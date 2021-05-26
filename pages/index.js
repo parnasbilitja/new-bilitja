@@ -14,7 +14,7 @@ export default function Home1() {
               <Provider store={store}>
               
                 <PersistGate persistor={persistor}>
-              <h1>HELLO</h1>
+              <App/>
                 </PersistGate>
             </Provider>
     );

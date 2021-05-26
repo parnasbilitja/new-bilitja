@@ -20,7 +20,7 @@
 .flight-detail{
     text-align: center;
     .background-world{
-        background-image: url(../images/worldmap.png);
+        background-image: url(../public/images/worldmap.png);
         background-position: center;
         background-size: contain;
     }
@@ -128,7 +128,7 @@
         line-height: 70px;
     }
     .background-world{
-        background-image: url(../images/worldmap.png);
+        background-image: url(../public/images/worldmap.png);
         background-position: center;
         background-size: cover;
     }

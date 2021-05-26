@@ -2,8 +2,8 @@ import React from 'react'
 import Image from 'next/image'
 import '../../../styles/ImageSlider.module.scss'
 
-//import img from '../../../images/hotel_view.jpg'
-//import img2 from '../../../images/hotel_view2.jpg'
+//import img from '../../../public/images/hotel_view.jpg'
+//import img2 from '../../../public/images/hotel_view2.jpg'
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class ImageSlider extends React.Component {
@@ -14,7 +14,7 @@ class ImageSlider extends React.Component {
         }
     }
     render() {
-        const images = ['../../../images/hotel_view.jpg', '../../../images/hotel_view2.jpg', '../../../images/hotel_view.jpg', '../../../images/hotel_view2.jpg']
+        const images = ['../../../public/images/hotel_view.jpg', '../../../public/images/hotel_view2.jpg', '../../../public/images/hotel_view.jpg', '../../../public/images/hotel_view2.jpg']
         return (
             <div className="image-slider-main-container">
                 {

@@ -2,11 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 import AccommodationSearchBox from '../../Components/accommodation_search_box/AccommodationSearchBox.component'
 import PageTabls from '../../Components/page_tabs/PageTabs.component'
-//import earth from '../../../images/earth.png'
-//import map from '../../../images/map.png'
-//import bilitja from '../../../images/bilitja.png'
-//import vilaIndex from '../../../images/villa-index.png'
-//import hotelView from '../../../images/hotel_view.jpg'
+//import earth from '../../../public/images/earth.png'
+//import map from '../../../public/images/map.png'
+//import bilitja from '../../../public/images/bilitja.png'
+//import vilaIndex from '../../../public/images/villa-index.png'
+//import hotelView from '../../../public/images/hotel_view.jpg'
 import moment from 'moment-jalaali'
 
 import "../../../styles/Accommodation.module.scss"
@@ -52,14 +52,14 @@ class Accommodation extends React.Component {
             <div>
                 <div className="hidden-xs hidden-sm row">
                     <div className="col-md-4">
-                        <img src="../../../images/map.png" className="hero-image-2 pull-right" />
+                        <img src="../../../public/images/map.png" className="hero-image-2 pull-right" />
                     </div>
 
                     <div className="text-center col-md-4" style={{ paddingTop: 10 }}>
-                        <img src="../../../images/bilitja.png" className="hero-image-center" />
+                        <img src="../../../public/images/bilitja.png" className="hero-image-center" />
                     </div>
                     <div className="col-md-4">
-                        <img src="../../../images/earth.png" className="hero-image-1 pull-left" />
+                        <img src="../../../public/images/earth.png" className="hero-image-1 pull-left" />
                     </div>
                 </div>
 
@@ -73,7 +73,7 @@ class Accommodation extends React.Component {
                     </div>
                 </div>
                 <div className="hero-big-image">
-                    <img src='../../../images/villa-index.png' />
+                    <img src='../../../public/images/villa-index.png' />
                 </div>
 
                 <div className="home-become-host">
@@ -129,7 +129,7 @@ class Accommodation extends React.Component {
                         <div className="col-lg-10 col-md-10 col-12 text-right">
                             <div className="row">
                                 <div className="col-lg-3 col-md-3 col-sm-6 col-12 accommodation-suggestion">
-                                    <img src='../../../images/hotel_view.jpg' />
+                                    <img src='../../../public/images/hotel_view.jpg' />
                                     <p className="font-size-13 no-margin">ویلا</p>
                                     <span className="pull-right">
                                         <FontAwesomeIcon icon={faStar} />

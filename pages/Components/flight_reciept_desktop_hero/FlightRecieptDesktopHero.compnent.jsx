@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-//import airplaneReserve from '../../../images/airplane_reserve.png'
-//import airplaneReserveSmall from '../../../images/airplane_reserve_small.png'
-//import barcode from '../../../images/barcode.png'
+//import airplaneReserve from '../../../public/images/airplane_reserve.png'
+//import airplaneReserveSmall from '../../../public/images/airplane_reserve_small.png'
+//import barcode from '../../../public/images/barcode.png'
 import globals from '../../Globals/Global'
 
 const FlightRecieptDesktopHero = (props) => (
@@ -25,7 +25,7 @@ const FlightRecieptDesktopHero = (props) => (
                         </div>
                     </div>
                     <div style={{ padding: 10 }}>
-                        <img src='../../../images/airplane_reserve.png' />
+                        <img src='../../../public/images/airplane_reserve.png' />
                     </div>
                     <div className="row">
                         <div className="col-lg-4 col-md-4 col-sm-4 col-6 text-right">
@@ -58,14 +58,14 @@ const FlightRecieptDesktopHero = (props) => (
                         <div className="col-lg-6 col-md-6 col-sm-6 col-6 second-column">
                             <br />
                             <div>
-                                <img src='../../../images/airplane_reserve_small.png' />
+                                <img src='../../../public/images/airplane_reserve_small.png' />
                                 <p> شماره پرواز :
                                     <span className="color-secondary">&nbsp;{props.flightNo}</span>
                                 </p>
                             </div>
                             <div className="clear"></div>
                             <div>
-                                <img src='../../../images/airplane_reserve_small.png' />
+                                <img src='../../../public/images/airplane_reserve_small.png' />
                                 <p className="font-size-14">ظرفیت :
                                                     <span className="color-secondary">&nbsp;{props.capLast}&nbsp;</span>
                                                     صندلی خالی
@@ -73,7 +73,7 @@ const FlightRecieptDesktopHero = (props) => (
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-3 col-sm-3 col-6">
-                            <img src='../../../images/barcode.png' className="barcode" />
+                            <img src='../../../public/images/barcode.png' className="barcode" />
                         </div>
 
                     </div>

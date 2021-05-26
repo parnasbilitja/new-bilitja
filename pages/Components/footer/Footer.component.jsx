@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-//import footerLogo from '../../../images/bilitja-light-logo.png'
+//import footerLogo from '../../../public/images/bilitja-light-logo.png'
 
 import '../../../styles/Footer.module.scss'
 
@@ -14,7 +14,7 @@ const Footer = () => {
                 <div className="row">
 
                     <div className="col-lg-2 col-md-12 col-sm-12 col-12 footer-logo">
-                        <img src='../../../Images/bilitja-light-logo.png' />
+                        <img src='../../../public/images/bilitja-light-logo.png' />
                         <p>ارزان ترین بلیط های هواپیما</p>
                         <a href="">www. B i l i t j a .com</a>
                     </div>

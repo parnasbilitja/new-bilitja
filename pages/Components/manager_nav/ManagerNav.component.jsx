@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import '../../../styles/ManagerNav.module.scss'
-//import logo from '../../../images/bilitja-logo.png'
+//import logo from '../../../public/images/bilitja-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArchway, faBars } from '@fortawesome/free-solid-svg-icons'
 //import { withRouter } from 'react-router-dom'
@@ -17,7 +17,7 @@ const ManagerNav = (props) => {
             <div className={`manager-nav-main-container ${isOpend ? 'slidein-manager' : ''}`}>
 
                 <div className="manager-nav-header">
-                    <img src='../../../images/bilitja-logo.png' />
+                    <img src='../../../public/images/bilitja-logo.png' />
                 </div>
                 <div className="manager-nav-one-row">
                     <div>

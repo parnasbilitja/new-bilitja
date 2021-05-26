@@ -3,12 +3,12 @@ import Image from 'next/image'
 import FlightSearchBox from '../../Components/flight_search_box/FlightSearchBox.component'
 import PageTabls from '../../Components/page_tabs/PageTabs.component'
 
-//import earth from '../../../images/earth.png'
-//import map from "../../../images/map.png"
-//import bilitja from '../../../images/bilitja.png'
+//import earth from '../../../public/images/earth.png'
+//import map from "../../../public/images/map.png"
+//import bilitja from '../../../public/images/bilitja.png'
 //import flightIndex from '../../../public/images/flight-index.png'
-//import srvice3 from "../../../images/service3.png"
-//import srvice1 from "../../../images/service1.png"
+//import srvice3 from "../../../public/images/service3.png"
+//import srvice1 from "../../../public/images/service1.png"
 import moment from 'moment-jalaali'
 
 import "../../../styles/Home.module.scss"
@@ -57,14 +57,14 @@ class Home extends React.Component {
             <div>
                 <div className="hidden-xs hidden-sm row">
                     <div className="col-md-4">
-                        <img src="../../../images/map.png" className="hero-image-2 pull-right" />
+                        <img src="../../../public/images/map.png" className="hero-image-2 pull-right" />
                     </div>
 
                     <div className="text-center col-md-4" style={{ paddingTop: 10 }}>
-                        <img src='../../../images/bilitja.png' className="hero-image-center" />
+                        <img src='../../../public/images/bilitja.png' className="hero-image-center" />
                     </div>
                     <div className="col-md-4">
-                        <img src='../../../images/earth.png' className="hero-image-1 pull-left" />
+                        <img src='../../../public/images/earth.png' className="hero-image-1 pull-left" />
                     </div>
                 </div>
 
@@ -91,7 +91,7 @@ class Home extends React.Component {
                             <div className="col-lg-1 hidden-sm col-sm-12 hidden-xs"></div>
                             <div className="col-lg-5 col-md-6 col-sm-12 padding-5px">
                                 <div className="home-value-propsal">
-                                    <img src="../../../images/service1.png" />
+                                    <img src="../../../public/images/service1.png" />
                                     <h3 className="font-bold-iransanse">
                                         <span>خرید بلیط هواپیما &nbsp;</span>
                                         <span className="color-primary">با چند کلیک</span>
@@ -101,7 +101,7 @@ class Home extends React.Component {
                             </div>
                             <div className="col-lg-5 col-md-6 col-sm-12 padding-5px">
                                 <div className="home-value-propsal">
-                                    <img src="../../../images/service3.png" />
+                                    <img src="../../../public/images/service3.png" />
                                     <h3 className="font-bold-iransanse">
                                         <span className="color-primary">پذیرش میزبانی &nbsp;</span>
                                         <span>ویلا و اقامتگاه</span>
