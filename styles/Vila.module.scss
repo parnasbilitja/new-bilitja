@@ -1,0 +1,16 @@
+@media only screen and (max-width: 440px) {
+    .vila-one-row{
+        margin-right:0 !important;
+    }
+}
+.vila-one-row{
+    background-color: white;
+    padding: 15px 13px 10px 13px;
+    border:1px solid #e7e7e7;
+    margin-right: 10px;
+    img{
+        width:112px;
+        height: 70px;
+        border-radius: 5px;
+    }
+}

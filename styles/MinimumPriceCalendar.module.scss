@@ -1,0 +1,19 @@
+.min-price-calendar-container{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+    height: 300px;
+    text-align: center;
+    margin-top: 15px;
+    .available{
+        cursor: pointer;
+        background-color: #f9f9f9;
+    }
+    .disable{
+        background-color: #f2f2f2;
+        background-image: repeating-linear-gradient(-45deg,transparent,transparent 8px,#bbb 0,#bbb 10px)!important;
+    }
+    
+    
+}

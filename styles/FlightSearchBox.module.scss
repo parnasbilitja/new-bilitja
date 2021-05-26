@@ -1,0 +1,49 @@
+@import './values.module.scss';
+@media only screen and (max-width: 649px) and (min-width: 441px) {
+    .home-flight-form {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        gap: 8px;
+    }
+}
+@media only screen and (max-width: 694px) and (min-width: 650px) {
+    .home-flight-form {
+        grid-template-columns: 8fr 2.5fr 8fr 8fr 4fr;
+        grid-template-rows: 1fr;
+        gap: 8px;
+    }
+}
+@media only screen and (max-width: 979px) and (min-width: 695px) {
+    .home-flight-form {
+        grid-template-columns: 8fr 2.5fr 8fr 8fr 4fr;
+        grid-template-rows: 1fr;
+        gap: 8px;
+    }
+}
+@media only screen and (max-width: 2000px) and (min-width: 980px) {
+    .home-flight-form {
+        grid-template-columns: 8fr 1.5fr 8fr 8fr 5fr;
+        grid-template-rows: 1fr;
+        gap: 8px;
+    }
+}
+.home-flight-form {
+    display: grid;
+    .form-input-border{
+        border: 1px solid #cfd3d8;
+    }
+}
+.home-swtich-button-container {
+    cursor: pointer;
+    &:hover{
+        background-color: $pillGray;
+    }
+    .home-swtich-button {
+        margin: 15px auto 0 auto;
+        font-size: 16px;
+        color: #000 !important;
+    }
+}
+.flight-search-box-calendar-container{
+    padding: 10px 15px;
+}

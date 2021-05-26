@@ -1,0 +1,56 @@
+@import './values.module.scss';
+@media only screen and (max-width : 650px){
+    .footer-logo{
+        text-align: right !important;
+    }
+}
+.footer{
+    background-color: $blackBackground;
+    padding: 20px 0 10px 0;
+    text-align: right;
+    color: $whiteColor;
+    margin-top: 48px;
+   
+    h3{
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    ul{
+        list-style: none;
+        padding: 0 !important;
+        margin: 0 !important;
+
+        a{
+            color:$whiteColor;
+            font-size: 14px;
+            font-weight: 400;
+            &:hover{
+                color:$whiteColor;   
+            }
+        }
+        svg{
+            margin-left: 5px;
+            font-size: 14px;
+        }
+    }
+    .row{
+        div{
+            margin-top: 10px;
+        }
+    }
+}
+
+.footer-logo{
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 0 20px;
+    p{
+        color: $pillTextGray;
+        font-size: 16px;
+        margin: 0 !important;
+    }
+    a{
+        color:$whiteColor
+    }
+}

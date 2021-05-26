@@ -1,0 +1,105 @@
+@import './values.module.scss';
+@media only screen and (max-width: 440px) {
+
+    .accommodation-calendar-reserve-day-container{
+        width:300px ;
+        grid-gap: 3px;
+    } 
+}
+@media only screen and (max-width: 694px) and (min-width: 441px) {
+  
+    .accommodation-calendar-reserve-day-container{
+        width:300px ;
+        grid-gap: 3px;
+    }
+  
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 695px) {
+  
+    .accommodation-calendar-reserve-day-container{
+        grid-gap: 1px;
+    }
+}
+@media only screen and (max-width: 2000px) and (min-width: 1025px) {
+    
+    .accommodation-calendar-reserve-day-container{
+        width:450px ;
+        grid-gap: 10px;
+    }
+  
+}
+
+.accommodation-calendar-reserve{
+    text-align: center;
+    border:1px solid $pillGray;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width:100%;
+    // overflow: scroll;
+    
+    .row{
+        p{
+            cursor: pointer;
+            font-size:17px ;
+            color:white;
+            margin-top: 8px;
+            margin-bottom: 0 !important;
+        }
+        svg{
+            // padding: 5px !important;
+            // border:1px solid white;
+            color:white;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+    }
+    .calendar-header{
+        background-color: $primaryColor;
+        height: 46px;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+    }
+   
+}
+
+.accommodation-calendar-reserve-day-container{
+    text-align: center;
+    display: grid;
+    padding: 5px;
+ 
+    .calendar-item{
+        text-align: center;
+        border:1px solid #c1c1c1;
+       
+        line-height: 28px;
+        border-radius: 5px;
+        color: $blackColor;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    
+}
+
+.accommodation-calendar-reserve-day-container{
+    width: 100%;
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows:auto;
+}
+.TODAY{
+    background-color: #f2f2f2;
+    border-radius: 3px;
+    border-color:$primaryColor !important;
+}
+.BEFORE{
+    background-color: #fff;
+    color: $pillGray !important;
+    border:1px solid $secondaryColor !important;
+    border-radius: 3px;
+    cursor: default !important;
+    background-image: repeating-linear-gradient(-45deg,transparent,transparent 8px,#eee 0,#eee 10px)!important;
+}
+.selected-day{
+    background-color: $primaryColor !important;
+    color:white !important;
+}

@@ -1,0 +1,89 @@
+.panel-header {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+}
+.panel-main-content {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    .row {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .form-input-border {
+        height: 29px;
+        margin-top: 3px !important;
+    }
+    select.primary-text {
+        padding: 1px !important;
+    }
+}
+.upload-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #1c8adb;
+    background-color: rgb(245, 252, 255);
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        background-color: #6f99f9;
+    }
+    
+}
+.uploaded-image-box{
+    img{
+        width: 100px;
+        height: 100px;
+        float:left;
+    }
+}
+.management-one-row {
+    padding: 5px;
+    margin-top: 10px;
+    background-color: #f2f2f2;
+    direction: rtl;
+    span {
+        margin-left: 10px;
+    }
+    svg {
+        float: left;
+        color: red;
+    }
+}
+
+.management-black-outlined-button {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 31px;
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-right: 7px;
+    cursor: pointer;
+    &:hover {
+        color: black;
+    }
+}
+.filter-list-management {
+    margin-top: 10px;
+    // & > div{
+    //     margin-top:-4px;
+    // }
+    strong {
+        margin-bottom: 5px;
+        display: block;
+        font-size:15px;
+    }
+    div.radio {
+        float: right;
+        margin-top: 3px;
+    }
+    label {
+        margin-right: 5px;
+        margin-bottom: 0.5rem;
+    }
+}

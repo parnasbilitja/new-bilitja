@@ -1,0 +1,30 @@
+.slide-in-form{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    width:220px;
+    background-color: white;
+    transition-duration: .5s;
+    transition-property: right;
+}
+.slide-in-screen-saver{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: #525965;
+    opacity: 0.6;
+    height: 100%;
+    z-index: 999998;
+
+}
+
+.slideout{
+    right: -220px;
+}
+.slidein{
+    right: 0;
+}

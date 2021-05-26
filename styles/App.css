@@ -1,0 +1,22 @@
+@media only screen and (max-width: 1025px) {
+  .panel-manager-main-container{
+    margin-top: 40px;
+  }
+}
+@media only screen and (max-width: 2000px) and (min-width: 1025px) {
+  .panel-manager-main-container{
+      padding-right: 280px;
+  }
+}
+#root{
+  height: 100%;
+}
+.panel-manager-main-container{
+  background-color: #f6f6f6;
+  text-align: right;
+  height: 100%;
+  
+}
+.panel-manager-content-container{
+  padding: 10px 20px;
+}

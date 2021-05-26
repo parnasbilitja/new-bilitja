@@ -1,0 +1,16 @@
+$pillGray :#dee2e6;
+$pillTextGray :#888;
+$whiteColor : #fff;
+$blackColor : #000;
+$primaryColor:#279692;
+$secondaryColor:#ff0000;
+$blackBackground:#333;
+$borderRadius : 0.25rem;
+@font-face {
+    font-family: BYekan;
+    src: url("../public/Font/IranSans2/eot/IRANSansWeb\(FaNum\)_UltraLight.woff");
+}
+.testtes{
+ color:$pillTextGray;
+ font-family:BYekan;
+}

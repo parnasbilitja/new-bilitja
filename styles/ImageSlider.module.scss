@@ -1,0 +1,55 @@
+.image-slider-main-container{
+    position: relative;
+    width: 100%;
+    & > img{
+        width: 100%;
+        height: 420px;
+        display: none;
+      
+    }
+    .visible-image{
+        display: block;
+    }
+    .button-slide{
+        height: 100px;
+        width: 50px;
+        background-color: #000;
+        opacity: 0.5;
+        line-height: 110px;
+        text-align: center;
+        cursor: pointer;
+        svg{
+            font-size: 20px;
+            color:white;
+        }
+        
+    }
+    .next{
+        position: absolute;
+        right: 0;
+        top: 35%;
+    }
+    .previous{
+        position: absolute;
+        left: 0;
+        top: 35%;
+    }
+}
+.image-slider-tumbs-container{
+    text-align: center;
+    & > div{
+        display: inline-block;
+        width: 80px;
+        height: 60px;
+        margin: 5px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .active-image{
+        border:2px solid red;
+        border-radius: 5px;
+        padding:2px;
+    }
+}

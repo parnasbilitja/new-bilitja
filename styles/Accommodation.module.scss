@@ -1,0 +1,151 @@
+@import "./values.module.scss";
+//@import "./global.style.scss";
+@media only screen and (max-width: 440px) {
+    
+    .home-become-host {
+        height: 390px !important;
+
+        & > div {
+            padding: 35px 50px !important;
+            .btn-secondary-outlined {
+                width: 40% !important;
+                padding: 6px 0 !important;
+            }
+            h2 {
+                margin-top: 0px !important;
+            }
+        }
+    }
+    .heor-main-container{
+        padding: 15px 18px 10px 18px !important;
+    }
+}
+
+
+
+
+
+
+
+.heor-main-container {
+    padding: 10px 18px;
+}
+.hero-image-1 {
+    width: 150px;
+    height: 191px;
+}
+.hero-image-2 {
+    width: 200px;
+    height: 191px;
+    float: right;
+}
+
+.hero-image-center {
+    width: 250px;
+    height: 175px;
+}
+.tab-container {
+    display: grid;
+    margin-bottom: 15px;
+}
+.home-tab {
+    height: 51px;
+    padding: 17px 2px 13px 2px;
+    text-align: center;
+    color: $blackColor;
+
+    span {
+        margin-right: 8px;
+    }
+    i {
+        line-height: 24px;
+        margin-right: 8px;
+    }
+}
+.home-tab-active{
+    @extend .card-box-shadow !optional;
+    border-bottom: 2px solid $secondaryColor;
+    color:$secondaryColor !important;
+    
+}
+
+.icon-container {
+    margin-top: -5px;
+}
+
+
+.hero-big-image {
+    text-align: center;
+    img {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+
+.home-become-host {
+    height: 495px;
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url(../public/images/flight-parallax.jpg);
+    margin-top: 48px;
+    text-align: center;
+    color: $whiteColor;
+    & > div {
+        background: rgba(0, 0, 0, 0.52);
+        width: 100%;
+        height: 100%;
+        padding: 120px;
+        h2 {
+            margin-top: 12px;
+            margin-bottom: 23px;
+            vertical-align: middle;
+            font-size: 22px;
+            font-weight: 700;
+            font-family:IranBold;
+            text-shadow: 0 3px 19px #000;
+        }
+        p {
+            font-size: 15px;
+        }
+        .btn-secondary-outlined {
+            display: inline-block;
+            width: 21%;
+            border-radius: 5px;
+            border: 3px solid $whiteColor;
+            padding: 15px 6px;
+            margin-top: 70px;
+            color: $whiteColor;
+
+            &:hover {
+                background-color: $whiteColor;
+                color: black;
+            }
+        }
+    }
+}
+.acco-tab{
+    height: 41px;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+    color: $blackColor;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.accommodation-suggestion{
+    border:1px solid $pillGray;
+    border-radius: 5px;
+    padding: 0!important;
+    img{
+        width: 100%;
+        height: 150px;
+    }
+    svg{
+        color:#fb9900;
+        font-size: 12px;
+    }
+    span,p{
+        padding: 0 10px;
+    }
+}

@@ -1,0 +1,221 @@
+@import './values.module.scss';
+@media only screen and (max-width: 440px) {
+    .birthday-year-container{
+
+        grid-gap: 1px;
+    }
+    .birthday-month-container{
+
+        grid-gap: 10px;
+    }
+    .birthday-day-container{
+
+        grid-gap: 3px;
+    }
+}
+@media only screen and (max-width: 694px) and (min-width: 441px) {
+    .birthday-year-container{
+        grid-gap: 5px;
+    }
+    .birthday-month-container{
+        grid-gap: 5px;
+    }
+    .birthday-day-container{
+        grid-gap: 3px;
+    }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 695px) {
+    .birthday-year-container{
+
+        grid-gap: 5px;
+    }
+    .birthday-month-container{
+
+        grid-gap: 5px;
+    }
+    .birthday-day-container{
+
+        grid-gap: 3px;
+    }
+}
+@media only screen and (max-width: 2000px) and (min-width: 1025px) {
+    .birthday-year-container{
+
+        grid-gap: 10px;
+    }
+    .birthday-month-container{
+
+        grid-gap: 10px;
+    }
+    .birthday-day-container{
+
+        grid-gap: 3px;
+    }
+}
+.birthday-calendar{
+    
+    height: 290px;
+
+    overflow: scroll;
+    margin-top: 15px;
+}
+.birthday-year-container,.birthday-month-container{
+    text-align: center;
+    display: grid;
+    width: 95%;
+    padding: 10px;
+    margin: 0 auto;
+    .birthday-item{
+        text-align: center;
+        border:2px solid $primaryColor;
+        height: 47px;
+        line-height: 47px;
+        border-radius: 5px;
+        color: $primaryColor;
+        font-size: 14px;
+        cursor: pointer;
+        &:hover{
+            background-color:$primaryColor;
+            color: $whiteColor;
+        }
+    }
+}
+.birthday-day-container{
+    text-align: center;
+    display: grid;
+    padding: 5px;
+    margin-top: 10px;
+    .birthday-item{
+        text-align: center;
+        border:1px solid #c1c1c1;
+        height: 28px;
+        line-height: 28px;
+        border-radius: 5px;
+        color: $blackColor;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .border-bottom-black{
+        margin: 10px auto 0 auto;
+        padding: 7px;
+        width: 85%;
+    }
+}
+
+.birthday-year-container{
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows:auto;
+}
+.birthday-month-container{
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows:auto;
+}
+.birthday-day-container{
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows:auto;
+}
+// .calendarContainer{
+//     width:100% !important;
+//     .heading{
+//         border-bottom: 1px solid black;
+//         width:90% !important;
+//         margin: auto;
+//         button{
+//             padding:auto 0 !important;
+//             &:hover{
+//                 border-radius: 0!important;
+//                 background: transparent !important;   
+//             }
+//             &:nth-child(2){
+//                 text-align: right;
+//             }
+//             &:nth-child(3){
+//                 text-align: left;
+//             }
+//         }
+//     }
+// }
+// .dayWrapper{
+//     visibility:hidden;
+//     border: solid 1px #c1c1c1 ;
+//     border-radius: 3px;
+//     width:12.5% !important;
+//     margin:2px !important;
+//     height: 28px;
+//     button{
+//         width: 100% !important;
+//         height: 100% !important;
+//         background: transparent !important;   
+
+//         &:hover{
+//             border-radius: 0!important;
+//             background: transparent !important;   
+//         }
+//         &:focus{
+//             color:black !important;
+//         }
+//     }
+   
+// }
+// .currentMonth{
+//     visibility: visible !important;
+// }
+// .disabled{
+//     background-image: repeating-linear-gradient(-45deg,transparent,transparent 8px,#eee 0,#eee 10px)!important;
+//     button{
+//         border-radius: 0 !important;    
+//     }
+    
+// }
+// .today{
+//     background-color: #f2f2f2;
+//     border-radius: 3px;
+//     button{
+//         background: transparent !important;
+//         border-radius:  0 !important;
+//         border-color:$secondaryColor !important;
+//         outline: none !important;
+//         color:black !important;
+//     }
+// }
+// .monthsList{
+//     padding: 10px;
+//     .selected button{
+//         background-color: $whiteColor;
+//     }
+//     div{
+//         button{
+//             color:$pillTextGray !important;
+//             height: 44px!important;
+//             width: 29.5% !important;
+//             margin:4px;
+//             border-radius: 5px;
+//             border:2px solid $primaryColor !important;
+//             &:hover{
+//                 background-color: $primaryColor !important;
+//                 color:$whiteColor !important;
+//             }
+//         }
+//     }
+// }
+// .yearsList{
+//     padding: 10px;
+//     .selected button{
+//         background-color: $whiteColor;
+//     }
+//     div{
+//         button{
+//             color:$pillTextGray !important;
+//             height: 44px!important;
+//             width: 18% !important;
+//             margin:1px;
+//             border-radius: 5px;
+//             border:2px solid $primaryColor !important;
+//             &:hover{
+//                 background-color: $primaryColor !important;
+//                 color:$whiteColor !important;
+//             }
+//         }
+//     }
+// }

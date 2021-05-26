@@ -1,0 +1,53 @@
+@import './values.module.scss'; 
+.flight-detail{
+    text-align: center;
+    .background-world{
+        background-image: url(../images/worldmap.png);
+        background-position: center;
+        background-size: contain;
+    }
+    img.barcode{
+        width:55px;
+        height: 100%;
+    }
+    
+}
+.passenger-list-last-payment{
+    svg{
+        margin-left:5px
+    }
+}
+.second-column{
+    padding: 10px;
+    text-align: center;
+    img{
+        margin-left: 5px;
+        display: inline-block;
+    }
+    p{
+        display: inline-block;
+    }
+}
+.border-pill-lg{
+    p.color-textpill{
+        border-bottom: 1px solid black;
+        margin-bottom: 0;
+        padding-bottom: 10px;
+        svg{
+            margin-top: 10px;
+            margin-left: 7px;
+        }
+    }
+}
+.payment-container{
+   
+    // .btn-outlined.color-secondary{
+    //     border-color: $secondaryColor;
+    //     color:$secondaryColor;
+
+    //     &:hover{
+    //         background-color: $secondaryColor;
+    //         color:$whiteColor;
+    //     }
+    // }
+}

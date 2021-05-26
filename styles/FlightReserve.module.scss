@@ -1,0 +1,149 @@
+@import './values.module.scss';
+@media only screen and (max-width : 650px){
+    .passanger-submiter{
+        .form-input-border{
+            height: 45px !important;   
+            border: 1px solid #cfd3d8;
+        }
+    }
+    .container-fluid{
+        padding:0 30px;
+    }
+}
+
+
+
+.border-pill{
+    padding: 10px 15px ;
+    margin-top: 10px ;
+}
+.flight-detail{
+    text-align: center;
+    .background-world{
+        background-image: url(../images/worldmap.png);
+        background-position: center;
+        background-size: contain;
+    }
+    img.barcode{
+        width:55px;
+        height: 100%;
+    }
+}
+.second-column{
+    padding: 10px;
+    text-align: center;
+    img{
+        margin-left: 5px;
+        display: inline-block;
+    }
+    p{
+        display: inline-block;
+    }
+}
+
+.passanger-submiter{
+    padding: 0px 10px;
+    text-align: right;
+    .form-input-border{
+        height: 29px;   
+    }
+    .finish-reserve{
+        & > div:nth-child(1){
+            margin-top: 15px;
+            input[type=checkbox]{
+                margin-left: 5px;
+            }
+        }
+    }
+    
+    .finish-reserve-buttons{
+       
+        .btn-outlined{
+            text-align: center;
+            border-width: 2px;
+            color:$primaryColor;
+            display: inline-block;
+            width: 98%;
+            height: 56px !important;
+            padding: 15px;
+            &:hover{
+                background-color: $primaryColor;
+                color:$whiteColor;
+            }
+        }
+        .btn-outlined.color-secondary{
+            border-color: $secondaryColor;
+            color:$secondaryColor;
+
+            &:hover{
+                background-color: $secondaryColor;
+                color:$whiteColor;
+            }
+        }
+    }
+}
+.add-passanger{
+    padding: 10px;
+    .btn-outlined{
+        text-align: center;
+        border-width: 2px;
+        color:$primaryColor;
+        display: inline-block;
+        width: 98%;
+        margin-top:5px;
+        font-size: 15px;
+        &:hover{
+            background-color: $primaryColor;
+            color:$whiteColor;
+        }
+        svg{
+            margin:3px 2px 0 2px;
+        }
+    }
+}
+.airline-image{
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+.reserve-mobile-hero{
+    margin-top: 20px !important;
+    .small-airplane{
+        margin-top: 10px;
+        width: 40px;
+        height: 30px;
+    }
+    .airline-icon{
+        width: 35px;
+        height: 35px;
+    }
+    
+    .line-2{
+        padding: 10px 0 0 0;
+        p{
+            margin:0
+        }
+    }
+    .center-p{
+        line-height: 70px;
+    }
+    .background-world{
+        background-image: url(../images/worldmap.png);
+        background-position: center;
+        background-size: cover;
+    }
+    .line-3{
+        p{
+            margin: 0 !important;
+        }
+        svg{
+            margin-left:5px;
+        }
+    }
+}
+.terms_and_regulation{
+    text-align: left;
+    a{
+        color: #337ab7;
+    }
+}

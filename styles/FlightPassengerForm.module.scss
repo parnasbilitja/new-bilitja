@@ -1,0 +1,61 @@
+@media only screen and (max-width: 650px) {
+
+    .visible-xs-passenger-form-header {
+        display: flex;
+    }
+    .hidden-xs {
+        display: none !important;
+    }
+    .passenger-form{
+        .form-input-border{
+            height: 45px !important;   
+        }
+    }
+}
+@media only screen and (max-width: 979px) and (min-width: 651px) {
+    .visible-xs-passenger-form-header {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 2000px) and (min-width: 980px) {
+    .visible-xs-passenger-form-header {
+        display: none;
+    }
+}
+.row-price {
+    padding: 12px 5px 0 5px;
+}
+.corner-position {
+    position: absolute;
+    top: 2px;
+    left: 1px;
+}
+.passenger-form {
+    position: relative;
+    margin-top: 5px;
+    text-align: right;
+    background-color: #eeeeee;
+    padding: 10px;
+    & > div {
+        margin: 0 2px;
+        .form-input-border {
+            height: 29px;
+        }
+    }
+    select {
+        padding: 0px 5px !important;
+    }
+    .exit-form {
+        padding: 2px 5px 0 5px !important;
+        height: 24px;
+        display: inline-block;
+        text-align: left;
+    }
+    .error-message {
+        display: block !important;
+        font-size: 13px;
+        // min-height: 19px !important;
+    }
+    
+}

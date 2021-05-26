@@ -1,3 +1,5 @@
+import AddVilla from "../../../Pages/manager/villa/AddVilla.page";
+
 export default function Add() {
-    return <h1>AddPage</h1>
+    return <AddVilla></AddVilla>
   }

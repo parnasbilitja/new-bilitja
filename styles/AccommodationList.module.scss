@@ -1,0 +1,54 @@
+@import "./values.module.scss";
+//@import './global.style.scss';
+@media only screen and (max-width : 650px){
+    .hidden-xs-flight{
+        display: none;
+    }
+    .visible-xs-accommodation-footer{
+        display: grid !important;
+        grid-template-columns:  repeat( 3, minmax(0px, 1fr) );
+        grid-template-rows: 1fr;
+    }
+    .visible-xs{
+        display: block !important;
+    }
+
+}
+.hotel_row {
+    border: 1px solid $pillGray;
+    padding: 1px;
+    margin-bottom: 10px;
+    img {
+        width: 99%;
+        height: 150px;
+        border-radius: 5px;
+    }
+}
+.hotel_row_mobile{
+    width: 95%;
+    border: 1px solid $pillGray;
+    padding: 2px;
+    margin: auto;
+    img {
+        width: 99%;
+        height: 100px;
+        border-radius: 5px;
+    }
+}
+.visible-xs-accommodation-footer{
+    @extend .card-box-shadow !optional;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: $whiteColor;
+    height: 55px;
+    border-top: 1px solid $pillGray;
+    text-align: center;
+    padding:5px;
+    font-size: 14px;
+    z-index: 999;
+    & > div{
+        background-color: white;
+    }
+}

@@ -1,0 +1,98 @@
+@import './values.module.scss';
+//@import './global.style.scss';
+@media only screen and (max-width : 650px){
+    .hidden-xs-flight{
+        display: none;
+    }
+    .visible-xs-flight-footer{
+        display: grid !important;
+        grid-template-columns:  repeat( 5, minmax(0px, 1fr) );
+        grid-template-rows: 1fr;
+    }
+    .visible-xs{
+        display: block !important;
+    }
+
+}
+
+
+.visible-xs-flight-footer{
+    @extend .card-box-shadow !optional;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: $whiteColor;
+    height: 55px;
+    border-top: 1px solid $pillGray;
+    text-align: center;
+    padding:5px;
+    font-size: 14px;
+    z-index: 999;
+    & > div{
+        background-color: white;
+    }
+}
+.flight-container{
+    padding:0px !important;
+}
+
+.filter-list-box{
+    padding: 5px 10px;
+    margin-top: 5px;
+    border:1px solid $pillGray;
+    text-align:right;
+    .filter-list-heading{
+        margin-bottom: 10px;
+    }
+    .filter-list-input{
+        height: 30px !important;
+        border-bottom-width: 1px !important;
+    }
+
+    .filter-list-sort,.filter-list-airlines,.filter-list-time-in-day{
+        margin-top:20px;
+        // & > div{
+        //     margin-top:-4px;
+        // }
+        strong{
+            margin-bottom: 5px;
+            display: block;
+        }
+        div.radio{
+            float:right;
+            margin-top: 3px;
+        }
+        label{
+            margin-right: 5px;
+            margin-bottom: .5rem;
+        }
+    }
+   .filter-list-airlines{
+        img{
+            widows: 16px;
+            height: 16px;
+            margin-right:5px
+        }
+   }
+}
+
+.flight-change-day{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    align-items: center;
+    .btn-outlined{
+        text-align: center;
+        border-width: 2px;
+        color:$primaryColor;
+        &:hover{
+            background-color: $primaryColor;
+            color:$whiteColor;
+        }
+        svg{
+            margin:3px 2px 0 2px;
+        }
+    }
+}
+
