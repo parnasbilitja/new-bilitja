@@ -1,10 +1,9 @@
 import React from 'react'
 
-//import './App.css'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
-//import './Assets/Styles/global.style.scss'
-import Styles from '../Styles/icon.module.scss'
-import '../styles/manager.module.scss'
+//import Styles from '../Styles/icon.module.scss'
+//import '../styles/manager.module.scss'
 
 import Home from './Pages/home/Home.page'
 import Flight from './Pages/flight/Flight.page'
@@ -43,6 +42,7 @@ import UpdateVila from './Pages/manager/villa/UpdateVila.page'
 import VilaDetial from './Pages/manager/villa/VilaDetail.page'
 import VilaReservation from './Pages/manager/villa/VilaReservation.page'
 import BecomeMember from './Pages/become_member/BecomeMember.page'
+import { useRouter } from 'next/router'
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -52,15 +52,22 @@ class App extends React.Component {
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
 
   }
+
+  
+
   componentDidMount() {
     this.updateWindowDimensions();
     // window.addEventListener('resize', this.updateWindowDimensions);
 
+    
   }
   updateWindowDimensions() {
     this.setState({ width: window.innerWidth });
   }
   render() {
+
+   
+    
     return (
      <>
      
@@ -69,8 +76,13 @@ class App extends React.Component {
                   this.state.width <= 826 ? <NavBarMobile /> : <NavBar />
                 }
                                 <div style={this.state.width <= 826 ? { marginTop: 110 } : { marginTop: 90 }}>
-                                
-                  {/* <Switch>
+                       
+                  {
+
+                      <Home></Home>
+
+                    
+                  /* <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path='/ویلا/intro' component={BecomeMember}/>
                     <Route exact path="/ویلا" component={AccommodationPage} />

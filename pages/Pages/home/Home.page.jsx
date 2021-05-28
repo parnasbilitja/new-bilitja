@@ -5,7 +5,7 @@ import PageTabls from '../../Components/page_tabs/PageTabs.component'
 
 //import earth from '../../../public/images/earth.png'
 //import map from "../../../public/images/map.png"
-//import bilitja from '../../../public/images/bilitja.png'
+//import bilitja from '../../../images/bilitja.png'
 //import flightIndex from '../../../public/images/flight-index.png'
 //import srvice3 from "../../../public/images/service3.png"
 //import srvice1 from "../../../public/images/service1.png"
@@ -23,6 +23,7 @@ import { addAccountProperties } from '../../Redux/Account/account.action'
 import { addAirports } from '../../Redux/Airports/airport.action'
 import { connect } from 'react-redux'
 import { compareTwoStringDates } from '../../Utils/SimpleTasks'
+import { withRouter } from 'next/router'
 class Home extends React.Component {
     constructor(props) {
         super(props)
@@ -61,7 +62,7 @@ class Home extends React.Component {
                     </div>
 
                     <div className="text-center col-md-4" style={{ paddingTop: 10 }}>
-                        <img src='../../../public/images/bilitja.png' className="hero-image-center" />
+                        <img src='../../../images/bilitja.png' className="hero-image-center" />
                     </div>
                     <div className="col-md-4">
                         <img src='../../../public/images/earth.png' className="hero-image-1 pull-left" />
@@ -254,4 +255,4 @@ const mapDispatchToProps = (dispatch) => ({
     setAirports: value => dispatch(addAirports(value)),
     addAccountProperties: value => dispatch(addAccountProperties(value))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Home) 
+export default withRouter( connect(mapStateToProps, mapDispatchToProps)(Home)) 

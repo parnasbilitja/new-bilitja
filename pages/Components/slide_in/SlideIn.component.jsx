@@ -1,11 +1,11 @@
-import '../../../styles/SlideIn.module.scss'
+import styles from '../../../styles/SlideIn.module.scss'
 const SlideIn = function (props) {
     return (
         <div>
-            <div className={`slide-in-form ${props.slide ? "slidein" : "slideout"}`}>
+            <div className={` ${styles['slide-in-form']}        ${props.slide ? styles.slidein : styles.slideout}`}>
                 {props.children}
             </div>
-            <div className="slide-in-screen-saver" style={props.slide ? { display: "block" } : { display: "none" }} onClick={() => {
+            <div className={styles["slide-in-screen-saver"]} style={props.slide ? { display: "block" } : { display: "none" }} onClick={() => {
                     props.close()
             }}></div>
         </div>

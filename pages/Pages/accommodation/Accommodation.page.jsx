@@ -4,7 +4,7 @@ import AccommodationSearchBox from '../../Components/accommodation_search_box/Ac
 import PageTabls from '../../Components/page_tabs/PageTabs.component'
 //import earth from '../../../public/images/earth.png'
 //import map from '../../../public/images/map.png'
-//import bilitja from '../../../public/images/bilitja.png'
+//import bilitja from '../../../images/bilitja.png'
 //import vilaIndex from '../../../public/images/villa-index.png'
 //import hotelView from '../../../public/images/hotel_view.jpg'
 import moment from 'moment-jalaali'
@@ -56,7 +56,7 @@ class Accommodation extends React.Component {
                     </div>
 
                     <div className="text-center col-md-4" style={{ paddingTop: 10 }}>
-                        <img src="../../../public/images/bilitja.png" className="hero-image-center" />
+                        <img src="../../../images/bilitja.png" className="hero-image-center" />
                     </div>
                     <div className="col-md-4">
                         <img src="../../../public/images/earth.png" className="hero-image-1 pull-left" />

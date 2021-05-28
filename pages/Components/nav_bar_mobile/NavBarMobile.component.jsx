@@ -1,7 +1,7 @@
 import React from 'react'
-//import logo from '../../../public/images/logo512.png'
-//import footerLogo from '../../../public/images/bilitja-light-logo.png'
-import '../../../styles/NavBarMobile.module.scss'
+//import logo from '../../../images/logo512.png'
+//import footerLogo from '../../../images/bilitja-light-logo.png'
+import styles from  '../../../styles/NavBarMobile.module.scss'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SlideIn from '../slide_in/SlideIn.component'
@@ -19,8 +19,9 @@ class NavBarMobile extends React.Component {
     }
     render() {
         return (
-            <nav className="nav-mobile">
-                <div className="nav-text-detail-mobile">
+            /*<div className={styles['error-mobile']}> hghgshghgsd</div>*/
+                  <nav className={styles['nav-mobile']}>
+                    <div className={styles['nav-text-detail-mobile']}>
                     <div className="pull-right">
                         <i className="kilo-font icon-login font-size-14 color-black"></i>
                         <a href="" className="font-size-13 color-black" onClick={(e) => {
@@ -57,7 +58,7 @@ class NavBarMobile extends React.Component {
                         </a>
                     </div>
                 </div>
-                <div className="nav-logo-container-mobile">
+                <div className={styles["nav-logo-container-mobile"]}>
                     <div className="pull-right">
                         <FontAwesomeIcon icon={faBars} onClick={() => {
                             this.setState({
@@ -66,7 +67,7 @@ class NavBarMobile extends React.Component {
                         }} />
                         <h1 className="font-bold-iransanse"> خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه </h1>
                     </div>
-                    <img src='../../../public/images/logo512.png' className="pull-left" />
+                    <img src='../../../images/logo512.png' className="pull-left" />
                 </div>
 
                 <SlideIn slide={this.state.slide} close={() => {
@@ -74,9 +75,9 @@ class NavBarMobile extends React.Component {
                         slide: false
                     })
                 }}>
-                    <div className="nav-items-container-mobile">
+                    <div className={styles["nav-items-container-mobile"]}>
                         <div className="logo-menu-mobile">
-                            <a href="/"><img src='../../../public/images/bilitja-light-logo.png'/></a>
+                            <a href="/"><img src='../../../images/bilitja-light-logo.png'/></a>
                             <p className="no-margin color-white">ارزان ترین بلیط های هواپیما</p>
                         </div>
                         <ul>
@@ -128,7 +129,7 @@ class NavBarMobile extends React.Component {
                         </ul>
                     </div>
                 </SlideIn>
-            </nav>
+            </nav> 
         )
     }
 }
