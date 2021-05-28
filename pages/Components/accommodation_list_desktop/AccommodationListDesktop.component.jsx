@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import HotelView from '../../../public/images/hotel_view.jpg'
-import { withRouter } from 'react-router-dom'
+
 
 const AccommodationListDesktop = ({ history, accommodationList }) => {
     return (
@@ -66,4 +66,4 @@ const AccommodationListDesktop = ({ history, accommodationList }) => {
     )
 }
 
-export default withRouter(AccommodationListDesktop)
+export default AccommodationListDesktop

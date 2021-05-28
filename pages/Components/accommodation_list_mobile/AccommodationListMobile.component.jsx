@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 //import HotelView from '../../../public/images/hotel_view.jpg'
-import { withRouter } from 'react-router-dom'
+
 
 
 const AccommodationListMobile = ({ history, accommodationList }) => {
@@ -57,4 +57,4 @@ const AccommodationListMobile = ({ history, accommodationList }) => {
     )
 }
 
-export default withRouter(AccommodationListMobile)
+export default AccommodationListMobile

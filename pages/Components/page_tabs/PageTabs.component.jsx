@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../../styles/PageTabs.module.scss'
-import { withRouter } from 'react-router-dom'
+
 const PageTabls = (props) => {
     return (
         <div className="row">
@@ -33,4 +33,4 @@ const PageTabls = (props) => {
     )
 }
 
-export default withRouter(PageTabls)
+export default PageTabls

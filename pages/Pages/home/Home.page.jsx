@@ -23,7 +23,7 @@ import { addAccountProperties } from '../../Redux/Account/account.action'
 import { addAirports } from '../../Redux/Airports/airport.action'
 import { connect } from 'react-redux'
 import { compareTwoStringDates } from '../../Utils/SimpleTasks'
-import { withRouter } from 'next/router'
+
 class Home extends React.Component {
     constructor(props) {
         super(props)
@@ -255,4 +255,4 @@ const mapDispatchToProps = (dispatch) => ({
     setAirports: value => dispatch(addAirports(value)),
     addAccountProperties: value => dispatch(addAccountProperties(value))
 })
-export default withRouter( connect(mapStateToProps, mapDispatchToProps)(Home)) 
+export default  connect(mapStateToProps, mapDispatchToProps)(Home)

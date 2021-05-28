@@ -4,7 +4,7 @@ import '../../../styles/ManagerNav.module.scss'
 //import logo from '../../../images/bilitja-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArchway, faBars } from '@fortawesome/free-solid-svg-icons'
-//import { withRouter } from 'react-router-dom'
+
 const ManagerNav = (props) => {
     const [isOpend,setOpend] =useState(false)
     return (

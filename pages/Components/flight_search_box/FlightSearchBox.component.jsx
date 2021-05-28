@@ -17,7 +17,7 @@ import { selectCredentials } from '../../Redux/Search/search.reselect'
 import { addCredentials, switchRoute } from '../../Redux/Search/search.action'
 import { messageBoxModify } from '../../Redux/UI/ui.action'
 
-import { withRouter } from 'react-router-dom'
+
 import BirthdayCalendar from "../birthday_calendar/BirthdayCalendar.component"
 
 
@@ -266,4 +266,4 @@ const mapDispatchesToProps = (dispatch) => ({
     messageBoxModify: async value => dispatch(messageBoxModify(value))
 
 })
-export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(FlightSearchBox))
+export default connect(mapStatesToProps, mapDispatchesToProps)(FlightSearchBox)

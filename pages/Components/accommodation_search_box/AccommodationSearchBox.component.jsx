@@ -15,7 +15,7 @@ import { selectCredentials } from '../../Redux/SearchAccommodation/search_accomm
 import { addCredentials } from '../../Redux/SearchAccommodation/search_accommodation.action'
 import { messageBoxModify } from '../../Redux/UI/ui.action'
 
-import { withRouter } from 'react-router-dom'
+
 
 import moment from 'jalali-moment'
 
@@ -276,4 +276,4 @@ const mapDispatchesToProps = (dispatch) => ({
     messageBoxModify: async value => dispatch(messageBoxModify(value))
 
 })
-export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(AccommodationSearchBox))
+export default connect(mapStatesToProps, mapDispatchesToProps)(AccommodationSearchBox)

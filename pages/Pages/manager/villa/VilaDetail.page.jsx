@@ -4,7 +4,7 @@ import PrimaryTextInput from '../../../Components/primaty_text_input/PrimaryText
 import PrimaryButton from '../../../Components/primary_button/PrimaryButton.component'
 import moment from 'moment-jalaali'
 import globals from '../../../Globals/Global'
-import { withRouter } from 'react-router-dom'
+
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
 
@@ -207,4 +207,4 @@ class VilaDetial extends React.Component {
 const mapDispatchesToProps = (dispatch) => ({
     messageBoxModify: async value => dispatch(messageBoxModify(value))
 })
-export default  withRouter(connect(null, mapDispatchesToProps)(VilaDetial))
+export default  connect(null, mapDispatchesToProps)(VilaDetial)

@@ -12,7 +12,7 @@ import PrimaryButton from '../primary_button/PrimaryButton.component'
 import { connect } from 'react-redux'
 import { addReservationProperties } from '../../Redux/Reserve/reserve.action'
 import { messageBoxModify } from '../../Redux/UI/ui.action'
-import { withRouter } from 'react-router-dom'
+
 
 class PopupFlightReserve extends React.Component {
     constructor(props) {
@@ -218,4 +218,4 @@ const mapDispatchesToProps = (dispatch) => ({
     addReservationProperties: async value => dispatch(addReservationProperties(value)),
     messageBoxModify: value => dispatch(messageBoxModify(value))
 })
-export default withRouter(connect(null, mapDispatchesToProps)(PopupFlightReserve))
+export default connect(null, mapDispatchesToProps)(PopupFlightReserve)

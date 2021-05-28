@@ -7,7 +7,7 @@ import s from '../../../styles/NavBar.module.scss'
 
 import { connect } from 'react-redux'
 import { accountBoxModify } from '../../Redux/UI/ui.action'
-import { withRouter } from 'react-router-dom'
+
 
 class NavBar extends React.Component {
     constructor(props) {

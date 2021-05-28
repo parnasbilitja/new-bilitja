@@ -4,7 +4,7 @@ import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../../../styles/AccommodationReserveCalendar.module.scss'
 import globals from '../../Globals/Global'
-import { withRouter } from 'react-router-dom'
+
 class AccommodationReserveCalendar extends React.Component {
     currentYear = 1405
 
@@ -236,7 +236,7 @@ class AccommodationReserveCalendar extends React.Component {
     }
 }
 
-export default withRouter(AccommodationReserveCalendar)
+export default AccommodationReserveCalendar
 
 
 

@@ -10,7 +10,6 @@ import Flight from './Pages/flight/Flight.page'
 import FlightReserve from './Pages/flight_reserve/FlightReseve.page'
 import FlightReciept from './Pages/flight_receipt/FlightReciept.page'
 import TrackOrder from './Pages/track_order/TrackOrder.page'
-import { Route, Switch, withRouter } from "react-router-dom"
 
 import NavBar from './Components/nav_bar/NavBar.component'
 import NavBarMobile from './Components/nav_bar_mobile/NavBarMobile.component'
