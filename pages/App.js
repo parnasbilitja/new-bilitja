@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 //import Styles from '../Styles/icon.module.scss'
 //import '../styles/manager.module.scss'
@@ -41,7 +40,7 @@ import UpdateVila from './Pages/manager/villa/UpdateVila.page'
 import VilaDetial from './Pages/manager/villa/VilaDetail.page'
 import VilaReservation from './Pages/manager/villa/VilaReservation.page'
 import BecomeMember from './Pages/become_member/BecomeMember.page'
-import { useRouter } from 'next/router'
+import { withRouter } from 'next/router'
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -52,7 +51,27 @@ class App extends React.Component {
 
   }
 
-  
+getComponent(pathName) {
+  console.log(pathName);
+  switch (pathName.slug) {
+    case "/":
+      return <Home></Home>;   
+      case "/[slug]":
+        return <h1>SLUG</h1>; 
+        case "ویلا":
+          return <AccommodationPage/>;           
+          case  "/ویلا/تهران" :
+            return <h1>vila tehran</h1>;                 
+      case "/mehdi":
+        return <Villa/>;   
+
+       
+
+    default:
+      return  <Home></Home>;   
+  }
+   
+}  
 
   componentDidMount() {
     this.updateWindowDimensions();
@@ -76,11 +95,24 @@ class App extends React.Component {
                 }
                                 <div style={this.state.width <= 826 ? { marginTop: 110 } : { marginTop: 90 }}>
                        
+                                
+                                
+                                {
+                                //this.getComponent(this.props.router.pathname)
+                                this.getComponent(this.props.router.query)
+                                }
+                    
+                           
+                          
+                                
                   {
 
-                      <Home></Home>
+                      
 
-                    
+
+ 
+
+
                   /* <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path='/ویلا/intro' component={BecomeMember}/>
@@ -156,6 +188,6 @@ const mapStatesToProps = (state) => ({
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: value => dispatch(accountBoxModify(value))
 })
-export default connect(mapStatesToProps, mapDispatchesToProps)(App);
+export default withRouter( connect(mapStatesToProps, mapDispatchesToProps)(App));
 
 
