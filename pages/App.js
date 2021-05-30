@@ -56,21 +56,32 @@ getComponent(pathName) {
   switch (decodeURI( pathName)) {
     case "/":
       return <Home></Home>;   
-      case "/[slug]":
-        return <h1>SLUG</h1>; 
-        case "/ویلا":
-          return <AccommodationPage/>;           
-          case  "/ویلا/تهران" :
-            return <h1>vila tehran</h1>;                 
-      case "/mehdi":
-        return <Villa/>;   
 
-       
+      case "/" : return <Home/>;
+      case '/ویلا/intro' : return <BecomeMember/>;
+      case "/ویلا" : return <AccommodationPage/>;
+      case "/ویلا/تهران" : return <AccommodationList/>;
+      case "/reserve/ویلا/تهران/:id" : return <AccommodationReserve/>;
+      case "/receipt/ویلا/تهران" : return <AccommodationReceipt/>;
+      case "/بلیط-هواپیما/:source/:destination" : return <Flight/>;
+      case "/بلیط-هواپیما/:source/:destination/info" : return <FlightReserve/>;
+      case "/بلیط-هواپیما/receipt" : return <FlightReciept/>;
+      case "/بلیط-هواپیما/order" : return <TrackOrder/>;
 
+      // //  case "/[slug]":
+    //  //   return <h1>SLUG</h1>; 
+    //     case "/ویلا":
+    //       return <AccommodationPage/>;           
+    //     case  "/ویلا/تهران" :
+    //         return <h1>vila tehran</h1>;                 
+      // case "/mehdi":
+      //   return <Villa/>;   
     default:
       return  <Home></Home>;   
   }
-   
+   /*
+   <Switch>
+                  </Switch> */
 }  
 
   componentDidMount() {
