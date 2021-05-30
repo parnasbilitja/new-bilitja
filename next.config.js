@@ -4,7 +4,7 @@ module.exports = {
         fallback: [
           {
             source: '/:path*',
-            destination: `https://custom-routes-proxying-endpoint.vercel.app/:path*`,
+            destination: '/',
           },
         ],
       }

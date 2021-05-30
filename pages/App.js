@@ -52,13 +52,13 @@ class App extends React.Component {
   }
 
 getComponent(pathName) {
-  console.log(pathName);
-  switch (pathName.slug) {
+  console.log(decodeURI( pathName));
+  switch (decodeURI( pathName)) {
     case "/":
       return <Home></Home>;   
       case "/[slug]":
         return <h1>SLUG</h1>; 
-        case "ویلا":
+        case "/ویلا":
           return <AccommodationPage/>;           
           case  "/ویلا/تهران" :
             return <h1>vila tehran</h1>;                 
@@ -99,7 +99,8 @@ getComponent(pathName) {
                                 
                                 {
                                 //this.getComponent(this.props.router.pathname)
-                                this.getComponent(this.props.router.query)
+                               //console.log( this.props.router)
+                                this.getComponent(this.props.router.asPath)
                                 }
                     
                            
