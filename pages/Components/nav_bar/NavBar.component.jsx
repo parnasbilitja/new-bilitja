@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 //import logo from '../../../images/logo512.png'
-import s from '../../../styles/NavBar.module.scss'
+import styles from '../../../styles/NavBar.module.scss'
 
 //import '../../../public/kilofont.svg'
 
@@ -15,7 +15,7 @@ class NavBar extends React.Component {
     }
     render() {
         return (
-            <nav id={s.navVar}>
+            <nav id={styles.navVar}>
                 <div className="nav-text-detail">
                     <div>
                         <a href="/ویلا/intro" className="font-size-10 btn-outlined btn-nav-hosting">میزبان شوید</a>
@@ -90,7 +90,7 @@ class NavBar extends React.Component {
                         <a href="/">
                             <img className="logo" src="../../../images/logo512.png" />
                         </a>
-                        <p className={["font-size-10"]}>خرید بلیط هواپیما و رزرو اقامتگاه</p>
+                        <p className="font-size-10">خرید بلیط هواپیما و رزرو اقامتگاه</p>
                     </div>
                 </div>
             </nav>

@@ -2,10 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 //import HotelView from '../../../images/hotel_view.jpg'
 
+import { useRouter } from 'next/router'
 
 
 const AccommodationListMobile = ({ history, accommodationList }) => {
-    return (
+  const myRouter=useRouter();
+  return (
         <div className="visible-xs">
             {
                 accommodationList ?
@@ -37,7 +39,7 @@ const AccommodationListMobile = ({ history, accommodationList }) => {
                                             style={{ marginTop: 8, height: 20 }}
                                             onClick={(e) => {
                                                 e.preventDefault()
-                                                history.push("/reserve/ویلا/تهران")
+                                                myRouter.push("/reserve/ویلا/تهران")
                                             }}
                                         >رزرو</a>
 

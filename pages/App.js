@@ -91,102 +91,25 @@ getComponent(pathName) {
     this.setState({ width: window.innerWidth });
   }
   render() {
-
-   
     
     return (
-     <>
+     <div className='bodyVar'>
      
      
-     {
-                  this.state.width <= 826 ? <NavBarMobile /> : <NavBar />
-                }
-                                <div style={this.state.width <= 826 ? { marginTop: 110 } : { marginTop: 90 }}>
-                       
-                                
-                                
-                                {
-                                //this.getComponent(this.props.router.pathname)
-                               //console.log( this.props.router)
-                                this.getComponent(this.props.router.asPath)
-                                }
-                    
-                           
-                          
-                                
-                  {
-
-                      
-
-
- 
-
-
-                  /* <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path='/ویلا/intro' component={BecomeMember}/>
-                    <Route exact path="/ویلا" component={AccommodationPage} />
-                    <Route exact path="/ویلا/تهران" component={AccommodationList} />
-                    <Route exact path="/reserve/ویلا/تهران/:id" component={AccommodationReserve} />
-                    <Route exact path="/receipt/ویلا/تهران" component={AccommodationReceipt} />
-                    <Route exact path="/بلیط-هواپیما/:source/:destination" component={Flight} />
-                    <Route exact path="/بلیط-هواپیما/:source/:destination/info" component={FlightReserve} />
-                    <Route exact path="/بلیط-هواپیما/receipt" component={FlightReciept} />
-                    <Route exact path="/بلیط-هواپیما/order" component={TrackOrder} />
-                  </Switch> */}
-
-                  <MessageBox />
-
-                  <Footer />
-                </div>
-                <PopUp opened={this.props.accountBox.state} closePopUp={() => {
-                  this.props.accountBoxModify({
-                    state: false
-                  })
-                }}>
-                  <Account />
-                </PopUp>
-              </>
-
-
-        /* <Switch>
-          <Route exact={false} path='/' component={() => {
-            return (
-              <>
-                {
-                  this.state.width <= 826 ? <NavBarMobile /> : <NavBar />
-                }
-                <div style={this.state.width <= 826 ? { marginTop: 110 } : { marginTop: 90 }}>
-                  <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path='/ویلا/intro' component={BecomeMember}/>
-                    <Route exact path="/ویلا" component={AccommodationPage} />
-                    <Route exact path="/ویلا/تهران" component={AccommodationList} />
-                    <Route exact path="/reserve/ویلا/تهران/:id" component={AccommodationReserve} />
-                    <Route exact path="/receipt/ویلا/تهران" component={AccommodationReceipt} />
-                    <Route exact path="/بلیط-هواپیما/:source/:destination" component={Flight} />
-                    <Route exact path="/بلیط-هواپیما/:source/:destination/info" component={FlightReserve} />
-                    <Route exact path="/بلیط-هواپیما/receipt" component={FlightReciept} />
-                    <Route exact path="/بلیط-هواپیما/order" component={TrackOrder} />
-                  </Switch>
-
-                  <MessageBox />
-
-                  <Footer />
-                </div>
-                <PopUp opened={this.props.accountBox.state} closePopUp={() => {
-                  this.props.accountBoxModify({
-                    state: false
-                  })
-                }}>
-                  <Account />
-                </PopUp>
-              </>
-            )
-          }
-          
-          } />
-        </Switch> */
+     { this.state.width <= 826 ? <NavBarMobile /> : <NavBar /> }
+      <div style={this.state.width <= 826 ? { marginTop: 110 } : { marginTop: 90 }} className='font-'>
+          {this.getComponent(this.props.router.asPath)}
+          <MessageBox />
+          <Footer />
+        </div>
+        <PopUp opened={this.props.accountBox.state} closePopUp={() => {
+          this.props.accountBoxModify({
+            state: false
+          })
+        }}>
+              <Account />
+        </PopUp>
+              </div>
       
     );
   }

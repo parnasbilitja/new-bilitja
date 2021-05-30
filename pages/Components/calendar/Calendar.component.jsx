@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../styles/Calendar.module.scss'
+//import styles from '../../../styles/Calendar.module.scss'
 import { connect } from 'react-redux'
 import { addCredentials } from '../../Redux/Search/search.action'
 import JalaliDays from './JalaliDays'

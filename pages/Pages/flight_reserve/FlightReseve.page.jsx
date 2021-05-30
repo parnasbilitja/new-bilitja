@@ -17,6 +17,7 @@ import { selectProperties } from '../../Redux/Reserve/reserve.reselect'
 import { messageBoxModify } from '../../Redux/UI/ui.action'
 
 import { isValidIranianNationalCode, moneyFormat, isValidPassportCode } from '../../Utils/SimpleTasks'
+import { withRouter } from 'next/router'
 
 class FlightReserve extends React.Component {
     constructor(props) {
@@ -264,7 +265,7 @@ class FlightReserve extends React.Component {
         }).then(res => res.json())
             .then(data => {
                 if (data.status == "0") {
-                    this.props.history.push("/بلیط-هواپیما/receipt")
+                    this.props.route.push("/بلیط-هواپیما/receipt")
                 } else {
                     this.props.messageBoxModify({
                         state: true,
@@ -461,4 +462,4 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     messageBoxModify: value => dispatch(messageBoxModify(value))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(FlightReserve)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FlightReserve))

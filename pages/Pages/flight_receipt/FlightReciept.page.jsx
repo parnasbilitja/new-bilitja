@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../../styles/FlightReciept.module.scss'
+import stylesflight from  '../../../styles/FlightSearchBox.module.scss'
 import FlightRecieptDesktopHero from '../../Components/flight_reciept_desktop_hero/FlightRecieptDesktopHero.compnent'
 import FlightRecieptMobileHero from '../../Components/flight_reciept_mobile_hero/FlightRecieptMobileHero.compnent'
 import { faUser, faEdit, faInfo, faInfoCircle, faDollarSign, faCalendar } from '@fortawesome/free-solid-svg-icons'
@@ -347,7 +348,7 @@ class FlightReciept extends React.Component {
                     </div>
                 </div>
                 <PopUpWide opened={this.state.open} closePopUp={this.managePopUpEditForm}>
-                    <div className="flight-search-box-calendar-container">
+                    <div className={stylesflight['flight-search-box-calendar-container']}>
                         <FlightPassengerEditForm {...this.state.current} closePopUpEditFrom={this.managePopUpEditForm} changeProperty={this.updatePassengerData} />
                     </div>
                 </PopUpWide>

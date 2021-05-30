@@ -38,10 +38,13 @@
     z-index: 99998;
     overflow: visible;
 }
+.card-box-shadow {
+    box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
+}
 .popup-main-box{
     position: fixed;
     background-color: white;
-    @extend .card-box-shadow !optional;
+    @extend .card-box-shadow ;
     border-radius:5px;
     z-index: 99999;
 }

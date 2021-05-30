@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment-jalaali'
-import '../../../styles/Calendar.module.scss'
+//import '../../../styles/Calendar.module.scss'
 import { connect } from 'react-redux'
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

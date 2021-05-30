@@ -1,5 +1,5 @@
 import React from "react"
-import "../../../styles/FlightSearchBox.module.scss"
+import styles from "../../../styles/FlightSearchBox.module.scss"
 
 import PrimaryButton from '../../Components/primary_button/PrimaryButton.component'
 import PrimaryTextInput from '../../Components/primaty_text_input/PrimaryTextInput.component'
@@ -16,6 +16,8 @@ import { connect } from 'react-redux'
 import { selectCredentials } from '../../Redux/Search/search.reselect'
 import { addCredentials, switchRoute } from '../../Redux/Search/search.action'
 import { messageBoxModify } from '../../Redux/UI/ui.action'
+import { withRouter } from 'next/router'
+
 
 
 import BirthdayCalendar from "../birthday_calendar/BirthdayCalendar.component"
@@ -127,7 +129,7 @@ class FlightSearchBox extends React.Component {
         const { credentials: { sourceName, destinationName, flightDatePersian }, history } = this.props
 
         return (
-            <div className="home-flight-form">
+            <div className={`{styles['home-flight-form']} `} >
                 <div>
                     <div className="form-input-border">
                         <i className="kilo-font icon-plane-departure form-input-icon"></i>
@@ -149,11 +151,11 @@ class FlightSearchBox extends React.Component {
                     </div>
                 </div>
 
-                <div style={{ textAlign: "center" }} className={`${this.props.showSwitch ? null : 'hidden-xs'} form-input-border home-swtich-button-container`} onClick={() => {
+                <div style={{ textAlign: "center" }} className={`${this.props.showSwitch ? null : 'hidden-xs'} form-input-border ${styles['home-swtich-button-container']}`} onClick={() => {
                     this.props.switchRoute()
                 }}>
 
-                    <FontAwesomeIcon icon={faExchangeAlt} className="home-swtich-button" />
+                    <FontAwesomeIcon icon={faExchangeAlt} className={styles['home-swtich-button']} />
                 </div>
 
                 <div>
@@ -205,11 +207,11 @@ class FlightSearchBox extends React.Component {
                                         withFilters: true,
                                         currentPage: 1
                                     }).then(() => {
-                                        history.push(`/بلیط-هواپیما/${this.props.credentials.sourceName}/${this.props.credentials.destinationName}`)
+                                        this.props.router.push(`/بلیط-هواپیما/${this.props.credentials.sourceName}/${this.props.credentials.destinationName}`)
                                         this.props.refreshAction()
                                     })
                                 }else{
-                                    history.push(`/بلیط-هواپیما/${this.props.credentials.sourceName}/${this.props.credentials.destinationName}`)
+                                    this.props.router.push(`/بلیط-هواپیما/${this.props.credentials.sourceName}/${this.props.credentials.destinationName}`)
                                 }
                         }else{
                             this.props.addCredentials({
@@ -225,7 +227,7 @@ class FlightSearchBox extends React.Component {
 
                 
                 <PopUpWide opened={this.state.open} closePopUp={this.managePopUpCalendar}>
-                <div className="flight-search-box-calendar-container">
+                <div className={styles['flight-search-box-calendar-container']}>
                     <CalendarComponent setDate={(value) => {
                             this.props.addCredentials({
                                 stDate: value.garigorian,
@@ -266,4 +268,4 @@ const mapDispatchesToProps = (dispatch) => ({
     messageBoxModify: async value => dispatch(messageBoxModify(value))
 
 })
-export default connect(mapStatesToProps, mapDispatchesToProps)(FlightSearchBox)
+export default withRouter( connect(mapStatesToProps, mapDispatchesToProps)(FlightSearchBox))

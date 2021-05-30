@@ -12,6 +12,7 @@ import PrimaryButton from '../primary_button/PrimaryButton.component'
 import { connect } from 'react-redux'
 import { addReservationProperties } from '../../Redux/Reserve/reserve.action'
 import { messageBoxModify } from '../../Redux/UI/ui.action'
+import { withRouter } from 'next/router'
 
 
 class PopupFlightReserve extends React.Component {
@@ -67,7 +68,7 @@ class PopupFlightReserve extends React.Component {
                         reqNo: data.reqNo,
                         reqPnr: data.reqPnr
                     }).then(() => {
-                        this.props.history.push(`${this.props.match.url}/info`)
+                        this.props.route.push(`${this.props.match.url}/info`)
                     })
                 } else {
                     this.props.messageBoxModify({
@@ -218,4 +219,4 @@ const mapDispatchesToProps = (dispatch) => ({
     addReservationProperties: async value => dispatch(addReservationProperties(value)),
     messageBoxModify: value => dispatch(messageBoxModify(value))
 })
-export default connect(null, mapDispatchesToProps)(PopupFlightReserve)
+export default withRouter(connect(null, mapDispatchesToProps)(PopupFlightReserve))

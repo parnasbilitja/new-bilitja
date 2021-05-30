@@ -5,6 +5,8 @@ import { faRemoveFormat, faTrash, faArchway } from '@fortawesome/free-solid-svg-
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
 import ManagerTopActionBox from '../../../Components/manager_top_action_box/ManagerTopActionBox.component'
+import { useRouter } from 'next/router'
+
 const ShowallCities = (props) => {
     const [cities, setCities] = useState([])
     useEffect(() => {
@@ -19,6 +21,8 @@ const ShowallCities = (props) => {
                 }
             })
     }
+    const myRouter=useRouter();
+
     return (
         <div className="panel-main-content">
             <div className="panel-header">
@@ -29,7 +33,7 @@ const ShowallCities = (props) => {
                 </div>
                 <div style={{ direction: 'ltr' }} className="text-left">
                     <ManagerTopActionBox handleClick={()=>{
-                        props.history.push("/panel/city/add")
+                        myRouter.push("/panel/city/add")
                     }}/>
                 </div>
             </div>
@@ -42,7 +46,7 @@ const ShowallCities = (props) => {
                                 {city.ProvinceName}
                             </span>
                             <span onClick={() => {
-                                props.history.push(`${props.match.url}/${city.CityId}`)
+                                myRouter.push(`${props.match.url}/${city.CityId}`)
                             }}>
                                 {city.CityName}
                             </span>

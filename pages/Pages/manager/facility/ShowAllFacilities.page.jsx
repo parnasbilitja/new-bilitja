@@ -5,6 +5,8 @@ import { faRemoveFormat, faTrash, faArchway } from '@fortawesome/free-solid-svg-
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
 import ManagerTopActionBox from '../../../Components/manager_top_action_box/ManagerTopActionBox.component'
+import { useRouter } from 'next/router'
+
 const ShowallFacilities = (props) => {
     const [facilities, setFacilities] = useState([])
     useEffect(() => {
@@ -20,6 +22,8 @@ const ShowallFacilities = (props) => {
                 }
             })
     }
+    const myRouter=useRouter();
+
     return (
         <div className="panel-main-content">
             <div className="panel-header">
@@ -30,7 +34,7 @@ const ShowallFacilities = (props) => {
                 </div>
                 <div style={{ direction: 'ltr' }} className="text-left">
                     <ManagerTopActionBox handleClick={()=>{
-                        props.history.push("/panel/facility/add")
+                        myRouter.push("/panel/facility/add")
                     }}/>
                 </div>
             </div>
@@ -41,7 +45,7 @@ const ShowallFacilities = (props) => {
                         <div className="management-one-row">
                            
                             <span onClick={() => {
-                                props.history.push(`${props.match.url}/${facility.EmkanatId}`)
+                                myRouter.push(`${props.match.url}/${facility.EmkanatId}`)
                             }}>
                                 {facility.EmkanatName}
                             </span>

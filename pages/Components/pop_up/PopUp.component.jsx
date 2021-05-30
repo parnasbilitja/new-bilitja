@@ -1,6 +1,6 @@
 import React from 'react'
 
-import  Styles from "../../../styles/PopUp.module.scss"
+import  styles from "../../../styles/PopUp.module.scss"
 
 const PopUp = (props) => {
     return (
@@ -10,7 +10,7 @@ const PopUp = (props) => {
             }}>
 
             </div>
-            <div className={`popup-main-box ${props.opened ? "popup-animation" : ""}`} >
+            <div className={` ${styles['popup-main-box']} ${props.opened ? styles['popup-animation'] : ""}`} >
                 {props.children}
             </div>
         </div>

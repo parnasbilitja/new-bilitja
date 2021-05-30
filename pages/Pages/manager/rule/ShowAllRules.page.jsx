@@ -5,6 +5,8 @@ import { faTrash, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
 import ManagerTopActionBox from '../../../Components/manager_top_action_box/ManagerTopActionBox.component'
+import { useRouter } from 'next/router'
+
 const ShowallRules = (props) => {
     const [rules, setRules] = useState([])
     useEffect(() => {
@@ -20,6 +22,8 @@ const ShowallRules = (props) => {
                 }
             })
     }
+    const myRouter=useRouter();
+
     return (
         <div className="panel-main-content">
             <div className="panel-header">
@@ -30,7 +34,7 @@ const ShowallRules = (props) => {
                 </div>
                 <div style={{ direction: 'ltr' }} className="text-left">
                     <ManagerTopActionBox handleClick={()=>{
-                        props.history.push("/panel/rule/add")
+                        myRouter.push("/panel/rule/add")
                     }}/>
                 </div>
             </div>
@@ -41,7 +45,7 @@ const ShowallRules = (props) => {
                         <div className="management-one-row">
                            
                             <span onClick={() => {
-                                props.history.push(`${props.match.url}/${rule.RulesId}`)
+                                myRouter.push(`${props.match.url}/${rule.RulesId}`)
                             }}>
                                 {rule.RulesName}
                             </span>

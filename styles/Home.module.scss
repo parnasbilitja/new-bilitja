@@ -1,4 +1,4 @@
-@import "./values.module.scss";
+@import "./values.scss";
 //@import "./global.style.scss";
 @media only screen and (max-width: 440px) {
     .tab-container {
@@ -159,8 +159,12 @@
         margin-right: 8px;
     }
 }
+.card-box-shadow {
+    box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
+}
 .home-tab-active{
-    @extend .card-box-shadow !optional;
+    @extend .card-box-shadow ;
+    
     border-bottom: 2px solid $secondaryColor;
     color:$secondaryColor !important;
     
@@ -203,7 +207,7 @@
     height: 495px;
     background-attachment: fixed;
     background-size: cover;
-    background-image: url(../public/images/flight-parallax.jpg);
+    background-image: url(../public/Images/flight-parallax.jpg);
     margin-top: 48px;
     text-align: center;
     color: $whiteColor;
@@ -242,7 +246,7 @@
 }
 
 .home-tour-intro {
-    background-image: url(../public/images/banner_bg_colored.png);
+    background-image: url(../public/Images/banner_bg_colored.png);
     background-size: cover;
     background-position: bottom;
     background-color: $primaryColor;
@@ -302,7 +306,7 @@
 }
 
 .home-flight-content {
-    @extend .card-box-shadow !optional;
+    @extend .card-box-shadow ;
     text-align: justify;
     margin-top: 48px;
     padding: 10px;

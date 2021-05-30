@@ -9,6 +9,8 @@ import globals from '../../Globals/Global'
 import { messageBoxModify } from '../../Redux/UI/ui.action'
 import { addReservationProperties } from '../../Redux/ReserveAccommodation/reserve_accommodation.action'
 import { connect } from 'react-redux'
+import { withRouter } from 'next/router'
+
 class AccommodationReserve extends React.Component {
     constructor(props) {
         super(props)
@@ -258,7 +260,7 @@ class AccommodationReserve extends React.Component {
                                                     CityName: this.state.CityName,
                                                     AddressName: this.state.AddressName
                                                 }).then(() => {
-                                                    this.props.history.push("/receipt/ویلا/تهران")
+                                                    this.props.route.push("/receipt/ویلا/تهران")
                                                 })
                                             }}>رزرو</a>
                                         </div>
@@ -284,4 +286,4 @@ const dispatchStatesToProps = (dispatch) => ({
     messageBoxModify: value => dispatch(messageBoxModify(value))
 })
 
-export default connect(null, dispatchStatesToProps)(AccommodationReserve)
+export default withRouter(connect(null, dispatchStatesToProps)(AccommodationReserve))

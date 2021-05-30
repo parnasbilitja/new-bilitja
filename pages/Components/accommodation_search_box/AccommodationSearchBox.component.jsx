@@ -1,5 +1,5 @@
 import React from "react"
-import "../../../styles/AccommodationSearchBox.module.scss"
+import styles from  "../../../styles/AccommodationSearchBox.module.scss"
 
 import PrimaryButton from '../primary_button/PrimaryButton.component'
 import PrimaryTextInput from '../primaty_text_input/PrimaryTextInput.component'
@@ -14,7 +14,7 @@ import { connect } from 'react-redux'
 import { selectCredentials } from '../../Redux/SearchAccommodation/search_accommodation.reselect'
 import { addCredentials } from '../../Redux/SearchAccommodation/search_accommodation.action'
 import { messageBoxModify } from '../../Redux/UI/ui.action'
-
+import { withRouter, NextRouter } from 'next/router'
 
 
 import moment from 'jalali-moment'
@@ -160,7 +160,7 @@ class AccommodationSearchBox extends React.Component {
         const { credentials: { cityName, dateStart, dateEnd } } = this.props
 
         return (
-            <div className="home-villa-form">
+            <div className={styles['home-villa-form']}>
                 <div>
                     <div className="form-input-border">
 
@@ -218,7 +218,8 @@ class AccommodationSearchBox extends React.Component {
                 </div>
                 <div className="form-input-border without-focus">
                     <PrimaryButton defaultValue={"جستجو"} onClick={() => {
-                        this.props.history.push("/ویلا/تهران")
+                        this.props.router.push("/ویلا/تهران")
+                        
                         // this.props.addCredentials({
                         //     dateStart:dateGo,
                         //     dateEnd:dateReturn
@@ -241,7 +242,7 @@ class AccommodationSearchBox extends React.Component {
                 </PopUpWide>
 
                 <PopUpWide opened={this.state.openReturn} closePopUp={this.managePopUpCalendarReturn}>
-                    <div className="flight-search-box-calendar-container">
+                    <div className={styles['flight-search-box-calendar-container']}>
                         <CalendarComponent setDate={(value) => {
                              this.props.addCredentials({
                                 dateEnd: value.jalali,
@@ -276,4 +277,4 @@ const mapDispatchesToProps = (dispatch) => ({
     messageBoxModify: async value => dispatch(messageBoxModify(value))
 
 })
-export default connect(mapStatesToProps, mapDispatchesToProps)(AccommodationSearchBox)
+export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(AccommodationSearchBox))

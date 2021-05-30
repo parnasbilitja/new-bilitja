@@ -4,8 +4,12 @@ import '../../../styles/ManagerNav.module.scss'
 //import logo from '../../../images/bilitja-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArchway, faBars } from '@fortawesome/free-solid-svg-icons'
+import { useRouter } from 'next/router'
+
+
 
 const ManagerNav = (props) => {
+    const myRouter=useRouter();
     const [isOpend,setOpend] =useState(false)
     return (
         <>
@@ -24,7 +28,7 @@ const ManagerNav = (props) => {
                         <FontAwesomeIcon icon={faArchway} />
                     </div>
                     <div onClick={() => {
-                        props.history.push('/panel/villas/search')
+                        myRouter.push('/panel/villas/search')
                     }}>
                         <p className="no-margin font-size-13 font-bold-iransanse">ویلا</p>
                         <p className="no-margin font-size-13 color-textpill">villa</p>
@@ -35,7 +39,7 @@ const ManagerNav = (props) => {
                         <FontAwesomeIcon icon={faArchway} />
                     </div>
                     <div onClick={() => {
-                        props.history.push('/panel/city/show')
+                        myRouter.push('/panel/city/show')
                     }}>
                         <p className="no-margin font-size-13 font-bold-iransanse">شهر</p>
                         <p className="no-margin font-size-13 color-textpill">City</p>
@@ -46,7 +50,7 @@ const ManagerNav = (props) => {
                         <FontAwesomeIcon icon={faArchway} />
                     </div>
                     <div onClick={() => {
-                        props.history.push('/panel/facility/show')
+                        myRouter.push('/panel/facility/show')
                     }}>
                         <p className="no-margin font-size-13 font-bold-iransanse">امکانات</p>
                         <p className="no-margin font-size-13 color-textpill">Facility</p>
@@ -57,7 +61,7 @@ const ManagerNav = (props) => {
                         <FontAwesomeIcon icon={faArchway} />
                     </div>
                     <div onClick={() => {
-                        props.history.push('/panel/rule/show')
+                        myRouter.push('/panel/rule/show')
                     }}>
                         <p className="no-margin font-size-13 font-bold-iransanse">قوانین</p>
                         <p className="no-margin font-size-13 color-textpill">Rules</p>

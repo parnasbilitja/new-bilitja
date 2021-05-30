@@ -58,7 +58,7 @@ class NavBarMobile extends React.Component {
                         </a>
                     </div>
                 </div>
-                <div className={styles["nav-logo-container-mobile"]}>
+                <div className={styles['nav-logo-container-mobile']}>
                     <div className="pull-right">
                         <FontAwesomeIcon icon={faBars} onClick={() => {
                             this.setState({
@@ -75,8 +75,8 @@ class NavBarMobile extends React.Component {
                         slide: false
                     })
                 }}>
-                    <div className={styles["nav-items-container-mobile"]}>
-                        <div className="logo-menu-mobile">
+                    <div className={styles['nav-items-container-mobile']}>
+                        <div className={styles['logo-menu-mobile']}>
                             <a href="/"><img src='../../../images/bilitja-light-logo.png'/></a>
                             <p className="no-margin color-white">ارزان ترین بلیط های هواپیما</p>
                         </div>

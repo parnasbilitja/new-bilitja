@@ -4,9 +4,11 @@ import Image from 'next/image'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import HotelView from '../../../images/hotel_view.jpg'
+import { useRouter } from 'next/router'
 
 
 const AccommodationListDesktop = ({ history, accommodationList }) => {
+    const myRouter=useRouter();
     return (
         <div className="hidden-xs">
             {
@@ -53,7 +55,7 @@ const AccommodationListDesktop = ({ history, accommodationList }) => {
                                             style={{ marginTop: 8, height: 20 }}
                                             onClick={(e) => {
                                                 e.preventDefault()
-                                                history.push(`/reserve/ویلا/تهران/${accommodation.EghamatId}`)
+                                                myRouter.push(`/reserve/ویلا/تهران/${accommodation.EghamatId}`)
                                             }}>رزرو</a>
                                     </div>
                                 </div>

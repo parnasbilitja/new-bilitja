@@ -8,7 +8,7 @@ import MobileFlightList from '../../Components/mobile_flight_list/MobileFlightLi
 import PopUp from '../../Components/pop_up/PopUp.component'
 import PopupFlightReserve from '../../Components/pop_up_flight_reserve/PopupFlightReserve.component'
 
-import '../../../styles/Flight.module.scss'
+import styles from  '../../../styles/Flight.module.scss'
 
 import globals from '../../Globals/Global'
 
@@ -26,6 +26,8 @@ import Loading from '../../Components/loading/Loading.component'
 import MinimumPriceCalendar from '../../Components/minimum_price_calendar/MinimumPriceCalendar.component'
 
 import {getCustomFormat} from '../../Utils/SimpleTasks'
+import { withRouter } from 'next/router'
+
 class Flight extends React.Component {
     constructor(props) {
         super(props)
@@ -136,7 +138,7 @@ class Flight extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid flight-container">
+            <div className={`container-fluid ${styles['flight-container']}`}>
                 <div className="row text-right hidden-xs-flight">
                     <div className="col-lg-1 col-md-1 col-sm-1"></div>
                     <div className="col-lg-10 col-md-11 col-sm-11">
@@ -273,7 +275,7 @@ class Flight extends React.Component {
                         <p>بعد</p>
                     </div>
                     <div onClick={() => {
-                        this.props.history.push("/")
+                        this.props.route.push("/")
                     }}>
                         <FontAwesomeIcon icon={faHome} />
                         <p>خانه</p>
@@ -293,4 +295,4 @@ const mapDispatchesToProps = (dispatch) => ({
     addCredentials: async value => dispatch(addCredentials(value)),
     messageBoxModify: value => dispatch(messageBoxModify(value))
 })
-export default connect(mapStatesToProps, mapDispatchesToProps)(Flight)
+export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(Flight))

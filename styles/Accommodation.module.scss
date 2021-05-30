@@ -62,8 +62,11 @@
         margin-right: 8px;
     }
 }
+.card-box-shadow {
+    box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
+}
 .home-tab-active{
-    @extend .card-box-shadow !optional;
+    @extend .card-box-shadow ;
     border-bottom: 2px solid $secondaryColor;
     color:$secondaryColor !important;
     

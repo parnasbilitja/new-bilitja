@@ -1,19 +1,19 @@
 import React from 'react'
-import Image from 'next/image'
+
 //import footerLogo from '../../../images/bilitja-light-logo.png'
 
-import '../../../styles/Footer.module.scss'
+import styles from '../../../styles/Footer.module.scss'
 
 import { faPhone, faGlobe, faMap } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // just view, without any functionality
 const Footer = () => {
     return (
-        <div className="footer">
+        <div className={styles['footer']}>
             <div className="container-fluid">
                 <div className="row">
 
-                    <div className="col-lg-2 col-md-12 col-sm-12 col-12 footer-logo">
+                    <div className={`col-lg-2 col-md-12 col-sm-12 col-12 ${styles['footer-logo']}`}>
                         <img src='../../../images/bilitja-light-logo.png' />
                         <p>ارزان ترین بلیط های هواپیما</p>
                         <a href="">www. B i l i t j a .com</a>

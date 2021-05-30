@@ -1,14 +1,18 @@
 import React from 'react'
-import '../../../styles/PageTabs.module.scss'
+import  '../../../styles/PageTabs.module.scss'
+import styles from '../../../styles/Home.module.scss'
+
+import { useRouter } from 'next/router'
 
 const PageTabls = (props) => {
+    const myRouter=useRouter();
     return (
         <div className="row">
             <div className="col-md-1"></div>
             <div className="col-md-10">
-                <div className="tab-container">
-                    <div className={`home-tab ${props.tabActice == 1 ? "home-tab-active" : null}`} onClick={() => {
-                        props.history.push("/")
+                <div className={styles['tab-container']}>
+                    <div className={`${styles['home-tab']}  ${props.tabActice == 1 ? styles['home-tab-active'] : null}`} onClick={() => {
+                        myRouter.push("/")
                     }}>
                         <div className="pull-right">
                             <i className="kilo-font font-size-24 icon-plane-departure"></i>
@@ -17,8 +21,8 @@ const PageTabls = (props) => {
                             <span className="font-size-14"> بلیط هواپیما </span>
                         </div>
                     </div>
-                    <div className={`home-tab ${props.tabActice == 2 ? "home-tab-active" : null}`} onClick={() => {
-                        props.history.push("/ویلا")
+                    <div className={`${styles['home-tab']} ${props.tabActice == 2 ? styles['home-tab-active'] : null}`} onClick={() => {
+                        myRouter.push("/ویلا")
                     }}>
                         <div className="pull-right icon-container">
                             <i className="kilo-font font-size-20 icon-villa"></i>

@@ -1,5 +1,5 @@
 import React from  'react'
-import '../../../styles/MessageBox.module.scss'
+import styles from '../../../styles/MessageBox.module.scss'
 
 import {connect} from 'react-redux'
 import {selectMessageBox} from '../../Redux/UI/ui.reselect'
@@ -22,7 +22,7 @@ class MessageBox extends React.Component{
     }
     render(){
         return(
-            <div className={`messagebox ${this.props.messageBox.state ? "messagebox-show" :"messagebox-hidden"}`}>
+            <div className={` ${styles['messagebox']} ${this.props.messageBox.state ? styles['messagebox-show'] :styles['messagebox-hidden'] }`}>
                 {this.props.messageBox.message}
             </div>
         )

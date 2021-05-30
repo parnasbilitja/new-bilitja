@@ -9,7 +9,7 @@ import PageTabls from '../../Components/page_tabs/PageTabs.component'
 //import hotelView from '../../../images/hotel_view.jpg'
 import moment from 'moment-jalaali'
 
-import "../../../styles/Accommodation.module.scss"
+import styles from "../../../styles/Accommodation.module.scss"
 import globals from '../../Globals/Global'
 
 import { faStar } from '@fortawesome/free-solid-svg-icons'
@@ -52,18 +52,18 @@ class Accommodation extends React.Component {
             <div>
                 <div className="hidden-xs hidden-sm row">
                     <div className="col-md-4">
-                        <img src="../../../images/map.png" className="hero-image-2 pull-right" />
+                        <img src="../../../images/map.png" className={`${styles['hero-image-2']} pull-right`} />
                     </div>
 
                     <div className="text-center col-md-4" style={{ paddingTop: 10 }}>
-                        <img src="../../../images/bilitja.png" className="hero-image-center" />
+                        <img src="../../../images/bilitja.png" className={styles['hero-image-center']} />
                     </div>
                     <div className="col-md-4">
-                        <img src="../../../images/earth.png" className="hero-image-1 pull-left" />
+                        <img src="../../../images/earth.png" className={`${styles['hero-image-1']} pull-left`} />
                     </div>
                 </div>
 
-                <div className="heor-main-container container-fuild">
+                <div className={`${styles['heor-main-container']} container-fuild`}>
                     <PageTabls tabActice={2}/>
                     <div className="row">
                         <div className="col-md-1"></div>
@@ -72,11 +72,11 @@ class Accommodation extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="hero-big-image">
+                <div className={styles['hero-big-image']}>
                     <img src='../../../images/villa-index.png' />
                 </div>
 
-                <div className="home-become-host">
+                <div className={styles['home-become-host']}>
                     <div>
                         <h2>ویلا و اقامتگاه خود را در بلیطجا ثبت کنید و میزبان شوید</h2>
                         <p>عکس بگیرید و اطلاعات خود را در بلیطجا به رایگان به نمایش بگذارید و میزبان مسافران بلیطجا باشید</p>
@@ -96,7 +96,7 @@ class Accommodation extends React.Component {
                     <div className="row">
                         <div className="col-md-1"></div>
                         <div className="col-md-10 text-right">
-                            <div className="acco-tab home-tab-active">
+                            <div className={`acco-tab ${styles['home-tab-active']}`}>
                                 <div className="pull-right">
                                     <span className="font-size-14"> تهران </span>
                                 </div>

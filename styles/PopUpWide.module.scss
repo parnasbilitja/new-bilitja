@@ -33,6 +33,9 @@
     z-index: 9999;
     overflow: visible;
 }
+.card-box-shadow {
+    box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
+}
 .popup-calendar-main-box{
     .calendatr{
         z-index: 9999999999;
@@ -49,7 +52,7 @@
         width: fit-content;
         margin: auto auto !important;
         background-color: white;
-        @extend .card-box-shadow !optional;
+        @extend .card-box-shadow ;
         border-radius:5px;
 
     }

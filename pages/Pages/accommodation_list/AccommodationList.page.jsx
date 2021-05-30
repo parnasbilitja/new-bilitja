@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../../styles/AccommodationList.module.scss'
-
+import styles from '../../../styles/AccommodationList.module.scss'
+import stylesflight from '../../../styles/Flight.module.scss'
 import AccommodationSearchBox from '../../Components/accommodation_search_box/AccommodationSearchBox.component'
 
 import {faFilter, faSearch, faMap,faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -43,8 +43,8 @@ class AccommodationList extends React.Component {
     }
     render() {
         return (
-            <div className="container-fluid flight-container">
-                <div className="row text-right hidden-xs-flight">
+            <div className={`container-fluid ${stylesflight['flight-container']}`}>
+                <div className={`row text-right  ${stylesflight['hidden-xs-flight']}`}>
                     <div className="col-lg-1 col-md-1 col-sm-1"></div>
                     <div className="col-lg-10 col-md-11 col-sm-11">
                         <AccommodationSearchBox />
@@ -59,7 +59,7 @@ class AccommodationList extends React.Component {
                                 <AccommodationListDesktop accommodationList={this.state.accommodationList}/>
                                 <AccommodationListMobile accommodationList={this.state.accommodationList}/>
                             </div>
-                            <div className="col-lg-3 col-md-4 col-sm-4 hidden-xs-flight padding-5px">
+                            <div className={`col-lg-3 col-md-4 col-sm-4 ${stylesflight['hidden-xs-flight']} padding-5px`}>
                                 <AccommodationFilterList />
                             </div>
                         </div>
@@ -91,7 +91,7 @@ class AccommodationList extends React.Component {
                     <AccommodationFilterList />
                 </SlideIn>
 
-                <div className="visible-xs-accommodation-footer">
+                <div className={styles['visible-xs-accommodation-footer']}>
                     <div onClick={() => {
                         this.setState({
                             slide: true

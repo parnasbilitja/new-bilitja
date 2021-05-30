@@ -11,7 +11,7 @@ import PageTabls from '../../Components/page_tabs/PageTabs.component'
 //import srvice1 from "../../../images/service1.png"
 import moment from 'moment-jalaali'
 
-import "../../../styles/Home.module.scss"
+import styles from  "../../../styles/Home.module.scss"
 import globals from '../../Globals/Global'
 
 import { faPlaneDeparture, faPlane } from '@fortawesome/free-solid-svg-icons'
@@ -58,18 +58,18 @@ class Home extends React.Component {
             <div>
                 <div className="hidden-xs hidden-sm row">
                     <div className="col-md-4">
-                        <img src="../../../images/map.png" className="hero-image-2 pull-right" />
+                        <img src="../../../images/map.png" className={`${styles['hero-image-2']} pull-right`} />
                     </div>
 
                     <div className="text-center col-md-4" style={{ paddingTop: 10 }}>
-                        <img src='../../../images/bilitja.png' className="hero-image-center" />
+                        <img src='../../../images/bilitja.png' className={styles['hero-image-center']} />
                     </div>
                     <div className="col-md-4">
-                        <img src='../../../images/earth.png' className="hero-image-1 pull-left" />
+                        <img src='../../../images/earth.png' className={`${styles['hero-image-1']} pull-left`} />
                     </div>
                 </div>
 
-                <div className="heor-main-container container-fuild">
+                <div className={`${styles['heor-main-container']} container-fuild`}>
                     <PageTabls tabActice={1}/>
 
 
@@ -80,7 +80,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="hero-big-image">
+                <div className={styles['hero-big-image']}>
                     <img src='../../../images/flight-index.png' />
                 </div>
 
@@ -91,7 +91,7 @@ class Home extends React.Component {
                         <div className="row">
                             <div className="col-lg-1 hidden-sm col-sm-12 hidden-xs"></div>
                             <div className="col-lg-5 col-md-6 col-sm-12 padding-5px">
-                                <div className="home-value-propsal">
+                                <div className={styles['home-value-propsal']}>
                                     <img src="../../../images/service1.png" />
                                     <h3 className="font-bold-iransanse">
                                         <span>خرید بلیط هواپیما &nbsp;</span>
@@ -101,7 +101,7 @@ class Home extends React.Component {
                                 </div>
                             </div>
                             <div className="col-lg-5 col-md-6 col-sm-12 padding-5px">
-                                <div className="home-value-propsal">
+                                <div className={styles['home-value-propsal']}>
                                     <img src="../../../images/service3.png" />
                                     <h3 className="font-bold-iransanse">
                                         <span className="color-primary">پذیرش میزبانی &nbsp;</span>
@@ -114,7 +114,7 @@ class Home extends React.Component {
                     </div>
                 </div>
 
-                <div className="home-become-host">
+                <div className={styles['home-become-host']}>
                     <div>
                         <h2>ویلا و اقامتگاه خود را در بلیطجا ثبت کنید و میزبان شوید</h2>
                         <p>عکس بگیرید و اطلاعات خود را در بلیطجا به رایگان به نمایش بگذارید و میزبان مسافران بلیطجا باشید</p>
@@ -123,7 +123,7 @@ class Home extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-md-1"></div>
-                    <div className="col-md-10 home-tour-intro">
+                    <div className={`col-md-10 ${styles['home-tour-intro']} `}>
                         <p>دیدن تور های ویژه</p>
                         <div>
                             <p>تور های ویژه گردشگری ، بازدید از موزه ها و مکان های دیدنی کشور ها</p>
@@ -132,12 +132,12 @@ class Home extends React.Component {
                     </div>
                 </div>
 
-                <div className="home-flight-suggestion text-center">
+                <div className={` ${styles['home-flight-suggestion']} text-center`}>
                     <h2 className="font-bold-iransanse font-size-25">بلیط هواپیما</h2>
                     <p>قیمت های لحظه آخری بلیطـجا</p>
 
                     <div>
-                        <div className="suggestion-list">
+                        <div className={styles['suggestion-list']}>
                             <div>
                                 <a href="بلیط-هواپیما/تهران/مشهد/">
                                     <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
@@ -181,7 +181,7 @@ class Home extends React.Component {
                                 <div className="clear"></div>
                             </div>
                         </div>
-                        <div className="suggestion-list">
+                        <div className={styles['suggestion-list']}>
                             <div>
                                 <a href="بلیط-هواپیما/تهران/استانبول">
                                     <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
@@ -230,7 +230,7 @@ class Home extends React.Component {
 
                 <div className="row padding-xs-5-25">
                     <div className="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>
-                    <div className="col-lg-10 col-md-10 col-sm-10 col-12 home-flight-content">
+                    <div className={`col-lg-10 col-md-10 col-sm-10 col-12 ${styles['home-flight-content']}`}>
                         <h3>
                             <FontAwesomeIcon icon={faPlane} />
                             خرید بلیط هواپیما </h3>
