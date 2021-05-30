@@ -1,5 +1,5 @@
 import React from 'react'
-
+import styles from "../../../styles/AirportsMobile.module.scss"
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -22,8 +22,8 @@ class CitiesMobile extends React.Component {
 
     render() {
         return (
-            <div className="mobile-suggestions">
-                <div className="mobile-suggestion-heading">
+            <div className={styles['mobile-suggestions']}>
+                <div className={styles['mobile-suggestion-heading']}>
                     <span>{this.props.title}</span>
                     <span className="pull-left exit-form" onClick={() => {
                         this.props.closePopUp(false)
@@ -33,7 +33,7 @@ class CitiesMobile extends React.Component {
 
                 </div>
                 <input name="searchTerm" autoFocus={false} value={this.props.searchTerm} autoComplete={false} className="input-search" onChange={this.handleChange} placeholder="مبدا خود را وارد کنید" />
-                <div className="mobile-airport-list">
+                <div className={styles['mobile-airport-list']}>
                     {
                         //fill airports
                         this.props.cities ?

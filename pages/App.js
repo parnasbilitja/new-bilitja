@@ -54,9 +54,6 @@ class App extends React.Component {
 getComponent(pathName) {
   console.log(decodeURI( pathName));
   switch (decodeURI( pathName)) {
-    case "/":
-      return <Home></Home>;   
-
       case "/" : return <Home/>;
       case '/ویلا/intro' : return <BecomeMember/>;
       case "/ویلا" : return <AccommodationPage/>;
