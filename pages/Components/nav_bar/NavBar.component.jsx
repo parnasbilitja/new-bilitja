@@ -15,13 +15,13 @@ class NavBar extends React.Component {
     }
     render() {
         return (
-            <nav id={styles.navVar}>
-                <div className="nav-text-detail">
+            <nav className={styles.navVar}>
+                <div className={styles['nav-text-detail']}>
                     <div>
                         <a href="/ویلا/intro" className="font-size-10 btn-outlined btn-nav-hosting">میزبان شوید</a>
                     </div>
                     <div className="font-size-12">
-                        <div className="nav-detail-first-line">
+                        <div className={styles['nav-detail-first-line']}>
                             <div>
                                 <a href="" onClick={(e) => {
                                     e.preventDefault()
@@ -47,7 +47,7 @@ class NavBar extends React.Component {
                                 </a>
                             </div>
                         </div>
-                        <div className="nav-detail-second-line">
+                        <div className={styles['nav-detail-second-line']}>
                             <a href="#">
                                 <span>مشاوره تلفنی : </span>
                                 <i className="kilo-font icon-phone"></i>
@@ -57,8 +57,8 @@ class NavBar extends React.Component {
                     </div>
 
                 </div>
-                <div className="nav-items-container">
-                    <ul className="navbar-items">
+                <div className={styles['nav-items-container']}>
+                    <ul className={styles['navbar-items']}>
                         <li>
                             <a href="/">
                                 <i className="kilo-font icon-plane-departure nav-icon rotate-y-180"></i>
@@ -85,7 +85,7 @@ class NavBar extends React.Component {
                         </li>
                     </ul>
                 </div>
-                <div className="nav-logo-container">
+                <div className={styles['nav-logo-container']}>
                     <div>
                         <a href="/">
                             <img className="logo" src="../../../images/logo512.png" />

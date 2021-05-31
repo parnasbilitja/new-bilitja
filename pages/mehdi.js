@@ -11,13 +11,21 @@ import { withRouter } from 'next/router';
 
 function Mehdi(){
      return (
-
-          <Provider store={store}>
+      <h1>mehdiskjddskjskjd
+      
+      <Provider store={store}>
+              
+              <PersistGate persistor={persistor}>
+              <Villa></Villa>
+              </PersistGate>
+          </Provider>
+      </h1>
+        //   <Provider store={store}>
           
-            <PersistGate persistor={persistor}>
-          <App/>
-            </PersistGate>
-        </Provider>
+        //     <PersistGate persistor={persistor}>
+        //   <App/>
+        //     </PersistGate>
+        // </Provider>
 );
 }
 export default withRouter(Mehdi)

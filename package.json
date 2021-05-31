@@ -29,5 +29,8 @@
     "reselect": "^4.0.0",
     "sass": "^1.32.12",
     "web-vitals": "^1.1.2"
+  },
+  "devDependencies": {
+    "@types/gtag.js": "0.0.5"
   }
 }

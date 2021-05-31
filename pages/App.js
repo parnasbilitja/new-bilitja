@@ -41,6 +41,7 @@ import VilaDetial from './Pages/manager/villa/VilaDetail.page'
 import VilaReservation from './Pages/manager/villa/VilaReservation.page'
 import BecomeMember from './Pages/become_member/BecomeMember.page'
 import { withRouter } from 'next/router'
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -48,11 +49,12 @@ class App extends React.Component {
       width: 0,
     }
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-
+    
   }
 
 getComponent(pathName) {
   console.log(decodeURI( pathName));
+  
   switch (decodeURI( pathName)) {
       case "/" : return <Home/>;
       case '/ویلا/intro' : return <BecomeMember/>;
