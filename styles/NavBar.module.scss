@@ -7,6 +7,7 @@
     }
     .nav-text-detail,.nav-items-container{
         display: none !important;
+        
     }
     .nav-logo-container{
         div{
@@ -111,6 +112,11 @@
         height: 57.85px;
         font-size: 16px;
         font-weight: 400;
+    }
+    a {
+        display: inline-block;
+        margin-right: 5px;
+        margin-top: 2px;
     }
 }
 .nav-icon{
