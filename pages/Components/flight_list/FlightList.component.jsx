@@ -4,7 +4,7 @@ import { faShoppingBag, faClock, faChair } from '@fortawesome/free-solid-svg-ico
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import globals from '../../Globals/Global'
 
-import '../../../styles/FlightList.module.scss'
+import styles from  '../../../styles/FlightList.module.scss'
 
 import { moneyFormat } from '../../Utils/SimpleTasks'
 // just a function component to show existing flights
@@ -14,7 +14,7 @@ const FlightList = (props)=> {
                 {
                     // .filter(x=>x.kndSys==3)
                     props.flightList.map(oneFlight => (
-                        <div key={oneFlight.flightId} className="flight-list-one-row">
+                        <div key={oneFlight.flightId} className={styles['flight-list-one-row']}>
                             <div className="one-row-price">
                                 <div>
                                     <span className="font-size-20"> {moneyFormat(oneFlight.priceView)}</span>
@@ -29,7 +29,7 @@ const FlightList = (props)=> {
                                     }}>خرید آنلاین</a>
                                 </div>
                             </div>
-                            <div className="one-row-detail">
+                            <div className={styles['one-row-detail']}>
                                 <div>
                                     <span className="color-secondary">{oneFlight.source}</span>
                                     <span>به</span>
@@ -40,17 +40,17 @@ const FlightList = (props)=> {
                                 </div>
                             </div>
 
-                            <div className="one-row-provider">
+                            <div className={styles['one-row-provider']}>
                                 <img src={globals.website + `Airlines/${oneFlight.airlineIataCode}.png?ver=1`} />
                                 <p>{oneFlight.airline}</p>
                             </div>
 
-                            <div className="one-row-date">
+                            <div className={styles['one-row-date']}>
                                 <div>{oneFlight.flightDay}</div>
                                 <div>{oneFlight.flightDate}</div>
                                 <div>{oneFlight.flightDateM}</div>
                             </div>
-                            <div className="one-row-time">
+                            <div className={styles['one-row-time']}>
                                 <div>
                                     <i className="kilo-font icon-clock"></i>
                                 </div>
@@ -59,7 +59,7 @@ const FlightList = (props)=> {
                                 </span>
 
                             </div>
-                            <div className="one-row-cap">
+                            <div className={styles['one-row-cap']}>
                                 <div>
                                     <i className="kilo-font icon-seat"></i>
                                 </div>

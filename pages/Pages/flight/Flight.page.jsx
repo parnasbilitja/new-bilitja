@@ -42,9 +42,13 @@ class Flight extends React.Component {
         }
     }
     componentDidUpdate() {
+        const path = this.props.router.asPath;
+        const src = decodeURI(path.split('/')[2]);
+        const dest = decodeURI(path.split('/')[3]);
+
         window.onpopstate = e => {
-            const source = this.props.airports.find(x => x.airportName == this.props.match.params.source)
-            const destinationn = this.props.airports.find(x => x.airportName == this.props.match.params.destination)
+            const source = this.props.airports.find(x => x.airportName == src)
+            const destinationn = this.props.airports.find(x => x.airportName == dest)
             this.props.addCredentials({
                 sourceName: source.airportName,
                 destinationName: destinationn.airportName,
@@ -58,22 +62,54 @@ class Flight extends React.Component {
         }
     }
     componentDidMount() {
-        if (this.props.credentials.source == '') {
-            const source = this.props.airports.find(x => x.airportName == this.props.match.params.source)
-            const destinationn = this.props.airports.find(x => x.airportName == this.props.match.params.destination)
-            this.props.addCredentials({
-                sourceName: source.airportName,
-                destinationName: destinationn.airportName,
-                source: source.airportCode,
-                dest: destinationn.airportCode,
-                stDate: getCustomFormat(moment().startOf('day'), true),
-                flightDatePersian: getCustomFormat(moment().startOf('day'), false),
-            }).then(() => {
-               this.setState({
-                   loading:false
-               })
-            })
-        } else {
+      //  if (this.props.credentials.source == '') {
+            // console.log(this.props.router.asPath);
+
+            const path = this.props.router.asPath;
+            const src = decodeURI(path.split('/')[2]);
+            const dest = decodeURI(path.split('/')[3]);
+
+            // console.log("abc");
+            // console.log(src);
+            // console.log(dest);
+
+            if (this.props.credentials.source == '') {
+                if (!this.props.airports) {
+                     fetch(`${globals.baseUrl}flights/getAirports`).then(res => res.json()).then(json => {
+                         this.props.setAirports(json.flightAirportsModel);
+                         const source = json.flightAirportsModel.find(x => x.airportName == src)
+                 const destinationn = json.flightAirportsModel.find(x => x.airportName == dest)
+                 this.props.addCredentials({
+                     sourceName: source.airportName,
+                     destinationName: destinationn.airportName,
+                     source: source.airportCode,
+                     dest: destinationn.airportCode,
+                     stDate: getCustomFormat(moment().startOf('day'), true),
+                     flightDatePersian: getCustomFormat(moment().startOf('day'), false),
+                 }).then(() => {
+                    this.setState({
+                        loading:false
+                    })
+                 })
+                     });
+                 }else{
+                         const source = this.props.airports.find(x => x.airportName == src )
+                     const destinationn = this.props.airports.find(x => x.airportName == dest)
+                     this.props.addCredentials({
+                         sourceName: source.airportName,
+                         destinationName: destinationn.airportName,
+                         source: source.airportCode,
+                         dest: destinationn.airportCode,
+                         stDate: getCustomFormat(moment().startOf('day'), true),
+                         flightDatePersian: getCustomFormat(moment().startOf('day'), false),
+                     }).then(() => {
+                     this.setState({
+                         loading:false
+                     })
+                     })
+                 }
+                 
+             }else {
             this.getData()
         }
     }
@@ -139,7 +175,7 @@ class Flight extends React.Component {
     render() {
         return (
             <div className={`container-fluid ${styles['flight-container']}`}>
-                <div className="row text-right hidden-xs-flight">
+                <div className={`row text-right ${styles['hidden-xs-flight']}`}>
                     <div className="col-lg-1 col-md-1 col-sm-1"></div>
                     <div className="col-lg-10 col-md-11 col-sm-11">
                         <div className="row">
@@ -184,7 +220,7 @@ class Flight extends React.Component {
                                                 <div className="visible-xs">
                                                     <MobileFlightList setReserveBoxData={this.setReserveBoxData} flightList={this.state.flights} />
                                                 </div>
-                                                <div className="hidden-xs-flight">
+                                                <div className={styles['hidden-xs-flight']}>
                                                     <FlightList setReserveBoxData={this.setReserveBoxData} flightList={this.state.flights} />
                                                 </div>
                                             </div>
@@ -192,7 +228,7 @@ class Flight extends React.Component {
                                             <MinimumPriceCalendar refreshAction={this.getData}/>
                                 }
                             </div>
-                            <div className="col-lg-3 col-md-4 col-sm-4 hidden-xs-flight padding-5px">
+                            <div className={`col-lg-3 col-md-4 col-sm-4 ${styles['hidden-xs-flight']} padding-5px`}>
                                 <FilterList getData={this.getData} />
                             </div>
                         </div>
@@ -275,7 +311,7 @@ class Flight extends React.Component {
                         <p>بعد</p>
                     </div>
                     <div onClick={() => {
-                        this.props.route.push("/")
+                        this.props.router.push("/")
                     }}>
                         <FontAwesomeIcon icon={faHome} />
                         <p>خانه</p>
@@ -291,6 +327,7 @@ const mapStatesToProps = (state) => ({
 })
 
 const mapDispatchesToProps = (dispatch) => ({
+    setAirports: value => dispatch(addAirports(value)),
     addFilters: value => dispatch(addFilters(value)),
     addCredentials: async value => dispatch(addCredentials(value)),
     messageBoxModify: value => dispatch(messageBoxModify(value))

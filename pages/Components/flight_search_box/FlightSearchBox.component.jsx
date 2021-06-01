@@ -200,8 +200,12 @@ class FlightSearchBox extends React.Component {
                             })
                             return
                         }
-                        if(this.props.match.params.source != this.props.credentials.sourceName ||
-                             this.props.match.params.destination != this.props.credentials.destinationName){
+                        const path = this.props.router.asPath;
+                        const src = decodeURI(path.split('/')[2]);
+                        const dest = decodeURI(path.split('/')[3]);
+            
+                        if(src != this.props.credentials.sourceName ||
+                             dest != this.props.credentials.destinationName){
                                 if (this.props.refreshAction) {
                                     this.props.addCredentials({
                                         withFilters: true,

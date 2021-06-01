@@ -68,7 +68,7 @@ class PopupFlightReserve extends React.Component {
                         reqNo: data.reqNo,
                         reqPnr: data.reqPnr
                     }).then(() => {
-                        this.props.route.push(`${this.props.match.url}/info`)
+                        this.props.router.push(`${this.props.match.url}/info`)
                     })
                 } else {
                     this.props.messageBoxModify({

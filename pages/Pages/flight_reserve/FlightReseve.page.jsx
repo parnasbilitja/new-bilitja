@@ -265,7 +265,7 @@ class FlightReserve extends React.Component {
         }).then(res => res.json())
             .then(data => {
                 if (data.status == "0") {
-                    this.props.route.push("/بلیط-هواپیما/receipt")
+                    this.props.router.push("/بلیط-هواپیما/receipt")
                 } else {
                     this.props.messageBoxModify({
                         state: true,

@@ -40,8 +40,8 @@ import UpdateVila from './Pages/manager/villa/UpdateVila.page'
 import VilaDetial from './Pages/manager/villa/VilaDetail.page'
 import VilaReservation from './Pages/manager/villa/VilaReservation.page'
 import BecomeMember from './Pages/become_member/BecomeMember.page'
-import { withRouter } from 'next/router'
-
+import {  withRouter } from 'next/router'
+import ManagerTopActionBox from './Components/manager_top_action_box/ManagerTopActionBox.component'
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -52,9 +52,9 @@ class App extends React.Component {
     
   }
 
-getComponent(pathName) {
+mainRouter(pathName) {
   console.log(decodeURI( pathName));
-  
+    
   switch (decodeURI( pathName)) {
       case "/" : return <Home/>;
       case '/ویلا/intro' : return <BecomeMember/>;
@@ -62,8 +62,9 @@ getComponent(pathName) {
       case "/ویلا/تهران" : return <AccommodationList/>;
       case "/reserve/ویلا/تهران/:id" : return <AccommodationReserve/>;
       case "/receipt/ویلا/تهران" : return <AccommodationReceipt/>;
-      case "/بلیط-هواپیما/:source/:destination" : return <Flight/>;
-      case "/بلیط-هواپیما/:source/:destination/info" : return <FlightReserve/>;
+      // //case "/بلیط-هواپیما/اصفهان/مشهد" :this.props.router.push("/Flight");break;
+      // case "/بلیط-هواپیما/:source/:destination" : return <Flight/>;
+      // case "/بلیط-هواپیما/:source/:destination/info" : return <FlightReserve/>;
       case "/بلیط-هواپیما/receipt" : return <FlightReciept/>;
       case "/بلیط-هواپیما/order" : return <TrackOrder/>;
 
@@ -86,8 +87,6 @@ getComponent(pathName) {
   componentDidMount() {
     this.updateWindowDimensions();
     // window.addEventListener('resize', this.updateWindowDimensions);
-
-    
   }
   updateWindowDimensions() {
     this.setState({ width: window.innerWidth });
@@ -95,12 +94,18 @@ getComponent(pathName) {
   render() {
     
     return (
+
      <div className='bodyVar'>
      
-     
+
      { this.state.width <= 826 ? <NavBarMobile /> : <NavBar /> }
       <div style={this.state.width <= 826 ? { marginTop: 110 } : { marginTop: 90 }} className='font-'>
-          {this.getComponent(this.props.router.asPath)}
+          {
+          this.mainRouter(this.props.router.asPath)
+          //console.log(this.props.router)
+       //   this.props.router.push("/flights")
+      
+          }
           <MessageBox />
           <Footer />
         </div>

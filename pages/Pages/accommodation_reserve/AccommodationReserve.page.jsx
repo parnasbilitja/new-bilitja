@@ -260,7 +260,7 @@ class AccommodationReserve extends React.Component {
                                                     CityName: this.state.CityName,
                                                     AddressName: this.state.AddressName
                                                 }).then(() => {
-                                                    this.props.route.push("/receipt/ویلا/تهران")
+                                                    this.props.router.push("/receipt/ویلا/تهران")
                                                 })
                                             }}>رزرو</a>
                                         </div>
