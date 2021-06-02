@@ -10,7 +10,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { isValidPassportCode, isValidIranianNationalCode } from '../../Utils/SimpleTasks'
-import '../../../styles/FlightPassengerEditForm.module.scss'
+import styles from '../../../styles/FlightPassengerEditForm.module.scss'
 class FlightPassengerEditForm extends React.Component {
     constructor(props) {
         super(props)

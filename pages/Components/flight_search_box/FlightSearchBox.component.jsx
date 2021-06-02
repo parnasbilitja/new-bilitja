@@ -129,7 +129,7 @@ class FlightSearchBox extends React.Component {
         const { credentials: { sourceName, destinationName, flightDatePersian }, history } = this.props
 
         return (
-            <div className={`{styles['home-flight-form']} `} >
+            <div className={styles['home-flight-form']} >
                 <div>
                     <div className="form-input-border">
                         <i className="kilo-font icon-plane-departure form-input-icon"></i>

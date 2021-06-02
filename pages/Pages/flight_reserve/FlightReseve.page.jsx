@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../styles/FlightReserve.module.scss'
+import styles from '../../../styles/FlightReserve.module.scss'
 
 import PrimaryTextInput from '../../Components/primaty_text_input/PrimaryTextInput.component'
 import PrimaryButton from '../../Components/primary_button/PrimaryButton.component'
@@ -305,7 +305,7 @@ class FlightReserve extends React.Component {
                                 ))
                                 : null
                         }
-                        <div className="row add-passanger">
+                        <div className={`row ${styles['add-passanger']}`}>
                             <div className="visible-xs col-12">
                                 <p className="font-size-14">
                                     <span className="font-bold-iransanse">مجموع قیمت: &nbsp;</span>
@@ -321,7 +321,7 @@ class FlightReserve extends React.Component {
                             <div className="col-lg-9 col-md-8 col-12">
                                 <div className="row">
                                     <div className="col-lg-2 col-md-4 col-4 no-padding">
-                                        <a href="#" className="btn-outlined font-bold-iransanse" onClick={(e) => {
+                                        <a href="#" className={` ${styles['btn-outlined-private']}  btn-outlined  font-bold-iransanse`} onClick={(e) => {
                                             if (this.validationNumberOfPassengers()) {
                                                 this.addNewPassenger("ADL", this.state.priceADL)
                                             }
@@ -335,7 +335,7 @@ class FlightReserve extends React.Component {
                                     </div>
 
                                     <div className="col-lg-2 col-md-4 col-4 no-padding">
-                                        <a href="#" className="btn-outlined font-bold-iransanse" onClick={(e) => {
+                                        <a href="#" className={` ${styles['btn-outlined-private']}  btn-outlined  font-bold-iransanse`} onClick={(e) => {
                                             if (this.validationNumberOfPassengers()) {
                                                 this.addNewPassenger("CHD", this.state.priceCHD)
 
@@ -350,7 +350,7 @@ class FlightReserve extends React.Component {
                                     </div>
 
                                     <div className="col-lg-2 col-md-4 col-4 no-padding">
-                                        <a href="#" className="btn-outlined font-bold-iransanse" onClick={(e) => {
+                                        <a href="#" className={` ${styles['btn-outlined-private']}  btn-outlined  font-bold-iransanse`} onClick={(e) => {
                                             if (this.validationNumberOfPassengers()) {
                                                 this.addNewPassenger("INF", this.state.priceINF)
                                             }
@@ -376,7 +376,7 @@ class FlightReserve extends React.Component {
                             </div>
                         </div>
 
-                        <div className="row passanger-submiter">
+                        <div className={`row ${styles['passanger-submiter']} `}>
                             <div className="col-lg-6 col-md-12 col-12">
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-6 padding-3px">

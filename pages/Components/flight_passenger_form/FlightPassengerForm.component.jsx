@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import BirthdayCalendar from '../birthday_calendar/BirthdayCalendar.component'
 import { moneyFormat } from '../../Utils/SimpleTasks'
 import PopUp from "../pop_up/PopUp.component"
-import '../../../styles/FlightPassengerForm.module.scss'
+import  styles from  '../../../styles/FlightPassengerForm.module.scss'
 import {checkCharacter,checkNumber} from '../../Utils/SimpleTasks'
 import { messageBoxModify } from '../../Redux/UI/ui.action'
 import { connect } from 'react-redux'
@@ -56,14 +56,14 @@ class FlightPassengerForm extends React.Component {
     }
     render() {
         return (
-            <div className="passenger-form">
+            <div className={styles['passenger-form']}>
                 <div className="row">
                     <div className="col-lg-1 col-md-12 col-sm-12 col-12 no-padding hidden-xs">
                         <p className="no-margin font-size-14 font-bold-iransanse">{`${this.props.index + 1}-`}&nbsp;{this.getTitleByType(this.props.type)}</p>
                         <p className="no-margin font-size-10">{this.getSubtitleByType(this.props.type)}</p>
                     </div>
                     {/* shows up just for mobile ----- start*/}
-                    <div className="visible-xs-passenger-form-header col-12 padding-3px">
+                    <div className={` ${styles['visible-xs-passenger-form-header']} col-12 padding-3px`}>
                         <div className="col-6 no-margin padding-xs-0-7">
                             <span className="font-size-13 no-margin font-bold-iransanse">{`${this.props.index + 1}-`}&nbsp;{this.getTitleByType(this.props.type)} </span>
                             <span className="no-margin font-size-11">{this.getSubtitleByType(this.props.type)}</span>

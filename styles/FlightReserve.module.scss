@@ -13,7 +13,7 @@
 
 
 
-.border-pill{
+.border-pill-private{
     padding: 10px 15px ;
     margin-top: 10px ;
 }
@@ -58,7 +58,7 @@
     
     .finish-reserve-buttons{
        
-        .btn-outlined{
+        .btn-outlined-private{
             text-align: center;
             border-width: 2px;
             color:$primaryColor;
@@ -84,7 +84,7 @@
 }
 .add-passanger{
     padding: 10px;
-    .btn-outlined{
+    .btn-outlined-private{
         text-align: center;
         border-width: 2px;
         color:$primaryColor;
