@@ -277,7 +277,7 @@ class Flight extends React.Component {
                     <FilterList getData={this.getData} />
                 </SlideIn>
 
-                <div className="visible-xs-flight-footer">
+                <div className={styles['visible-xs-flight-footer']}>
                     <div onClick={() => {
                         this.setState({
                             slide: true

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../../../styles/PopupFlightReserve.module.scss'
+import styles from  '../../../styles/PopupFlightReserve.module.scss'
 
 import { faMale, faFemale, faBaby, faChild } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -68,7 +68,9 @@ class PopupFlightReserve extends React.Component {
                         reqNo: data.reqNo,
                         reqPnr: data.reqPnr
                     }).then(() => {
-                        this.props.router.push(`${this.props.match.url}/info`)
+                        console.log(this.props.router);
+                        this.props.router.push(`${this.props.router.asPath}/info`)
+                        
                     })
                 } else {
                     this.props.messageBoxModify({
@@ -96,7 +98,7 @@ class PopupFlightReserve extends React.Component {
         const numberOfPassengers_ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         const { source, destinate, flightDay, flightDate, flightDateTime, cap, airlineIataCode, airline } = this.props
         return (
-            <div className="pop-up-flight-reserve-box">
+            <div className={styles['pop-up-flight-reserve-box']}>
                 <p className="font-bold-iransanse">
                     خرید بلیط هواپیما  &nbsp;
                     <span className="color-secondary">{source}</span>
@@ -107,7 +109,7 @@ class PopupFlightReserve extends React.Component {
                     {flightDay} {flightDate}
                 </p>
 
-                <div className="pop-up-flight-detail-reserve-box">
+                <div className={styles['pop-up-flight-detail-reserve-box']}>
                     <div>
                         <div>
                             <i className="kilo-font icon-clock"></i>
@@ -132,7 +134,7 @@ class PopupFlightReserve extends React.Component {
                     </div>
                 </div>
 
-                <div className="pop-up-flight-passengers-reserve-box">
+                <div className={styles['pop-up-flight-passengers-reserve-box']}>
                     <div className="row">
                         <div className="col-lg-5 col-md-5 col-sm-5 col-6">
                             <FontAwesomeIcon icon={faMale} />

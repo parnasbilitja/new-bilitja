@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../styles/MinimumPriceCalendar.module.scss'
+import StyleCalendarPrice from '../../../styles/MinimumPriceCalendar.module.scss'
 import globals from '../../Globals/Global'
 import moment from 'jalali-moment'
 import { connect } from 'react-redux'
@@ -159,7 +159,7 @@ class MinimumPriceCalendar extends React.Component {
                                     <FontAwesomeIcon icon={faAngleLeft} onClick={this.increaseMonth} />
                                 </div>
                             </div>
-                            <div className="min-price-calendar-container">
+                            <div className={StyleCalendarPrice['min-price-calendar-container']}>
                                 <div className="font-size-13 color-black">شنبه</div>
                                 <div className="font-size-13 color-black">1شنبه</div>
                                 <div className="font-size-13 color-black">2شنبه</div>

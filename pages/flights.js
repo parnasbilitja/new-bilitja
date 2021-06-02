@@ -9,6 +9,7 @@ import { store, persistor } from './Redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
 import { useRouter } from 'next/router';
 import Flight from './Pages/flight/Flight.page'
+import FlightReserve from './Pages/flight_reserve/FlightReseve.page'
 function Flights(){
     const myRouter=useRouter();
 
@@ -16,9 +17,7 @@ function Flights(){
      return (
       <div className='bodyVar'>
           <Provider store={store}>
-         
-          <Flight/>
-         
+          { myRouter.asPath.indexOf('info')>0 ? <FlightReserve /> : <Flight /> }
         </Provider>
         </div>
 );
