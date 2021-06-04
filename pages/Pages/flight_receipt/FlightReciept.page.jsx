@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../styles/FlightReciept.module.scss'
+import styles from '../../../styles/FlightReciept.module.scss'
 import stylesflight from  '../../../styles/FlightSearchBox.module.scss'
 import FlightRecieptDesktopHero from '../../Components/flight_reciept_desktop_hero/FlightRecieptDesktopHero.compnent'
 import FlightRecieptMobileHero from '../../Components/flight_reciept_mobile_hero/FlightRecieptMobileHero.compnent'
@@ -198,7 +198,7 @@ class FlightReciept extends React.Component {
     render() {
         return (
             <div className="container-fluid">
-                <div className="flight-detail">
+                <div className={styles['flight-detail']}>
                     <FlightRecieptDesktopHero {...this.state} />
                     <FlightRecieptMobileHero {...this.state} />
                 </div>

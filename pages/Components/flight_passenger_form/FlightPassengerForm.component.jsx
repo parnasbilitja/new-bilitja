@@ -93,7 +93,7 @@ class FlightPassengerForm extends React.Component {
                     <div className="col-lg-10 col-md-12 col-sm-12 col-12">
                         <div className="row">
                             <div className="col-lg-3 col-md-3 col-sm-3 col-6 padding-horizental-3px">
-                                <div className="form-input-border">
+                                <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                     <PrimaryTextInput placeHolder="نام" onChange={(e) => {
                                         if(!this.checkCharacters(e.target.value)){
                                             return
@@ -104,7 +104,7 @@ class FlightPassengerForm extends React.Component {
                                 <span className="color-secondary error-message">{this.props.nameErr}</span>
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-3 col-6 padding-horizental-3px">
-                                <div className="form-input-border">
+                                <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                     <PrimaryTextInput placeHolder="نام خانودگی" onChange={(e) => {
                                         if(!this.checkCharacters(e.target.value)){
                                             return
@@ -131,7 +131,7 @@ class FlightPassengerForm extends React.Component {
                                 </PrimarySelectInput>
                             </div>
                             <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px">
-                                <div className="form-input-border">
+                                <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                     <PrimaryTextInput inputMode="numeric" placeHolder={`${this.props.nationality=="IR" ? "کد ملی" : "کد پاسپورت" }`} onChange={(e) => {
                                         if(!checkNumber(e.target.value)){
                                             return
@@ -142,7 +142,7 @@ class FlightPassengerForm extends React.Component {
                                 <span className="color-secondary error-message">{this.props.codeErr}</span>
                             </div>
                             <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px">
-                                <div className="form-input-border">
+                                <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                     <PrimaryTextInput placeHolder="تاریخ تولد" value={this.props.birthday} onFocus={() => {
                                         this.managePopUpBirthdayCalendar(true)
                                     }} />

@@ -1,6 +1,6 @@
 import React from 'react'
 //import firstTime from '../../../images/first-time.png'
-import '../../../styles/BecomeMember.module.scss'
+import styles from '../../../styles/BecomeMember.module.scss'
 import PrimaryTextInput from '../../Components/primaty_text_input/PrimaryTextInput.component'
 import PrimaryButton from '../../Components/primary_button/PrimaryButton.component'
 const BecomeMember = () => {
@@ -20,7 +20,7 @@ const BecomeMember = () => {
                                     <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">میزبان شوید</h3>
 
                                     <p className="color-textpill font-size-13">شماره موبایل خود را وارد کنید</p>
-                                    <div className="form-input-border">
+                                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                         <PrimaryTextInput />
                                     </div>
                                     <PrimaryButton value="ادامه" />

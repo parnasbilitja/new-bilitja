@@ -8,7 +8,7 @@ import globals from '../../Globals/Global'
 const FlightReceiptMobileHero = (props) => (
     props.airport1 ? 
     <div className="row visible-xs reserve-mobile-hero">
-        <div className="col-12 border-pill background-world">
+        <div className={`col-12 border-pill ${styles['background-world']}`}>
             <div className="row">
                 <div className="col-4">
                     <strong className="color-secondary font-size-25">{props.airport1}</strong>

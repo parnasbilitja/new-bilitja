@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../../styles/PrimaryButton.module.scss"
+import styles from "../../../styles/PrimaryButton.module.scss"
 export default class PrimaryButton extends React.Component{
     constructor(props){
         super(props)
@@ -7,7 +7,7 @@ export default class PrimaryButton extends React.Component{
 
     render(){
         return(
-            <input type="button" {...this.props} className={`primary-button ${this.props.className}`}/>
+            <input type="button" {...this.props} className={styles['primary-button']} />
         )
     }
 }

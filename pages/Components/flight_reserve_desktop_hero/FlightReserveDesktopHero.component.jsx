@@ -4,6 +4,7 @@ import Image from 'next/image'
 //import airplaneReserveSmall from '../../../images/airplane_reserve_small.png'
 //import barcode from '../../../images/barcode.png'
 import globals from '../../Globals/Global'
+import styles from '../../../styles/FlightReserve.module.scss'
 
 const FlightReserveDesktopHero = (props) => (
     props.airport1 ? 
@@ -11,7 +12,7 @@ const FlightReserveDesktopHero = (props) => (
         <div className="col-lg-1"></div>
         <div className="col-lg-10 border-pill">
             <div className="row">
-                <div className="col-lg-6 col-md-12 col-sm-12 col-12 background-world">
+                <div className={`col-lg-6 col-md-12 col-sm-12 col-12 ${styles['background-world']}`}>
                     <div className="row">
                         <div className="col-lg-4 col-md-4 col-sm-4 col-4">
                             <strong className="font-size-23">{props.airport1}</strong>
@@ -73,7 +74,7 @@ const FlightReserveDesktopHero = (props) => (
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-3 col-sm-3 col-6">
-                            <img src='../../../images/barcode.png' className="barcode" />
+                            <img src='../../../images/barcode.png' className={styles['imgbarcode']} />
                         </div>
 
                     </div>

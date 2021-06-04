@@ -87,19 +87,19 @@ class AccommodationReceipt extends React.Component {
                                     </div>
                                     <div className="row padding-10px">
                                         <div className="col-lg-4 col-md-4 col-sm-4 col-6">
-                                            <div className="form-input-border">
+                                            <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                                 <PrimaryTextInput placeholder={"نام و نام‌خانوادگی"} name="NameFamily" onChange={this.handeChange} />
                                             </div>
                                             <span className="color-secondary error-message">{this.state.familyErr}</span>
                                         </div>
                                         <div className="col-lg-4 col-md-4 col-sm-4 col-6 padding-horizental-3px">
-                                            <div className="form-input-border">
+                                            <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                                 <PrimaryTextInput placeholder={"کد ملی"} name="NationalCode" onChange={this.handeChange} />
                                             </div>
                                             <span className="color-secondary error-message">{this.state.nationalCodeErr}</span>
                                         </div>
                                         <div className="col-lg-4 col-md-4 col-sm-4 col-6">
-                                            <div className="form-input-border">
+                                            <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                                 <PrimaryTextInput placeholder={"شماره موبایل"} name="MobileNo" onChange={this.handeChange} />
                                             </div>
                                             <span className="color-secondary error-message">{this.state.mobileNoErr}</span>

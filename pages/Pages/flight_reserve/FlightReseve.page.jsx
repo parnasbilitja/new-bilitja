@@ -277,7 +277,7 @@ class FlightReserve extends React.Component {
     render() {
         return (
             <div className="container-fluid">
-                <div className="flight-detail">
+                <div className={styles['flight-detail']}>
                     <FlightReserveDesktopHero {...this.state} />
                     <FlightReserveMobileHero {...this.state} />
                 </div>
@@ -380,13 +380,13 @@ class FlightReserve extends React.Component {
                             <div className="col-lg-6 col-md-12 col-12">
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-6 padding-3px">
-                                        <div className="form-input-border">
+                                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                             <PrimaryTextInput inputMode="numeric" placeHolder="شماره همراه" name="mobileSubmiter" onChange={this.handleChange} />
                                         </div>
                                         <span className="color-secondary">{this.state.mobileSubmiterErr}</span>
                                     </div>
                                     <div className="col-lg-6 col-md-6 col-6 padding-3px">
-                                        <div className="form-input-border">
+                                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                             <PrimaryTextInput inputMode="numeric" placeHolder="شماره ثابت" name="phoneSubmiter" onChange={this.handleChange} />
                                         </div>
                                         <span className="color-secondary">{this.state.phoneSubmiterErr}</span>
@@ -395,12 +395,12 @@ class FlightReserve extends React.Component {
 
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-6 padding-3px">
-                                        <div className="form-input-border">
+                                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                             <PrimaryTextInput placeHolder="ایمیل (اختیاری)" />
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6 col-6 padding-3px">
-                                        <div className="form-input-border">
+                                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                             <PrimaryTextInput placeHolder="کد تخفیف (اختیاری)" />
                                         </div>
                                     </div>
@@ -442,7 +442,8 @@ class FlightReserve extends React.Component {
                                     </div>
                                     <div className="col-lg-5 col-md-5 col-5 padding-3px">
                                         <a className="btn-outlined color-secondary" onClick={()=>{
-                                            this.props.history.goBack();
+                                            this.props.router.back()
+                                            
                                         }}>
                                             <span>بازگشت</span>
                                         </a>

@@ -76,7 +76,7 @@ class ForgetPassword extends React.Component {
                         <FontAwesomeIcon icon={faUser} className="margin-top-20px" />
                     </div>
                     <div className="col-11 padding-horizental-3px">
-                        <div className="form-input-border">
+                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                             <PrimaryTextInput placeHolder="نام‌کاربری(تلفن همراه)" onChange={(e) => {
                                 this.setState({
                                     mobile: e.target.value

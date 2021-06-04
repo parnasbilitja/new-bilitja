@@ -55,7 +55,7 @@ class Login extends React.Component {
                         <FontAwesomeIcon icon={faUser} className="margin-top-20px" />
                     </div>
                     <div className="col-11 padding-horizental-3px">
-                        <div className="form-input-border">
+                        <div className={` form-input-border  `}>
                             <PrimaryTextInput placeHolder="نام کاربری (شماره همراه)" name="mobile" onChange={this.props.handleChange} />
                         </div>
                     </div>
@@ -65,7 +65,7 @@ class Login extends React.Component {
                         <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
                     </div>
                     <div className="col-11 padding-horizental-3px">
-                        <div className="form-input-border">
+                        <div className={` form-input-border  `}>
                             <PrimaryTextInput placeHolder="شماره همراه معرف را وارد کنید (اختیاری)" name="moaref" onChange={this.handleChange} />
                         </div>
                     </div>
@@ -75,7 +75,7 @@ class Login extends React.Component {
                         <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
                     </div>
                     <div className="col-11 padding-horizental-3px">
-                        <div className="form-input-border">
+                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                             <PrimaryTextInput placeHolder="رمز عبور" name="password" onChange={this.handleChange} />
                         </div>
                     </div>

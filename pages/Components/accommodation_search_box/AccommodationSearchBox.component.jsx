@@ -162,7 +162,7 @@ class AccommodationSearchBox extends React.Component {
         return (
             <div className={styles['home-villa-form']}>
                 <div>
-                    <div className="form-input-border">
+                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
 
                         <PrimaryTextInput value={cityName} readOnlyAttr={this.state.width <= mobileSize} name="cityName" onFocus={(e) => {
                             // for mobile
@@ -183,7 +183,7 @@ class AccommodationSearchBox extends React.Component {
                 </div>
 
                 <div>
-                    <div className="form-input-border">
+                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                         <i className="kilo-font icon-calendar form-input-icon-larger"></i>
 
                         <PrimaryTextInput placeholder={"تاریخ رفت"} readOnly value={dateStart} onFocus={(e) => {
@@ -194,7 +194,7 @@ class AccommodationSearchBox extends React.Component {
                     </div>
                 </div>
 
-                <div className="form-input-border">
+                <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                     <i className="kilo-font icon-calendar form-input-icon-larger"></i>
 
                     <PrimaryTextInput placeholder={"تاریخ برگشت"} readOnly value={dateEnd} onFocus={(e) => {
@@ -205,7 +205,7 @@ class AccommodationSearchBox extends React.Component {
                 </div>
 
                 <div>
-                    <div className="form-input-border">
+                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                         <PrimaryTextInput readOnlyAttr={this.state.width <= mobileSize} value={this.state.numberStay} />
                         <NumberDayStay index={this.state.numberStay} handleChange={(value) => {
                             this.setState({

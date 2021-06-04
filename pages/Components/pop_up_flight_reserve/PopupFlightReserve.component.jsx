@@ -199,7 +199,7 @@ class PopupFlightReserve extends React.Component {
                             </PrimarySelectInput>
                         </div>
                     </div>
-                    <div className={`$"form-input-border" without-focus`}>
+                    <div className={` form-input-border  ${styles['form-input-border-private']} without-focus`}>
                         <PrimaryButton defaultValue={"مرحله بعد"} onClick={() => {
                             const message = this.validation(this.state.numADL, this.state.numCHD, this.state.numINF, this.props.cap)
                             if (message == "OK") {

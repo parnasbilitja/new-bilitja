@@ -1,6 +1,6 @@
 import React from 'react'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+
 //import Styles from '../Styles/icon.module.scss'
 //import '../styles/manager.module.scss'
 
@@ -86,8 +86,12 @@ mainRouter(pathName) {
 
   componentDidMount() {
     this.updateWindowDimensions();
-    // window.addEventListener('resize', this.updateWindowDimensions);
+     window.addEventListener('resize', this.updateWindowDimensions);
   }
+  componentWillUnmount() {
+     window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+  
   updateWindowDimensions() {
     this.setState({ width: window.innerWidth });
   }

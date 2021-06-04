@@ -1,4 +1,5 @@
 
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Styles from '../styles/global.style.scss'
 import StylesApp from '../styles/App.css'
 import Stylesindex from '../styles/index.css'

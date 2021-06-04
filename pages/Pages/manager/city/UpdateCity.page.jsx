@@ -57,7 +57,7 @@ const UpdateCity = (props) => {
             <div className="row margin-top-10px">
                 <div className="col-lg-3 col-12 padding-3px">
                     <span className="font-bold-iransanse font-size-13">نام شهر</span>
-                    <div className="form-input-border">
+                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                         <PrimaryTextInput placeHolder="نام شهر" value={state.cityName} name="cityName" onChange={(e) => {
                             setState({
                                 cityName: e.target.value
@@ -85,7 +85,7 @@ const UpdateCity = (props) => {
                 </div>
                 <div className="col-lg-3 col-12 padding-3px">
                     <span className="font-bold-iransanse font-size-13">کد فرودگاه</span>
-                    <div className="form-input-border">
+                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                         <PrimaryTextInput placeHolder="کد فرودگاه" value={state.airportCode} name="airportCode" onChange={(e) => {
                             setState({
                                 airportCode: e.target.value

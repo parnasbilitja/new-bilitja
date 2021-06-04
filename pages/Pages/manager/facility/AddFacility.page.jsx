@@ -33,7 +33,7 @@ const AddFacility = (props) => {
             <div className="row margin-top-10px">
                 <div className="col-lg-3 col-12 padding-3px">
                     <span className="font-bold-iransanse font-size-13">نام امکانات</span>
-                    <div className="form-input-border">
+                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                         <PrimaryTextInput placeHolder="نام امکانات" value={state.facilityName} name="facilityName" onChange={handleChange} />
                     </div>
                     <span className="color-secondary error-message font-size-14">{errors.facilityNameError}</span>

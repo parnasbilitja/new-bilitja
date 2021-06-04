@@ -61,7 +61,7 @@ class Register extends React.Component {
                     </div>
 
                     <div className="col-11 padding-horizental-3px">
-                        <div className="form-input-border">
+                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                             <PrimaryTextInput placeHolder="نام کاربری(موبایل)" name="mobile" onChange={this.handleChange} />
                         </div>
                     </div>
@@ -73,7 +73,7 @@ class Register extends React.Component {
                     </div>
 
                     <div className="col-11 padding-horizental-3px">
-                        <div className="form-input-border">
+                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                             <PrimaryTextInput placeHolder="نام و نام خانوادگی" name="nameFamily" onChange={this.handleChange} />
                         </div>
                     </div>
@@ -83,7 +83,7 @@ class Register extends React.Component {
                         <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
                     </div>
                     <div className="col-11 padding-horizental-3px">
-                        <div className="form-input-border">
+                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                             <PrimaryTextInput placeHolder="رمز عبور" type="password" name="password" onChange={this.handleChange} />
                         </div>
                     </div>
@@ -93,7 +93,7 @@ class Register extends React.Component {
                         <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
                     </div>
                     <div className="col-11 padding-horizental-3px">
-                        <div className="form-input-border">
+                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                             <PrimaryTextInput placeHolder="موبایل معرف" name="mobileMoaref" onChange={this.handleChange} />
                         </div>
                     </div>

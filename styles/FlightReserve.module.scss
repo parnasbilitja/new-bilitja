@@ -1,7 +1,7 @@
 @import './values.module.scss';
 @media only screen and (max-width : 650px){
     .passanger-submiter{
-        .form-input-border{
+        .form-input-border-private{
             height: 45px !important;   
             border: 1px solid #cfd3d8;
         }
@@ -24,7 +24,7 @@
         background-position: center;
         background-size: contain;
     }
-    img.barcode{
+    .imgbarcode{
         width:55px;
         height: 100%;
     }
@@ -44,7 +44,7 @@
 .passanger-submiter{
     padding: 0px 10px;
     text-align: right;
-    .form-input-border{
+    .form-input-border-private{
         height: 29px;   
     }
     .finish-reserve{

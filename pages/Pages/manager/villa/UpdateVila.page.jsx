@@ -361,20 +361,20 @@ class UpdateVila extends React.Component {
                             <div className="row">
                                 <div className="col-lg-3 col-12 padding-3px">
                                     <span className="font-bold-iransanse font-size-13">کد ویلای شما</span>
-                                    <div className="form-input-border">
+                                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                         <PrimaryTextInput placeHolder="کد ویلا" value="0" value={this.state.vilaMainObjcet.EghamatId} disabled={true} />
                                     </div>
                                 </div>
                                 <div className="col-lg-3 col-12 padding-3px">
                                     <span className="font-bold-iransanse font-size-13">نام صاحب ویلا</span>
-                                    <div className="form-input-border">
+                                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                         <PrimaryTextInput placeHolder="نام صاحب ویلا" value={this.state.vilaMainObjcet.AdminName} name="AdminName" onChange={this.handleChangeInput} />
                                     </div>
                                     <span className="color-secondary error-message font-size-14"> {this.state.errors.AdminName}</span>
                                 </div>
                                 <div className="col-lg-3 col-12 padding-3px">
                                     <span className="font-bold-iransanse font-size-13">نام اقامتگاه</span>
-                                    <div className="form-input-border">
+                                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                         <PrimaryTextInput placeHolder="نام اقامتگاه" value={this.state.vilaMainObjcet.Name} name="Name" onChange={this.handleChangeInput} />
                                     </div>
                                     <span className="color-secondary error-message font-size-14"> {this.state.errors.nameError}</span>
@@ -386,7 +386,7 @@ class UpdateVila extends React.Component {
                                             notTheOwner: e.target.checked
                                         })
                                     }} checked={this.state.notTheOwner} /><span className="font-bold-iransanse font-size-13">مالک اقامتگاه نیستم</span>
-                                    <div className="form-input-border">
+                                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                         <PrimaryTextInput disabled={!this.state.notTheOwner} placeHolder="تلفن تماس مالک اقامتگاه" value={this.state.vilaMainObjcet.TelNo} name="TelNo" onChange={this.handleChangeInput} />
                                     </div>
                                     <span className="color-secondary error-message font-size-14"> {this.state.errors.TelNo}</span>
@@ -426,7 +426,7 @@ class UpdateVila extends React.Component {
                             <div className="row margin-top-20px">
                                 <div className="col-12 padding-3px">
                                     <span className="font-bold-iransanse font-size-13">توضیحات</span>
-                                    <div className="form-input-border" style={{ height: "auto" }}>
+                                    <div className={` form-input-border  ${styles['form-input-border-private']} `} style={{ height: "auto" }}>
                                         <textarea rows="10" className="form-input primary-text" value={this.state.vilaMainObjcet.Dsc} name="Dsc" onChange={this.handleChangeInput}>
 
                                         </textarea>
@@ -476,14 +476,14 @@ class UpdateVila extends React.Component {
                             <span className="color-secondary error-message font-size-14"> {this.state.errors.City}</span>
                         </div>
                         <div className="col-lg-3 col-12 padding-3px">
-                            <div className="form-input-border">
+                            <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                 <PrimaryTextInput placeHolder="نام محدوده اقامتگاه" value={this.state.vilaMainObjcet.AddressName} name="AddressName" onChange={this.handleChangeInput} />
                             </div>
                             <span className="color-secondary error-message font-size-14"> {this.state.errors.AddressName}</span>
 
                         </div>
                         <div className="col-12 padding-3px margin-top-10px">
-                            <div className="form-input-border" style={{ height: "auto" }}>
+                            <div className={` form-input-border  ${styles['form-input-border-private']} `} style={{ height: "auto" }}>
                                 <textarea rows="5" placeholder="آدرس کامل اقامتگاه ( آمل-خیابان 1- کوچه 2 -پلاک 110)" value={this.state.vilaMainObjcet.Address} className="form-input primary-text" name="Address" onChange={this.handleChangeInput}>
 
                                 </textarea>
@@ -586,7 +586,7 @@ class UpdateVila extends React.Component {
                                             <p className="margin-top-10px margin-bottom-0px font-size-13 font-bold-iransanse">متراژ زمین</p>
                                         </div>
                                         <div className="col-lg-7 col-7 padding-3px">
-                                            <div className="form-input-border">
+                                            <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                                 <PrimaryTextInput name="Metraj" onChange={this.handleChangeInput} value={this.state.vilaMainObjcet.Metraj} />
                                                 <span className="color-secondary error-message font-size-14">{this.state.errors.landMetraj}</span>
                                             </div>
@@ -595,7 +595,7 @@ class UpdateVila extends React.Component {
                                             <p className="margin-top-10px margin-bottom-0px font-size-13 font-bold-iransanse">متراژ بنا</p>
                                         </div>
                                         <div className="col-lg-7 col-7 padding-3px">
-                                            <div className="form-input-border">
+                                            <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                                 <PrimaryTextInput name="Metraj" onChange={this.roomHandleChangeInput} value={this.state.roomObject.Metraj} />
                                                 <span className="color-secondary error-message font-size-14">{this.state.errors.accommodationMetraj}</span>
                                             </div>

@@ -115,7 +115,7 @@ class VilaDetial extends React.Component {
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-6 col-12 margin-top-20px">
                             <p className="font-size-13 font-bold-iransanse">(قیمت ها به تومان می‌باشد)</p>
-                            <div className="form-input-border">
+                            <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                                 <PrimaryTextInput placeholder={"قیمت مورد نظر خود را وارد کنید"} name="price" onChange={this.handleChange} />
                             </div>
                             <div className="border-pill">

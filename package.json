@@ -32,5 +32,10 @@
   },
   "devDependencies": {
     "@types/gtag.js": "0.0.5"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }

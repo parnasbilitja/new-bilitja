@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { selectArilines } from '../../Redux/Search/search.reselect'
 import { connect } from 'react-redux'
 import globals from '../../Globals/Global'
+import styles from '../../../styles/Flight.module.scss'
 
 import { addCredentials ,addAirlineToSearchObject,removeAirlineFromSearchObject} from '../../Redux/Search/search.action'
 
@@ -47,9 +48,9 @@ class FilterList extends React.Component {
 
     render() {
         return (
-            <div className="filter-list-box">
-                <div className="filter-list-heading">
-                    <span className="color-textpill">
+            <div className={styles['filter-list-box']}>
+                <div className={`styles['filter-list-heading']`}>
+                    <span className={`styles['color-textpill']`}>
                         <FontAwesomeIcon icon={faCog} />
                         فیلترها
                     </span>
@@ -57,7 +58,7 @@ class FilterList extends React.Component {
 
                 <input type="text" placeholder="جستجوی شماره پرواز" className="input-search filter-list-input" />
 
-                <div className="filter-list-sort">
+                <div className={styles['filter-list-sort']}>
                     <strong>جستجو براساس</strong>
                     <form>
                         <div>
@@ -76,7 +77,7 @@ class FilterList extends React.Component {
 
                 </div>
 
-                <div className="filter-list-time-in-day">
+                <div className={styles['filter-list-time-in-day']}>
                     <strong>زمان پرواز</strong>
 
                     <div>
@@ -104,7 +105,7 @@ class FilterList extends React.Component {
                         <label className="font-size-14" htmlFor="evening">شب (23:59 - 18:00)</label>
                     </div>
                 </div>
-                <div className="filter-list-airlines">
+                <div className={styles['filter-list-airlines']}>
                     <strong>ایرلاین</strong>
                     {
                         this.props.airlines.airlines ?

@@ -92,19 +92,19 @@ class FlightPassengerEditForm extends React.Component {
             }}>
                 <div className="row">
                     <div className="col-lg-3 col-md-3 col-sm-3 col-12 padding-horizental-3px">
-                        <div className="form-input-border">
+                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                             <PrimaryTextInput placeHolder="نام" value={this.state.name} name="name" onChange={this.handleChange} />
                         </div>
                         <span className="color-secondary error-message">{this.state.nameErr}</span>
                     </div>
                     <div className="col-lg-3 col-md-3 col-sm-3 col-12 padding-horizental-3px">
-                        <div className="form-input-border">
+                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                             <PrimaryTextInput placeHolder="نام‌خانوادگی" value={this.state.family} name="family" onChange={this.handleChange} />
                         </div>
                         <span className="color-secondary error-message">{this.state.familyErr}</span>
                     </div>
                     <div className="col-lg-2 col-md-2 col-sm-3 col-12 padding-horizental-3px">
-                        <div className="form-input-border">
+                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                             <PrimaryTextInput placeHolder="کدملی" value={this.state.meliCode} name="meliCode" onChange={this.handleChange} />
                         </div>
                         <span className="color-secondary error-message">{this.state.melliCodeErr}</span>
@@ -122,7 +122,7 @@ class FlightPassengerEditForm extends React.Component {
                         </PrimarySelectInput>
                     </div>
                     <div className="col-lg-2 col-md-2 col-sm-3 col-12 padding-horizental-3px">
-                        <div className="form-input-border">
+                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                             <PrimaryTextInput placeHolder="تاریخ تولد" value={this.state.birthday} name="birthday" onFocus={() => {
                                 this.managePopUpBirthdayCalendar(true)
                             }} />

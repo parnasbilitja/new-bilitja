@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment-jalaali'
-import '../../../styles/BirthdayCalendar.module.scss'
+import styles from '../../../styles/BirthdayCalendar.module.scss'
 class BirthdayCalendar extends React.Component {
     current = 1399
 
@@ -67,7 +67,7 @@ class BirthdayCalendar extends React.Component {
     }
     render() {
         return (
-            <div className="birthday-calendar">
+            <div className={styles['birthday-calendar']}>
                 {
                     this.state.stage == 1 ?
                         <div>
@@ -75,11 +75,11 @@ class BirthdayCalendar extends React.Component {
                                 لطفا سال تولد خود را وارد کنید
                             </p>
 
-                            <div className="birthday-year-container">
+                            <div className={styles['birthday-year-container']}>
                                 {
                                     this.getYears()
                                         .map(x => (
-                                            <div className="birthday-item" onClick={() => {
+                                            <div className={styles['birthday-item']} onClick={() => {
                                                 this.setState({ year: x, stage: 2 })
                                             }}>
                                                 {x}
@@ -98,8 +98,8 @@ class BirthdayCalendar extends React.Component {
                             <p className="font-size-14 black-color font-bold-iransanse text-center">
                                 لطفا ماه تولد خود را وارد کنید
                             </p>
-                            <div className="birthday-month-container">
-                                <div className="birthday-item" onClick={() => {
+                            <div className={styles['birthday-month-container']}>
+                                <div className={styles['birthday-item']} onClick={() => {
                                     this.setState({
                                         month: "1",
                                         stage: 3
@@ -107,7 +107,7 @@ class BirthdayCalendar extends React.Component {
                                 }}>
                                     فروردین
                                 </div>
-                                <div className="birthday-item" onClick={() => {
+                                <div className={styles['birthday-item']} onClick={() => {
                                     this.setState({
                                         month: "2",
                                         stage: 3
@@ -115,7 +115,7 @@ class BirthdayCalendar extends React.Component {
                                 }}>
                                     اردیبهشت
                                 </div>
-                                <div className="birthday-item" onClick={() => {
+                                <div className={styles['birthday-item']} onClick={() => {
                                     this.setState({
                                         month: "3",
                                         stage: 3
@@ -123,7 +123,7 @@ class BirthdayCalendar extends React.Component {
                                 }}>
                                     خرداد
                                 </div>
-                                <div className="birthday-item" onClick={() => {
+                                <div className={styles['birthday-item']} onClick={() => {
                                     this.setState({
                                         month: "4",
                                         stage: 3
@@ -131,7 +131,7 @@ class BirthdayCalendar extends React.Component {
                                 }}>
                                     تیر
                                 </div>
-                                <div className="birthday-item" onClick={() => {
+                                <div className={styles['birthday-item']} onClick={() => {
                                     this.setState({
                                         month: "5",
                                         stage: 3
@@ -139,7 +139,7 @@ class BirthdayCalendar extends React.Component {
                                 }}>
                                     مرداد
                                 </div>
-                                <div className="birthday-item" onClick={() => {
+                                <div className={styles['birthday-item']} onClick={() => {
                                     this.setState({
                                         month: "6",
                                         stage: 3
@@ -147,7 +147,7 @@ class BirthdayCalendar extends React.Component {
                                 }}>
                                     شهریور
                                 </div>
-                                <div className="birthday-item" onClick={() => {
+                                <div className={styles['birthday-item']} onClick={() => {
                                     this.setState({
                                         month: "7",
                                         stage: 3
@@ -155,7 +155,7 @@ class BirthdayCalendar extends React.Component {
                                 }}>
                                     مهر
                                 </div>
-                                <div className="birthday-item" onClick={() => {
+                                <div className={styles['birthday-item']} onClick={() => {
                                     this.setState({
                                         month: "8",
                                         stage: 3
@@ -163,7 +163,7 @@ class BirthdayCalendar extends React.Component {
                                 }}>
                                     آبان
                                 </div>
-                                <div className="birthday-item" onClick={() => {
+                                <div className={styles['birthday-item']} onClick={() => {
                                     this.setState({
                                         month: "9",
                                         stage: 3
@@ -171,7 +171,7 @@ class BirthdayCalendar extends React.Component {
                                 }}>
                                     آذر
                                 </div>
-                                <div className="birthday-item" onClick={() => {
+                                <div className={styles['birthday-item']} onClick={() => {
                                     this.setState({
                                         month: "10",
                                         stage: 3
@@ -179,7 +179,7 @@ class BirthdayCalendar extends React.Component {
                                 }}>
                                     دی
                                 </div>
-                                <div className="birthday-item" onClick={() => {
+                                <div className={styles['birthday-item']} onClick={() => {
                                     this.setState({
                                         month: "11",
                                         stage: 3
@@ -187,7 +187,7 @@ class BirthdayCalendar extends React.Component {
                                 }}>
                                     بهمن
                                 </div>
-                                <div className="birthday-item" onClick={() => {
+                                <div className={styles['birthday-item']} onClick={() => {
                                     this.setState({
                                         month: "12",
                                         stage: 3
@@ -206,7 +206,7 @@ class BirthdayCalendar extends React.Component {
                             <p className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black">
                                 {this.getMonth()}&nbsp;&nbsp;{this.state.year}
                             </p>
-                            <div className="birthday-day-container">
+                            <div className={styles['birthday-day-container']}>
                                 <div className="font-size-13 color-black">شنبه</div>
                                 <div className="font-size-13 color-black">1شنبه</div>
                                 <div className="font-size-13 color-black">2شنبه</div>
@@ -218,7 +218,7 @@ class BirthdayCalendar extends React.Component {
                                 {
                                     this.getDays().map(x => (
                                         x!=undefined?
-                                        <div className="birthday-item" onClick={() => {
+                                        <div className={styles['birthday-item']} onClick={() => {
                                             const m = moment(`${this.state.year+'/'+this.state.month+'/'+x}`, 'jYYYY/jM/jD')
                                             const date = m.format('YYYY/M/D')
                                             this.props.setBirthday(date)

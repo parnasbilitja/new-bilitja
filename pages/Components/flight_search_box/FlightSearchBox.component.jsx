@@ -131,7 +131,7 @@ class FlightSearchBox extends React.Component {
         return (
             <div className={styles['home-flight-form']} >
                 <div>
-                    <div className="form-input-border">
+                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                         <i className="kilo-font icon-plane-departure form-input-icon"></i>
                         <PrimaryTextInput value={sourceName} readOnlyAttr={this.state.width <= mobileSize} name="sourceName" onFocus={(e) => {
                             // for mobile
@@ -159,7 +159,7 @@ class FlightSearchBox extends React.Component {
                 </div>
 
                 <div>
-                    <div className="form-input-border">
+                    <div className={` form-input-border  ${styles['form-input-border-private']} `}>
 
                         <i className="kilo-font icon-plane-departure form-input-icon rotate-upsidedown-reverse"></i>
                         <PrimaryTextInput value={destinationName} readOnlyAttr={this.state.width <= mobileSize} name="destinationName"
@@ -182,7 +182,7 @@ class FlightSearchBox extends React.Component {
                     </div>
                 </div>
 
-                <div className="form-input-border">
+                <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                     <i className="kilo-font icon-calendar form-input-icon-larger"></i>
 
                     <PrimaryTextInput placeholder={" تاریخ پرواز پرواز رفت"} readOnly value={flightDatePersian} onFocus={(e) => {
