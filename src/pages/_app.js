@@ -5,7 +5,7 @@ import StylesApp from '../../styles/App.css'
 import Stylesindex from '../../styles/index.css'
 import StyleIcons from '../../styles/icon.scss'
 import StyleValues from '../../styles/values.scss'
-import StyleCalendar from '../../styles/calendar.scss'
+import StyleCalendar from '../../styles/Calendar.scss'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
