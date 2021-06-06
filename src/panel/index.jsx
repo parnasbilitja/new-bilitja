@@ -1,9 +1,9 @@
 import { Provider } from 'react-redux'
-import { store, persistor } from '../..//pages/Redux/store';
+import { store, persistor } from '../Redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
 
-import ManagerNav from '../../pages/Components/manager_nav/ManagerNav.component'
-import MessageBox from '../../pages/Components/message_box/MessageBox.component'
+import ManagerNav from '../Components/manager_nav/ManagerNav.component'
+import MessageBox from '../Components/message_box/MessageBox.component'
 
 
 export default function ManagePanel() {

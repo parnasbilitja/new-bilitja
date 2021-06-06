@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { Provider } from 'react-redux'
-import { store, persistor } from './Redux/store';
-import { PersistGate } from 'redux-persist/integration/react'
-import reportWebVitals from './reportWebVitals';
-import App from './App';
+import { store, persistor } from '../Redux/store';
+//import { PersistGate } from 'redux-persist/integration/react'
+//import reportWebVitals from './reportWebVitals';
+import App from '../../src/Components/App'
 
 export default function Home1() {
 
@@ -14,7 +14,7 @@ export default function Home1() {
               <Provider store={store}>
               
               <App/>
-              <reportWebVitals/>
+              {/* <reportWebVitals/> */}
             </Provider>
             
     );
@@ -34,7 +34,7 @@ import reportWebVitals from './reportWebVitals';
 
 
 import { Provider } from 'react-redux'
-import { store, persistor } from './Redux/store';
+import { store, persistor } from '../Redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
 ReactDOM.render(
   <Provider store={store}>

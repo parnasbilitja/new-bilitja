@@ -1,15 +1,15 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Styles from '../styles/global.style.scss'
-import StylesApp from '../styles/App.css'
-import Stylesindex from '../styles/index.css'
-import StyleIcons from '../styles/icon.scss'
-import StyleValues from '../styles/values.scss'
-import StyleCalendar from '../styles/calendar.scss'
+import Styles from '../../styles/global.style.scss'
+import StylesApp from '../../styles/App.css'
+import Stylesindex from '../../styles/index.css'
+import StyleIcons from '../../styles/icon.scss'
+import StyleValues from '../../styles/values.scss'
+import StyleCalendar from '../../styles/calendar.scss'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-import * as ga from '../lib/ga'
+import * as ga from '../../lib/ga'
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()

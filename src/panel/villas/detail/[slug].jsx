@@ -1,7 +1,7 @@
 
 //  http://localhost:3000/Ali/hasan
 // pages/blog/[slug].js
-import VilaDetial from '../../../Pages/manager/villa/VilaDetail.page'
+import VilaDetial from '../../../pages/manager/villa/VilaDetail.page'
 import { useRouter } from 'next/router'
 
 export default function SearchPost() {

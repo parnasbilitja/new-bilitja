@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 
 import { Provider } from 'react-redux'
-import { store, persistor } from './Redux/store';
+import { store, persistor } from '../Redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
 import { useRouter } from 'next/router';
-import Flight from './Pages/flight/Flight.page'
-import FlightReserve from './Pages/flight_reserve/FlightReseve.page'
-import NavBar from './Components/nav_bar/NavBar.component'
-import NavBarMobile from './Components/nav_bar_mobile/NavBarMobile.component'
-import Footer from './Components/footer/Footer.component'
-import MessageBox from './Components/message_box/MessageBox.component'
-import PopUp from './Components/pop_up/PopUp.component'
-import Account from './Components/account/Account.component'
+import Flight from '../Components/flight/Flight.page'
+import FlightReserve from '../Components/flight_reserve/FlightReseve.page'
+import NavBar from '../Components/nav_bar/NavBar.component'
+import NavBarMobile from '../Components/nav_bar_mobile/NavBarMobile.component'
+import Footer from '../Components/footer/Footer.component'
+import MessageBox from '../Components/message_box/MessageBox.component'
+import PopUp from '../Components/pop_up/PopUp.component'
+import Account from '../Components/account/Account.component'
 
 export default function Flights(){
     const myRouter=useRouter();

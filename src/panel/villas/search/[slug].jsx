@@ -3,7 +3,8 @@
 // pages/blog/[slug].js
 
 import { useRouter } from 'next/router'
-import Villa from "../../../Pages/manager/villa/Villa.page";
+
+import Villa from "../../../pages/manager/villa/Villa.page";
 
 export default function SearchPost() {
   const router = useRouter()

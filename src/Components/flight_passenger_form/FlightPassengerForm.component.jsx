@@ -1,7 +1,7 @@
 import React from 'react'
 
-import PrimaryTextInput from '../../Components/primaty_text_input/PrimaryTextInput.component'
-import PrimarySelectInput from '../../Components/primary_select_input/PrimarySelectInput.component'
+import PrimaryTextInput from '../primaty_text_input/PrimaryTextInput.component'
+import PrimarySelectInput from '../primary_select_input/PrimarySelectInput.component'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import BirthdayCalendar from '../birthday_calendar/BirthdayCalendar.component'

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import PrimaryTextInput from '../../Components/primaty_text_input/PrimaryTextInput.component'
-import PrimarySelectInput from '../../Components/primary_select_input/PrimarySelectInput.component'
+import PrimaryTextInput from '../primaty_text_input/PrimaryTextInput.component'
+import PrimarySelectInput from '../primary_select_input/PrimarySelectInput.component'
 import PrimaryButton from '../primary_button/PrimaryButton.component'
 import PopUp from "../pop_up/PopUp.component"
 import BirthdayCalendar from '../birthday_calendar/BirthdayCalendar.component'
