@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import HotelView from '../../../images/hotel_view.jpg'
+//import HotelView from '../../../Images/hotel_view.jpg'
 import { useRouter } from 'next/router'
 
 
@@ -24,7 +24,7 @@ const AccommodationListDesktop = ({ history, accommodationList }) => {
                             <div className="hotel_row">
                                 <div className="row">
                                     <div className="col-lg-4 col-md-4 col-sm-4">
-                                        <img src='../../../images/hotel_view.jpg' />
+                                        <img src='../../../Images/hotel_view.jpg' />
                                     </div>
                                     <div className="col-lg-6 col-md-6 col-sm-6 text-right">
                                         <div className="row">

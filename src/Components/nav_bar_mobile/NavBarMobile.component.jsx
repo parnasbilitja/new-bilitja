@@ -1,6 +1,6 @@
 import React from 'react'
-//import logo from '../../../images/logo512.png'
-//import footerLogo from '../../../images/bilitja-light-logo.png'
+//import logo from '../../../Images/logo512.png'
+//import footerLogo from '../../../Images/bilitja-light-logo.png'
 import styles from  '../../../styles/NavBarMobile.module.scss'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -67,7 +67,7 @@ class NavBarMobile extends React.Component {
                         }} />
                         <h1 className="font-bold-iransanse"> خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه </h1>
                     </div>
-                    <img src='../../../images/logo512.png' className="pull-left" />
+                    <img src='../../../Images/logo512.png' className="pull-left" />
                 </div>
 
                 <SlideIn slide={this.state.slide} close={() => {
@@ -77,7 +77,7 @@ class NavBarMobile extends React.Component {
                 }}>
                     <div className={styles['nav-items-container-mobile']}>
                         <div className={styles['logo-menu-mobile']}>
-                            <a href="/"><img src='../../../images/bilitja-light-logo.png'/></a>
+                            <a href="/"><img src='../../../Images/bilitja-light-logo.png'/></a>
                             <p className="no-margin color-white">ارزان ترین بلیط های هواپیما</p>
                         </div>
                         <ul>

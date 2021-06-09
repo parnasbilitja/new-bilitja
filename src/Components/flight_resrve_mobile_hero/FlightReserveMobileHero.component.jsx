@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-//import airplaneReserveSmall from '../../../images/airplane_reserve_small.png'
+//import airplaneReserveSmall from '../../../Images/airplane_reserve_small.png'
 import { faClock, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import globals from '../../Globals/Global'
@@ -15,7 +15,7 @@ const FlightReserveMobileHero = (props) => (
                         <strong className="color-secondary font-size-25">{props.airport1}</strong>
                     </div>
                     <div className="col-4">
-                        <img src='../../../images/airplane_reserve_small.png' className="small-airplane" />
+                        <img src='../../../Images/airplane_reserve_small.png' className="small-airplane" />
                     </div>
                     <div className="col-4">
                         <strong className="color-secondary font-size-25">{props.airport2}</strong>

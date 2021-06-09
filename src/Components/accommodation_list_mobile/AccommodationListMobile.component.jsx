@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-//import HotelView from '../../../images/hotel_view.jpg'
+//import HotelView from '../../../Images/hotel_view.jpg'
 
 import { useRouter } from 'next/router'
 
@@ -22,7 +22,7 @@ const AccommodationListMobile = ({ history, accommodationList }) => {
                     <div className="hotel_row_mobile">
                         <div className="row">
                             <div className="col-5">
-                                <img src='../../../images/hotel_view.jpg' />
+                                <img src='../../../Images/hotel_view.jpg' />
                             </div>
                             <div className="col-7 text-right no-padding">
                                 <div className="row">

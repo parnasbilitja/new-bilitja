@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-//import logo from '../../../images/logo512.png'
+//import logo from '../../../Images/logo512.png'
 import styles from '../../../styles/NavBar.module.scss'
 
 //import '../../../public/kilofont.svg'
@@ -88,7 +88,7 @@ class NavBar extends React.Component {
                 <div className={styles['nav-logo-container']}>
                     <div>
                         <a href="/">
-                            <img className="logo" src="../../../images/logo512.png" />
+                            <img className="logo" src="../../../Images/logo512.png" />
                         </a>
                         <p className="font-size-10">خرید بلیط هواپیما و رزرو اقامتگاه</p>
                     </div>
