@@ -56,7 +56,7 @@ class FilterList extends React.Component {
                     </span>
                 </div>
 
-                <input type="text" placeholder="جستجوی شماره پرواز" className="input-search filter-list-input" />
+                <input type="text" placeholder="جستجوی شماره پرواز" className={`${styles['filter-list-input']} input-search `} />
 
                 <div className={styles['filter-list-sort']}>
                     <strong>جستجو براساس</strong>

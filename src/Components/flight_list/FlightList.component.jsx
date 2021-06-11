@@ -15,7 +15,7 @@ const FlightList = (props)=> {
                     // .filter(x=>x.kndSys==3)
                     props.flightList.map(oneFlight => (
                         <div key={oneFlight.flightId} className={styles['flight-list-one-row']}>
-                            <div className="one-row-price">
+                            <div className={styles['one-row-price']}>
                                 <div>
                                     <span className="font-size-20"> {moneyFormat(oneFlight.priceView)}</span>
                                     <span className="color-black font-size-14">تومان</span>

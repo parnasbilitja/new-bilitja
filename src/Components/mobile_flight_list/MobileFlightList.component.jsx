@@ -11,9 +11,9 @@ class MobileFlightList extends React.Component {
 
     render() {
         return (
-            <div className="container-flight-list-mobile">
+            <div className={styles['container-flight-list-mobile']}>
                 <div>
-                    <div className={` ${styles['mobile-flight-list-header']} 'font-bold-iransanse' `}>
+                    <div className={` ${styles['mobile-flight-list-header']} font-bold-iransanse `}>
                         <p>خريد بليط هواپيما <span className="color-secondary">{this.props.flightList[0].source}</span> به <span className="color-secondary">{this.props.flightList[0].destinate}</span></p>
                         <p>{this.props.flightList[0].flightDay} &nbsp; {this.props.flightList[0].flightDate}</p>
                     </div>

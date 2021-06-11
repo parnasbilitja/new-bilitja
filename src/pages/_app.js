@@ -1,11 +1,12 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Styles from '../../styles/global.style.scss'
-import StylesApp from '../../styles/App.css'
-import Stylesindex from '../../styles/index.css'
-import StyleIcons from '../../styles/icon.scss'
-import StyleValues from '../../styles/values.scss'
-import StyleCalendar from '../../styles/Calendar.scss'
+import  '../../styles/global.style.scss'
+import  '../../styles/App.css'
+import  '../../styles/index.css'
+import  '../../styles/icon.scss'
+import  '../../styles/values.scss'
+import  '../../styles/Calendar.scss'
+
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 

@@ -118,7 +118,7 @@ class Home extends React.Component {
                     <div>
                         <h2>ویلا و اقامتگاه خود را در بلیطجا ثبت کنید و میزبان شوید</h2>
                         <p>عکس بگیرید و اطلاعات خود را در بلیطجا به رایگان به نمایش بگذارید و میزبان مسافران بلیطجا باشید</p>
-                        <a href="#" className="btn-secondary-outlined">میزبان شوید</a>
+                        <a href="#" className={styles['btn-secondary-outlined']}>میزبان شوید</a>
                     </div>
                 </div>
                 <div className="row">

@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../../styles/PopUpWide.module.scss"
+import styles from  "../../../styles/PopUpWide.module.scss"
 const PopUpWide = (props) => {
     return (
         <div style={props.opened ? { display: 'block' } : { display: 'none' }}>
@@ -10,7 +10,7 @@ const PopUpWide = (props) => {
             </div>
             <div onClick={() => {
                 props.closePopUp(false)
-            }} className={`popup-calendar-main-box ${props.opened ? "popup-animation" : ""}`} >
+            }} className={` ${ styles['popup-calendar-main-box']} ${props.opened ? styles['popup-animation'] : ""}`} >
                 <div>
                     {props.children}
                 </div>

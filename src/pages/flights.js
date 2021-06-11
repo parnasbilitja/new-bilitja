@@ -44,6 +44,7 @@ export default function Flights(){
      <MessageBox />
      <Footer />
    </div>
+   
    {/* <PopUp opened={this.props.accountBox.state} closePopUp={() => {
      this.props.accountBoxModify({
        state: false
