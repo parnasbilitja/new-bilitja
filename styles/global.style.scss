@@ -519,3 +519,13 @@ div.radio{
     float:right;
     margin-top: 3px;
 }
+.error-message {
+    display: block !important;
+    font-size: 13px;
+    // min-height: 19px !important;
+}
+.topic-icon{
+    border-left: 4px solid $primaryColor;
+    border-bottom-left-radius:5px;
+    border-top-left-radius: 5px;
+}

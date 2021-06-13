@@ -1,22 +1,20 @@
 module.exports = {
     async rewrites() {
       return [
-          // {
-          //   source:`/${encodeURI("بلیط هواپیما")}`,
-          //   destination: '/flights',
-          // },
            
             {
-//              "/بلیط-هواپیما/:source/:destination"
               source:`/${encodeURI("بلیط-هواپیما")}/:path*`,
               destination: '/flights',
             },
            
             {
-              source:`/${encodeURI("بلیط قطار")}`,
-              destination: '/mehdi',
+              source:`/${encodeURI("ویلا")}/:path*`,
+              destination: '/villa',
             },
-            
+            {
+              source:`/${encodeURI("panel")}/:path*`,
+              destination: '/panel',
+            },
           
         ]
     },

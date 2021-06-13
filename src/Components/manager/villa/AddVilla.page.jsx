@@ -8,6 +8,8 @@ import PrimaryButton from '../../../Components/primary_button/PrimaryButton.comp
 import globals from '../../../Globals/Global'
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
+import styles from '../../../../styles/manager.module.scss'
+import stylesTrack from '../../../../styles/TrackOrder.module.scss'
 class AddVilaDesktop extends React.Component {
     constructor(props) {
         super(props)
@@ -288,8 +290,8 @@ class AddVilaDesktop extends React.Component {
         return (
             <div className="container">
                 <div>
-                    <div className="row panel-main-content">
-                        <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">اقامتگاهتان را معرفی کنید</h3>
+                    <div className={`row ${styles['panel-main-content']} `}>
+                        <h3 className={` ${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse`} >اقامتگاهتان را معرفی کنید</h3>
                         <div className="col-lg-8 padding-3px margin-top-10px">
                             <div className="row">
                                 <div className="col-lg-3 col-12 padding-3px">
@@ -378,7 +380,7 @@ class AddVilaDesktop extends React.Component {
                             />
                             {
                                 this.state.file ?
-                                    <div className="uploaded-image-box" style={{ height: 100 }}>
+                                    <div className={styles['uploaded-image-box']}  style={{ height: 100 }}>
                                         <img src={this.state.file} />
                                         <FontAwesomeIcon icon={faTimes} onClick={()=>{
                                             this.setState({
@@ -387,15 +389,15 @@ class AddVilaDesktop extends React.Component {
                                         }}/>
                                     </div>
                                     :
-                                    <div className="upload-box" style={{ height: 100 }} onClick={() => { this.upload.click() }}>
+                                    <div className={styles['upload-box']} style={{ height: 100 }} onClick={() => { this.upload.click() }}>
                                         <p className="no-margin font-size-15 color-textpill">تصویر نمای خود را بارگذاری کنید</p>
                                     </div>
 
                             }
                         </div>
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
-                        <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse margin-bottom-5px">آدرس ویلا</h3>
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
+                        <h3 className={`${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse margin-bottom-5px`}>آدرس ویلا</h3>
                         <div className="col-lg-3 col-12 padding-3px">
                             <PrimarySelectInput name="ProvinceId" onChange={this.handleChangeInput}>
                                 <option value="-1" selected></option>
@@ -438,9 +440,9 @@ class AddVilaDesktop extends React.Component {
                             <span className="color-secondary error-message font-size-14"> {this.state.errors.Address}</span>
                         </div>
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={`row ${styles['panel-main-content']} margin-top-10px`}>
                         <span className="color-secondary error-message font-size-14"> {this.state.errors.typeAccommodation}</span>
-                        <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">نوع اقامتگاه</h3>
+                        <h3 className={` ${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse`}>نوع اقامتگاه</h3>
                         <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
                             <input class="form-check-input" type="checkbox" name="EcoFlag" onChange={this.handleChangeCheckbox} />
                             <label class="form-check-label font-bold-iransanse">&nbsp; اقتصادی</label>
@@ -463,9 +465,9 @@ class AddVilaDesktop extends React.Component {
                         </div>
 
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={`row ${styles['panel-main-content']} margin-top-10px`}>
                         <span className="color-secondary error-message font-size-14"> {this.state.errors.accommodationView}</span>
-                        <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">چشم انداز</h3>
+                        <h3 className={` ${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse `}>چشم انداز</h3>
                         <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
                             <input class="form-check-input" type="checkbox" name="KohViewFlag" onChange={this.roomHandleChangeCheckbox} />
                             <label class="form-check-label font-bold-iransanse">&nbsp; کوهستانی</label>
@@ -487,9 +489,9 @@ class AddVilaDesktop extends React.Component {
                             <label class="form-check-label font-bold-iransanse">&nbsp; شهری</label>
                         </div>
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={`row ${styles['panel-main-content']} margin-top-10px`}>
                         <span className="color-secondary error-message font-size-14">{this.state.errors.accommodationLocation}</span>
-                        <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">موقعیت</h3>
+                        <h3 className={` ${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse`}>موقعیت</h3>
                         <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
                             <input class="form-check-input" type="checkbox" name="RostaFlag" onChange={this.handleChangeCheckbox} />
                             <label class="form-check-label font-bold-iransanse">&nbsp; روستایی</label>
@@ -519,8 +521,8 @@ class AddVilaDesktop extends React.Component {
                             <label class="form-check-label font-bold-iransanse">&nbsp; کوهستانی</label>
                         </div>
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
-                        <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">ظرفیت ویلا</h3>
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
+                        <h3 className={` ${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse`}>ظرفیت ویلا</h3>
                         <div className="col-lg-3 padding-3px">
                             <div className="row">
                                 <div className="col-lg-2 col-2">
@@ -671,9 +673,9 @@ class AddVilaDesktop extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
                         <span className="color-secondary error-message font-size-14">{this.state.errors.facilities}</span>
-                        <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse margin-bottom-5px">امکانات اقامتگاه </h3>
+                        <h3 className={` ${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse margin-bottom-5px`}>امکانات اقامتگاه </h3>
                         {
                             this.state.facilities.map(facility => (
                                 <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
@@ -684,9 +686,9 @@ class AddVilaDesktop extends React.Component {
                         }
                     </div>
 
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
                         <span className="color-secondary error-message font-size-14">{this.state.errors.roomFacilities}</span>
-                        <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse margin-bottom-5px">امکانات اتاق اقامتگاه </h3>
+                        <h3 className={` ${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse margin-bottom-5px`}>امکانات اتاق اقامتگاه </h3>
                         {
                             this.state.facilities.map(facility => (
                                 <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
@@ -696,16 +698,16 @@ class AddVilaDesktop extends React.Component {
                             ))
                         }
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
-                        <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">با انتخاب تصاویر مناسب نمایش خوبی از اقامتگاهتان داشته باشید</h3>
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
+                        <h3 className={` ${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse `}>با انتخاب تصاویر مناسب نمایش خوبی از اقامتگاهتان داشته باشید</h3>
                         <div className="col-lg-2 col-12 margin-top-10px">
                             <div className="upload-box" style={{ height: 150 }} onClick={() => { this.upload.click() }}>
                                 <p className="no-margin font-size-15 color-textpill">آپلود تصویر</p>
                             </div>
                         </div>
                     </div>
-                    <div className="panel-main-content margin-top-10px">
-                        <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">با انتخاب تصاویر مناسب نمایش خوبی از اقامتگاهتان داشته باشید</h3>
+                    <div className={ ` ${styles['panel-main-content']}  margin-top-10px`}>
+                        <h3 className={` ${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse `}>با انتخاب تصاویر مناسب نمایش خوبی از اقامتگاهتان داشته باشید</h3>
 
                         {
                             this.state.rules.map(rule => (

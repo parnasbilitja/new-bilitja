@@ -36,7 +36,7 @@ class Villa extends React.Component {
                     </div>
                     <div style={{ direction: 'ltr' }} className="text-left">
                         <ManagerTopActionBox handleClick={() => {
-                            this.props.route.push("/panel/villas/add")
+                            this.props.router.push('/panel/villas/add')
                         }} />
                     </div>
                 </div>
@@ -130,18 +130,18 @@ class Villa extends React.Component {
                                                     }}/>
                                                 </a>
                                                 <a className="management-black-outlined-button" onClick={()=>{
-                                                        this.props.route.push(`/panel/villas/getReservation`)
+                                                        this.props.router.push(`/panel/villas/getReservation`)
                                                     }}>
                                                     <FontAwesomeIcon icon={faEye} />
                                                 </a>
                                                 <a className="management-black-outlined-button" onClick={()=>{
-                                                        this.props.route.push(`/panel/villas/detail/${vila.EghamatId}`)
+                                                        this.props.router.push(`/panel/villas/detail/${vila.EghamatId}`)
                                                     }}>
                                                     <FontAwesomeIcon icon={faDollarSign} />
                                                 </a>
                                                 <a className="management-black-outlined-button">
                                                     <FontAwesomeIcon icon={faEdit} onClick={()=>{
-                                                        this.props.route.push(`${this.props.match.url}/${vila.EghamatId}`)
+                                                        this.props.router.push(`${this.props.match.url}/${vila.EghamatId}`)
                                                     }}/>
                                                 </a>
                                             </div>

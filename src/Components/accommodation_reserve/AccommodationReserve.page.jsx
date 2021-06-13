@@ -3,7 +3,7 @@ import ImageSlider from '../../Components/image_slider/ImageSlider.component'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faCalendar, faUniversity } from '@fortawesome/free-solid-svg-icons'
 import AccommodationReserveCalendar from '../../Components/accommodation_reserve_calendar/AccommodationReserveCalendar.component'
-import '../../../styles/AccommodationReserve.module.scss'
+
 import globals from '../../Globals/Global'
 
 import { messageBoxModify } from '../../Redux/UI/ui.action'

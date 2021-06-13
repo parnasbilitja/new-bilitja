@@ -448,7 +448,7 @@ class UpdateVila extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
                         <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse margin-bottom-5px">آدرس ویلا</h3>
                         <div className="col-lg-3 col-12 padding-3px">
                             <PrimarySelectInput name="ProvinceId" value={this.state.vilaMainObjcet.ProvinceId} onChange={this.handleChangeInput}>
@@ -491,7 +491,7 @@ class UpdateVila extends React.Component {
                             <span className="color-secondary error-message font-size-14"> {this.state.errors.Address}</span>
                         </div>
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
                         <span className="color-secondary error-message font-size-14"> {this.state.errors.typeAccommodation}</span>
                         <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">نوع اقامتگاه</h3>
                         <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
@@ -516,7 +516,7 @@ class UpdateVila extends React.Component {
                         </div>
 
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
                         <span className="color-secondary error-message font-size-14"> {this.state.errors.accommodationView}</span>
                         <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">چشم انداز</h3>
                         <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
@@ -540,7 +540,7 @@ class UpdateVila extends React.Component {
                             <label class="form-check-label font-bold-iransanse">&nbsp; شهری</label>
                         </div>
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
                         <span className="color-secondary error-message font-size-14">{this.state.errors.accommodationLocation}</span>
                         <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">موقعیت</h3>
                         <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
@@ -572,7 +572,7 @@ class UpdateVila extends React.Component {
                             <label class="form-check-label font-bold-iransanse">&nbsp; کوهستانی</label>
                         </div>
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
                         <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">ظرفیت ویلا</h3>
                         <div className="col-lg-3 padding-3px">
                             <div className="row">
@@ -726,7 +726,7 @@ class UpdateVila extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
                         <span className="color-secondary error-message font-size-14">{this.state.errors.facilities}</span>
                         <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse margin-bottom-5px">امکانات اقامتگاه </h3>
                         {
@@ -739,7 +739,7 @@ class UpdateVila extends React.Component {
                         }
                     </div>
 
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
                         <span className="color-secondary error-message font-size-14">{this.state.errors.roomFacilities}</span>
                         <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse margin-bottom-5px">امکانات اتاق اقامتگاه </h3>
                         {
@@ -751,7 +751,7 @@ class UpdateVila extends React.Component {
                             ))
                         }
                     </div>
-                    <div className="row panel-main-content margin-top-10px">
+                    <div className={ `row ${styles['panel-main-content']}  margin-top-10px`}>
                         <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">با انتخاب تصاویر مناسب نمایش خوبی از اقامتگاهتان داشته باشید</h3>
                         <div className="col-lg-2 col-12 margin-top-10px">
                             <div className="upload-box" style={{ height: 150 }} onClick={() => { this.upload.click() }}>
@@ -759,7 +759,7 @@ class UpdateVila extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="panel-main-content margin-top-10px">
+                    <div className={ `${styles['panel-main-content']}  margin-top-10px`}>
                         <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">با انتخاب تصاویر مناسب نمایش خوبی از اقامتگاهتان داشته باشید</h3>
 
                         {

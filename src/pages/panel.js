@@ -1,26 +1,53 @@
+
+import React from 'react';
 import { Provider } from 'react-redux'
 import { store, persistor } from '../Redux/store';
-import { PersistGate } from 'redux-persist/integration/react'
+import AddVilla from '../../src/Components/manager/villa/AddVilla.page'
+import Villa from '../../src/Components/manager/villa/Villa.page'
+import VillaDetial from '../../src/Components/manager/villa/VilaDetail.page'
+import { useRouter } from 'next/router';
 
 import ManagerNav from '../Components/manager_nav/ManagerNav.component'
 import MessageBox from '../Components/message_box/MessageBox.component'
 
 
 export default function ManagePanel() {
+  const myRouter=useRouter();
+  // const [width,setWidth] =useState(0);
+
+  // const handleResize = ()=>{
+  //   setWidth(window.innerWidth)
+  // }
+  // useEffect(()=> {
+  //   //setWidth(window.innerWidth);
+  //   window.addEventListener('resize',handleResize)
+  //   return()=>{
+  //     window.removeEventListener('resize', handleResize)
+  //   }
+  // },[]);
+
     return(
-        
+      
         <Provider store={store}>
               
-              <PersistGate persistor={persistor}>
+              
               
                 <ManagerNav />
                 <div className="panel-manager-main-container">
                     <div className="panel-manager-content-container">
+                    { 
+                    myRouter.asPath.indexOf('add')>0 ? <AddVilla></AddVilla> :
+                  myRouter.asPath.indexOf('search')>0 ? <Villa/>:
+                  myRouter.asPath.indexOf('detail')>0 ? <VillaDetial/>:
+                  
+                  <div/>
+                  }
                             <MessageBox />
                     </div>
                 </div>
+               
+                                
             
-            </PersistGate>
             </Provider>
 
         );

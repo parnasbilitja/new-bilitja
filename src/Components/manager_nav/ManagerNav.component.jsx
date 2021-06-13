@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import '../../../styles/ManagerNav.module.scss'
+import styles from  '../../../styles/ManagerNav.module.scss'
 //import logo from '../../../Images/bilitja-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArchway, faBars } from '@fortawesome/free-solid-svg-icons'
@@ -13,17 +13,17 @@ const ManagerNav = (props) => {
     const [isOpend,setOpend] =useState(false)
     return (
         <>
-            <div className="manager-small-screen-top-bar">
+            <div className={styles['manager-small-screen-top-bar']}>
                 <FontAwesomeIcon icon={faBars} onClick={() => {
                     setOpend(!isOpend)
                 }} />
             </div>
-            <div className={`manager-nav-main-container ${isOpend ? 'slidein-manager' : ''}`}>
+            <div className={`${styles['manager-nav-main-container']} ${isOpend ? styles['slidein-manager'] : ''}`}>
 
-                <div className="manager-nav-header">
+                <div className={styles['manager-nav-header']}>
                     <img src='../../../Images/bilitja-logo.png' />
                 </div>
-                <div className="manager-nav-one-row">
+                <div className={styles['manager-nav-one-row']}>
                     <div>
                         <FontAwesomeIcon icon={faArchway} />
                     </div>
@@ -34,7 +34,7 @@ const ManagerNav = (props) => {
                         <p className="no-margin font-size-13 color-textpill">villa</p>
                     </div>
                 </div>
-                <div className="manager-nav-one-row">
+                <div className={styles['manager-nav-one-row']}>
                     <div>
                         <FontAwesomeIcon icon={faArchway} />
                     </div>
@@ -45,7 +45,7 @@ const ManagerNav = (props) => {
                         <p className="no-margin font-size-13 color-textpill">City</p>
                     </div>
                 </div>
-                <div className="manager-nav-one-row">
+                <div className={styles['manager-nav-one-row']}>
                     <div>
                         <FontAwesomeIcon icon={faArchway} />
                     </div>
@@ -56,7 +56,7 @@ const ManagerNav = (props) => {
                         <p className="no-margin font-size-13 color-textpill">Facility</p>
                     </div>
                 </div>
-                <div className="manager-nav-one-row">
+                <div className={styles['manager-nav-one-row']}>
                     <div>
                         <FontAwesomeIcon icon={faArchway} />
                     </div>
