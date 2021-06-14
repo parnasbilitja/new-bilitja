@@ -9,6 +9,19 @@ import { useRouter } from 'next/router';
 
 import ManagerNav from '../Components/manager_nav/ManagerNav.component'
 import MessageBox from '../Components/message_box/MessageBox.component'
+import AddVila from '../Components/manager/villa/AddVilla.page'
+import AddCity from '../Components/manager/city/AddCity.page'
+import AddRule from '../Components/manager/rule/AddRule.page'
+import AddFacility from '../Components/manager/facility/AddFacility.page'
+import ShowallCities from '../Components/manager/city/ShowAllCities.page'
+import UpdateCity from '../Components/manager/city/UpdateCity.page'
+import ShowallFacilities from '../Components/manager/facility/ShowAllFacilities.page'
+import UpdateFacility from '../Components/manager/facility/UpdateFacility.page'
+import ShowallRules from '../Components/manager/rule/ShowAllRules.page'
+import UpdateRule from '../Components/manager/rule/UpdateRule.page'
+import UpdateVila from '../Components/manager/villa/UpdateVila.page'
+import VilaDetial from '../Components/manager/villa/VilaDetail.page'
+import VilaReservation from '../Components/manager/villa/VilaReservation.page'
 
 
 export default function ManagePanel() {
@@ -25,23 +38,50 @@ export default function ManagePanel() {
   //     window.removeEventListener('resize', handleResize)
   //   }
   // },[]);
-
-    return(
+  function mainRouter(pathName) {
+    console.log(decodeURI( pathName));
       
+    switch (decodeURI( pathName)) {
+      case '/panel/villas/add' : return <AddVilla></AddVilla>  ; 
+       case '/panel/villas/search' : return <Villa/>  ;
+       case '/panel/villas/add' : return <AddVila/>  ;
+       case '/panel/villas/search/:id' : return <UpdateVila/>  ;
+       case '/panel/villas/detail/:id' : return <VilaDetial/>  ;
+       case '/panel/villas/getReservation' : return <VilaReservation/>  ;
+      
+
+
+       case '/panel/city/add' : return <AddCity/>  ;
+       case '/panel/city/show' : return <ShowallCities/>  ;
+       case '/panel/city/show/:id' : return <UpdateCity/>  ;
+
+       case '/panel/rule/add' : return <AddRule/>  ;
+       case '/panel/rule/show' : return <ShowallRules/>  ;
+       case '/panel/rule/show/:id' : return <UpdateRule/>  ;
+
+
+       case '/panel/facility/add' : return <AddFacility/>  ;
+       case '/panel/facility/show' : return <ShowallFacilities/>  ;
+       case '/panel/facility/show/:id' : return <UpdateFacility/>  ;
+
+      default:
+        return  <div/>   
+    }
+  }  
+  
+    return(
+ 
         <Provider store={store}>
-              
-              
+             
               
                 <ManagerNav />
                 <div className="panel-manager-main-container">
                     <div className="panel-manager-content-container">
-                    { 
-                    myRouter.asPath.indexOf('add')>0 ? <AddVilla></AddVilla> :
-                  myRouter.asPath.indexOf('search')>0 ? <Villa/>:
-                  myRouter.asPath.indexOf('detail')>0 ? <VillaDetial/>:
-                  
-                  <div/>
-                  }
+                    {console.log(myRouter.asPath) }
+                    {
+                    
+                    mainRouter(myRouter.asPath)
+                    }
                             <MessageBox />
                     </div>
                 </div>

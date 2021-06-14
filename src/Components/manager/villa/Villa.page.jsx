@@ -4,7 +4,8 @@ import { faArchway, faStar, faTimes, faEye, faDollarSign, faEdit, faCog } from '
 import ManagerTopActionBox from '../../../Components/manager_top_action_box/ManagerTopActionBox.component'
 import globals from '../../../Globals/Global'
 import Switch from "react-switch";
-import "./../../../../styles/Vila.module.scss"
+import styles from "./../../../../styles/Vila.module.scss"
+import stylesManage from "./../../../../styles/manager.module.scss"
 import { withRouter } from 'next/router'
 
 
@@ -85,13 +86,13 @@ class Villa extends React.Component {
                                             <p className="font-size-13 no-margin">{vila.CityName}</p>
                                             <p className="color-textpill font-size-13 visible-xs">(کد :1746)</p>
                                             <div className="text-right visible-xs">
-                                                <a className="management-black-outlined-button">
+                                                <a className={stylesManage['management-black-outlined-button']}>
                                                     <FontAwesomeIcon icon={faEye} />
                                                 </a>
-                                                <a className="management-black-outlined-button">
+                                                <a className={stylesManage['management-black-outlined-button']}>
                                                     <FontAwesomeIcon icon={faDollarSign} />
                                                 </a>
-                                                <a className="management-black-outlined-button">
+                                                <a className={stylesManage['management-black-outlined-button']}>
                                                     <FontAwesomeIcon icon={faEdit} />
                                                 </a>
                                             </div>
@@ -114,7 +115,7 @@ class Villa extends React.Component {
                                                 <span className="font-size-13 font-bold-iransanse">فعال</span>
                                             </div>
                                             <div className="text-left">
-                                                <a className="management-black-outlined-button">
+                                                <a className={stylesManage['management-black-outlined-button']}>
                                                     <FontAwesomeIcon icon={faTimes} onClick={()=>{
                                                         fetch(`${globals.baseUrl}bj/eghamat/delete`,{
                                                             headers:{"Content-Type":'application/json'},
@@ -129,19 +130,19 @@ class Villa extends React.Component {
                                                         })
                                                     }}/>
                                                 </a>
-                                                <a className="management-black-outlined-button" onClick={()=>{
+                                                <a className={stylesManage['management-black-outlined-button']} onClick={()=>{
                                                         this.props.router.push(`/panel/villas/getReservation`)
                                                     }}>
                                                     <FontAwesomeIcon icon={faEye} />
                                                 </a>
-                                                <a className="management-black-outlined-button" onClick={()=>{
+                                                <a className={stylesManage['management-black-outlined-button']} onClick={()=>{
                                                         this.props.router.push(`/panel/villas/detail/${vila.EghamatId}`)
                                                     }}>
                                                     <FontAwesomeIcon icon={faDollarSign} />
                                                 </a>
-                                                <a className="management-black-outlined-button">
+                                                <a className={stylesManage['management-black-outlined-button']}>
                                                     <FontAwesomeIcon icon={faEdit} onClick={()=>{
-                                                        this.props.router.push(`${this.props.match.url}/${vila.EghamatId}`)
+                                                        this.props.router.push(`${props.match.url}/${vila.EghamatId}`)
                                                     }}/>
                                                 </a>
                                             </div>

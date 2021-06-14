@@ -6,6 +6,8 @@ import { useCustomStateHook } from '../../../Utils/CustomHooks'
 import globals from '../../../Globals/Global'
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
+import styles from '../../../../styles/manager.module.scss'
+import stylesTrack from '../../../../styles/TrackOrder.module.scss'
 
 const UpdateCity = (props) => {
     const [state, setState] = useCustomStateHook({ cityName: '', province: -1, airportCode: '', cityNameError: '', provinceError: '', airportCodeError: '' });
@@ -52,7 +54,7 @@ const UpdateCity = (props) => {
 
     }, []);
     return (
-        <div className="panel-main-content">
+        <div className={styles['panel-main-content']}>
             <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">اضافه کردن شهر</h3>
             <div className="row margin-top-10px">
                 <div className="col-lg-3 col-12 padding-3px">

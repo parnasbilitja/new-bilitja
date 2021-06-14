@@ -5,6 +5,9 @@ import { useForm, useCustomStateHook } from '../../../Utils/CustomHooks'
 import globals from '../../../Globals/Global'
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
+import styles from '../../../../styles/manager.module.scss'
+import stylesTrack from '../../../../styles/TrackOrder.module.scss'
+
 const UpdateRule = (props) => {
     const [state, handleChange] = useCustomStateHook({ ruleName: '', ruleNameError: '' });
     const validation = () => {
@@ -32,7 +35,7 @@ const UpdateRule = (props) => {
 
     }, []);
     return (
-        <div className="panel-main-content">
+        <div className={styles['panel-main-content']}>
             <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">اضافه کردن قانون</h3>
             <div className="row margin-top-10px">
                 <div className="col-lg-3 col-12 padding-3px">

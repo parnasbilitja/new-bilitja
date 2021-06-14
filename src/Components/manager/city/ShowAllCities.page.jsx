@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
 import ManagerTopActionBox from '../../../Components/manager_top_action_box/ManagerTopActionBox.component'
 import { useRouter } from 'next/router'
+import styles from '../../../../styles/manager.module.scss'
+import stylesTrack from '../../../../styles/TrackOrder.module.scss'
 
 const ShowallCities = (props) => {
     const [cities, setCities] = useState([])
@@ -24,7 +26,7 @@ const ShowallCities = (props) => {
     const myRouter=useRouter();
 
     return (
-        <div className="panel-main-content">
+        <div className={styles['panel-main-content']}>
             <div className="panel-header">
                 <div>
                     <FontAwesomeIcon icon={faArchway} className="color-textpill" />

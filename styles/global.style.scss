@@ -529,3 +529,7 @@ div.radio{
     border-bottom-left-radius:5px;
     border-top-left-radius: 5px;
 }
+.panel-header {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+}
