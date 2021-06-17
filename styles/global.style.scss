@@ -347,6 +347,12 @@ html {
         border-bottom: none !important;
     }
 }
+.form-input-border-primaryselect{
+    height: 29px !important;
+}
+.row-price {
+    padding: 12px 5px 0 5px;
+}
 .form-input-border {
     border: 1px solid $pillGray;
     border-radius: $borderRadius;

@@ -6,6 +6,9 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { useRouter } from 'next/router';
 import Flight from '../Components/flight/Flight.page'
 import FlightReserve from '../Components/flight_reserve/FlightReseve.page'
+import FlightReciept from '../Components//flight_receipt/FlightReciept.page'
+import TrackOrder from '../Components//track_order/TrackOrder.page'
+
 import NavBar from '../Components/nav_bar/NavBar.component'
 import NavBarMobile from '../Components/nav_bar_mobile/NavBarMobile.component'
 import Footer from '../Components/footer/Footer.component'
@@ -27,7 +30,33 @@ export default function Flights(){
         window.removeEventListener('resize', handleResize)
       }
     },[]);
+    function mainRouter(pathName) {
+      console.log(decodeURI( pathName));
+      if(pathName.indexOf('info')>0 ){
+        return <FlightReserve />   ;
+      } else if(pathName.indexOf('receipt')>0 ){
+        return <FlightReciept />   ;
+      } else if(pathName.indexOf('order')>0 ){
+        return <TrackOrder />   ;
+      } else{
+        return <Flight/>;
+      }
 
+      // switch (decodeURI( pathName)) {
+      //      case "/بلیط-هواپیما/:source/:destination" : return <Flight/>;
+      //      case "/بلیط-هواپیما/:source/:destination/info" : return <FlightReserve/>;
+      //     case "/بلیط-هواپیما/receipt" : return <FlightReciept/>;
+      //     case "/بلیط-هواپیما/order" : return <TrackOrder/>;
+      //     // <Route exact path="/بلیط-هواپیما/:source/:destination" component={Flight} />
+      //     // <Route exact path="/بلیط-هواپیما/:source/:destination/info" component={FlightReserve} />
+      //     // <Route exact path="/بلیط-هواپیما/receipt" component={FlightReciept} />
+      //     // <Route exact path="/بلیط-هواپیما/order" component={TrackOrder} />
+
+      //   default:
+      //     return  <Home></Home>;   
+      // }
+    }
+    
     //window.innerWidth
      return (
       <Provider store={store}>
@@ -39,7 +68,9 @@ export default function Flights(){
 { width <= 826 ? <NavBarMobile /> : <NavBar /> }
  <div style={width <= 826 ? { marginTop: 110 } : { marginTop: 90 }} className='font-'>
 
- { myRouter.asPath.indexOf('info')>0 ? <FlightReserve /> : <Flight /> }
+ { mainRouter(myRouter.asPath)
+ }
+
 
      <MessageBox />
      <Footer />

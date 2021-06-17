@@ -6,7 +6,7 @@ export default class PrimarySelectInput extends React.Component {
     }
     render() {
         return (
-            <div className="form-input-border">
+            <div className="form-input-border form-input-border-primaryselect" >
                 <select {...this.props} className="form-input primary-text">
                     {
                         this.props.children

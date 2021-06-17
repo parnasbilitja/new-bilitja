@@ -88,7 +88,7 @@ class NavBar extends React.Component {
                 <div className={styles['nav-logo-container']}>
                     <div>
                         <a href="/">
-                            <img className="logo" src="../../../Images/logo512.png" />
+                            <img className={styles['logo']} src="../../../Images/logo512.png" />
                         </a>
                         <p className="font-size-10">خرید بلیط هواپیما و رزرو اقامتگاه</p>
                     </div>
