@@ -1,6 +1,7 @@
 
-import React from 'react';
+import React from 'react'
 import { Provider } from 'react-redux'
+
 import { store, persistor } from '../Redux/store';
 import AddVilla from '../../src/Components/manager/villa/AddVilla.page'
 import Villa from '../../src/Components/manager/villa/Villa.page'
@@ -24,13 +25,18 @@ import VilaDetial from '../Components/manager/villa/VilaDetail.page'
 import VilaReservation from '../Components/manager/villa/VilaReservation.page'
 
 
+
+
 export default function ManagePanel() {
   const myRouter=useRouter();
-  // const [width,setWidth] =useState(0);
+ // const [width,setWidth] =useState(0);
+  //const [myid,setmyId] =useState(0);
 
   // const handleResize = ()=>{
   //   setWidth(window.innerWidth)
   // }
+   
+ 
   // useEffect(()=> {
   //   //setWidth(window.innerWidth);
   //   window.addEventListener('resize',handleResize)
@@ -39,30 +45,51 @@ export default function ManagePanel() {
   //   }
   // },[]);
   function mainRouter(pathName) {
-    console.log(decodeURI( pathName));
-      
+    //console.log(decodeURI( pathName));
+      if(decodeURI( pathName).indexOf('/panel/villas/search/'))
+      {
+        
+       //console.log(decodeURI( pathName).substr(21,2));
+       return  <UpdateVila/>; 
+      }
+      if(decodeURI( pathName).indexOf('/panel/villas/detail/'))
+      {
+       return  <VilaDetial/>; 
+      }
+      if(decodeURI( pathName).indexOf('/panel/city/show/'))
+      {
+       return  <UpdateCity/>; 
+      }
+      if(decodeURI( pathName).indexOf('/panel/rule/show/'))
+      {
+       return  <UpdateRule/>; 
+      }  
+      if(decodeURI( pathName).indexOf('/panel/facility/show/'))
+      {
+       return  <UpdateFacility/>; 
+      }                        
     switch (decodeURI( pathName)) {
       case '/panel/villas/add' : return <AddVilla></AddVilla>  ; 
        case '/panel/villas/search' : return <Villa/>  ;
        case '/panel/villas/add' : return <AddVila/>  ;
-       case '/panel/villas/search/:id' : return <UpdateVila/>  ;
-       case '/panel/villas/detail/:id' : return <VilaDetial/>  ;
+       //case '/panel/villas/search/:id' : return <UpdateVila/>  ;
+//       case '/panel/villas/detail/:id' : return <VilaDetial/>  ;
        case '/panel/villas/getReservation' : return <VilaReservation/>  ;
       
 
 
        case '/panel/city/add' : return <AddCity/>  ;
        case '/panel/city/show' : return <ShowallCities/>  ;
-       case '/panel/city/show/:id' : return <UpdateCity/>  ;
+//       case '/panel/city/show/:id' : return <UpdateCity/>  ;
 
        case '/panel/rule/add' : return <AddRule/>  ;
        case '/panel/rule/show' : return <ShowallRules/>  ;
-       case '/panel/rule/show/:id' : return <UpdateRule/>  ;
+//       case '/panel/rule/show/:id' : return <UpdateRule/>  ;
 
 
        case '/panel/facility/add' : return <AddFacility/>  ;
        case '/panel/facility/show' : return <ShowallFacilities/>  ;
-       case '/panel/facility/show/:id' : return <UpdateFacility/>  ;
+    //   case '/panel/facility/show/:id' : return <UpdateFacility/>  ;
 
       default:
         return  <div/>   
@@ -73,7 +100,7 @@ export default function ManagePanel() {
  
         <Provider store={store}>
              
-              
+         
                 <ManagerNav />
                 <div className="panel-manager-main-container">
                     <div className="panel-manager-content-container">

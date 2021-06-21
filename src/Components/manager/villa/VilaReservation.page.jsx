@@ -1,11 +1,12 @@
 import React from 'react'
+import stylesTrack from '../../../../styles/TrackOrder.module.scss'
 
 const VilaReservation = (props) => {
     return (
 
         <div className="container">
             <div>
-                <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">گزارشات ویلا</h3>
+                <h3 className={` ${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse`}>گزارشات ویلا</h3>
                 <div className="row panel-main-content">
                     <table className="table table-striped font-size-13">
                         <thead>

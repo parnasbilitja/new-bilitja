@@ -40,11 +40,11 @@ const ShowallFacilities = (props) => {
                     }}/>
                 </div>
             </div>
-            <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">لیست شهر ها</h3>
+            <h3 className={` ${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse`}>لیست شهر ها</h3>
             <div className="margin-top-10px">
                 {
                     facilities.map(facility => (
-                        <div className="management-one-row">
+                        <div className={styles['management-one-row']}>
                            
                             <span onClick={() => {
                                 myRouter.push(`${props.match.url}/${facility.EmkanatId}`)

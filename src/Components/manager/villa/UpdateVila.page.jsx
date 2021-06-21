@@ -8,6 +8,7 @@ import PrimaryButton from '../../../Components/primary_button/PrimaryButton.comp
 import globals from '../../../Globals/Global'
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
+import styles from '../../../../styles/manager.module.scss'
 
 class UpdateVila extends React.Component {
     constructor(props) {

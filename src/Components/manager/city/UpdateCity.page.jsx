@@ -55,7 +55,7 @@ const UpdateCity = (props) => {
     }, []);
     return (
         <div className={styles['panel-main-content']}>
-            <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse">اضافه کردن شهر</h3>
+            <h3 className={` ${stylesTrack['border-bottom-black-track']} font-size-16 font-bold-iransanse`}>اضافه کردن شهر</h3>
             <div className="row margin-top-10px">
                 <div className="col-lg-3 col-12 padding-3px">
                     <span className="font-bold-iransanse font-size-13">نام شهر</span>
