@@ -35,7 +35,7 @@ export default function Hotels(){
 
 <div className='bodyVar'>
      
- 
+
 { width <= 826 ? <NavBarMobile /> : <NavBar /> }
  <div style={width <= 826 ? { marginTop: 110 } : { marginTop: 90 }} className='font-'>
 

@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Provider } from 'react-redux'
 
 import { store, persistor } from '../Redux/store';
@@ -29,46 +29,82 @@ import VilaReservation from '../Components/manager/villa/VilaReservation.page'
 
 export default function ManagePanel() {
   const myRouter=useRouter();
- // const [width,setWidth] =useState(0);
-  //const [myid,setmyId] =useState(0);
+ const [width,setWidth] =useState(0);
+  const [myid,setmyId] =useState(0);
 
-  // const handleResize = ()=>{
-  //   setWidth(window.innerWidth)
-  // }
+  const handleResize = ()=>{
+    setWidth(window.innerWidth)
+  }
    
  
-  // useEffect(()=> {
-  //   //setWidth(window.innerWidth);
-  //   window.addEventListener('resize',handleResize)
-  //   return()=>{
-  //     window.removeEventListener('resize', handleResize)
-  //   }
-  // },[]);
+  useEffect(()=> {
+    // var path= decodeURI( pathName) ; 
+    // if(path.indexOf('villas/search/')>0)
+    //   {
+    //     setmyId(path.substr(21));
+    //   }
+    //setWidth(window.innerWidth);
+    window.addEventListener('resize',handleResize)
+    return()=>{
+      window.removeEventListener('resize', handleResize)
+    }
+  },[]);
   function mainRouter(pathName) {
-    //console.log(decodeURI( pathName));
-      if(decodeURI( pathName).indexOf('/panel/villas/search/'))
+    
+     var path= decodeURI( pathName) ; 
+     console.log(path);
+    
+    if(path.indexOf('villas/search/')>0)
       {
+      //console.log(path.substr(21));
+      if(path.substr(21)==''){
+        return  <Villa/>; 
+      }else{
         
-       //console.log(decodeURI( pathName).substr(21,2));
-       return  <UpdateVila/>; 
+        return  <UpdateVila/>; 
       }
-      if(decodeURI( pathName).indexOf('/panel/villas/detail/'))
-      {
-       return  <VilaDetial/>; 
+       
       }
-      if(decodeURI( pathName).indexOf('/panel/city/show/'))
+      if(path.indexOf('villas/detail/')>0)
       {
-       return  <UpdateCity/>; 
+        if(path.substr(21)==''){
+          return  <Villa/>; 
+        }else{
+          
+          return  <VilaDetial/>; 
+        }
       }
-      if(decodeURI( pathName).indexOf('/panel/rule/show/'))
+      if(path.indexOf('city/show/')>0)
       {
-       return  <UpdateRule/>; 
+        if(path.substr(17)==''){
+          return  <ShowallCities/>; 
+        }else{
+          
+          return  <UpdateCity/>; 
+        }
+       
+      }
+      if(path.indexOf('/panel/rule/show/')>0)
+      {
+        if(path.substr(17)==''){
+          return  <ShowallRules/>; 
+        }else{
+          
+          return  <UpdateRule/>; 
+        }
+       
       }  
-      if(decodeURI( pathName).indexOf('/panel/facility/show/'))
+      if(path.indexOf('/panel/facility/show/')>0)
       {
-       return  <UpdateFacility/>; 
+        if(path.substr(21)==''){
+          return  <ShowallFacilities/>; 
+        }else{
+          
+          return  <UpdateFacility/>; 
+        }
+       
       }                        
-    switch (decodeURI( pathName)) {
+    switch (path) {
       case '/panel/villas/add' : return <AddVilla></AddVilla>  ; 
        case '/panel/villas/search' : return <Villa/>  ;
        case '/panel/villas/add' : return <AddVila/>  ;

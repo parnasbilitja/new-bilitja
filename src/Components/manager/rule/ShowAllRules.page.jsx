@@ -47,7 +47,7 @@ const ShowallRules = (props) => {
                         <div className={styles['management-one-row']}>
                            
                             <span onClick={() => {
-                                myRouter.push(`${props.match.url}/${rule.RulesId}`)
+                                myRouter.push(`${this.props.router.asPath}/${rule.RulesId}`)
                             }}>
                                 {rule.RulesName}
                             </span>

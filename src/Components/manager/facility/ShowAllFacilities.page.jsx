@@ -47,7 +47,7 @@ const ShowallFacilities = (props) => {
                         <div className={styles['management-one-row']}>
                            
                             <span onClick={() => {
-                                myRouter.push(`${props.match.url}/${facility.EmkanatId}`)
+                                myRouter.push(`${this.props.router.asPath}/${facility.EmkanatId}`)
                             }}>
                                 {facility.EmkanatName}
                             </span>

@@ -11,7 +11,7 @@ import stylesTrack from '../../../../styles/TrackOrder.module.scss'
 
 const UpdateCity = (props) => {
     const [state, setState] = useCustomStateHook({ cityName: '', province: -1, airportCode: '', cityNameError: '', provinceError: '', airportCodeError: '' });
-    const [provinces, setProvinces] = useState([])
+    
     const validation = () => {
         let cityNameError, provinceError, airportCodeError
         let isValidated = true
@@ -43,7 +43,7 @@ const UpdateCity = (props) => {
         const json = await res.json();
         setProvinces(json.Province)
         
-        const resCity = await fetch(`${globals.baseUrl}bj/city/view/${props.match.params.id}`);
+        const resCity = await fetch(`${globals.baseUrl}bj/city/view/${this.props.router.asPath.substr(17)}`);
         const jsonCity = await resCity.json();
 
         setState({
@@ -106,7 +106,7 @@ const UpdateCity = (props) => {
                                 method: "POST",
                                 headers: { 'Content-Type': "application/json" },
                                 body: JSON.stringify({
-                                    CityId: props.match.params.id,
+                                    CityId: this.props.router.asPath.substr(17),
                                     CityName: state.cityName,
                                     ProvinceId: state.province,
                                     AirportCode: state.airportCode

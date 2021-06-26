@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PrimaryTextInput from '../../../Components/primaty_text_input/PrimaryTextInput.component'
 import PrimarySelectInput from '../../../Components/primary_select_input/PrimarySelectInput.component'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,11 +9,15 @@ import globals from '../../../Globals/Global'
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
 import styles from '../../../../styles/manager.module.scss'
+import {  withRouter } from 'next/router'
 
 class UpdateVila extends React.Component {
+    
     constructor(props) {
         super(props)
         this.state = {
+           
+           
             errors: {},
             selectedRules: [],
             checkedFacilities: [],
@@ -57,7 +61,13 @@ class UpdateVila extends React.Component {
     }
 
     componentDidMount() {
-        // get base facilities
+         //console.log("start");
+        // console.log(this.props.router.asPath.substr(21)1);
+        // console.log("end");
+       // get base facilities
+       
+       //var path=this.props.router.asPath;
+       console.log(this.props.router.asPath.substr(21));
         fetch(`${globals.baseUrl}bj/emkanat/view`).then(res => res.json()).then(data => {
             if (data.status == "OK") {
                 this.setState({
@@ -85,7 +95,7 @@ class UpdateVila extends React.Component {
                 })
             })
         // get accommodation by the id
-        fetch(`${globals.baseUrl}bj/eghamat/view/${this.props.match.params.id}`)
+        fetch(`${globals.baseUrl}bj/eghamat/view/${this.props.router.asPath.substr(21)}`)
             .then(res => res.json())
             .then(data => {
                 const vilaTypeIndex = this.state.vilaTypes.findIndex(type => type == data.Eghamat[0].EghamatType)
@@ -99,7 +109,7 @@ class UpdateVila extends React.Component {
                 })
             })
         // get accommodation's room by the id
-        fetch(`${globals.baseUrl}bj/eghamatRoom/view/${this.props.match.params.id}`)
+        fetch(`${globals.baseUrl}bj/eghamatRoom/view/${this.props.router.asPath.substr(21)}`)
             .then(res => res.json())
             .then(data => {
                 this.setState({
@@ -109,7 +119,7 @@ class UpdateVila extends React.Component {
                 })
             })
         // get accommodation's facilities by the id
-        fetch(`${globals.baseUrl}bj/eghamatEmkanat/view/${this.props.match.params.id}`)
+        fetch(`${globals.baseUrl}bj/eghamatEmkanat/view/${this.props.router.asPath.substr(21)}`)
             .then(res => res.json())
             .then(data => {
                 this.setState({
@@ -117,7 +127,7 @@ class UpdateVila extends React.Component {
                 })
             })
         // get accommodation's rules by the id
-        fetch(`${globals.baseUrl}bj/eghamatRules/view/${this.props.match.params.id}`)
+        fetch(`${globals.baseUrl}bj/eghamatRules/view/${this.props.router.asPath.substr(21)}`)
             .then(res => res.json())
             .then(data => {
                 this.setState({
@@ -126,7 +136,7 @@ class UpdateVila extends React.Component {
             })
 
         //get facilities of accommmodation's room
-        fetch(`${globals.baseUrl}bj/eghamatRoomEmkanat/view/0/1/${this.props.match.params.id}`)
+        fetch(`${globals.baseUrl}bj/eghamatRoomEmkanat/view/0/1/${this.props.router.asPath.substr(21)}`)
         .then(res=>res.json())
         .then(data=>{
             this.setState({
@@ -894,4 +904,4 @@ class UpdateVila extends React.Component {
 const mapDispatchesToProps = (dispatch) => ({
     messageBoxModify: async value => dispatch(messageBoxModify(value))
 })
-export default connect(null, mapDispatchesToProps)(UpdateVila)
+export default  withRouter(connect(null, mapDispatchesToProps)(UpdateVila))

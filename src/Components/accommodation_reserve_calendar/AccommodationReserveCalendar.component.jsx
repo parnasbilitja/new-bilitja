@@ -14,6 +14,7 @@ class AccommodationReserveCalendar extends React.Component {
         const date = today.split("/")
         this.currentYear = parseInt(date[0]) + 5
         this.state = {
+            myId:this.props.router.asPath.substr(21),
             stage: 3,
             year: parseInt(date[0]),
             month: parseInt(date[1]),
@@ -35,7 +36,7 @@ class AccommodationReserveCalendar extends React.Component {
             headers: { "Content-Type": "application/json" },
             method: "POST",
             body: JSON.stringify({
-                EghamatId: this.props.match.params.id,
+                EghamatId: this.props.router.asPath.substr(21),
                 RoomRow: 1,
                 Year: this.state.year,
                 month: this.state.month

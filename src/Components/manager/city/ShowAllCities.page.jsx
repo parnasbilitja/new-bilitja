@@ -5,7 +5,7 @@ import { faRemoveFormat, faTrash, faArchway } from '@fortawesome/free-solid-svg-
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
 import ManagerTopActionBox from '../../../Components/manager_top_action_box/ManagerTopActionBox.component'
-import { useRouter } from 'next/router'
+import { useRouter, withRouter } from 'next/router'
 import styles from '../../../../styles/manager.module.scss'
 import stylesTrack from '../../../../styles/TrackOrder.module.scss'
 
@@ -48,7 +48,7 @@ const ShowallCities = (props) => {
                                 {city.ProvinceName}
                             </span>
                             <span onClick={() => {
-                                myRouter.push(`${props.match.url}/${city.CityId}`)
+                                myRouter.push(`${this.props.router.asPath}/${city.CityId}`)
                             }}>
                                 {city.CityName}
                             </span>
@@ -92,4 +92,4 @@ const ShowallCities = (props) => {
 const mapDispatchesToProps = (dispatch) => ({
     messageBoxModify: async value => dispatch(messageBoxModify(value))
 })
-export default connect(null, mapDispatchesToProps)(ShowallCities)
+export default withRouter( connect(null, mapDispatchesToProps)(ShowallCities))

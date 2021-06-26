@@ -31,7 +31,7 @@ const UpdateFacility = (props) => {
     }
     useEffect(async () => {
         
-        const res = await fetch(`${globals.baseUrl}bj/emkanat/view/${props.match.params.id}`);
+        const res = await fetch(`${globals.baseUrl}bj/emkanat/view/${this.props.router.asPath.substr(21)}`);
         const json = await res.json();
 
         handleChange({
@@ -68,7 +68,7 @@ const UpdateFacility = (props) => {
                             fetch(`${globals.baseUrl}bj/emkanat/save`, {
                                 headers: { 'Content-Type': 'application/json' },
                                 method: 'POST',
-                                body: JSON.stringify({ 'EmkanatId':props.match.params.id,'EmkanatName': state.facilityName ,"EmkanatType":state.facilityType})
+                                body: JSON.stringify({ 'EmkanatId':this.props.router.asPath.substr(21),'EmkanatName': state.facilityName ,"EmkanatType":state.facilityType})
                             })
                                 .then(res => res.json())
                                 .then(data => {

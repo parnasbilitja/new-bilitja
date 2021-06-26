@@ -37,11 +37,12 @@ export default function Villas(){
 
 <div className='bodyVar'>
      
- 
+
+  {console.log(width)}
 { width <= 826 ? <NavBarMobile /> : <NavBar /> }
  <div style={width <= 826 ? { marginTop: 110 } : { marginTop: 90 }} className='font-'>
- 
- 
+
+
 
  { myRouter.asPath.indexOf('intro')>0 ? <BecomeMember/> :
  myRouter.asPath.indexOf('reserve')>0 ? <AccommodationReserve/>:

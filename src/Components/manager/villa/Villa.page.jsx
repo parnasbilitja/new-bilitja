@@ -142,7 +142,7 @@ class Villa extends React.Component {
                                                 </a>
                                                 <a className={stylesManage['management-black-outlined-button']}>
                                                     <FontAwesomeIcon icon={faEdit} onClick={()=>{
-                                                        this.props.router.push(`${props.match.url}/${vila.EghamatId}`)
+                                                        this.props.router.push(`${this.props.router.asPath}/${vila.EghamatId}`)
                                                     }}/>
                                                 </a>
                                             </div>

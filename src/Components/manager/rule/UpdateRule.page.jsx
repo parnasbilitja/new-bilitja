@@ -26,7 +26,7 @@ const UpdateRule = (props) => {
 
     useEffect(async () => {
 
-        const res = await fetch(`${globals.baseUrl}bj/rules/view/${props.match.params.id}`);
+        const res = await fetch(`${globals.baseUrl}bj/rules/view/${this.props.router.asPath.substr(17)}`);
         const json = await res.json();
 
         handleChange({
@@ -53,7 +53,7 @@ const UpdateRule = (props) => {
                             fetch(`${globals.baseUrl}bj/rules/save`, {
                                 headers: { 'Content-Type': 'application/json' },
                                 method: 'POST',
-                                body: JSON.stringify({ 'RulesId': props.match.params.id, 'RulesName': state.ruleName })
+                                body: JSON.stringify({ 'RulesId': this.props.router.asPath.substr(17), 'RulesName': state.ruleName })
                             })
                                 .then(res => res.json())
                                 .then(data => {

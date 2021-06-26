@@ -15,20 +15,22 @@ class AccommodationReserve extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+
+            myId:this.props.router.asPath.substr(21),
             selectedDaysArray: [],
             room: {}
         }
     }
 
     componentDidMount() {
-        fetch(`${globals.baseUrl}bj/eghamat/view/${this.props.match.params.id}`)
+        fetch(`${globals.baseUrl}bj/eghamat/view/${this.props.router.asPath.substr(21)}`)
             .then(res => res.json())
             .then(json => {
                 this.setState({
                     ...json.Eghamat[0]
                 })
             })
-        fetch(`${globals.baseUrl}bj/eghamatRoom/view/${this.props.match.params.id}`)
+        fetch(`${globals.baseUrl}bj/eghamatRoom/view/${this.props.router.asPath.substr(21)}`)
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -251,7 +253,7 @@ class AccommodationReserve extends React.Component {
                                                     return
                                                 }
                                                 this.props.addReservationProperties({
-                                                    EghamatId: this.props.match.params.id,
+                                                    EghamatId: this.props.router.asPath.substr(21),
                                                     RoomRow: 1,
                                                     DateInc: this.state.selectedDaysArray[0][0],
                                                     NightCount: this.state.selectedDaysArray.length,

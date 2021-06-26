@@ -7,6 +7,8 @@ import globals from '../../../Globals/Global'
 
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
+import {  withRouter } from 'next/router'
+import styles from '../../../../styles/manager.module.scss'
 
 class VilaDetial extends React.Component {
     constructor(props) {
@@ -25,9 +27,10 @@ class VilaDetial extends React.Component {
     }
 
     getDaysDetail = async () => {
+        
         const d1 = String(this.state.firstDate).replace("/", "").replace("/", "")
         const d2 = String(this.state.secondDate).replace("/", "").replace("/", "")
-        const res = await fetch(`${globals.baseUrl}bj/datePrice/view/${this.props.match.params.id}/1/${d1}/${d2}`)
+        const res = await fetch(`${globals.baseUrl}bj/datePrice/view/${this.props.router.asPath.substr(21)}/1/${d1}/${d2}`)
         const data = await res.json()
         console.log(data.DatePrice)
         this.setState({
@@ -85,7 +88,7 @@ class VilaDetial extends React.Component {
                             {
                                 this.state.isRefreshing ? null
                                     :
-                                    <ManagementVilaSetPriceCalendar accommodationId={this.props.match.params.id} selectedDaysArray={this.state.selectedDaysArray} setDate={(args) => {
+                                    <ManagementVilaSetPriceCalendar accommodationId={this.props.router.asPath.substr(21)} selectedDaysArray={this.state.selectedDaysArray} setDate={(args) => {
                                         if (this.state.firstDate == null) {
                                             this.setState({
                                                 firstDate: args.jalali,
@@ -154,7 +157,7 @@ class VilaDetial extends React.Component {
                                             isRefreshing:true
                                         })
                                         const requestObject = this.state.selectedDaysArray.map(day => ({
-                                            "EghamatId": this.props.match.params.id,
+                                            "EghamatId": this.props.router.asPath.substr(21),
                                             "RoomRow": 1,
                                             "DateM": day.replace("/", "").replace("/", ""),
                                             "Price": this.state.price,
@@ -207,4 +210,4 @@ class VilaDetial extends React.Component {
 const mapDispatchesToProps = (dispatch) => ({
     messageBoxModify: async value => dispatch(messageBoxModify(value))
 })
-export default  connect(null, mapDispatchesToProps)(VilaDetial)
+export default withRouter(connect(null, mapDispatchesToProps)(VilaDetial)) 

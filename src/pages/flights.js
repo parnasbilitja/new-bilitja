@@ -64,7 +64,7 @@ export default function Flights(){
 
 <div className='bodyVar'>
      
- 
+ {console.log(width)}
 { width <= 826 ? <NavBarMobile /> : <NavBar /> }
  <div style={width <= 826 ? { marginTop: 110 } : { marginTop: 90 }} className='font-'>
 
