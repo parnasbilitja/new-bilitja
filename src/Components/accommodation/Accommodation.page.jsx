@@ -96,27 +96,27 @@ class Accommodation extends React.Component {
                     <div className="row">
                         <div className="col-md-1"></div>
                         <div className="col-md-10 text-right">
-                            <div className={`acco-tab ${styles['home-tab-active']}`}>
+                            <div className={`${styles['acco-tab']} ${styles['home-tab-active']}`}>
                                 <div className="pull-right">
                                     <span className="font-size-14"> تهران </span>
                                 </div>
                             </div>
-                            <div className="acco-tab">
+                            <div className={styles['acco-tab']}>
                                 <div className="pull-right">
                                     <span className="font-size-14"> مشهد </span>
                                 </div>
                             </div>
-                            <div className="acco-tab">
+                            <div className={styles['acco-tab']}>
                                 <div className="pull-right">
                                     <span className="font-size-14"> کیش </span>
                                 </div>
                             </div>
-                            <div className="acco-tab">
+                            <div className={styles['acco-tab']}>
                                 <div className="pull-right">
                                     <span className="font-size-14"> اصفهان </span>
                                 </div>
                             </div>
-                            <div className="acco-tab">
+                            <div className={styles['acco-tab']}>
                                 <div className="pull-right">
                                     <span className="font-size-14"> شیراز </span>
                                 </div>
@@ -128,7 +128,7 @@ class Accommodation extends React.Component {
                         <div className="col-md-1 col-0"></div>
                         <div className="col-lg-10 col-md-10 col-12 text-right">
                             <div className="row">
-                                <div className="col-lg-3 col-md-3 col-sm-6 col-12 accommodation-suggestion">
+                                <div className={`col-lg-3 col-md-3 col-sm-6 col-12 ${styles['accommodation-suggestion']}`}>
                                     <img src='../../../Images/hotel_view.jpg' />
                                     <p className="font-size-13 no-margin">ویلا</p>
                                     <span className="pull-right">
