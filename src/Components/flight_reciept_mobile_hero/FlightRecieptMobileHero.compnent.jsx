@@ -4,11 +4,12 @@ import Image from 'next/image'
 import { faClock, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import globals from '../../Globals/Global'
-
+import styles from '../../../styles/FlightReciept.module.scss'
+import stylesRes from '../../../styles/FlightReserve.module.scss'
 const FlightReceiptMobileHero = (props) => (
     props.airport1 ? 
-    <div className="row visible-xs reserve-mobile-hero">
-        <div className={`col-12 border-pill ${styles['background-world']}`}>
+    <div className={`row visible-xs ${stylesRes['reserve-mobile-hero']}`}>
+        <div className={`col-12 border-pill ${styles['background-world']} `}>
             <div className="row">
                 <div className="col-4">
                     <strong className="color-secondary font-size-25">{props.airport1}</strong>

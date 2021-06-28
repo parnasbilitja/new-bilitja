@@ -539,3 +539,19 @@ div.radio{
     display: grid;
     grid-template-columns: 1fr 10fr;
 }
+.payment-container {
+   
+    .btn-outlined.color-secondary{
+        border-color: $secondaryColor;
+        color:$secondaryColor;
+
+        &:hover{
+            background-color: $secondaryColor;
+            color:$whiteColor;
+        }
+    }
+}
+.airline-icon{
+    width: 35px;
+    height: 35px;
+}
