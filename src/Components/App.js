@@ -5,10 +5,6 @@ import React from 'react'
 //import '../../styles/manager.module.scss'
 
 import Home from './home/Home.page'
-//import Flight from '/flight/Flight.page'
-//import FlightReserve from '/flight_reserve/FlightReseve.page'
-import FlightReciept from './flight_receipt/FlightReciept.page'
-import TrackOrder from './track_order/TrackOrder.page'
 
 import NavBar from './nav_bar/NavBar.component'
 import NavBarMobile from './nav_bar_mobile/NavBarMobile.component'
@@ -24,6 +20,14 @@ import AccommodationPage from './accommodation/Accommodation.page'
 import AccommodationList from './accommodation_list/AccommodationList.page'
 import AccommodationReserve from './accommodation_reserve/AccommodationReserve.page'
 import AccommodationReceipt from './accommodation_receipt/AccommodationReceipt.page'
+
+
+import Flight from '../Components/flight/Flight.page'
+import FlightReserve from '../Components/flight_reserve/FlightReseve.page'
+import FlightReciept from '../Components//flight_receipt/FlightReciept.page'
+import TrackOrder from '../Components//track_order/TrackOrder.page'
+
+
 // import ManagerNav from '../Components/manager_nav/ManagerNav.component'
 // import Villa from '/manager/villa/Villa.page'
 // import AddVila from '/manager/villa/AddVilla.page'
@@ -54,28 +58,29 @@ class App extends React.Component {
 
 mainRouter(pathName) {
   console.log(decodeURI( pathName));
-    
-  switch (decodeURI( pathName)) {
-      case "/" : return <Home/>;
-      case '/ویلا/intro' : return <BecomeMember/>;
-      case "/ویلا" : return <AccommodationPage/>;
-      case "/ویلا/تهران" : return <AccommodationList/>;
-      case "/reserve/ویلا/تهران/:id" : return <AccommodationReserve/>;
-      case "/receipt/ویلا/تهران" : return <AccommodationReceipt/>;
-      // //case "/بلیط-هواپیما/اصفهان/مشهد" :this.props.router.push("/Flight");break;
-      // case "/بلیط-هواپیما/:source/:destination" : return <Flight/>;
-      // case "/بلیط-هواپیما/:source/:destination/info" : return <FlightReserve/>;
-      case "/بلیط-هواپیما/receipt" : return <FlightReciept/>;
-      case "/بلیط-هواپیما/order" : return <TrackOrder/>;
+   
+  
+  switch( this.props.mainRoute){
+    case "index":
+      return  <Home></Home>;   
+    case "flights":
+          if(pathName.indexOf('info')>0 ){
+            return <FlightReserve />   ;
+          } else if(pathName.indexOf('receipt')>0 ){
+            return <FlightReciept />   ;
+          } else if(pathName.indexOf('order')>0 ){
+            return <TrackOrder />   ;
+          } else{
+            return <Flight/>;
+          }
+     case "villa":
+          pathName.indexOf('intro')>0 ? <BecomeMember/> :
+          pathName.indexOf('reserve')>0 ? <AccommodationReserve/>:
+          pathName.indexOf('receipt')>0 ? <AccommodationReceipt/>:
+          pathName.length<7 ? <AccommodationPage/>:
+          <AccommodationList /> 
 
-      // //  case "/[slug]":
-    //  //   return <h1>SLUG</h1>; 
-    //     case "/ویلا":
-    //       return <AccommodationPage/>;           
-    //     case  "/ویلا/تهران" :
-    //         return <h1>vila tehran</h1>;                 
-      // case "/mehdi":
-      //   return <Villa/>;   
+
     default:
       return  <Home></Home>;   
   }

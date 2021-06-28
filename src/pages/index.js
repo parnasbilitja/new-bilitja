@@ -13,7 +13,7 @@ export default function Home1() {
 
               <Provider store={store}>
               
-              <App/>
+              <App mainRoute='index'/>
               {/* <reportWebVitals/> */}
             </Provider>
             
