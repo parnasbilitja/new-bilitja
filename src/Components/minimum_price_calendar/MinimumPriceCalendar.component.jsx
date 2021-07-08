@@ -174,9 +174,9 @@ class MinimumPriceCalendar extends React.Component {
                                                 if (day.minPrice == null || day.minPrice <= 0) {
                                                     return
                                                 }
-                                                const m = moment(`${this.state.year}/${this.state.month}/${day.day}`, 'jYYYY/jM/jD')
-                                                const persianDate = m.format("jYYYY/jM/jD")
-                                                const date = m.format('YYYY/M/D')
+                                                const m = moment(`${this.state.year}/${this.state.month}/${day.day}`, 'jYYYY/jMM/jDD')
+                                                const persianDate = m.format("jYYYY/jMM/jDD")
+                                                const date = m.format('YYYY/MM/DD')
                                                 this.props.addCredentials({
                                                     stDate: date,
                                                     flightDatePersian: persianDate,

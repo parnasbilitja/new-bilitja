@@ -49,7 +49,7 @@ class BirthdayCalendar extends React.Component {
                 arrayOfdays=Array.from({length: 29}, (_, i) => i + 1)
             }
         }
-        const m = moment(`${this.state.year+'/'+this.state.month+'/'+1}`, 'jYYYY/jM/jD').weekday()
+        const m = moment(`${this.state.year+'/'+this.state.month+'/'+1}`, 'jYYYY/jMM/jDD').weekday()
         let revArrayOfDay = arrayOfdays.reverse()
         for(let i =0; i <= m;i++){
             revArrayOfDay.push(undefined)
@@ -219,8 +219,8 @@ class BirthdayCalendar extends React.Component {
                                     this.getDays().map(x => (
                                         x!=undefined?
                                         <div className={styles['birthday-item']} onClick={() => {
-                                            const m = moment(`${this.state.year+'/'+this.state.month+'/'+x}`, 'jYYYY/jM/jD')
-                                            const date = m.format('YYYY/M/D')
+                                            const m = moment(`${this.state.year+'/'+this.state.month+'/'+x}`, 'jYYYY/jMM/jDD')
+                                            const date = m.format('YYYY/MM/DD')
                                             this.props.setBirthday(date)
                                             this.props.closePopUpCalendar(false)
                                             this.setState({

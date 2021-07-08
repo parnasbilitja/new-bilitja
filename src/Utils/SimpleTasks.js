@@ -18,7 +18,7 @@ export function moneyFormat(input) {
 export const getCustomFormat = (inputValue, isGregorian) => {
     if (!inputValue)
         return '';
-    const inputFormat = isGregorian ? 'YYYY/M/D' : 'jYYYY/jM/jD';
+    const inputFormat = isGregorian ? 'YYYY/MM/DD' : 'jYYYY/jMM/jDD';
     return isGregorian ? inputValue.locale('es').format(inputFormat) :
         inputValue.locale('fa').format(inputFormat);
 }

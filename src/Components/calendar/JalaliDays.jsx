@@ -41,7 +41,7 @@ class JalaliDays extends React.Component {
                 arrayOfdays = Array.from({ length: 29 }, (_, i) => i + 1)
             }
         }
-        const m = moment(`${this.state.year}/${this.state.month}/01`, 'jYYYY/jM/jD').weekday()
+        const m = moment(`${this.state.year}/${this.state.month}/01`, 'jYYYY/jMM/jDD').weekday()
         let revArrayOfDay = arrayOfdays.reverse()
         for (let i = 0; i <= m; i++) {
             revArrayOfDay.push(undefined)
@@ -69,7 +69,7 @@ class JalaliDays extends React.Component {
             }
         }
 
-        const m = moment(`${year}/${month}/01`, 'jYYYY/jM/jD').weekday()
+        const m = moment(`${year}/${month}/01`, 'jYYYY/jMM/jDD').weekday()
         let revArrayOfDay = arrayOfdays.reverse()
         for (let i = 0; i <= m; i++) {
             revArrayOfDay.push(undefined)
@@ -314,8 +314,9 @@ class JalaliDays extends React.Component {
                                 <div className="col-lg-10 col-10 no-padding no-margin">
                                     <p className="no-margin-vertical font-size-14 black-color font-bold-iransanse text-center border-bottom-black">
                                         <span onClick={() => {
-                                            const persianDate = moment().format("jYYYY/jM/jD")
-                                            const date = moment().format('YYYY/M/D')
+                                            const persianDate = moment().format("jYYYY/jMM/jDD")
+                                            console.log('test date jalali');
+                                            const date = moment().format('YYYY/MM/DD')
                                             this.props.setDate({
                                                 garigorian: date,
                                                 jalali: persianDate
@@ -358,9 +359,9 @@ class JalaliDays extends React.Component {
                                                             if (compareToToday == "BEFORE") {
                                                                 return
                                                             }
-                                                            const m = moment(`${this.state.year}/${this.state.month}/${x}`, 'jYYYY/jM/jD')
-                                                            const persianDate = m.format("jYYYY/jM/jD")
-                                                            const date = m.format('YYYY/M/D')
+                                                            const m = moment(`${this.state.year}/${this.state.month}/${x}`, 'jYYYY/jMM/jDD')
+                                                            const persianDate = m.format("jYYYY/jMM/jDD")
+                                                            const date = m.format('YYYY/MM/DD')
                                                             this.props.setDate({
                                                                 garigorian: date,
                                                                 jalali: persianDate
@@ -409,9 +410,9 @@ class JalaliDays extends React.Component {
                                                             const year = (parseInt(this.state.month) + 1) > 12 ? parseInt(this.state.year) + 1 : parseInt(this.state.year)
                                                             const month = (parseInt(this.state.month) + 1) > 12 ? 1 : parseInt(this.state.month) + 1
 
-                                                            const m = moment(`${year}/${month}/${x}`, 'jYYYY/jM/jD')
-                                                            const persianDate = m.format("jYYYY/jM/jD")
-                                                            const date = m.format('YYYY/M/D')
+                                                            const m = moment(`${year}/${month}/${x}`, 'jYYYY/jMM/jDD')
+                                                            const persianDate = m.format("jYYYY/jMM/jDD")
+                                                            const date = m.format('YYYY/MM/DD')
                                                             this.props.setDate({
                                                                 garigorian: date,
                                                                 jalali: persianDate
