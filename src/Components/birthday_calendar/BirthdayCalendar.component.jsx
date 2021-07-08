@@ -8,8 +8,9 @@ class BirthdayCalendar extends React.Component {
         super(props)
         const today = moment().format('jYYYY/jMM/jDD')
         const date = today.split("/")
-        this.currentYear = parseInt(date[0]) + 5
-        
+        this.current = parseInt(date[0]) 
+        console.log('current tavalod')
+        console.log(this.current)
         this.state = {
             stage: 1,
             year: '',
@@ -49,9 +50,9 @@ class BirthdayCalendar extends React.Component {
                 arrayOfdays=Array.from({length: 29}, (_, i) => i + 1)
             }
         }
-        const m = moment(`${this.state.year+'/'+this.state.month+'/'+1}`, 'jYYYY/jMM/jDD').weekday()
+        const firstDaymonth = moment(`${this.state.year+'/'+this.state.month+'/'+1}`, 'jYYYY/jMM/jDD').weekday()
         let revArrayOfDay = arrayOfdays.reverse()
-        for(let i =0; i <= m;i++){
+        for(let i =0; i <= firstDaymonth;i++){
             revArrayOfDay.push(undefined)
         }
 
