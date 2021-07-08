@@ -83,7 +83,7 @@ class AccommodationReserveCalendar extends React.Component {
         return dates
     }
     //check date is after today or not,the proccess occures in current month
-    chechDateIsAfterToday = (day) => {
+    checkDateIsAfterToday = (day) => {
         if (day.flag == false) {
             return "BEFORE"
         }
@@ -193,7 +193,7 @@ class AccommodationReserveCalendar extends React.Component {
                             <div className="font-size-13 color-black">جمعه</div>
                             {
                                 this.state.days.map((day, index) => {
-                                    const compareToToday = this.chechDateIsAfterToday(day)
+                                    const compareToToday = this.checkDateIsAfterToday(day)
                                     const isSelected = this.checkDateIsContained(day)
                                     return (
                                         <div className={`calendar-item ${compareToToday} ${isSelected}`} onClick={() => {

@@ -32,7 +32,8 @@ class GarigorianDays extends React.Component {
         let arrayOfdays
         const getDaysInMonth = () => {
             const month = parseInt(this.state.month)
-
+            console.log('myMonth=');
+            console.log(month);
             switch (month) {
                 case 1: return 31
                 case 2: return this.state.year % 4 == 0 ? 29 : 28
@@ -50,9 +51,15 @@ class GarigorianDays extends React.Component {
         }
         arrayOfdays = Array.from({ length: getDaysInMonth() }, (_, i) => i + 1)
 
-        const m = moment(`${this.state.year}/${this.state.month}/01`, 'YYYY/MM/DD').weekday()
+        var firstMonthWeekday = moment(`${this.state.year}/${this.state.month}/01`, 'YYYY/MM/DD').weekday()
+        if(firstMonthWeekday==0){
+            firstMonthWeekday=7
+        }  
+        console.log('FirstDay=')
+        console.log(firstMonthWeekday)
+
         let revArrayOfDay = arrayOfdays.reverse()
-        for (let i = 0; i <= m; i++) {
+        for (let i = 1; i < firstMonthWeekday; i++) {
             revArrayOfDay.push(undefined)
         }
 
@@ -83,9 +90,17 @@ class GarigorianDays extends React.Component {
         }
         arrayOfdays = Array.from({ length: getDaysInMonth() }, (_, i) => i + 1)
 
-        const m = moment(`${year}/${month}/01`, 'YYYY/MM/DD').weekday()
+        var firstMonthWeekday = moment(`${year}/${month}/01`, 'YYYY/MM/DD').weekday()
+        if(firstMonthWeekday==0){
+           firstMonthWeekday=7
+        }  
+
+        console.log('newxtMonth=')
+        console.log(month)
+        console.log(firstMonthWeekday)
+
         let revArrayOfDay = arrayOfdays.reverse()
-        for (let i = 0; i <= m; i++) {
+        for (let i = 1; i < firstMonthWeekday; i++) {
             revArrayOfDay.push(undefined)
         }
         return revArrayOfDay.reverse()
@@ -124,7 +139,7 @@ class GarigorianDays extends React.Component {
         return dates
     }
     //check date is after today or not,the proccess occures in current month
-    chechDateIsAfterToday = (year, month, day) => {
+    checkDateIsAfterToday = (year, month, day) => {
         let date = year + ''
             + ('0' + month).slice(-2) + ''
             + ('0' + day).slice(-2);
@@ -139,7 +154,7 @@ class GarigorianDays extends React.Component {
         }
     }
     //check date is after today or not,the proccess occures in next month
-    chechDateIsAfterTodayNextMonth = (day) => {
+    checkDateIsAfterTodayNextMonth = (day) => {
         const year = (parseInt(this.state.month) + 1) > 12 ? parseInt(this.state.year) + 1 : parseInt(this.state.year)
         const month = (parseInt(this.state.month) + 1) > 12 ? 1 : parseInt(this.state.month) + 1
 
@@ -330,9 +345,9 @@ class GarigorianDays extends React.Component {
                                         <span onClick={() => {
                                             const persianDate = moment().format("jYYYY/jMM/jDD")
                                             console.log('test date Gregoria');
-                                            const date = moment().format('YYYY/MM/DD')
+                                            const miladidate = moment().format('YYYY/MM/DD')
                                             this.props.setDate({
-                                                garigorian: date,
+                                                garigorian: miladidate,
                                                 jalali: persianDate
                                             })
                                             this.props.closePopUpCalendar(false)
@@ -364,7 +379,7 @@ class GarigorianDays extends React.Component {
                                         <div className="font-size-13 color-black">Sun</div>
                                         {
                                             this.getDays().map(x => {
-                                                const compareToToday = this.chechDateIsAfterToday(this.state.year, this.state.month, x)
+                                                const compareToToday = this.checkDateIsAfterToday(this.state.year, this.state.month, x)
                                                 return (
                                                     x != undefined ?
                                                         <div className={`calendar-item ${compareToToday}`} onClick={() => {
@@ -372,11 +387,11 @@ class GarigorianDays extends React.Component {
                                                             if (compareToToday == "BEFORE") {
                                                                 return
                                                             }
-                                                            const m = moment(`${this.state.year}/${this.state.month}/${x}`, 'YYYY/MM/DD')
-                                                            const persianDate = m.format("jYYYY/jMM/jDD")
-                                                            const date = m.format('YYYY/MM/DD')
+                                                            const todayDate = moment(`${this.state.year}/${this.state.month}/${x}`, 'YYYY/MM/DD')
+                                                            const persianDate = todayDate.format("jYYYY/jMM/jDD")
+                                                            const miladidate = todayDate.format('YYYY/MM/DD')
                                                             this.props.setDate({
-                                                                garigorian: date,
+                                                                garigorian: miladidate,
                                                                 jalali: persianDate
                                                             })
                                                             this.props.closePopUpCalendar(false)
@@ -412,7 +427,7 @@ class GarigorianDays extends React.Component {
 
                                         {
                                             this.getDaysNextMonth().map(x => {
-                                                const compareToToday = this.chechDateIsAfterTodayNextMonth(x)
+                                                const compareToToday = this.checkDateIsAfterTodayNextMonth(x)
 
                                                 return (
                                                     x != undefined ?
@@ -423,11 +438,11 @@ class GarigorianDays extends React.Component {
                                                             const year = (parseInt(this.state.month) + 1) > 12 ? parseInt(this.state.year) + 1 : parseInt(this.state.year)
                                                             const month = (parseInt(this.state.month) + 1) > 12 ? 1 : parseInt(this.state.month) + 1
                                                     
-                                                            const m = moment(`${year}/${month}/${x}`, 'YYYY/MM/DD')
-                                                            const persianDate = m.format("jYYYY/jMM/jDD")
-                                                            const date = m.format('YYYY/MM/DD')
+                                                            const todayDate = moment(`${year}/${month}/${x}`, 'YYYY/MM/DD')
+                                                            const persianDate = todayDate.format("jYYYY/jMM/jDD")
+                                                            const miladidate = todayDate.format('YYYY/MM/DD')
                                                             this.props.setDate({
-                                                                    garigorian:date,
+                                                                    garigorian:miladidate,
                                                                     jalali:persianDate
                                                             })
                                                             

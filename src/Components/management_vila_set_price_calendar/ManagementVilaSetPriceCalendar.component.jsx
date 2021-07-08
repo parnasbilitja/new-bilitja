@@ -99,7 +99,7 @@ class ManagementVilaSetPriceCalendar extends React.Component {
         return dates
     }
     //check date is after today or not,the proccess occures in current month
-    chechDateIsAfterToday = (day) => {
+    checkDateIsAfterToday = (day) => {
         const { year, month } = this.state
         let date = year + ''
             + ('0' + month).slice(-2) + ''
@@ -189,7 +189,7 @@ class ManagementVilaSetPriceCalendar extends React.Component {
                             <div className="font-size-13 color-black">جمعه</div>
                             {
                                 this.state.days.map(x => {
-                                    const compareToToday = this.chechDateIsAfterToday(x)
+                                    const compareToToday = this.checkDateIsAfterToday(x)
                                     const isSelected = this.checkDateIsContained(x)
                                     let price
                                     try {

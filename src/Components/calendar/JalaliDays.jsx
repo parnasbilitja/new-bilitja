@@ -10,6 +10,9 @@ class JalaliDays extends React.Component {
     constructor(props) {
         super(props)
         const today = moment().format('jYYYY/jMM/jDD')
+        console.log('today=')
+        console.log(today)
+
         const date = today.split("/")
         this.currentYear = parseInt(date[0]) + 5
         this.state = {
@@ -41,9 +44,9 @@ class JalaliDays extends React.Component {
                 arrayOfdays = Array.from({ length: 29 }, (_, i) => i + 1)
             }
         }
-        const m = moment(`${this.state.year}/${this.state.month}/01`, 'jYYYY/jMM/jDD').weekday()
+        const firstdayofweek = moment(`${this.state.year}/${this.state.month}/01`, 'jYYYY/jMM/jDD').weekday()
         let revArrayOfDay = arrayOfdays.reverse()
-        for (let i = 0; i <= m; i++) {
+        for (let i = 0; i <= firstdayofweek; i++) {
             revArrayOfDay.push(undefined)
         }
 
@@ -69,9 +72,9 @@ class JalaliDays extends React.Component {
             }
         }
 
-        const m = moment(`${year}/${month}/01`, 'jYYYY/jMM/jDD').weekday()
+        const firstdayofweek = moment(`${year}/${month}/01`, 'jYYYY/jMM/jDD').weekday()
         let revArrayOfDay = arrayOfdays.reverse()
-        for (let i = 0; i <= m; i++) {
+        for (let i = 0; i <= firstdayofweek; i++) {
             revArrayOfDay.push(undefined)
         }
         return revArrayOfDay.reverse()
@@ -111,7 +114,7 @@ class JalaliDays extends React.Component {
         return dates
     }
     //check date is after today or not,the proccess occures in current month
-    chechDateIsAfterToday = (year, month, day) => {
+    checkDateIsAfterToday = (year, month, day) => {
         let date = year + ''
             + ('0' + month).slice(-2) + ''
             + ('0' + day).slice(-2);
@@ -126,7 +129,7 @@ class JalaliDays extends React.Component {
         }
     }
     //check date is after today or not,the proccess occures in next month
-    chechDateIsAfterTodayNextMonth = (day) => {
+    checkDateIsAfterTodayNextMonth = (day) => {
         const year = (parseInt(this.state.month) + 1) > 12 ? parseInt(this.state.year) + 1 : parseInt(this.state.year)
         const month = (parseInt(this.state.month) + 1) > 12 ? 1 : parseInt(this.state.month) + 1
 
@@ -351,7 +354,7 @@ class JalaliDays extends React.Component {
 
                                         {
                                             this.getDays().map(x => {
-                                                const compareToToday = this.chechDateIsAfterToday(this.state.year, this.state.month, x)
+                                                const compareToToday = this.checkDateIsAfterToday(this.state.year, this.state.month, x)
                                                 return (
                                                     x != undefined ?
                                                         <div className={`calendar-item ${compareToToday}`} onClick={() => {
@@ -399,7 +402,7 @@ class JalaliDays extends React.Component {
 
                                         {
                                             this.getDaysNextMonth().map(x => {
-                                                const compareToToday = this.chechDateIsAfterTodayNextMonth(x)
+                                                const compareToToday = this.checkDateIsAfterTodayNextMonth(x)
 
                                                 return (
                                                     x != undefined ?
