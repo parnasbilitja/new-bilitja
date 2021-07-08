@@ -64,7 +64,7 @@ class BirthdayCalendar extends React.Component {
             "آذر", "آبان", "مهر",
             "اسفند", "بهمن", "دی"]
 
-        return monthes[this.state.month]
+        return monthes[parseInt( this.state.month)]
     }
     render() {
         return (

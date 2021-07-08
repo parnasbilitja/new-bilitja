@@ -108,7 +108,7 @@ class MinimumPriceCalendar extends React.Component {
             "دی",
             "بهمن",
             "اسفند"]
-        return `${monthes[this.state.month]} ${this.state.year}`
+        return `${monthes[parseInt( this.state.month)]} ${this.state.year}`
     }
 
     decreaseMonth = () => {
@@ -169,16 +169,16 @@ class MinimumPriceCalendar extends React.Component {
                                 <div className="font-size-13 color-black">جمعه</div>
                                 {
                                     this.state.firstMonth.map(day => (
-                                        <div className={`${day.offset == "-" || day.flag==false ? "disable" : "available"}`}
+                                        <div className={`${day.offset == "-" || day.flag==false ?  StyleCalendarPrice['disable'] : StyleCalendarPrice['available']}`}
                                             onClick={() => {
                                                 if (day.minPrice == null || day.minPrice <= 0) {
                                                     return
                                                 }
                                                 const m = moment(`${this.state.year}/${this.state.month}/${day.day}`, 'jYYYY/jMM/jDD')
                                                 const persianDate = m.format("jYYYY/jMM/jDD")
-                                                const date = m.format('YYYY/MM/DD')
+                                                const miladidate = m.format('YYYY/MM/DD')
                                                 this.props.addCredentials({
-                                                    stDate: date,
+                                                    stDate: miladidate,
                                                     flightDatePersian: persianDate,
                                                 }).then(() => {
                                                     this.props.refreshAction()
