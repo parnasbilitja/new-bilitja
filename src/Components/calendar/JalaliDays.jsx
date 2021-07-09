@@ -115,6 +115,8 @@ class JalaliDays extends React.Component {
     }
     //check date is after today or not,the proccess occures in current month
     checkDateIsAfterToday = (year, month, day) => {
+        console.log('checkdateAfterToday=');
+        console.log(day);
         let date = year + ''
             + ('0' + month).slice(-2) + ''
             + ('0' + day).slice(-2);
@@ -125,7 +127,11 @@ class JalaliDays extends React.Component {
         } else if (date < today) {
             return "BEFORE"
         } else {
+            console.log('TODAYTODAY=');
+            console.log(day)
             return "TODAY"
+            
+            
         }
     }
     //check date is after today or not,the proccess occures in next month
@@ -143,7 +149,7 @@ class JalaliDays extends React.Component {
         } else if (date < today) {
             return "BEFORE"
         } else {
-            return "TODAY"
+            return "TODAY"  // this is never happen
         }
     }
 
