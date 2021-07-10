@@ -7,9 +7,14 @@ import GarigorianDays from './GarigorianDays'
 class CalendarComponent extends React.Component {
     constructor(props) {
         super(props)
+
         this.state = {
             typeOfCalendar: "JAL"
         }
+
+        this.setState({
+            typeOfCalendar: "JAL"
+        });
     }
     // componentDidMount(){
     //     this.state = {

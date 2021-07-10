@@ -1,6 +1,4 @@
 module.exports = {
-  generateEtags: false,
-  
     async rewrites() {
       return [
            
