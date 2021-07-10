@@ -11,8 +11,8 @@ class JalaliDays extends React.Component {
     constructor(props) {
         super(props)
         const today = moment().format('jYYYY/jMM/jDD')
-        console.log('today=')
-        console.log(today)
+        // console.log('today=')
+        // console.log(today)
 
         const date = today.split("/")
         this.currentYear = parseInt(date[0]) + 5
@@ -126,7 +126,7 @@ componentDidMount(){
         //const today = parseInt(this.state.today.replace("/", "").replace("/", ""))
         const m =  moment().format('jYYYY/jMM/jDD')
         const today = parseInt(m.replace("/", "").replace("/", ""))
-        console.log(` NEWTODAY= ${today}`)
+        // console.log(` NEWTODAY= ${today}`)
         
 
         date = parseInt(date)
@@ -135,8 +135,8 @@ componentDidMount(){
         } else if (date < today) {
             return "BEFORE"
         } else {
-            console.log('TODAYTODAY=');
-            console.log(day)
+            // console.log('TODAYTODAY=');
+            // console.log(day)
             return "TODAY"
             
             
@@ -333,7 +333,7 @@ componentDidMount(){
                                     <p className="no-margin-vertical font-size-14 black-color font-bold-iransanse text-center border-bottom-black">
                                         <span onClick={() => {
                                             const persianDate = moment().format("jYYYY/jMM/jDD")
-                                            console.log('test date jalali');
+                                            // console.log('test date jalali');
                                             const miladidate = moment().format('YYYY/MM/DD')
                                             this.props.setDate({
                                                 garigorian: miladidate,
@@ -369,10 +369,10 @@ componentDidMount(){
 
                                         {
                                             this.getDays().map(x => {
-                                                let compareToToday = this.checkDateIsAfterToday(this.state.year, this.state.month, x)
+                                                const compareToToday = this.checkDateIsAfterToday(this.state.year, this.state.month, x)
 
-                                                const testdate = moment().format('mm:ss')
-                                                console.log(`comparetoday= ${compareToToday} ${x}`)
+                                                // const testdate = moment().format('mm:ss')
+                                                // console.log(`comparetoday= ${compareToToday} ${x}`)
                                                 return (
                                                     x != undefined ?
                                                         <div className={`calendar-item ${compareToToday}`} onClick={() => {
@@ -392,7 +392,7 @@ componentDidMount(){
 
                                                         }}>
                                                             
-                                                            {`${x} ${testdate}`}
+                                                            {x}
                                                         </div>
                                                         :
                                                         <div>
@@ -423,37 +423,81 @@ componentDidMount(){
                                         {
                                             this.getDaysNextMonth().map(x => {
                                                 const compareToToday = this.checkDateIsAfterTodayNextMonth(x)
+                                           
+                                                if(compareToToday=='TODAY'){   
+                                                    return (
+                                                        x != undefined ?
+                                                        <div className='calendar-item TODAY' onClick={() => {
+                                                                const year = (parseInt(this.state.month) + 1) > 12 ? parseInt(this.state.year) + 1 : parseInt(this.state.year)
+                                                                const month = (parseInt(this.state.month) + 1) > 12 ? 1 : parseInt(this.state.month) + 1
 
+                                                                const m = moment(`${year}/${month}/${x}`, 'jYYYY/jMM/jDD')
+                                                                const persianDate = m.format("jYYYY/jMM/jDD")
+                                                                const date = m.format('YYYY/MM/DD')
+                                                                this.props.setDate({
+                                                                    garigorian: date,
+                                                                    jalali: persianDate
+                                                                })
+                                                                
+                                                                this.props.closePopUpCalendar(false)
+
+                                                            }}>
+                                                            
+                                                             {x}
+                                                            </div>
+                                                            :
+                                                            <div>
+                                                                {x}
+                                                            </div>
+                                                    )
+
+                                            }
+
+                                            if(compareToToday=='BEFORE'){   
                                                 return (
                                                     x != undefined ?
-                                                        <div className={`calendar-item ${compareToToday}`} onClick={() => {
-                                                            if (compareToToday == "BEFORE") {
-                                                                return
-                                                            }
-                                                            const year = (parseInt(this.state.month) + 1) > 12 ? parseInt(this.state.year) + 1 : parseInt(this.state.year)
-                                                            const month = (parseInt(this.state.month) + 1) > 12 ? 1 : parseInt(this.state.month) + 1
-
-                                                            const m = moment(`${year}/${month}/${x}`, 'jYYYY/jMM/jDD')
-                                                            const persianDate = m.format("jYYYY/jMM/jDD")
-                                                            const date = m.format('YYYY/MM/DD')
-                                                            this.props.setDate({
-                                                                garigorian: date,
-                                                                jalali: persianDate
-                                                            })
-                                                            
-                                                            this.props.closePopUpCalendar(false)
-
-                                                        }}>
+                                                    <div className='calendar-item BEFORE' >
                                                         
-                                                        {`${x}A`}
+                                                        {x}
                                                         </div>
                                                         :
                                                         <div>
-                                                            {`${x}B`}
-
+                                                            {x}
 
                                                         </div>
                                                 )
+
+                                        }
+
+                                                if(compareToToday=='AFTER'){   
+                                                            return (
+                                                                x != undefined ?
+                                                                <div className='calendar-item AFTER' onClick={() => {
+                                                                      
+                                                                        const year = (parseInt(this.state.month) + 1) > 12 ? parseInt(this.state.year) + 1 : parseInt(this.state.year)
+                                                                        const month = (parseInt(this.state.month) + 1) > 12 ? 1 : parseInt(this.state.month) + 1
+
+                                                                        const m = moment(`${year}/${month}/${x}`, 'jYYYY/jMM/jDD')
+                                                                        const persianDate = m.format("jYYYY/jMM/jDD")
+                                                                        const date = m.format('YYYY/MM/DD')
+                                                                        this.props.setDate({
+                                                                            garigorian: date,
+                                                                            jalali: persianDate
+                                                                        })
+                                                                        
+                                                                        this.props.closePopUpCalendar(false)
+
+                                                                    }}>
+                                                                    
+                                                                    {x}
+                                                                    </div>
+                                                                    :
+                                                                    <div>
+                                                                        {x}
+                                                                    </div>
+                                                            )
+
+                                                    }
                                             })
                                         }
                                     </div>
