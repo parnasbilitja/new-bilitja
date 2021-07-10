@@ -23,7 +23,22 @@ class JalaliDays extends React.Component {
         };
 
     }
+componentDidMount(){
+        this.getDays()
 
+    // const today = moment().format('jYYYY/jMM/jDD')
+    //     console.log('todayDidmount=')
+    //     console.log(today)
+
+    //     const date = today.split("/")
+    //     this.currentYear = parseInt(date[0]) + 5
+    //     this.state = {
+    //         stage: 3,
+    //         year: parseInt(date[0]),
+    //         month: parseInt(date[1]),
+    //         today: today
+    //     };
+}
     getYears = () => {
         return new Array(this.currentYear - 1300).fill().map((x, index) => {
             return 1300 + index
