@@ -61,32 +61,32 @@ class CalendarComponent extends React.Component {
     }
 
     //calculate days in a month, month and year are defined in previous steps!
-    getDaysNextMonth = () => {
-        const year = (parseInt(this.state.month) + 1) > 12 ? parseInt(this.state.year) + 1 : parseInt(this.state.year)
-        const month = (parseInt(this.state.month) + 1) > 12 ? 1 : parseInt(this.state.month) + 1
+    // getDaysNextMonth = () => {
+    //     const year = (parseInt(this.state.month) + 1) > 12 ? parseInt(this.state.year) + 1 : parseInt(this.state.year)
+    //     const month = (parseInt(this.state.month) + 1) > 12 ? 1 : parseInt(this.state.month) + 1
 
-        let arrayOfdays
+    //     let arrayOfdays
 
-        if (month >= 1 && month <= 6) {
-            arrayOfdays = Array.from({ length: 31 }, (_, i) => i + 1)
-        } else if (month >= 7 && month <= 11) {
-            arrayOfdays = Array.from({ length: 30 }, (_, i) => i + 1)
-        } else {
-            if ((year - 1331) % 4 == 0) {
-                arrayOfdays = Array.from({ length: 30 }, (_, i) => i + 1)
-            } else {
-                arrayOfdays = Array.from({ length: 29 }, (_, i) => i + 1)
-            }
-        }
+    //     if (month >= 1 && month <= 6) {
+    //         arrayOfdays = Array.from({ length: 31 }, (_, i) => i + 1)
+    //     } else if (month >= 7 && month <= 11) {
+    //         arrayOfdays = Array.from({ length: 30 }, (_, i) => i + 1)
+    //     } else {
+    //         if ((year - 1331) % 4 == 0) {
+    //             arrayOfdays = Array.from({ length: 30 }, (_, i) => i + 1)
+    //         } else {
+    //             arrayOfdays = Array.from({ length: 29 }, (_, i) => i + 1)
+    //         }
+    //     }
 
-        const firstdayofweek = moment(`${year}/${month}/01`, 'jYYYY/jMM/jDD').weekday()
-        let revArrayOfDay = arrayOfdays.reverse()
-        for (let i = 0; i <= firstdayofweek; i++) {
-            revArrayOfDay.push(undefined)
-        }
-        return revArrayOfDay.reverse()
+    //     const firstdayofweek = moment(`${year}/${month}/01`, 'jYYYY/jMM/jDD').weekday()
+    //     let revArrayOfDay = arrayOfdays.reverse()
+    //     for (let i = 0; i <= firstdayofweek; i++) {
+    //         revArrayOfDay.push(undefined)
+    //     }
+    //     return revArrayOfDay.reverse()
 
-    }
+    // }
     //title on top of each month
     getDateTitle = () => {
         const firstYear = parseInt(this.state.year)
@@ -145,23 +145,23 @@ class CalendarComponent extends React.Component {
         }
     }
     //check date is after today or not,the proccess occures in next month
-    checkDateIsAfterTodayNextMonth = (day) => {
-        const year = (parseInt(this.state.month) + 1) > 12 ? parseInt(this.state.year) + 1 : parseInt(this.state.year)
-        const month = (parseInt(this.state.month) + 1) > 12 ? 1 : parseInt(this.state.month) + 1
+    // checkDateIsAfterTodayNextMonth = (day) => {
+    //     const year = (parseInt(this.state.month) + 1) > 12 ? parseInt(this.state.year) + 1 : parseInt(this.state.year)
+    //     const month = (parseInt(this.state.month) + 1) > 12 ? 1 : parseInt(this.state.month) + 1
 
-        let date = year + ''
-            + ('0' + month).slice(-2) + ''
-            + ('0' + day).slice(-2);
-        const today = parseInt(this.state.today.replace("/", "").replace("/", ""))
-        date = parseInt(date)
-        if (date > today) {
-            return "AFTER"
-        } else if (date < today) {
-            return "BEFORE"
-        } else {
-            return "TODAY"  // this is never happen
-        }
-    }
+    //     let date = year + ''
+    //         + ('0' + month).slice(-2) + ''
+    //         + ('0' + day).slice(-2);
+    //     const today = parseInt(this.state.today.replace("/", "").replace("/", ""))
+    //     date = parseInt(date)
+    //     if (date > today) {
+    //         return "AFTER"
+    //     } else if (date < today) {
+    //         return "BEFORE"
+    //     } else {
+    //         return "TODAY"  // this is never happen
+    //     }
+    // }
 
     decreaseMonth = () => {
         let month = parseInt(this.state.month) - 1
@@ -408,7 +408,7 @@ class CalendarComponent extends React.Component {
                                         }
                                     </div>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <p className="no-margin padding-5px font-size-14 black-color font-bold-iransanse text-center" onClick={(e) => {
                                         this.setState({
                                             stage: 1
@@ -462,7 +462,7 @@ class CalendarComponent extends React.Component {
                                             })
                                         }
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         :
