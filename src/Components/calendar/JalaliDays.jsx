@@ -368,11 +368,7 @@ componentDidMount(){
                                             this.getDays().map(x => {
                                                 let compareToToday = this.checkDateIsAfterToday(this.state.year, this.state.month, x)
 
-                                                if(x== 10)
-                                                {
-                                                    compareToToday='TODAY';
-                                                }
-
+                                                const testdate = moment().format('mm:ss')
                                                 console.log(`comparetoday= ${compareToToday} ${x}`)
                                                 return (
                                                     x != undefined ?
@@ -384,6 +380,7 @@ componentDidMount(){
                                                             const m = moment(`${this.state.year}/${this.state.month}/${x}`, 'jYYYY/jMM/jDD')
                                                             const persianDate = m.format("jYYYY/jMM/jDD")
                                                             const miladidate = m.format('YYYY/MM/DD')
+                                                           
                                                             this.props.setDate({
                                                                 garigorian: miladidate,
                                                                 jalali: persianDate
@@ -391,7 +388,8 @@ componentDidMount(){
                                                             this.props.closePopUpCalendar(false)
 
                                                         }}>
-                                                            {x}
+                                                            
+                                                            {`${x} ${testdate}`}
                                                         </div>
                                                         :
                                                         <div>
