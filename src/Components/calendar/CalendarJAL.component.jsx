@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment-jalaali'
-//import styles from '../../../styles/Calendar.module.scss'
+import styles from '../../../styles/Calendar.module.scss'
 import { connect } from 'react-redux'
 import { addCredentials } from '../../Redux/Search/search.action'
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
@@ -198,16 +198,16 @@ class CalendarComponent extends React.Component {
 
         return (
             
-            <div className="calendar">
+            <div className={styles['calendar']}>
                 {
                     this.state.stage == 1 ?
                         <div>
 
-                            <div className="calendar-year-container">
+                            <div className={styles['calendar-year-container']}>
                                 {
                                     this.getYears()
                                         .map(x => (
-                                            <div className="calendar-item" onClick={() => {
+                                            <div className={styles['calendar-item']} onClick={() => {
                                                 this.setState({ year: x, stage: 2 })
                                             }}>
                                                 {x}
@@ -224,8 +224,8 @@ class CalendarComponent extends React.Component {
                     this.state.stage == 2 ?
                         <div>
 
-                            <div className="calendar-month-container">
-                                <div className="calendar-item" onClick={() => {
+                            <div className={styles['calendar-month-container']}>
+                                <div className={styles['calendar-item']} onClick={() => {
                                     this.setState({
                                         month: "01",
                                         stage: 3
@@ -233,7 +233,7 @@ class CalendarComponent extends React.Component {
                                 }}>
                                     فروردین
                                 </div>
-                                <div className="calendar-item" onClick={() => {
+                                <div className={styles['calendar-item']} onClick={() => {
                                     this.setState({
                                         month: "02",
                                         stage: 3
@@ -241,7 +241,7 @@ class CalendarComponent extends React.Component {
                                 }}>
                                     اردیبهشت
                                 </div>
-                                <div className="calendar-item" onClick={() => {
+                                <div className={styles['calendar-item']} onClick={() => {
                                     this.setState({
                                         month: "03",
                                         stage: 3
@@ -249,7 +249,7 @@ class CalendarComponent extends React.Component {
                                 }}>
                                     خرداد
                                 </div>
-                                <div className="calendar-item" onClick={() => {
+                                <div className={styles['calendar-item']} onClick={() => {
                                     this.setState({
                                         month: "04",
                                         stage: 3
@@ -257,7 +257,7 @@ class CalendarComponent extends React.Component {
                                 }}>
                                     تیر
                                 </div>
-                                <div className="calendar-item" onClick={() => {
+                                <div className={styles['calendar-item']} onClick={() => {
                                     this.setState({
                                         month: "05",
                                         stage: 3
@@ -265,7 +265,7 @@ class CalendarComponent extends React.Component {
                                 }}>
                                     مرداد
                                 </div>
-                                <div className="calendar-item" onClick={() => {
+                                <div className={styles['calendar-item']} onClick={() => {
                                     this.setState({
                                         month: "06",
                                         stage: 3
@@ -273,7 +273,7 @@ class CalendarComponent extends React.Component {
                                 }}>
                                     شهریور
                                 </div>
-                                <div className="calendar-item" onClick={() => {
+                                <div className={styles['calendar-item']} onClick={() => {
                                     this.setState({
                                         month: "07",
                                         stage: 3
@@ -281,7 +281,7 @@ class CalendarComponent extends React.Component {
                                 }}>
                                     مهر
                                 </div>
-                                <div className="calendar-item" onClick={() => {
+                                <div className={styles['calendar-item']} onClick={() => {
                                     this.setState({
                                         month: "08",
                                         stage: 3
@@ -289,7 +289,7 @@ class CalendarComponent extends React.Component {
                                 }}>
                                     آبان
                                 </div>
-                                <div className="calendar-item" onClick={() => {
+                                <div className={styles['calendar-item']} onClick={() => {
                                     this.setState({
                                         month: "09",
                                         stage: 3
@@ -297,7 +297,7 @@ class CalendarComponent extends React.Component {
                                 }}>
                                     آذر
                                 </div>
-                                <div className="calendar-item" onClick={() => {
+                                <div className={styles['calendar-item']} onClick={() => {
                                     this.setState({
                                         month: "10",
                                         stage: 3
@@ -305,7 +305,7 @@ class CalendarComponent extends React.Component {
                                 }}>
                                     دی
                                 </div>
-                                <div className="calendar-item" onClick={() => {
+                                <div className={styles['calendar-item']} onClick={() => {
                                     this.setState({
                                         month: "11",
                                         stage: 3
@@ -313,7 +313,7 @@ class CalendarComponent extends React.Component {
                                 }}>
                                     بهمن
                                 </div>
-                                <div className="calendar-item" onClick={() => {
+                                <div className={styles['calendar-item']} onClick={() => {
                                     this.setState({
                                         month: "12",
                                         stage: 3
@@ -354,7 +354,7 @@ class CalendarComponent extends React.Component {
                                 </div>
                             </div>
 
-                            <div className="two-month-container">
+                            <div className={styles['two-month-container']}>
                                 <div>
                                     <p className="no-margin padding-5px font-size-14 black-color font-bold-iransanse text-center" onClick={(e) => {
                                         this.setState({
@@ -363,7 +363,7 @@ class CalendarComponent extends React.Component {
                                     }}>
                                         {`${currentAndNextDate[0][0]} ${currentAndNextDate[0][1]}`}
                                     </p>
-                                    <div className="calendar-day-container">
+                                    <div className={styles['calendar-day-container']}>
                                         <div className="font-size-13 color-black">شنبه</div>
                                         <div className="font-size-13 color-black">1شنبه</div>
                                         <div className="font-size-13 color-black">2شنبه</div>
@@ -376,11 +376,9 @@ class CalendarComponent extends React.Component {
                                             this.getDays().map(x => {
                                                 let compareToToday = this.checkDateIsAfterToday(this.state.year, this.state.month, x)
 
-                                                const testdate = moment().format('mm:ss')
-                                                console.log(`comparetoday= ${compareToToday} ${x}`)
                                                 return (
                                                     x != undefined ?
-                                                        <div className={`calendar-item ${compareToToday}`} onClick={() => {
+                                                        <div className={` ${styles['calendar-item']} ${ styles[compareToToday]}`} onClick={() => {
 
                                                             if (compareToToday == "BEFORE") {
                                                                 return
@@ -397,7 +395,7 @@ class CalendarComponent extends React.Component {
 
                                                         }}>
                                                             
-                                                            {`${x} ${compareToToday.substr(0,1)}`}
+                                                           {x}
                                                         </div>
                                                         :
                                                         <div>
