@@ -388,7 +388,7 @@ componentDidMount(){
 
                                                                     }}>
                                                                         
-                                                                        {x}
+                                                                        T
                                                                     </div>
                                                                     :
                                                                     <div>
