@@ -51,9 +51,9 @@ componentDidMount(){
         }
         const firstdayofweek = moment(`${this.state.year}/${this.state.month}/01`, 'jYYYY/jMM/jDD').weekday()
         let revArrayOfDay = arrayOfdays.reverse()
-        for (let i = 0; i <= firstdayofweek; i++) {
-            revArrayOfDay.push(undefined)
-        }
+        // for (let i = 0; i <= firstdayofweek; i++) {
+        //     revArrayOfDay.push(undefined)
+        // }
 
         return revArrayOfDay.reverse()
     }
