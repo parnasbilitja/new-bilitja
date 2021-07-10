@@ -129,7 +129,7 @@ class JalaliDays extends React.Component {
         } else {
             console.log('TODAYTODAY=');
             console.log(day)
-            return "AFTER"
+            return "TODAY"
             
             
         }
@@ -184,6 +184,7 @@ class JalaliDays extends React.Component {
         let currentAndNextDate = this.getDateTitle()
 
         return (
+            
             <div className="calendar">
                 {
                     this.state.stage == 1 ?
@@ -325,9 +326,9 @@ class JalaliDays extends React.Component {
                                         <span onClick={() => {
                                             const persianDate = moment().format("jYYYY/jMM/jDD")
                                             console.log('test date jalali');
-                                            const date = moment().format('YYYY/MM/DD')
+                                            const miladidate = moment().format('YYYY/MM/DD')
                                             this.props.setDate({
-                                                garigorian: date,
+                                                garigorian: miladidate,
                                                 jalali: persianDate
                                             })
                                             this.props.closePopUpCalendar(false)
@@ -452,8 +453,10 @@ class JalaliDays extends React.Component {
 }
 
 
-export default JalaliDays
-
+const mapDispatchesToProps = (dispatch) => ({
+    addCredentials: value => dispatch(addCredentials(value))
+})
+export default connect(null, mapDispatchesToProps)(JalaliDays)
 
 
 
