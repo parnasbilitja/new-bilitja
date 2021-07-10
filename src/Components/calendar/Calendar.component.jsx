@@ -12,9 +12,10 @@ class CalendarComponent extends React.Component {
             typeOfCalendar: "GAR"
         }
 
-       
+       console.log('Cosntructor GAR')
     }
     componentDidMount(){
+        console.log('componentDidMount JAL')
         this.setState({
             typeOfCalendar: "JAL"
         });

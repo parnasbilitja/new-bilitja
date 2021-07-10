@@ -32,8 +32,6 @@ class GarigorianDays extends React.Component {
         let arrayOfdays
         const getDaysInMonth = () => {
             const month = parseInt(this.state.month)
-            console.log('myMonth=');
-            console.log(month);
             switch (month) {
                 case 1: return 31
                 case 2: return this.state.year % 4 == 0 ? 29 : 28
@@ -55,8 +53,6 @@ class GarigorianDays extends React.Component {
         if(firstMonthWeekday==0){
             firstMonthWeekday=7
         }  
-        console.log('FirstDay=')
-        console.log(firstMonthWeekday)
 
         let revArrayOfDay = arrayOfdays.reverse()
         for (let i = 1; i < firstMonthWeekday; i++) {
@@ -95,9 +91,6 @@ class GarigorianDays extends React.Component {
            firstMonthWeekday=7
         }  
 
-        console.log('newxtMonth=')
-        console.log(month)
-        console.log(firstMonthWeekday)
 
         let revArrayOfDay = arrayOfdays.reverse()
         for (let i = 1; i < firstMonthWeekday; i++) {
@@ -344,7 +337,6 @@ class GarigorianDays extends React.Component {
                                     <p className="no-margin-vertical font-size-14 black-color font-bold-iransanse text-center border-bottom-black">
                                         <span onClick={() => {
                                             const persianDate = moment().format("jYYYY/jMM/jDD")
-                                            console.log('test date Gregoria');
                                             const miladidate = moment().format('YYYY/MM/DD')
                                             this.props.setDate({
                                                 garigorian: miladidate,
@@ -448,11 +440,11 @@ class GarigorianDays extends React.Component {
                                                             
                                                             this.props.closePopUpCalendar(false)
                                                         }}>
-                                                          {`${x}C`}
+                                                          {x}
                                                         </div>
                                                         :
                                                         <div>
-                                                            {`${x}D`}
+                                                          {x}
 
                                                         </div>
                                                 )
