@@ -397,7 +397,7 @@ class CalendarComponent extends React.Component {
 
                                                         }}>
                                                             
-                                                            {`${x} ${testdate}`}
+                                                            {`${x} ${compareToToday.substr(0,1)}`}
                                                         </div>
                                                         :
                                                         <div>
