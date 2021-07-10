@@ -8,7 +8,7 @@ class CalendarComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            typeOfCalendar: "GAR"
+            typeOfCalendar: "JAL"
         }
     }
     // componentDidMount(){
@@ -25,10 +25,10 @@ class CalendarComponent extends React.Component {
                
 
                 {
-                    //this.state.typeOfCalendar == "JAL" ?
+                    this.state.typeOfCalendar == "JAL" ?
                         
-                        // <JalaliDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar}/>
-                        // :
+                        <JalaliDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar}/>
+                        :
                         <GarigorianDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar}/>
                 }
                  <div className="rtl text-right">

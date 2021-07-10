@@ -1,11 +1,17 @@
 import React from 'react'
 import moment from 'moment-jalaali'
-//import '../../../styles/Calendar.module.scss'
+//import styles from '../../../styles/Calendar.module.scss'
 import { connect } from 'react-redux'
+import { addCredentials } from '../../Redux/Search/search.action'
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import globals from '../../Globals/Global'
-class JalaliDays extends React.Component {
+
+
+
+class CalendarComponent extends React.Component {
+  
+  
     currentYear = 1405
 
     constructor(props) {
@@ -17,6 +23,7 @@ class JalaliDays extends React.Component {
         const date = today.split("/")
         this.currentYear = parseInt(date[0]) + 5
         this.state = {
+            typeOfCalendar: "JAL",
             stage: 3,
             year: parseInt(date[0]),
             month: parseInt(date[1]),
@@ -24,11 +31,6 @@ class JalaliDays extends React.Component {
         };
 
     }
-componentDidMount(){
-      //  this.getDays()
-      const today = moment().format('jYYYY/jMM/jDD')
-   
-}
     getYears = () => {
         return new Array(this.currentYear - 1300).fill().map((x, index) => {
             return 1300 + index
@@ -187,6 +189,9 @@ componentDidMount(){
             })
         }
     }
+      // <div onClick={(e) => {
+            //     e.stopPropagation()
+            // }}>
 
     render() {
         let currentAndNextDate = this.getDateTitle()
@@ -468,12 +473,59 @@ componentDidMount(){
     }
 }
 
-
 const mapDispatchesToProps = (dispatch) => ({
     addCredentials: value => dispatch(addCredentials(value))
 })
-export default connect(null, mapDispatchesToProps)(JalaliDays)
+export default connect(null, mapDispatchesToProps)(CalendarComponent)
 
 
 
 
+
+// class CalendarComponent extends React.Component {
+//     constructor(props) {
+//         super(props)
+//         this.state = {
+//             value: moment(),
+
+//         };
+//         this.enabledRange = {
+//             min: moment().startOf('day'),
+//         };
+//     }
+//     componentDidMount() {
+//         this.updateTitles()
+//     }
+//     updateTitles = () => {
+
+//         document.getElementsByClassName('today')[0].classList.add("today_")
+//         document.getElementsByClassName('today')[0].classList.remove("today")
+
+//     }
+
+//     render() {
+//         return (
+//             <div>
+//                 <Calendar
+//                     min={this.enabledRange.min}
+//                     timePicker={false}
+//                     showTodayButton={false}
+//                     isGregorian={false}
+
+//                     onChange={value => {
+//                         let datePersian = getCustomFormat(value, false)
+//                         let date = getCustomFormat(value, true)
+
+//                         this.setState({ value })
+//                         this.props.addCredentials({
+//                             stDate: date,
+//                             flightDatePersian:datePersian
+//                         })
+//                         this.props.closePopUpCalendar(false)
+//                     }}
+//                     value={this.state.value}
+//                 />
+//             </div>
+//         )
+//     }
+// }

@@ -8,6 +8,7 @@ import AirportsMobile from '../airports_mobile/AirportsMobile.component'
 import PopUp from "../pop_up/PopUp.component"
 import PopUpWide from '../pop_up_wide/PopUpWide.component'
 import CalendarComponent from '../calendar/Calendar.component'
+import CalendarComponentJAL from '../calendar/CalendarJAL.component'
 
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -232,14 +233,23 @@ class FlightSearchBox extends React.Component {
                 
                 <PopUpWide opened={this.state.open} closePopUp={this.managePopUpCalendar}>
                 <div className={styles['flight-search-box-calendar-container']}>
-                    <CalendarComponent 
+                    {/* <CalendarComponent 
                     setDate={(value) => {
                             this.props.addCredentials({
                                 stDate: value.garigorian,
                                 flightDatePersian: value.jalali
                             })
                         }} 
-                        closePopUpCalendar={this.managePopUpCalendar} />
+                        closePopUpCalendar={this.managePopUpCalendar} /> */}
+                     <CalendarComponentJAL 
+                    setDate={(value) => {
+                            this.props.addCredentials({
+                                stDate: value.garigorian,
+                                flightDatePersian: value.jalali
+                            })
+                        }} 
+                        closePopUpCalendar={this.managePopUpCalendar} /> 
+
                 </div>
                 </PopUpWide>
                 {
