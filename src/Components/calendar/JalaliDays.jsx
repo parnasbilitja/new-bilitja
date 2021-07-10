@@ -371,7 +371,7 @@ componentDidMount(){
                                                 const testdate = moment().format('mm:ss')
                                                 console.log(`comparetoday= ${compareToToday} ${x}`)
                                                 return (
-                                                    x != undefined ?
+                                                  //  x != undefined ?
                                                         <div className={`calendar-item ${compareToToday}`} onClick={() => {
 
                                                             if (compareToToday == "BEFORE") {
@@ -391,10 +391,10 @@ componentDidMount(){
                                                             
                                                             {`${x} ${testdate}`}
                                                         </div>
-                                                        :
-                                                        <div>
-                                                            {x}
-                                                        </div>
+                                                    //    :
+                                                    //    <div>
+                                                     //       {x}
+                                                      //  </div>
                                                 )
                                             })
                                         }
