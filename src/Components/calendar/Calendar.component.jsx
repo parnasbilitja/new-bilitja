@@ -11,11 +11,11 @@ class CalendarComponent extends React.Component {
             typeOfCalendar: "JAL"
         }
     }
-    componentDidMount(){
-        this.state = {
-            typeOfCalendar: "JAL"
-        }
-    }
+    // componentDidMount(){
+    //     this.state = {
+    //         typeOfCalendar: "JAL"
+    //     }
+    // }
     render() {
 
         return (

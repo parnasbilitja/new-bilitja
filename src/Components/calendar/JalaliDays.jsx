@@ -4,6 +4,7 @@ import moment from 'moment-jalaali'
 import { connect } from 'react-redux'
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import globals from '../../Globals/Global'
 class JalaliDays extends React.Component {
     currentYear = 1405
 
@@ -25,19 +26,25 @@ class JalaliDays extends React.Component {
     }
 componentDidMount(){
       //  this.getDays()
+      const today = moment().format('jYYYY/jMM/jDD')
 
-    const today = moment().format('jYYYY/jMM/jDD')
-        console.log('todayDidmount=')
-        console.log(today)
+      fetch(`${globals.baseUrl}bj/datePrice/viewCalendar`, {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({
+            EghamatId: 1,
+            RoomRow: 1,
+            Year: this.state.year,
+            month: this.state.month
+        })
+    }).then(res => res.json())
+        .then(json => {
+            this.setState({
+                today: today
+            })
+        })
 
-        const date = today.split("/")
-        this.currentYear = parseInt(date[0]) + 5
-        this.state = {
-            stage: 3,
-            year: parseInt(date[0]),
-            month: parseInt(date[1]),
-            today: today
-        };
+   
 }
     getYears = () => {
         return new Array(this.currentYear - 1300).fill().map((x, index) => {
