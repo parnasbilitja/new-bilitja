@@ -367,6 +367,7 @@ componentDidMount(){
                                         {
                                             this.getDays().map(x => {
                                                 const compareToToday = this.checkDateIsAfterToday(this.state.year, this.state.month, x)
+                                                console.log(`comparetoday= ${compareToToday} ${x}`)
                                                 return (
                                                     x != undefined ?
                                                         <div className={`calendar-item ${compareToToday}`} onClick={() => {
