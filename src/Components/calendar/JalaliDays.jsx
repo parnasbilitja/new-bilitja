@@ -129,7 +129,7 @@ class JalaliDays extends React.Component {
         } else {
             console.log('TODAYTODAY=');
             console.log(day)
-            return "TODAY"
+            return "AFTER"
             
             
         }
