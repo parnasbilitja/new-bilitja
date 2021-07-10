@@ -8,7 +8,7 @@ import AirportsMobile from '../airports_mobile/AirportsMobile.component'
 import PopUp from "../pop_up/PopUp.component"
 import PopUpWide from '../pop_up_wide/PopUpWide.component'
 import CalendarComponent from '../calendar/Calendar.component'
-import CalendarComponentJAL from '../calendar/CalendarJAL.component'
+
 
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
