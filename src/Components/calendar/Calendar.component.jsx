@@ -9,18 +9,16 @@ class CalendarComponent extends React.Component {
         super(props)
 
         this.state = {
-            typeOfCalendar: "JAL"
+            typeOfCalendar: "GAR"
         }
 
+       
+    }
+    componentDidMount(){
         this.setState({
             typeOfCalendar: "JAL"
         });
     }
-    // componentDidMount(){
-    //     this.state = {
-    //         typeOfCalendar: "JAL"
-    //     }
-    // }
     render() {
 
         return (
