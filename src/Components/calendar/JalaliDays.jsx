@@ -51,9 +51,9 @@ componentDidMount(){
         }
         const firstdayofweek = moment(`${this.state.year}/${this.state.month}/01`, 'jYYYY/jMM/jDD').weekday()
         let revArrayOfDay = arrayOfdays.reverse()
-        // for (let i = 0; i <= firstdayofweek; i++) {
-        //     revArrayOfDay.push(undefined)
-        // }
+        for (let i = 0; i <= firstdayofweek; i++) {
+            revArrayOfDay.push(undefined)
+        }
 
         return revArrayOfDay.reverse()
     }
@@ -120,12 +120,13 @@ componentDidMount(){
     }
     //check date is after today or not,the proccess occures in current month
     checkDateIsAfterToday = (year, month, day) => {
-        console.log('checkdateAfterToday=');
-        console.log(day);
         let date = year + ''
             + ('0' + month).slice(-2) + ''
             + ('0' + day).slice(-2);
         const today = parseInt(this.state.today.replace("/", "").replace("/", ""))
+        console.log('NEWTODAY=');
+        console.log(today);
+
         date = parseInt(date)
         if (date > today) {
             return "AFTER"
