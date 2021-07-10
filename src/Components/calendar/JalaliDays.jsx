@@ -123,9 +123,11 @@ componentDidMount(){
         let date = year + ''
             + ('0' + month).slice(-2) + ''
             + ('0' + day).slice(-2);
-        const today = parseInt(this.state.today.replace("/", "").replace("/", ""))
-        console.log('NEWTODAY=');
-        console.log(today);
+        //const today = parseInt(this.state.today.replace("/", "").replace("/", ""))
+        const m =  moment().format('jYYYY/jMM/jDD')
+        const today = parseInt(m.replace("/", "").replace("/", ""))
+        console.log(` NEWTODAY= ${today}`)
+        
 
         date = parseInt(date)
         if (date > today) {
