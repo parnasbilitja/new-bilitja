@@ -441,11 +441,14 @@ componentDidMount(){
                                                             this.props.closePopUpCalendar(false)
 
                                                         }}>
-                                                            {x}
+                                                        
+                                                        {`${x}A`}
                                                         </div>
                                                         :
                                                         <div>
-                                                            {x}
+                                                            {`${x}B`}
+
+
                                                         </div>
                                                 )
                                             })

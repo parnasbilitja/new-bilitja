@@ -448,11 +448,12 @@ class GarigorianDays extends React.Component {
                                                             
                                                             this.props.closePopUpCalendar(false)
                                                         }}>
-                                                            {x}
+                                                          {`${x}C`}
                                                         </div>
                                                         :
                                                         <div>
-                                                            {x}
+                                                            {`${x}D`}
+
                                                         </div>
                                                 )
                                             })
