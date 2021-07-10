@@ -27,23 +27,6 @@ class JalaliDays extends React.Component {
 componentDidMount(){
       //  this.getDays()
       const today = moment().format('jYYYY/jMM/jDD')
-
-      fetch(`${globals.baseUrl}bj/datePrice/viewCalendar`, {
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-        body: JSON.stringify({
-            EghamatId: 1,
-            RoomRow: 1,
-            Year: this.state.year,
-            month: this.state.month
-        })
-    }).then(res => res.json())
-        .then(json => {
-            this.setState({
-                today: today
-            })
-        })
-
    
 }
     getYears = () => {
