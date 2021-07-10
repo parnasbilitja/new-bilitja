@@ -8,7 +8,7 @@ class CalendarComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            typeOfCalendar: "JAL"
+            typeOfCalendar: "GAR"
         }
     }
     // componentDidMount(){
