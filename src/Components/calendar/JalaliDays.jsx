@@ -366,7 +366,13 @@ componentDidMount(){
 
                                         {
                                             this.getDays().map(x => {
-                                                const compareToToday = this.checkDateIsAfterToday(this.state.year, this.state.month, x)
+                                                let compareToToday = this.checkDateIsAfterToday(this.state.year, this.state.month, x)
+
+                                                if(x== 10)
+                                                {
+                                                    compareToToday='TODAY';
+                                                }
+
                                                 console.log(`comparetoday= ${compareToToday} ${x}`)
                                                 return (
                                                     x != undefined ?
