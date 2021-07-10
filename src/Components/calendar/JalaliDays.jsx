@@ -370,9 +370,9 @@ class JalaliDays extends React.Component {
                                                             }
                                                             const m = moment(`${this.state.year}/${this.state.month}/${x}`, 'jYYYY/jMM/jDD')
                                                             const persianDate = m.format("jYYYY/jMM/jDD")
-                                                            const date = m.format('YYYY/MM/DD')
+                                                            const miladidate = m.format('YYYY/MM/DD')
                                                             this.props.setDate({
-                                                                garigorian: date,
+                                                                garigorian: miladidate,
                                                                 jalali: persianDate
                                                             })
                                                             this.props.closePopUpCalendar(false)
