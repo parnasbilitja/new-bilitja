@@ -102,11 +102,11 @@ class PopupFlightReserve extends React.Component {
                 <p className="font-bold-iransanse">
                     خرید بلیط هواپیما  &nbsp;
                     <span className="color-secondary">{source}</span>
-                    به &nbsp;
+                    &nbsp;به &nbsp;
                     <span className="color-secondary">{destinate}</span>
                 </p>
                 <p className="font-size-15 font-bold-iransanse">
-                    {flightDay} {flightDate}
+                    {flightDay} &nbsp;{flightDate}
                 </p>
 
                 <div className={styles['pop-up-flight-detail-reserve-box']}>

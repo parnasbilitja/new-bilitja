@@ -39,15 +39,15 @@ const FlightReserveMobileHero = (props) => (
                     </div>
                 </div>
                 <div className="row line-3">
-                    <div className="col-6">
+                    <div className="col-8">
                         <p className="text-right">
                             <FontAwesomeIcon icon={faCalendarAlt} />
                             <span className="color-secondary">
-                                {String(props.flightDate).replace("-", "/").replace("-", "/")}
+                            {String(props.flightDay)}  &nbsp; {String(props.flightDate).replace("-", "/").replace("-", "/")}
                             </span>
                         </p>
                     </div>
-                    <div className="col-6">
+                    <div className="col-4">
                         <p className="text-left">
                             <FontAwesomeIcon icon={faClock} />
                             {props.flightTime}

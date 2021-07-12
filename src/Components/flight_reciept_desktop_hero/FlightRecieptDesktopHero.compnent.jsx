@@ -28,16 +28,17 @@ const FlightRecieptDesktopHero = (props) => (
                         <img src='../../../Images/airplane_reserve.png' />
                     </div>
                     <div className="row">
-                        <div className="col-lg-4 col-md-4 col-sm-4 col-6 text-right">
+                        <div className="col-lg-8 col-md-8 col-sm-8 col-6 text-right">
                             <p className="text-center no-margin">
                                 تاریخ
                             </p>
                             <p className="color-secondary text-center font-size-23 no-margin">
+                                {String(props.flightDay)} &nbsp;
                                 {String(props.flightDate).replace("-", "/").replace("-", "/")}
                             </p>
 
                         </div>
-                        <div className="col-lg-4 col-md-4 col-sm-4 hidden-xs"></div>
+                        
                         <div className="col-lg-4 col-md-4 col-sm-4 col-6">
                             <p className="text-center no-margin">
                                 ساعت
