@@ -5,9 +5,9 @@ import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage'
 import airportReducer from './Airports/airport.reducer';
 import searchReducer from './Search/search.reducer';
-import searchAccommodationReducer from './SearchAccommodation/search_accommodation.reducer';
+import searchvillaReducer from './Searchvilla/search_villa.reducer';
 import reserveReducer from './Reserve/reserve.reducer';
-import reserveAccommodationReducer from './ReserveAccommodation/reserve_accommodation.reducer'
+import reservevillaReducer from './Reservevilla/reserve_villa.reducer'
 import UIReducer from './UI/ui.reducer'
 import accountReducer from './Account/account.reducer'
 const persistConfig = {
@@ -19,9 +19,9 @@ const rootReducer = combineReducers({
     airports  : airportReducer,
     cities:cityReducer,
     search : searchReducer,
-    searchAccommodation:searchAccommodationReducer,
+    searchvilla:searchvillaReducer,
     reserve:reserveReducer,
-    reserveAccommodation:reserveAccommodationReducer,
+    reservevilla:reservevillaReducer,
     ui: UIReducer,
     account:accountReducer
 });

@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { Provider } from 'react-redux'
 
 import { store, persistor } from '../Redux/store';
-import AddVilla from '../../src/Components/manager/villa/AddVilla.page'
-import Villa from '../../src/Components/manager/villa/Villa.page'
-import VillaDetial from '../../src/Components/manager/villa/VilaDetail.page'
+import AddVilla from '../../src/sources/manager/villa/AddVilla.page'
+import Villa from '../../src/sources/manager/villa/Villa.page'
+import VillaDetial from '../../src/sources/manager/villa/VilaDetail.page'
 import { useRouter } from 'next/router';
 
 import ManagerNav from '../Components/manager_nav/ManagerNav.component'

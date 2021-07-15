@@ -68,10 +68,11 @@
     display: grid;
     padding: 5px;
  
-    .manager-calendar-item{
+    .calendar-item{
         text-align: center;
         border:1px solid #c1c1c1;
-        line-height: 43px;
+       
+        line-height: 28px;
         border-radius: 5px;
         color: $blackColor;
         font-size: 14px;
