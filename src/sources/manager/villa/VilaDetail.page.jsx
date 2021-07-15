@@ -1,9 +1,9 @@
 import React from 'react'
-import ManagementVilaSetPriceCalendar from '../../../sources/management_vila_set_price_calendar/ManagementVilaSetPriceCalendar.component'
+import ManagementVilaSetPriceCalendar from '../../../sources/manager/villa/ManagementVilaSetPriceCalendar.component'
 import PrimaryTextInput from '../../../sources/component/PrimaryTextInput.component'
 import PrimaryButton from '../../../sources/component/PrimaryButton.component'
 import moment from 'moment-jalaali'
-import globals from '../Global'
+import globals from '../../Global'
 
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'

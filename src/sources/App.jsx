@@ -27,25 +27,9 @@ import FlightReserve from './flight_reserve/FlightReseve.page'
 import FlightReciept from './flight_receipt/FlightReciept.page'
 import TrackOrder from './report/TrackOrder.page'
 
-
-// import ManagerNav from '../Components/manager_nav/ManagerNav.component'
-// import Villa from '/manager/villa/Villa.page'
-// import AddVila from '/manager/villa/AddVilla.page'
-// import AddCity from '/manager/city/AddCity.page'
-// import AddRule from '/manager/rule/AddRule.page'
-// import AddFacility from '/manager/facility/AddFacility.page'
-// import ShowallCities from '/manager/city/ShowAllCities.page'
-// import UpdateCity from '/manager/city/UpdateCity.page'
-// import ShowallFacilities from '/manager/facility/ShowAllFacilities.page'
-// import UpdateFacility from '/manager/facility/UpdateFacility.page'
-// import ShowallRules from '/manager/rule/ShowAllRules.page'
-// import UpdateRule from '/manager/rule/UpdateRule.page'
-// import UpdateVila from '/manager/villa/UpdateVila.page'
-// import VilaDetial from '/manager/villa/VilaDetail.page'
-// import VilaReservation from '/manager/villa/VilaReservation.page'
 import BecomeMember from './account/BecomeMember.page'
 import {  withRouter } from 'next/router'
-// import ManagerTopActionBox from './manager_top_action_box/ManagerTopActionBox.component'
+
 class App extends React.Component {
   constructor(props) {
     super(props)

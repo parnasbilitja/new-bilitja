@@ -3,8 +3,8 @@ import React from 'react'
 import moment from 'moment-jalaali'
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import '../../../styles/ManagementVilaSetPriceCalendar.module.scss'
-import globals from '../Global'
+import '../../../../styles/ManagementVilaSetPriceCalendar.module.scss'
+import globals from '../../Global'
 
 class ManagementVilaSetPriceCalendar extends React.Component {
     currentYear = 1405

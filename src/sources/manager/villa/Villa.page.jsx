@@ -1,8 +1,8 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArchway, faStar, faTimes, faEye, faDollarSign, faEdit, faCog } from '@fortawesome/free-solid-svg-icons'
-import ManagerTopActionBox from '../../../sources/manager_top_action_box/ManagerTopActionBox.component'
-import globals from '../Global'
+import ManagerTopActionBox from '../ManagerTopActionBox.component'
+import globals from '../../Global'
 import Switch from "react-switch";
 import styles from "./../../../../styles/Vila.module.scss"
 import stylesManage from "./../../../../styles/manager.module.scss"

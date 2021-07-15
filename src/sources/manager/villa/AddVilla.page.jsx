@@ -1,11 +1,11 @@
 import React from 'react'
 import PrimaryTextInput from '../../../sources/component/PrimaryTextInput.component'
-import PrimarySelectInput from '../../../sources/primary_select_input/PrimarySelectInput.component'
+import PrimarySelectInput from '../../../sources/component/PrimarySelectInput.component'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUniversity, faTimes } from '@fortawesome/free-solid-svg-icons'
 import Switch from "react-switch";
 import PrimaryButton from '../../../sources/component/PrimaryButton.component'
-import globals from '../Global'
+import globals from '../../Global'
 import { connect } from 'react-redux'
 import { messageBoxModify } from '../../../Redux/UI/ui.action'
 import styles from '../../../../styles/manager.module.scss'
