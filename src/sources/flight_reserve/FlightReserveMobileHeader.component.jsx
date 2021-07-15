@@ -15,7 +15,7 @@ const FlightReserveMobileHeader = (props) => (
                         <strong className="color-secondary font-size-25">{props.airport1}</strong>
                     </div>
                     <div className="col-4">
-                        <img src='../../../Images/airplane_reserve_small.png' className={styles['small-airplane']} />
+                        <img src='../../../../../Images/airplane_reserve_small.png' className={styles['small-airplane']} />
                     </div>
                     <div className="col-4">
                         <strong className="color-secondary font-size-25">{props.airport2}</strong>

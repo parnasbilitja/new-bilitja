@@ -1,10 +1,10 @@
 import React from 'react'
 
 import FlightSearchBox from './FlightSearchBox.component'
-import FlightList from './FlightList.component'
+import ShowFlightList from './ShowFlightList.component'
 import Filters from './Filters.component'
 import SlideIn from '../component/SlideIn.component'
-import MobileFlightList from './MobileFlightList.component'
+import ShowFlightListMobile from './ShowFlightListMobile.component'
 import PopUp from '../component/PopUp.component'
 import PopupFlightReserve from '../flight_reserve/PopupFlightReserve.component'
 
@@ -28,7 +28,7 @@ import MinimumPriceCalendar from './MinimumPriceCalendar.component'
 import {getCustomFormat} from '../../Utils/SimpleTasks'
 import { withRouter } from 'next/router'
 
-class Flight extends React.Component {
+class GetFlightList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -72,26 +72,31 @@ class Flight extends React.Component {
             // console.log("abc");
             // console.log(src);
             // console.log(dest);
-
+            //////////////////////////
+            //
+            //  استخراج لیست فرودگاهها
+            //
+            //////////////////////////
             if (this.props.credentials.source == '') {
                 if (!this.props.airports) {
-                     fetch(`${globals.baseUrl}flights/getAirports`).then(res => res.json()).then(json => {
-                         this.props.setAirports(json.flightAirportsModel);
-                         const source = json.flightAirportsModel.find(x => x.airportName == src)
-                 const destinationn = json.flightAirportsModel.find(x => x.airportName == dest)
-                 this.props.addCredentials({
-                     sourceName: source.airportName,
-                     destinationName: destinationn.airportName,
-                     source: source.airportCode,
-                     dest: destinationn.airportCode,
-                     stDate: getCustomFormat(moment().startOf('day'), true),
-                     flightDatePersian: getCustomFormat(moment().startOf('day'), false),
-                 }).then(() => {
-                    this.setState({
-                        loading:false
-                    })
-                 })
-                     });
+                                fetch(`${globals.baseUrl}flights/getAirports`).then(res => res.json()).then(json => {
+                                    this.props.setAirports(json.flightAirportsModel);
+                                    const source = json.flightAirportsModel.find(x => x.airportName == src)
+                            const destinationn = json.flightAirportsModel.find(x => x.airportName == dest)
+                            this.props.addCredentials({
+                                sourceName: source.airportName,
+                                destinationName: destinationn.airportName,
+                                source: source.airportCode,
+                                dest: destinationn.airportCode,
+                                stDate: getCustomFormat(moment().startOf('day'), true),
+                                flightDatePersian: getCustomFormat(moment().startOf('day'), false),
+                                typeOfCalendar:this.props.typeOfCalendar,
+                            }).then(() => {
+                                this.setState({
+                                    loading:false
+                                })
+                            })
+                           });
                  }else{
                          const source = this.props.airports.find(x => x.airportName == src )
                      const destinationn = this.props.airports.find(x => x.airportName == dest)
@@ -102,6 +107,7 @@ class Flight extends React.Component {
                          dest: destinationn.airportCode,
                          stDate: getCustomFormat(moment().startOf('day'), true),
                          flightDatePersian: getCustomFormat(moment().startOf('day'), false),
+                         typeOfCalendar:this.props.typeOfCalendar,
                      }).then(() => {
                      this.setState({
                          loading:false
@@ -127,7 +133,12 @@ class Flight extends React.Component {
     }
 
     getData = () => {
-        
+            //////////////////////////
+            //
+            //  استخراج لیست پروازها
+            //
+            //////////////////////////
+
         this.setState({ loading: true, open: false })
         fetch(`${globals.baseUrl}flights/getFlights`, {
             method: "POST",
@@ -222,10 +233,10 @@ class Flight extends React.Component {
                                         this.state.flights ?
                                             <div>
                                                 <div className="visible-xs">
-                                                    <MobileFlightList setReserveBoxData={this.setReserveBoxData} flightList={this.state.flights} />
+                                                    <ShowFlightListMobile setReserveBoxData={this.setReserveBoxData} flightList={this.state.flights} />
                                                 </div>
                                                 <div className={styles['hidden-xs-flight']}>
-                                                    <FlightList setReserveBoxData={this.setReserveBoxData} flightList={this.state.flights} />
+                                                    <ShowFlightList setReserveBoxData={this.setReserveBoxData} flightList={this.state.flights} />
                                                 </div>
                                             </div>
                                             :
@@ -336,4 +347,4 @@ const mapDispatchesToProps = (dispatch) => ({
     addCredentials: async value => dispatch(addCredentials(value)),
     messageBoxModify: value => dispatch(messageBoxModify(value))
 })
-export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(Flight))
+export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(GetFlightList))

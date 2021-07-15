@@ -337,7 +337,8 @@ componentDidMount(){
                                             const miladidate = moment().format('YYYY/MM/DD')
                                             this.props.setDate({
                                                 garigorian: miladidate,
-                                                jalali: persianDate
+                                                jalali: persianDate,
+                                                typeOfCalendar:'JAL'
                                             })
                                             this.props.closePopUpCalendar(false)
                                         }}>برو به امروز</span>
@@ -382,7 +383,8 @@ componentDidMount(){
                                                                     
                                                                         this.props.setDate({
                                                                             garigorian: miladidate,
-                                                                            jalali: persianDate
+                                                                            jalali: persianDate,
+                                                                            typeOfCalendar:'JAL'
                                                                         })
                                                                         this.props.closePopUpCalendar(false)
 
@@ -422,7 +424,8 @@ componentDidMount(){
                                                     
                                                         this.props.setDate({
                                                             garigorian: miladidate,
-                                                            jalali: persianDate
+                                                            jalali: persianDate,
+                                                            typeOfCalendar:'JAL'
                                                         })
                                                         this.props.closePopUpCalendar(false)
 
@@ -474,7 +477,8 @@ componentDidMount(){
                                                                 const date = m.format('YYYY/MM/DD')
                                                                 this.props.setDate({
                                                                     garigorian: date,
-                                                                    jalali: persianDate
+                                                                    jalali: persianDate,
+                                                                    typeOfCalendar:'JAL'
                                                                 })
                                                                 
                                                                 this.props.closePopUpCalendar(false)
@@ -520,7 +524,8 @@ componentDidMount(){
                                                                         const date = m.format('YYYY/MM/DD')
                                                                         this.props.setDate({
                                                                             garigorian: date,
-                                                                            jalali: persianDate
+                                                                            jalali: persianDate,
+                                                                            typeOfCalendar:'JAL'
                                                                         })
                                                                         
                                                                         this.props.closePopUpCalendar(false)

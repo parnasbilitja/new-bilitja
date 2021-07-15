@@ -340,7 +340,9 @@ class GarigorianDays extends React.Component {
                                             const miladidate = moment().format('YYYY/MM/DD')
                                             this.props.setDate({
                                                 garigorian: miladidate,
-                                                jalali: persianDate
+                                                jalali: persianDate,
+                                                typeOfCalendar,
+                                                typeOfCalendar:'GAR'
                                             })
                                             this.props.closePopUpCalendar(false)
                                         }}>برو به امروز</span>
@@ -384,7 +386,8 @@ class GarigorianDays extends React.Component {
                                                             const miladidate = todayDate.format('YYYY/MM/DD')
                                                             this.props.setDate({
                                                                 garigorian: miladidate,
-                                                                jalali: persianDate
+                                                                jalali: persianDate,
+                                                                typeOfCalendar:'GAR'
                                                             })
                                                             this.props.closePopUpCalendar(false)
 
@@ -435,7 +438,8 @@ class GarigorianDays extends React.Component {
                                                             const miladidate = todayDate.format('YYYY/MM/DD')
                                                             this.props.setDate({
                                                                     garigorian:miladidate,
-                                                                    jalali:persianDate
+                                                                    jalali:persianDate,
+                                                                    typeOfCalendar:'GAR'
                                                             })
                                                             
                                                             this.props.closePopUpCalendar(false)

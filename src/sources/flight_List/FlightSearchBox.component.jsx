@@ -21,7 +21,7 @@ import { withRouter } from 'next/router'
 
 
 
-import BirthdayCalendar from "../calendar/BirthdayCalendar.component"
+//import BirthdayCalendar from "../calendar/BirthdayCalendar.component"
 
 
 class FlightSearchBox extends React.Component {
@@ -112,7 +112,7 @@ class FlightSearchBox extends React.Component {
         })
     }
     validation = () => {
-        const { credentials: { sourceName, destinationName, flightDatePersian, source, dest } } = this.props
+        const { credentials: { sourceName, destinationName, flightDatePersian, source, dest,stDate ,typeOfCalendar} } = this.props
         if (sourceName == "" || source == "") {
             return false
         }
@@ -127,7 +127,7 @@ class FlightSearchBox extends React.Component {
     }
     render() {
         const mobileSize = 626
-        const { credentials: { sourceName, destinationName, flightDatePersian }, history } = this.props
+        const { credentials: { sourceName, destinationName, flightDatePersian,stDate,typeOfCalendar }, history } = this.props
 
         return (
             <div className={styles['home-flight-form']} >
@@ -186,7 +186,7 @@ class FlightSearchBox extends React.Component {
                 <div className={` form-input-border  ${styles['form-input-border-private']} `}>
                     <i className="kilo-font icon-calendar form-input-icon-larger"></i>
 
-                    <PrimaryTextInput placeholder={" تاریخ پرواز پرواز رفت"} readOnly value={flightDatePersian} onFocus={(e) => {
+                    <PrimaryTextInput placeholder={" تاریخ پرواز پرواز رفت"} readOnly value= { (typeOfCalendar =='GAR')?stDate:flightDatePersian }   onFocus={(e) => {
                         e.preventDefault();
                         this.managePopUpCalendar(true)
                     }} />
@@ -237,7 +237,8 @@ class FlightSearchBox extends React.Component {
                     setDate={(value) => {
                             this.props.addCredentials({
                                 stDate: value.garigorian,
-                                flightDatePersian: value.jalali
+                                flightDatePersian: value.jalali,
+                                typeOfCalendar: value.typeOfCalendar
                             })
                         }} 
                         closePopUpCalendar={this.managePopUpCalendar} />

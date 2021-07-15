@@ -22,7 +22,7 @@ import villaReserve from './villa/villaReserve.page'
 import villaReceipt from './villa/villaReceipt.page'
 
 
-import Flight from './flight_List/Flight.page'
+import GetFlightList from './flight_List/GetFlightList.page'
 import FlightReserve from './flight_reserve/FlightReseve.page'
 import FlightReciept from './flight_receipt/FlightReciept.page'
 import TrackOrder from './report/TrackOrder.page'
@@ -71,7 +71,7 @@ mainRouter(pathName) {
           } else if(pathName.indexOf('order')>0 ){
             return <TrackOrder />   ;
           } else{
-            return <Flight/>;
+            return <GetFlightList/>;
           }
         }
      case "villa":{

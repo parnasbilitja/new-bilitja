@@ -25,7 +25,7 @@ const FlightRecieptDesktopHeader = (props) => (
                         </div>
                     </div>
                     <div style={{ padding: 10 }}>
-                        <img src='../../../Images/airplane_reserve.png' />
+                        <img src='../../../../../Images/airplane_reserve.png' />
                     </div>
                     <div className="row">
                         <div className="col-lg-8 col-md-8 col-sm-8 col-6 text-right">
@@ -59,14 +59,14 @@ const FlightRecieptDesktopHeader = (props) => (
                         <div className="col-lg-6 col-md-6 col-sm-6 col-6 second-column">
                             <br />
                             <div>
-                                <img src='../../../Images/airplane_reserve_small.png' />
+                                <img src='../../../../../Images/airplane_reserve_small.png' />
                                 <p> شماره پرواز :
                                     <span className="color-secondary">&nbsp;{props.flightNo}</span>
                                 </p>
                             </div>
                             <div className="clear"></div>
                             <div>
-                                <img src='../../../Images/airplane_reserve_small.png' />
+                                <img src='../../../../../Images/airplane_reserve_small.png' />
                                 <p className="font-size-14">ظرفیت :
                                                     <span className="color-secondary">&nbsp;{props.capLast}&nbsp;</span>
                                                     صندلی خالی
@@ -74,7 +74,7 @@ const FlightRecieptDesktopHeader = (props) => (
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-3 col-sm-3 col-6">
-                            <img src='../../../Images/barcode.png' className={styles['imgbarcode']} />
+                            <img src='../../../../../Images/barcode.png' className="imgbarcode"  />
                         </div>
 
                     </div>

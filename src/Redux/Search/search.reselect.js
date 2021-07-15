@@ -7,8 +7,9 @@ export const selectCredentials = createSelector([search], search => ({
     destinationName: search.searchObject.destinationName,
     source: search.searchObject.source,
     dest: search.searchObject.dest,
-    flightDatePersian: search.searchObject.flightDatePersian
-    
+    flightDatePersian: search.searchObject.flightDatePersian,
+    stDate:search.searchObject.stDate,
+    typeOfCalendar:search.searchObject.typeOfCalendar,
 }))
 
 export const selectSearchObject = createSelector([search], search => ({

@@ -210,7 +210,8 @@ class ManagementVilaSetPriceCalendar extends React.Component {
                                                 const date = m.format('YYYY/MM/DD')
                                                 this.props.setDate({
                                                     jalali: persianDate,
-                                                    garigorian: date
+                                                    garigorian: date,
+                                                    typeOfCalendar:'JAL'
 
                                                 })
                                                 this.getDays()

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBag, faClock, faChair } from '@fortawesome/free-solid-svg-icons'
 import globals from '../Global'
 import { moneyFormat } from '../../Utils/SimpleTasks'
-class MobileFlightList extends React.Component {
+class ShowFlightListMobile extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -75,4 +75,4 @@ class MobileFlightList extends React.Component {
     }
 }
 
-export default MobileFlightList
+export default ShowFlightListMobile

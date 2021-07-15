@@ -2,7 +2,7 @@ import React from 'react'
 import '../../../styles/AccommodationReceipt.module.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClock, faCalendar, faUniversity } from '@fortawesome/free-solid-svg-icons'
+import { faClock, faCalendar } from '@fortawesome/free-solid-svg-icons'
 import PrimaryTextInput from '../component/PrimaryTextInput.component'
 import PrimaryButton from '../component/PrimaryButton.component'
 

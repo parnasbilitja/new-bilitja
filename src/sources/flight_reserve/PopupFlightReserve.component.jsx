@@ -63,19 +63,30 @@ class PopupFlightReserve extends React.Component {
             method: "POST"
         }).then(res => res.json())
             .then(data => {
-                if (data.message == "OK" && data.priceMessage == "") {
+                if (data.message == "OK" ) {
                     this.props.addReservationProperties({
                         reqNo: data.reqNo,
-                        reqPnr: data.reqPnr
+                        reqPnr: data.reqPnr,
+                        priceMessage :data.priceMessage
                     }).then(() => {
                         console.log(this.props.router);
-                        this.props.router.push(`${this.props.router.asPath}/info`)
+                        this.props.router.push(`${this.props.router.asPath}/info/${data.reqNo}/${data.reqPnr}` )
                         
                     })
                 } else {
+
+                    // //  پیام تغییر قیمت
+                    // //if(data.priceMessage != null){
+                    //         if(data.priceMessage != ""){
+                    //             this.props.messageBoxModify({
+                    //                 state: true,
+                    //                 message: `${data.priceMessage}`
+                    //             }) 
+                    //         }
+                    // //}
                     this.props.messageBoxModify({
                         state: true,
-                        message: `${data.priceMessage}`
+                        message: `${data.message}`
                     })
                 }
             })

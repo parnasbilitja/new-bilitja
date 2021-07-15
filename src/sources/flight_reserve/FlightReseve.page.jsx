@@ -3,7 +3,7 @@ import styles from '../../../styles/FlightReserve.module.scss'
 
 import PrimaryTextInput from '../../sources/component/PrimaryTextInput.component'
 import PrimaryButton from '../../sources/component/PrimaryButton.component'
-
+import { addReservationProperties } from '../../Redux/Reserve/reserve.action'
 import FlightPassengerForm from './FlightPassengerForm.component'
 import FlightReserveDesktopHeader from './FlightReserveDesktopHeader.component'
 import FlightReserveMobileHeader from './FlightReserveMobileHeader.component'
@@ -17,7 +17,7 @@ import { selectProperties } from '../../Redux/Reserve/reserve.reselect'
 import { messageBoxModify } from '../../Redux/UI/ui.action'
 
 import { isValidIranianNationalCode, moneyFormat, isValidPassportCode } from '../../Utils/SimpleTasks'
-import { withRouter } from 'next/router'
+import router, { withRouter } from 'next/router'
 
 class FlightReserve extends React.Component {
     constructor(props) {
@@ -30,34 +30,40 @@ class FlightReserve extends React.Component {
             mobileSubmiterErr: '',
             phoneSubmiterErr: '',
             agreeWithTerm: false
+
         }
     }
 
-    componentDidMount() {
-        fetch(`${globals.baseUrl}flightsReserve/ravisReserveProperty/${this.props.reserveProperties.reqNo}-${this.props.reserveProperties.reqPnr}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.status == "0") {
-                    new Array(parseInt(data.flightReservePropertyModel.numADL)).fill().forEach(x => {
-                        this.addNewPassenger("ADL", data.flightReservePropertyModel.priceADL)
-                    })
-                    Array(parseInt(data.flightReservePropertyModel.numCHD)).fill().forEach(x => {
-                        this.addNewPassenger("CHD", data.flightReservePropertyModel.priceCHD)
-                    })
-                    Array(parseInt(data.flightReservePropertyModel.numINF)).fill().forEach(x => {
-                        this.addNewPassenger("INF", data.flightReservePropertyModel.priceINF)
-                    })
+     componentDidMount() {
+    
+         this.props.addReservationProperties({
+            reqNo: this.props.router.asPath.split("/")[5],
+            reqPnr: this.props.router.asPath.split("/")[6],
+            priceMessage :""
+        });
+        fetch(`${globals.baseUrl}flightsReserve/ravisReserveProperty/${this.props.router.asPath.split("/")[5]}-${this.props.router.asPath.split("/")[6]}`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.status == "0") {
+                new Array(parseInt(data.flightReservePropertyModel.numADL)).fill().forEach(x => {
+                    this.addNewPassenger("ADL", data.flightReservePropertyModel.priceADL)
+                })
+                Array(parseInt(data.flightReservePropertyModel.numCHD)).fill().forEach(x => {
+                    this.addNewPassenger("CHD", data.flightReservePropertyModel.priceCHD)
+                })
+                Array(parseInt(data.flightReservePropertyModel.numINF)).fill().forEach(x => {
+                    this.addNewPassenger("INF", data.flightReservePropertyModel.priceINF)
+                })
 
-                    this.setState({
-                        ...data.flightReservePropertyModel
-                    })
-                } else {
+                this.setState({
+                    ...data.flightReservePropertyModel
+                })
+            } else {
 
-                }
+            }
 
-            })
+        })
     }
-
     fillPassengersData = (field, passengerNo, value) => {
 
         let passenger = this.state.passengers.find(x => x.id == passengerNo)
@@ -274,7 +280,9 @@ class FlightReserve extends React.Component {
                 }
             })
     }
+    
     render() {
+       
         return (
             <div className="container-fluid">
                 <div className={styles['flight-detail']}>
@@ -461,6 +469,7 @@ const mapStateToProps = (state) => ({
     reserveProperties: selectProperties(state)
 })
 const mapDispatchToProps = (dispatch) => ({
+    addReservationProperties: async value => dispatch(addReservationProperties(value)),
     messageBoxModify: value => dispatch(messageBoxModify(value))
 })
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FlightReserve))

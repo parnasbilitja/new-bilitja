@@ -8,7 +8,7 @@ import styles from  '../../../styles/FlightList.module.scss'
 
 import { moneyFormat } from '../../Utils/SimpleTasks'
 // just a function component to show existing flights
-const FlightList = (props)=> {
+const ShowFlightList = (props)=> {
         return (
             <div>
                 {
@@ -48,7 +48,7 @@ const FlightList = (props)=> {
                             <div className={styles['one-row-date']}>
                                 <div>{oneFlight.flightDay}</div>
                                 <div>{oneFlight.flightDate}</div>
-                                <div>{oneFlight.flightDateM}</div>
+                                <div dir='ltr'>{oneFlight.flightDateM}</div>
                             </div>
                             <div className={styles['one-row-time']}>
                                 <div>
@@ -75,4 +75,4 @@ const FlightList = (props)=> {
         )
     
 }
-export default FlightList
+export default ShowFlightList
