@@ -12,6 +12,9 @@ import { selectProperties } from '../../Redux/Reserve/reserve.reselect'
 import { messageBoxModify } from '../../Redux/UI/ui.action'
 import PopUpWide from '../component/PopUpWide.component'
 import FlightPassengerEditForm from './FlightPassengerEditForm.component'
+import { addReservationProperties } from '../../Redux/Reserve/reserve.action'
+import  { withRouter } from 'next/router'
+
 class FlightReciept extends React.Component {
     constructor(props) {
         super(props)
@@ -39,7 +42,12 @@ class FlightReciept extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`${globals.baseUrl}flightsReserve/ravisReserveProperty/${this.props.reserveProperties.reqNo}-${this.props.reserveProperties.reqPnr}`)
+        this.props.addReservationProperties({
+            reqNo: this.props.router.asPath.split("/")[3],
+            reqPnr: this.props.router.asPath.split("/")[4],
+            priceMessage :""
+        });
+        fetch(`${globals.baseUrl}flightsReserve/ravisReserveProperty/${this.props.router.asPath.split("/")[3]}-${this.props.router.asPath.split("/")[4]}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -209,7 +217,7 @@ class FlightReciept extends React.Component {
                             <FontAwesomeIcon icon={faUser} />
                             مشخصات مسافرین
                         </p>
-                        <table className="table text-right passenger-list-last-payment">
+                        <table className={`table text-right ${styles['passenger-list-last-payment']} `}>
                             <tr className="font-bold-iransanse font-size-13 hidden-xs">
                                 <th></th>
                                 <th>نام</th>
@@ -325,7 +333,7 @@ class FlightReciept extends React.Component {
                                 </div>
                             </div>
                             <div className="col-lg-2 col-0"></div>
-                            <div className="col-lg-4 col-12 payment-container text-right">
+                            <div className={`col-lg-4 col-12 payment-container  text-right`}>
                                 <div className="row">
                                     <div className="col-lg-7 padding-5px">
                                         <a className="btn-encouregment" onClick={() => {
@@ -360,6 +368,7 @@ const mapStateToProps = (state) => ({
     reserveProperties: selectProperties(state)
 })
 const mapDispatchToProps = (dispatch) => ({
+    addReservationProperties: async value => dispatch(addReservationProperties(value)),
     messageBoxModify: value => dispatch(messageBoxModify(value))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(FlightReciept)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FlightReciept))

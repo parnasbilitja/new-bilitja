@@ -49,6 +49,7 @@ mainRouter(pathName) {
     }
     case "flights":{
           if(pathName.indexOf('info')>0 ){
+            console.log('flightreserve from home')
             return <FlightReserve />   ;
           } else if(pathName.indexOf('receipt')>0 ){
             return <FlightReciept />   ;

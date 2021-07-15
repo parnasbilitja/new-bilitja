@@ -17,7 +17,7 @@ import { selectProperties } from '../../Redux/Reserve/reserve.reselect'
 import { messageBoxModify } from '../../Redux/UI/ui.action'
 
 import { isValidIranianNationalCode, moneyFormat, isValidPassportCode } from '../../Utils/SimpleTasks'
-import router, { withRouter } from 'next/router'
+import  {withRouter } from 'next/router'
 
 class FlightReserve extends React.Component {
     constructor(props) {
@@ -271,7 +271,7 @@ class FlightReserve extends React.Component {
         }).then(res => res.json())
             .then(data => {
                 if (data.status == "0") {
-                    this.props.router.push("/بلیط-هواپیما/receipt")
+                    this.props.router.push(`/بلیط-هواپیما/receipt/${data.reqNo}/${data.reqPnr}`)
                 } else {
                     this.props.messageBoxModify({
                         state: true,

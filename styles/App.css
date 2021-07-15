@@ -26,3 +26,6 @@
   width:55px;
   height: 100%;
 }
+.container-fluid{
+  padding:0 30px;
+}
