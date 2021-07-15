@@ -8,8 +8,8 @@ import Villa from '../../src/sources/manager/villa/Villa.page'
 import VillaDetial from '../../src/sources/manager/villa/VilaDetail.page'
 import { useRouter } from 'next/router';
 
-import ManagerNav from '../Components/manager_nav/ManagerNav.component'
-import MessageBox from '../Components/message_box/MessageBox.component'
+import ManagerNav from '../Components/manager/ManagerNav.component'
+import MessageBox from '../Components/message/MessageBox.component'
 import AddVila from '../Components/manager/villa/AddVilla.page'
 import AddCity from '../Components/manager/city/AddCity.page'
 import AddRule from '../Components/manager/rule/AddRule.page'
