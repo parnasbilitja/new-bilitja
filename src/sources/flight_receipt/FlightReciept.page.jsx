@@ -213,11 +213,12 @@ class FlightReciept extends React.Component {
                 <div className="row" style={{ marginTop: 10 }}>
                     <div className="col-lg-1"></div>
                     <div className="col-lg-10 no-padding-xs border-pill-lg">
-                        <p className="text-right font-size-14 color-textpill">
+                        <p className={`text-right font-size-14 ${styles['pcolor-textpill']}  `} >
                             <FontAwesomeIcon icon={faUser} />
                             مشخصات مسافرین
                         </p>
                         <table className={`table text-right ${styles['passenger-list-last-payment']} `}>
+                            <thead>
                             <tr className="font-bold-iransanse font-size-13 hidden-xs">
                                 <th></th>
                                 <th>نام</th>
@@ -229,6 +230,8 @@ class FlightReciept extends React.Component {
                                 <th></th>
 
                             </tr>
+                            </thead>
+                            <tbody>
                             {
 
                                 this.state.birthDayAll_.length > 0 ?
@@ -272,7 +275,9 @@ class FlightReciept extends React.Component {
                                                 </div>
                                             </td>
                                             <td className="hidden-xs">{this.getTicketPrice(this.state.ticketCodeAll_[index])}</td>
-                                            <td><FontAwesomeIcon icon={faEdit} onClick={() => {
+                                            <td >
+                                                <div className='font-size-14'>
+                                                <FontAwesomeIcon icon={faEdit} onClick={() => {
                                                 this.setState({
                                                     current: {
                                                         index: index,
@@ -287,12 +292,15 @@ class FlightReciept extends React.Component {
                                                     this.managePopUpEditForm(true)
                                                 })
 
-                                            }} /></td>
+                                            }} />
+                                            </div>
+                                            </td>
 
                                         </tr>
                                     ))
                                     : null
                             }
+                            </tbody>
                         </table>
                     </div>
                 </div>

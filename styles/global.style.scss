@@ -238,11 +238,11 @@ html {
     height: 34px !important;
     padding: 6px;
     font-size: 13px;
-    border-color: $secondaryColor;
-    color: $secondaryColor;
+    border-color: $secondaryColor !important;
+    color: $secondaryColor !important;
     &:hover {
-        background-color: $secondaryColor;
-        color: $whiteColor;
+        background-color: $secondaryColor !important;
+        color: $whiteColor !important;
     }
 }
 .btn-outlined-cancle-tall {
@@ -325,9 +325,9 @@ html {
 
 .btn-encouregment {
     border-radius: 5px;
-    color: white;
-    background-color: #069e2c;
-    border: 2px solid #069e2c;
+    color: white !important;
+    background-color: #069e2c!important;
+    border: 2px solid #069e2c!important;
     display: inline-block;
     width: 98%;
     margin: auto;
@@ -338,8 +338,8 @@ html {
     font-size: 13px;
     line-height: 30px;
     &:hover {
-        background-color: white;
-        color: #069e2c;
+        background-color: white!important;
+        color: #069e2c!important;
     }
 }
 .without-focus {

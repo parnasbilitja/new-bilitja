@@ -3,7 +3,7 @@ import styles from  "../../../styles/PopUpWide.module.scss"
 const PopUpWide = (props) => {
     return (
         <div style={props.opened ? { display: 'block' } : { display: 'none' }}>
-            <div className="popup-calendar-scrren-saver" onClick={() => {
+            <div className={` ${styles['popup-calendar-scrren-saver']}`} onClick={() => {
                 props.closePopUp(false)
             }} >
 
