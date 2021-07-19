@@ -7,6 +7,10 @@ const INITIAL_STATE = {
     accountBox:{
         state:false,
         type:'login'
+    },
+    accountBox:{
+        state:false,
+        type:'register'
     }
 }
 

@@ -1,10 +1,10 @@
 import React from 'react'
 //import firstTime from '../../../Images/first-time.png'
-import styles from '../../../styles/BecomeMember.module.scss'
+import styles from '../../../styles/BecomeMizban.module.scss'
 import stylesTrack from '../../../styles/TrackOrder.module.scss'
 import PrimaryTextInput from '../component/PrimaryTextInput.component'
 import PrimaryButton from '../component/PrimaryButton.component'
-const BecomeMember = () => {
+const BecomeMizban = () => {
     return (
         <div className="become-host-box-container">
             <br /><br />
@@ -36,4 +36,4 @@ const BecomeMember = () => {
     )
 }
 
-export default BecomeMember
+export default BecomeMizban

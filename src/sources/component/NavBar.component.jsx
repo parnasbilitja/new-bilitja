@@ -39,7 +39,7 @@ class NavBar extends React.Component {
                                     e.preventDefault()
                                     this.props.accountBoxModify({
                                         state: true,
-                                        type: 'login'
+                                        type: 'register'
                                     })
                                 }}>
                                     <i className="kilo-font icon-register"></i>

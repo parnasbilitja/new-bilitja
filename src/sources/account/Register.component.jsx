@@ -34,6 +34,7 @@ class Register extends React.Component {
                 state: true,
                 message: data.message
             })
+
         })
     }
     handleChange = (event) => {
@@ -61,7 +62,7 @@ class Register extends React.Component {
                     </div>
 
                     <div className="col-11 padding-horizental-3px">
-                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
+                        <div className={` form-input-border  `}>
                             <PrimaryTextInput placeHolder="نام کاربری(موبایل)" name="mobile" onChange={this.handleChange} />
                         </div>
                     </div>
@@ -73,7 +74,7 @@ class Register extends React.Component {
                     </div>
 
                     <div className="col-11 padding-horizental-3px">
-                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
+                        <div className={` form-input-border  `}>
                             <PrimaryTextInput placeHolder="نام و نام خانوادگی" name="nameFamily" onChange={this.handleChange} />
                         </div>
                     </div>
@@ -83,7 +84,7 @@ class Register extends React.Component {
                         <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
                     </div>
                     <div className="col-11 padding-horizental-3px">
-                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
+                        <div className={` form-input-border   `}>
                             <PrimaryTextInput placeHolder="رمز عبور" type="password" name="password" onChange={this.handleChange} />
                         </div>
                     </div>
@@ -93,7 +94,7 @@ class Register extends React.Component {
                         <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
                     </div>
                     <div className="col-11 padding-horizental-3px">
-                        <div className={` form-input-border  ${styles['form-input-border-private']} `}>
+                        <div className={` form-input-border  `}>
                             <PrimaryTextInput placeHolder="موبایل معرف" name="mobileMoaref" onChange={this.handleChange} />
                         </div>
                     </div>

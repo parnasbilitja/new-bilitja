@@ -27,7 +27,7 @@ import FlightReserve from './flight_reserve/FlightReseve.page'
 import FlightReciept from './flight_receipt/FlightReciept.page'
 import TrackOrder from './report/TrackOrder.page'
 
-import BecomeMember from './account/BecomeMember.page'
+import BecomeMizban from './account/BecomeMizban.page'
 import {  withRouter } from 'next/router'
 
 class App extends React.Component {
@@ -62,7 +62,7 @@ mainRouter(pathName) {
      case "villa":{
         
           if(pathName.indexOf('intro')>0) {
-                 return <BecomeMember/> 
+                 return <BecomeMizban/> 
             }
             if(pathName.indexOf('reserve')>0 ){
               return <villaReserve/>

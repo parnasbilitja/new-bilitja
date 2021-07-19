@@ -4,7 +4,7 @@ import { selcetAccountBox } from '../../Redux/UI/ui.reselect'
 import { accountBoxModify } from '../../Redux/UI/ui.action'
 import Login from './Login.component'
 import Authentication from './Authentication.component'
-// import Register from './Register.component'
+ import Register from './Register.component'
 // import ForgetPassword from './ForgetPassword.component'
 class Account extends React.Component {
     constructor(props) {
@@ -35,12 +35,12 @@ class Account extends React.Component {
                         :
                         null
                 }
-                {/* {
+                 {
                 this.props.accountBox.type=="register"?
                     <Register/>
                 :
                 null
-            } */}
+            } 
                 {/* {
                 this.props.accountBox.type=="forget"?
                     <ForgetPassword/>
