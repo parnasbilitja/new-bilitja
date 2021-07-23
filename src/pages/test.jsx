@@ -1,12 +1,21 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit,faClock, faCalendar, faUniversity } from '@fortawesome/free-solid-svg-icons'
-export default function test() {
-return (
-<div>
+try {
+    const { data, status } = await GetAdvertsList(page_number);
+    if (status === 200) {
+      setState((prevState) => ({ ...prevState, adverts: data.data }));
+    }
+  } catch ({ response }) {
+    if (response) {
+      if (response.status === 400) {
+        ErrorMessage(ProblemError);
+      } else {
+        ErrorMessage(ProblemError);
+      }
+    } else {
+      ErrorMessage(NetworkError);
+    }
+  }
 
-<FontAwesomeIcon icon={faClock} />
-<FontAwesomeIcon icon={faEdit} />
-</div>
-
-)
-}
+  export const GetAdvertsList = (page_number) => {
+    return get(`${config.api_v1}/Adverts?PageNumber=${page_number}&PageSize=9`);
+  };
+  
