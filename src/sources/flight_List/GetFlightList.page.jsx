@@ -33,8 +33,10 @@ import moment from "jalali-moment";
 import Loading from "../component/Loading.component";
 import MinimumPriceCalendar from "./MinimumPriceCalendar.component";
 
+
 import { getCustomFormat } from "../../Utils/SimpleTasks";
 import { withRouter } from "next/router";
+
 
 class GetFlightList extends React.Component {
   constructor(props) {

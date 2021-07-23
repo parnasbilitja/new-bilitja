@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Provider } from "react-redux";
 import { store, persistor } from "../Redux/store";
@@ -33,3 +34,4 @@ export default function Flights() {
 //   export const GetAdvertsList = (page_number) => {
 //     return get(`${config.api_v1}/Adverts?PageNumber=${page_number}&PageSize=9`);
 //   };
+
