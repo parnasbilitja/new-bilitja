@@ -1,6 +1,5 @@
-const AirportType={
-    ADD_AIRPORTS:"ADD_AIRPORTS"
-}
+const AirportType = {
+  ADD_AIRPORTS: "ADD_AIRPORTS",
+};
 
-
-export default AirportType
+export default AirportType;

@@ -1,19 +1,19 @@
-import React from 'react';
-import { Provider } from 'react-redux'
-import { store, persistor } from '../Redux/store';
+
+import React from "react";
+import { Provider } from "react-redux";
+import { store, persistor } from "../Redux/store";
 //import { PersistGate } from 'redux-persist/integration/react'
 //import reportWebVitals from './reportWebVitals';
-import App from '../../src/sources/App'
-export default function Flights(){
-     return (
-      <Provider store={store}>
-              
-      <App mainRoute='villa'/>
+import App from "../../src/sources/App";
+export default function Flights() {
+  return (
+    <Provider store={store}>
+      <App mainRoute="villa" />
       {/* <reportWebVitals/> */}
     </Provider>
-
-);
+  );
 }
+
 // try {
 //     const { data, status } = await GetAdvertsList(page_number);
 //     if (status === 200) {
@@ -34,4 +34,4 @@ export default function Flights(){
 //   export const GetAdvertsList = (page_number) => {
 //     return get(`${config.api_v1}/Adverts?PageNumber=${page_number}&PageSize=9`);
 //   };
-  
+
