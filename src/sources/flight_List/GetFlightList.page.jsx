@@ -27,7 +27,7 @@ import MinimumPriceCalendar from './MinimumPriceCalendar.component'
 
 import {getCustomFormat} from '../../Utils/SimpleTasks'
 import { withRouter } from 'next/router'
-
+import {addAirports} from '../../Redux/Airports/airport.action'
 class GetFlightList extends React.Component {
     constructor(props) {
         super(props)
