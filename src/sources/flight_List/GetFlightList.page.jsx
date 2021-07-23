@@ -115,28 +115,6 @@ class GetFlightList extends React.Component {
             loading: false,
           });
         });
-    } else {
-      const source = this.props.mohammadsalehAirportsList.find(
-        (x) => x.airportName == src
-      );
-      const destinationn = this.props.mohammadsalehAirportsList.find(
-        (x) => x.airportName == dest
-      );
-      this.props
-        .addCredentials({
-          sourceName: source.airportName,
-          destinationName: destinationn.airportName,
-          source: source.airportCode,
-          dest: destinationn.airportCode,
-          stDate: getCustomFormat(moment().startOf("day"), true),
-          flightDatePersian: getCustomFormat(moment().startOf("day"), false),
-          typeOfCalendar: this.props.typeOfCalendar,
-        })
-        .then(() => {
-          this.setState({
-            loading: false,
-          });
-        });
     }
     //----------------------------
     //   if (this.props.credentials.source == "") {
