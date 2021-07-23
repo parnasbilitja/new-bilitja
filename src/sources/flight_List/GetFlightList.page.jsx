@@ -17,7 +17,10 @@ import { selectSearchObject } from "../../Redux/Search/search.reselect";
 import { selectAirports } from "../../Redux/Airports/airport.reselect";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { addFilters, addCredentials } from "../../Redux/Search/search.action";
-import { addAirports } from "../../Redux/Airports/airport.action";
+import {
+  addAirports,
+  GetAirportsList,
+} from "../../Redux/Airports/airport.action";
 
 import {
   faAngleRight,
@@ -55,8 +58,10 @@ class GetFlightList extends React.Component {
     const dest = decodeURI(path.split("/")[3]);
 
     window.onpopstate = (e) => {
-      const source = this.props.airports.find((x) => x.airportName == src);
-      const destinationn = this.props.airports.find(
+      const source = this.props.mohammadsalehAirportsList.find(
+        (x) => x.airportName == src
+      );
+      const destinationn = this.props.mohammadsalehAirportsList.find(
         (x) => x.airportName == dest
       );
       this.props
@@ -89,61 +94,109 @@ class GetFlightList extends React.Component {
     //  استخراج لیست فرودگاهها
     //
     //////////////////////////
-    if (this.props.credentials.source == "") {
-      if (!this.props.airports) {
-        fetch(`${globals.baseUrl}flights/getAirports`)
-          .then((res) => res.json())
-          .then((json) => {
-            this.props.setAirports(json.flightAirportsModel);
-            const source = json.flightAirportsModel.find(
-              (x) => x.airportName == src
-            );
-            const destinationn = json.flightAirportsModel.find(
-              (x) => x.airportName == dest
-            );
-            this.props
-              .addCredentials({
-                sourceName: source.airportName,
-                destinationName: destinationn.airportName,
-                source: source.airportCode,
-                dest: destinationn.airportCode,
-                stDate: getCustomFormat(moment().startOf("day"), true),
-                flightDatePersian: getCustomFormat(
-                  moment().startOf("day"),
-                  false
-                ),
-                typeOfCalendar: this.props.typeOfCalendar,
-              })
-              .then(() => {
-                this.setState({
-                  loading: false,
-                });
-              });
+
+    // Mohammadsaleh
+    if (this.props.mohammadsalehAirportsList) {
+      const source = this.props.mohammadsalehAirportsList.find(
+        (x) => x.airportName == src
+      );
+      const destinationn = this.props.mohammadsalehAirportsList.find(
+        (x) => x.airportName == dest
+      );
+      this.props
+        .addCredentials({
+          sourceName: source.airportName,
+          destinationName: destinationn.airportName,
+          source: source.airportCode,
+          dest: destinationn.airportCode,
+          stDate: getCustomFormat(moment().startOf("day"), true),
+          flightDatePersian: getCustomFormat(moment().startOf("day"), false),
+          typeOfCalendar: this.props.typeOfCalendar,
+        })
+        .then(() => {
+          this.setState({
+            loading: false,
           });
-      } else {
-        const source = this.props.airports.find((x) => x.airportName == src);
-        const destinationn = this.props.airports.find(
-          (x) => x.airportName == dest
-        );
-        this.props
-          .addCredentials({
-            sourceName: source.airportName,
-            destinationName: destinationn.airportName,
-            source: source.airportCode,
-            dest: destinationn.airportCode,
-            stDate: getCustomFormat(moment().startOf("day"), true),
-            flightDatePersian: getCustomFormat(moment().startOf("day"), false),
-            typeOfCalendar: this.props.typeOfCalendar,
-          })
-          .then(() => {
-            this.setState({
-              loading: false,
-            });
-          });
-      }
+        });
     } else {
-      this.getData();
+      const source = this.props.mohammadsalehAirportsList.find(
+        (x) => x.airportName == src
+      );
+      const destinationn = this.props.mohammadsalehAirportsList.find(
+        (x) => x.airportName == dest
+      );
+      this.props
+        .addCredentials({
+          sourceName: source.airportName,
+          destinationName: destinationn.airportName,
+          source: source.airportCode,
+          dest: destinationn.airportCode,
+          stDate: getCustomFormat(moment().startOf("day"), true),
+          flightDatePersian: getCustomFormat(moment().startOf("day"), false),
+          typeOfCalendar: this.props.typeOfCalendar,
+        })
+        .then(() => {
+          this.setState({
+            loading: false,
+          });
+        });
     }
+    //----------------------------
+    //   if (this.props.credentials.source == "") {
+    //     if (!this.props.airports) {
+    //       fetch(`${globals.baseUrl}flights/getAirports`)
+    //         .then((res) => res.json())
+    //         .then((json) => {
+    //           this.props.setAirports(json.flightAirportsModel);
+    //           const source = json.flightAirportsModel.find(
+    //             (x) => x.airportName == src
+    //           );
+    //           const destinationn = json.flightAirportsModel.find(
+    //             (x) => x.airportName == dest
+    //           );
+    //           this.props
+    //             .addCredentials({
+    //               sourceName: source.airportName,
+    //               destinationName: destinationn.airportName,
+    //               source: source.airportCode,
+    //               dest: destinationn.airportCode,
+    //               stDate: getCustomFormat(moment().startOf("day"), true),
+    //               flightDatePersian: getCustomFormat(
+    //                 moment().startOf("day"),
+    //                 false
+    //               ),
+    //               typeOfCalendar: this.props.typeOfCalendar,
+    //             })
+    //             .then(() => {
+    //               this.setState({
+    //                 loading: false,
+    //               });
+    //             });
+    //         });
+    //     } else {
+    //       const source = this.props.airports.find((x) => x.airportName == src);
+    //       const destinationn = this.props.airports.find(
+    //         (x) => x.airportName == dest
+    //       );
+    //       this.props
+    //         .addCredentials({
+    //           sourceName: source.airportName,
+    //           destinationName: destinationn.airportName,
+    //           source: source.airportCode,
+    //           dest: destinationn.airportCode,
+    //           stDate: getCustomFormat(moment().startOf("day"), true),
+    //           flightDatePersian: getCustomFormat(moment().startOf("day"), false),
+    //           typeOfCalendar: this.props.typeOfCalendar,
+    //         })
+    //         .then(() => {
+    //           this.setState({
+    //             loading: false,
+    //           });
+    //         });
+    //     }
+    //   } else {
+    //     this.getData();
+    //   }
   }
 
   managePopUpSearch = (value) => {
@@ -164,7 +217,6 @@ class GetFlightList extends React.Component {
     //  استخراج لیست پروازها
     //
     //////////////////////////
-
     this.setState({ loading: true, open: false });
     fetch(`${globals.baseUrl}flights/getFlights`, {
       method: "POST",
@@ -395,6 +447,7 @@ class GetFlightList extends React.Component {
 const mapStatesToProps = (state) => ({
   credentials: selectSearchObject(state),
   airports: selectAirports(state),
+  mohammadsalehAirportsList: state.mohammadsalehAirports,
 });
 
 const mapDispatchesToProps = (dispatch) => ({
@@ -402,6 +455,7 @@ const mapDispatchesToProps = (dispatch) => ({
   addFilters: (value) => dispatch(addFilters(value)),
   addCredentials: async (value) => dispatch(addCredentials(value)),
   messageBoxModify: (value) => dispatch(messageBoxModify(value)),
+  GetAirportsList: () => dispatch(GetAirportsList()),
 });
 export default withRouter(
   connect(mapStatesToProps, mapDispatchesToProps)(GetFlightList)
