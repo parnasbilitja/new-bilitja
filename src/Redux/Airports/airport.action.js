@@ -6,9 +6,3 @@ export const addAirports = (value) => {
     payload: value,
   };
 };
-
-export const GetAirportsList = () => {
-  return {
-    type: AirportType.GET_AIRPORTS_LIST,
-  };
-};

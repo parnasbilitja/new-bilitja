@@ -20,7 +20,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { selectAirports } from "../Redux/Airports/airport.reselect";
 import { selectAccount } from "../Redux/Account/account.reselect";
 import { addAccountProperties } from "../Redux/Account/account.action";
-import { addAirports, GetAirportsList } from "../Redux/Airports/airport.action";
+import { addAirports } from "../Redux/Airports/airport.action";
 import { connect } from "react-redux";
 import { compareTwoStringDates } from "../Utils/SimpleTasks";
 
@@ -34,7 +34,7 @@ class Home extends React.Component {
   }
   componentDidMount() {
     //   Mohammadsaleh Dispatch and Get Airports List
-    this.props.GetAirportsList();
+    this.props.setAirports(this.props.mohammadsalehAirportsList);
 
     // Last Code
     // ----------------
@@ -322,6 +322,5 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setAirports: (value) => dispatch(addAirports(value)),
   addAccountProperties: (value) => dispatch(addAccountProperties(value)),
-  GetAirportsList: () => dispatch(GetAirportsList()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

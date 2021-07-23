@@ -17,10 +17,7 @@ import { selectSearchObject } from "../../Redux/Search/search.reselect";
 import { selectAirports } from "../../Redux/Airports/airport.reselect";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { addFilters, addCredentials } from "../../Redux/Search/search.action";
-import {
-  addAirports,
-  GetAirportsList,
-} from "../../Redux/Airports/airport.action";
+import { addAirports } from "../../Redux/Airports/airport.action";
 
 import {
   faAngleRight,
@@ -85,8 +82,6 @@ class GetFlightList extends React.Component {
     const path = this.props.router.asPath;
     const src = decodeURI(path.split("/")[2]);
     const dest = decodeURI(path.split("/")[3]);
-
-    this.props.GetAirportsList();
 
     // console.log("abc");
     // console.log(src);
@@ -457,7 +452,6 @@ const mapDispatchesToProps = (dispatch) => ({
   addFilters: (value) => dispatch(addFilters(value)),
   addCredentials: async (value) => dispatch(addCredentials(value)),
   messageBoxModify: (value) => dispatch(messageBoxModify(value)),
-  GetAirportsList: () => dispatch(GetAirportsList()),
 });
 export default withRouter(
   connect(mapStatesToProps, mapDispatchesToProps)(GetFlightList)
