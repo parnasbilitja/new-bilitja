@@ -86,6 +86,8 @@ class GetFlightList extends React.Component {
     const src = decodeURI(path.split("/")[2]);
     const dest = decodeURI(path.split("/")[3]);
 
+    this.props.GetAirportsList();
+
     // console.log("abc");
     // console.log(src);
     // console.log(dest);
