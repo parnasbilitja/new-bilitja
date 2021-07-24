@@ -15,6 +15,7 @@ class Authentication extends React.Component {
     super(props);
     this.state = {
       token: "",
+      forseUpdate: false,
     };
   }
   handleChange = (event) => {
@@ -35,8 +36,15 @@ class Authentication extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "0") {
-          document.cookie = `mobile=${data.mobile}`;
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+          localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
+          this.props.accountBoxModify({
+            state: false,
+            type: "authentication",
+          });
           this.props.addAccountProperties({
             token: data.token,
             dateLogin: moment().format("YYYY/MM/DD"),

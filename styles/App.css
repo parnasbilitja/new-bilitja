@@ -26,6 +26,12 @@
 .container-fluid {
   padding: 0 30px;
 }
-.text-center {
+.user-mobile-content {
   text-align: center !important;
+  display: flex !important;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  margin-top: 8px;
+  padding-bottom: 8px;
 }

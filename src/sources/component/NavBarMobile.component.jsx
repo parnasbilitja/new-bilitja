@@ -22,7 +22,7 @@ class NavBarMobile extends React.Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token) {
-      const user_mobile = document.cookie.slice(7, 18);
+      const user_mobile = localStorage.getItem("mobile");
       const current_state = { ...this.state };
       current_state.logged = true;
       current_state.mobile = user_mobile;

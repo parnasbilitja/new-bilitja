@@ -20,7 +20,7 @@ class NavBar extends React.Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token) {
-      const user_mobile = document.cookie.slice(7, 18);
+      const user_mobile = localStorage.getItem("mobile");
       const current_state = { ...this.state };
       current_state.logged = true;
       current_state.mobile = user_mobile;
@@ -40,15 +40,19 @@ class NavBar extends React.Component {
             </a>
           </div>
           <div className="font-size-12">
-            <div className={styles[("nav-detail-first-line", "text-center")]}>
+            <div
+              className={
+                this.state.logged === true
+                  ? "user-mobile-content"
+                  : styles["nav-detail-first-line"]
+              }
+            >
               {this.state.logged === true ? (
-                <div className={styles["nav-detail-second-line"]}>
+                <div>
                   <a href="#">
-                    <span>شماره موبایل : </span>
                     <i className="kilo-font icon-login"></i>
-                    <span>{this.state.mobile}</span>
+                    {this.state.mobile}
                   </a>
-                  <hr />
                 </div>
               ) : (
                 <>
