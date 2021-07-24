@@ -15,10 +15,11 @@ import Account from "./account/Account.component";
 import { connect } from "react-redux";
 import { selcetAccountBox } from "../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../Redux/UI/ui.action";
-import villaPage from "./villa/villa.page";
-import villaList from "./villa_list/villaList.page";
-import villaReserve from "./villa/villaReserve.page";
-import villaReceipt from "./villa/villaReceipt.page";
+
+import VillaPage from "./villa/villa.page";
+import VillaList from "./villa_list/villaList.page";
+import VillaReserve from "./villa/villaReserve.page";
+import VillaReceipt from "./villa/villaReceipt.page";
 
 import GetFlightList from "./flight_List/GetFlightList.page";
 import FlightReserve from "./flight_reserve/FlightReseve.page";
@@ -60,15 +61,15 @@ class App extends React.Component {
           return <BecomeMizban />;
         }
         if (pathName.indexOf("reserve") > 0) {
-          return <villaReserve />;
+          return <VillaReserve />;
         }
         if (pathName.indexOf("receipt") > 0) {
-          return <villaReceipt />;
+          return <VillaReceipt />;
         }
         if (pathName.length < 7) {
-          return <villaPage />;
+          return <VillaPage />;
         } else {
-          return <villaList />;
+          return <VillaList />;
         }
       }
 
