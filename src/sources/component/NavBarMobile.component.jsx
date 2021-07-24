@@ -43,7 +43,10 @@ class NavBarMobile extends React.Component {
       <nav className={styles["nav-mobile"]}>
         <div className={styles["nav-text-detail-mobile"]}>
           <div className="pull-right">
-            <i className="kilo-font icon-login font-size-14 color-black"></i>
+            <i
+              className="kilo-font icon-login font-size-14 color-black"
+              style={{ width: "0.875em", height: "1em" }}
+            ></i>
             {this.state.logged === true ? (
               <>
                 <a
