@@ -1,15 +1,27 @@
-@import './values.module.scss';
-.primary-button{
-    height: 100%;
-    width: 100%;
-    background-color: $primaryColor;
-    border-radius: $borderRadius;
+@import "./values.module.scss";
+.primary-button {
+  height: 100%;
+  width: 100%;
+  background-color: $primaryColor;
+  border-radius: $borderRadius;
+  color: $whiteColor !important;
+  outline: initial !important;
+  border: solid 2px $primaryColor;
+  &:hover {
+    background-color: white;
+    color: $primaryColor !important;
+  }
+}
+.disable-button {
+  height: 100%;
+  width: 100%;
+  background-color: $disabledBtn;
+  border-radius: $borderRadius;
+  color: $whiteColor !important;
+  outline: initial !important;
+  border: solid 2px $primaryColor;
+  &:hover {
+    background-color: $disabledBtn;
     color: $whiteColor !important;
-    outline:initial !important;
-    border: solid 2px $primaryColor;
-    &:hover{
-        background-color: white;
-        color:$primaryColor !important;  
-
-    }
+  }
 }

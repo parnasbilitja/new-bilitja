@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faLock } from "@fortawesome/free-solid-svg-icons";
 import PrimaryTextInput from "../component/PrimaryTextInput.component";
-import PrimaryButton from "../component/PrimaryButton.component";
+import styles from "../../../styles/PrimaryButton.module.scss";
 import moment from "moment-jalaali";
 
 import { connect } from "react-redux";
@@ -10,12 +10,15 @@ import { accountBoxModify, messageBoxModify } from "../../Redux/UI/ui.action";
 import { addAccountProperties } from "../../Redux/Account/account.action";
 
 import globals from "../Global";
+import { Loader } from "./../../Utils/Loader";
 class Authentication extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       token: "",
       forseUpdate: false,
+      btn_disabled: false,
+      loading: false,
     };
   }
   handleChange = (event) => {
@@ -25,6 +28,7 @@ class Authentication extends React.Component {
     });
   };
   loginWithToken = () => {
+    this.setState({ btn_disabled: true, loading: true });
     fetch(`${globals.baseUrl}account/auth/checkUser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -36,11 +40,12 @@ class Authentication extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "0") {
+          this.setState({ btn_disabled: false, loading: false });
+          localStorage.setItem("mobile", data.mobile);
+          localStorage.setItem("token", data.token);
           setTimeout(() => {
             window.location.reload();
           }, 2000);
-          localStorage.setItem("mobile", data.mobile);
-          localStorage.setItem("token", data.token);
           this.props.accountBoxModify({
             state: false,
             type: "authentication",
@@ -54,6 +59,7 @@ class Authentication extends React.Component {
             message: "ورود شما موفقیت آمیز بود.",
           });
         } else {
+          this.setState({ btn_disabled: false, loading: false });
           this.props.messageBoxModify({
             state: true,
             message: data.message,
@@ -94,12 +100,19 @@ class Authentication extends React.Component {
 
         <div className="row">
           <div className="form-input-border without-focus col-12">
-            <PrimaryButton
-              defaultValue={"ورود"}
+            <button
               onClick={(e) => {
                 this.loginWithToken();
               }}
-            />
+              className={
+                this.props.disabled === false
+                  ? "btn btn-info py-3 mb-3 col-12 btn-block"
+                  : styles["primary-button"]
+              }
+              disabled={this.state.btn_disabled}
+            >
+              {this.state.loading === false ? "  ورود" : <Loader />}
+            </button>
           </div>
         </div>
         {/* <div className="row">

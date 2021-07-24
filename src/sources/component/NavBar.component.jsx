@@ -27,6 +27,15 @@ class NavBar extends React.Component {
       this.setState(current_state);
     }
   }
+
+  handleLogoutUser() {
+    localStorage.removeItem("mobile");
+    localStorage.removeItem("token");
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+  }
+
   render() {
     return (
       <nav className={styles.navVar}>
@@ -48,12 +57,20 @@ class NavBar extends React.Component {
               }
             >
               {this.state.logged === true ? (
-                <div>
-                  <a href="#">
-                    <i className="kilo-font icon-login"></i>
-                    {this.state.mobile}
-                  </a>
-                </div>
+                <>
+                  <div>
+                    <a href="#">
+                      <i className="kilo-font icon-login"></i>
+                      {this.state.mobile}
+                    </a>
+                  </div>
+                  <span className="mx-2"> /</span>
+                  <div>
+                    <a href="/" onClick={this.handleLogoutUser}>
+                      خروج
+                    </a>
+                  </div>
+                </>
               ) : (
                 <>
                   <div>

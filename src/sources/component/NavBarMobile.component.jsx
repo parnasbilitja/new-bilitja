@@ -29,6 +29,14 @@ class NavBarMobile extends React.Component {
       this.setState(current_state);
     }
   }
+
+  handleLogoutUser() {
+    localStorage.removeItem("mobile");
+    localStorage.removeItem("token");
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+  }
   render() {
     return (
       /*<div className={styles['error-mobile']}> hghgshghgsd</div>*/
@@ -37,22 +45,28 @@ class NavBarMobile extends React.Component {
           <div className="pull-right">
             <i className="kilo-font icon-login font-size-14 color-black"></i>
             {this.state.logged === true ? (
-              <a
-                href=""
-                className="font-size-13 color-black"
-                onClick={(e) => {
-                  e.preventDefault();
-                  this.props.accountBoxModify({
-                    state: true,
-                    type: "login",
-                  });
-                }}
-              >
-                <span className="font-bold-iransanse">
-                  شماره موبایل : {this.state.mobile}{" "}
-                </span>
-                /
-              </a>
+              <>
+                <a
+                  href=""
+                  className="font-size-13 color-black"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    this.props.accountBoxModify({
+                      state: true,
+                      type: "login",
+                    });
+                  }}
+                >
+                  <span className="font-bold-iransanse">
+                    شماره موبایل : {this.state.mobile}{" "}
+                  </span>
+                </a>
+                <span className="mx-2">/</span>
+
+                <a href="/" className="mx-2" onClick={this.handleLogoutUser}>
+                  خروج از حساب کاربری
+                </a>
+              </>
             ) : (
               <>
                 {" "}
