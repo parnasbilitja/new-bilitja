@@ -39,3 +39,109 @@
 input[type="button"]:hover {
   cursor: pointer !important;
 }
+
+.profile-img {
+  width: 220px;
+  height: 220px;
+}
+.title-box {
+  background-color: #f6f6f6;
+  border-right: 3px solid #279692;
+  padding: 3px 8px;
+  border-radius: 3px 0 0 3px;
+  font-family: IranBold !important;
+  font-size: 13px;
+  align-items: center;
+  display: flex;
+  height: 35px;
+}
+.text-box {
+  background-color: #f6f6f6;
+  padding: 6px 10px;
+  border-radius: 3px;
+  font-family: IranBold !important;
+  font-size: 13px;
+  align-items: center;
+  display: flex;
+  height: 35px;
+  margin-right: 10px;
+}
+.complate-profile-input {
+  height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.complate-profile-input:focus {
+  outline: none;
+  border-bottom: 1px solid red;
+}
+
+.menu-btn {
+  border: 1px solid #279692 !important;
+  border-radius: 4px !important;
+  color: #279692 !important;
+  font-size: 13px;
+  font-family: IranBold !important;
+}
+.active-menu {
+  background-color: #279692 !important;
+  color: #fff !important;
+}
+.menu-btn:hover {
+  background-color: #279692 !important;
+  color: #fff !important;
+}
+
+@media (max-width: 768px) {
+  .text-box {
+    margin-right: 0 !important;
+    border-top: 1px solid #ccc !important;
+  }
+}
+
+.button-wrapper {
+  position: relative;
+  width: 150px;
+  text-align: center;
+  margin: 10px auto;
+}
+
+.button-wrapper span.label {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  width: 100%;
+  background: #00bfff;
+  cursor: pointer;
+  color: #fff;
+  padding: 10px 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+#upload {
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 50px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.change-password-input {
+  border: 1px solid #ccc;
+  height: 50px;
+  border-radius: 6px;
+}
+.change-password-input:focus {
+  outline: none !important;
+  border-bottom: 1px solid red !important;
+}
+
+.change-password-btn {
+  height: 50px !important;
+}
