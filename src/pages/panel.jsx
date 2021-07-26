@@ -23,6 +23,11 @@ import UpdateVila from "../sources/manager/villa/UpdateVila.page";
 import VilaDetial from "../sources/manager/villa/VilaDetail.page";
 import VilaReservation from "../sources/manager/villa/VilaReservation.page";
 
+import Profile from "./../sources/manager/profile/Profile.component";
+import ComplateProfile from "./../sources/manager/profile/ComplateProfile.component";
+import EditProfile from "./../sources/manager/profile/EditProfile.component";
+import ChangePassword from "./../sources/manager/profile/ChangePassword.components";
+
 export default function ManagePanel() {
   const myRouter = useRouter();
   const [width, setWidth] = useState(0);
@@ -113,7 +118,16 @@ export default function ManagePanel() {
       case "/panel/facility/show":
         return <ShowallFacilities />;
       //   case '/panel/facility/show/:id' : return <UpdateFacility/>  ;
-
+      case "/panel/profile":
+        return <Profile />;
+      case "/panel/index":
+        return <h1>No Content Yet</h1>;
+      case "/panel/complate-profile":
+        return <ComplateProfile />;
+      case "/panel/edit-profile":
+        return <EditProfile />;
+      case "/panel/change-password":
+        return <ChangePassword />;
       default:
         return <div />;
     }

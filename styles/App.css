@@ -1,5 +1,5 @@
-a:hover {
-  cursor: pointer !important;
+body {
+  font-family: IranBold !important;
 }
 .cursor-pointer {
   cursor: pointer !important;
@@ -24,6 +24,7 @@ a:hover {
 }
 .panel-manager-content-container {
   padding: 10px 20px;
+  height: 100vh;
 }
 .imgbarcode {
   width: 55px;
@@ -164,4 +165,12 @@ input[type="button"]:hover {
 .dashboard-manager-content-container {
   height: 100vh !important;
   padding: 20px;
+}
+
+.panel-menu-item:hover {
+  background-color: #fff;
+}
+.panel-menu-item-active {
+  background-color: #fff;
+  border-left: 3px solid wheat;
 }
