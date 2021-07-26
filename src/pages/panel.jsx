@@ -22,13 +22,6 @@ import UpdateRule from "../sources/manager/rule/UpdateRule.page";
 import UpdateVila from "../sources/manager/villa/UpdateVila.page";
 import VilaDetial from "../sources/manager/villa/VilaDetail.page";
 import VilaReservation from "../sources/manager/villa/VilaReservation.page";
-import Profile from "../sources/manager/profile/Profile.component";
-import ComplateProfile from "../sources/manager/profile/ComplateProfile.component";
-import EditProfile from "./../sources/manager/profile/EditProfile.component";
-import ChangePassword from "../sources/manager/profile/ChangePassword.components";
-import OrderList from "../sources/manager/orders/OrderList.component";
-import WalletBalanc from "../sources/manager/wallet/Wallet.component";
-import MyVilla from "./../sources/manager/villa/MyVilla.component";
 
 export default function ManagePanel() {
   const myRouter = useRouter();
@@ -120,24 +113,6 @@ export default function ManagePanel() {
       case "/panel/facility/show":
         return <ShowallFacilities />;
       //   case '/panel/facility/show/:id' : return <UpdateFacility/>  ;
-
-      case "/panel/profile":
-        return <Profile />;
-      case "/panel/complate-profile":
-        return <ComplateProfile />;
-      case "/panel/edit-profile":
-        return <EditProfile />;
-      case "/panel/change-password":
-        return <ChangePassword />;
-
-      case "/panel/orders":
-        return <OrderList />;
-
-      case "/panel/wallet":
-        return <WalletBalanc />;
-
-      case "/panel/my-villa":
-        return <MyVilla />;
 
       default:
         return <div />;

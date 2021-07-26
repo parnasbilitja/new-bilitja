@@ -5,12 +5,7 @@ import styles from "../../../styles/ManagerNav.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArchway,
-  faBars,
-  faChartLine,
-  faDollarSign,
-  faHandshake,
-  faInfoCircle,
-  faUserAlt,
+  faBars, 
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 
@@ -23,7 +18,7 @@ const ManagerNav = (props) => {
     setMobile(localStorage.getItem("mobile"));
   }, []);
   return (
-    <>
+    <div>
       <div className={styles["manager-small-screen-top-bar"]}>
         <FontAwesomeIcon
           icon={faBars}
@@ -40,95 +35,15 @@ const ManagerNav = (props) => {
         <div className={styles["manager-nav-header"]}>
           <img src="../../../Images/bilitja-logo.png" />
         </div>
-        <div className={styles["manager-nav-one-row"]}>
-          <div>
-            <FontAwesomeIcon icon={faUserAlt} />
-          </div>
-          <div
+        <div className={styles["manager-small-screen-top-bar"]}>
+          <FontAwesomeIcon
+            icon={faBars}
             onClick={() => {
-              myRouter.push("/panel/profile");
+              setOpend(!isOpend);
             }}
-          >
-            <p className="no-margin font-size-13 font-bold-iransanse">
-              پروفایل
-            </p>
-            <p className="no-margin font-size-13 color-textpill">{mobile}</p>
-          </div>
+          />
         </div>
         <div className={styles["manager-nav-one-row"]}>
-          <div>
-            <FontAwesomeIcon icon={faChartLine} />
-          </div>
-          <div
-            onClick={() => {
-              myRouter.push("/panel/profile");
-            }}
-          >
-            <p className="no-margin font-size-13 font-bold-iransanse">
-              داشبورد
-            </p>
-            <p className="no-margin font-size-13 color-textpill">Dashboard</p>
-          </div>
-        </div>
-        <div className={styles["manager-nav-one-row"]}>
-          <div>
-            <FontAwesomeIcon icon={faInfoCircle} />
-          </div>
-          <div
-            onClick={() => {
-              myRouter.push("/panel/orders");
-            }}
-          >
-            <p className="no-margin font-size-13 font-bold-iransanse">
-              گزارشات
-            </p>
-            <p className="no-margin font-size-13 color-textpill">Orders</p>
-          </div>
-        </div>
-        <div className={styles["manager-nav-one-row"]}>
-          <div>
-            <FontAwesomeIcon icon={faDollarSign} />
-          </div>
-          <div
-            onClick={() => {
-              myRouter.push("/panel/wallet");
-            }}
-          >
-            <p className="no-margin font-size-13 font-bold-iransanse">مالی</p>
-            <p className="no-margin font-size-13 color-textpill">Wallet</p>
-          </div>
-        </div>
-        <div className={styles["manager-nav-one-row"]}>
-          <div>
-            <FontAwesomeIcon icon={faArchway} />
-          </div>
-          <div
-            onClick={() => {
-              myRouter.push("/panel/my-villa");
-            }}
-          >
-            <p className="no-margin font-size-13 font-bold-iransanse">
-              اقامتگاه
-            </p>
-            <p className="no-margin font-size-13 color-textpill">Villas</p>
-          </div>
-        </div>
-        <div className={styles["manager-nav-one-row"]}>
-          <div>
-            <FontAwesomeIcon icon={faHandshake} />
-          </div>
-          <div
-            onClick={() => {
-              myRouter.push("/panel/profile");
-            }}
-          >
-            <p className="no-margin font-size-13 font-bold-iransanse">
-              همکاری با ما
-            </p>
-            <p className="no-margin font-size-13 color-textpill">Cooperation</p>
-          </div>
-        </div>
-        {/* <div className={styles["manager-nav-one-row"]}>
           <div>
             <FontAwesomeIcon icon={faArchway} />
           </div>
@@ -181,9 +96,9 @@ const ManagerNav = (props) => {
             <p className="no-margin font-size-13 font-bold-iransanse">قوانین</p>
             <p className="no-margin font-size-13 color-textpill">Rules</p>
           </div>
-        </div> */}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 export default ManagerNav;

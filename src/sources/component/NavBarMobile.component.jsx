@@ -5,6 +5,7 @@ import styles from "../../../styles/NavBarMobile.module.scss";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SlideIn from "./SlideIn.component";
+import Link from "next/link";
 
 import { connect } from "react-redux";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
@@ -43,27 +44,26 @@ class NavBarMobile extends React.Component {
       <nav className={styles["nav-mobile"]}>
         <div className={styles["nav-text-detail-mobile"]}>
           <div className="pull-right">
-            <i
-              className="kilo-font icon-login color-black"
-              style={{ width: "0.875em", height: "1em" }}
-            ></i>
+            <FontAwesomeIcon icon={faBars} />
             {this.state.logged === true ? (
               <>
-                <a
-                  href=""
-                  className="font-size-13 color-black"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    this.props.accountBoxModify({
-                      state: true,
-                      type: "login",
-                    });
-                  }}
-                >
-                  <span className="font-bold-iransanse">
-                    شماره موبایل : {this.state.mobile}{" "}
-                  </span>
-                </a>
+                <Link href="/dashboard">
+                  <a
+                    href=""
+                    className="font-size-13 color-black"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      this.props.accountBoxModify({
+                        state: true,
+                        type: "login",
+                      });
+                    }}
+                  >
+                    <span className="font-bold-iransanse">
+                      شماره موبایل : {this.state.mobile}{" "}
+                    </span>
+                  </a>
+                </Link>
                 <span className="mx-2">/</span>
 
                 <a href="/" className="mx-2" onClick={this.handleLogoutUser}>

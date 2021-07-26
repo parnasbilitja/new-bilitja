@@ -2,6 +2,7 @@ import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../../../../styles/PrimaryButton.module.scss";
 import RouteButtons from "./RouteButtons.components";
+import { withRouter } from "next/router";
 
 const ChangePassword = () => {
   return (
@@ -43,4 +44,4 @@ const ChangePassword = () => {
   );
 };
 
-export default ChangePassword;
+export default withRouter(ChangePassword);

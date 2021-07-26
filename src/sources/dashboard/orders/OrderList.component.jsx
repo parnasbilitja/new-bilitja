@@ -1,3 +1,5 @@
+import { withRouter } from "next/router";
+
 const OrderList = () => {
   return (
     <section>
@@ -53,4 +55,4 @@ const OrderList = () => {
   );
 };
 
-export default OrderList;
+export default withRouter(OrderList);

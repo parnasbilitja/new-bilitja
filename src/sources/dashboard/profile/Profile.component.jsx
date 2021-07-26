@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import RouteButtons from "./RouteButtons.components";
+import { withRouter } from "next/router";
 
 const Profile = () => {
   return (
@@ -81,4 +82,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withRouter(Profile);

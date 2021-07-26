@@ -1,3 +1,5 @@
+import { withRouter } from "next/router";
+
 const MyVilla = () => {
   return (
     <div className="border-bottom-black panel-header">
@@ -12,4 +14,4 @@ const MyVilla = () => {
   );
 };
 
-export default MyVilla;
+export default withRouter(MyVilla);

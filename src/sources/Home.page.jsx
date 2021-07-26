@@ -151,12 +151,16 @@ class Home extends React.Component {
           <div className="col-md-1"></div>
           <div className={`col-md-10 ${styles["home-tour-intro"]} `}>
             <p>دیدن تور های ویژه</p>
-            <div>
+            <div className="align-center">
               <p>
                 تور های ویژه گردشگری ، بازدید از موزه ها و مکان های دیدنی کشور
                 ها
               </p>
-              <a href="#" className="pull-left btn-fiiled">
+              <a
+                href="#"
+                className="pull-left btn-fiiled mx-2  py-3 col-lg-2 mb-4 text-center"
+                style={{ fontSize: "13px" }}
+              >
                 جستجوی مقاصد
               </a>
             </div>

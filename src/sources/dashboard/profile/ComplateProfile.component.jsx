@@ -3,6 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../../../../styles/PrimaryButton.module.scss";
 import RouteButtons from "./RouteButtons.components";
+import { withRouter } from "next/router";
 
 const ComplateProfile = () => {
   return (
@@ -110,4 +111,4 @@ const ComplateProfile = () => {
   );
 };
 
-export default ComplateProfile;
+export default withRouter(ComplateProfile);

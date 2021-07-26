@@ -8,10 +8,10 @@ const RouteButtons = () => {
     <section>
       <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li className="nav-item" role="presentation">
-          <Link href="/panel/profile">
+          <Link href="/dashboard/profile">
             <button
               className={
-                path === "/panel/profile"
+                path === "/dashboard/profile"
                   ? "menu-btn nav-link mx-2 active-menu"
                   : "menu-btn nav-link mx-2"
               }
@@ -21,10 +21,10 @@ const RouteButtons = () => {
           </Link>
         </li>
         <li className="nav-item" role="presentation">
-          <Link href="/panel/complate-profile">
+          <Link href="/dashboard/complate-profile">
             <button
               className={
-                path === "/panel/complate-profile"
+                path === "/dashboard/complate-profile"
                   ? "menu-btn nav-link mx-2 active-menu"
                   : "menu-btn nav-link mx-2"
               }
@@ -34,10 +34,10 @@ const RouteButtons = () => {
           </Link>
         </li>
         <li className="nav-item" role="presentation">
-          <Link href="/panel/edit-profile">
+          <Link href="/dashboard/edit-profile">
             <button
               className={
-                path === "/panel/edit-profile"
+                path === "/dashboard/edit-profile"
                   ? "menu-btn nav-link mx-2 active-menu"
                   : "menu-btn nav-link mx-2"
               }
@@ -47,10 +47,10 @@ const RouteButtons = () => {
           </Link>
         </li>
         <li className="nav-item" role="presentation">
-          <Link href="/panel/change-password">
+          <Link href="/dashboard/change-password">
             <button
               className={
-                path === "/panel/change-password"
+                path === "/dashboard/change-password"
                   ? "menu-btn nav-link mx-2 active-menu"
                   : "menu-btn nav-link mx-2"
               }

@@ -1,4 +1,4 @@
-import ManagerTopActionBox from "../ManagerTopActionBox.component";
+import { withRouter } from "next/router";
 
 const WalletBalanc = () => {
   return (
@@ -69,4 +69,4 @@ const WalletBalanc = () => {
   );
 };
 
-export default WalletBalanc;
+export default withRouter(WalletBalanc);

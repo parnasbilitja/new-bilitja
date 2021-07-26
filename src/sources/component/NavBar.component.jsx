@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 //import logo from '../../../Images/logo512.png'
 import styles from "../../../styles/NavBar.module.scss";
+import Link from "next/link";
 
 //import '../../../public/kilofont.svg'
 
@@ -59,10 +60,12 @@ class NavBar extends React.Component {
               {this.state.logged === true ? (
                 <>
                   <div>
-                    <a href="#">
-                      <i className="kilo-font icon-login"></i>
-                      {this.state.mobile}
-                    </a>
+                    <Link href="/dashboard">
+                      <a href="#">
+                        <i className="kilo-font icon-login"></i>
+                        {this.state.mobile}
+                      </a>
+                    </Link>
                   </div>
                   <span className="mx-2"> /</span>
                   <div>
