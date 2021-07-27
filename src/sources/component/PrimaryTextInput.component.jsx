@@ -18,7 +18,7 @@ export default class PrimaryTextInput extends React.Component {
       <input
         {...this.props}
         autoComplete="off"
-        className="form-input primary-text px-2"
+        className="form-input primary-text px-2 rounded "
       />
     );
   }

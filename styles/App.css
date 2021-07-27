@@ -182,3 +182,59 @@ input[type="button"]:hover {
   position: relative;
   top: 50px;
 }
+
+.prev-next-btn {
+  background-color: #fff;
+  border: 2px solid #279692;
+  padding: 2px 0;
+  font-size: 14px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 6px;
+}
+.prev-next-btn:hover {
+  background-color: #279692;
+  color: #fff !important;
+}
+.prev-icon {
+  position: relative;
+  left: 5px;
+  bottom: 2px;
+}
+.next-icon {
+  position: relative;
+  right: 5px;
+  bottom: 2px;
+}
+
+.flight-filter-input {
+  height: 10em !important;
+  font-size: 13px;
+}
+.flight-filter-input::placeholder {
+  font-size: 13px;
+}
+
+.end-payment-btn {
+  background-color: #279692;
+  color: #fff !important;
+  margin-right: 15px;
+}
+.end-payment-btn:hover {
+  background-color: #fff;
+  border: 2px solid #279692;
+  color: #279692 !important;
+}
+.back-payment-btn {
+  border: 2px solid red;
+  color: red !important;
+  margin-right: 15px;
+}
+.back-payment-btn:hover {
+  background-color: red;
+  color: #fff !important;
+  margin-right: 15px;
+}

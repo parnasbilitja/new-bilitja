@@ -6,552 +6,552 @@
 // }
 
 @font-face {
-    font-family: BYekan;
-    src: url("../public/Font/IranSans2/eot/IRANSansWeb\(FaNum\)_UltraLight.woff");
+  font-family: BYekan;
+  src: url("../public/Font/IranSans2/eot/IRANSansWeb\(FaNum\)_UltraLight.woff");
 }
 @font-face {
-    font-family: IranBold;
-    src: url("../public/Font/IranSans2/eot/IRANSansWeb\(FaNum\)_Bold.woff");
+  font-family: IranBold;
+  src: url("../public/Font/IranSans2/eot/IRANSansWeb\(FaNum\)_Bold.woff");
 }
 @font-face {
-    font-family: kilo;
-    src: url("../public/Font/kilofont.woff");
+  font-family: kilo;
+  src: url("../public/Font/kilofont.woff");
 }
 .kilo-font {
-    font-family: kilo;
-    font-style: normal;
+  font-family: kilo;
+  font-style: normal;
 }
 
 @media only screen and (max-width: 768px) and (min-width: 451px) {
-    .hidden-sm {
-        display: none;
-    }
+  .hidden-sm {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 450px) {
-    .hidden-xs {
-        display: none !important;
-    }
-    .padding-xs-0-7 {
-        padding: 0 7px;
-    }
-    .no-padding-xs {
-        padding: 0 !important;
-    }
-    .no-margin-xs {
-        margin: 0 !important;
-    }
-    .padding-xs-5-15 {
-        padding: 5px 15px;
-    }
-    .padding-xs-5-25 {
-        padding: 5px 25px;
-    }
-    .xs-font-size-13 {
-        font-size: 13px !important;
-    }
-    .xs-font-size-14 {
-        font-size: 14px !important;
-    }
-    .visible-xs {
-        display: block !important;
-    }
+  .hidden-xs {
+    display: none !important;
+  }
+  .padding-xs-0-7 {
+    padding: 0 7px;
+  }
+  .no-padding-xs {
+    padding: 0 !important;
+  }
+  .no-margin-xs {
+    margin: 0 !important;
+  }
+  .padding-xs-5-15 {
+    padding: 5px 15px;
+  }
+  .padding-xs-5-25 {
+    padding: 5px 25px;
+  }
+  .xs-font-size-13 {
+    font-size: 13px !important;
+  }
+  .xs-font-size-14 {
+    font-size: 14px !important;
+  }
+  .visible-xs {
+    display: block !important;
+  }
 
-    .border-pill-lg {
-        border: none !important;
-    }
+  .border-pill-lg {
+    border: none !important;
+  }
 }
 
 body {
-    font-family: BYekan;
-    z-index: 1 !important;
-    direction: rtl;
+  font-family: BYekan;
+  z-index: 1 !important;
+  direction: rtl;
 }
 .ltr {
-    direction: ltr !important;
+  direction: ltr !important;
 }
 .font-bold-iransanse {
-    font-family: IranBold !important;
+  font-family: IranBold !important;
 }
 a {
-    color: $pillTextGray;
-    &:hover {
-        text-decoration: none;
-        color: $secondaryColor;
-    }
+  color: $pillTextGray;
+  &:hover {
+    text-decoration: none;
+    color: $secondaryColor;
+  }
 }
 body,
 html {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 .bodyVar {
-    font-family: BYekan;
-    z-index: 1 !important;
-    direction: rtl;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    a {
-        color: $pillTextGray;
-        text-decoration: none;
-        &:hover {
-            text-decoration: none;
-            color: $secondaryColor;
-        }
+  font-family: BYekan;
+  z-index: 1 !important;
+  direction: rtl;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  a {
+    color: $pillTextGray;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+      color: $secondaryColor;
     }
+  }
 }
 
 .no-padding {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 .no-margin {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 .no-margin-vertical {
-    margin: 0 auto !important;
+  margin: 0 auto !important;
 }
 .no-padding-right {
-    padding-right: 0 !important;
+  padding-right: 0 !important;
 }
 .no-padding-horizental {
-    padding: 5px 0 !important;
+  padding: 5px 0 !important;
 }
 .no-padding-vertical {
-    padding:0 5px !important;
+  padding: 0 5px !important;
 }
 .margin-top-20px {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .margin-top-15px {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 .margin-top-10px {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .margin-top-5px {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 .margin-bottom-5px {
-    margin-bottom: 5px !important;
+  margin-bottom: 5px !important;
 }
 .margin-bottom-0px {
-    margin-bottom: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 .margin-5px {
-    margin: 5px;
+  margin: 5px;
 }
 .padding-5px {
-    padding: 5px;
+  padding: 5px;
 }
 .padding-3px {
-    padding: 3px;
+  padding: 3px;
 }
 .padding-horizental-3px {
-    padding: 0 3px !important;
+  padding: 0 3px !important;
 }
 .padding-horizental-10px {
-    padding: 0 10px !important;
+  padding: 0 10px !important;
 }
 .padding-10px {
-    padding: 10px;
+  padding: 10px;
 }
 .card-box-shadow1 {
-    box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
+  box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
 }
 .font-size-10 {
-    font-size: 10px;
+  font-size: 10px;
 }
 .font-size-11 {
-    font-size: 11px;
+  font-size: 11px;
 }
 .font-size-12 {
-    font-size: 12px;
+  font-size: 12px;
 }
 .font-size-13 {
-    font-size: 13px;
+  font-size: 13px;
 }
 .font-size-14 {
-    font-size: 14px;
+  font-size: 14px;
 }
 .font-size-15 {
-    font-size: 15px;
+  font-size: 15px;
 }
 .font-size-16 {
-    font-size: 16px;
+  font-size: 16px;
 }
 .font-size-18 {
-    font-size: 18px;
+  font-size: 18px;
 }
 .font-size-20 {
-    font-size: 20px;
+  font-size: 20px;
 }
 .font-size-22 {
-    font-size: 22px;
+  font-size: 22px;
 }
 .font-size-23 {
-    font-size: 23px;
+  font-size: 23px;
 }
 .font-size-24 {
-    font-size: 24px;
+  font-size: 24px;
 }
 .font-size-25 {
-    font-size: 25px;
+  font-size: 25px;
 }
 .color-primary {
-    color: $primaryColor;
+  color: $primaryColor;
 }
 .color-textpill {
-    color: $pillTextGray;
+  color: $pillTextGray;
 }
 .color-black {
-    color: black;
+  color: black;
 }
 .color-white {
-    color: white;
+  color: white;
 }
-.background-white{
-    background-color: white;
+.background-white {
+  background-color: white;
 }
 .color-secondary {
-    color: $secondaryColor;
+  color: $secondaryColor;
 }
 .btn-outlined {
-    border: 1px solid $primaryColor;
-    padding: 1px 3px 2px 2px;
-    cursor: pointer;
+  border: 1px solid $primaryColor;
+  padding: 1px 3px 2px 2px;
+  cursor: pointer;
+  color: black;
+  border-radius: 5px;
+  &:hover {
+    text-decoration: none;
     color: black;
-    border-radius: 5px;
-    &:hover {
-        text-decoration: none;
-        color: black;
-    }
+  }
 }
 .btn-outlined-cancle {
-    @extend .btn-outlined;
-    text-align: center;
-    border-width: 2px;
-    display: inline-block;
-    width: 98%;
-    height: 34px !important;
-    padding: 6px;
-    font-size: 13px;
-    border-color: $secondaryColor !important;
-    color: $secondaryColor !important;
-    &:hover {
-        background-color: $secondaryColor !important;
-        color: $whiteColor !important;
-    }
+  @extend .btn-outlined;
+  text-align: center;
+  border-width: 2px;
+  display: inline-block;
+  width: 98%;
+  height: 34px !important;
+  padding: 6px;
+  font-size: 13px;
+  border-color: $secondaryColor !important;
+  color: $secondaryColor !important;
+  &:hover {
+    background-color: $secondaryColor !important;
+    color: $whiteColor !important;
+  }
 }
 .btn-outlined-cancle-tall {
-    @extend .btn-outlined;
-    height: 40px !important;
-    border-color: $secondaryColor;
-    text-align: center;
-    border-width: 2px;
-    display: block;
-    padding: 10px;
-    font-size: 13px;
-    border-color: $secondaryColor;
-    color: $secondaryColor;
-    &:hover {
-        background-color: $secondaryColor;
-        color: $whiteColor;
-    }
+  @extend .btn-outlined;
+  height: 40px !important;
+  border-color: $secondaryColor;
+  text-align: center;
+  border-width: 2px;
+  display: block;
+  padding: 10px;
+  font-size: 13px;
+  border-color: $secondaryColor;
+  color: $secondaryColor;
+  &:hover {
+    background-color: $secondaryColor;
+    color: $whiteColor;
+  }
 }
 .btn-outlined-reserve {
-    @extend .btn-outlined;
-    text-align: center;
-    border-width: 2px;
-    display: inline-block;
-    width: 98%;
-    height: 34px !important;
-    padding: 6px;
-    font-size: 13px;
-    border-color: $primaryColor;
-    color: $primaryColor;
-    &:hover {
-        background-color: $primaryColor;
-        color: $whiteColor;
-    }
+  @extend .btn-outlined;
+  text-align: center;
+  border-width: 2px;
+  display: inline-block;
+  width: 98%;
+  height: 34px !important;
+  padding: 6px;
+  font-size: 13px;
+  border-color: $primaryColor;
+  color: $primaryColor;
+  &:hover {
+    background-color: $primaryColor;
+    color: $whiteColor;
+  }
 }
 .btn-outlined-reserve-tall {
-    @extend .btn-outlined;
-    height: 40px !important;
-    border-color: $secondaryColor;
-    text-align: center;
-    border-width: 2px;
-    display: block;
-    padding: 10px;
-    font-size: 13px;
-    border-color: $primaryColor;
-    color: $primaryColor;
-    &:hover {
-        background-color: $primaryColor;
-        color: $whiteColor;
-    }
+  @extend .btn-outlined;
+  height: 40px !important;
+  border-color: $secondaryColor;
+  text-align: center;
+  border-width: 2px;
+  display: block;
+  padding: 10px;
+  font-size: 13px;
+  border-color: $primaryColor;
+  color: $primaryColor;
+  &:hover {
+    background-color: $primaryColor;
+    color: $whiteColor;
+  }
 }
 .btn-fiiled {
-    color: black;
-    padding: 7px 5px;
-    border-radius: 3px;
+  color: black;
+  padding: 7px 5px;
+  border-radius: 3px;
 
-    background-color: $whiteColor;
-    &:hover {
-        color: black;
-    }
+  background-color: $whiteColor;
+  &:hover {
+    color: black;
+  }
 }
 .btn-buy-action {
-    background-color: $secondaryColor;
-    border-radius: 20px;
-    padding: 3px;
-    width: 80%;
-    margin: 0 auto;
-    border: 2px solid $secondaryColor;
+  background-color: $secondaryColor;
+  border-radius: 20px;
+  padding: 3px;
+  width: 80%;
+  margin: 0 auto;
+  border: 2px solid $secondaryColor;
+  a,
+  i {
+    color: $whiteColor;
+  }
+  &:hover {
+    background-color: $whiteColor;
     a,
     i {
-        color: $whiteColor;
+      color: $secondaryColor;
     }
-    &:hover {
-        background-color: $whiteColor;
-        a,
-        i {
-            color: $secondaryColor;
-        }
-    }
+  }
 }
 
 .btn-encouregment {
-    border-radius: 5px;
-    color: white !important;
-    background-color: #069e2c!important;
-    border: 2px solid #069e2c!important;
-    display: inline-block;
-    width: 98%;
-    margin: auto;
-    height: 34px;
-    padding: 3px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 13px;
-    line-height: 30px;
-    &:hover {
-        background-color: white!important;
-        color: #069e2c!important;
-    }
+  border-radius: 5px;
+  color: white !important;
+  background-color: #069e2c !important;
+  border: 2px solid #069e2c !important;
+  display: inline-block;
+  width: 98%;
+  margin: auto;
+  height: 34px;
+  padding: 3px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 30px;
+  &:hover {
+    background-color: white !important;
+    color: #069e2c !important;
+  }
 }
 .without-focus {
-    &:focus-within {
-        border-bottom: none !important;
-    }
+  &:focus-within {
+    border-bottom: none !important;
+  }
 }
-.form-input-border-primaryselect{
-    height: 29px !important;
+.form-input-border-primaryselect {
+  height: 29px !important;
 }
 .row-price {
-    padding: 12px 5px 0 5px;
+  padding: 12px 5px 0 5px;
 }
 .form-input-border {
-    border: 1px solid $pillGray;
-    border-radius: $borderRadius;
-    position: relative;
-    height: 45px;
-    box-sizing: border-box;
-    padding: 0 !important;
-    margin-top: 7px;
-    position: relative;
-    svg {
-        color: $pillTextGray;
-    }
-    &:focus-within {
-        border-bottom: $secondaryColor 1px solid;
-        .suggestion-box {
-            display: block;
-        }
-    }
+  border: 1px solid $pillGray;
+  border-radius: $borderRadius;
+  position: relative;
+  height: 45px;
+  box-sizing: border-box;
+  padding: 0 !important;
+  margin-top: 7px;
+  position: relative;
+  svg {
+    color: $pillTextGray;
+  }
+  &:focus-within {
+    border-bottom: $secondaryColor 1px solid;
     .suggestion-box {
-        box-shadow: -2px 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
-        width: 100%;
-        position: absolute;
-        background-color: white;
-        height: 200px;
-        top: 44px;
-        overflow-y: scroll;
-        text-align: right;
-        border: solid 1px $pillGray;
-        border-radius: 5px;
-        z-index: 9999;
-        display: none;
-
-        div {
-            padding: 5px 10px;
-            cursor: pointer;
-            &:hover {
-                background-color: #f2f2f2;
-            }
-        }
-        &:hover {
-            display: block;
-        }
+      display: block;
     }
+  }
+  .suggestion-box {
+    box-shadow: -2px 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    height: 200px;
+    top: 44px;
+    overflow-y: scroll;
+    text-align: right;
+    border: solid 1px $pillGray;
+    border-radius: 5px;
+    z-index: 9999;
+    display: none;
+
+    div {
+      padding: 5px 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: #f2f2f2;
+      }
+    }
+    &:hover {
+      display: block;
+    }
+  }
 }
 .form-input {
-    border: none;
-    height: 100%;
-    width: 100%;
+  border: 1px solid rgba(230, 229, 229, 0.534);
+  height: 100%;
+  width: 100%;
 
-    &:focus {
-        outline: none;
-        border: none;
-    }
+  &:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid red;
+  }
 }
 .form-input-icon {
-    position: absolute;
-    top: 5px;
-    left: 15px;
-    font-size: 29px;
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  font-size: 29px;
 }
 .form-input-icon-larger {
-    position: absolute;
-    top: 0px;
-    left: 15px;
-    font-size: 29px;
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  font-size: 29px;
 }
 .input-search {
-    @extend .card-box-shadow1;
-    width: 100%;
-    border: solid 1px #ced4da;
-    height: 45px;
-    font-size: 17px;
-    border-radius: 5px;
-    &:focus {
-        border-bottom: 2px solid $secondaryColor;
-        outline: none;
-    }
+  @extend .card-box-shadow1;
+  width: 100%;
+  border: solid 1px #ced4da;
+  height: 45px;
+  font-size: 17px;
+  border-radius: 5px;
+  &:focus {
+    border-bottom: 2px solid $secondaryColor;
+    outline: none;
+  }
 }
 .border-pill,
 .border-pill-lg {
-    border: 1px solid $pillGray;
-    border-radius: 5px;
+  border: 1px solid $pillGray;
+  border-radius: 5px;
 }
 .border-right-pill {
-    border-right: 1px solid $pillGray;
+  border-right: 1px solid $pillGray;
 }
 .border-bottom-black {
-    border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 .text-right {
-    text-align: right;
+  text-align: right;
 }
 .text-left {
-    text-align: left;
+  text-align: left;
 }
 .pull-left {
-    float: left;
+  float: left;
 }
 .pull-right {
-    float: right;
+  float: right;
 }
 .clear {
-    clear: both;
+  clear: both;
 }
 .visible-xs {
-    display: none;
+  display: none;
 }
 .exit-form {
-    border: 2px solid $secondaryColor;
-    border-radius: 3px;
-    color: $secondaryColor;
-    cursor: pointer;
+  border: 2px solid $secondaryColor;
+  border-radius: 3px;
+  color: $secondaryColor;
+  cursor: pointer;
 }
 .exit-form-circle {
-    border: 2px solid $secondaryColor;
-    border-radius: 50%;
-    display: inline-block;
-    height: 21px;
-    width: 21px;
-    padding: 0 1px 2px 0;
-    text-align: center;
-    color: $secondaryColor;
-    cursor: pointer;
+  border: 2px solid $secondaryColor;
+  border-radius: 50%;
+  display: inline-block;
+  height: 21px;
+  width: 21px;
+  padding: 0 1px 2px 0;
+  text-align: center;
+  color: $secondaryColor;
+  cursor: pointer;
 }
 ::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #fff;
+  background: #fff;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #525965;
+  background: #525965;
 }
 .rotate-y-180 {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 .rotate-upsidedown-reverse {
-    transform: rotateZ(40deg) scale(1, 1);
-    //     transform:rotateZ(-40deg) scale(-1 , 1);
+  transform: rotateZ(40deg) scale(1, 1);
+  //     transform:rotateZ(-40deg) scale(-1 , 1);
 }
 .popup-content-container {
-    padding: 20px 30px;
-    .popup-heading {
-        padding: 10px 0;
-        text-align: right;
-        span {
-            margin: 5px 0;
-            padding: 4px 8px 0px 8px;
-            display: inline-block;
-        }
+  padding: 20px 30px;
+  .popup-heading {
+    padding: 10px 0;
+    text-align: right;
+    span {
+      margin: 5px 0;
+      padding: 4px 8px 0px 8px;
+      display: inline-block;
     }
+  }
 }
 .start-box {
-    color: #fb9900;
+  color: #fb9900;
 }
 .text-overflow {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 100%; // some width
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%; // some width
 }
-div.radio{
-    float:right;
-    margin-top: 3px;
+div.radio {
+  float: right;
+  margin-top: 3px;
 }
 .error-message {
-    display: block !important;
-    font-size: 13px;
-    // min-height: 19px !important;
+  display: block !important;
+  font-size: 13px;
+  // min-height: 19px !important;
 }
-.topic-icon{
-    border-left: 4px solid $primaryColor;
-    border-bottom-left-radius:5px;
-    border-top-left-radius: 5px;
+.topic-icon {
+  border-left: 4px solid $primaryColor;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
 }
 .panel-header {
-    display: grid;
-    grid-template-columns: 1fr 10fr;
+  display: grid;
+  grid-template-columns: 1fr 10fr;
 }
 .payment-container {
-   
-    .btn-outlined.color-secondary{
-        border-color: $secondaryColor;
-        color:$secondaryColor;
+  .btn-outlined.color-secondary {
+    border-color: $secondaryColor;
+    color: $secondaryColor;
 
-        &:hover{
-            background-color: $secondaryColor;
-            color:$whiteColor;
-        }
+    &:hover {
+      background-color: $secondaryColor;
+      color: $whiteColor;
     }
+  }
 }
-.airline-icon{
-    width: 35px;
-    height: 35px;
+.airline-icon {
+  width: 35px;
+  height: 35px;
 }

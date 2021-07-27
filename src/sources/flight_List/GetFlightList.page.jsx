@@ -33,10 +33,8 @@ import moment from "jalali-moment";
 import Loading from "../component/Loading.component";
 import MinimumPriceCalendar from "./MinimumPriceCalendar.component";
 
-
 import { getCustomFormat } from "../../Utils/SimpleTasks";
 import { withRouter } from "next/router";
-
 
 class GetFlightList extends React.Component {
   constructor(props) {
@@ -253,31 +251,43 @@ class GetFlightList extends React.Component {
               <div className="col-lg-10 col-md-11 col-sm-11 padding-5px">
                 <FlightSearchBox refreshAction={this.getData} />
               </div>
-              <div className="col-lg-2 col-md-3 col-sm-4 padding-5px flight-change-day">
-                <a
-                  className="btn-outlined"
-                  onClick={() => {
-                    const date_ = this.props.credentials.flightDatePrev;
-                    if (date_ != null) {
-                      this.changeDate(date_);
-                    }
-                  }}
-                >
-                  <FontAwesomeIcon icon={faAngleRight} />
-                  <span>قبل</span>
-                </a>
-                <a
-                  className="btn-outlined"
-                  onClick={() => {
-                    const date_ = this.props.credentials.flightDateNext;
-                    if (date_ != null) {
-                      this.changeDate(date_);
-                    }
-                  }}
-                >
-                  <span>بعد</span>
-                  <FontAwesomeIcon icon={faAngleLeft} />
-                </a>
+              <div className="col-lg-2 col-md-3 col-sm-4 padding-5px">
+                <div className="row mt-2">
+                  <div className="col-lg-6">
+                    <a
+                      className="btn btn-outlined col-12 btn-block prev-next-btn"
+                      onClick={() => {
+                        const date_ = this.props.credentials.flightDatePrev;
+                        if (date_ != null) {
+                          this.changeDate(date_);
+                        }
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        icon={faAngleRight}
+                        className="prev-icon"
+                      />
+                      <span>قبل</span>
+                    </a>
+                  </div>
+                  <div className="col-lg-6">
+                    <a
+                      className="btn btn-outlined col-12 btn-block  prev-next-btn"
+                      onClick={() => {
+                        const date_ = this.props.credentials.flightDateNext;
+                        if (date_ != null) {
+                          this.changeDate(date_);
+                        }
+                      }}
+                    >
+                      <span>بعد</span>
+                      <FontAwesomeIcon
+                        icon={faAngleLeft}
+                        className="next-icon"
+                      />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

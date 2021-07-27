@@ -5,7 +5,7 @@ import styles from "../../../styles/FlightReserve.module.scss";
 
 const FlightReserveDesktopHeader = (props) =>
   props.airport1 ? (
-    <div className="row hidden-xs font-bold-iransanse">
+    <div className="row hidden-xs font-bold-iransanse mt-3">
       <div className="col-lg-1"></div>
       <div className="col-lg-10 border-pill">
         <div className="row">
