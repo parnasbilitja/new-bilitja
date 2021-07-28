@@ -32,33 +32,33 @@ const Profile = () => {
               <div className="col-lg-4">
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">نام</div>
-                  <div className="col-lg-7 text-box">محمدصالح</div>
+                  <div className="col-lg-7 text-box">------</div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">نام خانوادگی</div>
-                  <div className="col-lg-7 text-box">کریمی</div>
+                  <div className="col-lg-7 text-box">-------</div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">شماره همراه</div>
-                  <div className="col-lg-7 text-box">09138409764</div>
+                  <div className="col-lg-7 text-box">-------</div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">کد ملی</div>
-                  <div className="col-lg-7 text-box">2020550014</div>
+                  <div className="col-lg-7 text-box">--------</div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">شماره پاسپورت</div>
-                  <div className="col-lg-7 text-box">2020550014</div>
+                  <div className="col-lg-7 text-box">---------</div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">نام پدر</div>
-                  <div className="col-lg-7 text-box">علی</div>
+                  <div className="col-lg-7 text-box">----------</div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">تاریخ تولد</div>
-                  <div className="col-lg-7 text-box">1360/02/01</div>
+                  <div className="col-lg-7 text-box">-----------</div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">معرف</div>

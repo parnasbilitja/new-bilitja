@@ -47,7 +47,7 @@ const ComplateProfile = () => {
                   </div>
                   <div className="row my-2">
                     <div className="col-lg-4 title-box ">شماره همراه</div>
-                    <div className="col-lg-7 text-box">0912547856</div>
+                    <div className="col-lg-7 text-box">--------</div>
                   </div>
                   <div className="row my-2">
                     <div className="col-lg-4 title-box ">کد ملی</div>
