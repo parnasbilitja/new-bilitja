@@ -71,7 +71,7 @@ class FlightPassengerForm extends React.Component {
           <div
             className={` ${styles["visible-xs-passenger-form-header"]} col-12 padding-3px`}
           >
-            <div className="col-6 no-margin padding-xs-0-7">
+            <div className="col-6 no-margin padding-xs-0-7 mx-3">
               <span className="font-size-13 no-margin font-bold-iransanse">
                 {`${this.props.index + 1}-`}&nbsp;
                 {this.getTitleByType(this.props.type)}{" "}
@@ -106,7 +106,7 @@ class FlightPassengerForm extends React.Component {
               <div className="col-lg-3 col-md-3 col-sm-3 col-6 padding-horizental-3px">
                 <div>
                   <PrimaryTextInput
-                    style={{ height: "2em" }}
+                    style={{ height: "3em" }}
                     placeHolder="نام"
                     onChange={(e) => {
                       if (!this.checkCharacters(e.target.value)) {
@@ -128,7 +128,7 @@ class FlightPassengerForm extends React.Component {
               <div className="col-lg-2 col-md-3 col-sm-3 col-6 padding-horizental-3px">
                 <div>
                   <PrimaryTextInput
-                    style={{ height: "2em" }}
+                    style={{ height: "3em" }}
                     placeHolder="نام خانودگی"
                     onChange={(e) => {
                       if (!this.checkCharacters(e.target.value)) {
@@ -147,10 +147,10 @@ class FlightPassengerForm extends React.Component {
                   {this.props.familyErr}
                 </span>
               </div>
-              <div className="reserve-selectbox col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px">
+              <div className="reserve-selectbox col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px mt-2">
                 <PrimarySelectInput
                   className=""
-                  style={{ height: "2em" }}
+                  style={{ height: "3em" }}
                   name="nationality"
                   onChange={(e) => {
                     this.props.fillPassengersData(
@@ -166,10 +166,9 @@ class FlightPassengerForm extends React.Component {
                   <option value="other">خارجی</option>
                 </PrimarySelectInput>
               </div>
-              <div className=" reserve-selectbox col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px">
+              <div className=" reserve-selectbox col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px mt-2">
                 <PrimarySelectInput
-                  // className="reserve-selectbox"
-                  style={{ height: "2em" }}
+                  style={{ height: "3em" }}
                   name="gender"
                   onChange={(e) => {
                     this.props.fillPassengersData(
@@ -188,7 +187,7 @@ class FlightPassengerForm extends React.Component {
               <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px">
                 <div>
                   <PrimaryTextInput
-                    style={{ height: "2em" }}
+                    style={{ height: "3em" }}
                     inputMode="numeric"
                     placeHolder={`${
                       this.props.nationality == "IR" ? "کد ملی" : "کد پاسپورت"
@@ -213,7 +212,7 @@ class FlightPassengerForm extends React.Component {
               <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px">
                 <div>
                   <PrimaryTextInput
-                    style={{ height: "2em" }}
+                    style={{ height: "3em" }}
                     placeHolder="تاریخ تولد"
                     value={this.props.birthday}
                     onFocus={() => {
