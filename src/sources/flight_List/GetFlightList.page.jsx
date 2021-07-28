@@ -243,7 +243,7 @@ class GetFlightList extends React.Component {
 
   render() {
     return (
-      <div className={`container-fluid ${styles["flight-container"]}`}>
+      <div className={`container ${styles["flight-container"]}`}>
         <div className={`row text-right ${styles["hidden-xs-flight"]}`}>
           <div className="col-lg-1 col-md-1 col-sm-1"></div>
           <div className="col-lg-10 col-md-11 col-sm-11">
@@ -352,7 +352,9 @@ class GetFlightList extends React.Component {
           >
             <div className="popup-content-container">
               <div className="popup-heading">
-                <span>انتخاب تعداد مسافران</span>
+                <span className="font-bold-iransanse">
+                  انتخاب تعداد مسافران
+                </span>
                 <span
                   className="pull-left exit-form"
                   onClick={() => {

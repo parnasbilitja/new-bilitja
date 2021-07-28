@@ -1,5 +1,10 @@
+@font-face {
+  src: url("/public/Font/IranSans/IRANSansWeb\(FaNum\)_Light.ttf");
+  font-family: IranSans;
+}
+
 body {
-  font-family: IranBold !important;
+  font-family: IranSans !important;
 }
 .cursor-pointer {
   cursor: pointer !important;
@@ -188,12 +193,14 @@ input[type="button"]:hover {
   border: 2px solid #279692;
   padding: 2px 0;
   font-size: 14px;
-  height: 35px;
+  height: 27px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  top: 6px;
+  top: 10px;
+  color: #279692 !important;
+  border-radius: 3px;
 }
 .prev-next-btn:hover {
   background-color: #279692;
@@ -202,12 +209,10 @@ input[type="button"]:hover {
 .prev-icon {
   position: relative;
   left: 5px;
-  bottom: 2px;
 }
 .next-icon {
   position: relative;
   right: 5px;
-  bottom: 2px;
 }
 
 .flight-filter-input {
@@ -237,4 +242,13 @@ input[type="button"]:hover {
   background-color: red;
   color: #fff !important;
   margin-right: 15px;
+}
+
+.select-box {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.select-box:focus {
+  border-bottom: 1px solid red;
+  outline: none;
 }

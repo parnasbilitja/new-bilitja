@@ -188,7 +188,11 @@ class PopupFlightReserve extends React.Component {
               <p className="font-size-11">(12 سال به بالا)</p>
             </div>
             <div className="col-lg-7 col-md-7 col-sm-7 col-6">
-              <PrimarySelectInput name="numADL" onChange={this.handleChange}>
+              <PrimarySelectInput
+                name="numADL"
+                style={{ height: "3.5em" }}
+                onChange={this.handleChange}
+              >
                 {numberOfPassengers_.map((x) =>
                   this.state.numADL == x ? (
                     <option selected>{x}</option>
@@ -208,7 +212,11 @@ class PopupFlightReserve extends React.Component {
               <p className="font-size-11">(2 تا 12 سال)</p>
             </div>
             <div className="col-lg-7 col-md-7 col-sm-7 col-6">
-              <PrimarySelectInput name="numCHD" onChange={this.handleChange}>
+              <PrimarySelectInput
+                name="numCHD"
+                style={{ height: "3.5em" }}
+                onChange={this.handleChange}
+              >
                 {numberOfPassengers.map((x) =>
                   this.state.numCHD == x ? (
                     <option selected>{x}</option>
@@ -228,7 +236,11 @@ class PopupFlightReserve extends React.Component {
               <p className="font-size-11">(زیر 2 سال)</p>
             </div>
             <div className="col-lg-7 col-md-7 col-sm-7 col-6">
-              <PrimarySelectInput name="numINF" onChange={this.handleChange}>
+              <PrimarySelectInput
+                name="numINF"
+                style={{ height: "3.5em" }}
+                onChange={this.handleChange}
+              >
                 {numberOfPassengers.map((x) =>
                   this.state.numINF == x ? (
                     <option selected>{x}</option>

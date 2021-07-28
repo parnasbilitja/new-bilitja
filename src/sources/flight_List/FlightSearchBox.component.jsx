@@ -230,7 +230,7 @@ class FlightSearchBox extends React.Component {
           <i className="kilo-font icon-calendar form-input-icon-larger"></i>
 
           <PrimaryTextInput
-            placeholder={" تاریخ پرواز پرواز رفت"}
+            placeholder={" تاریخ پرواز رفت"}
             readOnly
             value={typeOfCalendar == "GAR" ? stDate : flightDatePersian}
             onFocus={(e) => {
