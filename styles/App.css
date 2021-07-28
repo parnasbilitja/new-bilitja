@@ -271,7 +271,7 @@ input[type="button"]:hover {
 
 .reserve-selectbox {
   position: relative !important;
-  bottom: 3px !important;
+  bottom: 10px !important;
 }
 
 .btn-success-payment {
