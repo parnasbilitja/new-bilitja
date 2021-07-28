@@ -252,3 +252,8 @@ input[type="button"]:hover {
   border-bottom: 1px solid red;
   outline: none;
 }
+
+.selectbox-receipt {
+  position: relative;
+  top: 5px;
+}

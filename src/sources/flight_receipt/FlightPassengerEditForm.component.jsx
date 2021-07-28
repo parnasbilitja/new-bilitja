@@ -142,10 +142,9 @@ class FlightPassengerEditForm extends React.Component {
               {this.state.melliCodeErr}
             </span>
           </div>
-          <div className="col-lg-1 col-md-1 col-sm-1 col-12 padding-horizental-3px">
+          <div className="col-lg-1 col-md-1 col-sm-1 col-12 padding-horizental-3px selectbox-receipt">
             <PrimarySelectInput
               value={this.state.sex}
-              style={{ height: "2em" }}
               name="sex"
               onChange={this.handleChange}
             >
@@ -153,7 +152,7 @@ class FlightPassengerEditForm extends React.Component {
               <option value="2">زن</option>
             </PrimarySelectInput>
           </div>
-          <div className="col-lg-1 col-md-1 col-sm-1 col-12 padding-horizental-3px">
+          <div className="col-lg-1 col-md-1 col-sm-1 col-12 padding-horizental-3px selectbox-receipt">
             <PrimarySelectInput
               value={this.state.meliat}
               name="meliat"
