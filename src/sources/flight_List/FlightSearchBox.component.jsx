@@ -197,7 +197,10 @@ class FlightSearchBox extends React.Component {
           <div
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
-            <i className="kilo-font icon-plane-departure form-input-icon rotate-upsidedown-reverse"></i>
+            <i
+              className="kilo-font icon-plane-departure form-input-icon rotate-upsidedown-reverse"
+              style={{ direction: "ltr" }}
+            ></i>
             <PrimaryTextInput
               value={destinationName}
               readOnlyAttr={this.state.width <= mobileSize}
@@ -246,7 +249,7 @@ class FlightSearchBox extends React.Component {
               if (!this.validation()) {
                 this.props.messageBoxModify({
                   state: true,
-                  message: "لظفا اطلاعات را کامل وارد کنید",
+                  message: "لطفا اطلاعات را کامل وارد کنید",
                 });
                 return;
               }

@@ -44,7 +44,6 @@ class NavBarMobile extends React.Component {
       <nav className={styles["nav-mobile"]}>
         <div className={styles["nav-text-detail-mobile"]}>
           <div className="pull-right">
-            <FontAwesomeIcon icon={faBars} />
             {this.state.logged === true ? (
               <>
                 <Link href="/dashboard">

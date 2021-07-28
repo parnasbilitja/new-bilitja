@@ -247,13 +247,51 @@ input[type="button"]:hover {
 .select-box {
   border: 1px solid #ccc;
   border-radius: 3px;
+  background-color: #fff !important;
 }
 .select-box:focus {
   border-bottom: 1px solid red;
   outline: none;
+  background-color: #fff !important;
 }
 
 .selectbox-receipt {
   position: relative;
   top: 5px;
+}
+
+.reserve-input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.reserve-input:focus {
+  border-bottom: 1px solid red;
+  outline: none;
+}
+
+.reserve-selectbox {
+  position: relative !important;
+  bottom: 3px !important;
+}
+
+.btn-success-payment {
+  border: 2px solid #069e2c !important;
+  background-color: #069e2c !important;
+  color: #fff !important;
+}
+.btn-success-payment:hover {
+  border: 2px solid #069e2c !important;
+  background-color: #fff !important;
+  color: #069e2c !important;
+}
+
+.btn-danger-outlined {
+  border: 2px solid red;
+  background-color: #fff;
+  color: red;
+}
+.btn-danger-outlined:hover {
+  border: 2px solid red;
+  background-color: red;
+  color: #fff;
 }

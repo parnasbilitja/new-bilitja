@@ -104,9 +104,7 @@ class FlightPassengerForm extends React.Component {
           <div className="col-lg-10 col-md-12 col-sm-12 col-12">
             <div className="row">
               <div className="col-lg-3 col-md-3 col-sm-3 col-6 padding-horizental-3px">
-                <div
-                  className={` form-input-border  ${styles["form-input-border-private"]} `}
-                >
+                <div>
                   <PrimaryTextInput
                     style={{ height: "2em" }}
                     placeHolder="نام"
@@ -127,10 +125,8 @@ class FlightPassengerForm extends React.Component {
                   {this.props.nameErr}
                 </span>
               </div>
-              <div className="col-lg-3 col-md-3 col-sm-3 col-6 padding-horizental-3px">
-                <div
-                  className={` form-input-border  ${styles["form-input-border-private"]} `}
-                >
+              <div className="col-lg-2 col-md-3 col-sm-3 col-6 padding-horizental-3px">
+                <div>
                   <PrimaryTextInput
                     style={{ height: "2em" }}
                     placeHolder="نام خانودگی"
@@ -151,8 +147,9 @@ class FlightPassengerForm extends React.Component {
                   {this.props.familyErr}
                 </span>
               </div>
-              <div className="col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px">
+              <div className="reserve-selectbox col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px">
                 <PrimarySelectInput
+                  className=""
                   style={{ height: "2em" }}
                   name="nationality"
                   onChange={(e) => {
@@ -169,8 +166,9 @@ class FlightPassengerForm extends React.Component {
                   <option value="other">خارجی</option>
                 </PrimarySelectInput>
               </div>
-              <div className="col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px">
+              <div className=" reserve-selectbox col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px">
                 <PrimarySelectInput
+                  // className="reserve-selectbox"
                   style={{ height: "2em" }}
                   name="gender"
                   onChange={(e) => {
@@ -188,9 +186,7 @@ class FlightPassengerForm extends React.Component {
                 </PrimarySelectInput>
               </div>
               <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px">
-                <div
-                  className={` form-input-border  ${styles["form-input-border-private"]} `}
-                >
+                <div>
                   <PrimaryTextInput
                     style={{ height: "2em" }}
                     inputMode="numeric"
@@ -215,9 +211,7 @@ class FlightPassengerForm extends React.Component {
                 </span>
               </div>
               <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px">
-                <div
-                  className={` form-input-border  ${styles["form-input-border-private"]} `}
-                >
+                <div>
                   <PrimaryTextInput
                     style={{ height: "2em" }}
                     placeHolder="تاریخ تولد"
@@ -231,28 +225,30 @@ class FlightPassengerForm extends React.Component {
                   {this.props.birthdayErr}
                 </span>
               </div>
+              <div className="hidden-xs col-lg-1 col-md-2 col-sm-2 row-price font-size-12">
+                <span className="font-size-14 color-secondary font-bold-iransanse">
+                  {moneyFormat(this.props.price)}
+                  &nbsp;
+                </span>
+                تومان
+              </div>
             </div>
           </div>
           <div className="hidden-xs col-lg-1 col-md-2 col-sm-2 row-price font-size-12">
-            <span className="font-size-14 color-secondary font-bold-iransanse">
-              {moneyFormat(this.props.price)}
-              &nbsp;
-            </span>
-            تومان
+            {this.props.id != 0 ? (
+              <div className="hidden-xs hidden-sm corner-position">
+                <span
+                  className="exit-form-circle"
+                  onClick={() => {
+                    this.props.removePassenger(this.props.id);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faTimes} />
+                </span>
+                <span className="color-secondary error-message">&nbsp;</span>
+              </div>
+            ) : null}
           </div>
-          {this.props.id != 0 ? (
-            <div className="hidden-xs hidden-sm corner-position">
-              <span
-                className="exit-form-circle corner-position"
-                onClick={() => {
-                  this.props.removePassenger(this.props.id);
-                }}
-              >
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
-              <span className="color-secondary error-message">&nbsp;</span>
-            </div>
-          ) : null}
         </div>
         <PopUp
           opened={this.state.open}

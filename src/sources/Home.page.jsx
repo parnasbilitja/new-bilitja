@@ -84,7 +84,7 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <div className={`${styles["heor-main-container"]} container-fuild`}>
+        <div className={`${styles["heor-main-container"]} container`}>
           <PageTabls tabActice={1} />
 
           <div className="row">
@@ -94,7 +94,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-        <div className={styles["hero-big-image"]}>
+        <div className={`${styles["hero-big-image"]} container`}>
           <img src="../../../Images/flight-index.png" />
         </div>
 
@@ -167,7 +167,9 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <div className={` ${styles["home-flight-suggestion"]} text-center`}>
+        <div
+          className={` ${styles["home-flight-suggestion"]} text-center container`}
+        >
           <h2 className="font-bold-iransanse font-size-25">بلیط هواپیما</h2>
           <p>قیمت های لحظه آخری بلیطـجا</p>
 

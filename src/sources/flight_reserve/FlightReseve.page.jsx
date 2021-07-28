@@ -457,14 +457,14 @@ class FlightReserve extends React.Component {
               <div className="col-lg-6 col-md-12 col-12">
                 <div className="row">
                   <div className="col-lg-6 col-md-6 col-6 padding-3px">
-                    <div
-                      className={` form-input-border  ${styles["form-input-border-private"]} `}
-                    >
-                      <PrimaryTextInput
+                    <div>
+                      <input
                         inputMode="numeric"
-                        placeHolder="شماره همراه"
+                        style={{ height: "3.5em" }}
+                        placeholder="شماره همراه"
                         name="mobileSubmiter"
                         onChange={this.handleChange}
+                        className="col-12 reserve-input"
                       />
                     </div>
                     <span className="color-secondary">
@@ -472,12 +472,12 @@ class FlightReserve extends React.Component {
                     </span>
                   </div>
                   <div className="col-lg-6 col-md-6 col-6 padding-3px">
-                    <div
-                      className={` form-input-border  ${styles["form-input-border-private"]} `}
-                    >
-                      <PrimaryTextInput
+                    <div>
+                      <input
+                        className="col-12 reserve-input"
                         inputMode="numeric"
-                        placeHolder="شماره ثابت"
+                        style={{ height: "3.5em" }}
+                        placeholder="شماره ثابت"
                         name="phoneSubmiter"
                         onChange={this.handleChange}
                       />
@@ -488,19 +488,23 @@ class FlightReserve extends React.Component {
                   </div>
                 </div>
 
-                <div className="row">
+                <div className="row mb-3">
                   <div className="col-lg-6 col-md-6 col-6 padding-3px">
-                    <div
-                      className={` form-input-border  ${styles["form-input-border-private"]} `}
-                    >
-                      <PrimaryTextInput placeHolder="ایمیل (اختیاری)" />
+                    <div>
+                      <input
+                        className="col-12 reserve-input"
+                        style={{ height: "3.5em" }}
+                        placeholder="ایمیل (اختیاری)"
+                      />
                     </div>
                   </div>
                   <div className="col-lg-6 col-md-6 col-6 padding-3px">
-                    <div
-                      className={` form-input-border  ${styles["form-input-border-private"]} `}
-                    >
-                      <PrimaryTextInput placeHolder="کد تخفیف (اختیاری)" />
+                    <div>
+                      <input
+                        className="col-12 reserve-input"
+                        style={{ height: "3.5em" }}
+                        placeholder="کد تخفیف (اختیاری)"
+                      />
                     </div>
                   </div>
                 </div>
@@ -508,7 +512,7 @@ class FlightReserve extends React.Component {
 
               <div className="col-lg-6 col-md-12 col-12 finish-reserve">
                 <div className="row">
-                  <div className="col-lg-8">
+                  <div className="col-lg-9">
                     <input
                       type="checkbox"
                       id="terms"
@@ -523,7 +527,7 @@ class FlightReserve extends React.Component {
                       قوانین و مقررات و صحت اطلاعات را قبول دارم.
                     </label>
                   </div>
-                  <div className="col-lg-4 text-left">
+                  <div className="col-lg-3 text-left">
                     <div>
                       <a href="">قوانین و مقررات</a>
                     </div>
