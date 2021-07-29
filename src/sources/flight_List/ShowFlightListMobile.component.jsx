@@ -15,7 +15,7 @@ class ShowFlightListMobile extends React.Component {
 
   render() {
     return (
-      <div className={`${styles["container-flight-list-mobile"]} mt-5`}>
+      <div className={`${styles["container-flight-list-mobile"]}`}>
         <div>
           <div
             className={` ${styles["mobile-flight-list-header"]} font-bold-iransanse `}

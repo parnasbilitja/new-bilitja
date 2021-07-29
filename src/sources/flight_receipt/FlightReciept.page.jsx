@@ -318,8 +318,10 @@ class FlightReciept extends React.Component {
                               <FontAwesomeIcon icon={faDollarSign} />
                               <span className="color-secondary">
                                 {" "}
-                                {this.getTicketPrice(
-                                  this.state.ticketCodeAll_[index]
+                                {moneyFormat(
+                                  this.getTicketPrice(
+                                    this.state.ticketCodeAll_[index]
+                                  )
                                 )}
                               </span>
                             </p>

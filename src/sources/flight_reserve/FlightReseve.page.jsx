@@ -544,10 +544,10 @@ class FlightReserve extends React.Component {
                             state: true,
                             message: "لطفا با شرایط و مقررات موافقت کنید",
                           });
-                        }
-                        if (this.validation()) {
+                        } else if (this.validation()) {
                           this.compeleteReservation();
                         }
+
                         e.preventDefault();
                       }}
                       className="py-3 btn-block col-12 end-payment-btn btn"
