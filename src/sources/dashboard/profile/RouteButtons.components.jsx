@@ -8,19 +8,6 @@ const RouteButtons = () => {
     <section>
       <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li className="nav-item" role="presentation">
-          <Link href="/dashboard/profile">
-            <button
-              className={
-                path === "/dashboard/profile"
-                  ? "menu-btn nav-link mx-2 active-menu"
-                  : "menu-btn nav-link mx-2"
-              }
-            >
-              پروفایل
-            </button>
-          </Link>
-        </li>
-        <li className="nav-item" role="presentation">
           <Link href="/dashboard/complate-profile">
             <button
               className={

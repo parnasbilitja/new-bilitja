@@ -2,13 +2,13 @@ import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../../../../styles/PrimaryButton.module.scss";
-import RouteButtons from "./RouteButtons.components";
-import { withRouter } from "next/router";
+import { useRouter, withRouter } from "next/router";
 
 const EditProfile = () => {
+  const router = useRouter();
   return (
     <section>
-      <div className="border-bottom-black panel-header">
+      <div className="border-bottom-black">
         <div>
           <FontAwesomeIcon icon={faUserAlt} className="color-textpill" />
           &nbsp;&nbsp;
@@ -140,16 +140,27 @@ const EditProfile = () => {
               </div>
             </div>
           </div>
-          <div className="mx-4 mb-3 mt-5">
-            <button
-              className={`${styles["primary-button"]} py-2 font-bold-iransanse `}
-            >
-              ویرایش اطلاعات
-            </button>
+          <div className="row my-2">
+            <div className="col-lg-8  ">
+              <button
+                className={`${styles["primary-button"]}  font-bold-iransanse mb-1 `}
+              >
+                ویرایش اطلاعات
+              </button>
+            </div>
+            <div className="col-lg-4">
+              <button
+                className={`btn btn-danger col-12 py-2 font-bold-iransanse mb-1 `}
+                onClick={() => router.push("/dashboard/profile")}
+                style={{ height: "3em" }}
+                type="button"
+              >
+                انصراف
+              </button>
+            </div>
           </div>
         </form>
       </div>
-      <RouteButtons />
     </section>
   );
 };
