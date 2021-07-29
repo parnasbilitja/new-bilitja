@@ -47,17 +47,15 @@ class ShowFlightListMobile extends React.Component {
                   </span>
                   <span className="color-black font-size-12">تومان</span>
                 </div>
-                <div className="btn-buy-action">
+                <div
+                  className="btn-buy-action"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    this.props.setReserveBoxData(oneFlight);
+                  }}
+                >
                   <i className="kilo-font icon-refrence"></i>
-                  <a
-                    href=""
-                    onClick={(e) => {
-                      e.preventDefault();
-                      this.props.setReserveBoxData(oneFlight);
-                    }}
-                  >
-                    خرید آنلاین
-                  </a>
+                  <a href="">خرید آنلاین</a>
                 </div>
               </div>
 

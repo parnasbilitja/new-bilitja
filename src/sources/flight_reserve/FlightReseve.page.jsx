@@ -317,7 +317,6 @@ class FlightReserve extends React.Component {
   render() {
     return (
       <div className="container">
-        <br />
         <div className={`${styles["flight-detail"]}`}>
           <FlightReserveDesktopHeader {...this.state} />
           <FlightReserveMobileHeader {...this.state} />
@@ -454,7 +453,7 @@ class FlightReserve extends React.Component {
             </div>
 
             <div className={`row ${styles["passanger-submiter"]} `}>
-              <div className="col-lg-6 col-md-12 col-12">
+              <div className="col-lg-6 col-md-12 col-12 px-4">
                 <div className="row">
                   <div className="col-lg-6 col-md-6 col-6 padding-3px">
                     <div>
@@ -464,7 +463,7 @@ class FlightReserve extends React.Component {
                         placeholder="شماره همراه"
                         name="mobileSubmiter"
                         onChange={this.handleChange}
-                        className="col-12 reserve-input"
+                        className="col-12 reserve-input px-2"
                       />
                     </div>
                     <span className="color-secondary">
@@ -474,7 +473,7 @@ class FlightReserve extends React.Component {
                   <div className="col-lg-6 col-md-6 col-6 padding-3px">
                     <div>
                       <input
-                        className="col-12 reserve-input"
+                        className="col-12 reserve-input px-2"
                         inputMode="numeric"
                         style={{ height: "3.5em" }}
                         placeholder="شماره ثابت"
@@ -492,7 +491,7 @@ class FlightReserve extends React.Component {
                   <div className="col-lg-6 col-md-6 col-6 padding-3px">
                     <div>
                       <input
-                        className="col-12 reserve-input"
+                        className="col-12 reserve-input px-2"
                         style={{ height: "3.5em" }}
                         placeholder="ایمیل (اختیاری)"
                       />
@@ -501,7 +500,7 @@ class FlightReserve extends React.Component {
                   <div className="col-lg-6 col-md-6 col-6 padding-3px">
                     <div>
                       <input
-                        className="col-12 reserve-input"
+                        className="col-12 reserve-input px-2"
                         style={{ height: "3.5em" }}
                         placeholder="کد تخفیف (اختیاری)"
                       />

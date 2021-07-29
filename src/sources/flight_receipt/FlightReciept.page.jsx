@@ -412,7 +412,7 @@ class FlightReciept extends React.Component {
                 <div className="row">
                   <div className="col-lg-7">
                     <button
-                      className="btn btn-success-payment py-3 col-12"
+                      className="btn btn-success-payment py-3 col-12 mb-1"
                       onClick={() => {
                         if (this.state.isUpdated) {
                           this.compeleteReservation();
@@ -425,7 +425,7 @@ class FlightReciept extends React.Component {
                   </div>
                   <div className="col-lg-3">
                     <button
-                      className="btn-danger-outlined btn col-12 py-3"
+                      className="btn-danger-outlined btn col-12 py-3 mb-1"
                       onClick={() => {}}
                     >
                       <span>انصراف</span>

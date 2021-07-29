@@ -117,6 +117,34 @@ class GetFlightList extends React.Component {
             });
           });
       }
+    } else if (this.props.credentials.source != "") {
+      this.setState({ loading: true, open: false });
+      fetch(`${globals.baseUrl}flights/getFlights`, {
+        method: "POST",
+        body: JSON.stringify({ ...this.props.credentials }),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.message == "OK") {
+            if (this.props.credentials.withFilters == "true") {
+              this.props.addFilters({ airlines: data.airlines });
+              this.props.addCredentials({
+                flightDateNext: data.flightDateNext,
+                flightDatePrev: data.flightDatePrev,
+              });
+            }
+            this.setState({
+              flights: data.flights,
+              loading: false,
+            });
+          } else {
+            this.props.messageBoxModify({
+              state: true,
+              message: data.message,
+            });
+          }
+        });
     }
     //----------------------------
     //if (this.props.credentials.source == "") {

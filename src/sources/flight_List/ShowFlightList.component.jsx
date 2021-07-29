@@ -30,17 +30,15 @@ const ShowFlightList = (props) => {
                 </span>
                 <span className="color-black font-size-14">تومان</span>
               </div>
-              <div className="btn-buy-action">
+              <div
+                className="btn-buy-action"
+                onClick={(e) => {
+                  e.preventDefault();
+                  props.setReserveBoxData(oneFlight);
+                }}
+              >
                 <i className="kilo-font icon-refrence"></i>
-                <a
-                  href=""
-                  onClick={(e) => {
-                    e.preventDefault();
-                    props.setReserveBoxData(oneFlight);
-                  }}
-                >
-                  خرید آنلاین
-                </a>
+                <a href="">خرید آنلاین</a>
               </div>
             </div>
             <div className={styles["one-row-detail"]}>
