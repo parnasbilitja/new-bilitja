@@ -79,7 +79,10 @@ const FlightRecieptDesktopHeader = (props) =>
                   </div>
                   <div className="clear"></div>
                   <div>
-                    <img src="../../../../../Images/airplane_reserve_small.png" />
+                    <i
+                      className="kilo-font icon-seat mx-1"
+                      style={{ fontSize: "30px" }}
+                    ></i>
                     <p className="font-size-14">
                       ظرفیت :
                       <span className="color-secondary">
