@@ -124,6 +124,7 @@ class NavBarMobile extends React.Component {
                   slide: true,
                 });
               }}
+              style={{ fontSize: "15px" }}
             />
             <h1 className="font-bold-iransanse">
               {" "}
