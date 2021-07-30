@@ -95,7 +95,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="bodyVar">
-        {this.state.width <= 826 ? <NavBarMobile /> : <NavBar />}
+        {this.state.width <= 826 ? <NavBarMobile /> : null}
+        {this.state.width >= 826 ? <NavBar /> : null}
         <div
           style={
             this.state.width <= 826 ? { marginTop: 110 } : { marginTop: 90 }
