@@ -33,7 +33,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: 0,
+      width: 1024,
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
