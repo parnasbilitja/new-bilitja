@@ -190,6 +190,7 @@ class FlightSearchBox extends React.Component {
           <FontAwesomeIcon
             icon={faExchangeAlt}
             className={styles["home-swtich-button"]}
+            style={{ fontSize: "16px", width: "16px", height: "16px" }}
           />
         </div>
 
