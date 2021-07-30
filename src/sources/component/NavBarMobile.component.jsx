@@ -117,15 +117,15 @@ class NavBarMobile extends React.Component {
         </div>
         <div className={styles["nav-logo-container-mobile"]}>
           <div className="pull-right">
-            {/* <FontAwesomeIcon
+            <FontAwesomeIcon
               icon={faBars}
               onClick={() => {
                 this.setState({
                   slide: true,
                 });
               }}
-              style={{ fontSize: "15px" }}
-            /> */}
+              style={{ fontSize: "15px", width: "15px", height: "15px" }}
+            />
             <h1 className="font-bold-iransanse">
               {" "}
               خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه{" "}
