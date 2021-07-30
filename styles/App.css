@@ -6,6 +6,10 @@
 body {
   font-family: IranSans !important;
 }
+
+.iran-sans {
+  font-family: sans-serif !important;
+}
 .cursor-pointer {
   cursor: pointer !important;
 }
@@ -170,6 +174,10 @@ input[type="button"]:hover {
 .dashboard-manager-content-container {
   height: 100vh !important;
   padding: 20px;
+}
+.dashboard-exit {
+  position: absolute !important;
+  bottom: 0;
 }
 
 .panel-menu-item:hover {

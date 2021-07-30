@@ -8,6 +8,7 @@ import {
   faDollarSign,
   faHandshake,
   faInfoCircle,
+  faSignOutAlt,
   faUserAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "../../../styles/ManagerNav.module.scss";
@@ -56,7 +57,9 @@ const DashboardNav = () => {
             <p className="no-margin font-size-13 font-bold-iransanse">
               پروفایل
             </p>
-            <p className="no-margin font-size-13 color-textpill">{mobile}</p>
+            <p className="no-margin font-size-13 color-textpill iran-sans">
+              {mobile}
+            </p>
           </div>
         </div>
         <div
@@ -76,7 +79,9 @@ const DashboardNav = () => {
             <p className="no-margin font-size-13 font-bold-iransanse">
               داشبورد
             </p>
-            <p className="no-margin font-size-13 color-textpill">Dashboard</p>
+            <p className="no-margin font-size-13 color-textpill iran-sans">
+              Dashboard
+            </p>
           </div>
         </div>
         <div
@@ -96,7 +101,9 @@ const DashboardNav = () => {
             <p className="no-margin font-size-13 font-bold-iransanse">
               گزارشات
             </p>
-            <p className="no-margin font-size-13 color-textpill">Orders</p>
+            <p className="no-margin font-size-13 color-textpill iran-sans">
+              Orders
+            </p>
           </div>
         </div>
         <div
@@ -114,7 +121,9 @@ const DashboardNav = () => {
           </div>
           <div>
             <p className="no-margin font-size-13 font-bold-iransanse">مالی</p>
-            <p className="no-margin font-size-13 color-textpill">Wallet</p>
+            <p className="no-margin font-size-13 color-textpill iran-sans">
+              Wallet
+            </p>
           </div>
         </div>
         <div
@@ -134,7 +143,9 @@ const DashboardNav = () => {
             <p className="no-margin font-size-13 font-bold-iransanse">
               اقامتگاه
             </p>
-            <p className="no-margin font-size-13 color-textpill">Villas</p>
+            <p className="no-margin font-size-13 color-textpill iran-sans">
+              Villas
+            </p>
           </div>
         </div>
         <div
@@ -154,7 +165,25 @@ const DashboardNav = () => {
             <p className="no-margin font-size-13 font-bold-iransanse">
               همکاری با ما
             </p>
-            <p className="no-margin font-size-13 color-textpill">Cooperation</p>
+            <p className="no-margin font-size-13 color-textpill iran-sans">
+              Cooperation
+            </p>
+          </div>
+        </div>
+        <div
+          className={`${styles["manager-nav-one-row"]} dashboard-menu-item cursor-pointer dashboard-exit w-100`}
+          onClick={() => {
+            myRouter.push("/");
+          }}
+        >
+          <div>
+            <FontAwesomeIcon icon={faSignOutAlt} />
+          </div>
+          <div>
+            <p className="no-margin font-size-13 font-bold-iransanse">خروج</p>
+            <p className="no-margin font-size-13 color-textpill iran-sans">
+              Exit
+            </p>
           </div>
         </div>
       </div>
