@@ -20,7 +20,7 @@ import { messageBoxModify } from "../../Redux/UI/ui.action";
 import PopUpWide from "../component/PopUpWide.component";
 import FlightPassengerEditForm from "./FlightPassengerEditForm.component";
 import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
-import router, { withRouter, useRouter } from "next/router";
+import router, { withRouter } from "next/router";
 
 class FlightReciept extends React.Component {
   constructor(props) {
@@ -237,8 +237,8 @@ class FlightReciept extends React.Component {
       open: value,
     });
   };
+
   render() {
-    const router = useRouter();
     return (
       <div className="container-fluid">
         <div className={styles["flight-detail"]}>
