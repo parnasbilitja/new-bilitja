@@ -17,10 +17,7 @@ const FlightReceiptMobileHero = (props) =>
             </strong>
           </div>
           <div className="col-4">
-            <img
-              src="../../../Images/airplane_reserve_small.png"
-              className={stylesRes["small-airplane"]}
-            />
+            <strong className="color-secondary font-size-25">به</strong>
           </div>
           <div className="col-4">
             <strong className="color-secondary font-size-25">
@@ -53,7 +50,10 @@ const FlightReceiptMobileHero = (props) =>
               <span className="text-danger font-bold-iransanse mx-1 font-size-14">
                 {props.capLast}
               </span>
-              <i className="kilo-font icon-seat mx-1"></i>
+              <i
+                className="kilo-font icon-seat mx-1"
+                style={{ fontSize: "23px" }}
+              ></i>
               صندلی خالی
             </p>
           </div>

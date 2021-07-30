@@ -19,10 +19,7 @@ const FlightReserveMobileHeader = (props) =>
             </strong>
           </div>
           <div className="col-4">
-            <img
-              src="../../../../../Images/airplane_reserve_small.png"
-              className={styles["small-airplane"]}
-            />
+            <strong className="color-secondary font-size-25">به</strong>
           </div>
           <div className="col-4">
             <strong className="color-secondary font-size-25">
@@ -55,7 +52,10 @@ const FlightReserveMobileHeader = (props) =>
               <span className="text-danger font-bold-iransanse mx-1 font-size-14">
                 {props.capLast}
               </span>
-              <i className="kilo-font icon-seat mx-1"></i>
+              <i
+                className="kilo-font icon-seat mx-1"
+                style={{ fontSize: "24px" }}
+              ></i>
               صندلی خالی
             </p>
           </div>

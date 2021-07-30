@@ -412,7 +412,7 @@ class FlightReciept extends React.Component {
               <div className="col-lg-2 col-0"></div>
               <div className={`col-lg-4 col-12 payment-container  text-right`}>
                 <div className="row">
-                  <div className="col-lg-7">
+                  <div className="col-lg-8">
                     <button
                       className="btn btn-success-payment py-3 col-12 mb-1"
                       onClick={() => {
@@ -425,7 +425,7 @@ class FlightReciept extends React.Component {
                       پرداخت با کارت شتاب
                     </button>
                   </div>
-                  <div className="col-lg-3">
+                  <div className="col-lg-4">
                     <button
                       className="btn-danger-outlined btn col-12 py-3 mb-1"
                       onClick={() => {}}

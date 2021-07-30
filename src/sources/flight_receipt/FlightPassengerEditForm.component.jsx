@@ -100,6 +100,7 @@ class FlightPassengerEditForm extends React.Component {
           <div className="col-lg-3 col-md-3 col-sm-3 col-12 padding-horizental-3px">
             <div
               className={` form-input-border  ${styles["form-input-border-private"]} `}
+              style={{ height: "30px" }}
             >
               <PrimaryTextInput
                 placeHolder="نام"
@@ -115,6 +116,7 @@ class FlightPassengerEditForm extends React.Component {
           <div className="col-lg-3 col-md-3 col-sm-3 col-12 padding-horizental-3px">
             <div
               className={` form-input-border  ${styles["form-input-border-private"]} `}
+              style={{ height: "30px" }}
             >
               <PrimaryTextInput
                 placeHolder="نام‌خانوادگی"
@@ -130,6 +132,7 @@ class FlightPassengerEditForm extends React.Component {
           <div className="col-lg-2 col-md-2 col-sm-3 col-12 padding-horizental-3px">
             <div
               className={` form-input-border  ${styles["form-input-border-private"]} `}
+              style={{ height: "30px" }}
             >
               <PrimaryTextInput
                 placeHolder="کدملی"
@@ -147,6 +150,7 @@ class FlightPassengerEditForm extends React.Component {
               value={this.state.sex}
               name="sex"
               onChange={this.handleChange}
+              style={{ height: "30px", position: "relative", bottom: "2px" }}
             >
               <option value="1">مرد</option>
               <option value="2">زن</option>
@@ -157,6 +161,7 @@ class FlightPassengerEditForm extends React.Component {
               value={this.state.meliat}
               name="meliat"
               onChange={this.handleChange}
+              style={{ height: "30px", position: "relative", bottom: "2px" }}
             >
               <option value="IR">ایرانی</option>
               <option value="Other">خارجی</option>
@@ -165,6 +170,7 @@ class FlightPassengerEditForm extends React.Component {
           <div className="col-lg-2 col-md-2 col-sm-3 col-12 padding-horizental-3px">
             <div
               className={` form-input-border  ${styles["form-input-border-private"]} `}
+              style={{ height: "30px" }}
             >
               <PrimaryTextInput
                 placeHolder="تاریخ تولد"

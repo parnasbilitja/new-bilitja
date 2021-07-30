@@ -84,7 +84,7 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <div className={`${styles["heor-main-container"]} container`}>
+        <div className={`${styles["heor-main-container"]}`}>
           <PageTabls tabActice={1} />
 
           <div className="row">

@@ -47,7 +47,7 @@ class FlightPassengerForm extends React.Component {
   checkCharacters = (value) => {
     if (!checkCharacter(value) && value != "") {
       this.props.messageBoxModify({
-        message: "لطفا از کاکتر های لاتین استفاده کنید",
+        message: "لطفا از کاراکتر های لاتین استفاده کنید",
         state: true,
       });
       return false;
@@ -192,6 +192,7 @@ class FlightPassengerForm extends React.Component {
                     placeHolder={`${
                       this.props.nationality == "IR" ? "کد ملی" : "کد پاسپورت"
                     }`}
+                    maxLength={10}
                     onChange={(e) => {
                       if (!checkNumber(e.target.value)) {
                         return;

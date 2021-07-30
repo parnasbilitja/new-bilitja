@@ -41,7 +41,7 @@ const Airports = (props) => {
                     }}
                   >
                     <span className="font-size-14">
-                      فرودگاه : {oneAirport.airportName}
+                      {oneAirport.airportName}
                     </span>
                     <span className="pull-left font-size-13 color-textpill">
                       {oneAirport.airportCode}
@@ -74,7 +74,7 @@ const Airports = (props) => {
                     }}
                   >
                     <span className="font-size-14">
-                      فرودگاه : {oneAirport.airportName}
+                      {oneAirport.airportName}
                     </span>
                     <span className="pull-left font-size-13 color-textpill">
                       {oneAirport.airportCode}

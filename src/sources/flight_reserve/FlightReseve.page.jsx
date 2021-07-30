@@ -316,7 +316,7 @@ class FlightReserve extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className={`${styles["flight-detail"]}`}>
           <FlightReserveDesktopHeader {...this.state} />
           <FlightReserveMobileHeader {...this.state} />
@@ -464,6 +464,7 @@ class FlightReserve extends React.Component {
                         name="mobileSubmiter"
                         onChange={this.handleChange}
                         className="col-12 reserve-input px-2"
+                        maxLength={11}
                       />
                     </div>
                     <span className="color-secondary">
@@ -479,6 +480,7 @@ class FlightReserve extends React.Component {
                         placeholder="شماره ثابت"
                         name="phoneSubmiter"
                         onChange={this.handleChange}
+                        maxLength={10}
                       />
                     </div>
                     <span className="color-secondary">
