@@ -108,16 +108,19 @@ class Login extends React.Component {
             type: "authentication",
           });
         } else if (data.status == "-103") {
+          this.setState({ btn_disabled: false, loading: false });
           this.props.messageBoxModify({
             state: true,
             message: data.messgae,
           });
         } else if (data.status == "-104") {
+          this.setState({ btn_disabled: false, loading: false });
           this.props.messageBoxModify({
             state: true,
             message: data.messgae,
           });
         } else {
+          this.setState({ btn_disabled: false, loading: false });
           this.props.messageBoxModify({
             state: true,
             message: "لطفا از اتصال خود به اینترنت اطمینان حاصل کنید.",
