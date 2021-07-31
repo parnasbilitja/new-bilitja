@@ -66,7 +66,7 @@ class Register extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.status == "1") {
+        if (data.status == "1" || data.status == "2") {
           this.setState({
             moaref_save: true,
             loading: false,
@@ -78,10 +78,11 @@ class Register extends React.Component {
             localStorage.setItem("name", data.name + data.family);
           }
           localStorage.setItem("token", data.token);
-          this.props.addAccountProperties({
-            token: data.token,
-            dateLogin: moment().format("YYYY/MM/DD"),
-          });
+
+          // this.props.addAccountProperties({
+          //   token: data.token,
+          //   dateLogin: moment().format("YYYY/MM/DD"),
+          // });
         } else {
           this.setState({ btn_disabled: false, loading: false });
           this.props.messageBoxModify({
@@ -114,6 +115,9 @@ class Register extends React.Component {
             state: false,
             type: "authentication",
           });
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
         } else {
           this.setState({ btn_disabled: false, loading: false });
           this.props.messageBoxModify({
