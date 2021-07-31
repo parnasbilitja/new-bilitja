@@ -70,6 +70,29 @@ class Login extends React.Component {
             get_mobile_status: true,
             btn_text: "تایید کد احراز هویت",
           });
+        } else if (data.status == "10") {
+          this.setState({ btn_disabled: false, loading: false });
+          localStorage.setItem("mobile", data.mobile);
+          localStorage.setItem("token", data.token);
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+          this.props.accountBoxModify({
+            state: false,
+            type: "authentication",
+          });
+          // this.props.addAccountProperties({
+          //   token: data.token,
+          //   dateLogin: moment().format("YYYY/MM/DD"),
+          // });
+          this.props.messageBoxModify({
+            state: true,
+            message: "ورود شما موفقیت آمیز بود.",
+          });
+          this.props.accountBoxModify({
+            state: false,
+            type: "authentication",
+          });
         } else {
           this.setState({ btn_disabled: false, loading: false });
           this.props.messageBoxModify({
