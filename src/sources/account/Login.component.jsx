@@ -84,7 +84,7 @@ class Login extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.status == "2") {
+        if (data.status == "2" || data.status == "1") {
           this.setState({ btn_disabled: false, loading: false });
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
