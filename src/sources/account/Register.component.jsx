@@ -66,7 +66,25 @@ class Register extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.status == "1" || data.status == "2") {
+        if (data.status == "1") {
+          if (data.name == null) {
+            localStorage.setItem("mobile", data.mobile);
+          } else {
+            localStorage.setItem("name", data.name + data.family);
+          }
+          localStorage.setItem("token", data.token);
+          this.props.messageBoxModify({
+            state: true,
+            message: "کاربر عزیز، شما با موفقیت وارد حساب کاربری خود شدید.",
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+          // this.props.addAccountProperties({
+          //   token: data.token,
+          //   dateLogin: moment().format("YYYY/MM/DD"),
+          // });
+        } else if (data.status == "2") {
           this.setState({
             moaref_save: true,
             loading: false,
@@ -78,11 +96,6 @@ class Register extends React.Component {
             localStorage.setItem("name", data.name + data.family);
           }
           localStorage.setItem("token", data.token);
-
-          // this.props.addAccountProperties({
-          //   token: data.token,
-          //   dateLogin: moment().format("YYYY/MM/DD"),
-          // });
         } else {
           this.setState({ btn_disabled: false, loading: false });
           this.props.messageBoxModify({
@@ -107,6 +120,10 @@ class Register extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "0") {
+          this.props.messageBoxModify({
+            state: true,
+            message: "کاربر عزیز، شما با موفقیت ثبت نام شدید.",
+          });
           this.props.messageBoxModify({
             state: true,
             message: data.message,
@@ -178,6 +195,8 @@ class Register extends React.Component {
                   placeHolder="کد فعال سازی"
                   name="token"
                   onChange={this.handleChange}
+                  disabled={this.state.moaref_save}
+                  autoFocus
                 />
               </div>
             </div>
@@ -200,9 +219,6 @@ class Register extends React.Component {
           </div>
         ) : null}
 
-        {/* {this.state.register_status === true ? (
-      
-        ) : null} */}
         <div className="row">
           <div className="form-input-border without-focus col-12">
             <PrimaryButton

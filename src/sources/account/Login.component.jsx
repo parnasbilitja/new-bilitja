@@ -247,6 +247,7 @@ class Login extends React.Component {
                   placeHolder="کد فعالسازی ارسال شده"
                   name="moaref"
                   onChange={this.handleSetToken}
+                  autoFocus
                 />
               </div>
             </div>

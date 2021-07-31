@@ -480,7 +480,6 @@ class FlightReserve extends React.Component {
                         placeholder="شماره ثابت"
                         name="phoneSubmiter"
                         onChange={this.handleChange}
-                        maxLength={10}
                       />
                     </div>
                     <span className="color-secondary">
