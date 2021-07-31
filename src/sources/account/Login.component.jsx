@@ -95,10 +95,10 @@ class Login extends React.Component {
             state: false,
             type: "authentication",
           });
-          this.props.addAccountProperties({
-            token: data.token,
-            dateLogin: moment().format("YYYY/MM/DD"),
-          });
+          // this.props.addAccountProperties({
+          //   token: data.token,
+          //   dateLogin: moment().format("YYYY/MM/DD"),
+          // });
           this.props.messageBoxModify({
             state: true,
             message: "ورود شما موفقیت آمیز بود.",
