@@ -303,3 +303,12 @@ input[type="button"]:hover {
   background-color: red;
   color: #fff;
 }
+
+.btn-container-header-login {
+  border: 2px solid #279692;
+}
+.btn-header-login-active {
+  background-color: #279692 !important;
+  border: none !important;
+  color: #fff;
+}

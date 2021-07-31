@@ -27,9 +27,10 @@ class Authentication extends React.Component {
       [name]: value,
     });
   };
+
   loginWithToken = () => {
     this.setState({ btn_disabled: true, loading: true });
-    fetch(`${globals.baseUrl}account/auth/checkUser`, {
+    fetch(`${globals.baseUrlNew}account/auth/checkUser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

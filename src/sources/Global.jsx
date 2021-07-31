@@ -1,5 +1,5 @@
 const globals = {
-  // baseUrl: "Https://ghd.ravis.ir/api/",
+  baseUrlNew: "Https://ghd.ravis.ir/api/",
   baseUrl: "Https://bilitja.ravis.ir/api/",
   website: "https://bilitja.com/",
 };
