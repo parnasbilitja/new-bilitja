@@ -26,10 +26,18 @@ class Login extends React.Component {
   }
 
   handleLoginWithCode = () => {
-    this.setState({ login_with_code: true, password: "" });
+    this.setState({
+      login_with_code: true,
+      password: "",
+      btn_text: "دریافت کد احراز هویت",
+    });
   };
   handleLoginWithPassword = () => {
-    this.setState({ login_with_code: false, token: "" });
+    this.setState({
+      login_with_code: false,
+      token: "",
+      btn_text: "ورود به حساب",
+    });
   };
 
   handleSetMobile = (e) => {
