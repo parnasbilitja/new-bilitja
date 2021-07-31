@@ -111,13 +111,13 @@ class Login extends React.Component {
           this.setState({ btn_disabled: false, loading: false });
           this.props.messageBoxModify({
             state: true,
-            message: data.messgae,
+            message: data.message,
           });
         } else if (data.status == "-104") {
           this.setState({ btn_disabled: false, loading: false });
           this.props.messageBoxModify({
             state: true,
-            message: data.messgae,
+            message: data.message,
           });
         } else {
           this.setState({ btn_disabled: false, loading: false });
