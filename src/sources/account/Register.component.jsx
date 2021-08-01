@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import { accountBoxModify, messageBoxModify } from "../../Redux/UI/ui.action";
 import globals from "../Global";
 
+import Countdown from "react-countdown";
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +23,7 @@ class Register extends React.Component {
       mobilemoaref: "",
       register_status: false,
       moaref_save: false,
+      resend_code: false,
       btn_text: "دریافت کد احراز هویت",
     };
   }
@@ -42,6 +44,7 @@ class Register extends React.Component {
           this.setState({
             loading: false,
             register_status: true,
+            resend_code: true,
             btn_text: "تایید کد احراز هویت",
           });
         } else {
@@ -151,10 +154,27 @@ class Register extends React.Component {
       [name]: value,
     });
   };
+
+  renderer = ({ minutes, seconds, completed }) => {
+    if (completed) {
+      this.setState({
+        resend_code: false,
+        register_status: false,
+        btn_text: "  دریافت مجدد کد احراز هویت",
+      });
+      return null;
+    } else {
+      return (
+        <span className="font-bold-iransanse text-danger">
+          {minutes}:{seconds}
+        </span>
+      );
+    }
+  };
   render() {
     return (
       <div className="popup-content-container">
-        <div className="popup-heading">
+        <div className="popup-heading text-center">
           <span>ثبت نام</span>
           <span
             className="pull-left exit-form"
@@ -175,10 +195,11 @@ class Register extends React.Component {
           <div className="col-11 padding-horizental-3px">
             <div className={` form-input-border  `}>
               <PrimaryTextInput
-                placeHolder="نام کاربری(موبایل)"
+                placeHolder="نام کاربری ( شماره همراه )"
                 name="mobile"
                 onChange={this.handleChange}
                 disabled={this.state.register_status}
+                inputMode="numeric"
               />
             </div>
           </div>
@@ -192,11 +213,12 @@ class Register extends React.Component {
             <div className="col-11 padding-horizental-3px">
               <div className={` form-input-border  `}>
                 <PrimaryTextInput
-                  placeHolder="کد فعال سازی"
+                  placeHolder="کد ارسال شده را وارد نمایید."
                   name="token"
                   onChange={this.handleChange}
                   disabled={this.state.moaref_save}
                   autoFocus
+                  inputMode="numeric"
                 />
               </div>
             </div>
@@ -213,6 +235,7 @@ class Register extends React.Component {
                   placeHolder="شماره موبایل معرف"
                   name="mobilemoaref"
                   onChange={this.handleChange}
+                  inputMode="numeric"
                 />
               </div>
             </div>
@@ -233,6 +256,13 @@ class Register extends React.Component {
             />
           </div>
         </div>
+        {this.state.resend_code === true ? (
+          <div className="row mt-3 text-center">
+            <div className="col-12">
+              <Countdown renderer={this.renderer} date={Date.now() + 60000} />
+            </div>
+          </div>
+        ) : null}
         <div className="row">
           <div className="col-12 no-padding-horizental">
             <br />

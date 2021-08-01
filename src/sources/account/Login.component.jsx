@@ -9,6 +9,8 @@ import { accountBoxModify, messageBoxModify } from "../../Redux/UI/ui.action";
 
 import globals from "../Global";
 import { Loader } from "./../../Utils/Loader";
+
+import Countdown from "react-countdown";
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -159,10 +161,27 @@ class Login extends React.Component {
         }
       });
   };
+
+  // Renderer callback with condition
+  renderer = ({ minutes, seconds, completed }) => {
+    if (completed) {
+      this.setState({
+        get_mobile_status: false,
+        btn_text: "  دریافت مجدد کد احراز هویت",
+      });
+      return null;
+    } else {
+      return (
+        <span className="font-bold-iransanse text-danger">
+          {minutes}:{seconds}
+        </span>
+      );
+    }
+  };
   render() {
     return (
       <div className="popup-content-container">
-        <div className="popup-heading">
+        <div className="popup-heading text-center">
           <span>ورود</span>
           <span
             className="pull-left exit-form"
@@ -204,7 +223,7 @@ class Login extends React.Component {
           <div className="col-11 padding-horizental-3px">
             <div className={` form-input-border  `}>
               <PrimaryTextInput
-                placeHolder="نام کاربری (شماره همراه)"
+                placeHolder="نام کاربری ( شماره همراه )"
                 name="mobile"
                 onChange={this.handleSetMobile}
                 disabled={
@@ -214,6 +233,7 @@ class Login extends React.Component {
                       : false
                     : null
                 }
+                inputMode="numeric"
               />
             </div>
           </div>
@@ -231,6 +251,7 @@ class Login extends React.Component {
                   placeHolder="رمز عبور"
                   name="password"
                   onChange={this.handleSetPassword}
+                  inputMode="numeric"
                 />
               </div>
             </div>
@@ -244,10 +265,11 @@ class Login extends React.Component {
             <div className="col-11 padding-horizental-3px">
               <div className={` form-input-border  `}>
                 <PrimaryTextInput
-                  placeHolder="کد فعالسازی ارسال شده"
+                  placeHolder="کد ارسال شده را وارد نمایید."
                   name="moaref"
                   onChange={this.handleSetToken}
                   autoFocus
+                  inputMode="numeric"
                 />
               </div>
             </div>
@@ -273,6 +295,14 @@ class Login extends React.Component {
             </button>
           </div>
         </div>
+        {this.state.get_mobile_status === true ? (
+          <div className="row mt-3 text-center">
+            <div className="col-12">
+              <Countdown renderer={this.renderer} date={Date.now() + 60000} />
+            </div>
+          </div>
+        ) : null}
+
         <div className="row">
           <div className="col-12 no-padding-horizental">
             <br />
@@ -288,7 +318,7 @@ class Login extends React.Component {
                 className="cursor-pointer"
               >
                 {" "}
-                ثبت نام در سامانه بلیطــجا
+                ثبت نام در سامانه ( ثبت نــام جدید )
               </a>
             </p>
           </div>
