@@ -9,6 +9,7 @@ import Link from "next/link";
 
 import { connect } from "react-redux";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
+import router from "next/router";
 class NavBarMobile extends React.Component {
   constructor(props) {
     super(props);
@@ -52,10 +53,7 @@ class NavBarMobile extends React.Component {
                     className="font-size-13 color-black"
                     onClick={(e) => {
                       e.preventDefault();
-                      this.props.accountBoxModify({
-                        state: true,
-                        type: "login",
-                      });
+                      router.push("/dashboard");
                     }}
                   >
                     <span className="font-bold-iransanse">
@@ -103,9 +101,22 @@ class NavBarMobile extends React.Component {
               </>
             )}
 
-            <a href="/ویلا/intro" className="font-size-10 btn-outlined">
-              میزبان شوید
-            </a>
+            {this.state.logged === false ? (
+              <a href="/ویلا/intro" className="font-size-10 btn-outlined">
+                میزبان شوید
+              </a>
+            ) : (
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  router.push("/dashboard");
+                }}
+                className="font-size-13 btn-outlined px-2 "
+              >
+                داشبورد
+              </a>
+            )}
           </div>
           <div className="pull-left">
             <a href="#" className="color-black font-bold-iransanse">

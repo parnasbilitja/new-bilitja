@@ -187,14 +187,15 @@ class Register extends React.Component {
             <FontAwesomeIcon icon={faTimes} />
           </span>
         </div>
-        <div className="row">
+        <div className="row mb-2">
           <div className="col-1 padding-horizental-3px">
             <FontAwesomeIcon icon={faUser} className="margin-top-20px" />
           </div>
 
           <div className="col-11 padding-horizental-3px">
-            <div className={` form-input-border  `}>
+            <div>
               <PrimaryTextInput
+                className="form-input-auth"
                 placeHolder="نام کاربری ( شماره همراه )"
                 name="mobile"
                 onChange={this.handleChange}
@@ -206,13 +207,14 @@ class Register extends React.Component {
         </div>
 
         {this.state.register_status === true ? (
-          <div className="row">
+          <div className="row mb-2">
             <div className="col-1 padding-horizental-3px">
               <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
             </div>
             <div className="col-11 padding-horizental-3px">
-              <div className={` form-input-border  `}>
+              <div>
                 <PrimaryTextInput
+                  className="form-input-auth"
                   placeHolder="کد ارسال شده را وارد نمایید."
                   name="token"
                   onChange={this.handleChange}
@@ -225,13 +227,14 @@ class Register extends React.Component {
           </div>
         ) : null}
         {this.state.moaref_save === true ? (
-          <div className="row">
+          <div className="row mb-2">
             <div className="col-1 padding-horizental-3px">
               <FontAwesomeIcon icon={faUsers} className="margin-top-20px" />
             </div>
             <div className="col-11 padding-horizental-3px">
-              <div className={` form-input-border  `}>
+              <div>
                 <PrimaryTextInput
+                  className="form-input-auth"
                   placeHolder="شماره موبایل معرف"
                   name="mobilemoaref"
                   onChange={this.handleChange}
@@ -243,7 +246,7 @@ class Register extends React.Component {
         ) : null}
 
         <div className="row">
-          <div className="form-input-border without-focus col-12">
+          <div className="form-input-auth-border without-focus col-12">
             <PrimaryButton
               defaultValue={this.state.btn_text}
               onClick={(e) => {

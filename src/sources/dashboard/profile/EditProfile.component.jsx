@@ -1,11 +1,63 @@
 import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../../../../styles/PrimaryButton.module.scss";
 import { useRouter, withRouter } from "next/router";
+import { connect } from "react-redux";
+import globals from "./../../Global";
+import { messageBoxModify } from "./../../../Redux/UI/ui.action";
 
-const EditProfile = () => {
+const EditProfile = (props) => {
   const router = useRouter();
+  const [state, setState] = useState({
+    name: props.user_information.name,
+    family: props.user_information.family,
+    mobile: props.user_information.mobile,
+    meliCod: props.user_information.meliCod,
+    pasNo: props.user_information.pasNo,
+    gender: props.user_information.gender,
+    birthDate: props.user_information.birthDate,
+    mobileMoaref: props.user_information.mobileMoaref,
+    address: props.user_information.address,
+    mariedStat: props.user_information.mariedStat,
+  });
+
+  const handleSetState = (e) => {
+    const { name, value } = e.target;
+    setState((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  useEffect(() => {
+    setState((prevSate) => ({
+      ...prevSate,
+      UserId: localStorage.getItem("token"),
+    }));
+  }, []);
+
+  const handleEditProfile = (event) => {
+    event.preventDefault();
+    fetch(`${globals.baseUrlNew}account/auth/ProfileSave`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(state),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "0") {
+          router.push("/dashboard/profile");
+          props.messageBoxModify({
+            state: true,
+            message: "اطلاعات شما با موفقیت ثبت شد.",
+          });
+        } else {
+          props.messageBoxModify({
+            state: true,
+            message: "خطایی رخ داده است لطفا مجداا تلاش کنید.",
+          });
+        }
+      });
+  };
+
   return (
     <section>
       <div className="border-bottom-black">
@@ -21,7 +73,7 @@ const EditProfile = () => {
         className="card my-4"
         style={{ borderRadius: "15px", border: "transparent" }}
       >
-        <form>
+        <form onSubmit={handleEditProfile}>
           <div className="container-fluid">
             <div className="row my-3">
               <div className="col-lg-4 text-center">
@@ -49,7 +101,9 @@ const EditProfile = () => {
                   <div className="col-lg-4 title-box ">نام</div>
                   <div className="col-lg-8">
                     <input
-                      defaultValue="value"
+                      defaultValue={state.name}
+                      onChange={handleSetState}
+                      name="name"
                       className="col-12 complate-profile-input"
                     />
                   </div>
@@ -58,7 +112,9 @@ const EditProfile = () => {
                   <div className="col-lg-4 title-box ">نام خانوادگی</div>
                   <div className="col-lg-8">
                     <input
-                      defaultValue="value"
+                      defaultValue={state.family}
+                      onChange={handleSetState}
+                      name="family"
                       className="col-12 complate-profile-input"
                     />
                   </div>
@@ -67,8 +123,9 @@ const EditProfile = () => {
                   <div className="col-lg-4 title-box ">شماره همراه</div>
                   <div className="col-lg-8">
                     <input
-                      defaultValue="value"
+                      value={state.mobile}
                       className="col-12 complate-profile-input"
+                      nputMode="numeric"
                     />
                   </div>
                 </div>
@@ -76,8 +133,11 @@ const EditProfile = () => {
                   <div className="col-lg-4 title-box ">کد ملی</div>
                   <div className="col-lg-8">
                     <input
-                      defaultValue="value"
+                      defaultValue={state.meliCod}
+                      onChange={handleSetState}
+                      name="meliCod"
                       className="col-12 complate-profile-input"
+                      nputMode="numeric"
                     />
                   </div>
                 </div>
@@ -85,7 +145,9 @@ const EditProfile = () => {
                   <div className="col-lg-4 title-box ">شماره پاسپورت</div>
                   <div className="col-lg-8">
                     <input
-                      defaultValue="value"
+                      defaultValue={state.pasNo}
+                      onChange={handleSetState}
+                      name="pasNo"
                       className="col-12 complate-profile-input"
                     />
                   </div>
@@ -93,19 +155,26 @@ const EditProfile = () => {
               </div>
               <div className="col-lg-4">
                 <div className="row my-2">
-                  <div className="col-lg-4 title-box ">نام پدر</div>
+                  <div className="col-lg-4 title-box ">جنسیت</div>
                   <div className="col-lg-8">
-                    <input
-                      defaultValue="value"
+                    <select
+                      value={state.gender}
+                      onChange={handleSetState}
+                      name="gender"
                       className="col-12 complate-profile-input"
-                    />
+                    >
+                      <option value={1}>مرد</option>
+                      <option value={2}>زن</option>
+                    </select>
                   </div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">تاریخ تولد</div>
                   <div className="col-lg-8">
                     <input
-                      defaultValue="value"
+                      defaultValue={state.birthDate}
+                      onChange={handleSetState}
+                      name="birthDate"
                       className="col-12 complate-profile-input"
                     />
                   </div>
@@ -114,8 +183,11 @@ const EditProfile = () => {
                   <div className="col-lg-4 title-box ">معرف</div>
                   <div className="col-lg-8">
                     <input
-                      defaultValue="value"
+                      defaultValue={state.mobileMoaref}
+                      onChange={handleSetState}
+                      name="mobileMoaref"
                       className="col-12 complate-profile-input"
+                      nputMode="numeric"
                     />
                   </div>
                 </div>
@@ -123,7 +195,9 @@ const EditProfile = () => {
                   <div className="col-lg-4 title-box ">آدرس</div>
                   <div className="col-lg-8">
                     <input
-                      defaultValue="value"
+                      defaultValue={state.address}
+                      onChange={handleSetState}
+                      name="address"
                       className="col-12 complate-profile-input"
                     />
                   </div>
@@ -131,26 +205,31 @@ const EditProfile = () => {
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">وضعیت تاهل</div>
                   <div className="col-lg-8">
-                    <input
-                      defaultValue="value"
+                    <select
+                      value={state.mariedStat}
+                      onChange={handleSetState}
+                      name="mariedStat"
                       className="col-12 complate-profile-input"
-                    />
+                    >
+                      <option value={1}>مجرد</option>
+                      <option value={2}>متاهل</option>
+                    </select>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="row my-2">
-            <div className="col-lg-8  ">
+            <div className="col-lg-8 mb-2">
               <button
-                className={`${styles["primary-button"]}  font-bold-iransanse mb-1 `}
+                className={`${styles["primary-button"]}  font-bold-iransanse py-2 `}
               >
                 ویرایش اطلاعات
               </button>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 mb-2">
               <button
-                className={`btn btn-danger col-12 py-2 font-bold-iransanse mb-1 `}
+                className={`btn btn-outline-danger col-12 py-2 font-bold-iransanse  `}
                 onClick={() => router.push("/dashboard/profile")}
                 style={{ height: "3em" }}
                 type="button"
@@ -165,4 +244,13 @@ const EditProfile = () => {
   );
 };
 
-export default withRouter(EditProfile);
+const mapStateToProps = (state) => ({
+  user_information: state.user_information,
+});
+
+const mapDispatchesToProps = (dispatch) => ({
+  messageBoxModify: (value) => dispatch(messageBoxModify(value)),
+});
+export default withRouter(
+  connect(mapStateToProps, mapDispatchesToProps)(EditProfile)
+);

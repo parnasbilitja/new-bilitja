@@ -216,13 +216,14 @@ class Login extends React.Component {
             ورود با رمز ثابت
           </button>
         </div>
-        <div className="row">
+        <div className="row mb-2">
           <div className="col-1 padding-horizental-3px">
             <FontAwesomeIcon icon={faUser} className="margin-top-20px" />
           </div>
           <div className="col-11 padding-horizental-3px">
-            <div className={` form-input-border  `}>
+            <div>
               <PrimaryTextInput
+                className="form-input-auth"
                 placeHolder="نام کاربری ( شماره همراه )"
                 name="mobile"
                 onChange={this.handleSetMobile}
@@ -239,15 +240,14 @@ class Login extends React.Component {
           </div>
         </div>
         {this.state.login_with_code === false ? (
-          <div className="row">
+          <div className="row mb-2">
             <div className="col-1 padding-horizental-3px">
               <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
             </div>
             <div className="col-11 padding-horizental-3px">
-              <div
-                className={` form-input-border  ${styles["form-input-border-private"]} `}
-              >
+              <div>
                 <PrimaryTextInput
+                  className="form-input-auth"
                   placeHolder="رمز عبور"
                   name="password"
                   onChange={this.handleSetPassword}
@@ -259,13 +259,14 @@ class Login extends React.Component {
           </div>
         ) : null}
         {this.state.get_mobile_status === true ? (
-          <div className="row">
+          <div className="row mb-2">
             <div className="col-1 padding-horizental-3px">
               <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
             </div>
             <div className="col-11 padding-horizental-3px">
-              <div className={` form-input-border  `}>
+              <div>
                 <PrimaryTextInput
+                  className="form-input-auth"
                   placeHolder="کد ارسال شده را وارد نمایید."
                   name="moaref"
                   onChange={this.handleSetToken}
@@ -278,7 +279,7 @@ class Login extends React.Component {
         ) : null}
 
         <div className="row mt-3">
-          <div className="form-input-border without-focus col-12">
+          <div className=" without-focus col-12">
             <button
               onClick={(e) => {
                 this.state.get_mobile_status === false
@@ -288,7 +289,7 @@ class Login extends React.Component {
               className={
                 this.props.disabled === false
                   ? "btn btn-info py-3 mb-3 col-12 btn-block"
-                  : styles["primary-button"]
+                  : `${styles["primary-button"]} py-2`
               }
               disabled={this.state.btn_disabled}
             >

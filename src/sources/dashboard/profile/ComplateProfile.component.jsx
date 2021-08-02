@@ -87,6 +87,7 @@ const ComplateProfile = (props) => {
                           className="col-12 complate-profile-input"
                           onChange={(e) => handleSetState(e)}
                           name="Name"
+                          required
                         />
                       </div>
                     ) : (
@@ -104,6 +105,7 @@ const ComplateProfile = (props) => {
                           className="col-12 complate-profile-input"
                           onChange={(e) => handleSetState(e)}
                           name="Family"
+                          required
                         />
                       </div>
                     ) : (
@@ -125,6 +127,7 @@ const ComplateProfile = (props) => {
                           className="col-12 complate-profile-input"
                           onChange={(e) => handleSetState(e)}
                           name="MeliCod"
+                          inputMode="numeric"
                         />
                       </div>
                     ) : (
@@ -199,6 +202,7 @@ const ComplateProfile = (props) => {
                           className="col-12 complate-profile-input"
                           onChange={(e) => handleSetState(e)}
                           name="MobileMoaref"
+                          inputMode="numeric"
                         />
                       </div>
                     ) : (

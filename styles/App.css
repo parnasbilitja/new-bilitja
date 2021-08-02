@@ -6,7 +6,16 @@
 body {
   font-family: IranSans !important;
 }
-
+.form-input-auth {
+  height: 45px !important;
+  border: 1px solid #ccc !important;
+}
+.form-input-auth:focus {
+  border-bottom: 1px solid red !important;
+}
+.iran-sans-font {
+  font-family: IranSans !important;
+}
 .iran-sans {
   font-family: sans-serif !important;
 }
@@ -308,9 +317,13 @@ input[type="button"]:hover {
   border: 2px solid #279692;
 }
 .btn-header-login:focus {
-  border: none;
-  box-shadow: none;
-  outline: none;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+.btn-check:focus + .btn,
+.btn:focus {
+  box-shadow: none !important;
 }
 .btn-header-login-active {
   background-color: #279692 !important;

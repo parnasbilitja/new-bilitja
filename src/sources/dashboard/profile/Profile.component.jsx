@@ -1,13 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import RouteButtons from "./RouteButtons.components";
-import { withRouter } from "next/router";
+import { useRouter, withRouter } from "next/router";
 import { useEffect, useState } from "react";
 import globals from "./../../Global";
 import { connect } from "react-redux";
 import { SetUserInformation } from "../../../Redux/Dashboard/Profile/profile.action";
 
 const Profile = (props) => {
+  const router = useRouter();
   useEffect(() => {
     fetch(`${globals.baseUrlNew}account/auth/profileView`, {
       method: "POST",
@@ -27,7 +28,6 @@ const Profile = (props) => {
       });
   }, []);
 
-  console.log(props);
   return (
     <section>
       <div className="border-bottom-black ">
@@ -41,6 +41,18 @@ const Profile = (props) => {
         </div>
       </div>
       <div>
+        {props.user_information.name === null ? (
+          <div className="alert alert-info text-center mt-3 title-box">
+            مسافر گرامی، لطفا ابتدا از قسمت تکمیل پروفایل تمامی اطلاعات خود را
+            تکمیل کنید.
+            <a
+              className="font-bold-iransanse cursor-pointer mx-1"
+              onClick={() => router.push("/dashboard/complate-profile")}
+            >
+              برای دسترسی سریع اینجا کلیک کنید
+            </a>
+          </div>
+        ) : null}
         <div
           className="card my-4"
           style={{ borderRadius: "15px", border: "transparent" }}
@@ -138,9 +150,7 @@ const Profile = (props) => {
                   <div className="col-lg-4 title-box ">وضعیت تاهل</div>
                   <div className="col-lg-7 text-box">
                     {" "}
-                    {props.user_information.mariedStat == "1"
-                      ? "مجرد"
-                      : "متاهل"}
+                    {props.user_information.mariedStat == 1 ? "مجرد" : "متاهل"}
                   </div>
                 </div>
               </div>
