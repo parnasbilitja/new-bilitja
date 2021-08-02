@@ -12,6 +12,7 @@ import reserveReducer from "./Reserve/reserve.reducer";
 import reservevillaReducer from "./Reservevilla/reserve_villa.reducer";
 import UIReducer from "./UI/ui.reducer";
 import accountReducer from "./Account/account.reducer";
+import { ProfileReducer } from "./Dashboard/Profile/profile.reducer";
 const persistConfig = {
   key: "root",
   storage,
@@ -27,5 +28,6 @@ const rootReducer = combineReducers({
   reservevilla: reservevillaReducer,
   ui: UIReducer,
   account: accountReducer,
+  user_information: ProfileReducer,
 });
 export default persistReducer(persistConfig, rootReducer);

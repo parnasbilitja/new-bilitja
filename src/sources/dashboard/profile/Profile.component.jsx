@@ -2,8 +2,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import RouteButtons from "./RouteButtons.components";
 import { withRouter } from "next/router";
+import { useEffect, useState } from "react";
+import globals from "./../../Global";
+import { connect } from "react-redux";
+import { SetUserInformation } from "../../../Redux/Dashboard/Profile/profile.action";
 
-const Profile = () => {
+const Profile = (props) => {
+  useEffect(() => {
+    fetch(`${globals.baseUrlNew}account/auth/profileView`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        mobile: localStorage.getItem("mobile"),
+        userid: localStorage.getItem("token"),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "0") {
+          props.setUserInformationAction(data.profilemodel);
+        } else {
+          alert("Have Profnlem");
+        }
+      });
+  }, []);
+
+  console.log(props);
   return (
     <section>
       <div className="border-bottom-black ">
@@ -33,45 +57,91 @@ const Profile = () => {
               <div className="col-lg-4">
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">نام</div>
-                  <div className="col-lg-7 text-box">------</div>
+                  <div className="col-lg-7 text-box">
+                    {props.user_information.name !== null
+                      ? props.user_information.name
+                      : "------"}
+                  </div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">نام خانوادگی</div>
-                  <div className="col-lg-7 text-box">-------</div>
+                  <div className="col-lg-7 text-box">
+                    {" "}
+                    {props.user_information.family !== null
+                      ? props.user_information.family
+                      : "------"}
+                  </div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">شماره همراه</div>
-                  <div className="col-lg-7 text-box">-------</div>
+                  <div className="col-lg-7 text-box">
+                    {props.user_information.mobile !== null
+                      ? props.user_information.mobile
+                      : "------"}
+                  </div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">کد ملی</div>
-                  <div className="col-lg-7 text-box">--------</div>
+                  <div className="col-lg-7 text-box">
+                    {" "}
+                    {props.user_information.meliCod !== null
+                      ? props.user_information.meliCod
+                      : "------"}
+                  </div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">شماره پاسپورت</div>
-                  <div className="col-lg-7 text-box">---------</div>
+                  <div className="col-lg-7 text-box">
+                    {" "}
+                    {props.user_information.pasNo !== null
+                      ? props.user_information.pasNo
+                      : "------"}
+                  </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="row my-2">
-                  <div className="col-lg-4 title-box ">نام پدر</div>
-                  <div className="col-lg-7 text-box">----------</div>
+                  <div className="col-lg-4 title-box ">جنسیت</div>
+                  <div className="col-lg-7 text-box">
+                    {" "}
+                    {props.user_information.gender == 1 ? "مرد" : "زن"}
+                  </div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">تاریخ تولد</div>
-                  <div className="col-lg-7 text-box">-----------</div>
+                  <div className="col-lg-7 text-box">
+                    {" "}
+                    {props.user_information.birthDate !== null
+                      ? props.user_information.birthDate
+                      : "------"}
+                  </div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">معرف</div>
-                  <div className="col-lg-7 text-box">----</div>
+                  <div className="col-lg-7 text-box">
+                    {" "}
+                    {props.user_information.mobileMoaref !== null
+                      ? props.user_information.mobileMoaref
+                      : "------"}
+                  </div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">آدرس</div>
-                  <div className="col-lg-7 text-box"></div>
+                  <div className="col-lg-7 text-box">
+                    {" "}
+                    {props.user_information.address !== null
+                      ? props.user_information.address
+                      : "------"}
+                  </div>
                 </div>
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">وضعیت تاهل</div>
-                  <div className="col-lg-7 text-box">مجرد</div>
+                  <div className="col-lg-7 text-box">
+                    {" "}
+                    {props.user_information.mariedStat == "1"
+                      ? "مجرد"
+                      : "متاهل"}
+                  </div>
                 </div>
               </div>
             </div>
@@ -83,4 +153,13 @@ const Profile = () => {
   );
 };
 
-export default withRouter(Profile);
+const mapDispatchesToProps = (dispatch) => ({
+  setUserInformationAction: (value) => dispatch(SetUserInformation(value)),
+});
+const mapStateToProps = (state) => ({
+  user_information: state.user_information,
+});
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchesToProps)(Profile)
+);
