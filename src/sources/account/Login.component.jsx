@@ -252,6 +252,7 @@ class Login extends React.Component {
                   name="password"
                   onChange={this.handleSetPassword}
                   inputMode="numeric"
+                  type="password"
                 />
               </div>
             </div>
@@ -318,7 +319,7 @@ class Login extends React.Component {
                 className="cursor-pointer"
               >
                 {" "}
-                ثبت نام در سامانه ( ثبت نــام جدید )
+                ( ثبت نــام جدید )
               </a>
             </p>
           </div>

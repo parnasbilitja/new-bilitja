@@ -92,7 +92,7 @@ class NavBarMobile extends React.Component {
                     e.preventDefault();
                     this.props.accountBoxModify({
                       state: true,
-                      type: "login",
+                      type: "register",
                     });
                   }}
                 >

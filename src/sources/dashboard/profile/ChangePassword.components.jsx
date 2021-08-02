@@ -33,16 +33,16 @@ const ChangePassword = () => {
           </div>
         </div>
         <div className="row my-2">
-          <div className="col-lg-8  ">
+          <div className="col-lg-8 mb-2">
             <button
-              className={`${styles["primary-button"]}  font-bold-iransanse mb-1 `}
+              className={`${styles["primary-button"]}  font-bold-iransanse py-2  `}
             >
               تغییر گذرواژه
             </button>
           </div>
-          <div className="col-lg-4">
+          <div className="col-lg-4 mb-2">
             <button
-              className={`btn btn-danger col-12 py-2 font-bold-iransanse mb-1 `}
+              className={`btn btn-outline-danger col-12 py-2 font-bold-iransanse  `}
               onClick={() => router.push("/dashboard/profile")}
               style={{ height: "3em" }}
               type="button"

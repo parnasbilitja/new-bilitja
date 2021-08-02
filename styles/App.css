@@ -307,6 +307,11 @@ input[type="button"]:hover {
 .btn-container-header-login {
   border: 2px solid #279692;
 }
+.btn-header-login:focus {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
 .btn-header-login-active {
   background-color: #279692 !important;
   border: none !important;
