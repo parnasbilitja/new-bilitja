@@ -222,8 +222,8 @@ class Login extends React.Component {
           </div>
           <div className="col-11 padding-horizental-3px">
             <div>
-              <PrimaryTextInput
-                className="form-input-auth"
+              <input
+                className="form-input-auth col-12"
                 placeHolder="نام کاربری ( شماره همراه )"
                 name="mobile"
                 onChange={this.handleSetMobile}
@@ -246,8 +246,8 @@ class Login extends React.Component {
             </div>
             <div className="col-11 padding-horizental-3px">
               <div>
-                <PrimaryTextInput
-                  className="form-input-auth"
+                <input
+                  className="form-input-auth col-12"
                   placeHolder="رمز عبور"
                   name="password"
                   onChange={this.handleSetPassword}
@@ -265,8 +265,8 @@ class Login extends React.Component {
             </div>
             <div className="col-11 padding-horizental-3px">
               <div>
-                <PrimaryTextInput
-                  className="form-input-auth"
+                <input
+                  className="form-input-auth col-12"
                   placeHolder="کد ارسال شده را وارد نمایید."
                   name="moaref"
                   onChange={this.handleSetToken}

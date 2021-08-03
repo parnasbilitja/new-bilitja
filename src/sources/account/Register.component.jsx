@@ -194,8 +194,8 @@ class Register extends React.Component {
 
           <div className="col-11 padding-horizental-3px">
             <div>
-              <PrimaryTextInput
-                className="form-input-auth"
+              <input
+                className="form-input-auth col-12"
                 placeHolder="نام کاربری ( شماره همراه )"
                 name="mobile"
                 onChange={this.handleChange}
@@ -213,8 +213,8 @@ class Register extends React.Component {
             </div>
             <div className="col-11 padding-horizental-3px">
               <div>
-                <PrimaryTextInput
-                  className="form-input-auth"
+                <input
+                  className="form-input-auth col-12"
                   placeHolder="کد ارسال شده را وارد نمایید."
                   name="token"
                   onChange={this.handleChange}
@@ -233,8 +233,8 @@ class Register extends React.Component {
             </div>
             <div className="col-11 padding-horizental-3px">
               <div>
-                <PrimaryTextInput
-                  className="form-input-auth"
+                <input
+                  className="form-input-auth col-12"
                   placeHolder="شماره موبایل معرف"
                   name="mobilemoaref"
                   onChange={this.handleChange}
@@ -256,6 +256,7 @@ class Register extends React.Component {
                     : this.RegisterWithToken()
                   : this.SendMoarefMobile();
               }}
+              style={{ height: "3em" }}
             />
           </div>
         </div>
