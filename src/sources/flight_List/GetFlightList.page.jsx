@@ -134,6 +134,34 @@ class GetFlightList extends React.Component {
                 flightDatePrev: data.flightDatePrev,
               });
             }
+            // Get Flights List
+            this.setState({ loading: true, open: false });
+            fetch(`${globals.baseUrl}flights/getFlights`, {
+              method: "POST",
+              body: JSON.stringify({ ...this.props.credentials }),
+              headers: { "Content-Type": "application/json" },
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.message == "OK") {
+                  if (this.props.credentials.withFilters == "true") {
+                    this.props.addFilters({ airlines: data.airlines });
+                    this.props.addCredentials({
+                      flightDateNext: data.flightDateNext,
+                      flightDatePrev: data.flightDatePrev,
+                    });
+                  }
+                  this.setState({
+                    flights: data.flights,
+                    loading: false,
+                  });
+                } else {
+                  this.props.messageBoxModify({
+                    state: true,
+                    message: data.message,
+                  });
+                }
+              });
             this.setState({
               flights: data.flights,
               loading: false,
@@ -202,35 +230,6 @@ class GetFlightList extends React.Component {
     //   } else {
     //     this.getData();
     //   }
-
-    // Get Flights List
-    this.setState({ loading: true, open: false });
-    fetch(`${globals.baseUrl}flights/getFlights`, {
-      method: "POST",
-      body: JSON.stringify({ ...this.props.credentials }),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.message == "OK") {
-          if (this.props.credentials.withFilters == "true") {
-            this.props.addFilters({ airlines: data.airlines });
-            this.props.addCredentials({
-              flightDateNext: data.flightDateNext,
-              flightDatePrev: data.flightDatePrev,
-            });
-          }
-          this.setState({
-            flights: data.flights,
-            loading: false,
-          });
-        } else {
-          this.props.messageBoxModify({
-            state: true,
-            message: data.message,
-          });
-        }
-      });
   }
 
   managePopUpSearch = (value) => {
