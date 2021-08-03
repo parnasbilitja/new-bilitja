@@ -6,6 +6,7 @@
 body {
   font-family: IranSans !important;
 }
+
 .form-input-auth {
   height: 45px !important;
   border: 1px solid #ccc !important;
@@ -97,6 +98,7 @@ input[type="button"]:hover {
   height: 35px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-family: BYekan !important;
 }
 .complate-profile-input:focus {
   outline: none;
