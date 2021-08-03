@@ -1,173 +1,209 @@
-@import './values.scss';
+@import "./values.scss";
 @media only screen and (max-width: 440px) {
-    .calendar-year-container{
-        width: 300px !important;
-        grid-gap: 1px;
-    }
-    .calendar-month-container{
-        width: 300px !important;
-        grid-gap: 10px;
-    }
-    .calendar-day-container{
-        width:300px ;
-        height: 210px;
-        grid-gap: 3px;
-    }
-    .two-month-container{
-        grid-template-columns:  1fr;
-        grid-template-rows: 1fr 1fr;
-        
-    }
-    
+  .calendar-year-container {
+    width: 300px !important;
+    grid-gap: 1px;
+  }
+  .calendar-month-container {
+    width: 300px !important;
+    grid-gap: 10px;
+  }
+  .calendar-day-container {
+    width: 300px;
+    height: 210px;
+    grid-gap: 3px;
+  }
+  .two-month-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 }
 @media only screen and (max-width: 694px) and (min-width: 441px) {
-    .calendar-year-container{
-        width: 250px !important;
+  .calendar-year-container {
+    width: 250px !important;
 
-        grid-gap: 5px;
-    }
-    .calendar-month-container{
-        width: 250px !important;
+    grid-gap: 5px;
+  }
+  .calendar-month-container {
+    width: 250px !important;
 
-        grid-gap: 5px;
-    }
-    .calendar-day-container{
-        width:300px ;
+    grid-gap: 5px;
+  }
+  .calendar-day-container {
+    width: 300px;
 
-        grid-gap: 3px;
-    }
-    .two-month-container{
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        
-    }
+    grid-gap: 3px;
+  }
+  .two-month-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 695px) {
-    .calendar-year-container{
-        width: 300px !important;
-        grid-gap: 5px;
-    }
-    .calendar-month-container{
-        width: 300px !important;
-        grid-gap: 5px;
-    }
-    .calendar-day-container{
-        width:350px ;
-        grid-gap: 3px;
-    }
-    .two-month-container{
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        
-    }
+  .calendar-year-container {
+    width: 300px !important;
+    grid-gap: 5px;
+  }
+  .calendar-month-container {
+    width: 300px !important;
+    grid-gap: 5px;
+  }
+  .calendar-day-container {
+    width: 350px;
+    grid-gap: 3px;
+  }
+  .two-month-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
 }
 @media only screen and (max-width: 2000px) and (min-width: 1025px) {
-    .calendar-year-container{
-        width: 350px !important;
+  .calendar-year-container {
+    width: 350px !important;
 
-        grid-gap: 10px;
-    }
-    .calendar-month-container{
-        width: 350px !important;
+    grid-gap: 10px;
+  }
+  .calendar-month-container {
+    width: 350px !important;
 
-        grid-gap: 10px;
-    }
-    .calendar-day-container{
-        width:450px ;
-        grid-gap: 3px;
-    }
-    .two-month-container{
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        
-    }
-      
+    grid-gap: 10px;
+  }
+  .calendar-day-container {
+    width: 450px;
+    grid-gap: 3px;
+  }
+  .two-month-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
 }
-.two-month-container{
-    display: grid;
+.two-month-container {
+  display: grid;
+  font-family: BYekan !important;
 }
-.calendar{
-    text-align: center;
-    // max-height: 500px;
-    width: fit-content;
-    overflow: scroll;
-    // margin-top: 5px;
-    .row{
-        span{
-            cursor: pointer;
-        }
-        svg{
-            margin-top: 10px;
-            cursor: pointer;
-        }
+.calendar {
+  font-family: BYekan !important;
+  text-align: center;
+  // max-height: 500px;
+  width: fit-content;
+  overflow: scroll;
+  // margin-top: 5px;
+  .row {
+    span {
+      cursor: pointer;
     }
-}
-.calendar-year-container,.calendar-month-container{
-    text-align: center;
-    display: grid;
-    width: 100%;
-    height: 300px;
-    padding: 10px;
-    margin: 0 auto;
-    .calendar-item{
-        text-align: center;
-        border:2px solid $primaryColor;
-        height: 47px;
-        line-height: 47px;
-        border-radius: 5px;
-        color: $primaryColor;
-        font-size: 14px;
-        cursor: pointer;
-        &:hover{
-            background-color:$primaryColor;
-            color: $whiteColor;
-        }
+    svg {
+      margin-top: 10px;
+      cursor: pointer;
     }
+  }
 }
-.calendar-day-container{
-    text-align: center;
-    display: grid;
-    padding: 5px;
-    .calendar-item{
-        text-align: center;
-        border:1px solid #c1c1c1;
-        height: 28px;
-        line-height: 28px;
-        border-radius: 5px;
-        color: $blackColor;
-        font-size: 14px;
-        cursor: pointer;
-    }
-    .border-bottom-black{
-        margin: 10px auto 0 auto;
-        padding: 7px;
-        width: 85%;
-    }  
-}
+.calendar-year-container,
+.calendar-month-container {
+  text-align: center;
+  display: grid;
+  width: 100%;
+  height: 300px;
+  padding: 10px;
+  margin: 0 auto;
+  font-family: BYekan !important;
 
-.calendar-year-container{
-    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows:auto;
+  .calendar-item {
+    text-align: center;
+    border: 2px solid $primaryColor;
+    height: 47px;
+    line-height: 47px;
+    border-radius: 5px;
+    color: $primaryColor;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: BYekan !important;
+
+    &:hover {
+      background-color: $primaryColor;
+      color: $whiteColor;
+    }
+  }
 }
-.calendar-month-container{
-    grid-template-columns:1fr 1fr 1fr;
-    grid-template-rows:auto;
-}
-.calendar-day-container{
-    grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows:auto;
-}
-.TODAY{
-    background-color: #f2f2f2;
-    border-radius: 3px;
-    border-color:$secondaryColor !important;
-}
-.BEFORE{
-    background-color: #fff;
+.calendar-day-container {
+  text-align: center;
+  display: grid;
+  padding: 5px;
+  font-family: BYekan !important;
+
+  .calendar-item {
+    text-align: center;
     border: 1px solid #c1c1c1;
-    border-radius: 3px;
-    cursor: default !important;
-    background-image: repeating-linear-gradient(-45deg,transparent,transparent 8px,#eee 0,#eee 10px)!important;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 5px;
+    color: $blackColor;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: BYekan !important;
+  }
+  .border-bottom-black {
+    margin: 10px auto 0 auto;
+    padding: 7px;
+    width: 85%;
+  }
 }
- 
+
+.calendar-year-container {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  font-family: BYekan !important;
+}
+.calendar-month-container {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  font-family: BYekan !important;
+}
+.calendar-day-container {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  font-family: BYekan !important;
+}
+.TODAY {
+  background-color: #f2f2f2;
+  border-radius: 3px;
+  border-color: $secondaryColor !important;
+  font-family: BYekan !important;
+}
+.BEFORE {
+  background-color: #fff;
+  border: 1px solid #c1c1c1;
+  border-radius: 3px;
+  cursor: default !important;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    #eee 0,
+    #eee 10px
+  ) !important;
+  font-family: BYekan !important;
+}
+
+.BirthdayCalendar_birthday-year-container__Ocopt
+  .BirthdayCalendar_birthday-item__iJZEI,
+.BirthdayCalendar_birthday-month-container__30TWh
+  .BirthdayCalendar_birthday-item__iJZEI {
+  font-family: BYekan !important;
+  text-align: center;
+  border: 2px solid #279692;
+  height: 47px;
+  line-height: 47px;
+  border-radius: 5px;
+  color: #279692;
+  font-size: 14px;
+  cursor: pointer;
+}
+.BirthdayCalendar_birthday-day-container__3qNf3
+  .BirthdayCalendar_birthday-item__iJZEI {
+  font-family: BYekan !important;
+}
+.BirthdayCalendar_birthday-day-container__3qNf3 {
+  font-family: BYekan !important;
+}

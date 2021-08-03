@@ -6,6 +6,8 @@ import { useRouter, withRouter } from "next/router";
 import { connect } from "react-redux";
 import globals from "./../../Global";
 import { messageBoxModify } from "./../../../Redux/UI/ui.action";
+import PopUp from "./../../component/PopUp.component";
+import BirthdayCalendar from "./../../calendar/BirthdayCalendar.component";
 
 const EditProfile = (props) => {
   const router = useRouter();
@@ -21,6 +23,7 @@ const EditProfile = (props) => {
     address: props.user_information.address,
     mariedStat: props.user_information.mariedStat,
   });
+  const [open, setOpen] = useState(false);
 
   const handleSetState = (e) => {
     const { name, value } = e.target;
@@ -57,7 +60,9 @@ const EditProfile = (props) => {
         }
       });
   };
-
+  const managePopUpBirthdayCalendar = (value) => {
+    setOpen(value);
+  };
   return (
     <section>
       <div className="border-bottom-black">
@@ -105,6 +110,7 @@ const EditProfile = (props) => {
                       onChange={handleSetState}
                       name="name"
                       className="col-12 complate-profile-input"
+                      required
                     />
                   </div>
                 </div>
@@ -116,6 +122,7 @@ const EditProfile = (props) => {
                       onChange={handleSetState}
                       name="family"
                       className="col-12 complate-profile-input"
+                      required
                     />
                   </div>
                 </div>
@@ -163,6 +170,7 @@ const EditProfile = (props) => {
                       name="gender"
                       className="col-12 complate-profile-input"
                     >
+                      <option value={0}>جنسیت خود را انتخاب کنید</option>
                       <option value={1}>مرد</option>
                       <option value={2}>زن</option>
                     </select>
@@ -172,9 +180,9 @@ const EditProfile = (props) => {
                   <div className="col-lg-4 title-box ">تاریخ تولد</div>
                   <div className="col-lg-8">
                     <input
-                      defaultValue={state.birthDate}
-                      onChange={handleSetState}
-                      name="birthDate"
+                      value={state.birthDate}
+                      onFocus={() => setOpen(true)}
+                      // name="birthDate"
                       className="col-12 complate-profile-input"
                     />
                   </div>
@@ -211,6 +219,7 @@ const EditProfile = (props) => {
                       name="mariedStat"
                       className="col-12 complate-profile-input"
                     >
+                      <option value={0}>وضعیت تاهل خود را انتخاب کنید</option>
                       <option value={1}>مجرد</option>
                       <option value={2}>متاهل</option>
                     </select>
@@ -240,6 +249,20 @@ const EditProfile = (props) => {
           </div>
         </form>
       </div>
+      <PopUp
+        opened={open}
+        closePopUp={() => managePopUpBirthdayCalendar(false)}
+      >
+        <div style={{ padding: 15 }}>
+          <BirthdayCalendar
+            typePassenger={"ADL"}
+            setBirthday={(value) => {
+              setState((prevState) => ({ ...prevState, birthDate: value }));
+            }}
+            closePopUpCalendar={() => managePopUpBirthdayCalendar(false)}
+          />
+        </div>
+      </PopUp>
     </section>
   );
 };

@@ -7,14 +7,18 @@ import { useRouter, withRouter } from "next/router";
 import globals from "./../../Global";
 import { messageBoxModify } from "./../../../Redux/UI/ui.action";
 import { connect } from "react-redux";
+import PopUp from "./../../component/PopUp.component";
+import BirthdayCalendar from "./../../calendar/BirthdayCalendar.component";
 
 const ComplateProfile = (props) => {
   const router = useRouter();
   const [state, setState] = useState({
     UserId: "",
-    gender: 1,
-    MariedStat: 1,
+    gender: 0,
+    MariedStat: 0,
   });
+
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     setState((prevSate) => ({
@@ -29,28 +33,46 @@ const ComplateProfile = (props) => {
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
 
+  const managePopUpBirthdayCalendar = (value) => {
+    setOpen(value);
+  };
+
   const handleComplateProfile = (event) => {
     event.preventDefault();
-    fetch(`${globals.baseUrlNew}account/auth/ProfileSave`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(state),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "0") {
-          router.push("/dashboard/profile");
-          props.messageBoxModify({
-            state: true,
-            message: "اطلاعات شما با موفقیت ثبت شد.",
-          });
-        } else {
-          props.messageBoxModify({
-            state: true,
-            message: "خطایی رخ داده است لطفا مجداا تلاش کنید.",
-          });
-        }
+    if (
+      state.Name !== undefined &&
+      state.Family !== undefined &&
+      state.Name !== null &&
+      state.Family !== null &&
+      state.Name !== "" &&
+      state.Family !== ""
+    ) {
+      fetch(`${globals.baseUrlNew}account/auth/ProfileSave`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(state),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === "0") {
+            router.push("/dashboard/profile");
+            props.messageBoxModify({
+              state: true,
+              message: "اطلاعات شما با موفقیت ثبت شد.",
+            });
+          } else {
+            props.messageBoxModify({
+              state: true,
+              message: "خطایی رخ داده است لطفا مجداا تلاش کنید.",
+            });
+          }
+        });
+    } else {
+      props.messageBoxModify({
+        state: true,
+        message: "لطفا نام و نام خانوادگی خود را پر کنید.",
       });
+    }
   };
   return (
     <section>
@@ -87,7 +109,7 @@ const ComplateProfile = (props) => {
                           className="col-12 complate-profile-input"
                           onChange={(e) => handleSetState(e)}
                           name="Name"
-                          required
+                          value={state.Name}
                         />
                       </div>
                     ) : (
@@ -105,7 +127,7 @@ const ComplateProfile = (props) => {
                           className="col-12 complate-profile-input"
                           onChange={(e) => handleSetState(e)}
                           name="Family"
-                          required
+                          value={state.Family}
                         />
                       </div>
                     ) : (
@@ -128,6 +150,7 @@ const ComplateProfile = (props) => {
                           onChange={(e) => handleSetState(e)}
                           name="MeliCod"
                           inputMode="numeric"
+                          value={state.MeliCod}
                         />
                       </div>
                     ) : (
@@ -144,6 +167,7 @@ const ComplateProfile = (props) => {
                         <input
                           className="col-12 complate-profile-input"
                           onChange={(e) => handleSetState(e)}
+                          value={state.PasNo}
                           name="PasNo"
                         />
                       </div>
@@ -158,7 +182,7 @@ const ComplateProfile = (props) => {
                 <div className="col-lg-4">
                   <div className="row my-2">
                     <div className="col-lg-4 title-box ">جنسیت</div>
-                    {props.user_information.gender === null ? (
+                    {props.user_information.gender === 0 ? (
                       <div className="col-lg-8">
                         <select
                           className="col-12 complate-profile-input"
@@ -166,6 +190,7 @@ const ComplateProfile = (props) => {
                           value={state.gender}
                           name="gender"
                         >
+                          <option value={0}>جنسیت خود را انتخاب کنید</option>
                           <option value="1">مرد</option>
                           <option value="2">زن</option>
                         </select>
@@ -179,11 +204,12 @@ const ComplateProfile = (props) => {
                   </div>
                   <div className="row my-2">
                     <div className="col-lg-4 title-box ">تاریخ تولد</div>
-                    {props.user_information.birthDate === null ? (
+                    {props.user_information.birthDate !== null ? (
                       <div className="col-lg-8">
                         <input
                           className="col-12 complate-profile-input"
-                          onChange={(e) => handleSetState(e)}
+                          value={state.birthDate}
+                          onFocus={() => setOpen(true)}
                           name="birthDate"
                         />
                       </div>
@@ -196,11 +222,13 @@ const ComplateProfile = (props) => {
                   </div>
                   <div className="row my-2">
                     <div className="col-lg-4 title-box ">معرف</div>
-                    {props.user_information.mobileMoaref === null ? (
+                    {props.user_information.mobileMoaref === "" ||
+                    props.user_information.mobileMoaref === null ? (
                       <div className="col-lg-8">
                         <input
                           className="col-12 complate-profile-input"
                           onChange={(e) => handleSetState(e)}
+                          value={state.MobileMoaref}
                           name="MobileMoaref"
                           inputMode="numeric"
                         />
@@ -218,6 +246,7 @@ const ComplateProfile = (props) => {
                       <div className="col-lg-8">
                         <input
                           className="col-12 complate-profile-input"
+                          value={state.address}
                           onChange={(e) => handleSetState(e)}
                           name="address"
                         />
@@ -231,7 +260,7 @@ const ComplateProfile = (props) => {
                   </div>
                   <div className="row my-2">
                     <div className="col-lg-4 title-box ">وضعیت تاهل</div>
-                    {props.user_information.mariedStat === null ? (
+                    {props.user_information.mariedStat === 0 ? (
                       <div className="col-lg-8">
                         <select
                           className="col-12 complate-profile-input"
@@ -239,6 +268,9 @@ const ComplateProfile = (props) => {
                           onChange={(e) => handleSetState(e)}
                           name="MariedStat"
                         >
+                          <option value={0}>
+                            وضعیت تاهل خود را انتخاب کنید
+                          </option>
                           <option value="1">مجرد</option>
                           <option value="2">متاهل</option>
                         </select>
@@ -278,6 +310,20 @@ const ComplateProfile = (props) => {
           </form>
         </div>
       </div>
+      <PopUp
+        opened={open}
+        closePopUp={() => managePopUpBirthdayCalendar(false)}
+      >
+        <div style={{ padding: 15 }}>
+          <BirthdayCalendar
+            typePassenger={"ADL"}
+            setBirthday={(value) => {
+              setState((prevState) => ({ ...prevState, birthDate: value }));
+            }}
+            closePopUpCalendar={() => managePopUpBirthdayCalendar(false)}
+          />
+        </div>
+      </PopUp>
     </section>
   );
 };

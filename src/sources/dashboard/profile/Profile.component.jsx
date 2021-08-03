@@ -115,8 +115,11 @@ const Profile = (props) => {
                 <div className="row my-2">
                   <div className="col-lg-4 title-box ">جنسیت</div>
                   <div className="col-lg-7 text-box">
-                    {" "}
-                    {props.user_information.gender == 1 ? "مرد" : "زن"}
+                    {props.user_information.gender !== 0
+                      ? props.user_information.gender == 1
+                        ? "مرد"
+                        : "زن"
+                      : "------"}
                   </div>
                 </div>
                 <div className="row my-2">
@@ -132,7 +135,8 @@ const Profile = (props) => {
                   <div className="col-lg-4 title-box ">معرف</div>
                   <div className="col-lg-7 text-box">
                     {" "}
-                    {props.user_information.mobileMoaref !== null
+                    {props.user_information.mobileMoaref != "" ||
+                    props.user_information.mobileMoaref != null
                       ? props.user_information.mobileMoaref
                       : "------"}
                   </div>
@@ -150,7 +154,11 @@ const Profile = (props) => {
                   <div className="col-lg-4 title-box ">وضعیت تاهل</div>
                   <div className="col-lg-7 text-box">
                     {" "}
-                    {props.user_information.mariedStat == 1 ? "مجرد" : "متاهل"}
+                    {props.user_information.mariedStat !== 0
+                      ? props.user_information.mariedStat == 1
+                        ? "مجرد"
+                        : "متاهل"
+                      : "------"}
                   </div>
                 </div>
               </div>
