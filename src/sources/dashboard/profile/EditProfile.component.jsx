@@ -39,26 +39,40 @@ const EditProfile = (props) => {
 
   const handleEditProfile = (event) => {
     event.preventDefault();
-    fetch(`${globals.baseUrlNew}account/auth/ProfileSave`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(state),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "0") {
-          router.push("/dashboard/profile");
-          props.messageBoxModify({
-            state: true,
-            message: "اطلاعات شما با موفقیت ثبت شد.",
-          });
-        } else {
-          props.messageBoxModify({
-            state: true,
-            message: "خطایی رخ داده است لطفا مجداا تلاش کنید.",
-          });
-        }
+    if (
+      state.name !== undefined &&
+      state.family !== undefined &&
+      state.name !== null &&
+      state.family !== null &&
+      state.name !== "" &&
+      state.family !== ""
+    ) {
+      fetch(`${globals.baseUrlNew}account/auth/ProfileSave`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(state),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === "0") {
+            router.push("/dashboard/profile");
+            props.messageBoxModify({
+              state: true,
+              message: "اطلاعات شما با موفقیت ثبت شد.",
+            });
+          } else {
+            props.messageBoxModify({
+              state: true,
+              message: "خطایی رخ داده است لطفا مجداا تلاش کنید.",
+            });
+          }
+        });
+    } else {
+      props.messageBoxModify({
+        state: true,
+        message: "لطفا نام و نام خانوادگی خود را پر کنید.",
       });
+    }
   };
   const managePopUpBirthdayCalendar = (value) => {
     setOpen(value);
@@ -110,7 +124,6 @@ const EditProfile = (props) => {
                       onChange={handleSetState}
                       name="name"
                       className="col-12 complate-profile-input"
-                      required
                     />
                   </div>
                 </div>
@@ -122,7 +135,6 @@ const EditProfile = (props) => {
                       onChange={handleSetState}
                       name="family"
                       className="col-12 complate-profile-input"
-                      required
                     />
                   </div>
                 </div>
