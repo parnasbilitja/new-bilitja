@@ -195,7 +195,7 @@ class Register extends React.Component {
           <div className="col-11 padding-horizental-3px">
             <div>
               <input
-                className="form-input-auth col-12"
+                className="form-input-auth px-2  col-12"
                 placeHolder="نام کاربری ( شماره همراه )"
                 name="mobile"
                 onChange={this.handleChange}
@@ -214,7 +214,7 @@ class Register extends React.Component {
             <div className="col-11 padding-horizental-3px">
               <div>
                 <input
-                  className="form-input-auth col-12"
+                  className="form-input-auth px-2  col-12"
                   placeHolder="کد ارسال شده را وارد نمایید."
                   name="token"
                   onChange={this.handleChange}
@@ -234,7 +234,7 @@ class Register extends React.Component {
             <div className="col-11 padding-horizental-3px">
               <div>
                 <input
-                  className="form-input-auth col-12"
+                  className="form-input-auth px-2  col-12"
                   placeHolder="شماره موبایل معرف"
                   name="mobilemoaref"
                   onChange={this.handleChange}
@@ -246,7 +246,7 @@ class Register extends React.Component {
         ) : null}
 
         <div className="row">
-          <div className="form-input-auth-border without-focus col-12">
+          <div className="form-input-auth-border px-2 without-focus col-12">
             <PrimaryButton
               defaultValue={this.state.btn_text}
               onClick={(e) => {

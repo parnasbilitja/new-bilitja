@@ -1,36 +1,28 @@
-@media only screen and (max-width : 599px){
-    .messagebox{
-        right: 20%;
-    }
+.messagebox {
+  position: absolute;
+  background-color: skyblue;
+  border: 1px solid rgb(8, 99, 173);
+  border-radius: 5px;
+  box-shadow: -3px 3px 26px -9px rgba(0, 0, 0, 0.67);
+  width: 100%;
+  bottom: 0px;
+  z-index: 10000000;
+  padding: 5px;
+  text-align: center;
+  height: 60px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-@media only screen and (max-width : 979px) and (min-width :600px){
-    .messagebox{
-        right: 30%;
-    }
+.messagebox span {
+  position: relative;
+  top: 10px;
 }
-
-@media only screen and (max-width : 2000px) and (min-width :980px){
-    .messagebox{
-        right: 40%;
-    }
-}
-.messagebox{
-    position: fixed;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: -3px 3px 26px -9px rgba(0,0,0,0.67);
-    width: 200px;
-    bottom: 40px;
-    z-index: 10000000;
-    padding: 5px;
-    text-align: center;
-   
-    
-}
-.messagebox-hidden{
-    display: none;
+.messagebox-hidden {
+  display: none;
 }
 
-.messagebox-show{
-    display: block;
+.messagebox-show {
+  display: block;
 }

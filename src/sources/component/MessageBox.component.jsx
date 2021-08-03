@@ -1,37 +1,43 @@
-import React from  'react'
-import styles from '../../../styles/MessageBox.module.scss'
+import React from "react";
+import styles from "../../../styles/MessageBox.module.scss";
 
-import {connect} from 'react-redux'
-import {selectMessageBox} from '../../Redux/UI/ui.reselect'
-import {messageBoxModify} from '../../Redux/UI/ui.action'
+import { connect } from "react-redux";
+import { selectMessageBox } from "../../Redux/UI/ui.reselect";
+import { messageBoxModify } from "../../Redux/UI/ui.action";
 // this component opens when ever a messsage is goigng to be shown to user...throughout the project
-class MessageBox extends React.Component{
-    constructor(props){
-        super(props)
+class MessageBox extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidUpdate() {
+    if (this.props.messageBox.state) {
+      // message disapears after 4 seconds
+      setTimeout(() => {
+        this.props.messageBoxModify({
+          state: false,
+          message: "",
+        });
+      }, 30000);
     }
-    componentDidUpdate(){
-        if(this.props.messageBox.state){
-            // message disapears after 4 seconds
-            setTimeout(()=>{
-                this.props.messageBoxModify({
-                    state:false,
-                    message:''
-                })
-            },4000)
-        }
-    }
-    render(){
-        return(
-            <div className={` ${styles['messagebox']} ${this.props.messageBox.state ? styles['messagebox-show'] :styles['messagebox-hidden'] }`}>
-                {this.props.messageBox.message}
-            </div>
-        )
-    }
+  }
+  render() {
+    return (
+      <div
+        className={` ${styles["messagebox"]} ${
+          this.props.messageBox.state
+            ? styles["messagebox-show"]
+            : styles["messagebox-hidden"]
+        }`}
+      >
+        <span> {this.props.messageBox.message}</span>
+      </div>
+    );
+  }
 }
-const mapStatesToProps = (state)=>({
-    messageBox:selectMessageBox(state)
-})
-const mapDispatchestToProps=(dispatch)=>({
-    messageBoxModify:value=>dispatch(messageBoxModify(value))
-})
-export default connect(mapStatesToProps,mapDispatchestToProps)(MessageBox)
+const mapStatesToProps = (state) => ({
+  messageBox: selectMessageBox(state),
+});
+const mapDispatchestToProps = (dispatch) => ({
+  messageBoxModify: (value) => dispatch(messageBoxModify(value)),
+});
+export default connect(mapStatesToProps, mapDispatchestToProps)(MessageBox);
