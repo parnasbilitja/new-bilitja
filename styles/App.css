@@ -6,7 +6,9 @@
 body {
   font-family: IranSans !important;
 }
-
+span {
+  font-family: BYekan !important;
+}
 .form-input-auth {
   height: 45px !important;
   border: 1px solid #ccc !important;
