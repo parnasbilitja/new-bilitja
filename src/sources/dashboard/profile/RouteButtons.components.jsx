@@ -23,19 +23,22 @@ const RouteButtons = (props) => {
             </Link>
           </li>
         ) : null}
-        <li className="nav-item" role="presentation">
-          <Link href="/dashboard/edit-profile">
-            <button
-              className={
-                path === "/dashboard/edit-profile"
-                  ? "menu-btn nav-link mx-2 active-menu"
-                  : "menu-btn nav-link mx-2"
-              }
-            >
-              ویرایش اطلاعات
-            </button>
-          </Link>
-        </li>
+        {props.user_information.name !== null ? (
+          <li className="nav-item" role="presentation">
+            <Link href="/dashboard/edit-profile">
+              <button
+                className={
+                  path === "/dashboard/edit-profile"
+                    ? "menu-btn nav-link mx-2 active-menu"
+                    : "menu-btn nav-link mx-2"
+                }
+              >
+                ویرایش اطلاعات
+              </button>
+            </Link>
+          </li>
+        ) : null}
+
         <li className="nav-item" role="presentation">
           <Link href="/dashboard/change-password">
             <button
