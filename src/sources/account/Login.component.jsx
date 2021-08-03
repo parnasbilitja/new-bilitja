@@ -61,6 +61,7 @@ class Login extends React.Component {
         mobile: this.state.mobile,
         token: this.state.token,
         password: this.state.password,
+        register: 0,
       }),
     })
       .then((res) => res.json())

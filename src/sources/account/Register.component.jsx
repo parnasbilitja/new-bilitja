@@ -36,6 +36,7 @@ class Register extends React.Component {
         mobile: this.state.mobile,
         token: this.state.token,
         password: this.state.password,
+        register: 1,
       }),
     })
       .then((res) => res.json())
