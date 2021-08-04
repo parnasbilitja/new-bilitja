@@ -70,9 +70,13 @@ const ManagerNav = (props) => {
           </div>
         </div>
         <div
-          className={`${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item`}
+          className={
+            myRouter.asPath === "/panel/index"
+              ? `${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item-active`
+              : `${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item`
+          }
           onClick={() => {
-            myRouter.push("/panel/villas/search");
+            myRouter.push("/panel/index");
           }}
         >
           <div>

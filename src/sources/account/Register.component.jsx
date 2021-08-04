@@ -247,7 +247,7 @@ class Register extends React.Component {
                 <div>
                   <input
                     className="form-input-auth px-2  col-12"
-                    placeHolder="شماره موبایل معرف (اختیاری )"
+                    placeHolder="شماره موبایل معرف ( اختیاری )"
                     name="mobilemoaref"
                     onChange={this.handleChange}
                     inputMode="numeric"

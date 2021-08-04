@@ -27,6 +27,7 @@ import Profile from "./../sources/manager/profile/Profile.component";
 import ComplateProfile from "./../sources/manager/profile/ComplateProfile.component";
 import EditProfile from "./../sources/manager/profile/EditProfile.component";
 import ChangePassword from "./../sources/manager/profile/ChangePassword.components";
+import { Panel } from "./../sources/manager/index/Panel";
 
 export default function ManagePanel() {
   const myRouter = useRouter();
@@ -90,6 +91,8 @@ export default function ManagePanel() {
       }
     }
     switch (path) {
+      case "/panel/index":
+        return <Panel />;
       case "/panel/villas/add":
         return <AddVilla></AddVilla>;
       case "/panel/villas/search":
