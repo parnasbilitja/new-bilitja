@@ -489,7 +489,7 @@ class FlightReserve extends React.Component {
                 </div>
 
                 <div className="row mb-3">
-                  <div className="col-lg-6 col-md-6 col-6 padding-3px">
+                  <div className="col-lg-6 col-md-6 col-12 padding-3px">
                     <div>
                       <input
                         className="col-12 reserve-input px-2"
@@ -498,7 +498,7 @@ class FlightReserve extends React.Component {
                       />
                     </div>
                   </div>
-                  <div className="col-lg-6 col-md-6 col-6 padding-3px">
+                  <div className="col-lg-6 col-md-6 col-12 padding-3px">
                     <div>
                       <input
                         className="col-12 reserve-input px-2"

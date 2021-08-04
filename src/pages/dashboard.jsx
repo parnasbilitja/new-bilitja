@@ -11,10 +11,14 @@ import WalletBalanc from "../sources/dashboard/wallet/Wallet.component";
 import MyVilla from "./../sources/dashboard/villa/MyVilla.component";
 import { useRouter } from "next/router";
 import { store } from "../Redux/store";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styles from "../../styles/ManagerNav.module.scss";
 
 const Dashboard = () => {
   const myRouter = useRouter();
   const [width, setWidth] = useState(0);
+  const [isOpend, setOpend] = useState(false);
 
   const handleResize = () => {
     setWidth(window.innerWidth);
@@ -54,9 +58,23 @@ const Dashboard = () => {
   return (
     <div>
       <Provider store={store}>
-        <DashboardNav />
+        <DashboardNav open={isOpend}>
+          <div className={styles["manager-small-screen-top-bar"]}>
+            <FontAwesomeIcon
+              icon={faBars}
+              onClick={() => {
+                setOpend(!isOpend);
+              }}
+            />
+          </div>
+        </DashboardNav>
         <div className="panel-manager-main-container">
-          <div className="dashboard-manager-content-container">
+          <div
+            className="dashboard-manager-content-container"
+            onClick={() => {
+              setOpend(false);
+            }}
+          >
             {mainRouter(myRouter.asPath)}
             <MessageBox />
           </div>

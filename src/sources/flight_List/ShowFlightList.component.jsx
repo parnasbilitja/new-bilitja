@@ -43,9 +43,13 @@ const ShowFlightList = (props) => {
             </div>
             <div className={styles["one-row-detail"]}>
               <div>
-                <span className="color-secondary">{oneFlight.source}</span>
+                <span className="color-secondary font-bold-iransanse">
+                  {oneFlight.source}
+                </span>
                 <span>به</span>
-                <span className="color-secondary">{oneFlight.destinate}</span>
+                <span className="color-secondary font-bold-iransanse">
+                  {oneFlight.destinate}
+                </span>
               </div>
               <div>
                 <span>شماره پرواز{oneFlight.flightNo}</span>

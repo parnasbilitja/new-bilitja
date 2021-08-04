@@ -14,6 +14,7 @@ import { accountBoxModify, messageBoxModify } from "../../Redux/UI/ui.action";
 import globals from "../Global";
 
 import Countdown from "react-countdown";
+import { Loader } from "./../../Utils/Loader";
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +25,9 @@ class Register extends React.Component {
       register_status: false,
       moaref_save: false,
       resend_code: false,
+      loading: false,
+      error: false,
+      errText: "",
       btn_text: "دریافت کد احراز هویت",
     };
   }
@@ -49,10 +53,11 @@ class Register extends React.Component {
             btn_text: "تایید کد احراز هویت",
           });
         } else {
-          this.setState({ btn_disabled: false, loading: false });
-          this.props.messageBoxModify({
-            state: true,
-            message: data.message,
+          this.setState({
+            btn_disabled: false,
+            loading: false,
+            error: true,
+            errText: data.message,
           });
         }
       });
@@ -92,7 +97,7 @@ class Register extends React.Component {
           this.setState({
             moaref_save: true,
             loading: false,
-            btn_text: "ثبت معرف",
+            btn_text: "ثبت نام",
           });
           if (data.name == null) {
             localStorage.setItem("mobile", data.mobile);
@@ -101,10 +106,11 @@ class Register extends React.Component {
           }
           localStorage.setItem("token", data.token);
         } else {
-          this.setState({ btn_disabled: false, loading: false });
-          this.props.messageBoxModify({
-            state: true,
-            message: data.message,
+          this.setState({
+            btn_disabled: false,
+            loading: false,
+            error: true,
+            errText: data.message,
           });
         }
       });
@@ -140,10 +146,11 @@ class Register extends React.Component {
             window.location.reload();
           }, 2000);
         } else {
-          this.setState({ btn_disabled: false, loading: false });
-          this.props.messageBoxModify({
-            state: true,
-            message: data.message,
+          this.setState({
+            btn_disabled: false,
+            loading: false,
+            error: true,
+            errText: data.message,
           });
         }
       });
@@ -188,68 +195,72 @@ class Register extends React.Component {
             <FontAwesomeIcon icon={faTimes} />
           </span>
         </div>
-        <div className="row mb-2">
-          <div className="col-1 padding-horizental-3px">
-            <FontAwesomeIcon icon={faUser} className="margin-top-20px" />
-          </div>
+        {this.state.error === true ? (
+          <div className="alert alert-danger">{this.state.errText}</div>
+        ) : null}
+        <div className="container">
+          <div className="row mb-2">
+            <div className="col-1 padding-horizental-3px">
+              <FontAwesomeIcon icon={faUser} className="margin-top-20px" />
+            </div>
 
-          <div className="col-11 padding-horizental-3px">
-            <div>
-              <input
-                className="form-input-auth px-2  col-12"
-                placeHolder="نام کاربری ( شماره همراه )"
-                name="mobile"
-                onChange={this.handleChange}
-                disabled={this.state.register_status}
-                inputMode="numeric"
-              />
+            <div className="col-11 padding-horizental-3px">
+              <div>
+                <input
+                  className="form-input-auth px-2  col-12"
+                  placeHolder="نام کاربری ( شماره همراه )"
+                  name="mobile"
+                  onChange={this.handleChange}
+                  disabled={this.state.register_status}
+                  inputMode="numeric"
+                />
+              </div>
             </div>
           </div>
+
+          {this.state.register_status === true ? (
+            <div className="row mb-2">
+              <div className="col-1 padding-horizental-3px">
+                <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
+              </div>
+              <div className="col-11 padding-horizental-3px">
+                <div>
+                  <input
+                    className="form-input-auth px-2  col-12"
+                    placeHolder="کد ارسال شده را وارد نمایید."
+                    name="token"
+                    onChange={this.handleChange}
+                    disabled={this.state.moaref_save}
+                    autoFocus
+                    inputMode="numeric"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : null}
+          {this.state.moaref_save === true ? (
+            <div className="row mb-2">
+              <div className="col-1 padding-horizental-3px">
+                <FontAwesomeIcon icon={faUsers} className="margin-top-20px" />
+              </div>
+              <div className="col-11 padding-horizental-3px">
+                <div>
+                  <input
+                    className="form-input-auth px-2  col-12"
+                    placeHolder="شماره موبایل معرف (اختیاری )"
+                    name="mobilemoaref"
+                    onChange={this.handleChange}
+                    inputMode="numeric"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : null}
         </div>
-
-        {this.state.register_status === true ? (
-          <div className="row mb-2">
-            <div className="col-1 padding-horizental-3px">
-              <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
-            </div>
-            <div className="col-11 padding-horizental-3px">
-              <div>
-                <input
-                  className="form-input-auth px-2  col-12"
-                  placeHolder="کد ارسال شده را وارد نمایید."
-                  name="token"
-                  onChange={this.handleChange}
-                  disabled={this.state.moaref_save}
-                  autoFocus
-                  inputMode="numeric"
-                />
-              </div>
-            </div>
-          </div>
-        ) : null}
-        {this.state.moaref_save === true ? (
-          <div className="row mb-2">
-            <div className="col-1 padding-horizental-3px">
-              <FontAwesomeIcon icon={faUsers} className="margin-top-20px" />
-            </div>
-            <div className="col-11 padding-horizental-3px">
-              <div>
-                <input
-                  className="form-input-auth px-2  col-12"
-                  placeHolder="شماره موبایل معرف"
-                  name="mobilemoaref"
-                  onChange={this.handleChange}
-                  inputMode="numeric"
-                />
-              </div>
-            </div>
-          </div>
-        ) : null}
 
         <div className="row">
           <div className="form-input-auth-border px-2 without-focus col-12">
-            <PrimaryButton
-              defaultValue={this.state.btn_text}
+            <button
               onClick={(e) => {
                 this.state.moaref_save === false
                   ? this.state.register_status === false
@@ -258,7 +269,11 @@ class Register extends React.Component {
                   : this.SendMoarefMobile();
               }}
               style={{ height: "3em" }}
-            />
+              className="register-btn col-12 rounded"
+            >
+              {" "}
+              {this.state.loading === true ? <Loader /> : this.state.btn_text}
+            </button>
           </div>
         </div>
         {this.state.resend_code === true ? (

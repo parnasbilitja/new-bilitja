@@ -24,6 +24,8 @@ class Login extends React.Component {
       mobile: "",
       password: "",
       token: "",
+      error: false,
+      errText: "",
     };
   }
 
@@ -97,10 +99,11 @@ class Login extends React.Component {
             type: "authentication",
           });
         } else {
-          this.setState({ btn_disabled: false, loading: false });
-          this.props.messageBoxModify({
-            state: true,
-            message: data.message,
+          this.setState({
+            btn_disabled: false,
+            loading: false,
+            error: true,
+            errText: data.message,
           });
         }
       });
@@ -142,22 +145,25 @@ class Login extends React.Component {
             type: "authentication",
           });
         } else if (data.status == "-103") {
-          this.setState({ btn_disabled: false, loading: false });
-          this.props.messageBoxModify({
-            state: true,
-            message: data.message,
+          this.setState({
+            btn_disabled: false,
+            loading: false,
+            error: true,
+            errText: data.message,
           });
         } else if (data.status == "-104") {
-          this.setState({ btn_disabled: false, loading: false });
-          this.props.messageBoxModify({
-            state: true,
-            message: data.message,
+          this.setState({
+            btn_disabled: false,
+            loading: false,
+            error: true,
+            errText: data.message,
           });
         } else {
-          this.setState({ btn_disabled: false, loading: false });
-          this.props.messageBoxModify({
-            state: true,
-            message: "لطفا از اتصال خود به اینترنت اطمینان حاصل کنید.",
+          this.setState({
+            btn_disabled: false,
+            loading: false,
+            error: true,
+            errText: "لطفا از اتصال خود به اینترنت اطمینان حاصل کنید.",
           });
         }
       });
@@ -217,68 +223,72 @@ class Login extends React.Component {
             ورود با رمز ثابت
           </button>
         </div>
-        <div className="row mb-2">
-          <div className="col-1 padding-horizental-3px">
-            <FontAwesomeIcon icon={faUser} className="margin-top-20px" />
-          </div>
-          <div className="col-11 padding-horizental-3px">
-            <div>
-              <input
-                className="form-input-auth px-2 col-12"
-                placeHolder="نام کاربری ( شماره همراه )"
-                name="mobile"
-                onChange={this.handleSetMobile}
-                disabled={
-                  this.state.login_with_code === true
-                    ? this.state.get_mobile_status === true
-                      ? true
-                      : false
-                    : null
-                }
-                inputMode="numeric"
-              />
+        {this.state.error === true ? (
+          <div className="alert alert-danger">{this.state.errText}</div>
+        ) : null}
+        <div className="container">
+          <div className="row mb-2">
+            <div className="col-1 padding-horizental-3px">
+              <FontAwesomeIcon icon={faUser} className="margin-top-20px" />
+            </div>
+            <div className="col-11 padding-horizental-3px">
+              <div>
+                <input
+                  className="form-input-auth px-2 col-12"
+                  placeHolder="نام کاربری ( شماره همراه )"
+                  name="mobile"
+                  onChange={this.handleSetMobile}
+                  disabled={
+                    this.state.login_with_code === true
+                      ? this.state.get_mobile_status === true
+                        ? true
+                        : false
+                      : null
+                  }
+                  inputMode="numeric"
+                />
+              </div>
             </div>
           </div>
+          {this.state.login_with_code === false ? (
+            <div className="row mb-2">
+              <div className="col-1 padding-horizental-3px">
+                <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
+              </div>
+              <div className="col-11 padding-horizental-3px">
+                <div>
+                  <input
+                    className="form-input-auth px-2 col-12"
+                    placeHolder="رمز عبور"
+                    name="password"
+                    onChange={this.handleSetPassword}
+                    inputMode="numeric"
+                    type="password"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : null}
+          {this.state.get_mobile_status === true ? (
+            <div className="row mb-2">
+              <div className="col-1 padding-horizental-3px">
+                <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
+              </div>
+              <div className="col-11 padding-horizental-3px">
+                <div>
+                  <input
+                    className="form-input-auth px-2 col-12"
+                    placeHolder="کد ارسال شده را وارد نمایید."
+                    name="moaref"
+                    onChange={this.handleSetToken}
+                    autoFocus
+                    inputMode="numeric"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : null}
         </div>
-        {this.state.login_with_code === false ? (
-          <div className="row mb-2">
-            <div className="col-1 padding-horizental-3px">
-              <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
-            </div>
-            <div className="col-11 padding-horizental-3px">
-              <div>
-                <input
-                  className="form-input-auth px-2 col-12"
-                  placeHolder="رمز عبور"
-                  name="password"
-                  onChange={this.handleSetPassword}
-                  inputMode="numeric"
-                  type="password"
-                />
-              </div>
-            </div>
-          </div>
-        ) : null}
-        {this.state.get_mobile_status === true ? (
-          <div className="row mb-2">
-            <div className="col-1 padding-horizental-3px">
-              <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
-            </div>
-            <div className="col-11 padding-horizental-3px">
-              <div>
-                <input
-                  className="form-input-auth px-2 col-12"
-                  placeHolder="کد ارسال شده را وارد نمایید."
-                  name="moaref"
-                  onChange={this.handleSetToken}
-                  autoFocus
-                  inputMode="numeric"
-                />
-              </div>
-            </div>
-          </div>
-        ) : null}
-
         <div className="row mt-3">
           <div className=" without-focus col-12">
             <button

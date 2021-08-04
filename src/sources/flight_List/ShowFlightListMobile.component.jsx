@@ -22,11 +22,11 @@ class ShowFlightListMobile extends React.Component {
           >
             <p>
               خريد بليط هواپيما{" "}
-              <span className="color-secondary">
+              <span className="color-secondary font-bold-iransanse">
                 {this.props.flightList[0].source}
               </span>{" "}
               به{" "}
-              <span className="color-secondary">
+              <span className="color-secondary font-bold-iransanse">
                 {this.props.flightList[0].destinate}
               </span>
             </p>

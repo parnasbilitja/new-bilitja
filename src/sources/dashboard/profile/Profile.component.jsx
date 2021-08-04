@@ -42,9 +42,12 @@ const Profile = (props) => {
       </div>
       <div>
         {props.user_information.name === null ? (
-          <div className="alert alert-info text-center mt-3 title-box">
-            مسافر گرامی، لطفا ابتدا از قسمت تکمیل پروفایل تمامی اطلاعات خود را
-            تکمیل کنید.
+          <div className="alert alert-info text-center mt-3">
+            <span>
+              {" "}
+              مسافر گرامی، لطفا ابتدا از قسمت تکمیل پروفایل تمامی اطلاعات خود را
+              تکمیل کنید.
+            </span>
             <a
               className="font-bold-iransanse cursor-pointer mx-1"
               onClick={() => router.push("/dashboard/complate-profile")}

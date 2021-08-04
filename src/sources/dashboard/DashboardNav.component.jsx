@@ -13,9 +13,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "../../../styles/ManagerNav.module.scss";
 
-const DashboardNav = () => {
+const DashboardNav = (props) => {
   const myRouter = useRouter();
-  const [isOpend, setOpend] = useState(false);
   const [mobile, setMobile] = useState();
 
   useEffect(() => {
@@ -24,17 +23,10 @@ const DashboardNav = () => {
 
   return (
     <div>
-      <div className={styles["manager-small-screen-top-bar"]}>
-        <FontAwesomeIcon
-          icon={faBars}
-          onClick={() => {
-            setOpend(!isOpend);
-          }}
-        />
-      </div>
+      {props.children}
       <div
         className={`${styles["manager-nav-main-container"]} ${
-          isOpend ? styles["slidein-manager"] : ""
+          props.open ? styles["slidein-manager"] : ""
         }`}
       >
         <div className={styles["manager-nav-header"]}>

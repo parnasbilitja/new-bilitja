@@ -194,6 +194,12 @@ input[type="button"]:hover {
   position: absolute !important;
   bottom: 0;
 }
+@media (max-width: 768px) {
+  .dashboard-exit {
+    position: absolute !important;
+    bottom: 40px;
+  }
+}
 
 .panel-menu-item:hover {
   background-color: #fff;
@@ -334,5 +340,16 @@ input[type="button"]:hover {
 .btn-header-login-active {
   background-color: #279692 !important;
   border: none !important;
+  color: #fff;
+}
+
+.register-btn {
+  background-color: #fff;
+  border: 2px solid #279692;
+  color: #279692;
+}
+.register-btn:hover {
+  background-color: #279692 !important;
+  border: 2px solid #279692;
   color: #fff;
 }

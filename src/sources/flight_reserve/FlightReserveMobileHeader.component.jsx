@@ -66,6 +66,10 @@ const FlightReserveMobileHeader = (props) =>
               <FontAwesomeIcon icon={faCalendarAlt} className="mx-2" />
               <span className="color-secondary">
                 {String(props.flightDay)} &nbsp;{" "}
+              </span>
+            </p>
+            <p className="text-right mx-2">
+              <span className="color-secondary">
                 {String(props.flightDate).replace("-", "/").replace("-", "/")}
               </span>
             </p>

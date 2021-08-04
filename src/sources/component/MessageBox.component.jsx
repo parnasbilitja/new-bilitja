@@ -17,7 +17,7 @@ class MessageBox extends React.Component {
           state: false,
           message: "",
         });
-      }, 30000);
+      }, 4000);
     }
   }
   render() {

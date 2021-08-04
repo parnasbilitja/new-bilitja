@@ -1,7 +1,7 @@
 .messagebox {
   position: absolute;
-  background-color: skyblue;
-  border: 1px solid rgb(8, 99, 173);
+  background-color: rgb(230, 86, 86);
+  border: 1px solid red;
   border-radius: 5px;
   box-shadow: -3px 3px 26px -9px rgba(0, 0, 0, 0.67);
   width: 100%;
@@ -14,6 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #fff !important;
 }
 .messagebox span {
   position: relative;

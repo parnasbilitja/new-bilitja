@@ -15,8 +15,11 @@ const Airports = (props) => {
               props.airports
                 .filter(
                   (oneAirport) =>
-                    oneAirport.airportKey.includes(props.searchTerm) &&
-                    oneAirport.airportName != props.credentials.sourceName
+                    oneAirport.airportKey
+                      .toLowerCase()
+                      .includes(props.searchTerm) &&
+                    oneAirport.airportName.toLowerCase() !=
+                      props.credentials.sourceName.toLowerCase()
                 )
                 .map((oneAirport) => (
                   <div
@@ -50,7 +53,7 @@ const Airports = (props) => {
                 ))
             : props.airports
                 .filter((oneAirport) =>
-                  oneAirport.airportKey.includes(props.searchTerm)
+                  oneAirport.airportKey.toLowerCase().includes(props.searchTerm)
                 )
                 .map((oneAirport) => (
                   <div
