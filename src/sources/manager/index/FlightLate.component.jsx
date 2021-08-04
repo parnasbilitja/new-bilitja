@@ -2,7 +2,7 @@ import React from "react";
 
 export const FlightLate = () => {
   return (
-    <section className="card p-3" style={{ borderRadius: "15px" }}>
+    <section className="card my-1 p-3" style={{ borderRadius: "15px" }}>
       <div>
         <div>
           <h6 className=" font-bold-iransanse">تاخیر پرواز ها</h6>

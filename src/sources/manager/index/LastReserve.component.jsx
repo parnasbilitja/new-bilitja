@@ -2,7 +2,7 @@ import React from "react";
 
 export const LastReserve = () => {
   return (
-    <section className="card p-3" style={{ borderRadius: "15px" }}>
+    <section className="card my-1 p-3" style={{ borderRadius: "15px" }}>
       <div>
         <div>
           <h6 className=" font-bold-iransanse">آخرین سفارشات</h6>
