@@ -45,13 +45,13 @@ class Login extends React.Component {
   };
 
   handleSetMobile = (e) => {
-    this.setState({ mobile: e.target.value });
+    this.setState({ mobile: e.target.value, error: false, errText: "" });
   };
   handleSetToken = (e) => {
-    this.setState({ token: e.target.value });
+    this.setState({ token: e.target.value, error: false, errText: "" });
   };
   handleSetPassword = (e) => {
-    this.setState({ password: e.target.value });
+    this.setState({ password: e.target.value, error: false, errText: "" });
   };
 
   login = () => {
@@ -97,6 +97,21 @@ class Login extends React.Component {
           this.props.accountBoxModify({
             state: false,
             type: "authentication",
+          });
+        } else if (data.status === "-111") {
+          this.setState({
+            btn_disabled: false,
+            loading: false,
+            error: true,
+            errText:
+              "چنین شماره موبایلی در سامانه ثبت نشده است، لطفا ثبت نام کنید.",
+          });
+        } else if (data.status === "-200") {
+          this.setState({
+            btn_disabled: false,
+            loading: false,
+            error: true,
+            errText: "شماره موبایل یا رمز ثابت نادرست می باشد.",
           });
         } else {
           this.setState({
@@ -149,7 +164,7 @@ class Login extends React.Component {
             btn_disabled: false,
             loading: false,
             error: true,
-            errText: data.message,
+            errText: "کد احراز هویت وارد شده نادرست می باشد.",
           });
         } else if (data.status == "-104") {
           this.setState({

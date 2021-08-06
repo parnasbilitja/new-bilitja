@@ -52,6 +52,14 @@ class Register extends React.Component {
             resend_code: true,
             btn_text: "تایید کد احراز هویت",
           });
+        } else if (data.status === "-110") {
+          this.setState({
+            btn_disabled: false,
+            loading: false,
+            error: true,
+            errText:
+              "این شماره موبایل در سامانه موجود است، لطفا از بخش ورود وارد حساب خود شوید.",
+          });
         } else {
           this.setState({
             btn_disabled: false,
@@ -105,6 +113,13 @@ class Register extends React.Component {
             localStorage.setItem("name", data.name + data.family);
           }
           localStorage.setItem("token", data.token);
+        } else if (data.status === "-103") {
+          this.setState({
+            btn_disabled: false,
+            loading: false,
+            error: true,
+            errText: "کد احراز هویت وارد شده نادرست است.",
+          });
         } else {
           this.setState({
             btn_disabled: false,
@@ -132,11 +147,7 @@ class Register extends React.Component {
         if (data.status == "0") {
           this.props.messageBoxModify({
             state: true,
-            message: "کاربر عزیز، شما با موفقیت ثبت نام شدید.",
-          });
-          this.props.messageBoxModify({
-            state: true,
-            message: data.message,
+            message: "مسافر عزیز، شما با موفقیت ثبت نام شدید.",
           });
           this.props.accountBoxModify({
             state: false,
@@ -160,6 +171,8 @@ class Register extends React.Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
+      error: false,
+      errText: "",
     });
   };
 
