@@ -23,6 +23,8 @@ const EditProfile = (props) => {
     address: props.user_information.address,
     mariedStat: props.user_information.mariedStat,
   });
+
+  console.log(state);
   const [open, setOpen] = useState(false);
 
   const handleSetState = (e) => {
@@ -39,34 +41,34 @@ const EditProfile = (props) => {
 
   const handleEditProfile = (event) => {
     event.preventDefault();
-    if (
-      state.name !== undefined &&
-      state.family !== undefined &&
-      state.name !== null &&
-      state.family !== null &&
-      state.name !== "" &&
-      state.family !== ""
-    ) {
-      fetch(`${globals.baseUrlNew}account/auth/ProfileSave`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(state),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.status === "0") {
-            router.push("/dashboard/profile");
-            props.messageBoxModify({
-              state: true,
-              message: "اطلاعات شما با موفقیت ثبت شد.",
-            });
-          } else {
-            props.messageBoxModify({
-              state: true,
-              message: "خطایی رخ داده است لطفا مجداا تلاش کنید.",
-            });
-          }
+    if (state.name != "" && state.family != "") {
+      if (state.gender != 0 && state.mariedStat != 0) {
+        fetch(`${globals.baseUrlNew}account/auth/ProfileSave`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(state),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status === "0") {
+              router.push("/dashboard/profile");
+              props.messageBoxModify({
+                state: true,
+                message: "اطلاعات شما با موفقیت ثبت شد.",
+              });
+            } else {
+              props.messageBoxModify({
+                state: true,
+                message: "خطایی رخ داده است لطفا مجداا تلاش کنید.",
+              });
+            }
+          });
+      } else {
+        props.messageBoxModify({
+          state: true,
+          message: "لطفا جنسیت و وضعیت تاهل خود را مشخص کنید.",
         });
+      }
     } else {
       props.messageBoxModify({
         state: true,

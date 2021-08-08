@@ -540,16 +540,21 @@ class FlightReserve extends React.Component {
                   <div className="col-lg-8 col-md-8 col-7 padding-3px">
                     <button
                       onClick={(e) => {
-                        if (!this.state.agreeWithTerm) {
+                        if (!this.validation()) {
+                          this.props.messageBoxModify({
+                            state: true,
+                            message: "لطفا اطلاعات را تکمیل کنید.",
+                          });
+                          e.preventDefault();
+                        } else if (this.state.agreeWithTerm === true) {
+                          this.compeleteReservation();
+                          e.preventDefault();
+                        } else {
                           this.props.messageBoxModify({
                             state: true,
                             message: "لطفا با شرایط و مقررات موافقت کنید",
                           });
-                        } else if (this.validation()) {
-                          this.compeleteReservation();
                         }
-
-                        e.preventDefault();
                       }}
                       className="py-3 btn-block col-12 end-payment-btn btn"
                     >

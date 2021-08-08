@@ -188,11 +188,9 @@ class FlightPassengerForm extends React.Component {
                 <div>
                   <PrimaryTextInput
                     style={{ height: "3em" }}
-                    inputMode="numeric"
                     placeHolder={`${
                       this.props.nationality == "IR" ? "کد ملی" : "کد پاسپورت"
                     }`}
-                    maxLength={10}
                     onChange={(e) => {
                       if (!checkNumber(e.target.value)) {
                         return;
@@ -203,7 +201,7 @@ class FlightPassengerForm extends React.Component {
                         e.target.value
                       );
                     }}
-                    value={this.props.code}
+                    defaultValue={this.props.code}
                   />
                 </div>
                 <span className="color-secondary error-message">

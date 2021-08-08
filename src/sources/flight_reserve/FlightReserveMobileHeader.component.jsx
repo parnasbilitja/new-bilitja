@@ -8,9 +8,10 @@ import styles from "../../../styles/FlightReserve.module.scss";
 
 const FlightReserveMobileHeader = (props) =>
   props.airport1 ? (
-    <div className={`row visible-xs ${styles["reserve-mobile-hero"]}`}>
+    <div className={`row visible-xs ${styles["reserve-mobile-hero"]} `}>
+    <br/>
       <div
-        className={`col-12 border-pill ${styles["border-pill-private"]}  ${styles["background-world"]}`}
+        className={`col-12 border-pill  ${styles["border-pill-private"]}  ${styles["background-world"]}`}
       >
         <div className="row">
           <div className="col-4">

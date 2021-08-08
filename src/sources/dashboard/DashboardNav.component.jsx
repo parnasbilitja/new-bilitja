@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import {
   faArchway,
-  faBars,
   faChartLine,
   faDollarSign,
   faHandshake,
@@ -19,14 +18,14 @@ const DashboardNav = (props) => {
 
   useEffect(() => {
     setMobile(localStorage.getItem("mobile"));
-  }, []);
+  }, [props.open]);
 
   return (
     <div>
       {props.children}
       <div
         className={`${styles["manager-nav-main-container"]} ${
-          props.open ? styles["slidein-manager"] : ""
+          props.open === true ? styles["slidein-manager"] : ""
         }`}
       >
         <div className={styles["manager-nav-header"]}>
@@ -40,6 +39,7 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/profile");
+            props.onClose();
           }}
         >
           <div>
@@ -62,6 +62,7 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/index");
+            props.onClose();
           }}
         >
           <div>
@@ -84,6 +85,7 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/orders");
+            props.onClose();
           }}
         >
           <div>
@@ -106,6 +108,7 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/wallet");
+            props.onClose();
           }}
         >
           <div>
@@ -126,6 +129,7 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/my-villa");
+            props.onClose();
           }}
         >
           <div>
@@ -148,6 +152,7 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/profile");
+            props.onClose();
           }}
         >
           <div>
@@ -166,6 +171,7 @@ const DashboardNav = (props) => {
           className={`${styles["manager-nav-one-row"]} dashboard-menu-item cursor-pointer dashboard-exit w-100`}
           onClick={() => {
             myRouter.push("/");
+            props.onClose();
           }}
         >
           <div>

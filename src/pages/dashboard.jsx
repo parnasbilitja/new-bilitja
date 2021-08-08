@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Provider } from "react-redux";
+import { connect, Provider } from "react-redux";
 import DashboardNav from "../sources/dashboard/DashboardNav.component";
 import MessageBox from "./../sources/component/MessageBox.component";
 import Profile from "./../sources/dashboard/profile/Profile.component";
@@ -9,7 +9,7 @@ import ChangePassword from "./../sources/dashboard/profile/ChangePassword.compon
 import OrderList from "./../sources/dashboard/orders/OrderList.component";
 import WalletBalanc from "../sources/dashboard/wallet/Wallet.component";
 import MyVilla from "./../sources/dashboard/villa/MyVilla.component";
-import { useRouter } from "next/router";
+import { useRouter, withRouter } from "next/router";
 import { store } from "../Redux/store";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,7 +18,7 @@ import styles from "../../styles/ManagerNav.module.scss";
 const Dashboard = () => {
   const myRouter = useRouter();
   const [width, setWidth] = useState(0);
-  const [isOpend, setOpend] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleResize = () => {
     setWidth(window.innerWidth);
@@ -58,12 +58,12 @@ const Dashboard = () => {
   return (
     <div>
       <Provider store={store}>
-        <DashboardNav open={isOpend}>
+        <DashboardNav open={open} onClose={() => setOpen(false)}>
           <div className={styles["manager-small-screen-top-bar"]}>
             <FontAwesomeIcon
               icon={faBars}
               onClick={() => {
-                setOpend(!isOpend);
+                setOpen(true);
               }}
             />
           </div>
@@ -72,7 +72,7 @@ const Dashboard = () => {
           <div
             className="dashboard-manager-content-container"
             onClick={() => {
-              setOpend(false);
+              setOpen(false);
             }}
           >
             {mainRouter(myRouter.asPath)}
@@ -83,4 +83,5 @@ const Dashboard = () => {
     </div>
   );
 };
+
 export default Dashboard;

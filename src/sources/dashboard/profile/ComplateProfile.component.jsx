@@ -47,26 +47,33 @@ const ComplateProfile = (props) => {
       state.Name !== "" &&
       state.Family !== ""
     ) {
-      fetch(`${globals.baseUrlNew}account/auth/ProfileSave`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(state),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.status === "0") {
-            router.push("/dashboard/profile");
-            props.messageBoxModify({
-              state: true,
-              message: "اطلاعات شما با موفقیت ثبت شد.",
-            });
-          } else {
-            props.messageBoxModify({
-              state: true,
-              message: "خطایی رخ داده است لطفا مجداا تلاش کنید.",
-            });
-          }
+      if (state.MariedStat != 0 && state.gender != 0) {
+        fetch(`${globals.baseUrlNew}account/auth/ProfileSave`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(state),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status === "0") {
+              router.push("/dashboard/profile");
+              props.messageBoxModify({
+                state: true,
+                message: "اطلاعات شما با موفقیت ثبت شد.",
+              });
+            } else {
+              props.messageBoxModify({
+                state: true,
+                message: "خطایی رخ داده است لطفا مجداا تلاش کنید.",
+              });
+            }
+          });
+      } else {
+        props.messageBoxModify({
+          state: true,
+          message: "لطفا جنسیت و وضعیت تاهل خود را مشخص کنید.",
         });
+      }
     } else {
       props.messageBoxModify({
         state: true,
