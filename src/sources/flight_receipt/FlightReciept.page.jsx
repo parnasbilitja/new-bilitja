@@ -48,6 +48,8 @@ class FlightReciept extends React.Component {
   }
 
   componentDidMount() {
+    //console.log(`${window.location.origin}/api/callbackbank`);
+    
     this.props.addReservationProperties({
       reqNo: this.props.router.asPath.split("/")[3],
       reqPnr: this.props.router.asPath.split("/")[4],
@@ -138,45 +140,45 @@ class FlightReciept extends React.Component {
       });
   };
   getBanks = () => {
-    window.open(
-      `Https://bilitja.ravis.ir/ApplicationBank/CallBank?reqNo=${this.props.reserveProperties.reqNo}&reqPnr=${this.props.reserveProperties.reqPnr}`,
-      "_self"
-    );
+    // window.open(
+    //   `Https://bilitja.ravis.ir/ApplicationBank/CallBank?reqNo=${this.props.reserveProperties.reqNo}&reqPnr=${this.props.reserveProperties.reqPnr}`,
+    //   "_self"
+    // );
 
     // onlinePay/pricing/getBanks/97847/Y0GB7D
-    // ${this.props.reserveProperties.reqNo}/${this.props.reserveProperties.reqPnr}
-    // fetch(`${globals.baseUrl}onlinePay/pricing/getBanks/${this.props.reserveProperties.reqNo}/${this.props.reserveProperties.reqPnr}`)
-    //     .then(res => res.json()).then(data => {
+    //${this.props.reserveProperties.reqNo}/${this.props.reserveProperties.reqPnr}
+    fetch(`${globals.baseUrl}onlinePay/pricing/getBanks/${this.props.reserveProperties.reqNo}/${this.props.reserveProperties.reqPnr}`)
+        .then(res => res.json()).then(data => {
 
-    //         fetch(`${globals.baseUrl}onlinePay/pricing/saveEbank`, {
-    //             headers: { 'Content-Type': 'application/json'},
-    //             method: "POST",
-    //             body: JSON.stringify({
-    //                 reqNo : this.props.reserveProperties.reqNo,
-    //                 reqPnr : this.props.reserveProperties.reqPnr,
-    //                 bankId :  data.bankId,
-    //                 kndRequest :1
-    //             })
-    //         }).then(res=>res.json()).then(data=>{
-    //             console.log(data)
-    //             var form = document.createElement("form");
-    //             form.setAttribute("method", "POST");
-    //             form.setAttribute("action", data.address);
-    //             form.setAttribute("target", "_self");
-    //             var hiddenField = document.createElement("input");
-    //             hiddenField.setAttribute("name", "token");
-    //             hiddenField.setAttribute("value", data.authority);
-    //             form.appendChild(hiddenField);
-    //             var hiddenField2 = document.createElement("input");
-    //             hiddenField2.setAttribute("name", "RedirectURL");
-    //             hiddenField2.setAttribute("value", data.callBackUrl);
-    //             form.appendChild(hiddenField2);
-    //             document.body.appendChild(form);
-    //             form.submit();
-    //             document.body.removeChild(form);
-    //         })
+            fetch(`${globals.baseUrl}onlinePay/pricing/saveEbank`, {
+                headers: { 'Content-Type': 'application/json'},
+                method: "POST",
+                body: JSON.stringify({
+                    reqNo : this.props.reserveProperties.reqNo,
+                    reqPnr : this.props.reserveProperties.reqPnr,
+                    bankId :  data.bankId,
+                    kndRequest :1
+                })
+            }).then(res=>res.json()).then(data=>{
+                console.log(data)
+                var form = document.createElement("form");
+                form.setAttribute("method", "POST");
+                form.setAttribute("action", data.address);
+                form.setAttribute("target", "_self");
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("name", "token");
+                hiddenField.setAttribute("value", data.authority);
+                form.appendChild(hiddenField);
+                var hiddenField2 = document.createElement("input");
+                hiddenField2.setAttribute("name", "RedirectURL");
+                hiddenField2.setAttribute("value",  `${window.location.origin}/api/callbackbank`);
+                form.appendChild(hiddenField2);
+                document.body.appendChild(form);
+                form.submit();
+                document.body.removeChild(form);
+            })
 
-    //     })
+        })
   };
   getTicketType = (type) => {
     switch (type) {
