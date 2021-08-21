@@ -29,7 +29,7 @@ const PaymentReceiptPage = (props) => {
         <div className="card">
           <div className="row py-3">
             <div className="col-lg-11">
-              <div className="tabel-responsive">
+              <div className="table-responsive">
                 <table class="table table-striped font-bold-iransanse text-center">
                   <thead>
                     <tr>
@@ -74,7 +74,7 @@ const PaymentReceiptPage = (props) => {
                 </table>
               </div>
             </div>
-            <div className="col-lg-1 text-center">
+            <div className="col-lg-1 text-center d-none d-lg-block">
               <img
                 src="../../../../../Images/barcode.png"
                 className="imgbarcode"
