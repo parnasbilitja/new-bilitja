@@ -2,9 +2,21 @@ import React from "react";
 import Footer from "./../component/Footer.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
+import globals from "./../Global";
 
 const PaymentReceiptPage = (props) => {
   let i = 1;
+
+  const handlePrint = (reqNo, reqPnr) => {
+    fetch(
+      `https://bilitja.ravis.ir/Eticket/Ticket?reqNo=${reqNo}&reqPnr=${reqPnr}`
+    )
+      .then((res) => res.blob())
+      .then((blob) => {
+        var file = window.URL.createObjectURL(blob);
+        window.location.assign(file);
+      });
+  };
 
   return (
     <>
@@ -23,9 +35,6 @@ const PaymentReceiptPage = (props) => {
         </h6>
       </div>
       <div className="container pt-4">
-        <button className="btn btn-success font-yekan mb-3">
-          <FontAwesomeIcon icon={faPrint} /> چاپ بلیط
-        </button>
         <div className="card">
           <div className="row py-3">
             <div className="col-lg-11">
@@ -64,7 +73,7 @@ const PaymentReceiptPage = (props) => {
                         <td>{option.airline}</td>
                         <td>{option.flightDate}</td>
                         <td>{option.flightTime}</td>
-                        <td>#{option.reqPnr}</td>
+                        <td>{option.reqPnr}</td>
                         <td>{option.meliat}</td>
                         <td>{option.sex == 1 ? "مرد" : "زن"}</td>
                         <td>{option.ticketPrice}</td>
@@ -82,6 +91,14 @@ const PaymentReceiptPage = (props) => {
             </div>
           </div>
         </div>
+        <button
+          className="btn btn-success font-yekan my-3"
+          onClick={() =>
+            handlePrint(props.referenceEbank.reqNo, props.referenceEbank.reqPnr)
+          }
+        >
+          <FontAwesomeIcon icon={faPrint} /> چاپ بلیط
+        </button>
       </div>
       <Footer />
     </>

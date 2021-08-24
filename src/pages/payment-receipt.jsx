@@ -9,9 +9,9 @@ const PaymentReceipt = ({ PaymentInfo }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
   const response = await fetch(
-    "Https://bilitja.ravis.ir/api/onlinePay/reference/QOMG9L"
+    `Https://bilitja.ravis.ir/api/onlinePay/reference/${context.query.reqPnr}`
   );
   const data = await response.json();
 

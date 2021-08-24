@@ -1,7 +1,9 @@
+import { useRouter } from "next/dist/client/router";
 import { redirect } from "next/dist/next-server/server/api-utils";
 import globals from "../../sources/Global";
 
 export default function handler(req, res) {
+  const router = useRouter();
   if (req.method == "POST") {
     const body = JSON.parse(req.body);
 
@@ -39,16 +41,9 @@ export default function handler(req, res) {
 
           default: {
             //res.send(data.status) ;
-            fetch(
-              `${globals.baseUrl}onlinePay/reference/${this.state.trackRef}`
-            )
-              .then((res) => res.json())
-              .then((data) => {
-                console.log(data);
-                this.setState({ ...data });
-              });
-            //  res.redirect("https://www.google.com");
-
+            reqNo = String(data.status).split("|")[0];
+            reqPnr = String(data.status).split("|")[1];
+            router.push(`/payment-receipt/?reqPnr=${reqPnr}&reqNo=${reqNo}`);
             break;
           }
         }
