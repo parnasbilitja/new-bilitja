@@ -3,16 +3,21 @@ import Footer from "./../component/Footer.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import globals from "./../Global";
+import PaymentReceiptDesktopHeader from "./PaymentReceiptDesktopHeader.component";
+import PaymentReciptMobileHeader from "./PaymentReceiptMobileHeader.component";
 
 const PaymentReceiptPage = (props) => {
+  const [btn_disabel, setBtnDisabel] = React.useState(false);
   let i = 1;
 
   const handlePrint = (reqNo, reqPnr) => {
+    setBtnDisabel(true);
     fetch(
       `https://bilitja.ravis.ir/Eticket/Ticket?reqNo=${reqNo}&reqPnr=${reqPnr}`
     )
       .then((res) => res.blob())
       .then((blob) => {
+        setBtnDisabel(false);
         var file = window.URL.createObjectURL(blob);
         window.location.assign(file);
       });
@@ -34,68 +39,51 @@ const PaymentReceiptPage = (props) => {
           مبلغ: {props.referenceEbank.amount}
         </h6>
       </div>
+      <PaymentReceiptDesktopHeader info={props} />
+      <PaymentReciptMobileHeader info={props} />
       <div className="container pt-4">
         <div className="card">
-          <div className="row py-3">
-            <div className="col-lg-11">
-              <div className="table-responsive">
-                <table class="table table-striped font-bold-iransanse text-center">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">نام</th>
-                      <th scope="col">نام خانوادگی</th>
-                      <th scope="col">مبدا / مقصد</th>
-                      <th scope="col">شماره پرواز</th>
-                      <th scope="col">ایرلاین</th>
-                      <th scope="col">تاریخ</th>
-                      <th scope="col">ساعت</th>
-                      <th scope="col">رفرنس</th>
-                      <th scope="col">ملیت</th>
-                      <th scope="col">جنسیت</th>
-                      <th scope="col">قیمت</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {props.referenceFlight.map((option) => (
-                      <tr className="text-muted" style={{ fontSize: "12px" }}>
-                        <th scope="row">
-                          {i++}-{option.ticketName}
-                        </th>
-                        <td>{option.nameEn}</td>
-                        <td>{option.familyEn}</td>
-                        <td>
-                          <strong>{option.airport1}</strong>{" "}
-                          <strong className="text-danger">به </strong>
-                          <strong>{option.airport2}</strong>
-                        </td>
-                        <td>{option.flightNo}</td>
-                        <td>{option.airline}</td>
-                        <td>{option.flightDate}</td>
-                        <td>{option.flightTime}</td>
-                        <td>{option.reqPnr}</td>
-                        <td>{option.meliat}</td>
-                        <td>{option.sex == 1 ? "مرد" : "زن"}</td>
-                        <td>{option.ticketPrice}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div className="col-lg-1 text-center d-none d-lg-block">
-              <img
-                src="../../../../../Images/barcode.png"
-                className="imgbarcode"
-              />
-            </div>
+          <div className="table-responsive">
+            <table class="table table-striped font-bold-iransanse text-center">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">نام</th>
+                  <th scope="col">نام خانوادگی</th>
+                  <th scope="col">رفرنس</th>
+                  <th scope="col">ملیت</th>
+                  <th scope="col">قیمت</th>
+                </tr>
+              </thead>
+              <tbody>
+                {props.referenceFlight.map((option) => (
+                  <tr className="text-muted" style={{ fontSize: "12px" }}>
+                    <th scope="row">
+                      {i++}-{option.ticketName}
+                    </th>
+                    <td>{option.nameEn}</td>
+                    <td>{option.familyEn}</td>
+
+                    <td>{option.reqPnr}</td>
+                    <td>{option.meliat}</td>
+
+                    <td>{option.ticketPrice}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
         <button
-          className="btn btn-success font-yekan my-3"
+          className={
+            btn_disabel === true
+              ? "btn btn-success font-yekan my-3 cursor-progress "
+              : "btn btn-success font-yekan my-3"
+          }
           onClick={() =>
             handlePrint(props.referenceEbank.reqNo, props.referenceEbank.reqPnr)
           }
+          disabled={btn_disabel}
         >
           <FontAwesomeIcon icon={faPrint} /> چاپ بلیط
         </button>
