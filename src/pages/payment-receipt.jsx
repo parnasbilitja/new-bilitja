@@ -1,3 +1,4 @@
+import { withRouter } from "next/router";
 import React from "react";
 import PaymentReceiptPage from "./../sources/payment_receipt/PaymentReceipt.page";
 
@@ -22,4 +23,4 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-export default PaymentReceipt;
+export default withRouter(PaymentReceipt);

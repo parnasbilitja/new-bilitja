@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import { useRouter, withRouter } from "next/router";
+import React from "react";
 
 const CallbackbankError = () => {
   const router = useRouter();
@@ -84,4 +84,4 @@ const CallbackbankError = () => {
   );
 };
 
-export default CallbackbankError;
+export default withRouter(CallbackbankError);
