@@ -1,7 +1,7 @@
 import { redirect } from "next/dist/next-server/server/api-utils";
 import globals from '../../sources/Global';
 
-export default async function handler(req, res) {
+export default  function handler(req, res) {
   //const myRouter=useRouter();
   //myRouter.push(`https://www.google.com`);
   //console.log('myRouter');
