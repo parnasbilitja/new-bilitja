@@ -17,22 +17,22 @@ export default async function handler(req, res) {
 
     switch (body.StateCode) {
       case 1:
-        `https://${req.headers.host}/callbackbank-error?status=1`;
+        res.redirect(`https://${req.headers.host}/callbackbank-error?status=1`);
         break;
       case 3:
-        `https://${req.headers.host}/callbackbank-error?status=3`;
+        res.redirect(`https://${req.headers.host}/callbackbank-error?status=3`);
         break;
       case 4:
-        `https://${req.headers.host}/callbackbank-error?status=4`;
+        res.redirect(`https://${req.headers.host}/callbackbank-error?status=4`);
         break;
       case 5:
-        `https://${req.headers.host}/callbackbank-error?status=5`;
+        res.redirect(`https://${req.headers.host}/callbackbank-error?status=5`);
         break;
       case 6:
-        `https://${req.headers.host}/callbackbank-error?status=6`;
+        res.redirect(`https://${req.headers.host}/callbackbank-error?status=6`);
         break;
       case 7:
-        `https://${req.headers.host}/callbackbank-error?status=7`;
+        res.redirect(`https://${req.headers.host}/callbackbank-error?status=7`);
         break;
       default:
         const response = await fetch(
