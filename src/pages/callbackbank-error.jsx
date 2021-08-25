@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 
 const CallbackbankError = () => {
   const router = useRouter();
@@ -52,6 +52,7 @@ const CallbackbankError = () => {
 
       break;
   }
+
   return (
     <div
       style={{
