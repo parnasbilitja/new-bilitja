@@ -2,7 +2,7 @@ import { redirect } from "next/dist/next-server/server/api-utils";
 import globals from "../../sources/Global";
 
 export default async function handler(req, res) {
-  
+   
   if (req.method == "POST") {
     const body = req.body;
     //{"message":{"State":"Canceled By User","StateCode":"-1","ResNum":"28284","MID":"10916111","RefNum":"","CID":"","TRACENO":"","RRN":"","SecurePan":""}}
