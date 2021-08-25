@@ -1,18 +1,18 @@
-import app from "next/app";
 import { redirect } from "next/dist/next-server/server/api-utils";
-import globals from "../../sources/Global";
-//import { useRouter } from 'next/router'
+import globals from '../../sources/Global';
 
 export default async function handler(req, res) {
   //const myRouter=useRouter();
   //myRouter.push(`https://www.google.com`);
   //console.log('myRouter');
-  
+  console.log("start");
   if (req.method == "POST") {
+    console.log("start3");
     const body = req.body;
+   // const body=JSON.parse(req.body);
     //{"message":{"State":"Canceled By User","StateCode":"-1","ResNum":"28284","MID":"10916111","RefNum":"","CID":"","TRACENO":"","RRN":"","SecurePan":""}}
     //    [Route("api/appCallBackBank/saman/{state}/{refNum}/{resNum}/{mid}")]
-
+    console.log(body.StateCode);
     var refNum = "";
 
     if (body.RefNum == "") {
@@ -20,28 +20,28 @@ export default async function handler(req, res) {
     } else {
       refNum = body.RefNum;
     }
-
+ console.log(body.StateCode);
     switch (body.StateCode) {
-      case -1:
-        res.redirect(`../callbackbank-error?status=1`);
+      case "-1":
+        res.redirect(`../callbackbank-error?status=-1`);
         break;
-      case -3:
-        res.redirect(`../callbackbank-error?status=3`);
+      case "-3":
+        res.redirect(`../callbackbank-error?status=-3`);
         break;
-      case -4:
-        res.redirect(`../callbackbank-error?status=4`);
+      case "-4":
+        res.redirect(`../callbackbank-error?status=-4`);
         break;
-      case -5:
-        res.redirect(`../callbackbank-error?status=5`);
+      case "-5":
+        res.redirect(`../callbackbank-error?status=-5`);
         break;
-      case -6:
-        res.redirect(`../callbackbank-error?status=6`);
+      case "-6":
+        res.redirect(`../callbackbank-error?status=-6`);
         break;
-      case -7:
-        res.redirect(`../callbackbank-error?status=7`);
+      case "-7":
+        res.redirect(`../callbackbank-error?status=-7`);
         break;
       default:
-        fetch(`${globals.baseUrl}appCallBackBank/saman/${body.StateCode}/${body.RefNum}/${body.ResNum}/${body.message.MID}`)
+        fetch(`${globals.baseUrl}appCallBackBank/saman/${body.StateCode}/${refNum}/${body.ResNum}/${body.MID}`)
         .then(res => res.json()).then(data => { 
                   switch (data.status) {
                     case "-100":
