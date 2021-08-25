@@ -17,33 +17,40 @@ export default function handler(req, res) {
         //res.status(200).send(body.message.State);
         switch (data.status) {
           case "-100":
-            res.send(data.message);
+            res.send("کد دریافتی از طرف بانک معتبر نیست.");
             break;
           case "-101":
-            res.send(data.message);
+            res.send("کد دریافتی از طرف بانک معتبر نیست.");
             break;
 
           case "-102":
-            res.send(data.message);
+            res.send("کد دریافتی از طرف بانک معتبر نیست.");
             break;
 
           case "-103":
-            res.send("-103");
+            res.send("بانک تراکنش شما را تایید نکرد");
             break;
 
           case "-104":
-            res.send(data.message);
+            res.send("تراکنش انجام نشد. رزرو برای شما ثبت نشده است");
             break;
 
           case "-105":
-            res.send(data.message);
+            res.send(
+              "متاسفانه خطا رخ داده است. ممکن است بلیط صادر شده باشد. خواهشمندیم جهت پیگیری رزرو خود حتما با تلفن پشتیبانی تماس حاصل فرمایید"
+            );
             break;
 
           default: {
             //res.send(data.status) ;
-            reqNo = String(data.status).split("|")[0];
-            reqPnr = String(data.status).split("|")[1];
-            router.push(`/payment-receipt/?reqPnr=${reqPnr}&reqNo=${reqNo}`);
+            if (data.status.search("|") != -1) {
+              reqNo = String(data.status).split("|")[0];
+              reqPnr = String(data.status).split("|")[1];
+              router.push(`/payment-receipt/?reqPnr=${reqPnr}&reqNo=${reqNo}`);
+            } else {
+              res.send("بانک تراکنش شما را تایید نکرد");
+            }
+
             break;
           }
         }
