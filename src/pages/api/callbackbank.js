@@ -23,7 +23,8 @@ export default  function handler(req, res) {
  console.log(body.StateCode);
     switch (body.StateCode) {
       case "-1":
-        res.redirect(`../callbackbank-error?status=-1`);
+        //res.redirect(`../callbackbank-error?status=-1`);
+        res.redirect(`https://www.google.com`);
         break;
       case "-3":
         res.redirect(`../callbackbank-error?status=-3`);
@@ -45,7 +46,7 @@ export default  function handler(req, res) {
         .then(res => res.json()).then(data => { 
                   switch (data.status) {
                     case "-100":
-                      res.redirect(`../callbackbank-error?-100`);
+                      res.redirect(`../callbackbank-error?status=-100`);
                       break;
                     case "-101":
                       res.redirect(
