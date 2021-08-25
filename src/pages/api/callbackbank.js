@@ -16,22 +16,22 @@ export default async function handler(req, res) {
     }
 
     switch (body.StateCode) {
-      case 1:
+      case "-1":
         res.redirect(`https://${req.headers.host}/callbackbank-error?status=1`);
         break;
-      case 3:
+      case "-3":
         res.redirect(`https://${req.headers.host}/callbackbank-error?status=3`);
         break;
-      case 4:
+      case "-4":
         res.redirect(`https://${req.headers.host}/callbackbank-error?status=4`);
         break;
-      case 5:
+      case "-5":
         res.redirect(`https://${req.headers.host}/callbackbank-error?status=5`);
         break;
-      case 6:
+      case "-6":
         res.redirect(`https://${req.headers.host}/callbackbank-error?status=6`);
         break;
-      case 7:
+      case "-7":
         res.redirect(`https://${req.headers.host}/callbackbank-error?status=7`);
         break;
       default:
