@@ -17,22 +17,22 @@ export default async function handler(req, res) {
 
     switch (body.StateCode) {
       case 1:
-        `http://${req.headers.host}/callbackbank-error?status=1`;
+        `https://${req.headers.host}/callbackbank-error?status=1`;
         break;
       case 3:
-        `http://${req.headers.host}/callbackbank-error?status=3`;
+        `https://${req.headers.host}/callbackbank-error?status=3`;
         break;
       case 4:
-        `http://${req.headers.host}/callbackbank-error?status=4`;
+        `https://${req.headers.host}/callbackbank-error?status=4`;
         break;
       case 5:
-        `http://${req.headers.host}/callbackbank-error?status=5`;
+        `https://${req.headers.host}/callbackbank-error?status=5`;
         break;
       case 6:
-        `http://${req.headers.host}/callbackbank-error?status=6`;
+        `https://${req.headers.host}/callbackbank-error?status=6`;
         break;
       case 7:
-        `http://${req.headers.host}/callbackbank-error?status=7`;
+        `https://${req.headers.host}/callbackbank-error?status=7`;
         break;
       default:
         const response = await fetch(
@@ -42,35 +42,35 @@ export default async function handler(req, res) {
 
         switch (data.status) {
           case "-100":
-            res.redirect(`http://${req.headers.host}/callbackbank-error?-100`);
+            res.redirect(`https://${req.headers.host}/callbackbank-error?-100`);
             break;
           case "-101":
             res.redirect(
-              `http://${req.headers.host}/callbackbank-error?status=-101`
+              `https://${req.headers.host}/callbackbank-error?status=-101`
             );
             break;
 
           case "-102":
             res.redirect(
-              `http://${req.headers.host}/callbackbank-error?status=-102`
+              `https://${req.headers.host}/callbackbank-error?status=-102`
             );
             break;
 
           case "-103":
             res.redirect(
-              `http://${req.headers.host}/callbackbank-error?status=-103`
+              `https://${req.headers.host}/callbackbank-error?status=-103`
             );
             break;
 
           case "-104":
             res.redirect(
-              `http://${req.headers.host}/callbackbank-error?status=-104`
+              `https://${req.headers.host}/callbackbank-error?status=-104`
             );
             break;
 
           case "-105":
             res.redirect(
-              `http://${req.headers.host}/callbackbank-error?status=-105`
+              `https://${req.headers.host}/callbackbank-error?status=-105`
             );
             break;
 
@@ -78,7 +78,7 @@ export default async function handler(req, res) {
             const reqNo = String(data.status).split("|")[0];
             const reqPnr = String(data.status).split("|")[1];
             res.redirect(
-              `http://${req.headers.host}/payment-receipt?reqPnr${reqPnr}&reqNo=${reqNo}`
+              `https://${req.headers.host}/payment-receipt?reqPnr${reqPnr}&reqNo=${reqNo}`
             );
             break;
           }
