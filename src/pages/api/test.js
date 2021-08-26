@@ -2,7 +2,7 @@ import { redirect } from "next/dist/next-server/server/api-utils";
 import globals from '../../sources/Global';
 
 export default function handler(req,res) {
-    res.redirect('https://www.google.com')
+    //res.redirect('https://www.google.com')
     if(req.method=='POST'){
         const body=JSON.parse(req.body);
 

@@ -23,8 +23,8 @@ export default  function handler(req, res) {
  console.log(body.StateCode);
     switch (body.StateCode) {
       case "-1":
-        //res.redirect(`../callbackbank-error?status=-1`);
-        res.redirect(`https://www.google.com`);
+        res.redirect(`../callbackbank-error?status=-1`);
+        
         break;
       case "-3":
         res.redirect(`../callbackbank-error?status=-3`);

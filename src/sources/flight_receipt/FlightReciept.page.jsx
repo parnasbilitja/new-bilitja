@@ -177,7 +177,7 @@ class FlightReciept extends React.Component {
             hiddenField2.setAttribute("name", "RedirectURL");
             hiddenField2.setAttribute(
               "value",
-              `${window.location.origin}/api/callbackbank`
+              `${window.location.origin}/callbackbank`
             );
             form.appendChild(hiddenField2);
             document.body.appendChild(form);
