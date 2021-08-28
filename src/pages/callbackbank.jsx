@@ -99,7 +99,7 @@ export async function getServerSideProps({req}) {
           data.RRN = "در موارد چند تراکنشی، تمام تراکنش ها پرداخت ناموفق داشته اند.";
            break;
         
-        case "OK":
+        case "0":
           const response = await fetch(
             `${globals.baseUrl}appCallBackBank/saman/${data.State}/${refNum}/${data.ResNum}/${data.MID}`
           );
