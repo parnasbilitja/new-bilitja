@@ -34,7 +34,7 @@ console.log(data.StateCode);
     // case "-7":
     //   myRouter.push(`./callbackbank-error?status=-7`);
     //   break;
-    case "-1":
+    case "-50":
       error = "شما از تراکنش انصراف داده اید.";
       break;
     case "-3":
