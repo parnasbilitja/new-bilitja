@@ -1,5 +1,8 @@
 import getRawBody from 'raw-body';
 import { useRouter } from "next/router";
+import globals from '../sources/Global'
+import React from "react";
+
 function  Page({ data }) {
   const myRouter = useRouter();
  // myRouter.push(`./callbackbank-error?status=-1`);
@@ -105,9 +108,11 @@ console.log(data.StateCode);
         background: "#ccc",
       }}
     >
+  { error=="" ? <div>test</div> :
+    
       <div className="row">
         <div className="col-12 text-center mb-5">
-          <img src="../../../Images/bilitja.png" className="img-fluid " />
+          <img src="../../Images/bilitja.png" className="img-fluid " />
         </div>
         <br />
         <div>
@@ -122,11 +127,13 @@ console.log(data.StateCode);
           </a>
         </div>
       </div>
+}
     </div>
   );
 
 
 }
+
 //This gets called on every request
 export async function getServerSideProps({req}) {
   if(req.method=="POST"){
