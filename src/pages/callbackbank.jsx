@@ -15,12 +15,12 @@ function  Page({ data,PaymentInfo }) {
   
   return (
     <div >
-  { data.State=="" ? 
+  { data.RRN=="" ? 
 
       <PaymentReceiptPage {...PaymentInfo} />: null
      }
 
-    {data.State!="" ?
+    {data.RRN!="" ?
     <div style={{
       display: "flex",
       justifyContent: "center",
@@ -36,7 +36,7 @@ function  Page({ data,PaymentInfo }) {
         <div>
           <h6 className="font-bold-iransanse text-center alert alert-danger">
             {" "}
-            خطا: {data.State}
+            خطا: {data.RRN}
           </h6>
         </div>
         <div className="mt-5 text-center">
@@ -75,46 +75,46 @@ export async function getServerSideProps({req}) {
        } else {
          refNum = data.RefNum;
        }
-       data.State="";
+       data.RRN="";
      console.log(data.StateCode);
        switch (data.StateCode) {
-         case "-50":
-           data.State = "شما از تراکنش انصراف داده اید.";
+         case "-1":
+           data.RRN = "شما از تراکنش انصراف داده اید.";
            break;
          case "-3":
-          data.State =
+          data.RRN =
              "پرداخت انجام نشد، در صورت کسر وجه مبلغ با 72 ساعت به حساب شما بازگشت داده می شود.";
            break;
          case "-4":
-          data.State = "متاسفانه مدت زمان انجام تراکنش به اتمام رسیده است.";
+          data.RRN = "متاسفانه مدت زمان انجام تراکنش به اتمام رسیده است.";
            break;
          case "-5":
-          data.State = "اطلاعات ارسال شده نا معتبر است.";
+          data.RRN = "اطلاعات ارسال شده نا معتبر است.";
            break;
          case "-6":
-          data.State =
+          data.RRN =
              "در موارد چند تراکنشی، ازطلاعات موفق از طریق سرویس دیگری ارسال می شود.";
            break;
          case "-7":
-          data.State = "در موارد چند تراکنشی، تمام تراکنش ها پرداخت ناموفق داشته اند.";
+          data.RRN = "در موارد چند تراکنشی، تمام تراکنش ها پرداخت ناموفق داشته اند.";
            break;
         
-         default:
+        case "OK":
           const response = await fetch(
-            `${globals.baseUrl}appCallBackBank/saman/${data.StateCode}/${refNum}/${data.ResNum}/${data.MID}`
+            `${globals.baseUrl}appCallBackBank/saman/${data.State}/${refNum}/${data.ResNum}/${data.MID}`
           );
           const responsedata = await response.json();
 
                      switch (responsedata.status) {
                        case "-100":
-                        data.State = "کد دریافتی از طرف بانک معتبر نیست.";
+                        data.RRN = "کد دریافتی از طرف بانک معتبر نیست.";
                          break;
                        case "-101":
-                        data.State = "کد دریافتی از طرف بانک معتبر نیست.";
+                        data.RRN = "کد دریافتی از طرف بانک معتبر نیست.";
                          break;
                    
                        case "-102":
-                        data.State = "کد دریافتی از طرف بانک معتبر نیست.";
+                        data.RRN = "کد دریافتی از طرف بانک معتبر نیست.";
                          break;
                    
                        case "-103":
@@ -125,17 +125,17 @@ export async function getServerSideProps({req}) {
                       //    `${globals.baseUrl}onlinePay/reference/${reqPnr}`
                       //  );
                       //   responsedatapnr = await responsePnr.json();
-                      //  data.State ="";
+                      //  data.RRN ="";
                       //   break;
-                        data.State = "بانک تراکنش شما را تایید نکرد";
+                        data.RRN = "بانک تراکنش شما را تایید نکرد";
                          break;
                    
                        case "-104":
-                        data.State = "تراکنش انجام نشد. رزرو برای شما ثبت نشده است";
+                        data.RRN = "تراکنش انجام نشد. رزرو برای شما ثبت نشده است";
                          break;
                    
                        case "-105":
-                        data.State =
+                        data.RRN =
                            "متاسفانه خطا رخ داده است. ممکن است بلیط صادر شده باشد. خواهشمندیم جهت پیگیری رزرو خود حتما با تلفن پشتیبانی تماس حاصل فرمایید";
                          break;
      
@@ -146,21 +146,19 @@ export async function getServerSideProps({req}) {
                           `${globals.baseUrl}onlinePay/reference/${reqPnr}`
                         );
                         responsedatapnr = await responsePnr.json();
-                        data.State ="";
+                        data.RRN ="";
                          break;
                        }
                      }
-                    
-                
-             
-                  return { 
-                    props: {
-                    data: data,
-                    PaymentInfo: responsedatapnr,
-                  } 
-                }
+                 
              
   }
+  return { 
+    props: {
+    data: data,
+    PaymentInfo: responsedatapnr,
+  } 
+}
 }
   return { props: {}  }
 
