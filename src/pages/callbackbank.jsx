@@ -63,7 +63,7 @@ export async function getServerSideProps({req}) {
         var data={};
         var responsedatapnr ={};
         //var body2="State=Canceled+By+User&StateCode=-1&ResNum=28333&MID=10916111&RefNum=&CID=&TRACENO=&RRN=&SecurePan=";
-        String(body.toString("utf-8")).split('&').map(x=>( data[x.split('=')[0]] =x.split('=')[1]));
+        String(body.toString()).split('&').map(x=>( data[x.split('=')[0]] =x.split('=')[1]));
         console.log("bottom");   
         console.log(data);
         console.log("bottom2");   
@@ -101,8 +101,18 @@ export async function getServerSideProps({req}) {
         
         case "0":
           const response = await fetch(
-            `${globals.baseUrl}appCallBackBank/saman/${data.State}/${refNum}/${data.ResNum}/${data.MID}`
-          );
+            `${globals.baseUrl}appCallBackBank/saman`
+            , {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                  state: data.State,
+                  refNum: refNum,
+                  resNum:data.ResNum,
+                  mid:data.MID
+                })
+              })
+          
           const responsedata = await response.json();
 
                      switch (responsedata.status) {
@@ -140,13 +150,18 @@ export async function getServerSideProps({req}) {
                          break;
      
                        default: {
-                         const reqNo = String(responsedata.status).split("|")[0];
-                         const reqPnr = String(responsedata.status).split("|")[1];
-                         const responsePnr = await fetch(
-                          `${globals.baseUrl}onlinePay/reference/${reqPnr}`
-                        );
-                        responsedatapnr = await responsePnr.json();
-                        data.RRN ="";
+                         if( String(responsedata.status).indexOf('|')>0){
+                              const reqNo = String(responsedata.status).split("|")[0];
+                              const reqPnr = String(responsedata.status).split("|")[1];
+                              const responsePnr = await fetch(
+                                `${globals.baseUrl}onlinePay/reference/${reqPnr}`
+                              );
+                              responsedatapnr = await responsePnr.json();
+                              data.RRN ="";
+                         }else{
+                            data.RRN =
+                            "خطای ناشناخته : متاسفانه خطا رخ داده است. ممکن است بلیط صادر شده باشد. خواهشمندیم جهت پیگیری رزرو خود حتما با تلفن پشتیبانی تماس حاصل فرمایید"+responsedata.status;
+                         }
                          break;
                        }
                      }
