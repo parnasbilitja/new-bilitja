@@ -63,7 +63,8 @@ export async function getServerSideProps({req}) {
         var data={};
         var responsedatapnr ={};
         //var body2="State=Canceled+By+User&StateCode=-1&ResNum=28333&MID=10916111&RefNum=&CID=&TRACENO=&RRN=&SecurePan=";
-        String(body.toString()).split('&').map(x=>( data[x.split('=')[0]] =x.split('=')[1]));
+         String(body.toString()).split('&').map(x=>( data[x.split('=')[0]] =x.split('=')[1]));
+        
         console.log("bottom");   
         console.log(data);
         console.log("bottom2");   
@@ -73,7 +74,7 @@ export async function getServerSideProps({req}) {
        if (data.RefNum == "") {
          refNum = "0";
        } else {
-         refNum = data.RefNum;
+         refNum = decodeURI(data.RefNum);
        }
        data.RRN="";
      console.log(data.StateCode);
