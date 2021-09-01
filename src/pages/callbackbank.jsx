@@ -3,7 +3,25 @@ import { useRouter } from "next/router";
 import globals from '../sources/Global'
 import React from "react";
 import PaymentReceiptPage from "./../sources/payment_receipt/PaymentReceipt.page";
+function convertUtftoAscii(str){
+  str=str.replaceAll('%24','$');
+  str=str.replaceAll('%26','&');
+  str=str.replaceAll('%2B','+');
+  str=str.replaceAll('%2C',',');
+  str=str.replaceAll('%2F','/');
+  str=str.replaceAll('%3A',':');
+  str=str.replaceAll('%3B',';');
+  str=str.replaceAll('%3D','=');
+  str=str.replaceAll('%3F','?');
+  str=str.replaceAll('%40','@');
+  str=str.replaceAll('%3C','<');
+  str=str.replaceAll('%3E','>');
+  str=str.replaceAll('%23','#');
+  str=str.replaceAll('%25','%');
+  str=str.replaceAll('%20',' ');
+ return str;
 
+}
 function  Page({ data,PaymentInfo }) {
   
   
@@ -74,7 +92,7 @@ export async function getServerSideProps({req}) {
        if (data.RefNum == "") {
          refNum = "0";
        } else {
-         refNum = decodeURI(data.RefNum);
+         refNum = convertUtftoAscii(data.RefNum);
        }
        data.RRN="";
      console.log(data.StateCode);

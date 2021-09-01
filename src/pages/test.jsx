@@ -1,5 +1,31 @@
 import getRawBody from 'raw-body';
+function convertUtftoAscii(str){
+    str=str.replaceAll('%24','$');
+    str=str.replaceAll('%26','&');
+    str=str.replaceAll('%2B','+');
+    str=str.replaceAll('%2C',',');
+    str=str.replaceAll('%2F','/');
+    str=str.replaceAll('%3A',':');
+    str=str.replaceAll('%3B',';');
+    str=str.replaceAll('%3D','=');
+    str=str.replaceAll('%3F','?');
+    str=str.replaceAll('%40','@');
+    str=str.replaceAll('%3C','<');
+    str=str.replaceAll('%3E','>');
+    str=str.replaceAll('%23','#');
+    str=str.replaceAll('%25','%');
+    str=str.replaceAll('%20',' ');
+   return str;
+
+}
 function Page({ data }) {
+  var a="GmshtyjwKSun20WdgeTQP%2BPKL8GFh5Thg3P3xX7qDy"
+  console.log("startt"); 
+  a=convertUtftoAscii(a);
+ console.log(a.toString("utf-8"));
+console.log( decodeURI(a.toString("utf-8")));
+console.log("end"); 
+
   // Render data...
   return( <div>{data}</div>)
 }
@@ -14,7 +40,8 @@ export async function getServerSideProps({req}) {
   // Pass data to the page via props
   //return { props: { data } }
   //if (req.method == "POST") {
-   const body = await getRawBody(req)
+    
+  const body = await getRawBody(req)
     console.log("ssdjdsds")
     console.log(body.toString("utf-8"))
     
