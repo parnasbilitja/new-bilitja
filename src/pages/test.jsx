@@ -1,24 +1,26 @@
 import getRawBody from 'raw-body';
 function convertUtftoAscii(str){
-    str=str.replaceAll('%24','$');
-    str=str.replaceAll('%26','&');
-    str=str.replaceAll('%2B','+');
-    str=str.replaceAll('%2C',',');
-    str=str.replaceAll('%2F','/');
-    str=str.replaceAll('%3A',':');
-    str=str.replaceAll('%3B',';');
-    str=str.replaceAll('%3D','=');
-    str=str.replaceAll('%3F','?');
-    str=str.replaceAll('%40','@');
-    str=str.replaceAll('%3C','<');
-    str=str.replaceAll('%3E','>');
-    str=str.replaceAll('%23','#');
-    str=str.replaceAll('%25','%');
-    str=str.replaceAll('%20',' ');
-   return str;
+  while (str.indexOf('%')>0){
+  str= String(str).replace('%24','$');
+  str=String(str).replace('%26','&');
+  str=String(str).replace('%2B','+');
+  str=String(str).replace('%2C',',');
+  str=String(str).replace('%2F','/');
+  str=String(str).replace('%3A',':');
+  str=String(str).replace('%3B',';');
+  str=String(str).replace('%3D','=');
+  str=String(str).replace('%3F','?');
+  str=String(str).replace('%40','@');
+  str=String(str).replace('%3C','<');
+  str=String(str).replace('%3E','>');
+  str=String(str).replace('%23','#');
+  str=String(str).replace('%25','%');
+  str=String(str).replace('%20',' ');
+  }
+ return str;
 
 }
-function Page({ data }) {
+export default function ({ data }) {
   var a="GmshtyjwKSun20WdgeTQP%2BPKL8GFh5Thg3P3xX7qDy"
   console.log("startt"); 
   a=convertUtftoAscii(a);
@@ -52,7 +54,7 @@ export async function getServerSideProps({req}) {
   return { props: {data}  }
 }
 
-export default Page
+
 
 // import { useRouter } from "next/router";
 // import React from "react";
