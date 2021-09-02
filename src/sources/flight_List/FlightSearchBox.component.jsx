@@ -153,7 +153,7 @@ class FlightSearchBox extends React.Component {
             <i className="kilo-font icon-plane-departure form-input-icon"></i>
             <PrimaryTextInput
               value={sourceName}
-              readOnlyAttr={this.state.width <= mobileSize}
+              readonlyattr={(this.state.width <= mobileSize? "true":"false")}
               name="sourceName"
               onFocus={(e) => {
                 // for mobile
@@ -204,7 +204,7 @@ class FlightSearchBox extends React.Component {
             ></i>
             <PrimaryTextInput
               value={destinationName}
-              readOnlyAttr={this.state.width <= mobileSize}
+              readonlyattr={(this.state.width <= mobileSize? "true":"false")}
               name="destinationName"
               onFocus={(e) => {
                 // for mobile
