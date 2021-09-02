@@ -250,7 +250,7 @@ class Login extends React.Component {
               <div>
                 <input
                   className="form-input-auth px-2 col-12"
-                  placeHolder="نام کاربری ( شماره همراه )"
+                  placeholder="نام کاربری ( شماره همراه )"
                   name="mobile"
                   onChange={this.handleSetMobile}
                   disabled={
@@ -274,7 +274,7 @@ class Login extends React.Component {
                 <div>
                   <input
                     className="form-input-auth px-2 col-12"
-                    placeHolder="رمز عبور"
+                    placeholder="رمز عبور"
                     name="password"
                     onChange={this.handleSetPassword}
                     inputMode="numeric"
@@ -293,7 +293,7 @@ class Login extends React.Component {
                 <div>
                   <input
                     className="form-input-auth px-2 col-12"
-                    placeHolder="کد ارسال شده را وارد نمایید."
+                    placeholder="کد ارسال شده را وارد نمایید."
                     name="moaref"
                     onChange={this.handleSetToken}
                     autoFocus

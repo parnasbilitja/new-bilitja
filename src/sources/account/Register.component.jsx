@@ -221,7 +221,7 @@ class Register extends React.Component {
               <div>
                 <input
                   className="form-input-auth px-2  col-12"
-                  placeHolder="نام کاربری ( شماره همراه )"
+                  placeholder="نام کاربری ( شماره همراه )"
                   name="mobile"
                   onChange={this.handleChange}
                   disabled={this.state.register_status}
@@ -240,7 +240,7 @@ class Register extends React.Component {
                 <div>
                   <input
                     className="form-input-auth px-2  col-12"
-                    placeHolder="کد ارسال شده را وارد نمایید."
+                    placeholder="کد ارسال شده را وارد نمایید."
                     name="token"
                     onChange={this.handleChange}
                     disabled={this.state.moaref_save}
@@ -260,7 +260,7 @@ class Register extends React.Component {
                 <div>
                   <input
                     className="form-input-auth px-2  col-12"
-                    placeHolder="شماره موبایل معرف ( اختیاری )"
+                    placeholder="شماره موبایل معرف ( اختیاری )"
                     name="mobilemoaref"
                     onChange={this.handleChange}
                     inputMode="numeric"

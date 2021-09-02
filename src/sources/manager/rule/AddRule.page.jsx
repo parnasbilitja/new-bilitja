@@ -32,7 +32,7 @@ const AddRule = (props) => {
                 <div className="col-lg-3 col-12 padding-3px">
                     <span className="font-bold-iransanse font-size-13">نام قانون</span>
                     <div className={` form-input-border  ${styles['form-input-border-private']} `}>
-                        <PrimaryTextInput placeHolder="نام قانون" value={state.ruleName} name="ruleName" onChange={handleChange} />
+                        <PrimaryTextInput placeholder="نام قانون" value={state.ruleName} name="ruleName" onChange={handleChange} />
                     </div>
                     <span className="color-secondary error-message font-size-14">{errors.ruleNameError}</span>
                 </div>

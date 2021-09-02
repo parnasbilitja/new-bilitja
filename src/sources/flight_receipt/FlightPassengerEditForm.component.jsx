@@ -103,7 +103,7 @@ class FlightPassengerEditForm extends React.Component {
               style={{ height: "30px" }}
             >
               <PrimaryTextInput
-                placeHolder="نام"
+                placeholder="نام"
                 value={this.state.name}
                 name="name"
                 onChange={this.handleChange}
@@ -119,7 +119,7 @@ class FlightPassengerEditForm extends React.Component {
               style={{ height: "30px" }}
             >
               <PrimaryTextInput
-                placeHolder="نام‌خانوادگی"
+                placeholder="نام‌خانوادگی"
                 value={this.state.family}
                 name="family"
                 onChange={this.handleChange}
@@ -135,7 +135,7 @@ class FlightPassengerEditForm extends React.Component {
               style={{ height: "30px" }}
             >
               <PrimaryTextInput
-                placeHolder="کدملی"
+                placeholder="کدملی"
                 value={this.state.meliCode}
                 name="meliCode"
                 onChange={this.handleChange}
@@ -173,7 +173,7 @@ class FlightPassengerEditForm extends React.Component {
               style={{ height: "30px" }}
             >
               <PrimaryTextInput
-                placeHolder="تاریخ تولد"
+                placeholder="تاریخ تولد"
                 value={this.state.birthday}
                 name="birthday"
                 onFocus={() => {

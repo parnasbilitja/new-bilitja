@@ -77,7 +77,7 @@ class ForgetPassword extends React.Component {
                     </div>
                     <div className="col-11 padding-horizental-3px">
                         <div className={` form-input-border  ${styles['form-input-border-private']} `}>
-                            <PrimaryTextInput placeHolder="نام‌کاربری(تلفن همراه)" onChange={(e) => {
+                            <PrimaryTextInput placeholder="نام‌کاربری(تلفن همراه)" onChange={(e) => {
                                 this.setState({
                                     mobile: e.target.value
                                 })

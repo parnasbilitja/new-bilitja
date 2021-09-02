@@ -32,7 +32,7 @@ class CitiesMobile extends React.Component {
                     </span>
 
                 </div>
-                <input name="searchTerm" autoFocus={false} value={this.props.searchTerm} autoComplete={false} className={`${styles['input-search-private']} input-search `} onChange={this.handleChange} placeholder="مبدا خود را وارد کنید" />
+                <input name="searchTerm" autoFocus={false} value={this.props.searchTerm} autoComplete="false" className={`${styles['input-search-private']} input-search `} onChange={this.handleChange} placeholder="مبدا خود را وارد کنید" />
                 <div className={styles['mobile-airport-list']}>
                     {
                         //fill airports

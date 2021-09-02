@@ -7,7 +7,7 @@ export default class PrimaryTextInput extends React.Component {
   }
 
   render() {
-    return this.props.readOnlyAttr ? (
+    return this.props.readonlyattr ? (
       <input
         {...this.props}
         readOnly

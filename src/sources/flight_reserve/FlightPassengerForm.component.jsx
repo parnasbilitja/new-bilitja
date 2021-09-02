@@ -107,7 +107,7 @@ class FlightPassengerForm extends React.Component {
                 <div>
                   <PrimaryTextInput
                     style={{ height: "3em" }}
-                    placeHolder="نام"
+                    placeholder="نام"
                     onChange={(e) => {
                       if (!this.checkCharacters(e.target.value)) {
                         return;
@@ -129,7 +129,7 @@ class FlightPassengerForm extends React.Component {
                 <div>
                   <PrimaryTextInput
                     style={{ height: "3em" }}
-                    placeHolder="نام خانودگی"
+                    placeholder="نام خانودگی"
                     onChange={(e) => {
                       if (!this.checkCharacters(e.target.value)) {
                         return;
@@ -188,7 +188,7 @@ class FlightPassengerForm extends React.Component {
                 <div>
                   <PrimaryTextInput
                     style={{ height: "3em" }}
-                    placeHolder={`${
+                    placeholder={`${
                       this.props.nationality == "IR" ? "کد ملی" : "کد پاسپورت"
                     }`}
                     onChange={(e) => {
@@ -212,7 +212,7 @@ class FlightPassengerForm extends React.Component {
                 <div>
                   <PrimaryTextInput
                     style={{ height: "3em" }}
-                    placeHolder="تاریخ تولد"
+                    placeholder="تاریخ تولد"
                     value={this.props.birthday}
                     onFocus={() => {
                       this.managePopUpBirthdayCalendar(true);

@@ -91,7 +91,7 @@ class Authentication extends React.Component {
           <div className="col-11 padding-horizental-3px">
             <div className={` form-input-border `}>
               <PrimaryTextInput
-                placeHolder="کد ارسال شده"
+                placeholder="کد ارسال شده"
                 name="token"
                 onChange={this.handleChange}
               />

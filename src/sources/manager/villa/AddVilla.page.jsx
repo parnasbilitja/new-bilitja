@@ -297,20 +297,20 @@ class AddVilaDesktop extends React.Component {
                                 <div className="col-lg-3 col-12 padding-3px">
                                     <span className="font-bold-iransanse font-size-13">کد ویلای شما</span>
                                     <div className={` form-input-border  ${styles['form-input-border-private']} `}>
-                                        <PrimaryTextInput placeHolder="کد ویلا" value="0" />
+                                        <PrimaryTextInput placeholder="کد ویلا" value="0" />
                                     </div>
                                 </div>
                                 <div className="col-lg-3 col-12 padding-3px">
                                     <span className="font-bold-iransanse font-size-13">نام صاحب ویلا</span>
                                     <div className={` form-input-border  ${styles['form-input-border-private']} `}>
-                                        <PrimaryTextInput placeHolder="نام صاحب ویلا" name="AdminName" onChange={this.handleChangeInput} />
+                                        <PrimaryTextInput placeholder="نام صاحب ویلا" name="AdminName" onChange={this.handleChangeInput} />
                                     </div>
                                     <span className="color-secondary error-message font-size-14"> {this.state.errors.AdminName}</span>
                                 </div>
                                 <div className="col-lg-3 col-12 padding-3px">
                                     <span className="font-bold-iransanse font-size-13">نام اقامتگاه</span>
                                     <div className={` form-input-border  ${styles['form-input-border-private']} `}>
-                                        <PrimaryTextInput placeHolder="نام اقامتگاه" name="Name" onChange={this.handleChangeInput} />
+                                        <PrimaryTextInput placeholder="نام اقامتگاه" name="Name" onChange={this.handleChangeInput} />
                                     </div>
                                     <span className="color-secondary error-message font-size-14"> {this.state.errors.nameError}</span>
                                 </div>
@@ -322,7 +322,7 @@ class AddVilaDesktop extends React.Component {
                                         })
                                     }} /><span className="font-bold-iransanse font-size-13">مالک اقامتگاه نیستم</span>
                                     <div className={` form-input-border  ${styles['form-input-border-private']} `}>
-                                        <PrimaryTextInput disabled={!this.state.notTheOwner} placeHolder="تلفن تماس مالک اقامتگاه" name="TelNo" onChange={this.handleChangeInput} />
+                                        <PrimaryTextInput disabled={!this.state.notTheOwner} placeholder="تلفن تماس مالک اقامتگاه" name="TelNo" onChange={this.handleChangeInput} />
                                     </div>
                                     <span className="color-secondary error-message font-size-14"> {this.state.errors.TelNo}</span>
                                 </div>
@@ -426,7 +426,7 @@ class AddVilaDesktop extends React.Component {
                         </div>
                         <div className="col-lg-3 col-12 padding-3px">
                             <div className={` form-input-border  ${styles['form-input-border-private']} `}>
-                                <PrimaryTextInput placeHolder="نام محدوده اقامتگاه" name="AddressName" onChange={this.handleChangeInput} />
+                                <PrimaryTextInput placeholder="نام محدوده اقامتگاه" name="AddressName" onChange={this.handleChangeInput} />
                             </div>
                             <span className="color-secondary error-message font-size-14"> {this.state.errors.AddressName}</span>
 

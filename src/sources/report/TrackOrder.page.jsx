@@ -48,7 +48,7 @@ class TrackOrder extends React.Component {
 
                             <div className="col-lg-2 col-md-2 col-sm-2 col-7">
                                 <div className="form-input-border height-short-input">
-                                    <PrimaryTextInput placeHolder="رفرنس پیگیری" name="trackRef" onChange={this.handleChange} />
+                                    <PrimaryTextInput placeholder="رفرنس پیگیری" name="trackRef" onChange={this.handleChange} />
                                 </div>
                             </div>
                             <div className="col-lg-2 col-md-2 col-sm-2 col-5">

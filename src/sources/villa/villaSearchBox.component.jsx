@@ -164,7 +164,7 @@ class villaSearchBox extends React.Component {
                 <div>
                     <div className={` form-input-border  ${styles['form-input-border-private']} `}>
 
-                        <PrimaryTextInput value={cityName} readOnlyAttr={this.state.width <= mobileSize} name="cityName" onFocus={(e) => {
+                        <PrimaryTextInput value={cityName} readonlyattr={(this.state.width <= mobileSize ? "true":"false")} name="cityName" onFocus={(e) => {
                             // for mobile
                             if (this.state.width <= mobileSize) {
                                 e.preventDefault()
@@ -206,7 +206,7 @@ class villaSearchBox extends React.Component {
 
                 <div>
                     <div className={` form-input-border  ${styles['form-input-border-private']} `}>
-                        <PrimaryTextInput readOnlyAttr={this.state.width <= mobileSize} value={this.state.numberStay} />
+                        <PrimaryTextInput readonlyattr={(this.state.width <= mobileSize? "true":"false")} value={this.state.numberStay} />
                         <NumberDayStay index={this.state.numberStay} handleChange={(value) => {
                             this.setState({
                                 numberStay: value
