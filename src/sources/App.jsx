@@ -1,5 +1,5 @@
 import React from "react";
-
+import Head from 'next/head'
 //import Styles from '../../styles/icon.module.scss'
 //import '../../styles/manager.module.scss'
 
@@ -110,6 +110,9 @@ class App extends React.Component {
           }
           <MessageBox />
           <Footer />
+          <Head>
+        <title>{`بلیطجا ${decodeURI(this.props.router.asPath).replace('-',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ')}`} </title>
+      </Head>
         </div>
         <PopUp
           opened={this.props.accountBox.state}
