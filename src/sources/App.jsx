@@ -30,6 +30,7 @@ import BecomeMizban from "./account/BecomeMizban.page";
 import { withRouter } from "next/router";
 
 class App extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +43,7 @@ class App extends React.Component {
     pathName = decodeURI(pathName);
     switch (this.props.mainRoute) {
       case "index": {
-        return <Home></Home>;
+        return <Home></Home> ;
       }
       case "flights": {
         if (pathName.indexOf("info") > 0) {
@@ -74,13 +75,60 @@ class App extends React.Component {
       }
 
       default:
-        return <Home></Home>;
+        return <div> <Contextmytitle.Provider value="dark"/><Home></Home></div>;
     }
-    /*
-   <Switch>
-                  </Switch> */
   }
 
+  setTitleMeta(pathName) {
+    var src="";
+    var dest="";
+    pathName = decodeURI(pathName);
+    switch (this.props.mainRoute) {
+      case "index": {
+        return   "بلیطجا"  ;
+      }
+      case "flights": {
+        if (pathName.indexOf("info") > 0) {
+          
+          return "بلیطجا";     //<FlightReserve />;
+        } else if (pathName.indexOf("receipt") > 0) {
+          return "بلیطجا";     //<FlightReciept />;
+        } else if (pathName.indexOf("order") > 0) {
+          return "بلیطجا";     //<TrackOrder />;
+        } else {
+          src = decodeURI(pathName.split("/")[2]);
+          dest = decodeURI(pathName.split("/")[3]);
+           
+          return " خرید اینترنتی بلیط هواپیما "+src+"-"+dest+" با ارزانترین قیمت|20درصد تخفیف بلیطجا  "
+          +"/"+
+          "خرید اینترنتی بلیط هواپیما "+src+" به "+dest+" به بهترین نرخ با امکان رزرو آنلاین و اینترنتی  به همراه ارزانترین قیمت  بلیط هواپیما و هتل در سایت بلیط جا امکان پذیر است . 02184279999 "
+          +"/"+
+          " بلیط ارزان هواپیما "+src+" به "+dest+"|خرید اینترنتی بلیط هواپیما "+src+" به "+dest+""
+          
+          ;     //<GetFlightList />;
+        }
+      }
+      case "villa": {
+        if (pathName.indexOf("intro") > 0) {
+          return  "بلیطجا";     //<BecomeMizban />;
+        }
+        if (pathName.indexOf("reserve") > 0) {
+          return  "بلیطجا";     //<VillaReserve />;
+        }
+        if (pathName.indexOf("receipt") > 0) {
+          return  "بلیطجا";     //<VillaReceipt />;
+        }
+        if (pathName.length < 7) {
+          return  "بلیطجا";     //<VillaPage />;
+        } else {
+          return  "بلیطجا";     //<VillaList />;
+        }
+      }
+
+      default:
+        return  "بلیطجا";     //<Home></Home>;
+    }
+  }
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
@@ -111,7 +159,20 @@ class App extends React.Component {
           <MessageBox />
           <Footer />
           <Head>
-        <title>{`بلیطجا ${decodeURI(this.props.router.asPath).replace('-',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ')}`} </title>
+        <title>{ 
+        // {`بلیطجا ${decodeURI(this.props.router.asPath).replace('-',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ')}`}
+         this.setTitleMeta(this.props.router.asPath).split("/")[0]
+        } </title>
+         <meta property="og:title" content={
+            this.setTitleMeta(this.props.router.asPath).split("/")[0]
+         }  />
+
+         <meta property="description" content={
+            this.setTitleMeta(this.props.router.asPath).split("/")[1]
+         }  />
+         <meta property="keywords" content={
+            this.setTitleMeta(this.props.router.asPath).split("/")[2]
+         }  />
       </Head>
         </div>
         <PopUp
