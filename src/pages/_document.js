@@ -22,7 +22,7 @@ export default class MyDocument extends Document {
           `,
             }}
           />
-          
+          <meta http-equiv="content-language" content="fa"></meta>
         </Head>
         <body>
           <Main />
