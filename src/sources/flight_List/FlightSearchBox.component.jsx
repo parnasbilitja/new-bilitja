@@ -153,7 +153,7 @@ class FlightSearchBox extends React.Component {
             <i className="kilo-font icon-plane-departure form-input-icon"></i>
             <PrimaryTextInput
               value={sourceName}
-              readonlyattr={(this.state.width <= mobileSize? "true":"false")}
+              readonlyattr={this.state.width <= mobileSize ? "true" : "false"}
               name="sourceName"
               onFocus={(e) => {
                 // for mobile
@@ -204,7 +204,7 @@ class FlightSearchBox extends React.Component {
             ></i>
             <PrimaryTextInput
               value={destinationName}
-              readonlyattr={(this.state.width <= mobileSize? "true":"false")}
+              readonlyattr={this.state.width <= mobileSize ? "true" : "false"}
               name="destinationName"
               onFocus={(e) => {
                 // for mobile
@@ -243,8 +243,9 @@ class FlightSearchBox extends React.Component {
             }}
           />
         </div>
-        <div className="form-input-border without-focus">
+        <div className=" without-focus">
           <PrimaryButton
+            style={{ height: "45px", marginTop: "7px" }}
             defaultValue={"جستجو"}
             onClick={() => {
               if (!this.validation()) {

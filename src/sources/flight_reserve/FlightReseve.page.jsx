@@ -40,6 +40,7 @@ class FlightReserve extends React.Component {
       mobileSubmiterErr: "",
       phoneSubmiterErr: "",
       agreeWithTerm: false,
+      loading: false,
     };
   }
 
@@ -541,15 +542,19 @@ class FlightReserve extends React.Component {
                     <button
                       onClick={(e) => {
                         if (!this.validation()) {
+                          this.setState({ loading: false });
                           this.props.messageBoxModify({
                             state: true,
                             message: "لطفا اطلاعات را تکمیل کنید.",
                           });
                           e.preventDefault();
                         } else if (this.state.agreeWithTerm === true) {
+                          this.setState({ loading: true });
                           this.compeleteReservation();
                           e.preventDefault();
                         } else {
+                          this.setState({ loading: false });
+
                           this.props.messageBoxModify({
                             state: true,
                             message: "لطفا با شرایط و مقررات موافقت کنید",
@@ -558,7 +563,9 @@ class FlightReserve extends React.Component {
                       }}
                       className="py-3 btn-block col-12 end-payment-btn btn"
                     >
-                      تکمیل خرید
+                      {this.state.loading == false
+                        ? "تکمیل خرید"
+                        : "درحال پردازش..."}
                     </button>
                   </div>
                   <div className="col-lg-4 col-md-4 col-5 padding-3px">

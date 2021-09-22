@@ -2,7 +2,7 @@ import React from "react";
 //import logo from '../../../Images/logo512.png'
 //import footerLogo from '../../../Images/bilitja-light-logo.png'
 import styles from "../../../styles/NavBarMobile.module.scss";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SlideIn from "./SlideIn.component";
 import Link from "next/link";
@@ -63,7 +63,11 @@ class NavBarMobile extends React.Component {
                 </Link>
                 <span className="mx-2">/</span>
 
-                <a href="/" className="mx-2" onClick={this.handleLogoutUser}>
+                <a
+                  href="/"
+                  className="mx-2 text-dark"
+                  onClick={this.handleLogoutUser}
+                >
                   خروج از حساب کاربری
                 </a>
               </>
@@ -81,7 +85,7 @@ class NavBarMobile extends React.Component {
                     });
                   }}
                 >
-                  <span className="font-bold-iransanse">ورود </span>/
+                  <span className="font-bold-iransanse text-dark">ورود </span>/
                 </a>
                 <a
                   href=""
@@ -94,9 +98,9 @@ class NavBarMobile extends React.Component {
                     });
                   }}
                 >
-                  <i className="kilo-font icon-register font-size-14"></i>
+                  <i className="kilo-font icon-register font-size-14 text-dark"></i>
                   &nbsp;
-                  <span className="font-bold-iransanse">ثبت نام</span>
+                  <span className="font-bold-iransanse text-dark">ثبت نام</span>
                 </a>
               </>
             )}
@@ -120,9 +124,9 @@ class NavBarMobile extends React.Component {
           </div>
           <div className="pull-left">
             <a href="#" className="color-black font-bold-iransanse">
-              <span>مشاوره تلفنی : </span>
+              <span className="text-dark">مشاوره تلفنی : </span>
               <i className="kilo-font icon-phone font-size-14"></i>
-              <span className="font-size-13"> &nbsp;۰۲۱-۵۷۸۷۴</span>
+              <span className="font-size-13 text-dark"> &nbsp;۰۲۱-۵۷۸۷۴</span>
             </a>
           </div>
         </div>
@@ -162,7 +166,25 @@ class NavBarMobile extends React.Component {
                 ارزان ترین بلیط های هواپیما
               </p>
             </div>
-            <ul>
+            <div>
+              <FontAwesomeIcon
+                icon={faTimes}
+                onClick={() => {
+                  this.setState({
+                    slide: false,
+                  });
+                }}
+                className="mt-2 ms-2"
+                style={{
+                  fontSize: "15px",
+                  width: "15px",
+                  height: "15px",
+                  float: "left",
+                }}
+              />
+            </div>
+
+            <ul className="mt-2">
               <li>
                 <div>
                   <a href="/">

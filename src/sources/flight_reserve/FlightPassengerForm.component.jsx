@@ -103,7 +103,7 @@ class FlightPassengerForm extends React.Component {
           {/* shows up just for mobile ----- end */}
           <div className="col-lg-10 col-md-12 col-sm-12 col-12">
             <div className="row">
-              <div className="col-lg-3 col-md-3 col-sm-3 col-6 padding-horizental-3px">
+              <div className="col-lg-2 col-md-3 col-sm-3 col-6 padding-horizental-3px">
                 <div>
                   <PrimaryTextInput
                     style={{ height: "3em" }}
@@ -125,7 +125,7 @@ class FlightPassengerForm extends React.Component {
                   {this.props.nameErr}
                 </span>
               </div>
-              <div className="col-lg-2 col-md-3 col-sm-3 col-6 padding-horizental-3px mb-2">
+              <div className="col-lg-3 col-md-3 col-sm-3 col-6 padding-horizental-3px mb-2">
                 <div>
                   <PrimaryTextInput
                     style={{ height: "3em" }}
@@ -190,6 +190,9 @@ class FlightPassengerForm extends React.Component {
                     style={{ height: "3em" }}
                     placeholder={`${
                       this.props.nationality == "IR" ? "کد ملی" : "کد پاسپورت"
+                    }`}
+                    inputMode={`${
+                      this.props.nationality == "IR" ? "numeric" : "text"
                     }`}
                     onChange={(e) => {
                       if (!checkNumber(e.target.value)) {

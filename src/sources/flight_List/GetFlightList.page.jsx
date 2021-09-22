@@ -47,8 +47,16 @@ class GetFlightList extends React.Component {
       openReserve: false,
       reserveBoxData: null,
       showMessageBox: false,
+      sourceName: "",
+      destinationName: "",
     };
   }
+
+  closeSide = () => {
+    this.setState({
+      slide: false,
+    });
+  };
   componentDidUpdate() {
     const path = this.props.router.asPath;
     const src = decodeURI(path.split("/")[2]);
@@ -82,7 +90,10 @@ class GetFlightList extends React.Component {
     const path = this.props.router.asPath;
     const src = decodeURI(path.split("/")[2]);
     const dest = decodeURI(path.split("/")[3]);
-
+    this.setState({
+      sourceName: src,
+      destinationName: dest,
+    });
     // console.log("abc");
     // console.log(src);
     // console.log(dest);
@@ -399,13 +410,26 @@ class GetFlightList extends React.Component {
                     </div>
                   </div>
                 ) : (
-                  <MinimumPriceCalendar refreshAction={this.getData} />
+                  <>
+                    <p className="text-center mx-3">
+                      متاسفانه هیچ پروازی از{" "}
+                      <strong className="text-danger">
+                        {this.state.sourceName}
+                      </strong>{" "}
+                      <strong>به </strong>
+                      <strong className="text-danger">
+                        {this.state.destinationName}
+                      </strong>{" "}
+                      یافت نشد لطفا از تقویم زیر انتخاب کنید.
+                    </p>
+                    <MinimumPriceCalendar refreshAction={this.getData} />
+                  </>
                 )}
               </div>
               <div
                 className={`col-lg-3 col-md-4 col-sm-4 ${styles["hidden-xs-flight"]} padding-5px`}
               >
-                <Filters getData={this.getData} />
+                <Filters getData={this.getData} closeSide={this.closeSide} />
               </div>
             </div>
           </div>
@@ -459,7 +483,14 @@ class GetFlightList extends React.Component {
             });
           }}
         >
-          <Filters getData={this.getData} />
+          <Filters
+            getData={this.getData}
+            closeSide={() => {
+              this.setState({
+                slide: false,
+              });
+            }}
+          />
         </SlideIn>
 
         <div className={styles["visible-xs-flight-footer"]}>
