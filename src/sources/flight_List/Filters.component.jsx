@@ -1,6 +1,6 @@
 import React from "react";
 
-import { faCog } from "@fortawesome/free-solid-svg-icons";
+import { faCog, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { selectArilines } from "../../Redux/Search/search.reselect";
@@ -53,10 +53,13 @@ class Filters extends React.Component {
       });
     }
   };
-
   render() {
     return (
       <div className={styles["filter-list-box"]}>
+        <div onClick={this.props.closeSide}>
+          <FontAwesomeIcon icon={faTimes} style={{ float: "left" }} />
+        </div>
+
         <div className={`styles['filter-list-heading'] mt-2`}>
           <span className={`${styles["color-textpill"]} text-muted `}>
             <FontAwesomeIcon icon={faCog} />

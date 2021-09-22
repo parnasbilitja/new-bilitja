@@ -26,6 +26,7 @@ class PopupFlightReserve extends React.Component {
       numADL: 1,
       numCHD: 0,
       numINF: 0,
+      loading: false,
     };
   }
 
@@ -257,7 +258,9 @@ class PopupFlightReserve extends React.Component {
             className={` form-input-border  ${styles["form-input-border-private"]} without-focus`}
           >
             <PrimaryButton
-              defaultValue={"مرحله بعد"}
+              defaultValue={
+                this.state.loading == false ? "مرحله بعد" : "در حال پردازش..."
+              }
               onClick={() => {
                 const message = this.validation(
                   this.state.numADL,
@@ -266,8 +269,10 @@ class PopupFlightReserve extends React.Component {
                   this.props.cap
                 );
                 if (message == "OK") {
+                  this.setState({ loading: true });
                   this.submitReserve();
                 } else {
+                  this.setState({ loading: false });
                   this.props.messageBoxModify({
                     state: true,
                     message: message,

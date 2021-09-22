@@ -91,7 +91,7 @@ class FlightPassengerEditForm extends React.Component {
   render() {
     return (
       <div
-        className="passenger-form"
+        className="passenger-form mx-3"
         onClick={(e) => {
           e.stopPropagation();
         }}
@@ -199,6 +199,7 @@ class FlightPassengerEditForm extends React.Component {
                   });
                 }
               }}
+              style={{ height: "40px" }}
             />
           </div>
           <div className="col-lg-1 padding-3px">
