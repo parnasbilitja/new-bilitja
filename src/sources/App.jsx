@@ -187,10 +187,10 @@ class App extends React.Component {
             this.setTitleMeta(this.props.router.asPath).split("/")[0]
          }  />
 
-         <meta property="description" content={
+         <meta property="og:description" content={
             this.setTitleMeta(this.props.router.asPath).split("/")[1]
          }  />
-         <meta property="keywords" content={
+         <meta property="og:keywords" content={
             this.setTitleMeta(this.props.router.asPath).split("/")[2]
          }  />
       </Head>
