@@ -183,14 +183,14 @@ class App extends React.Component {
         // {`بلیطجا ${decodeURI(this.props.router.asPath).replace('-',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ')}`}
          this.setTitleMeta(this.props.router.asPath).split("/")[0]
         } </title>
-         <meta property="og:title" content={
+         <meta name="title" property="og:title" content={
             this.setTitleMeta(this.props.router.asPath).split("/")[0]
          }  />
 
-         <meta property="og:description" content={
+         <meta name="description" property="og:description" content={
             this.setTitleMeta(this.props.router.asPath).split("/")[1]
          }  />
-         <meta property="og:keywords" content={
+         <meta name="keywords" property="og:keywords" content={
             this.setTitleMeta(this.props.router.asPath).split("/")[2]
          }  />
       </Head>
