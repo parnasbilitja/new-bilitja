@@ -32,9 +32,6 @@ class NavBar extends React.Component {
   handleLogoutUser() {
     localStorage.removeItem("mobile");
     localStorage.removeItem("token");
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
   }
 
   render() {
@@ -52,24 +49,28 @@ class NavBar extends React.Component {
           <div className="font-size-12">
             <div
               className={
-                this.state.logged === true
+                this.props.user.logged === true
                   ? "user-mobile-content"
                   : styles["nav-detail-first-line"]
               }
             >
-              {this.state.logged === true ? (
+              {this.props.user.logged === true ? (
                 <>
                   <div>
                     <Link href="/dashboard">
                       <a href="#">
                         <i className="kilo-font icon-login"></i>
-                        {this.state.mobile}
+                        {this.props.user.user_info.mobile}
                       </a>
                     </Link>
                   </div>
                   <span className="mx-2"> /</span>
                   <div>
-                    <a href="/" onClick={this.handleLogoutUser}>
+                    <a
+                      href="/"
+                      onClick={this.handleLogoutUser}
+                      style={{ cursor: "pointer" }}
+                    >
                       خروج
                     </a>
                   </div>
@@ -171,5 +172,8 @@ class NavBar extends React.Component {
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),
 });
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
 
-export default connect(null, mapDispatchesToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchesToProps)(NavBar);

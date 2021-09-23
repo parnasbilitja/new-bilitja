@@ -5,7 +5,7 @@ import { accountBoxModify } from "../../Redux/UI/ui.action";
 import Login from "./Login.component";
 import Authentication from "./Authentication.component";
 import Register from "./Register.component";
-// import ForgetPassword from './ForgetPassword.component'
+import ForgetPassword from "./ForgetPassword.component";
 class Account extends React.Component {
   constructor(props) {
     super(props);
@@ -30,6 +30,7 @@ class Account extends React.Component {
           <Authentication mobile={this.state.mobile} />
         ) : null}
         {this.props.accountBox.type == "register" ? <Register /> : null}
+        {this.props.accountBox.type == "forget" ? <ForgetPassword /> : null}
         {/* {
                 this.props.accountBox.type=="forget"?
                     <ForgetPassword/>

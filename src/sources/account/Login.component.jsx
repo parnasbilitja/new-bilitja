@@ -11,6 +11,10 @@ import globals from "../Global";
 import { Loader } from "./../../Utils/Loader";
 
 import Countdown from "react-countdown";
+import {
+  checkUserLogged,
+  getUserInfo,
+} from "../../Redux/Account/account.action";
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -79,9 +83,10 @@ class Login extends React.Component {
           this.setState({ btn_disabled: false, loading: false });
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000);
+          this.props.checkUserLogged();
+          this.props.getUserInfo({
+            mobile: data.mobile,
+          });
           this.props.accountBoxModify({
             state: false,
             type: "authentication",
@@ -140,9 +145,10 @@ class Login extends React.Component {
           this.setState({ btn_disabled: false, loading: false });
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000);
+          this.props.checkUserLogged();
+          this.props.getUserInfo({
+            mobile: data.mobile,
+          });
           this.props.accountBoxModify({
             state: false,
             type: "authentication",
@@ -351,6 +357,26 @@ class Login extends React.Component {
             </p>
           </div>
         </div>
+        <div className="row">
+          <div className="col-12 no-padding-horizental">
+            <br />
+            <p className="text-center font-size-13 no-margin font-bold-iransanse">
+              گذرواژه خود را فراموش کرده اید؟{" "}
+              <a
+                onClick={() => {
+                  this.props.accountBoxModify({
+                    state: true,
+                    type: "forget",
+                  });
+                }}
+                className="cursor-pointer"
+              >
+                {" "}
+                (بازیابی گذرواژه )
+              </a>
+            </p>
+          </div>
+        </div>
         {/*<div className="row">
                     
                    
@@ -380,5 +406,7 @@ class Login extends React.Component {
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),
   messageBoxModify: (value) => dispatch(messageBoxModify(value)),
+  checkUserLogged: () => dispatch(checkUserLogged()),
+  getUserInfo: (value) => dispatch(getUserInfo(value)),
 });
 export default connect(null, mapDispatchesToProps)(Login);

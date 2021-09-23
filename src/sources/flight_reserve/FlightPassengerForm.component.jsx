@@ -226,18 +226,21 @@ class FlightPassengerForm extends React.Component {
                   {this.props.birthdayErr}
                 </span>
               </div>
-              <div className="hidden-xs col-lg-1 col-md-2 col-sm-2 row-price font-size-12">
-                <span className="font-size-14 color-secondary font-bold-iransanse">
-                  {moneyFormat(this.props.price)}
-                  &nbsp;
-                </span>
-                تومان
-              </div>
             </div>
+          </div>
+          <div className="hidden-xs col-lg-1 col-md-2 col-sm-2 row-price font-size-12 text-left mt-2">
+            <span className="font-size-14 color-secondary font-bold-iransanse">
+              {moneyFormat(this.props.price)}
+              &nbsp;
+            </span>
+            تومان
           </div>
           <div className="hidden-xs col-lg-1 col-md-2 col-sm-2 row-price font-size-12">
             {this.props.id != 0 ? (
-              <div className="hidden-xs hidden-sm corner-position">
+              <div
+                className="hidden-xs hidden-sm corner-position"
+                style={{ position: "absolute", left: "5px", top: "5px" }}
+              >
                 <span
                   className="exit-form-circle"
                   onClick={() => {

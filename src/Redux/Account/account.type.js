@@ -1,6 +1,7 @@
-const AccountType={
-    ADD_ACCOUNT_PROPERTIES:"ADD_ACCOUNT_PROPERTIES"
-}
+const AccountType = {
+  ADD_ACCOUNT_PROPERTIES: "ADD_ACCOUNT_PROPERTIES",
+  GET_USER_INFO: "GET_USER_INFO",
+  CHECK_USER_LOGGED: "CHECK_USER_LOGGED",
+};
 
-
-export default AccountType
+export default AccountType;

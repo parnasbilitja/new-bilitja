@@ -35,17 +35,15 @@ class NavBarMobile extends React.Component {
   handleLogoutUser() {
     localStorage.removeItem("mobile");
     localStorage.removeItem("token");
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
   }
   render() {
+    console.log(this.props);
     return (
       /*<div className={styles['error-mobile']}> hghgshghgsd</div>*/
       <nav className={styles["nav-mobile"]}>
         <div className={styles["nav-text-detail-mobile"]}>
           <div className="pull-right">
-            {this.state.logged === true ? (
+            {this.props.user.logged === true ? (
               <>
                 <Link href="/dashboard">
                   <a
@@ -57,7 +55,7 @@ class NavBarMobile extends React.Component {
                     }}
                   >
                     <span className="font-bold-iransanse">
-                      شماره موبایل : {this.state.mobile}{" "}
+                      شماره موبایل : {this.props.user.user_info.mobile}{" "}
                     </span>
                   </a>
                 </Link>
@@ -105,7 +103,7 @@ class NavBarMobile extends React.Component {
               </>
             )}
 
-            {this.state.logged === false ? (
+            {this.props.user.logged === false ? (
               <a href="/ویلا/intro" className="font-size-10 btn-outlined">
                 میزبان شوید
               </a>
@@ -250,4 +248,7 @@ class NavBarMobile extends React.Component {
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),
 });
-export default connect(null, mapDispatchesToProps)(NavBarMobile);
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+export default connect(mapStateToProps, mapDispatchesToProps)(NavBarMobile);

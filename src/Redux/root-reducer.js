@@ -12,6 +12,7 @@ import reserveReducer from "./Reserve/reserve.reducer";
 import reservevillaReducer from "./Reservevilla/reserve_villa.reducer";
 import UIReducer from "./UI/ui.reducer";
 import accountReducer from "./Account/account.reducer";
+import { userReducer } from "./Account/account.reducer";
 import { ProfileReducer } from "./Dashboard/Profile/profile.reducer";
 const persistConfig = {
   key: "root",
@@ -29,5 +30,6 @@ const rootReducer = combineReducers({
   ui: UIReducer,
   account: accountReducer,
   user_information: ProfileReducer,
+  user: userReducer,
 });
 export default persistReducer(persistConfig, rootReducer);
