@@ -375,3 +375,170 @@ input[type="button"]:hover {
     width: 100%;
   }
 }
+
+.not-found-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.villa-reserve-btn {
+  margin-top: 8px;
+  height: 20px;
+}
+
+.padding-r-5 {
+  padding-right: 5px;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.h-200 {
+  height: 200px;
+}
+.h-100 {
+  height: 100px;
+}
+.h-150 {
+  height: 150px;
+}
+.h-auto {
+  height: auto;
+}
+.h-3em {
+  height: 3em;
+}
+.h-35em {
+  height: 3.5em;
+}
+.h-30 {
+  height: 30px;
+}
+.w-100 {
+  width: 100% !important;
+}
+.mt-8 {
+  margin-top: 8px;
+}
+.ml-0 {
+  margin-left: 0 !important;
+}
+.ml-5 {
+  margin-left: 5px !important;
+}
+.mt-10 {
+  margin-top: 10px;
+}
+.mt-100 {
+  margin-top: 100px;
+}
+.pt-10 {
+  padding-top: 10px;
+}
+.p-10 {
+  padding: 10px;
+}
+.pl-0 {
+  padding-left: 0 !important;
+}
+
+.font-size-30 {
+  font-size: 30px;
+}
+.font-size-12 {
+  font-size: 12px;
+}
+.font-size-13 {
+  font-size: 13px;
+}
+.font-size-14 {
+  font-size: 14px;
+}
+.font-size-16 {
+  font-size: 16px;
+}
+.font-size-23 {
+  font-size: 23px;
+}
+.font-size-24 {
+  font-size: 24px;
+}
+.font-size-30 {
+  font-size: 30px;
+}
+.font-size-32 {
+  font-size: 32px;
+}
+.p-15 {
+  padding: 15px;
+}
+
+.accommodation-back {
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+.callback-bank-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ccc;
+}
+
+.br-15 {
+  border-radius: 15px;
+}
+
+.mobile-nav-barsicon {
+  font-size: 15px !important;
+  width: 15px !important;
+  height: 15px !important;
+}
+.mobile-nav-timesicon {
+  font-size: 15px !important;
+  width: 15px !important;
+  height: 15px !important;
+  float: left !important;
+}
+
+.complate-profile-cnt {
+  border-radius: 15px;
+  border: transparent;
+}
+.edit-profile-cnt {
+  border-radius: 15px;
+  border: transparent;
+}
+.profile-cnt {
+  border-radius: 15px;
+  border: transparent;
+}
+
+.ltr {
+  direction: ltr !important;
+}
+
+.f-left {
+  float: left;
+}
+
+.exchange-icon {
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.flight-no {
+  position: relative;
+  top: 20px;
+}
+
+.barcode-img {
+  position: relative;
+  top: 25px;
+}

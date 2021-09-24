@@ -90,10 +90,7 @@ const EditProfile = (props) => {
           </span>
         </div>
       </div>
-      <div
-        className="card my-4"
-        style={{ borderRadius: "15px", border: "transparent" }}
-      >
+      <div className="card my-4 edit-profile-cnt">
         <form onSubmit={handleEditProfile}>
           <div className="container-fluid">
             <div className="row my-3">
@@ -252,9 +249,8 @@ const EditProfile = (props) => {
             </div>
             <div className="col-lg-4 mb-2">
               <button
-                className={`btn btn-outline-danger col-12 py-2 font-bold-iransanse  `}
+                className={`btn btn-outline-danger col-12 py-2 font-bold-iransanse h-3em `}
                 onClick={() => router.push("/dashboard/profile")}
-                style={{ height: "3em" }}
                 type="button"
               >
                 انصراف
@@ -267,7 +263,7 @@ const EditProfile = (props) => {
         opened={open}
         closePopUp={() => managePopUpBirthdayCalendar(false)}
       >
-        <div style={{ padding: 15 }}>
+        <div className="p-15">
           <BirthdayCalendar
             typePassenger={"ADL"}
             setBirthday={(value) => {

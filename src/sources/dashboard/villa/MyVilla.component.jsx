@@ -9,7 +9,7 @@ const MyVilla = () => {
           طراحی صفحه
         </span>
       </div>
-      <div style={{ direction: "ltr" }} className="text-left"></div>
+      <div className="text-left ltr"></div>
     </div>
   );
 };

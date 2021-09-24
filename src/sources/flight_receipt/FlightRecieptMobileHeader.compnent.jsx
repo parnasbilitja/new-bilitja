@@ -26,7 +26,7 @@ const FlightReceiptMobileHero = (props) =>
           </div>
         </div>
         <div className="row line-2">
-          <div className="col-4" style={{ paddingLeft: 0 }}>
+          <div className="col-4 pl-0">
             <p className="text-right font-size-12 center-p">
               {" "}
               شماره پرواز &nbsp;
@@ -50,10 +50,7 @@ const FlightReceiptMobileHero = (props) =>
               <span className="text-danger font-bold-iransanse mx-1 font-size-14">
                 {props.capLast}
               </span>
-              <i
-                className="kilo-font icon-seat mx-1"
-                style={{ fontSize: "23px" }}
-              ></i>
+              <i className="kilo-font icon-seat mx-1 font-size-23"></i>
               صندلی خالی
             </p>
           </div>

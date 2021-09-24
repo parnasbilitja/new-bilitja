@@ -142,9 +142,8 @@ const ChangePassword = (props) => {
           </div>
           <div className="col-lg-4 mb-2">
             <button
-              className={`btn btn-outline-danger col-12 py-2 font-bold-iransanse  `}
+              className={`btn btn-outline-danger col-12 py-2 font-bold-iransanse h-3em `}
               onClick={() => router.push("/dashboard/profile")}
-              style={{ height: "3em" }}
               type="button"
             >
               انصراف

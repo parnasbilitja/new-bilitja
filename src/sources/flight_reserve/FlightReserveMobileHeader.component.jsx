@@ -9,7 +9,7 @@ import styles from "../../../styles/FlightReserve.module.scss";
 const FlightReserveMobileHeader = (props) =>
   props.airport1 ? (
     <div className={`row visible-xs ${styles["reserve-mobile-hero"]} `}>
-    <br/>
+      <br />
       <div
         className={`col-12 border-pill  ${styles["border-pill-private"]}  ${styles["background-world"]}`}
       >
@@ -29,7 +29,7 @@ const FlightReserveMobileHeader = (props) =>
           </div>
         </div>
         <div className="row line-2">
-          <div className="col-4" style={{ paddingLeft: 0 }}>
+          <div className="col-4 pl-0">
             <p className="text-right font-size-12 center-p">
               {" "}
               شماره پرواز &nbsp;
@@ -53,10 +53,7 @@ const FlightReserveMobileHeader = (props) =>
               <span className="text-danger font-bold-iransanse mx-1 font-size-14">
                 {props.capLast}
               </span>
-              <i
-                className="kilo-font icon-seat mx-1"
-                style={{ fontSize: "24px" }}
-              ></i>
+              <i className="kilo-font icon-seat mx-1 font-size-24"></i>
               صندلی خالی
             </p>
           </div>

@@ -57,7 +57,7 @@ class Filters extends React.Component {
     return (
       <div className={styles["filter-list-box"]}>
         <div onClick={this.props.closeSide}>
-          <FontAwesomeIcon icon={faTimes} style={{ float: "left" }} />
+          <FontAwesomeIcon icon={faTimes} className="f-left" />
         </div>
 
         <div className={`styles['filter-list-heading'] mt-2`}>

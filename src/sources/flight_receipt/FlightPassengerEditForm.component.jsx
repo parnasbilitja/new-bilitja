@@ -99,8 +99,7 @@ class FlightPassengerEditForm extends React.Component {
         <div className="row">
           <div className="col-lg-3 col-md-3 col-sm-3 col-12 padding-horizental-3px">
             <div
-              className={` form-input-border  ${styles["form-input-border-private"]} `}
-              style={{ height: "30px" }}
+              className={` form-input-border h-30 ${styles["form-input-border-private"]} `}
             >
               <PrimaryTextInput
                 placeholder="نام"
@@ -115,8 +114,7 @@ class FlightPassengerEditForm extends React.Component {
           </div>
           <div className="col-lg-3 col-md-3 col-sm-3 col-12 padding-horizental-3px">
             <div
-              className={` form-input-border  ${styles["form-input-border-private"]} `}
-              style={{ height: "30px" }}
+              className={` form-input-border h-30 ${styles["form-input-border-private"]} `}
             >
               <PrimaryTextInput
                 placeholder="نام‌خانوادگی"
@@ -131,8 +129,7 @@ class FlightPassengerEditForm extends React.Component {
           </div>
           <div className="col-lg-2 col-md-2 col-sm-3 col-12 padding-horizental-3px">
             <div
-              className={` form-input-border  ${styles["form-input-border-private"]} `}
-              style={{ height: "30px" }}
+              className={` form-input-border h-30  ${styles["form-input-border-private"]} `}
             >
               <PrimaryTextInput
                 placeholder="کدملی"
@@ -169,8 +166,7 @@ class FlightPassengerEditForm extends React.Component {
           </div>
           <div className="col-lg-2 col-md-2 col-sm-3 col-12 padding-horizental-3px">
             <div
-              className={` form-input-border  ${styles["form-input-border-private"]} `}
-              style={{ height: "30px" }}
+              className={` form-input-border h-30  ${styles["form-input-border-private"]} `}
             >
               <PrimaryTextInput
                 placeholder="تاریخ تولد"
@@ -186,7 +182,7 @@ class FlightPassengerEditForm extends React.Component {
             </span>
           </div>
         </div>
-        <div className="row" style={{ marginTop: 10 }}>
+        <div className="row mt-10">
           <div className="col-lg-10"></div>
           <div className="col-lg-1 padding-3px">
             <PrimaryButton
@@ -217,7 +213,7 @@ class FlightPassengerEditForm extends React.Component {
           opened={this.state.open}
           closePopUp={this.managePopUpBirthdayCalendar}
         >
-          <div style={{ padding: 15 }}>
+          <div className="p-15">
             <BirthdayCalendar
               typePassenger={"ADL"}
               setBirthday={(value) => {

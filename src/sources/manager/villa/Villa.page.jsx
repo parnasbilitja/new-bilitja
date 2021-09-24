@@ -43,7 +43,7 @@ class Villa extends React.Component {
               ویلا
             </span>
           </div>
-          <div style={{ direction: "ltr" }} className="text-left">
+          <div className="text-left ltr">
             <ManagerTopActionBox
               handleClick={() => {
                 this.props.router.push("/panel/villas/add");

@@ -69,7 +69,7 @@ class NavBar extends React.Component {
                     <a
                       href="/"
                       onClick={this.handleLogoutUser}
-                      style={{ cursor: "pointer" }}
+                      className="cursor-pointer"
                     >
                       خروج
                     </a>

@@ -93,10 +93,7 @@ const ComplateProfile = (props) => {
         </div>
       </div>
       <div>
-        <div
-          className="card my-4"
-          style={{ borderRadius: "15px", border: "transparent" }}
-        >
+        <div className="card my-4 complate-profile-cnt">
           <form onSubmit={handleComplateProfile}>
             <div className="container-fluid">
               <div className="row my-3">
@@ -304,9 +301,8 @@ const ComplateProfile = (props) => {
                 </div>
                 <div className="col-lg-4 mb-2">
                   <button
-                    className={`btn btn-outline-danger col-12 py-2 font-bold-iransanse  `}
+                    className={`btn btn-outline-danger col-12 py-2 font-bold-iransanse h-3em `}
                     onClick={() => router.push("/dashboard/profile")}
-                    style={{ height: "3em" }}
                     type="button"
                   >
                     انصراف
@@ -321,7 +317,7 @@ const ComplateProfile = (props) => {
         opened={open}
         closePopUp={() => managePopUpBirthdayCalendar(false)}
       >
-        <div style={{ padding: 15 }}>
+        <div className="p-15">
           <BirthdayCalendar
             typePassenger={"ADL"}
             setBirthday={(value) => {

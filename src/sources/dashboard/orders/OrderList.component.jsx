@@ -15,18 +15,10 @@ const OrderList = () => {
         <table className="table table-sm table-striped">
           <thead>
             <tr>
-              <th className="font-bold-iransanse" style={{ fontSize: "12px" }}>
-                نام
-              </th>
-              <th className="font-bold-iransanse" style={{ fontSize: "12px" }}>
-                ساعت
-              </th>
-              <th className="font-bold-iransanse" style={{ fontSize: "12px" }}>
-                تاریخ
-              </th>
-              <th className="font-bold-iransanse" style={{ fontSize: "12px" }}>
-                وضعیت
-              </th>
+              <th className="font-bold-iransanse font-size-12">نام</th>
+              <th className="font-bold-iransanse font-size-12">ساعت</th>
+              <th className="font-bold-iransanse font-size-12">تاریخ</th>
+              <th className="font-bold-iransanse font-size-12">وضعیت</th>
             </tr>
           </thead>
           <tbody>

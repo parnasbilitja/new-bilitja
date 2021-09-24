@@ -281,8 +281,7 @@ class Register extends React.Component {
                     : this.RegisterWithToken()
                   : this.SendMoarefMobile();
               }}
-              style={{ height: "3em" }}
-              className="register-btn col-12 rounded"
+              className="register-btn col-12 rounded h-3em"
             >
               {" "}
               {this.state.loading === true ? <Loader /> : this.state.btn_text}

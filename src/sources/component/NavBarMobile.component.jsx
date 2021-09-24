@@ -137,7 +137,7 @@ class NavBarMobile extends React.Component {
                   slide: true,
                 });
               }}
-              style={{ fontSize: "15px", width: "15px", height: "15px" }}
+              className="mobile-nav-barsicon"
             />
             <h1 className="font-bold-iransanse">
               {" "}
@@ -172,13 +172,7 @@ class NavBarMobile extends React.Component {
                     slide: false,
                   });
                 }}
-                className="mt-2 ms-2"
-                style={{
-                  fontSize: "15px",
-                  width: "15px",
-                  height: "15px",
-                  float: "left",
-                }}
+                className="mt-2 ms-2 mobile-nav-timesicon"
               />
             </div>
 

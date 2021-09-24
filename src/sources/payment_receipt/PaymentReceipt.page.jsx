@@ -57,7 +57,7 @@ const PaymentReceiptPage = (props) => {
               </thead>
               <tbody>
                 {props.referenceFlight.map((option) => (
-                  <tr className="text-muted" style={{ fontSize: "12px" }}>
+                  <tr className="text-muted font-size-12">
                     <th scope="row">
                       {i++}-{option.ticketName}
                     </th>

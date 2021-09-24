@@ -4,11 +4,11 @@ const WalletBalanc = () => {
   return (
     <section className="container-fluid">
       <div className="row">
-        <div className="card text-left py-3" style={{ borderRadius: "15px" }}>
+        <div className="card text-left py-3 br-15">
           <h6 className="font-bold-iransanse mx-3">مانده حساب: 0 تومان</h6>
         </div>
         <div className=" col-lg-6">
-          <div className="card mt-4 p-3" style={{ borderRadius: "15px" }}>
+          <div className="card mt-4 p-3 br-15">
             <div className="border-bottom-black panel-header">
               <div>
                 &nbsp;&nbsp;
@@ -21,24 +21,9 @@ const WalletBalanc = () => {
               <table className="table table-sm table-striped">
                 <thead>
                   <tr>
-                    <th
-                      className="font-bold-iransanse"
-                      style={{ fontSize: "12px" }}
-                    >
-                      تاریخ
-                    </th>
-                    <th
-                      className="font-bold-iransanse"
-                      style={{ fontSize: "12px" }}
-                    >
-                      مبلغ
-                    </th>
-                    <th
-                      className="font-bold-iransanse"
-                      style={{ fontSize: "12px" }}
-                    >
-                      توضیحات
-                    </th>
+                    <th className="font-bold-iransanse ltr">تاریخ</th>
+                    <th className="font-bold-iransanse ltr">مبلغ</th>
+                    <th className="font-bold-iransanse ltr">توضیحات</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,7 +38,7 @@ const WalletBalanc = () => {
           </div>
         </div>
         <div className="col-lg-6">
-          <div className="card mt-4 p-3" style={{ borderRadius: "15px" }}>
+          <div className="card mt-4 p-3 br-15">
             <div className="border-bottom-black panel-header pb-3">
               <div>
                 &nbsp;&nbsp;

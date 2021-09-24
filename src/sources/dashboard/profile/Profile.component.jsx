@@ -56,10 +56,7 @@ const Profile = (props) => {
             </a>
           </div>
         ) : null}
-        <div
-          className="card my-4"
-          style={{ borderRadius: "15px", border: "transparent" }}
-        >
+        <div className="card my-4 profile-cnt">
           <div className="container-fluid">
             <div className="row my-3">
               <div className="col-lg-4 text-center">

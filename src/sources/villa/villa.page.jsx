@@ -62,7 +62,7 @@ class villa extends React.Component {
             />
           </div>
 
-          <div className="text-center col-md-4" style={{ paddingTop: 10 }}>
+          <div className="text-center col-md-4 pt-10">
             <img
               src="../../../Images/bilitja.png"
               className={styles["hero-image-center"]}
@@ -122,42 +122,27 @@ class villa extends React.Component {
                 className={`${styles["acco-tab"]} ${styles["home-tab-active"]}`}
               >
                 <div className="pull-right">
-                  <span style={{ cursor: "pointer" }} className="font-size-14">
-                    {" "}
-                    تهران{" "}
-                  </span>
+                  <span className="cursor-pointer font-size-14"> تهران </span>
                 </div>
               </div>
               <div className={styles["acco-tab"]}>
                 <div className="pull-right">
-                  <span style={{ cursor: "pointer" }} className="font-size-14">
-                    {" "}
-                    مشهد{" "}
-                  </span>
+                  <span className="cursor-pointer font-size-14"> مشهد </span>
                 </div>
               </div>
               <div className={styles["acco-tab"]}>
                 <div className="pull-right">
-                  <span style={{ cursor: "pointer" }} className="font-size-14">
-                    {" "}
-                    کیش{" "}
-                  </span>
+                  <span className="cursor-pointer font-size-14"> کیش </span>
                 </div>
               </div>
               <div className={styles["acco-tab"]}>
                 <div className="pull-right">
-                  <span style={{ cursor: "pointer" }} className="font-size-14">
-                    {" "}
-                    اصفهان{" "}
-                  </span>
+                  <span className="cursor-pointer font-size-14"> اصفهان </span>
                 </div>
               </div>
               <div className={styles["acco-tab"]}>
                 <div className="pull-right">
-                  <span style={{ cursor: "pointer" }} className="font-size-14">
-                    {" "}
-                    شیراز{" "}
-                  </span>
+                  <span className="cursor-pointer font-size-14"> شیراز </span>
                 </div>
               </div>
             </div>

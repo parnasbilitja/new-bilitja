@@ -179,18 +179,18 @@ class FlightSearchBox extends React.Component {
         </div>
 
         <div
-          style={{ textAlign: "center" }}
           className={`${
             this.props.showSwitch ? null : "hidden-xs"
-          } form-input-border ${styles["home-swtich-button-container"]}`}
+          } form-input-border text-center ${
+            styles["home-swtich-button-container"]
+          }`}
           onClick={() => {
             this.props.switchRoute();
           }}
         >
           <FontAwesomeIcon
             icon={faExchangeAlt}
-            className={styles["home-swtich-button"]}
-            style={{ fontSize: "16px", width: "16px", height: "16px" }}
+            className={`${styles["home-swtich-button"]} exchange-icon`}
           />
         </div>
 
@@ -198,10 +198,7 @@ class FlightSearchBox extends React.Component {
           <div
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
-            <i
-              className="kilo-font icon-plane-departure form-input-icon rotate-upsidedown-reverse"
-              style={{ direction: "ltr" }}
-            ></i>
+            <i className="kilo-font ltr icon-plane-departure form-input-icon rotate-upsidedown-reverse"></i>
             <PrimaryTextInput
               value={destinationName}
               readonlyattr={this.state.width <= mobileSize ? "true" : "false"}

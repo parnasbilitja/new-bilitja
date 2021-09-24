@@ -34,7 +34,7 @@ const PaymentReceiptDesktopHeader = (props) => {
                   </strong>
                 </div>
               </div>
-              <div style={{ padding: 10 }}>
+              <div className="p-10">
                 <img src="../../../../../Images/airplane_reserve.png" />
               </div>
               <div className="row">
@@ -91,8 +91,7 @@ const PaymentReceiptDesktopHeader = (props) => {
                 <div className="col-lg-3 col-md-3 col-sm-3 col-6">
                   <img
                     src="../../../../../Images/barcode.png"
-                    className="imgbarcode"
-                    style={{ position: "relative", top: "25px" }}
+                    className="imgbarcode barcode-img"
                   />
                 </div>
               </div>

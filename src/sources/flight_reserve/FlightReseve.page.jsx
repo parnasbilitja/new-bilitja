@@ -322,7 +322,7 @@ class FlightReserve extends React.Component {
           <FlightReserveDesktopHeader {...this.state} />
           <FlightReserveMobileHeader {...this.state} />
         </div>
-        <div className="row" style={{ marginTop: 10 }}>
+        <div className="row mt-10">
           <div className="col-lg-1"></div>
           <div className="col-lg-10 no-padding-xs border-pill-lg">
             {this.state.passengers
@@ -397,8 +397,7 @@ class FlightReserve extends React.Component {
                       <span>بزرگسال</span>
                       <FontAwesomeIcon className="pull-left" icon={faMale} />
                       <FontAwesomeIcon
-                        className="pull-left"
-                        style={{ marginLeft: 0 }}
+                        className="pull-left ml-0"
                         icon={faFemale}
                       />
                     </a>
@@ -460,11 +459,10 @@ class FlightReserve extends React.Component {
                     <div>
                       <input
                         inputMode="numeric"
-                        style={{ height: "3.5em" }}
                         placeholder="شماره همراه"
                         name="mobileSubmiter"
                         onChange={this.handleChange}
-                        className="col-12 reserve-input px-2"
+                        className="col-12 reserve-input px-2 h-35em"
                         maxLength={11}
                       />
                     </div>
@@ -475,9 +473,8 @@ class FlightReserve extends React.Component {
                   <div className="col-lg-6 col-md-6 col-6 padding-3px">
                     <div>
                       <input
-                        className="col-12 reserve-input px-2"
+                        className="col-12 reserve-input px-2 h-35em"
                         inputMode="numeric"
-                        style={{ height: "3.5em" }}
                         placeholder="شماره ثابت"
                         name="phoneSubmiter"
                         onChange={this.handleChange}
@@ -493,8 +490,7 @@ class FlightReserve extends React.Component {
                   <div className="col-lg-6 col-md-6 col-12 padding-3px">
                     <div>
                       <input
-                        className="col-12 reserve-input px-2"
-                        style={{ height: "3.5em" }}
+                        className="col-12 reserve-input px-2 h-35em"
                         placeholder="ایمیل (اختیاری)"
                       />
                     </div>
@@ -502,8 +498,7 @@ class FlightReserve extends React.Component {
                   <div className="col-lg-6 col-md-6 col-12 padding-3px">
                     <div>
                       <input
-                        className="col-12 reserve-input px-2"
-                        style={{ height: "3.5em" }}
+                        className="col-12 reserve-input px-2 h-35em"
                         placeholder="کد تخفیف (اختیاری)"
                       />
                     </div>
@@ -534,10 +529,7 @@ class FlightReserve extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div
-                  className="row finish-reserve-buttons mb-3"
-                  style={{ marginLeft: "5px" }}
-                >
+                <div className="row finish-reserve-buttons mb-3 ml-5">
                   <div className="col-lg-8 col-md-8 col-7 padding-3px">
                     <button
                       onClick={(e) => {

@@ -356,7 +356,7 @@ class JalaliDays extends React.Component {
         ) : null}
         {this.state.stage == 3 ? (
           <div>
-            <div className="row" style={{ margin: "0" }}>
+            <div className="row m-0">
               <div className="col-lg-1 col-1 no-padding no-margin">
                 <FontAwesomeIcon
                   icon={faAngleRight}

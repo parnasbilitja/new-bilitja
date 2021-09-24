@@ -253,7 +253,7 @@ class FlightReciept extends React.Component {
           <FlightRecieptDesktopHeader {...this.state} />
           <FlightRecieptMobileHero {...this.state} />
         </div>
-        <div className="row" style={{ marginTop: 10 }}>
+        <div className="row mt-10">
           <div className="col-lg-1"></div>
           <div className="col-lg-10 no-padding-xs border-pill-lg">
             <p
@@ -375,12 +375,9 @@ class FlightReciept extends React.Component {
             </table>
           </div>
         </div>
-        <div className="row" style={{ marginTop: 10 }}>
+        <div className="row mt-10">
           <div className="col-lg-1 col-0"></div>
-          <div
-            className="col-lg-10 col-12 no-padding-xs border-pill-lg"
-            style={{ paddingTop: 10 }}
-          >
+          <div className="col-lg-10 col-12 no-padding-xs border-pill-lg pt-10">
             <div className="row">
               <div className="col-lg-4 text-right">
                 <div className="row">

@@ -33,10 +33,7 @@ const PaymentReciptMobileHeader = (props) => {
         </div>
         <div className="row line-2">
           <div className="col-6 text-center">
-            <p
-              className="text-center font-size-12  font-bold-iransanse"
-              style={{ position: "relative", top: "20px" }}
-            >
+            <p className="text-center font-size-12  font-bold-iransanse flight-no">
               {" "}
               شماره پرواز &nbsp;
               <span className="color-secondary font-bold-iransanse">

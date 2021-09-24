@@ -5,10 +5,7 @@ import styles from "../../../styles/FlightReserve.module.scss";
 
 const FlightReserveDesktopHeader = (props) =>
   props.airport1 ? (
-    <div
-      className="row hidden-xs font-bold-iransanse"
-      style={{ marginTop: "100px" }}
-    >
+    <div className="row hidden-xs font-bold-iransanse mt-100">
       <div className="col-lg-1"></div>
       <div className="col-lg-10 border-pill">
         <div className="row">
@@ -26,7 +23,7 @@ const FlightReserveDesktopHeader = (props) =>
                 <strong className="font-size-23">{props.airport2}</strong>
               </div>
             </div>
-            <div style={{ padding: 10 }}>
+            <div className="p-10">
               <img src="../../../../../Images/airplane_reserve.png" />
             </div>
             <div className="row">
@@ -75,10 +72,7 @@ const FlightReserveDesktopHeader = (props) =>
                 </div>
                 <div className="clear"></div>
                 <div>
-                  <i
-                    className="kilo-font icon-seat mx-1"
-                    style={{ fontSize: "30px" }}
-                  ></i>
+                  <i className="kilo-font icon-seat mx-1 font-size-30"></i>
                   <p className="font-size-14">
                     ظرفیت :
                     <span className="color-secondary">

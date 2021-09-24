@@ -27,23 +27,17 @@ export const TopHeaderBox = () => {
               <div className="col-6 my-1 text-left">
                 <FontAwesomeIcon
                   icon={faPlaneDeparture}
-                  style={{ fontSize: "32px" }}
-                  className="text-danger"
+                  className="text-danger font-size-32"
                 />
               </div>
               <div className="text-right border-bottom">
                 {" "}
-                <h5
-                  className="font-bold-iransanse"
-                  style={{ fontSize: "16px" }}
-                >
-                  3
-                </h5>
+                <h5 className="font-bold-iransanse font-size-16">3</h5>
               </div>
 
               <div className="row mx-1 p-0">
                 <div className="col-10 text-right">
-                  <span style={{ fontSize: "13px" }} className="text-muted">
+                  <span className="text-muted font-size-13">
                     پرواز های 24 ساعت آینده
                   </span>
                 </div>
@@ -63,23 +57,17 @@ export const TopHeaderBox = () => {
               <div className="col-6 my-1 text-left">
                 <FontAwesomeIcon
                   icon={faHotel}
-                  style={{ fontSize: "32px" }}
-                  className="text-danger"
+                  className="font-size-32 text-danger"
                 />
               </div>
               <div className="text-right border-bottom">
                 {" "}
-                <h5
-                  className="font-bold-iransanse"
-                  style={{ fontSize: "16px" }}
-                >
-                  5
-                </h5>
+                <h5 className="font-size-16 font-bold-iransanse">5</h5>
               </div>
 
               <div className="row mx-1 p-0">
                 <div className="col-10 text-right">
-                  <span style={{ fontSize: "13px" }} className="text-muted">
+                  <span className="font-size-13 text-muted">
                     مشاهده لیست هتل ها
                   </span>
                 </div>
@@ -99,25 +87,17 @@ export const TopHeaderBox = () => {
               <div className="col-6 my-1 text-left">
                 <FontAwesomeIcon
                   icon={faMapMarked}
-                  style={{ fontSize: "32px" }}
-                  className="text-danger"
+                  className="font-size-32 text-danger"
                 />
               </div>
               <div className="text-right border-bottom">
                 {" "}
-                <h5
-                  className="font-bold-iransanse"
-                  style={{ fontSize: "16px" }}
-                >
-                  30
-                </h5>
+                <h5 className="font-size-16 font-bold-iransanse">30</h5>
               </div>
 
               <div className="row mx-1 p-0">
                 <div className="col-10 text-right">
-                  <span style={{ fontSize: "13px" }} className="text-muted">
-                    مشاهده جزئیات
-                  </span>
+                  <span className="font-size-13 text-muted">مشاهده جزئیات</span>
                 </div>
                 <div className="col-2 text-left">
                   <FontAwesomeIcon icon={faHome} className="text-muted" />
@@ -135,23 +115,17 @@ export const TopHeaderBox = () => {
               <div className="col-6 my-1 text-left">
                 <FontAwesomeIcon
                   icon={faArchway}
-                  style={{ fontSize: "32px" }}
-                  className="text-danger"
+                  className="font-size-32 text-danger"
                 />
               </div>
               <div className="text-right border-bottom">
                 {" "}
-                <h5
-                  className="font-bold-iransanse"
-                  style={{ fontSize: "16px" }}
-                >
-                  3
-                </h5>
+                <h5 className="font-size-16 font-bold-iransanse">3</h5>
               </div>
 
               <div className="row mx-1 p-0">
                 <div className="col-10 text-right">
-                  <span style={{ fontSize: "13px" }} className="text-muted">
+                  <span className="font-size-13 text-muted">
                     پرواز های 24 ساعت آینده
                   </span>
                 </div>
@@ -174,23 +148,17 @@ export const TopHeaderBox = () => {
               <div className="col-6 my-1 text-left">
                 <FontAwesomeIcon
                   icon={faBlog}
-                  style={{ fontSize: "32px" }}
-                  className="text-danger"
+                  className="font-size-32 text-danger"
                 />
               </div>
               <div className="text-right border-bottom">
                 {" "}
-                <h5
-                  className="font-bold-iransanse"
-                  style={{ fontSize: "16px" }}
-                >
-                  0
-                </h5>
+                <h5 className="font-size-16 font-bold-iransanse">0</h5>
               </div>
 
               <div className="row mx-1 p-0">
                 <div className="col-10 text-right">
-                  <span style={{ fontSize: "13px" }} className="text-muted">
+                  <span className="font-size-13 text-muted">
                     مشاهده لیست بلاگ ها
                   </span>
                 </div>
@@ -210,25 +178,17 @@ export const TopHeaderBox = () => {
               <div className="col-6 my-1 text-left">
                 <FontAwesomeIcon
                   icon={faCalculator}
-                  style={{ fontSize: "32px" }}
-                  className="text-danger"
+                  className="font-size-32 text-danger"
                 />
               </div>
               <div className="text-right border-bottom">
                 {" "}
-                <h5
-                  className="font-bold-iransanse"
-                  style={{ fontSize: "16px" }}
-                >
-                  175
-                </h5>
+                <h5 className="font-size-16 font-bold-iransanse">175</h5>
               </div>
 
               <div className="row mx-1 p-0">
                 <div className="col-10 text-right">
-                  <span style={{ fontSize: "13px" }} className="text-muted">
-                    میزان موجودی
-                  </span>
+                  <span className="font-size-13 text-muted">میزان موجودی</span>
                 </div>
                 <div className="col-2 text-left">
                   <FontAwesomeIcon icon={faDollarSign} className="text-muted" />
