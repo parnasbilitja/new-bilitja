@@ -3,7 +3,7 @@ import React from "react";
 const NotFountPage = () => {
   return (
     <div className="not-found-container">
-      <img src="/images/bilitja-logo.png" />
+      <img alt="" src="/images/bilitja-logo.png" />
 
       <h5 className="font-bold-iransanse text-center mt-4">
         مسافر گرامی، صفحه مورد نظر شما یافت نشد.

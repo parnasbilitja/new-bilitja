@@ -29,7 +29,7 @@ const DashboardNav = (props) => {
         }`}
       >
         <div className={styles["manager-nav-header"]}>
-          <img src="../../../Images/bilitja-logo.png" />
+          <img alt="" src="../../../Images/bilitja-logo.png" />
         </div>
         <div
           className={

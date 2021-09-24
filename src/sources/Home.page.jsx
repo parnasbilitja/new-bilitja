@@ -103,7 +103,7 @@ class Home extends React.Component {
           </div>
         </div>
         <div className={`${styles["hero-big-image"]} container`}>
-          <img src="../../../Images/flight-index.png" />
+          <img alt="" src="../../../Images/flight-index.png" />
         </div>
 
         <div className="row padding-xs-5-15">
@@ -113,7 +113,7 @@ class Home extends React.Component {
               <div className="col-lg-1 hidden-sm col-sm-12 hidden-xs"></div>
               <div className="col-lg-5 col-md-6 col-sm-12 padding-5px">
                 <div className={styles["home-value-propsal"]}>
-                  <img src="../../../Images/service1.png" />
+                  <img alt="" src="../../../Images/service1.png" />
                   <h2 className="font-bold-iransanse">
                     <span>خرید بلیط هواپیما &nbsp;</span>
                     <span className="color-primary">با چند کلیک</span>
@@ -127,7 +127,7 @@ class Home extends React.Component {
               </div>
               <div className="col-lg-5 col-md-6 col-sm-12 padding-5px">
                 <div className={styles["home-value-propsal"]}>
-                  <img src="../../../Images/service3.png" />
+                  <img alt="" src="../../../Images/service3.png" />
                   <h2 className="font-bold-iransanse">
                     <span className="color-primary">پذیرش میزبانی &nbsp;</span>
                     <span>ویلا و اقامتگاه</span>

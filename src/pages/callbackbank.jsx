@@ -37,7 +37,11 @@ function Page({ data, PaymentInfo }) {
         <div className="callback-bank-container">
           <div className="row">
             <div className="col-12 text-center mb-5">
-              <img src="../../Images/bilitja.png" className="img-fluid " />
+              <img
+                alt=""
+                src="../../Images/bilitja.png"
+                className="img-fluid "
+              />
             </div>
             <br />
             <div>

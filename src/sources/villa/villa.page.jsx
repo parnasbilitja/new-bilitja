@@ -86,7 +86,7 @@ class villa extends React.Component {
           </div>
         </div>
         <div className={styles["hero-big-image"]}>
-          <img src="../../../Images/villa-index.png" />
+          <img alt="" src="../../../Images/villa-index.png" />
         </div>
 
         <div className={styles["home-become-host"]}>
@@ -155,7 +155,7 @@ class villa extends React.Component {
                 <div
                   className={`col-lg-3 col-md-3 col-sm-6 col-12 ${styles["villa-suggestion"]}`}
                 >
-                  <img src="../../../Images/hotel_view.jpg" />
+                  <img alt="" src="../../../Images/hotel_view.jpg" />
                   <p className="font-size-13 no-margin">ویلا</p>
                   <span className="pull-right">
                     <FontAwesomeIcon icon={faStar} />

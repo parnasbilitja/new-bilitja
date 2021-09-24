@@ -28,7 +28,7 @@ const FlightRecieptDesktopHeader = (props) =>
                 </div>
               </div>
               <div className="p-10">
-                <img src="../../../../../Images/airplane_reserve.png" />
+                <img alt="" src="../../../../../Images/airplane_reserve.png" />
               </div>
               <div className="row">
                 <div className="col-lg-8 col-md-8 col-sm-8 col-6 text-right">
@@ -68,7 +68,10 @@ const FlightRecieptDesktopHeader = (props) =>
                 <div className="col-lg-6 col-md-6 col-sm-6 col-6 second-column">
                   <br />
                   <div>
-                    <img src="../../../../../Images/airplane_reserve_small.png" />
+                    <img
+                      alt=""
+                      src="../../../../../Images/airplane_reserve_small.png"
+                    />
                     <p>
                       {" "}
                       شماره پرواز :

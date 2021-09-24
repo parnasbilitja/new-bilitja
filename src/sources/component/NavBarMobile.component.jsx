@@ -144,7 +144,7 @@ class NavBarMobile extends React.Component {
               خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه{" "}
             </h1>
           </div>
-          <img src="../../../Images/logo512.png" className="pull-left" />
+          <img alt="" src="../../../Images/logo512.png" className="pull-left" />
         </div>
 
         <SlideIn
@@ -158,7 +158,7 @@ class NavBarMobile extends React.Component {
           <div className={styles["nav-items-container-mobile"]}>
             <div className={styles["logo-menu-mobile"]}>
               <a href="/">
-                <img src="../../../Images/bilitja-light-logo.png" />
+                <img alt="" src="../../../Images/bilitja-light-logo.png" />
               </a>
               <p className="no-margin color-white">
                 ارزان ترین بلیط های هواپیما
