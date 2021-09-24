@@ -39,7 +39,7 @@ const ManagerNav = (props) => {
         }`}
       >
         <div className={styles["manager-nav-header"]}>
-          <img alt="" src="../../../Images/bilitja-logo.png" />
+          <img alt="بلیطجا - لوگو" src="../../../Images/bilitja-logo.png" />
         </div>
         <div className={styles["manager-small-screen-top-bar"]}>
           <FontAwesomeIcon

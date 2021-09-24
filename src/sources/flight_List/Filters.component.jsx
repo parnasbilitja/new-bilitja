@@ -190,6 +190,7 @@ class Filters extends React.Component {
                       globals.website +
                       `Airlines/${oneAirline.airlineIataCode}.png?ver=1`
                     }
+                    alt="بلیطجا - لوگو ایرلاین"
                   />
                   <label className="font-size-14" htmlFor="cheapest">
                     {oneAirline.airline}

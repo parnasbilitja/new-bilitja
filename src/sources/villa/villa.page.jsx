@@ -57,6 +57,7 @@ class villa extends React.Component {
         <div className="hidden-xs hidden-sm row">
           <div className="col-md-4">
             <img
+              alt="بلیطجا- لوگو"
               src="../../../Images/map.png"
               className={`${styles["hero-image-2"]} pull-right`}
             />
@@ -64,12 +65,14 @@ class villa extends React.Component {
 
           <div className="text-center col-md-4 pt-10">
             <img
+              alt="بلیطجا- لوگو"
               src="../../../Images/bilitja.png"
               className={styles["hero-image-center"]}
             />
           </div>
           <div className="col-md-4">
             <img
+              alt="بلیطجا- لوگو"
               src="../../../Images/earth.png"
               className={`${styles["hero-image-1"]} pull-left`}
             />
@@ -86,7 +89,10 @@ class villa extends React.Component {
           </div>
         </div>
         <div className={styles["hero-big-image"]}>
-          <img alt="" src="../../../Images/villa-index.png" />
+          <img
+            alt="بلیطجا - لوگو پذیرش میزبان"
+            src="../../../Images/villa-index.png"
+          />
         </div>
 
         <div className={styles["home-become-host"]}>
@@ -155,7 +161,10 @@ class villa extends React.Component {
                 <div
                   className={`col-lg-3 col-md-3 col-sm-6 col-12 ${styles["villa-suggestion"]}`}
                 >
-                  <img alt="" src="../../../Images/hotel_view.jpg" />
+                  <img
+                    alt="بلیطجا - پیش نمایش ویلا"
+                    src="../../../Images/hotel_view.jpg"
+                  />
                   <p className="font-size-13 no-margin">ویلا</p>
                   <span className="pull-right">
                     <FontAwesomeIcon icon={faStar} />

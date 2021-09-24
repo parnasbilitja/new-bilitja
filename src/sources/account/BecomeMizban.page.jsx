@@ -15,7 +15,10 @@ const BecomeMizban = () => {
           <div className="col-lg-9 col-md-9 col-sm-12">
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-6 col-12 text-center">
-                <img alt="" src="../../../Images/first-time.png" />
+                <img
+                  alt="بلیطجا-لوگو میزبان شوید"
+                  src="../../../Images/first-time.png"
+                />
               </div>
               <div className="col-lg-6 col-md-6 col-sm-6 col-12 margin-top-20px text-right">
                 <div className="become-host-box">

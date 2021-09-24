@@ -15,7 +15,10 @@ const Footer = () => {
           <div
             className={`col-lg-2 col-md-12 col-sm-12 col-12 ${styles["footer-logo"]}`}
           >
-            <img alt="" src="../../../Images/bilitja-light-logo.png" />
+            <img
+              alt="بلیطجا-لوگو"
+              src="../../../Images/bilitja-light-logo.png"
+            />
             <p>ارزان ترین بلیط های هواپیما</p>
             <a href="">www. B i l i t j a .com</a>
           </div>

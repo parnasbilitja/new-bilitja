@@ -24,7 +24,10 @@ const FlightReserveDesktopHeader = (props) =>
               </div>
             </div>
             <div className="p-10">
-              <img alt="" src="../../../../../Images/airplane_reserve.png" />
+              <img
+                alt="بلیطجا - لوگو رزور بلیط هواپیما"
+                src="../../../../../Images/airplane_reserve.png"
+              />
             </div>
             <div className="row">
               <div className="col-lg-8 col-md-8 col-sm-8 col-6 text-right">
@@ -52,6 +55,7 @@ const FlightReserveDesktopHeader = (props) =>
                   src={
                     globals.website + `Airlines/${props.airlineCode}.png?ver=1`
                   }
+                  alt="بلیطجا - لوگو ایرلاین"
                 />
                 <p>
                   ایرلاین :{" "}
@@ -62,7 +66,7 @@ const FlightReserveDesktopHeader = (props) =>
                 <br />
                 <div>
                   <img
-                    alt=""
+                    alt="بلیطجا - لوگو رزرو بلیط هواپیما"
                     src="../../../../../Images/airplane_reserve_small.png"
                   />
                   <p>
@@ -89,6 +93,7 @@ const FlightReserveDesktopHeader = (props) =>
                 <img
                   src="../../../../../Images/barcode.png"
                   className="imgbarcode"
+                  alt="بلیطجا - بارکد "
                 />
               </div>
             </div>

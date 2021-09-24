@@ -26,7 +26,11 @@ const PaymentReceiptPage = (props) => {
   return (
     <>
       <div className="container text-center">
-        <img alt="" src="/Images/check.png" className="mt-5 text-center" />
+        <img
+          alt="بلیطجا - لوگو پرداخت موفقیت آمیز"
+          src="/Images/check.png"
+          className="mt-5 text-center"
+        />
         <br />
         <h6 className="font-bold-iransanse mt-3">
           {props.referenceEbank.stat} - {props.referenceEbank.bankName} - کد

@@ -48,6 +48,7 @@ const PaymentReciptMobileHeader = (props) => {
                 globals.website +
                 `Airlines/${flight_info.airlineCode}.png?ver=1`
               }
+              alt="بلیطجا - لوگو ایرلاین"
             />
             <p className="font-size-14">
               <span className="font-bold-iransanse">ایرلاین</span> -{" "}

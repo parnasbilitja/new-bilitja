@@ -73,6 +73,7 @@ class Home extends React.Component {
         <div className="hidden-xs hidden-sm row">
           <div className="col-md-4">
             <img
+              alt="بلیطجا- لوگو"
               src="../../../Images/map.png"
               className={`${styles["hero-image-2"]} pull-right`}
             />
@@ -80,12 +81,14 @@ class Home extends React.Component {
 
           <div className="text-center col-md-4 pt-10">
             <img
+              alt="بلیطجا - لوگو"
               src="../../../Images/bilitja.png"
               className={styles["hero-image-center"]}
             />
           </div>
           <div className="col-md-4">
             <img
+              alt="بلیطجا - لوگو"
               src="../../../Images/earth.png"
               className={`${styles["hero-image-1"]} pull-left`}
             />
@@ -103,7 +106,7 @@ class Home extends React.Component {
           </div>
         </div>
         <div className={`${styles["hero-big-image"]} container`}>
-          <img alt="" src="../../../Images/flight-index.png" />
+          <img alt="بلیطجا-اسلایدر" src="../../../Images/flight-index.png" />
         </div>
 
         <div className="row padding-xs-5-15">
@@ -113,7 +116,10 @@ class Home extends React.Component {
               <div className="col-lg-1 hidden-sm col-sm-12 hidden-xs"></div>
               <div className="col-lg-5 col-md-6 col-sm-12 padding-5px">
                 <div className={styles["home-value-propsal"]}>
-                  <img alt="" src="../../../Images/service1.png" />
+                  <img
+                    alt="بلیطجا-لوگو خرید بلیط هواپیما"
+                    src="../../../Images/service1.png"
+                  />
                   <h2 className="font-bold-iransanse">
                     <span>خرید بلیط هواپیما &nbsp;</span>
                     <span className="color-primary">با چند کلیک</span>
@@ -127,7 +133,10 @@ class Home extends React.Component {
               </div>
               <div className="col-lg-5 col-md-6 col-sm-12 padding-5px">
                 <div className={styles["home-value-propsal"]}>
-                  <img alt="" src="../../../Images/service3.png" />
+                  <img
+                    alt="بلیطجا- لوگو پذیرش میزبانی"
+                    src="../../../Images/service3.png"
+                  />
                   <h2 className="font-bold-iransanse">
                     <span className="color-primary">پذیرش میزبانی &nbsp;</span>
                     <span>ویلا و اقامتگاه</span>

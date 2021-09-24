@@ -1,5 +1,5 @@
 import React from "react";
-import Head from 'next/head'
+import Head from "next/head";
 //import Styles from '../../styles/icon.module.scss'
 //import '../../styles/manager.module.scss'
 
@@ -30,7 +30,6 @@ import BecomeMizban from "./account/BecomeMizban.page";
 import { withRouter } from "next/router";
 
 class App extends React.Component {
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -43,7 +42,7 @@ class App extends React.Component {
     pathName = decodeURI(pathName);
     switch (this.props.mainRoute) {
       case "index": {
-        return <Home></Home> ;
+        return <Home></Home>;
       }
       case "flights": {
         if (pathName.indexOf("info") > 0) {
@@ -75,78 +74,103 @@ class App extends React.Component {
       }
 
       default:
-        return <div> <Contextmytitle.Provider value="dark"/><Home></Home></div>;
+        return (
+          <div>
+            {" "}
+            <Contextmytitle.Provider value="dark" />
+            <Home></Home>
+          </div>
+        );
     }
   }
 
   setTitleMeta(pathName) {
-    var src="";
-    var dest="";
+    var src = "";
+    var dest = "";
     pathName = decodeURI(pathName);
     switch (this.props.mainRoute) {
       case "index": {
-        return   "خرید اینترنتی بلیط ارزان هواپیما |بلیط استانبول|بلیط جا|02184279999" 
-        +"/"+
-        "ارزانترین قیمت بلیط های هواپیما به استانبول آنتالیا  دنیزلی اسپارتا دبی از1میلیون و 500 هزارتومان و کیش مشهد قشم شیراز را از 300هزار تومان در بین بلیت های ماجستجو و آنلاین خرید کنید|بلیط جا" 
-        +"/"+
-        "بلیط ارزان هواپیما|خرید اینترنتی بلیط هواپیما|بلیط هواپیما تهران به استانبول|بلیط هواپیما کیش|بلیط هواپیما دبی|بلیط هواپیما مشهد|رزرو اینترنتی بلیط هواپیما مشهد"
-        ;
+        return (
+          "خرید اینترنتی بلیط ارزان هواپیما |بلیط استانبول|بلیط جا|02184279999" +
+          "/" +
+          "ارزانترین قیمت بلیط های هواپیما به استانبول آنتالیا  دنیزلی اسپارتا دبی از1میلیون و 500 هزارتومان و کیش مشهد قشم شیراز را از 300هزار تومان در بین بلیت های ماجستجو و آنلاین خرید کنید|بلیط جا" +
+          "/" +
+          "بلیط ارزان هواپیما|خرید اینترنتی بلیط هواپیما|بلیط هواپیما تهران به استانبول|بلیط هواپیما کیش|بلیط هواپیما دبی|بلیط هواپیما مشهد|رزرو اینترنتی بلیط هواپیما مشهد"
+        );
       }
       case "flights": {
         if (pathName.indexOf("info") > 0) {
-          
-          return "بلیطجا";     //<FlightReserve />;
+          return "بلیطجا"; //<FlightReserve />;
         } else if (pathName.indexOf("receipt") > 0) {
-          return "بلیطجا";     //<FlightReciept />;
+          return "بلیطجا"; //<FlightReciept />;
         } else if (pathName.indexOf("order") > 0) {
-          return "بلیطجا";     //<TrackOrder />;
+          return "بلیطجا"; //<TrackOrder />;
         } else {
           src = decodeURI(pathName.split("/")[2]);
           dest = decodeURI(pathName.split("/")[3]);
-           
-          return " خرید اینترنتی بلیط هواپیما "+src+"-"+dest+" با ارزانترین قیمت|20درصد تخفیف بلیطجا  "
-          +"/"+
-          "خرید اینترنتی بلیط هواپیما "+src+" به "+dest+" به بهترین نرخ با امکان رزرو آنلاین و اینترنتی  به همراه ارزانترین قیمت  بلیط هواپیما و هتل در سایت بلیط جا امکان پذیر است . 02184279999 "
-          +"/"+
-          " بلیط ارزان هواپیما "+src+" به "+dest+"|خرید اینترنتی بلیط هواپیما "+src+" به "+dest+""
-          
-          ;     //<GetFlightList />;
+
+          return (
+            " خرید اینترنتی بلیط هواپیما " +
+            src +
+            "-" +
+            dest +
+            " با ارزانترین قیمت|20درصد تخفیف بلیطجا  " +
+            "/" +
+            "خرید اینترنتی بلیط هواپیما " +
+            src +
+            " به " +
+            dest +
+            " به بهترین نرخ با امکان رزرو آنلاین و اینترنتی  به همراه ارزانترین قیمت  بلیط هواپیما و هتل در سایت بلیط جا امکان پذیر است . 02184279999 " +
+            "/" +
+            " بلیط ارزان هواپیما " +
+            src +
+            " به " +
+            dest +
+            "|خرید اینترنتی بلیط هواپیما " +
+            src +
+            " به " +
+            dest +
+            ""
+          ); //<GetFlightList />;
         }
       }
       case "villa": {
         if (pathName.indexOf("intro") > 0) {
-          return  "بلیطجا";     //<BecomeMizban />;
+          return "بلیطجا"; //<BecomeMizban />;
         }
         if (pathName.indexOf("reserve") > 0) {
-          return  "بلیطجا";     //<VillaReserve />;
+          return "بلیطجا"; //<VillaReserve />;
         }
         if (pathName.indexOf("receipt") > 0) {
-          return  "بلیطجا";     //<VillaReceipt />;
+          return "بلیطجا"; //<VillaReceipt />;
         }
         if (pathName.length < 7) {
-          return  "رزرو آنلاین و اینترنتی اقامتگاه و ویلا در سراسر ایران|بلیط جا 0184279999 "
-          +"/"+
-          "ویلا و اقامتگاه مورد نیاز خود را ازبین هزاران ویلا و اقامتگاه تمیز و اکونومی موجوداز شبی 100هزار تومان در بلیط جا با بهترین میزبان ها در تمام شهرهای ایران جستجو و آنلاین خرید کنید"
-          +"/"+
-          "خرید اینترنتی اقامتگاه|رزرو آنلاین ویلا|اقامتگاه لوکس و تمیز"
-          ;     //<VillaPage />;
+          return (
+            "رزرو آنلاین و اینترنتی اقامتگاه و ویلا در سراسر ایران|بلیط جا 0184279999 " +
+            "/" +
+            "ویلا و اقامتگاه مورد نیاز خود را ازبین هزاران ویلا و اقامتگاه تمیز و اکونومی موجوداز شبی 100هزار تومان در بلیط جا با بهترین میزبان ها در تمام شهرهای ایران جستجو و آنلاین خرید کنید" +
+            "/" +
+            "خرید اینترنتی اقامتگاه|رزرو آنلاین ویلا|اقامتگاه لوکس و تمیز"
+          ); //<VillaPage />;
         } else {
-          return  "رزرو آنلاین و اینترنتی اقامتگاه و ویلا در سراسر ایران|بلیط جا 0184279999 "
-          +"/"+
-          "ویلا و اقامتگاه مورد نیاز خود را ازبین هزاران ویلا و اقامتگاه تمیز و اکونومی موجوداز شبی 100هزار تومان در بلیط جا با بهترین میزبان ها در تمام شهرهای ایران جستجو و آنلاین خرید کنید"
-          +"/"+
-          "خرید اینترنتی اقامتگاه|رزرو آنلاین ویلا|اقامتگاه لوکس و تمیز"
-          ;     //<VillaList />;
+          return (
+            "رزرو آنلاین و اینترنتی اقامتگاه و ویلا در سراسر ایران|بلیط جا 0184279999 " +
+            "/" +
+            "ویلا و اقامتگاه مورد نیاز خود را ازبین هزاران ویلا و اقامتگاه تمیز و اکونومی موجوداز شبی 100هزار تومان در بلیط جا با بهترین میزبان ها در تمام شهرهای ایران جستجو و آنلاین خرید کنید" +
+            "/" +
+            "خرید اینترنتی اقامتگاه|رزرو آنلاین ویلا|اقامتگاه لوکس و تمیز"
+          ); //<VillaList />;
         }
       }
 
       default:
-        return  "خرید اینترنتی بلیط ارزان هواپیما |بلیط استانبول|بلیط جا|02184279999" 
-        +"/"+
-        "ارزانترین قیمت بلیط های هواپیما به استانبول آنتالیا دنیزلی اسپارتااز1میلیون تومان و کیش مشهد قشم شیراز را از 300هزار تومان را در بین بلیت های ما آنلاین خرید کنید|بلیط جا" 
-        +"/"+
-        "بلیط ارزان هواپیما|خرید اینترنتی بلیط هواپیما|بلیط هواپیما تهران به استانبول|بلیط هواپیما کیش|بلیط هواپیما دبی|بلیط هواپیما مشهد|رزرو اینترنتی بلیط هواپیما مشهد"
-        ;     //<Home></Home>;
+        return (
+          "خرید اینترنتی بلیط ارزان هواپیما |بلیط استانبول|بلیط جا|02184279999" +
+          "/" +
+          "ارزانترین قیمت بلیط های هواپیما به استانبول آنتالیا دنیزلی اسپارتااز1میلیون تومان و کیش مشهد قشم شیراز را از 300هزار تومان را در بین بلیت های ما آنلاین خرید کنید|بلیط جا" +
+          "/" +
+          "بلیط ارزان هواپیما|خرید اینترنتی بلیط هواپیما|بلیط هواپیما تهران به استانبول|بلیط هواپیما کیش|بلیط هواپیما دبی|بلیط هواپیما مشهد|رزرو اینترنتی بلیط هواپیما مشهد"
+        ); //<Home></Home>;
     }
   }
   componentDidMount() {
@@ -165,12 +189,7 @@ class App extends React.Component {
       <div className="bodyVar">
         {this.state.width <= 826 ? <NavBarMobile /> : null}
         {this.state.width >= 826 ? <NavBar /> : null}
-        <div
-          style={
-            this.state.width <= 826 ? { marginTop: 110 } : { marginTop: 90 }
-          }
-          className="font-"
-        >
+        <div className={this.state.width <= 826 ? "mt-110" : "mt-90"}>
           {
             this.mainRouter(this.props.router.asPath)
             //console.log(this.props.router)
@@ -179,21 +198,35 @@ class App extends React.Component {
           <MessageBox />
           <Footer />
           <Head>
-        <title>{ 
-        // {`بلیطجا ${decodeURI(this.props.router.asPath).replace('-',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ')}`}
-         this.setTitleMeta(this.props.router.asPath).split("/")[0]
-        } </title>
-         <meta name="title" property="og:title" content={
-            this.setTitleMeta(this.props.router.asPath).split("/")[0]
-         }  />
+            <title>
+              {
+                // {`بلیطجا ${decodeURI(this.props.router.asPath).replace('-',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ')}`}
+                this.setTitleMeta(this.props.router.asPath).split("/")[0]
+              }{" "}
+            </title>
+            <meta
+              name="title"
+              property="og:title"
+              content={
+                this.setTitleMeta(this.props.router.asPath).split("/")[0]
+              }
+            />
 
-         <meta name="description" property="og:description" content={
-            this.setTitleMeta(this.props.router.asPath).split("/")[1]
-         }  />
-         <meta name="keywords" property="og:keywords" content={
-            this.setTitleMeta(this.props.router.asPath).split("/")[2]
-         }  />
-      </Head>
+            <meta
+              name="description"
+              property="og:description"
+              content={
+                this.setTitleMeta(this.props.router.asPath).split("/")[1]
+              }
+            />
+            <meta
+              name="keywords"
+              property="og:keywords"
+              content={
+                this.setTitleMeta(this.props.router.asPath).split("/")[2]
+              }
+            />
+          </Head>
         </div>
         <PopUp
           opened={this.props.accountBox.state}

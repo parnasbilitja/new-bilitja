@@ -174,6 +174,7 @@ class PopupFlightReserve extends React.Component {
           <div>
             <img
               src={globals.website + `Airlines/${airlineIataCode}.png?ver=1`}
+              alt="بلیطجا - لوگو ایرلاین"
             />
             <p className="font-size-15 xs-font-size-14">{airline}</p>
           </div>

@@ -24,7 +24,7 @@ const EditProfile = () => {
               <div className="col-lg-4 text-center">
                 <img
                   src="https://profiles.utdallas.edu/img/default.png"
-                  alt="User Profile"
+                  alt="بلیطجا - عکس پروفایل کاربر"
                   className="img-fluid img-responsive rounded-circle border-black profile-img"
                 />
                 <div className="button-wrapper">

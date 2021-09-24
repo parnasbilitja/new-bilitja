@@ -159,9 +159,10 @@ class NavBar extends React.Component {
               <img
                 className={styles["logo"]}
                 src="../../../Images/logo512.png"
+                alt="بلیطجا - لوگو"
               />
             </a>
-            <p className="font-size-10">خرید بلیط هواپیما و رزرو اقامتگاه</p>
+            <h1 className="font-size-10">خرید بلیط هواپیما و رزرو اقامتگاه</h1>
           </div>
         </div>
       </nav>

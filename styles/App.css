@@ -436,6 +436,12 @@ input[type="button"]:hover {
 .mt-100 {
   margin-top: 100px;
 }
+.mt-110 {
+  margin-top: 110px;
+}
+.mt-90 {
+  margin-top: 90px;
+}
 .pt-10 {
   padding-top: 10px;
 }

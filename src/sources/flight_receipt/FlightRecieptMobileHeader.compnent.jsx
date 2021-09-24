@@ -37,6 +37,7 @@ const FlightReceiptMobileHero = (props) =>
           </div>
           <div className="col-4">
             <img
+              alt="بلیطجا - لوگو ایرلاین"
               className="airline-icon"
               src={globals.website + `Airlines/${props.airlineCode}.png?ver=1`}
             />

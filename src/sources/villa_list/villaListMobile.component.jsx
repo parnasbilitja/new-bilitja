@@ -25,7 +25,10 @@ const villaListMobile = ({ history, villaList }) => {
             <div className="hotel_row_mobile">
               <div className="row">
                 <div className="col-5">
-                  <img alt="" src="../../../Images/hotel_view.jpg" />
+                  <img
+                    alt="بلیطجا - پیشنمایش هتل"
+                    src="../../../Images/hotel_view.jpg"
+                  />
                 </div>
                 <div className="col-7 text-right no-padding">
                   <div className="row">

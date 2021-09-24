@@ -28,7 +28,10 @@ const FlightRecieptDesktopHeader = (props) =>
                 </div>
               </div>
               <div className="p-10">
-                <img alt="" src="../../../../../Images/airplane_reserve.png" />
+                <img
+                  alt="بلیطجا- لوگو رزور بلیط هواپیما"
+                  src="../../../../../Images/airplane_reserve.png"
+                />
               </div>
               <div className="row">
                 <div className="col-lg-8 col-md-8 col-sm-8 col-6 text-right">
@@ -59,6 +62,7 @@ const FlightRecieptDesktopHeader = (props) =>
                       globals.website +
                       `Airlines/${props.airlineCode}.png?ver=1`
                     }
+                    alt="بلیطجا - لوگو ایرلاین"
                   />
                   <p>
                     ایرلاین :{" "}
@@ -69,7 +73,7 @@ const FlightRecieptDesktopHeader = (props) =>
                   <br />
                   <div>
                     <img
-                      alt=""
+                      alt="بلیطجا - لوگو رزرو بلیط"
                       src="../../../../../Images/airplane_reserve_small.png"
                     />
                     <p>
@@ -95,6 +99,7 @@ const FlightRecieptDesktopHeader = (props) =>
                 <div className="col-lg-3 col-md-3 col-sm-3 col-6">
                   <img
                     src="../../../../../Images/barcode.png"
+                    alt="بلیطجا - بارکد"
                     className="imgbarcode"
                   />
                 </div>

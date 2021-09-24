@@ -35,7 +35,10 @@ const PaymentReceiptDesktopHeader = (props) => {
                 </div>
               </div>
               <div className="p-10">
-                <img alt="" src="../../../../../Images/airplane_reserve.png" />
+                <img
+                  alt="بلیطجا - رزرو بلیط هواپیما"
+                  src="../../../../../Images/airplane_reserve.png"
+                />
               </div>
               <div className="row">
                 <div className="col-lg-8 col-md-8 col-sm-8 col-6 text-right">
@@ -66,6 +69,7 @@ const PaymentReceiptDesktopHeader = (props) => {
                       globals.website +
                       `Airlines/${flight_info.airlineCode}.png?ver=1`
                     }
+                    alt="بلیطجا - لوگو ایرلاین"
                   />
                   <p>
                     ایرلاین :{" "}
@@ -78,7 +82,7 @@ const PaymentReceiptDesktopHeader = (props) => {
                   <br />
                   <div>
                     <img
-                      alt=""
+                      alt="بلیطجا - لوگو رزرو بلیط هواپیما"
                       src="../../../../../Images/airplane_reserve_small.png"
                     />
                     <p>
@@ -95,6 +99,7 @@ const PaymentReceiptDesktopHeader = (props) => {
                   <img
                     src="../../../../../Images/barcode.png"
                     className="imgbarcode barcode-img"
+                    alt="بلیطجا - بارکد"
                   />
                 </div>
               </div>
