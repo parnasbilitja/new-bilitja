@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 
 import { store, persistor } from "../Redux/store";
-import AddVilla from "../../src/sources/manager/villa/AddVilla.page";
-import Villa from "../../src/sources/manager/villa/Villa.page";
-import VillaDetial from "../../src/sources/manager/villa/VilaDetail.page";
+import AddVilla from "../sources/manager/villa/AddVilla.page";
+import Villa from "../sources/manager/villa/Villa.page";
+import VillaDetial from "../sources/manager/villa/VilaDetail.page";
 import { useRouter } from "next/router";
 
 import ManagerNav from "../sources/manager/ManagerNav.component";
@@ -23,11 +23,11 @@ import UpdateVila from "../sources/manager/villa/UpdateVila.page";
 import VilaDetial from "../sources/manager/villa/VilaDetail.page";
 import VilaReservation from "../sources/manager/villa/VilaReservation.page";
 
-import Profile from "./../sources/manager/profile/Profile.component";
-import ComplateProfile from "./../sources/manager/profile/ComplateProfile.component";
-import EditProfile from "./../sources/manager/profile/EditProfile.component";
-import ChangePassword from "./../sources/manager/profile/ChangePassword.components";
-import { Panel } from "./../sources/manager/index/Panel";
+import Profile from "../sources/manager/profile/Profile.component";
+import ComplateProfile from "../sources/manager/profile/ComplateProfile.component";
+import EditProfile from "../sources/manager/profile/EditProfile.component";
+import ChangePassword from "../sources/manager/profile/ChangePassword.components";
+import { Panel } from "../sources/manager/index/Panel";
 
 export default function ManagePanel() {
   const myRouter = useRouter();

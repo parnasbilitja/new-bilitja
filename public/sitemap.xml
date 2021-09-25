@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://bilitjassrnew.vercel.appapi/hello</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://bilitjassrnew.vercel.app/404</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://bilitjassrnew.vercel.app/callbackbank</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://bilitjassrnew.vercel.app/dashboard</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://bilitjassrnew.vercel.app/flights</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://bilitjassrnew.vercel.app</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://bilitjassrnew.vercel.app/panel</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://bilitjassrnew.vercel.app/payment-receipt</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://bilitjassrnew.vercel.app/testx</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://bilitjassrnew.vercel.app/villa</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://bilitjassrnew.vercel.app/_app</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://bilitjassrnew.vercel.app/_document</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://bilitjassrnew.vercel.app/scripts/generate-sitemap.mjs</loc>
+    <lastmod>2021-09-25T14:21:05.682Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+</urlset>
