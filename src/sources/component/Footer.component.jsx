@@ -4,8 +4,9 @@ import React from "react";
 
 import styles from "../../../styles/Footer.module.scss";
 
-import { faPhone, faGlobe, faMap } from "@fortawesome/free-solid-svg-icons";
+import { faPhone, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Instagram, Twitter, Facebook } from "@material-ui/icons";
 // just view, without any functionality
 const Footer = () => {
   return (
@@ -26,19 +27,34 @@ const Footer = () => {
             <h3> مقاصد داخلی </h3>
             <ul>
               <li>
-                <a href="#">اصفهان</a>{" "}
+                <h6>
+                  {" "}
+                  <a href="#">اصفهان</a>
+                </h6>
               </li>
               <li>
-                <a href="#">کیش</a>
+                <h6>
+                  {" "}
+                  <a href="#">کیش</a>
+                </h6>
               </li>
               <li>
-                <a href="#">یزد</a>
+                <h6>
+                  {" "}
+                  <a href="#">یزد</a>
+                </h6>
               </li>
               <li>
-                <a href="#">کرمانشاه</a>
+                <h6>
+                  {" "}
+                  <a href="#">کرمانشاه</a>
+                </h6>
               </li>
               <li>
-                <a href="#">مشهد</a>
+                <h6>
+                  {" "}
+                  <a href="#">مشهد</a>
+                </h6>
               </li>
             </ul>
           </div>
@@ -46,16 +62,28 @@ const Footer = () => {
             <h3> مقاصد خارجی </h3>
             <ul>
               <li>
-                <a href="#">ترکیه</a>{" "}
+                <h6>
+                  {" "}
+                  <a href="#">ترکیه</a>
+                </h6>
               </li>
               <li>
-                <a href="#">گرجستان</a>
+                <h6>
+                  {" "}
+                  <a href="#">گرجستان</a>
+                </h6>
               </li>
               <li>
-                <a href="#">دبی</a>
+                <h6>
+                  {" "}
+                  <a href="#">دبی</a>
+                </h6>
               </li>
               <li>
-                <a href="#">آنتالیا</a>
+                <h6>
+                  {" "}
+                  <a href="#">آنتالیا</a>
+                </h6>
               </li>
             </ul>
           </div>
@@ -103,7 +131,25 @@ const Footer = () => {
               </li>
               <li>
                 <FontAwesomeIcon icon={faGlobe} />
-                <a href="#"></a>
+                <a href="#">bilitja.com</a>
+              </li>
+              <li>
+                <a href="https://instagram.com/hamnavaz.tour">
+                  <Instagram />
+                </a>
+                <a href="https://instagram.com/hamnavaz.tour">hamnavaz.tour</a>
+              </li>
+              <li>
+                <a href="https://twitter.com/Hamnavaz_com">
+                  <Twitter />
+                </a>
+                <a href="https://twitter.com/Hamnavaz_com">Hamnavaz_com</a>
+              </li>
+              <li>
+                <a href="https://facebook.com/Hamnavaz_com">
+                  <Facebook />
+                </a>
+                <a href="https://facebook.com/Hamnavaz_com">Hamnavaz_com</a>
               </li>
             </ul>
           </div>
