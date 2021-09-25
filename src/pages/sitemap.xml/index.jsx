@@ -34,7 +34,7 @@ export const getServerSideprops = async ({ res }) => {
   }, []);
   const sitemapContent = buildSitemapXml(transformedData);
 
-  res.setHeader("Content-Type", "text/xml");
+  res.setHeader("Content-Type", "application/xml");
   res.write(sitemapContent);
 
   res.end();
