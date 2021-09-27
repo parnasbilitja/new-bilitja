@@ -160,9 +160,7 @@ class FlightPassengerForm extends React.Component {
                     );
                   }}
                 >
-                  <option value="IR" selected="selected">
-                    ایرانی
-                  </option>
+                  <option value="IR">ایرانی</option>
                   <option value="other">خارجی</option>
                 </PrimarySelectInput>
               </div>
@@ -195,14 +193,23 @@ class FlightPassengerForm extends React.Component {
                       this.props.nationality == "IR" ? "numeric" : "text"
                     }`}
                     onChange={(e) => {
-                      if (!checkNumber(e.target.value)) {
-                        return;
+                      if (this.props.nationality == "other") {
+                        this.props.fillPassengersData(
+                          "code",
+                          this.props.id,
+                          e.target.value
+                        );
+                      } else {
+                        if (!checkNumber(e.target.value)) {
+                          return;
+                        } else {
+                          this.props.fillPassengersData(
+                            "code",
+                            this.props.id,
+                            e.target.value
+                          );
+                        }
                       }
-                      this.props.fillPassengersData(
-                        "code",
-                        this.props.id,
-                        e.target.value
-                      );
                     }}
                     defaultValue={this.props.code}
                   />

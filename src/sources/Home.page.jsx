@@ -120,7 +120,7 @@ class Home extends React.Component {
                     alt="بلیطجا-لوگو خرید بلیط هواپیما"
                     src="../../../Images/service1.png"
                   />
-                  <h2 className="font-bold-iransanse">
+                  <h2 className="font-bold-iransanse font-size-24 font-bold ">
                     <span>خرید بلیط هواپیما &nbsp;</span>
                     <span className="color-primary">با چند کلیک</span>
                   </h2>
@@ -137,7 +137,7 @@ class Home extends React.Component {
                     alt="بلیطجا- لوگو پذیرش میزبانی"
                     src="../../../Images/service3.png"
                   />
-                  <h2 className="font-bold-iransanse">
+                  <h2 className="font-bold-iransanse font-size-24 font-bold">
                     <span className="color-primary">پذیرش میزبانی &nbsp;</span>
                     <span>ویلا و اقامتگاه</span>
                   </h2>
@@ -194,7 +194,7 @@ class Home extends React.Component {
               <div>
                 <a href="بلیط-هواپیما/تهران/مشهد/">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-16">
+                  <span className="pull-right font-size-14">
                     بلیط هواپیما مشهد
                   </span>
                 </a>
@@ -203,7 +203,7 @@ class Home extends React.Component {
               <div>
                 <a href="بلیط-هواپیما/تهران/اصفهان">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-16">
+                  <span className="pull-right font-size-14">
                     بلیط هواپیما کیش
                   </span>
                 </a>
@@ -212,7 +212,7 @@ class Home extends React.Component {
               <div>
                 <a href="بلیط-هواپیما/تهران/مشهد">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-16">
+                  <span className="pull-right font-size-13">
                     بلیط هواپیما اصفهان
                   </span>
                 </a>
@@ -221,7 +221,7 @@ class Home extends React.Component {
               <div>
                 <a href="بلیط-هواپیما/تهران/اهواز">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-16">
+                  <span className="pull-right font-size-14">
                     بلیط هواپیما اهواز
                   </span>
                 </a>
@@ -230,7 +230,7 @@ class Home extends React.Component {
               <div>
                 <a href="بلیط-هواپیما/تهران/تبریز">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-16">
+                  <span className="pull-right font-size-14">
                     بلیط هواپیما تبریز
                   </span>
                 </a>
@@ -239,7 +239,7 @@ class Home extends React.Component {
               <div>
                 <a href="بلیط-هواپیما/تهران/شیراز">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-16">
+                  <span className="pull-right font-size-14">
                     بلیط هواپیما شیراز
                   </span>
                 </a>
@@ -250,7 +250,7 @@ class Home extends React.Component {
               <div>
                 <a href="بلیط-هواپیما/تهران/استانبول">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-15">
+                  <span className="pull-right font-size-13">
                     بلیط هواپیما استانبول
                   </span>
                 </a>
@@ -259,7 +259,7 @@ class Home extends React.Component {
               <div>
                 <a href="بلیط-هواپیما/تهران/دبی">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-16">
+                  <span className="pull-right font-size-14">
                     بلیط هواپیما دبی
                   </span>
                 </a>
@@ -268,7 +268,7 @@ class Home extends React.Component {
               <div>
                 <a href="بلیط-هواپیما/تهران/تفلیس">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-16">
+                  <span className="pull-right font-size-14">
                     بلیط هواپیما تفلیس
                   </span>
                 </a>
@@ -277,7 +277,7 @@ class Home extends React.Component {
               <div>
                 <a href="بلیط-هواپیما/تهران/مشهد">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-16">
+                  <span className="pull-right font-size-14">
                     بلیط هواپیما مشهد
                   </span>
                 </a>
@@ -295,7 +295,7 @@ class Home extends React.Component {
               <div>
                 <a href="بلیط-هواپیما/تهران/نجف">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-16">
+                  <span className="pull-right font-size-14">
                     بلیط هواپیما نجف
                   </span>
                 </a>

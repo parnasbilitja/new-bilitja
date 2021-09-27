@@ -482,6 +482,9 @@ input[type="button"]:hover {
 .p-15 {
   padding: 15px;
 }
+.font-bold {
+  font-weight: bold !important;
+}
 
 .accommodation-back {
   margin-top: 8px;

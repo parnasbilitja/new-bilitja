@@ -393,7 +393,9 @@ class GetFlightList extends React.Component {
             <div className="row">
               <div className="col-lg-9 col-md-8 col-sm-8 col-12 padding-5px">
                 {this.state.loading ? (
-                  <Loading />
+                  <div className="mt-4">
+                    <Loading />
+                  </div>
                 ) : this.state.flights ? (
                   <div>
                     <div className="visible-xs">
