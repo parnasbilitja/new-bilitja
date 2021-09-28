@@ -146,7 +146,7 @@ class NavBarMobile extends React.Component {
           </div>
           <img
             alt="بلیطجا - لوگو"
-            src="../../../Images/logo512.png"
+            src="../../../Images/logo512.webp"
             className="pull-left"
           />
         </div>
