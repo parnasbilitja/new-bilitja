@@ -57,11 +57,11 @@ class GetFlightList extends React.Component {
       slide: false,
     });
   };
+
   componentDidUpdate() {
     const path = this.props.router.asPath;
     const src = decodeURI(path.split("/")[2]);
     const dest = decodeURI(path.split("/")[3]);
-
     window.onpopstate = (e) => {
       const source = this.props.mohammadsalehAirportsList.find(
         (x) => x.airportName == src
@@ -69,6 +69,7 @@ class GetFlightList extends React.Component {
       const destinationn = this.props.mohammadsalehAirportsList.find(
         (x) => x.airportName == dest
       );
+
       this.props
         .addCredentials({
           sourceName: source.airportName,
@@ -336,6 +337,10 @@ class GetFlightList extends React.Component {
   };
 
   render() {
+    const path = this.props.router.asPath;
+    const src = decodeURI(path.split("/")[2]);
+    const dest = decodeURI(path.split("/")[3]);
+
     return (
       <div className={`container-fluid ${styles["flight-container"]}`}>
         <div className={`row text-right ${styles["hidden-xs-flight"]}`}>
@@ -415,14 +420,10 @@ class GetFlightList extends React.Component {
                   <>
                     <p className="text-center mx-3">
                       متاسفانه هیچ پروازی از{" "}
-                      <strong className="text-danger">
-                        {this.state.sourceName}
-                      </strong>{" "}
+                      <strong className="text-danger">{src}</strong>{" "}
                       <strong>به </strong>
-                      <strong className="text-danger">
-                        {this.state.destinationName}
-                      </strong>{" "}
-                      یافت نشد لطفا از تقویم زیر انتخاب کنید.
+                      <strong className="text-danger">{dest}</strong> یافت نشد
+                      لطفا از تقویم زیر انتخاب کنید.
                     </p>
                     <MinimumPriceCalendar refreshAction={this.getData} />
                   </>
