@@ -58,7 +58,7 @@ class villa extends React.Component {
           <div className="col-md-4">
             <img
               alt="بلیطجا- لوگو"
-              src="../../../Images/map.png"
+              src="../../../Images/map.webp"
               className={`${styles["hero-image-2"]} pull-right`}
             />
           </div>
@@ -91,7 +91,7 @@ class villa extends React.Component {
         <div className={styles["hero-big-image"]}>
           <img
             alt="بلیطجا - لوگو پذیرش میزبان"
-            src="../../../Images/villa-index.png"
+            src="../../../Images/villa-index.webp"
           />
         </div>
 

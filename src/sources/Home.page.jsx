@@ -74,7 +74,7 @@ class Home extends React.Component {
           <div className="col-md-4">
             <img
               alt="بلیطجا- لوگو"
-              src="../../../Images/map.png"
+              src="../../../Images/map.webp"
               className={`${styles["hero-image-2"]} pull-right`}
             />
           </div>
@@ -106,7 +106,7 @@ class Home extends React.Component {
           </div>
         </div>
         <div className={`${styles["hero-big-image"]} container`}>
-          <img alt="بلیطجا-اسلایدر" src="../../../Images/flight-index.png" />
+          <img alt="بلیطجا-اسلایدر" src="../../../Images/flight-index.webp" />
         </div>
 
         <div className="row padding-xs-5-15">
@@ -118,7 +118,7 @@ class Home extends React.Component {
                 <div className={styles["home-value-propsal"]}>
                   <img
                     alt="بلیطجا-لوگو خرید بلیط هواپیما"
-                    src="../../../Images/service1.png"
+                    src="../../../Images/service1.webp"
                   />
                   <h2 className="font-bold-iransanse font-size-24 font-bold ">
                     <span>خرید بلیط هواپیما &nbsp;</span>
@@ -135,7 +135,7 @@ class Home extends React.Component {
                 <div className={styles["home-value-propsal"]}>
                   <img
                     alt="بلیطجا- لوگو پذیرش میزبانی"
-                    src="../../../Images/service3.png"
+                    src="../../../Images/service3.webp"
                   />
                   <h2 className="font-bold-iransanse font-size-24 font-bold">
                     <span className="color-primary">پذیرش میزبانی &nbsp;</span>
