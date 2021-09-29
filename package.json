@@ -6,8 +6,7 @@
     "dev": "next dev -p 3008",
     "build": "next build",
     "start": "next start -p 3008",
-    "export": "npm run build && next export ",
-    "postbuild": "node ./src/pages/scripts/generate-sitemap.mjs"
+    "export": "npm run build && next export "
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
