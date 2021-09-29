@@ -506,7 +506,14 @@ class AddVilaDesktop extends React.Component {
               />
               {this.state.file ? (
                 <div className={`h-100 ${styles["uploaded-image-box"]}`}>
-                  <img alt="بلیطجا - تصویر اقامتگاه" src={this.state.file} />
+                  <img
+                    width=""
+                    height=""
+                    width=""
+                    height=""
+                    alt="بلیطجا - تصویر اقامتگاه"
+                    src={this.state.file}
+                  />
                   <FontAwesomeIcon
                     icon={faTimes}
                     onClick={() => {

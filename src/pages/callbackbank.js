@@ -38,8 +38,10 @@ function Page({ data, PaymentInfo }) {
           <div className="row">
             <div className="col-12 text-center mb-5">
               <img
+                width=""
+                height=""
                 alt=""
-                src="../../Images/bilitja.png"
+                src="../../Images/bilitja.webp"
                 className="img-fluid "
               />
             </div>

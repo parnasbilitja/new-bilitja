@@ -1,6 +1,6 @@
 import React from "react";
 
-//import footerLogo from '../../../Images/bilitja-light-logo.png'
+//import footerLogo from '../../../Images/bilitja-light-logo.webp'
 
 import styles from "../../../styles/Footer.module.scss";
 
@@ -17,8 +17,10 @@ const Footer = () => {
             className={`col-lg-2 col-md-12 col-sm-12 col-12 ${styles["footer-logo"]}`}
           >
             <img
+              width=""
+              height=""
               alt="بلیطجا-لوگو"
-              src="../../../Images/bilitja-light-logo.png"
+              src="../../../Images/bilitja-light-logo.webp"
             />
             <p>ارزان ترین بلیط های هواپیما</p>
             <a href="">www. B i l i t j a .com</a>

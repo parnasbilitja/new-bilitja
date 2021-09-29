@@ -22,7 +22,13 @@ class villaFilterList extends React.Component {
             <div className="radio">
               <input type="checkbox" className="radio" />
             </div>
-            <img alt="بلیطجا - لوگو فیلتر منظره" />
+            <img
+              width=""
+              height=""
+              width=""
+              height=""
+              alt="بلیطجا - لوگو فیلتر منظره"
+            />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
             </label>
@@ -31,7 +37,13 @@ class villaFilterList extends React.Component {
             <div className="radio">
               <input type="checkbox" className="radio" />
             </div>
-            <img alt="بلیطجا - لوگو فیلتر منظره" />
+            <img
+              width=""
+              height=""
+              width=""
+              height=""
+              alt="بلیطجا - لوگو فیلتر منظره"
+            />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
             </label>
@@ -40,7 +52,13 @@ class villaFilterList extends React.Component {
             <div className="radio">
               <input type="checkbox" className="radio" />
             </div>
-            <img alt="بلیطجا - لوگو فیلتر منظره" />
+            <img
+              width=""
+              height=""
+              width=""
+              height=""
+              alt="بلیطجا - لوگو فیلتر منظره"
+            />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
             </label>
@@ -49,7 +67,13 @@ class villaFilterList extends React.Component {
             <div className="radio">
               <input type="checkbox" className="radio" />
             </div>
-            <img alt="بلیطجا - لوگو فیلتر منظره" />
+            <img
+              width=""
+              height=""
+              width=""
+              height=""
+              alt="بلیطجا - لوگو فیلتر منظره"
+            />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
             </label>
@@ -58,7 +82,13 @@ class villaFilterList extends React.Component {
             <div className="radio">
               <input type="checkbox" className="radio" />
             </div>
-            <img alt="بلیطجا - لوگو فیلتر منظره" />
+            <img
+              width=""
+              height=""
+              width=""
+              height=""
+              alt="بلیطجا - لوگو فیلتر منظره"
+            />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
             </label>
@@ -70,7 +100,13 @@ class villaFilterList extends React.Component {
             <div className="radio">
               <input type="checkbox" className="radio" />
             </div>
-            <img alt="بلیطجا - لوگو فیلتر منظره" />
+            <img
+              width=""
+              height=""
+              width=""
+              height=""
+              alt="بلیطجا - لوگو فیلتر منظره"
+            />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
             </label>
@@ -79,7 +115,13 @@ class villaFilterList extends React.Component {
             <div className="radio">
               <input type="checkbox" className="radio" />
             </div>
-            <img alt="بلیطجا - لوگو فیلتر منظره" />
+            <img
+              width=""
+              height=""
+              width=""
+              height=""
+              alt="بلیطجا - لوگو فیلتر منظره"
+            />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
             </label>
@@ -88,7 +130,13 @@ class villaFilterList extends React.Component {
             <div className="radio">
               <input type="checkbox" className="radio" />
             </div>
-            <img alt="بلیطجا - لوگو فیلتر منظره" />
+            <img
+              width=""
+              height=""
+              width=""
+              height=""
+              alt="بلیطجا - لوگو فیلتر منظره"
+            />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
             </label>
@@ -97,7 +145,13 @@ class villaFilterList extends React.Component {
             <div className="radio">
               <input type="checkbox" className="radio" />
             </div>
-            <img alt="بلیطجا - لوگو فیلتر منظره" />
+            <img
+              width=""
+              height=""
+              width=""
+              height=""
+              alt="بلیطجا - لوگو فیلتر منظره"
+            />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
             </label>

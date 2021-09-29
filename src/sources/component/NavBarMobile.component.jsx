@@ -1,6 +1,6 @@
 import React from "react";
 //import logo from '../../../Images/logo512.png'
-//import footerLogo from '../../../Images/bilitja-light-logo.png'
+//import footerLogo from '../../../Images/bilitja-light-logo.webp'
 import styles from "../../../styles/NavBarMobile.module.scss";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -145,6 +145,8 @@ class NavBarMobile extends React.Component {
             </h1>
           </div>
           <img
+            width=""
+            height=""
             alt="بلیطجا - لوگو"
             src="../../../Images/logo512.webp"
             className="pull-left"
@@ -163,8 +165,10 @@ class NavBarMobile extends React.Component {
             <div className={styles["logo-menu-mobile"]}>
               <a href="/">
                 <img
+                  width=""
+                  height=""
                   alt="بلیطجا - لوگو"
-                  src="../../../Images/bilitja-light-logo.png"
+                  src="../../../Images/bilitja-light-logo.webp"
                 />
               </a>
               <p className="no-margin color-white">

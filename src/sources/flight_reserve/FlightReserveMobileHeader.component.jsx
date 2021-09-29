@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-//import airplaneReserveSmall from '../../../Images/airplane_reserve_small.png'
+//import airplaneReserveSmall from '../../../Images/airplane_reserve_small.webp'
 import { faClock, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import globals from "../Global";
@@ -40,6 +40,8 @@ const FlightReserveMobileHeader = (props) =>
           </div>
           <div className="col-4">
             <img
+              width=""
+              height=""
               className="airline-icon"
               src={globals.website + `Airlines/${props.airlineCode}.png?ver=1`}
               alt="بلیطجا - لوگو ایرلاین"

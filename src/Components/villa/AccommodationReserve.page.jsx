@@ -72,7 +72,7 @@ class AccommodationReserve extends React.Component {
           <div className="col-lg-10 col-12">
             <div className="row">
               <div className="col-lg-8 col-md-8 col-sm-12 col-12 no-padding">
-                <imgSlider />
+                <img width="" height="" Slider />
                 <br />
                 <br />
                 <div className="border-pill text-right">

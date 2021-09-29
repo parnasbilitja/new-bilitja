@@ -2,9 +2,9 @@ import React from "react";
 import Image from "next/image";
 import VillaSearchBox from "./villaSearchBox.component";
 import PageTabls from "../component/PageTabs.component";
-//import earth from '../../../Images/earth.png'
+//import earth from '../../../Images/earth.webp'
 //import map from '../../../Images/map.png'
-//import bilitja from '../../../Images/bilitja.png'
+//import bilitja from '../../../Images/bilitja.webp'
 //import vilaIndex from '../../../Images/villa-index.png'
 //import hotelView from '../../../Images/hotel_view.jpg'
 import moment from "moment-jalaali";
@@ -57,6 +57,8 @@ class villa extends React.Component {
         <div className="hidden-xs hidden-sm row">
           <div className="col-md-4">
             <img
+              width=""
+              height=""
               alt="بلیطجا- لوگو"
               src="../../../Images/map.webp"
               className={`${styles["hero-image-2"]} pull-right`}
@@ -65,15 +67,19 @@ class villa extends React.Component {
 
           <div className="text-center col-md-4 pt-10">
             <img
+              width=""
+              height=""
               alt="بلیطجا- لوگو"
-              src="../../../Images/bilitja.png"
+              src="../../../Images/bilitja.webp"
               className={styles["hero-image-center"]}
             />
           </div>
           <div className="col-md-4">
             <img
+              width=""
+              height=""
               alt="بلیطجا- لوگو"
-              src="../../../Images/earth.png"
+              src="../../../Images/earth.webp"
               className={`${styles["hero-image-1"]} pull-left`}
             />
           </div>
@@ -90,6 +96,8 @@ class villa extends React.Component {
         </div>
         <div className={styles["hero-big-image"]}>
           <img
+            width=""
+            height=""
             alt="بلیطجا - لوگو پذیرش میزبان"
             src="../../../Images/villa-index.webp"
           />
@@ -162,6 +170,8 @@ class villa extends React.Component {
                   className={`col-lg-3 col-md-3 col-sm-6 col-12 ${styles["villa-suggestion"]}`}
                 >
                   <img
+                    width=""
+                    height=""
                     alt="بلیطجا - پیش نمایش ویلا"
                     src="../../../Images/hotel_view.jpg"
                   />

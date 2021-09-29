@@ -186,6 +186,8 @@ class Filters extends React.Component {
                     />
                   </div>
                   <img
+                    width=""
+                    height=""
                     src={
                       globals.website +
                       `Airlines/${oneAirline.airlineIataCode}.png?ver=1`

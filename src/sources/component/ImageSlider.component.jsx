@@ -27,6 +27,8 @@ class ImageSlider extends React.Component {
       <div className="image-slider-main-container">
         {images.map((image, index) => (
           <img
+            width=""
+            height=""
             alt="بلیطجا - اسلایدر"
             src={image}
             className={`${
@@ -69,7 +71,14 @@ class ImageSlider extends React.Component {
                 });
               }}
             >
-              <img alt="بلیطجا - اسلایدر" src={image} />
+              <img
+                width=""
+                height=""
+                width=""
+                height=""
+                alt="بلیطجا - اسلایدر"
+                src={image}
+              />
             </div>
           ))}
         </div>

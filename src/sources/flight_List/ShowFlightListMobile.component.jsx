@@ -62,6 +62,8 @@ class ShowFlightListMobile extends React.Component {
               <div>
                 <div className={styles["mobile-one-row-provider"]}>
                   <img
+                    width=""
+                    height=""
                     src={
                       globals.website +
                       `Airlines/${oneFlight.airlineIataCode}.png?ver=1`
