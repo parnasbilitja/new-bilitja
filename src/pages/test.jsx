@@ -120,7 +120,7 @@ export async function getServerSideProps({ req }) {
 //     >
 //       <div className="row">
 //         <div className="col-12 text-center mb-5">
-//           <img alt="" src="../../../Images/bilitja.png" className="img-fluid " />
+//           <img width="" height=""  width="" height="" alt="" src="../../../Images/bilitja.webp" className="img-fluid " />
 //         </div>
 //         <br />
 //         <div>

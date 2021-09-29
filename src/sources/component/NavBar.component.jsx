@@ -157,6 +157,8 @@ class NavBar extends React.Component {
           <div>
             <a href="/">
               <img
+                width=""
+                height=""
                 className={styles["logo"]}
                 src="../../../Images/logo512.webp"
                 alt="بلیطجا - لوگو"

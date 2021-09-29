@@ -96,6 +96,8 @@ const EditProfile = (props) => {
             <div className="row my-3">
               <div className="col-lg-4 text-center">
                 <img
+                  width=""
+                  height=""
                   src="https://profiles.utdallas.edu/img/default.png"
                   alt="User Profile"
                   className="img-fluid img-responsive rounded-circle border-black profile-img"

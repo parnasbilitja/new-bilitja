@@ -1,5 +1,5 @@
 import React from "react";
-//import firstTime from '../../../Images/first-time.png'
+//import firstTime from '../../../Images/first-time.webp'
 import styles from "../../../styles/BecomeMizban.module.scss";
 import stylesTrack from "../../../styles/TrackOrder.module.scss";
 import PrimaryTextInput from "../component/PrimaryTextInput.component";
@@ -16,8 +16,10 @@ const BecomeMizban = () => {
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-6 col-12 text-center">
                 <img
+                  width=""
+                  height=""
                   alt="بلیطجا-لوگو میزبان شوید"
-                  src="../../../Images/first-time.png"
+                  src="../../../Images/first-time.webp"
                 />
               </div>
               <div className="col-lg-6 col-md-6 col-sm-6 col-12 margin-top-20px text-right">

@@ -28,6 +28,8 @@ const villaListDesktop = ({ history, villaList }) => {
               <div className="row">
                 <div className="col-lg-4 col-md-4 col-sm-4">
                   <img
+                    width=""
+                    height=""
                     alt="بلیطجا - پیشنمایش هتل"
                     src="../../../Images/hotel_view.jpg"
                   />

@@ -107,6 +107,8 @@ class Villa extends React.Component {
                 <div className="row">
                   <div className="col-lg-2 col-5">
                     <img
+                      width=""
+                      height=""
                       src="http://kilo.website/Files/69a3656b-6b79-445d-82b5-dd10df2eba1f_نما 5.jpg"
                       className="rounded img-fluid img-responsive m-3"
                       alt="بلیطجا - پیشنمایش ویلا"

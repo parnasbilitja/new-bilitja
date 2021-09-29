@@ -58,6 +58,8 @@ const ShowFlightList = (props) => {
 
             <div className={styles["one-row-provider"]}>
               <img
+                width=""
+                height=""
                 src={
                   globals.website +
                   `Airlines/${oneFlight.airlineIataCode}.png?ver=1`

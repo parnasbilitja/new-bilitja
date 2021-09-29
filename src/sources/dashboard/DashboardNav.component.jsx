@@ -29,7 +29,14 @@ const DashboardNav = (props) => {
         }`}
       >
         <div className={styles["manager-nav-header"]}>
-          <img alt="بلیطجا - لوگو" src="../../../Images/bilitja-logo.png" />
+          <img
+            width=""
+            height=""
+            width=""
+            height=""
+            alt="بلیطجا - لوگو"
+            src="../../../Images/bilitja-logo.png"
+          />
         </div>
         <div
           className={

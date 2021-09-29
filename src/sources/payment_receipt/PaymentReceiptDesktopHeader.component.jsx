@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-//import airplaneReserve from '../../../Images/airplane_reserve.png'
-//import airplaneReserveSmall from '../../../Images/airplane_reserve_small.png'
-//import barcode from '../../../Images/barcode.png'
+//import airplaneReserve from '../../../Images/airplane_reserve.webp'
+//import airplaneReserveSmall from '../../../Images/airplane_reserve_small.webp'
+//import barcode from '../../../Images/barcode.webp'
 import globals from "../Global";
 import styles from "../../../styles/FlightReciept.module.scss";
 
@@ -36,8 +36,10 @@ const PaymentReceiptDesktopHeader = (props) => {
               </div>
               <div className="p-10">
                 <img
+                  width=""
+                  height=""
                   alt="بلیطجا - رزرو بلیط هواپیما"
-                  src="../../../../../Images/airplane_reserve.png"
+                  src="../../../../../Images/airplane_reserve.webp"
                 />
               </div>
               <div className="row">
@@ -64,6 +66,8 @@ const PaymentReceiptDesktopHeader = (props) => {
                 <div className="col-lg-3 col-md-3 col-sm-3 col-12">
                   <br />
                   <img
+                    width=""
+                    height=""
                     className="airline-image"
                     src={
                       globals.website +
@@ -82,8 +86,10 @@ const PaymentReceiptDesktopHeader = (props) => {
                   <br />
                   <div>
                     <img
+                      width=""
+                      height=""
                       alt="بلیطجا - لوگو رزرو بلیط هواپیما"
-                      src="../../../../../Images/airplane_reserve_small.png"
+                      src="../../../../../Images/airplane_reserve_small.webp"
                     />
                     <p>
                       {" "}
@@ -97,7 +103,9 @@ const PaymentReceiptDesktopHeader = (props) => {
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-3 col-6">
                   <img
-                    src="../../../../../Images/barcode.png"
+                    width=""
+                    height=""
+                    src="../../../../../Images/barcode.webp"
                     className="imgbarcode barcode-img"
                     alt="بلیطجا - بارکد"
                   />

@@ -1,20 +1,9 @@
 import React from "react";
-import Image from "next/image";
 import FlightSearchBox from "./flight_List/FlightSearchBox.component";
 import PageTabls from "./component/PageTabs.component";
-
-//import earth from '../../../Images/earth.png'
-//import map from "../../../Images/map.png"
-//import bilitja from '../../../Images/bilitja.png'
-//import flightIndex from '../../../Images/flight-index.png'
-//import srvice3 from "../../../Images/service3.png"
-//import srvice1 from "../../../Images/service1.png"
 import moment from "moment-jalaali";
-
 import styles from "../../styles/Home.module.scss";
-import globals from "./Global";
-
-import { faPlaneDeparture, faPlane } from "@fortawesome/free-solid-svg-icons";
+import { faPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { selectAirports } from "../Redux/Airports/airport.reselect";
@@ -43,18 +32,6 @@ class Home extends React.Component {
     this.props.getUserInfo({
       mobile: localStorage.getItem("mobile"),
     });
-
-    // Last Code
-    // ----------------
-    // window.addEventListener('resize', this.updateWindowDimensions);
-    // if (!this.props.airports) {
-    //   fetch(`${globals.baseUrl}flights/getAirports`)
-    //     .then((res) => res.json())
-    //     .then((json) => {
-    //       this.props.setAirports(json.flightAirportsModel);
-    //     });
-    // }
-
     if (this.props.account) {
       if (
         compareTwoStringDates(
@@ -73,24 +50,36 @@ class Home extends React.Component {
         <div className="hidden-xs hidden-sm row">
           <div className="col-md-4">
             <img
+              width=""
+              height=""
               alt="بلیطجا- لوگو"
               src="../../../Images/map.webp"
               className={`${styles["hero-image-2"]} pull-right`}
+              width=""
+              height=""
             />
           </div>
 
           <div className="text-center col-md-4 pt-10">
             <img
+              width=""
+              height=""
               alt="بلیطجا - لوگو"
-              src="../../../Images/bilitja.png"
+              src="../../../Images/bilitja.webp"
               className={styles["hero-image-center"]}
+              width=""
+              height=""
             />
           </div>
           <div className="col-md-4">
             <img
+              width=""
+              height=""
               alt="بلیطجا - لوگو"
-              src="../../../Images/earth.png"
+              src="../../../Images/earth.webp"
               className={`${styles["hero-image-1"]} pull-left`}
+              width=""
+              height=""
             />
           </div>
         </div>
@@ -106,7 +95,14 @@ class Home extends React.Component {
           </div>
         </div>
         <div className={`${styles["hero-big-image"]} container`}>
-          <img alt="بلیطجا-اسلایدر" src="../../../Images/flight-index.webp" />
+          <img
+            width=""
+            height=""
+            width=""
+            height=""
+            alt="بلیطجا-اسلایدر"
+            src="../../../Images/flight-index.webp"
+          />
         </div>
 
         <div className="row padding-xs-5-15">
@@ -117,6 +113,8 @@ class Home extends React.Component {
               <div className="col-lg-5 col-md-6 col-sm-12 padding-5px">
                 <div className={styles["home-value-propsal"]}>
                   <img
+                    width=""
+                    height=""
                     alt="بلیطجا-لوگو خرید بلیط هواپیما"
                     src="../../../Images/service1.webp"
                   />
@@ -134,6 +132,8 @@ class Home extends React.Component {
               <div className="col-lg-5 col-md-6 col-sm-12 padding-5px">
                 <div className={styles["home-value-propsal"]}>
                   <img
+                    width=""
+                    height=""
                     alt="بلیطجا- لوگو پذیرش میزبانی"
                     src="../../../Images/service3.webp"
                   />
