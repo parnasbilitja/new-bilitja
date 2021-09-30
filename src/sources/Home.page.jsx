@@ -23,6 +23,7 @@ class Home extends React.Component {
     this.state = {
       open: false,
       dateSelected: null,
+      width: 1024,
     };
   }
   componentDidMount() {
@@ -42,6 +43,9 @@ class Home extends React.Component {
         this.props.addAccountProperties(null);
       }
     }
+    this.setState({
+      width: window.innerWidth,
+    });
   }
 
   render() {
@@ -101,7 +105,11 @@ class Home extends React.Component {
             width=""
             height=""
             alt="بلیطجا-اسلایدر"
-            src="../../../Images/flight-index.webp"
+            src={
+              this.state.width > 768
+                ? "../../../Images/flight-index.webp"
+                : "../../../Images/flight-index-mobile.webp"
+            }
           />
         </div>
 
