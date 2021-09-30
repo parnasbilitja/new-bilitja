@@ -3,14 +3,18 @@ import Head from "next/head";
 //import Styles from '../../styles/icon.module.scss'
 //import '../../styles/manager.module.scss'
 
-import Home from "./../sources/Home.page";
-
-import NavBar from "./../sources/component/NavBar.component";
-import NavBarMobile from "./../sources/component/NavBarMobile.component";
-import Footer from "./../sources/component/Footer.component";
-import MessageBox from "./../sources/component/MessageBox.component";
-import PopUp from "./../sources/component/PopUp.component";
-import Account from "./../sources/account/Account.component";
+import dynamic from "next/dynamic";
+const Home = dynamic(() => import("./../sources/Home.page"));
+const NavBar = dynamic(() => import("./../sources/component/NavBar.component"));
+const NavBarMobile = dynamic(() =>
+  import("./../sources/component/NavBarMobile.component")
+);
+const Footer = dynamic(() => import("./../sources/component/Footer.component"));
+const MessageBox = dynamic(() =>
+  import("./../sources/component/MessageBox.component")
+);
+const PopUp = dynamic(() => import("./../sources/component/PopUp.component"));
+const Account = dynamic(() => import("./../sources/account/Account.component"));
 
 import { connect } from "react-redux";
 import { selcetAccountBox } from "../Redux/UI/ui.reselect";

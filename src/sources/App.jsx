@@ -2,31 +2,21 @@ import React from "react";
 import Head from "next/head";
 //import Styles from '../../styles/icon.module.scss'
 //import '../../styles/manager.module.scss'
-
-import Home from "./Home.page";
-
-import NavBar from "./component/NavBar.component";
-import NavBarMobile from "./component/NavBarMobile.component";
-import Footer from "./component/Footer.component";
-import MessageBox from "./component/MessageBox.component";
-import PopUp from "./component/PopUp.component";
-import Account from "./account/Account.component";
+import dynamic from "next/dynamic";
+const Home = dynamic(() => import("./Home.page"));
+const NavBar = dynamic(() => import("./component/NavBar.component"));
+const NavBarMobile = dynamic(() =>
+  import("./component/NavBarMobile.component")
+);
+const Footer = dynamic(() => import("./component/Footer.component"));
+const MessageBox = dynamic(() => import("./component/MessageBox.component"));
+const PopUp = dynamic(() => import("./component/PopUp.component"));
+const Account = dynamic(() => import("./account/Account.component"));
 
 import { connect } from "react-redux";
 import { selcetAccountBox } from "../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../Redux/UI/ui.action";
 
-import VillaPage from "./villa/villa.page";
-import VillaList from "./villa_list/villaList.page";
-import VillaReserve from "./villa/villaReserve.page";
-import VillaReceipt from "./villa/villaReceipt.page";
-
-import GetFlightList from "./flight_List/GetFlightList.page";
-import FlightReserve from "./flight_reserve/FlightReseve.page";
-import FlightReciept from "./flight_receipt/FlightReciept.page";
-import TrackOrder from "./report/TrackOrder.page";
-
-import BecomeMizban from "./account/BecomeMizban.page";
 import { withRouter } from "next/router";
 
 class App extends React.Component {
@@ -44,35 +34,6 @@ class App extends React.Component {
       case "index": {
         return <Home></Home>;
       }
-      case "flights": {
-        if (pathName.indexOf("info") > 0) {
-          console.log("flightreserve from home");
-          return <FlightReserve />;
-        } else if (pathName.indexOf("receipt") > 0) {
-          return <FlightReciept />;
-        } else if (pathName.indexOf("order") > 0) {
-          return <TrackOrder />;
-        } else {
-          return <GetFlightList />;
-        }
-      }
-      case "villa": {
-        if (pathName.indexOf("intro") > 0) {
-          return <BecomeMizban />;
-        }
-        if (pathName.indexOf("reserve") > 0) {
-          return <VillaReserve />;
-        }
-        if (pathName.indexOf("receipt") > 0) {
-          return <VillaReceipt />;
-        }
-        if (pathName.length < 7) {
-          return <VillaPage />;
-        } else {
-          return <VillaList />;
-        }
-      }
-
       default:
         return (
           <div>
