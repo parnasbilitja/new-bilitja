@@ -268,13 +268,13 @@ class FlightSearchBox extends React.Component {
                     })
                     .then(() => {
                       this.props.router.push(
-                        `/بلیط-هواپیما/${this.props.credentials.sourceName}/${this.props.credentials.destinationName}`
+                        `/flight/${this.props.credentials.sourceName}/${this.props.credentials.destinationName}`
                       );
                       this.props.refreshAction();
                     });
                 } else {
                   this.props.router.push(
-                    `/بلیط-هواپیما/${this.props.credentials.sourceName}/${this.props.credentials.destinationName}`
+                    `/flight/${this.props.credentials.sourceName}/${this.props.credentials.destinationName}`
                   );
                 }
               } else {
