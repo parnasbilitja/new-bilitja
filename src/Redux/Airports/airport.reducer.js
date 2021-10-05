@@ -1,5 +1,5 @@
 import AirportType from "./airport.type";
-import { AirportsList } from "../../../public/static-data/airports-mohammadsaleh.json";
+import  AirportsJson  from "../../../public/static-data/airports-mohammadsaleh.json";
 
 const INITIAL_STATE = {
   airports: null
@@ -9,8 +9,8 @@ const airportReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case AirportType.LOAD_AIRPORTS: {
       return {
-        ...state,    //  add airports to state(airports)
-        airports: AirportsList,   //  airports.airports
+        ...state,    //  merge data in record airportsRecords into state airports 
+        airports: AirportsJson.AirportsList,   //  airports.airports
         
         
         //action.payload,
