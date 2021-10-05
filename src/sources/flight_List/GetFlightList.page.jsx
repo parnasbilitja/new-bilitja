@@ -17,7 +17,7 @@ import { selectSearchObject } from "../../Redux/Search/search.reselect";
 import { selectAirports } from "../../Redux/Airports/airport.reselect";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { addFilters, addCredentials } from "../../Redux/Search/search.action";
-import { addAirports } from "../../Redux/Airports/airport.action";
+import { loadAirports } from "../../Redux/Airports/airport.action";
 
 import {
   faAngleRight,
@@ -63,10 +63,10 @@ class GetFlightList extends React.Component {
     const src = decodeURI(path.split("/")[2]);
     const dest = decodeURI(path.split("/")[3]);
     window.onpopstate = (e) => {
-      const source = this.props.mohammadsalehAirportsList.find(
+      const source = this.props.airports.find(
         (x) => x.airportName == src
       );
-      const destinationn = this.props.mohammadsalehAirportsList.find(
+      const destinationn = this.props.airports.find(
         (x) => x.airportName == dest
       );
 
@@ -106,11 +106,11 @@ class GetFlightList extends React.Component {
 
     // Mohammadsaleh
     if (this.props.credentials.source == "") {
-      if (this.props.mohammadsalehAirportsList) {
-        const source = this.props.mohammadsalehAirportsList.find(
+      if (this.props.airports) {
+        const source = this.props.airports.find(
           (x) => x.airportName == src
         );
-        const destinationn = this.props.mohammadsalehAirportsList.find(
+        const destinationn = this.props.airports.find(
           (x) => x.airportName == dest
         );
         this.props
@@ -552,12 +552,11 @@ class GetFlightList extends React.Component {
 }
 const mapStatesToProps = (state) => ({
   credentials: selectSearchObject(state),
-  airports: selectAirports(state),
-  mohammadsalehAirportsList: state.mohammadsalehAirports,
+  airports: selectAirports(state)
 });
 
 const mapDispatchesToProps = (dispatch) => ({
-  setAirports: (value) => dispatch(addAirports(value)),
+  setAirports: (value) => dispatch(loadAirports(value)),
   addFilters: (value) => dispatch(addFilters(value)),
   addCredentials: async (value) => dispatch(addCredentials(value)),
   messageBoxModify: (value) => dispatch(messageBoxModify(value)),

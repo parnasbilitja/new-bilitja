@@ -13,7 +13,7 @@ import {
   checkUserLogged,
   getUserInfo,
 } from "../Redux/Account/account.action";
-import { addAirports } from "../Redux/Airports/airport.action";
+import { loadAirports } from "../Redux/Airports/airport.action";
 import { connect } from "react-redux";
 import { compareTwoStringDates } from "../Utils/SimpleTasks";
 
@@ -27,8 +27,6 @@ class Home extends React.Component {
     };
   }
   componentDidMount() {
-    //   Mohammadsaleh Dispatch and Get Airports List
-    this.props.setAirports(this.props.mohammadsalehAirportsList);
     this.props.checkUserLogged();
     this.props.getUserInfo({
       mobile: localStorage.getItem("mobile"),
@@ -346,11 +344,9 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => ({
   airports: selectAirports(state),
-  account: selectAccount(state),
-  mohammadsalehAirportsList: state.mohammadsalehAirports,
+  account: selectAccount(state)
 });
 const mapDispatchToProps = (dispatch) => ({
-  setAirports: (value) => dispatch(addAirports(value)),
   addAccountProperties: (value) => dispatch(addAccountProperties(value)),
   getUserInfo: (value) => dispatch(getUserInfo(value)),
   checkUserLogged: () => dispatch(checkUserLogged()),

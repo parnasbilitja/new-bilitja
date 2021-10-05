@@ -1,8 +1,8 @@
 import AirportType from "./airport.type";
 
-export const addAirports = (value) => {
+export const loadAirports = (value) => {
   return {
-    type: AirportType.ADD_AIRPORTS,
+    type: AirportType.LOAD_AIRPORTS,
     payload: value,
   };
 };

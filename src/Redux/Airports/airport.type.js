@@ -1,5 +1,5 @@
 const AirportType = {
-  ADD_AIRPORTS: "ADD_AIRPORTS",
+  LOAD_AIRPORTS: "LOAD_AIRPORTS",
 };
 
 export default AirportType;

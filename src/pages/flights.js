@@ -55,8 +55,6 @@ class Flights extends React.Component {
     var src = "";
     var dest = "";
     pathName = decodeURI(pathName);
-    switch (this.props.mainRoute) {
-      case "flights": {
         if (pathName.indexOf("info") > 0) {
           return "بلیطجا"; //<FlightReserve />;
         } else if (pathName.indexOf("receipt") > 0) {
@@ -91,18 +89,9 @@ class Flights extends React.Component {
             ""
           ); //<GetFlightList />;
         }
-      }
-
-      default:
-        return (
-          "خرید اینترنتی بلیط ارزان هواپیما |بلیط استانبول|بلیط جا|02184279999" +
-          "/" +
-          "ارزانترین قیمت بلیط های هواپیما به استانبول آنتالیا دنیزلی اسپارتااز1میلیون تومان و کیش مشهد قشم شیراز را از 300هزار تومان را در بین بلیت های ما آنلاین خرید کنید|بلیط جا" +
-          "/" +
-          "بلیط ارزان هواپیما|خرید اینترنتی بلیط هواپیما|بلیط هواپیما تهران به استانبول|بلیط هواپیما کیش|بلیط هواپیما دبی|بلیط هواپیما مشهد|رزرو اینترنتی بلیط هواپیما مشهد"
-        ); //<Home></Home>;
+    
     }
-  }
+  
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
