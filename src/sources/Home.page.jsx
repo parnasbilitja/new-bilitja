@@ -27,6 +27,18 @@ class Home extends React.Component {
     };
   }
   componentDidMount() {
+    if (!this.props.airports ) 
+    {
+      console.log('asasasas');
+      this.props.setAirports(null);
+    }else{
+
+      if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.1' ){
+        console.log('asasasas111');
+      this.props.setAirports(null);
+      }
+    }
+
     this.props.checkUserLogged();
     this.props.getUserInfo({
       mobile: localStorage.getItem("mobile"),
@@ -347,6 +359,7 @@ const mapStateToProps = (state) => ({
   account: selectAccount(state)
 });
 const mapDispatchToProps = (dispatch) => ({
+  setAirports: (value) => dispatch(loadAirports(value)),
   addAccountProperties: (value) => dispatch(addAccountProperties(value)),
   getUserInfo: (value) => dispatch(getUserInfo(value)),
   checkUserLogged: () => dispatch(checkUserLogged()),

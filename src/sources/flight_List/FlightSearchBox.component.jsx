@@ -112,6 +112,9 @@ class FlightSearchBox extends React.Component {
       credentials: {
         sourceName,
         destinationName,
+        sourceNameEn,
+        destinationNameEn,
+
         flightDatePersian,
         source,
         dest,
@@ -137,6 +140,9 @@ class FlightSearchBox extends React.Component {
       credentials: {
         sourceName,
         destinationName,
+        sourceNameEn,
+        destinationNameEn,
+
         flightDatePersian,
         stDate,
         typeOfCalendar,
@@ -257,8 +263,8 @@ class FlightSearchBox extends React.Component {
               const dest = decodeURI(path.split("/")[3]);
 
               if (
-                src != this.props.credentials.sourceName ||
-                dest != this.props.credentials.destinationName
+                src != this.props.credentials.sourceNameEn ||
+                dest != this.props.credentials.destinationNameEn
               ) {
                 if (this.props.refreshAction) {
                   this.props
@@ -268,13 +274,13 @@ class FlightSearchBox extends React.Component {
                     })
                     .then(() => {
                       this.props.router.push(
-                        `/flight/${this.props.credentials.sourceName}/${this.props.credentials.destinationName}`
+                        `/flight/${this.props.credentials.sourceNameEn}/${this.props.credentials.destinationNameEn}`
                       );
                       this.props.refreshAction();
                     });
                 } else {
                   this.props.router.push(
-                    `/flight/${this.props.credentials.sourceName}/${this.props.credentials.destinationName}`
+                    `/flight/${this.props.credentials.sourceNameEn}/${this.props.credentials.destinationNameEn}`
                   );
                 }
               } else {

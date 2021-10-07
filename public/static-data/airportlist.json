@@ -1,6 +1,7 @@
-{
+{ 
   "AirportsList": [
     {
+      "Version":"1.1",
       "airportCode": "thr,ika",
       "airportName": "تهران",
       "airportKey": "تهران Tehran THR مهرآباد امام خمینی Imam Khomeini IKA Mehr Abad همه فرودگاهها طهران emam khomeini"
@@ -570,7 +571,8 @@
       "airportCode": "can",
       "airportName": "گوانگجو",
       "airportKey": "گوانگجو Guangzhou CAN چین"
-    },,"airportNameEn":"guangzhou"
+      ,"airportNameEn":"guangzhou"
+    },
     {
       "airportCode": "bey",
       "airportName": "بیروت",

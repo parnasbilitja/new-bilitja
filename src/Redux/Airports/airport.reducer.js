@@ -1,11 +1,13 @@
 import AirportType from "./airport.type";
-import  AirportsJson  from "../../../public/static-data/airports-mohammadsaleh.json";
+import  AirportsJson  from "../../../public/static-data/airportlist.json";
 
 const INITIAL_STATE = {
   airports: null
 };
 
 const airportReducer = (state = INITIAL_STATE, action) => {
+  // console.log('blsbbbvb');
+  // console.log(action.type);
   switch (action.type) {
     case AirportType.LOAD_AIRPORTS: {
       return {

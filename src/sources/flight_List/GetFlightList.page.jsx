@@ -49,6 +49,9 @@ class GetFlightList extends React.Component {
       showMessageBox: false,
       sourceName: "",
       destinationName: "",
+      sourceNameEn: "",
+      destinationNameEn: "",
+
     };
   }
 
@@ -64,16 +67,19 @@ class GetFlightList extends React.Component {
     const dest = decodeURI(path.split("/")[3]);
     window.onpopstate = (e) => {
       const source = this.props.airports.find(
-        (x) => x.airportName == src
+        (x) => x.airportNameEn == src
       );
       const destinationn = this.props.airports.find(
-        (x) => x.airportName == dest
+        (x) => x.airportNameEn == dest
       );
 
       this.props
         .addCredentials({
           sourceName: source.airportName,
           destinationName: destinationn.airportName,
+          sourceNameEn: source.airportNameEn,
+          destinationNameEn: destinationn.airportNameEn,
+
           source: source.airportCode,
           dest: destinationn.airportCode,
           withFilters: true,
@@ -92,8 +98,8 @@ class GetFlightList extends React.Component {
     const src = decodeURI(path.split("/")[2]);
     const dest = decodeURI(path.split("/")[3]);
     this.setState({
-      sourceName: src,
-      destinationName: dest,
+      sourceNameEn: src,
+      destinationNameEn: dest,
     });
     // console.log("abc");
     // console.log(src);
@@ -106,17 +112,29 @@ class GetFlightList extends React.Component {
 
     // Mohammadsaleh
     if (this.props.credentials.source == "") {
+     if (!this.props.airports) {
+           this.props.setAirports(null);
+       }else{
+
+        if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.1' ){
+          console.log('asasasas111');
+        this.props.setAirports(null);
+        }
+      }
       if (this.props.airports) {
         const source = this.props.airports.find(
-          (x) => x.airportName == src
+          (x) => x.airportNameEn == src
         );
         const destinationn = this.props.airports.find(
-          (x) => x.airportName == dest
+          (x) => x.airportNameEn == dest
         );
         this.props
           .addCredentials({
             sourceName: source.airportName,
             destinationName: destinationn.airportName,
+            sourceNameEn: source.airportNameEn,
+            destinationNameEn: destinationn.airportNameEn,
+
             source: source.airportCode,
             dest: destinationn.airportCode,
             stDate: getCustomFormat(moment().startOf("day"), true),
@@ -154,7 +172,8 @@ class GetFlightList extends React.Component {
               });
           });
       }
-    } else if (this.props.credentials.source != "") {
+    } 
+    else if (this.props.credentials.source != "") {
       this.setState({ loading: true, open: false });
       fetch(`${globals.baseUrl}flights/getFlights`, {
         method: "POST",
