@@ -51,6 +51,7 @@ class GetFlightList extends React.Component {
       destinationName: "",
       sourceNameEn: "",
       destinationNameEn: "",
+      ddtt: "تست",
 
     };
   }
@@ -439,9 +440,13 @@ class GetFlightList extends React.Component {
                   <>
                     <p className="text-center mx-3">
                       متاسفانه هیچ پروازی از{" "}
-                      <strong className="text-danger">{src}</strong>{" "}
+                      <strong className="text-danger">{this.props.airports.find(
+        (x) => x.airportNameEn == src
+      ).airportName}</strong>{" "}
                       <strong>به </strong>
-                      <strong className="text-danger">{dest}</strong> یافت نشد
+                      <strong className="text-danger">{this.props.airports.find(
+        (x) => x.airportNameEn == dest
+      ).airportName}</strong> یافت نشد
                       لطفا از تقویم زیر انتخاب کنید.
                     </p>
                     <MinimumPriceCalendar refreshAction={this.getData} />
@@ -571,7 +576,7 @@ class GetFlightList extends React.Component {
 }
 const mapStatesToProps = (state) => ({
   credentials: selectSearchObject(state),
-  airports: selectAirports(state)
+  airports: selectAirports(state),
 });
 
 const mapDispatchesToProps = (dispatch) => ({
