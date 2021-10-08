@@ -68,7 +68,7 @@ const villaListDesktop = ({ history, villaList }) => {
                     className="btn-outlined-cancle villa-reserve-btn "
                     onClick={(e) => {
                       e.preventDefault();
-                      myRouter.push(`/reserve/ویلا/تهران/${villa.EghamatId}`);
+                      myRouter.push(`/reserve/villa/tehran/${villa.EghamatId}`);
                     }}
                   >
                     رزرو

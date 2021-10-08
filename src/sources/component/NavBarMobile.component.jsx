@@ -104,7 +104,7 @@ class NavBarMobile extends React.Component {
             )}
 
             {this.props.user.logged === false ? (
-              <a href="/ویلا/intro" className="font-size-10 btn-outlined">
+              <a href="/villa/intro" className="font-size-10 btn-outlined">
                 میزبان شوید
               </a>
             ) : (
@@ -201,7 +201,7 @@ class NavBarMobile extends React.Component {
               </li>
               <li>
                 <div>
-                  <a href="/ویلا">
+                  <a href="/villa">
                     <i className="kilo-font font-size-24 icon-villa pull-right rotate-y-180"></i>
                     <span className="pull-right font-size-14 color-black">
                       اقامتگاه

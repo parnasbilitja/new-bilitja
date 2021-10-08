@@ -363,7 +363,7 @@ class AccommodationReserve extends React.Component {
                               AddressName: this.state.AddressName,
                             })
                             .then(() => {
-                              this.props.router.push("/receipt/ویلا/تهران");
+                              this.props.router.push("/receipt/villa/tehran");
                             });
                         }}
                       >
