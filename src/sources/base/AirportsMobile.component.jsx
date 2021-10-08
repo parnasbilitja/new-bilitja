@@ -28,11 +28,13 @@ class AirportsMobile extends React.Component {
         if (this.props.credenrialType == "source") {
             credentialObject = {
                 sourceName: oneAirport.airportName,
+                sourceNameEn: oneAirport.airportNameEn,
                 source: oneAirport.airportCode
             }
         } else {
             credentialObject = {
                 destinationName: oneAirport.airportName,
+                destinationNameEn: oneAirport.airportNameEn,
                 dest: oneAirport.airportCode
             }
         }

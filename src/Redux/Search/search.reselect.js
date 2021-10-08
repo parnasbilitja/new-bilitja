@@ -5,6 +5,9 @@ const search = state=> state.search
 export const selectCredentials = createSelector([search], search => ({
     sourceName: search.searchObject.sourceName,
     destinationName: search.searchObject.destinationName,
+    sourceNameEn: search.searchObject.sourceNameEn,
+    destinationNameEn: search.searchObject.destinationNameEn,
+
     source: search.searchObject.source,
     dest: search.searchObject.dest,
     flightDatePersian: search.searchObject.flightDatePersian,

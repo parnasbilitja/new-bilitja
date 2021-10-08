@@ -17,7 +17,7 @@ import { selectSearchObject } from "../../Redux/Search/search.reselect";
 import { selectAirports } from "../../Redux/Airports/airport.reselect";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { addFilters, addCredentials } from "../../Redux/Search/search.action";
-import { addAirports } from "../../Redux/Airports/airport.action";
+import { loadAirports } from "../../Redux/Airports/airport.action";
 
 import {
   faAngleRight,
@@ -49,6 +49,9 @@ class GetFlightList extends React.Component {
       showMessageBox: false,
       sourceName: "",
       destinationName: "",
+      sourceNameEn: "",
+      destinationNameEn: "",
+
     };
   }
 
@@ -63,17 +66,20 @@ class GetFlightList extends React.Component {
     const src = decodeURI(path.split("/")[2]);
     const dest = decodeURI(path.split("/")[3]);
     window.onpopstate = (e) => {
-      const source = this.props.mohammadsalehAirportsList.find(
-        (x) => x.airportName == src
+      const source = this.props.airports.find(
+        (x) => x.airportNameEn == src
       );
-      const destinationn = this.props.mohammadsalehAirportsList.find(
-        (x) => x.airportName == dest
+      const destinationn = this.props.airports.find(
+        (x) => x.airportNameEn == dest
       );
 
       this.props
         .addCredentials({
           sourceName: source.airportName,
           destinationName: destinationn.airportName,
+          sourceNameEn: source.airportNameEn,
+          destinationNameEn: destinationn.airportNameEn,
+
           source: source.airportCode,
           dest: destinationn.airportCode,
           withFilters: true,
@@ -92,8 +98,8 @@ class GetFlightList extends React.Component {
     const src = decodeURI(path.split("/")[2]);
     const dest = decodeURI(path.split("/")[3]);
     this.setState({
-      sourceName: src,
-      destinationName: dest,
+      sourceNameEn: src,
+      destinationNameEn: dest,
     });
     // console.log("abc");
     // console.log(src);
@@ -106,17 +112,29 @@ class GetFlightList extends React.Component {
 
     // Mohammadsaleh
     if (this.props.credentials.source == "") {
-      if (this.props.mohammadsalehAirportsList) {
-        const source = this.props.mohammadsalehAirportsList.find(
-          (x) => x.airportName == src
+     if (!this.props.airports) {
+           this.props.setAirports(null);
+       }else{
+
+        if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.1' ){
+          console.log('asasasas111');
+        this.props.setAirports(null);
+        }
+      }
+      if (this.props.airports) {
+        const source = this.props.airports.find(
+          (x) => x.airportNameEn == src
         );
-        const destinationn = this.props.mohammadsalehAirportsList.find(
-          (x) => x.airportName == dest
+        const destinationn = this.props.airports.find(
+          (x) => x.airportNameEn == dest
         );
         this.props
           .addCredentials({
             sourceName: source.airportName,
             destinationName: destinationn.airportName,
+            sourceNameEn: source.airportNameEn,
+            destinationNameEn: destinationn.airportNameEn,
+
             source: source.airportCode,
             dest: destinationn.airportCode,
             stDate: getCustomFormat(moment().startOf("day"), true),
@@ -154,7 +172,8 @@ class GetFlightList extends React.Component {
               });
           });
       }
-    } else if (this.props.credentials.source != "") {
+    } 
+    else if (this.props.credentials.source != "") {
       this.setState({ loading: true, open: false });
       fetch(`${globals.baseUrl}flights/getFlights`, {
         method: "POST",
@@ -552,12 +571,11 @@ class GetFlightList extends React.Component {
 }
 const mapStatesToProps = (state) => ({
   credentials: selectSearchObject(state),
-  airports: selectAirports(state),
-  mohammadsalehAirportsList: state.mohammadsalehAirports,
+  airports: selectAirports(state)
 });
 
 const mapDispatchesToProps = (dispatch) => ({
-  setAirports: (value) => dispatch(addAirports(value)),
+  setAirports: (value) => dispatch(loadAirports(value)),
   addFilters: (value) => dispatch(addFilters(value)),
   addCredentials: async (value) => dispatch(addCredentials(value)),
   messageBoxModify: (value) => dispatch(messageBoxModify(value)),

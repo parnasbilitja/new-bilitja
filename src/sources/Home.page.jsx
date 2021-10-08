@@ -13,7 +13,7 @@ import {
   checkUserLogged,
   getUserInfo,
 } from "../Redux/Account/account.action";
-import { addAirports } from "../Redux/Airports/airport.action";
+import { loadAirports } from "../Redux/Airports/airport.action";
 import { connect } from "react-redux";
 import { compareTwoStringDates } from "../Utils/SimpleTasks";
 
@@ -27,8 +27,18 @@ class Home extends React.Component {
     };
   }
   componentDidMount() {
-    //   Mohammadsaleh Dispatch and Get Airports List
-    this.props.setAirports(this.props.mohammadsalehAirportsList);
+    if (!this.props.airports ) 
+    {
+      console.log('asasasas');
+      this.props.setAirports(null);
+    }else{
+
+      if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.1' ){
+        console.log('asasasas111');
+      this.props.setAirports(null);
+      }
+    }
+
     this.props.checkUserLogged();
     this.props.getUserInfo({
       mobile: localStorage.getItem("mobile"),
@@ -200,7 +210,7 @@ class Home extends React.Component {
           <div>
             <div className={styles["suggestion-list"]}>
               <div>
-                <a href="بلیط-هواپیما/تهران/مشهد/">
+                <a href="flight/تهران/مشهد/">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                   <span className="pull-right font-size-14">
                     بلیط هواپیما مشهد
@@ -209,7 +219,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="بلیط-هواپیما/تهران/اصفهان">
+                <a href="flight/تهران/اصفهان">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                   <span className="pull-right font-size-14">
                     بلیط هواپیما کیش
@@ -218,7 +228,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="بلیط-هواپیما/تهران/مشهد">
+                <a href="flight/تهران/مشهد">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                   <span className="pull-right font-size-13">
                     بلیط هواپیما اصفهان
@@ -227,7 +237,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="بلیط-هواپیما/تهران/اهواز">
+                <a href="flight/تهران/اهواز">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                   <span className="pull-right font-size-14">
                     بلیط هواپیما اهواز
@@ -236,7 +246,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="بلیط-هواپیما/تهران/تبریز">
+                <a href="flight/تهران/تبریز">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                   <span className="pull-right font-size-14">
                     بلیط هواپیما تبریز
@@ -245,7 +255,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="بلیط-هواپیما/تهران/شیراز">
+                <a href="flight/تهران/شیراز">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                   <span className="pull-right font-size-14">
                     بلیط هواپیما شیراز
@@ -256,7 +266,7 @@ class Home extends React.Component {
             </div>
             <div className={styles["suggestion-list"]}>
               <div>
-                <a href="بلیط-هواپیما/تهران/استانبول">
+                <a href="flight/تهران/استانبول">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                   <span className="pull-right font-size-13">
                     بلیط هواپیما استانبول
@@ -265,7 +275,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="بلیط-هواپیما/تهران/دبی">
+                <a href="flight/تهران/دبی">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                   <span className="pull-right font-size-14">
                     بلیط هواپیما دبی
@@ -274,7 +284,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="بلیط-هواپیما/تهران/تفلیس">
+                <a href="flight/تهران/تفلیس">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                   <span className="pull-right font-size-14">
                     بلیط هواپیما تفلیس
@@ -283,7 +293,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="بلیط-هواپیما/تهران/مشهد">
+                <a href="flight/تهران/مشهد">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                   <span className="pull-right font-size-14">
                     بلیط هواپیما مشهد
@@ -292,7 +302,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="بلیط-هواپیما/تهران/باکو">
+                <a href="flight/تهران/باکو">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                   <span className="pull-right font-size-16">
                     بلیط هواپیما باکو
@@ -301,7 +311,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="بلیط-هواپیما/تهران/نجف">
+                <a href="flight/تهران/نجف">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                   <span className="pull-right font-size-14">
                     بلیط هواپیما نجف
@@ -346,11 +356,10 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => ({
   airports: selectAirports(state),
-  account: selectAccount(state),
-  mohammadsalehAirportsList: state.mohammadsalehAirports,
+  account: selectAccount(state)
 });
 const mapDispatchToProps = (dispatch) => ({
-  setAirports: (value) => dispatch(addAirports(value)),
+  setAirports: (value) => dispatch(loadAirports(value)),
   addAccountProperties: (value) => dispatch(addAccountProperties(value)),
   getUserInfo: (value) => dispatch(getUserInfo(value)),
   checkUserLogged: () => dispatch(checkUserLogged()),

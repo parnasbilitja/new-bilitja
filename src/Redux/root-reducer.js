@@ -1,6 +1,4 @@
-import AirportReducer, {
-  mohammadsalehAirportsReduser,
-} from "./Airports/airport.reducer";
+
 import cityReducer from "./City/city.reducer";
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
@@ -21,7 +19,6 @@ const persistConfig = {
 };
 const rootReducer = combineReducers({
   airports: airportReducer,
-  mohammadsalehAirports: mohammadsalehAirportsReduser,
   cities: cityReducer,
   search: searchReducer,
   searchvilla: searchvillaReducer,

@@ -2,12 +2,12 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: `/${encodeURI("بلیط-هواپیما")}/:path*`,
+        source: `/${encodeURI("flight")}/:path*`,
         destination: "/flights",
       },
 
       {
-        source: `/${encodeURI("ویلا")}/:path*`,
+        source: `/${encodeURI("villa")}/:path*`,
         destination: "/villa",
       },
       {
