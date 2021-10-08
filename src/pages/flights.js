@@ -62,8 +62,8 @@ class Flights extends React.Component {
         } else if (pathName.indexOf("order") > 0) {
           return "بلیطجا"; //<TrackOrder />;
         } else {
-          src = decodeURI(pathName.split("/")[2]);
-          dest = decodeURI(pathName.split("/")[3]);
+          src = decodeURI(pathName.split("/")[2]).split("-")[0];
+          dest = decodeURI(pathName.split("/")[2]).split("-")[1];
 
           return (
             " خرید اینترنتی بلیط هواپیما " +

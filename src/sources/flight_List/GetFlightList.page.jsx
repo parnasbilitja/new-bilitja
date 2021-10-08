@@ -64,8 +64,8 @@ class GetFlightList extends React.Component {
 
   componentDidUpdate() {
     const path = this.props.router.asPath;
-    const src = decodeURI(path.split("/")[2]);
-    const dest = decodeURI(path.split("/")[3]);
+    const src = decodeURI(path.split("/")[2]).split("-")[0];;
+    const dest = decodeURI(path.split("/")[2]).split("-")[1];;
     window.onpopstate = (e) => {
       const source = this.props.airports.find(
         (x) => x.airportNameEn == src
@@ -96,8 +96,8 @@ class GetFlightList extends React.Component {
     // console.log(this.props.router.asPath);
 
     const path = this.props.router.asPath;
-    const src = decodeURI(path.split("/")[2]);
-    const dest = decodeURI(path.split("/")[3]);
+    const src = decodeURI(path.split("/")[2]).split("-")[0];;
+    const dest = decodeURI(path.split("/")[2]).split("-")[1];;
     this.setState({
       sourceNameEn: src,
       destinationNameEn: dest,
@@ -358,8 +358,8 @@ class GetFlightList extends React.Component {
 
   render() {
     const path = this.props.router.asPath;
-    const src = decodeURI(path.split("/")[2]);
-    const dest = decodeURI(path.split("/")[3]);
+    const src = decodeURI(path.split("/")[2]).split("-")[0];;
+    const dest = decodeURI(path.split("/")[2]).split("-")[1];;
 
     return (
       <div className={`container-fluid ${styles["flight-container"]}`}>
