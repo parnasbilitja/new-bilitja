@@ -31,7 +31,7 @@ const PageTabls = (props) => {
               props.tabActice == 2 ? styles["home-tab-active"] : null
             }`}
             onClick={() => {
-              myRouter.push("/ویلا");
+              myRouter.push("/villa");
             }}
           >
             <div className="pull-right icon-container">

@@ -218,7 +218,7 @@ class villaSearchBox extends React.Component {
                 </div>
                 <div className="form-input-border without-focus">
                     <PrimaryButton defaultValue={"جستجو"} onClick={() => {
-                        this.props.router.push("/ویلا/تهران")
+                        this.props.router.push("/villa/tehran")
                         
                         // this.props.addCredentials({
                         //     dateStart:dateGo,

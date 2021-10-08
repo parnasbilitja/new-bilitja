@@ -51,6 +51,7 @@ class GetFlightList extends React.Component {
       destinationName: "",
       sourceNameEn: "",
       destinationNameEn: "",
+      ddtt: "تست",
 
     };
   }
@@ -63,8 +64,8 @@ class GetFlightList extends React.Component {
 
   componentDidUpdate() {
     const path = this.props.router.asPath;
-    const src = decodeURI(path.split("/")[2]);
-    const dest = decodeURI(path.split("/")[3]);
+    const src = decodeURI(path.split("/")[2]).split("-")[0];;
+    const dest = decodeURI(path.split("/")[2]).split("-")[1];;
     window.onpopstate = (e) => {
       const source = this.props.airports.find(
         (x) => x.airportNameEn == src
@@ -95,8 +96,8 @@ class GetFlightList extends React.Component {
     // console.log(this.props.router.asPath);
 
     const path = this.props.router.asPath;
-    const src = decodeURI(path.split("/")[2]);
-    const dest = decodeURI(path.split("/")[3]);
+    const src = decodeURI(path.split("/")[2]).split("-")[0];;
+    const dest = decodeURI(path.split("/")[2]).split("-")[1];;
     this.setState({
       sourceNameEn: src,
       destinationNameEn: dest,
@@ -357,8 +358,8 @@ class GetFlightList extends React.Component {
 
   render() {
     const path = this.props.router.asPath;
-    const src = decodeURI(path.split("/")[2]);
-    const dest = decodeURI(path.split("/")[3]);
+    const src = decodeURI(path.split("/")[2]).split("-")[0];;
+    const dest = decodeURI(path.split("/")[2]).split("-")[1];;
 
     return (
       <div className={`container-fluid ${styles["flight-container"]}`}>
@@ -439,9 +440,13 @@ class GetFlightList extends React.Component {
                   <>
                     <p className="text-center mx-3">
                       متاسفانه هیچ پروازی از{" "}
-                      <strong className="text-danger">{src}</strong>{" "}
+                      <strong className="text-danger">{this.props.airports.find(
+        (x) => x.airportNameEn == src
+      ).airportName}</strong>{" "}
                       <strong>به </strong>
-                      <strong className="text-danger">{dest}</strong> یافت نشد
+                      <strong className="text-danger">{this.props.airports.find(
+        (x) => x.airportNameEn == dest
+      ).airportName}</strong> یافت نشد
                       لطفا از تقویم زیر انتخاب کنید.
                     </p>
                     <MinimumPriceCalendar refreshAction={this.getData} />
@@ -571,7 +576,7 @@ class GetFlightList extends React.Component {
 }
 const mapStatesToProps = (state) => ({
   credentials: selectSearchObject(state),
-  airports: selectAirports(state)
+  airports: selectAirports(state),
 });
 
 const mapDispatchesToProps = (dispatch) => ({

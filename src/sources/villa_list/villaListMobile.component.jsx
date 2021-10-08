@@ -53,7 +53,7 @@ const villaListMobile = ({ history, villaList }) => {
                         className="btn-outlined-cancle villa-reserve-btn"
                         onClick={(e) => {
                           e.preventDefault();
-                          myRouter.push("/reserve/ویلا/تهران");
+                          myRouter.push("/reserve/villa/tehran");
                         }}
                       >
                         رزرو

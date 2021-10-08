@@ -40,7 +40,7 @@ class NavBar extends React.Component {
         <div className={styles["nav-text-detail"]}>
           <div>
             <a
-              href="/ویلا/intro"
+              href="/villa/intro"
               className={`font-size-10 btn-outlined ${styles["btn-nav-hosting"]}`}
             >
               میزبان شوید
@@ -130,7 +130,7 @@ class NavBar extends React.Component {
               </a>
             </li>
             <li>
-              <a href="/ویلا">
+              <a href="/villa">
                 <i
                   className={`kilo-font icon-villa ${styles["nav-icon"]} `}
                 ></i>
