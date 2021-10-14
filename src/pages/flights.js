@@ -27,13 +27,19 @@ import FlightReciept from "./../sources/flight_receipt/FlightReciept.page";
 import TrackOrder from "./../sources/report/TrackOrder.page";
 
 import { withRouter } from "next/router";
+import { selectAirports } from "../Redux/Airports/airport.reselect";
+import { loadAirports } from "../Redux/Airports/airport.action";
 
 class Flights extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       width: 1024,
+      sourceName: "",
+      destinationName: "",
+
     };
+
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
@@ -52,8 +58,9 @@ class Flights extends React.Component {
   }
 
   setTitleMeta(pathName) {
-    var src = "";
-    var dest = "";
+   var src=this.state.sourceName;
+   var dest=this.state.destinationName;
+
     pathName = decodeURI(pathName);
         if (pathName.indexOf("info") > 0) {
           return "بلیطجا"; //<FlightReserve />;
@@ -62,9 +69,10 @@ class Flights extends React.Component {
         } else if (pathName.indexOf("order") > 0) {
           return "بلیطجا"; //<TrackOrder />;
         } else {
-          src = decodeURI(pathName.split("/")[2]).split("-")[0];
-          dest = decodeURI(pathName.split("/")[2]).split("-")[1];
-
+          
+          // srcEn = decodeURI(pathName.split("/")[2]).split("-")[0];
+          // destEn = decodeURI(pathName.split("/")[2]).split("-")[1];
+          
           return (
             " خرید اینترنتی بلیط هواپیما " +
             src +
@@ -91,8 +99,58 @@ class Flights extends React.Component {
         }
     
     }
+    componentDidUpdate() {
+      const pathquery = this.props.router.asPath;
+      const path = pathquery.split("#")[0];
+      const src = decodeURI(path.split("/")[2]).split("-")[0];;
+      const dest = decodeURI(path.split("/")[2]).split("-")[1];;
   
+      window.onpopstate = (e) => {
+            if(this.props.airports!=null){
+              const srcName=this.props.airports.find(
+                (x) => x.airportNameEn == src
+              ).airportName;
+              const destName=this.props.airports.find(
+                (x) => x.airportNameEn == dest
+              ).airportName;
+              this.setState({
+                sourceName: srcName,
+                destinationName: destName,
+              });
+        }
+    }
+  }
   componentDidMount() {
+    const pathquery = this.props.router.asPath;
+    const path = pathquery.split("#")[0];
+    const src = decodeURI(path.split("/")[2]).split("-")[0];;
+    const dest = decodeURI(path.split("/")[2]).split("-")[1];;
+
+    
+     if (this.props.airports==null) {
+              this.props.setAirports(null);
+         }else{
+
+          if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.1' ){
+            console.log('set2');
+          this.props.setAirports(null);
+          }
+          
+        }
+        if(this.props.airports!=null){
+            const srcName=this.props.airports.find(
+              (x) => x.airportNameEn == src
+            ).airportName;
+            const destName=this.props.airports.find(
+              (x) => x.airportNameEn == dest
+            ).airportName;
+            this.setState({
+              sourceName: srcName,
+              destinationName: destName,
+            });
+      }
+  
+    
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
   }
@@ -120,14 +178,15 @@ class Flights extends React.Component {
             <title>
               {
                 // {`بلیطجا ${decodeURI(this.props.router.asPath).replace('-',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ')}`}
-                this.setTitleMeta(this.props.router.asPath).split("/")[0]
+
+                this.setTitleMeta(this.props.router.asPath.split("#")[0]).split("/")[0]
               }{" "}
             </title>
             <meta
               name="title"
               property="og:title"
               content={
-                this.setTitleMeta(this.props.router.asPath).split("/")[0]
+                this.setTitleMeta(this.props.router.asPath.split("#")[0]).split("/")[0]
               }
             />
 
@@ -135,14 +194,14 @@ class Flights extends React.Component {
               name="description"
               property="og:description"
               content={
-                this.setTitleMeta(this.props.router.asPath).split("/")[1]
+                this.setTitleMeta(this.props.router.asPath.split("#")[0]).split("/")[1]
               }
             />
             <meta
               name="keywords"
               property="og:keywords"
               content={
-                this.setTitleMeta(this.props.router.asPath).split("/")[2]
+                this.setTitleMeta(this.props.router.asPath.split("#")[0]).split("/")[2]
               }
             />
           </Head>
@@ -163,9 +222,11 @@ class Flights extends React.Component {
 }
 const mapStatesToProps = (state) => ({
   accountBox: selcetAccountBox(state),
+  airports: selectAirports(state),
 });
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),
+  setAirports: (value) => dispatch(loadAirports(value)),
 });
 export default withRouter(
   connect(mapStatesToProps, mapDispatchesToProps)(Flights)
