@@ -1,4 +1,20 @@
 module.exports = {
+  async redirects() {
+    return [
+          {
+            source:`/${encodeURI("بلیط-هواپیما")}/:path*`,
+            destination: '/',
+            permanent:true,
+          },
+         
+          {
+            source:`/${encodeURI("ویلا")}/:path*`,
+            destination: '/',
+            permanent:true,
+
+          },
+      ]
+  },
   async rewrites() {
     return [
       {
