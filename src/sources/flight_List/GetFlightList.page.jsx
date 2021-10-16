@@ -30,6 +30,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import moment from "jalali-moment";
+import momentj from "moment-jalaali";
 import Loading from "../component/Loading.component";
 import MinimumPriceCalendar from "./MinimumPriceCalendar.component";
 
@@ -149,6 +150,13 @@ componentWillUnmount() {
     const dest = decodeURI(path.split("/")[2]).split("-")[1];;
 
     const flightdate =pathquery.split("#")[1]!=null?pathquery.split("#")[1]:getCustomFormat(moment().startOf("day"), false);
+    const m = moment(
+      flightdate,
+      "jYYYY/jMM/jDD"
+    );
+    const flightdatemiladi = m.format("YYYY/MM/DD");
+    console.log(flightdatemiladi);
+
     console.log(flightdate);
     
 
@@ -205,7 +213,7 @@ componentWillUnmount() {
 
                                 source: source.airportCode,
                                 dest: destinationn.airportCode,
-                                stDate: getCustomFormat(moment().startOf("day"), true),
+                                stDate: flightdatemiladi,
                               flightDatePersian: flightdate,
                                 typeOfCalendar: this.props.typeOfCalendar,
                               })
@@ -243,7 +251,8 @@ componentWillUnmount() {
     } 
     else 
      if (this.props.credentials.source != "") {
-                
+                // console.log('send data to api');
+                // console.log(this.props.credentials);
                 this.setState({ loading: true, open: false ,flightDatePersian: flightdate,});
 
                 fetch(`${globals.baseUrl}flights/getFlights`, {
