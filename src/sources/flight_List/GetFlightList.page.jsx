@@ -188,16 +188,22 @@ componentWillUnmount() {
 
     // Mohammadsaleh
     if (this.props.credentials.source == "") {
+            console.log('not source');
+      
+
                 if (!this.props.airports) {
+                      console.log('this.props.airports is null');
                       this.props.setAirports(null);
                   }else{
 
                     if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.3' ){
-                      console.log('asasasas111');
+                      console.log('airport version is changed');
                     this.props.setAirports(null);
                     }
                   }
+                  
                   if (this.props.airports) {
+                          console.log('this.props.airports has data');
                             const source = this.props.airports.find(
                               (x) => x.airportNameEn == src
                             );
@@ -251,8 +257,8 @@ componentWillUnmount() {
     } 
     else 
      if (this.props.credentials.source != "") {
-                // console.log('send data to api');
-                // console.log(this.props.credentials);
+                 console.log('send data to api');
+                 console.log(this.props.credentials);
                 this.setState({ loading: true, open: false ,flightDatePersian: flightdate,});
 
                 fetch(`${globals.baseUrl}flights/getFlights`, {
