@@ -131,7 +131,7 @@ class Flights extends React.Component {
               this.props.setAirports(null);
          }else{
 
-          if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.1' ){
+          if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.3' ){
             console.log('set2');
           this.props.setAirports(null);
           }
