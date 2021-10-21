@@ -77,15 +77,18 @@ componentWillUnmount() {
     console.log("componentDidUpdate");
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
-    const src = decodeURI(path.split("/")[2]).split("-to-")[0];;
-    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];;
+    const src = decodeURI(path.split("/")[2]).split("-to-")[0];const srccod = decodeURI(path.split("/")[3]).split("-")[1];
+    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];const destcod = decodeURI(path.split("/")[3]).split("-")[2];
 
     const flightdate =pathquery.split("#")[1]!=null?pathquery.split("#")[1]:getCustomFormat(moment().startOf("day"), false);
     
 
     window.onpopstate = (e) => {     //  when back or forward in browser occured
               console.log("window.onpopstate");
-          
+              // const source = srccod;
+              // const destinationn = destcod;
+              //       console.log('NEW1');
+              //       console.log(source);
     
                     const source = this.props.airports.find(
                       (x) => x.airportNameEn == src
@@ -146,8 +149,8 @@ componentWillUnmount() {
     console.log("compoMOUNT");
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
-    const src = decodeURI(path.split("/")[2]).split("-to-")[0];;
-    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];;
+    const src = decodeURI(path.split("/")[2]).split("-to-")[0];const srccod = decodeURI(path.split("/")[3]).split("-")[1];
+    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];const destcod = decodeURI(path.split("/")[3]).split("-")[2];
 
     const flightdate =pathquery.split("#")[1]!=null?pathquery.split("#")[1]:getCustomFormat(moment().startOf("day"), false);
     const m = moment(
@@ -202,8 +205,12 @@ componentWillUnmount() {
                     }
                   }
                   
-                  if (this.props.airports) {
+                //  if (this.props.airports) {
                           console.log('this.props.airports has data');
+                          // const source = srccod;
+                          // const destinationn = destcod;
+                          // console.log('NEW2');
+                          // console.log(source);
                             const source = this.props.airports.find(
                               (x) => x.airportNameEn == src
                             );
@@ -253,7 +260,7 @@ componentWillUnmount() {
                                     }
                                   });
                               });
-                        }
+                  //      }
     } 
     else 
      if (this.props.credentials.source != "") {
@@ -454,8 +461,8 @@ componentWillUnmount() {
   render() {
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
-    const src = decodeURI(path.split("/")[2]).split("-to-")[0];;
-    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];;
+    const src = decodeURI(path.split("/")[2]).split("-to-")[0];const srccod = decodeURI(path.split("/")[3]).split("-")[1];
+    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];const destcod = decodeURI(path.split("/")[3]).split("-")[2];
     
     return (
       <div className={`container-fluid ${styles["flight-container"]}`}>

@@ -102,8 +102,8 @@ class Flights extends React.Component {
     componentDidUpdate() {
       const pathquery = this.props.router.asPath;
       const path = pathquery.split("#")[0];
-      const src = decodeURI(path.split("/")[2]).split("-to-")[0];;
-      const dest = decodeURI(path.split("/")[2]).split("-to-")[1];;
+      const src = decodeURI(path.split("/")[2]).split("-to-")[0];const srccod = decodeURI(path.split("/")[3]).split("-")[1];
+      const dest = decodeURI(path.split("/")[2]).split("-to-")[1];const destcod = decodeURI(path.split("/")[3]).split("-")[2];
   
       window.onpopstate = (e) => {
             if(this.props.airports!=null){
@@ -123,8 +123,8 @@ class Flights extends React.Component {
   componentDidMount() {
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
-    const src = decodeURI(path.split("/")[2]).split("-to-")[0];;
-    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];;
+    const src = decodeURI(path.split("/")[2]).split("-to-")[0];const srccod = decodeURI(path.split("/")[3]).split("-")[1];
+    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];const destcod = decodeURI(path.split("/")[3]).split("-")[2];
 
     
      if (this.props.airports==null) {
