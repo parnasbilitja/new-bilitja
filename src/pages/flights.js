@@ -102,8 +102,8 @@ class Flights extends React.Component {
     componentDidUpdate() {
       const pathquery = this.props.router.asPath;
       const path = pathquery.split("#")[0];
-      const src = decodeURI(path.split("/")[2]).split("-")[0];;
-      const dest = decodeURI(path.split("/")[2]).split("-")[1];;
+      const src = decodeURI(path.split("/")[2]).split("-to-")[0];;
+      const dest = decodeURI(path.split("/")[2]).split("-to-")[1];;
   
       window.onpopstate = (e) => {
             if(this.props.airports!=null){
@@ -123,15 +123,15 @@ class Flights extends React.Component {
   componentDidMount() {
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
-    const src = decodeURI(path.split("/")[2]).split("-")[0];;
-    const dest = decodeURI(path.split("/")[2]).split("-")[1];;
+    const src = decodeURI(path.split("/")[2]).split("-to-")[0];;
+    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];;
 
     
      if (this.props.airports==null) {
               this.props.setAirports(null);
          }else{
 
-          if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.3' ){
+          if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.1' ){
             console.log('set2');
           this.props.setAirports(null);
           }

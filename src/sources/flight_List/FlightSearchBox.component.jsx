@@ -262,8 +262,8 @@ class FlightSearchBox extends React.Component {
       
               const pathquery = this.props.router.asPath;
               const path = pathquery.split("#")[0];
-              const src = decodeURI(path.split("/")[2]).split("-")[0];
-              const dest = decodeURI(path.split("/")[2]).split("-")[1];
+              const src = decodeURI(path.split("/")[2]).split("-to-")[0];
+              const dest = decodeURI(path.split("/")[2]).split("-to-")[1];
           
               if (
                 src != this.props.credentials.sourceNameEn ||
@@ -277,13 +277,13 @@ class FlightSearchBox extends React.Component {
                     })
                     .then(() => {
                       this.props.router.push(
-                        `/flight/${this.props.credentials.sourceNameEn}-${this.props.credentials.destinationNameEn}#${this.props.credentials.flightDatePersian}`
+                        `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}#${this.props.credentials.flightDatePersian}`
                       );
                       this.props.refreshAction();
                     });
                 } else {
                   this.props.router.push(
-                    `/flight/${this.props.credentials.sourceNameEn}-${this.props.credentials.destinationNameEn}#${this.props.credentials.flightDatePersian}`
+                    `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}#${this.props.credentials.flightDatePersian}`
                   );
                 }
               } else {
@@ -294,7 +294,7 @@ class FlightSearchBox extends React.Component {
                   })
                   .then(() => {
                     this.props.router.push(
-                      `/flight/${this.props.credentials.sourceNameEn}-${this.props.credentials.destinationNameEn}#${this.props.credentials.flightDatePersian}`
+                      `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}#${this.props.credentials.flightDatePersian}`
                     );
                     this.props.refreshAction();
                   });

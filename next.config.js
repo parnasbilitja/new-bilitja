@@ -18,7 +18,7 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: `/${encodeURI("flight")}/:path*`,
+        source: `/${encodeURI("flights")}/:path*`,
         destination: "/flights",
       },
 

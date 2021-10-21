@@ -144,7 +144,7 @@ class NavBar extends React.Component {
               </a>
             </li>
             <li>
-              <a href="/flight/order">
+              <a href="/flights/order">
                 <i
                   className={`kilo-font icon-refrence ${styles["nav-icon"]} `}
                 ></i>

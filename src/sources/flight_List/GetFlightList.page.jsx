@@ -77,8 +77,8 @@ componentWillUnmount() {
     console.log("componentDidUpdate");
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
-    const src = decodeURI(path.split("/")[2]).split("-")[0];;
-    const dest = decodeURI(path.split("/")[2]).split("-")[1];;
+    const src = decodeURI(path.split("/")[2]).split("-to-")[0];;
+    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];;
 
     const flightdate =pathquery.split("#")[1]!=null?pathquery.split("#")[1]:getCustomFormat(moment().startOf("day"), false);
     
@@ -146,8 +146,8 @@ componentWillUnmount() {
     console.log("compoMOUNT");
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
-    const src = decodeURI(path.split("/")[2]).split("-")[0];;
-    const dest = decodeURI(path.split("/")[2]).split("-")[1];;
+    const src = decodeURI(path.split("/")[2]).split("-to-")[0];;
+    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];;
 
     const flightdate =pathquery.split("#")[1]!=null?pathquery.split("#")[1]:getCustomFormat(moment().startOf("day"), false);
     const m = moment(
@@ -196,7 +196,7 @@ componentWillUnmount() {
                       this.props.setAirports(null);
                   }else{
 
-                    if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.3' ){
+                    if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.1' ){
                       console.log('airport version is changed');
                     this.props.setAirports(null);
                     }
@@ -444,8 +444,8 @@ componentWillUnmount() {
   render() {
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
-    const src = decodeURI(path.split("/")[2]).split("-")[0];;
-    const dest = decodeURI(path.split("/")[2]).split("-")[1];;
+    const src = decodeURI(path.split("/")[2]).split("-to-")[0];;
+    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];;
     
     return (
       <div className={`container-fluid ${styles["flight-container"]}`}>

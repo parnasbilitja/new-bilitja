@@ -223,7 +223,7 @@ class NavBarMobile extends React.Component {
               </li>
               <li>
                 <div>
-                  <a href="/flight/order">
+                  <a href="/flights/order">
                     <i className="kilo-font font-size-24 icon-refrence pull-right rotate-y-180"></i>
                     <span className="pull-right font-size-14 color-black">
                       پیگیری خرید
