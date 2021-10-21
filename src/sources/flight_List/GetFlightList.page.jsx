@@ -196,7 +196,7 @@ componentWillUnmount() {
                       this.props.setAirports(null);
                   }else{
 
-                    if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.1' ){
+                    if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.4' ){
                       console.log('airport version is changed');
                     this.props.setAirports(null);
                     }
@@ -433,8 +433,18 @@ componentWillUnmount() {
         flightDatePersian: String(date).replace("-", "/").replace("-", "/"),
       })
       .then(() => {
+        if(history.pushState) {
+          history.pushState(null, null, `#${String(date).replace("-", "/").replace("-", "/")}`);
+      }
+      else {
+          location.hash = `#${String(date).replace("-", "/").replace("-", "/")}`;
+      }
+        
         this.getData();
       });
+      // .then(() => {
+      //   this.getData();
+      // });
   };
 
   setReserveBoxData = (oneFlight) => {

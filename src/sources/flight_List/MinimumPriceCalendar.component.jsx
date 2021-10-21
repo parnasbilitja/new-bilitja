@@ -7,6 +7,8 @@ import { selectCredentials } from "../../Redux/Search/search.reselect";
 import { addCredentials } from "../../Redux/Search/search.action";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { withRouter } from "next/router";
+
 class MinimumPriceCalendar extends React.Component {
   constructor(props) {
     super(props);
@@ -199,6 +201,7 @@ class MinimumPriceCalendar extends React.Component {
                       ? StyleCalendarPrice["disable"]
                       : StyleCalendarPrice["available"]
                   }`}
+                  key={day.dayOfWeek+'/'+day.day}
                   onClick={() => {
                     if (day.minPrice == null || day.minPrice <= 0) {
                       return;
@@ -209,23 +212,43 @@ class MinimumPriceCalendar extends React.Component {
                     );
                     const persianDate = m.format("jYYYY/jMM/jDD");
                     const miladidate = m.format("YYYY/MM/DD");
+                    
+                    if (this.props.refreshAction) {
                     this.props
                       .addCredentials({
                         stDate: miladidate,
                         flightDatePersian: persianDate,
                       })
-                      .then(() => {
-                        this.props.refreshAction();
-                      });
+                    .then(() => {
+                          this.props.router.push(
+                            `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}#${this.props.credentials.flightDatePersian}`
+                          );
+                          this.props.refreshAction();
+                        });
+                    } 
+                    else {
+                      this.props.router.push(
+                        `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}#${this.props.credentials.flightDatePersian}`
+                      );
+                    }
+                    // this.props
+                    //   .addCredentials({
+                    //     stDate: miladidate,
+                    //     flightDatePersian: persianDate,
+                    //   })
+                    //   .then(() => {
+                    //     this.props.refreshAction();
+                    //   });
                   }}
                 >
-                  <div>{day.day}</div>
+                  <div  >{day.day}</div>
                   <div
                     className={`${
                       day.minPrice != null && day.minPrice > 0
                         ? "color-secondary"
                         : null
                     } font-size-13`}
+                    
                   >
                     {Math.floor(day.minPrice / 10000)}
                   </div>
@@ -245,7 +268,7 @@ const mapDispatchesToProps = (dispatch) => ({
   addCredentials: async (value) => dispatch(addCredentials(value)),
 });
 
-export default connect(
+export default withRouter(connect(
   mapStatesToProps,
   mapDispatchesToProps
-)(MinimumPriceCalendar);
+)(MinimumPriceCalendar)) ;
