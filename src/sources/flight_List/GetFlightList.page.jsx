@@ -205,7 +205,7 @@ componentWillUnmount() {
                     }
                   }
                   
-                //  if (this.props.airports) {
+                  if (this.props.airports) {
                           console.log('this.props.airports has data');
                           // const source = srccod;
                           // const destinationn = destcod;
@@ -240,7 +240,7 @@ componentWillUnmount() {
                                 })
                                   .then((res) => res.json())
                                   .then((data) => {
-                                    if (data.message == "OK") {
+                                  if (data.message == "OK") {
                                       if (this.props.credentials.withFilters == "true") {
                                         this.props.addFilters({ airlines: data.airlines });
                                         this.props.addCredentials({
@@ -260,7 +260,69 @@ componentWillUnmount() {
                                     }
                                   });
                               });
-                  //      }
+                        }
+                        else
+                        {
+                          this.props
+                          .addCredentials({
+                            sourceNameEn:src, //source.airportNameEn,
+                            destinationNameEn:dest, //destinationn.airportNameEn,
+
+                            source:srccod, //source.airportCode,
+                            dest:destcod, //destinationn.airportCode,
+                            stDate: flightdatemiladi,
+                          flightDatePersian: flightdate,
+                            typeOfCalendar: this.props.typeOfCalendar,
+                          })
+                          .then(() => {
+                            // Get Flights List
+                            this.setState({ loading: true, open: false });
+                            fetch(`${globals.baseUrl}flights/getFlights`, {
+                              method: "POST",
+                              body: JSON.stringify({ ...this.props.credentials }),
+                              headers: { "Content-Type": "application/json" },
+                            })
+                              .then((res) => res.json())
+                              .then((data) => {
+                                console.log('load flight');
+                                console.log(this.props.credentials.sourceName );
+                                if (!this.props.credentials.sourceName ) {
+                                      const source = this.props.airports.find(
+                                        (x) => x.airportNameEn == src
+                                      );
+                                      const destinationn = this.props.airports.find(
+                                        (x) => x.airportNameEn == dest
+                                      );
+                                      console.log('sourcename after flight');
+                                        this.props
+                                        .addCredentials({
+                                          sourceName: source.airportName,
+                                          destinationName: destinationn.airportName
+                                        });
+                              }
+
+                                if (data.message == "OK") {
+                                  if (this.props.credentials.withFilters == "true") {
+                                    this.props.addFilters({ airlines: data.airlines });
+                                    this.props.addCredentials({
+                                      flightDateNext: data.flightDateNext,
+                                      flightDatePrev: data.flightDatePrev,
+                                    });
+                                  }
+                                  this.setState({
+                                    flights: data.flights,
+                                    loading: false,
+                                  });
+                                } else {
+                                  this.props.messageBoxModify({
+                                    state: true,
+                                    message: data.message,
+                                  });
+                                }
+                              });
+                          });
+
+                        }
     } 
     else 
      if (this.props.credentials.source != "") {
