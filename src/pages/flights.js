@@ -20,6 +20,7 @@ import Account from "./../sources/account/Account.component";
 import { connect } from "react-redux";
 import { selcetAccountBox } from "../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../Redux/UI/ui.action";
+import { selectCredentials } from "../Redux/Search/search.reselect";
 
 import GetFlightList from "./../sources/flight_List/GetFlightList.page";
 import FlightReserve from "./../sources/flight_reserve/FlightReseve.page";
@@ -35,8 +36,7 @@ class Flights extends React.Component {
     super(props);
     this.state = {
       width: 1024,
-      sourceName: "",
-      destinationName: "",
+    
 
     };
 
@@ -58,8 +58,8 @@ class Flights extends React.Component {
   }
 
   setTitleMeta(pathName) {
-   var src=this.state.sourceName;
-   var dest=this.state.destinationName;
+  //  var src=this.state.sourceName;
+  //  var dest=this.state.destinationName;
 
     pathName = decodeURI(pathName);
         if (pathName.indexOf("info") > 0) {
@@ -72,84 +72,36 @@ class Flights extends React.Component {
           
           // srcEn = decodeURI(pathName.split("/")[2]).split("-")[0];
           // destEn = decodeURI(pathName.split("/")[2]).split("-")[1];
+          console.log('this.props.credentials');
+          console.log(this.props);
           
           return (
             " خرید اینترنتی بلیط هواپیما " +
-            src +
+            this.props.credentials.sourceName+
             "-" +
-            dest +
+            this.props.credentials.destinationName+
             " با ارزانترین قیمت|20درصد تخفیف بلیطجا  " +
             "/" +
             "خرید اینترنتی بلیط هواپیما " +
-            src +
+            this.props.credentials.sourceName +
             " به " +
-            dest +
+            this.props.credentials.destinationName +
             " به بهترین نرخ با امکان رزرو آنلاین و اینترنتی  به همراه ارزانترین قیمت  بلیط هواپیما و هتل در سایت بلیط جا امکان پذیر است . 02184279999 " +
             "/" +
             " بلیط ارزان هواپیما " +
-            src +
+            this.props.credentials.sourceName +
             " به " +
-            dest +
+            this.props.credentials.destinationName +
             "|خرید اینترنتی بلیط هواپیما " +
-            src +
+            this.props.credentials.sourceName +
             " به " +
-            dest +
+            this.props.credentials.destinationName +
             ""
           ); //<GetFlightList />;
         }
     
     }
-    componentDidUpdate() {
-      const pathquery = this.props.router.asPath;
-      const path = pathquery.split("#")[0];
-      const src = decodeURI(path.split("/")[2]).split("-to-")[0];const srccod = decodeURI(path.split("/")[3]).split("-")[1];
-      const dest = decodeURI(path.split("/")[2]).split("-to-")[1];const destcod = decodeURI(path.split("/")[3]).split("-")[2];
-  
-      window.onpopstate = (e) => {
-            if(this.props.airports!=null){
-              const srcName=this.props.airports.find(
-                (x) => x.airportNameEn == src
-              ).airportName;
-              const destName=this.props.airports.find(
-                (x) => x.airportNameEn == dest
-              ).airportName;
-              this.setState({
-                sourceName: srcName,
-                destinationName: destName,
-              });
-        }
-    }
-  }
   componentDidMount() {
-    const pathquery = this.props.router.asPath;
-    const path = pathquery.split("#")[0];
-    const src = decodeURI(path.split("/")[2]).split("-to-")[0];const srccod = decodeURI(path.split("/")[3]).split("-")[1];
-    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];const destcod = decodeURI(path.split("/")[3]).split("-")[2];
-
-    
-     if (this.props.airports==null) {
-              this.props.setAirports(null);
-         }else{
-
-          if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.5' ){
-            console.log('set2');
-          this.props.setAirports(null);
-          }
-          
-        }
-        if(this.props.airports!=null){
-            const srcName=this.props.airports.find(
-              (x) => x.airportNameEn == src
-            ).airportName;
-            const destName=this.props.airports.find(
-              (x) => x.airportNameEn == dest
-            ).airportName;
-            this.setState({
-              sourceName: srcName,
-              destinationName: destName,
-            });
-      }
-  
     
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
@@ -223,10 +175,11 @@ class Flights extends React.Component {
 const mapStatesToProps = (state) => ({
   accountBox: selcetAccountBox(state),
   airports: selectAirports(state),
+  credentials: selectCredentials(state),
+
 });
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),
-  setAirports: (value) => dispatch(loadAirports(value)),
 });
 export default withRouter(
   connect(mapStatesToProps, mapDispatchesToProps)(Flights)

@@ -164,7 +164,7 @@ class NavBar extends React.Component {
                 alt="بلیطجا - لوگو"
               />
             </a>
-            <h1 className="font-size-10">خرید بلیط هواپیما و رزرو اقامتگاه</h1>
+            <h1 className="font-size-8">خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه</h1>
           </div>
         </div>
       </nav>

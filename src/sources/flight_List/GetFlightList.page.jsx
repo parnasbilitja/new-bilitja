@@ -145,7 +145,7 @@ componentWillUnmount() {
   }
   componentDidMount() {
     window.addEventListener("hashchange", this.hashchange, false);
-    //  if (this.props.credentials.source == '') {
+    //  if (this.props.searchobject.source == '') {
     console.log("compoMOUNT");
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
@@ -190,7 +190,7 @@ componentWillUnmount() {
     //////////////////////////
 
     // Mohammadsaleh
-    if (this.props.credentials.source == "") {
+    if (this.props.searchobject.source == "") {
             console.log('not source');
       
 
@@ -235,13 +235,13 @@ componentWillUnmount() {
                                 this.setState({ loading: true, open: false });
                                 fetch(`${globals.baseUrl}flights/getFlights`, {
                                   method: "POST",
-                                  body: JSON.stringify({ ...this.props.credentials }),
+                                  body: JSON.stringify({ ...this.props.searchobject }),
                                   headers: { "Content-Type": "application/json" },
                                 })
                                   .then((res) => res.json())
                                   .then((data) => {
                                   if (data.message == "OK") {
-                                      if (this.props.credentials.withFilters == "true") {
+                                      if (this.props.searchobject.withFilters == "true") {
                                         this.props.addFilters({ airlines: data.airlines });
                                         this.props.addCredentials({
                                           flightDateNext: data.flightDateNext,
@@ -276,17 +276,17 @@ componentWillUnmount() {
                           })
                           .then(() => {
                             // Get Flights List
-                            this.setState({ loading: true, open: false });
+                            this.setState({ loading: true, open: false ,sourceName:src});
                             fetch(`${globals.baseUrl}flights/getFlights`, {
                               method: "POST",
-                              body: JSON.stringify({ ...this.props.credentials }),
+                              body: JSON.stringify({ ...this.props.searchobject }),
                               headers: { "Content-Type": "application/json" },
                             })
                               .then((res) => res.json())
                               .then((data) => {
                                 console.log('load flight');
-                                console.log(this.props.credentials.sourceName );
-                                if (!this.props.credentials.sourceName ) {
+                                console.log(this.props.searchobject.sourceName );
+                                if (!this.props.searchobject.sourceName ) {
                                       const source = this.props.airports.find(
                                         (x) => x.airportNameEn == src
                                       );
@@ -302,7 +302,7 @@ componentWillUnmount() {
                               }
 
                                 if (data.message == "OK") {
-                                  if (this.props.credentials.withFilters == "true") {
+                                  if (this.props.searchobject.withFilters == "true") {
                                     this.props.addFilters({ airlines: data.airlines });
                                     this.props.addCredentials({
                                       flightDateNext: data.flightDateNext,
@@ -325,20 +325,20 @@ componentWillUnmount() {
                         }
     } 
     else 
-     if (this.props.credentials.source != "") {
+     if (this.props.searchobject.source != "") {
                  console.log('send data to api');
-                 console.log(this.props.credentials);
-                this.setState({ loading: true, open: false ,flightDatePersian: flightdate,});
+                 console.log(this.props.searchobject);
+                this.setState({ loading: true, open: false ,flightDatePersian: flightdate,sourceName:src,});
 
                 fetch(`${globals.baseUrl}flights/getFlights`, {
                   method: "POST",
-                  body: JSON.stringify({ ...this.props.credentials }),
+                  body: JSON.stringify({ ...this.props.searchobject }),
                   headers: { "Content-Type": "application/json" },
                 })
                   .then((res) => res.json())
                   .then((data) => {
                             if (data.message == "OK") {
-                                      if (this.props.credentials.withFilters == "true") {
+                                      if (this.props.searchobject.withFilters == "true") {
                                             this.props.addFilters({ airlines: data.airlines });
                                             this.props.addCredentials({
                                               flightDateNext: data.flightDateNext,
@@ -349,13 +349,13 @@ componentWillUnmount() {
                                       this.setState({ loading: true, open: false });
                                       fetch(`${globals.baseUrl}flights/getFlights`, {
                                         method: "POST",
-                                        body: JSON.stringify({ ...this.props.credentials }),
+                                        body: JSON.stringify({ ...this.props.searchobject }),
                                         headers: { "Content-Type": "application/json" },
                                       })
                                         .then((res) => res.json())
                                         .then((data) => {
                                           if (data.message == "OK") {
-                                            if (this.props.credentials.withFilters == "true") {
+                                            if (this.props.searchobject.withFilters == "true") {
                                               this.props.addFilters({ airlines: data.airlines });
                                               this.props.addCredentials({
                                                 flightDateNext: data.flightDateNext,
@@ -386,7 +386,7 @@ componentWillUnmount() {
                   });
     }
     //----------------------------
-    //if (this.props.credentials.source == "") {
+    //if (this.props.searchobject.source == "") {
     //     if (!this.props.airports) {
     //       fetch(`${globals.baseUrl}flights/getAirports`)
     //         .then((res) => res.json())
@@ -464,13 +464,13 @@ componentWillUnmount() {
     this.setState({ loading: true, open: false });
     fetch(`${globals.baseUrl}flights/getFlights`, {
       method: "POST",
-      body: JSON.stringify({ ...this.props.credentials }),
+      body: JSON.stringify({ ...this.props.searchobject }),
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.message == "OK") {
-          if (this.props.credentials.withFilters == "true") {
+          if (this.props.searchobject.withFilters == "true") {
             this.props.addFilters({ airlines: data.airlines });
             this.props.addCredentials({
               flightDateNext: data.flightDateNext,
@@ -541,7 +541,7 @@ componentWillUnmount() {
                     <a
                       className="btn btn-outlined col-12 btn-block prev-next-btn"
                       onClick={() => {
-                        const date_ = this.props.credentials.flightDatePrev;
+                        const date_ = this.props.searchobject.flightDatePrev;
                         if (date_ != null) {
                           this.changeDate(date_);
                         }
@@ -558,7 +558,7 @@ componentWillUnmount() {
                     <a
                       className="btn btn-outlined col-12 btn-block  prev-next-btn"
                       onClick={() => {
-                        const date_ = this.props.credentials.flightDateNext;
+                        const date_ = this.props.searchobject.flightDateNext;
                         if (date_ != null) {
                           this.changeDate(date_);
                         }
@@ -698,7 +698,7 @@ componentWillUnmount() {
           </div>
           <div
             onClick={() => {
-              const date_ = this.props.credentials.flightDatePrev;
+              const date_ = this.props.searchobject.flightDatePrev;
               if (date_ != null) {
                 this.changeDate(date_);
               }
@@ -717,7 +717,7 @@ componentWillUnmount() {
           </div>
           <div
             onClick={() => {
-              const date_ = this.props.credentials.flightDateNext;
+              const date_ = this.props.searchobject.flightDateNext;
               if (date_ != null) {
                 this.changeDate(date_);
               }
@@ -740,7 +740,7 @@ componentWillUnmount() {
   }
 }
 const mapStatesToProps = (state) => ({
-  credentials: selectSearchObject(state),
+  searchobject: selectSearchObject(state),
   airports: selectAirports(state),
 });
 
