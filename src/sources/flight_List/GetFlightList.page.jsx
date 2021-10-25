@@ -199,7 +199,7 @@ componentWillUnmount() {
                       this.props.setAirports(null);
                   }else{
 
-                    if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.5' ){
+                    if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.6' ){
                       console.log('airport version is changed');
                     this.props.setAirports(null);
                     }

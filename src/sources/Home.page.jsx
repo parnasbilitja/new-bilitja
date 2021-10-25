@@ -33,7 +33,7 @@ class Home extends React.Component {
       this.props.setAirports(null);
     }else{
 
-      if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.5' ){
+      if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.6' ){
         console.log('asasasas111');
       this.props.setAirports(null);
       }

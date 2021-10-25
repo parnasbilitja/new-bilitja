@@ -1,9 +1,9 @@
 {
   "AirportsList": [
     {
-      "Version":"1.5",
+      "Version":"1.6",
       "airportCode": "thr,ika",
-      "airportName": "تهران همه فرودگاه ها",
+      "airportName": "تهران",
       "airportKey": "تهران Tehran THR مهرآباد امام خمینی Imam Khomeini IKA Mehr Abad همه فرودگاهها طهران emam khomeini"
 	  ,"airportNameEn":"tehran-all"
     },
@@ -57,7 +57,7 @@
     },
     {
       "airportCode": "ist,saw,teq",
-      "airportName": "استانبول همه فرودگاهها",
+      "airportName": "استانبول ",
       "airportKey": "استانبول Istanbul IST صبیحا Sabiha SAW صبيحا سبیحا آتا ترک اسطنبول چورلو TEQ chorlu corlu گوکچن Gokcen همه فرودگاهها ترکیه ترکيه ISL"
 	  ,"airportNameEn":"istanbul-all"
     },
@@ -105,7 +105,7 @@
     },
     {
       "airportCode": "buz,iaq",
-      "airportName": "بوشهر همه فرودگاهها",
+      "airportName": "بوشهر ",
       "airportKey": "بوشهر Boshehr BUZ بهرگان IAQ Bahregan همه فرودگاهها"
 	  ,"airportNameEn":"bushehr-all"
     },
@@ -370,7 +370,7 @@
     },
     {
       "airportCode": "ayt,dnz,ise",
-      "airportName": "آنتالیا همه فرودگاهها",
+      "airportName": "آنتالیا ",
       "airportKey": "آنتالیا انتالیا انتاليا Antalya AYT دنیزلی دنيزلي DENIZLI DNZ Esparta اسپارتا ISE انطاليا ترکیه ترکيه همه فرودگاهها"
 	  ,"airportNameEn":"antalya-all"
     },
@@ -395,7 +395,7 @@
     },
     {
       "airportCode": "dxb,dwc,shj",
-      "airportName": "دبی همه فرودگاهها",
+      "airportName": "دبی ",
       "airportKey": "دبی Dubai DXB دبي آل مکتوم Alemaktom DWC امارات SHJ شارجه Sharjah شارجة ال مکتوم همه فرودگاهها"
 	  ,"airportNameEn":"dubi-all"
     },
@@ -443,7 +443,7 @@
     },
     {
       "airportCode": "bkk,dmk",
-      "airportName": "بانکوک همه فرودگاهها",
+      "airportName": "بانکوک ",
       "airportKey": "بانکوک Bangkok BKK دن مواینگ مواينگ Mueang DMK تایلند همه فرودگاه ها bankok"
 	  ,"airportNameEn":"bangkok-all"
     },
@@ -485,7 +485,7 @@
     },
     {
       "airportCode": "par,ory,cdg",
-      "airportName": "پاریس همه فرودگاهها",
+      "airportName": "پاریس ",
       "airportKey": "پاریس شارل دوگل Charles-de-Gaulle CDG اورلی Orly ORY Paris PAR اورلي پاريس فرانسه همه فرودگاهها"
 	  ,"airportNameEn":"paris-all"
     },
@@ -539,7 +539,7 @@
     },
     {
       "airportCode": "vko,svo,dme,zia",
-      "airportName": "همه فرودگاهها مسکو",
+      "airportName": " مسکو",
       "airportKey": "ونوکوا VKO شرمیتوا SVO دومودیدوا DME ZIA  Moscow Sheremetyevo مسکو vnukovo domodedovo زوموویسکی zhukovsky روسیه همه فرودگاهها"
 	  ,"airportNameEn":"moscow-all"
     },
@@ -617,7 +617,7 @@
     },
     {
       "airportCode": "lon,lhr,lgw",
-      "airportName": "لندن همه فرودگاهها",
+      "airportName": "لندن ",
       "airportKey": "لندن London LON,LHR,LGW گاتویک هیترو  Heathrow Gatwick انگلستان انگليس هيترو گاتويک همه فرودگاهها"
 	  ,"airportNameEn":"london-all"
     },
@@ -653,7 +653,7 @@
     },
     {
       "airportCode": "mil,mxp",
-      "airportName": "میلان  همه فرودگاهها",
+      "airportName": "میلان  ",
       "airportKey": "میلان Milan MIL ميلان مالپنسا MXP ایتالیا همه فرودگاهها"
 	  ,"airportNameEn":"milan-all"
     },
@@ -683,7 +683,7 @@
     },
     {
       "airportCode": "iev,kbp",
-      "airportName": "کی یف همه فرودگاهها",
+      "airportName": "کی یف ",
       "airportKey": "Kiev کی یف IEV KBP Zhuliany Boryspil ژولیانی بوریسپیل کي يف ژولياني بوريسپيل اوکراین اوکراين همه فرودگاهها"
 	  ,"airportNameEn":"kyiv-all"
     },
@@ -731,7 +731,7 @@
     },
     {
       "airportCode": "txl,ber",
-      "airportName": "برلین همه فرودگاهها",
+      "airportName": "برلین ",
       "airportKey": "برلین تگل Berlin TXL,BER برلين آلمان Tegel  همه فرودگاهها"
 	  ,"airportNameEn":"berlin-all"
     },
