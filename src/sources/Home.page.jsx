@@ -210,55 +210,67 @@ class Home extends React.Component {
           <div>
             <div className={styles["suggestion-list"]}>
               <div>
-                <a href="flights/tehran/mashhad/">
+                            <a href="flights/tehran-to-mashhad/airfare-thr,ika-mhd">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-14">
-                    بلیط هواپیما مشهد
+                                <span className="pull-right font-size-14">
+                                    <h7>
+                                        بلیط هواپیما مشهد
+                                        </h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="flights/tehran/isfahan">
+                            <a href="flights/tehran-to-kish/airfare-thr,ika-kih">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-14">
-                    بلیط هواپیما کیش
+                                <span className="pull-right font-size-14">
+                                    <h7>
+                                        بلیط هواپیما کیش
+                                         </h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="flights/tehran/mashhad">
+                            <a href="flights/tehran-to-isfahan/airfare-thr,ika-ifn">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-13">
-                    بلیط هواپیما اصفهان
+                                <span className="pull-right font-size-13">
+                                    <h7>
+                                        بلیط هواپیما اصفهان
+                                         </h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="flights/tehran/ahwaz">
+                            <a href="flightstehran-to-ahwaz/airfare-thr,ika-awz">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-14">
-                    بلیط هواپیما اهواز
+                                <span className="pull-right font-size-14">
+                                    <h7>
+                                        بلیط هواپیما اهواز
+                                         </h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="flights/tehran/tabriz">
+                            <a href="flights/tehran-to-tabriz/airfare-thr,ika-tbz">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-14">
-                    بلیط هواپیما تبریز
+                                <span className="pull-right font-size-14">
+                                    <h7>
+                                        بلیط هواپیما تبریز
+                                         </h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="flights/tehran/shiraz">
+                            <a href="flights/tehran-to-shiraz/airfare-thr,ika-syz">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-14">
-                    بلیط هواپیما شیراز
+                                <span className="pull-right font-size-14">
+                                    <h7>
+                                        بلیط هواپیما شیراز
+                                         </h7>
                   </span>
                 </a>
                 <div className="clear"></div>
@@ -266,55 +278,67 @@ class Home extends React.Component {
             </div>
             <div className={styles["suggestion-list"]}>
               <div>
-                <a href="flights/tehran/istanbul">
+                            <a href="flights/tehran-to-istanbul/airfare-thr,ika-ist">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-13">
-                    بلیط هواپیما استانبول
+                                <span className="pull-right font-size-13">
+                                    <h7>
+                                        بلیط هواپیما استانبول
+                                         </h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="flights/tehran/dubai">
+                            <a href="flights/tehran-to-dubi/airfare-thr,ika-dxb">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-14">
-                    بلیط هواپیما دبی
+                                <span className="pull-right font-size-14">
+                                    <h7>
+                                        بلیط هواپیما دبی
+                                         </h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="flights/tehran/teflis">
+                            <a href="flights/tehran-to-teflis/airfare-thr,ika-tbs">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-14">
-                    بلیط هواپیما تفلیس
+                                <span className="pull-right font-size-14">
+                                    <h7>
+                                        بلیط هواپیما تفلیس
+                                         </h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="flights/tehran/mashhad">
+                            <a href="flights/tehran-to-abadan/airfare-thr,ika-abd">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-14">
-                    بلیط هواپیما مشهد
+                                <span className="pull-right font-size-14">
+                                    <h7>
+                                        بلیط هواپیما آبادان
+                                         </h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="flights/tehran/baku">
+                            <a href="flights/tehran-to-baku/airfare-thr,ika-gyd">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-16">
-                    بلیط هواپیما باکو
+                                <span className="pull-right font-size-16">
+                                    <h7>
+                                        بلیط هواپیما باکو
+                                         </h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                <a href="flights/tehran/najaf">
+                            <a href="flights/tehran-to-najaf/airfare-thr,ika-njf">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-14">
-                    بلیط هواپیما نجف
+                                <span className="pull-right font-size-14">
+                                    <h7>
+                                        بلیط هواپیما نجف
+                                         </h7>
                   </span>
                 </a>
                 <div className="clear"></div>
