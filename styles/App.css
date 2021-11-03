@@ -1,7 +1,7 @@
-@font-face {
+/* @font-face {
   src: url("/public/Font/IranSans/IRANSansWebFaNumLight.ttf");
   font-family: IranSans;
-}
+} */
 
 body {
   font-family: IranSans !important;
