@@ -6,8 +6,9 @@ import styles from "../../../styles/Footer.module.scss";
 
 import { faPhone, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Instagram, Twitter, Facebook } from "@material-ui/icons";
-// just view, without any functionality
+import { faInstagram,faTwitter,faFacebook } from '@fortawesome/free-brands-svg-icons'
+ //import { Instagram, Twitter, Facebook } from "@material-ui/icons";
+ // just view, without any functionality
 const Footer = () => {
   return (
     <div className={styles["footer"]}>
@@ -136,20 +137,25 @@ const Footer = () => {
                 <a href="#">bilitja.com</a>
               </li>
               <li>
+              
                 <a href="https://instagram.com/hamnavaz.tour">
-                  <Instagram />
+                <FontAwesomeIcon icon={faInstagram} />  
+               
                 </a>
                 <a href="https://instagram.com/hamnavaz.tour">hamnavaz.tour</a>
               </li>
               <li>
                 <a href="https://twitter.com/Hamnavaz_com">
-                  <Twitter />
+                <FontAwesomeIcon icon={faTwitter} />  
+               
+
                 </a>
                 <a href="https://twitter.com/Hamnavaz_com">Hamnavaz_com</a>
               </li>
               <li>
                 <a href="https://facebook.com/Hamnavaz_com">
-                  <Facebook />
+                <FontAwesomeIcon icon={faFacebook} />  
+               
                 </a>
                 <a href="https://facebook.com/Hamnavaz_com">Hamnavaz_com</a>
               </li>

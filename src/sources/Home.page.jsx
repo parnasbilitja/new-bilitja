@@ -23,7 +23,7 @@ class Home extends React.Component {
     this.state = {
       open: false,
       dateSelected: null,
-      width: 1024,
+      width: 100,
     };
   }
   componentDidMount() {
@@ -61,6 +61,8 @@ class Home extends React.Component {
   render() {
     return (
       <div>
+         {
+              this.state.width >= 826?
         <div className="hidden-xs hidden-sm row">
           <div className="col-md-4">
             <img
@@ -97,6 +99,7 @@ class Home extends React.Component {
             />
           </div>
         </div>
+        :null}
 
         <div className={`${styles["heor-main-container"]}`}>
           <PageTabls tabActice={1} />
@@ -108,6 +111,8 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
+        {
+              this.state.width >= 826?
         <div className={`${styles["hero-big-image"]} container`}>
           <img
             width=""
@@ -115,14 +120,26 @@ class Home extends React.Component {
             width=""
             height=""
             alt="بلیطجا-اسلایدر"
-            src={
-              this.state.width > 768
-                ? "../../../Images/flight-index.webp"
-                : "../../../Images/flight-index-mobile.webp"
-            }
+            src="../../../Images/flight-index.webp"
           />
         </div>
-
+        :null
+  }
+  {
+              this.state.width < 826?
+        <div className={`${styles["hero-big-image"]} container`}>
+          <img
+            width=""
+            height=""
+            width=""
+            height=""
+            alt="بلیطجا-اسلایدر"
+            src="../../../Images/flight-index-mobile.webp"
+          />
+        </div>
+        :null
+  }
+ 
         <div className="row padding-xs-5-15">
           <div className="col-lg-2 col-md-1 hidden-xs"></div>
           <div className="col-lg-8 col-md-10 col-sm-12">

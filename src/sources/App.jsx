@@ -157,7 +157,7 @@ class App extends React.Component {
             //   this.props.router.push("/flights")
           }
           <MessageBox />
-          <Footer />
+          {/* <Footer /> */}
           <Head>
             <title>
               {
