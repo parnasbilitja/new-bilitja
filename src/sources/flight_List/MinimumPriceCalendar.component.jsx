@@ -221,14 +221,14 @@ class MinimumPriceCalendar extends React.Component {
                       })
                     .then(() => {
                           this.props.router.push(
-                            `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}/airfare-${this.props.credentials.source}-${this.props.credentials.dest}#${this.props.credentials.flightDatePersian}`
+                            `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}/airfares-${this.props.credentials.source}-${this.props.credentials.dest}#${this.props.credentials.flightDatePersian}`
                           );
                           this.props.refreshAction();
                         });
                     } 
                     else {
                       this.props.router.push(
-                        `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}/airfare-${this.props.credentials.source}-${this.props.credentials.dest}#${this.props.credentials.flightDatePersian}`
+                        `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}/airfares-${this.props.credentials.source}-${this.props.credentials.dest}#${this.props.credentials.flightDatePersian}`
                       );
                     }
                     // this.props

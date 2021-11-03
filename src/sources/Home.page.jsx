@@ -227,7 +227,7 @@ class Home extends React.Component {
           <div>
             <div className={styles["suggestion-list"]}>
               <div>
-                            <a href="flights/tehran-to-mashhad/airfare-thr,ika-mhd">
+                            <a href="flights/tehran-to-mashhad/airfares-thr,ika-mhd">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                                 <span className="pull-right font-size-14">
                                     <h7>
@@ -238,7 +238,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-kish/airfare-thr,ika-kih">
+                            <a href="flights/tehran-to-kish/airfares-thr,ika-kih">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                                 <span className="pull-right font-size-14">
                                     <h7>
@@ -249,7 +249,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-isfahan/airfare-thr,ika-ifn">
+                            <a href="flights/tehran-to-isfahan/airfares-thr,ika-ifn">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                                 <span className="pull-right font-size-13">
                                     <h7>
@@ -260,7 +260,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flightstehran-to-ahwaz/airfare-thr,ika-awz">
+                            <a href="flights/tehran-to-ahwaz/airfares-thr,ika-awz">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                                 <span className="pull-right font-size-14">
                                     <h7>
@@ -271,7 +271,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-tabriz/airfare-thr,ika-tbz">
+                            <a href="flights/tehran-to-tabriz/airfares-thr,ika-tbz">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                                 <span className="pull-right font-size-14">
                                     <h7>
@@ -282,7 +282,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-shiraz/airfare-thr,ika-syz">
+                            <a href="flights/tehran-to-shiraz/airfares-thr,ika-syz">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                                 <span className="pull-right font-size-14">
                                     <h7>
@@ -295,7 +295,7 @@ class Home extends React.Component {
             </div>
             <div className={styles["suggestion-list"]}>
               <div>
-                            <a href="flights/tehran-to-istanbul/airfare-thr,ika-ist">
+                            <a href="flights/tehran-to-istanbul/airfares-thr,ika-ist">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                                 <span className="pull-right font-size-13">
                                     <h7>
@@ -306,7 +306,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-dubi/airfare-thr,ika-dxb">
+                            <a href="flights/tehran-to-dubi/airfares-thr,ika-dxb">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                                 <span className="pull-right font-size-14">
                                     <h7>
@@ -317,7 +317,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-teflis/airfare-thr,ika-tbs">
+                            <a href="flights/tehran-to-teflis/airfares-thr,ika-tbs">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                                 <span className="pull-right font-size-14">
                                     <h7>
@@ -328,7 +328,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-abadan/airfare-thr,ika-abd">
+                            <a href="flights/tehran-to-abadan/airfares-thr,ika-abd">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                                 <span className="pull-right font-size-14">
                                     <h7>
@@ -339,7 +339,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-baku/airfare-thr,ika-gyd">
+                            <a href="flights/tehran-to-baku/airfares-thr,ika-gyd">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                                 <span className="pull-right font-size-16">
                                     <h7>
@@ -350,7 +350,7 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-najaf/airfare-thr,ika-njf">
+                            <a href="flights/tehran-to-najaf/airfares-thr,ika-njf">
                   <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
                                 <span className="pull-right font-size-14">
                                     <h7>
