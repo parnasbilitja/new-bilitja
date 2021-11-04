@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 //import airplaneReserve from '../../../Images/airplane_reserve.webp'
-//import airplaneReserveSmall from '../../../Images/airplane_reserve_small.webp'
+
 //import barcode from '../../../Images/barcode.webp'
 import globals from "../Global";
 import styles from "../../../styles/FlightReciept.module.scss";
@@ -80,7 +80,7 @@ const FlightRecieptDesktopHeader = (props) =>
                       width=""
                       height=""
                       alt="بلیطجا - لوگو رزرو بلیط"
-                      src="../../../../../Images/airplane_reserve_small.webp"
+                      src="../../../../../Images/airplane_reserve.webp"
                     />
                     <p>
                       {" "}

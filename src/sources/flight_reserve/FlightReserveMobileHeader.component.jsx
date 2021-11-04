@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-//import airplaneReserveSmall from '../../../Images/airplane_reserve_small.webp'
+
 import { faClock, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import globals from "../Global";

@@ -89,7 +89,7 @@ const PaymentReceiptDesktopHeader = (props) => {
                       width=""
                       height=""
                       alt="بلیطجا - لوگو رزرو بلیط هواپیما"
-                      src="../../../../../Images/airplane_reserve_small.webp"
+                      src="../../../../../Images/airplane_reserve.webp"
                     />
                     <p>
                       {" "}

@@ -46,14 +46,14 @@ class FlightReserve extends React.Component {
 
   componentDidMount() {
     this.props.addReservationProperties({
-      reqNo: this.props.router.asPath.split("/")[5],
-      reqPnr: this.props.router.asPath.split("/")[6],
+      reqNo: this.props.router.asPath.split("/")[7],
+      reqPnr: this.props.router.asPath.split("/")[8],
       priceMessage: "",
     });
     fetch(
       `${globals.baseUrl}flightsReserve/ravisReserveProperty/${
-        this.props.router.asPath.split("/")[5]
-      }-${this.props.router.asPath.split("/")[6]}`
+        this.props.router.asPath.split("/")[7]
+      }-${this.props.router.asPath.split("/")[8]}`
     )
       .then((res) => res.json())
       .then((data) => {
