@@ -3,7 +3,6 @@ import React from "react";
 import { faCog, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { selectArilines } from "../../Redux/Search/search.reselect";
 import { connect } from "react-redux";
 import globals from "../Global";
 import styles from "../../../styles/Flight.module.scss";
@@ -13,44 +12,118 @@ import {
   addAirlineToSearchObject,
   removeAirlineFromSearchObject,
 } from "../../Redux/Search/search.action";
+import { messageBoxModify } from "../../Redux/UI/ui.action";
 
 class Filters extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      airlines: [],
+      lowPrice: null,
+      endtime: "",
+    };
   }
-  //change sort criteria, by price, by time
-  sortableChanged = (e) => {
-    this.props
-      .addCredentials({
-        sortable: e.currentTarget.value,
-      })
-      .then(() => {
-        this.props.getData();
-      });
+
+  handleFindByFlightNo = (e) => {
+    if (e.target.value != "") {
+      const searched = this.props.realData.filter((res) =>
+        res.flightNo.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+      this.props.setFilter(searched);
+    } else {
+      this.props.setFilter(this.props.realData);
+    }
   };
-  //change time filter in order to show only flights in those times
-  timeOfFlightChanged = (e) => {
-    const { name, checked } = e.currentTarget;
-    this.props
-      .addCredentials({
-        [name]: checked,
-        withFilters: false,
-      })
-      .then(() => {
-        this.props.getData();
-      });
-  };
-  //check specific airlines to show only their flights
-  airlineFilter = (e) => {
-    const { name, checked } = e.currentTarget;
-    if (checked) {
-      this.props.addAirlineToSearchObject(name).then(() => {
-        this.props.getData();
+
+  handleSelectAirline = async (airline, event) => {
+    const { checked } = event.target;
+    const prevTickets = [...this.props.realData];
+
+    if (checked == true) {
+      const newSelected = [...this.state.airlines, airline];
+      const finedTicket = prevTickets.filter((ticket) =>
+        newSelected.includes(ticket.airlineIataCode)
+      );
+      this.props.setFilter(finedTicket);
+      this.setState({
+        airlines: newSelected,
       });
     } else {
-      this.props.removeAirlineFromSearchObject(name).then(() => {
-        this.props.getData();
+      const prevSelect = [...this.state.airlines];
+      const findedIndex = prevSelect.indexOf(airline);
+      prevSelect.splice(findedIndex, 1);
+
+      if (prevSelect.length != 0) {
+        this.setState({
+          airlines: prevSelect,
+        });
+        const finedTicket = prevTickets.filter((ticket) =>
+          prevSelect.includes(ticket.airlineIataCode)
+        );
+        this.props.setFilter(finedTicket);
+      } else {
+        this.props.setFilter(prevTickets);
+        this.setState({
+          airlines: [],
+        });
+      }
+    }
+  };
+
+  handleFindByPrice = (lowMood, e) => {
+    const { checked } = e.target;
+    if (checked == true) {
+      if (lowMood == true) {
+        this.setState({
+          lowPrice: true,
+        });
+        const prevTickets = [...this.props.realData];
+        const filtring = prevTickets.sort((a, b) => a.priceView - b.priceView);
+        this.props.setFilter(filtring);
+      } else {
+        this.setState({
+          lowPrice: false,
+        });
+        const prevTickets = [...this.props.realData];
+        const filtring = prevTickets.sort((a, b) => a.priceView - b.priceView);
+        const reversed = filtring.reverse();
+        this.props.setFilter(reversed);
+      }
+    } else {
+      this.setState({
+        lowPrice: null,
       });
+      this.props.setFilter(this.props.realData);
+    }
+  };
+
+  handleFilterByTime = (st, en, e) => {
+    const { checked } = e.target;
+    if (checked == true) {
+      this.setState({
+        endtime: en,
+      });
+      const prevTickets = [...this.props.realData];
+      const filtring = prevTickets.filter(
+        (res) => res.flightTime > st && res.flightTime < en
+      );
+      if (filtring.length != 0) {
+        this.props.setFilter(filtring);
+      } else {
+        this.props.messageBoxModify({
+          state: true,
+          message: "متاسفانه در این ساعت پروازی وجود ندارد.",
+        });
+
+        this.setState({
+          endtime: "",
+        });
+      }
+    } else {
+      this.setState({
+        endtime: "",
+      });
+      this.props.setFilter(this.props.realData);
     }
   };
   render() {
@@ -71,6 +144,7 @@ class Filters extends React.Component {
           type="text"
           placeholder="جستجوی شماره پرواز"
           className={`${styles["filter-list-input"]} input-search mt-3 flight-filter-input`}
+          onChange={this.handleFindByFlightNo}
         />
         <hr />
         <div className={styles["filter-list-sort"]}>
@@ -79,32 +153,42 @@ class Filters extends React.Component {
             <div>
               <div className="radio">
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="sortable"
                   value="1"
                   className="radio"
                   id="cheapest"
-                  onChange={this.sortableChanged}
+                  onChange={(e) => this.handleFindByPrice(true, e)}
+                  checked={
+                    this.state.lowPrice != null && this.state.lowPrice == true
+                      ? true
+                      : false
+                  }
                 />
               </div>
               <label className="font-size-14" htmlFor="cheapest">
                 {" "}
-                کمترین قیمت
+                ارزانترین
               </label>
             </div>
             <div>
               <div className="radio">
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="sortable"
                   value="2"
                   className="radio"
-                  onChange={this.sortableChanged}
+                  onChange={(e) => this.handleFindByPrice(false, e)}
+                  checked={
+                    this.state.lowPrice != null && this.state.lowPrice == false
+                      ? true
+                      : false
+                  }
                   id="earlieast"
                 />
               </div>
               <label className="font-size-14" htmlFor="earlieast">
-                نزدیک ترین ساعت
+                گرانترین
               </label>
             </div>
           </form>
@@ -117,21 +201,23 @@ class Filters extends React.Component {
             <div className="radio">
               <input
                 type="checkbox"
-                onChange={this.timeOfFlightChanged}
                 className="radio"
-                name="earlyMorning"
-                id="earlyMorning"
+                id="exampleCheck1"
+                onChange={(e) => this.handleFilterByTime("00:00", "04:59", e)}
+                checked={this.state.endtime == "04:59" ? true : false}
               />
             </div>
-            <label className="font-size-14" htmlFor="earlyMorning">
-              بامداد (04:59 - 00:00)
+
+            <label className="form-check-label" htmlFor="exampleCheck1">
+              بامداد (00:00 - 04:59)
             </label>
           </div>
           <div>
             <div className="radio">
               <input
                 type="checkbox"
-                onChange={this.timeOfFlightChanged}
+                onChange={(e) => this.handleFilterByTime("05:00", "11:59", e)}
+                checked={this.state.endtime == "11:59" ? true : false}
                 className="radio"
                 name="morning"
                 id="morning"
@@ -145,7 +231,8 @@ class Filters extends React.Component {
             <div className="radio">
               <input
                 type="checkbox"
-                onChange={this.timeOfFlightChanged}
+                onChange={(e) => this.handleFilterByTime("12:00", "17:59", e)}
+                checked={this.state.endtime == "17:59" ? true : false}
                 className="radio"
                 name="afternoon"
                 id="afternoon"
@@ -159,7 +246,8 @@ class Filters extends React.Component {
             <div className="radio">
               <input
                 type="checkbox"
-                onChange={this.timeOfFlightChanged}
+                onChange={(e) => this.handleFilterByTime("18:00", "23:59", e)}
+                checked={this.state.endtime == "23:59" ? true : false}
                 className="radio"
                 name="evening"
                 id="evening"
@@ -173,12 +261,14 @@ class Filters extends React.Component {
         <hr />
         <div className={styles["filter-list-airlines"]}>
           <strong>ایرلاین</strong>
-          {this.props.airlines.airlines
-            ? this.props.airlines.airlines.map((oneAirline) => (
+          {this.props.Airlines != undefined && this.props.Airlines != null
+            ? this.props.Airlines.map((oneAirline) => (
                 <div key={oneAirline.airlineIataCode}>
                   <div className="radio">
                     <input
-                      onChange={this.airlineFilter}
+                      onChange={(e) =>
+                        this.handleSelectAirline(oneAirline.airlineIataCode, e)
+                      }
                       name={oneAirline.airlineIataCode}
                       type="checkbox"
                       className="radio"
@@ -205,14 +295,13 @@ class Filters extends React.Component {
     );
   }
 }
-const mapStatesToProps = (state) => ({
-  airlines: selectArilines(state),
-});
+
 const mapDispatchesToProps = (dispatch) => ({
   addCredentials: async (value) => dispatch(addCredentials(value)),
   addAirlineToSearchObject: async (value) =>
     dispatch(addAirlineToSearchObject(value)),
   removeAirlineFromSearchObject: async (value) =>
     dispatch(removeAirlineFromSearchObject(value)),
+  messageBoxModify: async (value) => dispatch(messageBoxModify(value)),
 });
-export default connect(mapStatesToProps, mapDispatchesToProps)(Filters);
+export default connect(null, mapDispatchesToProps)(Filters);

@@ -14,7 +14,7 @@ const INITIAL_STATE = {
         stDate:'',
         flightDatePersian:'',
         currentPage :1,
-        withFilters:true,
+        withFilters:false,
         sortable:1,
         earlyMorning: false,
         morning: false,

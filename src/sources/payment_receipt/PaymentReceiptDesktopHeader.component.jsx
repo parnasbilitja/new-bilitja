@@ -5,7 +5,7 @@ import Image from "next/image";
 //import barcode from '../../../Images/barcode.webp'
 import globals from "../Global";
 import styles from "../../../styles/FlightReciept.module.scss";
-
+import { getweekday } from "../../Utils/SimpleTasks";
 const PaymentReceiptDesktopHeader = (props) => {
   if (props) {
     var flight_info = props.info.referenceFlight[0];
@@ -46,7 +46,7 @@ const PaymentReceiptDesktopHeader = (props) => {
                 <div className="col-lg-8 col-md-8 col-sm-8 col-6 text-right">
                   <p className="text-center no-margin">تاریخ</p>
                   <p className="color-secondary text-center font-size-23 no-margin">
-                    {String(flight_info.flightDay)} &nbsp;
+                    {getweekday(String(flight_info.flightDay))} &nbsp;
                     {String(flight_info.flightDate)
                       .replace("-", "/")
                       .replace("-", "/")}

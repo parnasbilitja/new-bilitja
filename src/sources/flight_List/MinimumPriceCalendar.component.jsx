@@ -48,19 +48,15 @@ class MinimumPriceCalendar extends React.Component {
     const requestParams1 = {
       airport1: this.props.credentials.source,
       airport2: this.props.credentials.dest,
-      year: this.state.year,
-      month: this.state.month,
     };
-    fetch(`${globals.baseUrl}flights/getFlightCalendar`, {
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestParams1),
-      method: "POST",
-    })
+    fetch(
+      `${globals.baseUrl2}BilitAirLines/getFlightCalendar/${requestParams1.airport1}/${requestParams1.airport2}/${this.state.year}/${this.state.month}`
+    )
       .then((res) => res.json())
       .then((data) => {
         // check if this is from componentdidmount or not
         if (idInitReq) {
-          if (!this.checkLastDays(data.flightCalendarModel)) {
+          if (!this.checkLastDays(data[0])) {
             const year =
               parseInt(this.state.month) + 1 > 12
                 ? parseInt(this.state.year) + 1
@@ -76,27 +72,25 @@ class MinimumPriceCalendar extends React.Component {
               year: year,
               month: month,
             };
-            fetch(`${globals.baseUrl}flights/getFlightCalendar`, {
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(requestParams2),
-              method: "POST",
-            })
+            fetch(
+              `${globals.baseUrl2}BilitAirLines/getFlightCalendar/${requestParams1.airport1}/${requestParams1.airport2}/${this.state.year}/${this.state.month}`
+            )
               .then((res) => res.json())
               .then((data) => {
                 this.setState({
-                  firstMonth: data.flightCalendarModel,
+                  firstMonth: data[0],
                   year: year,
                   month: month,
                 });
               });
           } else {
             this.setState({
-              firstMonth: data.flightCalendarModel,
+              firstMonth: data[0],
             });
           }
         } else {
           this.setState({
-            firstMonth: data.flightCalendarModel,
+            firstMonth: data[0],
           });
         }
       });
@@ -201,7 +195,7 @@ class MinimumPriceCalendar extends React.Component {
                       ? StyleCalendarPrice["disable"]
                       : StyleCalendarPrice["available"]
                   }`}
-                  key={day.dayOfWeek+'/'+day.day}
+                  key={day.dayOfWeek + "/" + day.day}
                   onClick={() => {
                     if (day.minPrice == null || day.minPrice <= 0) {
                       return;
@@ -212,21 +206,20 @@ class MinimumPriceCalendar extends React.Component {
                     );
                     const persianDate = m.format("jYYYY/jMM/jDD");
                     const miladidate = m.format("YYYY/MM/DD");
-                    
+
                     if (this.props.refreshAction) {
-                    this.props
-                      .addCredentials({
-                        stDate: miladidate,
-                        flightDatePersian: persianDate,
-                      })
-                    .then(() => {
+                      this.props
+                        .addCredentials({
+                          stDate: miladidate,
+                          flightDatePersian: persianDate,
+                        })
+                        .then(() => {
                           this.props.router.push(
                             `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}/airfares-${this.props.credentials.source}-${this.props.credentials.dest}#${this.props.credentials.flightDatePersian}`
                           );
                           this.props.refreshAction();
                         });
-                    } 
-                    else {
+                    } else {
                       this.props.router.push(
                         `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}/airfares-${this.props.credentials.source}-${this.props.credentials.dest}#${this.props.credentials.flightDatePersian}`
                       );
@@ -241,14 +234,13 @@ class MinimumPriceCalendar extends React.Component {
                     //   });
                   }}
                 >
-                  <div  >{day.day}</div>
+                  <div>{day.day}</div>
                   <div
                     className={`${
                       day.minPrice != null && day.minPrice > 0
                         ? "color-secondary"
                         : null
                     } font-size-13`}
-                    
                   >
                     {Math.floor(day.minPrice / 10000)}
                   </div>
@@ -268,7 +260,6 @@ const mapDispatchesToProps = (dispatch) => ({
   addCredentials: async (value) => dispatch(addCredentials(value)),
 });
 
-export default withRouter(connect(
-  mapStatesToProps,
-  mapDispatchesToProps
-)(MinimumPriceCalendar)) ;
+export default withRouter(
+  connect(mapStatesToProps, mapDispatchesToProps)(MinimumPriceCalendar)
+);

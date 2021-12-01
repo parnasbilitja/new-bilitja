@@ -2,6 +2,7 @@ import React from "react";
 
 import globals from "../Global";
 import styles from "../../../styles/FlightReserve.module.scss";
+import { getweekday } from "../../Utils/SimpleTasks";
 
 const FlightReserveDesktopHeader = (props) =>
   props.airport1 ? (
@@ -35,7 +36,7 @@ const FlightReserveDesktopHeader = (props) =>
               <div className="col-lg-8 col-md-8 col-sm-8 col-6 text-right">
                 <p className="text-center no-margin">تاریخ</p>
                 <p className="color-secondary text-center font-size-23 no-margin">
-                  {String(props.flightDay)} &nbsp;{" "}
+                  {getweekday(String(props.flightDay))} &nbsp;{" "}
                   {String(props.flightDate).replace("-", "/").replace("-", "/")}
                 </p>
               </div>

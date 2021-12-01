@@ -5,7 +5,7 @@ import { faClock, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import globals from "../Global";
 import styles from "../../../styles/FlightReserve.module.scss";
-
+import { getweekday } from "../../Utils/SimpleTasks";
 const FlightReserveMobileHeader = (props) =>
   props.airport1 ? (
     <div className={`row visible-xs ${styles["reserve-mobile-hero"]} `}>
@@ -66,7 +66,7 @@ const FlightReserveMobileHeader = (props) =>
             <p className="text-right">
               <FontAwesomeIcon icon={faCalendarAlt} className="mx-2" />
               <span className="color-secondary">
-                {String(props.flightDay)} &nbsp;{" "}
+                {getweekday(String(props.flightDay))} &nbsp;{" "}
               </span>
             </p>
             <p className="text-right mx-2">

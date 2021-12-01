@@ -49,3 +49,23 @@ export const checkNumber = (char) => {
   let res = /^[0-9]+$/.test(char);
   return res;
 };
+export const getweekday = (value) => {
+  switch (value.toLowerCase()) {
+    case "saturday":
+      return "شنبه";
+    case "sunday":
+      return "یکشنبه";
+    case "monday":
+      return "دوشنبه";
+    case "tuesday":
+      return "سه شنبه";
+    case "wednesday":
+      return "چهارشنبه";
+    case "thursday":
+      return "پنج شنبه";
+    case "friday":
+      return "جمعه";
+    default:
+      return "";
+  }
+}

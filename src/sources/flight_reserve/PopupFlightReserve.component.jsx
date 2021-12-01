@@ -18,7 +18,7 @@ import { connect } from "react-redux";
 import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
-
+import { getweekday } from "../../Utils/SimpleTasks";
 class PopupFlightReserve extends React.Component {
   constructor(props) {
     super(props);
@@ -149,7 +149,7 @@ class PopupFlightReserve extends React.Component {
           </span>
         </p>
         <p className="font-size-15 font-bold-iransanse">
-          {flightDay} &nbsp;{flightDate}
+          {getweekday(flightDay)} &nbsp;{flightDate}
         </p>
 
         <div className={styles["pop-up-flight-detail-reserve-box"]}>

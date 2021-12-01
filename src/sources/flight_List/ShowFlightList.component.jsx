@@ -10,8 +10,9 @@ import globals from "../Global";
 
 import styles from "../../../styles/FlightList.module.scss";
 
-import { moneyFormat } from "../../Utils/SimpleTasks";
+import { moneyFormat,getweekday } from "../../Utils/SimpleTasks";
 // just a function component to show existing flights
+ 
 const ShowFlightList = (props) => {
   return (
     <div>
@@ -70,8 +71,10 @@ const ShowFlightList = (props) => {
             </div>
 
             <div className={styles["one-row-date"]}>
-              <div>{oneFlight.flightDay}</div>
-              <div>{oneFlight.flightDate}</div>
+              <div> {getweekday(oneFlight.flightDay)}</div>
+              <div>
+                {oneFlight.flightDate}
+              </div>
               <div dir="ltr">{oneFlight.flightDateM}</div>
             </div>
             <div className={styles["one-row-time"]}>

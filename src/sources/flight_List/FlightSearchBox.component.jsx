@@ -272,7 +272,7 @@ class FlightSearchBox extends React.Component {
                 if (this.props.refreshAction) {
                   this.props
                     .addCredentials({
-                      withFilters: true,
+                      withFilters: false,
                       currentPage: 1,
                     })
                     .then(() => {
@@ -289,7 +289,7 @@ class FlightSearchBox extends React.Component {
               } else {
                 this.props
                   .addCredentials({
-                    withFilters: true,
+                    withFilters: false,
                     currentPage: 1,
                   })
                   .then(() => {

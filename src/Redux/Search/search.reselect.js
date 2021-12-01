@@ -19,7 +19,7 @@ export const selectSearchObject = createSelector([search], search => ({
     source: search.searchObject.source,
     dest: search.searchObject.dest,
     stDate: search.searchObject.stDate,
-    withFilters: `${search.searchObject.withFilters}`,
+    withFilters: search.searchObject.withFilters,
     currentPage: `${search.searchObject.currentPage}`,
     sortable: search.searchObject.sortable,
     earlyMorning: search.searchObject.earlyMorning,

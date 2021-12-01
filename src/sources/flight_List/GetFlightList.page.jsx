@@ -42,6 +42,7 @@ class GetFlightList extends React.Component {
     super(props);
     this.state = {
       flights: null,
+      Allflights: [],
       loading: true,
       slide: false,
       open: false,
@@ -52,7 +53,7 @@ class GetFlightList extends React.Component {
       destinationName: "",
       sourceNameEn: "",
       destinationNameEn: "",
-
+      airlines: [],
     };
   }
 
@@ -63,84 +64,98 @@ class GetFlightList extends React.Component {
   };
 
   hashchange() {
-    console.log('hashchange');
-    var flightdate=location.hash.substring(1);
+    console.log("hashchange");
+    var flightdate = location.hash.substring(1);
     console.log(flightdate);
     location.reload();
-}
+  }
 
-componentWillUnmount() {
+  getingAirlines = () => {
+    const airlines =
+      this.state.flights != null
+        ? this.state.flights.map(
+            ({ airlineIataCode, priceView, airline, kndSys }) => ({
+              airline,
+              airlineIataCode,
+              priceView,
+              kndSys,
+            })
+          )
+        : [];
+
+    this.setState({
+      airlines: airlines,
+    });
+  };
+
+  componentWillUnmount() {
     window.removeEventListener("hashchange", this.hashchange, false);
-}
+  }
   componentDidUpdate() {
-    
     console.log("componentDidUpdate");
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
-    const src = decodeURI(path.split("/")[2]).split("-to-")[0];const srccod = decodeURI(path.split("/")[3]).split("-")[1];
-    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];const destcod = decodeURI(path.split("/")[3]).split("-")[2];
+    const src = decodeURI(path.split("/")[2]).split("-to-")[0];
+    const srccod = decodeURI(path.split("/")[3]).split("-")[1];
+    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];
+    const destcod = decodeURI(path.split("/")[3]).split("-")[2];
 
-    const flightdate =pathquery.split("#")[1]!=null?pathquery.split("#")[1]:getCustomFormat(moment().startOf("day"), false);
-    
+    const flightdate =
+      pathquery.split("#")[1] != null
+        ? pathquery.split("#")[1]
+        : getCustomFormat(moment().startOf("day"), false);
 
-    window.onpopstate = (e) => {     //  when back or forward in browser occured
-              console.log("window.onpopstate");
-              // const source = srccod;
-              // const destinationn = destcod;
-              //       console.log('NEW1');
-              //       console.log(source);
-    
-                    const source = this.props.airports.find(
-                      (x) => x.airportNameEn == src
-                    );
-                    const destinationn = this.props.airports.find(
-                      (x) => x.airportNameEn == dest
-                    );
+    window.onpopstate = (e) => {
+      //  when back or forward in browser occured
+      console.log("window.onpopstate");
+      // const source = srccod;
+      // const destinationn = destcod;
+      //       console.log('NEW1');
+      //       console.log(source);
 
-                  if(pathquery.includes("#")){
-                    //  console.log('path start');
-                    // console.log(path.split("#")[1]);
-                    //  console.log('path end');
-                    const flightdate =pathquery.split("#")[1];
-                    this.props
-                      .addCredentials({
-                        sourceName: source.airportName,
-                        destinationName: destinationn.airportName,
-                        sourceNameEn:src, //source.airportNameEn,
-                        destinationNameEn:dest, //destinationn.airportNameEn,
+      const source = this.props.airports.find((x) => x.airportNameEn == src);
+      const destinationn = this.props.airports.find(
+        (x) => x.airportNameEn == dest
+      );
 
-                        source:srccod, //source.airportCode,
-                        dest:destcod,  //destinationn.airportCode,
-                        withFilters: true,
-                        currentPage: 1,
-                        flightDatePersian: flightdate,
-                      })
-                      .then(() => {
-                        this.getData();
-                      });
-                
-              
-                  }else{
-                  
+      if (pathquery.includes("#")) {
+        //  console.log('path start');
+        // console.log(path.split("#")[1]);
+        //  console.log('path end');
+        const flightdate = pathquery.split("#")[1];
+        this.props
+          .addCredentials({
+            sourceName: source.airportName,
+            destinationName: destinationn.airportName,
+            sourceNameEn: src, //source.airportNameEn,
+            destinationNameEn: dest, //destinationn.airportNameEn,
 
-                    this.props
-                      .addCredentials({
-                        sourceName: source.airportName,
-                        destinationName: destinationn.airportName,
-                        sourceNameEn:src, //source.airportNameEn,
-                        destinationNameEn:dest, //destinationn.airportNameEn,
+            source: srccod, //source.airportCode,
+            dest: destcod, //destinationn.airportCode,
+            withFilters: false,
+            currentPage: 1,
+            flightDatePersian: flightdate,
+          })
+          .then(() => {
+            this.getData();
+          });
+      } else {
+        this.props
+          .addCredentials({
+            sourceName: source.airportName,
+            destinationName: destinationn.airportName,
+            sourceNameEn: src, //source.airportNameEn,
+            destinationNameEn: dest, //destinationn.airportNameEn,
 
-                        source:srcco , //source.airportCode,
-                        dest:destcod, //destinationn.airportCode,
-                        withFilters: true,
-                        currentPage: 1,
-                      })
-                      .then(() => {
-                        this.getData();
-                      });
-
-  }
-
+            source: srcco, //source.airportCode,
+            dest: destcod, //destinationn.airportCode,
+            withFilters: false,
+            currentPage: 1,
+          })
+          .then(() => {
+            this.getData();
+          });
+      }
     };
   }
   componentDidMount() {
@@ -149,19 +164,20 @@ componentWillUnmount() {
     console.log("compoMOUNT");
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
-    const src = decodeURI(path.split("/")[2]).split("-to-")[0];const srccod = decodeURI(path.split("/")[3]).split("-")[1];
-    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];const destcod = decodeURI(path.split("/")[3]).split("-")[2];
+    const src = decodeURI(path.split("/")[2]).split("-to-")[0];
+    const srccod = decodeURI(path.split("/")[3]).split("-")[1];
+    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];
+    const destcod = decodeURI(path.split("/")[3]).split("-")[2];
 
-    const flightdate =pathquery.split("#")[1]!=null?pathquery.split("#")[1]:getCustomFormat(moment().startOf("day"), false);
-    const m = moment(
-      flightdate,
-      "jYYYY/jMM/jDD"
-    );
+    const flightdate =
+      pathquery.split("#")[1] != null
+        ? pathquery.split("#")[1]
+        : getCustomFormat(moment().startOf("day"), false);
+    const m = moment(flightdate, "jYYYY/jMM/jDD");
     const flightdatemiladi = m.format("YYYY/MM/DD");
     console.log(flightdatemiladi);
 
     console.log(flightdate);
-    
 
     // this.setState({
     //   sourceNameEn: src,
@@ -169,17 +185,15 @@ componentWillUnmount() {
     //   flightDatePersian: flightdate,
     // });
 
-  //   if(pathquery.includes("#")){
+    //   if(pathquery.includes("#")){
 
-  
- 
-  //   }else{
-     
-  //   this.setState({
-  //     sourceNameEn: src,
-  //     destinationNameEn: dest,
-  //   });
-  // }
+    //   }else{
+
+    //   this.setState({
+    //     sourceNameEn: src,
+    //     destinationNameEn: dest,
+    //   });
+    // }
     // console.log("abc");
     // console.log(src);
     // console.log(dest);
@@ -189,201 +203,244 @@ componentWillUnmount() {
     //
     //////////////////////////
 
-    // Mohammadsaleh
     if (this.props.searchobject.source == "") {
-            console.log('not source');
-      
+      console.log("not source");
 
-                if (!this.props.airports) {
-                      console.log('this.props.airports is null');
-                      this.props.setAirports(null);
-                  }else{
+      if (!this.props.airports) {
+        console.log("this.props.airports is null");
+        this.props.setAirports(null);
+      } else {
+        if (
+          !this.props.airports[0] ||
+          !this.props.airports[0].Version ||
+          this.props.airports[0].Version != "1.7"
+        ) {
+          console.log("airport version is changed");
+          this.props.setAirports(null);
+        }
+      }
 
-                    if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.7' ){
-                      console.log('airport version is changed');
-                    this.props.setAirports(null);
-                    }
-                  }
-                  
-                  if (this.props.airports) {
-                          console.log('this.props.airports has data');
-                          // const source = srccod;
-                          // const destinationn = destcod;
-                          // console.log('NEW2');
-                          // console.log(source);
-                            const source = this.props.airports.find(
-                              (x) => x.airportNameEn == src
-                            );
-                            const destinationn = this.props.airports.find(
-                              (x) => x.airportNameEn == dest
-                            );
-                            this.props
-                              .addCredentials({
-                                sourceName: source.airportName,
-                                destinationName: destinationn.airportName,
-                                sourceNameEn:src, //source.airportNameEn,
-                                destinationNameEn:dest, //destinationn.airportNameEn,
+      if (this.props.airports) {
+        console.log("this.props.airports has data");
+        // const source = srccod;
+        // const destinationn = destcod;
+        // console.log('NEW2');
+        // console.log(source);
+        const source = this.props.airports.find((x) => x.airportNameEn == src);
+        const destinationn = this.props.airports.find(
+          (x) => x.airportNameEn == dest
+        );
+        this.props
+          .addCredentials({
+            sourceName: source.airportName,
+            destinationName: destinationn.airportName,
+            sourceNameEn: src, //source.airportNameEn,
+            destinationNameEn: dest, //destinationn.airportNameEn,
 
-                                source:srccod, //source.airportCode,
-                                dest:destcod, //destinationn.airportCode,
-                                stDate: flightdatemiladi,
-                              flightDatePersian: flightdate,
-                                typeOfCalendar: this.props.typeOfCalendar,
-                              })
-                              .then(() => {
-                                // Get Flights List
-                                this.setState({ loading: true, open: false });
-                                fetch(`${globals.baseUrl}flights/getFlights`, {
-                                  method: "POST",
-                                  body: JSON.stringify({ ...this.props.searchobject }),
-                                  headers: { "Content-Type": "application/json" },
-                                })
-                                  .then((res) => res.json())
-                                  .then((data) => {
-                                  if (data.message == "OK") {
-                                      if (this.props.searchobject.withFilters == "true") {
-                                        this.props.addFilters({ airlines: data.airlines });
-                                        this.props.addCredentials({
-                                          flightDateNext: data.flightDateNext,
-                                          flightDatePrev: data.flightDatePrev,
-                                        });
-                                      }
-                                      this.setState({
-                                        flights: data.flights,
-                                        loading: false,
-                                      });
-                                    } else {
-                                      this.props.messageBoxModify({
-                                        state: true,
-                                        message: data.message,
-                                      });
-                                    }
-                                  });
-                              });
-                        }
-                        else
-                        {
-                          this.props
-                          .addCredentials({
-                            sourceNameEn:src, //source.airportNameEn,
-                            destinationNameEn:dest, //destinationn.airportNameEn,
-
-                            source:srccod, //source.airportCode,
-                            dest:destcod, //destinationn.airportCode,
-                            stDate: flightdatemiladi,
-                          flightDatePersian: flightdate,
-                            typeOfCalendar: this.props.typeOfCalendar,
-                          })
-                          .then(() => {
-                            // Get Flights List
-                            this.setState({ loading: true, open: false ,sourceName:src});
-                            fetch(`${globals.baseUrl}flights/getFlights`, {
-                              method: "POST",
-                              body: JSON.stringify({ ...this.props.searchobject }),
-                              headers: { "Content-Type": "application/json" },
-                            })
-                              .then((res) => res.json())
-                              .then((data) => {
-                                console.log('load flight');
-                                console.log(this.props.searchobject.sourceName );
-                                if (!this.props.searchobject.sourceName ) {
-                                      const source = this.props.airports.find(
-                                        (x) => x.airportNameEn == src
-                                      );
-                                      const destinationn = this.props.airports.find(
-                                        (x) => x.airportNameEn == dest
-                                      );
-                                      console.log('sourcename after flight');
-                                        this.props
-                                        .addCredentials({
-                                          sourceName: source.airportName,
-                                          destinationName: destinationn.airportName
-                                        });
-                              }
-
-                                if (data.message == "OK") {
-                                  if (this.props.searchobject.withFilters == "true") {
-                                    this.props.addFilters({ airlines: data.airlines });
-                                    this.props.addCredentials({
-                                      flightDateNext: data.flightDateNext,
-                                      flightDatePrev: data.flightDatePrev,
-                                    });
-                                  }
-                                  this.setState({
-                                    flights: data.flights,
-                                    loading: false,
-                                  });
-                                } else {
-                                  this.props.messageBoxModify({
-                                    state: true,
-                                    message: data.message,
-                                  });
-                                }
-                              });
-                          });
-
-                        }
-    } 
-    else 
-     if (this.props.searchobject.source != "") {
-                 console.log('send data to api');
-                 console.log(this.props.searchobject);
-                this.setState({ loading: true, open: false ,flightDatePersian: flightdate,sourceName:src,});
-
-                fetch(`${globals.baseUrl}flights/getFlights`, {
-                  method: "POST",
-                  body: JSON.stringify({ ...this.props.searchobject }),
-                  headers: { "Content-Type": "application/json" },
-                })
-                  .then((res) => res.json())
-                  .then((data) => {
-                            if (data.message == "OK") {
-                                      if (this.props.searchobject.withFilters == "true") {
-                                            this.props.addFilters({ airlines: data.airlines });
-                                            this.props.addCredentials({
-                                              flightDateNext: data.flightDateNext,
-                                              flightDatePrev: data.flightDatePrev,
-                                            });
-                                      }
-                                      // Get Flights List
-                                      this.setState({ loading: true, open: false });
-                                      fetch(`${globals.baseUrl}flights/getFlights`, {
-                                        method: "POST",
-                                        body: JSON.stringify({ ...this.props.searchobject }),
-                                        headers: { "Content-Type": "application/json" },
-                                      })
-                                        .then((res) => res.json())
-                                        .then((data) => {
-                                          if (data.message == "OK") {
-                                            if (this.props.searchobject.withFilters == "true") {
-                                              this.props.addFilters({ airlines: data.airlines });
-                                              this.props.addCredentials({
-                                                flightDateNext: data.flightDateNext,
-                                                flightDatePrev: data.flightDatePrev,
-                                              });
-                                            }
-                                            this.setState({
-                                              flights: data.flights,
-                                              loading: false,
-                                            });
-                                          } else {
-                                            this.props.messageBoxModify({
-                                              state: true,
-                                              message: data.message,
-                                            });
-                                          }
-                                        });
-                                      this.setState({
-                                        flights: data.flights,
-                                        loading: false,
-                                      });
-                            } else {
-                                    this.props.messageBoxModify({
-                                      state: true,
-                                      message: data.message,
-                                    });
-                            }
+            source: srccod, //source.airportCode,
+            dest: destcod, //destinationn.airportCode,
+            stDate: flightdatemiladi,
+            flightDatePersian: flightdate,
+            typeOfCalendar: this.props.typeOfCalendar,
+          })
+          .then(() => {
+            // Get Flights List
+            this.setState({ loading: true, open: false });
+            fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
+              method: "POST",
+              body: JSON.stringify({ ...this.props.searchobject }),
+              headers: { "Content-Type": "application/json" },
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.length != 0 && data != undefined) {
+                  this.props.addCredentials({
+                    flightDateNext: data[0].flightDateNext,
+                    flightDatePrev: data[0].flightDatePrev,
                   });
+                  // if (this.props.searchobject.withFilters == "true") {
+                  //   this.props.addFilters({ airlines: data.airlines });
+
+                  // }
+                  this.setState(
+                    {
+                      flights: data,
+                      Allflights: data,
+                      loading: false,
+                    },
+                    () => this.getingAirlines()
+                  );
+                } else {
+                  this.setState({
+                    flights: null,
+                    Allflights: null,
+                    loading: false,
+                  });
+                  this.props.messageBoxModify({
+                    state: true,
+                    message: data.message,
+                  });
+                }
+              });
+          });
+      } else {
+        this.props
+          .addCredentials({
+            sourceNameEn: src, //source.airportNameEn,
+            destinationNameEn: dest, //destinationn.airportNameEn,
+
+            source: srccod, //source.airportCode,
+            dest: destcod, //destinationn.airportCode,
+            stDate: flightdatemiladi,
+            flightDatePersian: flightdate,
+            typeOfCalendar: this.props.typeOfCalendar,
+          })
+          .then(() => {
+            // Get Flights List
+            this.setState({ loading: true, open: false, sourceName: src });
+            fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
+              method: "POST",
+              body: JSON.stringify({ ...this.props.searchobject }),
+              headers: { "Content-Type": "application/json" },
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log("load flight");
+
+                console.log(this.props.searchobject.sourceName);
+                if (!this.props.searchobject.sourceName) {
+                  const source = this.props.airports.find(
+                    (x) => x.airportNameEn == src
+                  );
+                  const destinationn = this.props.airports.find(
+                    (x) => x.airportNameEn == dest
+                  );
+                  console.log("sourcename after flight");
+                  this.props.addCredentials({
+                    sourceName: source.airportName,
+                    destinationName: destinationn.airportName,
+                  });
+                }
+
+                if (data.length != 0 && data != undefined) {
+                  this.props.addCredentials({
+                    flightDateNext: data[0].flightDateNext,
+                    flightDatePrev: data[0].flightDatePrev,
+                  });
+                  // if (this.props.searchobject.withFilters == "true") {
+                  //   this.props.addFilters({ airlines: data.airlines });
+
+                  // }
+                  this.setState(
+                    {
+                      flights: data,
+                      Allflights: data,
+                      loading: false,
+                    },
+                    () => this.getingAirlines()
+                  );
+                } else {
+                  this.setState({
+                    flights: null,
+                    Allflights: null,
+
+                    loading: false,
+                  });
+                  this.props.messageBoxModify({
+                    state: true,
+                    message: data.message,
+                  });
+                }
+              });
+          });
+      }
+    } else if (this.props.searchobject.source != "") {
+      console.log("send data to api");
+      console.log(this.props.searchobject);
+      this.setState({
+        loading: true,
+        open: false,
+        flightDatePersian: flightdate,
+        sourceName: src,
+      });
+
+      // fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
+      //   method: "POST",
+      //   body: JSON.stringify({ ...this.props.searchobject }),
+      //   headers: { "Content-Type": "application/json" },
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     if (data.length != 0 && data != undefined) {
+      //       this.props.addCredentials({
+      //         flightDateNext: data[0].flightDateNext,
+      //         flightDatePrev: data[0].flightDatePrev,
+      //       });
+
+      //       if (this.props.searchobject.withFilters == "true") {
+      //         this.props.addFilters({ airlines: data.airlines });
+
+      //       }
+      // Get Flights List
+      //      this.setState({ loading: true, open: false });
+      fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
+        method: "POST",
+        body: JSON.stringify({ ...this.props.searchobject }),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.length != 0 && data != undefined) {
+            this.props.addCredentials({
+              flightDateNext: data[0].flightDateNext,
+              flightDatePrev: data[0].flightDatePrev,
+            });
+            // if (this.props.searchobject.withFilters == "true") {
+            //   this.props.addFilters({ airlines: data.airlines });
+
+            // }
+            this.setState(
+              {
+                flights: data,
+                loading: false,
+                Allflights: data,
+              },
+              () => this.getingAirlines()
+            );
+          } else {
+            this.setState({
+              flights: null,
+              Allflights: null,
+              loading: false,
+            });
+            this.props.messageBoxModify({
+              state: true,
+              message: data.message,
+            });
+          }
+        });
+      // this.setState(
+      //   {
+      //     flights: data,
+      //     loading: false,
+      //     Allflights: data,
+      //   },
+      //   () => this.getingAirlines()
+      // );
+      //  }
+      // else {
+      //   this.setState(
+      //     {
+      //       flights: null,
+      //       Allflights: null,
+      //       loading: false,
+      //     },);
+      //   this.props.messageBoxModify({
+      //     state: true,
+      //     message: data.message,
+      //   });
+      // }
+      //  });
     }
     //----------------------------
     //if (this.props.searchobject.source == "") {
@@ -462,26 +519,38 @@ componentWillUnmount() {
     //
     //////////////////////////
     this.setState({ loading: true, open: false });
-    fetch(`${globals.baseUrl}flights/getFlights`, {
+    fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
       method: "POST",
       body: JSON.stringify({ ...this.props.searchobject }),
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.message == "OK") {
-          if (this.props.searchobject.withFilters == "true") {
-            this.props.addFilters({ airlines: data.airlines });
-            this.props.addCredentials({
-              flightDateNext: data.flightDateNext,
-              flightDatePrev: data.flightDatePrev,
-            });
-          }
+        console.log(` datalength=${data}`);
+        if (data.length != 0 && data != undefined) {
+          this.props.addCredentials({
+            flightDateNext: data[0].flightDateNext,
+            flightDatePrev: data[0].flightDatePrev,
+          });
+          // if (this.props.searchobject.withFilters == "true") {
+          //   this.props.addFilters({ airlines: data.airlines });
+
+          // }
+          this.setState(
+            {
+              flights: data,
+              loading: false,
+              Allflights: data,
+            },
+            () => this.getingAirlines()
+          );
+        } else {
           this.setState({
-            flights: data.flights,
+            flights: null,
+            Allflights: null,
+
             loading: false,
           });
-        } else {
           this.props.messageBoxModify({
             state: true,
             message: data.message,
@@ -493,39 +562,59 @@ componentWillUnmount() {
   changeDate = (date) => {
     const changedDateGregorian = moment(date, "jYYYY/jMM/jDD")
       .local("en")
-      .format("MM/DD/YYYY");
+      .format("YYYY/MM/DD");
     this.props
       .addCredentials({
-        withFilters: true,
+        withFilters: false,
         currentPage: 1,
         stDate: changedDateGregorian,
         flightDatePersian: String(date).replace("-", "/").replace("-", "/"),
       })
       .then(() => {
-        if(history.pushState) {
-          history.pushState(null, null, `#${String(date).replace("-", "/").replace("-", "/")}`);
-      }
-      else {
-          location.hash = `#${String(date).replace("-", "/").replace("-", "/")}`;
-      }
-        
+        if (history.pushState) {
+          history.pushState(
+            null,
+            null,
+            `#${String(date).replace("-", "/").replace("-", "/")}`
+          );
+        } else {
+          location.hash = `#${String(date)
+            .replace("-", "/")
+            .replace("-", "/")}`;
+        }
+
         this.getData();
       });
-      // .then(() => {
-      //   this.getData();
-      // });
+    // .then(() => {
+    //   this.getData();
+    // });
   };
 
   setReserveBoxData = (oneFlight) => {
     this.setState({ reserveBoxData: oneFlight, openReserve: true });
   };
 
+  getUniqData = (array) => {
+    const twoDArray = array.map((data) => [data.airlineIataCode, data]);
+    const uniqMap = new Map(twoDArray);
+
+    return Array.from(uniqMap.values());
+  };
+
+  handleFindTickets = (tickets) => {
+    this.setState({
+      flights: tickets,
+    });
+  };
+
   render() {
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
-    const src = decodeURI(path.split("/")[2]).split("-to-")[0];const srccod = decodeURI(path.split("/")[3]).split("-")[1];
-    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];const destcod = decodeURI(path.split("/")[3]).split("-")[2];
-    
+    const src = decodeURI(path.split("/")[2]).split("-to-")[0];
+    const srccod = decodeURI(path.split("/")[3]).split("-")[1];
+    const dest = decodeURI(path.split("/")[2]).split("-to-")[1];
+    const destcod = decodeURI(path.split("/")[3]).split("-")[2];
+
     return (
       <div className={`container-fluid ${styles["flight-container"]}`}>
         <div className={`row text-right ${styles["hidden-xs-flight"]}`}>
@@ -586,33 +675,51 @@ componentWillUnmount() {
                   <div className="mt-4">
                     <Loading />
                   </div>
-                ) : this.state.flights ? (
+                ) : this.state.flights != null ? (
+
+                  
                   <div>
+
+           { (window.innerWidth < 826?(
                     <div className="visible-xs">
                       <ShowFlightListMobile
                         setReserveBoxData={this.setReserveBoxData}
                         flightList={this.state.flights}
                       />
                     </div>
+                    )
+                    : null )  }
+                    
+                    { (window.innerWidth >= 826?(
                     <div className={styles["hidden-xs-flight"]}>
                       <ShowFlightList
                         setReserveBoxData={this.setReserveBoxData}
                         flightList={this.state.flights}
                       />
                     </div>
+                    )
+                    : null )  }
                   </div>
                 ) : (
                   <>
                     <p className="text-center mx-3">
                       متاسفانه هیچ پروازی از{" "}
-                      <strong className="text-danger">{this.props.airports.find(
-        (x) => x.airportNameEn == src
-      ).airportName}</strong>{" "}
+                      <strong className="text-danger">
+                        {
+                          this.props.airports.find(
+                            (x) => x.airportNameEn == src
+                          ).airportName
+                        }
+                      </strong>{" "}
                       <strong>به </strong>
-                      <strong className="text-danger">{this.props.airports.find(
-        (x) => x.airportNameEn == dest
-      ).airportName}</strong> یافت نشد
-                      لطفا از تقویم زیر انتخاب کنید.
+                      <strong className="text-danger">
+                        {
+                          this.props.airports.find(
+                            (x) => x.airportNameEn == dest
+                          ).airportName
+                        }
+                      </strong>{" "}
+                      یافت نشد لطفا از تقویم زیر انتخاب کنید.
                     </p>
                     <MinimumPriceCalendar refreshAction={this.getData} />
                   </>
@@ -621,7 +728,17 @@ componentWillUnmount() {
               <div
                 className={`col-lg-3 col-md-4 col-sm-4 ${styles["hidden-xs-flight"]} padding-5px`}
               >
-                <Filters getData={this.getData} closeSide={this.closeSide} />
+                <Filters
+                  getData={this.getData}
+                  closeSide={() => {
+                    this.setState({
+                      slide: false,
+                    });
+                  }}
+                  Airlines={this.getUniqData(this.state.airlines)}
+                  realData={this.state.Allflights}
+                  setFilter={this.handleFindTickets}
+                />
               </div>
             </div>
           </div>
@@ -682,6 +799,9 @@ componentWillUnmount() {
                 slide: false,
               });
             }}
+            Airlines={this.getUniqData(this.state.airlines)}
+            realData={this.state.Allflights}
+            setFilter={this.handleFindTickets}
           />
         </SlideIn>
 

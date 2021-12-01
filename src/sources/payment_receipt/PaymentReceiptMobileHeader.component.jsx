@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import globals from "../Global";
 import styles from "../../../styles/FlightReciept.module.scss";
 import stylesRes from "../../../styles/FlightReserve.module.scss";
-
+import { getweekday } from "../../Utils/SimpleTasks";
 const PaymentReciptMobileHeader = (props) => {
   if (props) {
     var flight_info = props.info.referenceFlight[0];
@@ -64,7 +64,7 @@ const PaymentReciptMobileHeader = (props) => {
               <FontAwesomeIcon icon={faCalendarAlt} className="mx-1" />
               <span className="color-secondary">
                 {" "}
-                {String(flight_info.flightDay)} &nbsp;{" "}
+                {getweekday(String(flight_info.flightDay))} &nbsp;{" "}
                 {String(flight_info.flightDate)
                   .replace("-", "/")
                   .replace("-", "/")}
