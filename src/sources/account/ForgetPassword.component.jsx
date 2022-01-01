@@ -32,7 +32,7 @@ class ForgetPassword extends React.Component {
 
   forgetPassword = () => {
     this.setState({ btn_text: "در حال پردازش..." });
-    fetch(`${globals.baseUrlNew}account/auth/getMobile`, {
+    fetch(`${globals.baseUrlNew}auth/getMobile`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -40,6 +40,10 @@ class ForgetPassword extends React.Component {
         register: 0,
         token: "",
         password: "",
+        hostname : "bilitja.com",
+        customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+        agencyName : "بلیطجا",
+        telNumber : "02157874",
       }),
     })
       .then((res) => res.json())
@@ -61,12 +65,17 @@ class ForgetPassword extends React.Component {
 
   verifyToken = () => {
     this.setState({ btn_text: "در حال پردازش..." });
-    fetch(`${globals.baseUrlNew}account/auth/ForgotPassword`, {
+    fetch(`${globals.baseUrlNew}auth/ForgotPassword`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         mobile: this.state.mobile,
         token: this.state.token,
+        hostname : "bilitja.com",
+        customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+        agencyName : "بلیطجا",
+        telNumber : "02157874",
+
       }),
     })
       .then((res) => res.json())
@@ -98,13 +107,18 @@ class ForgetPassword extends React.Component {
         message: "لطفا فیلد را کامل پر کنید.",
       });
     } else {
-      fetch(`${globals.baseUrlNew}account/auth/setPassword`, {
+      fetch(`${globals.baseUrlNew}auth/setPassword`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           UserId: localStorage.getItem("f-token"),
           password: this.state.password,
           passwordnew: this.state.passwordnew,
+          hostname : "bilitja.com",
+          customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+          agencyName : "بلیطجا",
+          telNumber : "02157874",
+  
         }),
       })
         .then((res) => res.json())

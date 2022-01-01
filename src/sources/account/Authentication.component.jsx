@@ -30,12 +30,17 @@ class Authentication extends React.Component {
 
   loginWithToken = () => {
     this.setState({ btn_disabled: true, loading: true });
-    fetch(`${globals.baseUrlNew}account/auth/checkUser`, {
+    fetch(`${globals.baseUrlNew}auth/checkUser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         mobile: this.props.mobile,
         token: this.state.token,
+        hostname : "bilitja.com",
+        customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+        agencyName : "بلیطجا",
+        telNumber : "02157874",
+
       }),
     })
       .then((res) => res.json())

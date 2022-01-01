@@ -33,7 +33,7 @@ class Register extends React.Component {
   }
   register = () => {
     this.setState({ btn_disabled: true, loading: true });
-    fetch(`${globals.baseUrlNew}account/auth/getMobile`, {
+    fetch(`${globals.baseUrlNew}auth/getMobile`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -41,6 +41,11 @@ class Register extends React.Component {
         token: this.state.token,
         password: this.state.password,
         register: 1,
+        hostname : "bilitja.com",
+        customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+        agencyName : "بلیطجا",
+        telNumber : "02157874",
+
       }),
     })
       .then((res) => res.json())
@@ -73,12 +78,17 @@ class Register extends React.Component {
 
   RegisterWithToken = () => {
     this.setState({ btn_disabled: true, loading: true });
-    fetch(`${globals.baseUrlNew}account/auth/checkUser`, {
+    fetch(`${globals.baseUrlNew}auth/checkUser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         mobile: this.state.mobile,
         token: this.state.token,
+        hostname : "bilitja.com",
+        customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+        agencyName : "بلیطجا",
+        telNumber : "02157874",
+
       }),
     })
       .then((res) => res.json())
@@ -133,13 +143,18 @@ class Register extends React.Component {
 
   SendMoarefMobile = () => {
     this.setState({ btn_disabled: true, loading: true });
-    fetch(`${globals.baseUrlNew}account/auth/MoarefSave`, {
+    fetch(`${globals.baseUrlNew}auth/MoarefSave`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         mobile: this.state.mobile,
         userid: localStorage.getItem("token"),
         mobilemoaref: this.state.mobilemoaref,
+        hostname : "bilitja.com",
+        customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+        agencyName : "بلیطجا",
+        telNumber : "02157874",
+
       }),
     })
       .then((res) => res.json())

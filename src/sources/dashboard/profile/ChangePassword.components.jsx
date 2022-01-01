@@ -28,13 +28,18 @@ const ChangePassword = (props) => {
     event.preventDefault();
     if (state.passwordnew !== "" && state.confirm_password !== "") {
       if (state.passwordnew == state.confirm_password) {
-        fetch(`${globals.baseUrlNew}account/auth/setPassword`, {
+        fetch(`${globals.baseUrlNew}auth/setPassword`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             UserId: state.UserId,
             password: state.password,
             passwordnew: state.passwordnew,
+            hostname : "bilitja.com",
+            customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+            agencyName : "بلیطجا",
+            telNumber : "02157874",
+    
           }),
         })
           .then((res) => res.json())

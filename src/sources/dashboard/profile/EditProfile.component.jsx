@@ -22,6 +22,11 @@ const EditProfile = (props) => {
     mobileMoaref: props.user_information.mobileMoaref,
     address: props.user_information.address,
     mariedStat: props.user_information.mariedStat,
+    hostname : "bilitja.com",
+    customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+    agencyName : "بلیطجا",
+    telNumber : "02157874",
+
   });
 
   console.log(state);
@@ -43,7 +48,7 @@ const EditProfile = (props) => {
     event.preventDefault();
     if (state.name != "" && state.family != "") {
       if (state.gender != 0 && state.mariedStat != 0) {
-        fetch(`${globals.baseUrlNew}account/auth/ProfileSave`, {
+        fetch(`${globals.baseUrlNew}auth/ProfileSave`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(state),

@@ -10,12 +10,17 @@ import { SetUserInformation } from "../../../Redux/Dashboard/Profile/profile.act
 const Profile = (props) => {
   const router = useRouter();
   useEffect(() => {
-    fetch(`${globals.baseUrlNew}account/auth/profileView`, {
+    fetch(`${globals.baseUrlNew}auth/profileView`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         mobile: localStorage.getItem("mobile"),
         userid: localStorage.getItem("token"),
+        hostname : "bilitja.com",
+        customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+        agencyName : "بلیطجا",
+        telNumber : "02157874",
+
       }),
     })
       .then((res) => res.json())
