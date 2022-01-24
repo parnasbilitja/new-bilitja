@@ -1,97 +1,142 @@
-@import './values.module.scss';
-//@import './global.style.scss';
-@media only screen and (max-width : 650px){
-    .hidden-xs-flight{
-        display: none;
-    }
-    .visible-xs-flight-footer{
-        display: grid !important;
-        grid-template-columns:  repeat( 5, minmax(0px, 1fr) );
-        grid-template-rows: 1fr;
-    }
-    .visible-xs{
-        display: block !important;
-    }
+@import "./values.module.scss";
 
+@media only screen and (max-width: 650px) {
+  .hidden-xs-flight {
+    display: none;
+  }
+  .visible-xs-flight-footer {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0px, 1fr));
+    grid-template-rows: 1fr;
+  }
+  .visible-xs {
+    display: block !important;
+  }
 }
 .card-box-shadow {
-    box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
+  box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
 }
 
-.visible-xs-flight-footer{
-    @extend .card-box-shadow;
-    display: none;
-    position: fixed;
-    bottom: 0;
+.visible-xs-flight-footer {
+  @extend .card-box-shadow;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: $whiteColor;
+  height: 55px;
+  border-top: 1px solid $pillGray;
+  text-align: center;
+  padding: 5px;
+  font-size: 14px;
+  z-index: 999;
+  & > div {
+    background-color: white;
+  }
+}
+.flight-container {
+  padding: 0px !important;
+}
+
+.none {
+  background-color: #fff !important;
+  box-shadow: 0 0 !important;
+  width: 100%;
+  height: 50px;
+}
+.none:not(.collapsed)::after {
+  filter: brightness(20%);
+  position: relative;
+  right: 0;
+}
+
+.filter-list-sort-1 {
+  font-size: 14px;
+  width: 100%;
+  text-align: right;
+}
+.filter-list-sort-2 {
+  font-size: 14px;
+  width: 100%;
+  text-align: right;
+}
+.filter-list-sort-3 {
+  font-size: 14px;
+  width: 100%;
+  text-align: right;
+}
+.filter-list-sort-4 {
+  color: black;
+  font-size: 14px;
+  width: 100%;
+  text-align: right;
+}
+.filter-list-box {
+  padding: 5px 0;
+  margin-top: 5px;
+  text-align: right;
+  .filter-list-heading {
     width: 100%;
-    background-color: $whiteColor;
-    height: 55px;
-    border-top: 1px solid $pillGray;
+    text-align: right;
+  }
+  .filter-list-input {
+    height: 30px !important;
+    border-bottom-width: 1px !important;
+    width: 93%;
+  }
+  .filter-list-sort form {
+    margin-top: 10px;
+    margin-right: 15px;
+  }
+  .filter-list-heading & > strong {
+    background-color: rgb(243, 243, 243);
+    width: 100%;
+  }
+  .filter-list-sort,
+  .filter-list-airlines,
+  .filter-list-time-in-day {
+    border-radius: 10px;
+    margin-top: 15px;
+
+    & > div {
+      margin-top: 8px;
+      margin-right: 15px;
+      background-color: rgb(243, 243, 243);
+    }
+    strong {
+      margin: auto;
+      color: black;
+    }
+
+    label {
+      margin-right: 5px;
+      margin-bottom: 0.5rem;
+    }
+  }
+  .filter-list-airlines {
+    img {
+      widows: 16px;
+      height: 16px;
+      margin-right: 5px;
+    }
+  }
+}
+
+.flight-change-day {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  align-items: center;
+  .btn-outlined {
     text-align: center;
-    padding:5px;
-    font-size: 14px;
-    z-index: 999;
-    & > div{
-        background-color: white;
+    border-width: 2px;
+    color: $primaryColor;
+    &:hover {
+      background-color: $primaryColor;
+      color: $whiteColor;
     }
+    svg {
+      margin: 3px 2px 0 2px;
+    }
+  }
 }
-.flight-container{
-    padding:0px !important;
-}
-
-.filter-list-box{
-    padding: 5px 10px;
-    margin-top: 5px;
-    border:1px solid $pillGray;
-    text-align:right;
-    .filter-list-heading{
-        margin-bottom: 10px;
-    }
-    .filter-list-input{
-        height: 30px !important;
-        border-bottom-width: 1px !important;
-    }
-
-    .filter-list-sort,.filter-list-airlines,.filter-list-time-in-day{
-        margin-top:20px;
-        // & > div{
-        //     margin-top:-4px;
-        // }
-        strong{
-            margin-bottom: 5px;
-            display: block;
-        }
-        
-        label{
-            margin-right: 5px;
-            margin-bottom: .5rem;
-        }
-    }
-   .filter-list-airlines{
-        img{
-            widows: 16px;
-            height: 16px;
-            margin-right:5px
-        }
-   }
-}
-
-.flight-change-day{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-    align-items: center;
-    .btn-outlined{
-        text-align: center;
-        border-width: 2px;
-        color:$primaryColor;
-        &:hover{
-            background-color: $primaryColor;
-            color:$whiteColor;
-        }
-        svg{
-            margin:3px 2px 0 2px;
-        }
-    }
-}
-

@@ -36,8 +36,6 @@ class Flights extends React.Component {
     super(props);
     this.state = {
       width: 1024,
-    
-
     };
 
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -58,51 +56,48 @@ class Flights extends React.Component {
   }
 
   setTitleMeta(pathName) {
-  //  var src=this.state.sourceName;
-  //  var dest=this.state.destinationName;
+    //  var src=this.state.sourceName;
+    //  var dest=this.state.destinationName;
 
     pathName = decodeURI(pathName);
-        if (pathName.indexOf("info") > 0) {
-          return "بلیطجا"; //<FlightReserve />;
-        } else if (pathName.indexOf("receipt") > 0) {
-          return "بلیطجا"; //<FlightReciept />;
-        } else if (pathName.indexOf("order") > 0) {
-          return "بلیطجا"; //<TrackOrder />;
-        } else {
-          
-          // srcEn = decodeURI(pathName.split("/")[2]).split("-")[0];
-          // destEn = decodeURI(pathName.split("/")[2]).split("-")[1];
-          console.log('this.props.credentials');
-          console.log(this.props);
-          
-          return (
-            " خرید اینترنتی بلیط هواپیما " +
-            this.props.credentials.sourceName+
-            "-" +
-            this.props.credentials.destinationName+
-            " با ارزانترین قیمت|20درصد تخفیف بلیطجا  " +
-            "/" +
-            "خرید اینترنتی بلیط هواپیما " +
-            this.props.credentials.sourceName +
-            " به " +
-            this.props.credentials.destinationName +
-            " به بهترین نرخ با امکان رزرو آنلاین و اینترنتی  به همراه ارزانترین قیمت  بلیط هواپیما و هتل در سایت بلیط جا امکان پذیر است . 02184279999 " +
-            "/" +
-            " بلیط ارزان هواپیما " +
-            this.props.credentials.sourceName +
-            " به " +
-            this.props.credentials.destinationName +
-            "|خرید اینترنتی بلیط هواپیما " +
-            this.props.credentials.sourceName +
-            " به " +
-            this.props.credentials.destinationName +
-            ""
-          ); //<GetFlightList />;
-        }
-    
+    if (pathName.indexOf("info") > 0) {
+      return "بلیطجا"; //<FlightReserve />;
+    } else if (pathName.indexOf("receipt") > 0) {
+      return "بلیطجا"; //<FlightReciept />;
+    } else if (pathName.indexOf("order") > 0) {
+      return "بلیطجا"; //<TrackOrder />;
+    } else {
+      // srcEn = decodeURI(pathName.split("/")[2]).split("-")[0];
+      // destEn = decodeURI(pathName.split("/")[2]).split("-")[1];
+      console.log("this.props.credentials");
+      console.log(this.props);
+
+      return (
+        " خرید اینترنتی بلیط هواپیما " +
+        this.props.credentials.sourceName +
+        "-" +
+        this.props.credentials.destinationName +
+        " با ارزانترین قیمت|20درصد تخفیف بلیطجا  " +
+        "/" +
+        "خرید اینترنتی بلیط هواپیما " +
+        this.props.credentials.sourceName +
+        " به " +
+        this.props.credentials.destinationName +
+        " به بهترین نرخ با امکان رزرو آنلاین و اینترنتی  به همراه ارزانترین قیمت  بلیط هواپیما و هتل در سایت بلیط جا امکان پذیر است . 02184279999 " +
+        "/" +
+        " بلیط ارزان هواپیما " +
+        this.props.credentials.sourceName +
+        " به " +
+        this.props.credentials.destinationName +
+        "|خرید اینترنتی بلیط هواپیما " +
+        this.props.credentials.sourceName +
+        " به " +
+        this.props.credentials.destinationName +
+        ""
+      ); //<GetFlightList />;
     }
+  }
   componentDidMount() {
-    
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
   }
@@ -131,14 +126,18 @@ class Flights extends React.Component {
               {
                 // {`بلیطجا ${decodeURI(this.props.router.asPath).replace('-',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ')}`}
 
-                this.setTitleMeta(this.props.router.asPath.split("#")[0]).split("/")[0]
+                this.setTitleMeta(this.props.router.asPath.split("#")[0]).split(
+                  "/"
+                )[0]
               }{" "}
             </title>
             <meta
               name="title"
               property="og:title"
               content={
-                this.setTitleMeta(this.props.router.asPath.split("#")[0]).split("/")[0]
+                this.setTitleMeta(this.props.router.asPath.split("#")[0]).split(
+                  "/"
+                )[0]
               }
             />
 
@@ -146,14 +145,18 @@ class Flights extends React.Component {
               name="description"
               property="og:description"
               content={
-                this.setTitleMeta(this.props.router.asPath.split("#")[0]).split("/")[1]
+                this.setTitleMeta(this.props.router.asPath.split("#")[0]).split(
+                  "/"
+                )[1]
               }
             />
             <meta
               name="keywords"
               property="og:keywords"
               content={
-                this.setTitleMeta(this.props.router.asPath.split("#")[0]).split("/")[2]
+                this.setTitleMeta(this.props.router.asPath.split("#")[0]).split(
+                  "/"
+                )[2]
               }
             />
           </Head>
@@ -176,7 +179,6 @@ const mapStatesToProps = (state) => ({
   accountBox: selcetAccountBox(state),
   airports: selectAirports(state),
   credentials: selectCredentials(state),
-
 });
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),

@@ -1,9 +1,6 @@
 import React from "react";
-
-import { faCog, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { connect } from "react-redux";
+import Accordion from "react-bootstrap/Accordion";
 import globals from "../Global";
 import styles from "../../../styles/Flight.module.scss";
 
@@ -13,6 +10,7 @@ import {
   removeAirlineFromSearchObject,
 } from "../../Redux/Search/search.action";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
+import { useState } from "react";
 
 class Filters extends React.Component {
   constructor(props) {
@@ -21,9 +19,15 @@ class Filters extends React.Component {
       airlines: [],
       lowPrice: null,
       endtime: "",
+      checked: false,
     };
+    this.handleClick = this.handleClick.bind(this);
   }
-
+  handleClick() {
+    this.setState({
+      checked: this.state.checked,
+    });
+  }
   handleFindByFlightNo = (e) => {
     if (e.target.value != "") {
       const searched = this.props.realData.filter((res) =>
@@ -126,171 +130,211 @@ class Filters extends React.Component {
       this.props.setFilter(this.props.realData);
     }
   };
+  handledropdown = () => {};
+
   render() {
     return (
       <div className={styles["filter-list-box"]}>
-        <div onClick={this.props.closeSide}>
-          <FontAwesomeIcon icon={faTimes} className="f-left" />
-        </div>
-
-        <div className={`styles['filter-list-heading'] mt-2`}>
-          <span className={`${styles["color-textpill"]} text-muted `}>
-            <FontAwesomeIcon icon={faCog} />
-            <span className="mx-2">فیلترها</span>
-          </span>
-        </div>
-
-        <input
-          type="text"
-          placeholder="جستجوی شماره پرواز"
-          className={`${styles["filter-list-input"]} input-search mt-3 flight-filter-input`}
-          onChange={this.handleFindByFlightNo}
-        />
-        <hr />
-        <div className={styles["filter-list-sort"]}>
-          <strong>جستجو براساس</strong>
-          <form>
-            <div>
-              <div className="radio">
-                <input
-                  type="checkbox"
-                  name="sortable"
-                  value="1"
-                  className="radio"
-                  id="cheapest"
-                  onChange={(e) => this.handleFindByPrice(true, e)}
-                  checked={
-                    this.state.lowPrice != null && this.state.lowPrice == true
-                      ? true
-                      : false
-                  }
-                />
+        <Accordion style={{ width: "94%", marginRight: 15 }}>
+          <Accordion.Item>
+            <Accordion.Button className={styles["none"]}>
+              <div className={styles["filter-list-heading"]}>
+                <strong className={`${styles["color-textpill"]} text-muted `}>
+                  <strong className={styles["filter-list-sort-4"]}>
+                    فیلترها
+                  </strong>
+                </strong>
               </div>
-              <label className="font-size-14" htmlFor="cheapest">
-                {" "}
-                ارزانترین
-              </label>
-            </div>
-            <div>
-              <div className="radio">
-                <input
-                  type="checkbox"
-                  name="sortable"
-                  value="2"
-                  className="radio"
-                  onChange={(e) => this.handleFindByPrice(false, e)}
-                  checked={
-                    this.state.lowPrice != null && this.state.lowPrice == false
-                      ? true
-                      : false
-                  }
-                  id="earlieast"
-                />
+            </Accordion.Button>
+            <Accordion.Body style={{ background: " rgb(243, 243, 243)" }}>
+              <input
+                style={{ marginRight: 15 }}
+                type="text"
+                placeholder="جستجوی شماره پرواز"
+                className={`${styles["filter-list-input"]} input-search mt-3 flight-filter-input`}
+                onChange={this.handleFindByFlightNo}
+              />
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+        <Accordion defaultActiveKey="0" className={styles["filter-list-sort"]}>
+          <Accordion.Item eventKey="0">
+            <Accordion.Button className={styles["none"]}>
+              <strong className={styles["filter-list-sort-1"]}>
+                جستجو براساس
+              </strong>
+            </Accordion.Button>
+            <Accordion.Body>
+              <div>
+                <form>
+                  <div>
+                    <div className="radio ">
+                      <input
+                        type="checkbox"
+                        name="sortable"
+                        value="1"
+                        className="radio"
+                        id="cheapest"
+                        onChange={(e) => this.handleFindByPrice(true, e)}
+                        checked={
+                          this.state.lowPrice != null &&
+                          this.state.lowPrice == true
+                            ? true
+                            : false
+                        }
+                      />
+                    </div>
+                    <label className="font-size-14" htmlFor="cheapest">
+                      {" "}
+                      ارزانترین
+                    </label>
+                  </div>
+                  <div>
+                    <div className="radio">
+                      <input
+                        type="checkbox"
+                        name="sortable"
+                        value="2"
+                        className="radio"
+                        onChange={(e) => this.handleFindByPrice(false, e)}
+                        checked={
+                          this.state.lowPrice != null &&
+                          this.state.lowPrice == false
+                            ? true
+                            : false
+                        }
+                        id="earlieast"
+                      />
+                    </div>
+                    <label className="font-size-14" htmlFor="earlieast">
+                      گرانترین
+                    </label>
+                  </div>
+                </form>
               </div>
-              <label className="font-size-14" htmlFor="earlieast">
-                گرانترین
-              </label>
-            </div>
-          </form>
-        </div>
-        <hr />
-        <div className={styles["filter-list-time-in-day"]}>
-          <strong>زمان پرواز</strong>
+            </Accordion.Body>
+          </Accordion.Item>
 
-          <div>
-            <div className="radio">
-              <input
-                type="checkbox"
-                className="radio"
-                id="exampleCheck1"
-                onChange={(e) => this.handleFilterByTime("00:00", "04:59", e)}
-                checked={this.state.endtime == "04:59" ? true : false}
-              />
-            </div>
+          <Accordion.Item eventKey="1">
+            <Accordion.Button className={styles["none"]}>
+              <strong className={styles["filter-list-sort-2"]}>
+                زمان پرواز
+              </strong>
+            </Accordion.Button>
+            <Accordion.Body>
+              <div style={{ marginTop: 10 }}>
+                <div className="radio">
+                  <input
+                    type="checkbox"
+                    className="radio"
+                    id="exampleCheck1"
+                    onChange={(e) =>
+                      this.handleFilterByTime("00:00", "04:59", e)
+                    }
+                    checked={this.state.endtime == "04:59" ? true : false}
+                  />
+                </div>
 
-            <label className="form-check-label" htmlFor="exampleCheck1">
-              بامداد (00:00 - 04:59)
-            </label>
-          </div>
-          <div>
-            <div className="radio">
-              <input
-                type="checkbox"
-                onChange={(e) => this.handleFilterByTime("05:00", "11:59", e)}
-                checked={this.state.endtime == "11:59" ? true : false}
-                className="radio"
-                name="morning"
-                id="morning"
-              />
-            </div>
-            <label className="font-size-14" htmlFor="morning">
-              صبح (11:59 - 05:00)
-            </label>
-          </div>
-          <div>
-            <div className="radio">
-              <input
-                type="checkbox"
-                onChange={(e) => this.handleFilterByTime("12:00", "17:59", e)}
-                checked={this.state.endtime == "17:59" ? true : false}
-                className="radio"
-                name="afternoon"
-                id="afternoon"
-              />
-            </div>
-            <label className="font-size-14" htmlFor="afternoon">
-              بعدازظهر (17:59 - 12:00)
-            </label>
-          </div>
-          <div>
-            <div className="radio">
-              <input
-                type="checkbox"
-                onChange={(e) => this.handleFilterByTime("18:00", "23:59", e)}
-                checked={this.state.endtime == "23:59" ? true : false}
-                className="radio"
-                name="evening"
-                id="evening"
-              />
-            </div>
-            <label className="font-size-14" htmlFor="evening">
-              شب (23:59 - 18:00)
-            </label>
-          </div>
-        </div>
-        <hr />
-        <div className={styles["filter-list-airlines"]}>
-          <strong>ایرلاین</strong>
-          {this.props.Airlines != undefined && this.props.Airlines != null
-            ? this.props.Airlines.map((oneAirline) => (
-                <div key={oneAirline.airlineIataCode}>
+                <label className="form-check-label" htmlFor="exampleCheck1">
+                  بامداد (00:00 - 04:59)
+                </label>
+              </div>
+              <div>
+                <div className="radio">
+                  <input
+                    type="checkbox"
+                    onChange={(e) =>
+                      this.handleFilterByTime("05:00", "11:59", e)
+                    }
+                    checked={this.state.endtime == "11:59" ? true : false}
+                    className="radio"
+                    name="morning"
+                    id="morning"
+                  />
+                </div>
+                <label className="font-size-14" htmlFor="morning">
+                  صبح (11:59 - 05:00)
+                </label>
+
+                <div>
                   <div className="radio">
                     <input
-                      onChange={(e) =>
-                        this.handleSelectAirline(oneAirline.airlineIataCode, e)
-                      }
-                      name={oneAirline.airlineIataCode}
                       type="checkbox"
+                      onChange={(e) =>
+                        this.handleFilterByTime("12:00", "17:59", e)
+                      }
+                      checked={this.state.endtime == "17:59" ? true : false}
                       className="radio"
-                      id={oneAirline.airline}
+                      name="afternoon"
+                      id="afternoon"
                     />
                   </div>
-                  <img
-                    width=""
-                    height=""
-                    src={
-                      globals.website +
-                      `Airlines/${oneAirline.airlineIataCode}.png?ver=1`
-                    }
-                    alt="بلیطجا - لوگو ایرلاین"
-                  />
-                  <label className="font-size-14" htmlFor="cheapest">
-                    {oneAirline.airline}
+                  <label className="font-size-14" htmlFor="afternoon">
+                    بعدازظهر (17:59 - 12:00)
                   </label>
                 </div>
-              ))
-            : null}
-        </div>
+                <div>
+                  <div className="radio">
+                    <input
+                      type="checkbox"
+                      onChange={(e) =>
+                        this.handleFilterByTime("18:00", "23:59", e)
+                      }
+                      checked={this.state.endtime == "23:59" ? true : false}
+                      className="radio"
+                      name="evening"
+                      id="evening"
+                    />
+                  </div>
+                  <label className="font-size-14" htmlFor="evening">
+                    شب (23:59 - 18:00)
+                  </label>
+                </div>
+              </div>
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="2">
+            <Accordion.Button className={styles["none"]}>
+              <strong className={styles["filter-list-sort-3"]}>ایرلاین</strong>
+            </Accordion.Button>
+            <Accordion.Body>
+              <div className={styles["filter-list-airlines"]}>
+                {this.props.Airlines != undefined && this.props.Airlines != null
+                  ? this.props.Airlines.map((oneAirline) => (
+                      <div key={oneAirline.airlineIataCode}>
+                        <div className="radio">
+                          <input
+                            onChange={(e) =>
+                              this.handleSelectAirline(
+                                oneAirline.airlineIataCode,
+                                e
+                              )
+                            }
+                            name={oneAirline.airlineIataCode}
+                            type="checkbox"
+                            className="radio"
+                            id={oneAirline.airline}
+                          />
+                        </div>
+                        <img
+                          width=""
+                          height=""
+                          src={
+                            globals.website +
+                            `Airlines/${oneAirline.airlineIataCode}.png?ver=1`
+                          }
+                          alt="بلیطجا - لوگو ایرلاین"
+                        />
+                        <label className="font-size-14" htmlFor="cheapest">
+                          {oneAirline.airline}
+                        </label>
+                      </div>
+                    ))
+                  : null}
+              </div>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
       </div>
     );
   }

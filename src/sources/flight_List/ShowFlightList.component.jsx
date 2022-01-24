@@ -1,21 +1,17 @@
 import React from "react";
 
-import {
-  faShoppingBag,
-  faClock,
-  faChair,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import globals from "../Global";
 
 import styles from "../../../styles/FlightList.module.scss";
 
-import { moneyFormat,getweekday } from "../../Utils/SimpleTasks";
+import { moneyFormat, getweekday } from "../../Utils/SimpleTasks";
+// import Listtiketssold from "../listtiketssold/Listtiketssold";
 // just a function component to show existing flights
- 
+
 const ShowFlightList = (props) => {
   return (
     <div>
+      {/* <Listtiketssold /> */}
       {
         // .filter(x=>x.kndSys==3)
         props.flightList.map((oneFlight) => (
@@ -29,9 +25,12 @@ const ShowFlightList = (props) => {
                   {" "}
                   {moneyFormat(oneFlight.priceView)}
                 </span>
-                <span className="color-black font-size-14">تومان</span>
+                <span style={{ color: "blue" }} className=" font-size-14 p-1">
+                  تومان
+                </span>
               </div>
               <div
+                style={{ marginTop: 15 }}
                 className="btn-buy-action"
                 onClick={(e) => {
                   e.preventDefault();
@@ -39,7 +38,7 @@ const ShowFlightList = (props) => {
                 }}
               >
                 <i className="kilo-font icon-refrence"></i>
-                <a href="">خرید آنلاین</a>
+                <a href="">خرید بلیط</a>
               </div>
             </div>
             <div className={styles["one-row-detail"]}>
@@ -52,8 +51,8 @@ const ShowFlightList = (props) => {
                   {oneFlight.destinate}
                 </span>
               </div>
-              <div>
-                <span>شماره پرواز{oneFlight.flightNo}</span>
+              <div className="p-1">
+                <span>ش.پرواز : {oneFlight.flightNo}</span>
               </div>
             </div>
 
@@ -72,10 +71,10 @@ const ShowFlightList = (props) => {
 
             <div className={styles["one-row-date"]}>
               <div> {getweekday(oneFlight.flightDay)}</div>
-              <div>
-                {oneFlight.flightDate}
+              <div style={{ marginTop: 8 }}>
+                <div>{oneFlight.flightDate}</div>
+                <div dir="ltr">{oneFlight.flightDateM}</div>
               </div>
-              <div dir="ltr">{oneFlight.flightDateM}</div>
             </div>
             <div className={styles["one-row-time"]}>
               <div>

@@ -1,0 +1,20 @@
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e4e4e4;
+}
+.table-header p {
+  margin: 0 auto;
+  text-align: center;
+}
+.table-body div {
+  display: flex;
+  flex-direction: column;
+}
+.table-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-content: space-between;
+  align-items: flex-start;
+}

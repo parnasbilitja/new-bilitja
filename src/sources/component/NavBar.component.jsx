@@ -129,14 +129,14 @@ class NavBar extends React.Component {
                 بلیط هواپیما
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="/villa">
                 <i
                   className={`kilo-font icon-villa ${styles["nav-icon"]} `}
                 ></i>
                 اقامتگاه
               </a>
-            </li>
+            </li> */}
             <li>
               <a href="#">
                 <i className={`kilo-font icon-blog ${styles["nav-icon"]} `}></i>

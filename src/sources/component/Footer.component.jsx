@@ -3,12 +3,15 @@ import React from "react";
 //import footerLogo from '../../../Images/bilitja-light-logo.webp'
 
 import styles from "../../../styles/Footer.module.scss";
-
 import { faPhone, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram,faTwitter,faFacebook } from '@fortawesome/free-brands-svg-icons'
- //import { Instagram, Twitter, Facebook } from "@material-ui/icons";
- // just view, without any functionality
+import {
+  faInstagram,
+  faTwitter,
+  faFacebook,
+} from "@fortawesome/free-brands-svg-icons";
+//import { Instagram, Twitter, Facebook } from "@material-ui/icons";
+// just view, without any functionality
 const Footer = () => {
   return (
     <div className={styles["footer"]}>
@@ -26,7 +29,7 @@ const Footer = () => {
             <p>ارزان ترین بلیط های هواپیما</p>
             <a href="">www. B i l i t j a .com</a>
           </div>
-         
+
           <div className="col-lg-2 col-md-3 col-sm-6 col-6">
             <h3> مقاصد داخلی </h3>
             <ul>
@@ -119,7 +122,18 @@ const Footer = () => {
           </div>
 
           <div className="col-lg-2 col-md-3 col-6">
-          <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR" alt=""  id="wC1opUKBlpiUx3sEWOGR"/></a>
+            <a
+              referrerpolicy="origin"
+              target="_blank"
+              href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+            >
+              <img
+                referrerpolicy="origin"
+                src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                alt=""
+                id="wC1opUKBlpiUx3sEWOGR"
+              />
+            </a>
           </div>
           <div className="col-lg-2 col-md-3 col-6">
             <h3>تماس با ما</h3>
@@ -141,25 +155,20 @@ const Footer = () => {
                 <a href="#">bilitja.com</a>
               </li>
               <li>
-              
                 <a href="https://instagram.com/hamnavaz.tour">
-                <FontAwesomeIcon icon={faInstagram} />  
-               
+                  <FontAwesomeIcon icon={faInstagram} />
                 </a>
                 <a href="https://instagram.com/hamnavaz.tour">hamnavaz.tour</a>
               </li>
               <li>
                 <a href="https://twitter.com/Hamnavaz_com">
-                <FontAwesomeIcon icon={faTwitter} />  
-               
-
+                  <FontAwesomeIcon icon={faTwitter} />
                 </a>
                 <a href="https://twitter.com/Hamnavaz_com">Hamnavaz_com</a>
               </li>
               <li>
                 <a href="https://facebook.com/Hamnavaz_com">
-                <FontAwesomeIcon icon={faFacebook} />  
-               
+                  <FontAwesomeIcon icon={faFacebook} />
                 </a>
                 <a href="https://facebook.com/Hamnavaz_com">Hamnavaz_com</a>
               </li>

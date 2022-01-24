@@ -4,7 +4,8 @@
   border: 1px solid red;
   border-radius: 5px;
   box-shadow: -3px 3px 26px -9px rgba(0, 0, 0, 0.67);
-  width: 100%;
+  width: 50%;
+  top: 0;
   bottom: 0px;
   z-index: 10000000;
   padding: 5px;
@@ -12,8 +13,7 @@
   height: 60px;
   margin: 10px auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   color: #fff !important;
 }
 .messagebox span {
@@ -26,4 +26,5 @@
 
 .messagebox-show {
   display: block;
+  margin-right: 350px;
 }

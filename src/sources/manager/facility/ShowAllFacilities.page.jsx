@@ -37,7 +37,7 @@ const ShowallFacilities = (props) => {
           <FontAwesomeIcon icon={faArchway} className="color-textpill" />
           &nbsp;&nbsp;
           <span className="no-margin font-size-13 font-bold-iransanse">
-            ویلا
+            ویSDFSDFلا
           </span>
         </div>
         <div className="text-left ltr">
@@ -51,7 +51,7 @@ const ShowallFacilities = (props) => {
       <h3
         className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse`}
       >
-        لیست شهر ها
+        لsdfsdیست شهر ها
       </h3>
       <div className="margin-top-10px">
         {facilities.map((facility) => (

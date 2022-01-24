@@ -13,7 +13,7 @@ const EditProfile = () => {
           <FontAwesomeIcon icon={faUserAlt} className="color-textpill" />
           &nbsp;&nbsp;
           <span className="no-margin font-size-13 font-bold-iransanse">
-            ویرایش اطلاعات
+            ویرsssایش اطلاعات
           </span>
         </div>
       </div>
@@ -39,7 +39,7 @@ const EditProfile = () => {
                     name="upload"
                     id="upload"
                     className={styles["primary-button"]}
-                    placeholder="تغییر پروفایل"
+                    placeholder="تغییر پروdfdsfdsffdssdfفایل"
                   />
                 </div>
               </div>

@@ -18,7 +18,7 @@ export const OnlineUser = () => {
           </thead>
           <tbody>
             <tr>
-              <td>Mark</td>
+              <td>Markadsfads</td>
               <td>Otto</td>
             </tr>
             <tr>
