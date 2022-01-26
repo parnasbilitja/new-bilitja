@@ -1,32 +1,35 @@
-@import './values.module.scss';
-.pop-up-flight-reserve-box{
-    text-align: center;
-    p{
-        margin-bottom: -4px !important;
+@import "./values.module.scss";
+.pop-up-flight-reserve-box {
+  text-align: center;
+  p {
+    margin-bottom: 9px !important;
+  }
+  .pop-up-flight-detail-reserve-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-template-rows: 1fr;
+    padding: 7px 4px 4px 4px;
+    border: 1px solid $pillGray;
+    border-radius: 15px;
+    margin-top: 10px;
+    i {
+      font-size: 29px;
     }
-    .pop-up-flight-detail-reserve-box{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr;
-        padding: 7px 4px 4px 4px;
-        border:1px solid $pillGray;
-        margin-top:10px;
-        i{
-            font-size: 29px;
-        }
-        span{
-            display: inline-block;
-            font-weight: 700;
-        }
+    span {
+      display: inline-block;
+      font-weight: 700;
+      margin: auto;
     }
-    .pop-up-flight-passengers-reserve-box{
-        text-align: right;
-        padding: 10px 0;
+  }
+  .pop-up-flight-passengers-reserve-box {
+    text-align: right;
+    padding: 10px 0;
 
-        span{
-            display: inline-block;
-            margin-top: 10px;
-            margin-right: 5px;
-        }
+    span {
+      display: inline-block;
+      margin-top: 10px;
+      margin-right: 5px;
     }
+  }
 }

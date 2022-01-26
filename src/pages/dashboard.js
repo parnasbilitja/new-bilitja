@@ -9,6 +9,7 @@ import ChangePassword from "../sources/dashboard/profile/ChangePassword.componen
 import OrderList from "../sources/dashboard/orders/OrderList.component";
 import WalletBalanc from "../sources/dashboard/wallet/Wallet.component";
 import MyVilla from "../sources/dashboard/villa/MyVilla.component";
+import Requset from "../sources/dashboard/request/Requset";
 import { useRouter, withRouter } from "next/router";
 import { store } from "../Redux/store";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -38,7 +39,7 @@ const Dashboard = () => {
       case "/dashboard/profile":
         return <Profile />;
       case "/dashboard/index":
-        return <h1>No Content Yet</h1>;
+        return <Requset />;
       case "/dashboard/complate-profile":
         return <ComplateProfile />;
       case "/dashboard/edit-profile":

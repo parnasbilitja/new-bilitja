@@ -157,7 +157,7 @@ class FlightSearchBox extends React.Component {
           <div
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
-            <i className="kilo-font icon-plane-departure form-input-icon"></i>
+            <i className="kilo-font icon-plane-departure form-input-icon rotate-y-180"></i>
             <PrimaryTextInput
               value={sourceName}
               // readonlyattr={this.state.width <= mobileSize ? "true" : "false"}
@@ -235,7 +235,7 @@ class FlightSearchBox extends React.Component {
         <div
           className={` form-input-border  ${styles["form-input-border-private"]} `}
         >
-          <i className="kilo-font icon-calendar form-input-icon-larger"></i>
+          <i className="kilo-font icon-calendar form-input-icon-larger "></i>
 
           <PrimaryTextInput
             placeholder={" تاریخ پرواز رفت"}
@@ -259,12 +259,14 @@ class FlightSearchBox extends React.Component {
                 });
                 return;
               }
-      
+
               const pathquery = this.props.router.asPath;
               const path = pathquery.split("#")[0];
-              const src = decodeURI(path.split("/")[2]).split("-to-")[0];const srccod = decodeURI(path.split("/")[3]).split("-")[1];
-              const dest = decodeURI(path.split("/")[2]).split("-to-")[1];const destcod = decodeURI(path.split("/")[3]).split("-")[2];
-          
+              const src = decodeURI(path.split("/")[2]).split("-to-")[0];
+              const srccod = decodeURI(path.split("/")[3]).split("-")[1];
+              const dest = decodeURI(path.split("/")[2]).split("-to-")[1];
+              const destcod = decodeURI(path.split("/")[3]).split("-")[2];
+
               if (
                 src != this.props.credentials.sourceNameEn ||
                 dest != this.props.credentials.destinationNameEn

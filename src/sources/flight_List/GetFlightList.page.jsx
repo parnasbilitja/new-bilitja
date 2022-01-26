@@ -1,4 +1,5 @@
 import React from "react";
+import { CloseOutlined } from "@ant-design/icons";
 
 import FlightSearchBox from "./FlightSearchBox.component";
 import ShowFlightList from "./ShowFlightList.component";
@@ -676,29 +677,24 @@ class GetFlightList extends React.Component {
                     <Loading />
                   </div>
                 ) : this.state.flights != null ? (
-
-                  
                   <div>
+                    {window.innerWidth < 826 ? (
+                      <div className="visible-xs">
+                        <ShowFlightListMobile
+                          setReserveBoxData={this.setReserveBoxData}
+                          flightList={this.state.flights}
+                        />
+                      </div>
+                    ) : null}
 
-           { (window.innerWidth < 826?(
-                    <div className="visible-xs">
-                      <ShowFlightListMobile
-                        setReserveBoxData={this.setReserveBoxData}
-                        flightList={this.state.flights}
-                      />
-                    </div>
-                    )
-                    : null )  }
-                    
-                    { (window.innerWidth >= 826?(
-                    <div className={styles["hidden-xs-flight"]}>
-                      <ShowFlightList
-                        setReserveBoxData={this.setReserveBoxData}
-                        flightList={this.state.flights}
-                      />
-                    </div>
-                    )
-                    : null )  }
+                    {window.innerWidth >= 826 ? (
+                      <div className={styles["hidden-xs-flight"]}>
+                        <ShowFlightList
+                          setReserveBoxData={this.setReserveBoxData}
+                          flightList={this.state.flights}
+                        />
+                      </div>
+                    ) : null}
                   </div>
                 ) : (
                   <>
@@ -772,12 +768,12 @@ class GetFlightList extends React.Component {
                   انتخاب تعداد مسافران
                 </span>
                 <span
-                  className="pull-left exit-form"
+                  className="pull-left"
                   onClick={() => {
                     this.managePopUpReserve(false);
                   }}
                 >
-                  <FontAwesomeIcon icon={faTimes} />
+                  <CloseOutlined style={{ color: "red" }} />
                 </span>
               </div>
               <PopupFlightReserve {...this.state.reserveBoxData} />

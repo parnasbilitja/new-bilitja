@@ -21,8 +21,7 @@ const ShowFlightList = (props) => {
           >
             <div className={styles["one-row-price"]}>
               <div>
-                <span className="font-size-20">
-                  {" "}
+                <span style={{ fontWeight: 900 }} className="font-size-20">
                   {moneyFormat(oneFlight.priceView)}
                 </span>
                 <span style={{ color: "blue" }} className=" font-size-14 p-1">
@@ -58,8 +57,6 @@ const ShowFlightList = (props) => {
 
             <div className={styles["one-row-provider"]}>
               <img
-                width=""
-                height=""
                 src={
                   globals.website +
                   `Airlines/${oneFlight.airlineIataCode}.png?ver=1`

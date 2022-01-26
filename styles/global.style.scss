@@ -419,7 +419,10 @@ html {
   top: 5px;
   left: 15px;
   font-size: 29px;
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
 }
+
 .form-input-icon-larger {
   position: absolute;
   top: 0px;

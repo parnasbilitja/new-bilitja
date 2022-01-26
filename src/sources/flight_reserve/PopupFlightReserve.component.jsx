@@ -172,13 +172,14 @@ class PopupFlightReserve extends React.Component {
           </div>
 
           <div>
-            <img
-              width=""
-              height=""
-              src={globals.website + `Airlines/${airlineIataCode}.png?ver=1`}
-              alt="بلیطجا - لوگو ایرلاین"
-            />
-            <p className="font-size-15 xs-font-size-14">{airline}</p>
+            <div>
+              <img
+                style={{ width: 35 }}
+                src={globals.website + `Airlines/${airlineIataCode}.png?ver=1`}
+                alt="بلیطجا - لوگو ایرلاین"
+              />
+            </div>
+            <span className="font-size-15 xs-font-size-14">{airline}</span>
           </div>
         </div>
 
@@ -196,7 +197,7 @@ class PopupFlightReserve extends React.Component {
             <div className="col-lg-7 col-md-7 col-sm-7 col-6">
               <PrimarySelectInput
                 name="numADL"
-                style={{ height: "3.5em" }}
+                style={{ height: "2.5em" }}
                 onChange={this.handleChange}
               >
                 {numberOfPassengers_.map((x) =>
@@ -220,7 +221,7 @@ class PopupFlightReserve extends React.Component {
             <div className="col-lg-7 col-md-7 col-sm-7 col-6">
               <PrimarySelectInput
                 name="numCHD"
-                style={{ height: "3.5em" }}
+                style={{ height: "2.5em" }}
                 onChange={this.handleChange}
               >
                 {numberOfPassengers.map((x) =>
@@ -244,7 +245,7 @@ class PopupFlightReserve extends React.Component {
             <div className="col-lg-7 col-md-7 col-sm-7 col-6">
               <PrimarySelectInput
                 name="numINF"
-                style={{ height: "3.5em" }}
+                style={{ height: "2.5em" }}
                 onChange={this.handleChange}
               >
                 {numberOfPassengers.map((x) =>
