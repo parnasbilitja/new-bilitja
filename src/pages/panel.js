@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { store, persistor } from "../Redux/store";
 import AddVilla from "../sources/manager/villa/AddVilla.page";
 import Villa from "../sources/manager/villa/Villa.page";
-import VillaDetial from "../sources/manager/villa/VilaDetail.page";
 import { useRouter } from "next/router";
 
 import ManagerNav from "../sources/manager/ManagerNav.component";

@@ -28,25 +28,43 @@
   top: 2px;
   left: 1px;
 }
+
 .passenger-form {
   position: relative;
   margin-top: 5px;
   text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #ccc;
+  border-radius: 8px;
   padding: 10px;
   & > div {
     margin: 0 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     .form-input-border-private {
       height: 29px !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
-  select {
+  select,
+  option {
     padding: 0px 5px !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
   .exit-form {
     padding: 2px 5px 0 5px !important;
     height: 24px;
     display: inline-block;
     text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

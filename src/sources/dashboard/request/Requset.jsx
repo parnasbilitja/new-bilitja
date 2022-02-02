@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+import Accordion from "react-bootstrap/Accordion";
 import axios from "axios";
 import "antd/dist/antd.css";
 import style from "./Style.module.scss";
@@ -46,37 +47,40 @@ const Request = () => {
     console.log("itemselected", itemselected);
   };
   const menu = (
-    <Menu>
-      <Menu.Item key="1" style={{ width:1020, height: 80 }}>
-        <div className={style["table-header-list"]}>
-          <p>ردیف</p>
-          <p>اسامی مسافران </p>
-          <p> گروه سنی</p>
-          <p> شماره بلیط</p>
-          <p> قیمت</p>
-          <p> شماره ملی </p>
-          <p>عملیات</p>
-          <p>وضعیت</p>
-        </div>
-      </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item key="2" className={style['drop-icon']}>
-        {itemselected ? (
-          <div className={style["table-body-list"]}>
-            <span> {itemselected.airline} </span>
-            <span>{itemselected.route}</span>
-            <span>{itemselected.flightDate}</span>
-            <span>{itemselected.flightNo}</span>
-            <span>sdasd</span>
-            <span>asdasd</span>
-            <span>sadas</span>
-            <span>sgsf</span>
+    <Accordion defaultActiveKey="0">
+      <Accordion.Item eventKey="0">
+        <Accordion.Button className={style['accordian-button']}
+          style={{ width: 1020, height: 80 }}
+        >
+          <div className={style["table-header-list"]}>
+            <p>ردیف</p>
+            <p>اسامی مسافران </p>
+            <p> گروه سنی</p>
+            <p> شماره بلیط</p>
+            <p> قیمت</p>
+            <p> شماره ملی </p>
+            <p>عملیات</p>
+            <p>وضعیت</p>
           </div>
-        ) : (
-          "null"
-        )}
-      </Menu.Item>
-    </Menu>
+        </Accordion.Button>
+        <Accordion.Body className={style["drop-icon"]}>
+          {itemselected ? (
+            <div className={style["table-body-list"]}>
+              <span> {itemselected.airline} </span>
+              <span>{itemselected.route}</span>
+              <span>{itemselected.flightDate}</span>
+              <span>{itemselected.flightNo}</span>
+              <span>sdasd</span>
+              <span>asdasd</span>
+              <span>sadas</span>
+              <span>sgsf</span>
+            </div>
+          ) : (
+            "null"
+          )}
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
   );
 
   return (

@@ -101,9 +101,12 @@ class FlightPassengerForm extends React.Component {
             ) : null}
           </div>
           {/* shows up just for mobile ----- end */}
-          <div className="col-lg-10 col-md-12 col-sm-12 col-12">
-            <div className="row">
-              <div className="col-lg-2 col-md-3 col-sm-3 col-6 padding-horizental-3px">
+          <div
+            className={styles["container"]}
+            className="col-lg-10 col-md-12 col-sm-12 col-12 m-auto"
+          >
+            <div className="row ">
+              <div className="col-lg-2 col-md-3 col-sm-3 col-6 padding-horizental-3px m-auto ">
                 <div>
                   <PrimaryTextInput
                     style={{ height: "3em" }}
@@ -125,7 +128,7 @@ class FlightPassengerForm extends React.Component {
                   {this.props.nameErr}
                 </span>
               </div>
-              <div className="col-lg-3 col-md-3 col-sm-3 col-6 padding-horizental-3px mb-2">
+              <div className="col-lg-3 col-md-3 col-sm-3 col-6 padding-horizental-3px m-auto">
                 <div>
                   <PrimaryTextInput
                     style={{ height: "3em" }}
@@ -147,7 +150,7 @@ class FlightPassengerForm extends React.Component {
                   {this.props.familyErr}
                 </span>
               </div>
-              <div className="reserve-selectbox col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px mt-2">
+              <div className=" col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px m-auto">
                 <PrimarySelectInput
                   className=""
                   style={{ height: "3em" }}
@@ -164,7 +167,7 @@ class FlightPassengerForm extends React.Component {
                   <option value="other">خارجی</option>
                 </PrimarySelectInput>
               </div>
-              <div className=" reserve-selectbox col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px mt-2">
+              <div className=" col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px m-auto ">
                 <PrimarySelectInput
                   style={{ height: "3em" }}
                   name="gender"
@@ -182,7 +185,7 @@ class FlightPassengerForm extends React.Component {
                   <option value="2">زن</option>
                 </PrimarySelectInput>
               </div>
-              <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px">
+              <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px m-auto">
                 <div>
                   <PrimaryTextInput
                     style={{ height: "3em" }}
@@ -218,7 +221,7 @@ class FlightPassengerForm extends React.Component {
                   {this.props.codeErr}
                 </span>
               </div>
-              <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px">
+              <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px m-auto">
                 <div>
                   <PrimaryTextInput
                     style={{ height: "3em" }}
@@ -233,20 +236,21 @@ class FlightPassengerForm extends React.Component {
                   {this.props.birthdayErr}
                 </span>
               </div>
+              <div className="hidden-xs col-lg-1 col-md-2 col-sm-2 row-price font-size-12  p-3 m-auto">
+                <span className="font-size-14 color-secondary font-bold-iransanse">
+                  {moneyFormat(this.props.price)}
+                  &nbsp;
+                </span>
+                تومان
+              </div>
             </div>
           </div>
-          <div className="hidden-xs col-lg-1 col-md-2 col-sm-2 row-price font-size-12 text-left mt-2">
-            <span className="font-size-14 color-secondary font-bold-iransanse">
-              {moneyFormat(this.props.price)}
-              &nbsp;
-            </span>
-            تومان
-          </div>
+
           <div className="hidden-xs col-lg-1 col-md-2 col-sm-2 row-price font-size-12">
             {this.props.id != 0 ? (
               <div
                 className="hidden-xs hidden-sm corner-position"
-                style={{ position: "absolute", left: "5px", top: "5px" }}
+                style={{ position: "absolute", left: "-33px", top: "3px" }}
               >
                 <span
                   className="exit-form-circle"

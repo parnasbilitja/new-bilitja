@@ -8,7 +8,7 @@ const FlightReserveDesktopHeader = (props) =>
   props.airport1 ? (
     <div className="row hidden-xs font-bold-iransanse mt-100">
       <div className="col-lg-1"></div>
-      <div className="col-lg-10 border-pill">
+      <div className={styles["header-box"]}>
         <div className="row">
           <div
             className={`col-lg-6 col-md-12 col-sm-12 col-12 ${styles["background-world"]}`}
@@ -24,26 +24,30 @@ const FlightReserveDesktopHeader = (props) =>
                 <strong className="font-size-23">{props.airport2}</strong>
               </div>
             </div>
-            <div className="p-10">
+            <div className="p-15">
               <img
-                width=""
-                height=""
+                style={{ marginTop: 20 }}
                 alt="بلیطجا - لوگو رزور بلیط هواپیما"
                 src="../../../../../Images/airplane_reserve.webp"
               />
             </div>
-            <div className="row">
-              <div className="col-lg-8 col-md-8 col-sm-8 col-6 text-right">
-                <p className="text-center no-margin">تاریخ</p>
-                <p className="color-secondary text-center font-size-23 no-margin">
+            <div className={styles["data"]}>
+              <div className="col-lg-8 col-md-8 col-sm-8 col-6 ">
+                <p style={{ marginLeft: 205 }} className="font-size-23">
+                  تاریخ
+                </p>
+                <p
+                  className="color-secondary font-size-23 "
+                  style={{ marginLeft: 205 }}
+                >
                   {getweekday(String(props.flightDay))} &nbsp;{" "}
                   {String(props.flightDate).replace("-", "/").replace("-", "/")}
                 </p>
               </div>
 
               <div className="col-lg-4 col-md-4 col-sm-4 col-6">
-                <p className="text-center no-margin">ساعت</p>
-                <p className="color-secondary font-size-23 no-margin">
+                <p className="font-size-23">ساعت</p>
+                <p className="color-secondary font-size-23 ">
                   {props.flightTime}
                 </p>
               </div>
@@ -54,7 +58,7 @@ const FlightReserveDesktopHeader = (props) =>
               <div className="col-lg-3 col-md-3 col-sm-3 col-12">
                 <br />
                 <img
-                  width=""
+                  width="100%"
                   height=""
                   className="airline-image"
                   src={
@@ -63,7 +67,7 @@ const FlightReserveDesktopHeader = (props) =>
                   alt="بلیطجا - لوگو ایرلاین"
                 />
                 <p>
-                  ایرلاین :{" "}
+                  ایرلاین :
                   <span className="color-secondary">{props.airline}</span>
                 </p>
               </div>
@@ -97,13 +101,15 @@ const FlightReserveDesktopHeader = (props) =>
                 </div>
               </div>
               <div className="col-lg-3 col-md-3 col-sm-3 col-6">
-                <img
-                  width=""
-                  height=""
-                  src="../../../../../Images/barcode.webp"
-                  className="imgbarcode"
-                  alt="بلیطجا - بارکد "
-                />
+                <div className={styles["barcod"]}>
+                  <img
+                    width=""
+                    height=""
+                    src="../../../../../Images/barcode.webp"
+                    className="imgbarcode"
+                    alt="بلیطجا - بارکد "
+                  />
+                </div>
               </div>
             </div>
           </div>

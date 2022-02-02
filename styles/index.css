@@ -7,6 +7,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.accordion-button::after {
+  width: 0;
+}
+.accordion-button:not(.collapsed) {
+  background-color: none !important;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

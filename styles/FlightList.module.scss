@@ -58,7 +58,7 @@
   .one-row-price {
     border-left: dotted rgb(161, 161, 161);
     border-width: 2px;
-    margin-right: 20px;
+    margin-right: 14px;
 
     display: flex;
     flex-direction: column;
@@ -67,7 +67,9 @@
   .flight-list-one-row :hover {
     background-color: teal !important;
   }
-
+  .img-airplan {
+    height: auto !important;
+  }
   .one-row-detail {
     padding: 5px;
     margin-top: 10px;
@@ -91,6 +93,10 @@
       margin-top: 15px;
       font-size: 14px;
     }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .one-row-date {
     font-size: 12px;

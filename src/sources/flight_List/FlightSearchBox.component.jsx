@@ -158,6 +158,7 @@ class FlightSearchBox extends React.Component {
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
             <i className="kilo-font icon-plane-departure form-input-icon rotate-y-180"></i>
+            {/* className={`kilo-font icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`} */}
             <PrimaryTextInput
               value={sourceName}
               // readonlyattr={this.state.width <= mobileSize ? "true" : "false"}
@@ -205,7 +206,7 @@ class FlightSearchBox extends React.Component {
           <div
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
-            <i className="kilo-font ltr icon-plane-departure form-input-icon rotate-upsidedown-reverse"></i>
+            <i className="kilo-font ltr icon-plane-departure form-input-icon rotate-upsidedown-reverse rotate-x-180"></i>
             <PrimaryTextInput
               value={destinationName}
               // readonlyattr={this.state.width <= mobileSize ? "true" : "false"}

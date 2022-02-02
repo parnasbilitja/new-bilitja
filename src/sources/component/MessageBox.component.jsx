@@ -15,7 +15,7 @@ class MessageBox extends React.Component {
       setTimeout(() => {
         this.props.messageBoxModify({
           state: false,
-          message: "adasdasdas",
+          message: "adasdasadassdas",
         });
       }, 4000);
     }
@@ -29,10 +29,7 @@ class MessageBox extends React.Component {
             : styles["messagebox-hidden"]
         }`}
       >
-        <span>
-          یافت نشد لطفا از تقویم روز دیگری را انتخاب کنید.{" "}
-          {this.props.messageBox.message}
-        </span>
+        <span>{this.props.messageBox.message}</span>
       </div>
     );
   }

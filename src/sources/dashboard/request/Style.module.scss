@@ -19,6 +19,9 @@
   width: 1020px;
   height: 60px;
 }
+.accordian-button {
+  background-color: rgb(245, 245, 245) !important;
+}
 .table-body {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -65,12 +68,17 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   padding: 8px;
-  background-color: rgb(245, 245, 245);
   border-radius: 2px;
   height: 55px;
+  width: 100%;
+  color: black;
   border-radius: 8px;
   box-sizing: border-box;
 }
+.accordion-button::after {
+  width: 0 !important;
+}
+
 .table-body-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;

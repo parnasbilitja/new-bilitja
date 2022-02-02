@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import "../../../styles/ImageSlider.module.scss";
 
 //import img from '../../../Images/hotel_view.jpg'

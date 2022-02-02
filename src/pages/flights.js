@@ -26,10 +26,10 @@ import GetFlightList from "./../sources/flight_List/GetFlightList.page";
 import FlightReserve from "./../sources/flight_reserve/FlightReseve.page";
 import FlightReciept from "./../sources/flight_receipt/FlightReciept.page";
 import TrackOrder from "./../sources/report/TrackOrder.page";
+import Blog from "../sources/blog/Blog.page";
 
 import { withRouter } from "next/router";
 import { selectAirports } from "../Redux/Airports/airport.reselect";
-import { loadAirports } from "../Redux/Airports/airport.action";
 
 class Flights extends React.Component {
   constructor(props) {
@@ -64,12 +64,10 @@ class Flights extends React.Component {
       return "بلیطجا"; //<FlightReserve />;
     } else if (pathName.indexOf("receipt") > 0) {
       return "بلیطجا"; //<FlightReciept />;
-    } else if (pathName.indexOf("order") > 0) {
-      return "بلیطجا"; //<TrackOrder />;
     } else {
       // srcEn = decodeURI(pathName.split("/")[2]).split("-")[0];
       // destEn = decodeURI(pathName.split("/")[2]).split("-")[1];
-      console.log("this.props.credentials");
+      console.log("this.props.  ");
       console.log(this.props);
 
       return (
@@ -117,7 +115,7 @@ class Flights extends React.Component {
           {
             this.mainRouter(this.props.router.asPath)
             //console.log(this.props.router)
-            //   this.props.router.push("/flights")
+            //    this.props.router.push("/flights")
           }
           <MessageBox />
           <Footer />

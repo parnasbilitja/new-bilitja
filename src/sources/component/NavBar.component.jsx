@@ -39,12 +39,12 @@ class NavBar extends React.Component {
       <nav className={styles.navVar}>
         <div className={styles["nav-text-detail"]}>
           <div>
-            <a
+            {/* <a
               href="/villa/intro"
               className={`font-size-10 btn-outlined ${styles["btn-nav-hosting"]}`}
             >
               میزبان شوید
-            </a>
+            </a> */}
           </div>
           <div className="font-size-12">
             <div
@@ -138,7 +138,7 @@ class NavBar extends React.Component {
               </a>
             </li> */}
             <li>
-              <a href="#">
+              <a href="/blog">
                 <i className={`kilo-font icon-blog ${styles["nav-icon"]} `}></i>
                 بلاگ
               </a>
@@ -164,7 +164,9 @@ class NavBar extends React.Component {
                 alt="بلیطجا - لوگو"
               />
             </a>
-            <h1 className="font-size-8">خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه</h1>
+            <h1 className="font-size-8">
+              خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه
+            </h1>
           </div>
         </div>
       </nav>

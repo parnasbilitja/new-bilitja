@@ -185,11 +185,13 @@ class PopupFlightReserve extends React.Component {
 
         <div className={styles["pop-up-flight-passengers-reserve-box"]}>
           <div className="row">
-            <div className="col-lg-5 col-md-5 col-sm-5 col-6">
+            <div
+              style={{ margin: "auto" }}
+              className="col-lg-5 col-md-5 col-sm-5 col-6 m-auto"
+            >
               <FontAwesomeIcon icon={faMale} />
               <FontAwesomeIcon icon={faFemale} />
               <span className="font-size-14 font-bold-iransanse">
-                {" "}
                 تعداد بزرگسال
               </span>
               <p className="font-size-11">(12 سال به بالا)</p>
@@ -197,7 +199,7 @@ class PopupFlightReserve extends React.Component {
             <div className="col-lg-7 col-md-7 col-sm-7 col-6">
               <PrimarySelectInput
                 name="numADL"
-                style={{ height: "2.5em" }}
+                style={{ height: "3.5em" }}
                 onChange={this.handleChange}
               >
                 {numberOfPassengers_.map((x) =>
