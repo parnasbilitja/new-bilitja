@@ -1,6 +1,9 @@
 @import "./values.module.scss";
 .pop-up-flight-reserve-box {
   text-align: center;
+  margin-top: 10px;
+  border-top: 1px solid #eee;
+  padding: 10px;
   p {
     margin-bottom: 9px !important;
   }

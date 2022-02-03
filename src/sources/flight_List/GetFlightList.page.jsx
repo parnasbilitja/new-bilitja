@@ -763,12 +763,10 @@ class GetFlightList extends React.Component {
             closePopUp={this.managePopUpReserve}
           >
             <div className="popup-content-container">
-              <div className="popup-heading">
-                <span className="font-bold-iransanse">
-                  انتخاب تعداد مسافران
-                </span>
+              <div>
+                <span className="font-iransanse">انتخاب تعداد مسافران</span>
                 <span
-                  className="pull-left"
+                  className="pull-left exit-form"
                   onClick={() => {
                     this.managePopUpReserve(false);
                   }}

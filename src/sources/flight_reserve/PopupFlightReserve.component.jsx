@@ -19,6 +19,7 @@ import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
 import { getweekday } from "../../Utils/SimpleTasks";
+import { Loader } from "../../Utils/Loader";
 class PopupFlightReserve extends React.Component {
   constructor(props) {
     super(props);
@@ -199,7 +200,7 @@ class PopupFlightReserve extends React.Component {
             <div className="col-lg-7 col-md-7 col-sm-7 col-6">
               <PrimarySelectInput
                 name="numADL"
-                style={{ height: "3.5em" }}
+                style={{ height: "2.5em" }}
                 onChange={this.handleChange}
               >
                 {numberOfPassengers_.map((x) =>

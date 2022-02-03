@@ -28,7 +28,9 @@
   top: 2px;
   left: 1px;
 }
-
+.container {
+  width: 98%;
+}
 .passenger-form {
   position: relative;
   margin-top: 5px;
@@ -36,6 +38,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 98%;
   background-color: #ccc;
   border-radius: 8px;
   padding: 10px;
@@ -60,11 +63,23 @@
   }
   .exit-form {
     padding: 2px 5px 0 5px !important;
-    height: 24px;
     display: inline-block;
     text-align: left;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 67px;
+    margin-left: 15px;
+    left: 4px;
   }
+}
+.exit-form {
+  height: 21px;
+  width: 26px;
+  padding: 0 1px 2px 0;
+  text-align: center;
+  color: #ff0000;
+  cursor: pointer;
+  position: absolute;
+  left: 7px;
 }

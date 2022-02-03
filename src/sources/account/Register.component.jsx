@@ -298,7 +298,7 @@ class Register extends React.Component {
               }}
               className="register-btn col-12 rounded h-3em"
             >
-              {" "}
+             
               {this.state.loading === true ? <Loader /> : this.state.btn_text}
             </button>
           </div>

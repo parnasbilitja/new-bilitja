@@ -28,6 +28,7 @@ import {
   isValidPassportCode,
 } from "../../Utils/SimpleTasks";
 import { withRouter } from "next/router";
+import { Loader } from "../../Utils/Loader";
 
 class FlightReserve extends React.Component {
   constructor(props) {
@@ -507,7 +508,7 @@ class FlightReserve extends React.Component {
               </div>
 
               <div className="col-lg-6 col-md-12 col-12 finish-reserve">
-                <div className="row">
+                <div className="row" style={{ marginTop: 10 }}>
                   <div className="col-lg-9">
                     <input
                       type="checkbox"
@@ -529,7 +530,7 @@ class FlightReserve extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="row finish-reserve-buttons mb-3 ml-5">
+                <div className="row finish-reserve-buttons mb-3 ml-5 mt-4">
                   <div className="col-lg-8 col-md-8 col-7 padding-3px">
                     <button
                       onClick={(e) => {

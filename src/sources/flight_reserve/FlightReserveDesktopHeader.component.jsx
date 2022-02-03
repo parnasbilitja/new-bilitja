@@ -58,7 +58,7 @@ const FlightReserveDesktopHeader = (props) =>
               <div className="col-lg-3 col-md-3 col-sm-3 col-12">
                 <br />
                 <img
-                  width="100%"
+                  width="70%"
                   height=""
                   className="airline-image"
                   src={
@@ -68,7 +68,7 @@ const FlightReserveDesktopHeader = (props) =>
                 />
                 <p>
                   ایرلاین :
-                  <span className="color-secondary">{props.airline}</span>
+                  <span className="color-secondary"> {props.airline}</span>
                 </p>
               </div>
               <div className="col-lg-6 col-md-6 col-sm-6 col-6 second-column">
