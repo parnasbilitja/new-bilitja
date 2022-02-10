@@ -22,6 +22,7 @@ const DashboardNav = (props) => {
 
   return (
     <div>
+      
       {props.children}
       <div
         className={`${styles["manager-nav-main-container"]} ${
@@ -125,6 +126,27 @@ const DashboardNav = (props) => {
             <p className="no-margin font-size-13 font-bold-iransanse">مالی</p>
             <p className="no-margin font-size-13 color-textpill iran-sans">
               Wallet
+            </p>
+          </div>
+        </div>
+        <div
+          className={
+            myRouter.asPath === "/dashboard/agency"
+              ? `${styles["manager-nav-one-row"]} dashboard-menu-item-active cursor-pointer`
+              : `${styles["manager-nav-one-row"]} dashboard-menu-item cursor-pointer`
+          }
+          onClick={() => {
+            myRouter.push("/dashboard/agency");
+            props.onClose();
+          }}
+        >
+          <div>
+            <FontAwesomeIcon icon={faDollarSign} />
+          </div>
+          <div>
+            <p className="no-margin font-size-13 font-bold-iransanse">agency</p>
+            <p className="no-margin font-size-13 color-textpill iran-sans">
+              agency
             </p>
           </div>
         </div>

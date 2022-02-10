@@ -90,7 +90,7 @@ export default function ManagePanel() {
       }
     }
     switch (path) {
-      case "/panel/index":
+      case "/panel":
         return <Panel />;
       case "/panel/villas/add":
         return <AddVilla></AddVilla>;
@@ -102,7 +102,6 @@ export default function ManagePanel() {
       //       case '/panel/villas/detail/:id' : return <VilaDetial/>  ;
       case "/panel/villas/getReservation":
         return <VilaReservation />;
-
       case "/panel/city/add":
         return <AddCity />;
       case "/panel/city/show":

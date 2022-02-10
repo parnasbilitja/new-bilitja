@@ -6,11 +6,10 @@ import { FlightLate } from "./FlightLate.component";
 import { Cash } from "./Cash.component";
 import { LastReserve } from "./LastReserve.component";
 
-export const Panel = () => {
+const Panel = () => {
   return (
     <div>
       <TopHeaderBox />
-
       <div className="row">
         <div className="col-lg-6">
           <OnlineUser />
@@ -33,3 +32,4 @@ export const Panel = () => {
     </div>
   );
 };
+export default Panel;

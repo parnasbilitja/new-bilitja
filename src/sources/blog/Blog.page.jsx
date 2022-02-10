@@ -1,14 +1,19 @@
 import style from "../../../styles/Blog.module.scss";
-
+import { useRouter } from "next/router";
+import ShowFlightList from "../flight_List/ShowFlightList.component";
+import FilterList from "../flight_List/Filters.component";
 const Blog = () => {
+  const router = useRouter();
   return (
     <div className={style["bloge"]}>
+      <ShowFlightList />
+      <FilterList />
       <div className={style["bloge-btn"]}>
         <img alt="" />
         <h3>test1</h3>
         <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
         <div style={{ marginTop: 12 }}>
-          <a href="/bloginfo">بیشتر بخوانید</a>
+          <a onClick={() => router.push("/flightlistadmin")}>بیشتر بخوانید</a>
         </div>
       </div>
       <div className={style["bloge-btn"]}>
@@ -16,7 +21,7 @@ const Blog = () => {
         <h3>test2</h3>
         <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
         <div style={{ marginTop: 12 }}>
-          <a href="/bloginfo/test1"> بیشتر بخوانید</a>
+          <a honClick={() => router.push("/bloginfo")}> بیشتر بخوانید</a>
         </div>
       </div>
       <div className={style["bloge-btn"]}>
@@ -27,7 +32,7 @@ const Blog = () => {
           <a href="/flights/bloginfo">بیشتر بخوانید</a>
         </div> */}
         <div style={{ marginTop: 12 }}>
-          <a href="/">بیشتر بخوانید</a>
+          <a onClick={() => router.push("/bloginfo")}>بیشتر بخوانید</a>
         </div>
       </div>
       <div className={style["bloge-btn"]}>
@@ -35,7 +40,7 @@ const Blog = () => {
         <h3>test4</h3>
         <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
         <div style={{ marginTop: 12 }}>
-          <a href="/"> بیشتر بخوانید</a>
+          <a onClick={() => router.push("/bloginfo")}> بیشتر بخوانید</a>
         </div>
       </div>
     </div>

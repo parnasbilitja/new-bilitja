@@ -176,7 +176,7 @@ class FlightSearchBox extends React.Component {
               placeholder={"مبدا خود را وارد کنید"}
             />
 
-            {this.state.width > mobileSize && this.state.suggestSource ? (
+            {this.state.suggestSource ? (
               <Airports
                 credenrialType="source"
                 closeSuggest={this.manageSuggestSource}

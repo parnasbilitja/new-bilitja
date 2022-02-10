@@ -5,18 +5,19 @@ import globals from "../Global";
 import styles from "../../../styles/FlightList.module.scss";
 
 import { moneyFormat, getweekday } from "../../Utils/SimpleTasks";
+
 // import Blog from "../blog/Blog";
 
 const ShowFlightList = (props) => {
+  console.log("props", props);
   return (
     <div>
-      {/* <Blog /> */}
-      {props.flightList.map((oneFlight) => (
+      {props?.flightList?.map((oneFlight) => (
         <div key={oneFlight.flightId} className={styles["flight-list-one-row"]}>
           <div className={styles["one-row-price"]}>
             <div>
               <span style={{ fontWeight: 900 }} className="font-size-20">
-                {moneyFormat(oneFlight.priceView)}
+                {moneyFormat(oneFlight?.priceView)}
               </span>
               <span style={{ color: "blue" }} className=" font-size-14 p-1">
                 تومان
@@ -48,7 +49,6 @@ const ShowFlightList = (props) => {
               <span>ش.پرواز : {oneFlight.flightNo}</span>
             </div>
           </div>
-
           <div className={styles["one-row-provider"]}>
             <img
               className={styles["img-airplan"]}
@@ -60,7 +60,6 @@ const ShowFlightList = (props) => {
             />
             <p>{oneFlight.airline}</p>
           </div>
-
           <div className={styles["one-row-date"]}>
             <div> {getweekday(oneFlight.flightDay)}</div>
             <div style={{ marginTop: 8 }}>

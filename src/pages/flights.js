@@ -50,7 +50,7 @@ class Flights extends React.Component {
       return <FlightReciept />;
     } else if (pathName.indexOf("order") > 0) {
       return <TrackOrder />;
-    } else {
+    }  else {
       return <GetFlightList />;
     }
   }

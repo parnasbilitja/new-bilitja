@@ -1,0 +1,17 @@
+.agency {
+  padding: 10px;
+  font-size: 15px;
+}
+.agency-list {
+  display: flex;
+  flex-direction: column;
+}
+.agency-list div {
+  font-family: BYekan !important;
+  border-bottom: 1px solid black;
+  border-width: 100%;
+  padding: 10px;
+}
+.agency-list div .item-list {
+  margin-right: 10px;
+}
