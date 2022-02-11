@@ -90,7 +90,7 @@ export default function ManagePanel() {
       }
     }
     switch (path) {
-      case "/panel":
+      case "/panel/index":
         return <Panel />;
       case "/panel/villas/add":
         return <AddVilla></AddVilla>;

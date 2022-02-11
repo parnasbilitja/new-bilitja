@@ -123,12 +123,12 @@ const Footer = () => {
 
           <div className="col-lg-2 col-md-3 col-6">
             <a
-              referrerpolicy="origin"
+              referrerPolicy="origin"
               target="_blank"
               href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
             >
               <img
-                referrerpolicy="origin"
+                referrerPolicy="origin"
                 src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
                 alt=""
                 id="wC1opUKBlpiUx3sEWOGR"
