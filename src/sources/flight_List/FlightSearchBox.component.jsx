@@ -114,7 +114,6 @@ class FlightSearchBox extends React.Component {
         destinationName,
         sourceNameEn,
         destinationNameEn,
-
         flightDatePersian,
         source,
         dest,
@@ -321,14 +320,6 @@ class FlightSearchBox extends React.Component {
               }}
               closePopUpCalendar={this.managePopUpCalendar}
             />
-            {/* <CalendarComponentJAL 
-                    setDate={(value) => {
-                            this.props.addCredentials({
-                                stDate: value.garigorian,
-                                flightDatePersian: value.jalali
-                            })
-                        }} 
-                        closePopUpCalendar={this.managePopUpCalendar} />  */}
           </div>
         </PopUpWide>
         {

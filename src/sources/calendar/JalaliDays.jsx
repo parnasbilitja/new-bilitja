@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import globals from "../Global";
 class JalaliDays extends React.Component {
   currentYear = 1405;
-
   constructor(props) {
     super(props);
     const today = moment().format("jYYYY/jMM/jDD");

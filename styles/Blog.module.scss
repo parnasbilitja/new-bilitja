@@ -1,3 +1,19 @@
+@media only screen and (max-width: 440px) {
+  .bloge {
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+  }
+}
+@media only screen and (min-width: 441px) and (max-width: 651px) {
+  .bloge {
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+  }
+}
+
+
 .bloge {
   display: flex;
   justify-content: space-evenly;

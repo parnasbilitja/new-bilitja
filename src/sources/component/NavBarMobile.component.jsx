@@ -212,7 +212,7 @@ class NavBarMobile extends React.Component {
               </li>
               <li>
                 <div>
-                  <a href="#">
+                  <a href="/blog">
                     <i className="kilo-font font-size-24 icon-blog pull-right rotate-y-180"></i>
                     <span className="pull-right font-size-14 color-black">
                       بلاگ

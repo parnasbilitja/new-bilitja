@@ -1,13 +1,14 @@
 import style from "../../../styles/Blog.module.scss";
 import { useRouter } from "next/router";
 import ShowFlightList from "../flight_List/ShowFlightList.component";
-import FilterList from "../flight_List/Filters.component";
+import NavBar from "../../sources/component/NavBar.component";
+import NavBarMobileComponent from "../component/NavBarMobile.component";
 const Blog = () => {
   const router = useRouter();
+  const breakpoint = 620;
   return (
     <div className={style["bloge"]}>
-      <ShowFlightList />
-      <FilterList />
+      {breakpoint ? <NavBarMobileComponent /> : ""}
       <div className={style["bloge-btn"]}>
         <img alt="" />
         <h3>test1</h3>

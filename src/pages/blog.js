@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import Blog from "../sources/blog/Blog.page";
-import NavBar from "./../sources/component/NavBar.component";
 import Footer from "./../sources/component/Footer.component";
 
 const BloginfoRoute = () => {
@@ -17,10 +16,10 @@ const BloginfoRoute = () => {
   }
   return (
     <div className="bodyVar">
-      <NavBar />
       {mainRouter(myRouter.asPath)}
       <Blog />
       <Footer />
+
     </div>
   );
 };

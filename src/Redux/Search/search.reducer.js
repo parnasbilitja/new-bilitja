@@ -8,7 +8,6 @@ const INITIAL_STATE = {
         destinationName:'',
         sourceNameEn:'',
         destinationNameEn:'',
-
         source:'',
         dest:'',
         stDate:'',
@@ -69,7 +68,6 @@ const searchReducer = (state= INITIAL_STATE,action)=>{
                     sourceName:state.searchObject.destinationName,
                     destinationNameEn:state.searchObject.sourceNameEn,
                     sourceNameEn:state.searchObject.destinationNameEn,
-
                     source:state.searchObject.dest,
                     dest:state.searchObject.source}
             }

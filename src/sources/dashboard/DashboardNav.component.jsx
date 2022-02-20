@@ -22,7 +22,6 @@ const DashboardNav = (props) => {
 
   return (
     <div>
-      
       {props.children}
       <div
         className={`${styles["manager-nav-main-container"]} ${

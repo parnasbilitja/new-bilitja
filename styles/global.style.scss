@@ -374,6 +374,8 @@ html {
   &:focus-within {
     border-bottom: $secondaryColor 1px solid;
     .suggestion-box {
+      overflow-y: auto ;
+      max-height: 100px;
       display: block;
     }
   }

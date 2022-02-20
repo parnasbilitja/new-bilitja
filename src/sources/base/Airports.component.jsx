@@ -2,11 +2,23 @@ import React from "react";
 import { selectAirports } from "../../Redux/Airports/airport.reselect";
 import { connect } from "react-redux";
 import { selectCredentials } from "../../Redux/Search/search.reselect";
-
 import { addCredentials } from "../../Redux/Search/search.action";
 const Airports = (props) => {
   return (
-    <div className="suggestion-box">
+    <div
+      style={{
+        maxHeight: 200,
+        overflowY: "auto",
+        // position: "absolute",
+        background: "#fff",
+        borderRadius: 8,
+        width: "100%",
+        marginTop: 5,
+        padding: "0 12px",
+        cursor: "pointer",
+      }}
+      className="suggestion-box"
+    >
       {
         //fill airport
         props.airports

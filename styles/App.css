@@ -2,7 +2,7 @@
   src: url("/public/Font/IranSans/IRANSansWebFaNumLight.ttf");
   font-family: IranSans;
 } */
-
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
 body {
   font-family: IranSans !important;
 }
@@ -53,7 +53,8 @@ span {
 }
 .panel-manager-content-container {
   padding: 10px 20px;
-  height: 100vh;
+  height: auto;
+  background-color: rgb(248, 248, 248);
 }
 .imgbarcode {
   width: 55px;
@@ -550,4 +551,30 @@ input[type="button"]:hover {
 .barcode-img {
   position: relative;
   top: 25px;
+}
+.ant-modal-close-x {
+  display: block;
+  width: 56px;
+  height: 56px;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 56px;
+  text-align: center;
+  text-transform: none;
+  text-rendering: auto;
+  margin-right: 475px !important;
+}
+.ant-modal-title {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+  font-size: 18px !important;
+  line-height: 22px;
+  word-wrap: break-word;
+}
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled),
+button:not(:disabled) {
+  cursor: pointer;
+  margin-left: 15px;
 }

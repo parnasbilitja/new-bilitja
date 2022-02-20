@@ -1,0 +1,27 @@
+@import "../../../styles/values.module.scss";
+
+.suggestion-box {
+  box-shadow: -2px 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  height: 200px;
+  top: 44px;
+  overflow-y: scroll;
+  text-align: right;
+  border: solid 1px $pillGray;
+  border-radius: 5px;
+  z-index: 9999;
+  display: none;
+
+  div {
+    padding: 5px 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #f2f2f2;
+    }
+  }
+  &:hover {
+    display: block;
+  }
+}

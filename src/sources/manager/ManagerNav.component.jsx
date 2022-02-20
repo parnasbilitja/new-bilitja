@@ -91,11 +91,29 @@ const ManagerNav = (props) => {
           </div>
           <div>
             <p className="no-margin font-size-13 font-bold-iransanse">
-              داشasdsadبورد
+              داشبورد
             </p>
-            <p className="no-margin font-size-13 color-textpill">
-              Dashsdfsdfboard
+            <p className="no-margin font-size-13 color-textpill">Dashboard</p>
+          </div>
+        </div>
+        <div
+          className={
+            myRouter.asPath === "/panel/reports"
+              ? `${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item-active`
+              : `${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item`
+          }
+          onClick={() => {
+            myRouter.push("/panel/reports");
+          }}
+        >
+          <div>
+            <FontAwesomeIcon icon={faChartLine} />
+          </div>
+          <div>
+            <p className="no-margin font-size-13 font-bold-iransanse">
+              گزارشات
             </p>
+            <p className="no-margin font-size-13 color-textpill">Reports</p>
           </div>
         </div>
         <div
