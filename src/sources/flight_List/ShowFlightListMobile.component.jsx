@@ -7,8 +7,7 @@ import {
   faChair,
 } from "@fortawesome/free-solid-svg-icons";
 import globals from "../Global";
-import { moneyFormat,getweekday } from "../../Utils/SimpleTasks";
-
+import { moneyFormat, getweekday } from "../../Utils/SimpleTasks";
 
 class ShowFlightListMobile extends React.Component {
   constructor(props) {
@@ -41,7 +40,7 @@ class ShowFlightListMobile extends React.Component {
             </p>
             <p>
               {this.props.flightList.length != 0
-                ?  getweekday(this.props.flightList[0].flightDay) 
+                ? getweekday(this.props.flightList[0].flightDay)
                 : ""}{" "}
               &nbsp;
               {this.props.flightList.length != 0
@@ -56,11 +55,11 @@ class ShowFlightListMobile extends React.Component {
                   className={styles["mobile-flight-list-one-row"]}
                 >
                   <div className={styles["mobile-one-row-price"]}>
-                    <div>
+                    <div style={{ marginBottom: 10 }}>
                       <span className="font-size-16 color-secondary font-bold-iransanse">
                         {moneyFormat(oneFlight.priceView)}
                       </span>
-                      <span className="color-black font-size-12">تومان</span>
+                      <span className="color-black font-size-12"> تومان</span>
                     </div>
                     <div
                       className="btn-buy-action"
@@ -75,7 +74,10 @@ class ShowFlightListMobile extends React.Component {
                   </div>
 
                   <div>
-                    <div className={styles["mobile-one-row-provider"]}>
+                    <div
+                      style={{ marginBottom: 18 }}
+                      className={styles["mobile-one-row-provider"]}
+                    >
                       <img
                         width=""
                         height=""
@@ -85,20 +87,29 @@ class ShowFlightListMobile extends React.Component {
                         }
                         alt="بلیطجا - لوگو ایرلاین"
                       />
-                      <span>{oneFlight.airline}</span>
+                      <span style={{ fontSize: 15 }}>{oneFlight.airline}</span>
                     </div>
 
                     <div className={styles["mobile-one-row-flight-number"]}>
                       <span>شماره پرواز </span>
-                      <span className="font-bold-iransanse">
+                      <span
+                        style={{ fontSize: 15 }}
+                        className="font-bold-iransanse"
+                      >
                         {oneFlight.flightNo}
                       </span>
                     </div>
                   </div>
 
                   <div>
-                    <div className={styles["mobile-one-row-time"]}>
-                      <span className="font-size-18 font-bold-iransanse">
+                    <div
+                      style={{ marginBottom: 10 }}
+                      className={styles["mobile-one-row-time"]}
+                    >
+                      <span
+                        style={{ fontSize: 15 }}
+                        className="font-size-18 font-bold-iransanse"
+                      >
                         {String(oneFlight.flightDateTime)
                           .split("T")[1]
                           .slice(0, 5)}
@@ -106,7 +117,10 @@ class ShowFlightListMobile extends React.Component {
                       <i className="kilo-font icon-clock"></i>
                     </div>
                     <div className={styles["mobile-one-row-cap"]}>
-                      <span className="font-bold-iransanse">
+                      <span
+                        style={{ fontSize: 15 }}
+                        className="font-bold-iransanse"
+                      >
                         {oneFlight.cap}
                       </span>
                       <i className="kilo-font icon-seat"></i>

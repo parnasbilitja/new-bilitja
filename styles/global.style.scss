@@ -147,6 +147,8 @@ html {
   padding: 5px;
 }
 .padding-3px {
+  margin-top: 10px;
+
   padding: 3px;
 }
 .padding-horizental-3px {
@@ -374,7 +376,7 @@ html {
   &:focus-within {
     border-bottom: $secondaryColor 1px solid;
     .suggestion-box {
-      overflow-y: auto ;
+      overflow-y: auto;
       max-height: 100px;
       display: block;
     }
@@ -478,8 +480,10 @@ html {
 .exit-form {
   border: 2px solid $secondaryColor;
   border-radius: 3px;
-  color: $secondaryColor;
   cursor: pointer;
+  border: 2px solid #ff0000;
+  color: #ff0000;
+  text-align: center;
 }
 .exit-form-circle {
   border: 2px solid $secondaryColor;

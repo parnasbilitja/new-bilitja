@@ -38,7 +38,7 @@ const FlightReserveMobileHeader = (props) =>
               </span>
             </p>
           </div>
-          <div className="col-4">
+          <div className="col-4" style={{ marginTop: 51 }}>
             <img
               width=""
               height=""
@@ -47,12 +47,12 @@ const FlightReserveMobileHeader = (props) =>
               alt="بلیطجا - لوگو ایرلاین"
             />
             <p className="font-size-14">
-              <span className="font-bold-iransanse">ایرلاین</span> -{" "}
-              <span className="color-secondary">{props.airline}</span>
+              <span className="font-bold-iransanse">ایرلاین</span>{" "}
+              <div className="color-secondary">{props.airline}</div>
             </p>
           </div>
           <div className="col-4 padding-3px">
-            <p className="font-size-13 center-p">
+            <p className="font-size-14 center-p">
               <span className="text-danger font-bold-iransanse mx-1 font-size-14">
                 {props.capLast}
               </span>
@@ -62,20 +62,21 @@ const FlightReserveMobileHeader = (props) =>
           </div>
         </div>
         <div className="row line-3">
-          <div className="col-8">
-            <p className="text-right">
+          <div className="col-8" style={{ marginRight: -40 }}>
+            <span className="text-right">
               <FontAwesomeIcon icon={faCalendarAlt} className="mx-2" />
               <span className="color-secondary">
                 {getweekday(String(props.flightDay))} &nbsp;{" "}
               </span>
-            </p>
-            <p className="text-right mx-2">
-              <span className="color-secondary">
+            </span>
+            <span className="text-right mx-2">
+              <span className="color-secondary" style={{ marginRight: -15 }}>
                 {String(props.flightDate).replace("-", "/").replace("-", "/")}
+                <p style={{ marginRight: 90 }}>{props.flightDay}</p>
               </span>
-            </p>
+            </span>
           </div>
-          <div className="col-4">
+          <div className="col-4" style={{ marginRight: 25 }}>
             <p className="text-left">
               <FontAwesomeIcon icon={faClock} className="mx-2" />
               {props.flightTime}

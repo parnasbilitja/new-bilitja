@@ -5,10 +5,10 @@ import NavBar from "../../sources/component/NavBar.component";
 import NavBarMobileComponent from "../component/NavBarMobile.component";
 const Blog = () => {
   const router = useRouter();
-  const breakpoint = 620;
+  const breakpoint = 440;
   return (
     <div className={style["bloge"]}>
-      {breakpoint ? <NavBarMobileComponent /> : ""}
+      {breakpoint === 440 ? <NavBarMobileComponent /> : <NavBar />}
       <div className={style["bloge-btn"]}>
         <img alt="" />
         <h3>test1</h3>

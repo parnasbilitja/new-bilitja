@@ -2,7 +2,7 @@
   .bloge {
     display: flex;
     flex-direction: column;
-    top: 50%;
+    top: 100% !important;
   }
 }
 @media only screen and (min-width: 441px) and (max-width: 651px) {
@@ -12,7 +12,6 @@
     top: 50%;
   }
 }
-
 
 .bloge {
   display: flex;
@@ -28,8 +27,9 @@
   width: 250px;
   padding: 5px;
   height: 400px;
-  margin: 15px 10px;
-  box-shadow: 6px 10px 15px #eee;
+  margin-right: 10px;
+  margin-top: 86px;
+  margin-bottom: -40px;
 }
 .bloge-btn h3 {
   margin-top: 20px;

@@ -19,7 +19,7 @@ import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
 import { getweekday } from "../../Utils/SimpleTasks";
-import { Loader } from "../../Utils/Loader";
+import Loader from "../../Utils/Loader";
 class PopupFlightReserve extends React.Component {
   constructor(props) {
     super(props);
@@ -261,12 +261,13 @@ class PopupFlightReserve extends React.Component {
               </PrimarySelectInput>
             </div>
           </div>
+
           <div
             className={` form-input-border  ${styles["form-input-border-private"]} without-focus`}
           >
             <PrimaryButton
               defaultValue={
-                this.state.loading == false ? "مرحله بعد" : "در حال پردازش..."
+                this.state.loading == false ? "مرحله بعد" : "درحال پردازش .."
               }
               onClick={() => {
                 const message = this.validation(

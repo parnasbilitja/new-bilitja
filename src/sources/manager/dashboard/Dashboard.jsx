@@ -14,10 +14,10 @@ const Dashboard = () => {
   const [post, setPost] = useState({});
   const [datelist, setDatelist] = useState({});
   const [valuechange, setValuechange] = useState([]);
-  console.log("value change :", valuechange);
   const [changemony, setChangemony] = useState([]);
   const [itemselected, setItemselected] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [value, setValue] = useState([]);
   const [sugest, setSugest] = useState(false);
   const [sugestdest, setSugestdest] = useState(false);
   const [iditems, setIditems] = useState({});
@@ -32,7 +32,7 @@ const Dashboard = () => {
   const mayRouter = useRouter();
   const mony = parseInt(changemony);
   const monyselect = parseInt(itemselected);
-
+  console.log("flight list :", flightlist);
   //////////////
   const search = (param) => {
     setParam(param);
@@ -68,15 +68,12 @@ const Dashboard = () => {
       console.log(e);
     }
   }, [url]);
-
   const showModal = () => {
     setIsModalVisible(true);
   };
-
   const handleOk = () => {
     setIsModalVisible(false);
   };
-
   const handleCancel = () => {
     setIsModalVisible(false);
   };
@@ -108,7 +105,6 @@ const Dashboard = () => {
       setValuechange(moneyFormat(item1 * 0.01 * changemony + item1));
     } else if (itemselected && checked === false) {
       setValuechange(moneyFormat(item1 + mony));
-      console.log(valuechange);
     }
   };
 
@@ -301,6 +297,7 @@ const Dashboard = () => {
               {agency.map((item) => (
                 <div>{item.kndsys === item1.kndSys ? item.azhansNam : ""}</div>
               ))}
+              <div>{!itemselected ? mony + item1.priceView : ""}</div>
               <div className={style1["mony-change"]}>{valuechange}: تومان</div>
             </div>
             <input

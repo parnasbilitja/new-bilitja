@@ -29,6 +29,7 @@ import ChangePassword from "../sources/manager/profile/ChangePassword.components
 import { Panel } from "../sources/manager/index/Panel";
 import Dashboard from "../sources/manager/dashboard/Dashboard";
 import Reports from "../sources/manager/reports/Reports";
+import Flightlist from "../sources/manager/flightlist/Flightlist";
 
 export default function ManagePanel() {
   const myRouter = useRouter();
@@ -94,13 +95,14 @@ export default function ManagePanel() {
     switch (path) {
       case "/panel/index":
         return <Dashboard />;
-
       case "/panel/villas/add":
         return <AddVilla></AddVilla>;
       case "/panel/reports":
         return <Reports />;
       case "/panel/villas/search":
         return <Villa />;
+      case "/panel/flightlist":
+        return <Flightlist />;
       case "/panel/villas/add":
         return <AddVila />;
       //case '/panel/villas/search/:id' : return <UpdateVila/>  ;
