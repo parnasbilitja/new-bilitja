@@ -1,5 +1,5 @@
 import { withRouter } from "next/router";
-import { Modal, Button } from "antd";
+// import { Modal } from "antd";
 import { useState, useEffect } from "react";
 import globals from "../../Global";
 import { moneyFormat, getweekday } from "../../../Utils/SimpleTasks";
@@ -26,7 +26,7 @@ const Dashboard = () => {
   const [cond, setCond] = useState(false);
   const [agency, setAgency] = useState([]);
   const [flightlist, setFlightlist] = useState();
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
   const [url, setUrl] = useState("");
   const { searchObject } = useSelector((state) => state.search);
   const mayRouter = useRouter();
@@ -68,15 +68,15 @@ const Dashboard = () => {
       console.log(e);
     }
   }, [url]);
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+  // const showModal = () => {
+  //   setIsModalVisible(true);
+  // };
+  // const handleOk = () => {
+  //   setIsModalVisible(false);
+  // };
+  // const handleCancel = () => {
+  //   setIsModalVisible(false);
+  // };
   const searchdatakndsys = (url) => {
     setUrl(url);
   };
@@ -195,7 +195,7 @@ const Dashboard = () => {
           جستجوآژانس
         </button>
         <button onClick={() => mayRouter.push(`/panel/index`)}>بازگشت </button>
-        <button onClick={showModal}>تغییر قیمت</button>
+        <button>تغییر قیمت</button>
       </div>
 
       <div className={style1["search-boxs"]}>
@@ -225,14 +225,14 @@ const Dashboard = () => {
           </p>
         </span>
       </div>
-      <Modal
+      {/* <Modal
         title="تغییر قیمت"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
       >
         <p style={{ fontSize: 18 }}>آیا میخواهید تغییرات اعمال شود</p>
-      </Modal>
+      </Modal> */}
       <div>
         {flightlist?.map((item1, index) => (
           <div key={index} className={style1["flight-list-one-row"]}>

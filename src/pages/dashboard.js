@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { connect, Provider } from "react-redux";
+import { Provider } from "react-redux";
 import DashboardNav from "../sources/dashboard/DashboardNav.component";
-import GetFlightList from "../sources/flight_List/GetFlightList.page";
 import MessageBox from "../sources/component/MessageBox.component";
 import Profile from "../sources/dashboard/profile/Profile.component";
 import ComplateProfile from "../sources/dashboard/profile/ComplateProfile.component";
@@ -12,13 +11,11 @@ import WalletBalanc from "../sources/dashboard/wallet/Wallet.component";
 import MyVilla from "../sources/dashboard/villa/MyVilla.component";
 import Requset from "../sources/dashboard/request/Requset";
 import Agency from "../sources/dashboard/agency/Agency";
-import { useRouter, withRouter } from "next/router";
+import { useRouter } from "next/router";
 import { store } from "../Redux/store";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../../styles/ManagerNav.module.scss";
-import ShowFlightList from "../sources/flight_List/ShowFlightList.component";
-
 const Dashboard = () => {
   const myRouter = useRouter();
   const [width, setWidth] = useState(0);
@@ -55,7 +52,6 @@ const Dashboard = () => {
         return <OrderList />;
       case "/dashboard/wallet":
         return <WalletBalanc />;
-     
       case "/dashboard/my-villa":
         return <MyVilla />;
       default:

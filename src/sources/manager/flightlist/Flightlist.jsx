@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Modal, Button } from "antd";
-import style1 from "../dashboard/Dashboard.module.scss";
-import { moneyFormat } from "../../../Utils/SimpleTasks";
+// import { Modal, Button } from "antd";
 import style from "./Flightlist.module.scss";
 
 const Flightlist = () => {
@@ -16,7 +14,7 @@ const Flightlist = () => {
   const [url, setUrl] = useState("");
   const [data, setData] = useState([]);
   const [azhanskndsys, setAzhanskndsys] = useState([]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
   const [checked, setChecked] = useState(false);
   console.log(" azhanskndsys :", azhanskndsys);
   useEffect(() => {
@@ -62,16 +60,16 @@ const Flightlist = () => {
       setValuechangesrvprice((item.srvPrice = parseInt(changevalue)));
     }
   };
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
+  // const showModal = () => {
+  //   setIsModalVisible(true);
+  // };
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+  // const handleCancel = () => {
+  //   setIsModalVisible(false);
+  // };
   return (
     <div>
-      <Modal
+      {/* <Modal
         title="تغییر قیمت"
         visible={isModalVisible}
         onCancel={handleCancel}
@@ -88,11 +86,11 @@ const Flightlist = () => {
             تایید
           </button>
         </div>
-      </Modal>
+      </Modal> */}
       <div>
         <div className={style["azhans"]}>
           <span className={style["search-box"]}>
-            <button onClick={showModal}>تغییر قیمت</button>
+            <button>تغییر قیمت</button>
           </span>
           <span>
             <input

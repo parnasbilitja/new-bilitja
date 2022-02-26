@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { Menu, Dropdown } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+// import { Menu, Dropdown } from "antd";
+// import { DownOutlined } from "@ant-design/icons";
 import Accordion from "react-bootstrap/Accordion";
 import axios from "axios";
-import "antd/dist/antd.css";
-import style from "./reports.module.scss";
+// import "antd/dist/antd.css";
+import style from "./Reports.module.scss";
 const Reports = () => {
   const [data, setData] = useState([]);
   const [itemselected, setItemselected] = useState({});
@@ -107,11 +107,11 @@ const Reports = () => {
         {data?.reportFlightFrLst?.map((item1, index) => (
           <div className={style["table-body"]}>
             <div className={style["table-body-icon"]}>
-              <div className={style["icon"]}>
+              {/* <div className={style["icon"]}>
                 <Dropdown overlay={menu} trigger={["click"]}>
                   <DownOutlined onClick={() => getitem(index)} />
                 </Dropdown>
-              </div>
+              </div> */}
               <div className={style["table-body-request"]}>
                 <span className={style["table-body-compare"]}>
                   {index?.ticketNo}

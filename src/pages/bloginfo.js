@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import BlogInfo from "../sources/bloginfo/BlogInfo";
 import NavBar from "./../sources/component/NavBar.component";
-import Blog from "../sources/blog/Blog.page";
 import Footer from "./../sources/component/Footer.component";
 const BloginfoMore = () => {
   const myRouter = useRouter();
