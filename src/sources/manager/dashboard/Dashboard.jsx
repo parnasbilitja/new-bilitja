@@ -194,12 +194,12 @@ const Dashboard = () => {
         >
           جستجوآژانس
         </button>
-        <button onClick={() => mayRouter.push(`/panel/index`)}>بازگشت </button>
-        <button>تغییر قیمت</button>
+        {/* <button onClick={() => mayRouter.push(`/panel/index`)}>بازگشت </button> */}
+        {/* <button>تغییر قیمت</button> */}
       </div>
 
       <div className={style1["search-boxs"]}>
-        <input
+        {/* <input
           type="number"
           placeholder="تغییر قیمت ..."
           value={changemony}
@@ -209,8 +209,8 @@ const Dashboard = () => {
             borderRadius: 5,
             borderWidth: 0.3,
           }}
-        />
-        <span className={style1["search-boxs-checkbox"]}>
+        /> */}
+        {/* <span className={style1["search-boxs-checkbox"]}>
           <input
             type="checkbox"
             value={checked}
@@ -223,7 +223,7 @@ const Dashboard = () => {
           <p className={style1["percent-icon"]}>
             <i class="fas fa-solid fa-percent"></i>
           </p>
-        </span>
+        </span> */}
       </div>
       {/* <Modal
         title="تغییر قیمت"
@@ -297,14 +297,14 @@ const Dashboard = () => {
               {agency.map((item) => (
                 <div>{item.kndsys === item1.kndSys ? item.azhansNam : ""}</div>
               ))}
-              <div>{!itemselected ? mony + item1.priceView : ""}</div>
-              <div className={style1["mony-change"]}>{valuechange}: تومان</div>
+              {/* <div>{!itemselected ? mony + item1.priceView : ""}</div> */}
+              {/* <div className={style1["mony-change"]}>{valuechange}: تومان</div> */}
             </div>
-            <input
+            {/* <input
               className={style1["checkbox"]}
               type="checkbox"
               onClick={() => getitem(item1.priceView)}
-            />
+            /> */}
           </div>
         ))}
       </div>
