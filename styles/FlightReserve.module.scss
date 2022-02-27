@@ -22,7 +22,6 @@
   text-align: center;
   padding: 12px 0px 12px 0;
   margin-top: 10px;
-
   &:before,
   &:after {
     content: "";
@@ -57,7 +56,8 @@
 }
 .border-pill-private {
   padding: 10px 15px;
-  margin-top: 10px;
+  margin-top: 20px;
+  height: 250px;
 }
 .flight-detail {
   text-align: center;

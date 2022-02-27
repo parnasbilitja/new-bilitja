@@ -80,7 +80,10 @@ class FlightPassengerForm extends React.Component {
                 {this.getSubtitleByType(this.props.type)}
               </span>
             </div>
-            <div className="col-6 no-padding no-margin text-left">
+            <div
+              className="col-6 no-padding text-left"
+              style={{ marginRight: -14 }}
+            >
               <span className="font-size-14 color-secondary font-bold-iransanse">
                 {moneyFormat(this.props.price)}
               </span>
@@ -89,6 +92,7 @@ class FlightPassengerForm extends React.Component {
             {this.props.id != 0 ? (
               <div className="col-1 no-margin no-padding">
                 <span
+                  style={{ padding: 3 }}
                   className="exit-form"
                   onClick={() => {
                     this.props.removePassenger(this.props.id);

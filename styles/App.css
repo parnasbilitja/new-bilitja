@@ -12,6 +12,9 @@ span {
 .font-yekan {
   font-family: BYekan !important;
 }
+.ant-modal-footer {
+  display: none;
+}
 .form-input-auth {
   height: 45px !important;
   border: 1px solid #ccc !important;
@@ -450,6 +453,7 @@ input[type="button"]:hover {
   padding: 10px;
 }
 .pl-0 {
+  margin-top: 28px;
   padding-left: 0 !important;
 }
 
@@ -576,5 +580,4 @@ input[type="button"]:hover {
 [type="submit"]:not(:disabled),
 button:not(:disabled) {
   cursor: pointer;
-  margin-left: 15px;
 }

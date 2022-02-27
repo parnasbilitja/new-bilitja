@@ -19,7 +19,6 @@ const BloginfoRoute = () => {
       {mainRouter(myRouter.asPath)}
       <Blog />
       <Footer />
-
     </div>
   );
 };

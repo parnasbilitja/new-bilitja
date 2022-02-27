@@ -1,10 +1,5 @@
 import React from "react";
 import Head from "next/head";
-//import Styles from '../../styles/icon.module.scss'
-//import '../../styles/manager.module.scss'
-
-import Home from "./../sources/Home.page";
-
 import NavBar from "./../sources/component/NavBar.component";
 import NavBarMobile from "./../sources/component/NavBarMobile.component";
 import Footer from "./../sources/component/Footer.component";

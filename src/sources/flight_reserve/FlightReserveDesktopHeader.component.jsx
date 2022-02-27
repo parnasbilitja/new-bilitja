@@ -33,21 +33,22 @@ const FlightReserveDesktopHeader = (props) =>
             </div>
             <div className={styles["data"]}>
               <div className="col-lg-8 col-md-8 col-sm-8 col-6 ">
-                <p style={{ marginLeft: 205 }} className="font-size-23">
+                <p style={{ marginLeft: 205 }} className="font-size-20">
                   تاریخ
                 </p>
                 <p
-                  className="color-secondary font-size-23 "
+                  className="color-secondary font-size-17"
                   style={{ marginLeft: 205 }}
                 >
                   {getweekday(String(props.flightDay))} &nbsp;{" "}
                   {String(props.flightDate).replace("-", "/").replace("-", "/")}
+                  <p> {props.flightDay}</p>
                 </p>
               </div>
 
               <div className="col-lg-4 col-md-4 col-sm-4 col-6">
                 <p className="font-size-23">ساعت</p>
-                <p className="color-secondary font-size-23 ">
+                <p className="color-secondary font-size-18 ">
                   {props.flightTime}
                 </p>
               </div>

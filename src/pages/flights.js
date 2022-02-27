@@ -1,15 +1,5 @@
 import React from "react";
-import { Provider } from "react-redux";
-import { store, persistor } from "../Redux/store";
-//import { PersistGate } from 'redux-persist/integration/react'
-//import reportWebVitals from './reportWebVitals';
-import App from "../sources/App";
 import Head from "next/head";
-//import Styles from '../../styles/icon.module.scss'
-//import '../../styles/manager.module.scss'
-
-import Home from "./../sources/Home.page";
-
 import NavBar from "./../sources/component/NavBar.component";
 import NavBarMobile from "./../sources/component/NavBarMobile.component";
 import Footer from "./../sources/component/Footer.component";
@@ -26,8 +16,6 @@ import GetFlightList from "./../sources/flight_List/GetFlightList.page";
 import FlightReserve from "./../sources/flight_reserve/FlightReseve.page";
 import FlightReciept from "./../sources/flight_receipt/FlightReciept.page";
 import TrackOrder from "./../sources/report/TrackOrder.page";
-import Blog from "../sources/blog/Blog.page";
-
 import { withRouter } from "next/router";
 import { selectAirports } from "../Redux/Airports/airport.reselect";
 

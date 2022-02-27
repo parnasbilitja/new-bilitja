@@ -1,5 +1,5 @@
 import { withRouter } from "next/router";
-import { Modal, Button } from "antd";
+// import { Modal } from "antd";
 import { useState, useEffect } from "react";
 import globals from "../../Global";
 import { moneyFormat, getweekday } from "../../../Utils/SimpleTasks";
@@ -14,10 +14,10 @@ const Dashboard = () => {
   const [post, setPost] = useState({});
   const [datelist, setDatelist] = useState({});
   const [valuechange, setValuechange] = useState([]);
-  console.log("value change :", valuechange);
   const [changemony, setChangemony] = useState([]);
   const [itemselected, setItemselected] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [value, setValue] = useState([]);
   const [sugest, setSugest] = useState(false);
   const [sugestdest, setSugestdest] = useState(false);
   const [iditems, setIditems] = useState({});
@@ -26,13 +26,13 @@ const Dashboard = () => {
   const [cond, setCond] = useState(false);
   const [agency, setAgency] = useState([]);
   const [flightlist, setFlightlist] = useState();
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
   const [url, setUrl] = useState("");
   const { searchObject } = useSelector((state) => state.search);
   const mayRouter = useRouter();
   const mony = parseInt(changemony);
   const monyselect = parseInt(itemselected);
-
+  console.log("flight list :", flightlist);
   //////////////
   const search = (param) => {
     setParam(param);
@@ -69,18 +69,15 @@ const Dashboard = () => {
       console.log(e);
     }
   }, [url]);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+  // const showModal = () => {
+  //   setIsModalVisible(true);
+  // };
+  // const handleOk = () => {
+  //   setIsModalVisible(false);
+  // };
+  // const handleCancel = () => {
+  //   setIsModalVisible(false);
+  // };
   const searchdatakndsys = (url) => {
     setUrl(url);
   };
@@ -109,7 +106,6 @@ const Dashboard = () => {
       setValuechange(moneyFormat(item1 * 0.01 * changemony + item1));
     } else if (itemselected && checked === false) {
       setValuechange(moneyFormat(item1 + mony));
-      console.log(valuechange);
     }
   };
 
@@ -199,12 +195,12 @@ const Dashboard = () => {
         >
           جستجوآژانس
         </button>
-        <button onClick={() => mayRouter.push(`/panel/index`)}>بازگشت </button>
-        <button onClick={showModal}>تغییر قیمت</button>
+        {/* <button onClick={() => mayRouter.push(`/panel/index`)}>بازگشت </button> */}
+        {/* <button>تغییر قیمت</button> */}
       </div>
 
       <div className={style1["search-boxs"]}>
-        <input
+        {/* <input
           type="number"
           placeholder="تغییر قیمت ..."
           value={changemony}
@@ -214,8 +210,8 @@ const Dashboard = () => {
             borderRadius: 5,
             borderWidth: 0.3,
           }}
-        />
-        <span className={style1["search-boxs-checkbox"]}>
+        /> */}
+        {/* <span className={style1["search-boxs-checkbox"]}>
           <input
             type="checkbox"
             value={checked}
@@ -228,16 +224,16 @@ const Dashboard = () => {
           <p className={style1["percent-icon"]}>
             <i class="fas fa-solid fa-percent"></i>
           </p>
-        </span>
+        </span> */}
       </div>
-      <Modal
+      {/* <Modal
         title="تغییر قیمت"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
       >
         <p style={{ fontSize: 18 }}>آیا میخواهید تغییرات اعمال شود</p>
-      </Modal>
+      </Modal> */}
       <div>
         {flightlist?.map((item1, index) => (
           <div key={index} className={style1["flight-list-one-row"]}>
@@ -302,13 +298,14 @@ const Dashboard = () => {
               {agency.map((item) => (
                 <div>{item.kndsys === item1.kndSys ? item.azhansNam : ""}</div>
               ))}
-              <div className={style1["mony-change"]}>{valuechange}: تومان</div>
+              {/* <div>{!itemselected ? mony + item1.priceView : ""}</div> */}
+              {/* <div className={style1["mony-change"]}>{valuechange}: تومان</div> */}
             </div>
-            <input
+            {/* <input
               className={style1["checkbox"]}
               type="checkbox"
               onClick={() => getitem(item1.priceView)}
-            />
+            /> */}
           </div>
         ))}
       </div>
