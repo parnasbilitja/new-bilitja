@@ -144,7 +144,7 @@ class FlightReciept extends React.Component {
   getBanks = () => {
     
     fetch(
-      `${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/getBanks/${this.props.reserveProperties.reqNo}/${this.props.reserveProperties.reqPnr}/1a157116-a01a-4027-ab10-74098ac63815`
+      `${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/getBanks/${this.props.reserveProperties.reqNo}/${this.props.reserveProperties.reqPnr}?customerId=1a157116-a01a-4027-ab10-74098ac63815`
     )
       .then((res) => res.json())
       .then((data) => {
