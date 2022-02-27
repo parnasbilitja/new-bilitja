@@ -52,9 +52,9 @@ class FlightReserve extends React.Component {
       priceMessage: "",
     });
     fetch(
-      `${globals.baseUrl}flightsReserve/ravisReserveProperty/${
+      `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveProperty/${
         this.props.router.asPath.split("/")[7]
-      }-${this.props.router.asPath.split("/")[8]}`
+      }-${this.props.router.asPath.split("/")[8]}/1a157116-a01a-4027-ab10-74098ac63815`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -286,17 +286,18 @@ class FlightReserve extends React.Component {
       sexAll: this.state.passengers.map((x) => x.gender).join(","),
       birthDayAll: this.state.passengers.map((x) => x.birthday).join(","),
       meliatAll: this.state.passengers.map((x) => x.nationality).join(","),
-      telNo: this.state.phoneSubmiter,
-      mobileNo: this.state.mobileSubmiter,
+      telNo: this.state.phoneSubmiter.toString(),
+      mobileNo: this.state.mobileSubmiter.toString(),
       pasNoAll: Array(this.state.passengers.length).fill("").join(","),
       pasStDateAll: Array(this.state.passengers.length).fill("").join(","),
       pasEndDateAll: Array(this.state.passengers.length).fill("").join(","),
       numADL: numADL,
       numCHD: numCHD,
       numINF: numINF,
+      customerId:"1a157116-a01a-4027-ab10-74098ac63815",
     };
 
-    fetch(`${globals.baseUrl}flightsReserve/ravisReserveSave`, {
+    fetch(`${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`, {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(reservePassengerObject),
       method: "POST",

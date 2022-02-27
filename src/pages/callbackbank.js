@@ -121,7 +121,7 @@ export async function getServerSideProps({ req }) {
 
       case "0":
         const response = await fetch(
-          `${globals.baseUrl}appCallBackBank/saman`,
+          `${globals.baseUrlNew}appCallBackBank/AppCallBackBank/saman`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -130,6 +130,12 @@ export async function getServerSideProps({ req }) {
               refNum: refNum,
               resNum: data.ResNum,
               mid: data.MID,
+              userId: localStorage.getItem("token"),
+              customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+              hostname: "bilitja.com",
+              agencyName: "بلیطجا",
+              telNumber: "02157874"
+
             }),
           }
         );
@@ -149,15 +155,6 @@ export async function getServerSideProps({ req }) {
             break;
 
           case "-103":
-            // only for test
-            //   const reqNo = 1;
-            //   const reqPnr ='qomg9l';
-            //   const responsePnr = await fetch(
-            //    `${globals.baseUrl}onlinePay/reference/${reqPnr}`
-            //  );
-            //   responsedatapnr = await responsePnr.json();
-            //  data.RRN ="";
-            //   break;
             data.RRN = "بانک تراکنش شما را تایید نکرد";
             break;
 
@@ -175,7 +172,7 @@ export async function getServerSideProps({ req }) {
               const reqNo = String(responsedata.status).split("|")[0];
               const reqPnr = String(responsedata.status).split("|")[1];
               const responsePnr = await fetch(
-                `${globals.baseUrl}onlinePay/reference/${reqPnr}`
+                `${globals.baseUrlNew}OnlinePay/api/onlinePay/reference/${reqPnr}/1a157116-a01a-4027-ab10-74098ac63815`
               );
               responsedatapnr = await responsePnr.json();
               data.RRN = "";
