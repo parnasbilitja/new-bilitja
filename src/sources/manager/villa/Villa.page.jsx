@@ -53,8 +53,8 @@ class Villa extends React.Component {
         </div>
 
         <div className="row margin-top-10px padding-5px">
-          <div className="col-lg-3 visible-xs">
-            <div className="filter-list-box background-white">
+          <div>
+            {/* <div className="filter-list-box background-white">
               <div className="filter-list-heading">
                 <span className="color-textpill">
                   <FontAwesomeIcon icon={faCog} />
@@ -99,7 +99,7 @@ class Villa extends React.Component {
                   </label>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="col-lg-9">
             {this.state.vilas.map((vila) => (
@@ -249,9 +249,9 @@ class Villa extends React.Component {
             ))}
           </div>
           <div className="col-lg-3 hidden-xs">
-            <div className="filter-list-box background-white">
+            <div className={styles["filter-box"]}>
               <div className="filter-list-heading">
-                <span className="color-textpill">
+                <span className={styles["fliter-header"]}>
                   <FontAwesomeIcon icon={faCog} />
                   فیلترها
                 </span>

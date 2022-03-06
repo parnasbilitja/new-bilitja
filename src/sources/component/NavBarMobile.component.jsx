@@ -96,7 +96,7 @@ class NavBarMobile extends React.Component {
                     });
                   }}
                 >
-                  <i className="kilo-font icon-register font-size-14 text-dark"></i>
+                  <i className="bilitja icon-register font-size-14 text-dark"></i>
                   &nbsp;
                   <span className="font-bold-iransanse text-dark">ثبت نام</span>
                 </a>
@@ -123,7 +123,7 @@ class NavBarMobile extends React.Component {
           <div className="pull-left">
             <a href="#" className="color-black font-bold-iransanse">
               <span className="text-dark">مشاوره تلفنی : </span>
-              <i className="kilo-font icon-phone font-size-14"></i>
+              <i className="bilitja icon-phone font-size-14"></i>
               <span className="font-size-13 text-dark"> &nbsp;۰۲۱-۵۷۸۷۴</span>
             </a>
           </div>
@@ -191,7 +191,7 @@ class NavBarMobile extends React.Component {
               <li>
                 <div>
                   <a href="/">
-                    <i className="kilo-font font-size-24 icon-plane-departure pull-right rotate-y-180"></i>
+                    <i className="bilitja font-size-24 icon-plane-departure pull-right rotate-y-180"></i>
                     <span className="pull-right font-size-14 color-black">
                       بلیط هواپیما
                     </span>
@@ -202,7 +202,7 @@ class NavBarMobile extends React.Component {
               <li>
                 <div>
                   <a href="/villa">
-                    <i className="kilo-font font-size-24 icon-villa pull-right rotate-y-180"></i>
+                    <i className="bilitja font-size-24 icon-villa pull-right rotate-y-180"></i>
                     <span className="pull-right font-size-14 color-black">
                       اقامتگاه
                     </span>
@@ -213,7 +213,7 @@ class NavBarMobile extends React.Component {
               <li>
                 <div>
                   <a href="/blog">
-                    <i className="kilo-font font-size-24 icon-blog pull-right rotate-y-180"></i>
+                    <i className="bilitja font-size-24 icon-blog pull-right rotate-y-180"></i>
                     <span className="pull-right font-size-14 color-black">
                       بلاگ
                     </span>
@@ -224,7 +224,7 @@ class NavBarMobile extends React.Component {
               <li>
                 <div>
                   <a href="/flights/order">
-                    <i className="kilo-font font-size-24 icon-refrence pull-right rotate-y-180"></i>
+                    <i className="bilitja font-size-24 icon-refrence pull-right rotate-y-180"></i>
                     <span className="pull-right font-size-14 color-black">
                       پیگیری خرید
                     </span>
@@ -235,7 +235,7 @@ class NavBarMobile extends React.Component {
               <li>
                 <div>
                   <a href="#">
-                    <i className="kilo-font font-size-24 icon-refrence pull-right rotate-y-180"></i>
+                    <i className="bilitja font-size-24 icon-refrence pull-right rotate-y-180"></i>
                     <span className="pull-right font-size-14 color-black">
                       درباره ما
                     </span>

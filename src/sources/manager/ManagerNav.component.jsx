@@ -23,6 +23,7 @@ const ManagerNav = (props) => {
   useEffect(() => {
     setMobile(localStorage.getItem("mobile"));
   }, []);
+
   return (
     <div>
       <div className={styles["manager-small-screen-top-bar"]}>

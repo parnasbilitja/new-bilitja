@@ -14,11 +14,11 @@
   src: url("../public/Font/IranSans2/eot/IRANSansWebFaNumBold.woff");
 }
 @font-face {
-  font-family: kilo;
+  font-family: bilitja;
   src: url("../public/Font/kilofont.woff");
 }
-.kilo-font {
-  font-family: kilo;
+.bilitja {
+  font-family: bilitja;
   font-style: normal;
 }
 
@@ -506,12 +506,14 @@ html {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #fff;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important;
+  background-color: #f5f5f5 !important;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #525965;
+  border-radius: 10px;
 }
 .rotate-y-180 {
   transform: rotateY(180deg);

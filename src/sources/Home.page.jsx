@@ -16,6 +16,7 @@ import {
 import { loadAirports } from "../Redux/Airports/airport.action";
 import { connect } from "react-redux";
 import { compareTwoStringDates } from "../Utils/SimpleTasks";
+import Scrolltoprefresh from "./component/Scrolltoprefresh";
 
 class Home extends React.Component {
   constructor(props) {
@@ -27,15 +28,17 @@ class Home extends React.Component {
     };
   }
   componentDidMount() {
-    if (!this.props.airports ) 
-    {
-      console.log('asasasas');
+    if (!this.props.airports) {
+      console.log("asasasas");
       this.props.setAirports(null);
-    }else{
-
-      if( !this.props.airports[0] || !this.props.airports[0].Version || this.props.airports[0].Version!='1.7' ){
-        console.log('asasasas111');
-      this.props.setAirports(null);
+    } else {
+      if (
+        !this.props.airports[0] ||
+        !this.props.airports[0].Version ||
+        this.props.airports[0].Version != "1.7"
+      ) {
+        console.log("asasasas111");
+        this.props.setAirports(null);
       }
     }
 
@@ -61,49 +64,48 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-         {
-              this.state.width >= 826?
-        <div className="hidden-xs hidden-sm row">
-          <div className="col-md-4">
-            <img
-              width=""
-              height=""
-              alt="بلیطجا- لوگو"
-              src="../../../Images/map.webp"
-              className={`${styles["hero-image-2"]} pull-right`}
-              width=""
-              height=""
-            />
-          </div>
+        {this.state.width >= 826 ? (
+          <div className="hidden-xs hidden-sm row">
+            <div className="col-md-4">
+              <img
+                width=""
+                height=""
+                alt="بلیطجا- لوگو"
+                src="../../../Images/map.webp"
+                className={`${styles["hero-image-2"]} pull-right`}
+                width=""
+                height=""
+              />
+            </div>
 
-          <div className="text-center col-md-4 pt-10">
-            <img
-              width=""
-              height=""
-              alt="بلیطجا - لوگو"
-              src="../../../Images/bilitja.webp"
-              className={styles["hero-image-center"]}
-              width=""
-              height=""
-            />
+            <div className="text-center col-md-4 pt-10">
+              <img
+                width=""
+                height=""
+                alt="بلیطجا - لوگو"
+                src="../../../Images/bilitja.webp"
+                className={styles["hero-image-center"]}
+                width=""
+                height=""
+              />
+            </div>
+            <div className="col-md-4">
+              <img
+                width=""
+                height=""
+                alt="بلیطجا - لوگو"
+                src="../../../Images/earth.webp"
+                className={`${styles["hero-image-1"]} pull-left`}
+                width=""
+                height=""
+              />
+            </div>
           </div>
-          <div className="col-md-4">
-            <img
-              width=""
-              height=""
-              alt="بلیطجا - لوگو"
-              src="../../../Images/earth.webp"
-              className={`${styles["hero-image-1"]} pull-left`}
-              width=""
-              height=""
-            />
-          </div>
-        </div>
-        :null}
+        ) : null}
 
         <div className={`${styles["heor-main-container"]}`}>
           <PageTabls tabActice={1} />
-
+          <Scrolltoprefresh />
           <div className="row">
             <div className="col-md-1"></div>
             <div className="col-md-10">
@@ -111,35 +113,31 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-        {
-              this.state.width >= 826?
-        <div className={`${styles["hero-big-image"]} container`}>
-          <img
-            width=""
-            height=""
-            width=""
-            height=""
-            alt="بلیطجا-اسلایدر"
-            src="../../../Images/flight-index.webp"
-          />
-        </div>
-        :null
-  }
-  {
-              this.state.width < 826?
-        <div className={`${styles["hero-big-image"]} container`}>
-          <img
-            width=""
-            height=""
-            width=""
-            height=""
-            alt="بلیطجا-اسلایدر"
-            src="../../../Images/flight-index-mobile.webp"
-          />
-        </div>
-        :null
-  }
- 
+        {this.state.width >= 826 ? (
+          <div className={`${styles["hero-big-image"]} container`}>
+            <img
+              width=""
+              height=""
+              width=""
+              height=""
+              alt="بلیطجا-اسلایدر"
+              src="../../../Images/flight-index.webp"
+            />
+          </div>
+        ) : null}
+        {this.state.width < 826 ? (
+          <div className={`${styles["hero-big-image"]} container`}>
+            <img
+              width=""
+              height=""
+              width=""
+              height=""
+              alt="بلیطجا-اسلایدر"
+              src="../../../Images/flight-index-mobile.webp"
+            />
+          </div>
+        ) : null}
+
         <div className="row padding-xs-5-15">
           <div className="col-lg-2 col-md-1 hidden-xs"></div>
           <div className="col-lg-8 col-md-10 col-sm-12">
@@ -227,67 +225,55 @@ class Home extends React.Component {
           <div>
             <div className={styles["suggestion-list"]}>
               <div>
-                            <a href="flights/tehran-to-mashhad/airfares-thr,ika-mhd">
-                  <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                                <span className="pull-right font-size-14">
-                                    <h7>
-                                        بلیط هواپیما مشهد
-                                        </h7>
+                <a href="flights/tehran-to-mashhad/airfares-thr,ika-mhd">
+                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
+                  <span className="pull-right font-size-14">
+                    <h7>بلیط هواپیما مشهد</h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-kish/airfares-thr,ika-kih">
-                  <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                                <span className="pull-right font-size-14">
-                                    <h7>
-                                        بلیط هواپیما کیش
-                                         </h7>
+                <a href="flights/tehran-to-kish/airfares-thr,ika-kih">
+                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
+                  <span className="pull-right font-size-14">
+                    <h7>بلیط هواپیما کیش</h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-isfahan/airfares-thr,ika-ifn">
-                  <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                                <span className="pull-right font-size-13">
-                                    <h7>
-                                        بلیط هواپیما اصفهان
-                                         </h7>
+                <a href="flights/tehran-to-isfahan/airfares-thr,ika-ifn">
+                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
+                  <span className="pull-right font-size-13">
+                    <h7>بلیط هواپیما اصفهان</h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-ahwaz/airfares-thr,ika-awz">
-                  <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                                <span className="pull-right font-size-14">
-                                    <h7>
-                                        بلیط هواپیما اهواز
-                                         </h7>
+                <a href="flights/tehran-to-ahwaz/airfares-thr,ika-awz">
+                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
+                  <span className="pull-right font-size-14">
+                    <h7>بلیط هواپیما اهواز</h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-tabriz/airfares-thr,ika-tbz">
-                  <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                                <span className="pull-right font-size-14">
-                                    <h7>
-                                        بلیط هواپیما تبریز
-                                         </h7>
+                <a href="flights/tehran-to-tabriz/airfares-thr,ika-tbz">
+                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
+                  <span className="pull-right font-size-14">
+                    <h7>بلیط هواپیما تبریز</h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-shiraz/airfares-thr,ika-syz">
-                  <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                                <span className="pull-right font-size-14">
-                                    <h7>
-                                        بلیط هواپیما شیراز
-                                         </h7>
+                <a href="flights/tehran-to-shiraz/airfares-thr,ika-syz">
+                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
+                  <span className="pull-right font-size-14">
+                    <h7>بلیط هواپیما شیراز</h7>
                   </span>
                 </a>
                 <div className="clear"></div>
@@ -295,67 +281,55 @@ class Home extends React.Component {
             </div>
             <div className={styles["suggestion-list"]}>
               <div>
-                            <a href="flights/tehran-to-istanbul/airfares-thr,ika-ist">
-                  <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                                <span className="pull-right font-size-13">
-                                    <h7>
-                                        بلیط هواپیما استانبول
-                                         </h7>
+                <a href="flights/tehran-to-istanbul/airfares-thr,ika-ist">
+                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
+                  <span className="pull-right font-size-13">
+                    <h7>بلیط هواپیما استانبول</h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-dubi/airfares-thr,ika-dxb">
-                  <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                                <span className="pull-right font-size-14">
-                                    <h7>
-                                        بلیط هواپیما دبی
-                                         </h7>
+                <a href="flights/tehran-to-dubi/airfares-thr,ika-dxb">
+                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
+                  <span className="pull-right font-size-14">
+                    <h7>بلیط هواپیما دبی</h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-teflis/airfares-thr,ika-tbs">
-                  <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                                <span className="pull-right font-size-14">
-                                    <h7>
-                                        بلیط هواپیما تفلیس
-                                         </h7>
+                <a href="flights/tehran-to-teflis/airfares-thr,ika-tbs">
+                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
+                  <span className="pull-right font-size-14">
+                    <h7>بلیط هواپیما تفلیس</h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-abadan/airfares-thr,ika-abd">
-                  <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                                <span className="pull-right font-size-14">
-                                    <h7>
-                                        بلیط هواپیما آبادان
-                                         </h7>
+                <a href="flights/tehran-to-abadan/airfares-thr,ika-abd">
+                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
+                  <span className="pull-right font-size-14">
+                    <h7>بلیط هواپیما آبادان</h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-baku/airfares-thr,ika-gyd">
-                  <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                                <span className="pull-right font-size-16">
-                                    <h7>
-                                        بلیط هواپیما باکو
-                                         </h7>
+                <a href="flights/tehran-to-baku/airfares-thr,ika-gyd">
+                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
+                  <span className="pull-right font-size-16">
+                    <h7>بلیط هواپیما باکو</h7>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
               <div>
-                            <a href="flights/tehran-to-najaf/airfares-thr,ika-njf">
-                  <i className="kilo-font font-size-24 icon-plane-departure pull-right"></i>
-                                <span className="pull-right font-size-14">
-                                    <h7>
-                                        بلیط هواپیما نجف
-                                         </h7>
+                <a href="flights/tehran-to-najaf/airfares-thr,ika-njf">
+                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
+                  <span className="pull-right font-size-14">
+                    <h7>بلیط هواپیما نجف</h7>
                   </span>
                 </a>
                 <div className="clear"></div>
@@ -397,7 +371,7 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => ({
   airports: selectAirports(state),
-  account: selectAccount(state)
+  account: selectAccount(state),
 });
 const mapDispatchToProps = (dispatch) => ({
   setAirports: (value) => dispatch(loadAirports(value)),

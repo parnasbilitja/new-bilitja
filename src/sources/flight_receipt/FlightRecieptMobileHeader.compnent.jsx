@@ -54,7 +54,7 @@ const FlightReceiptMobileHero = (props) =>
               <span className="text-danger font-bold-iransanse mx-1 font-size-14">
                 {props.capLast}
               </span>
-              <i className="kilo-font icon-seat mx-1 font-size-23"></i>
+              <i className="bilitja icon-seat mx-1 font-size-23"></i>
               صندلی خالی
             </p>
           </div>

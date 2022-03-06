@@ -91,7 +91,7 @@ const FlightReserveDesktopHeader = (props) =>
                 </div>
                 <div className="clear"></div>
                 <div>
-                  <i className="kilo-font icon-seat mx-1 font-size-30"></i>
+                  <i className="bilitja icon-seat mx-1 font-size-30"></i>
                   <p className="font-size-14">
                     ظرفیت :
                     <span className="color-secondary">

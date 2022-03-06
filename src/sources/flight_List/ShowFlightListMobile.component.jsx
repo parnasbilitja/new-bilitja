@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import globals from "../Global";
 import { moneyFormat, getweekday } from "../../Utils/SimpleTasks";
+import Scrolltoprefresh from "../component/Scrolltoprefresh";
 
 class ShowFlightListMobile extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class ShowFlightListMobile extends React.Component {
     }
     return (
       <div className={`${styles["container-flight-list-mobile"]}`}>
+        <Scrolltoprefresh />
         <div>
           <div
             className={` ${styles["mobile-flight-list-header"]} font-bold-iransanse `}
@@ -68,7 +70,7 @@ class ShowFlightListMobile extends React.Component {
                         this.props.setReserveBoxData(oneFlight);
                       }}
                     >
-                      <i className="kilo-font icon-refrence"></i>
+                      <i className="bilitja icon-refrence"></i>
                       <a href="">خرید آنلاین</a>
                     </div>
                   </div>
@@ -114,7 +116,7 @@ class ShowFlightListMobile extends React.Component {
                           .split("T")[1]
                           .slice(0, 5)}
                       </span>
-                      <i className="kilo-font icon-clock"></i>
+                      <i className="bilitja icon-clock"></i>
                     </div>
                     <div className={styles["mobile-one-row-cap"]}>
                       <span
@@ -123,7 +125,7 @@ class ShowFlightListMobile extends React.Component {
                       >
                         {oneFlight.cap}
                       </span>
-                      <i className="kilo-font icon-seat"></i>
+                      <i className="bilitja icon-seat"></i>
 
                       <span className="font-size-18">&nbsp;صندلی خالی</span>
                     </div>

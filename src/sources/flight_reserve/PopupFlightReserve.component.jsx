@@ -156,7 +156,7 @@ class PopupFlightReserve extends React.Component {
         <div className={styles["pop-up-flight-detail-reserve-box"]}>
           <div>
             <div>
-              <i className="kilo-font icon-clock"></i>
+              <i className="bilitja icon-clock"></i>
             </div>
             <span className="font-size-12 xs-font-size-13">
               {String(flightDateTime).split("T")[1].slice(0, 5)}
@@ -165,7 +165,7 @@ class PopupFlightReserve extends React.Component {
 
           <div>
             <div>
-              <i className="kilo-font icon-seat"></i>
+              <i className="bilitja icon-seat"></i>
             </div>
             <span className="font-size-12 xs-font-size-13">
               {cap + " صندلی خالی"}

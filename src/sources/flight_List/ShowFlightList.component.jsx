@@ -31,7 +31,7 @@ const ShowFlightList = (props) => {
                 props.setReserveBoxData(oneFlight);
               }}
             >
-              <i className="kilo-font icon-refrence"></i>
+              <i className="bilitja icon-refrence"></i>
               <a href="">خرید بلیط</a>
             </div>
           </div>
@@ -69,7 +69,7 @@ const ShowFlightList = (props) => {
           </div>
           <div className={styles["one-row-time"]}>
             <div>
-              <i className="kilo-font icon-clock"></i>
+              <i className="bilitja icon-clock"></i>
             </div>
             <span className="font-size-18">
               {String(oneFlight.flightDateTime).split("T")[1].slice(0, 5)}
@@ -77,7 +77,7 @@ const ShowFlightList = (props) => {
           </div>
           <div className={styles["one-row-cap"]}>
             <div>
-              <i className="kilo-font icon-seat"></i>
+              <i className="bilitja icon-seat"></i>
             </div>
             <span className="font-size-18">
               {oneFlight.cap + " صندلی خالی"}

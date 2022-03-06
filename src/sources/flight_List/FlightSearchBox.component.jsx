@@ -8,7 +8,7 @@ import AirportsMobile from "../base/AirportsMobile.component";
 import PopUp from "../component/PopUp.component";
 import PopUpWide from "../component/PopUpWide.component";
 import CalendarComponent from "../calendar/Calendar.component";
-
+import Filters from "./Filters.component";
 import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -17,6 +17,7 @@ import { selectCredentials } from "../../Redux/Search/search.reselect";
 import { addCredentials, switchRoute } from "../../Redux/Search/search.action";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
+import Scrolltoprefresh from "../component/Scrolltoprefresh";
 
 //import BirthdayCalendar from "../calendar/BirthdayCalendar.component"
 
@@ -153,11 +154,12 @@ class FlightSearchBox extends React.Component {
     return (
       <div className={styles["home-flight-form"]}>
         <div>
+          <Scrolltoprefresh />
           <div
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
-            <i className="kilo-font icon-plane-departure form-input-icon rotate-y-180"></i>
-            {/* className={`kilo-font icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`} */}
+            <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
+            {/* className={`bilitja icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`} */}
             <PrimaryTextInput
               value={sourceName}
               // readonlyattr={this.state.width <= mobileSize ? "true" : "false"}
@@ -205,7 +207,7 @@ class FlightSearchBox extends React.Component {
           <div
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
-            <i className="kilo-font ltr icon-plane-departure form-input-icon rotate-upsidedown-reverse rotate-x-180"></i>
+            <i className="bilitja ltr icon-plane-departure form-input-icon rotate-upsidedown-reverse rotate-x-180"></i>
             <PrimaryTextInput
               value={destinationName}
               // readonlyattr={this.state.width <= mobileSize ? "true" : "false"}
@@ -235,7 +237,7 @@ class FlightSearchBox extends React.Component {
         <div
           className={` form-input-border  ${styles["form-input-border-private"]} `}
         >
-          <i className="kilo-font icon-calendar form-input-icon-larger "></i>
+          <i className="bilitja icon-calendar form-input-icon-larger "></i>
 
           <PrimaryTextInput
             placeholder={" تاریخ پرواز رفت"}
@@ -259,7 +261,8 @@ class FlightSearchBox extends React.Component {
                 });
                 return;
               }
-
+       
+              
               const pathquery = this.props.router.asPath;
               const path = pathquery.split("#")[0];
               const src = decodeURI(path.split("/")[2]).split("-to-")[0];

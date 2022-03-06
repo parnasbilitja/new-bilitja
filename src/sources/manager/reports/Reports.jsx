@@ -10,6 +10,9 @@ const Reports = () => {
   const [data, setData] = useState([]);
   const [itemselected, setItemselected] = useState({});
   const [databank, setDatabank] = useState([]);
+  const [checkeded, setCheckeded] = useState(false);
+  const [checkededcancel, setCheckededcancel] = useState(false);
+
   useEffect(() => {
     try {
       axios
@@ -45,6 +48,24 @@ const Reports = () => {
     setItemselected(data?.reportFlightFrLst[index]);
     // console.log("dataasdas", data?.reportFlightFrLst[index]);
     console.log("itemselected", itemselected);
+  };
+  const handelchange = () => {
+    if (!checkeded) {
+      setCheckeded(true);
+      console.log(checkeded);
+    } else {
+      setCheckeded(false);
+      console.log(checkeded);
+    }
+  };
+  const handelchangecancel = () => {
+    if (!checkededcancel) {
+      setCheckededcancel(true);
+      console.log(checkededcancel);
+    } else {
+      setCheckededcancel(false);
+      console.log(checkededcancel);
+    }
   };
   const menu = (
     <Accordion defaultActiveKey="0">
@@ -86,6 +107,27 @@ const Reports = () => {
 
   return (
     <>
+      <div style={{ display: "flex", justifyContent: "space-around" }}>
+        <div>
+          <input
+            type="checkbox"
+            onChange={(e) => handelchange(e.target.value)}
+          />
+          فروش
+        </div>
+
+        <div>
+          <input
+            type="checkbox"
+            onChange={(e) => handelchangecancel(e.target.value)}
+          />
+          کنسل
+        </div>
+        <div>
+          <input type="checkbox" />
+          درحال رزرو
+        </div>
+      </div>
       <div className={style["table-header"]}>
         <p>
           شماره درخواست<p>رفرنس</p>
@@ -118,13 +160,17 @@ const Reports = () => {
                 </span>
 
                 <span>
-                  {databank.reportEbank?.map((item) => (
-                    <span>
-                      {item1?.reqPnr === item?.reqPnr
-                        ? item?.reqPnr && item1?.reqPnr
-                        : ""}
-                    </span>
-                  ))}
+                  {databank.reportEbank
+                    ?.filter((x) => item1.reqPnr === x.reqPnr)
+                    .map((item) => (
+                      <span style={{ background: "#eee" }}>
+                        <div key={item.id}>
+                          {checkeded == true && item.stat === "پرداخت موفق"
+                            ? item.stat
+                            : ""}
+                        </div>
+                      </span>
+                    ))}
                 </span>
               </div>
             </div>

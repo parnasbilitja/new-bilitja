@@ -10,7 +10,6 @@ import {
   removeAirlineFromSearchObject,
 } from "../../Redux/Search/search.action";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
-import { useState } from "react";
 
 class Filters extends React.Component {
   constructor(props) {
@@ -23,6 +22,7 @@ class Filters extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
   }
+
   handleClick() {
     this.setState({
       checked: this.state.checked,
@@ -76,8 +76,10 @@ class Filters extends React.Component {
 
   handleFindByPrice = (lowMood, e) => {
     const { checked } = e.target;
-    if (checked == true) {
-      if (lowMood == true) {
+    if (checked === true) {
+      console.log("checkeds :", checked);
+
+      if (lowMood === true) {
         this.setState({
           lowPrice: true,
         });
@@ -95,8 +97,10 @@ class Filters extends React.Component {
       }
     } else {
       this.setState({
+        checked: false,
         lowPrice: null,
       });
+      console.log("checkeds :", checked);
       this.props.setFilter(this.props.realData);
     }
   };
@@ -173,7 +177,7 @@ class Filters extends React.Component {
                         type="checkbox"
                         name="sortable"
                         value="1"
-                        className="radio"
+                        className="checkbox"
                         id="cheapest"
                         onChange={(e) => this.handleFindByPrice(true, e)}
                         checked={
@@ -185,7 +189,6 @@ class Filters extends React.Component {
                       />
                     </div>
                     <label className="font-size-14" htmlFor="cheapest">
-                      {" "}
                       ارزانترین
                     </label>
                   </div>
@@ -195,7 +198,7 @@ class Filters extends React.Component {
                         type="checkbox"
                         name="sortable"
                         value="2"
-                        className="radio"
+                        className="checkbox"
                         onChange={(e) => this.handleFindByPrice(false, e)}
                         checked={
                           this.state.lowPrice != null &&

@@ -17,6 +17,7 @@ const Dashboard = () => {
   const [changemony, setChangemony] = useState([]);
   const [itemselected, setItemselected] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [changemonymarkupprice, setChanemonymarkupprice] = useState();
   const [value, setValue] = useState([]);
   const [sugest, setSugest] = useState(false);
   const [sugestdest, setSugestdest] = useState(false);
@@ -26,11 +27,12 @@ const Dashboard = () => {
   const [cond, setCond] = useState(false);
   const [agency, setAgency] = useState([]);
   const [flightlist, setFlightlist] = useState();
-  // const [isModalVisible, setIsModalVisible] = useState(false);
+  const [flightlistazhans, setFlightlistazhans] = useState([]);
   const [url, setUrl] = useState("");
   const { searchObject } = useSelector((state) => state.search);
   const mayRouter = useRouter();
   const mony = parseInt(changemony);
+  const [changemonycapprice, setChangemonycapprice] = useState();
   const monyselect = parseInt(itemselected);
   console.log("flight list :", flightlist);
   //////////////
@@ -38,6 +40,7 @@ const Dashboard = () => {
     setParam(param);
     setCond((prev) => !prev);
   };
+
   useEffect(() => {
     fetch(param, {
       method: "POST",
@@ -59,27 +62,20 @@ const Dashboard = () => {
 
   useEffect(() => {
     try {
-      axios.get(url).then((res) => {
-        console.log(res);
-        setAgency(res.data);
-        console.log("agency :", agency);
-      });
+      axios
+        .get(
+          `https://tpa.ravis.ir/api/BilitAirLines/getRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`
+        )
+        .then((res) => {
+          console.log(res);
+          setAgency(res.data);
+          console.log("agency :", agency);
+        });
     } catch (e) {
       console.log(e);
     }
-  }, [url]);
-  // const showModal = () => {
-  //   setIsModalVisible(true);
-  // };
-  // const handleOk = () => {
-  //   setIsModalVisible(false);
-  // };
-  // const handleCancel = () => {
-  //   setIsModalVisible(false);
-  // };
-  const searchdatakndsys = (url) => {
-    setUrl(url);
-  };
+  }, []);
+
   const managestart = (value) => {
     setSugest(value);
   };
@@ -185,17 +181,6 @@ const Dashboard = () => {
         >
           جستجو
         </button>
-        <button
-          onClick={() =>
-            searchdatakndsys(
-              "https://tpa.ravis.ir/api/BilitAirLines/GetAzhansList"
-            )
-          }
-        >
-          جستجوآژانس
-        </button>
-        {/* <button onClick={() => mayRouter.push(`/panel/index`)}>بازگشت </button> */}
-        {/* <button>تغییر قیمت</button> */}
       </div>
 
       <div className={style1["search-boxs"]}>
@@ -225,26 +210,18 @@ const Dashboard = () => {
           </p>
         </span> */}
       </div>
-      {/* <Modal
-        title="تغییر قیمت"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p style={{ fontSize: 18 }}>آیا میخواهید تغییرات اعمال شود</p>
-      </Modal> */}
+
       <div>
         {flightlist?.map((item1, index) => (
           <div key={index} className={style1["flight-list-one-row"]}>
             <div className={style1["one-row-price"]}>
-              <div>
-                <span style1={{ fontWeight: 900 }} className="font-size-20">
-                  {moneyFormat(item1?.priceView)}
-                </span>
+              <span style1={{ fontWeight: 900 }} className="font-size-20">
+                {moneyFormat(item1.priceView)}
                 <span style1={{ color: "blue" }} className=" font-size-14 p-1">
                   تومان
                 </span>
-              </div>
+              </span>
+              <div></div>
             </div>
             <div className={style1["one-row-detail"]}>
               <div className={style1["one-row-detail-div"]}>
@@ -280,7 +257,7 @@ const Dashboard = () => {
             </div>
             <div className={style1["one-row-time"]}>
               <div>
-                <i className="kilo-font icon-clock"></i>
+                <i className="bilitja icon-clock"></i>
               </div>
               <span className="font-size-18">
                 {String(item1.flightDateTime).split("T")[1].slice(0, 5)}
@@ -288,23 +265,42 @@ const Dashboard = () => {
             </div>
             <div className={style1["one-row-cap"]}>
               <div>
-                <i className="kilo-font icon-seat"></i>
+                <i className="bilitja icon-seat"></i>
               </div>
               <span className="font-size-18">{item1.cap + " صندلی خالی"}</span>
             </div>
-
-            <div style={{ fontSize: 17 }} className={style1["one-row-cap"]}>
+            <div style={{ fontSize: 18 }} className={style1["one-row-cap"]}>
               {agency.map((item) => (
-                <div>{item.kndsys === item1.kndSys ? item.azhansNam : ""}</div>
+                <div>
+                  <span style={{ fontSize: 18, color: "red", fontWeight: 600 }}>
+                    {item.kndsys !== item1.kndSys ? null : item.azhansNam}
+                  </span>
+                  <div
+                    style={{ color: "#279692", fontWeight: 600, fontSize: 20 }}
+                  >
+                    {item.kndsys !== item1.kndSys ? null : (
+                      <div>
+                        <span
+                          style={{
+                            fontSize: 18,
+                            color: "#279692",
+                            fontWeight: 500,
+                          }}
+                        >
+                          {moneyFormat(
+                            item.markupPrice +
+                              ((item.markupPercent * item1.priceView) / 100 +
+                                item1.priceView)
+                          )}
+                          تومان
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
               ))}
-              {/* <div>{!itemselected ? mony + item1.priceView : ""}</div> */}
-              {/* <div className={style1["mony-change"]}>{valuechange}: تومان</div> */}
             </div>
-            {/* <input
-              className={style1["checkbox"]}
-              type="checkbox"
-              onClick={() => getitem(item1.priceView)}
-            /> */}
+            <div></div>
           </div>
         ))}
       </div>

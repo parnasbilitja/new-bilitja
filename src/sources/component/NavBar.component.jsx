@@ -59,7 +59,7 @@ class NavBar extends React.Component {
                   <div>
                     <Link href="/dashboard">
                       <a href="#">
-                        <i className="kilo-font icon-login"></i>
+                        <i className="bilitja icon-login"></i>
                         {this.props.user.user_info.mobile}
                       </a>
                     </Link>
@@ -88,7 +88,7 @@ class NavBar extends React.Component {
                         });
                       }}
                     >
-                      <i className="kilo-font icon-login"></i>
+                      <i className="bilitja icon-login"></i>
                       <span>ورود کاربر</span>
                     </a>
                   </div>
@@ -103,7 +103,7 @@ class NavBar extends React.Component {
                         });
                       }}
                     >
-                      <i className="kilo-font icon-register"></i>
+                      <i className="bilitja icon-register"></i>
                       <span>ثبت نام</span>
                     </a>
                   </div>
@@ -113,7 +113,7 @@ class NavBar extends React.Component {
             <div className={styles["nav-detail-second-line"]}>
               <a href="#">
                 <span>مشاوره تلفنی : </span>
-                <i className="kilo-font icon-phone"></i>
+                <i className="bilitja icon-phone"></i>
                 <span>۰۲۱۵۷۸۷۴</span>
               </a>
             </div>
@@ -124,7 +124,7 @@ class NavBar extends React.Component {
             <li>
               <a href="/">
                 <i
-                  className={`kilo-font icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`}
+                  className={`bilitja icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`}
                 ></i>
                 بلیط هواپیما
               </a>
@@ -132,21 +132,21 @@ class NavBar extends React.Component {
             {/* <li>
               <a href="/villa">
                 <i
-                  className={`kilo-font icon-villa ${styles["nav-icon"]} `}
+                  className={`bilitja icon-villa ${styles["nav-icon"]} `}
                 ></i>
                 اقامتگاه
               </a>
             </li> */}
             <li>
               <a href="/blog">
-                <i className={`kilo-font icon-blog ${styles["nav-icon"]} `}></i>
+                <i className={`bilitja icon-blog ${styles["nav-icon"]} `}></i>
                 بلاگ
               </a>
             </li>
             <li>
               <a href="/flights/order">
                 <i
-                  className={`kilo-font icon-refrence ${styles["nav-icon"]} `}
+                  className={`bilitja icon-refrence ${styles["nav-icon"]} `}
                 ></i>
                 پیگیری خرید
               </a>
