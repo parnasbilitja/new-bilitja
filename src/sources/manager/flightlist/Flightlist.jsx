@@ -52,9 +52,9 @@ const Flightlist = () => {
     }
   }, []);
 
-  const percentmony = () => {
-    setChecked(!checked);
-  };
+  // const percentmony = () => {
+  //   setChecked(!checked);
+  // };
 
   const getid = (item) => {
     setAzhanskndsys(item.kndsys);

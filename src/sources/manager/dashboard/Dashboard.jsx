@@ -1,9 +1,7 @@
-import { withRouter } from "next/router";
+import { withRouter, useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { moneyFormat, getweekday } from "../../../Utils/SimpleTasks";
 import axios from "axios";
-import { useRouter } from "next/router";
-
 import { useSelector } from "react-redux";
 const Dashboard = () => {
   const [post, setPost] = useState({});
@@ -12,7 +10,7 @@ const Dashboard = () => {
   const [changemony, setChangemony] = useState([]);
   const [itemselected, setItemselected] = useState(false);
   const [checked, setChecked] = useState(false);
- const [sugest, setSugest] = useState(false);
+  const [sugest, setSugest] = useState(false);
   const [sugestdest, setSugestdest] = useState(false);
   const [iditems, setIditems] = useState({});
   const [open, setOpen] = useState(false);
@@ -20,7 +18,6 @@ const Dashboard = () => {
   const [cond, setCond] = useState(false);
   const [agency, setAgency] = useState([]);
   const [flightlist, setFlightlist] = useState();
-  const [url, setUrl] = useState("");
   const { searchObject } = useSelector((state) => state.search);
   const mayRouter = useRouter();
   const mony = parseInt(changemony);
@@ -81,9 +78,6 @@ const Dashboard = () => {
     console.log("e :", index);
     setIditems(index);
     console.log("id items :", iditems);
-  };
-  const changetogel = () => {
-    setChecked(!checked);
   };
 
   const getitem = (item1) => {
@@ -175,9 +169,7 @@ const Dashboard = () => {
         </button>
       </div>
 
-      <div className={style1["search-boxs"]}>
-   
-      </div>
+      <div className={style1["search-boxs"]}></div>
 
       <div>
         {flightlist?.map((item1, index) => (
