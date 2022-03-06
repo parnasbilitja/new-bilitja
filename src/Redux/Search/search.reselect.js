@@ -28,7 +28,8 @@ export const selectSearchObject = createSelector([search], search => ({
     evening: search.searchObject.evening,
     airlines:search.searchObject.airlines,
     flightDateNext:search.searchObject.flightDateNext,
-    flightDatePrev:search.searchObject.flightDatePrev
+    flightDatePrev:search.searchObject.flightDatePrev,
+    customerId: "1a157116-a01a-4027-ab10-74098ac63815",
 }))
 
 export const selectArilines= createSelector([search],search=>({

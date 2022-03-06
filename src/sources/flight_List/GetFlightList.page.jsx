@@ -136,6 +136,7 @@ class GetFlightList extends React.Component {
             withFilters: false,
             currentPage: 1,
             flightDatePersian: flightdate,
+            customerId: "1a157116-a01a-4027-ab10-74098ac63815",
           })
           .then(() => {
             this.getData();
@@ -152,6 +153,7 @@ class GetFlightList extends React.Component {
             dest: destcod, //destinationn.airportCode,
             withFilters: false,
             currentPage: 1,
+            customerId: "1a157116-a01a-4027-ab10-74098ac63815",
           })
           .then(() => {
             this.getData();
@@ -243,6 +245,7 @@ class GetFlightList extends React.Component {
             stDate: flightdatemiladi,
             flightDatePersian: flightdate,
             typeOfCalendar: this.props.typeOfCalendar,
+            customerId: "1a157116-a01a-4027-ab10-74098ac63815",
           })
           .then(() => {
             // Get Flights List
@@ -295,6 +298,7 @@ class GetFlightList extends React.Component {
             stDate: flightdatemiladi,
             flightDatePersian: flightdate,
             typeOfCalendar: this.props.typeOfCalendar,
+            customerId: "1a157116-a01a-4027-ab10-74098ac63815",
           })
           .then(() => {
             // Get Flights List
@@ -420,85 +424,7 @@ class GetFlightList extends React.Component {
             });
           }
         });
-      // this.setState(
-      //   {
-      //     flights: data,
-      //     loading: false,
-      //     Allflights: data,
-      //   },
-      //   () => this.getingAirlines()
-      // );
-      //  }
-      // else {
-      //   this.setState(
-      //     {
-      //       flights: null,
-      //       Allflights: null,
-      //       loading: false,
-      //     },);
-      //   this.props.messageBoxModify({
-      //     state: true,
-      //     message: data.message,
-      //   });
-      // }
-      //  });
     }
-    //----------------------------
-    //if (this.props.searchobject.source == "") {
-    //     if (!this.props.airports) {
-    //       fetch(`${globals.baseUrl}flights/getAirports`)
-    //         .then((res) => res.json())
-    //         .then((json) => {
-    //           this.props.setAirports(json.flightAirportsModel);
-    //           const source = json.flightAirportsModel.find(
-    //             (x) => x.airportName == src
-    //           );
-    //           const destinationn = json.flightAirportsModel.find(
-    //             (x) => x.airportName == dest
-    //           );
-    //           this.props
-    //             .addCredentials({
-    //               sourceName: source.airportName,
-    //               destinationName: destinationn.airportName,
-    //               source: source.airportCode,
-    //               dest: destinationn.airportCode,
-    //               stDate: getCustomFormat(moment().startOf("day"), true),
-    //               flightDatePersian: getCustomFormat(
-    //                 moment().startOf("day"),
-    //                 false
-    //               ),
-    //               typeOfCalendar: this.props.typeOfCalendar,
-    //             })
-    //             .then(() => {
-    //               this.setState({
-    //                 loading: false,
-    //               });
-    //             });
-    //         });
-    //     } else {
-    //       const source = this.props.airports.find((x) => x.airportName == src);
-    //       const destinationn = this.props.airports.find(
-    //         (x) => x.airportName == dest
-    //       );
-    //       this.props
-    //         .addCredentials({
-    //           sourceName: source.airportName,
-    //           destinationName: destinationn.airportName,
-    //           source: source.airportCode,
-    //           dest: destinationn.airportCode,
-    //           stDate: getCustomFormat(moment().startOf("day"), true),
-    //           flightDatePersian: getCustomFormat(moment().startOf("day"), false),
-    //           typeOfCalendar: this.props.typeOfCalendar,
-    //         })
-    //         .then(() => {
-    //           this.setState({
-    //             loading: false,
-    //           });
-    //         });
-    //     }
-    //   } else {
-    //     this.getData();
-    //   }
   }
 
   managePopUpSearch = (value) => {

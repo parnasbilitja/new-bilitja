@@ -56,9 +56,9 @@ class FlightReciept extends React.Component {
       priceMessage: "",
     });
     fetch(
-      `${globals.baseUrl}flightsReserve/ravisReserveProperty/${
+      `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveProperty/${
         this.props.router.asPath.split("/")[3]
-      }-${this.props.router.asPath.split("/")[4]}`
+      }-${this.props.router.asPath.split("/")[4]}/1a157116-a01a-4027-ab10-74098ac63815`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -121,8 +121,10 @@ class FlightReciept extends React.Component {
       numADL: this.state.numADL,
       numCHD: this.state.numCHD,
       numINF: this.state.numINF,
+      customerId:"1a157116-a01a-4027-ab10-74098ac63815",
+      
     };
-    fetch(`${globals.baseUrl}flightsReserve/ravisReserveSave`, {
+    fetch(`${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`, {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(reservePassengerObject),
       method: "POST",
@@ -140,19 +142,13 @@ class FlightReciept extends React.Component {
       });
   };
   getBanks = () => {
-    // window.open(
-    //   `Https://bilitja.ravis.ir/ApplicationBank/CallBank?reqNo=${this.props.reserveProperties.reqNo}&reqPnr=${this.props.reserveProperties.reqPnr}`,
-    //   "_self"
-    // );
-
-    // onlinePay/pricing/getBanks/97847/Y0GB7D
-    //${this.props.reserveProperties.reqNo}/${this.props.reserveProperties.reqPnr}
+    
     fetch(
-      `${globals.baseUrl}onlinePay/pricing/getBanks/${this.props.reserveProperties.reqNo}/${this.props.reserveProperties.reqPnr}`
+      `${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/getBanks/${this.props.reserveProperties.reqNo}/${this.props.reserveProperties.reqPnr}?customerId=1a157116-a01a-4027-ab10-74098ac63815`
     )
       .then((res) => res.json())
       .then((data) => {
-        fetch(`${globals.baseUrl}onlinePay/pricing/saveEbank`, {
+        fetch(`${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/saveEbank`, {
           headers: { "Content-Type": "application/json" },
           method: "POST",
           body: JSON.stringify({
@@ -160,6 +156,10 @@ class FlightReciept extends React.Component {
             reqPnr: this.props.reserveProperties.reqPnr,
             bankId: data.bankId,
             kndRequest: 1,
+            customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+            callBackUrl: "https://bilitja.com/callbackbank",
+            userId: localStorage.getItem("token")
+           
           }),
         })
           .then((res) => res.json())

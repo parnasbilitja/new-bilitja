@@ -54,6 +54,7 @@ class PopupFlightReserve extends React.Component {
       pathKind,
       serviceType,
       priceView,
+      faranegarId,
     } = this.props;
 
     console.log(this.props);
@@ -75,9 +76,13 @@ class PopupFlightReserve extends React.Component {
       pathKind: pathKind,
       serviceType: serviceType,
       priceView: priceView,
+      customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+      mobileNo: localStorage.getItem("mobile"),
+      userId: localStorage.getItem("token"),
+      faranegarId: faranegarId
     };
 
-    fetch(`${globals.baseUrl}flightsReserve/reserve`, {
+    fetch(`${globals.baseUrlNew}BilitFlightReserve/flightsReserve/reserve`, {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(reserveObject),
       method: "POST",

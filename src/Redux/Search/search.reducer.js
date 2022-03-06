@@ -22,7 +22,8 @@ const INITIAL_STATE = {
         airlines:[],
         flightDateNext:null,
         flightDatePrev:null,
-        typeOfCalendar:''
+        typeOfCalendar:'',
+        customerId: "1a157116-a01a-4027-ab10-74098ac63815",
     },
     filters : {
         arilines:[]

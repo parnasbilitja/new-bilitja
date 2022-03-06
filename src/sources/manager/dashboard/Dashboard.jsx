@@ -52,6 +52,7 @@ const Dashboard = () => {
         dest: searchObject.dest,
         stDate: setDatelist.flightDatePersian,
         withFilters: false,
+        customerId: "1a157116-a01a-4027-ab10-74098ac63815",
       }),
     })
       .then((res) => res.json())
