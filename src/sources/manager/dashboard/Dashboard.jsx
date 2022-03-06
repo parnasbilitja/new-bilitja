@@ -1,14 +1,9 @@
 import { withRouter } from "next/router";
-// import { Modal } from "antd";
 import { useState, useEffect } from "react";
-import globals from "../../Global";
 import { moneyFormat, getweekday } from "../../../Utils/SimpleTasks";
-import Airports from "../../base/Airports.component";
-import style1 from "./Dashboard.module.scss";
 import axios from "axios";
 import { useRouter } from "next/router";
-import PopUpWide from "../../component/PopUpWide.component";
-import CalendarComponent from "../../calendar/Calendar.component";
+
 import { useSelector } from "react-redux";
 const Dashboard = () => {
   const [post, setPost] = useState({});
@@ -17,9 +12,7 @@ const Dashboard = () => {
   const [changemony, setChangemony] = useState([]);
   const [itemselected, setItemselected] = useState(false);
   const [checked, setChecked] = useState(false);
-  const [changemonymarkupprice, setChanemonymarkupprice] = useState();
-  const [value, setValue] = useState([]);
-  const [sugest, setSugest] = useState(false);
+ const [sugest, setSugest] = useState(false);
   const [sugestdest, setSugestdest] = useState(false);
   const [iditems, setIditems] = useState({});
   const [open, setOpen] = useState(false);
@@ -27,12 +20,10 @@ const Dashboard = () => {
   const [cond, setCond] = useState(false);
   const [agency, setAgency] = useState([]);
   const [flightlist, setFlightlist] = useState();
-  const [flightlistazhans, setFlightlistazhans] = useState([]);
   const [url, setUrl] = useState("");
   const { searchObject } = useSelector((state) => state.search);
   const mayRouter = useRouter();
   const mony = parseInt(changemony);
-  const [changemonycapprice, setChangemonycapprice] = useState();
   const monyselect = parseInt(itemselected);
   console.log("flight list :", flightlist);
   //////////////
@@ -185,31 +176,7 @@ const Dashboard = () => {
       </div>
 
       <div className={style1["search-boxs"]}>
-        {/* <input
-          type="number"
-          placeholder="تغییر قیمت ..."
-          value={changemony}
-          onChange={(e) => setChangemony(e.target.value)}
-          className={style1["input-number"]}
-          style={{
-            borderRadius: 5,
-            borderWidth: 0.3,
-          }}
-        /> */}
-        {/* <span className={style1["search-boxs-checkbox"]}>
-          <input
-            type="checkbox"
-            value={checked}
-            onChange={changetogel}
-            className={style1["input-checkbox"]}
-          />
-          <p className={style1["dollar-icon"]}>
-            <i class="fa-solid fa-dollar-sign"></i>
-          </p>
-          <p className={style1["percent-icon"]}>
-            <i class="fas fa-solid fa-percent"></i>
-          </p>
-        </span> */}
+   
       </div>
 
       <div>
