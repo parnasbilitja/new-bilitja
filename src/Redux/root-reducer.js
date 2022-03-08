@@ -4,7 +4,7 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import airportReducer from "./Airports/airport.reducer";
 import searchReducer from "./Search/search.reducer";
-import { searchboxReducer } from "./Searchazhans/searchboxReducer";
+import { searchboxReducer } from "./Searchazhans/SearchboxReducer";
 import searchvillaReducer from "./Searchvilla/search_villa.reducer";
 import reserveReducer from "./Reserve/reserve.reducer";
 import reservevillaReducer from "./Reservevilla/reserve_villa.reducer";
