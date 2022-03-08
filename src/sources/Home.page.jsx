@@ -301,8 +301,8 @@ class Home extends React.Component {
               <div>
                 <a href="flights/tehran-to-teflis/airfares-thr,ika-tbs">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
-                  <span className="pull-right font-size-14">
-                    <h7>بلیط هواپیما تفلیس</h7>
+                  <span className={"pull-right font-size-14"}>
+                    <h7 className={styles["h7-airline"]}>بلیط هواپیما تفلیس</h7>
                   </span>
                 </a>
                 <div className="clear"></div>

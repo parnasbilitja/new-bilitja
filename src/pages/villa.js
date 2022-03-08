@@ -6,16 +6,13 @@ import Footer from "./../sources/component/Footer.component";
 import MessageBox from "./../sources/component/MessageBox.component";
 import PopUp from "./../sources/component/PopUp.component";
 import Account from "./../sources/account/Account.component";
-
 import { connect } from "react-redux";
 import { selcetAccountBox } from "../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../Redux/UI/ui.action";
-
 import VillaPage from "./../sources/villa/villa.page";
 import VillaList from "./../sources/villa_list/villaList.page";
 import VillaReserve from "./../sources/villa/villaReserve.page";
 import VillaReceipt from "./../sources/villa/villaReceipt.page";
-
 import BecomeMizban from "./../sources/account/BecomeMizban.page";
 import { withRouter } from "next/router";
 

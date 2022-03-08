@@ -2,7 +2,13 @@ import { withRouter, useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { moneyFormat, getweekday } from "../../../Utils/SimpleTasks";
 import axios from "axios";
+import style1 from "./Dashboard.module.scss";
 import { useSelector } from "react-redux";
+import Airports from "../../base/Airports.component";
+import PopUpWide from "../../component/PopUpWide.component";
+import globals from "../../Global";
+import CalendarComponent from "../../calendar/Calendar.component";
+
 const Dashboard = () => {
   const [post, setPost] = useState({});
   const [datelist, setDatelist] = useState({});

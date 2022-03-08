@@ -29,10 +29,12 @@ const Footer = () => {
             <p>ارزان ترین بلیط های هواپیما</p>
             <a href="">www. B i l i t j a .com</a>
           </div>
-
-          <div className="col-lg-2 col-md-3 col-sm-6 col-6">
-            <h3> مقاصد داخلی </h3>
-            <ul>
+          <div className="col-lg-2 col-md-3 col-sm-6 col-6 mb-2">
+            <div className="d-flex align-items-center mb-2">
+              <div className={styles["circle"]}></div>
+              <h3 className="mb-0"> مقاصد داخلی </h3>
+            </div>
+            <ul className={styles["ul-lists"]}>
               <li>
                 <h6>
                   {" "}
@@ -65,9 +67,12 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="col-lg-2 col-md-3 col-sm-6 col-6">
-            <h3> مقاصد خارجی </h3>
-            <ul>
+          <div className="col-lg-2 col-md-3 col-sm-6 col-6 mb-2">
+            <div className="d-flex align-items-center mb-2">
+              <div className={styles["circle"]}></div>
+              <h3 className="mb-0"> مقاصد خارجی </h3>
+            </div>
+            <ul className={styles["ul-lists"]}>
               <li>
                 <h6>
                   {" "}
@@ -94,9 +99,12 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="col-lg-2 col-md-5 col-6">
-            <h3> مطالب خواندنی </h3>
-            <ul>
+          <div className="col-lg-2 col-md-5 col-6 mb-2">
+            <div className="d-flex align-items-center mb-2">
+              <div className={styles["circle"]}></div>
+              <h3 className="mb-0">مطالب خواندنی</h3>
+            </div>
+            <ul className={styles["ul-lists"]}>
               <li>
                 <a href="#">راهنمای گردشگری</a>{" "}
               </li>
@@ -120,8 +128,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
-          <div className="col-lg-2 col-md-3 col-6">
+          <div className="col-lg-2 col-md-3 col-6 mb-2">
             <a
               referrerPolicy="origin"
               target="_blank"
@@ -135,9 +142,66 @@ const Footer = () => {
               />
             </a>
           </div>
-          <div className="col-lg-2 col-md-3 col-6">
-            <h3>تماس با ما</h3>
-            <ul>
+          <div className={styles["mobile-footer-soccialmedia"]}>
+            <div
+              className={`"col-lg-2 col-md-3 col-6"${styles["footer-contact"]}`}
+            >
+              <div className="d-flex align-items-center mb-2">
+                <div className={styles["circle"]}></div>
+                <h3 className="mb-0">تـــماس با ما</h3>
+              </div>
+              <ul className={styles["ul-lists"]}>
+                <li>
+                  <FontAwesomeIcon icon={faPhone} />
+                  <a href="#">تهران</a>
+                </li>
+                <li>
+                  <FontAwesomeIcon icon={faPhone} />
+                  <a href="#"> تلفن پشتیبانی : 02157912000 - 02157874</a>
+                </li>
+                <li>
+                  <FontAwesomeIcon icon={faPhone} />
+                  <a href="#">موبایل پشتیبانی : 09101214100</a>
+                </li>
+              </ul>
+            </div>
+            <div className={styles["footer-virtual-mobile"]}>
+              <ul>
+                <li>
+                  <FontAwesomeIcon icon={faGlobe} />
+                  <a href="#">bilitja.com</a>
+                </li>
+                <li>
+                  <a href="https://instagram.com/hamnavaz.tour">
+                    <FontAwesomeIcon icon={faInstagram} />
+                  </a>
+                  <a href="https://instagram.com/hamnavaz.tour">
+                    hamnavaz.tour
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/Hamnavaz_com">
+                    <FontAwesomeIcon icon={faTwitter} />
+                  </a>
+                  <a href="https://twitter.com/Hamnavaz_com">Hamnavaz_com</a>
+                </li>
+                <li>
+                  <a href="https://facebook.com/Hamnavaz_com">
+                    <FontAwesomeIcon icon={faFacebook} />
+                  </a>
+                  <a href="https://facebook.com/Hamnavaz_com">Hamnavaz_com</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            className={`col-lg-2 col-md-3 col-6${styles["contact-desktop"]}`}
+          >
+            <div className="d-flex align-items-center mb-2">
+              <div className={styles["circle"]}></div>
+              <h3 className="mb-0">تـــماس با ما</h3>
+            </div>
+            <ul className={styles["ul-lists"]}>
               <li>
                 <FontAwesomeIcon icon={faPhone} />
                 <a href="#">تهران</a>
@@ -150,6 +214,10 @@ const Footer = () => {
                 <FontAwesomeIcon icon={faPhone} />
                 <a href="#">موبایل پشتیبانی : 09101214100</a>
               </li>
+            </ul>
+          </div>
+          <div className={styles["footer-virtual"]}>
+            <ul>
               <li>
                 <FontAwesomeIcon icon={faGlobe} />
                 <a href="#">bilitja.com</a>

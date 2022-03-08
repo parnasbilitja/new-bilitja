@@ -1,4 +1,9 @@
 @import "./values.module.scss";
+@media only screen and(max-width:320px) {
+  .flight-day {
+    margin-right: 65px !important;
+  }
+}
 @media only screen and (max-width: 650px) {
   .passanger-submiter {
     .form-input-border-private {
@@ -134,7 +139,7 @@
       color: $whiteColor;
     }
     svg {
-      margin: 3px 2px 0 2px;
+      margin: 3px 1px 0 2px;
     }
   }
 }
@@ -179,4 +184,8 @@
   a {
     color: #337ab7;
   }
+}
+.flight-day {
+  margin-right: 90px;
+  font-size: 14px !important;
 }

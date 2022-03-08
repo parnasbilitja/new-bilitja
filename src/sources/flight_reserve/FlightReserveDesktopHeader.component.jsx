@@ -42,7 +42,7 @@ const FlightReserveDesktopHeader = (props) =>
                 >
                   {getweekday(String(props.flightDay))} &nbsp;{" "}
                   {String(props.flightDate).replace("-", "/").replace("-", "/")}
-                  <p> {props.flightDay}</p>
+                  <p style={{ fontSize: 15 }}> {props.flightDay}</p>
                 </p>
               </div>
 

@@ -68,11 +68,10 @@ class Login extends React.Component {
         token: this.state.token,
         password: this.state.password,
         register: 0,
-        hostname : "bilitja.com",
-        customerId : "1a157116-a01a-4027-ab10-74098ac63815",
-        agencyName : "بلیطجا",
-        telNumber : "02157874",
-
+        hostname: "bilitja.com",
+        customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+        agencyName: "بلیطجا",
+        telNumber: "02157874",
       }),
     })
       .then((res) => res.json())
@@ -142,11 +141,10 @@ class Login extends React.Component {
       body: JSON.stringify({
         mobile: this.state.mobile,
         token: this.state.token,
-        hostname : "bilitja.com",
-        customerId : "1a157116-a01a-4027-ab10-74098ac63815",
-        agencyName : "بلیطجا",
-        telNumber : "02157874",
-
+        hostname: "bilitja.com",
+        customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+        agencyName: "بلیطجا",
+        telNumber: "02157874",
       }),
     })
       .then((res) => res.json())
@@ -232,7 +230,7 @@ class Login extends React.Component {
             <FontAwesomeIcon icon={faTimes} />
           </span>
         </div>
-        <div className="row btn-container-header-login rounded-pill m-4">
+        <div className="row btn-container-header-login rounded-pill m-2">
           <button
             className={
               this.state.login_with_code === true

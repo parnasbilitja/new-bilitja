@@ -52,9 +52,13 @@ class FlightReserve extends React.Component {
       priceMessage: "",
     });
     fetch(
-      `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveProperty/${
+      `${
+        globals.baseUrlNew
+      }BilitFlightReserve/flightsReserve/ravisReserveProperty/${
         this.props.router.asPath.split("/")[7]
-      }-${this.props.router.asPath.split("/")[8]}/1a157116-a01a-4027-ab10-74098ac63815`
+      }-${
+        this.props.router.asPath.split("/")[8]
+      }/1a157116-a01a-4027-ab10-74098ac63815`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -294,14 +298,17 @@ class FlightReserve extends React.Component {
       numADL: numADL,
       numCHD: numCHD,
       numINF: numINF,
-      customerId:"1a157116-a01a-4027-ab10-74098ac63815",
+      customerId: "1a157116-a01a-4027-ab10-74098ac63815",
     };
 
-    fetch(`${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`, {
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(reservePassengerObject),
-      method: "POST",
-    })
+    fetch(
+      `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`,
+      {
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reservePassengerObject),
+        method: "POST",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "0") {
@@ -555,7 +562,7 @@ class FlightReserve extends React.Component {
                           });
                         }
                       }}
-                      className="py-3 btn-block col-12 end-payment-btn btn"
+                      className="py-2 btn-block col-12 end-payment-btn btn"
                     >
                       {this.state.loading == false
                         ? "تکمیل خرید"
@@ -564,7 +571,7 @@ class FlightReserve extends React.Component {
                   </div>
                   <div className="col-lg-4 col-md-4 col-5 padding-3px">
                     <a
-                      className="btn col-12 back-payment-btn py-3"
+                      className="btn col-12 back-payment-btn py-2"
                       onClick={() => {
                         this.props.router.back();
                       }}

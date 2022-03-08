@@ -86,6 +86,24 @@
     background-color: #279692;
     color: #fff;
     margin-right: 10px;
+    &:hover {
+      background-color: #fff;
+      color: #279692;
+    }
+  }
+}
+.buy-button-all button {
+  border: none;
+  border-radius: 5px;
+  width: 70%;
+  height: 33px;
+  font-size: 17px;
+  background-color: #279692;
+  color: #fff;
+  margin-right: 10px;
+  &:hover {
+    background-color: #fff;
+    color: #279692;
   }
 }
 .azhans {

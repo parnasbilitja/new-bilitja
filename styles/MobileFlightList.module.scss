@@ -1,4 +1,16 @@
 @import "./values.module.scss";
+@media only screen and (min-width: 320px) {
+  .mobile-flight-list-one-row {
+    height: 107px !important;
+    max-width: 300px !important;
+  }
+}
+@media only screen and (min-width: 375px) {
+  .mobile-flight-list-one-row {
+    height: 107px !important;
+    max-width: 355px !important;
+  }
+}
 @media only screen and (max-width: 440px) {
   .mobile-flight-list-one-row {
     text-align: center;

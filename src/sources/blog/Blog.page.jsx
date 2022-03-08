@@ -29,9 +29,6 @@ const Blog = () => {
         <img alt="" />
         <h3>test3</h3>
         <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-        {/* <div style={{ marginTop: 500 }}>
-          <a href="/flights/bloginfo">بیشتر بخوانید</a>
-        </div> */}
         <div style={{ marginTop: 12 }}>
           <a onClick={() => router.push("/bloginfo")}>بیشتر بخوانید</a>
         </div>

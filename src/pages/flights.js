@@ -6,12 +6,10 @@ import Footer from "./../sources/component/Footer.component";
 import MessageBox from "./../sources/component/MessageBox.component";
 import PopUp from "./../sources/component/PopUp.component";
 import Account from "./../sources/account/Account.component";
-
 import { connect } from "react-redux";
 import { selcetAccountBox } from "../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../Redux/UI/ui.action";
 import { selectCredentials } from "../Redux/Search/search.reselect";
-
 import GetFlightList from "./../sources/flight_List/GetFlightList.page";
 import FlightReserve from "./../sources/flight_reserve/FlightReseve.page";
 import FlightReciept from "./../sources/flight_receipt/FlightReciept.page";
@@ -38,7 +36,7 @@ class Flights extends React.Component {
       return <FlightReciept />;
     } else if (pathName.indexOf("order") > 0) {
       return <TrackOrder />;
-    }  else {
+    } else {
       return <GetFlightList />;
     }
   }

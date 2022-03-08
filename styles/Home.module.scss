@@ -1,5 +1,39 @@
 @import "./values.scss";
 //@import "./global.style.scss";
+
+@media only screen and(max-width:320px) {
+  .suggestion-list {
+    padding: 5px 8px;
+    & > div {
+      border-bottom: 1px solid $pillGray;
+      padding: 8px 0px 0 0;
+      span {
+        // margin-right: 5px;
+        position: relative;
+        left: -25%; /* or right 50% */
+        text-align: center;
+      }
+      i {
+        margin-top: -5px;
+        position: relative;
+        left: -25%; /* or right 50% */
+        text-align: center;
+        height: 35px;
+        margin-right: -30px;
+      }
+      a {
+        color: $blackColor;
+        &:hover {
+          color: $blackColor;
+        }
+      }
+    }
+    .h7-airline {
+      margin-top: 0 !important;
+      margin-right: -11px !important;
+    }
+  }
+}
 @media only screen and (max-width: 440px) {
   .tab-container {
     width: 65%;
@@ -283,7 +317,7 @@
       border-bottom: 1px solid $pillGray;
       padding: 8px 0px 0 0;
       span {
-        margin-right: 5px;
+        // margin-right: 5px;
         position: relative;
         left: -25%; /* or right 50% */
         text-align: center;
@@ -300,6 +334,9 @@
         &:hover {
           color: $blackColor;
         }
+      }
+      &.h7-airline {
+        margin-right: 100px !important;
       }
     }
   }

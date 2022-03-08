@@ -58,7 +58,7 @@ class ShowFlightListMobile extends React.Component {
                 >
                   <div className={styles["mobile-one-row-price"]}>
                     <div style={{ marginBottom: 10 }}>
-                      <span className="font-size-16 color-secondary font-bold-iransanse">
+                      <span className="font-size-15 color-secondary font-bold-iransanse">
                         {moneyFormat(oneFlight.priceView)}
                       </span>
                       <span className="color-black font-size-12"> تومان</span>
