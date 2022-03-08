@@ -22,6 +22,12 @@ export function moneyFormat(input) {
     .replace(/\d(?=(\d{3})+\.)/g, "$&,")
     .split(".")[0];
 }
+export function moneyFormatrial(input) {
+  return parseFloat(input)
+    .toFixed(1)
+    .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+    .split(".")[0];
+}
 export const getCustomFormat = (inputValue, isGregorian) => {
   if (!inputValue) return "";
   const inputFormat = isGregorian ? "YYYY/MM/DD" : "jYYYY/jMM/jDD";
@@ -68,4 +74,4 @@ export const getweekday = (value) => {
     default:
       return "";
   }
-}
+};

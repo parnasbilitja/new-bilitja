@@ -2,12 +2,9 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Modal, Button } from "antd";
 import style from "./Flightlist.module.scss";
 import { SearchAction } from "../../../Redux/Searchazhans/SearchAction";
-import { moneyFormat } from "../../../Utils/SimpleTasks";
-import Loader from "../../../Utils/Loader";
-import { getLocationOrigin } from "next/dist/shared/lib/utils";
+import { moneyFormat, moneyFormatrial } from "../../../Utils/SimpleTasks";
 
 const Flightlist = () => {
   const [flightlist, setFlightlist] = useState([]);
@@ -17,6 +14,7 @@ const Flightlist = () => {
   const [valuechangesrv, setValuechangesrv] = useState();
   const [valuechangesrvprice, setValuechangesrvprice] = useState(0);
   const [azhanskndsys, setAzhanskndsys] = useState([]);
+  const [checked, setChecked] = useState(false);
   const [data, setData] = useState();
   const [searchbox, setSearchbox] = useState([""]);
   const [list, setList] = useState([]);
@@ -24,6 +22,8 @@ const Flightlist = () => {
   const [change, setChange] = useState({});
   const [param, setParam] = useState("");
   const [url, setUrl] = useState("");
+  const [changevalueall, setChangevalueall] = useState("");
+  const [changevaluepercernall, setChangevaluepercentall] = useState("");
   const [flightchangemony, SetFlightchangemony] = useState();
   const [flightchangemonyall, SetFlightchangemonyall] = useState();
   const [cond, setCond] = useState(false);
@@ -31,12 +31,6 @@ const Flightlist = () => {
   const marcupprice = parseInt(valuechangesrvprice);
   const reservestats = parseInt(reservestate);
   const [condurl, setCondurl] = useState(false);
-  // console.log("change :", change);
-  // console.log("valuechangesrvssss :", valuechangesrv);
-  // console.log("valuechangesrvprice :", valuechangesrvprice);
-  // console.log("azhanskndsys :", azhanskndsys);
-  // console.log("flightchangemony :", flightchangemony);
-  // console.log("reserve state :", reservestate);
   console.log(flightlist);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -55,9 +49,11 @@ const Flightlist = () => {
 
   const getid = (item) => {
     list.push(item);
+    setChecked(!checked);
+    console.log("setChecked :", checked);
     setAzhanskndsys(item.kndsys);
-    setValuechangesrv((item.markupPercent = parseInt(changevaluepercent)));
-    setValuechangesrvprice((item.markupPrice = parseInt(changevalue)));
+    setValuechangesrv((item.markupPercent = parseInt(changevaluepercernall)));
+    setValuechangesrvprice((item.markupPrice = parseInt(changevalueall)));
     setreservestate(item.reserveStat);
   };
 
@@ -123,6 +119,7 @@ const Flightlist = () => {
         markupPrice: list[i].markupPrice,
         UserIdSabt: "",
       };
+      window.location.reload();
       fetch(param, {
         method: "POST",
         headers: {
@@ -152,18 +149,38 @@ const Flightlist = () => {
                 />
               </div>
             </span>
-            <span>روکشی(درصد)</span>
-            <span>روکشی(واحد)</span>
+            <span>
+              روکشی(درصد){" "}
+              <div className={style["azhans"]}>
+                <input
+                  placeholder="درصد"
+                  type="number"
+                  onChange={(e) => setChangevaluepercentall(e.target.value)}
+                />
+              </div>
+            </span>
+            <span>
+              روکشی(واحد)
+              <div style={{ marginRight: 5 }} className={style["azhans"]}>
+                <input
+                  type="number"
+                  placeholder="ریــال"
+                  onChange={(e) => setChangevalueall(e.target.value)}
+                />
+              </div>
+            </span>
             <span className={style["buy-button-all"]}>
-              <button
-                onClick={() =>
-                  changesrv(
-                    "https://tpa.ravis.ir/api/BilitAirLines/SetRaviskndSysDeclare"
-                  )
-                }
-              >
-                تایید
-              </button>
+              <div style={{ marginTop: 22 }}>
+                <button
+                  onClick={() =>
+                    changesrv(
+                      "https://tpa.ravis.ir/api/BilitAirLines/SetRaviskndSysDeclare"
+                    )
+                  }
+                >
+                  تایید
+                </button>
+              </div>
             </span>
           </div>
 
@@ -172,26 +189,32 @@ const Flightlist = () => {
               <span className={style["azhabs-list-mobile"]}>
                 {item?.azhansNam == searchbox ? (
                   <div className={style["azhans-list"]}>
-                    <span>{item?.azhansNam}</span>
                     <span>
                       <input
+                        type="checkbox"
+                        value={checked}
+                        onClick={() => getid(item)}
+                      />
+                    </span>
+                    <span>{item?.azhansNam}</span>
+                    <span className={style["azhans"]}>
+                      <input
                         type="number"
-                        min="-100"
-                        max="100"
-                        placeholder={moneyFormat(item.markupPercent)}
+                        placeholder={moneyFormatrial(item.markupPercent)}
                         onChange={(e) => setChangevaluepercent(e.target.value)}
                       />
                     </span>
-                    <span style={{ marginRight: 5 }}>
+                    <span
+                      style={{ marginRight: 5 }}
+                      className={style["azhans"]}
+                    >
                       <input
                         type="number"
-                        placeholder={moneyFormat(item.markupPrice)}
+                        placeholder={moneyFormatrial(item.markupPrice)}
                         onChange={(e) => setChangevalue(e.target.value)}
                       />
                     </span>
-                    <span>
-                      <input type="checkbox" onClick={() => getid(item)} />
-                    </span>
+
                     <span className={style["buy-button"]}>
                       <button
                         data-toggle="modal"
@@ -212,21 +235,22 @@ const Flightlist = () => {
                     <div className={style["azhans-list"]}>
                       <input type="checkbox" onClick={() => getid(item)} />
                       <span>{item.azhansNam}</span>
-                      <span>
+                      <span className={style["azhans"]}>
                         <input
                           type="number"
-                          min="-100"
-                          max="100"
-                          placeholder={moneyFormat(item.markupPercent)}
+                          placeholder={moneyFormatrial(item.markupPercent)}
                           onChange={(e) =>
                             setChangevaluepercent(e.target.value)
                           }
                         />
                       </span>
-                      <span style={{ marginRight: 5 }}>
+                      <span
+                        style={{ marginRight: 5 }}
+                        className={style["azhans"]}
+                      >
                         <input
                           type="number"
-                          placeholder={moneyFormat(item.markupPrice)}
+                          placeholder={moneyFormatrial(item.markupPrice)}
                           onChange={(e) => setChangevalue(e.target.value)}
                         />
                       </span>

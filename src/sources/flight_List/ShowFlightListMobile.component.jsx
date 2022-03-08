@@ -1,11 +1,6 @@
 import React from "react";
 import styles from "../../../styles/MobileFlightList.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faShoppingBag,
-  faClock,
-  faChair,
-} from "@fortawesome/free-solid-svg-icons";
+
 import globals from "../Global";
 import { moneyFormat, getweekday } from "../../Utils/SimpleTasks";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";

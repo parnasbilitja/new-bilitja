@@ -366,7 +366,10 @@ class Login extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-12 no-padding-horizental">
+          <div
+            style={{ marginTop: -20 }}
+            className="col-12 no-padding-horizental"
+          >
             <br />
             <p className="text-center font-size-13 no-margin font-bold-iransanse">
               گذرواژه خود را فراموش کرده اید؟{" "}
