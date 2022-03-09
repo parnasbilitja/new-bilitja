@@ -102,7 +102,6 @@
   }
 }
 
-
 @media only screen and (max-width: 694px) and (min-width: 650px) {
   .tab-container {
     width: 30%;
@@ -222,7 +221,7 @@
 .hero-big-image {
   text-align: center;
   img {
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
   }
 }
@@ -294,10 +293,18 @@
   background-size: cover;
   background-position: bottom;
   background-color: $primaryColor;
-  min-height: 78px;
+  max-height: 78px;
   margin-top: 48px;
   text-align: right;
   border-radius: 5px;
+  a {
+    margin-top: -10px;
+    height: 43px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
   div {
     p {
       display: inline-block;
@@ -361,6 +368,7 @@
   border-radius: 10px;
   h3 {
     font-size: 17px;
+    font-weight: 700;
     border-bottom: 1px solid gray;
     padding: 10px 20px;
     svg {

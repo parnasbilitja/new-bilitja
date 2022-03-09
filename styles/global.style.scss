@@ -96,6 +96,7 @@ html {
   a {
     color: $pillTextGray;
     text-decoration: none;
+    font-size: 15px;
     &:hover {
       text-decoration: none;
       color: $secondaryColor;

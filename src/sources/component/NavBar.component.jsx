@@ -67,6 +67,7 @@ class NavBar extends React.Component {
                   <span className="mx-2"> /</span>
                   <div>
                     <a
+                      style={{ fontSize: 13 }}
                       href="/"
                       onClick={this.handleLogoutUser}
                       className="cursor-pointer"
@@ -79,6 +80,7 @@ class NavBar extends React.Component {
                 <>
                   <div>
                     <a
+                      style={{ fontSize: 13 }}
                       href=""
                       onClick={(e) => {
                         e.preventDefault();
@@ -94,6 +96,7 @@ class NavBar extends React.Component {
                   </div>
                   <div className="border-right">
                     <a
+                      style={{ fontSize: 13 }}
                       href=""
                       onClick={(e) => {
                         e.preventDefault();
@@ -111,7 +114,7 @@ class NavBar extends React.Component {
               )}
             </div>
             <div className={styles["nav-detail-second-line"]}>
-              <a href="#">
+              <a href="#" style={{ fontSize: 13 }}>
                 <span>مشاوره تلفنی : </span>
                 <i className="bilitja icon-phone"></i>
                 <span>۰۲۱۵۷۸۷۴</span>

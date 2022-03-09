@@ -282,7 +282,7 @@ class GetFlightList extends React.Component {
                   });
                   this.props.messageBoxModify({
                     state: true,
-                    message: data.message,
+                    message: "لطفا از تقویم روز دیگری را انتخاب کنید",
                   });
                 }
               });
@@ -353,7 +353,7 @@ class GetFlightList extends React.Component {
                   });
                   this.props.messageBoxModify({
                     state: true,
-                    message: data.message,
+                    message: "لطفا از تقویم روز دیگری را انتخاب کنید",
                   });
                 }
               });
@@ -420,7 +420,7 @@ class GetFlightList extends React.Component {
             });
             this.props.messageBoxModify({
               state: true,
-              message: data.message,
+              message: "لطفا از تقویم روز دیگری را انتخاب کنید",
             });
           }
         });
@@ -578,10 +578,10 @@ class GetFlightList extends React.Component {
                         const date_ = this.props.searchobject.flightDateNext;
                         if (date_ != null) {
                           this.changeDate(date_);
-                          window.Filters.reload();
+                          // window.Filters.reload();
                           localStorage.clear();
                         }
-                        this.Filters.checked == false;
+                        // this.Filters.checked == false;
                       }}
                     >
                       <span>بعد</span>

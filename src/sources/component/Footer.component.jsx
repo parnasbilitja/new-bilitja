@@ -123,13 +123,50 @@ const Footer = () => {
               <li>
                 <a href="#">همکاری</a>
               </li>
-              <li>
-                <a href="#">امتیازات</a>
+              <li style={{ marginBottom: 20 }}>
+                <a href="#"></a>
               </li>
             </ul>
           </div>
           <div className="col-lg-2 col-md-3 col-6 mb-2">
-            <a
+            {" "}
+            <div className={styles["footer-virtual-mobile"]}>
+              <div style={{ marginBottom: 8 }}>
+                <div
+                  style={{ marginRight: -15, marginTop: 7 }}
+                  className={styles["circle"]}
+                ></div>
+                <h3 style={{ marginTop: -12 }} className="mb-0">
+                  شبکه های اجتماعی
+                </h3>
+              </div>
+
+              <ul style={{ marginTop: 15 }}>
+                <li>
+                  <FontAwesomeIcon icon={faGlobe} />
+                  <a href="#">bilitja.com</a>
+                </li>
+                <li>
+                  <a href="https://instagram.com/hamnavaz.tour">
+                    <FontAwesomeIcon icon={faInstagram} />
+                  </a>
+                  <a href="https://instagram.com/hamnavaz.tour">bilitja </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/Hamnavaz_com">
+                    <FontAwesomeIcon icon={faTwitter} />
+                  </a>
+                  <a href="https://twitter.com/Hamnavaz_com">bilitja</a>
+                </li>
+                <li>
+                  <a href="https://facebook.com/Hamnavaz_com">
+                    <FontAwesomeIcon icon={faFacebook} />
+                  </a>
+                  <a href="https://facebook.com/Hamnavaz_com">bilitja</a>
+                </li>
+              </ul>
+            </div>
+            {/* <a
               referrerPolicy="origin"
               target="_blank"
               href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
@@ -140,7 +177,7 @@ const Footer = () => {
                 alt=""
                 id="wC1opUKBlpiUx3sEWOGR"
               />
-            </a>
+            </a> */}
           </div>
           <div className={styles["mobile-footer-soccialmedia"]}>
             <div
@@ -165,7 +202,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className={styles["footer-virtual-mobile"]}>
+            {/* <div className={styles["footer-virtual-mobile"]}>
               <div>
                 <div className={styles["circle"]}></div>
                 <h3 className="mb-0">شبکه های اجتماعی</h3>
@@ -197,7 +234,7 @@ const Footer = () => {
                   <a href="https://facebook.com/Hamnavaz_com">Hamnavaz_com</a>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
           <div
             style={{ display: "none" }}
@@ -248,6 +285,16 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+      <div className={styles["footer-copy"]}>
+        <div className={styles["footer-right"]}>
+          <div>© کپی رایت 1400. Ver 1.1.1</div>
+          <span>کلیه حقوق این سایت محفوظ و متعلق به بلیط جا می‌باشد. </span>
+        </div>
+        <div className={styles["footer-left"]}>
+          <div>طراحی و توسعه سایت : </div>
+          <span> تیم فنی و توسعه بلیطجا </span>
         </div>
       </div>
     </div>
