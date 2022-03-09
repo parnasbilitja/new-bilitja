@@ -35,6 +35,15 @@
   }
 }
 @media only screen and (max-width: 440px) {
+  .home-tour-intro {
+    max-height: 150px !important;
+    .btn-fiiled {
+      margin-left: 10px;
+      margin-bottom: 10px;
+      width: 20px !important;
+      height: 20px !important;
+    }
+  }
   .tab-container {
     width: 65%;
     grid-template-columns: 1.3fr 1fr;
@@ -59,7 +68,7 @@
   }
   .home-become-host {
     height: 390px !important;
-
+    background-position: center center;
     & > div {
       padding: 35px 50px !important;
       .btn-secondary-outlined {
@@ -92,6 +101,7 @@
     }
   }
 }
+
 
 @media only screen and (max-width: 694px) and (min-width: 650px) {
   .tab-container {

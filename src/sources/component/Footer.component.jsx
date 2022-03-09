@@ -166,6 +166,11 @@ const Footer = () => {
               </ul>
             </div>
             <div className={styles["footer-virtual-mobile"]}>
+              <div>
+                <div className={styles["circle"]}></div>
+                <h3 className="mb-0">شبکه های اجتماعی</h3>
+              </div>
+
               <ul>
                 <li>
                   <FontAwesomeIcon icon={faGlobe} />
@@ -195,6 +200,7 @@ const Footer = () => {
             </div>
           </div>
           <div
+            style={{ display: "none" }}
             className={`col-lg-2 col-md-3 col-6${styles["contact-desktop"]}`}
           >
             <div className="d-flex align-items-center mb-2">

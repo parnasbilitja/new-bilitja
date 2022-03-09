@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../../styles/FlightSearchBox.module.scss";
 
 import PrimaryButton from "../component/PrimaryButton.component";
-import PrimaryTextInput from "../component/PrimaryTextInput.component";
+import PrimaryTextInputMobile from "../component/PrimaryTextInputMobile";
 import Airports from "../base/Airports.component";
 import AirportsMobile from "../base/AirportsMobile.component";
 import PopUp from "../component/PopUp.component";
@@ -160,7 +160,7 @@ class FlightSearchBox extends React.Component {
           >
             <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
             {/* className={`bilitja icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`} */}
-            <PrimaryTextInput
+            <PrimaryTextInputMobile
               value={sourceName}
               // readonlyattr={this.state.width <= mobileSize ? "true" : "false"}
               name="sourceName"
@@ -208,7 +208,7 @@ class FlightSearchBox extends React.Component {
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
             <i className="bilitja ltr icon-plane-departure form-input-icon rotate-upsidedown-reverse rotate-x-180"></i>
-            <PrimaryTextInput
+            <PrimaryTextInputMobile
               value={destinationName}
               // readonlyattr={this.state.width <= mobileSize ? "true" : "false"}
               name="destinationName"
@@ -239,7 +239,7 @@ class FlightSearchBox extends React.Component {
         >
           <i className="bilitja icon-calendar form-input-icon-larger "></i>
 
-          <PrimaryTextInput
+          <PrimaryTextInputMobile
             placeholder={" تاریخ پرواز رفت"}
             readOnly
             value={typeOfCalendar == "GAR" ? stDate : flightDatePersian}
@@ -261,8 +261,7 @@ class FlightSearchBox extends React.Component {
                 });
                 return;
               }
-       
-              
+
               const pathquery = this.props.router.asPath;
               const path = pathquery.split("#")[0];
               const src = decodeURI(path.split("/")[2]).split("-to-")[0];

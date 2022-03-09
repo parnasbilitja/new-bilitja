@@ -1,7 +1,7 @@
 @media only screen and (max-width: 440px) {
   .azhans-border-header {
     display: grid !important;
-    grid-template-columns: 2fr 1fr 1fr 1fr 2fr !important;
+    grid-template-columns: 4fr 1fr 1fr 1fr 2fr !important;
     width: 700px;
     overflow-x: scroll !important;
     span {
@@ -22,7 +22,7 @@
   .azhans-list {
     display: grid !important;
     grid-template-columns: 2fr 1fr 1fr 1fr 2fr !important;
-    width: 700px !important;
+    width: 760px !important;
     &:hover {
       background-color: unset !important;
       color: unset !important;

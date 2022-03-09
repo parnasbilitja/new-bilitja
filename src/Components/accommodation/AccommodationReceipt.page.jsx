@@ -69,7 +69,7 @@ class AccommodationReceipt extends React.Component {
           <div className="col-lg-1 col-md-1 col-sm-0 col-0"></div>
           <div className="col-lg-10 col-12">
             <h1 className="border-bottom-black font-size-18 text-right padding-5px">
-              اطلاعات رزرو شماره TJq4rS
+              اطلاعات رزرو شماره
             </h1>
             <div className="row">
               <div className="col-lg-8 col-md-8 col-sm-12 col-12">

@@ -137,7 +137,7 @@ const Flightlist = () => {
       <div>
         <div className={style["azhans-border"]}>
           <div className={style["azhans-border-header"]}>
-            <span> وضعیت</span>{" "}
+            <span> وضعیت</span>
             <span>
               تامین کننده
               <div className={style["azhans"]}>
@@ -233,7 +233,10 @@ const Flightlist = () => {
                 ) : (
                   searchdatalist || (
                     <div className={style["azhans-list"]}>
-                      <input type="checkbox" onClick={() => getid(item)} />
+                      <span>
+                        {" "}
+                        <input type="checkbox" onClick={() => getid(item)} />
+                      </span>
                       <span>{item.azhansNam}</span>
                       <span className={style["azhans"]}>
                         <input
