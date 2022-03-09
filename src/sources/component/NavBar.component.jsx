@@ -137,12 +137,12 @@ class NavBar extends React.Component {
                 اقامتگاه
               </a>
             </li> */}
-            <li>
+            {/* <li>
               <a href="/blog">
                 <i className={`bilitja icon-blog ${styles["nav-icon"]} `}></i>
                 بلاگ
               </a>
-            </li>
+            </li> */}
             <li>
               <a href="/flights/order">
                 <i

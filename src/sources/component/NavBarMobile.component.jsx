@@ -104,10 +104,11 @@ class NavBarMobile extends React.Component {
             )}
 
             {this.props.user.logged === false ? (
-              <a href="/villa/intro" className="font-size-10 btn-outlined">
-                میزبان شوید
-              </a>
+              ""
             ) : (
+              // <a href="/villa/intro" className="font-size-10 btn-outlined">
+              //   میزبان شوید
+              // </a>
               <a
                 href="#"
                 onClick={(e) => {
@@ -144,13 +145,15 @@ class NavBarMobile extends React.Component {
               خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه{" "}
             </h1>
           </div>
-          <img
-            width=""
-            height=""
-            alt="بلیطجا - لوگو"
-            src="../../../Images/logo512.webp"
-            className="pull-left"
-          />
+          <a href="/">
+            <img
+              width=""
+              height=""
+              alt="بلیطجا - لوگو"
+              src="../../../Images/logo512.webp"
+              className="pull-left"
+            />
+          </a>
         </div>
 
         <SlideIn
@@ -200,7 +203,7 @@ class NavBarMobile extends React.Component {
                 </div>
               </li>
               <li>
-                <div>
+                {/* <div>
                   <a href="/villa">
                     <i className="bilitja font-size-24 icon-villa pull-right rotate-y-180"></i>
                     <span className="pull-right font-size-14 color-black">
@@ -208,10 +211,10 @@ class NavBarMobile extends React.Component {
                     </span>
                   </a>
                   <div className="clear"></div>
-                </div>
+                </div> */}
               </li>
               <li>
-                <div>
+                {/* <div>
                   <a href="/blog">
                     <i className="bilitja font-size-24 icon-blog pull-right rotate-y-180"></i>
                     <span className="pull-right font-size-14 color-black">
@@ -219,7 +222,7 @@ class NavBarMobile extends React.Component {
                     </span>
                   </a>
                   <div className="clear"></div>
-                </div>
+                </div> */}
               </li>
               <li>
                 <div>

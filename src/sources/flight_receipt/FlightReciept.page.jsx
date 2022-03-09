@@ -56,9 +56,13 @@ class FlightReciept extends React.Component {
       priceMessage: "",
     });
     fetch(
-      `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveProperty/${
+      `${
+        globals.baseUrlNew
+      }BilitFlightReserve/flightsReserve/ravisReserveProperty/${
         this.props.router.asPath.split("/")[3]
-      }-${this.props.router.asPath.split("/")[4]}/1a157116-a01a-4027-ab10-74098ac63815`
+      }-${
+        this.props.router.asPath.split("/")[4]
+      }/1a157116-a01a-4027-ab10-74098ac63815`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -121,14 +125,16 @@ class FlightReciept extends React.Component {
       numADL: this.state.numADL,
       numCHD: this.state.numCHD,
       numINF: this.state.numINF,
-      customerId:"1a157116-a01a-4027-ab10-74098ac63815",
-      
+      customerId: "1a157116-a01a-4027-ab10-74098ac63815",
     };
-    fetch(`${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`, {
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(reservePassengerObject),
-      method: "POST",
-    })
+    fetch(
+      `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`,
+      {
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reservePassengerObject),
+        method: "POST",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.message == "0") {
@@ -136,32 +142,33 @@ class FlightReciept extends React.Component {
         } else {
           this.props.messageBoxModify({
             state: true,
-            message: data.message,
+            message: "لطفا اطلاعات را کامل وارد کنید",
           });
         }
       });
   };
   getBanks = () => {
-    
     fetch(
       `${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/getBanks/${this.props.reserveProperties.reqNo}/${this.props.reserveProperties.reqPnr}?customerId=1a157116-a01a-4027-ab10-74098ac63815`
     )
       .then((res) => res.json())
       .then((data) => {
-        fetch(`${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/saveEbank`, {
-          headers: { "Content-Type": "application/json" },
-          method: "POST",
-          body: JSON.stringify({
-            reqNo: this.props.reserveProperties.reqNo,
-            reqPnr: this.props.reserveProperties.reqPnr,
-            bankId: data.bankId,
-            kndRequest: 1,
-            customerId: "1a157116-a01a-4027-ab10-74098ac63815",
-            callBackUrl: "https://bilitja.com/callbackbank",
-            userId: localStorage.getItem("token")
-           
-          }),
-        })
+        fetch(
+          `${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/saveEbank`,
+          {
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+            body: JSON.stringify({
+              reqNo: this.props.reserveProperties.reqNo,
+              reqPnr: this.props.reserveProperties.reqPnr,
+              bankId: data.bankId,
+              kndRequest: 1,
+              customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+              callBackUrl: "https://bilitja.com/callbackbank",
+              userId: localStorage.getItem("token"),
+            }),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

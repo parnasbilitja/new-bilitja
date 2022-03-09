@@ -480,7 +480,7 @@ class GetFlightList extends React.Component {
           });
           this.props.messageBoxModify({
             state: true,
-            message: data.message,
+            message: "لطفا از تقویم روز دیگری را انتخاب کنید",
           });
         }
       });
@@ -549,9 +549,9 @@ class GetFlightList extends React.Component {
           <div className="col-lg-10 col-md-11 col-sm-11">
             <div className="row">
               <div className="col-lg-10 col-md-11 col-sm-11 padding-5px">
-                <FlightSearchBox refreshAction={this.getData}  />
+                <FlightSearchBox refreshAction={this.getData} />
               </div>
-              
+
               <div className="col-lg-2 col-md-3 col-sm-4 padding-5px">
                 <div className="row mt-2">
                   <div className="col-lg-6">
@@ -628,7 +628,7 @@ class GetFlightList extends React.Component {
                   </div>
                 ) : (
                   <>
-                    <p className="text-center mx-3">
+                    <p style={{ marginTop: 30 }} className="text-center mx-3">
                       متاسفانه هیچ پروازی از{" "}
                       <strong className="text-danger">
                         {
