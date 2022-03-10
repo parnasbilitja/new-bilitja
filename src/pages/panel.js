@@ -27,6 +27,7 @@ import Dashboard from "../sources/manager/dashboard/Dashboard";
 import Reports from "../sources/manager/reports/Reports";
 import Flightlist from "../sources/manager/flightlist/Flightlist";
 import PriceHandling from "../sources/manager/price-handling/PriceHandling";
+import CharterList from "../sources/manager/charter-list/CharterList";
 
 export default function ManagePanel() {
   const myRouter = useRouter();
@@ -129,6 +130,8 @@ export default function ManagePanel() {
         return <ChangePassword />;
       case "/panel/price-handling":
         return <PriceHandling />;
+      case "/panel/charter-list":
+        return <CharterList />;
       default:
         return <div />;
     }
