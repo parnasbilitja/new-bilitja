@@ -26,6 +26,7 @@ import ChangePassword from "../sources/manager/profile/ChangePassword.components
 import Dashboard from "../sources/manager/dashboard/Dashboard";
 import Reports from "../sources/manager/reports/Reports";
 import Flightlist from "../sources/manager/flightlist/Flightlist";
+import PriceHandling from "../sources/manager/price-handling/PriceHandling";
 
 export default function ManagePanel() {
   const myRouter = useRouter();
@@ -86,7 +87,7 @@ export default function ManagePanel() {
       case "/panel/index":
         return <Dashboard />;
       case "/panel/villas/add":
-        return <AddVilla/>;
+        return <AddVilla />;
       case "/panel/reports":
         return <Reports />;
       case "/panel/villas/search":
@@ -126,6 +127,8 @@ export default function ManagePanel() {
         return <EditProfile />;
       case "/panel/change-password":
         return <ChangePassword />;
+      case "/panel/price-handling":
+        return <PriceHandling />;
       default:
         return <div />;
     }
