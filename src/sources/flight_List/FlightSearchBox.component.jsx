@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "../../../styles/FlightSearchBox.module.scss";
-
 import PrimaryButton from "../component/PrimaryButton.component";
 import PrimaryTextInputMobile from "../component/PrimaryTextInputMobile";
+import PrimaryTextInput from "../component/PrimarySelectInput.component";
 import Airports from "../base/Airports.component";
 import AirportsMobile from "../base/AirportsMobile.component";
 import PopUp from "../component/PopUp.component";
