@@ -133,13 +133,10 @@ class NavBar extends React.Component {
               </a>
             </li>
             <li>
-              <a style={{ marginTop: 5 }} href="https://www.hamnavaz.com/">
-                <div style={{ marginBottom: 10 }}>
-                  <i
-                    style={{ fontSize: 20 }}
-                    class=" fas fa-solid fa-location-pin"
-                  ></i>{" "}
-                </div>
+              <a href="https://www.hamnavaz.com/">
+                <i
+                  className={`bilitja icon-tours  ${styles["nav-icon"]} rotate-y-180`}
+                ></i>
                 رزرو تور
               </a>
             </li>
