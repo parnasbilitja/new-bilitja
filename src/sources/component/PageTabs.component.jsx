@@ -33,14 +33,14 @@ const PageTabls = (props) => {
             onClick={() => {
               myRouter.push("/villa");
             }}
-          > */}
-          {/* <div className="pull-right icon-container">
+          >
+            <div className="pull-right icon-container">
               <i className="bilitja font-size-20 icon-villa"></i>
             </div>
-            {/* <div className="pull-right">
+            <div className="pull-right">
               <span className="font-size-14"> اقامتگاه </span>
+            </div>
           </div> */}
-          {/* </div> */}
         </div>
       </div>
     </div>

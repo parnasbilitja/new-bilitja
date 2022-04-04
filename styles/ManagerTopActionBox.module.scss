@@ -1,23 +1,33 @@
-.manager-top-action-box{
-    width: 17%;
-    margin: 10px;
-    height: 70px;
-    background-color: white;
-    border:1px solid #dbdbdb;
-    padding: 5px 10px;
-    display: inline-block;
-    .red-icon{
-        margin-top: 0 !important;
-        color:red;
-        font-size: 22px;
-    }
-    svg{
-        margin-top: 5px;
-    }
+.manager-top-action-box {
+  width: 25%;
+  margin: 8px;
+  height: 92px;
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 8px;
+  .red-icon {
+    margin-top: 0 !important;
+    color: red;
+    font-size: 22px;
+  }
+  svg {
+    margin-top: 5px;
+  }
 }
-
-.manager-top-action-button{
-    width: 20%;
-    height: 30px;
-   
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    &:hover {
+      color: red;
+    }
+  }
+}
+.manager-top-action-button {
+  width: 20%;
+  height: 30px;
 }

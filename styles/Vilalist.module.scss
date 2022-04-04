@@ -1,0 +1,284 @@
+.home {
+  margin-top: 10%;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+.vila {
+  width: 70%;
+}
+.vila-info-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  margin-top: 15px;
+}
+.title-header {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.room-title {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  .room-count {
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    background-color: #279692;
+    width: 13%;
+    border-radius: 15px;
+  }
+}
+.room-border {
+  display: flex;
+  justify-content: space-evenly;
+  width: 500px;
+}
+.room-style {
+  border: 1px solid #eee;
+  width: 150px;
+  height: 90px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  box-shadow: 0 0 10px #eee;
+}
+.vila-header {
+  margin-right: 70px;
+  width: 100%;
+  .vila-name {
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    width: 500px;
+    background: rgb(34, 164, 195);
+    margin: auto;
+    border-radius: 10px;
+    border-bottom-right-radius: 170px;
+    border-bottom-left-radius: 170px;
+    background: #279692;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+  .vila-adress {
+    margin-top: 15px;
+    color: rgb(105, 105, 105);
+    text-decoration: underline;
+  }
+  .vila-mizban {
+    font-size: 19px;
+    font-weight: 600;
+  }
+  .vila-code {
+    margin-top: 15px;
+    font-size: 17px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    background-color: #279692;
+    width: 13%;
+    border-radius: 15px;
+  }
+  .border {
+    background-color: #eee;
+    border-bottom: rgb(192, 192, 192);
+    border: dotted;
+    border-width: 0.5px;
+    width: 75%;
+    margin-top: 20px;
+  }
+
+  .vila-Information {
+    margin-top: 15px;
+    font-size: 16px;
+    color: black;
+    font-weight: 600;
+  }
+  .room-information {
+    margin-top: 10px;
+    color: rgb(88, 88, 88);
+    font-size: 18px;
+  }
+  .vila-cap {
+    margin-top: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+  }
+  .vila-info {
+    margin-top: 15px;
+    font-size: 21px;
+    font-weight: 600;
+  }
+  .vila-metraj {
+    margin-right: 0px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .vila-dsc {
+    margin-top: 15px;
+    max-width: 65%;
+  }
+}
+.vila-left-home {
+  border: 1px solid rgb(78, 78, 78);
+  background-color: rgba(238, 238, 238, 0.911);
+  border-radius: 10px;
+  width: 330px;
+  height: auto;
+  .vila-box-header {
+    margin: 0 0 15px 0;
+  }
+  .header-title {
+    text-align: center;
+    background-color: #279692;
+    height: 50px;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+  }
+  .vila-box-date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-size: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 300px;
+    margin-right: 13px;
+  }
+  .border-box {
+    border-bottom: 2px solid rgb(202, 202, 202);
+    width: 85%;
+    margin: auto;
+  }
+  .flight-data {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    width: 300px;
+    border-radius: 8px;
+    margin: 15px 15px 10px 0;
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 120px;
+
+      margin: 12px 0 15px 0;
+    }
+  }
+  .button-buy {
+    margin-top: 5%;
+    margin-bottom: 15px;
+    background-color: #fff;
+    width: 300px;
+    margin-right: 15px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    button {
+      width: 250px;
+      height: 44px;
+      border: none;
+      border-radius: 5px;
+      background-color: #279692;
+      color: white;
+      font-weight: 600;
+      &:hover {
+        background-color: white;
+        color: #279692;
+        border: 1px solid #279692;
+      }
+    }
+  }
+  .box-number {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-right: 15px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+  .numbers {
+    display: flex;
+    justify-content: space-between;
+    background-color: #eee;
+    width: 90%;
+    border-radius: 10px;
+    margin: 15px 15px 10px 0;
+  }
+  .button-inc {
+    button {
+      padding: 8px;
+      border: none;
+      background-color: rgb(94, 126, 126);
+      width: 40px;
+      color: white;
+      font-weight: 600;
+      border-radius: 10px;
+      margin-top: 2px;
+    }
+  }
+  .amount {
+    margin: 10px 15px;
+  }
+  .box-title {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fff;
+    width: 300px;
+    margin-right: 15px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+  }
+  .Contact-support {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    width: 300px;
+    margin-right: 15px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    .suport {
+      background-color: #eee;
+      border-radius: 8px;
+      height: 40px;
+      width: 130px;
+      display: flex;
+      font-size: 15px;
+      justify-content: center;
+      align-items: center;
+      color: #279692;
+      font-weight: 600;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

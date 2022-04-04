@@ -5,6 +5,16 @@
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: 0.3s;
 }
+@media only screen and(max-width:440px) {
+  .desc-flightlist {
+    width: 50% !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    color: red;
+    background-color: red;
+  }
+}
 @media only screen and (max-width: 979px) and (min-width: 651px) {
   .flight-list-one-row {
     grid-template-columns: 1fr 1fr 1fr;
@@ -126,5 +136,25 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+}
+.desc-flightlist {
+  margin-top: 55px;
+  .desc-flightlist-header {
+    font-size: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+  }
+  .desc-flightlist-title {
+    color: rgb(148, 148, 148);
+    font-size: 18px;
+  }
+  .title-header {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(148, 148, 148);
   }
 }

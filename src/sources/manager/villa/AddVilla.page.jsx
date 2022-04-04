@@ -26,6 +26,19 @@ class AddVilaDesktop extends React.Component {
         "سنتی/بوم گردی",
         "مجموعه اقامتی",
       ],
+      vilaaddress: [
+        "مشهد",
+        "تبریز",
+        "مازندران",
+        "اهواز",
+        "اصفهان",
+        "یزد",
+        "کیش",
+        "قشم",
+        "اردبیل",
+        "قم",
+      ],
+
       buildinType: [
         ["همسطح", "دوبلکس", "تریبلکس"],
         ["یک واحد از چند واحد", "چند واحد از آپارتمان"],
@@ -38,7 +51,8 @@ class AddVilaDesktop extends React.Component {
       currentBuildingType: 0,
       facilities: [],
       province: [],
-      rules: [],
+      facilitiesroom: [],
+      rules: ["sdasd", "asdasd  "],
       provinceIndexSelected: 0,
       vilaMainObjcet: {
         LocX: 12535.5488,
@@ -64,6 +78,16 @@ class AddVilaDesktop extends React.Component {
         if (data.status == "OK") {
           this.setState({
             facilities: data.Emkanat,
+          });
+        } else {
+        }
+      });
+    fetch(`${globals.baseUrl}bj/eghamatRoom/view`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status == "OK") {
+          this.setState({
+            facilitiesroom: data.Emkanat,
           });
         } else {
         }
@@ -415,13 +439,17 @@ class AddVilaDesktop extends React.Component {
                       });
                     }}
                   />
-                  <span className="font-bold-iransanse font-size-13">
+                  <span
+                    style={{ marginRight: 5 }}
+                    className="font-bold-iransanse font-size-13 "
+                  >
                     مالک اقامتگاه نیستم
                   </span>
                   <div
                     className={` form-input-border  ${styles["form-input-border-private"]} `}
                   >
                     <PrimaryTextInput
+                      style={{ fontSize: 14 }}
                       disabled={!this.state.notTheOwner}
                       placeholder="تلفن تماس مالک اقامتگاه"
                       name="TelNo"
@@ -436,10 +464,11 @@ class AddVilaDesktop extends React.Component {
               </div>
               <div className="row margin-top-10px">
                 <div className="col-lg-4 col-12 padding-3px">
-                  <span className="font-bold-iransanse font-size-13">
+                  <span className="font-bold-iransanse font-size-13 ">
                     نوع اقامتگاه
                   </span>
                   <PrimarySelectInput
+                    style={{ fontSize: 14 }}
                     value={this.state.currentVilaType}
                     onChange={(e) => {
                       this.setState({
@@ -449,7 +478,9 @@ class AddVilaDesktop extends React.Component {
                     }}
                   >
                     {this.state.vilaTypes.map((type, index) => (
-                      <option value={index}>{type}</option>
+                      <option style={{ fontSize: 14 }} value={index}>
+                        {type}
+                      </option>
                     ))}
                   </PrimarySelectInput>
                 </div>
@@ -458,6 +489,7 @@ class AddVilaDesktop extends React.Component {
                     نوع ساختمان
                   </span>
                   <PrimarySelectInput
+                    style={{ fontSize: 14 }}
                     value={this.state.currentBuildingType}
                     onChange={(e) => {
                       this.setState({
@@ -467,7 +499,9 @@ class AddVilaDesktop extends React.Component {
                   >
                     {this.state.buildinType[this.state.currentVilaType].map(
                       (type, index) => (
-                        <option value={index}>{type}</option>
+                        <option style={{ fontSize: 14 }} value={index}>
+                          {type}
+                        </option>
                       )
                     )}
                   </PrimarySelectInput>
@@ -475,7 +509,10 @@ class AddVilaDesktop extends React.Component {
               </div>
               <div className="row margin-top-20px">
                 <div className="col-12 padding-3px">
-                  <span className="font-bold-iransanse font-size-13">
+                  <span
+                    style={{ marginRight: 10 }}
+                    className="font-bold-iransanse font-size-15"
+                  >
                     توضیحات
                   </span>
                   <div
@@ -496,7 +533,9 @@ class AddVilaDesktop extends React.Component {
               </div>
             </div>
             <div className="col-lg-4 col-12 margin-top-10px">
-              <span>تصویر نمای اقامتگاه</span>
+              <span className={styles["photo-Residence"]}>
+                تصویر نمای اقامتگاه
+              </span>
               <input
                 id="myInput"
                 type="file"
@@ -507,8 +546,6 @@ class AddVilaDesktop extends React.Component {
               {this.state.file ? (
                 <div className={`h-100 ${styles["uploaded-image-box"]}`}>
                   <img
-                    width=""
-                    height=""
                     width=""
                     height=""
                     alt="بلیطجا - تصویر اقامتگاه"
@@ -547,14 +584,13 @@ class AddVilaDesktop extends React.Component {
             </h3>
             <div className="col-lg-3 col-12 padding-3px">
               <PrimarySelectInput
+                style={{ fontSize: 14, fontFamily: "BYekan" }}
                 name="ProvinceId"
                 onChange={this.handleChangeInput}
               >
                 <option value="-1" selected></option>
-                {this.state.province.map((oneProvince) => (
-                  <option value={oneProvince.ProvinceId}>
-                    {oneProvince.ProvinceName}
-                  </option>
+                {this.state.vilaaddress.map((type, index) => (
+                  <option value={index}>{type}</option>
                 ))}
               </PrimarySelectInput>
               <span className="color-secondary error-message font-size-14">
@@ -566,18 +602,17 @@ class AddVilaDesktop extends React.Component {
               <PrimarySelectInput
                 name="CityId"
                 onChange={this.handleChangeInput}
+                style={{ fontSize: 14, fontFamily: "BYekan" }}
               >
-                <option value="-1" selected></option>
-
-                {this.state.vilaMainObjcet.ProvinceId
-                  ? this.state.province
-                      .filter(
-                        (x) =>
-                          x.ProvinceId == this.state.vilaMainObjcet.ProvinceId
-                      )[0]
-                      .Cities.map((city) => (
-                        <option value={city.CityId}>{city.CityName}</option>
-                      ))
+                <option
+                  style={{ fontSize: 14, fontFamily: "BYekan" }}
+                  value="-1"
+                  selected
+                ></option>
+                {this.state.vilaaddress
+                  ? this.state.vilaaddress.map((city, index) => (
+                      <option value={index}>{city}</option>
+                    ))
                   : null}
               </PrimarySelectInput>
               <span className="color-secondary error-message font-size-14">
@@ -590,6 +625,7 @@ class AddVilaDesktop extends React.Component {
                 className={` form-input-border  ${styles["form-input-border-private"]} `}
               >
                 <PrimaryTextInput
+                  style={{ fontSize: 14, fontFamily: "BYekan" }}
                   placeholder="نام محدوده اقامتگاه"
                   name="AddressName"
                   onChange={this.handleChangeInput}
@@ -605,6 +641,7 @@ class AddVilaDesktop extends React.Component {
                 className={` form-input-border h-auto ${styles["form-input-border-private"]} `}
               >
                 <textarea
+                  style={{ fontSize: 14, fontFamily: "BYekan" }}
                   rows="5"
                   placeholder="آدرس کامل اقامتگاه ( آمل-خیابان 1- کوچه 2 -پلاک 110)"
                   className="form-input primary-text"
@@ -631,59 +668,72 @@ class AddVilaDesktop extends React.Component {
               نوع اقامتگاه
             </h3>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="EcoFlag"
-                onChange={this.handleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; اقتصادی
-              </label>
+              <div className={styles["form"]}>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="EcoFlag"
+                  onChange={this.handleChangeCheckbox}
+                />
+                <label style={{ fontSize: 18 }} class="form-check-label ">
+                  &nbsp; اقتصادی
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="LuxFlag"
-                onChange={this.handleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; لوکس
-              </label>
+              <div className={styles["form"]}>
+                {" "}
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="LuxFlag"
+                  onChange={this.handleChangeCheckbox}
+                />
+                <label style={{ fontSize: 18 }} class="form-check-label ">
+                  &nbsp; لوکس
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="NormalFlag"
-                onChange={this.handleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; معمولی
-              </label>
+              <div className={styles["form"]}>
+                {" "}
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="NormalFlag"
+                  onChange={this.handleChangeCheckbox}
+                />
+                <label style={{ fontSize: 18 }} class="form-check-label ">
+                  &nbsp; معمولی
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="SupLuxFlag"
-                onChange={this.handleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; سوپر لوکس
-              </label>
+              <div className={styles["form"]}>
+                {" "}
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="SupLuxFlag"
+                  onChange={this.handleChangeCheckbox}
+                />
+                <label style={{ fontSize: 16 }} class="form-check-label ">
+                  &nbsp; سوپر لوکس
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="TakhfifFlag"
-                onChange={this.handleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; تخفیف دار
-              </label>
+              <div className={styles["form"]}>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="TakhfifFlag"
+                  onChange={this.handleChangeCheckbox}
+                />
+                <label style={{ fontSize: 16 }} class="form-check-label ">
+                  &nbsp; تخفیف دار
+                </label>
+              </div>
             </div>
           </div>
           <div
@@ -699,59 +749,74 @@ class AddVilaDesktop extends React.Component {
               چشم انداز
             </h3>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="KohViewFlag"
-                onChange={this.roomHandleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; کوهستانی
-              </label>
+              <div className={styles["form"]}>
+                {" "}
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="KohViewFlag"
+                  onChange={this.roomHandleChangeCheckbox}
+                />
+                <label class="form-check-label" style={{ fontSize: 18 }}>
+                  &nbsp; کوهستانی
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="JangalViewFlag"
-                onChange={this.roomHandleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; جنگل
-              </label>
+              <div className={styles["form"]}>
+                {" "}
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="JangalViewFlag"
+                  onChange={this.roomHandleChangeCheckbox}
+                />
+                <label class="form-check-label " style={{ fontSize: 18 }}>
+                  &nbsp; جنگل
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="SeaViewFlag"
-                onChange={this.roomHandleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; دریا
-              </label>
+              <div className={styles["form"]}>
+                {" "}
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="SeaViewFlag"
+                  onChange={this.roomHandleChangeCheckbox}
+                />
+                <label class="form-check-label " style={{ fontSize: 18 }}>
+                  &nbsp; دریا
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="PayeViewFlag"
-                onChange={this.roomHandleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; کوهپایه
-              </label>
+              {" "}
+              <div className={styles["form"]}>
+                {" "}
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="PayeViewFlag"
+                  onChange={this.roomHandleChangeCheckbox}
+                />
+                <label class="form-check-label " style={{ fontSize: 18 }}>
+                  &nbsp; کوهپایه
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="CityViewFlag"
-                onChange={this.roomHandleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; شهری
-              </label>
+              <div className={styles["form"]}>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="CityViewFlag"
+                  onChange={this.roomHandleChangeCheckbox}
+                />
+                <label class="form-check-label " style={{ fontSize: 17 }}>
+                  &nbsp; شهری
+                </label>
+              </div>
             </div>
           </div>
           <div
@@ -766,81 +831,90 @@ class AddVilaDesktop extends React.Component {
               موقعیت
             </h3>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="RostaFlag"
-                onChange={this.handleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; روستایی
-              </label>
+              <div className={styles["form"]}>
+                {" "}
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="RostaFlag"
+                  onChange={this.handleChangeCheckbox}
+                />
+                <label style={{ fontSize: 18 }} class="form-check-label ">
+                  &nbsp; روستایی
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="SahelFlag"
-                onChange={this.handleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; ساحلی
-              </label>
+              <div className={styles["form"]}>
+                {" "}
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="SahelFlag"
+                  onChange={this.handleChangeCheckbox}
+                />
+                <label style={{ fontSize: 18 }} class="form-check-label ">
+                  &nbsp; ساحلی
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="ShahrakFlag"
-                onChange={this.handleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; شهرک
-              </label>
+              <div className={styles["form"]}>
+                {" "}
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="ShahrakFlag"
+                  onChange={this.handleChangeCheckbox}
+                />
+                <label style={{ fontSize: 18 }} class="form-check-label ">
+                  &nbsp; شهرک
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="YeylaFlag"
-                onChange={this.handleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; ییلاقی
-              </label>
+              <div className={styles["form"]}>
+                {" "}
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="YeylaFlag"
+                  onChange={this.handleChangeCheckbox}
+                />
+                <label style={{ fontSize: 18 }} class="form-check-label ">
+                  &nbsp; ییلاقی
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="ShahrFlag"
-                onChange={this.handleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; شهری
-              </label>
+              <div className={styles["form"]}>
+                {" "}
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="ShahrFlag"
+                  onChange={this.handleChangeCheckbox}
+                />
+                <label style={{ fontSize: 18 }} class="form-check-label ">
+                  &nbsp; شهری
+                </label>
+              </div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="JangalFlag"
-                onChange={this.handleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; جنگلی
-              </label>
+              <div className={styles["form"]}></div>
             </div>
             <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="KohFlag"
-                onChange={this.handleChangeCheckbox}
-              />
-              <label class="form-check-label font-bold-iransanse">
-                &nbsp; کوهستانی
-              </label>
+              <div className={styles["form"]}>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="KohFlag"
+                  onChange={this.handleChangeCheckbox}
+                />
+                <label style={{ fontSize: 18 }} class="form-check-label ">
+                  &nbsp; کوهستانی
+                </label>
+              </div>
             </div>
           </div>
           <div
@@ -849,21 +923,25 @@ class AddVilaDesktop extends React.Component {
             <h3
               className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse`}
             >
+              {" "}
+              <FontAwesomeIcon
+                className="font-size-30  margin-top-7px ml-5 "
+                icon={faUniversity}
+              />
               ظرفیت ویلا
             </h3>
-            <div className="col-lg-3 padding-3px">
-              <div className="row">
+            <div className={`col-lg-3 padding-3px ${styles["cap-city"]}`}>
+              <div>
                 <div className="col-lg-2 col-2">
                   <br />
-                  <FontAwesomeIcon
-                    className="font-size-30 topic-icon margin-top-5px"
-                    icon={faUniversity}
-                  />
                 </div>
                 <div className="col-lg-10 col-10 no-padding">
                   <div className="row">
                     <div className="col-lg-5 col-5 text-right">
-                      <p className="margin-top-10px margin-bottom-0px font-size-13 font-bold-iransanse">
+                      <p
+                        className="margin-top-10px margin-bottom-0px font-size-13 "
+                        style={{ fontSize: 18 }}
+                      >
                         متراژ زمین
                       </p>
                     </div>
@@ -878,7 +956,10 @@ class AddVilaDesktop extends React.Component {
                       </div>
                     </div>
                     <div className="col-lg-5 col-5 text-right">
-                      <p className="margin-top-10px margin-bottom-0px font-size-13 font-bold-iransanse">
+                      <p
+                        className="margin-top-10px margin-bottom-0px font-size-13"
+                        style={{ fontSize: 18 }}
+                      >
                         متراژ بنا
                       </p>
                     </div>
@@ -896,24 +977,24 @@ class AddVilaDesktop extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3 padding-3px">
-              <div className="row">
+            <div className={`col-lg-3 padding-3px ${styles["cap-city"]}`}>
+              <div style={{ marginTop: -6 }}>
                 <div className="col-lg-2 col-2">
                   <br />
-                  <FontAwesomeIcon
-                    className="font-size-30 topic-icon margin-top-5px"
-                    icon={faUniversity}
-                  />
                 </div>
                 <div className="col-lg-10 col-10 no-padding">
                   <div className="row">
                     <div className="col-lg-5 col-5 text-right">
-                      <p className="margin-top-10px margin-bottom-0px font-size-13 font-bold-iransanse">
+                      <p
+                        className="margin-top-10px margin-bottom-0px font-size-13 "
+                        style={{ fontSize: 18 }}
+                      >
                         ظرفیت
                       </p>
                     </div>
                     <div className="col-lg-7 col-7 padding-3px">
                       <PrimarySelectInput
+                        style={{ maxHeight: 32 }}
                         name="Cap"
                         onChange={this.roomHandleChangeInput}
                       >
@@ -923,12 +1004,16 @@ class AddVilaDesktop extends React.Component {
                       </PrimarySelectInput>
                     </div>
                     <div className="col-lg-5 col-5 text-right">
-                      <p className="margin-top-10px margin-bottom-0px font-size-13 font-bold-iransanse">
+                      <p
+                        className="margin-top-9px margin-bottom-0px font-size-13 "
+                        style={{ fontSize: 18 }}
+                      >
                         حداکثر ظرفیت
                       </p>
                     </div>
                     <div className="col-lg-7 col-7 padding-3px">
                       <PrimarySelectInput
+                        style={{ maxHeight: 32, marginTop: -10 }}
                         name="CapMax"
                         onChange={this.roomHandleChangeInput}
                       >
@@ -942,25 +1027,22 @@ class AddVilaDesktop extends React.Component {
               </div>
             </div>
 
-            <div className="col-lg-3 padding-3px">
-              <div className="row">
-                <div className="col-lg-2 col-2">
-                  <br />
-                  <FontAwesomeIcon
-                    className="font-size-30 topic-icon margin-top-5px"
-                    icon={faUniversity}
-                  />
-                </div>
+            <div className={`col-lg-3 padding-3px ${styles["cap-city"]}`}>
+              <div style={{ marginTop: -6 }}>
                 <div className="col-lg-10 col-10 no-padding">
                   <div className="row">
                     <div className="col-lg-12 col-12">&nbsp;</div>
                     <div className="col-lg-5 col-5 text-right">
-                      <p className="margin-top-10px margin-bottom-0px font-size-13 font-bold-iransanse">
+                      <p
+                        className="margin-top-10px margin-bottom-0px font-size-13 "
+                        style={{ fontSize: 18 }}
+                      >
                         تعداد اتاق
                       </p>
                     </div>
                     <div className="col-lg-7 col-7 padding-3px">
                       <PrimarySelectInput
+                        style={{ maxHeight: 32, marginTop: -10 }}
                         name="RoomCount"
                         onChange={this.roomHandleChangeInput}
                       >
@@ -970,43 +1052,18 @@ class AddVilaDesktop extends React.Component {
                       </PrimarySelectInput>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 padding-3px">
-              <div className="row">
-                <div className="col-lg-2 col-2">
-                  <br />
-                  <FontAwesomeIcon
-                    className="font-size-30 topic-icon margin-top-5px"
-                    icon={faUniversity}
-                  />
-                </div>
-                <div className="col-lg-10 col-10 no-padding">
                   <div className="row">
                     <div className="col-lg-5 col-5 text-right">
-                      <p className="margin-top-10px margin-bottom-0px font-size-13 font-bold-iransanse">
-                        تخت 1 نفره
-                      </p>
-                    </div>
-                    <div className="col-lg-7 col-7 padding-3px">
-                      <PrimarySelectInput
-                        name="Takht1Count"
-                        onChange={this.roomHandleChangeInput}
+                      <p
+                        className="margin-top-10px margin-bottom-0px font-size-13 "
+                        style={{ fontSize: 18 }}
                       >
-                        {arrayOfTen.map((number) => (
-                          <option value={number}>{number}</option>
-                        ))}
-                      </PrimarySelectInput>
-                    </div>
-                    <div className="col-lg-5 col-5 text-right">
-                      <p className="margin-top-10px font-size-13 font-bold-iransanse">
-                        تخت 2 نفره
+                        تعداد تشک
                       </p>
                     </div>
                     <div className="col-lg-7 col-7 padding-3px">
                       <PrimarySelectInput
-                        name="Takht2Count"
+                        name="ToshakCount"
                         onChange={this.roomHandleChangeInput}
                       >
                         {arrayOfTen.map((number) => (
@@ -1018,24 +1075,50 @@ class AddVilaDesktop extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3 padding-3px">
-              <div className="row">
+            <div className={`col-lg-3 padding-3px ${styles["cap-city"]}`}>
+              <div style={{ marginTop: 6 }}>
                 <div className="col-lg-2 col-2">
-                  <FontAwesomeIcon
-                    className="font-size-30 topic-icon"
-                    icon={faUniversity}
-                  />
+                  <br />
                 </div>
                 <div className="col-lg-10 col-10 no-padding">
                   <div className="row">
                     <div className="col-lg-5 col-5 text-right">
-                      <p className="margin-top-10px margin-bottom-0px font-size-13 font-bold-iransanse">
-                        تعداد تشک
+                      <p
+                        className="margin-top-8px margin-bottom-0px font-size-13 "
+                        style={{ fontSize: 18 }}
+                      >
+                        تخت 1 نفره
                       </p>
                     </div>
-                    <div className="col-lg-7 col-7 padding-3px">
+                    <div
+                      style={{ marginTop: 0 }}
+                      className="col-lg-7 col-7 padding-3px"
+                    >
                       <PrimarySelectInput
-                        name="ToshakCount"
+                        style={{ maxHeight: 32, marginTop: -10 }}
+                        name="Takht1Count"
+                        onChange={this.roomHandleChangeInput}
+                      >
+                        {arrayOfTen.map((number) => (
+                          <option value={number}>{number}</option>
+                        ))}
+                      </PrimarySelectInput>
+                    </div>
+                    <div className="col-lg-5 col-5 text-right">
+                      <p
+                        className="margin-top-10px font-size-13 "
+                        style={{ fontSize: 18 }}
+                      >
+                        تخت 2 نفره
+                      </p>
+                    </div>
+                    <div
+                      style={{ marginTop: -4 }}
+                      className="col-lg-7 col-7 padding-3px"
+                    >
+                      <PrimarySelectInput
+                        style={{ maxHeight: 32, marginTop: -10 }}
+                        name="Takht2Count"
                         onChange={this.roomHandleChangeInput}
                       >
                         {arrayOfTen.map((number) => (
@@ -1061,15 +1144,18 @@ class AddVilaDesktop extends React.Component {
             </h3>
             {this.state.facilities.map((facility) => (
               <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name={facility.EmkanatId}
-                  onChange={this.onCheckFacility}
-                />
-                <label class="form-check-label">
-                  &nbsp; {facility.EmkanatName}
-                </label>
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name={facility.EmkanatId}
+                    onChange={this.onCheckFacility}
+                  />
+                  <label class="form-check-label">
+                    &nbsp; {facility.EmkanatName}
+                  </label>
+                </div>
               </div>
             ))}
           </div>
@@ -1085,17 +1171,19 @@ class AddVilaDesktop extends React.Component {
             >
               امکانات اتاق اقامتگاه{" "}
             </h3>
-            {this.state.facilities.map((facility) => (
+            {this.state.facilities?.map((facility) => (
               <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name={facility.EmkanatId}
-                  onChange={this.onCheckRoomFacility}
-                />
-                <label class="form-check-label">
-                  &nbsp; {facility.EmkanatName}
-                </label>
+                <div className={styles["form"]}>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name={facility.EmkanatId}
+                    onChange={this.onCheckRoomFacility}
+                  />
+                  <label class="form-check-label">
+                    &nbsp; {facility.EmkanatName}
+                  </label>
+                </div>
               </div>
             ))}
           </div>
@@ -1107,17 +1195,43 @@ class AddVilaDesktop extends React.Component {
             >
               با انتخاب تصاویر مناسب نمایش خوبی از اقامتگاهتان داشته باشید
             </h3>
-            <div className="col-lg-2 col-12 margin-top-10px">
-              <div
-                className="upload-box h-150"
-                onClick={() => {
-                  this.upload.click();
-                }}
-              >
-                <p className="no-margin font-size-15 color-textpill">
-                  آپلود تصویر
-                </p>
-              </div>
+            <div className="col-lg-4 col-12 margin-top-10px">
+              <input
+                id="myInput"
+                type="file"
+                ref={(ref) => (this.upload = ref)}
+                className="d-none"
+                onChange={this.onChangeFile.bind(this)}
+              />
+              {this.state.file ? (
+                <div className={`h-100 ${styles["uploaded-image-box"]}`}>
+                  <img
+                    width=""
+                    height=""
+                    alt="بلیطجا - تصویر اقامتگاه"
+                    src={this.state.file}
+                  />
+                  <FontAwesomeIcon
+                    icon={faTimes}
+                    onClick={() => {
+                      this.setState({
+                        file: null,
+                      });
+                    }}
+                  />
+                </div>
+              ) : (
+                <div
+                  className={`${styles["upload-box"]} h-100`}
+                  onClick={() => {
+                    this.upload.click();
+                  }}
+                >
+                  <p className="no-margin font-size-15 color-textpill">
+                    تصویر نمای خود را بارگذاری کنید
+                  </p>
+                </div>
+              )}
             </div>
           </div>
           <div className={` ${styles["panel-main-content"]}  margin-top-10px`}>
@@ -1270,7 +1384,10 @@ class AddVilaDesktop extends React.Component {
               />
             </div>
             <div className="col-lg-2 padding-3px">
-              <a href="#" className="btn-outlined-cancle w-100">
+              <a
+                href="/panel/villas/search"
+                className="btn-outlined-cancle w-100"
+              >
                 بازگشت
               </a>
             </div>

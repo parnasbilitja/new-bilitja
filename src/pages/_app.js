@@ -32,6 +32,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
+      <title>
+        خریداینترنتی بلیط ارزان هواپیما | بلیط استانبول | بلیط جا | 021842799999
+      </title>
       <Component {...pageProps} />
     </Provider>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import globals from "./../../Global";
+import style from "./Filter.module.scss";
 
 const Row = ({ option, index, filters }) => {
   const [data, setData] = React.useState(null);
@@ -45,18 +46,9 @@ const Row = ({ option, index, filters }) => {
   }, [option, filters]);
 
   return (
-    <div>
-      <div
-        className={
-          change == 0
-            ? index % 2 == 0
-              ? "row bg-light align-items-center  pt-1 pb-1"
-              : "row bg-muted align-items-center  pt-1 pb-1"
-            : "row bg-green align-items-center  pt-1 pb-1"
-        }
-        key={index}
-      >
-        <div className="col-2 text-center">
+    <div className={style["price"]}>
+      <div className={style["price-items"]} key={index}>
+        <div>
           <input
             type="checkbox"
             checked={reserveStatus == 1 ? true : false}
@@ -65,35 +57,28 @@ const Row = ({ option, index, filters }) => {
             }
           />
         </div>
-        <div className="col-2 text-center">
+        <div>
           <h6 className="text-dark"> {data != null ? data.kndsys : ""}</h6>
         </div>
-        <div className="col-2 text-center">
+        <div>
           <h6 className="text-dark"> {data != null ? data.azhansNam : ""}</h6>
         </div>
-        <div className="col-2 text-center pe-1 ps-1">
+        <div>
           <input
             type="text"
-            value={precent}
+            placeholder={precent}
             onChange={(e) => setPrecent(e.target.value)}
           />
         </div>
-        <div className="col-2 text-center pe-1 ps-1">
+        <div>
           <input
             type="text"
-            value={price}
+            placeholder={price}
             onChange={(e) => setPrice(e.target.value)}
           />
         </div>
-        <div className="col-2 text-center pe-1">
-          <button
-            className={
-              change == 0
-                ? "btn btn-primary-0 col-12"
-                : "btn btn-primary-1 col-12"
-            }
-            onClick={() => handleSave(data)}
-          >
+        <div>
+          <button onClick={() => handleSave(data)}>
             {loader ? "منتظر بمانید" : "ثبت"}
           </button>
         </div>

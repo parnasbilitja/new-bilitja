@@ -381,3 +381,11 @@
     color: $pillTextGray;
   }
 }
+.form {
+  margin: 30px auto;
+  max-width: 90%;
+  .filter-title {
+    color: #fff;
+    font-weight: 600;
+  }
+}

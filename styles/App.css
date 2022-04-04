@@ -58,7 +58,7 @@ span {
 .panel-manager-content-container {
   padding: 10px 20px;
   height: auto;
-  background-color: rgb(248, 248, 248);
+  background-color: rgb(255, 255, 255);
 }
 .imgbarcode {
   width: 55px;
@@ -225,7 +225,7 @@ input[type="button"]:hover {
   align-items: center !important;
   justify-content: center !important;
   position: relative;
-  top: 50px;
+  top: 30px;
 }
 
 .prev-next-btn {
@@ -581,4 +581,41 @@ input[type="button"]:hover {
 [type="submit"]:not(:disabled),
 button:not(:disabled) {
   cursor: pointer;
+}
+.accordion-button::after {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0px !important;
+  color: #fff !important;
+  content: "";
+  background-image: url(
+    data:image/svg + xml;charset=utf-8,
+    %3Csvgxmlns="http://www.w3.org/2000/svg"viewBox="0 0 16 16"fill="%23212529"%3E%3Cpathfill-rule="evenodd"d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/%3E%3C/svg%3E
+  );
+  background-repeat: no-repeat;
+  border-radius: 30%;
+  filter: brightness(100%);
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+  background-color: #fff;
+}
+.accordion-button:not(.collapsed) {
+  color: #fff !important;
+  box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+.accordion-item:not(:first-of-type) {
+  border-top: 1px solid #eee !important;
+}
+.accordion-item:not(:first-of-type) {
+  border-top: 1;
+}
+.accordion-item:last-of-type {
+  border-radius: 3px !important;
+}
+.accordion-button:focus {
+  z-index: 3;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: unset !important;
 }

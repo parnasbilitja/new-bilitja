@@ -43,10 +43,8 @@ const ManagerNav = (props) => {
           <img
             width=""
             height=""
-            width=""
-            height=""
             alt="بلیطجا - لوگو"
-            src="../../../Images/bilitja-logo.png"
+            src="../../../Images/bilitja-logo.webp"
           />
         </div>
         <div className={styles["manager-small-screen-top-bar"]}>
@@ -104,7 +102,7 @@ const ManagerNav = (props) => {
               : `${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item`
           }
           onClick={() => {
-            myRouter.push("/panel/reports");
+            myRouter.push("/panel/charter-list");
           }}
         >
           <div>
@@ -120,7 +118,7 @@ const ManagerNav = (props) => {
         <div
           className={`${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item`}
           onClick={() => {
-            myRouter.push("/panel/flightlist");
+            myRouter.push("/panel/price-handling");
           }}
         >
           <div>

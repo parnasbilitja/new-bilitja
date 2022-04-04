@@ -17,6 +17,8 @@ import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter, NextRouter } from "next/router";
 
 import moment from "jalali-moment";
+import VillaPage from "./villa.page";
+import Villa from "../../pages/villa";
 
 class villaSearchBox extends React.Component {
   constructor(props) {
@@ -268,7 +270,7 @@ class villaSearchBox extends React.Component {
           <PrimaryButton
             defaultValue={"جستجو"}
             onClick={() => {
-              this.props.router.push("/villa/tehran");
+              this.props.router.push("/villa/reserve");
 
               // this.props.addCredentials({
               //     dateStart:dateGo,

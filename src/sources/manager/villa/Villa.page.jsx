@@ -103,8 +103,8 @@ class Villa extends React.Component {
           </div>
           <div className="col-lg-9">
             {this.state.vilas.map((vila) => (
-              <div className="card villa-information-card margin-top-10px vila-one-row">
-                <div className="row">
+              <div>
+                <div className={` row ${styles["card"]}`}>
                   <div className="col-lg-2 col-5">
                     <img
                       width=""
@@ -252,21 +252,43 @@ class Villa extends React.Component {
             <div className={styles["filter-box"]}>
               <div className="filter-list-heading">
                 <span className={styles["fliter-header"]}>
-                  <FontAwesomeIcon icon={faCog} />
-                  فیلترها
+                  <span>فیلترها</span>
+                  <span>
+                    <FontAwesomeIcon icon={faCog} />
+                  </span>
                 </span>
               </div>
-
+              <div
+                style={{
+                  borderBottom: "1px solid black",
+                  width: "95%",
+                  marginTop: 8,
+                  marginRight: 5,
+                }}
+              ></div>
               <input
+                style={{
+                  width: "90%",
+                  height: 33,
+                  marginRight: 11,
+                  marginTop: 12,
+                }}
                 type="text"
                 placeholder="جستجو براساس شهر نام یا کد ویلا"
                 className="input-search filter-list-input"
               />
 
-              <div className="filter-list-management">
-                <strong>فیلتر بر اساس وضعیت ویلا</strong>
+              <div className={styles["filter-box-items"]}>
+                <strong> فیلتر بر اساس وضعیت ویلا</strong>
+                <div
+                  style={{
+                    borderBottom: "1px solid black",
+                    width: "95%",
+                    marginTop: 8,
+                  }}
+                ></div>
 
-                <div>
+                <div className={styles["input-button"]}>
                   <div className="radio">
                     <input
                       type="checkbox"
@@ -280,7 +302,8 @@ class Villa extends React.Component {
                   </label>
                 </div>
 
-                <div>
+                <div className={styles["input-button"]}>
+                  {" "}
                   <div className="radio">
                     <input
                       type="checkbox"

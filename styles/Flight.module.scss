@@ -1,6 +1,66 @@
 @import "./values.module.scss";
-
+@media only screen and (max-width: 375px) {
+  .form {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+  .accordian-button {
+    width: 345px !important;
+    margin-right: 23px;
+  }
+  .body-text {
+    width: 345px !important;
+    margin-right: 23px;
+    text-align: center;
+  }
+  .accordian {
+    width: 390px !important;
+    margin-left: 114px;
+  }
+  .filter-list-heading {
+    font-size: 13px !important;
+  }
+  .text-title {
+    font-size: 25px !important;
+    margin-right: 90px !important;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .form {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+  .accordian {
+    width: 390px !important;
+    margin-left: 114px;
+  }
+  .filter-list-heading {
+    font-size: 15px !important;
+  }
+  .text-title {
+    font-size: 25px !important;
+    margin-right: 90px !important;
+  }
+}
 @media only screen and (max-width: 650px) {
+  .form {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+  .accordian {
+    width: 390px !important;
+    margin-left: 114px;
+  }
+  .filter-list-heading {
+    font-size: 13px !important;
+  }
+  .text-title {
+    font-size: 25px !important;
+    margin-right: 90px !important;
+  }
   .hidden-xs-flight {
     display: none;
   }
@@ -11,6 +71,24 @@
   }
   .visible-xs {
     display: block !important;
+  }
+}
+@media only screen and (min-width: 650px) and (max-width: 900px) {
+  .form {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+  .accordian {
+    width: 390px !important;
+    margin-left: 114px;
+  }
+  .filter-list-heading {
+    font-size: 15px !important;
+  }
+  .text-title {
+    font-size: 25px !important;
+    margin-right: 90px !important;
   }
 }
 .card-box-shadow {
@@ -43,7 +121,8 @@
   height: 50px;
 }
 .none:not(.collapsed)::after {
-  filter: brightness(20%);
+  filter: brightness(100%);
+  background-color: #fff;
   position: relative;
   right: 0;
 }
@@ -71,8 +150,9 @@
 }
 .filter-list-box {
   padding: 5px 0;
-  margin-top: 5px;
-  margin-left: 15px;
+  margin: 5px 0 0 15px;
+  position: sticky;
+  position: -webkit-sticky;
   text-align: right;
   .filter-list-heading {
     width: 100%;
@@ -138,4 +218,25 @@
       margin: 3px 2px 0 2px;
     }
   }
+}
+.form {
+  display: flex;
+  justify-content: space-around;
+  max-width: 86%;
+  margin-right: 90px;
+  margin-top: 15px;
+}
+.text-title {
+  font-size: 30px;
+  font-weight: 800;
+  margin: 15px 130px 25px 0;
+}
+.accordian {
+  margin-right: 20px;
+  width: 530px;
+}
+.accordian-button {
+  display: flex;
+  justify-content: space-between;
+  background-color: #279692 !important;
 }

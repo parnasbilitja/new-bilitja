@@ -17,6 +17,7 @@ import { loadAirports } from "../Redux/Airports/airport.action";
 import { connect } from "react-redux";
 import { compareTwoStringDates } from "../Utils/SimpleTasks";
 import Scrolltoprefresh from "./component/Scrolltoprefresh";
+import Formsolotion from "./Formsolotion";
 
 class Home extends React.Component {
   constructor(props) {
@@ -89,7 +90,7 @@ class Home extends React.Component {
               <img
                 width=""
                 height=""
-                alt="بلیطجا - لوگو"
+                alt="بلیطجا - قطب نما"
                 src="../../../Images/earth.webp"
                 className={`${styles["hero-image-1"]} pull-left`}
               />
@@ -365,6 +366,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
+        <Formsolotion />
 
         <div className="row padding-xs-5-25">
           <div className="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>

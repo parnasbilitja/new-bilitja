@@ -23,13 +23,17 @@ class ManagerTopActionBox extends React.Component {
             icon={faPlusCircle}
           />
           <div className="border-bottom margin-top-15px">&nbsp;</div>
-          <span className="pull-right font-size-13 color-textpill padding-3px">
-            مشاهده جزییات
-          </span>
-          <FontAwesomeIcon
-            className="pull-left color-textpill font-size-13"
-            icon={faInfo}
-          />
+          <div className={styles["info"]}>
+            <span>
+              <FontAwesomeIcon
+                className="pull-left color-textpill font-size-13"
+                icon={faInfo}
+              />
+            </span>{" "}
+            <span className="pull-right font-size-13 color-textpill padding-3px">
+              مشاهده جزییات
+            </span>
+          </div>
         </div>
 
         <div className={` ${styles["manager-top-action-button"]} visible-xs`}>

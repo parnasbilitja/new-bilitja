@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import globals from "./../../Global";
+import style from "./Filter.module.scss";
 import axios from "axios";
 
 const SaveAllDialog = ({ open, close, save }) => {
@@ -36,8 +37,12 @@ const PriceHandling = () => {
   const [openSaveAll, setSaveAll] = React.useState(false);
 
   const getList = async () => {
-      const agencies = await axios.get(`${globals.baseUrlNew}BilitAirLines/GetAzhansList`)
-      const agenciesDeclare = await axios.get( `${globals.baseUrlNew}BilitAirLines/GetRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`)
+    const agencies = await axios.get(
+      `${globals.baseUrlNew}BilitAirLines/GetAzhansList`
+    );
+    const agenciesDeclare = await axios.get(
+      `${globals.baseUrlNew}BilitAirLines/GetRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`
+    );
     if (agencies.data.length != 0) {
       const items = agencies.data.map((element) =>
         agenciesDeclare.data.map((ele) => {
@@ -98,27 +103,27 @@ const PriceHandling = () => {
         filters={filter}
       />
 
-      <div className="table">
-        <div className="container overflow-x-scroll">
-          <div className="tabel-responsive mt-4 ">
-            <div className="top-list-header">
-              <div className="col-2 text-center">
-                <h6 className="text-light">فعالسازی</h6>
+      <div>
+        <div>
+          <div>
+            <div className={style["header-title"]}>
+              <div>
+                <h5>فعالسازی</h5>
               </div>
-              <div className="col-2 text-center">
-                <h6 className="text-light">کد</h6>
+              <div>
+                <h5>کد</h5>
               </div>
-              <div className="col-2 text-center">
-                <h6 className="text-light">عنوان چارتر</h6>
+              <div>
+                <h5>عنوان چارتر</h5>
               </div>
-              <div className="col-2 text-center">
-                <h6 className="text-light"> درصد افزایش</h6>
+              <div>
+                <h5> درصد افزایش</h5>
               </div>
-              <div className="col-2 text-center">
-                <h6 className="text-light">مبلغ افزایش</h6>
+              <div>
+                <h5>مبلغ افزایش</h5>
               </div>
-              <div className="col-2 text-center">
-                <h6 className="text-light">ذخیره</h6>
+              <div>
+                <h5>ذخیره</h5>
               </div>
             </div>
 
@@ -138,12 +143,9 @@ const PriceHandling = () => {
             )}
           </div>
         </div>
-        <button
-          onClick={() => setSaveAll(true)}
-          className="btn btn-primary-0 mt-2"
-        >
-          ذخیره کلی
-        </button>
+        <div className={style["save"]}>
+          <button onClick={() => setSaveAll(true)}>ذخیره کلی</button>
+        </div>
       </div>
       <SaveAllDialog
         open={openSaveAll}

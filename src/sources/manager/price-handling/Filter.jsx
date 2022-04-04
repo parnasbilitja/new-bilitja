@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./Filter.module.scss";
 
 const Filter = ({ list, cancel, setFilter, filters }) => {
   const [data, setData] = React.useState(list);
@@ -43,13 +44,13 @@ const Filter = ({ list, cancel, setFilter, filters }) => {
   }, [list, filters]);
 
   return (
-    <div className="mt-2">
-      <div className="d-flex align-items-center">
-        <div className="col-2 text-center pe-1 ps-1">
+    <div>
+      <div className={style["headerlist"]}>
+        <div>
           <label>عنوان چارتر کننده:</label>
           <input onChange={findByName} defaultValue={""} />
         </div>
-        <div className="col-2 text-start pe-1 ps-1">
+        <div>
           <label>وضعیت آژانس</label>
           <select value={activeStatus} onChange={findByStatus}>
             <option value="Active">فعال</option>
@@ -57,34 +58,25 @@ const Filter = ({ list, cancel, setFilter, filters }) => {
             <option value="Cancel">حذف فیلتر</option>
           </select>
         </div>
-        <div className="col-2 text-center pe-1 ps-1">
+        <div>
           <label>درصد افزایش کلی:</label>
           <input
             onChange={(e) => setAllPrecent(e.target.value)}
             value={allprecent}
           />
         </div>
-        <div className="col-2 text-center pe-1 ps-1">
+        <div>
           <label>مبلغ افزایش کلی:</label>
           <input
             onChange={(e) => setAllPrice(e.target.value)}
             value={allprice}
           />
         </div>
-        <div className="col-2 text-center pe-1 ps-1">
-          <button
-            onClick={changeAll}
-            className="btn btn-primary-0 col-12 mt-2 font-size-11"
-          >
-            {" "}
-            تغییر کلی
-          </button>
+        <div>
+          <button onClick={changeAll}> تغییر کلی</button>
         </div>
-        <div className="col-2 text-center pe-1 ps-1">
-          <button onClick={cancel} className="btn btn-primary-1 col-12 mt-2">
-            {" "}
-            حذف فیلتر ها
-          </button>
+        <div>
+          <button onClick={cancel}>حذف فیلتر ها</button>
         </div>
       </div>
     </div>

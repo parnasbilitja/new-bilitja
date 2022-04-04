@@ -19,6 +19,7 @@ class UpdateVila extends React.Component {
       selectedRules: [],
       checkedFacilities: [],
       checkedFacilitiesForRoom: [],
+
       vilaTypes: [
         "ویلایی",
         "آپارتمانی",
@@ -38,6 +39,7 @@ class UpdateVila extends React.Component {
       currentVilaType: 0,
       currentBuildingType: 0,
       facilities: [],
+      facilitiesroom: [],
       province: [],
       rules: [],
       provinceIndexSelected: 0,
@@ -465,7 +467,6 @@ class UpdateVila extends React.Component {
                   >
                     <PrimaryTextInput
                       placeholder="کد ویلا"
-                      value="0"
                       value={this.state.vilaMainObjcet.EghamatId}
                       disabled={true}
                     />
@@ -1195,7 +1196,7 @@ class UpdateVila extends React.Component {
             <h3 className="border-bottom-black-track font-size-16 font-bold-iransanse margin-bottom-5px">
               امکانات اتاق اقامتگاه{" "}
             </h3>
-            {this.state.facilities.map((facility) => (
+            {this.state.facilitiesroom.map((facilitiesroom) => (
               <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
                 <input
                   class="form-check-input"
@@ -1207,7 +1208,7 @@ class UpdateVila extends React.Component {
                   )}
                 />
                 <label class="form-check-label">
-                  &nbsp; {facility.EmkanatName}
+                  &nbsp; {facilitiesroom.facilitiesroom}
                 </label>
               </div>
             ))}

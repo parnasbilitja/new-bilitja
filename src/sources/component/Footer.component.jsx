@@ -147,22 +147,22 @@ const Footer = () => {
                   <a href="#">bilitja.com</a>
                 </li>
                 <li>
-                  <a href="https://instagram.com/hamnavaz.tour">
+                  <a href="https://instagram.com/bilitja">
                     <FontAwesomeIcon icon={faInstagram} />
                   </a>
                   <a href="https://instagram.com/hamnavaz.tour">bilitja </a>
                 </li>
                 <li>
-                  <a href="https://twitter.com/Hamnavaz_com">
+                  <a href="https://twitter.com/bilitja">
                     <FontAwesomeIcon icon={faTwitter} />
                   </a>
-                  <a href="https://twitter.com/Hamnavaz_com">bilitja</a>
+                  <a href="https://twitter.com/bilitja">bilitja</a>
                 </li>
                 <li>
-                  <a href="https://facebook.com/Hamnavaz_com">
+                  <a href="https://facebook.com/bilitja">
                     <FontAwesomeIcon icon={faFacebook} />
                   </a>
-                  <a href="https://facebook.com/Hamnavaz_com">bilitja</a>
+                  <a href="https://facebook.com/bilitja">bilitja</a>
                 </li>
               </ul>
             </div>
@@ -263,25 +263,25 @@ const Footer = () => {
             <ul>
               <li>
                 <FontAwesomeIcon icon={faGlobe} />
-                <a href="#">bilitja.com</a>
+                <a href="#">bilitja.bilitja</a>
               </li>
               <li>
-                <a href="https://instagram.com/hamnavaz.tour">
+                <a href="https://instagram.com/bilitja">
                   <FontAwesomeIcon icon={faInstagram} />
                 </a>
-                <a href="https://instagram.com/hamnavaz.tour">hamnavaz.tour</a>
+                <a href="https://instagram.com/bilitja">bilitja.tour</a>
               </li>
               <li>
-                <a href="https://twitter.com/Hamnavaz_com">
+                <a href="https://twitter.com/bilitja">
                   <FontAwesomeIcon icon={faTwitter} />
                 </a>
-                <a href="https://twitter.com/Hamnavaz_com">Hamnavaz_com</a>
+                <a href="https://twitter.com/bilitja">bilitja</a>
               </li>
               <li>
-                <a href="https://facebook.com/Hamnavaz_com">
+                <a href="https://facebook.com/bilitja">
                   <FontAwesomeIcon icon={faFacebook} />
                 </a>
-                <a href="https://facebook.com/Hamnavaz_com">Hamnavaz_com</a>
+                <a href="https://facebook.com/bilitja">bilitja</a>
               </li>
             </ul>
           </div>

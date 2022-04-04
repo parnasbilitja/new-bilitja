@@ -26,20 +26,14 @@ class villaReserve extends React.Component {
   }
 
   componentDidMount() {
-    fetch(
-      `${globals.baseUrl}bj/eghamat/view/${this.props.router.asPath.substr(21)}`
-    )
+    fetch(`${globals.baseUrl}bj/eghamat/view/`)
       .then((res) => res.json())
       .then((json) => {
         this.setState({
-          ...json.Eghamat[0],
+          ...json.Eghamat[23],
         });
       });
-    fetch(
-      `${globals.baseUrl}bj/eghamatRoom/view/${this.props.router.asPath.substr(
-        21
-      )}`
-    )
+    fetch(`${globals.baseUrl}bj/eghamatRoom/view}`)
       .then((res) => res.json())
       .then((json) => {
         this.setState({
@@ -48,6 +42,7 @@ class villaReserve extends React.Component {
           },
         });
       });
+      
   }
 
   setDate = (args) => {
@@ -84,7 +79,7 @@ class villaReserve extends React.Component {
                   <div className="row padding-10px">
                     <div className="col-lg-4 col-md-4 col-sm-4 col-6">
                       <FontAwesomeIcon icon={faClock} />
-                      <span> شهر : {this.state.CityName} </span>
+                      <span> شهر : {this.state.Name} </span>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-4 col-6">
                       <FontAwesomeIcon icon={faClock} />
@@ -137,7 +132,7 @@ class villaReserve extends React.Component {
                             {" "}
                             متراژ بنا:{" "}
                             <span className="color-primary">
-                              {this.state.room.Metraj} متر
+                              {this.state.Metraj} متر
                             </span>
                           </p>
                         </div>
@@ -236,7 +231,7 @@ class villaReserve extends React.Component {
                             {" "}
                             تعداد تشک :{" "}
                             <span className="color-primary">
-                              {this.state.room.ToshakCount}
+                              {this.state.room.LuxFlag}
                             </span>
                           </p>
                         </div>
