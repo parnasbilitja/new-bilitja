@@ -28,6 +28,8 @@ import Reports from "../sources/manager/reports/Reports";
 import Flightlist from "../sources/manager/flightlist/Flightlist";
 import PriceHandling from "../sources/manager/price-handling/PriceHandling";
 import CharterList from "../sources/manager/charter-list/CharterList";
+import FlightSellReport from "../sources/manager/sell-report/sell-report/DesktopFlightSellReport";
+import AllFlightSellReport from "./../sources/manager/sell-report/all-sell-report/DesktopFlightSellReport";
 
 export default function ManagePanel() {
   const myRouter = useRouter();
@@ -132,6 +134,10 @@ export default function ManagePanel() {
         return <PriceHandling />;
       case "/panel/charter-list":
         return <CharterList />;
+      case "/panel/flight-sell-report":
+        return <FlightSellReport />;
+      case "/panel/all-flight-sell-report":
+        return <AllFlightSellReport />;
       default:
         return <div />;
     }

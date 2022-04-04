@@ -13,6 +13,8 @@ import UIReducer from "./UI/ui.reducer";
 import accountReducer from "./Account/account.reducer";
 import { userReducer } from "./Account/account.reducer";
 import { ProfileReducer } from "./Dashboard/Profile/profile.reducer";
+import ReportReducer from "./Reports/reports.reducer";
+
 const persistConfig = {
   key: "root",
   storage,
@@ -31,5 +33,6 @@ const rootReducer = combineReducers({
   user: userReducer,
   searchboxReducer: searchboxReducer,
   AzhanslistReducer: AzhanslistReducer,
+  reports: ReportReducer,
 });
 export default persistReducer(persistConfig, rootReducer);
