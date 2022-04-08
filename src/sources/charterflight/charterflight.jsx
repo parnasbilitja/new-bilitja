@@ -1,7 +1,6 @@
 import NavBarComponent from "../component/NavBar.component";
 import style from "./Charter.module.scss";
 import FlightSearchBox from "../flight_List/FlightSearchBox.component";
-import Image from "next/Image";
 import Descflitlist from "../flight_List/Descflitlist";
 import Formsolotion from "../Formsolotion";
 const Charetrflight = () => {
@@ -12,13 +11,9 @@ const Charetrflight = () => {
       </div>
       <div className={style["charterlist-title"]}>
         <div className={style["gradiant"]}>
-          {" "}
           <h1>بلیط چارتر</h1>
           <p className={style["title-text"]}>ارزانترین و لحظه آخری</p>
-          <img
-            src="../../../Images/airplane-view.jpg"
-            alt="بلیطجا - لوگو"
-          />{" "}
+          <img src="../../../Images/airplane-view.jpg" alt="بلیطجا - لوگو" />
         </div>
       </div>
       <div className={style["charterlist-box"]}>
