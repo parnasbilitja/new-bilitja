@@ -1,0 +1,64 @@
+.header-title {
+  font-size: 25px;
+  font-weight: 700;
+  font-family: BYekan !important;
+}
+.input {
+  font-size: 15px;
+  font-family: BYekan !important;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 15px;
+  font-weight: 600;
+  input {
+    border-radius: 5px;
+    border-width: 0.5px;
+    height: 33px;
+  }
+}
+.header-input {
+  font-family: BYekan !important;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-top: -40px;
+  margin-right: 600px;
+}
+.list-title {
+  font-size: 18px;
+  text-align: center;
+  font-family: BYekan !important;
+}
+.title-table {
+  font-size: 18px;
+  text-align: center;
+  font-family: BYekan !important;
+  margin-top: 10px;
+}
+.header-buttn {
+  font-family: BYekan !important;
+
+  button {
+    background-color: #279692;
+    border-radius: 8px;
+    width: 105px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+.title {
+  font-size: 25px;
+  font-family: BYekan !important;
+}
+.tablerow:nth-of-type(odd) {
+  background-color: #eee;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.tablerowfont {
+  font-family: BYekan !important;
+}

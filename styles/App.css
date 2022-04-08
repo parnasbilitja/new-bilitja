@@ -1,7 +1,7 @@
-/* @font-face {
+@font-face {
   src: url("/public/Font/IranSans/IRANSansWebFaNumLight.ttf");
   font-family: IranSans;
-} */
+}
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
 body {
   font-family: IranSans !important;

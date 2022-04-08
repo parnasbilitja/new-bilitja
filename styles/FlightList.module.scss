@@ -69,7 +69,6 @@
     border-left: dotted rgb(161, 161, 161);
     border-width: 2px;
     margin-right: 14px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -140,6 +139,8 @@
 }
 .desc-flightlist {
   margin-top: 55px;
+  max-width: 80%;
+  align-items: center;
   .desc-flightlist-header {
     font-size: 22px;
     display: flex;

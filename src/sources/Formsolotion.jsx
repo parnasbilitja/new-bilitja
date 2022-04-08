@@ -5,7 +5,13 @@ import Accordion from "react-bootstrap/Accordion";
 const Formsolotion = () => {
   return (
     <div>
-      {/* <div className={styles["text-title"]}>سوالات متداول از بلیطجا</div>
+      <h2
+        style={{ marginTop: 50, marginRight: 130 }}
+        className="font-bold-iransanse"
+      >
+        سوالات متداول بلیط چارتر
+      </h2>
+      <div className={styles["text-title"]}></div>
       <span className={styles["form"]}>
         <span>
           <Accordion className={styles["accordian"]} defaultActiveKey="0">
@@ -150,7 +156,7 @@ const Formsolotion = () => {
             </Accordion.Item>{" "}
           </Accordion>
         </span>
-      </span> */}
+      </span>
       {/* <Accordion
         style={{ width: "35%", marginRight: 100 }}
         defaultActiveKey="0"

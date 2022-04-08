@@ -9,6 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import style from "../sell-report/Descktop.module.scss";
 import { FilterFields } from "./Filter.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import { headCells, getRows } from "./data";
@@ -375,7 +376,10 @@ const AllFlightSellReport = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <div className="d-flex justify-content-start pe-1 ps-1" dir="ltr">
+          <div
+            className={`d-flex justify-content-start pe-1 ps-1 font-size-16${style["title"]}`}
+            dir="ltr"
+          >
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
               component="div"

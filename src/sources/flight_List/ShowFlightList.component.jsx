@@ -86,7 +86,7 @@ const ShowFlightList = (props) => {
               </span>
             </div>
           </div>
-        ))}{" "}
+        ))}
         <Descflightlist />
       </div>
     </>

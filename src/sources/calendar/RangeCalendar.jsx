@@ -2,6 +2,7 @@ import React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
+import style from "./Clanedr.module.scss";
 
 const RangeCalendar = ({ open, close, selected }) => {
   const defaultValue = {
@@ -45,23 +46,29 @@ const RangeCalendar = ({ open, close, selected }) => {
     };
   }, []);
   return (
-    <Dialog open={open} onClose={close} dir="rtl">
+    <Dialog
+      className={style["header-title"]}
+      open={open}
+      onClose={close}
+      dir="rtl"
+    >
       <DialogContent>
         <div className="d-flex mb-2">
           <div className="col-lg-12">
-            <span className="font-size-11 text-dark bold">
+            <span className={style["header-title"]}>
               تاریخ شروع رزرو پایان رزرو را مشخص کنید:
             </span>
           </div>
         </div>
         <Calendar
+          className={style["header-title"]}
           value={selectedDay}
           onChange={setSelectedDay}
           shouldHighlightWeekends
           locale="fa" // add this
           colorPrimary="#00ca99"
         />
-        <div className="mt-2">
+        <div className={style["header-title"]}>
           <button className="btn btn-primary col-12" onClick={handleGetDay}>
             تایید تاریخ
           </button>

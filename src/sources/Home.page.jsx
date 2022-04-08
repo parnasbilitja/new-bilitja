@@ -366,7 +366,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-        <Formsolotion />
+        {/* <Formsolotion /> */}
 
         <div className="row padding-xs-5-25">
           <div className="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>

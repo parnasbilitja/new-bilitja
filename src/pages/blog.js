@@ -6,7 +6,7 @@ const BloginfoRoute = () => {
   function mainRouter(pathName) {
     var path = decodeURI(pathName);
     switch (path) {
-      case "/blog":
+      case "/charter":
         return "";
       default:
         return "hello";

@@ -6,6 +6,8 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
+import style from "./Descktop.module.scss";
+
 import TableRow from "@mui/material/TableRow";
 import { moneyFormat } from "../../../../Utils/SimpleTasks";
 
@@ -153,12 +155,12 @@ const EnhancedTableHead = (props) => {
   return (
     <TableHead>
       <TableRow>
-        <TableCell align="center">
-          <h6 className="text-dark font-size-12">ردیف</h6>
+        <TableCell align="center" className={style["tablerowfont"]}>
+          <p className={style["list-title"]}>ردیف</p>
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell key={headCell.id} align="center" padding="none">
-            <h6 className="text-dark font-size-11">{headCell.label}</h6>
+            <p className={style["tablerowfont"]}>{headCell.label}</p>
           </TableCell>
         ))}
       </TableRow>
@@ -225,9 +227,9 @@ const DesktopInfoSell = ({ open, close, reqNo, reqPnr }) => {
       <DialogContent>
         <div className="d-flex mb-3 align-items-center">
           <div className="col-11">
-            <h3 className="text-dark">مشخصات فروش</h3>
+            <p className={style["header-title"]}>مشخصات فروش</p>
           </div>
-          <div className="col-1">
+          <div className={style["header-buttn"]}>
             <button className="btn btn-primary-1" onClick={close}>
               بستن
             </button>
@@ -249,80 +251,146 @@ const DesktopInfoSell = ({ open, close, reqNo, reqPnr }) => {
                       key={row.name}
                       className="cursor-pointer hover-tabel-row"
                     >
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{i++}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-14">{i++}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.nameEn}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.nameEn}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.familyEn}</h6>
+                      <TableCell
+                        className={style["tablerowfont"]}
+                        align="center"
+                      >
+                        <h6 className="font-size-16">{row.familyEn}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.meliCode}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.meliCode}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.ticketName}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.ticketName}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.ticketNo}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.ticketNo}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.changeStat}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.changeStat}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.sex}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.sex}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.birthDate}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.birthDate}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.pasNo}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.pasNo}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.pasDateEnd}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.pasDateEnd}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.meliat}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.meliat}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">
                           {moneyFormat(row.ticketPrice)}
                         </h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">
                           {moneyFormat(row.ticketPriceFare)}
                         </h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">
                           {moneyFormat(row.ticketPriceKh)}
                         </h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">
                           {moneyFormat(row.stock)}
                         </h6>
                       </TableCell>
 
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.finePrice}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.finePrice}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.changeTime}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.changeTime}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.changeIp}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.changeIp}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.finePriceName}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.finePriceName}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.changeTimeName}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.changeTimeName}</h6>
                       </TableCell>
-                      <TableCell align="center">
-                        <h6 className="font-size-11">{row.changeIpName}</h6>
+                      <TableCell
+                        align="center"
+                        className={style["tablerowfont"]}
+                      >
+                        <h6 className="font-size-16">{row.changeIpName}</h6>
                       </TableCell>
                     </TableRow>
                   );

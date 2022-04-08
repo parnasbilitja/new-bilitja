@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { _filterSellReport } from "../../../../Redux/Reports/reports.action";
 import RangeCalendar from "../../../calendar/RangeCalendar";
+import style from "./Descktop.module.scss";
 
 const TopFilter = () => {
   const [date, setDate] = React.useState("");
@@ -33,8 +34,8 @@ const TopFilter = () => {
     <div className="container mt-2 mb-2">
       <div className="d-flex">
         <div className="col-6">
-          <div className="d-flex">
-            <div className="col-8 me-1">
+          <div className={style["header-input"]}>
+            <div className={style["input"]}>
               <input
                 placeholder="از تاریخ تا تاریخ"
                 value={date}

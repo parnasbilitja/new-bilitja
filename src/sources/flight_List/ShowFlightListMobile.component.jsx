@@ -52,7 +52,17 @@ class ShowFlightListMobile extends React.Component {
                   className={styles["mobile-flight-list-one-row"]}
                 >
                   <div className={styles["mobile-one-row-price"]}>
-                    <div style={{ marginBottom: 10 }}>
+                    <div
+                      className="btn-buy-action"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        props.setReserveBoxData(oneFlight);
+                      }}
+                    >
+                      <i className="bilitja icon-refrence"></i>
+                      <a href="">خرید بلیط</a>
+                    </div>
+                    <div style={{ marginTop:9 }}>
                       <span className="font-size-15 color-secondary font-bold-iransanse">
                         {moneyFormat(oneFlight.priceView)}
                       </span>
@@ -89,10 +99,7 @@ class ShowFlightListMobile extends React.Component {
                   </div>
 
                   <div>
-                    <div
-                      style={{ marginBottom: 10 }}
-                      className={styles["mobile-one-row-time"]}
-                    >
+                    <div className={styles["mobile-one-row-time"]}>
                       <span
                         style={{ fontSize: 15 }}
                         className="font-size-18 font-bold-iransanse"
