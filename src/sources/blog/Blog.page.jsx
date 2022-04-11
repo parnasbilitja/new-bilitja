@@ -1,14 +1,22 @@
 import style from "../../../styles/Blog.module.scss";
 import { useRouter } from "next/router";
-import ShowFlightList from "../flight_List/ShowFlightList.component";
-import NavBar from "../../sources/component/NavBar.component";
+import { useEffect, useState } from "react";
+import NavBarComponent from "../component/NavBar.component";
 import NavBarMobileComponent from "../component/NavBarMobile.component";
 const Blog = () => {
   const router = useRouter();
-  const breakpoint = 440;
+  const [width, setWidth] = useState();
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [width]);
+  console.log("width", width);
   return (
     <div className={style["bloge"]}>
-      {breakpoint === 440 ? <NavBarMobileComponent /> : <NavBar />}
+      {width <= 769 ? <NavBarMobileComponent /> : <NavBarComponent />}
       <div className={style["bloge-btn"]}>
         <img alt="" />
         <h3>test1</h3>

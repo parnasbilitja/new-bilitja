@@ -4,7 +4,7 @@ import globals from "../Global";
 import styles from "../../../styles/FlightList.module.scss";
 
 import { moneyFormat, getweekday } from "../../Utils/SimpleTasks";
-import Descflightlist from "./Descflitlist";
+// import Descflightlist from "./Descflitlist";
 
 const ShowFlightList = (props) => {
   console.log("props", props);
@@ -87,7 +87,7 @@ const ShowFlightList = (props) => {
             </div>
           </div>
         ))}
-        <Descflightlist />
+        {/* <Descflightlist /> */}
       </div>
     </>
   );

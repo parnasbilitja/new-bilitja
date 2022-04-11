@@ -7,12 +7,27 @@
 }
 @media only screen and(max-width:440px) {
   .desc-flightlist {
-    width: 50% !important;
+    width: 80% !important;
     display: flex !important;
     flex-direction: column;
     align-items: center;
-    color: red;
-    background-color: red;
+  }
+  .title-header {
+    margin: 16px 0 10px 137px !important;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(99, 99, 99) !important;
+  }
+  .desc-flightlist-header {
+    font-size: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    h2 {
+      font-size: 18px !important;
+      margin-left: 20px !important;
+    }
   }
 }
 @media only screen and (max-width: 979px) and (min-width: 651px) {

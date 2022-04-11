@@ -5,12 +5,11 @@ import Accordion from "react-bootstrap/Accordion";
 const Formsolotion = () => {
   return (
     <div>
-      <h2
-        style={{ marginTop: 50, marginRight: 130 }}
-        className="font-bold-iransanse"
-      >
-        سوالات متداول بلیط چارتر
-      </h2>
+      <div className={styles["title-solotion"]}>
+        <h2 style={{ fontSize: 25 }} className="font-bold-iransanse">
+          سوالات متداول بلیط چارتر
+        </h2>
+      </div>
       <div className={styles["text-title"]}></div>
       <span className={styles["form"]}>
         <span>

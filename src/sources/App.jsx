@@ -18,6 +18,7 @@ import { selcetAccountBox } from "../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../Redux/UI/ui.action";
 
 import { withRouter } from "next/router";
+import Scrollindiactor from "./scrollindiactor/Scrollindiactor";
 
 class App extends React.Component {
   constructor(props) {
@@ -155,7 +156,8 @@ class App extends React.Component {
             this.mainRouter(this.props.router.asPath)
             //console.log(this.props.router)
             //   this.props.router.push("/flights")
-          }
+          }{" "}
+          <Scrollindiactor />
           <MessageBox />
           {/* <Footer /> */}
           <Head>

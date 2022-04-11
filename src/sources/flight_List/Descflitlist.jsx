@@ -4,7 +4,10 @@ const Descflightlist = () => {
   return (
     <div className={styles["desc-flightlist"]}>
       <div className={styles["desc-flightlist-header"]}>
-        <h2 style={{ marginTop: 50 }} className="font-bold-iransanse">
+        <h2
+          style={{ marginTop: 50, fontSize: 25 }}
+          className="font-bold-iransanse"
+        >
           درباره بلیط چارتر بیشتر بدانید{" "}
         </h2>
         <span>
