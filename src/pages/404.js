@@ -7,7 +7,7 @@ const NotFountPage = () => {
         width=""
         height=""
         alt="بلیطجا-لوگو"
-        src="/images/bilitja.webp"
+        src="../../../images/bilitja.webp"
       />
 
       <h5 className="font-bold-iransanse text-center mt-4">
