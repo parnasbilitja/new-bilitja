@@ -517,7 +517,7 @@ class FlightReserve extends React.Component {
 
               <div className="col-lg-6 col-md-12 col-12 finish-reserve">
                 <div className="row" style={{ marginTop: 10 }}>
-                  <div className="col-lg-9">
+                  <div className="col-lg-9 d-flex align-items-center">
                     <input
                       type="checkbox"
                       id="terms"
@@ -528,13 +528,15 @@ class FlightReserve extends React.Component {
                       }}
                       className="mx-2"
                     />
-                    <label htmlFor="terms">
+                    <label htmlFor="terms" style={{ fontSize: 15 }}>
                       قوانین و مقررات و صحت اطلاعات را قبول دارم.
                     </label>
                   </div>
-                  <div className="col-lg-3 text-left">
-                    <div>
-                      <a href="">قوانین و مقررات</a>
+                  <div className="col-lg-3 text-right">
+                    <div className={styles["ruls-text"]}>
+                      <a style={{ marginRight: 10, marginTop: 5 }} href="">
+                        قوانین و مقررات
+                      </a>
                     </div>
                   </div>
                 </div>

@@ -130,8 +130,8 @@ export default function ManagePanel() {
         return <EditProfile />;
       case "/panel/change-password":
         return <ChangePassword />;
-      case "/panel/price-handling":
-        return <PriceHandling />;
+      case "/panel/dashboard":
+        return <Dashboard />;
       case "/panel/charter-list":
         return <CharterList />;
       case "/panel/flight-sell-report":

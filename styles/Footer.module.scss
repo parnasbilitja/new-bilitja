@@ -9,7 +9,7 @@
     display: flex;
     color: rgb(241, 241, 241);
     font-size: 14px;
-    justify-content: space-between;
+    flex-direction: column !important;
     .footer-right {
       margin-top: 17px;
       margin-right: 20px;
@@ -155,7 +155,9 @@
     font-size: 17px;
     font-weight: 600;
   }
-
+  .ul-soutian {
+    margin-right: 15px !important;
+  }
   ul {
     list-style: none;
     padding: 0 !important;
@@ -216,7 +218,7 @@
   display: none;
   justify-content: end;
   margin-top: -40px;
-  margin-right: -50px;
+  margin-right: -40px;
 }
 .mobile-footer-soccialmedia {
   display: block;
@@ -252,12 +254,16 @@
   }
   .footer-left {
     margin: 17px;
-    margin-left: 20px;
+    margin-left: 28px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
     span {
       color: #ff0000;
     }
   }
 }
+
 // .enamd{
 //   img{
 //     width: 150px;

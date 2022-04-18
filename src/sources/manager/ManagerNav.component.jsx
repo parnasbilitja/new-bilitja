@@ -82,7 +82,7 @@ const ManagerNav = (props) => {
               : `${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item`
           }
           onClick={() => {
-            myRouter.push("/panel/charter-list");
+            myRouter.push("/panel/dashboard");
           }}
         >
           <div>

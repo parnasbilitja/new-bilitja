@@ -207,7 +207,11 @@ class FlightSearchBox extends React.Component {
           <div
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
-            <i className="bilitja ltr icon-plane-departure form-input-icon rotate-upsidedown-reverse rotate-x-180"></i>
+            {" "}
+            <i
+              style={{ color: "black", fontSize: 32, fontWeight: 500 }}
+              className="bilitja  icon-plane-departure form-input-icon rotate-upsidedown-reverse "
+            ></i>
             <PrimaryTextInputMobile
               value={destinationName}
               // readonlyattr={this.state.width <= mobileSize ? "true" : "false"}

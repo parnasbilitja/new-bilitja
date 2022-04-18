@@ -53,8 +53,9 @@ const Charetrflight = () => {
           <div className={style["charterflight-items-border"]}>
             <div className={style["charterflight-items-price"]}>
               قیمت : <span style={{ color: "red" }}>1300000</span>
+              <div style={{ marginRight: 25 }}>تومـــان</div>
             </div>
-            <div>
+            <div className={style["charterflight-items-button"]}>
               <button>خرید</button>
             </div>
           </div>
@@ -98,9 +99,10 @@ const Charetrflight = () => {
         <div className={style["charterflight-items-coulm"]}>
           <div className={style["charterflight-items-border"]}>
             <div className={style["charterflight-items-price"]}>
-              قیمت : <span style={{ color: "red" }}>1300000</span>
+              قیمت : <span style={{ color: "red" }}>1300000</span>{" "}
+              <div style={{ marginRight: 25 }}>تومـــان</div>
             </div>
-            <div>
+            <div className={style["charterflight-items-button"]}>
               <button>خرید</button>
             </div>
           </div>
@@ -146,9 +148,10 @@ const Charetrflight = () => {
         <div className={style["charterflight-items-coulm"]}>
           <div className={style["charterflight-items-border"]}>
             <div className={style["charterflight-items-price"]}>
-              قیمت : <span style={{ color: "red" }}>1300000</span>
+              قیمت : <span style={{ color: "red" }}>1300000</span>{" "}
+              <div style={{ marginRight: 25 }}>تومـــان</div>
             </div>
-            <div>
+            <div className={style["charterflight-items-button"]}>
               <button>خرید</button>
             </div>
           </div>
@@ -192,9 +195,10 @@ const Charetrflight = () => {
         <div className={style["charterflight-items-coulm"]}>
           <div className={style["charterflight-items-border"]}>
             <div className={style["charterflight-items-price"]}>
-              قیمت : <span style={{ color: "red" }}>1300000</span>
+              قیمت : <span style={{ color: "red" }}>1300000</span>{" "}
+              <div style={{ marginRight: 25 }}>تومـــان</div>
             </div>
-            <div>
+            <div className={style["charterflight-items-button"]}>
               <button>خرید</button>
             </div>
           </div>

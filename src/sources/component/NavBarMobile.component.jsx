@@ -83,7 +83,13 @@ class NavBarMobile extends React.Component {
                     });
                   }}
                 >
-                  <span className="font-bold-iransanse text-dark">ورود </span>/
+                  {" "}
+                  <i className="bilitja icon-login font-size-14 text-dark"></i>{" "}
+                  &nbsp;
+                  <span className="font-bold-iransanse text-dark mr-2">
+                    ورود{" "}
+                  </span>
+                  /
                 </a>
                 <a
                   href=""
@@ -125,7 +131,7 @@ class NavBarMobile extends React.Component {
             <a href="#" className="color-black font-bold-iransanse">
               <span className="text-dark">مشاوره تلفنی : </span>
               <i className="bilitja icon-phone font-size-14"></i>
-              <span className="font-size-13 text-dark"> &nbsp;۰۲۱-۵۷۸۷۴</span>
+              <span className="font-size-17 text-dark"> &nbsp;۰۲۱-۵۷۸۷۴</span>
             </a>
           </div>
         </div>

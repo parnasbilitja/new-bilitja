@@ -9,7 +9,8 @@ export default class PrimarySelectInput extends React.Component {
       <div>
         <select
           {...this.props}
-          className="col-12 primary-text select-box my-1 h-25 p-1"
+          className="col-12 primary-text select-box my-1 h-25 p-2"
+          style={{ height: "4em", borderRadius: 5 }}
         >
           {this.props.children}
         </select>

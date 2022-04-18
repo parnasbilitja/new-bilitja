@@ -41,6 +41,7 @@
     "reselect": "^4.0.0",
     "sass": "^1.32.12",
     "styled-component": "^2.8.0",
+    "swiper": "^8.1.1",
     "use-debounce": "^7.0.1",
     "web-vitals": "^1.1.2"
   },

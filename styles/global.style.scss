@@ -495,7 +495,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 71px;
+  height: 111px;
   width: 26px;
   padding: 0 1px 2px 0;
   text-align: center;
@@ -522,8 +522,9 @@ html {
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
 .rotate-upsidedown-reverse {
-  transform: rotateZ(40deg) scale(1, 1);
+  transform: rotateZ(319deg) rotateY(180deg) scale(1, 1);
   //     transform:rotateZ(-40deg) scale(-1 , 1);
 }
 .popup-content-container {

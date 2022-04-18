@@ -37,6 +37,7 @@ import MinimumPriceCalendar from "./MinimumPriceCalendar.component";
 
 import { getCustomFormat } from "../../Utils/SimpleTasks";
 import { withRouter } from "next/router";
+import Descflightlist from "./Descflitlist";
 
 class GetFlightList extends React.Component {
   constructor(props) {
