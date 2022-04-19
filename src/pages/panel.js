@@ -131,11 +131,13 @@ export default function ManagePanel() {
       case "/panel/change-password":
         return <ChangePassword />;
       case "/panel/dashboard":
-        return <Dashboard />;
+        return <CharterList />;
       case "/panel/charter-list":
         return <CharterList />;
       case "/panel/flight-sell-report":
         return <FlightSellReport />;
+      case "/panel/price-handling":
+        return <PriceHandling />;
       case "/panel/all-flight-sell-report":
         return <AllFlightSellReport />;
       default:

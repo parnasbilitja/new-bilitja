@@ -1,0 +1,82 @@
+.list-vila {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 8%;
+  .vila-item {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 45px 0 0;
+  }
+  .filterbox {
+    width: 23%;
+  }
+}
+
+.vila-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+
+  .villa-suggestion {
+    width: 32%;
+    margin: 20px 0 0 12px;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid #eee;
+    box-shadow: 0px 5px 15px #e9ecefd1;
+    img {
+      width: 95%;
+      height: 200px;
+      border-radius: 8px 8px 0 0;
+      margin: 5px 8px 0 0;
+    }
+    .vilia-desc {
+      font-size: 13px;
+      color: rgb(139, 139, 139);
+      font-weight: 600;
+      margin: 15px 9px 0 0;
+    }
+    .vilia-desc-title {
+      margin: 10px 9px 0 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .vila-price {
+      margin: 15px 9px 0 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: rgb(73, 73, 73);
+    }
+    .star-vila {
+      margin: 5px 9px 5px 0;
+      color: gold;
+      font-size: 13px;
+    }
+  }
+  .button {
+    margin: 10px 0 15px 10px;
+    text-align: left;
+    button {
+      border: none;
+      width: 155px;
+      height: 33px;
+      border-radius: 8px 8px 8px 0;
+      background-color: #279692;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      transition: all 0.5s;
+
+      &:hover {
+        background-color: #fff;
+        color: #279692;
+        font-size: 18px;
+        font-weight: 600;
+        border: #279692 1px solid;
+        transition: all 0.5s;
+      }
+    }
+  }
+}

@@ -12,10 +12,11 @@ import { accountBoxModify } from "../Redux/UI/ui.action";
 import VillaPage from "./../sources/villa/villa.page";
 import VillaList from "./../sources/villa_list/villaList.page";
 import VillaReserve from "./../sources/villa/villaReserve.page";
-import Vilialist from "./../sources/villa/Vilialist";
+// import Vilialist from "./../sources/villa/Vilialist";
 import VillaReceipt from "./../sources/villa/villaReceipt.page";
 import BecomeMizban from "./../sources/account/BecomeMizban.page";
 import { withRouter } from "next/router";
+import Vilalistitem from "../sources/villa/Vilalistitem";
 
 class App extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class App extends React.Component {
       return <BecomeMizban />;
     }
     if (pathName.indexOf("reserve") > 0) {
-      return <Vilialist />;
+      return <Vilalistitem />;
     }
     if (pathName.indexOf("receipt") > 0) {
       return <VillaReceipt />;

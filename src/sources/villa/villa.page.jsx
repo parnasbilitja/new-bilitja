@@ -165,7 +165,7 @@ class villa extends React.Component {
           <div className="row">
             <div className="col-md-1 col-0"></div>
             <div className="col-lg-10 col-md-10 col-12 text-right">
-              <div className="row">
+              <div className={styles["vila-item"]}>
                 <div
                   className={`col-lg-3 col-md-3 col-sm-6 col-12 ${styles["villa-suggestion"]}`}
                 >
@@ -173,17 +173,154 @@ class villa extends React.Component {
                     width=""
                     height=""
                     alt="بلیطجا - پیش نمایش ویلا"
-                    src="../../../Images/hotel_view.jpg"
+                    src="Images/picture3.jpg"
                   />
-                  <p className="font-size-13 no-margin">ویلا</p>
-                  <span className="pull-right">
+                  <p className={styles["vilia-desc"]}>
+                    ویلایی . 3 خوابه . تهران، رودهن
+                  </p>
+                  <div className={styles["vilia-desc-title"]}>
+                    استخر سرپوشیده آبگرم با جکوزی و امکانات سرگرمی
+                  </div>
+                  <div className={styles["vila-price"]}>
+                    هر شب از 3٫500٫000 تومان
+                  </div>{" "}
+                  <div className={styles["star-vila"]}>
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
-                  </span>
-                  <span className="pull-left font-size-13">000 تومان</span>
+                  </div>
+                </div>
+                <div
+                  className={`col-lg-3 col-md-3 col-sm-6 col-12 ${styles["villa-suggestion"]}`}
+                >
+                  <img
+                    width=""
+                    height=""
+                    alt="بلیطجا - پیش نمایش ویلا"
+                    src="Images/picture3.jpg"
+                  />
+                  <p className={styles["vilia-desc"]}>
+                    ویلایی . 3 خوابه . تهران، رودهن
+                  </p>
+                  <div className={styles["vilia-desc-title"]}>
+                    استخر سرپوشیده آبگرم با جکوزی و امکانات سرگرمی
+                  </div>
+                  <div className={styles["vila-price"]}>
+                    هر شب از 3٫500٫000 تومان
+                  </div>{" "}
+                  <div className={styles["star-vila"]}>
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                  </div>
+                </div>
+                <div
+                  className={`col-lg-3 col-md-3 col-sm-6 col-12 ${styles["villa-suggestion"]}`}
+                >
+                  <img
+                    width=""
+                    height=""
+                    alt="بلیطجا - پیش نمایش ویلا"
+                    src="Images/picture3.jpg"
+                  />
+                  <p className={styles["vilia-desc"]}>
+                    ویلایی . 3 خوابه . تهران، رودهن
+                  </p>
+                  <div className={styles["vilia-desc-title"]}>
+                    استخر سرپوشیده آبگرم با جکوزی و امکانات سرگرمی
+                  </div>
+                  <div className={styles["vila-price"]}>
+                    هر شب از 3٫500٫000 تومان
+                  </div>{" "}
+                  <div className={styles["star-vila"]}>
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                  </div>
+                </div>
+                <div
+                  className={`col-lg-3 col-md-3 col-sm-6 col-12 ${styles["villa-suggestion"]}`}
+                >
+                  <img
+                    width=""
+                    height=""
+                    alt="بلیطجا - پیش نمایش ویلا"
+                    src="Images/picture3.jpg"
+                  />
+                  <p className={styles["vilia-desc"]}>
+                    ویلایی . 3 خوابه . تهران، رودهن
+                  </p>
+                  <div className={styles["vilia-desc-title"]}>
+                    استخر سرپوشیده آبگرم با جکوزی و امکانات سرگرمی
+                  </div>
+                  <div className={styles["vila-price"]}>
+                    هر شب از 3٫500٫000 تومان
+                  </div>{" "}
+                  <div className={styles["star-vila"]}>
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                  </div>
+                </div>
+                <div
+                  className={`col-lg-3 col-md-3 col-sm-6 col-12 ${styles["villa-suggestion"]}`}
+                >
+                  <img
+                    width=""
+                    height=""
+                    alt="بلیطجا - پیش نمایش ویلا"
+                    src="Images/picture3.jpg"
+                  />
+                  <p className={styles["vilia-desc"]}>
+                    ویلایی . 3 خوابه . تهران، رودهن
+                  </p>
+                  <div className={styles["vilia-desc-title"]}>
+                    استخر سرپوشیده آبگرم با جکوزی و امکانات سرگرمی
+                  </div>
+                  <div className={styles["vila-price"]}>
+                    هر شب از 3٫500٫000 تومان
+                  </div>{" "}
+                  <div className={styles["star-vila"]}>
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                  </div>
+                </div>
+                <div
+                  className={`col-lg-3 col-md-3 col-sm-6 col-12 ${styles["villa-suggestion"]}`}
+                >
+                  <img
+                    width=""
+                    height=""
+                    alt="بلیطجا - پیش نمایش ویلا"
+                    src="Images/picture3.jpg"
+                  />
+                  <p className={styles["vilia-desc"]}>
+                    ویلایی . 3 خوابه . تهران، رودهن
+                  </p>
+                  <div className={styles["vilia-desc-title"]}>
+                    استخر سرپوشیده آبگرم با جکوزی و امکانات سرگرمی
+                  </div>
+                  <div className={styles["vila-price"]}>
+                    هر شب از 3٫500٫000 تومان
+                  </div>{" "}
+                  <div className={styles["star-vila"]}>
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                  </div>
                 </div>
               </div>
             </div>
