@@ -96,6 +96,8 @@ export async function getServerSideProps({ req }) {
     }
     data.RRN = "";
     console.log(data.StateCode);
+    data.StateCode =0 ; // موقت برای تست
+    
     switch (data.StateCode) {
       case "-1":
         data.RRN = "شما از تراکنش انصراف داده اید.";
