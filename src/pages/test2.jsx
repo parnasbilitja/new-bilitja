@@ -33,38 +33,6 @@ const page = ({ data,PaymentInfo }) => {
 
   return (
     <div>
-      {data.RRN == "" ? <PaymentReceiptPage {...PaymentInfo} /> : null}
-
-      {data.RRN != "" ? (
-        <div className="callback-bank-container">
-          <div className="row">
-            <div className="col-12 text-center mb-5">
-              <img
-                width=""
-                height=""
-                alt=""
-                src="../../Images/bilitja.webp"
-                className="img-fluid "
-              />
-            </div>
-            <br />
-            <div>
-              <h6 className="font-bold-iransanse text-center alert alert-danger">
-                {" "}
-                خطا: {data.RRN}
-              </h6>
-            </div>
-            <div className="mt-5 text-center">
-              <a
-                className="font-bold-iransanse text-center text-danger"
-                href="/"
-              >
-                بازگشت به صفحه اصلی
-              </a>
-            </div>
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 }
@@ -196,6 +164,7 @@ export const getServerSideProps = async (req) => {
       },
     };
   }
+
   const responsePnr2 = await fetch(
     // `${globals.baseUrl}onlinePay/reference/${reqPnr}`
 //              `https://tpa.ravis.ir/api/OnlinePay/api/onlinePay/reference/OUPHKE/1a157116-a01a-4027-ab10-74098ac63815`
@@ -205,7 +174,7 @@ export const getServerSideProps = async (req) => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      state: "-3",
+      state: "-2",
       refNum: "237",
       resNum: "237",
       mid: "222222",
@@ -219,7 +188,6 @@ export const getServerSideProps = async (req) => {
    const responsedatapnr2 = await responsePnr2.json();
 
   return { props: {PaymentInfo: responsedatapnr2} };
-//  return { props: {} };
 }
 
 export default page;
