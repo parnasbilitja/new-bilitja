@@ -71,7 +71,8 @@ const page = ({ data,PaymentInfo }) => {
 
 //This gets called on every request
 export const getServerSideProps = async (req) => {  
-  if (req.method == "POST") {
+  //if (req.method == "POST") 
+  //{
     const body = await getRawBody(req);
     //  console.log("start")
     //    console.log(body.toString("utf-8"))
@@ -195,7 +196,7 @@ export const getServerSideProps = async (req) => {
         PaymentInfo: responsedatapnr,
       },
     };
-  }
+  //}
   const responsePnr2 = await fetch(
     // `${globals.baseUrl}onlinePay/reference/${reqPnr}`
 //              `https://tpa.ravis.ir/api/OnlinePay/api/onlinePay/reference/OUPHKE/1a157116-a01a-4027-ab10-74098ac63815`
