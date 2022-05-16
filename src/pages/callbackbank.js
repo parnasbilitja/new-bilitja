@@ -23,7 +23,9 @@ function convertUtftoAscii(str) {
   }
   return str;
 }
-function Page({ data, PaymentInfo }) {
+
+const page = ({ data,PaymentInfo }) => {
+//const Page({ data, PaymentInfo }) {
   console.log("top");
   console.log(data);
   console.log(PaymentInfo);
@@ -197,4 +199,4 @@ export const getServerSideProps = async (req) => {
   return { props: {} };
 }
 
-export default Page;
+export default page;
