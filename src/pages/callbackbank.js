@@ -68,7 +68,7 @@ function Page({ data, PaymentInfo }) {
 }
 
 //This gets called on every request
-export async function getServerSideProps({ req }) {
+export const getServerSideProps = async (req) => {  
   if (req.method == "POST") {
     const body = await getRawBody(req);
     //  console.log("start")
