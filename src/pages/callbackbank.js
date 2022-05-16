@@ -24,7 +24,7 @@ function convertUtftoAscii(str) {
   return str;
 }
 
-const page = ({ data,PaymentInfo }) => {
+function Page({ data, PaymentInfo }) {
 //const Page({ data, PaymentInfo }) {
   console.log("top");
   console.log(data);
@@ -70,9 +70,10 @@ const page = ({ data,PaymentInfo }) => {
 }
 
 //This gets called on every request
-export const getServerSideProps = async (req) => {  
-  //if (req.method == "POST") 
-  //{
+//export const getServerSideProps = async (req) => {  
+export async function getServerSideProps({ req }) {
+  if (req.method == "POST") 
+  {
     const body = await getRawBody(req);
     //  console.log("start")
     //    console.log(body.toString("utf-8"))
@@ -135,7 +136,7 @@ export const getServerSideProps = async (req) => {
               refNum: refNum,
               resNum: data.ResNum,
               mid: data.MID,
-              userId: localStorage.getItem("token"),
+              userId: "",//localStorage.getItem("token"),
               customerId: "1a157116-a01a-4027-ab10-74098ac63815",
               hostname: "bilitja.com",
               agencyName: "بلیطجا",
@@ -196,31 +197,10 @@ export const getServerSideProps = async (req) => {
         PaymentInfo: responsedatapnr,
       },
     };
-  //}
-  const responsePnr2 = await fetch(
-    // `${globals.baseUrl}onlinePay/reference/${reqPnr}`
-//              `https://tpa.ravis.ir/api/OnlinePay/api/onlinePay/reference/OUPHKE/1a157116-a01a-4027-ab10-74098ac63815`
-  `https://tpa.ravis.ir/api/appCallBackBank/AppCallBackBank/saman`,
- //   );
-   {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      state: "-3",
-      refNum: "237",
-      resNum: "237",
-      mid: "222222",
-      userId: "",
-      customerId: "1a157116-a01a-4027-ab10-74098ac63815",
-      hostname: "bilitja.com",
-      agencyName: "بلیطجا",
-      telNumber: "02157874",
-    }),
-  });
-   const responsedatapnr2 = await responsePnr2.json();
-
-  return { props: {PaymentInfo: responsedatapnr2} };
-//  return { props: {} };
+  }
+  
+//  return { props: {PaymentInfo: responsedatapnr2} };
+  return { props: {} };
 }
 
-export default page;
+export default Page;
