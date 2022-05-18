@@ -162,18 +162,7 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-              {/* <a
-            referrerPolicy="origin"
-            target="_blank"
-            href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-          >
-            <img
-              referrerPolicy="origin"
-              src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-              alt=""
-              id="wC1opUKBlpiUx3sEWOGR"
-            />
-          </a> */}
+              
             </div>
             <div className={styles["mobile-footer-soccialmedia"]}>
               <div
@@ -287,7 +276,19 @@ const Footer = () => {
             <div>© کپی رایت 1400. Ver 1.1.1</div>
             <span>کلیه حقوق این سایت محفوظ و متعلق به بلیط جا می‌باشد. </span>
           </div>
-          <div className={styles["footer-left"]}>
+
+          <div><a
+            referrerPolicy="origin"
+            target="_blank"
+            href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+          >
+            <img
+              referrerPolicy="origin"
+              src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+              alt=""
+              id="wC1opUKBlpiUx3sEWOGR"
+            />
+          </a> </div>          <div className={styles["footer-left"]}>
             <strong style={{ width: 500 }}>طراحی و توسعه سایت : </strong>
             <span> تیم فنی و توسعه بلیطجا </span>
           </div>
