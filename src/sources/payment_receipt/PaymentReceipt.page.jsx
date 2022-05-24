@@ -13,7 +13,7 @@ const PaymentReceiptPage = (props) => {
   const handlePrint = (reqNo, reqPnr) => {
     setBtnDisabel(true);
     fetch(
-      `https://bilitja.ravis.ir/Eticket/Ticket?reqNo=${reqNo}&reqPnr=${reqPnr}`
+      `https://tpa.ravis.ir/Eticket/Ticket?reqNo=${reqNo}&reqPnr=${reqPnr}`
     )
       .then((res) => res.blob())
       .then((blob) => {
