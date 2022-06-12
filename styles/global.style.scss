@@ -9,14 +9,17 @@
   font-family: BYekan;
   src: url("../public/Font/IranSans2/eot/IRANSansWebFaNumUltraLight.woff");
 }
+
 @font-face {
   font-family: IranBold;
   src: url("../public/Font/IranSans2/eot/IRANSansWebFaNumBold.woff");
 }
+
 @font-face {
   font-family: bilitja;
   src: url("../public/Font/kilofont.woff");
 }
+
 .bilitja {
   font-family: bilitja;
   font-style: normal;
@@ -67,25 +70,31 @@ body {
   z-index: 1 !important;
   direction: rtl;
 }
+
 .ltr {
   direction: ltr !important;
 }
+
 .font-bold-iransanse {
   font-family: IranBold !important;
 }
+
 a {
   color: $pillTextGray;
+
   &:hover {
     text-decoration: none;
     color: $secondaryColor;
   }
 }
+
 body,
 html {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
 }
+
 .bodyVar {
   font-family: BYekan;
   z-index: 1 !important;
@@ -93,10 +102,12 @@ html {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+
   a {
     color: $pillTextGray;
     text-decoration: none;
     font-size: 15px;
+
     &:hover {
       text-decoration: none;
       color: $secondaryColor;
@@ -107,36 +118,47 @@ html {
 .no-padding {
   padding: 0 !important;
 }
+
 .no-margin {
   margin: 0 !important;
 }
+
 .no-margin-vertical {
   margin: 0 auto !important;
 }
+
 .no-padding-right {
   padding-right: 0 !important;
 }
+
 .no-padding-horizental {
   padding: 5px 0 !important;
 }
+
 .no-padding-vertical {
   padding: 0 5px !important;
 }
+
 .margin-top-20px {
   margin-top: 20px;
 }
+
 .margin-top-15px {
   margin-top: 15px;
 }
+
 .margin-top-10px {
   margin-top: 10px;
 }
+
 .margin-top-5px {
   margin-top: 5px;
 }
+
 .margin-bottom-5px {
   margin-bottom: 5px !important;
 }
+
 .margin-bottom-0px {
   margin-bottom: 0px !important;
 }
@@ -144,101 +166,131 @@ html {
 .margin-5px {
   margin: 5px;
 }
+
 .padding-5px {
   padding: 5px;
 }
+
 .padding-3px {
   margin-top: 10px;
 
   padding: 3px;
 }
+
 .padding-horizental-3px {
   padding: 0 3px !important;
 }
+
 .padding-horizental-10px {
   padding: 0 10px !important;
 }
+
 .padding-10px {
   padding: 10px;
 }
+
 .card-box-shadow1 {
   box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
 }
+
 .font-size-8 {
   font-size: 8px;
 }
+
 .font-size-9 {
   font-size: 9px;
 }
+
 .font-size-10 {
   font-size: 10px;
 }
+
 .font-size-11 {
   font-size: 11px;
 }
+
 .font-size-12 {
   font-size: 12px;
 }
+
 .font-size-13 {
   font-size: 13px;
 }
+
 .font-size-14 {
   font-size: 14px;
 }
+
 .font-size-15 {
   font-size: 15px;
 }
+
 .font-size-16 {
   font-size: 16px;
 }
+
 .font-size-18 {
   font-size: 18px;
 }
+
 .font-size-20 {
   font-size: 20px;
 }
+
 .font-size-22 {
   font-size: 22px;
 }
+
 .font-size-23 {
   font-size: 23px;
 }
+
 .font-size-24 {
   font-size: 24px;
 }
+
 .font-size-25 {
   font-size: 25px;
 }
+
 .color-primary {
   color: $primaryColor;
 }
+
 .color-textpill {
   color: $pillTextGray;
 }
+
 .color-black {
   color: black;
 }
+
 .color-white {
   color: white;
 }
+
 .background-white {
   background-color: white;
 }
+
 .color-secondary {
   color: $secondaryColor;
   font-size: 17px;
 }
+
 .btn-outlined {
   border: 1px solid $primaryColor;
   padding: 1px 3px 2px 2px;
   cursor: pointer;
   color: black;
   border-radius: 5px;
+
   &:hover {
     text-decoration: none;
     color: black;
   }
 }
+
 .btn-outlined-cancle {
   @extend .btn-outlined;
   text-align: center;
@@ -250,11 +302,13 @@ html {
   font-size: 13px;
   border-color: $secondaryColor !important;
   color: $secondaryColor !important;
+
   &:hover {
     background-color: $secondaryColor !important;
     color: $whiteColor !important;
   }
 }
+
 .btn-outlined-cancle-tall {
   @extend .btn-outlined;
   height: 40px !important;
@@ -266,11 +320,13 @@ html {
   font-size: 13px;
   border-color: $secondaryColor;
   color: $secondaryColor;
+
   &:hover {
     background-color: $secondaryColor;
     color: $whiteColor;
   }
 }
+
 .btn-outlined-reserve {
   @extend .btn-outlined;
   text-align: center;
@@ -282,11 +338,13 @@ html {
   font-size: 13px;
   border-color: $primaryColor;
   color: $primaryColor;
+
   &:hover {
     background-color: $primaryColor;
     color: $whiteColor;
   }
 }
+
 .btn-outlined-reserve-tall {
   @extend .btn-outlined;
   height: 40px !important;
@@ -298,21 +356,25 @@ html {
   font-size: 13px;
   border-color: $primaryColor;
   color: $primaryColor;
+
   &:hover {
     background-color: $primaryColor;
     color: $whiteColor;
   }
 }
+
 .btn-fiiled {
   color: black;
   padding: 7px 5px;
   border-radius: 3px;
 
   background-color: $whiteColor;
+
   &:hover {
     color: black;
   }
 }
+
 .btn-buy-action {
   background-color: $secondaryColor;
   border-radius: 20px;
@@ -321,12 +383,15 @@ html {
   height: 33px;
   margin: 0 auto;
   border: 2px solid $secondaryColor;
+
   a,
   i {
     color: $whiteColor;
   }
+
   &:hover {
     background-color: $whiteColor;
+
     a,
     i {
       color: $secondaryColor;
@@ -348,22 +413,27 @@ html {
   cursor: pointer;
   font-size: 13px;
   line-height: 30px;
+
   &:hover {
     background-color: white !important;
     color: #069e2c !important;
   }
 }
+
 .without-focus {
   &:focus-within {
     border-bottom: none !important;
   }
 }
+
 .form-input-border-primaryselect {
   height: 29px !important;
 }
+
 .row-price {
   padding: 12px 5px 0 5px;
 }
+
 .form-input-border {
   border: 1px solid $pillGray;
   border-radius: $borderRadius;
@@ -373,17 +443,21 @@ html {
   padding: 0 !important;
   margin-top: 7px;
   position: relative;
+
   svg {
     color: $pillTextGray;
   }
+
   &:focus-within {
     border-bottom: $secondaryColor 1px solid;
+
     .suggestion-box {
       overflow-y: auto;
       max-height: 100px;
       display: block;
     }
   }
+
   .suggestion-box {
     box-shadow: -2px 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
     width: 100%;
@@ -401,15 +475,18 @@ html {
     div {
       padding: 5px 10px;
       cursor: pointer;
+
       &:hover {
         background-color: #f2f2f2;
       }
     }
+
     &:hover {
       display: block;
     }
   }
 }
+
 .form-input {
   border: none;
   height: 100%;
@@ -421,6 +498,7 @@ html {
     border-bottom: 1px solid red;
   }
 }
+
 .form-input-icon {
   position: absolute;
   top: 5px;
@@ -436,6 +514,7 @@ html {
   left: 15px;
   font-size: 29px;
 }
+
 .input-search {
   @extend .card-box-shadow1;
   width: 100%;
@@ -443,43 +522,55 @@ html {
   height: 45px;
   font-size: 17px;
   border-radius: 5px;
+
   &:focus {
     border-bottom: 2px solid $secondaryColor;
     outline: none;
   }
 }
+
 .border-pill,
 .border-pill-lg {
   border: 1px solid $pillGray;
   border-radius: 5px;
 }
+
 .border-right-pill {
   border-right: 1px solid $pillGray;
 }
+
 .border-bottom-black {
   border-bottom: 1px solid black;
 }
+
 .text-center {
   text-align: center;
 }
+
 .text-right {
   text-align: right;
 }
+
 .text-left {
   text-align: left;
 }
+
 .pull-left {
   float: left;
 }
+
 .pull-right {
   float: right;
 }
+
 .clear {
   clear: both;
 }
+
 .visible-xs {
   display: none;
 }
+
 .exit-form {
   border: 2px solid #ff0000;
   border-radius: 3px;
@@ -489,6 +580,7 @@ html {
   text-align: center;
   height: 30px;
 }
+
 .exit-form-circle {
   border: 2px solid $secondaryColor;
   border-radius: 3px;
@@ -504,6 +596,7 @@ html {
   position: absolute;
   left: 4px;
 }
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 6px;
@@ -519,6 +612,7 @@ html {
   background: #525965;
   border-radius: 10px;
 }
+
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
@@ -527,11 +621,14 @@ html {
   transform: rotateZ(319deg) rotateY(180deg) scale(1, 1);
   //     transform:rotateZ(-40deg) scale(-1 , 1);
 }
+
 .popup-content-container {
   padding: 20px 30px;
+
   .popup-heading {
     padding: 10px 0;
     text-align: right;
+
     span {
       margin: 5px 0;
       padding: 4px 8px 0px 8px;
@@ -539,33 +636,40 @@ html {
     }
   }
 }
+
 .start-box {
   color: #fb9900;
 }
+
 .text-overflow {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   width: 100%; // some width
 }
+
 div.radio {
   float: right;
   margin-top: 3px;
 }
+
 .error-message {
   display: block !important;
   font-size: 11px;
   // min-height: 19px !important;
 }
+
 .topic-icon {
   border-left: 4px solid $primaryColor;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
 }
+
 .panel-header {
   display: grid;
   grid-template-columns: 1fr 10fr;
 }
+
 .payment-container {
   .btn-outlined.color-secondary {
     border-color: $secondaryColor;
@@ -577,18 +681,86 @@ div.radio {
     }
   }
 }
+
 .airline-icon {
   width: 35px;
   height: 35px;
 }
 
+.parent-footer-top {
+  flex-wrap: nowrap !important;
+  padding: 0 5rem !important;
+}
+
+.item-footer {
+  ul {
+    li {
+      margin-top: 8px;
+      transition: 0.4s all;
+
+      &:hover {
+        transition: 0.4s all;
+        transform: translateX(-5px);
+
+        svg {
+          path {
+            fill: $secondaryColor;
+          }
+        }
+
+        a {
+          transition: 0.4s all;
+          color: $secondaryColor;
+        }
+
+      }
+    }
+  }
+}
+
+.description-shop-ticket {
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.number-space {
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin: 0 4px;
+}
+.filter-list-box {
+  .accordion-item {
+    border-radius: 30px !important;
+  }
+
+  .accordion-button {
+    background-color: $secondaryColor !important;
+  }
+}
+.light-bg{
+  background-color: #dbdbdb !important;
+}
+.accordion-item-prs{
+  border-radius: 15px !important;
+}
 @media screen and (max-width: 490px) {
+  .parent-footer-top {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 !important;
+
+    .item-footer {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
   .popup-content-container {
     padding: 20px 10px !important;
   }
   .btn-container-header-login {
     margin: 5px !important;
     margin-bottom: 10px !important;
+
     button {
       font-size: 12px;
     }

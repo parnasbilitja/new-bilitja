@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/Home.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/Home.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/Filters.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/Filters.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/values.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/values.scss" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package.json" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2ATIDXnZ1QNhk7yFfXBGBF793sA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ofogh" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="" />
+      <created>1655027029229</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655027029229</updated>
+      <workItem from="1655027031750" duration="4605000" />
+      <workItem from="1655033308572" duration="219000" />
+      <workItem from="1655033560755" duration="453000" />
+      <workItem from="1655034036221" duration="351000" />
+      <workItem from="1655034407544" duration="6551000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/sources/component/Footer.component.jsx</url>
+          <line>16</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

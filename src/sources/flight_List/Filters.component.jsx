@@ -139,9 +139,9 @@ class Filters extends React.Component {
   render() {
     return (
       <div className={styles["filter-list-box"]}>
-        <Accordion style={{ width: "94%", marginRight: 15 }}>
-          <Accordion.Item>
-            <Accordion.Button className={styles["none"]}>
+        <Accordion style={{ width: "94%", marginRight: 15, }}>
+          <Accordion.Item  className={styles['accordion-item-prs']}>
+            <Accordion.Button style={{ background: " rgb(243, 243, 243)" }}>
               <div className={styles["filter-list-heading"]}>
                 <strong className={`${styles["color-textpill"]} text-muted `}>
                   <strong className={styles["filter-list-sort-4"]}>
@@ -150,7 +150,7 @@ class Filters extends React.Component {
                 </strong>
               </div>
             </Accordion.Button>
-            <Accordion.Body style={{ background: " rgb(243, 243, 243)" }}>
+            <Accordion.Body style={{ background: "#fff" }}>
               <input
                 style={{ marginRight: 15 }}
                 type="text"

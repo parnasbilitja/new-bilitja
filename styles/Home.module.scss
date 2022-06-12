@@ -1,6 +1,7 @@
 @import "./values.scss";
 //@import "./global.style.scss";
 
+
 @media only screen and(max-width:320px) {
   .suggestion-list {
     padding: 5px 8px;
@@ -152,6 +153,7 @@
   }
 }
 @media only screen and (max-width: 2000px) and (min-width: 1025px) {
+
   .tab-container {
     width: 20%;
     grid-template-columns: 1.3fr 1fr;
@@ -389,3 +391,4 @@
     font-weight: 600;
   }
 }
+
