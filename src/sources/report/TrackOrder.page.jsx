@@ -38,7 +38,7 @@ class TrackOrder extends React.Component {
                             </div>
                             <div className="row border-bottom-black-track">
                                 <div className="col-lg-10 col-md-10 col-sm-10 col-10 text-right font-size-14">
-                                    <p className="track-order-second-title">جهت نمایش اطلاعات خرید و پرداخت های آنلاین، کد 6 رقمی رفرنس را وارد نمایید و دکمه جستجو را کلیک کنید</p>
+                                    <p className="track-order-second-title">جهت پیگیری رزرو، کد 6 رقمی رفرنس را وارد نمایید و بروی دکمه جستجو  کلیک کنید</p>
                                 </div>
 
                                 <div className="col-lg-1 col-md-1 col-sm-0 hidden-xs"></div>
@@ -48,7 +48,7 @@ class TrackOrder extends React.Component {
                                         <PrimaryTextInput placeholder="رفرنس پیگیری" name="trackRef" onChange={this.handleChange} />
                                     </div>
                                 </div>
-                                <div className="col-lg-2 col-md-2 col-sm-2 col-5">
+                                <div className="col-lg-5 col-md-5 col-sm-5 col-5">
                                     <div className="form-input-border height-short-input without-focus">
                                         <PrimaryButton defaultValue={"جستجو"} onClick={() => {
                                             this.checkTheRefrence()
@@ -57,27 +57,27 @@ class TrackOrder extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-6 img">
-                            <img className="img-fluid" src="/Images/Exploring-pana.svg" height="450" width="100%" alt=""/>
-                        </div>
+                        {
+                            this.state.referenceEbank ?
+                                <div className="row">
+                                    <div className="col-lg-10 border-pill p-4">
+                                        <div className="row">
+                                            <div className="col-lg-6">{this.state.referenceEbank.stat}</div>
+                                            <div className="col-lg-6">{this.state.referenceEbank.bankName}</div>
+                                            <div className="col-lg-6">{this.state.referenceEbank.reqNo}</div>
+                                            <div className="col-lg-6">{this.state.referenceEbank.reqPnr}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                :        <div className="col-lg-6 img">
+                                    <img className="img-fluid-1" src="/Images/Exploring-pana.svg" height="350" width="100%" alt=""/>
+                                </div>
+                        }
+
                     </div>
 
                 </div>
-                {
-                    this.state.referenceEbank ?
-                        <div className="row">
-                            <div className="col-lg-1"></div>
-                            <div className="col-lg-10 border-pill">
-                                <div className="row">
-                                    <div className="col-lg-6">{this.state.referenceEbank.stat}</div>
-                                    <div className="col-lg-6">{this.state.referenceEbank.bankName}</div>
-                                    <div className="col-lg-6">{this.state.referenceEbank.reqNo}</div>
-                                    <div className="col-lg-6">{this.state.referenceEbank.reqPnr}</div>
-                                </div>
-                            </div>
-                        </div>
-                        : null
-                }
+
 
             </div>
         )

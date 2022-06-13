@@ -852,9 +852,13 @@ div.radio {
   flex-direction: column;
   .img{
     img{
-      object-fit: cover;
+     height: 350px !important;
     }
   }
+}
+.img-fluid-1{
+  height: 430px;
+  object-fit: contain;
 }
 @media screen and (max-width: 490px) {
   .parent-page-trakorder .img{
