@@ -30,36 +30,38 @@ class TrackOrder extends React.Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-lg-1"></div>
-                    <div className="col-lg-10 border-pill">
-                        <br />
-
-                        <p className="text-right track-order-title font-bold-iransanse no-margin">
-                            <FontAwesomeIcon className="color-textpill" icon={faCalendarCheck} />
-                                پیگیری خرید
-                        </p>
-
-                        <div className="row border-bottom-black-track">
-                            <div className="col-lg-7 col-md-7 col-sm-8 col-12 text-right font-size-14">
-                                <p className="track-order-second-title">جهت نمایش اطلاعات خرید و پرداخت های آنلاین، کد 6 رقمی رفرنس را وارد نمایید و دکمه جستجو را کلیک کنید</p>
+                    <div className="col-lg-11 mx-auto parent-page-trakorder">
+                        <div className="col-lg-6 details-order">
+                            <div className="title-order d-flex align-items-center text-right track-order-title font-bold-iransanse no-margin">
+                                <FontAwesomeIcon className="color-textpill icon-size" icon={faCalendarCheck} />
+                                <h2 className={'title-track-order'}>پیگیری خرید</h2>
                             </div>
-
-                            <div className="col-lg-1 col-md-1 col-sm-0 hidden-xs"></div>
-
-                            <div className="col-lg-2 col-md-2 col-sm-2 col-7">
-                                <div className="form-input-border height-short-input">
-                                    <PrimaryTextInput placeholder="رفرنس پیگیری" name="trackRef" onChange={this.handleChange} />
+                            <div className="row border-bottom-black-track">
+                                <div className="col-lg-10 col-md-10 col-sm-10 col-10 text-right font-size-14">
+                                    <p className="track-order-second-title">جهت نمایش اطلاعات خرید و پرداخت های آنلاین، کد 6 رقمی رفرنس را وارد نمایید و دکمه جستجو را کلیک کنید</p>
                                 </div>
-                            </div>
-                            <div className="col-lg-2 col-md-2 col-sm-2 col-5">
-                                <div className="form-input-border height-short-input without-focus">
-                                    <PrimaryButton defaultValue={"جستجو"} onClick={() => {
-                                        this.checkTheRefrence()
-                                    }} />
+
+                                <div className="col-lg-1 col-md-1 col-sm-0 hidden-xs"></div>
+
+                                <div className="w-100">
+                                    <div className="col-md-10 form-input-border height-short-input">
+                                        <PrimaryTextInput placeholder="رفرنس پیگیری" name="trackRef" onChange={this.handleChange} />
+                                    </div>
+                                </div>
+                                <div className="col-lg-2 col-md-2 col-sm-2 col-5">
+                                    <div className="form-input-border height-short-input without-focus">
+                                        <PrimaryButton defaultValue={"جستجو"} onClick={() => {
+                                            this.checkTheRefrence()
+                                        }} />
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div className="col-lg-6 img">
+                            <img className="img-fluid" src="/Images/Exploring-pana.svg" height="450" width="100%" alt=""/>
+                        </div>
                     </div>
+
                 </div>
                 {
                     this.state.referenceEbank ?

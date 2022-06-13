@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/Home.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/Home.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/Exploring-pana.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/arrow-small-left.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/flight_List/Filters.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/Filters.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightList.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightList.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/report/TrackOrder.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/report/TrackOrder.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/Flight.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Flight.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/values.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/values.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,10 +40,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ofogh" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/Images" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\projects\bilitjassrnew\public\Images" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -53,12 +62,26 @@
       <workItem from="1655033308572" duration="219000" />
       <workItem from="1655033560755" duration="453000" />
       <workItem from="1655034036221" duration="351000" />
-      <workItem from="1655034407544" duration="6551000" />
+      <workItem from="1655034407544" duration="6614000" />
+      <workItem from="1655098262796" duration="16779000" />
     </task>
+    <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
+      <created>1655042277930</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۱" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۱" />
+      <updated>1655042277930</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="design footer &amp; text bold shop ticket" />
+    <option name="LAST_COMMIT_MESSAGE" value="design footer &amp; text bold shop ticket" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -66,8 +89,13 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/sources/component/Footer.component.jsx</url>
           <line>16</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/sources/flight_List/Filters.component.jsx</url>
+          <line>331</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

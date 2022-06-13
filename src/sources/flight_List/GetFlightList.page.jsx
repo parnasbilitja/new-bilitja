@@ -601,7 +601,7 @@ class GetFlightList extends React.Component {
         <div className="row">
           <div className="col-lg-1 col-md-1 col-sm-1"></div>
           <div className="col-lg-10 col-md-11 col-sm-12">
-            <div className="row">
+            <div className="row min-height">
               <div className="col-lg-9 col-md-8 col-sm-8 col-12 padding-5px">
                 {this.state.loading ? (
                   <div className="mt-4">
