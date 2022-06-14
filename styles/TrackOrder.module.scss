@@ -1,3 +1,12 @@
+$pillGray :#dee2e6;
+$pillTextGray :#888;
+$whiteColor : #fff;
+$blackColor : #000;
+$primaryColor: #279692;
+$secondaryColor:#ff0000;
+$blackBackground:#333;
+$borderRadius : 0.25rem;
+
 .track-order-title {
   svg {
     margin-left: 5px;
@@ -15,4 +24,41 @@
   margin: 0 auto;
   padding-bottom: 10px;
   border-bottom: 1px solid black;
+}
+.parent-page-trakorder{
+  margin: 3rem 0;
+  border: 2px solid $pillGray;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title-track-order{
+  margin-right: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+.icon-size{
+  font-size: 18px;
+}
+.details-order{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.border-bottom-black-track{
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  .img{
+    img{
+      height: 350px !important;
+    }
+  }
+}
+.img-fluid-1{
+  height: 430px;
+  object-fit: contain;
 }
