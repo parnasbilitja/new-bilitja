@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/report/TrackOrder.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/report/TrackOrder.page.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +57,7 @@
       <workItem from="1655034407544" duration="6614000" />
       <workItem from="1655098262796" duration="23765000" />
       <workItem from="1655184643535" duration="8146000" />
-      <workItem from="1655194945592" duration="332000" />
+      <workItem from="1655194945592" duration="1317000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -94,7 +95,19 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۰۶" />
       <updated>1655194766758</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL‎۰۰۰۰۷" summary="flight reserve">
+      <created>1655195284618</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۷" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۷" />
+      <updated>1655195284618</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۰۸" summary="flight reserve">
+      <created>1655195535987</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۸" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۸" />
+      <updated>1655195535987</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

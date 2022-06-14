@@ -30,7 +30,7 @@ class TrackOrder extends React.Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-lg-11 mx-auto parent-page-trakorder">
+                    <div className='col-lg-11 mx-auto parent-page-trakorder'>
                         <div className="col-lg-6 details-order">
                             <div className="title-order d-flex align-items-center text-right track-order-title font-bold-iransanse no-margin">
                                 <FontAwesomeIcon className="color-textpill icon-size" icon={faCalendarCheck} />

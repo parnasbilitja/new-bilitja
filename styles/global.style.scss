@@ -832,6 +832,35 @@ div.radio {
   align-items: center;
   justify-content: space-between;
 }
+.title-track-order{
+  margin-right: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+.icon-size{
+  font-size: 18px;
+}
+.details-order{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.border-bottom-black-track{
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  .img{
+    img{
+      height: 350px !important;
+    }
+  }
+}
+.img-fluid-1{
+  height: 430px;
+  object-fit: contain;
+}
+
 .iranBold{
   font-family: IranBold !important;
 }
