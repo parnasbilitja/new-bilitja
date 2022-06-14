@@ -1,3 +1,4 @@
+
 @media only screen and (max-width: 650px) {
   .visible-xs-passenger-form-header {
     display: flex;
@@ -27,19 +28,28 @@
   position: absolute;
   top: 2px;
   left: 1px;
+  .delete-thumbnail{
+    height: 50px !important;
+    width: 50px !important;
+    background-color: #ff0000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 }
 .container {
   width: 98%;
 }
 .passenger-form {
   position: relative;
-  margin-top: 5px;
+  margin-top: 12px;
   text-align: right;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 98%;
-  background-color: #ccc;
+  background-color: #ede8e8;
   border-radius: 8px;
   padding: 10px;
   & > div {

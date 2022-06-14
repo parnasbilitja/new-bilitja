@@ -860,7 +860,40 @@ div.radio {
   height: 430px;
   object-fit: contain;
 }
+.iranBold{
+  font-family: IranBold !important;
+}
+.border-between{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.delete-thumbnail{
+  height: 50px !important;
+  width: 50px !important;
+  background-color: #ff0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover{
+    svg{
+      transform: scale(1.2);
+      transition: 0.5s ease-in;
+    }
+  }
+  svg{
+    transition: 0.5s ease-in;
+    path{
+      fill: #ffff;
+    }
+  }
+}
 @media screen and (max-width: 490px) {
+  .border-between{
+    display: none !important;
+  }
   .parent-page-trakorder .img{
     display: none;
   }

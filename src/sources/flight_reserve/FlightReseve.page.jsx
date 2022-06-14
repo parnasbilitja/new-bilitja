@@ -52,48 +52,48 @@ class FlightReserve extends React.Component {
       priceMessage: "",
     });
     fetch(
-      `${
-        globals.baseUrlNew
-      }BilitFlightReserve/flightsReserve/ravisReserveProperty/${
-        this.props.router.asPath.split("/")[7]
-      }-${
-        this.props.router.asPath.split("/")[8]
-      }/1a157116-a01a-4027-ab10-74098ac63815`
+        `${
+            globals.baseUrlNew
+        }BilitFlightReserve/flightsReserve/ravisReserveProperty/${
+            this.props.router.asPath.split("/")[7]
+        }-${
+            this.props.router.asPath.split("/")[8]
+        }/1a157116-a01a-4027-ab10-74098ac63815`
     )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status == "0") {
-          new Array(parseInt(data.flightReservePropertyModel.numADL))
-            .fill()
-            .forEach((x) => {
-              this.addNewPassenger(
-                "ADL",
-                data.flightReservePropertyModel.priceADL
-              );
-            });
-          Array(parseInt(data.flightReservePropertyModel.numCHD))
-            .fill()
-            .forEach((x) => {
-              this.addNewPassenger(
-                "CHD",
-                data.flightReservePropertyModel.priceCHD
-              );
-            });
-          Array(parseInt(data.flightReservePropertyModel.numINF))
-            .fill()
-            .forEach((x) => {
-              this.addNewPassenger(
-                "INF",
-                data.flightReservePropertyModel.priceINF
-              );
-            });
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status == "0") {
+            new Array(parseInt(data.flightReservePropertyModel.numADL))
+                .fill()
+                .forEach((x) => {
+                  this.addNewPassenger(
+                      "ADL",
+                      data.flightReservePropertyModel.priceADL
+                  );
+                });
+            Array(parseInt(data.flightReservePropertyModel.numCHD))
+                .fill()
+                .forEach((x) => {
+                  this.addNewPassenger(
+                      "CHD",
+                      data.flightReservePropertyModel.priceCHD
+                  );
+                });
+            Array(parseInt(data.flightReservePropertyModel.numINF))
+                .fill()
+                .forEach((x) => {
+                  this.addNewPassenger(
+                      "INF",
+                      data.flightReservePropertyModel.priceINF
+                  );
+                });
 
-          this.setState({
-            ...data.flightReservePropertyModel,
-          });
-        } else {
-        }
-      });
+            this.setState({
+              ...data.flightReservePropertyModel,
+            });
+          } else {
+          }
+        });
   }
   fillPassengersData = (field, passengerNo, value) => {
     let passenger = this.state.passengers.find((x) => x.id == passengerNo);
@@ -141,12 +141,12 @@ class FlightReserve extends React.Component {
     passengers.push(additionalPassenger);
 
     this.setState(
-      {
-        passengers: passengers,
-      },
-      () => {
-        this.getAllPrice();
-      }
+        {
+          passengers: passengers,
+        },
+        () => {
+          this.getAllPrice();
+        }
     );
   };
 
@@ -154,12 +154,12 @@ class FlightReserve extends React.Component {
     let passengers = this.state.passengers;
     passengers = passengers.filter((onePssenger) => onePssenger.id != id);
     this.setState(
-      {
-        passengers: passengers,
-      },
-      () => {
-        this.getAllPrice();
-      }
+        {
+          passengers: passengers,
+        },
+        () => {
+          this.getAllPrice();
+        }
     );
   };
 
@@ -278,9 +278,9 @@ class FlightReserve extends React.Component {
       reqNo: this.props.reserveProperties.reqNo,
       reqPnr: this.props.reserveProperties.reqPnr,
       nameFamily:
-        this.state.passengers[0].name + " " + this.state.passengers[0].family,
+          this.state.passengers[0].name + " " + this.state.passengers[0].family,
       nameFamilyEn:
-        this.state.passengers[0].name + " " + this.state.passengers[0].family,
+          this.state.passengers[0].name + " " + this.state.passengers[0].family,
       nameEnAll: this.state.passengers.map((x) => x.name).join(","),
       familyEnAll: this.state.passengers.map((x) => x.family).join(","),
       nameAll: this.state.passengers.map((x) => x.name).join(","),
@@ -302,291 +302,291 @@ class FlightReserve extends React.Component {
     };
 
     fetch(
-      `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`,
-      {
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(reservePassengerObject),
-        method: "POST",
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status == "0") {
-          this.props.router.push(
-            `/flights/receipt/${data.reqNo}/${data.reqPnr}`
-          );
-        } else {
-          this.props.messageBoxModify({
-            state: true,
-            message: data.message,
-          });
+        `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`,
+        {
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(reservePassengerObject),
+          method: "POST",
         }
-      });
+    )
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status == "0") {
+            this.props.router.push(
+                `/flights/receipt/${data.reqNo}/${data.reqPnr}`
+            );
+          } else {
+            this.props.messageBoxModify({
+              state: true,
+              message: data.message,
+            });
+          }
+        });
   };
 
   render() {
     return (
-      <div className="container-fluid">
-        <div className={`${styles["flight-detail"]}`}>
-          <FlightReserveDesktopHeader {...this.state} />
-          <FlightReserveMobileHeader {...this.state} />
-        </div>
-        <div className="row mt-10">
-          <div className="col-lg-1"></div>
-          <div className="col-lg-10 no-padding-xs border-pill-lg">
-            {this.state.passengers
-              ? this.state.passengers
-                  .filter((x) => x.type == "ADL")
-                  .map((onePassenger, index) => (
-                    <FlightPassengerForm
-                      {...onePassenger}
-                      id={onePassenger.id}
-                      index={index}
-                      type="ADL"
-                      removePassenger={this.removePassenger}
-                      fillPassengersData={this.fillPassengersData}
-                    />
-                  ))
-              : null}
-            {this.state.passengers
-              ? this.state.passengers
-                  .filter((x) => x.type == "CHD")
-                  .map((onePassenger, index) => (
-                    <FlightPassengerForm
-                      {...onePassenger}
-                      id={onePassenger.id}
-                      index={index}
-                      type="CHD"
-                      removePassenger={this.removePassenger}
-                      fillPassengersData={this.fillPassengersData}
-                    />
-                  ))
-              : null}
-            {this.state.passengers
-              ? this.state.passengers
-                  .filter((x) => x.type == "INF")
-                  .map((onePassenger, index) => (
-                    <FlightPassengerForm
-                      {...onePassenger}
-                      id={onePassenger.id}
-                      index={index}
-                      removePassenger={this.removePassenger}
-                      fillPassengersData={this.fillPassengersData}
-                    />
-                  ))
-              : null}
-            <div className={`row ${styles["add-passanger"]} text-left`}>
-              <div className="visible-xs col-12 ">
-                <p className="font-size-14">
+        <div className="container-fluid">
+          <div className={`${styles["flight-detail"]}`}>
+            <FlightReserveDesktopHeader {...this.state} />
+            <FlightReserveMobileHeader {...this.state} />
+          </div>
+          <div className="row mt-10">
+            <div className="col-lg-1"></div>
+            <div className="col-lg-10 no-padding-xs border-pill-lg">
+              {this.state.passengers
+                  ? this.state.passengers
+                      .filter((x) => x.type == "ADL")
+                      .map((onePassenger, index) => (
+                          <FlightPassengerForm
+                              {...onePassenger}
+                              id={onePassenger.id}
+                              index={index}
+                              type="ADL"
+                              removePassenger={this.removePassenger}
+                              fillPassengersData={this.fillPassengersData}
+                          />
+                      ))
+                  : null}
+              {this.state.passengers
+                  ? this.state.passengers
+                      .filter((x) => x.type == "CHD")
+                      .map((onePassenger, index) => (
+                          <FlightPassengerForm
+                              {...onePassenger}
+                              id={onePassenger.id}
+                              index={index}
+                              type="CHD"
+                              removePassenger={this.removePassenger}
+                              fillPassengersData={this.fillPassengersData}
+                          />
+                      ))
+                  : null}
+              {this.state.passengers
+                  ? this.state.passengers
+                      .filter((x) => x.type == "INF")
+                      .map((onePassenger, index) => (
+                          <FlightPassengerForm
+                              {...onePassenger}
+                              id={onePassenger.id}
+                              index={index}
+                              removePassenger={this.removePassenger}
+                              fillPassengersData={this.fillPassengersData}
+                          />
+                      ))
+                  : null}
+              <div className={`row ${styles["add-passanger"]} text-left`}>
+                <div className="visible-xs col-12 ">
+                  <p className="font-size-14">
                   <span className="font-bold-iransanse">
                     مجموع قیمت: &nbsp;
                   </span>
-                  <span className="color-secondary font-bold-iransanse">
+                    <span className="color-secondary font-bold-iransanse">
                     {moneyFormat(this.state.priceAll)}
-                    &nbsp;
+                      &nbsp;
                   </span>
-                  <span className="font-bold-iransanse">تومان</span>
-                </p>
-              </div>
-
-              <div className="col-lg-9 col-md-8 col-12">
-                <div className="row">
-                  <div className="col-lg-2 col-md-4 col-4 no-padding">
-                    <a
-                      href="#"
-                      className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
-                      onClick={(e) => {
-                        if (this.validationNumberOfPassengers()) {
-                          this.addNewPassenger("ADL", this.state.priceADL);
-                        }
-                        e.preventDefault();
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faPlus} />
-                      <span>بزرگسال</span>
-                      <FontAwesomeIcon className="pull-left" icon={faMale} />
-                      <FontAwesomeIcon
-                        className="pull-left ml-0"
-                        icon={faFemale}
-                      />
-                    </a>
-                  </div>
-
-                  <div className="col-lg-2 col-md-4 col-4 no-padding">
-                    <a
-                      href="#"
-                      className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
-                      onClick={(e) => {
-                        if (this.validationNumberOfPassengers()) {
-                          this.addNewPassenger("CHD", this.state.priceCHD);
-                        }
-                        e.preventDefault();
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faPlus} />
-                      <span>کودک</span>
-                      <FontAwesomeIcon className="pull-left" icon={faChild} />
-                    </a>
-                  </div>
-
-                  <div className="col-lg-2 col-md-4 col-4 no-padding">
-                    <a
-                      href="#"
-                      className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
-                      onClick={(e) => {
-                        if (this.validationNumberOfPassengers()) {
-                          this.addNewPassenger("INF", this.state.priceINF);
-                        }
-                        e.preventDefault();
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faPlus} />
-                      <span>نوزاد</span>
-                      <FontAwesomeIcon className="pull-left" icon={faBaby} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 hidden-xs">
-                <p className="font-size-14">
-                  <span className="font-bold-iransanse">
-                    مجموع قیمت: &nbsp;
-                  </span>
-                  <span className="color-secondary font-bold-iransanse">
-                    {moneyFormat(this.state.priceAll)}
-                    &nbsp;
-                  </span>
-                  <span className="font-bold-iransanse">تومان</span>
-                </p>
-              </div>
-            </div>
-
-            <div className={`row ${styles["passanger-submiter"]} `}>
-              <div className="col-lg-6 col-md-12 col-12 px-4">
-                <div className="row">
-                  <div className="col-lg-6 col-md-6 col-6 padding-3px">
-                    <div>
-                      <input
-                        inputMode="numeric"
-                        placeholder="شماره همراه"
-                        name="mobileSubmiter"
-                        onChange={this.handleChange}
-                        className="col-12 reserve-input px-2 h-35em"
-                        maxLength={11}
-                      />
-                    </div>
-                    <span className="color-secondary">
-                      {this.state.mobileSubmiterErr}
-                    </span>
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-6 padding-3px">
-                    <div>
-                      <input
-                        className="col-12 reserve-input px-2 h-35em"
-                        inputMode="numeric"
-                        placeholder="شماره ثابت"
-                        name="phoneSubmiter"
-                        onChange={this.handleChange}
-                      />
-                    </div>
-                    <span className="color-secondary">
-                      {this.state.phoneSubmiterErr}
-                    </span>
-                  </div>
+                    <span className="font-bold-iransanse">تومان</span>
+                  </p>
                 </div>
 
-                <div className="row mb-3">
-                  <div className="col-lg-6 col-md-6 col-12 padding-3px">
-                    <div>
-                      <input
-                        className="col-12 reserve-input px-2 h-35em"
-                        placeholder="ایمیل (اختیاری)"
-                      />
+                <div className="col-lg-9 col-md-8 col-12">
+                  <div className="row">
+                    <div className="col-lg-2 col-md-4 col-4 no-padding">
+                      <a
+                          href="#"
+                          className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
+                          onClick={(e) => {
+                            if (this.validationNumberOfPassengers()) {
+                              this.addNewPassenger("ADL", this.state.priceADL);
+                            }
+                            e.preventDefault();
+                          }}
+                      >
+                        <FontAwesomeIcon icon={faPlus} />
+                        <span>بزرگسال</span>
+                        <FontAwesomeIcon className="pull-left" icon={faMale} />
+                        <FontAwesomeIcon
+                            className="pull-left ml-0"
+                            icon={faFemale}
+                        />
+                      </a>
                     </div>
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-12 padding-3px">
-                    <div>
-                      <input
-                        className="col-12 reserve-input px-2 h-35em"
-                        placeholder="کد تخفیف (اختیاری)"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div className="col-lg-6 col-md-12 col-12 finish-reserve">
-                <div className="row" style={{ marginTop: 10 }}>
-                  <div className="col-lg-9 d-flex align-items-center">
-                    <input
-                      type="checkbox"
-                      id="terms"
-                      onChange={(e) => {
-                        this.setState({
-                          agreeWithTerm: e.target.checked,
-                        });
-                      }}
-                      className="mx-2"
-                    />
-                    <label htmlFor="terms" style={{ fontSize: 15 }}>
-                      قوانین و مقررات و صحت اطلاعات را قبول دارم.
-                    </label>
-                  </div>
-                  <div className="col-lg-3 text-right">
-                    <div className={styles["ruls-text"]}>
-                      <a style={{ marginRight: 10, marginTop: 5 }} href="">
-                        قوانین و مقررات
+                    <div className="col-lg-2 col-md-4 col-4 no-padding">
+                      <a
+                          href="#"
+                          className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
+                          onClick={(e) => {
+                            if (this.validationNumberOfPassengers()) {
+                              this.addNewPassenger("CHD", this.state.priceCHD);
+                            }
+                            e.preventDefault();
+                          }}
+                      >
+                        <FontAwesomeIcon icon={faPlus} />
+                        <span>کودک</span>
+                        <FontAwesomeIcon className="pull-left" icon={faChild} />
+                      </a>
+                    </div>
+
+                    <div className="col-lg-2 col-md-4 col-4 no-padding">
+                      <a
+                          href="#"
+                          className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
+                          onClick={(e) => {
+                            if (this.validationNumberOfPassengers()) {
+                              this.addNewPassenger("INF", this.state.priceINF);
+                            }
+                            e.preventDefault();
+                          }}
+                      >
+                        <FontAwesomeIcon icon={faPlus} />
+                        <span>نوزاد</span>
+                        <FontAwesomeIcon className="pull-left" icon={faBaby} />
                       </a>
                     </div>
                   </div>
                 </div>
-                <div className="row finish-reserve-buttons mb-3 ml-5 mt-4">
-                  <div className="col-lg-8 col-md-8 col-7 padding-3px">
-                    <button
-                      onClick={(e) => {
-                        if (!this.validation()) {
-                          this.setState({ loading: false });
-                          this.props.messageBoxModify({
-                            state: true,
-                            message: "لطفا اطلاعات را تکمیل کنید.",
-                          });
-                          e.preventDefault();
-                        } else if (this.state.agreeWithTerm === true) {
-                          this.setState({ loading: true });
-                          this.compeleteReservation();
-                          e.preventDefault();
-                        } else {
-                          this.setState({ loading: false });
+                <div className="col-lg-3 col-md-4 hidden-xs">
+                  <p className="font-size-14">
+                  <span className="font-bold-iransanse">
+                    مجموع قیمت: &nbsp;
+                  </span>
+                    <span className="color-secondary font-bold-iransanse">
+                    {moneyFormat(this.state.priceAll)}
+                      &nbsp;
+                  </span>
+                    <span className="font-bold-iransanse">تومان</span>
+                  </p>
+                </div>
+              </div>
 
-                          this.props.messageBoxModify({
-                            state: true,
-                            message: "لطفا با شرایط و مقررات موافقت کنید",
-                          });
-                        }
-                      }}
-                      className="py-2 btn-block col-12 end-payment-btn btn"
-                    >
-                      {this.state.loading == false
-                        ? "تکمیل خرید"
-                        : "درحال پردازش..."}
-                    </button>
+              <div className={`row ${styles["passanger-submiter"]} `}>
+                <div className="col-lg-6 col-md-12 col-12 px-4">
+                  <div className="row">
+                    <div className="col-lg-6 col-md-6 col-6 padding-3px">
+                      <div>
+                        <input
+                            inputMode="numeric"
+                            placeholder="شماره همراه"
+                            name="mobileSubmiter"
+                            onChange={this.handleChange}
+                            className="col-12 reserve-input px-2 h-35em"
+                            maxLength={11}
+                        />
+                      </div>
+                      <span className="color-secondary">
+                      {this.state.mobileSubmiterErr}
+                    </span>
+                    </div>
+                    <div className="col-lg-6 col-md-6 col-6 padding-3px">
+                      <div>
+                        <input
+                            className="col-12 reserve-input px-2 h-35em"
+                            inputMode="numeric"
+                            placeholder="شماره ثابت"
+                            name="phoneSubmiter"
+                            onChange={this.handleChange}
+                        />
+                      </div>
+                      <span className="color-secondary">
+                      {this.state.phoneSubmiterErr}
+                    </span>
+                    </div>
                   </div>
-                  <div className="col-lg-4 col-md-4 col-5 padding-3px">
-                    <a
-                      className="btn col-12 back-payment-btn py-2"
-                      onClick={() => {
-                        this.props.router.back();
-                      }}
-                    >
-                      <span>بازگشت</span>
-                    </a>
+
+                  <div className="row mb-3">
+                    <div className="col-lg-6 col-md-6 col-12 padding-3px">
+                      <div>
+                        <input
+                            className="col-12 reserve-input px-2 h-35em"
+                            placeholder="ایمیل (اختیاری)"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-lg-6 col-md-6 col-12 padding-3px">
+                      <div>
+                        <input
+                            className="col-12 reserve-input px-2 h-35em"
+                            placeholder="کد تخفیف (اختیاری)"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-lg-6 col-md-12 col-12 finish-reserve">
+                  <div className="row" style={{ marginTop: 10 }}>
+                    <div className="col-lg-9 d-flex align-items-center">
+                      <input
+                          type="checkbox"
+                          id="terms"
+                          onChange={(e) => {
+                            this.setState({
+                              agreeWithTerm: e.target.checked,
+                            });
+                          }}
+                          className="mx-2"
+                      />
+                      <label htmlFor="terms" style={{ fontSize: 15 }}>
+                        قوانین و مقررات و صحت اطلاعات را قبول دارم.
+                      </label>
+                    </div>
+                    <div className="col-lg-3 text-right">
+                      <div className={styles["ruls-text"]}>
+                        <a style={{ marginRight: 10, marginTop: 5 }} href="">
+                          قوانین و مقررات
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row finish-reserve-buttons mb-3 ml-5 mt-4">
+                    <div className="col-lg-8 col-md-8 col-7 padding-3px">
+                      <button
+                          onClick={(e) => {
+                            if (!this.validation()) {
+                              this.setState({ loading: false });
+                              this.props.messageBoxModify({
+                                state: true,
+                                message: "لطفا اطلاعات را تکمیل کنید.",
+                              });
+                              e.preventDefault();
+                            } else if (this.state.agreeWithTerm === true) {
+                              this.setState({ loading: true });
+                              this.compeleteReservation();
+                              e.preventDefault();
+                            } else {
+                              this.setState({ loading: false });
+
+                              this.props.messageBoxModify({
+                                state: true,
+                                message: "لطفا با شرایط و مقررات موافقت کنید",
+                              });
+                            }
+                          }}
+                          className="py-2 btn-block col-12 end-payment-btn btn"
+                      >
+                        {this.state.loading == false
+                            ? "تکمیل خرید"
+                            : "درحال پردازش..."}
+                      </button>
+                    </div>
+                    <div className="col-lg-4 col-md-4 col-5 padding-3px">
+                      <a
+                          className="btn col-12 back-payment-btn py-2"
+                          onClick={() => {
+                            this.props.router.back();
+                          }}
+                      >
+                        <span>بازگشت</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     );
   }
 }
@@ -595,9 +595,9 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   addReservationProperties: async (value) =>
-    dispatch(addReservationProperties(value)),
+      dispatch(addReservationProperties(value)),
   messageBoxModify: (value) => dispatch(messageBoxModify(value)),
 });
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(FlightReserve)
+    connect(mapStateToProps, mapDispatchToProps)(FlightReserve)
 );
