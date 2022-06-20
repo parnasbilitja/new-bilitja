@@ -94,7 +94,7 @@ const PriceHandling = () => {
 
   return (
     <div className="container pt-2 pb-2 pe-2 ps-2">
-      <h2 className="text-dark">مدیریت قیمت گذاری</h2>
+      <h2 className={style['title-page']}>مدیریت قیمت گذاری</h2>
 
       <Filter
         list={agency}
@@ -106,7 +106,7 @@ const PriceHandling = () => {
       <div>
         <div>
           <div>
-            <div className={style["header-title"]}>
+            <div className={style["header-title-page"]}>
               <div>
                 <h5>فعالسازی</h5>
               </div>

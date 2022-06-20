@@ -9,7 +9,7 @@ const Row = ({ option, index }) => {
         <div>{option.azhansNam}</div>
         <div>{option.url}</div>
         <div>
-          <a target="_blank" href={option.url}>
+          <a className={style['open-website']} target="_blank" href={option.url}>
             باز کردن سایت
           </a>
         </div>

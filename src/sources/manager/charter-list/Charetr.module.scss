@@ -1,23 +1,47 @@
+.title-page {
+  font-family: IranBold !important;
+  font-size: 18px;
+  margin-top: 2rem;
+}
+
 .header-title {
   display: grid;
   grid-template-columns: 1fr 1fr 1.7fr 1fr;
   margin: 35px 5px;
+  background-color: #eee;
+  padding: 0 12px !important;
   width: 100%;
   font-size: 18px;
-  font-family: BYekan !important;
+  height: 60px;
+  place-content: center;
+
+  .item {
+    font-family: IranBold !important;
+    font-size: 14px;
+  }
 }
+
+.open-website {
+  border-bottom: 1px dotted #279692;
+  color: #279692 !important;
+  font-weight: 600;
+  font-size: 14px;
+}
+
 .items {
   display: grid;
   grid-template-columns: 1fr 1fr 1.7fr 1fr;
   margin: auto;
   width: 100%;
   padding: 15px;
-  font-size: 15px;
   font-family: BYekan !important;
+  font-size: 14px;
+  font-weight: 600;
 
   &:hover {
-    background-color: #eee;
+    background-color: #eeebeb;
   }
+
   a {
     color: blue;
     text-decoration: none;

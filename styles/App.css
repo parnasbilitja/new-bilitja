@@ -2,6 +2,10 @@
   src: url("/public/Font/IranSans/IRANSansWebFaNumLight.ttf");
   font-family: IranSans;
 }
+@font-face {
+  src: url("/public/Font/en-font/BebasNeue-Regular.ttf");
+  font-family: en-font;
+}
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
 body {
   font-family: IranSans !important;

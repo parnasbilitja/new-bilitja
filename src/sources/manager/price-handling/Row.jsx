@@ -49,7 +49,7 @@ const Row = ({ option, index, filters }) => {
     <div className={style["price"]}>
       <div className={style["price-items"]} key={index}>
         <div>
-          <input
+          <input className={style['inp-checkbox']}
             type="checkbox"
             checked={reserveStatus == 1 ? true : false}
             onChange={(e) =>
@@ -57,10 +57,10 @@ const Row = ({ option, index, filters }) => {
             }
           />
         </div>
-        <div>
+        <div  className={style['id-parent']}>
           <h6 className="text-dark"> {data != null ? data.kndsys : ""}</h6>
         </div>
-        <div>
+        <div className={style['title-chart']}>
           <h6 className="text-dark"> {data != null ? data.azhansNam : ""}</h6>
         </div>
         <div>

@@ -1,3 +1,12 @@
+@font-face {
+  src: url("/public/Font/en-font/BebasNeue-Regular.ttf");
+  font-family: en-font;
+}
+.title-page{
+  font-family: 'IranBold' !important;
+  font-size: 18px;
+  margin-top: 1rem;
+}
 .header-title {
   font-size: 25px;
   font-weight: 700;
@@ -6,14 +15,18 @@
 .input {
   font-size: 15px;
   font-family: BYekan !important;
+  border: 2px solid #eee;
   display: flex;
   justify-content: space-between;
   margin-left: 15px;
+  padding: 4px 8px;
+  border-radius: 6px;
   font-weight: 600;
   input {
-    border-radius: 5px;
-    border-width: 0.5px;
     height: 33px;
+    border: none;
+    outline: none;
+
   }
 }
 .header-input {
@@ -30,9 +43,9 @@
   font-family: BYekan !important;
 }
 .title-table {
-  font-size: 18px;
+  font-size: 15px;
   text-align: center;
-  font-family: BYekan !important;
+  font-family: IranBold !important;
   margin-top: 10px;
 }
 .header-buttn {
@@ -61,4 +74,59 @@
 
 .tablerowfont {
   font-family: BYekan !important;
+}
+.name-leader{
+  font-size: 14px !important;
+}
+.id{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  color: #fff;
+  font-size: 12px !important;
+  font-family: 'IranBold' !important;
+}
+.date{
+  font-size: 13px;
+  font-weight: 600;
+  svg{
+    margin-left: 8px;
+  }
+}
+.airline{
+  font-size: 13px;
+  font-weight: 600;
+  svg{
+    margin-left: 8px;
+  }
+}
+.normal-size{
+  font-size: 14px;
+  font-family: 'BYekan' !important;
+  font-weight: 600;
+}
+.en-font{
+  font-family: 'en-font' !important;
+  font-weight: 600;
+  font-size: 14px;
+}
+.style-number-view-item{
+  font-family: 'IranBold' !important;
+  width: 100%;
+}
+.child-style-number-view-item{
+  width: 100%;
+  display: flex !important;
+  justify-content: flex-end;
+  p{
+    font-family: 'IranBold' !important;
+    margin: 0;
+    padding: 0;
+
+  }
+
 }

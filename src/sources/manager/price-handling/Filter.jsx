@@ -47,36 +47,36 @@ const Filter = ({ list, cancel, setFilter, filters }) => {
     <div>
       <div className={style["headerlist"]}>
         <div>
-          <label>عنوان چارتر کننده:</label>
-          <input onChange={findByName} defaultValue={""} />
+          <label className={style['label-base']}>عنوان چارتر کننده:</label>
+          <input className={style['inp-base']} onChange={findByName} defaultValue={""} />
         </div>
         <div>
-          <label>وضعیت آژانس</label>
-          <select value={activeStatus} onChange={findByStatus}>
+          <label className={style['label-base']}>وضعیت آژانس</label>
+          <select className={style['select-base']} value={activeStatus} onChange={findByStatus}>
             <option value="Active">فعال</option>
             <option value="Not-Active">غیر فعال</option>
             <option value="Cancel">حذف فیلتر</option>
           </select>
         </div>
         <div>
-          <label>درصد افزایش کلی:</label>
-          <input
+          <label className={style['label-base']}>درصد افزایش کلی:</label>
+          <input className={style['inp-base']}
             onChange={(e) => setAllPrecent(e.target.value)}
             value={allprecent}
           />
         </div>
         <div>
-          <label>مبلغ افزایش کلی:</label>
-          <input
+          <label className={style['label-base']}>مبلغ افزایش کلی:</label>
+          <input className={style['inp-base']}
             onChange={(e) => setAllPrice(e.target.value)}
             value={allprice}
           />
         </div>
         <div>
-          <button onClick={changeAll}> تغییر کلی</button>
+          <button className={style['button-base']} onClick={changeAll}> تغییر کلی</button>
         </div>
         <div>
-          <button onClick={cancel}>حذف فیلتر ها</button>
+          <button className={style['button-base']} onClick={cancel}>حذف فیلتر ها</button>
         </div>
       </div>
     </div>

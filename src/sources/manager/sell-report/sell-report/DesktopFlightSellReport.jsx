@@ -424,7 +424,7 @@ const FlightSellReport = () => {
 
   return (
     <div className="container pt-2 pb-2 pe-2 ps-2">
-      <div className={style["header-title"]}>گزارشات فروش پرواز</div>
+      <div className={style["title-page"]}>گزارشات فروش پرواز</div>
       <TopFilter />
       <Box>
         <Paper>
@@ -474,91 +474,102 @@ const FlightSellReport = () => {
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-14 ">{i++}</h6>
+                          <h6 className={style['id']}>{i++}</h6>
                         </TableCell>
                         <TableCell
                           className={style["tablerowfont"]}
                           align="center"
                         >
-                          <h6 className="font-size-16">{row.customerName}</h6>
+                          <h6 className={style['normal-size']}>
+                            {row.customerName}</h6>
                         </TableCell>
                         <TableCell
                           className={style["tablerowfont"]}
                           align="center"
                         >
-                          <h6 className="font-size-16">{row.reqNo}</h6>
+                          <h6 className={style['normal-size']}>
+
+                            {row.reqNo}</h6>
                         </TableCell>
                         <TableCell
                           className={style["tablerowfont"]}
                           align="center"
                         >
-                          <h6 className="font-size-16">{row.reqPnr}</h6>
+                          <h6 className={style['en-font']}>{row.reqPnr}</h6>
                         </TableCell>
                         <TableCell
                           className={style["tablerowfont"]}
                           align="center"
                         >
-                          <h6 className="font-size-16">{row.dateTimeSabt}</h6>
+                          <h6 className={style['date']}>
+                            <svg id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20"><path d="M19,2h-1V1c0-.552-.447-1-1-1s-1,.448-1,1v1H8V1c0-.552-.447-1-1-1s-1,.448-1,1v1h-1C2.243,2,0,4.243,0,7v12c0,2.757,2.243,5,5,5h14c2.757,0,5-2.243,5-5V7c0-2.757-2.243-5-5-5ZM5,4h14c1.654,0,3,1.346,3,3v1H2v-1c0-1.654,1.346-3,3-3Zm14,18H5c-1.654,0-3-1.346-3-3V10H22v9c0,1.654-1.346,3-3,3Zm0-8c0,.552-.447,1-1,1H6c-.553,0-1-.448-1-1s.447-1,1-1h12c.553,0,1,.448,1,1Zm-7,4c0,.552-.447,1-1,1H6c-.553,0-1-.448-1-1s.447-1,1-1h5c.553,0,1,.448,1,1Z"/></svg>
+                            {row.dateTimeSabt}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-15">{row.nameFamilyEn}</h6>
+                          <h6 className={style['en-font']}>{row.nameFamilyEn}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">{row.numFr}</h6>
+                          <h6 className={style['normal-size']}>{row.numFr}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">{row.mobileNo}</h6>
+                          <h6 className={style['normal-size']}>{row.mobileNo}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">{row.route}</h6>
+                          <h6 className={style['normal-size']}>{row.route}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">{row.flightNo}</h6>
+                          <h6 className={style['normal-size']}>
+                            {row.flightNo}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">{row.flightDate}</h6>
+                          <h6 className={style['normal-size']}>{row.flightDate}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">{row.airline}</h6>
+                          <h6 className={style['airline']}>
+                            <svg id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20"><path d="M10.689,24a2.688,2.688,0,0,1-2.546-3.547L10.083,15H6.158l-1.08,1.646A2.993,2.993,0,0,1,2.569,18h0a2.556,2.556,0,0,1-2.4-3.434L1.1,12,.159,9.44A2.555,2.555,0,0,1,.46,7.1a2.811,2.811,0,0,1,4.6.247L6.155,9h3.928L8.147,3.563a2.7,2.7,0,0,1,.359-2.442,2.883,2.883,0,0,1,4.817.442L17.58,9h3.313a3.084,3.084,0,0,1,3.067,2.5A3,3,0,0,1,21,15H17.58l-4.267,7.454A2.989,2.989,0,0,1,10.689,24ZM5.618,13H11.5a1.006,1.006,0,0,1,.942,1.335l-2.41,6.773a.676.676,0,0,0,.1.605.9.9,0,0,0,1.437-.234L16.132,13.5A1,1,0,0,1,17,13h4a1,1,0,0,0,.985-1.175A1.083,1.083,0,0,0,20.893,11H17a1,1,0,0,1-.868-.5L11.577,2.539a.894.894,0,0,0-1.447-.252.684.684,0,0,0-.093.621l2.4,6.757A1.006,1.006,0,0,1,11.5,11H5.618a1,1,0,0,1-.834-.448l-1.393-2.1c-.228-.421-1.034-.637-1.29-.21a.541.541,0,0,0-.065.51l1.072,2.906a1,1,0,0,1,0,.69l-1.066,2.91A.556.556,0,0,0,2.564,16h0a1,1,0,0,0,.837-.452l1.376-2.1A1,1,0,0,1,5.618,13Z"/></svg>
+
+                            {row.airline}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">{row.className}</h6>
+                          <h6 className={style['normal-size']}>{row.className}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">{row.kndSysName}</h6>
+                          <h6 className={style['normal-size']}>
+
+                            {row.kndSysName}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">
+                          <h6 className={style['normal-size']}>
                             {moneyFormat(row.feeGetKh)}
                           </h6>
                         </TableCell>
@@ -566,7 +577,7 @@ const FlightSellReport = () => {
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">
+                          <h6 className={style['normal-size']}>
                             {moneyFormat(row.feeGet)}
                           </h6>
                         </TableCell>
@@ -574,7 +585,7 @@ const FlightSellReport = () => {
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">
+                          <h6 className={style['normal-size']}>
                             {moneyFormat(row.stock)}
                           </h6>
                         </TableCell>
@@ -582,25 +593,25 @@ const FlightSellReport = () => {
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">{row.userFr}</h6>
+                          <h6 className={style['normal-size']}>{row.userFr}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">{row.serviceName}</h6>
+                          <h6 className={style['normal-size']}>{row.serviceName}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">{row.servicePnr}</h6>
+                          <h6 className={style['en-font']}>{row.servicePnr}</h6>
                         </TableCell>
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className="font-size-16">{row.pathKind}</h6>
+                          <h6 className={style['normal-size']}>{row.pathKind}</h6>
                         </TableCell>
                       </TableRow>
                     );
@@ -649,17 +660,17 @@ const FlightSellReport = () => {
                     <h6 className="font-size-14"></h6>
                   </TableCell>
                   <TableCell className={style["tablerowfont"]} align="center">
-                    <h6 className="font-size-14">
+                    <h6 className={style['normal-size']}>
                       {moneyFormat(prices.kharidAll)} ریال
                     </h6>
                   </TableCell>
                   <TableCell className={style["tablerowfont"]} align="center">
-                    <h6 className="font-size-14">
+                    <h6 className={style['normal-size']}>
                       {moneyFormat(prices.foroshAll)} ریال
                     </h6>
                   </TableCell>
                   <TableCell className={style["tablerowfont"]} align="center">
-                    <h6 className="font-size-14">
+                    <h6 className={style['normal-size']}>
                       {moneyFormat(prices.soodAll)} ریال
                     </h6>
                   </TableCell>
@@ -679,16 +690,10 @@ const FlightSellReport = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <div
-            className="d-flex justify-content-start pe-1 ps-1 font-size-16"
+          <div className={style['style-number-view-item']}
             dir="ltr"
           >
-            <TablePagination
-              style={{
-                fontSize: 20,
-                textAlign: "center",
-                fontFamily: "BYekan",
-              }}
+            <TablePagination className={style['child-style-number-view-item']}
               rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
               component="div"
               count={
@@ -700,7 +705,7 @@ const FlightSellReport = () => {
               page={page}
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
-              labelRowsPerPage="آیتم نمایشی هر صفحه:"
+              labelRowsPerPage="آیتم نمایشی هر صفحه"
             />
           </div>
         </Paper>

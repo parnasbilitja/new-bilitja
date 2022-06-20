@@ -18,16 +18,16 @@ const CharterList = () => {
   }, []);
   return (
     <div className="container pt-2 pb-2 pe-2 ps-2">
-      <h2 className="text-dark">لیست آژانس های چارتر</h2>
+      <h2 className={style['title-page']}>لیست آژانس های چارتر</h2>
 
       <div>
         <div>
           <div>
             <div className={style["header-title"]}>
-              <div>کد</div>
-              <div>نام</div>
-              <div>آدرس</div>
-              <div>رفتن به سایت</div>
+              <div className={style['item']}>کد</div>
+              <div className={style['item']}>نام</div>
+              <div className={style['item']}>آدرس سایت</div>
+              <div className={style['item']}>رفتن به سایت</div>
             </div>
 
             {agency != null ? (

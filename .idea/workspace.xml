@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/Font/en-font/BebasNeue-Regular.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/report/TrackOrder.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/report/TrackOrder.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/charter-list/Charetr.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/charter-list/Charetr.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/charter-list/CharterList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/charter-list/CharterList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/charter-list/Row.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/charter-list/Row.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/Filter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/Filter.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/Filter.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/Filter.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/PriceHandling.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/PriceHandling.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/Row.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/Row.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/sell-report/all-sell-report/DesktopFlightSellReport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/all-sell-report/DesktopFlightSellReport.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/Descktop.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/Descktop.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/DesktopFlightSellReport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/DesktopFlightSellReport.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/villa/Villa.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/villa/Villa.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/TrackOrder.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/TrackOrder.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/Vila.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Vila.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,13 +46,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/Images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/Font/en-font" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\projects\bilitjassrnew\public\Font\en-font" />
       <recent name="C:\projects\bilitjassrnew\public\Images" />
     </key>
   </component>
@@ -57,7 +72,10 @@
       <workItem from="1655034407544" duration="6614000" />
       <workItem from="1655098262796" duration="23765000" />
       <workItem from="1655184643535" duration="8146000" />
-      <workItem from="1655194945592" duration="1317000" />
+      <workItem from="1655194945592" duration="1589000" />
+      <workItem from="1655196679273" duration="345000" />
+      <workItem from="1655197958339" duration="7000" />
+      <workItem from="1655709943503" duration="15758000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -107,7 +125,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۰۸" />
       <updated>1655195535987</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL‎۰۰۰۰۹" summary="flight reserve">
+      <created>1655196458061</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۹" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۹" />
+      <updated>1655196458061</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

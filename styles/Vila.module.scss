@@ -42,10 +42,34 @@
 }
 .card {
   border-radius: 5px;
-  border: 1px solid rgb(138, 138, 138);
+  border: 2px solid #dbdbdb;
   margin-top: 10px;
+  padding: 1rem;
   &:hover {
     background-color: #eee;
     cursor: pointer;
   }
+}
+.villa-information-content{
+  top: 0 !important;
+  display: flex;
+  align-items: center;
+}
+.title-villa{
+  font-family: 'IranBold' !important;
+  font-size: 18px;
+}
+.parent-option{
+  font-family: 'BYekan' !important;
+  font-size: 13px;
+  margin-top: 8px;
+  font-weight: 600;
+}
+.text{
+  margin-right: 8px;
+  font-family: "BYekan" !important;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  top: -4px;
 }

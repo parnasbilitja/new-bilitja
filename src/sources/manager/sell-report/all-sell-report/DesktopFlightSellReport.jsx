@@ -215,7 +215,7 @@ const AllFlightSellReport = () => {
 
   return (
     <div className="container pt-2 pb-2 pe-2 ps-2">
-      <h2 className="text-dark mb-3">ریز گزارشات فروش پرواز</h2>
+      <h2 className={style['title-page']}>ریز گزارشات فروش پرواز</h2>
       <TopFilter />
       <Box>
         <Paper>

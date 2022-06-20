@@ -36,12 +36,12 @@ class Villa extends React.Component {
     return (
       <div>
         <div className="border-bottom-black panel-header">
-          <div>
+          <div className="d-flex mt-4">
             <FontAwesomeIcon icon={faArchway} className="color-textpill" />
             &nbsp;&nbsp;
-            <span className="no-margin font-size-13 font-bold-iransanse">
+            <h2 className={styles['title-villa']}>
               ویلا
-            </span>
+            </h2>
           </div>
           <div className="text-left ltr">
             <ManagerTopActionBox
@@ -109,13 +109,13 @@ class Villa extends React.Component {
                     <img
                       width=""
                       height=""
-                      src="http://kilo.website/Files/69a3656b-6b79-445d-82b5-dd10df2eba1f_نما 5.jpg"
+                      src="/images/flight-parallax.jpg"
                       className="rounded img-fluid img-responsive m-3"
                       alt="بلیطجا - پیشنمایش ویلا"
                     />
                   </div>
                   <div className="col-lg-10">
-                    <div className="row villa-information-content">
+                    <div className={styles['villa-information-content']}>
                       <div className="col-lg-3 col-6">
                         <p className="font-size-14 font-bold-iransanse no-margin">
                           {vila.Name}
@@ -158,20 +158,20 @@ class Villa extends React.Component {
                         </p>
                       </div>
                       <div className="col-lg-4 hidden-xs">
-                        <p className="font-size-13 no-margin">
+                        <p className={styles['parent-option']}>
                           موقعیت: {vila.AddressName}
                         </p>
-                        <p className="font-size-13 no-margin">
+                        <p className={styles['parent-option']}>
                           کد موقت ویلا: 0
                         </p>
-                        <p className="font-size-13 no-margin">
+                        <p className={styles['parent-option']}>
                           نام صاحب ویلا: {vila.AdminName}
                         </p>
                       </div>
                       <div className="col-lg-3 hidden-xs">
-                        <div className="text-left">
+                        <div className="text-left mb-3">
                           <Switch height={20} />
-                          <span className="font-size-13 font-bold-iransanse">
+                          <span className={styles['text']}>
                             فعال
                           </span>
                         </div>
