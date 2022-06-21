@@ -11,38 +11,60 @@ const OrderList = () => {
           </span>
         </div>
       </div>
-      <div className="table-responsive">
-        <table className="table table-sm table-striped">
-          <thead>
-            <tr>
-              <th className="font-bold-iransanse font-size-12">نام</th>
-              <th className="font-bold-iransanse font-size-12">ساعت</th>
-              <th className="font-bold-iransanse font-size-12">تاریخ</th>
-              <th className="font-bold-iransanse font-size-12">وضعیت</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className={'parent-order-dashboard'}>
+        <div className={'header-parent'}>
+          <span className="font-bold-iransanse font-size-12">شماره درخواست </span>
+          <span className="font-bold-iransanse font-size-12">نام و نام خانوادگی</span>
+          <span className="font-bold-iransanse font-size-12">رفرنس</span>
+          <span className="font-bold-iransanse font-size-12">مسیر</span>
+          <span className="font-bold-iransanse font-size-12">قیمت خرید</span>
+          <span className="font-bold-iransanse font-size-12">وضعیت</span>
+          <span className="font-bold-iransanse font-size-12">چاپ بلیط</span>
+          <span className="font-bold-iransanse font-size-12">گزارش تراکنش</span>
+        </div>
+        <div className={'body-parent'}>
+          <span className={'id'}>3</span>
+          <span>میلاد کرد</span>
+          <span>refrens</span>
+          <span>masir</span>
+          <span className={'price-order'}>
+            <strong>13,700,000</strong>
+            <small>تومان</small>
+          </span>
+          <span>status</span>
+          <span>ticket</span>
+          <span>transaction</span>
+        </div>
+        <div className={'body-parent'}>
+          <span className={'id'}>3</span>
+          <span>میلاد کرد</span>
+          <span>refrens</span>
+          <span>masir</span>
+          <span className={'price-order'}>
+            <strong>13,700,000</strong>
+            <small>تومان</small>
+          </span>
+          <span>status</span>
+          <span>ticket</span>
+          <span>transaction</span>
+        </div>
+        <div className={'body-parent'}>
+          <span className={'id'}>3</span>
+          <span>میلاد کرد</span>
+          <span>refrens</span>
+          <span>masir</span>
+          <span className={'price-order'}>
+            <strong>13,700,000</strong>
+            <small>تومان</small>
+          </span>
+          <span>status</span>
+          <span>ticket</span>
+          <span>transaction</span>
+        </div>
+
+
       </div>
+
     </section>
   );
 };

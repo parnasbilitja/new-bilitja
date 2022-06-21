@@ -35,7 +35,7 @@ const DashboardNav = (props) => {
             width=""
             height=""
             alt="بلیطجا - لوگو"
-            src="../../../Images/bilitja-logo.png"
+            src="../../../Images/bilitja-logo.webp"
           />
         </div>
         <div
@@ -61,29 +61,29 @@ const DashboardNav = (props) => {
             </p>
           </div>
         </div>
-        <div
-          className={
-            myRouter.asPath === "/dashboard/index"
-              ? `${styles["manager-nav-one-row"]} dashboard-menu-item-active cursor-pointer`
-              : `${styles["manager-nav-one-row"]} dashboard-menu-item cursor-pointer`
-          }
-          onClick={() => {
-            myRouter.push("/dashboard/index");
-            props.onClose();
-          }}
-        >
-          <div>
-            <FontAwesomeIcon icon={faChartLine} />
-          </div>
-          <div>
-            <p className="no-margin font-size-13 font-bold-iransanse">
-              داشبورد
-            </p>
-            <p className="no-margin font-size-13 color-textpill iran-sans">
-              Dashboard
-            </p>
-          </div>
-        </div>
+        {/*<div*/}
+        {/*  className={*/}
+        {/*    myRouter.asPath === "/dashboard/index"*/}
+        {/*      ? `${styles["manager-nav-one-row"]} dashboard-menu-item-active cursor-pointer`*/}
+        {/*      : `${styles["manager-nav-one-row"]} dashboard-menu-item cursor-pointer`*/}
+        {/*  }*/}
+        {/*  onClick={() => {*/}
+        {/*    myRouter.push("/dashboard/index");*/}
+        {/*    props.onClose();*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  <div>*/}
+        {/*    <FontAwesomeIcon icon={faChartLine} />*/}
+        {/*  </div>*/}
+        {/*  <div>*/}
+        {/*    <p className="no-margin font-size-13 font-bold-iransanse">*/}
+        {/*      داشبورد*/}
+        {/*    </p>*/}
+        {/*    <p className="no-margin font-size-13 color-textpill iran-sans">*/}
+        {/*      Dashboard*/}
+        {/*    </p>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
         <div
           className={
             myRouter.asPath === "/dashboard/orders"
@@ -128,50 +128,50 @@ const DashboardNav = (props) => {
             </p>
           </div>
         </div>
-        <div
-          className={
-            myRouter.asPath === "/dashboard/agency"
-              ? `${styles["manager-nav-one-row"]} dashboard-menu-item-active cursor-pointer`
-              : `${styles["manager-nav-one-row"]} dashboard-menu-item cursor-pointer`
-          }
-          onClick={() => {
-            myRouter.push("/dashboard/agency");
-            props.onClose();
-          }}
-        >
-          <div>
-            <FontAwesomeIcon icon={faDollarSign} />
-          </div>
-          <div>
-            <p className="no-margin font-size-13 font-bold-iransanse">agency</p>
-            <p className="no-margin font-size-13 color-textpill iran-sans">
-              agency
-            </p>
-          </div>
-        </div>
-        <div
-          className={
-            myRouter.asPath === "/dashboard/my-villa"
-              ? `${styles["manager-nav-one-row"]} dashboard-menu-item-active cursor-pointer`
-              : `${styles["manager-nav-one-row"]} dashboard-menu-item cursor-pointer`
-          }
-          onClick={() => {
-            myRouter.push("/dashboard/my-villa");
-            props.onClose();
-          }}
-        >
-          <div>
-            <FontAwesomeIcon icon={faArchway} />
-          </div>
-          <div>
-            <p className="no-margin font-size-13 font-bold-iransanse">
-              اقامتگاه
-            </p>
-            <p className="no-margin font-size-13 color-textpill iran-sans">
-              Villas
-            </p>
-          </div>
-        </div>
+        {/*<div*/}
+        {/*  className={*/}
+        {/*    myRouter.asPath === "/dashboard/agency"*/}
+        {/*      ? `${styles["manager-nav-one-row"]} dashboard-menu-item-active cursor-pointer`*/}
+        {/*      : `${styles["manager-nav-one-row"]} dashboard-menu-item cursor-pointer`*/}
+        {/*  }*/}
+        {/*  onClick={() => {*/}
+        {/*    myRouter.push("/dashboard/agency");*/}
+        {/*    props.onClose();*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  <div>*/}
+        {/*    <FontAwesomeIcon icon={faDollarSign} />*/}
+        {/*  </div>*/}
+        {/*  <div>*/}
+        {/*    <p className="no-margin font-size-13 font-bold-iransanse">agency</p>*/}
+        {/*    <p className="no-margin font-size-13 color-textpill iran-sans">*/}
+        {/*      agency*/}
+        {/*    </p>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
+        {/*<div*/}
+        {/*  className={*/}
+        {/*    myRouter.asPath === "/dashboard/my-villa"*/}
+        {/*      ? `${styles["manager-nav-one-row"]} dashboard-menu-item-active cursor-pointer`*/}
+        {/*      : `${styles["manager-nav-one-row"]} dashboard-menu-item cursor-pointer`*/}
+        {/*  }*/}
+        {/*  onClick={() => {*/}
+        {/*    myRouter.push("/dashboard/my-villa");*/}
+        {/*    props.onClose();*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  <div>*/}
+        {/*    <FontAwesomeIcon icon={faArchway} />*/}
+        {/*  </div>*/}
+        {/*  <div>*/}
+        {/*    <p className="no-margin font-size-13 font-bold-iransanse">*/}
+        {/*      اقامتگاه*/}
+        {/*    </p>*/}
+        {/*    <p className="no-margin font-size-13 color-textpill iran-sans">*/}
+        {/*      Villas*/}
+        {/*    </p>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
         <div
           className={
             myRouter.asPath === "/dashboard/coopration"
@@ -203,7 +203,7 @@ const DashboardNav = (props) => {
           }}
         >
           <div>
-            <FontAwesomeIcon icon={faSignOutAlt} />
+            <FontAwesomeIcon className={'text-danger'} icon={faSignOutAlt} />
           </div>
           <div>
             <p className="no-margin font-size-13 font-bold-iransanse">خروج</p>

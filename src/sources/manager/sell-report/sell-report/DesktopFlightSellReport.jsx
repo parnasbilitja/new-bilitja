@@ -11,6 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import { styled } from "@mui/material/styles";
 import style from "./Descktop.module.scss";
 import Paper from "@mui/material/Paper";
+import salesReport from "./Sales-report"
 import { FilterFields } from "./Filter.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import DesktopInfoSell from "./DesktopInfoSell";
@@ -20,6 +21,8 @@ import {
   _filterSellReport,
   _getSellReport,
 } from "../../../../Redux/Reports/reports.action";
+import router from "next/router";
+import Link from "next/link";
 
 function createData({
   customerName,
@@ -424,8 +427,28 @@ const FlightSellReport = () => {
 
   return (
     <div className="container pt-2 pb-2 pe-2 ps-2">
-      <div className={style["title-page"]}>گزارشات فروش پرواز</div>
-      <TopFilter />
+      <div className="d-flex justify-content-between mt-3 align-items-center w-100 mb-4">
+        <div className={style["title-page"]}>گزارشات فروش پرواز</div>
+        <div className={style['parent-buttons']}>
+          <Link href="/panel/flight-sell-report">
+            <button>همه </button>
+          </Link>
+          <Link href="/panel/Sales-report">
+            <button>گزارش فروش</button>
+          </Link>
+          <Link href="/panel/Consular-report">
+            <button>گزارش کنسلی</button>
+          </Link>
+          <Link href="/panel/reserving">
+            <button>در حال رزرو</button>
+          </Link>
+          <Link href="/panel/transaction">
+            <button>تراکنش ها  </button>
+          </Link>
+        </div>
+      </div>
+
+      {/*<TopFilter />*/}
       <Box>
         <Paper>
           <TableContainer>

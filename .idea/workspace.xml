@@ -5,22 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/Font/en-font/BebasNeue-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/Consular-report.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/Sales-report.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/reserving.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/transaction.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/charter-list/Charetr.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/charter-list/Charetr.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/charter-list/CharterList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/charter-list/CharterList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/charter-list/Row.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/charter-list/Row.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/Filter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/Filter.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/Filter.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/Filter.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/PriceHandling.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/PriceHandling.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/Row.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/Row.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/sell-report/all-sell-report/DesktopFlightSellReport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/all-sell-report/DesktopFlightSellReport.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/panel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/dashboard/DashboardNav.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/dashboard/DashboardNav.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/dashboard/orders/OrderList.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/dashboard/orders/OrderList.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/Descktop.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/Descktop.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/DesktopFlightSellReport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/DesktopFlightSellReport.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/villa/Villa.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/villa/Villa.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/TrackOrder.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/TrackOrder.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Vila.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Vila.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/report/TrackOrder.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/report/TrackOrder.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +71,8 @@
       <workItem from="1655194945592" duration="1589000" />
       <workItem from="1655196679273" duration="345000" />
       <workItem from="1655197958339" duration="7000" />
-      <workItem from="1655709943503" duration="15758000" />
+      <workItem from="1655709943503" duration="16591000" />
+      <workItem from="1655790404247" duration="12961000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -131,7 +128,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۰۹" />
       <updated>1655196458061</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL‎۰۰۰۱۰" summary="panel manger redesign order&amp;fly&amp;dashboard&amp;villa">
+      <created>1655727914386</created>
+      <option name="number" value="LOCAL‎۰۰۰۱۰" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۱۰" />
+      <updated>1655727914386</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,7 +146,8 @@
     <MESSAGE value="design footer &amp; text bold shop ticket" />
     <MESSAGE value="track order create page" />
     <MESSAGE value="flight reserve" />
-    <option name="LAST_COMMIT_MESSAGE" value="flight reserve" />
+    <MESSAGE value="panel manger redesign order&amp;fly&amp;dashboard&amp;villa" />
+    <option name="LAST_COMMIT_MESSAGE" value="panel manger redesign order&amp;fly&amp;dashboard&amp;villa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -157,6 +161,12 @@
           <url>file://$PROJECT_DIR$/src/sources/flight_List/Filters.component.jsx</url>
           <line>331</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/transaction.jsx</url>
+          <line>49</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

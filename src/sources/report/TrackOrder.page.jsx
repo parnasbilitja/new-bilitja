@@ -1,7 +1,7 @@
 import React from 'react'
 import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import '../../../styles/TrackOrder.module.scss'
+import style from '../../../styles/TrackOrder.module.scss'
 import PrimaryTextInput from '../../sources/component/PrimaryTextInput.component'
 import PrimaryButton from '../../sources/component/PrimaryButton.component'
 import globals from '../Global'

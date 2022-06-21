@@ -2,16 +2,37 @@
   src: url("/public/Font/en-font/BebasNeue-Regular.ttf");
   font-family: en-font;
 }
-.title-page{
+
+.title-page {
   font-family: 'IranBold' !important;
   font-size: 18px;
   margin-top: 1rem;
+  text-align: right;
+  border-bottom: 2px solid #dbdbdb;
+  padding-bottom: 1rem;
 }
+.title-page-sales-report{
+  font-family: 'IranBold' !important;
+  font-size: 18px;
+  margin-top: 1rem;
+  text-align: right;
+  border-bottom: 2px solid #dbdbdb;
+  padding-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h6{
+    margin-bottom: 0;
+  }
+}
+
 .header-title {
   font-size: 25px;
   font-weight: 700;
   font-family: BYekan !important;
 }
+
 .input {
   font-size: 15px;
   font-family: BYekan !important;
@@ -22,6 +43,7 @@
   padding: 4px 8px;
   border-radius: 6px;
   font-weight: 600;
+
   input {
     height: 33px;
     border: none;
@@ -29,6 +51,7 @@
 
   }
 }
+
 .header-input {
   font-family: BYekan !important;
   display: flex;
@@ -37,17 +60,20 @@
   margin-top: -40px;
   margin-right: 600px;
 }
+
 .list-title {
   font-size: 18px;
   text-align: center;
   font-family: BYekan !important;
 }
+
 .title-table {
   font-size: 15px;
   text-align: center;
   font-family: IranBold !important;
   margin-top: 10px;
 }
+
 .header-buttn {
   font-family: BYekan !important;
 
@@ -60,10 +86,12 @@
     font-size: 18px;
   }
 }
+
 .title {
   font-size: 25px;
   font-family: BYekan !important;
 }
+
 .tablerow:nth-of-type(odd) {
   background-color: #eee;
 
@@ -75,10 +103,12 @@
 .tablerowfont {
   font-family: BYekan !important;
 }
-.name-leader{
+
+.name-leader {
   font-size: 14px !important;
 }
-.id{
+
+.id {
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -90,43 +120,312 @@
   font-size: 12px !important;
   font-family: 'IranBold' !important;
 }
-.date{
+
+.date {
   font-size: 13px;
   font-weight: 600;
-  svg{
+
+  svg {
     margin-left: 8px;
   }
 }
-.airline{
+
+.airline {
   font-size: 13px;
   font-weight: 600;
-  svg{
+
+  svg {
     margin-left: 8px;
   }
 }
-.normal-size{
+
+.normal-size {
   font-size: 14px;
   font-family: 'BYekan' !important;
   font-weight: 600;
 }
-.en-font{
+
+.en-font {
   font-family: 'en-font' !important;
   font-weight: 600;
   font-size: 14px;
 }
-.style-number-view-item{
+
+.style-number-view-item {
   font-family: 'IranBold' !important;
   width: 100%;
 }
-.child-style-number-view-item{
+
+.child-style-number-view-item {
   width: 100%;
   display: flex !important;
   justify-content: flex-end;
-  p{
+
+  p {
     font-family: 'IranBold' !important;
     margin: 0;
     padding: 0;
 
   }
 
+}
+
+.parent-buttons {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+
+  button {
+    width: auto;
+    height: 40px;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #279692;
+    border: 2px solid #279692;
+    padding: 0 10px;
+    font-family: 'BYekan' !important;
+    transition: 0.5s all;
+    font-size: 14px;
+    &:hover {
+      transition: 0.5s all;
+      color: #279692;
+      background-color: #fff;
+    }
+  }
+}
+
+
+.header-parent-sales-report{
+  width: 2200px;
+  height: 60px;
+  background-color: #eee;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-content: center;
+  padding: 0 12px;
+}
+.body-search-report{
+  width: 2200px;
+  height: 60px;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-content: center;
+  padding: 0 12px;
+  input{
+    border: 2px solid #dbdbdb;
+    border-radius: 5px;
+    padding: 0 8px;
+    width: 90%;
+  }
+}
+.body-parent-report{
+  width: 2200px;
+  height: 60px;
+  border-bottom: 2px dashed #dbdbdb;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 0 12px;
+  place-content: center;
+  .id{
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    background-color: #999;
+  }
+  .price-order{
+    strong{
+      font-size: 16px;
+      font-family: 'IranBold' !important;
+    }
+    small{
+      font-size: 13px;
+      margin-right: 4px;
+    }
+  }
+}
+.header-parent-sales-report-two{
+  width: 2500px;
+  height: 60px;
+  background-color: #eee;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-content: center;
+  padding: 0 12px;
+}
+.body-search-report-two{
+  width: 2500px;
+  height: 60px;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-content: center;
+  padding: 0 12px;
+  input{
+    border: 2px solid #dbdbdb;
+    border-radius: 5px;
+    padding: 0 8px;
+    width: 90%;
+  }
+}
+.body-parent-report-two{
+  width: 2500px;
+  height: 60px;
+  border-bottom: 2px dashed #dbdbdb;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 0 12px;
+  place-content: center;
+  .id{
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    background-color: #999;
+  }
+  .price-order{
+    strong{
+      font-size: 16px;
+      font-family: 'IranBold' !important;
+    }
+    small{
+      font-size: 13px;
+      margin-right: 4px;
+    }
+  }
+}
+.parent-sales-report{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: auto;
+  padding-bottom: 2rem;
+
+}
+
+//reserve
+.header-parent-sales-report-reserve{
+  width: 2200px;
+  height: 60px;
+  background-color: #eee;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-content: center;
+  padding: 0 12px;
+}
+.body-search-report-reserve{
+  width: 2200px;
+  height: 60px;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-content: center;
+  padding: 0 12px;
+  input{
+    border: 2px solid #dbdbdb;
+    border-radius: 5px;
+    padding: 0 8px;
+    width: 90%;
+  }
+}
+.body-parent-report-reserve{
+  width: 2200px;
+  height: 60px;
+  border-bottom: 2px dashed #dbdbdb;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 0 12px;
+  place-content: center;
+  .id{
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    background-color: #999;
+  }
+  .price-order{
+    strong{
+      font-size: 16px;
+      font-family: 'IranBold' !important;
+    }
+    small{
+      font-size: 13px;
+      margin-right: 4px;
+    }
+  }
+}
+
+
+
+//transaction
+.header-parent-sales-report-transaction{
+  width: 2200px;
+  height: 60px;
+  background-color: #eee;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-content: center;
+  padding: 0 12px;
+}
+.body-search-report-transaction{
+  width: 2200px;
+  height: 60px;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-content: center;
+  padding: 0 12px;
+  input{
+    border: 2px solid #dbdbdb;
+    border-radius: 5px;
+    padding: 0 8px;
+    width: 90%;
+  }
+}
+.body-parent-report-transaction{
+  width: 2200px;
+  height: 60px;
+  border-bottom: 2px dashed #dbdbdb;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 0 12px;
+  place-content: center;
+  .id{
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    background-color: #999;
+  }
+  .price-order{
+    strong{
+      font-size: 16px;
+      font-family: 'IranBold' !important;
+    }
+    small{
+      font-size: 13px;
+      margin-right: 4px;
+    }
+  }
 }

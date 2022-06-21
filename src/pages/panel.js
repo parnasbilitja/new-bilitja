@@ -30,6 +30,10 @@ import PriceHandling from "../sources/manager/price-handling/PriceHandling";
 import CharterList from "../sources/manager/charter-list/CharterList";
 import FlightSellReport from "../sources/manager/sell-report/sell-report/DesktopFlightSellReport";
 import AllFlightSellReport from "./../sources/manager/sell-report/all-sell-report/DesktopFlightSellReport";
+import SalesReport from "../sources/manager/sell-report/sell-report/Sales-report";
+import ConsularReport from "../sources/manager/sell-report/sell-report/Consular-report";
+import Reserving from "../sources/manager/sell-report/sell-report/reserving";
+import Transaction from "../sources/manager/sell-report/sell-report/transaction";
 
 export default function ManagePanel() {
   const myRouter = useRouter();
@@ -103,6 +107,8 @@ export default function ManagePanel() {
       //       case '/panel/villas/detail/:id' : return <VilaDetial/>  ;
       case "/panel/villas/getReservation":
         return <VilaReservation />;
+      case "/panel/Sales-report":
+        return <SalesReport/>;
       case "/panel/city/add":
         return <AddCity />;
       case "/panel/city/show":
@@ -140,6 +146,12 @@ export default function ManagePanel() {
         return <PriceHandling />;
       case "/panel/all-flight-sell-report":
         return <AllFlightSellReport />;
+      case "/panel/Consular-report":
+        return <ConsularReport/>;
+      case "/panel/reserving":
+        return <Reserving/>;
+      case "/panel/transaction":
+        return <Transaction/>;
       default:
         return <div />;
     }
