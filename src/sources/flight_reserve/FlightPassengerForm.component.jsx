@@ -111,7 +111,7 @@ class FlightPassengerForm extends React.Component {
                         className={`"col-lg-10 col-md-12 col-sm-12 col-12 m-auto" ${styles["container"]}`}
                     >
                         <div className="row ">
-                            <div className="col-lg-2 col-md-3 col-sm-3 col-6 padding-horizental-3px m-auto ">
+                            <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px m-auto ">
                                 <div>
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
@@ -133,7 +133,7 @@ class FlightPassengerForm extends React.Component {
                   {this.props.nameErr}
                 </span>
                             </div>
-                            <div className="col-lg-3 col-md-3 col-sm-3 col-6 padding-horizental-3px m-auto">
+                            <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px m-auto">
                                 <div>
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
@@ -188,8 +188,9 @@ class FlightPassengerForm extends React.Component {
                                     <option value="2">زن</option>
                                 </PrimarySelectInput>
                             </div>
-                            <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px m-auto">
-                                <div>
+
+                            <div className="col-lg-4 col-md-4 col-sm-4 col-6 padding-horizental-3px m-auto">
+                                <div className="d-flex align-items-center">
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
                                         placeholder={`${
@@ -222,7 +223,7 @@ class FlightPassengerForm extends React.Component {
                                         defaultValue={this.props.code}
                                     />
                                     <PrimaryTextInput
-                                        style={{height: "3em", fontSize: 12, marginTop: 18}}
+                                        style={{height: "3em", fontSize: 12,marginRight:12}}
                                         placeholder={`
   شماره پاسپورت`}
                                         inputMode={`${
@@ -254,7 +255,7 @@ class FlightPassengerForm extends React.Component {
                   {this.props.codeErr}
                 </span>
                             </div>
-                            <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px m-auto">
+                            <div className="col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px m-auto">
                                 <div>
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}

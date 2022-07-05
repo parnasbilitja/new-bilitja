@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="new pages panel manger">
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/flight_reserve/FlightPassengerForm.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_reserve/FlightPassengerForm.component.jsx" afterDir="false" />
     </list>
@@ -67,7 +67,7 @@
       <workItem from="1655876783683" duration="871000" />
       <workItem from="1655901538506" duration="1737000" />
       <workItem from="1655963010945" duration="302000" />
-      <workItem from="1657023736788" duration="964000" />
+      <workItem from="1657023736788" duration="2740000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -135,7 +135,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۱۱" />
       <updated>1655813856665</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL‎۰۰۰۱۲" summary="input placeholder">
+      <created>1657024994727</created>
+      <option name="number" value="LOCAL‎۰۰۰۱۲" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۱۲" />
+      <updated>1657024994727</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,7 +155,8 @@
     <MESSAGE value="flight reserve" />
     <MESSAGE value="panel manger redesign order&amp;fly&amp;dashboard&amp;villa" />
     <MESSAGE value="new pages panel manger" />
-    <option name="LAST_COMMIT_MESSAGE" value="new pages panel manger" />
+    <MESSAGE value="input placeholder" />
+    <option name="LAST_COMMIT_MESSAGE" value="input placeholder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
