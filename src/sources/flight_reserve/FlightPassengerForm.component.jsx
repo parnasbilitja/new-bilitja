@@ -194,6 +194,21 @@ class FlightPassengerForm extends React.Component {
                                     <option value="2">زن</option>
                                 </PrimarySelectInput>
                             </div>
+                            <div className="col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px m-auto">
+                                <div>
+                                    <PrimaryTextInput
+                                        style={{height: "3em", fontSize: 12}}
+                                        placeholder="تاریخ تولد"
+                                        value={this.props.birthday}
+                                        onFocus={() => {
+                                            this.managePopUpBirthdayCalendar(true);
+                                        }}
+                                    />
+                                </div>
+                                <span className="color-secondary error-message">
+                  {this.props.birthdayErr}
+                </span>
+                            </div>
                             <div className="col-lg-3 col-md-3 col-sm-4 col-6 padding-horizental-3px m-auto">
                                 <div className="d-flex align-items-center">
                                     <PrimaryTextInput
@@ -260,21 +275,6 @@ class FlightPassengerForm extends React.Component {
                   {this.props.codeErr}
                 </span>
                             </div>
-                            <div className="col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px m-auto">
-                                <div>
-                                    <PrimaryTextInput
-                                        style={{height: "3em", fontSize: 12}}
-                                        placeholder="تاریخ تولد"
-                                        value={this.props.birthday}
-                                        onFocus={() => {
-                                            this.managePopUpBirthdayCalendar(true);
-                                        }}
-                                    />
-                                </div>
-                                <span className="color-secondary error-message">
-                  {this.props.birthdayErr}
-                </span>
-                            </div>
                             <div className="col-lg-2 mt-12 col-md-2 col-sm-4 col-6 padding-horizental-3px ">
                                 <div>
                                     <PrimaryTextInput
@@ -298,7 +298,7 @@ class FlightPassengerForm extends React.Component {
                         {this.props.id != 0 ? (
                             <div
                                 className="hidden-xs hidden-sm corner-position"
-                                style={{position: "absolute", left: "-33px", top: "3px"}}
+                                style={{position: "absolute", left: "-33px", top: "35px"}}
                             >
                 <span
                     className="delete-thumbnail"
