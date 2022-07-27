@@ -59,7 +59,7 @@ class FlightPassengerForm extends React.Component {
     render() {
         return (
             <div className={`${styles["passenger-form"]}`}>
-                <div className="row">
+                <div className="row d-flex justify-content-start col-md-12">
                     <div className="col-lg-1 col-md-12 col-sm-12 col-12 no-padding hidden-xs">
                         <p className="no-margin font-size-14 font-bold-iransanse">
                             {`${this.props.index + 1}-`}&nbsp;
@@ -68,6 +68,13 @@ class FlightPassengerForm extends React.Component {
                         <p className="no-margin font-size-10">
                             {this.getSubtitleByType(this.props.type)}
                         </p>
+                    </div>
+                    <div className="hidden-xs col-lg-1 mr-4 col-md-2 col-sm-2 row-price font-size-12 p-3">
+                <span className="font-size-14 color-secondary font-bold-iransanse ">
+                  {moneyFormat(this.props.price)}
+                    &nbsp;
+                </span>
+                        تومان
                     </div>
                     {/* shows up just for mobile ----- start*/}
                     <div
@@ -107,11 +114,9 @@ class FlightPassengerForm extends React.Component {
                         ) : null}
                     </div>
                     {/* shows up just for mobile ----- end */}
-                    <div
-                        className={`"col-lg-10 col-md-12 col-sm-12 col-12 m-auto" ${styles["container"]}`}
-                    >
-                        <div className="row ">
-                            <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px m-auto ">
+                    <div className={`"col-lg-12 col-md-12 col-sm-12 col-12 m-auto" ${styles["container"]}`}>
+                        <div className="row">
+                            <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px m-auto ">
                                 <div>
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
@@ -133,7 +138,7 @@ class FlightPassengerForm extends React.Component {
                   {this.props.nameErr}
                 </span>
                             </div>
-                            <div className="col-lg-2 col-md-2 col-sm-2 col-6 padding-horizental-3px m-auto">
+                            <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px m-auto">
                                 <div>
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
@@ -155,8 +160,9 @@ class FlightPassengerForm extends React.Component {
                   {this.props.familyErr}
                 </span>
                             </div>
-                            <div className=" col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px m-auto">
+                            <div className=" col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px m-auto">
                                 <PrimarySelectInput
+                                    style={{padding: "6px 0",border:"1px solid #eee"}}
                                     name="nationality"
                                     onChange={(e) => {
                                         this.props.fillPassengersData(
@@ -170,7 +176,7 @@ class FlightPassengerForm extends React.Component {
                                     <option value="other">خارجی</option>
                                 </PrimarySelectInput>
                             </div>
-                            <div className=" col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px m-auto ">
+                            <div className=" col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px m-auto ">
                                 <PrimarySelectInput
                                     style={{height: "3em", fontSize: 12}}
                                     name="gender"
@@ -188,8 +194,7 @@ class FlightPassengerForm extends React.Component {
                                     <option value="2">زن</option>
                                 </PrimarySelectInput>
                             </div>
-
-                            <div className="col-lg-4 col-md-4 col-sm-4 col-6 padding-horizental-3px m-auto">
+                            <div className="col-lg-3 col-md-3 col-sm-4 col-6 padding-horizental-3px m-auto">
                                 <div className="d-flex align-items-center">
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
@@ -255,7 +260,7 @@ class FlightPassengerForm extends React.Component {
                   {this.props.codeErr}
                 </span>
                             </div>
-                            <div className="col-lg-1 col-md-1 col-sm-1 col-6 padding-horizental-3px m-auto">
+                            <div className="col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px m-auto">
                                 <div>
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
@@ -270,13 +275,22 @@ class FlightPassengerForm extends React.Component {
                   {this.props.birthdayErr}
                 </span>
                             </div>
-                            <div className="hidden-xs col-lg-1 col-md-2 col-sm-2 row-price font-size-12 p-3 m-auto">
-                <span className="font-size-14 color-secondary font-bold-iransanse ">
-                  {moneyFormat(this.props.price)}
-                    &nbsp;
+                            <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px m-auto">
+                                <div>
+                                    <PrimaryTextInput
+                                        style={{height: "3em", fontSize: 12}}
+                                        placeholder=" انقضا پاسپورت"
+                                        value={this.props.birthday}
+                                        onFocus={() => {
+                                            this.managePopUpBirthdayCalendar(true);
+                                        }}
+                                    />
+                                </div>
+                                <span className="color-secondary error-message">
+                  {this.props.birthdayErr}
                 </span>
-                                تومان
                             </div>
+
                         </div>
                     </div>
 
