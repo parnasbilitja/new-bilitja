@@ -275,7 +275,7 @@ class FlightPassengerForm extends React.Component {
                   {this.props.birthdayErr}
                 </span>
                             </div>
-                            <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px m-auto">
+                            <div className="col-lg-2 mt-12 col-md-2 col-sm-4 col-6 padding-horizental-3px ">
                                 <div>
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
