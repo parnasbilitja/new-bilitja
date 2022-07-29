@@ -140,6 +140,8 @@ class FlightReserve extends React.Component {
             pasno:"",
             birthdate:"",
             pasenddat:"",
+            pasenddatErr:"",
+            pasnoErr:"",
         };
 
         passengers.push(additionalPassenger);
@@ -209,7 +211,7 @@ class FlightReserve extends React.Component {
                 tempPassenger.pasnoErr = "شماره پاسپورت الزامی میباشد";
                 isValid = false;
             }
-            if (tempPassenger.pasenddat == "" && this.state.pathKind==2) {
+            if (tempPassenger.futureday == "" && this.state.pathKind==2) {
                 tempPassenger.pasenddatErr = "انقضای پاسپورت الزامی میباشد";
                 isValid = false;
             }
