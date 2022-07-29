@@ -1,7 +1,8 @@
 import React from 'react'
 import moment from 'moment-jalaali'
+
 import styles from '../../../styles/BirthdayCalendar.module.scss'
-class BirthdayCalendar extends React.Component {
+class FutureCalendar extends React.Component {
     current = 1401
 
     constructor(props) {
@@ -20,20 +21,11 @@ class BirthdayCalendar extends React.Component {
     }
 
     getYears = () => {
-        if (this.props.typePassenger == "ADL") {
-            return new Array(this.current - 11 - 1300).fill().map((x, index) => {
-                return 1300 + index
+        
+            return new Array(this.props.numOfYear).fill().map((x, index) => {
+                return 1400 + index
             }).reverse()
-        } else if (this.props.typePassenger == "CHD") {
-            return new Array(11).fill().map((x, index) => {
-                return this.current - 12 + index
-            }).reverse()
-        }
-        else if (this.props.typePassenger == "INF") {
-            return new Array(3).fill().map((x, index) => {
-                return this.current - 2 + index
-            }).reverse()
-        }
+        
 
     }
     //calculate days in a month, month and year are defined in previous steps!
@@ -73,7 +65,7 @@ class BirthdayCalendar extends React.Component {
                     this.state.stage == 1 ?
                         <div>
                             <p className="font-size-14 black-color font-bold-iransanse text-center">
-                                لطفا سال تولد خود را وارد کنید
+                                لطفا سال را وارد کنید
                             </p>
 
                             <div className={styles['birthday-year-container']}>
@@ -97,7 +89,7 @@ class BirthdayCalendar extends React.Component {
                     this.state.stage == 2 ?
                         <div>
                             <p className="font-size-14 black-color font-bold-iransanse text-center">
-                                لطفا ماه تولد خود را وارد کنید
+                                لطفا ماه را وارد کنید
                             </p>
                             <div className={styles['birthday-month-container']}>
                                 <div className={styles['birthday-item']} onClick={() => {
@@ -222,7 +214,8 @@ class BirthdayCalendar extends React.Component {
                                         <div className={styles['birthday-item']} onClick={() => {
                                             const m = moment(`${this.state.year+'/'+this.state.month+'/'+x}`, 'jYYYY/jMM/jDD')
                                             const date = m.format('jYYYY/jMM/jDD')
-                                            this.props.setBirthday(date)
+                                            const miladidate = m.format("YYYY/MM/DD");
+                                            this.props.setFutureday(miladidate)
                                             this.props.closePopUpCalendar(false)
                                             this.setState({
                                                 stage: 1
@@ -246,7 +239,7 @@ class BirthdayCalendar extends React.Component {
     }
 }
 
-export default BirthdayCalendar
+export default FutureCalendar
 
 
 // <Calendar

@@ -136,6 +136,10 @@ class FlightReserve extends React.Component {
             codeErr: "",
             birthdayErr: "",
             pasaportErr: "",
+            futureday:"",
+            pasno:"",
+            birthdate:"",
+            pasenddat:"",
         };
 
         passengers.push(additionalPassenger);
@@ -188,23 +192,35 @@ class FlightReserve extends React.Component {
             tempPassenger.codeErr = "";
             tempPassenger.birthdayErr = "";
             tempPassenger.pasaportErr = "";
+            tempPassenger.pasnoErr = "";
+            tempPassenger.pasenddatErr = "";
 
             if (tempPassenger.name == "") {
                 tempPassenger.nameErr = "نام الزامی میباشد";
                 isValid = false;
             }
+            
             if (tempPassenger.family == "") {
                 tempPassenger.familyErr = "نام‌خانوادگی الزامی میباشد";
                 isValid = false;
             }
-            if (onePassenger.nationality == "IR") {
+
+            if (tempPassenger.pasno == "" && this.state.pathKind==2) {
+                tempPassenger.pasnoErr = "شماره پاسپورت الزامی میباشد";
+                isValid = false;
+            }
+            if (tempPassenger.pasenddat == "" && this.state.pathKind==2) {
+                tempPassenger.pasenddatErr = "انقضای پاسپورت الزامی میباشد";
+                isValid = false;
+            }
+            if (onePassenger.nationality == "IR" && this.state.pathKind!=2) {
                 if (!isValidIranianNationalCode(tempPassenger.code)) {
                     tempPassenger.codeErr = "کدملی نامعتبر میباشد";
                     isValid = false;
                 }
             } else {
                 if (!isValidPassportCode(tempPassenger.code)) {
-                    tempPassenger.codeErr = "کد پاسورت نا معتبر میباشد";
+                    tempPassenger.codeErr = "کد پاسپورت نا معتبر میباشد";
                     isValid = false;
                 }
             }
@@ -292,9 +308,9 @@ class FlightReserve extends React.Component {
             meliatAll: this.state.passengers.map((x) => x.nationality).join(","),
             telNo: this.state.phoneSubmiter.toString(),
             mobileNo: this.state.mobileSubmiter.toString(),
-            pasNoAll: Array(this.state.passengers.length).fill("").join(","),
+            pasNoAll: this.state.passengers.map((x) => x.pasno).join(","),    //Array(this.state.passengers.length).fill("").join(","),
             pasStDateAll: Array(this.state.passengers.length).fill("").join(","),
-            pasEndDateAll: Array(this.state.passengers.length).fill("").join(","),
+            pasEndDateAll: this.state.passengers.map((x) => x.futureday).join(","),
             numADL: numADL,
             numCHD: numCHD,
             numINF: numINF,
@@ -345,6 +361,7 @@ class FlightReserve extends React.Component {
                                         type="ADL"
                                         removePassenger={this.removePassenger}
                                         fillPassengersData={this.fillPassengersData}
+                                        pathKind={this.state.pathKind}
                                     />
                                 ))
                             : null}
@@ -359,6 +376,7 @@ class FlightReserve extends React.Component {
                                         type="CHD"
                                         removePassenger={this.removePassenger}
                                         fillPassengersData={this.fillPassengersData}
+                                        pathKind={this.state.pathKind}
                                     />
                                 ))
                             : null}
@@ -372,6 +390,7 @@ class FlightReserve extends React.Component {
                                         index={index}
                                         removePassenger={this.removePassenger}
                                         fillPassengersData={this.fillPassengersData}
+                                        pathKind={this.state.pathKind}
                                     />
                                 ))
                             : null}

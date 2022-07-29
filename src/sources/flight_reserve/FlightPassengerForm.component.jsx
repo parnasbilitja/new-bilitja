@@ -5,12 +5,15 @@ import PrimarySelectInput from "../component/PrimarySelectInput.component";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import BirthdayCalendar from "../calendar/BirthdayCalendar.component";
+import FuturedayCalendar from "../calendar/FutureCalendar.component";
+
 import {moneyFormat} from "../../Utils/SimpleTasks";
 import PopUp from "../component/PopUp.component";
 import styles from "../../../styles/FlightPassengerForm.module.scss";
 import {checkCharacter, checkNumber} from "../../Utils/SimpleTasks";
 import {messageBoxModify} from "../../Redux/UI/ui.action";
 import {connect} from "react-redux";
+
 
 class FlightPassengerForm extends React.Component {
     constructor(props) {
@@ -45,6 +48,11 @@ class FlightPassengerForm extends React.Component {
             open: value,
         });
     };
+    managePopUpFuturedayCalendar = (value) => {
+        this.setState({
+            openFuture: value,
+        });
+    };
     checkCharacters = (value) => {
         if (!checkCharacter(value) && value != "") {
             this.props.messageBoxModify({
@@ -74,7 +82,7 @@ class FlightPassengerForm extends React.Component {
                   {moneyFormat(this.props.price)}
                     &nbsp;
                 </span>
-                        تومان
+                       تومان
                     </div>
                     {/* shows up just for mobile ----- start*/}
                     <div
@@ -203,6 +211,7 @@ class FlightPassengerForm extends React.Component {
                                         onFocus={() => {
                                             this.managePopUpBirthdayCalendar(true);
                                         }}
+                                        
                                     />
                                 </div>
                                 <span className="color-secondary error-message">
@@ -210,7 +219,7 @@ class FlightPassengerForm extends React.Component {
                 </span>
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-4 col-6 padding-horizental-3px m-auto">
-                                <div className="d-flex align-items-center">
+                            <div  className={`d-flex align-items-center ${ this.props.pathKind !=1 ? styles["makhfi"]:""  }`} >
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
                                         placeholder={`${
@@ -242,52 +251,47 @@ class FlightPassengerForm extends React.Component {
                                         }}
                                         defaultValue={this.props.code}
                                     />
-                                    <PrimaryTextInput
-                                        style={{height: "3em", fontSize: 12,marginRight:12}}
-                                        placeholder={`
-  شماره پاسپورت`}
-                                        inputMode={`${
-                                            this.props.nationality == "IR" ? "numeric" : "text"
-                                        }`}
-                                        onChange={(e) => {
-                                            if (this.props.nationality == "other") {
-                                                this.props.fillPassengersData(
-                                                    "code",
-                                                    this.props.id,
-                                                    e.target.value
-                                                );
-                                            } else {
-                                                if (!checkNumber(e.target.value)) {
-                                                    return;
-                                                } else {
-                                                    this.props.fillPassengersData(
-                                                        "code",
-                                                        this.props.id,
-                                                        e.target.value
-                                                    );
-                                                }
-                                            }
-                                        }}
-                                        defaultValue={this.props.code}
-                                    />
                                 </div>
+                                
+                                <div  className={`d-flex align-items-center ${ this.props.pathKind !=2 ? styles["makhfi"]:""  }`} >
+                                    <PrimaryTextInput 
+                                        style={{height: "3em", fontSize: 12,marginRight:12}}
+                                        placeholder={` شماره پاسپورت`}
+                                        onChange={(e) => {
+                                            if (!this.checkCharacters(e.target.value)) {
+                                                return;
+                                            }
+                                            this.props.fillPassengersData(
+                                                "pasno",
+                                                this.props.id,
+                                                e.target.value
+                                            );
+                                        }}
+                                        defaultValue={this.props.pasno}
+                                    />
+                                    </div>
                                 <span className="color-secondary error-message">
-                  {this.props.codeErr}
+                   {this.props.codeErr}                                    
+                  {this.props.pasnoErr}
                 </span>
                             </div>
                             <div className="col-lg-2 mt-12 col-md-2 col-sm-4 col-6 padding-horizental-3px ">
-                                <div>
+                                <div  className={`${ this.props.pathKind !=2 ? styles["makhfi"]:""  }`} >
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
                                         placeholder=" انقضا پاسپورت"
-                                        value={this.props.birthday}
+                                        value={this.props.futureday}
                                         onFocus={() => {
-                                            this.managePopUpBirthdayCalendar(true);
+                                            this.managePopUpFuturedayCalendar(true);
                                         }}
+                                        
                                     />
+                                      
                                 </div>
                                 <span className="color-secondary error-message">
-                  {this.props.birthdayErr}
+
+
+                  {this.props.pasenddatErr}
                 </span>
                             </div>
 
@@ -328,6 +332,23 @@ class FlightPassengerForm extends React.Component {
                         />
                     </div>
                 </PopUp>
+
+                <PopUp
+                    opened={this.state.openFuture}
+                    closePopUp={this.managePopUpFuturedayCalendar}
+                >
+                    <div style={{padding: 15}}>
+                        <FuturedayCalendar
+                            numOfYear={10}
+                            setFutureday={(value) => {
+                                this.props.fillPassengersData("futureday", this.props.id, value);
+                            }}
+                            closePopUpCalendar={this.managePopUpFuturedayCalendar}
+                        />
+                    </div>
+                </PopUp>
+
+              
             </div>
         );
     }

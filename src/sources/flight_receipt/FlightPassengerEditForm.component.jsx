@@ -22,6 +22,9 @@ class FlightPassengerEditForm extends React.Component {
       familyErr: "",
       melliCodeErr: "",
       birthdayErr: "",
+      pasnoErr : "",
+      pasenddatErr : "",
+
     };
   }
   // when a new user gets selected from parent component, this method will be triggered
@@ -53,6 +56,8 @@ class FlightPassengerEditForm extends React.Component {
     let familyErr = "";
     let codeErr = "";
     let birthdayErr = "";
+    let pasnoErr = "";
+    let pasenddatErr = "";
 
     if (this.state.name == "") {
       nameErr = "نام الزامی میباشد";
@@ -83,6 +88,9 @@ class FlightPassengerEditForm extends React.Component {
       melliCodeErr: codeErr,
       familyErr: familyErr,
       nameErr: nameErr,
+      pasnoErr : pasnoErr,
+      pasenddatErr :pasenddatErr,
+
     });
 
     return isValid;
