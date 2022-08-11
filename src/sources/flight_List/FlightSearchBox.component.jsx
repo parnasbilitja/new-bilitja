@@ -162,7 +162,7 @@ class FlightSearchBox extends React.Component {
             {/* className={`bilitja icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`} */}
             <PrimaryTextInputMobile
               value={sourceName}
-              // readonlyattr={this.state.width <= mobileSize ? "true" : "false"}
+              readonlyattr={this.state.width <= mobileSize ? "false" : "false"}
               name="sourceName"
               onFocus={(e) => {
                 // for mobile
@@ -214,7 +214,7 @@ class FlightSearchBox extends React.Component {
             ></i>
             <PrimaryTextInputMobile
               value={destinationName}
-              // readonlyattr={this.state.width <= mobileSize ? "true" : "false"}
+              readonlyattr={this.state.width <= mobileSize ? "false" : "false"}
               name="destinationName"
               onFocus={(e) => {
                 // for mobile
