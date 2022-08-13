@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "../../../styles/FlightReserve.module.scss";
 
-import PrimaryTextInput from "../../sources/component/PrimaryTextInput.component";
-import PrimaryButton from "../../sources/component/PrimaryButton.component";
+
 import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
 import FlightPassengerForm from "./FlightPassengerForm.component";
 import FlightReserveDesktopHeader from "./FlightReserveDesktopHeader.component";
@@ -20,7 +19,7 @@ import globals from "../Global";
 
 import { connect } from "react-redux";
 import { selectProperties } from "../../Redux/Reserve/reserve.reselect";
-import { messageBoxModify } from "../../Redux/UI/ui.action";
+import { messageBoxModify,accountBoxModify } from "../../Redux/UI/ui.action";
 
 import {
     isValidIranianNationalCode,
@@ -29,11 +28,14 @@ import {
 } from "../../Utils/SimpleTasks";
 import { withRouter } from "next/router";
 import { Loader } from "../../Utils/Loader";
+import RegisterComponent from "../account/Register.component";
+import PopUp from "../component/PopUp.component";
 
 class FlightReserve extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            stateRegister : false,
             passengers: [],
             priceAll: 0,
             mobileSubmiter: "",
@@ -130,6 +132,8 @@ class FlightReserve extends React.Component {
             code: "",
             birthday: "",
             pasaport: "",
+            // add new fild for extPasaport
+            extPasaport: "",
             price: price,
             nameErr: "",
             familyErr: "",
@@ -260,7 +264,14 @@ class FlightReserve extends React.Component {
             [name]: parseInt(value),
         });
     };
-    validationNumberOfPassengers = () => {
+
+    authUserPopUP = () => {
+        this.setState({
+            stateRegister: false,
+        });
+    };
+
+    validationNumberOfPassengers = (type='') => {
         const numADL = this.state.passengers.filter((x) => x.type == "ADL").length;
         const numCHD = this.state.passengers.filter((x) => x.type == "CHD").length;
         const numINF = this.state.passengers.filter((x) => x.type == "INF").length;
@@ -268,22 +279,24 @@ class FlightReserve extends React.Component {
         let message = "";
         let valid = true;
 
-        if (numADL <= 0) {
+        if (numADL <= numINF && type!='ADL' && type!='CHD') {
+           message = "تعداد نوزاد نمیتواند بیشتر از تعداد بزرگسال باشد";
+           valid = false;
+       }else if (numADL <= 0) {
             message = "باید حداقل یک بزرگسال در بین مسافرین باشد";
             valid = false;
-        } else if (numADL + numCHD >= cap) {
+        } else if (numADL + numCHD >= cap && type!='INF') {
             message = "تعداد افراد بیش از ظرفیت پرواز است";
             valid = false;
-        } else if (numADL <= numINF) {
-            message = "تعداد نوزاد نمیتواند بیشتر از تعداد بزرگسال باشد";
-            valid = false;
-        }
+        } 
         if (!valid) {
             this.props.messageBoxModify({
                 message: message,
                 state: true,
             });
         }
+
+        console.log(this.state.passengers);
 
         return valid;
     };
@@ -417,7 +430,7 @@ class FlightReserve extends React.Component {
                                             href="#"
                                             className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
                                             onClick={(e) => {
-                                                if (this.validationNumberOfPassengers()) {
+                                                if (this.validationNumberOfPassengers('ADL')) {
                                                     this.addNewPassenger("ADL", this.state.priceADL);
                                                 }
                                                 e.preventDefault();
@@ -434,11 +447,10 @@ class FlightReserve extends React.Component {
                                     </div>
 
                                     <div className="col-lg-2 col-md-4 col-4 no-padding">
-                                        <a
-                                            href="#"
+                                        <div
                                             className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
                                             onClick={(e) => {
-                                                if (this.validationNumberOfPassengers()) {
+                                                if (this.validationNumberOfPassengers('CHD')) {
                                                     this.addNewPassenger("CHD", this.state.priceCHD);
                                                 }
                                                 e.preventDefault();
@@ -447,7 +459,7 @@ class FlightReserve extends React.Component {
                                             <FontAwesomeIcon icon={faPlus} />
                                             <span>کودک</span>
                                             <FontAwesomeIcon className="pull-left" icon={faChild} />
-                                        </a>
+                                        </div>
                                     </div>
 
                                     <div className="col-lg-2 col-md-4 col-4 no-padding">
@@ -455,7 +467,7 @@ class FlightReserve extends React.Component {
                                             href="#"
                                             className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
                                             onClick={(e) => {
-                                                if (this.validationNumberOfPassengers()) {
+                                                if (this.validationNumberOfPassengers('INF')) {
                                                     this.addNewPassenger("INF", this.state.priceINF);
                                                 }
                                                 e.preventDefault();
@@ -565,6 +577,13 @@ class FlightReserve extends React.Component {
                                     <div className="col-lg-8 col-md-8 col-7 padding-3px">
                                         <button
                                             onClick={(e) => {
+
+                                                    e.preventDefault();
+                                                    this.props.accountBoxModify({
+                                                      state: true,
+                                                      type: "register",
+                                                    });
+                                                  
                                                 if (!this.validation()) {
                                                     this.setState({ loading: false });
                                                     this.props.messageBoxModify({
@@ -574,7 +593,7 @@ class FlightReserve extends React.Component {
                                                     e.preventDefault();
                                                 } else if (this.state.agreeWithTerm === true) {
                                                     this.setState({ loading: true });
-                                                    this.compeleteReservation();
+                                                  this.compeleteReservation();
                                                     e.preventDefault();
                                                 } else {
                                                     this.setState({ loading: false });
@@ -607,6 +626,12 @@ class FlightReserve extends React.Component {
                         </div>
                     </div>
                 </div>
+                <PopUp
+                    opened={this.state.stateRegister}
+                    closePopUp={this.authUserPopUP}
+                >
+                        <RegisterComponent/>
+                </PopUp>
             </div>
         );
     }
@@ -615,6 +640,7 @@ const mapStateToProps = (state) => ({
     reserveProperties: selectProperties(state),
 });
 const mapDispatchToProps = (dispatch) => ({
+  accountBoxModify: (value) => dispatch(accountBoxModify(value)),
     addReservationProperties: async (value) =>
         dispatch(addReservationProperties(value)),
     messageBoxModify: (value) => dispatch(messageBoxModify(value)),

@@ -209,7 +209,7 @@ class NavBarMobile extends React.Component {
                 </div>
               </li>
               <li>
-                {/* <div>
+                <div>
                   <a href="/villa">
                     <i className="bilitja font-size-24 icon-villa pull-right rotate-y-180"></i>
                     <span className="pull-right font-size-14 color-black">
@@ -217,7 +217,7 @@ class NavBarMobile extends React.Component {
                     </span>
                   </a>
                   <div className="clear"></div>
-                </div> */}
+                </div>
               </li>
               <li>
                 {/* <div>

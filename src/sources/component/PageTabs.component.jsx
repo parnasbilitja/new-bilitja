@@ -26,7 +26,7 @@ const PageTabls = (props) => {
               <span className="font-size-14"> بلیط هواپیما </span>
             </div>
           </div>
-          {/* <div
+          <div
             className={`${styles["home-tab"]} cursor-pointer ${
               props.tabActice == 2 ? styles["home-tab-active"] : null
             }`}
@@ -40,7 +40,7 @@ const PageTabls = (props) => {
             <div className="pull-right">
               <span className="font-size-14"> اقامتگاه </span>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

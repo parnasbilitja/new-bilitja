@@ -13,6 +13,7 @@ import styles from "../../../styles/FlightPassengerForm.module.scss";
 import {checkCharacter, checkNumber} from "../../Utils/SimpleTasks";
 import {messageBoxModify} from "../../Redux/UI/ui.action";
 import {connect} from "react-redux";
+import BirthdayCalenderMiladi from "../calendar/BirthdayCalenderMiladi";
 
 
 class FlightPassengerForm extends React.Component {
@@ -20,6 +21,7 @@ class FlightPassengerForm extends React.Component {
         super(props);
         this.state = {
             open: false,
+            extOpen:false,
         };
     }
 
@@ -46,6 +48,11 @@ class FlightPassengerForm extends React.Component {
     managePopUpBirthdayCalendar = (value) => {
         this.setState({
             open: value,
+        });
+    };
+    managePopUpExtPasCalendar = (value) => {
+        this.setState({
+            extOpen: value,
         });
     };
     managePopUpFuturedayCalendar = (value) => {
@@ -253,6 +260,9 @@ class FlightPassengerForm extends React.Component {
                                     />
                                 </div>
                                 
+                                
+
+
                                 <div  className={`d-flex align-items-center ${ this.props.pathKind !=2 ? styles["makhfi"]:""  }`} >
                                     <PrimaryTextInput 
                                         style={{height: "3em", fontSize: 12,marginRight:12}}
@@ -274,6 +284,27 @@ class FlightPassengerForm extends React.Component {
                    {this.props.codeErr}                                    
                   {this.props.pasnoErr}
                 </span>
+                            </div>
+                            
+                            <div className="col-lg-2 col-md-3 col-sm-4 col-6 padding-horizental-3px m-auto">
+                            <div  className={`d-flex align-items-center ${ this.props.pathKind !=1 ? styles["makhfi"]:""  }`} >
+                                    <PrimaryTextInput
+                                        style={{height: "3em", fontSize: 12,display: this.props.nationality == 'IR' && 'none'}}
+                                        placeholder={`${ "انقضای پاسپورت"}`}
+                                        inputMode={`${"text"}`} 
+                                        onChange={(e) => {console.log(this.props);
+                                                this.props.fillPassengersData(
+                                                    "extPasaport",
+                                                    this.props.id,
+                                                    e.target.value
+                                                );}}
+                                                onFocus={() => {
+                                                    this.managePopUpExtPasCalendar(true);
+                                                }}
+                                        defaultValue={this.props.extPasaport}
+                                        value={this.props.extPasaport}
+                                    />
+                                </div>
                             </div>
                             <div className="col-lg-2 mt-12 col-md-2 col-sm-4 col-6 padding-horizental-3px ">
                                 <div  className={`${ this.props.pathKind !=2 ? styles["makhfi"]:""  }`} >
@@ -318,17 +349,33 @@ class FlightPassengerForm extends React.Component {
                         ) : null}
                     </div>
                 </div>
+                
                 <PopUp
                     opened={this.state.open}
                     closePopUp={this.managePopUpBirthdayCalendar}
                 >
                     <div style={{padding: 15}}>
-                        <BirthdayCalendar
+                        <BirthdayCalenderMiladi
                             typePassenger={this.props.type}
                             setBirthday={(value) => {
                                 this.props.fillPassengersData("birthday", this.props.id, value);
                             }}
                             closePopUpCalendar={this.managePopUpBirthdayCalendar}
+                        />
+                    </div>
+                </PopUp>
+                
+                <PopUp
+                    opened={this.state.extOpen}
+                    closePopUp={this.managePopUpExtPasCalendar}
+                >
+                    <div style={{padding: 15}}>
+                        <BirthdayCalenderMiladi
+                            typePassenger={this.props.type}
+                            setBirthday={(value) => {
+                                this.props.fillPassengersData("extPasaport", this.props.id, value);
+                            }}
+                            closePopUpCalendar={this.managePopUpExtPasCalendar}
                         />
                     </div>
                 </PopUp>

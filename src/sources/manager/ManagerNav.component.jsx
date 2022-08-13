@@ -12,6 +12,7 @@ import {
   faMapMarked,
   faPlaneDeparture,
   faUser,
+  faDoorOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 
@@ -40,12 +41,14 @@ const ManagerNav = (props) => {
         }`}
       >
         <div className={styles["manager-nav-header"]}>
-          <img
-            width=""
-            height=""
-            alt="بلیطجا - لوگو"
-            src="../../../Images/bilitja-logo.webp"
-          />
+          <a href="/" target='_blank'>
+            <img
+              width=""
+              height=""
+              alt="بلیطجا - لوگو"
+              src="../../../Images/bilitja-logo.webp"
+            />
+          </a>
         </div>
         <div className={styles["manager-small-screen-top-bar"]}>
           <FontAwesomeIcon
@@ -213,6 +216,20 @@ const ManagerNav = (props) => {
           <div>
             <p className="no-margin font-size-13 font-bold-iransanse">قوانین</p>
             <p className="no-margin font-size-13 color-textpill">Rules</p>
+          </div>
+        </div>
+        <div
+          className={`${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item`}
+          onClick={() => {
+            myRouter.push("/logout");
+          }}
+        >
+          <div>
+            <FontAwesomeIcon icon={faDoorOpen} />
+          </div>
+          <div>
+            <p className="no-margin font-size-13 font-bold-iransanse">خروج</p>
+            <p className="no-margin font-size-13 color-textpill">exit</p>
           </div>
         </div>
       </div>
