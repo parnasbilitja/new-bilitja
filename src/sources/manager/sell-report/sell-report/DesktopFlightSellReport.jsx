@@ -149,28 +149,16 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "name",
-    numeric: false,
-    disablePadding: true,
-    label: "مشتری",
-  },
-  {
-    id: "calories",
-    numeric: false,
-    disablePadding: true,
-    label: "درخواست",
-  },
-  {
     id: "fat",
     numeric: false,
     disablePadding: true,
     label: "رفرنس",
   },
   {
-    id: "carbs",
+    id: "calories",
     numeric: false,
     disablePadding: true,
-    label: "تایخ فروش",
+    label: "درخواست",
   },
   {
     id: "protein",
@@ -183,6 +171,25 @@ const headCells = [
     numeric: true,
     disablePadding: true,
     label: "تعداد",
+  },
+
+  {
+    id: "carbs",
+    numeric: false,
+    disablePadding: true,
+    label: "تاریخ فروش",
+  },
+  {
+    id: "flightDate",
+    numeric: false,
+    disablePadding: true,
+    label: "تاریخ پرواز",
+  },
+  {
+    id: "name",
+    numeric: false,
+    disablePadding: true,
+    label: "فروشنده",
   },
   {
     id: "mobile",
@@ -201,12 +208,6 @@ const headCells = [
     numeric: true,
     disablePadding: true,
     label: "شماره پرواز",
-  },
-  {
-    id: "flightDate",
-    numeric: false,
-    disablePadding: true,
-    label: "تاریخ پرواز",
   },
   {
     id: "airline",
@@ -493,19 +494,23 @@ const FlightSellReport = () => {
                           setOpenInfo(true);
                         }}
                       >
+                        {/*row*/}
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
                           <h6 className={style['id']}>{i++}</h6>
                         </TableCell>
+
+                        {/*refrence*/}
                         <TableCell
-                          className={style["tablerowfont"]}
-                          align="center"
+                            className={style["tablerowfont"]}
+                            align="center"
                         >
-                          <h6 className={style['normal-size']}>
-                            {row.customerName}</h6>
+                          <h6 className={style['en-font']}>{row.reqPnr}</h6>
                         </TableCell>
+
+                        {/*request number*/}
                         <TableCell
                           className={style["tablerowfont"]}
                           align="center"
@@ -514,12 +519,26 @@ const FlightSellReport = () => {
 
                             {row.reqNo}</h6>
                         </TableCell>
+
+                        {/*CustomerName*/}
                         <TableCell
-                          className={style["tablerowfont"]}
-                          align="center"
+                            align="center"
+                            className={style["tablerowfont"]}
                         >
-                          <h6 className={style['en-font']}>{row.reqPnr}</h6>
+                          <h6 className={style['en-font']}>{row.nameFamilyEn}</h6>
                         </TableCell>
+
+
+
+                        {/*count*/}
+                        <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                        >
+                          <h6 className={style['normal-size']}>{row.numFr}</h6>
+                        </TableCell>
+
+                        {/*submitDateTime*/}
                         <TableCell
                           className={style["tablerowfont"]}
                           align="center"
@@ -528,30 +547,45 @@ const FlightSellReport = () => {
                             <svg id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20"><path d="M19,2h-1V1c0-.552-.447-1-1-1s-1,.448-1,1v1H8V1c0-.552-.447-1-1-1s-1,.448-1,1v1h-1C2.243,2,0,4.243,0,7v12c0,2.757,2.243,5,5,5h14c2.757,0,5-2.243,5-5V7c0-2.757-2.243-5-5-5ZM5,4h14c1.654,0,3,1.346,3,3v1H2v-1c0-1.654,1.346-3,3-3Zm14,18H5c-1.654,0-3-1.346-3-3V10H22v9c0,1.654-1.346,3-3,3Zm0-8c0,.552-.447,1-1,1H6c-.553,0-1-.448-1-1s.447-1,1-1h12c.553,0,1,.448,1,1Zm-7,4c0,.552-.447,1-1,1H6c-.553,0-1-.448-1-1s.447-1,1-1h5c.553,0,1,.448,1,1Z"/></svg>
                             {row.dateTimeSabt}</h6>
                         </TableCell>
+
+                        {/*flightDate*/}
                         <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
+                            align="center"
+                            className={style["tablerowfont"]}
                         >
-                          <h6 className={style['en-font']}>{row.nameFamilyEn}</h6>
+                          <h6 className={style['normal-size']}>{row.flightDate}</h6>
                         </TableCell>
+
+
+                        {/*customerName*/}
                         <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
+                            className={style["tablerowfont"]}
+                            align="center"
                         >
-                          <h6 className={style['normal-size']}>{row.numFr}</h6>
+                          <h6 className={style['normal-size']}>
+                            {row.customerName}</h6>
                         </TableCell>
+
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
                           <h6 className={style['normal-size']}>{row.mobileNo}</h6>
                         </TableCell>
+
+
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
                         >
-                          <h6 className={style['normal-size']}>{row.route}</h6>
+                          <h6 className={style['normal-size']}>
+                            {row.route.split('-')[0] + ' '}
+                            <br/>
+                            {row.route.split('-')[1] + ' '}
+                          </h6>
                         </TableCell>
+
+
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
@@ -559,12 +593,7 @@ const FlightSellReport = () => {
                           <h6 className={style['normal-size']}>
                             {row.flightNo}</h6>
                         </TableCell>
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>{row.flightDate}</h6>
-                        </TableCell>
+
                         <TableCell
                           align="center"
                           className={style["tablerowfont"]}
