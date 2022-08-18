@@ -975,3 +975,105 @@ div.radio {
   overflow-y: hidden;
   height: auto;
 }
+
+
+// afp
+$base-color-1: #279692;
+$base-color-2: #ff0000;
+$radius-btn: 15px 15px 1px 15px;
+.tour-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 85px;
+    border-radius: 8px;
+    overflow: hidden;
+    padding-right: 1rem;
+    border: 2px solid #E0E0E0;
+    box-shadow: 2px 1px 10px #eee;
+}
+.tour-city {
+    display: flex;
+    align-items: center;
+    width: 33%;
+    height: 100%;
+}
+.tour-days {
+    display: flex;
+    flex-direction: column;
+}
+.type {
+    align-items: center;
+    display: flex;
+    justify-content: start;
+    width: 14%;
+}
+.text-mobi-btn {
+    display: none;
+}
+.ino-tour-btn{
+  cursor: pointer;
+}
+.info-tour-city{
+  cursor: pointer;
+
+}
+// .text-price{
+//   .price-tour{
+//     color: $base-color-2;
+//   }
+// }
+.ino-tour-btn {
+    width: 55px;
+    height: 100%;
+    background-color: $base-color-1;
+    border-radius: 8px 0 17px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bottom {
+    .border-right {
+        width: 15%;
+        height: 2px;
+        background-color: $base-color-1;
+    }
+    .border-left {
+        width: 85%;
+        height: 2px;
+        background-color: $base-color-2;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .tour-item {
+        flex-wrap: wrap!important;
+        height: auto!important;
+        padding: 0;
+    }
+    .tour-city {
+        width: 100% !important;
+        padding-right: 10px;
+        padding-left: 5px;
+        padding-top: 13px;
+    }
+    .type {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding-top: 10px;
+    }
+    .tour-days {
+        padding-right: 10px;
+        padding-top: 10px;
+    }
+    .tour-night {
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+    .ino-tour-btn {
+        border-radius: $radius-btn !important;
+        height: 55px !important;
+        margin-top: 1rem !important;
+        width: 100% !important;
+    }
+}
