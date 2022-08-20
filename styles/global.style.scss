@@ -980,7 +980,25 @@ div.radio {
 // afp
 $base-color-1: #279692;
 $base-color-2: #ff0000;
+
+.color-base-color{
+  color: $base-color-2;
+}
+.color-second-color{
+  color: $base-color-1;
+}
+.border-base-color{
+  border-color: $base-color-1 !important;
+}
+.border-second-color{
+  border-color: $base-color-2 !important;
+}
+
 $radius-btn: 15px 15px 1px 15px;
+button {
+  outline: none;
+  border: none;
+}
 .tour-item {
     display: flex;
     align-items: center;
@@ -989,8 +1007,8 @@ $radius-btn: 15px 15px 1px 15px;
     border-radius: 8px;
     overflow: hidden;
     padding-right: 1rem;
-    border: 2px solid #E0E0E0;
-    box-shadow: 2px 1px 10px #eee;
+    // border: 2px solid #E0E0E0;
+    box-shadow: 0 0 4px #E0E0E0;
 }
 .tour-city {
     display: flex;
@@ -1044,6 +1062,68 @@ $radius-btn: 15px 15px 1px 15px;
         background-color: $base-color-2;
     }
 }
+
+.border-box{
+  width: 28%;
+  height: 2px;
+  margin: auto;
+}
+
+.box-right{
+  border-right: 2px dashed $base-color-1;
+  border-top: 2px dashed $base-color-1;
+  height: 80px;
+  transform: rotateX(170deg) translate(-13px, 40px);
+}
+
+.box-left {
+  border-left: 2px dashed $base-color-2;
+  border-top: 2px dashed $base-color-2;
+  height: 80px;
+  transform: translate(17px, 40px);
+}
+
+.p-info__tour,
+.p-detail{
+  .p-thead,
+  .d-detail{
+    .c-thead,
+    .c-detail{
+      flex: 0 0 12%;
+      max-width: 12%;
+      &:first-child{
+        flex: 0 0 25%;
+        max-width: 25%;
+      }
+    }
+    .c-thead{
+      background-color: #f7f7f7;
+      border: 1px solid #E0E0E0;
+      border-radius: 10px;
+    }
+  }
+}
+
+.p-detail{
+  .d-detail{
+    height: 130px;
+    box-shadow: 0 0 4px #E0E0E0;
+    border-radius: 10px;
+    .c-detail{
+      margin-left: 10px;
+    }
+  }
+}
+
+.p-info__descrip{
+  .p-descrip{
+    .c-descrip{
+      border: 2px solid;
+      border-radius: 10px;
+    }
+  }
+}
+
 @media only screen and (max-width: 800px) {
     .tour-item {
         flex-wrap: wrap!important;
@@ -1075,5 +1155,35 @@ $radius-btn: 15px 15px 1px 15px;
         height: 55px !important;
         margin-top: 1rem !important;
         width: 100% !important;
+    }
+    .m-main-data{
+      flex-direction: column !important;
+      align-items: start !important;
+    }
+    .val{
+      span{
+        padding-right: 10px;
+      }
+    }
+    .p-info__tour{
+      margin-top: 20px;
+      .c-info__tour{
+        &:nth-child(3){
+          flex-direction: row !important;
+        }
+      }
+    }
+    .vertical-data{
+      display: block !important;
+      width: 4%;
+      height: 250px;
+      border-right: 2px dashed #E0E0E0;
+      border-top:2px dashed $base-color-1;
+      border-bottom: 2px dashed $base-color-2;
+      position: absolute;
+      top: 100px;
+    }
+    .border-box{
+      display: none;
     }
 }
