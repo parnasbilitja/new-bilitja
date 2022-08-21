@@ -8,7 +8,7 @@ import globals from '../Global'
 class TrackOrder extends React.Component {
     constructor(props) {
         super(props)
-        this.state={
+        this.state = {
 
         }
     }
@@ -28,10 +28,10 @@ class TrackOrder extends React.Component {
     }
     render() {
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    <div className='col-lg-11 mx-auto parent-page-trakorder'>
-                        <div className="col-lg-6 details-order">
+            <div className="container-fluid mt-130">
+                <div className="container">
+                    <div className='col-xl-12 col-lg-12 col-sm-12 mx-auto parent-page-trakorder'>
+                        <div className="col-lg-6 details-order mt-4">
                             <div className="title-order d-flex align-items-center text-right track-order-title font-bold-iransanse no-margin">
                                 <FontAwesomeIcon className="color-textpill icon-size" icon={faCalendarCheck} />
                                 <h2 className={'title-track-order'}>پیگیری خرید</h2>
@@ -69,16 +69,13 @@ class TrackOrder extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                :        <div className="col-lg-6 img">
-                                    <img className="img-fluid-1" src="/Images/Exploring-pana.svg" height="350" width="100%" alt=""/>
+                                : <div className="col-lg-6 img">
+                                    <img className="img-fluid-1" src="/Images/Exploring-pana.svg" height="350" width="100%" alt="" />
                                 </div>
                         }
 
                     </div>
-
                 </div>
-
-
             </div>
         )
     }
