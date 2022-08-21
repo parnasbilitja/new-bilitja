@@ -36,143 +36,151 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <nav className={styles.navVar}>
-        <div className={styles["nav-text-detail"]}>
-          <div>
-            {/* <a
+      <div className="col-xl-12 col-lg-12">
+        <nav className={styles.navVar}>
+          <div className="container">
+            <div className="d-flex flex-row-reverse justify-content-between">
+              <div className={styles["nav-text-detail"]}>
+                <div>
+                  {/* <a
               href="/villa/intro"
               className={`font-size-10 btn-outlined ${styles["btn-nav-hosting"]}`}
             >
               میزبان شوید
             </a> */}
-          </div>
-          <div className="font-size-12">
-            <div
-              className={
-                this.props.user.logged === true
-                  ? "user-mobile-content"
-                  : styles["nav-detail-first-line"]
-              }
-            >
-              {this.props.user.logged === true ? (
-                <>
-                  <div>
-                    <Link href="/dashboard">
-                      <a href="#">
-                        <i className="bilitja icon-login"></i>
-                        {this.props.user.user_info.mobile}
+                </div>
+                <div className="font-size-12">
+                  <div
+                    className={
+                      this.props.user.logged === true
+                        ? "user-mobile-content"
+                        : styles["nav-detail-first-line"]
+                    }
+                  >
+                    {this.props.user.logged === true ? (
+                      <>
+                        <div>
+                          <Link href="/dashboard">
+                            <a href="#">
+                              <i className="bilitja icon-login"></i>
+                              {this.props.user.user_info.mobile}
+                            </a>
+                          </Link>
+                        </div>
+                        <span className="mx-2"> /</span>
+                        <div>
+                          <a
+                            style={{ fontSize: 12 }}
+                            href="/"
+                            onClick={this.handleLogoutUser}
+                            className="cursor-pointer"
+                          >
+                            خروج
+                          </a>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div>
+                          <a
+                            style={{ fontSize: 12 }}
+                            href=""
+                            onClick={(e) => {
+                              e.preventDefault();
+                              this.props.accountBoxModify({
+                                state: true,
+                                type: "login",
+                              });
+                            }}
+                          >
+                            <i className="bilitja icon-login"></i>
+                            <span>ورود کاربر</span>
+                          </a>
+                        </div>
+                        <div className="border-right">
+                          <a
+                            style={{ fontSize: 12 }}
+                            href=""
+                            onClick={(e) => {
+                              e.preventDefault();
+                              this.props.accountBoxModify({
+                                state: true,
+                                type: "register",
+                              });
+                            }}
+                          >
+                            <i className="bilitja icon-register"></i>
+                            <span>ثبت نام</span>
+                          </a>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                  <div className={styles["nav-detail-second-line"]}>
+                    <a href="#" style={{ fontSize: 12 }}>
+                      <span>مشاوره تلفنی : </span>
+                      <i className="bilitja icon-phone"></i>
+                      <a href="tel:۰۲۱۵۷۸۷۴">۰۲۱۵۷۸۷۴</a>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex flex-row-reverse">
+                <div className={styles["nav-items-container"]}>
+                  <ul className={styles["navbar-items"]}>
+                    <li>
+                      <a href="/">
+                        <i
+                          className={`bilitja icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`}
+                        ></i>
+                        بلیط هواپیما
                       </a>
-                    </Link>
-                  </div>
-                  <span className="mx-2"> /</span>
-                  <div>
-                    <a
-                      style={{ fontSize: 12 }}
-                      href="/"
-                      onClick={this.handleLogoutUser}
-                      className="cursor-pointer"
-                    >
-                      خروج
-                    </a>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div>
-                    <a
-                      style={{ fontSize: 12 }}
-                      href=""
-                      onClick={(e) => {
-                        e.preventDefault();
-                        this.props.accountBoxModify({
-                          state: true,
-                          type: "login",
-                        });
-                      }}
-                    >
-                      <i className="bilitja icon-login"></i>
-                      <span>ورود کاربر</span>
-                    </a>
-                  </div>
-                  <div className="border-right">
-                    <a
-                      style={{ fontSize: 12 }}
-                      href=""
-                      onClick={(e) => {
-                        e.preventDefault();
-                        this.props.accountBoxModify({
-                          state: true,
-                          type: "register",
-                        });
-                      }}
-                    >
-                      <i className="bilitja icon-register"></i>
-                      <span>ثبت نام</span>
-                    </a>
-                  </div>
-                </>
-              )}
-            </div>
-            <div className={styles["nav-detail-second-line"]}>
-              <a href="#" style={{ fontSize: 12 }}>
-                <span>مشاوره تلفنی : </span>
-                <i className="bilitja icon-phone"></i>
-                <a href="tel:۰۲۱۵۷۸۷۴">۰۲۱۵۷۸۷۴</a>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className={styles["nav-items-container"]}>
-          <ul className={styles["navbar-items"]}>
-            <li>
-              <a href="/">
-                <i
-                  className={`bilitja icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`}
-                ></i>
-                بلیط هواپیما
-              </a>
-            </li>
-            <li>
-              <a href="/tours">
-                <i
-                  className={`bilitja icon-tours  ${styles["nav-icon"]} rotate-y-180`}
-                ></i>
-                رزرو تور
-              </a>
-            </li>
-            {/* <li>
+                    </li>
+                    <li>
+                      <a href="/tours">
+                        <i
+                          className={`bilitja icon-tours  ${styles["nav-icon"]} rotate-y-180`}
+                        ></i>
+                        رزرو تور
+                      </a>
+                    </li>
+                    {/* <li>
               <a href="/blog">
                 <i className={`bilitja icon-blog ${styles["nav-icon"]} `}></i>
                 بلاگ
               </a>
             </li> */}
-            <li>
-              <a href="/flights/order">
-                <i
-                  className={`bilitja icon-refrence ${styles["nav-icon"]} `}
-                ></i>
-                پیگیری خرید
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className={styles["nav-logo-container"]}>
-          <div>
-            <a href="/">
-              <img
-                width=""
-                height=""
-                className={styles["logo"]}
-                src="../../../Images/logo512.webp"
-                alt="بلیطجا - لوگو"
-              />
-            </a>
-            <h1 className="font-size-8">
-              خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه
-            </h1>
+                    <li>
+                      <a href="/flights/order">
+                        <i
+                          className={`bilitja icon-refrence ${styles["nav-icon"]} `}
+                        ></i>
+                        پیگیری خرید
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className={styles["nav-logo-container"]}>
+                  <div>
+                    <a href="/">
+                      <img
+                        width=""
+                        height=""
+                        className={styles["logo"]}
+                        src="../../../Images/logo512.webp"
+                        alt="بلیطجا - لوگو"
+                      />
+                    </a>
+                    <h1 className="font-size-8">
+                      خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     );
   }
 }
