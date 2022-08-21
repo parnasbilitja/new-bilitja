@@ -102,8 +102,8 @@ const tours = () => {
                                         </g>
                                     </svg>
                                     <div className="d-flex flex-column">
-                                        <span className="from text-dark font-size-14">{item.transfers[0].dateTime}</span>
-                                        <span className="to text-dark font-size-14">{item.transfers[1].dateTime}</span>
+                                        <span className="from text-dark font-size-14 pt-1">{item.transfers[0].dateTime}</span>
+                                        <span className="to text-dark font-size-14 pt-1">{item.transfers[1].dateTime}</span>
                                     </div>
                                 </div>
                                 <div className="type">
