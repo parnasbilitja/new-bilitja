@@ -54,17 +54,17 @@ const tour = () => {
                     </div> */}
                 {/* </div> */}
                 {/* section 1 */}
-                <section class="mt-5 pt-5">
-                    <div class="container">
-                        <div class="m-main-data detail-title col-xl-12 col-lg-12 col-12 d-flex justify-content-between border-bottom pb-2">
-                            <div class="title d-flex align-items-center">
-                                <svg class="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.643" height="30.68" viewBox="0 0 19.643 19.68">
+                <section className="mt-5 pt-5">
+                    <div className="container">
+                        <div className="m-main-data detail-title col-xl-12 col-lg-12 col-12 d-flex justify-content-between border-bottom pb-2">
+                            <div className="title d-flex align-items-center">
+                                <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.643" height="30.68" viewBox="0 0 19.643 19.68">
                                     <g id="Ticket-index" transform="translate(-0.022)">
                                         <path id="Path_1168" data-name="Path 1168" d="M2.235,8.086a3.6,3.6,0,0,1-.584-.018l-.169.786.169-.786a.83.83,0,0,1-.622-.641,3.194,3.194,0,0,1,0-.548,8.679,8.679,0,0,1,.385-2.755A4.211,4.211,0,0,1,3.406,1.7C4.216,1.247,5.483,1,8.058,1h3.571c2.575,0,3.842.247,4.652.7a4.211,4.211,0,0,1,1.993,2.423,8.675,8.675,0,0,1,.385,2.755,3.2,3.2,0,0,1,0,.548l.791.144-.791-.144a.83.83,0,0,1-.622.641,3.6,3.6,0,0,1-.584.018A1.876,1.876,0,0,0,15.7,10.059a1.876,1.876,0,0,0,1.757,1.974,3.5,3.5,0,0,1,.573.018.843.843,0,0,1,.625.655,2.943,2.943,0,0,1-.006.52,7.652,7.652,0,0,1-.369,2.331,4.212,4.212,0,0,1-1.993,2.423c-.811.454-2.077.7-4.652.7H8.058c-2.575,0-3.842-.247-4.652-.7a4.212,4.212,0,0,1-1.993-2.423,7.652,7.652,0,0,1-.369-2.331,2.933,2.933,0,0,1-.006-.52.842.842,0,0,1,.625-.655,3.5,3.5,0,0,1,.573-.018,1.876,1.876,0,0,0,1.757-1.974A1.876,1.876,0,0,0,2.235,8.086Z" fill="none" stroke="#ff0000" strokeWidth={1}></path>
                                         <path id="Path_1169" data-name="Path 1169" d="M14.8,4a.8.8,0,0,1,.8.8V6.411a.8.8,0,0,1-1.607,0V4.8A.8.8,0,0,1,14.8,4Zm0,4.822a.8.8,0,0,1,.8.8v1.607a.8.8,0,0,1-1.607,0V9.625A.8.8,0,0,1,14.8,8.822Zm.8,5.625a.8.8,0,1,0-1.607,0v1.607a.8.8,0,0,0,1.607,0Z" transform="translate(-2.549 -0.589)" fill="#279692" fillRule="evenodd"></path>
                                     </g>
                                 </svg>
-                                <div class="text">
+                                <div className="text">
                                     <h5 className="font-bold">{data && data.title}</h5>
                                     <span className="font-bold">قیمت: {data && data.minPrice}</span>
                                 </div>
@@ -104,47 +104,47 @@ const tour = () => {
                             </div>
                             <div className="left position-relative col-xl-7 col-lg-7 col-12">
                                 <div className="vertical-data" style={{ display: "none" }}></div>
-                                <div class="p-info__tour d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3">
-                                    <div class="c-info__tour d-flex align-items-center col-xl-12 col-gl-12">
-                                        <div class="bg-white py-3">
-                                            <div class="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
+                                <div className="p-info__tour d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3">
+                                    <div className="c-info__tour d-flex align-items-center col-xl-12 col-gl-12">
+                                        <div className="bg-white py-3">
+                                            <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
                                                 <img src="/images/QB.png" width={"35px"} height={"35px"} alt="company" />
                                             </div>
                                         </div>
-                                        <div class="text pe-2">
-                                            <div class="m-main-data d-flex align-items-center pb-1">
-                                                <div class="prop pe-2">
-                                                    <span class="font-bold">اطلاعات مبدا</span>
+                                        <div className="text pe-2">
+                                            <div className="m-main-data d-flex align-items-center pb-1">
+                                                <div className="prop pe-2">
+                                                    <span className="font-bold">اطلاعات مبدا</span>
                                                 </div>
-                                                <div class="val pe-2">
+                                                <div className="val pe-2">
                                                     <span>{data && data.stCity.name}</span>
                                                 </div>
                                             </div>
-                                            <div class="m-main-data d-flex align-items-center pb-1">
-                                                <div class="prop pe-2">
-                                                    <span class="font-bold">تاریخ و ساعت پرواز رفت</span>
+                                            <div className="m-main-data d-flex align-items-center pb-1">
+                                                <div className="prop pe-2">
+                                                    <span className="font-bold">تاریخ و ساعت پرواز رفت</span>
                                                 </div>
-                                                <div class="val pe-2">
+                                                <div className="val pe-2">
                                                     <span>{data && data.transfers[0].dateTime}</span>
                                                 </div>
                                             </div>
-                                            <div class="m-main-data d-flex align-items-center pb-1">
-                                                <div class="prop pe-2">
+                                            <div className="m-main-data d-flex align-items-center pb-1">
+                                                <div className="prop pe-2">
                                                     <span className="font-bold">تاریخ ورود به هتل</span>
                                                 </div>
-                                                <div class="val pe-2">
-                                                    <span class="ps-2">1401/10/11</span>
+                                                <div className="val pe-2">
+                                                    <span className="ps-2">1401/10/11</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="c-info__tour bg-white d-flex align-items-center justify-content-center box-shadow-sm col-xl-12 col-lg-12 col-12 my-4">
+                                    <div className="c-info__tour bg-white d-flex align-items-center justify-content-center box-shadow-sm col-xl-12 col-lg-12 col-12 my-4">
                                         <div className="border-box box-right"></div>
-                                        <div class="text d-flex align-items-center justify-content-center px-2">
-                                            <div class="text">
+                                        <div className="text d-flex align-items-center justify-content-center px-2">
+                                            <div className="text">
                                                 <span>مدت اقامت</span>
                                             </div>
-                                            <div class="image d-flex align-items-center mx-3">
+                                            <div className="image d-flex align-items-center mx-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38"
                                                     viewBox="0 0 43.84 45.663">
                                                     <g id="Moon_2" data-name="Moon 2" transform="translate(0 0)">
@@ -158,42 +158,42 @@ const tour = () => {
                                                     </g>
                                                 </svg>
                                             </div>
-                                            <div class="text">
-                                                <span class="ps-1 font-bold">{data && data.nightNum} شب</span>
-                                                <span class="pe-1 font-bold ps-2">{data && data.dayNum} روز</span>
+                                            <div className="text">
+                                                <span className="ps-1 font-bold">{data && data.nightNum} شب</span>
+                                                <span className="pe-1 font-bold ps-2">{data && data.dayNum} روز</span>
                                             </div>
                                         </div>
                                         <div className="border-box box-left"></div>
                                     </div>
-                                    <div class="c-info__tour d-flex flex-row-reverse align-items-center col-xl-12 col-lg-12 col-12">
-                                        <div class="bg-white py-3">
-                                            <div class="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
+                                    <div className="c-info__tour d-flex flex-row-reverse align-items-center col-xl-12 col-lg-12 col-12">
+                                        <div className="bg-white py-3">
+                                            <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
                                                 <img src="/images/QB.png" width={"35px"} height={"35px"} alt="company" />
                                             </div>
                                         </div>
-                                        <div class="text pe-2 ps-3">
-                                            <div class="m-main-data d-flex flex-row-reverse align-items-center pb-1">
-                                                <div class="prop pe-2">
-                                                    <span class="font-bold">اطلاعات مقصد</span>
+                                        <div className="text pe-2 ps-3">
+                                            <div className="m-main-data d-flex flex-row-reverse align-items-center pb-1">
+                                                <div className="prop pe-2">
+                                                    <span className="font-bold">اطلاعات مقصد</span>
                                                 </div>
-                                                <div class="val pe-2">
-                                                    <span class="">{data && data.endCity.name}</span>
+                                                <div className="val pe-2">
+                                                    <span className="">{data && data.endCity.name}</span>
                                                 </div>
                                             </div>
-                                            <div class="m-main-data d-flex flex-row-reverse align-items-center pb-1">
-                                                <div class="prop pe-2">
-                                                    <span class="font-bold">تاریخ و ساعت پرواز برگشت</span>
+                                            <div className="m-main-data d-flex flex-row-reverse align-items-center pb-1">
+                                                <div className="prop pe-2">
+                                                    <span className="font-bold">تاریخ و ساعت پرواز برگشت</span>
                                                 </div>
-                                                <div class="val pe-2">
+                                                <div className="val pe-2">
                                                     <span>{data && data.transfers[1].dateTime}</span>
                                                 </div>
                                             </div>
-                                            <div class="m-main-data d-flex flex-row-reverse align-items-center pb-1">
-                                                <div class="prop pe-2">
-                                                    <span class="font-bold">تاریخ خروج از هتل</span>
+                                            <div className="m-main-data d-flex flex-row-reverse align-items-center pb-1">
+                                                <div className="prop pe-2">
+                                                    <span className="font-bold">تاریخ خروج از هتل</span>
                                                 </div>
-                                                <div class="val ps-2">
-                                                    <span class="">1401/10/15</span>
+                                                <div className="val ps-2">
+                                                    <span className="">1401/10/15</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -243,27 +243,27 @@ const tour = () => {
                             </div>
                             <div className="p-info__tour col-xl-12 col-lg-12 col-12 mt-2 border-bottom pb-4">
                                 <div className="p-thead d-flex align-items-center col-xl-12 col-lg-12 col-12">
-                                    <div className="c-thead text-center rounded py-2 me-2">
+                                    <div className="c-thead text-center rounded py-2 me-2 isDesktop">
                                         <span className="font-bold font-size-16">اطلاعات هتل</span>
                                     </div>
-                                    <div className="c-thead text-center rounded py-2 me-2">
+                                    <div className="c-thead text-center rounded py-2 me-2 isDesktop">
                                         <span className="font-bold font-size-16">دو تخته(هرنفر)</span>
                                     </div>
-                                    <div className="c-thead text-center rounded py-2 me-2">
+                                    <div className="c-thead text-center rounded py-2 me-2 isDesktop">
                                         <span className="font-bold font-size-16">سینگل</span>
                                     </div>
-                                    <div className="c-thead text-center rounded py-2 me-2">
+                                    <div className="c-thead text-center rounded py-2 me-2 isDesktop">
                                         <span className="font-bold font-size-16">کودک با تخت</span>
                                     </div>
-                                    <div className="c-thead text-center rounded py-2 me-2">
+                                    <div className="c-thead text-center rounded py-2 me-2 isDesktop">
                                         <span className="font-bold font-size-16">کودک بدون تخت</span>
                                     </div>
-                                    <div className="c-thead text-center rounded py-2 me-2">
+                                    <div className="c-thead text-center rounded py-2 me-2 isDesktop">
                                         <span className="font-bold font-size-16">سن کودک</span>
                                     </div>
                                 </div>
                                 <div className="p-detail col-xl-12 col-lg-12 mt-2">
-                                    <div className="d-detail pos-relative col-xl-12 col-lg-12 col-12 d-flex align-items-center bg-white py-2 px-2 mb-2">
+                                    <div className="d-detail pos-relative col-xl-12 col-lg-12 col-12 d-flex flex-wrap align-items-center bg-white py-2 px-2 mb-2">
                                         <div className="c-detail ms-2">
                                             {/* <div className="Special-tour">
                                                 <div className="text">
@@ -281,7 +281,7 @@ const tour = () => {
                                                     <span className="font-bold pb-1">Description Text</span>
                                                     <div className="star d-flex align-items-center pb-1">
                                                         <div className="d-flex align-items-center">
-                                                            <div className="image d-flex align-items-center mx-2">
+                                                            <div className="image d-flex align-items-center">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="19"
                                                                     height="19" viewBox="0 0 21.443 21.387">
                                                                     <path id="Star"
@@ -292,7 +292,6 @@ const tour = () => {
                                                                 </svg>
                                                             </div>
                                                         </div>
-                                                        <span className="font-size-14 f-bold">3.6</span>
                                                     </div>
                                                     <div className="d-flex align-items-center">
                                                         <svg className="ms-2" xmlns="http://www.w3.org/2000/svg" width="20"
@@ -314,7 +313,7 @@ const tour = () => {
                                                         <span className="f-18 text-33 f-bold pr-4">Holand</span>
                                                     </div>
                                                 </div>
-                                                <div className="image">
+                                                <div className="image left-border-line">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="1" height="110"
                                                         viewBox="0 0 1 186.408">
                                                         <line id="Line_87" data-name="Line 87" y2="186.408"
@@ -327,6 +326,7 @@ const tour = () => {
                                         <div className="c-detail">
                                             <div className="info-price position-relative d-flex align-items-start mx-2">
                                                 <div className="text d-flex flex-column align-items-center w-100 py-3">
+                                                    <span className="text-show-m mb-2 color-base-color font-bold d-none">دو تخته (هر نفر)</span>
                                                     <span className="font-font-size-14 font-bold">150.000.000</span>
                                                     <span className="font-font-size-16 font-bold">تومان</span>
                                                 </div>
@@ -335,7 +335,8 @@ const tour = () => {
                                         <div className="c-detail">
                                             <div className="info-price position-relative d-flex align-items-start mx-2">
                                                 <div
-                                                    className="text d-flex flex-column align-items-center w-100 py-32">
+                                                    className="text d-flex flex-column align-items-center w-100 py-3">
+                                                    <span className="text-show-m mb-2 color-base-color font-bold d-none"> سینگل</span>
                                                     <span className="font-font-size-14 font-bold">150.000.000</span>
                                                     <span className="font-font-size-16 font-bold">تومان</span>
                                                 </div>
@@ -343,7 +344,8 @@ const tour = () => {
                                         </div>
                                         <div className="c-detail">
                                             <div className="info-price position-relative d-flex align-items-start mx-2">
-                                                <div className="text d-flex flex-column align-items-center w-100 py-32">
+                                                <div className="text d-flex flex-column align-items-center w-100 py-3">
+                                                    <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک با تخت</span>
                                                     <span className="font-font-size-14 font-bold">150.000.000</span>
                                                     <span className="font-font-size-16 font-bold">تومان</span>
                                                 </div>
@@ -351,16 +353,18 @@ const tour = () => {
                                         </div>
                                         <div className="c-detail">
                                             <div className="info-price position-relative d-flex align-items-start mx-2">
-                                                <div className="text d-flex flex-column align-items-center w-100 py-32">
+                                                <div className="text d-flex flex-column align-items-center w-100 py-3">
+                                                    <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک بدون تخت</span>
                                                     <span className="font-font-size-14 font-bold">10.000.000</span>
                                                     <span className="font-font-size-16 font-bold">تومان</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="c-detail text-center ml-3">
+                                        <div className="c-detail child-number d-flex flex-column text-center ml-3 py-3">
+                                            <span className="text-show-m mb-2 color-base-color font-bold d-none">سن کودک</span>
                                             <span className="font-size-16 font-bold">3 تا 10</span>
                                         </div>
-                                        <div className="c-btn pos-absolute left-20 flex-14 m-flex-50">
+                                        <div className="c-btn request-data">
                                             <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2">
                                                 درخواست رزرو
                                             </button>
