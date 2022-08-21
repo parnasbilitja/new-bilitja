@@ -1124,7 +1124,24 @@ button {
   }
 }
 
+.gallery-image{
+  .image{
+    img{
+      height: 220px;
+    }
+  }
+}
+
 @media only screen and (max-width: 800px) {
+  .isDesktop{
+    display: none !important;
+  }
+  .left-border-line{
+    display: none;
+  }
+  .text-show-m{
+    display: block !important;
+  }
     .tour-item {
         flex-wrap: wrap!important;
         height: auto!important;
@@ -1163,6 +1180,32 @@ button {
     .val{
       span{
         padding-right: 10px;
+      }
+    }
+    .d-detail{
+      height: auto !important;
+      justify-content: space-around;
+      .c-detail{
+        flex: 0 0 46% !important;
+        max-width: 46% !important;
+        margin-left: 0 !important;
+        margin-bottom: 15px;
+        &:first-child {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+        }
+      }
+      .child-number,.info-price{
+          box-shadow: 0 0 5px #CECECE;
+          height: 100px;
+          border-radius: 10px;
+      }
+      .request-data{
+        flex: 0 0 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 5px;
       }
     }
     .p-info__tour{
