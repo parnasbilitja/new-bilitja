@@ -76,13 +76,13 @@ class GetFlightList extends React.Component {
     const airlines =
       this.state.flights != null
         ? this.state.flights.map(
-            ({ airlineIataCode, priceView, airline, kndSys }) => ({
-              airline,
-              airlineIataCode,
-              priceView,
-              kndSys,
-            })
-          )
+          ({ airlineIataCode, priceView, airline, kndSys }) => ({
+            airline,
+            airlineIataCode,
+            priceView,
+            kndSys,
+          })
+        )
         : [];
 
     this.setState({
@@ -544,9 +544,9 @@ class GetFlightList extends React.Component {
     const destcod = decodeURI(path.split("/")[3]).split("-")[2];
 
     return (
-      <div className={`container-fluid ${styles["flight-container"]}`}>
-        <div className={`row text-right ${styles["hidden-xs-flight"]}`}>
-          <div className="col-lg-1 col-md-1 col-sm-1"></div>
+      <div className="container">
+        <div className="row text-right">
+          <div className="col-lg-12 col-md-12 col-sm-12 d-flex flex-wrap align-items-center"></div>
           <div className="col-lg-10 col-md-11 col-sm-11">
             <div className="row">
               <div className="col-lg-10 col-md-11 col-sm-11 padding-5px">
