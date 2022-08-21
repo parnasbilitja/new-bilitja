@@ -1124,13 +1124,7 @@ button {
   }
 }
 
-.gallery-image{
-  .image{
-    img{
-      height: 220px;
-    }
-  }
-}
+
 
 @media only screen and (max-width: 800px) {
   .isDesktop{
@@ -1206,6 +1200,13 @@ button {
         display: flex;
         justify-content: center;
         margin-top: 5px;
+      }
+    }
+    .gallery-image {
+      .image {
+        img {
+          height: 220px;
+        }
       }
     }
     .p-info__tour{
