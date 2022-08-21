@@ -77,7 +77,7 @@ const tours = () => {
                                         <svg className="ms-2" xmlns="http://www.w3.org/2000/svg" width="15.437" height="16.078" viewBox="0 0 15.437 16.078">
                                             <path id="Moon_1" data-name="Moon 1" d="M14.794,10.838l.595.245a.643.643,0,0,0-.883-.82ZM6.442.643l.519.38A.643.643,0,0,0,6.3.015Zm5.39,10.25a6.126,6.126,0,0,1-6.07-6.181H4.475a7.413,7.413,0,0,0,7.356,7.467Zm2.674-.63a5.954,5.954,0,0,1-2.674.63V12.18a7.24,7.24,0,0,0,3.25-.766Zm-.307.33a6.717,6.717,0,0,1-6.2,4.2v1.286a8,8,0,0,0,7.387-5ZM8,14.792A6.777,6.777,0,0,1,1.287,7.955H0a8.063,8.063,0,0,0,8,8.123ZM1.287,7.955A6.812,6.812,0,0,1,6.58,1.271L6.3.015A8.1,8.1,0,0,0,0,7.955ZM5.762,4.712a6.225,6.225,0,0,1,1.2-3.689L5.923.263A7.512,7.512,0,0,0,4.475,4.712Z" transform="translate(0)" fill="#279692" />
                                         </svg>
-                                        <span>{item.nightNum} شب</span>
+                                        <span className="font-size-14">{item.nightNum} شب</span>
                                     </div>
                                     <div className="day d-flex justify-content-start">
                                         <svg className="ms-2" id="Sun" xmlns="http://www.w3.org/2000/svg" width="21.159" height="21.159" viewBox="0 0 21.159 21.159">
@@ -91,7 +91,7 @@ const tours = () => {
                                             <path id="Path_1151" data-name="Path 1151" d="M23.29,3.221A.756.756,0,1,1,24.359,4.29Zm0,2.137A.756.756,0,0,1,22.221,4.29ZM24.359,4.29,23.29,5.359,22.221,4.29,23.29,3.221Z" transform="translate(-5.375 -0.733)" fill="#279692" />
                                             <path id="Path_1152" data-name="Path 1152" d="M23.29,24.359a.756.756,0,1,0,1.069-1.069Zm0-2.137a.756.756,0,0,0-1.069,1.069Zm1.069,1.069L23.29,22.221,22.221,23.29l1.069,1.069Z" transform="translate(-5.375 -5.375)" fill="#279692" />
                                         </svg>
-                                        <span> {item.dayNum} روز</span>
+                                        <span className="font-size-14">{item.dayNum} روز</span>
                                     </div>
                                 </div>
                                 <div className="tour-night d-flex align-items-center">
@@ -102,13 +102,13 @@ const tours = () => {
                                         </g>
                                     </svg>
                                     <div className="d-flex flex-column">
-                                        <span className="from text-dark">{item.transfers[0].dateTime}</span>
-                                        <span className="to text-dark">{item.transfers[1].dateTime}</span>
+                                        <span className="from text-dark font-size-14">{item.transfers[0].dateTime}</span>
+                                        <span className="to text-dark font-size-14">{item.transfers[1].dateTime}</span>
                                     </div>
                                 </div>
                                 <div className="type">
                                     <img width="28" src={item.transfers[0].logo} />
-                                    <span className="text-dark me-2">{item.transfers[0].transfer}</span>
+                                    <span className="text-dark me-2 font-size-14">{item.transfers[0].transfer}</span>
                                 </div>
                                 <Link href={'/tour'}>
                                     <div className="ino-tour-btn">
