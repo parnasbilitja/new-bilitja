@@ -58,7 +58,8 @@
     }
 }
 .navVar{
-    display: grid !important;
+    display: flex !important;
+    flex-direction: row-reverse;
     padding:4px 11px 4px 16px;
     width: 100%;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -74,9 +75,9 @@
     display: grid;
     grid-area: detail;
     padding: 1px;
-    & > div:first-child{
-        margin: 10px 2px;
-    } 
+    // & > div:first-child{
+    //     margin: 10px 2px;
+    // } 
     div.font-size-12{
         margin:6px 15px 10px 0;       
     }
@@ -112,6 +113,9 @@
         height: 57.85px;
         font-size: 16px;
         font-weight: 400;
+        &:last-child{
+            border-left: none !important;
+        }
     }
     a {
         display: inline-block;
