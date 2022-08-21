@@ -546,7 +546,7 @@ class GetFlightList extends React.Component {
     return (
       <div className="container">
         <div className="row text-right">
-          <div className="col-lg-12 col-md-12 col-sm-12 d-flex flex-wrap align-items-center"></div>
+          <div className="col-lg-12 col-md-12 col-sm-12 d-flex flex-wrap align-items-center mt-5"></div>
           <div className="col-lg-10 col-md-11 col-sm-11">
             <div className="row">
               <div className="col-lg-10 col-md-11 col-sm-11 padding-5px">
