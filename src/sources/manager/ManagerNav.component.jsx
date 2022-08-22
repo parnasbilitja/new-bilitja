@@ -36,9 +36,8 @@ const ManagerNav = (props) => {
         />
       </div>
       <div
-        className={`${styles["manager-nav-main-container"]} ${
-          isOpend ? styles["slidein-manager"] : ""
-        }`}
+        className={`${styles["manager-nav-main-container"]} ${isOpend ? styles["slidein-manager"] : ""
+          }`}
       >
         <div className={styles["manager-nav-header"]}>
           <a href="/" target='_blank'>
@@ -61,8 +60,8 @@ const ManagerNav = (props) => {
         <div
           className={
             myRouter.asPath === "/panel/profile"
-              ? `${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item-active`
-              : `${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item`
+              ? `${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item-active mt-2`
+              : `${styles["manager-nav-one-row"]} cursor-pointer panel-menu-item mt-2`
           }
           onClick={() => {
             myRouter.push("/panel/profile");
