@@ -81,9 +81,8 @@ body {
 
 a {
   color: $pillTextGray;
-
+  text-decoration: none;
   &:hover {
-    text-decoration: none;
     color: $secondaryColor;
   }
 }
