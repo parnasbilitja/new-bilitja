@@ -8,13 +8,16 @@ import { withRouter } from "next/router";
 const ComplateProfile = () => {
   return (
     <section>
-      <div className="border-bottom-black panel-header">
-        <div>
-          <FontAwesomeIcon icon={faUserAlt} className="color-textpill" />
-          &nbsp;&nbsp;
-          <span className="no-margin font-size-13 font-bold-iransanse">
-            تکمیل اطلاعات
+      <div className="position-relative">
+        <p>
+          {/* <FontAwesomeIcon icon={faUserAlt} className="color-textpill" /> */}
+          <span className=" font-size-13 font-bold-iransanse mx-2">
+            تکــمیل اطــلاعات
           </span>
+        </p>
+        <div className="d-flex align-items-center">
+          <div className="box-through"></div>
+          <div className="aside-through"></div>
         </div>
       </div>
       <div>
