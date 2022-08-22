@@ -652,7 +652,7 @@ button:not(:disabled) {
 .box-through,
 .aside-through{
   width: 21px;
-  height: 2px;
+  height: 3px;
   border-radius: 10px;
   background-color: #279692;
   position: absolute;
