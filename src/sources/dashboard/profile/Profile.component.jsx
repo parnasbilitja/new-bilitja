@@ -16,10 +16,10 @@ const Profile = (props) => {
       body: JSON.stringify({
         mobile: localStorage.getItem("mobile"),
         userid: localStorage.getItem("token"),
-        hostname : "bilitja.com",
-        customerId : "1a157116-a01a-4027-ab10-74098ac63815",
-        agencyName : "بلیطجا",
-        telNumber : "02157874",
+        hostname: "bilitja.com",
+        customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+        agencyName: "بلیطجا",
+        telNumber: "02157874",
 
       }),
     })
@@ -35,26 +35,30 @@ const Profile = (props) => {
 
   return (
     <section>
-      <div className="border-bottom-black ">
-        <div>
+      <div>
+        <div className="position-relative">
           <p>
-            <FontAwesomeIcon icon={faUserAlt} className="color-textpill" />
+            {/* <FontAwesomeIcon icon={faUserAlt} className="color-textpill" /> */}
             <span className=" font-size-13 font-bold-iransanse mx-2">
-              اطلاعات کاربر
+              اطـلاعات کــاربــر
             </span>
           </p>
+          <div className="d-flex align-items-center">
+            <div className="box-through"></div>
+            <div className="aside-through"></div>
+          </div>
         </div>
       </div>
       <div>
         {props.user_information.name === null ? (
-          <div className="alert alert-info text-center mt-3">
-            <span>
+          <div className="alert alert-warning text-center mt-2">
+            <span className="font-size-15">
               {" "}
               مسافر گرامی، لطفا ابتدا از قسمت تکمیل پروفایل تمامی اطلاعات خود را
               تکمیل کنید.
             </span>
             <a
-              className="font-bold-iransanse cursor-pointer mx-1"
+              className="font-bold-iransanse cursor-pointer font-size-14 mx-1"
               onClick={() => router.push("/dashboard/complate-profile")}
             >
               برای دسترسی سریع اینجا کلیک کنید
@@ -143,7 +147,7 @@ const Profile = (props) => {
                   <div className="col-lg-7 text-box">
                     {" "}
                     {props.user_information.mobileMoaref != "" ||
-                    props.user_information.mobileMoaref != null
+                      props.user_information.mobileMoaref != null
                       ? props.user_information.mobileMoaref
                       : "------"}
                   </div>
