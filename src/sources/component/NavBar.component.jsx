@@ -63,7 +63,7 @@ class NavBar extends React.Component {
                           <Link href="/dashboard">
                             <a href="#">
                               <i className="bilitja icon-login"></i>
-                              {this.props.user.user_info.mobile}
+                              {this.props.user && this.props.user.user_info.mobile}
                             </a>
                           </Link>
                         </div>

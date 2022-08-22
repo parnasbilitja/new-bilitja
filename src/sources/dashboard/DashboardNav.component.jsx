@@ -123,9 +123,16 @@ const DashboardNav = (props) => {
         >
           <div>
             {/* <FontAwesomeIcon icon={faInfoCircle} /> */}
-            <svg width="25" height="25" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* <svg width="25" height="25" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M32.6172 17.8203L25.9245 27.8844C25.4988 28.5245 24.5401 28.4649 24.197 27.777L21.9143 23.2003C21.5712 22.5124 20.6125 22.4528 20.1868 23.0929L13.4941 33.157" stroke="#013136" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
               <rect x="5.84766" y="6.31836" width="34.4215" height="34.5075" rx="2" stroke="#013136" strokeWidth={2} />
+            </svg> */}
+            <svg width="25" height="25" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.31641 10.7246C8.31641 8.83899 8.31641 7.89618 8.90219 7.3104C9.48798 6.72461 10.4308 6.72461 12.3164 6.72461H34.9133C36.7989 6.72461 37.7417 6.72461 38.3275 7.3104C38.9133 7.89618 38.9133 8.83899 38.9133 10.7246V31.2321C38.9133 35.9461 38.9133 38.3032 37.4488 39.7676C35.9844 41.2321 33.6273 41.2321 28.9133 41.2321H18.3164C13.6024 41.2321 11.2453 41.2321 9.78087 39.7676C8.31641 38.3032 8.31641 35.9461 8.31641 31.2321V10.7246Z" stroke="#013136" strokeWidth={2} />
+              <path d="M29.6055 35.4805L29.6055 41.2317M18.103 35.4805L18.103 41.2317" stroke="#013136" strokeWidth={1.5} strokeLinecap="round" />
+              <path d="M14.2695 16.3086H33.4404" stroke="#013136" strokeWidth={1.5} strokeLinecap="round" />
+              <path d="M20.0195 27.8125H27.6879" stroke="#013136" strokeWidth={1.5} strokeLinecap="round" />
+              <path d="M16.1875 22.0605L31.5242 22.0605" stroke="#013136" strokeWidth={1.5} strokeLinecap="round" />
             </svg>
           </div>
           <div>
