@@ -6,53 +6,36 @@ import { tourSlug } from '../jotai/jotai';
 import Link from 'next/link';
 import NavBar from "./../sources/component/NavBar.component";
 import Footer from '../sources/component/Footer.component';
+import Slider from '../Components/slider/Slider';
 
 const tour = () => {
     const [data, setData] = useState(null)
     const [slug, setSlug] = useAtom(tourSlug)
-    let s = "تور-کوش-آداسی-ویژه-2-و-3-و-5-شهریور"
-    // let s = localStorage.getItem("slug")
     const getData = async () => {
         const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${slug ? slug : JSON.parse(localStorage.getItem("slug"))}`)
         setData(val.data.data)
+
     }
     useEffect(() => {
         getData();
         console.log(data);
-    }, [data])
+    }, [slug])
+    useEffect(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth"
+        });
+      }, [slug]);
+    const slugHandler = (slug) => {
+        // window.scrollTo({top: 0,left: 0,behavior: "smooth"});
+        setSlug(slug)
+        localStorage.setItem("slug", JSON.stringify(slug))
+    }
     return (
         <div>
             <div className="mt-5 bodyVar">
                 <NavBar />
-                {/* <div className='row justify-content-center'> */}
-                {/* {data && data.map((item)=>( */}
-                {/* <div className="m-2 card col-3" style={{ width: "18rem" }}>
-                        <div className="card-body">
-                            <h5 className="card-title">{data && data.title}</h5>
-                        </div>
-                        <ul className="list-group list-group-flush">
-                            <li className="list-group-item">تعداد روز:{data && data.dayNum}</li>
-                            <li className="list-group-item">تعداد شب:{data && data.nightNum}</li>
-                            <li className="list-group-item">قیمت:{data && data.minPrice}</li>
-                        </ul>
-                        <ul className="list-group list-group-flush">
-                            {data &&
-                                <li className="list-group-item">ایرلاین رفت :
-                                    {data.transfers[0].transfer}
-                                </li>
-                            }
-                            {data &&
-                                <li className="list-group-item">ایرلاین برگشت :
-                                    {data.transfers[1].transfer}
-                                </li>
-                            }
-                            <li className="list-group-item">{data && data.transfers[0].dateTime}</li>
-                            <li className="list-group-item">{data && data.transfers[1].dateTime}</li>
-                            <li className="list-group-item">{data && data.stCity.name}</li>
-                            <li className="list-group-item">{data && data.endCity.name}</li>
-                        </ul>
-                    </div> */}
-                {/* </div> */}
                 {/* section 1 */}
                 <section className="mt-5 pt-5">
                     <div className="container">
@@ -65,7 +48,7 @@ const tour = () => {
                                     </g>
                                 </svg>
                                 <div className="text">
-                                    <h5 className="font-bold">{data && data.title}</h5>
+                                    <h5 className="font-bold" >{data && data.title}</h5>
                                     <span className="font-bold">قیمت: {data && data.minPrice}</span>
                                 </div>
                             </div>
@@ -98,7 +81,7 @@ const tour = () => {
                             <div className="right col-xl-5 col-lg-5 col-12">
                                 <div className="gallery-image">
                                     <div className="image">
-                                        <img src="images/picture1.jpg" width={'100%'} height={'350px'} className="rounded" />
+                                        <Slider data={data && data.endCity.images}/>
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +116,7 @@ const tour = () => {
                                                     <span className="font-bold">تاریخ ورود به هتل</span>
                                                 </div>
                                                 <div className="val pe-2">
-                                                    <span className="ps-2">1401/10/11</span>
+                                                    <span className="ps-2">{data && data.stDate.split(' ')[0]}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -193,7 +176,7 @@ const tour = () => {
                                                     <span className="font-bold">تاریخ خروج از هتل</span>
                                                 </div>
                                                 <div className="val ps-2">
-                                                    <span className="">1401/10/15</span>
+                                                    <span className="">{data && data.stDate.split(' ')[0]}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -262,116 +245,156 @@ const tour = () => {
                                         <span className="font-bold font-size-16">سن کودک</span>
                                     </div>
                                 </div>
-                                <div className="p-detail col-xl-12 col-lg-12 mt-2">
-                                    <div className="d-detail pos-relative col-xl-12 col-lg-12 col-12 d-flex flex-wrap align-items-center bg-white py-2 px-2 mb-2">
-                                        <div className="c-detail ms-2">
-                                            {/* <div className="Special-tour">
-                                                <div className="text">
-                                                    <span className="text-white font-size-16">ویژه</span>
-                                                </div>
-                                            </div> */}
-                                            <div className="info-detail pos-relative d-flex align-items-center">
-                                                <a href="">
-                                                    <div className="image d-flex align-items-center">
-                                                        <img src="/images/picture3.jpg" width="100px" height="100px" className="rounded-2" alt="" />
+                                {data && data.packages.map((pack)=>(
+                                    <div className="p-detail col-xl-12 col-lg-12 mt-2" key={pack.id}>
+                                        <div className="d-detail position-relative col-xl-12 col-lg-12 col-12 d-flex flex-wrap align-items-center bg-white py-2 px-2 mb-2">
+                                            <div className="c-detail ms-2">
+                                                {data.offered &&
+                                                <div className="position-absolute bg-danger py-1 px-1 rounded-2">
+                                                    <div className="text">
+                                                        <span className="text-white font-size-16">ویژه</span>
                                                     </div>
-                                                </a>
-                                                <div className="text d-flex flex-column justify-content-between mt-2 pe-2 w-100">
-                                                    <a href="" className="font-bold pb-1">Title text</a>
-                                                    <span className="font-bold pb-1">Description Text</span>
-                                                    <div className="star d-flex align-items-center pb-1">
-                                                        <div className="d-flex align-items-center">
-                                                            <div className="image d-flex align-items-center">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="19"
-                                                                    height="19" viewBox="0 0 21.443 21.387">
-                                                                    <path id="Star"
-                                                                        d="M10.749,1c.915,0,2.352,4.154,2.871,5.751a.916.916,0,0,0,.84.632c1.666.057,5.983.3,5.983,1.273s-3.077,3.38-4.335,4.328A.915.915,0,0,0,15.789,14c.512,1.585,1.742,5.7.952,6.343s-4.1-1.885-5.447-2.963a.919.919,0,0,0-1.147,0c-1.35,1.078-4.669,3.6-5.392,2.964s.431-4.772.912-6.351a.914.914,0,0,0-.324-1C4.093,12.047,1,9.619,1,8.655S5.326,7.438,6.988,7.382a.916.916,0,0,0,.838-.625C8.357,5.165,9.833,1,10.749,1Z"
-                                                                        fill="#f7db06" stroke="#f7db06"
-                                                                        strokeLinecap="round" strokeLinejoin="round"
-                                                                        strokeWidth={2} />
-                                                                </svg>
+                                                </div>
+                                                }
+                                                <div className="info-detail pos-relative d-flex align-items-center">
+                                                    <a href="">
+                                                        <div className="image d-flex align-items-center">
+                                                            <img src={pack.hotel.thumbnail} width="100px" height="100px" className="rounded-2" alt="" />
+                                                        </div>
+                                                    </a>
+                                                    <div className="text d-flex flex-column justify-content-between mt-2 pe-2 w-100">
+                                                        <span className="font-bold pb-1 font-size-13">{pack.hotel.nameEn}</span>
+                                                        <span className="font-bold pb-1">{pack.hotel.name}</span>
+                                                        <div className="star d-flex align-items-center pb-1">
+                                                            <div className="d-flex align-items-center">
+                                                                <div className="image d-flex align-items-center">
+                                                                {Array.from(Array(parseInt(pack.hotel.stars)), (e, i) => {
+                                                                return (
+                                                                    <svg key={i} xmlns="http://www.w3.org/2000/svg" width="19"
+                                                                        height="19" viewBox="0 0 21.443 21.387">
+                                                                        <path id="Star"
+                                                                            d="M10.749,1c.915,0,2.352,4.154,2.871,5.751a.916.916,0,0,0,.84.632c1.666.057,5.983.3,5.983,1.273s-3.077,3.38-4.335,4.328A.915.915,0,0,0,15.789,14c.512,1.585,1.742,5.7.952,6.343s-4.1-1.885-5.447-2.963a.919.919,0,0,0-1.147,0c-1.35,1.078-4.669,3.6-5.392,2.964s.431-4.772.912-6.351a.914.914,0,0,0-.324-1C4.093,12.047,1,9.619,1,8.655S5.326,7.438,6.988,7.382a.916.916,0,0,0,.838-.625C8.357,5.165,9.833,1,10.749,1Z"
+                                                                            fill="#f7db06" stroke="#f7db06"
+                                                                            strokeLinecap="round" strokeLinejoin="round"
+                                                                            strokeWidth={2} />
+                                                                    </svg>)
+                                                            })}
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <div className="d-flex align-items-center">
+                                                            {/* {(parseInt(pack.hotel.stars))} */}
+                                                            
+                                                                <svg className="ms-2" xmlns="http://www.w3.org/2000/svg" width="20"
+                                                                    height="20" viewBox="0 0 23.528 26.039">
+                                                                    <g id="Location" transform="translate(0.028)">
+                                                                        <path id="Path_1011" data-name="Path 1011"
+                                                                            d="M1.152,12.976a14.6,14.6,0,0,0,4.131,7.545,25.71,25.71,0,0,0,5.471,4.223,1.912,1.912,0,0,0,1.962,0,25.71,25.71,0,0,0,5.471-4.223,14.6,14.6,0,0,0,4.131-7.545,10.842,10.842,0,0,0-1.656-7.829C19.058,2.823,16.236,1,11.736,1S4.413,2.823,2.809,5.147A10.842,10.842,0,0,0,1.152,12.976Z"
+                                                                            transform="translate(0 0)" fill="none"
+                                                                            stroke="#333333" strokeLinecap="round"
+                                                                            strokeLinejoin="round" strokeWidth={2}>
+                                                                        </path>
+                                                                        <circle id="Ellipse_49" data-name="Ellipse 49"
+                                                                            cx="2.928" cy="2.928" r="2.928"
+                                                                            transform="translate(14.663 12.712) rotate(180)"
+                                                                            fill="none" stroke="#333333" strokeWidth={2}>
+                                                                        </circle>
+                                                                    </g>
+                                                                </svg>
+                                                            
+                                                            <span className="f-18 text-33 f-bold pr-4">{pack.hotel.location}</span>
+                                                        </div>
                                                     </div>
-                                                    <div className="d-flex align-items-center">
-                                                        <svg className="ms-2" xmlns="http://www.w3.org/2000/svg" width="20"
-                                                            height="20" viewBox="0 0 23.528 26.039">
-                                                            <g id="Location" transform="translate(0.028)">
-                                                                <path id="Path_1011" data-name="Path 1011"
-                                                                    d="M1.152,12.976a14.6,14.6,0,0,0,4.131,7.545,25.71,25.71,0,0,0,5.471,4.223,1.912,1.912,0,0,0,1.962,0,25.71,25.71,0,0,0,5.471-4.223,14.6,14.6,0,0,0,4.131-7.545,10.842,10.842,0,0,0-1.656-7.829C19.058,2.823,16.236,1,11.736,1S4.413,2.823,2.809,5.147A10.842,10.842,0,0,0,1.152,12.976Z"
-                                                                    transform="translate(0 0)" fill="none"
-                                                                    stroke="#333333" strokeLinecap="round"
-                                                                    strokeLinejoin="round" strokeWidth={2}>
-                                                                </path>
-                                                                <circle id="Ellipse_49" data-name="Ellipse 49"
-                                                                    cx="2.928" cy="2.928" r="2.928"
-                                                                    transform="translate(14.663 12.712) rotate(180)"
-                                                                    fill="none" stroke="#333333" strokeWidth={2}>
-                                                                </circle>
-                                                            </g>
+                                                    <div className="image left-border-line">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="1" height="110"
+                                                            viewBox="0 0 1 186.408">
+                                                            <line id="Line_87" data-name="Line 87" y2="186.408"
+                                                                transform="translate(0.5)" fill="none" stroke="#333"
+                                                                strokeWidth={1} strokeDasharray={10} />
                                                         </svg>
-                                                        <span className="f-18 text-33 f-bold pr-4">Holand</span>
                                                     </div>
                                                 </div>
-                                                <div className="image left-border-line">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="1" height="110"
-                                                        viewBox="0 0 1 186.408">
-                                                        <line id="Line_87" data-name="Line 87" y2="186.408"
-                                                            transform="translate(0.5)" fill="none" stroke="#333"
-                                                            strokeWidth={1} strokeDasharray={10} />
-                                                    </svg>
+                                            </div>
+                                            <div className="c-detail">
+                                                <div className="info-price position-relative d-flex align-items-start mx-2">
+                                                    <div className="text d-flex flex-column align-items-center w-100 py-3">
+                                                        <span className="text-show-m mb-2 color-base-color font-bold d-none">دو تخته (هر نفر)</span>
+                                                        <span className="font-font-size-14 font-bold">{pack.prices.tripleRate} تومان</span>
+                                                        <span className="font-font-size-14 font-bold">{pack.prices.twin} یورو</span>
+                                                        {/* <span className="font-font-size-16 font-bold">تومان</span> */}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="c-detail">
-                                            <div className="info-price position-relative d-flex align-items-start mx-2">
-                                                <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                                    <span className="text-show-m mb-2 color-base-color font-bold d-none">دو تخته (هر نفر)</span>
-                                                    <span className="font-font-size-14 font-bold">150.000.000</span>
-                                                    <span className="font-font-size-16 font-bold">تومان</span>
+                                            {data && data.type && <>
+                                            <div className="c-detail">
+                                                <div className="info-price position-relative d-flex align-items-start mx-2">
+                                                    <div className="text d-flex flex-column align-items-center w-100 py-3">
+                                                        <span className="text-show-m mb-2 color-base-color font-bold d-none">سه تخته (هر نفر)</span>
+                                                        <span className="font-font-size-14 font-bold">{pack.prices.tripleRate}</span>
+                                                        <span className="font-font-size-16 font-bold">تومان</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="c-detail">
-                                            <div className="info-price position-relative d-flex align-items-start mx-2">
-                                                <div
-                                                    className="text d-flex flex-column align-items-center w-100 py-3">
-                                                    <span className="text-show-m mb-2 color-base-color font-bold d-none"> سینگل</span>
-                                                    <span className="font-font-size-14 font-bold">150.000.000</span>
-                                                    <span className="font-font-size-16 font-bold">تومان</span>
+                                            <div className="c-detail">
+                                                <div className="info-price position-relative d-flex align-items-start mx-2">
+                                                    <div className="text d-flex flex-column align-items-center w-100 py-3">
+                                                        <span className="text-show-m mb-2 color-base-color font-bold d-none">چهار تخته (هر نفر)</span>
+                                                        <span className="font-font-size-14 font-bold">{pack.prices.tripleRate}</span>
+                                                        <span className="font-font-size-16 font-bold">تومان</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="c-detail">
-                                            <div className="info-price position-relative d-flex align-items-start mx-2">
-                                                <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                                    <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک با تخت</span>
-                                                    <span className="font-font-size-14 font-bold">150.000.000</span>
-                                                    <span className="font-font-size-16 font-bold">تومان</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="c-detail">
-                                            <div className="info-price position-relative d-flex align-items-start mx-2">
-                                                <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                                    <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک بدون تخت</span>
-                                                    <span className="font-font-size-14 font-bold">10.000.000</span>
-                                                    <span className="font-font-size-16 font-bold">تومان</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="c-detail child-number d-flex flex-column text-center ml-3 py-3">
-                                            <span className="text-show-m mb-2 color-base-color font-bold d-none">سن کودک</span>
-                                            <span className="font-size-16 font-bold">3 تا 10</span>
-                                        </div>
-                                        <div className="c-btn request-data">
-                                            <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2">
-                                                درخواست رزرو
-                                            </button>
-                                        </div>
-                                    </div>
+                                            </>
+                                            }
 
-                                </div>
+                                            {data && !data.type && 
+                                            <div className="c-detail">
+                                                <div className="info-price position-relative d-flex align-items-start mx-2">
+                                                    <div
+                                                        className="text d-flex flex-column align-items-center w-100 py-3">
+                                                        <span className="text-show-m mb-2 color-base-color font-bold d-none"> سینگل</span>
+                                                        <span className="font-font-size-14 font-bold">{pack.prices.singleRate} تومان</span>
+                                                        <span className="font-font-size-16 font-bold"></span>
+                                                        <span className="font-font-size-14 font-bold">{pack.prices.single} یورو</span>
+                                                        <span className="font-font-size-16 font-bold"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            }
+                                            {data && !data.type && 
+
+                                            <div className="c-detail">
+                                                <div className="info-price position-relative d-flex align-items-start mx-2">
+                                                    <div className="text d-flex flex-column align-items-center w-100 py-3">
+                                                        <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک با تخت</span>
+                                                        <span className="font-font-size-14 font-bold">{pack.prices.cwbRate} تومان</span>
+                                                        <span className="font-font-size-14 font-bold">{pack.prices.cwb} یورو</span>
+                                                        {/* <span className="font-font-size-16 font-bold">تومان</span> */}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            }
+                                            <div className="c-detail">
+                                                <div className="info-price position-relative d-flex align-items-start mx-2">
+                                                    <div className="text d-flex flex-column align-items-center w-100 py-3">
+                                                        <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک بدون تخت</span>
+                                                        <span className="font-font-size-14 font-bold">{pack.prices.cnb} تومان</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="c-detail child-number d-flex flex-column text-center ml-3 py-3">
+                                                <span className="text-show-m mb-2 color-base-color font-bold d-none">سن کودک</span>
+                                                <span className="font-size-16 font-bold">{pack.prices.age}</span>
+                                            </div>
+                                            <div className="c-btn request-data">
+                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2">
+                                                    درخواست رزرو
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                 ))} 
                             </div>
                         </div>
                     </div>
@@ -415,7 +438,7 @@ const tour = () => {
                                             </div>
                                             <div className="paragraph pt-2 pe-3">
                                                 <p className="font-size-16 font-bold">
-                                                    مدارک خود را در این قسمت وارد کنید
+                                                    {data && data.documents}
                                                 </p>
                                             </div>
                                         </div>
@@ -443,7 +466,7 @@ const tour = () => {
                                             </div>
                                             <div className="paragraph pt-2 pe-2">
                                                 <p className="font-size-16 font-bold">
-                                                    خدمات آژانس خود را بنویسید
+                                                    {data && data.services}
                                                 </p>
                                             </div>
                                         </div>
@@ -473,7 +496,7 @@ const tour = () => {
                                             </div>
                                             <div className="paragraph pt-2 pe-2">
                                                 <p className="font-size-16 font-bold">
-                                                    توضیحات خود را در این بخش وارد کنید
+                                                {data && data.description}
                                                 </p>
                                             </div>
                                         </div>
@@ -505,74 +528,77 @@ const tour = () => {
                             {/* parent data */}
                             <div className="w-100 col-xl-12 col-lg-12 w-100 d-flex flex-column">
                                 {/* child data */}
-                                <div className="tour-item col-xl-12 col-lg-12 mb-2">
-                                    <div className="tour-city">
-                                        <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="41.265" height="48.155" viewBox="0 0 41.265 48.155">
-                                            <g id="location2" transform="translate(1.549 1.5)">
-                                                <path id="Path_1011" data-name="Path 1011" d="M1.271,23.5A27.9,27.9,0,0,0,8.614,37.67,46.066,46.066,0,0,0,18.34,45.6a3.243,3.243,0,0,0,3.487,0,46.066,46.066,0,0,0,9.725-7.932A27.9,27.9,0,0,0,38.895,23.5,21.308,21.308,0,0,0,35.951,8.79C33.1,4.425,28.083,1,20.083,1S7.067,4.425,4.215,8.79A21.308,21.308,0,0,0,1.271,23.5Z" transform="translate(-1 -1)" fill="none" stroke="#e0e0e0" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                                <circle id="Ellipse_49" data-name="Ellipse 49" cx="5.204" cy="5.204" r="5.204" transform="translate(24.288 23.697) rotate(180)" fill="none" stroke="#e0e0e0" strokeWidth={2} />
-                                            </g>
-                                        </svg>
-                                        <div className="info-tour-city">
-                                            <Link href={'/tour'}>
-                                                <strong>عنوان تور</strong>
-                                            </Link>
-                                            <div className="text-price pt-1">
-                                                <small className="title-price">شروع قیمت از :</small>
-                                                <strong className="price-tour color-base-color me-2">
-                                                    34000000
-                                                    <small className="pe-1">تومان </small>
-                                                </strong>
+                                {data && data.tours.map((item,index)=>(
+                                    <div className="tour-item col-xl-12 col-lg-12 mb-2" key={index} onClick={() => slugHandler(item.slug)}>
+                                        {console.log(item)}
+                                        <div className="tour-city">
+                                            <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="41.265" height="48.155" viewBox="0 0 41.265 48.155">
+                                                <g id="location2" transform="translate(1.549 1.5)">
+                                                    <path id="Path_1011" data-name="Path 1011" d="M1.271,23.5A27.9,27.9,0,0,0,8.614,37.67,46.066,46.066,0,0,0,18.34,45.6a3.243,3.243,0,0,0,3.487,0,46.066,46.066,0,0,0,9.725-7.932A27.9,27.9,0,0,0,38.895,23.5,21.308,21.308,0,0,0,35.951,8.79C33.1,4.425,28.083,1,20.083,1S7.067,4.425,4.215,8.79A21.308,21.308,0,0,0,1.271,23.5Z" transform="translate(-1 -1)" fill="none" stroke="#e0e0e0" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+                                                    <circle id="Ellipse_49" data-name="Ellipse 49" cx="5.204" cy="5.204" r="5.204" transform="translate(24.288 23.697) rotate(180)" fill="none" stroke="#e0e0e0" strokeWidth={2} />
+                                                </g>
+                                            </svg>
+                                            <div className="info-tour-city">
+                                                <Link href={'/tour'}>
+                                                    <strong>{item.title}</strong>
+                                                </Link>
+                                                <div className="text-price pt-1">
+                                                    <small className="title-price">شروع قیمت از :</small>
+                                                    <strong className="price-tour color-base-color me-2">
+                                                        {item.minPrice}
+                                                        <small className="pe-1">تومان </small>
+                                                    </strong>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="tour-days">
-                                        <div className="night mb-2">
-                                            <svg className="ms-2" xmlns="http://www.w3.org/2000/svg" width="15.437" height="16.078" viewBox="0 0 15.437 16.078">
-                                                <path id="Moon_1" data-name="Moon 1" d="M14.794,10.838l.595.245a.643.643,0,0,0-.883-.82ZM6.442.643l.519.38A.643.643,0,0,0,6.3.015Zm5.39,10.25a6.126,6.126,0,0,1-6.07-6.181H4.475a7.413,7.413,0,0,0,7.356,7.467Zm2.674-.63a5.954,5.954,0,0,1-2.674.63V12.18a7.24,7.24,0,0,0,3.25-.766Zm-.307.33a6.717,6.717,0,0,1-6.2,4.2v1.286a8,8,0,0,0,7.387-5ZM8,14.792A6.777,6.777,0,0,1,1.287,7.955H0a8.063,8.063,0,0,0,8,8.123ZM1.287,7.955A6.812,6.812,0,0,1,6.58,1.271L6.3.015A8.1,8.1,0,0,0,0,7.955ZM5.762,4.712a6.225,6.225,0,0,1,1.2-3.689L5.923.263A7.512,7.512,0,0,0,4.475,4.712Z" transform="translate(0)" fill="#279692" />
+                                        <div className="tour-days">
+                                            <div className="night mb-2">
+                                                <svg className="ms-2" xmlns="http://www.w3.org/2000/svg" width="15.437" height="16.078" viewBox="0 0 15.437 16.078">
+                                                    <path id="Moon_1" data-name="Moon 1" d="M14.794,10.838l.595.245a.643.643,0,0,0-.883-.82ZM6.442.643l.519.38A.643.643,0,0,0,6.3.015Zm5.39,10.25a6.126,6.126,0,0,1-6.07-6.181H4.475a7.413,7.413,0,0,0,7.356,7.467Zm2.674-.63a5.954,5.954,0,0,1-2.674.63V12.18a7.24,7.24,0,0,0,3.25-.766Zm-.307.33a6.717,6.717,0,0,1-6.2,4.2v1.286a8,8,0,0,0,7.387-5ZM8,14.792A6.777,6.777,0,0,1,1.287,7.955H0a8.063,8.063,0,0,0,8,8.123ZM1.287,7.955A6.812,6.812,0,0,1,6.58,1.271L6.3.015A8.1,8.1,0,0,0,0,7.955ZM5.762,4.712a6.225,6.225,0,0,1,1.2-3.689L5.923.263A7.512,7.512,0,0,0,4.475,4.712Z" transform="translate(0)" fill="#279692" />
+                                                </svg>
+                                                <span>{item.nightNum} شب</span>
+                                            </div>
+                                            <div className="day d-flex justify-content-start">
+                                                <svg className="ms-2" id="Sun" xmlns="http://www.w3.org/2000/svg" width="21.159" height="21.159" viewBox="0 0 21.159 21.159">
+                                                    <path id="Path_1144" data-name="Path 1144" d="M7,12.3c-.024,2.225.347,3.463,1.064,4.18s1.973,1.1,4.225,1.1,3.492-.382,4.205-1.1,1.084-1.96,1.084-4.19-.37-3.471-1.084-4.19S14.542,7,12.289,7,8.811,7.382,8.1,8.1,7.024,10.063,7,12.3Z" transform="translate(-1.71 -1.71)" fill="none" stroke="#279692" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+                                                    <path id="Path_1145" data-name="Path 1145" d="M14.511.756A.756.756,0,0,0,13,.756ZM13,2.267a.756.756,0,0,0,1.511,0ZM13,.756V2.267h1.511V.756Z" transform="translate(-3.176)" fill="#279692" />
+                                                    <path id="Path_1146" data-name="Path 1146" d="M14.511,24.756a.756.756,0,0,0-1.511,0ZM13,26.267a.756.756,0,0,0,1.511,0Zm0-1.511v1.511h1.511V24.756Z" transform="translate(-3.176 -5.864)" fill="#279692" />
+                                                    <path id="Path_1147" data-name="Path 1147" d="M26.267,14.511a.756.756,0,0,0,0-1.511ZM24.756,13a.756.756,0,0,0,0,1.511Zm1.511,0H24.756v1.511h1.511Z" transform="translate(-5.864 -3.176)" fill="#279692" />
+                                                    <path id="Path_1148" data-name="Path 1148" d="M2.267,14.511a.756.756,0,0,0,0-1.511ZM.756,13a.756.756,0,0,0,0,1.511Zm1.511,0H.756v1.511H2.267Z" transform="translate(0 -3.176)" fill="#279692" />
+                                                    <path id="Path_1149" data-name="Path 1149" d="M4.29,3.221A.756.756,0,0,0,3.221,4.29Zm0,2.137A.756.756,0,0,0,5.359,4.29ZM3.221,4.29,4.29,5.359,5.359,4.29,4.29,3.221Z" transform="translate(-0.733 -0.733)" fill="#279692" />
+                                                    <path id="Path_1150" data-name="Path 1150" d="M4.29,24.359A.756.756,0,1,1,3.221,23.29Zm0-2.137A.756.756,0,0,1,5.359,23.29ZM3.221,23.29,4.29,22.221,5.359,23.29,4.29,24.359Z" transform="translate(-0.733 -5.375)" fill="#279692" />
+                                                    <path id="Path_1151" data-name="Path 1151" d="M23.29,3.221A.756.756,0,1,1,24.359,4.29Zm0,2.137A.756.756,0,0,1,22.221,4.29ZM24.359,4.29,23.29,5.359,22.221,4.29,23.29,3.221Z" transform="translate(-5.375 -0.733)" fill="#279692" />
+                                                    <path id="Path_1152" data-name="Path 1152" d="M23.29,24.359a.756.756,0,1,0,1.069-1.069Zm0-2.137a.756.756,0,0,0-1.069,1.069Zm1.069,1.069L23.29,22.221,22.221,23.29l1.069,1.069Z" transform="translate(-5.375 -5.375)" fill="#279692" />
+                                                </svg>
+                                                <span> {data.dayNum} روز</span>
+                                            </div>
+                                        </div>
+                                        <div className="tour-night d-flex align-items-center">
+                                            <svg className="ms-2" xmlns="http://www.w3.org/2000/svg" width="21.429" height="17.709" viewBox="0 0 21.429 17.709">
+                                                <g id="Up_Down_1" data-name="Up Down 1" transform="translate(21.015 17.294) rotate(180)">
+                                                    <path id="Path_1173" data-name="Path 1173" d="M1,11.23l4.65,4.65m0,0V1m0,14.88,4.65-4.65" fill="none" stroke="#279692" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+                                                    <path id="Path_1174" data-name="Path 1174" d="M11,5.65,15.65,1m0,0V15.88M15.65,1,20.3,5.65" transform="translate(-0.7)" fill="none" stroke="#ff0000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+                                                </g>
                                             </svg>
-                                            <span>4 شب</span>
+                                            <div className="d-flex flex-column">
+                                                <span className="from text-dark">{item.createdAt.split('T')[0]}</span>
+                                                <span className="to text-dark">{item.expireDate.split(' ')[0]}</span>
+                                            </div>
                                         </div>
-                                        <div className="day d-flex justify-content-start">
-                                            <svg className="ms-2" id="Sun" xmlns="http://www.w3.org/2000/svg" width="21.159" height="21.159" viewBox="0 0 21.159 21.159">
-                                                <path id="Path_1144" data-name="Path 1144" d="M7,12.3c-.024,2.225.347,3.463,1.064,4.18s1.973,1.1,4.225,1.1,3.492-.382,4.205-1.1,1.084-1.96,1.084-4.19-.37-3.471-1.084-4.19S14.542,7,12.289,7,8.811,7.382,8.1,8.1,7.024,10.063,7,12.3Z" transform="translate(-1.71 -1.71)" fill="none" stroke="#279692" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                                <path id="Path_1145" data-name="Path 1145" d="M14.511.756A.756.756,0,0,0,13,.756ZM13,2.267a.756.756,0,0,0,1.511,0ZM13,.756V2.267h1.511V.756Z" transform="translate(-3.176)" fill="#279692" />
-                                                <path id="Path_1146" data-name="Path 1146" d="M14.511,24.756a.756.756,0,0,0-1.511,0ZM13,26.267a.756.756,0,0,0,1.511,0Zm0-1.511v1.511h1.511V24.756Z" transform="translate(-3.176 -5.864)" fill="#279692" />
-                                                <path id="Path_1147" data-name="Path 1147" d="M26.267,14.511a.756.756,0,0,0,0-1.511ZM24.756,13a.756.756,0,0,0,0,1.511Zm1.511,0H24.756v1.511h1.511Z" transform="translate(-5.864 -3.176)" fill="#279692" />
-                                                <path id="Path_1148" data-name="Path 1148" d="M2.267,14.511a.756.756,0,0,0,0-1.511ZM.756,13a.756.756,0,0,0,0,1.511Zm1.511,0H.756v1.511H2.267Z" transform="translate(0 -3.176)" fill="#279692" />
-                                                <path id="Path_1149" data-name="Path 1149" d="M4.29,3.221A.756.756,0,0,0,3.221,4.29Zm0,2.137A.756.756,0,0,0,5.359,4.29ZM3.221,4.29,4.29,5.359,5.359,4.29,4.29,3.221Z" transform="translate(-0.733 -0.733)" fill="#279692" />
-                                                <path id="Path_1150" data-name="Path 1150" d="M4.29,24.359A.756.756,0,1,1,3.221,23.29Zm0-2.137A.756.756,0,0,1,5.359,23.29ZM3.221,23.29,4.29,22.221,5.359,23.29,4.29,24.359Z" transform="translate(-0.733 -5.375)" fill="#279692" />
-                                                <path id="Path_1151" data-name="Path 1151" d="M23.29,3.221A.756.756,0,1,1,24.359,4.29Zm0,2.137A.756.756,0,0,1,22.221,4.29ZM24.359,4.29,23.29,5.359,22.221,4.29,23.29,3.221Z" transform="translate(-5.375 -0.733)" fill="#279692" />
-                                                <path id="Path_1152" data-name="Path 1152" d="M23.29,24.359a.756.756,0,1,0,1.069-1.069Zm0-2.137a.756.756,0,0,0-1.069,1.069Zm1.069,1.069L23.29,22.221,22.221,23.29l1.069,1.069Z" transform="translate(-5.375 -5.375)" fill="#279692" />
-                                            </svg>
-                                            <span> 3 روز</span>
+                                        <div className="type">
+                                            <img width="28" src="/images/QB.png" />
+                                            <span className="text-dark me-2">{item.transfers[0].transfer}</span>
                                         </div>
+                                        <Link href={'/tour'}>
+                                            <div className="ino-tour-btn" >
+                                                {/* <span className="text-mobi-btn">جزییات</span> */}
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="27.414" height="18.453" viewBox="0 0 27.414 18.453">
+                                                    <path id="Right_Arrow_2" data-name="Right Arrow 2" d="M18.188,1,26,8.812m0,0H1m25,0-7.812,7.813" transform="translate(27.414 18.039) rotate(180)" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+                                                </svg>
+                                            </div>
+                                        </Link>
                                     </div>
-                                    <div className="tour-night d-flex align-items-center">
-                                        <svg className="ms-2" xmlns="http://www.w3.org/2000/svg" width="21.429" height="17.709" viewBox="0 0 21.429 17.709">
-                                            <g id="Up_Down_1" data-name="Up Down 1" transform="translate(21.015 17.294) rotate(180)">
-                                                <path id="Path_1173" data-name="Path 1173" d="M1,11.23l4.65,4.65m0,0V1m0,14.88,4.65-4.65" fill="none" stroke="#279692" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                                <path id="Path_1174" data-name="Path 1174" d="M11,5.65,15.65,1m0,0V15.88M15.65,1,20.3,5.65" transform="translate(-0.7)" fill="none" stroke="#ff0000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                            </g>
-                                        </svg>
-                                        <div className="d-flex flex-column">
-                                            <span className="from text-dark">1401/10/10</span>
-                                            <span className="to text-dark">1401/10/12</span>
-                                        </div>
-                                    </div>
-                                    <div className="type">
-                                        <img width="28" src="/images/QB.png" />
-                                        <span className="text-dark me-2">ایران ایر</span>
-                                    </div>
-                                    <Link href={'/tour'}>
-                                        <div className="ino-tour-btn">
-                                            {/* <span className="text-mobi-btn">جزییات</span> */}
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="27.414" height="18.453" viewBox="0 0 27.414 18.453">
-                                                <path id="Right_Arrow_2" data-name="Right Arrow 2" d="M18.188,1,26,8.812m0,0H1m25,0-7.812,7.813" transform="translate(27.414 18.039) rotate(180)" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                            </svg>
-                                        </div>
-                                    </Link>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>
