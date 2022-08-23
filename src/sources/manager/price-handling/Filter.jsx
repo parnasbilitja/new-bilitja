@@ -72,10 +72,12 @@ const Filter = ({ list, cancel, setFilter, filters }) => {
             value={allprice}
           />
         </div>
-        <div>
+      </div>
+      <div className="d-flex align-items-center justify-content-end mt-3">
+        <div className="ms-2">
           <button className={style['button-base']} onClick={changeAll}> تغییر کلی</button>
         </div>
-        <div>
+        <div className="me-2">
           <button className={style['button-base']} onClick={cancel}>حذف فیلتر ها</button>
         </div>
       </div>
