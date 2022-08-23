@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Tour from '../sources/manager/tours/Tours'
+// mui
+import { Alert, Snackbar } from '@mui/material';
+
 import axios from 'axios';
 import { useAtom } from 'jotai';
 import { tourSlug } from '../jotai/jotai';
@@ -11,6 +13,16 @@ import RequestTour from '../Components/modal/RequestTour';
 import PopUp from '../sources/component/PopUp.component';
 
 const tour = () => {
+    // mui
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
+
+    const [open, setOpen] = useState(false);
     const [data, setData] = useState(null)
     const [slug, setSlug] = useAtom(tourSlug)
     const [show,setShow] = useState(false);
@@ -19,6 +31,10 @@ const tour = () => {
         number:'',
         count:'1',
         tourId:tourId,
+    })
+    const [messages,setMessages] = useState({
+        isDone: false,
+        message:''
     })
     const getData = async () => {
         const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${slug ? slug : JSON.parse(localStorage.getItem("slug"))}`)
@@ -94,7 +110,7 @@ const tour = () => {
                                     <div className="c-info__tour d-flex align-items-center col-xl-12 col-gl-12">
                                         <div className="bg-white py-3">
                                             <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
-                                                <img src="/images/QB.png" width={"35px"} height={"35px"} alt="company" />
+                                                <img src={data && data.transfers[0].logo} width={"35px"} height={"35px"} alt="company" />
                                             </div>
                                         </div>
                                         <div className="text pe-2">
@@ -154,7 +170,7 @@ const tour = () => {
                                     <div className="c-info__tour d-flex flex-row-reverse align-items-center col-xl-12 col-lg-12 col-12">
                                         <div className="bg-white py-3">
                                             <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
-                                                <img src="/images/QB.png" width={"35px"} height={"35px"} alt="company" />
+                                                <img src={data && data.transfers[1].logo} width={"35px"} height={"35px"} alt="company" />
                                             </div>
                                         </div>
                                         <div className="text pe-2 ps-3">
@@ -387,7 +403,7 @@ const tour = () => {
                                                 <span className="font-size-16 font-bold">{pack.prices.age}</span>
                                             </div>
                                             <div className="c-btn request-data">
-                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() =>{setShow(true);setPackData({...packData,tourId:pack.id});console.log(pack.id);}}>
+                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() =>{setShow(true);setPackData({tourId:pack.id});console.log(pack.id);}}>
                                                     درخواست رزرو
                                                 </button>
                                             </div>
@@ -586,17 +602,17 @@ const tour = () => {
                                             </div>
                                         </div>
                                         <div className="type">
-                                            <img width="28" src="/images/QB.png" />
+                                            <img width="28" src={data && data.transfers[0].logo} />
                                             <span className="text-dark me-2">{item.transfers[0].transfer}</span>
                                         </div>
-                                        <Link href={'/tour'}>
                                             <div className="ino-tour-btn" >
+                                        <a href={'/tour'}>
                                                 {/* <span className="text-mobi-btn">جزییات</span> */}
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="27.414" height="18.453" viewBox="0 0 27.414 18.453">
                                                     <path id="Right_Arrow_2" data-name="Right Arrow 2" d="M18.188,1,26,8.812m0,0H1m25,0-7.812,7.813" transform="translate(27.414 18.039) rotate(180)" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
                                                 </svg>
+                                        </a>
                                             </div>
-                                        </Link>
                                     </div>
                                 ))}
                             </div>
@@ -608,9 +624,18 @@ const tour = () => {
             </div>
             {show && 
             <PopUp opened={show} closePopUp={setShow}>
-                <RequestTour setShow={setShow} packData={packData} setPackData={setPackData} />
+                <RequestTour setOpen={setOpen} messages={messages} setMessages={setMessages} setShow={setShow} packData={packData} setPackData={setPackData} />
             </PopUp>
             }
+            {/* {messages.message !=='' &&
+                    <div> */}
+                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                        {messages.message}
+                    </Alert>
+                </Snackbar>
+                    {/* </div>
+            } */}
         </div>
     );
 };
