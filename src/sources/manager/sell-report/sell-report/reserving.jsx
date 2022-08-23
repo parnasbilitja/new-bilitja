@@ -432,14 +432,14 @@ const FlightSellReport = () => {
       <div>
         <div class="position-relative">
           <h5 className="mt-0">
-            <span class="font-size-13 font-bold-iransanse mx-2">گـزارشات در حال رزرو</span>
+            <span class="font-size-13 font-bold-iransanse mx-2">گـزارشات رزرو</span>
           </h5>
           <div class="d-flex align-items-center">
             <div class="box-through"></div>
             <div class="aside-through"></div>
           </div>
         </div>
-        <div className="d-flex justify-content-between mt-3 align-items-center w-100 mb-4">
+        <div className="d-flex justify-content-end mt-3 align-items-center w-100 mb-4">
           <div className={style['parent-buttons']}>
             <Link href="/panel/flight-sell-report">
               <button>همه </button>
@@ -450,9 +450,11 @@ const FlightSellReport = () => {
             <Link href="/panel/Consular-report">
               <button>گزارش کنسلی</button>
             </Link>
-            <b>در حال رزرو</b>
+            <Link href="/panel/reserving">
+              <button>در حال رزرو </button>
+            </Link>
             <Link href="/panel/transaction">
-              <button>تراکنش ها  </button>
+              <button>تراکنش ها</button>
             </Link>
           </div>
         </div>
