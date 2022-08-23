@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Tour from '../sources/manager/tours/Tours'
 import axios from 'axios';
 import { useAtom } from 'jotai';
 import { tourSlug } from '../jotai/jotai';
@@ -7,11 +8,18 @@ import NavBar from "./../sources/component/NavBar.component";
 import Footer from '../sources/component/Footer.component';
 import Slider from '../Components/slider/Slider';
 import RequestTour from '../Components/modal/RequestTour';
+import PopUp from '../sources/component/PopUp.component';
 
 const tour = () => {
     const [data, setData] = useState(null)
     const [slug, setSlug] = useAtom(tourSlug)
     const [show,setShow] = useState(false);
+    const [tourId,setTourId] = useState(null);
+    const [packData,setPackData] = useState({
+        number:'',
+        count:'1',
+        tourId:tourId,
+    })
     const getData = async () => {
         const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${slug ? slug : JSON.parse(localStorage.getItem("slug"))}`)
         setData(val.data.data)
@@ -21,15 +29,9 @@ const tour = () => {
         getData();
         console.log(data);
     }, [slug])
-    useEffect(() => {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "smooth"
-        });
-      }, [slug]);
+    
+
     const slugHandler = (slug) => {
-        // window.scrollTo({top: 0,left: 0,behavior: "smooth"});
         setSlug(slug)
         localStorage.setItem("slug", JSON.stringify(slug))
     }
@@ -385,7 +387,7 @@ const tour = () => {
                                                 <span className="font-size-16 font-bold">{pack.prices.age}</span>
                                             </div>
                                             <div className="c-btn request-data">
-                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() =>setShow(true)}>
+                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() =>{setShow(true);setPackData({...packData,tourId:pack.id});console.log(pack.id);}}>
                                                     درخواست رزرو
                                                 </button>
                                             </div>
@@ -528,7 +530,7 @@ const tour = () => {
                                 {/* child data */}
                                 {data && data.tours.map((item,index)=>(
                                     <div className="tour-item col-xl-12 col-lg-12 mb-2" key={index} onClick={() => slugHandler(item.slug)}>
-                                        {console.log(item)}
+                                        {/* {console.log(item)} */}
                                         <div className="tour-city">
                                             <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="41.265" height="48.155" viewBox="0 0 41.265 48.155">
                                                 <g id="location2" transform="translate(1.549 1.5)">
@@ -605,8 +607,8 @@ const tour = () => {
                 <Footer />
             </div>
             {show && 
-            <PopUp show={show}>
-                <RequestTour setShow={setShow} />
+            <PopUp opened={show} closePopUp={setShow}>
+                <RequestTour setShow={setShow} packData={packData} setPackData={setPackData} />
             </PopUp>
             }
         </div>
