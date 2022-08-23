@@ -6,13 +6,22 @@ import { withRouter } from "next/router";
 const Profile = () => {
   return (
     <section>
-      <div className="border-bottom-black panel-header">
-        <div>
+      <div className="">
+        {/* <div>
           <FontAwesomeIcon icon={faUserAlt} className="color-textpill" />
           &nbsp;&nbsp;
           <span className="no-margin font-size-13 font-bold-iransanse">
             اطلاعات کاربر
           </span>
+        </div> */}
+        <div class="position-relative">
+          <h5 className="mt-0">
+            <span class=" font-size-13 font-bold-iransanse mx-2">اطـلاعات کــاربــر</span>
+          </h5>
+          <div class="d-flex align-items-center">
+            <div class="box-through"></div>
+            <div class="aside-through"></div>
+          </div>
         </div>
       </div>
       <div>
