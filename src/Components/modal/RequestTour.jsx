@@ -1,12 +1,11 @@
 import React from "react";
 // import "../../../styles/AccommodationReceipt.module.scss";
-class RequestTour extends React.Component {
+const  RequestTour =() =>{
     // constructor(props) {
     //     super(props);
     //     this.state = {};
     // }
 
-    render() {
         return (
             <div>
                 <div className="modal-content col-xl-12 col-lg-12 col-12">
@@ -34,7 +33,6 @@ class RequestTour extends React.Component {
             </div>
         );
     }
-}
 
 
 export default RequestTour;
