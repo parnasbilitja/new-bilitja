@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Tour from '../sources/manager/tours/Tours'
 import axios from 'axios';
 import { useAtom } from 'jotai';
 import { tourSlug } from '../jotai/jotai';
@@ -8,7 +7,6 @@ import NavBar from "./../sources/component/NavBar.component";
 import Footer from '../sources/component/Footer.component';
 import Slider from '../Components/slider/Slider';
 import RequestTour from '../Components/modal/RequestTour';
-import PopUp from '../sources/component/PopUp.component';
 
 const tour = () => {
     const [data, setData] = useState(null)
@@ -252,7 +250,7 @@ const tour = () => {
                                     <div className="p-detail col-xl-12 col-lg-12 mt-2" key={pack.id}>
                                         <div className="d-detail position-relative col-xl-12 col-lg-12 col-12 d-flex flex-wrap align-items-center bg-white py-2 px-2 mb-2">
                                             <div className="c-detail ms-2">
-                                                {data.offered &&
+                                                {pack.offered &&
                                                 <div className="position-absolute bg-danger py-1 px-1 rounded-2">
                                                     <div className="text">
                                                         <span className="text-white font-size-16">ویژه</span>
@@ -387,7 +385,7 @@ const tour = () => {
                                                 <span className="font-size-16 font-bold">{pack.prices.age}</span>
                                             </div>
                                             <div className="c-btn request-data">
-                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() =>setShow(!show)}>
+                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() =>setShow(true)}>
                                                     درخواست رزرو
                                                 </button>
                                             </div>
@@ -607,8 +605,8 @@ const tour = () => {
                 <Footer />
             </div>
             {show && 
-            <PopUp opened={show} closePopUp={setShow}>
-                <RequestTour/>
+            <PopUp show={show}>
+                <RequestTour setShow={setShow} />
             </PopUp>
             }
         </div>
