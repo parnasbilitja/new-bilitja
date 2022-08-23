@@ -1006,6 +1006,20 @@ button {
   // border: 2px solid #E0E0E0;
   box-shadow: 0 0 4px #e0e0e0;
 }
+.tourImages{
+  .swiper-button-next{
+    &::after{
+      content: "";
+      color:$base-color-1 !important;
+    }
+  }
+  .swiper-button-prev{
+    &::after{
+      content: "";
+      color:$base-color-1 !important;
+    }
+  }
+}
 .tour-city {
   display: flex;
   align-items: center;
