@@ -25,10 +25,10 @@ const ComplateProfile = (props) => {
       ...prevSate,
       UserId: localStorage.getItem("token"),
       mobile: localStorage.getItem("mobile"),
-      hostname : "bilitja.com",
-      customerId : "1a157116-a01a-4027-ab10-74098ac63815",
-      agencyName : "بلیطجا",
-      telNumber : "02157874",
+      hostname: "bilitja.com",
+      customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+      agencyName: "بلیطجا",
+      telNumber: "02157874",
 
     }));
   }, []);
@@ -88,13 +88,16 @@ const ComplateProfile = (props) => {
   };
   return (
     <section>
-      <div className="border-bottom-black">
-        <div>
-          <FontAwesomeIcon icon={faUserAlt} className="color-textpill" />
-          &nbsp;&nbsp;
-          <span className="no-margin font-size-13 font-bold-iransanse">
-            تکمیل اطلاعات
+      <div className="position-relative">
+        <p>
+          {/* <FontAwesomeIcon icon={faUserAlt} className="color-textpill" /> */}
+          <span className=" font-size-13 font-bold-iransanse mx-2">
+            تکــمیل اطــلاعات
           </span>
+        </p>
+        <div className="d-flex align-items-center">
+          <div className="box-through"></div>
+          <div className="aside-through"></div>
         </div>
       </div>
       <div>
@@ -234,7 +237,7 @@ const ComplateProfile = (props) => {
                   <div className="row my-2">
                     <div className="col-lg-4 title-box ">معرف</div>
                     {props.user_information.mobileMoaref === "" ||
-                    props.user_information.mobileMoaref === null ? (
+                      props.user_information.mobileMoaref === null ? (
                       <div className="col-lg-8">
                         <input
                           className="col-12 complate-profile-input"

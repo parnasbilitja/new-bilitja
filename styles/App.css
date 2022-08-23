@@ -48,14 +48,24 @@ span {
 }
 @media only screen and (max-width: 2000px) and (min-width: 1025px) {
   .panel-manager-main-container {
-    padding-right: 280px;
+    /* padding-right: 280px; */
+    flex: 0 0 80.5%;
+    max-width: 80.5%;
+    margin-right: auto;
   }
 }
+@media (min-width: 1600px){
+  .panel-manager-main-container {
+    flex: 0 0 86.5%;
+    max-width: 86.5%;
+  }
+}
+
 #root {
   height: 100%;
 }
 .panel-manager-main-container {
-  background-color: #f6f6f6;
+  /* background-color: #f6f6f6; */
   text-align: right;
   height: auto;
 }
@@ -64,6 +74,8 @@ span {
   height: auto;
   background-color: rgb(255, 255, 255);
 }
+
+
 .imgbarcode {
   width: 55px;
   height: 100%;
@@ -203,7 +215,14 @@ input[type="button"]:hover {
 
 .dashboard-manager-content-container {
   height: 100% !important;
-  padding: 20px;
+  padding: 5px 0;
+  padding-left: 7px;
+}
+.dashboard-manager-content-container section {
+  background-color: #f1f1f1;
+  border-radius: 6px;
+  padding: 15px 14px;
+  border: 1px solid #E0E0E0;
 }
 .dashboard-exit {
   position: absolute !important;
@@ -596,10 +615,10 @@ button:not(:disabled) {
   margin-left: 0px !important;
   color: #fff !important;
   content: "";
-  background-image: url(
+  /* background-image: url(
     data:image/svg + xml;charset=utf-8,
     %3Csvgxmlns="http://www.w3.org/2000/svg"viewBox="0 0 16 16"fill="%23212529"%3E%3Cpathfill-rule="evenodd"d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/%3E%3C/svg%3E
-  );
+  ); */
   background-repeat: no-repeat;
   border-radius: 30%;
   filter: brightness(100%);
@@ -625,4 +644,37 @@ button:not(:disabled) {
   border-color: #86b7fe;
   outline: 0;
   box-shadow: unset !important;
+}
+
+/* style =>amir.qn */
+
+
+.box-through,
+.aside-through{
+  width: 21px;
+  height: 3px;
+  border-radius: 10px;
+  background-color: #279692;
+  position: absolute;
+  bottom: 9px;
+  right: 6px;
+}
+.aside-through{
+  width: 50px;
+  right: 31px;
+}
+
+.line-horizontal {
+  width: 94%;
+  height: 3px;
+  background-color: #f8f8f8;
+  margin: 5px auto;
+  border-radius: 50px;
+}
+
+
+@media (max-width: 768px){
+  .dashboard-manager-content-container section {
+      margin-right: 8px;
+  }
 }

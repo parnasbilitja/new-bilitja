@@ -8,11 +8,22 @@
 }
 @media only screen and (max-width: 2000px) and (min-width: 1025px) {
   .manager-nav-main-container {
-    width: 280px;
+    width: 13%;
     right: 0;
   }
   .manager-small-screen-top-bar {
     display: none;
+  }
+}
+
+// .manager-nav-main-container {
+//   width: 19%;
+//   right: 0;
+// }
+
+@media only screen and (max-width: 1536px){
+  .manager-nav-main-container{
+    width: 19% !important;
   }
 }
 
@@ -33,24 +44,36 @@
 .manager-nav-main-container {
   height: 100%;
   position: fixed;
-  background-color: #f2f2f2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #279692;
   z-index: 999;
   transition-property: right;
   transition-duration: 0.5s;
   .manager-nav-header {
     border-bottom: 1px solid #dbdbdb;
-    text-align: center;
-    padding: 10px;
+    padding: 4px;
+    padding-right: 7px;
+    margin-bottom: 10px;
+    background-color: #f8f8f8;
+    margin: 7px;
+    margin-bottom: 0;
+    border-radius: 5px;
     img {
-      margin: auto;
+      // margin: auto;
       width: 63px;
       height: 46px;
     }
   }
   .manager-nav-one-row {
-    padding: 8px 15px 5px 15px;
+    padding: 7px 15px 5px 15px;
     text-align: right;
     border-bottom: 1px solid #dbdbdb;
+    background-color: #f8f8f8;
+    margin: 0 7px;
+    margin-bottom: 5px;
+    border-radius: 5px;
     svg {
       margin-top: 5px;
       font-size: 22px;

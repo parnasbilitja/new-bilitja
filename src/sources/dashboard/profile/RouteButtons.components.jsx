@@ -7,7 +7,7 @@ const RouteButtons = (props) => {
   const path = router.asPath;
   return (
     <section>
-      <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <ul className="nav nav-pills justify-content-end" id="pills-tab" role="tablist">
         {props.user_information.name === null ? (
           <li className="nav-item" role="presentation">
             <Link href="/dashboard/complate-profile">

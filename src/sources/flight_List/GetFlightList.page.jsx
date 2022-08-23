@@ -546,16 +546,14 @@ class GetFlightList extends React.Component {
     return (
       <div className="container">
         <div className="row text-right">
-          <div className="col-lg-12 col-md-12 col-sm-12 d-flex flex-wrap align-items-center mt-5"></div>
-          <div className="col-lg-10 col-md-11 col-sm-11">
+          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-5">
             <div className="row">
-              <div className="col-lg-10 col-md-11 col-sm-11 padding-5px">
+              <div className="col-xl-9 col-lg-9 col-md-9 col-sm-9 padding-5px">
                 <FlightSearchBox refreshAction={this.getData} />
               </div>
-
-              <div className="col-lg-2 col-md-3 col-sm-4 padding-5px">
-                <div className="row mt-2">
-                  <div className="col-lg-6">
+              <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 padding-5px m-auto">
+                <div className="row">
+                  <div className="col-lg-6 col-6">
                     <a
                       className="btn btn-outlined col-12 btn-block prev-next-btn"
                       onClick={() => {
@@ -572,7 +570,7 @@ class GetFlightList extends React.Component {
                       <span>قبل</span>
                     </a>
                   </div>
-                  <div className="col-lg-6">
+                  <div className="col-lg-6 col-6">
                     <a
                       className="btn btn-outlined col-12 btn-block  prev-next-btn"
                       onClick={() => {
@@ -599,10 +597,10 @@ class GetFlightList extends React.Component {
         </div>
 
         <div className="row">
-          <div className="col-lg-1 col-md-1 col-sm-1"></div>
-          <div className="col-lg-10 col-md-11 col-sm-12">
+          {/* <div className="col-lg-1 col-md-1 col-sm-1"></div> */}
+          <div className="col-lg-12 col-md-12 col-sm-12">
             <div className="row min-height">
-              <div className="col-lg-9 col-md-8 col-sm-8 col-12 padding-5px">
+              <div className="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-12 padding-5px">
                 {this.state.loading ? (
                   <div className="mt-4">
                     <Loading />
@@ -655,17 +653,19 @@ class GetFlightList extends React.Component {
               <div
                 className={`col-lg-3 col-md-4 col-sm-4 ${styles["hidden-xs-flight"]} padding-5px`}
               >
-                <Filters
-                  getData={this.getData}
-                  closeSide={() => {
-                    this.setState({
-                      slide: false,
-                    });
-                  }}
-                  Airlines={this.getUniqData(this.state.airlines)}
-                  realData={this.state.Allflights}
-                  setFilter={this.handleFindTickets}
-                />
+                <div className="position-sticky">
+                  <Filters
+                    getData={this.getData}
+                    closeSide={() => {
+                      this.setState({
+                        slide: false,
+                      });
+                    }}
+                    Airlines={this.getUniqData(this.state.airlines)}
+                    realData={this.state.Allflights}
+                    setFilter={this.handleFindTickets}
+                  />
+                </div>
               </div>
             </div>
           </div>

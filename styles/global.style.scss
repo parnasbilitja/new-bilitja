@@ -81,9 +81,8 @@ body {
 
 a {
   color: $pillTextGray;
-
+  text-decoration: none;
   &:hover {
-    text-decoration: none;
     color: $secondaryColor;
   }
 }
@@ -822,15 +821,15 @@ div.radio {
     fill: #fff;
   }
 }
-.parent-page-trakorder {
-  margin: 3rem 0;
-  border: 2px solid $pillGray;
-  border-radius: 10px;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+// .parent-page-trakorder {
+//   margin: 3rem 0;
+//   border: 2px solid $pillGray;
+//   border-radius: 10px;
+//   padding: 1rem;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// }
 .title-track-order {
   margin-right: 8px;
   font-weight: 600;

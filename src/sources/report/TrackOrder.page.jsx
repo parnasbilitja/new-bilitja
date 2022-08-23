@@ -28,11 +28,11 @@ class TrackOrder extends React.Component {
     }
     render() {
         return (
-            <div className="container-fluid mt-130">
-                <div className="container">
-                    <div className='col-xl-12 col-lg-12 col-sm-12 mx-auto parent-page-trakorder'>
+            <div className=" mt-130">
+                <div className="">
+                    <div style={{ display: 'flex', alignItems: 'center', flex: '0 0 100%', maxWidth: '100%' }}>
                         <div className="col-lg-6 details-order mt-4">
-                            <div className="title-order d-flex align-items-center text-right track-order-title font-bold-iransanse no-margin">
+                            <div className="title-order d-flex align-items-center">
                                 <FontAwesomeIcon className="color-textpill icon-size" icon={faCalendarCheck} />
                                 <h2 className={'title-track-order'}>پیگیری خرید</h2>
                             </div>
@@ -40,9 +40,6 @@ class TrackOrder extends React.Component {
                                 <div className="col-lg-10 col-md-10 col-sm-10 col-10 text-right font-size-14">
                                     <p className="track-order-second-title">جهت پیگیری رزرو، کد 6 رقمی رفرنس را وارد نمایید و بروی دکمه جستجو  کلیک کنید</p>
                                 </div>
-
-                                <div className="col-lg-1 col-md-1 col-sm-0 hidden-xs"></div>
-
                                 <div className="w-100">
                                     <div className="col-md-10 form-input-border height-short-input">
                                         <PrimaryTextInput placeholder="رفرنس پیگیری" name="trackRef" onChange={this.handleChange} />
@@ -62,7 +59,7 @@ class TrackOrder extends React.Component {
                                 <div className="row">
                                     <div className="col-lg-10 border-pill p-4">
                                         <div className="row">
-                                            <div className="col-lg-6">{this.state.referenceEbank.stat}</div>
+                                            <div className="col-lg-6">{this.state.referenceEbank.state}</div>
                                             <div className="col-lg-6">{this.state.referenceEbank.bankName}</div>
                                             <div className="col-lg-6">{this.state.referenceEbank.reqNo}</div>
                                             <div className="col-lg-6">{this.state.referenceEbank.reqPnr}</div>
@@ -76,7 +73,7 @@ class TrackOrder extends React.Component {
 
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }

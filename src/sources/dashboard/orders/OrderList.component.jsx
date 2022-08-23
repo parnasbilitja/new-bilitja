@@ -3,12 +3,15 @@ import { withRouter } from "next/router";
 const OrderList = () => {
   return (
     <section>
-      <div className="border-bottom-black panel-header">
-        <div>
-          &nbsp;&nbsp;
-          <span className="no-margin font-size-13 font-bold-iransanse">
-            سفارشات
+      <div className="position-relative">
+        <p>
+          <span className=" font-size-13 font-bold-iransanse mx-2">
+            سفــارشــات
           </span>
+        </p>
+        <div className="d-flex align-items-center">
+          <div className="box-through"></div>
+          <div className="aside-through"></div>
         </div>
       </div>
       <div className={'parent-order-dashboard'}>
