@@ -382,7 +382,7 @@ const Transaction = () => {
             <div class="aside-through"></div>
           </div>
         </div>
-        <div className="d-flex justify-content-between mt-3 align-items-center w-100 mb-4">
+        <div className="d-flex justify-content-end mt-3 align-items-center w-100 mb-4">
           <div className={style['parent-buttons']}>
             <Link href="/panel/flight-sell-report">
               <button>همه </button>
@@ -396,8 +396,9 @@ const Transaction = () => {
             <Link href="/panel/reserving">
               <button>در حال رزرو </button>
             </Link>
-
-            <b> تراکنش ها</b>
+            <Link href="/panel/transaction">
+              <button>تراکنش ها</button>
+            </Link>
           </div>
         </div>
 
