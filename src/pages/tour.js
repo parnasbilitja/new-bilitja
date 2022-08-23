@@ -7,10 +7,13 @@ import Link from 'next/link';
 import NavBar from "./../sources/component/NavBar.component";
 import Footer from '../sources/component/Footer.component';
 import Slider from '../Components/slider/Slider';
+import RequestTour from '../Components/modal/RequestTour';
+import PopUp from '../sources/component/PopUp.component';
 
 const tour = () => {
     const [data, setData] = useState(null)
     const [slug, setSlug] = useAtom(tourSlug)
+    const [show,setShow] = useState(false);
     const getData = async () => {
         const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${slug ? slug : JSON.parse(localStorage.getItem("slug"))}`)
         setData(val.data.data)
@@ -319,8 +322,8 @@ const tour = () => {
                                                 <div className="info-price position-relative d-flex align-items-start mx-2">
                                                     <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                         <span className="text-show-m mb-2 color-base-color font-bold d-none">دو تخته (هر نفر)</span>
-                                                        <span className="font-font-size-14 font-bold">{pack.prices.tripleRate} تومان</span>
-                                                        <span className="font-font-size-14 font-bold">{pack.prices.twin} یورو</span>
+                                                        {data.defineTour &&<span className="font-font-size-14 font-bold">{ pack.prices.twinRate} تومان</span>}
+                                                        {!data.defineTour &&<span className="font-font-size-14 font-bold">{pack.prices.twin} {pack.rate.name}</span>}
                                                         {/* <span className="font-font-size-16 font-bold">تومان</span> */}
                                                     </div>
                                                 </div>
@@ -330,8 +333,8 @@ const tour = () => {
                                                 <div className="info-price position-relative d-flex align-items-start mx-2">
                                                     <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                         <span className="text-show-m mb-2 color-base-color font-bold d-none">سه تخته (هر نفر)</span>
-                                                        <span className="font-font-size-14 font-bold">{pack.prices.tripleRate}</span>
-                                                        <span className="font-font-size-16 font-bold">تومان</span>
+                                                        {data.defineTour &&<span className="font-font-size-14 font-bold">{ pack.prices.tripleRate} تومان</span>}
+                                                        {!data.defineTour &&<span className="font-font-size-14 font-bold">{pack.prices.triple} {pack.rate.name}</span>}
                                                     </div>
                                                 </div>
                                             </div>
@@ -339,8 +342,8 @@ const tour = () => {
                                                 <div className="info-price position-relative d-flex align-items-start mx-2">
                                                     <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                         <span className="text-show-m mb-2 color-base-color font-bold d-none">چهار تخته (هر نفر)</span>
-                                                        <span className="font-font-size-14 font-bold">{pack.prices.tripleRate}</span>
-                                                        <span className="font-font-size-16 font-bold">تومان</span>
+                                                        {data.defineTour &&<span className="font-font-size-14 font-bold">{ pack.prices.quadRate} تومان</span>}
+                                                        {!data.defineTour &&<span className="font-font-size-14 font-bold">{pack.prices.quad} {pack.rate.name}</span>}
                                                     </div>
                                                 </div>
                                             </div>
@@ -353,10 +356,8 @@ const tour = () => {
                                                     <div
                                                         className="text d-flex flex-column align-items-center w-100 py-3">
                                                         <span className="text-show-m mb-2 color-base-color font-bold d-none"> سینگل</span>
-                                                        <span className="font-font-size-14 font-bold">{pack.prices.singleRate} تومان</span>
-                                                        <span className="font-font-size-16 font-bold"></span>
-                                                        <span className="font-font-size-14 font-bold">{pack.prices.single} یورو</span>
-                                                        <span className="font-font-size-16 font-bold"></span>
+                                                        {data.defineTour &&<span className="font-font-size-14 font-bold">{ pack.prices.singleRate} تومان</span>}
+                                                        {!data.defineTour &&<span className="font-font-size-14 font-bold">{pack.prices.single} {pack.rate.name}</span>}
                                                     </div>
                                                 </div>
                                             </div>
@@ -367,9 +368,8 @@ const tour = () => {
                                                 <div className="info-price position-relative d-flex align-items-start mx-2">
                                                     <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                         <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک با تخت</span>
-                                                        <span className="font-font-size-14 font-bold">{pack.prices.cwbRate} تومان</span>
-                                                        <span className="font-font-size-14 font-bold">{pack.prices.cwb} یورو</span>
-                                                        {/* <span className="font-font-size-16 font-bold">تومان</span> */}
+                                                        {data.defineTour &&<span className="font-font-size-14 font-bold">{ pack.prices.cwbRate} تومان</span>}
+                                                        {!data.defineTour &&<span className="font-font-size-14 font-bold">{pack.prices.cwb} {pack.rate.name}</span>}
                                                     </div>
                                                 </div>
                                             </div>
@@ -378,7 +378,7 @@ const tour = () => {
                                                 <div className="info-price position-relative d-flex align-items-start mx-2">
                                                     <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                         <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک بدون تخت</span>
-                                                        <span className="font-font-size-14 font-bold">{pack.prices.cnb} تومان</span>
+                                                        <span className="font-font-size-14 font-bold">{ pack.prices.cnb} تومان</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -387,7 +387,7 @@ const tour = () => {
                                                 <span className="font-size-16 font-bold">{pack.prices.age}</span>
                                             </div>
                                             <div className="c-btn request-data">
-                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2">
+                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() =>setShow(!show)}>
                                                     درخواست رزرو
                                                 </button>
                                             </div>
@@ -606,6 +606,11 @@ const tour = () => {
                 {/* footer */}
                 <Footer />
             </div>
+            {show && 
+            <PopUp opened={show} closePopUp={setShow}>
+                <RequestTour/>
+            </PopUp>
+            }
         </div>
     );
 };
