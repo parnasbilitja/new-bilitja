@@ -27,10 +27,12 @@ const RequestTour = () => {
                             جهت تماس با شما از طریق کارشناسان آژانس همنواز اطلاعات درخواستی زیر را تکمیل و ارسال فرمایید.
                         </p>
                     </div>
-                    <div className="in-data w-75 d-flex justify-content-center m-auto mb-2">
-                        <input type="text" className="w-100 px-2 rounded-3 border-secondary" placeholder="داده خود را وارد کنید" style={{ height: "40px", outline: "none" }} />
+                    <div className="in-data w-75 d-flex flex-column align-items-stretch justify-content-center m-auto mb-2">
+                        <label htmlFor="" className="pb-2 font-yekan font-bold">شماره تلفن همراه</label>
+                        <input type="text" className="w-100 px-2 rounded-3 border-secondary font-yekan" placeholder="شماره همراه خود را وارد کنید" style={{ height: "40px", outline: "none" }} />
                     </div>
-                    <div className="selectData w-75 d-flex justify-content-center m-auto mb-2">
+                    <div className="selectData w-75 d-flex flex-column align-items-stretch justify-content-center m-auto mb-2">
+                        <label htmlFor="" className="pb-2 font-yekan font-bold">تعداد مسافر</label>
                         <select className="w-100 px-2 rounded-3 border-secondary" name="" id="" style={{ height: "40px", outline: "none" }}>
                             <option value="1">1</option>
                             <option value="2">2</option>
