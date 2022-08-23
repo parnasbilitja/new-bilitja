@@ -1,9 +1,32 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 // import "../../../styles/AccommodationReceipt.module.scss";
-const RequestTour = ({setShow,setPackData,packData}) => {
+const RequestTour = ({messages,setMessages,setShow,setPackData,packData,setOpen}) => {
     
     const valueHandler = (e)=>{
         setPackData({...packData,[e.target.name]:e.target.value})
+    }
+    
+    const data = {
+        noPackage : false,
+        package_id : packData.tourId,
+        city_id : null,
+        phone : packData.number,
+        name : null,
+        month : null,
+        count : packData.count ?packData.count:1
+    }
+
+    const dataHandler = async() => {
+        console.log(packData);
+        await axios.post('https://api.hamnavaz.com/api/v1/reserve/createReserve',data)
+        .then(response=>{
+            setMessages({...messages,isDone:response.data.isDone,message:response.data.message});
+            console.log(response.data);
+            console.log(messages);
+        })
+        setShow(false);
+        setOpen(true)
     }
 
     return (
@@ -41,7 +64,7 @@ const RequestTour = ({setShow,setPackData,packData}) => {
                         </select>
                     </div>
                     <div className="c-btn request-data my-3 font-yekan m-auto">
-                        <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={console.log(packData)}>
+                        <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={dataHandler}>
                             درخواست رزرو
                         </button>
                     </div>
