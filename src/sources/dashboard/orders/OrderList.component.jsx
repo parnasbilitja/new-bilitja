@@ -4,11 +4,11 @@ const OrderList = () => {
   return (
     <section>
       <div className="position-relative">
-        <p>
+        <h5 className="mt-0">
           <span className=" font-size-13 font-bold-iransanse mx-2">
             سفــارشــات
           </span>
-        </p>
+        </h5>
         <div className="d-flex align-items-center">
           <div className="box-through"></div>
           <div className="aside-through"></div>

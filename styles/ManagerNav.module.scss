@@ -51,6 +51,9 @@
   z-index: 999;
   transition-property: right;
   transition-duration: 0.5s;
+  height: 100vh;
+  overflow-y: auto;
+  direction: ltr;
   .manager-nav-header {
     border-bottom: 1px solid #dbdbdb;
     padding: 4px;

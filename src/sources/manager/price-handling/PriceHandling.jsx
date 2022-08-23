@@ -93,66 +93,75 @@ const PriceHandling = () => {
   };
 
   return (
-    <div className="container pt-2 pb-2 pe-2 ps-2">
-      <h2 className={style['title-page']}>مدیریت قیمت گذاری</h2>
-
-      <Filter
-        list={agency}
-        setFilter={(data) => setFilter(data)}
-        cancel={handleCancel}
-        filters={filter}
-      />
-
+    <section>
       <div>
-        <div>
-          <div>
-            <div className={style["header-title-page"]}>
-              <div>
-                <h5>فعالسازی</h5>
-              </div>
-              <div>
-                <h5>کد</h5>
-              </div>
-              <div>
-                <h5>عنوان چارتر</h5>
-              </div>
-              <div>
-                <h5> درصد افزایش</h5>
-              </div>
-              <div>
-                <h5>مبلغ افزایش</h5>
-              </div>
-              <div>
-                <h5>ذخیره</h5>
-              </div>
-            </div>
-
-            {filter != null ? (
-              filter.map((option, index) => (
-                <Row
-                  option={option}
-                  index={index}
-                  key={index}
-                  filters={filter}
-                />
-              ))
-            ) : (
-              <div className="text-center pt-2 pb-2">
-                <h5 className="text-dark">درحال پردازش...</h5>
-              </div>
-            )}
+        <div class="position-relative">
+          <h5 className="mt-0">
+            <span class="font-size-13 font-bold-iransanse mx-2">مدیـریت قـیمت گـذاری</span>
+          </h5>
+          <div class="d-flex align-items-center">
+            <div class="box-through"></div>
+            <div class="aside-through"></div>
           </div>
         </div>
-        <div className={style["save"]}>
-          <button onClick={() => setSaveAll(true)}>ذخیره کلی</button>
+        <Filter
+          list={agency}
+          setFilter={(data) => setFilter(data)}
+          cancel={handleCancel}
+          filters={filter}
+        />
+
+        <div>
+          <div>
+            <div>
+              <div className={style["header-title-page"]}>
+                <div>
+                  <h5>فعالسازی</h5>
+                </div>
+                <div>
+                  <h5>کد</h5>
+                </div>
+                <div>
+                  <h5>عنوان چارتر</h5>
+                </div>
+                <div>
+                  <h5> درصد افزایش</h5>
+                </div>
+                <div>
+                  <h5>مبلغ افزایش</h5>
+                </div>
+                <div>
+                  <h5>ذخیره</h5>
+                </div>
+              </div>
+
+              {filter != null ? (
+                filter.map((option, index) => (
+                  <Row
+                    option={option}
+                    index={index}
+                    key={index}
+                    filters={filter}
+                  />
+                ))
+              ) : (
+                <div className="text-center pt-2 pb-2">
+                  <h5 className="text-dark">درحال پردازش...</h5>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className={style["save"]}>
+            <button onClick={() => setSaveAll(true)}>ذخیره کلی</button>
+          </div>
         </div>
+        <SaveAllDialog
+          open={openSaveAll}
+          close={() => setSaveAll(false)}
+          save={handleSave}
+        />
       </div>
-      <SaveAllDialog
-        open={openSaveAll}
-        close={() => setSaveAll(false)}
-        save={handleSave}
-      />
-    </div>
+    </section>
   );
 };
 

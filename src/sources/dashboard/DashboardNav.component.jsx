@@ -28,7 +28,7 @@ const DashboardNav = (props) => {
           }`}
       >
         <div className="w-100 d-flex justify-content-between rounded-3">
-          <div className={styles["manager-nav-header"]} style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
+          <div className={styles["manager-nav-header"]} style={{ width: "100%", display: "flex", flexDirection: 'row-reverse', justifyContent: "space-between" }}>
             <img
               width=""
               height=""
@@ -42,7 +42,7 @@ const DashboardNav = (props) => {
                 props.onClose();
               }}
             >
-              <div className="me-2">
+              <div className="d-flex flex-row-reverse">
                 {/* <FontAwesomeIcon className={'text-danger'} icon={faSignOutAlt} /> */}
                 <svg width="25" height="25" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M15.6773 36.5873C18.003 37.9334 20.6411 38.6421 23.3265 38.6421C26.012 38.6421 28.6501 37.9334 30.9758 36.5873C33.3014 35.2413 35.2327 33.3052 36.5754 30.9737C37.9181 28.6423 38.625 25.9976 38.625 23.3054C38.625 20.6133 37.9181 17.9685 36.5754 15.6371C35.2327 13.3056 33.3014 11.3695 30.9758 10.0235C28.6501 8.6774 26.012 7.96875 23.3266 7.96875C20.6411 7.96875 18.003 8.6774 15.6773 10.0235" stroke="#ff0000" strokeWidth={2} />
@@ -62,8 +62,8 @@ const DashboardNav = (props) => {
         <div
           className={
             myRouter.asPath === "/dashboard/profile"
-              ? `${styles["manager-nav-one-row"]} d-flex align-items-center dashboard-menu-item-active cursor-pointer`
-              : `${styles["manager-nav-one-row"]} d-flex align-items-center dashboard-menu-item cursor-pointer`
+              ? `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item-active cursor-pointer`
+              : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item cursor-pointer`
           }
           onClick={() => {
             myRouter.push("/dashboard/profile");
@@ -113,8 +113,8 @@ const DashboardNav = (props) => {
         <div
           className={
             myRouter.asPath === "/dashboard/orders"
-              ? `${styles["manager-nav-one-row"]} d-flex align-items-center dashboard-menu-item-active cursor-pointer`
-              : `${styles["manager-nav-one-row"]} d-flex align-items-center dashboard-menu-item cursor-pointer`
+              ? `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item-active cursor-pointer`
+              : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item cursor-pointer`
           }
           onClick={() => {
             myRouter.push("/dashboard/orders");
@@ -147,8 +147,8 @@ const DashboardNav = (props) => {
         <div
           className={
             myRouter.asPath === "/dashboard/wallet"
-              ? `${styles["manager-nav-one-row"]} d-flex align-items-center dashboard-menu-item-active cursor-pointer`
-              : `${styles["manager-nav-one-row"]} d-flex align-items-center dashboard-menu-item cursor-pointer`
+              ? `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item-active cursor-pointer`
+              : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item cursor-pointer`
           }
           onClick={() => {
             myRouter.push("/dashboard/wallet");
@@ -217,8 +217,8 @@ const DashboardNav = (props) => {
         <div
           className={
             myRouter.asPath === "/dashboard/coopration"
-              ? `${styles["manager-nav-one-row"]} d-flex align-items-center dashboard-menu-item-active cursor-pointer`
-              : `${styles["manager-nav-one-row"]} d-flex align-items-center dashboard-menu-item cursor-pointer`
+              ? `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item-active cursor-pointer`
+              : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item cursor-pointer`
           }
           onClick={() => {
             myRouter.push("/dashboard/profile");
