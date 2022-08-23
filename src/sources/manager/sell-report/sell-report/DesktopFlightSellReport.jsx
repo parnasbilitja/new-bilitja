@@ -427,351 +427,331 @@ const FlightSellReport = () => {
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   return (
-    <div className="container pt-2 pb-2 pe-2 ps-2">
-      <div className="d-flex justify-content-between mt-3 align-items-center w-100 mb-4">
-        <div className={style["title-page"]}>گزارشات فروش پرواز</div>
-        <div className={style['parent-buttons']}>
-          <Link href="/panel/flight-sell-report">
-            <button>همه </button>
-          </Link>
-          <Link href="/panel/Sales-report">
-            <button>گزارش فروش</button>
-          </Link>
-          <Link href="/panel/Consular-report">
-            <button>گزارش کنسلی</button>
-          </Link>
-          <Link href="/panel/reserving">
-            <button>در حال رزرو</button>
-          </Link>
-          <Link href="/panel/transaction">
-            <button>تراکنش ها  </button>
-          </Link>
+    <section>
+      <div>
+        <div class="position-relative">
+          <h5 className="mt-0">
+            <span class="font-size-13 font-bold-iransanse mx-2">گـزارشات در حال رزرو</span>
+          </h5>
+          <div class="d-flex align-items-center">
+            <div class="box-through"></div>
+            <div class="aside-through"></div>
+          </div>
         </div>
-      </div>
+        <div className="d-flex justify-content-end mt-3 align-items-center w-100 mb-4">
+          <div className={style['parent-buttons']}>
+            <Link href="/panel/flight-sell-report">
+              <button>همه </button>
+            </Link>
+            <Link href="/panel/Sales-report">
+              <button>گزارش فروش</button>
+            </Link>
+            <Link href="/panel/Consular-report">
+              <button>گزارش کنسلی</button>
+            </Link>
+            <b>در حال رزرو</b>
+            <Link href="/panel/transaction">
+              <button>تراکنش ها</button>
+            </Link>
+          </div>
+        </div>
 
-      {/*<TopFilter />*/}
-      <Box>
-        <Paper>
-          <TableContainer>
-            <Table
-              sx={{ minWidth: 750 }}
-              aria-labelledby="tableTitle"
-              size="small"
+        {/*<TopFilter />*/}
+        <Box>
+          <Paper>
+            <TableContainer>
+              <Table
+                sx={{ minWidth: 750 }}
+                aria-labelledby="tableTitle"
+                size="small"
+              >
+                <EnhancedTableHead
+                  numSelected={selected.length}
+                  order={order}
+                  orderBy={orderBy}
+                  onRequestSort={handleRequestSort}
+                  rowCount={
+                    flights.filter_sell_report == null
+                      ? []
+                      : flights.filter_sell_report.length
+                  }
+                />
+
+                <TableBody>
+                  {stableSort(
+                    flights.filter_sell_report == null
+                      ? []
+                      : flights.filter_sell_report,
+                    getComparator(order, orderBy)
+                  )
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row, index) => {
+                      const isItemSelected = isSelected(row.name);
+                      const labelId = `enhanced-table-checkbox-${index}`;
+
+                      return (
+                        <TableRow
+                          tabIndex={-1}
+                          key={row.name}
+                          selected={isItemSelected}
+                          className={style["tablerow"]}
+                          onClick={async () => {
+                            await setReqNo(row.reqNo);
+                            await setReqPnr(row.reqPnr);
+                            setOpenInfo(true);
+                          }}
+                        >
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['id']}>{i++}</h6>
+                          </TableCell>
+                          <TableCell
+                            className={style["tablerowfont"]}
+                            align="center"
+                          >
+                            <h6 className={style['normal-size']}>
+                              {row.message}</h6>
+                          </TableCell>
+                          <TableCell
+                            className={style["tablerowfont"]}
+                            align="center"
+                          >
+                            <h6 className={style['normal-size']}>
+
+                              {row.reqNo}</h6>
+                          </TableCell>
+                          <TableCell
+                            className={style["tablerowfont"]}
+                            align="center"
+                          >
+                            <h6 className={style['en-font']}>{row.reqPnr}</h6>
+                          </TableCell>
+                          <TableCell
+                            className={style["tablerowfont"]}
+                            align="center"
+                          >
+                            <h6 className={style['date']}>
+                              <svg id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20"><path d="M19,2h-1V1c0-.552-.447-1-1-1s-1,.448-1,1v1H8V1c0-.552-.447-1-1-1s-1,.448-1,1v1h-1C2.243,2,0,4.243,0,7v12c0,2.757,2.243,5,5,5h14c2.757,0,5-2.243,5-5V7c0-2.757-2.243-5-5-5ZM5,4h14c1.654,0,3,1.346,3,3v1H2v-1c0-1.654,1.346-3,3-3Zm14,18H5c-1.654,0-3-1.346-3-3V10H22v9c0,1.654-1.346,3-3,3Zm0-8c0,.552-.447,1-1,1H6c-.553,0-1-.448-1-1s.447-1,1-1h12c.553,0,1,.448,1,1Zm-7,4c0,.552-.447,1-1,1H6c-.553,0-1-.448-1-1s.447-1,1-1h5c.553,0,1,.448,1,1Z" /></svg>
+                              {row.dateTimeSabt}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['en-font']}>{row.nameFamilyEn}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>{row.numFr}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>{row.mobileNo}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>{row.route}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>
+                              {row.flightNo}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>{row.flightDate}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['airline']}>
+                              <svg id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20"><path d="M10.689,24a2.688,2.688,0,0,1-2.546-3.547L10.083,15H6.158l-1.08,1.646A2.993,2.993,0,0,1,2.569,18h0a2.556,2.556,0,0,1-2.4-3.434L1.1,12,.159,9.44A2.555,2.555,0,0,1,.46,7.1a2.811,2.811,0,0,1,4.6.247L6.155,9h3.928L8.147,3.563a2.7,2.7,0,0,1,.359-2.442,2.883,2.883,0,0,1,4.817.442L17.58,9h3.313a3.084,3.084,0,0,1,3.067,2.5A3,3,0,0,1,21,15H17.58l-4.267,7.454A2.989,2.989,0,0,1,10.689,24ZM5.618,13H11.5a1.006,1.006,0,0,1,.942,1.335l-2.41,6.773a.676.676,0,0,0,.1.605.9.9,0,0,0,1.437-.234L16.132,13.5A1,1,0,0,1,17,13h4a1,1,0,0,0,.985-1.175A1.083,1.083,0,0,0,20.893,11H17a1,1,0,0,1-.868-.5L11.577,2.539a.894.894,0,0,0-1.447-.252.684.684,0,0,0-.093.621l2.4,6.757A1.006,1.006,0,0,1,11.5,11H5.618a1,1,0,0,1-.834-.448l-1.393-2.1c-.228-.421-1.034-.637-1.29-.21a.541.541,0,0,0-.065.51l1.072,2.906a1,1,0,0,1,0,.69l-1.066,2.91A.556.556,0,0,0,2.564,16h0a1,1,0,0,0,.837-.452l1.376-2.1A1,1,0,0,1,5.618,13Z" /></svg>
+
+                              {row.airline}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>{row.className}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>
+
+                              {row.kndSysName}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>
+                              {moneyFormat(row.feeGetKh)}
+                            </h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>
+                              {moneyFormat(row.feeGet)}
+                            </h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>
+                              {moneyFormat(row.stock)}
+                            </h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>{row.userFr}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>{row.serviceName}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['en-font']}>{row.servicePnr}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>{row.pathKind}</h6>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+                  <TableRow tabIndex={-1} className="bg-muted">
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell className={style["tablerowfont"]} align="center">
+                      <h6 className={style['normal-size']}>
+                        {moneyFormat(prices.kharidAll)} ریال
+                      </h6>
+                    </TableCell>
+                    <TableCell className={style["tablerowfont"]} align="center">
+                      <h6 className={style['normal-size']}>
+                        {moneyFormat(prices.foroshAll)} ریال
+                      </h6>
+                    </TableCell>
+                    <TableCell className={style["tablerowfont"]} align="center">
+                      <h6 className={style['normal-size']}>
+                        {moneyFormat(prices.soodAll)} ریال
+                      </h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                    <TableCell align="center">
+                      <h6 className="font-size-14"></h6>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <div className={style['style-number-view-item']}
+              dir="ltr"
             >
-              <EnhancedTableHead
-                numSelected={selected.length}
-                order={order}
-                orderBy={orderBy}
-                onRequestSort={handleRequestSort}
-                rowCount={
+              <TablePagination className={style['child-style-number-view-item']}
+                rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
+                component="div"
+                count={
                   flights.filter_sell_report == null
                     ? []
                     : flights.filter_sell_report.length
                 }
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                labelRowsPerPage="آیتم نمایشی هر صفحه"
               />
+            </div>
+          </Paper>
+        </Box>
 
-              <TableBody>
-                {stableSort(
-                  flights.filter_sell_report == null
-                    ? []
-                    : flights.filter_sell_report,
-                  getComparator(order, orderBy)
-                )
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row, index) => {
-                    const isItemSelected = isSelected(row.name);
-                    const labelId = `enhanced-table-checkbox-${index}`;
-
-                    return (
-                      <TableRow
-                        tabIndex={-1}
-                        key={row.name}
-                        selected={isItemSelected}
-                        className={style["tablerow"]}
-                        onClick={async () => {
-                          await setReqNo(row.reqNo);
-                          await setReqPnr(row.reqPnr);
-                          setOpenInfo(true);
-                        }}
-                      >
-                        {/*row*/}
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['id']}>{i++}</h6>
-                        </TableCell>
-
-                        {/*refrence*/}
-                        <TableCell
-                            className={style["tablerowfont"]}
-                            align="center"
-                        >
-                          <h6 className={style['en-font']}>{row.reqPnr}</h6>
-                        </TableCell>
-
-                        {/*request number*/}
-                        <TableCell
-                          className={style["tablerowfont"]}
-                          align="center"
-                        >
-                          <h6 className={style['normal-size']}>
-
-                            {row.reqNo}</h6>
-                        </TableCell>
-
-                        {/*CustomerName*/}
-                        <TableCell
-                            align="center"
-                            className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['en-font']}>{row.nameFamilyEn}</h6>
-                        </TableCell>
-
-
-
-                        {/*count*/}
-                        <TableCell
-                            align="center"
-                            className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>{row.numFr}</h6>
-                        </TableCell>
-
-                        {/*submitDateTime*/}
-                        <TableCell
-                          className={style["tablerowfont"]}
-                          align="center"
-                        >
-                          <h6 className={style['date']}>
-                            <svg id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20"><path d="M19,2h-1V1c0-.552-.447-1-1-1s-1,.448-1,1v1H8V1c0-.552-.447-1-1-1s-1,.448-1,1v1h-1C2.243,2,0,4.243,0,7v12c0,2.757,2.243,5,5,5h14c2.757,0,5-2.243,5-5V7c0-2.757-2.243-5-5-5ZM5,4h14c1.654,0,3,1.346,3,3v1H2v-1c0-1.654,1.346-3,3-3Zm14,18H5c-1.654,0-3-1.346-3-3V10H22v9c0,1.654-1.346,3-3,3Zm0-8c0,.552-.447,1-1,1H6c-.553,0-1-.448-1-1s.447-1,1-1h12c.553,0,1,.448,1,1Zm-7,4c0,.552-.447,1-1,1H6c-.553,0-1-.448-1-1s.447-1,1-1h5c.553,0,1,.448,1,1Z"/></svg>
-                            {row.dateTimeSabt}</h6>
-                        </TableCell>
-
-                        {/*flightDate*/}
-                        <TableCell
-                            align="center"
-                            className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>{row.flightDate}</h6>
-                        </TableCell>
-
-
-                        {/*customerName*/}
-                        <TableCell
-                            className={style["tablerowfont"]}
-                            align="center"
-                        >
-                          <h6 className={style['normal-size']}>
-                            {row.customerName}</h6>
-                        </TableCell>
-
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>{row.mobileNo}</h6>
-                        </TableCell>
-
-
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>
-                            {row.route.split('-')[0] + ' '}
-                            <br/>
-                            {row.route.split('-')[1] + ' '}
-                          </h6>
-                        </TableCell>
-
-
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>
-                            {row.flightNo}</h6>
-                        </TableCell>
-
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['airline']}>
-                            <svg id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20"><path d="M10.689,24a2.688,2.688,0,0,1-2.546-3.547L10.083,15H6.158l-1.08,1.646A2.993,2.993,0,0,1,2.569,18h0a2.556,2.556,0,0,1-2.4-3.434L1.1,12,.159,9.44A2.555,2.555,0,0,1,.46,7.1a2.811,2.811,0,0,1,4.6.247L6.155,9h3.928L8.147,3.563a2.7,2.7,0,0,1,.359-2.442,2.883,2.883,0,0,1,4.817.442L17.58,9h3.313a3.084,3.084,0,0,1,3.067,2.5A3,3,0,0,1,21,15H17.58l-4.267,7.454A2.989,2.989,0,0,1,10.689,24ZM5.618,13H11.5a1.006,1.006,0,0,1,.942,1.335l-2.41,6.773a.676.676,0,0,0,.1.605.9.9,0,0,0,1.437-.234L16.132,13.5A1,1,0,0,1,17,13h4a1,1,0,0,0,.985-1.175A1.083,1.083,0,0,0,20.893,11H17a1,1,0,0,1-.868-.5L11.577,2.539a.894.894,0,0,0-1.447-.252.684.684,0,0,0-.093.621l2.4,6.757A1.006,1.006,0,0,1,11.5,11H5.618a1,1,0,0,1-.834-.448l-1.393-2.1c-.228-.421-1.034-.637-1.29-.21a.541.541,0,0,0-.065.51l1.072,2.906a1,1,0,0,1,0,.69l-1.066,2.91A.556.556,0,0,0,2.564,16h0a1,1,0,0,0,.837-.452l1.376-2.1A1,1,0,0,1,5.618,13Z"/></svg>
-
-                            {row.airline}</h6>
-                        </TableCell>
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>{row.className}</h6>
-                        </TableCell>
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>
-
-                            {row.kndSysName}</h6>
-                        </TableCell>
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>
-                            {moneyFormat(row.feeGetKh)}
-                          </h6>
-                        </TableCell>
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>
-                            {moneyFormat(row.feeGet)}
-                          </h6>
-                        </TableCell>
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>
-                            {moneyFormat(row.stock)}
-                          </h6>
-                        </TableCell>
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>{row.userFr}</h6>
-                        </TableCell>
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>{row.serviceName}</h6>
-                        </TableCell>
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['en-font']}>{row.servicePnr}</h6>
-                        </TableCell>
-                        <TableCell
-                          align="center"
-                          className={style["tablerowfont"]}
-                        >
-                          <h6 className={style['normal-size']}>{row.pathKind}</h6>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
-                <TableRow tabIndex={-1} className="bg-muted">
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell className={style["tablerowfont"]} align="center">
-                    <h6 className={style['normal-size']}>
-                      {moneyFormat(prices.kharidAll)} ریال
-                    </h6>
-                  </TableCell>
-                  <TableCell className={style["tablerowfont"]} align="center">
-                    <h6 className={style['normal-size']}>
-                      {moneyFormat(prices.foroshAll)} ریال
-                    </h6>
-                  </TableCell>
-                  <TableCell className={style["tablerowfont"]} align="center">
-                    <h6 className={style['normal-size']}>
-                      {moneyFormat(prices.soodAll)} ریال
-                    </h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                  <TableCell align="center">
-                    <h6 className="font-size-14"></h6>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <div className={style['style-number-view-item']}
-            dir="ltr"
-          >
-            <TablePagination className={style['child-style-number-view-item']}
-              rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
-              component="div"
-              count={
-                flights.filter_sell_report == null
-                  ? []
-                  : flights.filter_sell_report.length
-              }
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              labelRowsPerPage="آیتم نمایشی هر صفحه"
-            />
-          </div>
-        </Paper>
-      </Box>
-
-      {openInfo ? (
-        <DesktopInfoSell
-          open={openInfo}
-          close={() => setOpenInfo(false)}
-          reqNo={reqNo}
-          reqPnr={reqPnr}
-        />
-      ) : null}
-    </div>
+        {openInfo ? (
+          <DesktopInfoSell
+            open={openInfo}
+            close={() => setOpenInfo(false)}
+            reqNo={reqNo}
+            reqPnr={reqPnr}
+          />
+        ) : null}
+      </div>
+    </section>
   );
 };
 
