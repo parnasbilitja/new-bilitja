@@ -68,10 +68,11 @@
 }
 
 .title-table {
-  font-size: 15px;
+  font-size: 14px;
   text-align: center;
   font-family: IranBold !important;
-  margin-top: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .header-buttn {
@@ -171,10 +172,10 @@
 }
 
 .parent-buttons {
-  width: 40%;
+  width: 60%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
   z-index: 100;
 
   button {
@@ -188,6 +189,8 @@
     font-family: 'BYekan' !important;
     transition: 0.5s all;
     font-size: 14px;
+    margin-right: 5px;
+    margin-left: 5px;
     &:hover {
       transition: 0.5s all;
       color: #279692;
