@@ -6,7 +6,7 @@ const RouteButtons = () => {
   const path = router.asPath;
   return (
     <section>
-      <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <ul className="nav nav-pills justify-content-end" id="pills-tab" role="tablist">
         <li className="nav-item" role="presentation">
           <Link href="/panel/profile">
             <button
