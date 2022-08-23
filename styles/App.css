@@ -213,15 +213,17 @@ input[type="button"]:hover {
   border-left: 3px solid red;
 }
 
-.dashboard-manager-content-container {
+.dashboard-manager-content-container,
+.panel-manager-content-container {
   height: 100% !important;
   padding: 5px 0;
   padding-left: 7px;
 }
-.dashboard-manager-content-container section {
+.dashboard-manager-content-container section,
+.panel-manager-content-container section {
   background-color: #f1f1f1;
   border-radius: 6px;
-  padding: 15px 14px;
+  padding: 15px 7px;
   border: 1px solid #E0E0E0;
 }
 .dashboard-exit {
@@ -656,7 +658,7 @@ button:not(:disabled) {
   border-radius: 10px;
   background-color: #279692;
   position: absolute;
-  bottom: 9px;
+  bottom: -2px;
   right: 6px;
 }
 .aside-through{
