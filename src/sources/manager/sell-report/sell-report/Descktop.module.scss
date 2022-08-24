@@ -205,17 +205,19 @@
 
 .header-parent-sales-report{
   width: 2200px;
-  height: 60px;
+  height: 50px;
   background-color: #eee;
-  margin-top: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   place-content: center;
   padding: 0 12px;
+  span{
+    text-align: center;
+  }
 }
 .body-search-report{
   width: 2200px;
-  height: 60px;
+  height: 20px;
   margin-top: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
