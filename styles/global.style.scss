@@ -277,6 +277,11 @@ html {
   font-size: 17px;
 }
 
+// style include => amir.qn
+.color-gray{
+  color: #7a7272;
+}
+
 .btn-outlined {
   border: 1px solid $primaryColor;
   padding: 1px 3px 2px 2px;
@@ -1129,6 +1134,44 @@ button {
       border: 2px solid;
       border-radius: 10px;
     }
+  }
+}
+
+
+//style => amir.qn
+
+.swiper-button-next,
+.swiper-button-prev{
+  background-color: #f9f9f9;
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &::after{
+    content: url('/images/Arrow_left_long.svg') !important;
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 3px;
+  }
+}
+
+.swiper-button-prev{
+  &::after{
+    content: url('/images/Arrow_right_long.svg') !important;
+  }
+}
+
+.swiper-rtl {
+  .swiper-button-next,
+  .swiper-button-prev{
+    top : 34px !important;
+  }
+  .swiper-button-prev{
+    right: inherit !important;
+    left: 65px !important;
   }
 }
 

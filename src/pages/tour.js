@@ -16,25 +16,25 @@ const tour = () => {
     // mui
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
-          return;
+            return;
         }
-    
+
         setOpen(false);
-      };
+    };
 
     const [open, setOpen] = useState(false);
     const [data, setData] = useState(null)
     const [slug, setSlug] = useAtom(tourSlug)
-    const [show,setShow] = useState(false);
-    const [tourId,setTourId] = useState(null);
-    const [packData,setPackData] = useState({
-        number:'',
-        count:'1',
-        tourId:tourId,
+    const [show, setShow] = useState(false);
+    const [tourId, setTourId] = useState(null);
+    const [packData, setPackData] = useState({
+        number: '',
+        count: '1',
+        tourId: tourId,
     })
-    const [messages,setMessages] = useState({
+    const [messages, setMessages] = useState({
         isDone: false,
-        message:''
+        message: ''
     })
     const getData = async () => {
         const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${slug ? slug : JSON.parse(localStorage.getItem("slug"))}`)
@@ -45,7 +45,7 @@ const tour = () => {
         getData();
         console.log(data);
     }, [slug])
-    
+
 
     const slugHandler = (slug) => {
         setSlug(slug)
@@ -97,14 +97,14 @@ const tour = () => {
                             </div>
                         </div>
                         <div className="detail-tour col-xl-12 col-lg-12 col-12 d-flex flex-wrap justify-content-between border-bottom py-4">
-                            <div className="right col-xl-5 col-lg-5 col-12">
+                            <div className="right col-xl-6 col-lg-6 col-12">
                                 <div className="gallery-image">
                                     <div className="image">
-                                        <Slider data={data && data.endCity.images}/>
+                                        <Slider data={data && data.endCity.images} />
                                     </div>
                                 </div>
                             </div>
-                            <div className="left position-relative col-xl-7 col-lg-7 col-12">
+                            <div className="left position-relative col-xl-6 col-lg-6 col-12">
                                 <div className="vertical-data" style={{ display: "none" }}></div>
                                 <div className="p-info__tour d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3">
                                     <div className="c-info__tour d-flex align-items-center col-xl-12 col-gl-12">
@@ -119,7 +119,7 @@ const tour = () => {
                                                     <span className="font-bold">اطلاعات مبدا</span>
                                                 </div>
                                                 <div className="val pe-2">
-                                                    <span>{data && data.stCity.name}</span>
+                                                    <span className="font-size-12">{data && data.stCity.name}</span>
                                                 </div>
                                             </div>
                                             <div className="m-main-data d-flex align-items-center pb-1">
@@ -152,10 +152,10 @@ const tour = () => {
                                                     <g id="Moon_2" data-name="Moon 2" transform="translate(0 0)">
                                                         <path id="Path_1046" data-name="Path 1046"
                                                             d="M42.014,30.781l1.689.695A1.827,1.827,0,0,0,41.2,29.147ZM18.3,1.827l1.474,1.079A1.827,1.827,0,0,0,17.9.043ZM33.6,30.938A17.4,17.4,0,0,1,16.363,13.383H12.709A21.052,21.052,0,0,0,33.6,34.591Zm7.594-1.79a16.909,16.909,0,0,1-7.594,1.79v3.653a20.562,20.562,0,0,0,9.23-2.177Zm-.872.939a19.078,19.078,0,0,1-17.6,11.923v3.653A22.731,22.731,0,0,0,43.7,31.476Zm-17.6,11.923A19.246,19.246,0,0,1,3.653,22.592H0a22.9,22.9,0,0,0,22.725,23.07ZM3.653,22.592A19.347,19.347,0,0,1,18.687,3.611L17.9.043A23,23,0,0,0,0,22.592Zm12.709-9.209A17.679,17.679,0,0,1,19.769,2.906L16.821.748a21.333,21.333,0,0,0-4.111,12.636Z"
-                                                            transform="translate(0 0)" fill="#f5c238" />
+                                                            transform="translate(0 0)" fill="#ff4422" />
                                                         <path isd="Path_1047" data-name="Path 1047"
                                                             d="M20.672,3.152a1.279,1.279,0,0,1,2.4,0L24.627,7.36a1.279,1.279,0,0,0,.756.755L29.59,9.672a1.279,1.279,0,0,1,0,2.4l-4.208,1.557a1.279,1.279,0,0,0-.756.755L23.07,18.59a1.279,1.279,0,0,1-2.4,0l-1.557-4.208a1.278,1.278,0,0,0-.755-.755L14.152,12.07a1.279,1.279,0,0,1,0-2.4L18.36,8.115a1.278,1.278,0,0,0,.755-.755Z"
-                                                            transform="translate(11.009 1.915)" fill="none" stroke="#347557"
+                                                            transform="translate(11.009 1.915)" fill="none" stroke="#ff2233"
                                                             strokeLinecap="round" strokeWidth={3} />
                                                     </g>
                                                 </svg>
@@ -264,16 +264,16 @@ const tour = () => {
                                         <span className="font-bold font-size-16">سن کودک</span>
                                     </div>
                                 </div>
-                                {data && data.packages.map((pack)=>(
+                                {data && data.packages.map((pack) => (
                                     <div className="p-detail col-xl-12 col-lg-12 mt-2" key={pack.id}>
                                         <div className="d-detail position-relative col-xl-12 col-lg-12 col-12 d-flex flex-wrap align-items-center bg-white py-2 px-2 mb-2">
                                             <div className="c-detail ms-2">
                                                 {pack.offered &&
-                                                <div className="position-absolute bg-danger py-1 px-1 rounded-2">
-                                                    <div className="text">
-                                                        <span className="text-white font-size-16">ویژه</span>
+                                                    <div className="position-absolute bg-danger py-1 px-1 rounded-2">
+                                                        <div className="text">
+                                                            <span className="text-white font-size-16">ویژه</span>
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 }
                                                 <div className="info-detail pos-relative d-flex align-items-center">
                                                     <a href="">
@@ -281,47 +281,45 @@ const tour = () => {
                                                             <img src={pack.hotel.thumbnail} width="100px" height="100px" className="rounded-2" alt="" />
                                                         </div>
                                                     </a>
-                                                    <div className="text d-flex flex-column justify-content-between mt-2 pe-2 w-100">
-                                                        <span className="font-bold pb-1 font-size-13">{pack.hotel.nameEn}</span>
-                                                        <span className="font-bold pb-1">{pack.hotel.name}</span>
+                                                    <div className="text d-flex flex-column justify-content-between mt-1 pe-2 w-100">
+                                                        <span className="pb-1 font-size-13 iranBold">{pack.hotel.nameEn}</span>
+                                                        <span className="font-light pb-1 font-size-12">{pack.hotel.name}</span>
                                                         <div className="star d-flex align-items-center pb-1">
                                                             <div className="d-flex align-items-center">
                                                                 <div className="image d-flex align-items-center">
-                                                                {Array.from(Array(parseInt(pack.hotel.stars)), (e, i) => {
-                                                                return (
-                                                                    <svg key={i} xmlns="http://www.w3.org/2000/svg" width="19"
-                                                                        height="19" viewBox="0 0 21.443 21.387">
-                                                                        <path id="Star"
-                                                                            d="M10.749,1c.915,0,2.352,4.154,2.871,5.751a.916.916,0,0,0,.84.632c1.666.057,5.983.3,5.983,1.273s-3.077,3.38-4.335,4.328A.915.915,0,0,0,15.789,14c.512,1.585,1.742,5.7.952,6.343s-4.1-1.885-5.447-2.963a.919.919,0,0,0-1.147,0c-1.35,1.078-4.669,3.6-5.392,2.964s.431-4.772.912-6.351a.914.914,0,0,0-.324-1C4.093,12.047,1,9.619,1,8.655S5.326,7.438,6.988,7.382a.916.916,0,0,0,.838-.625C8.357,5.165,9.833,1,10.749,1Z"
-                                                                            fill="#f7db06" stroke="#f7db06"
-                                                                            strokeLinecap="round" strokeLinejoin="round"
-                                                                            strokeWidth={2} />
-                                                                    </svg>)
-                                                            })}
+                                                                    {Array.from(Array(parseInt(pack.hotel.stars)), (e, i) => {
+                                                                        return (
+                                                                            <svg className="mx-1" key={i} xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                                height="16" viewBox="0 0 21.443 21.387">
+                                                                                <path id="Star"
+                                                                                    d="M10.749,1c.915,0,2.352,4.154,2.871,5.751a.916.916,0,0,0,.84.632c1.666.057,5.983.3,5.983,1.273s-3.077,3.38-4.335,4.328A.915.915,0,0,0,15.789,14c.512,1.585,1.742,5.7.952,6.343s-4.1-1.885-5.447-2.963a.919.919,0,0,0-1.147,0c-1.35,1.078-4.669,3.6-5.392,2.964s.431-4.772.912-6.351a.914.914,0,0,0-.324-1C4.093,12.047,1,9.619,1,8.655S5.326,7.438,6.988,7.382a.916.916,0,0,0,.838-.625C8.357,5.165,9.833,1,10.749,1Z"
+                                                                                    fill="#f7db06" stroke="#f7db06"
+                                                                                    strokeLinecap="round" strokeLinejoin="round"
+                                                                                    strokeWidth={2} />
+                                                                            </svg>)
+                                                                    })}
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="d-flex align-items-center">
+                                                        <div className="d-flex align-items-center mt-1">
                                                             {/* {(parseInt(pack.hotel.stars))} */}
-                                                            
-                                                                <svg className="ms-2" xmlns="http://www.w3.org/2000/svg" width="20"
-                                                                    height="20" viewBox="0 0 23.528 26.039">
-                                                                    <g id="Location" transform="translate(0.028)">
-                                                                        <path id="Path_1011" data-name="Path 1011"
-                                                                            d="M1.152,12.976a14.6,14.6,0,0,0,4.131,7.545,25.71,25.71,0,0,0,5.471,4.223,1.912,1.912,0,0,0,1.962,0,25.71,25.71,0,0,0,5.471-4.223,14.6,14.6,0,0,0,4.131-7.545,10.842,10.842,0,0,0-1.656-7.829C19.058,2.823,16.236,1,11.736,1S4.413,2.823,2.809,5.147A10.842,10.842,0,0,0,1.152,12.976Z"
-                                                                            transform="translate(0 0)" fill="none"
-                                                                            stroke="#333333" strokeLinecap="round"
-                                                                            strokeLinejoin="round" strokeWidth={2}>
-                                                                        </path>
-                                                                        <circle id="Ellipse_49" data-name="Ellipse 49"
-                                                                            cx="2.928" cy="2.928" r="2.928"
-                                                                            transform="translate(14.663 12.712) rotate(180)"
-                                                                            fill="none" stroke="#333333" strokeWidth={2}>
-                                                                        </circle>
-                                                                    </g>
-                                                                </svg>
-                                                            
-                                                            <span className="f-18 text-33 f-bold pr-4">{pack.hotel.location}</span>
+                                                            <svg className="ms-1" xmlns="http://www.w3.org/2000/svg" width="20"
+                                                                height="20" viewBox="0 0 23.528 26.039">
+                                                                <g id="Location" transform="translate(0.028)">
+                                                                    <path id="Path_1011" data-name="Path 1011"
+                                                                        d="M1.152,12.976a14.6,14.6,0,0,0,4.131,7.545,25.71,25.71,0,0,0,5.471,4.223,1.912,1.912,0,0,0,1.962,0,25.71,25.71,0,0,0,5.471-4.223,14.6,14.6,0,0,0,4.131-7.545,10.842,10.842,0,0,0-1.656-7.829C19.058,2.823,16.236,1,11.736,1S4.413,2.823,2.809,5.147A10.842,10.842,0,0,0,1.152,12.976Z"
+                                                                        transform="translate(0 0)" fill="none"
+                                                                        stroke="#333333" strokeLinecap="round"
+                                                                        strokeLinejoin="round" strokeWidth={2}>
+                                                                    </path>
+                                                                    <circle id="Ellipse_49" data-name="Ellipse 49"
+                                                                        cx="2.928" cy="2.928" r="2.928"
+                                                                        transform="translate(14.663 12.712) rotate(180)"
+                                                                        fill="none" stroke="#333333" strokeWidth={2}>
+                                                                    </circle>
+                                                                </g>
+                                                            </svg>
+                                                            <span className="font-bold font-size-12">{pack.hotel.location}</span>
                                                         </div>
                                                     </div>
                                                     <div className="image left-border-line">
@@ -338,79 +336,79 @@ const tour = () => {
                                                 <div className="info-price position-relative d-flex align-items-start mx-2">
                                                     <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                         <span className="text-show-m mb-2 color-base-color font-bold d-none">دو تخته (هر نفر)</span>
-                                                        {data.defineTour &&<span className="font-font-size-14 font-bold">{ pack.prices.twinRate} تومان</span>}
-                                                        {!data.defineTour &&<span className="font-font-size-14 font-bold">{pack.prices.twin} {pack.rate.name}</span>}
+                                                        {data.defineTour && <span className="font-size-13 font-bold color-gray">{pack.prices.twinRate} تومان</span>}
+                                                        {!data.defineTour && <span className="font-size-14 font-bold color-gray">{pack.prices.twin} {pack.rate.name}</span>}
                                                         {/* <span className="font-font-size-16 font-bold">تومان</span> */}
                                                     </div>
                                                 </div>
                                             </div>
                                             {data && data.type && <>
-                                            <div className="c-detail">
-                                                <div className="info-price position-relative d-flex align-items-start mx-2">
-                                                    <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                                        <span className="text-show-m mb-2 color-base-color font-bold d-none">سه تخته (هر نفر)</span>
-                                                        {data.defineTour &&<span className="font-font-size-14 font-bold">{ pack.prices.tripleRate} تومان</span>}
-                                                        {!data.defineTour &&<span className="font-font-size-14 font-bold">{pack.prices.triple} {pack.rate.name}</span>}
+                                                <div className="c-detail">
+                                                    <div className="info-price position-relative d-flex align-items-start mx-2">
+                                                        <div className="text d-flex flex-column align-items-center w-100 py-3">
+                                                            <span className="text-show-m mb-2 color-base-color font-bold d-none">سه تخته (هر نفر)</span>
+                                                            {data.defineTour && <span className="font-size-13 font-bold color-gray">{pack.prices.tripleRate} تومان</span>}
+                                                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{pack.prices.triple} {pack.rate.name}</span>}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="c-detail">
-                                                <div className="info-price position-relative d-flex align-items-start mx-2">
-                                                    <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                                        <span className="text-show-m mb-2 color-base-color font-bold d-none">چهار تخته (هر نفر)</span>
-                                                        {data.defineTour &&<span className="font-font-size-14 font-bold">{ pack.prices.quadRate} تومان</span>}
-                                                        {!data.defineTour &&<span className="font-font-size-14 font-bold">{pack.prices.quad} {pack.rate.name}</span>}
+                                                <div className="c-detail">
+                                                    <div className="info-price position-relative d-flex align-items-start mx-2">
+                                                        <div className="text d-flex flex-column align-items-center w-100 py-3">
+                                                            <span className="text-show-m mb-2 color-base-color font-bold d-none">چهار تخته (هر نفر)</span>
+                                                            {data.defineTour && <span className="font-size-13 font-bold color-gray">{pack.prices.quadRate} تومان</span>}
+                                                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{pack.prices.quad} {pack.rate.name}</span>}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             </>
                                             }
 
-                                            {data && !data.type && 
-                                            <div className="c-detail">
-                                                <div className="info-price position-relative d-flex align-items-start mx-2">
-                                                    <div
-                                                        className="text d-flex flex-column align-items-center w-100 py-3">
-                                                        <span className="text-show-m mb-2 color-base-color font-bold d-none"> سینگل</span>
-                                                        {data.defineTour &&<span className="font-font-size-14 font-bold">{ pack.prices.singleRate} تومان</span>}
-                                                        {!data.defineTour &&<span className="font-font-size-14 font-bold">{pack.prices.single} {pack.rate.name}</span>}
+                                            {data && !data.type &&
+                                                <div className="c-detail">
+                                                    <div className="info-price position-relative d-flex align-items-start mx-2">
+                                                        <div
+                                                            className="text d-flex flex-column align-items-center w-100 py-3">
+                                                            <span className="text-show-m mb-2 color-base-color font-bold d-none"> سینگل</span>
+                                                            {data.defineTour && <span className="font-size-13 font-bold color-gray">{pack.prices.singleRate} تومان</span>}
+                                                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{pack.prices.single} {pack.rate.name}</span>}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             }
-                                            {data && !data.type && 
+                                            {data && !data.type &&
 
-                                            <div className="c-detail">
-                                                <div className="info-price position-relative d-flex align-items-start mx-2">
-                                                    <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                                        <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک با تخت</span>
-                                                        {data.defineTour &&<span className="font-font-size-14 font-bold">{ pack.prices.cwbRate} تومان</span>}
-                                                        {!data.defineTour &&<span className="font-font-size-14 font-bold">{pack.prices.cwb} {pack.rate.name}</span>}
+                                                <div className="c-detail">
+                                                    <div className="info-price position-relative d-flex align-items-start mx-2">
+                                                        <div className="text d-flex flex-column align-items-center w-100 py-3">
+                                                            <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک با تخت</span>
+                                                            {data.defineTour && <span className="font-size-13 font-bold color-gray">{pack.prices.cwbRate} تومان</span>}
+                                                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{pack.prices.cwb} {pack.rate.name}</span>}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             }
                                             <div className="c-detail">
                                                 <div className="info-price position-relative d-flex align-items-start mx-2">
                                                     <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                         <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک بدون تخت</span>
-                                                        <span className="font-font-size-14 font-bold">{ pack.prices.cnb} تومان</span>
+                                                        <span className="font-size-14 font-bold color-gray">{pack.prices.cnb} تومان</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="c-detail child-number d-flex flex-column text-center ml-3 py-3">
                                                 <span className="text-show-m mb-2 color-base-color font-bold d-none">سن کودک</span>
-                                                <span className="font-size-16 font-bold">{pack.prices.age}</span>
+                                                <span className="font-size-16 font-bold color-gray">{pack.prices.age}</span>
                                             </div>
                                             <div className="c-btn request-data">
-                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() =>{setShow(true);setPackData({tourId:pack.id});console.log(pack.id);}}>
+                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() => { setShow(true); setPackData({ tourId: pack.id }); console.log(pack.id); }}>
                                                     درخواست رزرو
                                                 </button>
                                             </div>
                                         </div>
 
                                     </div>
-                                 ))} 
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -512,7 +510,7 @@ const tour = () => {
                                             </div>
                                             <div className="paragraph pt-2 pe-2">
                                                 <p className="font-size-16 font-bold">
-                                                {data && data.description}
+                                                    {data && data.description}
                                                 </p>
                                             </div>
                                         </div>
@@ -544,7 +542,7 @@ const tour = () => {
                             {/* parent data */}
                             <div className="w-100 col-xl-12 col-lg-12 w-100 d-flex flex-column">
                                 {/* child data */}
-                                {data && data.tours.map((item,index)=>(
+                                {data && data.tours.map((item, index) => (
                                     <div className="tour-item col-xl-12 col-lg-12 mb-2" key={index} onClick={() => slugHandler(item.slug)}>
                                         {/* {console.log(item)} */}
                                         <div className="tour-city">
@@ -605,14 +603,14 @@ const tour = () => {
                                             <img width="28" src={data && data.transfers[0].logo} />
                                             <span className="text-dark me-2">{item.transfers[0].transfer}</span>
                                         </div>
-                                            <div className="ino-tour-btn" >
-                                        <a href={'/tour'}>
+                                        <div className="ino-tour-btn" >
+                                            <a href={'/tour'}>
                                                 {/* <span className="text-mobi-btn">جزییات</span> */}
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="27.414" height="18.453" viewBox="0 0 27.414 18.453">
                                                     <path id="Right_Arrow_2" data-name="Right Arrow 2" d="M18.188,1,26,8.812m0,0H1m25,0-7.812,7.813" transform="translate(27.414 18.039) rotate(180)" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
                                                 </svg>
-                                        </a>
-                                            </div>
+                                            </a>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
@@ -622,19 +620,19 @@ const tour = () => {
                 {/* footer */}
                 <Footer />
             </div>
-            {show && 
-            <PopUp opened={show} closePopUp={setShow}>
-                <RequestTour setOpen={setOpen} messages={messages} setMessages={setMessages} setShow={setShow} packData={packData} setPackData={setPackData} />
-            </PopUp>
+            {show &&
+                <PopUp opened={show} closePopUp={setShow}>
+                    <RequestTour setOpen={setOpen} messages={messages} setMessages={setMessages} setShow={setShow} packData={packData} setPackData={setPackData} />
+                </PopUp>
             }
             {/* {messages.message !=='' &&
                     <div> */}
-                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                        {messages.message}
-                    </Alert>
-                </Snackbar>
-                    {/* </div>
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    {messages.message}
+                </Alert>
+            </Snackbar>
+            {/* </div>
             } */}
         </div>
     );
