@@ -68,9 +68,7 @@ const AddCity = (props) => {
           <div className="row align-items-center margin-top-10px">
             <div className="col-lg-3 col-12 padding-3px">
               <span className="font-bold-iransanse font-size-16">نام شهر</span>
-              <div
-                className={` form-input-border  ${styles["form-input-border-private"]} `}
-              >
+              <div className="mt-2">
                 <PrimaryTextInput
                   placeholder="نام شهر"
                   value={state.cityName}
@@ -102,9 +100,7 @@ const AddCity = (props) => {
             </div>
             <div className="col-lg-3 col-12 padding-3px">
               <span className="font-bold-iransanse font-size-16">کد فرودگاه</span>
-              <div
-                className={` form-input-border  ${styles["form-input-border-private"]} `}
-              >
+              <div className="mt-2">
                 <PrimaryTextInput
                   placeholder="کد فرودگاه"
                   value={state.airportCode}
