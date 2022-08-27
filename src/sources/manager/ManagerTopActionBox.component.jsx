@@ -11,7 +11,12 @@ class ManagerTopActionBox extends React.Component {
   render() {
     return (
       <>
-        <div
+        <div onClick={this.props.handleClick}>
+          <div className="btn-data">
+            <button className="btn-primary py-2 px-5 rounded-3 font-bold-iransanse text-text-white">افزودن {this.props.titlebase}</button>
+          </div>
+        </div>
+        {/* <div
           className={` ${styles["manager-top-action-box"]} hidden-xs cursor-pointer`}
           onClick={this.props.handleClick}
         >
@@ -34,8 +39,8 @@ class ManagerTopActionBox extends React.Component {
               مشاهده جزییات
             </span>
           </div>
-        </div>
-
+        </div> */}
+        {/* 
         <div className={` ${styles["manager-top-action-button"]} visible-xs`}>
           <button
             className="btn-outlined-reserve"
@@ -43,7 +48,7 @@ class ManagerTopActionBox extends React.Component {
           >
             افزودن
           </button>
-        </div>
+        </div> */}
       </>
     );
   }
