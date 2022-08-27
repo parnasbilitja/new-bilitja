@@ -11,13 +11,13 @@ export default class PrimaryTextInput extends React.Component {
       <input
         {...this.props}
         autoComplete="off"
-        className="form-input primary-text px-2 rounded font-yekan  style-indata mt-0"
+        className="form-input primary-text px-2 rounded font-yekan style-indata mt-0"
       />
     ) : (
       <input
         {...this.props}
         autoComplete="off"
-        className="form-input primary-text px-2 rounded font-yekan  style-indata mt-0"
+        className="form-input primary-text px-2 rounded font-yekan style-indata mt-0" style={{ height: '2.9rem' }}
       />
     );
   }
