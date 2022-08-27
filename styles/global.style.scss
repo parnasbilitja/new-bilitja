@@ -1,9 +1,5 @@
 @import "./values.scss";
 
-// @font-face {
-//     font-family: BYekan;
-//     src: url("../Font/Yekan/BYekan.woff");
-// }
 
 @font-face {
   font-family: BYekan;
@@ -1174,6 +1170,22 @@ button {
     left: 65px !important;
   }
 }
+
+// $sizes: 100;
+
+// @mixin grid-classes {
+//   @for $i from 5 through $sizes {
+//     $grids: $i * 1px;
+
+//     /* flex #{$grids} */
+//     .flex-#{$i} {
+//       flex: 0 0 $grids;
+//       max-width: $grids;
+//     }
+//   }
+// }
+
+// @include grid-classes;
 
 @media only screen and (max-width: 800px) {
   .isDesktop {
