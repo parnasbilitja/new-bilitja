@@ -76,7 +76,7 @@ class Home extends React.Component {
               />
             </div>
 
-            <div className="text-center col-md-4 pt-10">
+            <div className="text-center col-md-4 pt-10 mt-5">
               <img
                 width=""
                 height=""

@@ -431,9 +431,9 @@ const FlightSellReport = () => {
     <section>
       <div>
         <div class="position-relative">
-          <h5 className="mt-0">
-            <span class="font-size-13 font-bold-iransanse mx-2">گـزارشات رزرو</span>
-          </h5>
+          <h6 className="mt-0 font-bold-iransanse">
+            گـزارشات رزرو
+          </h6>
           <div class="d-flex align-items-center">
             <div class="box-through"></div>
             <div class="aside-through"></div>

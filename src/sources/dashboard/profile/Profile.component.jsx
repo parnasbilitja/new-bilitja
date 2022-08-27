@@ -37,12 +37,9 @@ const Profile = (props) => {
     <section>
       <div>
         <div className="position-relative">
-          <h5 className="mt-0">
-            {/* <FontAwesomeIcon icon={faUserAlt} className="color-textpill" /> */}
-            <span className=" font-size-13 font-bold-iransanse mx-2">
-              اطـلاعات کــاربــر
-            </span>
-          </h5>
+          <h6 className="mt-0 font-bold-iransanse">
+            اطـلاعات کــاربــر
+          </h6>
           <div className="d-flex align-items-center">
             <div className="box-through"></div>
             <div className="aside-through"></div>
