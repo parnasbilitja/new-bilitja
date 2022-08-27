@@ -32,26 +32,24 @@ const ShowallCities = (props) => {
   return (
     <div className={styles["panel-main-content"]}>
       <div className="panel-header">
-        <div>
-          <FontAwesomeIcon icon={faArchway} className="color-textpill" />
-          &nbsp;&nbsp;
-          <span className="no-margin font-size-13 font-bold-iransanse">
-            ویلا
-          </span>
+        <div class="position-relative">
+          <h6 className="mt-0 font-bold-iransanse">
+            لیست شهــرها
+          </h6>
+          <div class="d-flex align-items-center position-absolute" style={{ top: '27px' }}>
+            <div class="box-through"></div>
+            <div class="aside-through"></div>
+          </div>
         </div>
         <div className="text-left ltr">
           <ManagerTopActionBox
             handleClick={() => {
               myRouter.push("/panel/city/add");
             }}
+            titlebase="شهــر"
           />
         </div>
       </div>
-      <h3
-        className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse`}
-      >
-        لیست شهر ها
-      </h3>
       <div className="margin-top-10px">
         {cities.map((city) => (
           <div className={styles["management-one-row"]}>
