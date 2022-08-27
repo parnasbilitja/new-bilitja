@@ -376,7 +376,7 @@ class AddVilaDesktop extends React.Component {
       <section>
         <div>
           {/* box 1 */}
-          <div className={`${styles["panel-main-content"]} `}>
+          <div>
             <div class="position-relative">
               <h6 className="mt-0 font-bold-iransanse">
                 اقـــامتــگاهتان را معـــرفی کنید
@@ -392,20 +392,18 @@ class AddVilaDesktop extends React.Component {
               <div className="col-lg-9 padding-3px margin-top-10px">
                 <div className="row">
                   <div className="col-lg-3 col-12 padding-3px">
-                    <span className="font-bold-iransanse font-size-13">
+                    <span className="font-bold-iransanse font-size-16">
                       کد ویلای شما
                     </span>
-                    <div className="form-input-border style-indata">
+                    <div className="mt-2">
                       <PrimaryTextInput placeholder="کد ویلا" value="0" />
                     </div>
                   </div>
                   <div className="col-lg-3 col-12 padding-3px">
-                    <span className="font-bold-iransanse font-size-13">
+                    <span className="font-bold-iransanse font-size-16 pb-2">
                       نام صاحب ویلا
                     </span>
-                    <div
-                      className="form-input-border style-indata"
-                    >
+                    <div className="mt-2">
                       <PrimaryTextInput
                         placeholder="نام صاحب ویلا"
                         name="AdminName"
@@ -418,12 +416,10 @@ class AddVilaDesktop extends React.Component {
                     </span>
                   </div>
                   <div className="col-lg-3 col-12 padding-3px">
-                    <span className="font-bold-iransanse font-size-13">
+                    <span className="font-bold-iransanse font-size-16">
                       نام اقامتگاه
                     </span>
-                    <div
-                      className="form-input-border style-indata"
-                    >
+                    <div className="mt-2">
                       <PrimaryTextInput
                         placeholder="نام اقامتگاه"
                         name="Name"
@@ -447,15 +443,14 @@ class AddVilaDesktop extends React.Component {
                     />
                     <span
                       style={{ marginRight: 5 }}
-                      className="font-bold-iransanse font-size-13"
+                      className="font-bold-iransanse font-size-16"
                     >
                       مالک اقامتگاه نیستم
                     </span>
                     <div
-                      className={` form-input-border mt-3  ${styles["form-input-border-private"]} `}
+                      className={`${styles["form-input-border-private"]} `}
                     >
                       <PrimaryTextInput
-                        className="style-indata"
                         style={{ fontSize: 14 }}
                         disabled={!this.state.notTheOwner}
                         placeholder="تلفن تماس مالک اقامتگاه"
@@ -471,7 +466,7 @@ class AddVilaDesktop extends React.Component {
                 </div>
                 <div className="row margin-top-10px">
                   <div className="col-lg-3 col-12 padding-3px">
-                    <span className="font-bold-iransanse font-size-13 ">
+                    <span className="font-bold-iransanse font-size-16">
                       نوع اقامتگاه
                     </span>
                     <PrimarySelectInput
@@ -485,14 +480,14 @@ class AddVilaDesktop extends React.Component {
                       }}
                     >
                       {this.state.vilaTypes.map((type, index) => (
-                        <option style={{ fontSize: 14 }} value={index}>
+                        <option className="font-yekan" style={{ fontSize: 14 }} value={index}>
                           {type}
                         </option>
                       ))}
                     </PrimarySelectInput>
                   </div>
                   <div className="col-lg-3 col-12 padding-3px">
-                    <span className="font-bold-iransanse font-size-13">
+                    <span className="font-bold-iransanse font-size-16">
                       نوع ساختمان
                     </span>
                     <PrimarySelectInput
@@ -506,7 +501,7 @@ class AddVilaDesktop extends React.Component {
                     >
                       {this.state.buildinType[this.state.currentVilaType].map(
                         (type, index) => (
-                          <option style={{ fontSize: 14 }} value={index}>
+                          <option className="font-yekan" style={{ fontSize: 14 }} value={index}>
                             {type}
                           </option>
                         )
@@ -518,7 +513,7 @@ class AddVilaDesktop extends React.Component {
                   <div className="col-12 padding-3px">
                     <span
                       style={{ marginRight: 10 }}
-                      className="font-bold-iransanse font-size-15"
+                      className="font-bold-iransanse font-size-16"
                     >
                       توضیحات
                     </span>
@@ -991,7 +986,7 @@ class AddVilaDesktop extends React.Component {
                       </div>
                       <div className="col-lg-7 col-7 padding-3px">
                         <div
-                          className={` form-input-border  ${styles["form-input-border-private"]} `}
+                          className={`${styles["form-input-border-private"]} `}
                         >
                           <PrimaryTextInput
                             name="Metraj"
@@ -1009,7 +1004,7 @@ class AddVilaDesktop extends React.Component {
                       </div>
                       <div className="col-lg-7 col-7 padding-3px">
                         <div
-                          className={` form-input-border  ${styles["form-input-border-private"]} `}
+                          className={`${styles["form-input-border-private"]} `}
                         >
                           <PrimaryTextInput
                             name="Metraj"
