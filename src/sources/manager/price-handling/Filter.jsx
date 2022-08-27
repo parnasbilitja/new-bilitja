@@ -46,31 +46,35 @@ const Filter = ({ list, cancel, setFilter, filters }) => {
   return (
     <div>
       <div className={style["headerlist"]}>
-        <div>
+        {/* child */}
+        <div className="d-flex flex-column align-items-start ms-3">
           <label className={style['label-base']}>عنوان چارتر کننده:</label>
           <input className={style['inp-base']} onChange={findByName} defaultValue={""} />
         </div>
-        <div>
-          <label className={style['label-base']}>وضعیت آژانس</label>
-          <select className={style['select-base']} value={activeStatus} onChange={findByStatus}>
-            <option value="Active">فعال</option>
-            <option value="Not-Active">غیر فعال</option>
-            <option value="Cancel">حذف فیلتر</option>
-          </select>
-        </div>
-        <div>
+        {/* child */}
+        <div className="d-flex flex-column align-items-start ms-3">
           <label className={style['label-base']}>درصد افزایش کلی:</label>
           <input className={style['inp-base']}
             onChange={(e) => setAllPrecent(e.target.value)}
             value={allprecent}
           />
         </div>
-        <div>
+        {/* child */}
+        <div className="d-flex flex-column align-items-start ms-3">
           <label className={style['label-base']}>مبلغ افزایش کلی:</label>
           <input className={style['inp-base']}
             onChange={(e) => setAllPrice(e.target.value)}
             value={allprice}
           />
+        </div>
+        {/* child */}
+        <div className="d-flex flex-column align-items-start ms-3">
+          <label className={style['label-base']}>وضعیت آژانس</label>
+          <select className={style['select-base']} value={activeStatus} onChange={findByStatus}>
+            <option value="Active">فعال</option>
+            <option value="Not-Active">غیر فعال</option>
+            <option value="Cancel">حذف فیلتر</option>
+          </select>
         </div>
       </div>
       <div className="d-flex align-items-center justify-content-end mt-3">
