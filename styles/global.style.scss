@@ -1190,6 +1190,8 @@ $sizes: 100;
 
 //component table => amir.qn
 .controller-table {
+  border: 5px solid #fff;
+  border-radius: 10px;
   .thead,
   .d-detail{
     .head,
@@ -1229,7 +1231,7 @@ $sizes: 100;
     .d-detail{
       &:nth-child(odd){
         .detail{
-          background-color: #e7e7e7;
+          background-color: #f0f0f0;
           border-left: 1px solid #fff;
           &:last-child{
             border-left: none !important;
@@ -1288,7 +1290,7 @@ $sizes: 100;
     height: max-content;
     padding: 5px 10px;
     border-radius: 5px;
-    background-color: #090026;
+    background-color: #eaeaea;
     color: #fff;
     position: absolute;
     left: -8px;
@@ -1297,14 +1299,14 @@ $sizes: 100;
     z-index: 13;
     opacity: .40;
     text-align: center;
-    border: 1px solid #fff;
     transform: translateY(9px);
+    // border: 1px solid #090026;
     transition: all 0.3s ease-in-out;
-    // box-shadow: 0 0 1px rgba(56, 54, 54, 0.86);
-    font-size: 13px;
+    box-shadow: 0 0 4px rgba(225, 225, 225, 0.86);
+    font-size: 14px;
 
     span{
-      color: #fff !important;
+      color: #090026 !important;
     }
 
 
@@ -1315,7 +1317,7 @@ $sizes: 100;
       border-style: solid;
       border-color: #fff;
       border-width: 6px 6px 0 6px;
-      border-color: #090026 transparent transparent transparent;
+      border-color: #eaeaea transparent transparent transparent;
       position: absolute;
       bottom: -6px;
       left: 12px;
@@ -1327,7 +1329,7 @@ $sizes: 100;
     top: -5px;
 
     &::after {
-      border-color: transparent #090026 transparent transparent;
+      border-color: transparent #eaeaea transparent transparent;
       bottom: 3px;
       left: -12px;
     }
@@ -1338,7 +1340,7 @@ $sizes: 100;
     transform: translateY(5px);
 
     &::after {
-      border-color: transparent transparent transparent #090026;
+      border-color: transparent transparent transparent #eaeaea;
       bottom: 25px;
       left: 28px;
     }
@@ -1374,7 +1376,7 @@ $sizes: 100;
 }
 
 .scroller::-webkit-scrollbar-thumb {
-  background-color: #a8a8a8;
+  background-color: #090026;
   border-radius: 10px;
 }
 
