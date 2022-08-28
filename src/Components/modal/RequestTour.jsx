@@ -43,7 +43,7 @@ const RequestTour = ({messages,setMessages,setShow,setPackData,packData,setOpen}
                     <div className="text d-flex flex-column align-items-center px-2 mb-2">
                         <p className="text-center font-yekan font-bold font-size-14 mb-0">
                             با تشکر از انتخاب شما
-                            لطفا جهت رزرو تور با شماره تلفن<span className="rtl text-right px-2">84278-021</span>تماس حاصل فرمایید
+                            لطفا جهت رزرو تور با شماره تلفن<span className="rtl text-right px-2">57874-021</span>تماس حاصل فرمایید
                         </p>
                         <span className="text-center font-yekan font-bold font-size-14 py-2">یا</span>
                         <p className="text-center font-yekan font-bold font-size-14">
