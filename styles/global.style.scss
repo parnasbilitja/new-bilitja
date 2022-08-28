@@ -502,11 +502,13 @@ html {
   border: none;
   height: 100%;
   width: 100%;
+  border-radius: 10px;
 
   &:focus {
     outline: none;
     border: none;
     border-bottom: 1px solid red;
+    border-radius: 3px;
   }
 }
 
