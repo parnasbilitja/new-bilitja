@@ -110,7 +110,7 @@ const tour = () => {
                                     <div className="c-info__tour d-flex align-items-center col-xl-12 col-gl-12">
                                         <div className="bg-white py-3">
                                             <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
-                                                <img src={data && data.transfers[0].logo} width={"35px"} height={"35px"} alt="company" />
+                                                <img src={data && data.transfers[0].logo} width={"35px"} height={"35px"} alt="company" style={{ objectFit: 'cover' }} />
                                             </div>
                                         </div>
                                         <div className="text pe-2">
@@ -170,7 +170,7 @@ const tour = () => {
                                     <div className="c-info__tour d-flex flex-row-reverse align-items-center col-xl-12 col-lg-12 col-12">
                                         <div className="bg-white py-3">
                                             <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
-                                                <img src={data && data.transfers[1].logo} width={"35px"} height={"35px"} alt="company" />
+                                                <img src={data && data.transfers[1].logo} width={"35px"} height={"35px"} alt="company" style={{ objectFit: 'cover' }} />
                                             </div>
                                         </div>
                                         <div className="text pe-2 ps-3">
