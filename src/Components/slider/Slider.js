@@ -21,7 +21,7 @@ const Slider = ({ data }) => {
         >
             {data && data.map((item, index) => (
                 <SwiperSlide key={index}>
-                    <img src={item} width={'100%'} height={'310px'} className="rounded-3" />
+                    <img src={item} width={'100%'} height={'310px'} style={{ borderRadius: 15, objectFit: 'cover' }} />
                 </SwiperSlide>
             ))}
         </Swiper>
