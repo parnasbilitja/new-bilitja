@@ -33,7 +33,7 @@ const ShowallCities = (props) => {
     <section>
       <div>
         <div className="panel-header">
-          <div class="position-relative">
+          <div class="position-relative" style={{ width: '140px' }}>
             <h6 className="mt-0 font-bold-iransanse">
               لیست شهــرها
             </h6>
