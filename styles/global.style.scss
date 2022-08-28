@@ -1171,21 +1171,218 @@ button {
   }
 }
 
-// $sizes: 100;
+$sizes: 100;
 
-// @mixin grid-classes {
-//   @for $i from 5 through $sizes {
-//     $grids: $i * 1px;
+@mixin grid-classes {
+  @for $i from 5 through $sizes {
+    $grids: $i * 1%;
 
-//     /* flex #{$grids} */
-//     .flex-#{$i} {
-//       flex: 0 0 $grids;
-//       max-width: $grids;
-//     }
-//   }
-// }
+    /* flex #{$grids} */
+    .flex-#{$i} {
+      flex: 0 0 $grids;
+      max-width: $grids;
+    }
+  }
+}
 
-// @include grid-classes;
+@include grid-classes;
+
+//component table => amir.qn
+.controller-table {
+  .thead,
+  .d-detail{
+    .head,
+    .detail{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span {
+          color: $pillGray;
+      }
+    }
+  }
+  .d-detail {
+    .detail {
+      span {
+        font-weight: bold;
+        color: #292929;
+      }
+    }
+  }
+  .thead{
+    .head{
+      padding: 8px 0;
+      background-color: $firstColor;
+      height: 55px;
+      border-left: 1px solid #fff;
+      &:first-child{
+        border-radius: 0 10px 0 0;
+      }
+      &:last-child{
+        border-radius: 10px 0 0 0;
+        border-left: none!important;
+      }
+    }
+  }
+  .data-detail{
+    .d-detail{
+      &:nth-child(odd){
+        .detail{
+          background-color: #e7e7e7;
+          border-left: 1px solid #fff;
+          &:last-child{
+            border-left: none !important;
+          }
+        }
+      }
+      &:nth-child(even){
+        .detail{
+          background-color: #f5f5f5;
+        }
+      }
+      .detail{
+        height: 55px;
+        .actioncall{
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+}
+
+//component tooltip custom => amir.qn
+.tooltipcustom {
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  .left {
+    &:hover {
+      transform: translateX(-10px);
+    }
+  }
+
+  .top {
+    &:hover {
+      transform: translateY(-6px);
+    }
+  }
+
+  .bottom {
+    &:hover {
+      transform: translateY(6px);
+    }
+  }
+
+  .right {
+    &:hover {
+      -webkit-transform: translateX(6px);
+      transform: translateX(6px);
+    }
+  }
+
+  .s-tooltip {
+    width: max-content;
+    height: max-content;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #090026;
+    color: #fff;
+    position: absolute;
+    left: -8px;
+    top: -29px;
+    visibility: hidden;
+    z-index: 13;
+    opacity: .40;
+    text-align: center;
+    transform: translateY(9px);
+    transition: all 0.3s ease-in-out;
+    // box-shadow: 0 0 1px rgba(56, 54, 54, 0.86);
+    font-size: 13px;
+
+    span{
+      color: #fff !important;
+    }
+
+
+    &::after {
+      content: " ";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 6px 0 6px;
+      border-color: #090026 transparent transparent transparent;
+      position: absolute;
+      bottom: -6px;
+      left: 12px;
+    }
+  }
+
+  .s-tooltip.topright_tooltip {
+    left: 28px;
+    top: -5px;
+
+    &::after {
+      border-color: transparent #090026 transparent transparent;
+      bottom: 3px;
+      left: -12px;
+    }
+  }
+
+  .s-tooltip.bottom_tooltip {
+    top: 27px;
+    transform: translateY(5px);
+
+    &::after {
+      border-color: transparent transparent transparent #090026;
+      bottom: 25px;
+      left: 28px;
+    }
+  }
+
+  &:hover {
+    .s-tooltip {
+      visibility: visible;
+      transform: translateY(-4px);
+      opacity: 1;
+      transition: .3s linear;
+      animation: odsoky 1s ease-in-out infinite alternate;
+      position: absolute;
+    }
+  }
+}
+
+//component scroller
+.scroller {
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.scroller::-webkit-scrollbar {
+  width: 3px;
+  height: 5px;
+}
+
+.scroller::-webkit-scrollbar-track {
+  // -webkit-box-shadow: inset 0 0 5px #f0f0f0;
+  // box-shadow: inset 0 0 5px #212e47;
+  border-radius: 10px;
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  background-color: #a8a8a8;
+  border-radius: 10px;
+}
+
+.scroller-transparent::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px transparent;
+  box-shadow: inset 0 0 5px transparent;
+}
+
+.scroller-transparent::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
 
 @media only screen and (max-width: 800px) {
   .isDesktop {
