@@ -506,7 +506,6 @@ html {
 
   &:focus {
     outline: none;
-    border: none;
     border-bottom: 1px solid red;
     border-radius: 3px;
   }
@@ -1298,6 +1297,7 @@ $sizes: 100;
     z-index: 13;
     opacity: .40;
     text-align: center;
+    border: 1px solid #fff;
     transform: translateY(9px);
     transition: all 0.3s ease-in-out;
     // box-shadow: 0 0 1px rgba(56, 54, 54, 0.86);
@@ -1313,6 +1313,7 @@ $sizes: 100;
       width: 0;
       height: 0;
       border-style: solid;
+      border-color: #fff;
       border-width: 6px 6px 0 6px;
       border-color: #090026 transparent transparent transparent;
       position: absolute;

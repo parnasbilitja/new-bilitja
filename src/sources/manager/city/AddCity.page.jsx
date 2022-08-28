@@ -80,7 +80,7 @@ const AddCity = (props) => {
                 {errors.cityNameError}
               </span>
             </div>
-            <div className="col-lg-3 col-12 padding-3px">
+            <div className="col-lg-3 col-12 padding-3px mt-3">
               <span className="font-bold-iransanse font-size-16">استان</span>
               <PrimarySelectInput
                 name="province"

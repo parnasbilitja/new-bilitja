@@ -56,12 +56,9 @@ class FlightReciept extends React.Component {
       priceMessage: "",
     });
     fetch(
-      `${
-        globals.baseUrlNew
-      }BilitFlightReserve/flightsReserve/ravisReserveProperty/${
-        this.props.router.asPath.split("/")[3]
-      }-${
-        this.props.router.asPath.split("/")[4]
+      `${globals.baseUrlNew
+      }BilitFlightReserve/flightsReserve/ravisReserveProperty/${this.props.router.asPath.split("/")[3]
+      }-${this.props.router.asPath.split("/")[4]
       }/1a157116-a01a-4027-ab10-74098ac63815`
     )
       .then((res) => res.json())
@@ -255,14 +252,14 @@ class FlightReciept extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className={styles["flight-detail"]}>
           <FlightRecieptDesktopHeader {...this.state} />
           <FlightRecieptMobileHero {...this.state} />
         </div>
         <div className="row mt-10">
-          <div className="col-lg-1"></div>
-          <div className="col-lg-10 no-padding-xs border-pill-lg">
+          {/* <div className="col-lg-1"></div> */}
+          <div className="col-lg-12 no-padding-xs border-pill-lg">
             <p
               className={`text-right font-size-14 ${styles["pcolor-textpill"]}  `}
             >
@@ -274,7 +271,7 @@ class FlightReciept extends React.Component {
             >
               <thead>
                 <tr className="font-bold-iransanse font-size-13 hidden-xs">
-                  <th></th>
+                  <th>رده</th>
                   <th>نام</th>
                   <th>نام‌خانوادگی</th>
                   <th>ملیت</th>
@@ -287,96 +284,95 @@ class FlightReciept extends React.Component {
               <tbody>
                 {this.state.birthDayAll_.length > 0
                   ? this.state.birthDayAll_.map((oneRow, index) => (
-                      <tr className="font-size-13">
-                        <td className="hidden-xs">
-                          {this.getTicketType(this.state.ticketCodeAll_[index])}
-                        </td>
-                        <td>
-                          <div className="hidden-xs">
-                            {this.state.nameAll_[index]}
-                          </div>
-                          <div className="visible-xs font-bold-iransanse">
-                            <span>
-                              <FontAwesomeIcon icon={faUser} />
-                              {`${this.state.nameAll_[index]} ${
-                                this.state.familyAll_[index]
+                    <tr className="font-size-13">
+                      <td className="hidden-xs">
+                        {this.getTicketType(this.state.ticketCodeAll_[index])}
+                      </td>
+                      <td>
+                        <div className="hidden-xs">
+                          {this.state.nameAll_[index]}
+                        </div>
+                        <div className="visible-xs font-bold-iransanse">
+                          <span>
+                            <FontAwesomeIcon icon={faUser} />
+                            {`${this.state.nameAll_[index]} ${this.state.familyAll_[index]
                               } (${this.getTicketType(
                                 this.state.ticketCodeAll_[index]
                               )})`}
-                            </span>
-                            <p>
-                              <FontAwesomeIcon icon={faInfoCircle} />
-                              {this.state.meliCodeAll_[index]}
-                            </p>
-                          </div>
-                        </td>
-                        <td className="hidden-xs">
-                          {this.state.familyAll_[index]}
-                        </td>
-                        <td className="hidden-xs">
-                          {this.state.meliatAll_[index] == "IR"
-                            ? "ایرانی"
-                            : "خارجی"}
-                        </td>
-                        <td className="hidden-xs">
-                          {this.state.meliCodeAll_[index]}
-                        </td>
-                        <td>
-                          <div className="hidden-xs">
+                          </span>
+                          <p>
+                            <FontAwesomeIcon icon={faInfoCircle} />
+                            {this.state.meliCodeAll_[index]}
+                          </p>
+                        </div>
+                      </td>
+                      <td className="hidden-xs">
+                        {this.state.familyAll_[index]}
+                      </td>
+                      <td className="hidden-xs">
+                        {this.state.meliatAll_[index] == "IR"
+                          ? "ایرانی"
+                          : "خارجی"}
+                      </td>
+                      <td className="hidden-xs">
+                        {this.state.meliCodeAll_[index]}
+                      </td>
+                      <td>
+                        <div className="hidden-xs">
+                          {this.state.birthDayAll_[index]}
+                        </div>
+                        <div className="visible-xs font-bold-iransanse">
+                          <span>
+                            <FontAwesomeIcon icon={faCalendar} />
                             {this.state.birthDayAll_[index]}
-                          </div>
-                          <div className="visible-xs font-bold-iransanse">
-                            <span>
-                              <FontAwesomeIcon icon={faCalendar} />
-                              {this.state.birthDayAll_[index]}
+                          </span>
+                          <p>
+                            <FontAwesomeIcon icon={faDollarSign} />
+                            <span className="color-secondary">
+                              {" "}
+                              {moneyFormat(
+                                this.getTicketPrice(
+                                  this.state.ticketCodeAll_[index]
+                                )
+                              )}
                             </span>
-                            <p>
-                              <FontAwesomeIcon icon={faDollarSign} />
-                              <span className="color-secondary">
-                                {" "}
-                                {moneyFormat(
-                                  this.getTicketPrice(
-                                    this.state.ticketCodeAll_[index]
-                                  )
-                                )}
-                              </span>
-                            </p>
-                          </div>
-                        </td>
-                        <td className="hidden-xs">
-                          {moneyFormat(
-                            this.getTicketPrice(
-                              this.state.ticketCodeAll_[index]
-                            )
-                          )}
-                        </td>
-                        <td>
-                          <div className="font-size-14">
-                            <FontAwesomeIcon
-                              icon={faEdit}
-                              onClick={() => {
-                                this.setState(
-                                  {
-                                    current: {
-                                      index: index,
-                                      name: this.state.nameAll_[index],
-                                      family: this.state.familyAll_[index],
-                                      meliat: this.state.meliatAll_[index],
-                                      meliCode: this.state.meliCodeAll_[index],
-                                      sex: this.state.sexAll_[index],
-                                      birthday: this.state.birthDayAll_[index],
-                                    },
+                          </p>
+                        </div>
+                      </td>
+                      <td className="hidden-xs">
+                        {moneyFormat(
+                          this.getTicketPrice(
+                            this.state.ticketCodeAll_[index]
+                          )
+                        )}
+                      </td>
+                      <td>
+                        <div className="font-size-14">
+                          <FontAwesomeIcon
+                            icon={faEdit}
+                            onClick={() => {
+                              this.setState(
+                                {
+                                  current: {
+                                    index: index,
+                                    name: this.state.nameAll_[index],
+                                    family: this.state.familyAll_[index],
+                                    meliat: this.state.meliatAll_[index],
+                                    meliCode: this.state.meliCodeAll_[index],
+                                    sex: this.state.sexAll_[index],
+                                    birthday: this.state.birthDayAll_[index],
                                   },
-                                  () => {
-                                    this.managePopUpEditForm(true);
-                                  }
-                                );
-                              }}
-                            />
-                          </div>
-                        </td>
-                      </tr>
-                    ))
+                                },
+                                () => {
+                                  this.managePopUpEditForm(true);
+                                }
+                              );
+                            }}
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  ))
                   : null}
               </tbody>
             </table>
@@ -384,8 +380,9 @@ class FlightReciept extends React.Component {
         </div>
         <div className="row mt-10">
           <div className="col-lg-1 col-0"></div>
-          <div className="col-lg-10 col-12 no-padding-xs border-pill-lg pt-10">
-            <div className="row">
+          <div className="col-lg-12 col-12 no-padding-xs border-pill-lg pt-10">
+            <div className="row justify-content-between">
+              {/* child */}
               <div className="col-lg-4 text-right">
                 <div className="row">
                   <div className="col-lg-7 col-6">
@@ -422,12 +419,12 @@ class FlightReciept extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-2 col-0"></div>
-              <div className={`col-lg-4 col-12 payment-container  text-right`}>
-                <div className="row">
-                  <div className="col-lg-8">
+              {/* child */}
+              <div className={`col-lg-4 col-12 payment-container d-flex align-items-center justify-content-end text-right`}>
+                <div className="d-flex justify-content-end">
+                  <div className="ms-2">
                     <button
-                      className="btn btn-success-payment py-3 col-12 mb-1"
+                      className="btn btn-success-payment py-2 col-12 mb-1"
                       onClick={() => {
                         if (this.state.isUpdated) {
                           this.compeleteReservation();
@@ -438,9 +435,9 @@ class FlightReciept extends React.Component {
                       پرداخت با کارت شتاب
                     </button>
                   </div>
-                  <div className="col-lg-4">
+                  <div className="me-2">
                     <button
-                      className="btn-danger-outlined btn col-12 py-3 mb-1"
+                      className="btn-danger-outlined btn col-12 py-2 mb-1"
                       onClick={() => router.push("/")}
                     >
                       <span>انصراف</span>
