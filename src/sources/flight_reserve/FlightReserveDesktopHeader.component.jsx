@@ -90,7 +90,7 @@ const FlightReserveDesktopHeader = (props) =>
                     alt="بلیطجا - لوگو رزرو بلیط هواپیما"
                     src="../../../../../Images/airplane_reserve.webp"
                   />
-                  <p>
+                  <p className="pt-2">
                     {" "}
                     شماره پرواز :
                     <span className="color-secondary iranBold">
