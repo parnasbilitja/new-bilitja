@@ -76,7 +76,7 @@ const FlightReserveDesktopHeader = (props) =>
                   }
                   alt="بلیطجا - لوگو ایرلاین"
                 />
-                <p>
+                <p className="pt-4">
                   ایرلاین :
                   <span className="color-secondary"> {props.airline}</span>
                 </p>
