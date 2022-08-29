@@ -14,7 +14,7 @@ const FlightReserveDesktopHeader = (props) =>
             className={`col-lg-6 col-md-12 col-sm-12 col-12 ${styles["background-world"]}`}
           >
             <div className="row d-flex align-items-center">
-              <div className="col-lg-3 col-md-3 col-sm-3 col-4 d-flex justify-content-center">
+              <div className="col-lg-3 col-md-3 col-sm-3 col-4 d-flex justify-content-center pe-5">
                 <strong className="font-size-23">{props.airport1}</strong>
               </div>
 
@@ -29,25 +29,25 @@ const FlightReserveDesktopHeader = (props) =>
                 <svg id="Outline" viewBox="0 0 24 24" width="45" height="45"><path fill="#dbdbdb" d="M.88,14.09,4.75,18a1,1,0,0,0,1.42,0h0a1,1,0,0,0,0-1.42L2.61,13H23a1,1,0,0,0,1-1h0a1,1,0,0,0-1-1H2.55L6.17,7.38A1,1,0,0,0,6.17,6h0A1,1,0,0,0,4.75,6L.88,9.85A3,3,0,0,0,.88,14.09Z" /></svg>
               </div>
 
-              <div className="col-lg-3 col-md-3 col-sm-3 col-4 d-flex justify-content-center">
+              <div className="col-lg-3 col-md-3 col-sm-3 col-4 d-flex justify-content-center pe-5">
                 <strong className="font-size-23">{props.airport2}</strong>
               </div>
             </div>
             <div className="p-15">
               <img
-                style={{ marginTop: 20 }}
+                style={{ marginTop: 20, transform: 'translate(28px, 26px)' }}
                 alt="بلیطجا - لوگو رزور بلیط هواپیما"
                 src="../../../../../Images/airplane_reserve.webp"
               />
             </div>
             <div className={styles["data"]}>
               <div style={{ marginTop: -25 }} className="col-lg-8 col-md-8 col-sm-8 col-6 ">
-                <p style={{ marginLeft: 205 }} className="font-size-20">
+                <p style={{ marginLeft: 250 }} className="font-size-20">
                   تاریخ
                 </p>
                 <p
                   className="color-secondary font-size-17"
-                  style={{ marginLeft: 205 }}
+                  style={{ marginLeft: 250 }}
                 >
                   {getweekday(String(props.flightDay))} &nbsp;{" "}
                   {String(props.flightDate).replace("-", "/").replace("-", "/")}
