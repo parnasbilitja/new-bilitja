@@ -18,14 +18,14 @@ const FlightReserveDesktopHeader = (props) =>
                 <strong className="font-size-23">{props.airport1}</strong>
               </div>
 
-              <div className="border-between col-md-2 col-lg-2">
+              <div className="border-between col-md-2 col-lg-2" style={{ transform: 'translate(15px, 58px)' }}>
                 <svg id="Outline" viewBox="0 0 24 24" width="45" height="45"><path fill="#dbdbdb" d="M.88,14.09,4.75,18a1,1,0,0,0,1.42,0h0a1,1,0,0,0,0-1.42L2.61,13H23a1,1,0,0,0,1-1h0a1,1,0,0,0-1-1H2.55L6.17,7.38A1,1,0,0,0,6.17,6h0A1,1,0,0,0,4.75,6L.88,9.85A3,3,0,0,0,.88,14.09Z" /></svg>
               </div>
 
               <div className="col-lg-1 col-md-1 col-sm-1 col-4">
                 <strong className="font-size-23"> به </strong>
               </div>
-              <div className="border-between col-md-2 col-lg-2">
+              <div className="border-between col-md-2 col-lg-2" style={{ transform: 'translate(-42px, 58px)' }}>
                 <svg id="Outline" viewBox="0 0 24 24" width="45" height="45"><path fill="#dbdbdb" d="M.88,14.09,4.75,18a1,1,0,0,0,1.42,0h0a1,1,0,0,0,0-1.42L2.61,13H23a1,1,0,0,0,1-1h0a1,1,0,0,0-1-1H2.55L6.17,7.38A1,1,0,0,0,6.17,6h0A1,1,0,0,0,4.75,6L.88,9.85A3,3,0,0,0,.88,14.09Z" /></svg>
               </div>
 
