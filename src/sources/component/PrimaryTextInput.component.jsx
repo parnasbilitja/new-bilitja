@@ -10,13 +10,13 @@ export default class PrimaryTextInput extends React.Component {
     return this.props.readonlyattr ? (
       <input
         {...this.props}
-        autoComplete="off"
+        // autoComplete="off"
         className="form-input primary-text px-2"
       />
     ) : (
       <input
         {...this.props}
-        autoComplete="off"
+        // autoComplete="off"
         className="form-input primary-text px-2 rounded "
       />
     );
