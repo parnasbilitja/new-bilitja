@@ -373,775 +373,819 @@ class AddVilaDesktop extends React.Component {
       22, 23, 24, 25, 26, 27, 28, 29, 30,
     ];
     return (
-      <div className="container">
+      <section>
         <div>
-          <div className={`row ${styles["panel-main-content"]} `}>
-            <h3
-              className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse`}
-            >
-              اقامتگاهتان را معرفی کنید
-            </h3>
-            <div className="col-lg-8 padding-3px margin-top-10px">
-              <div className="row">
-                <div className="col-lg-3 col-12 padding-3px">
-                  <span className="font-bold-iransanse font-size-13">
-                    کد ویلای شما
-                  </span>
-                  <div
-                    className={` form-input-border  ${styles["form-input-border-private"]} `}
-                  >
-                    <PrimaryTextInput placeholder="کد ویلا" value="0" />
-                  </div>
-                </div>
-                <div className="col-lg-3 col-12 padding-3px">
-                  <span className="font-bold-iransanse font-size-13">
-                    نام صاحب ویلا
-                  </span>
-                  <div
-                    className={` form-input-border  ${styles["form-input-border-private"]} `}
-                  >
-                    <PrimaryTextInput
-                      placeholder="نام صاحب ویلا"
-                      name="AdminName"
-                      onChange={this.handleChangeInput}
-                    />
-                  </div>
-                  <span className="color-secondary error-message font-size-14">
-                    {" "}
-                    {this.state.errors.AdminName}
-                  </span>
-                </div>
-                <div className="col-lg-3 col-12 padding-3px">
-                  <span className="font-bold-iransanse font-size-13">
-                    نام اقامتگاه
-                  </span>
-                  <div
-                    className={` form-input-border  ${styles["form-input-border-private"]} `}
-                  >
-                    <PrimaryTextInput
-                      placeholder="نام اقامتگاه"
-                      name="Name"
-                      onChange={this.handleChangeInput}
-                    />
-                  </div>
-                  <span className="color-secondary error-message font-size-14">
-                    {" "}
-                    {this.state.errors.nameError}
-                  </span>
-                </div>
-
-                <div className="col-lg-3 col-12 padding-3px">
-                  <input
-                    type="checkbox"
-                    onChange={(e) => {
-                      this.setState({
-                        notTheOwner: e.target.checked,
-                      });
-                    }}
-                  />
-                  <span
-                    style={{ marginRight: 5 }}
-                    className="font-bold-iransanse font-size-13 "
-                  >
-                    مالک اقامتگاه نیستم
-                  </span>
-                  <div
-                    className={` form-input-border  ${styles["form-input-border-private"]} `}
-                  >
-                    <PrimaryTextInput
-                      style={{ fontSize: 14 }}
-                      disabled={!this.state.notTheOwner}
-                      placeholder="تلفن تماس مالک اقامتگاه"
-                      name="TelNo"
-                      onChange={this.handleChangeInput}
-                    />
-                  </div>
-                  <span className="color-secondary error-message font-size-14">
-                    {" "}
-                    {this.state.errors.TelNo}
-                  </span>
-                </div>
+          {/* box 1 */}
+          <div>
+            <div class="position-relative">
+              <h6 className="mt-0 font-bold-iransanse">
+                اقـــامتــگاهتان را معـــرفی کنید
+              </h6>
+              <div class="d-flex align-items-center">
+                <div class="box-through"></div>
+                <div class="aside-through"></div>
               </div>
-              <div className="row margin-top-10px">
-                <div className="col-lg-4 col-12 padding-3px">
-                  <span className="font-bold-iransanse font-size-13 ">
-                    نوع اقامتگاه
-                  </span>
-                  <PrimarySelectInput
-                    style={{ fontSize: 14 }}
-                    value={this.state.currentVilaType}
-                    onChange={(e) => {
-                      this.setState({
-                        currentBuildingType: 0,
-                        currentVilaType: e.target.value,
-                      });
-                    }}
-                  >
-                    {this.state.vilaTypes.map((type, index) => (
-                      <option style={{ fontSize: 14 }} value={index}>
-                        {type}
-                      </option>
-                    ))}
-                  </PrimarySelectInput>
+            </div>
+            {/* Parent */}
+            <div className="d-flex align-items-start px-3">
+              {/* child */}
+              <div className="col-lg-9 padding-3px margin-top-10px">
+                <div className="row">
+                  <div className="col-lg-3 col-12 padding-3px">
+                    <span className="font-bold-iransanse font-size-16">
+                      کد ویلای شما
+                    </span>
+                    <div className="mt-2">
+                      <PrimaryTextInput placeholder="کد ویلا" value="0" />
+                    </div>
+                  </div>
+                  <div className="col-lg-3 col-12 padding-3px">
+                    <span className="font-bold-iransanse font-size-16 pb-2">
+                      نام صاحب ویلا
+                    </span>
+                    <div className="mt-2">
+                      <PrimaryTextInput
+                        placeholder="نام صاحب ویلا"
+                        name="AdminName"
+                        onChange={this.handleChangeInput}
+                      />
+                    </div>
+                    <span className="color-secondary error-message font-size-14">
+                      {" "}
+                      {this.state.errors.AdminName}
+                    </span>
+                  </div>
+                  <div className="col-lg-3 col-12 padding-3px">
+                    <span className="font-bold-iransanse font-size-16">
+                      نام اقامتگاه
+                    </span>
+                    <div className="mt-2">
+                      <PrimaryTextInput
+                        placeholder="نام اقامتگاه"
+                        name="Name"
+                        onChange={this.handleChangeInput}
+                      />
+                    </div>
+                    <span className="color-secondary error-message font-size-14">
+                      {" "}
+                      {this.state.errors.nameError}
+                    </span>
+                  </div>
+
+                  <div className="col-lg-3 col-12 padding-3px">
+                    <input
+                      type="checkbox"
+                      onChange={(e) => {
+                        this.setState({
+                          notTheOwner: e.target.checked,
+                        });
+                      }}
+                    />
+                    <span
+                      style={{ marginRight: 5 }}
+                      className="font-bold-iransanse font-size-16"
+                    >
+                      مالک اقامتگاه نیستم
+                    </span>
+                    <div
+                      className={`${styles["form-input-border-private"]} `}
+                    >
+                      <PrimaryTextInput
+                        style={{ fontSize: 14 }}
+                        disabled={!this.state.notTheOwner}
+                        placeholder="تلفن تماس مالک اقامتگاه"
+                        name="TelNo"
+                        onChange={this.handleChangeInput}
+                      />
+                    </div>
+                    <span className="color-secondary error-message font-size-14">
+                      {" "}
+                      {this.state.errors.TelNo}
+                    </span>
+                  </div>
                 </div>
-                <div className="col-lg-4 col-12 padding-3px">
-                  <span className="font-bold-iransanse font-size-13">
-                    نوع ساختمان
-                  </span>
-                  <PrimarySelectInput
-                    style={{ fontSize: 14 }}
-                    value={this.state.currentBuildingType}
-                    onChange={(e) => {
-                      this.setState({
-                        currentBuildingType: e.target.value,
-                      });
-                    }}
-                  >
-                    {this.state.buildinType[this.state.currentVilaType].map(
-                      (type, index) => (
-                        <option style={{ fontSize: 14 }} value={index}>
+                <div className="row margin-top-10px">
+                  <div className="col-lg-3 col-12 padding-3px">
+                    <span className="font-bold-iransanse font-size-16">
+                      نوع اقامتگاه
+                    </span>
+                    <PrimarySelectInput
+                      style={{ fontSize: 14 }}
+                      value={this.state.currentVilaType}
+                      onChange={(e) => {
+                        this.setState({
+                          currentBuildingType: 0,
+                          currentVilaType: e.target.value,
+                        });
+                      }}
+                    >
+                      {this.state.vilaTypes.map((type, index) => (
+                        <option className="font-yekan" style={{ fontSize: 14 }} value={index}>
                           {type}
                         </option>
-                      )
-                    )}
-                  </PrimarySelectInput>
-                </div>
-              </div>
-              <div className="row margin-top-20px">
-                <div className="col-12 padding-3px">
-                  <span
-                    style={{ marginRight: 10 }}
-                    className="font-bold-iransanse font-size-15"
-                  >
-                    توضیحات
-                  </span>
-                  <div
-                    className={` form-input-border h-auto ${styles["form-input-border-private"]} `}
-                  >
-                    <textarea
-                      rows="10"
-                      className="form-input primary-text"
-                      name="Dsc"
-                      onChange={this.handleChangeInput}
-                    ></textarea>
+                      ))}
+                    </PrimarySelectInput>
                   </div>
-                  <span className="color-secondary error-message font-size-14">
-                    {" "}
-                    {this.state.errors.Dsc}
-                  </span>
+                  <div className="col-lg-3 col-12 padding-3px">
+                    <span className="font-bold-iransanse font-size-16">
+                      نوع ساختمان
+                    </span>
+                    <PrimarySelectInput
+                      style={{ fontSize: 14 }}
+                      value={this.state.currentBuildingType}
+                      onChange={(e) => {
+                        this.setState({
+                          currentBuildingType: e.target.value,
+                        });
+                      }}
+                    >
+                      {this.state.buildinType[this.state.currentVilaType].map(
+                        (type, index) => (
+                          <option className="font-yekan" style={{ fontSize: 14 }} value={index}>
+                            {type}
+                          </option>
+                        )
+                      )}
+                    </PrimarySelectInput>
+                  </div>
+                </div>
+                <div className="row mt-2">
+                  <div className="col-12 padding-3px">
+                    <span
+                      style={{ marginRight: 10 }}
+                      className="font-bold-iransanse font-size-16"
+                    >
+                      توضیحات
+                    </span>
+                    <div
+                      className={` form-input-border h-auto ${styles["form-input-border-private"]} `}
+                    >
+                      <textarea
+                        rows="10"
+                        className="form-input primary-text"
+                        name="Dsc"
+                        onChange={this.handleChangeInput}
+                      ></textarea>
+                    </div>
+                    <span className="color-secondary error-message font-size-14">
+                      {" "}
+                      {this.state.errors.Dsc}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-4 col-12 margin-top-10px">
-              <span className={styles["photo-Residence"]}>
-                تصویر نمای اقامتگاه
-              </span>
-              <input
-                id="myInput"
-                type="file"
-                ref={(ref) => (this.upload = ref)}
-                className="d-none"
-                onChange={this.onChangeFile.bind(this)}
-              />
-              {this.state.file ? (
-                <div className={`h-100 ${styles["uploaded-image-box"]}`}>
-                  <img
-                    width=""
-                    height=""
-                    alt="بلیطجا - تصویر اقامتگاه"
-                    src={this.state.file}
-                  />
-                  <FontAwesomeIcon
-                    icon={faTimes}
+              {/* child */}
+              <div className="col-lg-3 col-12 margin-top-10px me-4">
+                <div class="position-relative mb-3">
+                  <h6 className="mt-0 font-bold-iransanse">
+                    تصـــویر نمــای اقـامتگاه
+                  </h6>
+                  <div class="d-flex align-items-center">
+                    <div class="box-through"></div>
+                    <div class="aside-through"></div>
+                  </div>
+                </div>
+                <input
+                  id="myInput"
+                  type="file"
+                  ref={(ref) => (this.upload = ref)}
+                  className="d-none"
+                  onChange={this.onChangeFile.bind(this)}
+                />
+                {this.state.file ? (
+                  <div className={`h-100 ${styles["uploaded-image-box"]}`}>
+                    <img
+                      width=""
+                      height=""
+                      alt="بلیطجا - تصویر اقامتگاه"
+                      src={this.state.file}
+                    />
+                    <FontAwesomeIcon
+                      icon={faTimes}
+                      onClick={() => {
+                        this.setState({
+                          file: null,
+                        });
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className={`${styles["upload-box"]} h-100 py-5`}
                     onClick={() => {
-                      this.setState({
-                        file: null,
-                      });
+                      this.upload.click();
                     }}
-                  />
-                </div>
-              ) : (
-                <div
-                  className={`${styles["upload-box"]} h-100`}
-                  onClick={() => {
-                    this.upload.click();
-                  }}
-                >
-                  <p className="no-margin font-size-15 color-textpill">
-                    تصویر نمای خود را بارگذاری کنید
-                  </p>
-                </div>
-              )}
+                  >
+                    <p className="no-margin font-size-15 color-textpill">
+                      تصویر نمای خود را بارگذاری کنید
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
+          {/* box 2 */}
           <div
-            className={`row ${styles["panel-main-content"]}  margin-top-10px`}
+            className={`${styles["panel-main-content"]}  margin-top-10px`}
           >
-            <h3
-              className={`${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse margin-bottom-5px`}
-            >
-              آدرس ویلا
-            </h3>
-            <div className="col-lg-3 col-12 padding-3px">
-              <PrimarySelectInput
-                style={{ fontSize: 14, fontFamily: "BYekan" }}
-                name="ProvinceId"
-                onChange={this.handleChangeInput}
-              >
-                <option value="-1" selected></option>
-                {this.state.vilaaddress.map((type, index) => (
-                  <option value={index}>{type}</option>
-                ))}
-              </PrimarySelectInput>
-              <span className="color-secondary error-message font-size-14">
-                {" "}
-                {this.state.errors.Province}
-              </span>
+            <div class="position-relative">
+              <h6 className="mt-0 font-bold-iransanse">
+                آدرس ویــلا
+              </h6>
+              <div class="d-flex align-items-center">
+                <div class="box-through"></div>
+                <div class="aside-through"></div>
+              </div>
             </div>
-            <div className="col-lg-3 col-12 padding-3px">
-              <PrimarySelectInput
-                name="CityId"
-                onChange={this.handleChangeInput}
-                style={{ fontSize: 14, fontFamily: "BYekan" }}
-              >
-                <option
+            <div className="d-flex align-items-start flex-wrap px-3 pt-2">
+              <div className="col-lg-3 col-12 padding-3px">
+                <PrimarySelectInput
                   style={{ fontSize: 14, fontFamily: "BYekan" }}
-                  value="-1"
-                  selected
-                ></option>
-                {this.state.vilaaddress
-                  ? this.state.vilaaddress.map((city, index) => (
+                  name="ProvinceId"
+                  onChange={this.handleChangeInput}
+                >
+                  <option value="-1" selected></option>
+                  {this.state.vilaaddress.map((type, index) => (
+                    <option value={index}>{type}</option>
+                  ))}
+                </PrimarySelectInput>
+                <span className="color-secondary error-message font-size-14">
+                  {" "}
+                  {this.state.errors.Province}
+                </span>
+              </div>
+              <div className="col-lg-3 col-12 padding-3px">
+                <PrimarySelectInput
+                  name="CityId"
+                  onChange={this.handleChangeInput}
+                  style={{ fontSize: 14, fontFamily: "BYekan" }}
+                >
+                  <option
+                    style={{ fontSize: 14, fontFamily: "BYekan" }}
+                    value="-1"
+                    selected
+                  ></option>
+                  {this.state.vilaaddress
+                    ? this.state.vilaaddress.map((city, index) => (
                       <option value={index}>{city}</option>
                     ))
-                  : null}
-              </PrimarySelectInput>
-              <span className="color-secondary error-message font-size-14">
-                {" "}
-                {this.state.errors.City}
-              </span>
-            </div>
-            <div className="col-lg-3 col-12 padding-3px">
-              <div
-                className={` form-input-border  ${styles["form-input-border-private"]} `}
-              >
-                <PrimaryTextInput
-                  style={{ fontSize: 14, fontFamily: "BYekan" }}
-                  placeholder="نام محدوده اقامتگاه"
-                  name="AddressName"
-                  onChange={this.handleChangeInput}
-                />
+                    : null}
+                </PrimarySelectInput>
+                <span className="color-secondary error-message font-size-14">
+                  {" "}
+                  {this.state.errors.City}
+                </span>
               </div>
-              <span className="color-secondary error-message font-size-14">
-                {" "}
-                {this.state.errors.AddressName}
-              </span>
-            </div>
-            <div className="col-12 padding-3px margin-top-10px">
-              <div
-                className={` form-input-border h-auto ${styles["form-input-border-private"]} `}
-              >
-                <textarea
-                  style={{ fontSize: 14, fontFamily: "BYekan" }}
-                  rows="5"
-                  placeholder="آدرس کامل اقامتگاه ( آمل-خیابان 1- کوچه 2 -پلاک 110)"
-                  className="form-input primary-text"
-                  name="Address"
-                  onChange={this.handleChangeInput}
-                ></textarea>
+              <div className="col-lg-3 col-12 padding-3px">
+                <div
+                  className={` form-input-border  ${styles["form-input-border-private"]} `}
+                >
+                  <PrimaryTextInput
+                    style={{ fontSize: 14, fontFamily: "BYekan" }}
+                    placeholder="نام محدوده اقامتگاه"
+                    name="AddressName"
+                    onChange={this.handleChangeInput}
+                  />
+                </div>
+                <span className="color-secondary error-message font-size-14">
+                  {" "}
+                  {this.state.errors.AddressName}
+                </span>
               </div>
-              <span className="color-secondary error-message font-size-14">
-                {" "}
-                {this.state.errors.Address}
-              </span>
+              <div className="col-12 padding-3px margin-top-10px">
+                <div
+                  className={` form-input-border h-auto ${styles["form-input-border-private"]} `}
+                >
+                  <textarea
+                    style={{ fontSize: 14, fontFamily: "BYekan" }}
+                    rows="5"
+                    placeholder="آدرس کامل اقامتگاه ( آمل-خیابان 1- کوچه 2 -پلاک 110)"
+                    className="form-input primary-text"
+                    name="Address"
+                    onChange={this.handleChangeInput}
+                  ></textarea>
+                </div>
+                <span className="color-secondary error-message font-size-14">
+                  {" "}
+                  {this.state.errors.Address}
+                </span>
+              </div>
             </div>
           </div>
+          {/* box 3 */}
           <div
-            className={`row ${styles["panel-main-content"]} margin-top-10px`}
+            className={`${styles["panel-main-content"]} margin-top-10px`}
           >
             <span className="color-secondary error-message font-size-14">
               {" "}
               {this.state.errors.typevilla}
             </span>
-            <h3
-              className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse`}
-            >
-              نوع اقامتگاه
-            </h3>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="EcoFlag"
-                  onChange={this.handleChangeCheckbox}
-                />
-                <label style={{ fontSize: 18 }} class="form-check-label ">
-                  &nbsp; اقتصادی
-                </label>
+            <div class="position-relative">
+              <h6 className="mt-0 font-bold-iransanse">
+                نوع اقــامتگـــاه
+              </h6>
+              <div class="d-flex align-items-center">
+                <div class="box-through"></div>
+                <div class="aside-through"></div>
               </div>
             </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                {" "}
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="LuxFlag"
-                  onChange={this.handleChangeCheckbox}
-                />
-                <label style={{ fontSize: 18 }} class="form-check-label ">
-                  &nbsp; لوکس
-                </label>
+            <div className="d-flex align-items-start flex-wrap px-3 pt-2">
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="EcoFlag"
+                    onChange={this.handleChangeCheckbox}
+                  />
+                  <label style={{ fontSize: 18 }} class="form-check-label ">
+                    &nbsp; اقتصادی
+                  </label>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                {" "}
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="NormalFlag"
-                  onChange={this.handleChangeCheckbox}
-                />
-                <label style={{ fontSize: 18 }} class="form-check-label ">
-                  &nbsp; معمولی
-                </label>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="LuxFlag"
+                    onChange={this.handleChangeCheckbox}
+                  />
+                  <label style={{ fontSize: 18 }} class="form-check-label ">
+                    &nbsp; لوکس
+                  </label>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                {" "}
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="SupLuxFlag"
-                  onChange={this.handleChangeCheckbox}
-                />
-                <label style={{ fontSize: 16 }} class="form-check-label ">
-                  &nbsp; سوپر لوکس
-                </label>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="NormalFlag"
+                    onChange={this.handleChangeCheckbox}
+                  />
+                  <label style={{ fontSize: 18 }} class="form-check-label ">
+                    &nbsp; معمولی
+                  </label>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="TakhfifFlag"
-                  onChange={this.handleChangeCheckbox}
-                />
-                <label style={{ fontSize: 16 }} class="form-check-label ">
-                  &nbsp; تخفیف دار
-                </label>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="SupLuxFlag"
+                    onChange={this.handleChangeCheckbox}
+                  />
+                  <label style={{ fontSize: 16 }} class="form-check-label ">
+                    &nbsp; سوپر لوکس
+                  </label>
+                </div>
+              </div>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="TakhfifFlag"
+                    onChange={this.handleChangeCheckbox}
+                  />
+                  <label style={{ fontSize: 16 }} class="form-check-label ">
+                    &nbsp; تخفیف دار
+                  </label>
+                </div>
               </div>
             </div>
           </div>
+          {/* box 4 */}
           <div
-            className={`row ${styles["panel-main-content"]} margin-top-10px`}
+            className={`${styles["panel-main-content"]} margin-top-10px`}
           >
             <span className="color-secondary error-message font-size-14">
               {" "}
               {this.state.errors.villaView}
             </span>
-            <h3
-              className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse `}
-            >
-              چشم انداز
-            </h3>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                {" "}
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="KohViewFlag"
-                  onChange={this.roomHandleChangeCheckbox}
-                />
-                <label class="form-check-label" style={{ fontSize: 18 }}>
-                  &nbsp; کوهستانی
-                </label>
+            <div class="position-relative">
+              <h6 className="mt-0 font-bold-iransanse">
+                چشـــم انـــداز
+              </h6>
+              <div class="d-flex align-items-center">
+                <div class="box-through"></div>
+                <div class="aside-through"></div>
               </div>
             </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                {" "}
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="JangalViewFlag"
-                  onChange={this.roomHandleChangeCheckbox}
-                />
-                <label class="form-check-label " style={{ fontSize: 18 }}>
-                  &nbsp; جنگل
-                </label>
+            <div className="d-flex align-itmes-start flex-wrap px-3 pt-2">
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="KohViewFlag"
+                    onChange={this.roomHandleChangeCheckbox}
+                  />
+                  <label class="form-check-label" style={{ fontSize: 18 }}>
+                    &nbsp; کوهستانی
+                  </label>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                {" "}
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="SeaViewFlag"
-                  onChange={this.roomHandleChangeCheckbox}
-                />
-                <label class="form-check-label " style={{ fontSize: 18 }}>
-                  &nbsp; دریا
-                </label>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="JangalViewFlag"
+                    onChange={this.roomHandleChangeCheckbox}
+                  />
+                  <label class="form-check-label " style={{ fontSize: 18 }}>
+                    &nbsp; جنگل
+                  </label>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              {" "}
-              <div className={styles["form"]}>
-                {" "}
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="PayeViewFlag"
-                  onChange={this.roomHandleChangeCheckbox}
-                />
-                <label class="form-check-label " style={{ fontSize: 18 }}>
-                  &nbsp; کوهپایه
-                </label>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="SeaViewFlag"
+                    onChange={this.roomHandleChangeCheckbox}
+                  />
+                  <label class="form-check-label " style={{ fontSize: 18 }}>
+                    &nbsp; دریا
+                  </label>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="CityViewFlag"
-                  onChange={this.roomHandleChangeCheckbox}
-                />
-                <label class="form-check-label " style={{ fontSize: 17 }}>
-                  &nbsp; شهری
-                </label>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                {" "}
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="PayeViewFlag"
+                    onChange={this.roomHandleChangeCheckbox}
+                  />
+                  <label class="form-check-label " style={{ fontSize: 18 }}>
+                    &nbsp; کوهپایه
+                  </label>
+                </div>
+              </div>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="CityViewFlag"
+                    onChange={this.roomHandleChangeCheckbox}
+                  />
+                  <label class="form-check-label " style={{ fontSize: 17 }}>
+                    &nbsp; شهری
+                  </label>
+                </div>
               </div>
             </div>
           </div>
+          {/* box 5 */}
           <div
-            className={`row ${styles["panel-main-content"]} margin-top-10px`}
+            className={`${styles["panel-main-content"]} margin-top-10px`}
           >
             <span className="color-secondary error-message font-size-14">
               {this.state.errors.villaLocation}
             </span>
-            <h3
-              className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse`}
-            >
-              موقعیت
-            </h3>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                {" "}
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="RostaFlag"
-                  onChange={this.handleChangeCheckbox}
-                />
-                <label style={{ fontSize: 18 }} class="form-check-label ">
-                  &nbsp; روستایی
-                </label>
+            <div class="position-relative">
+              <h6 className="mt-0 font-bold-iransanse">
+                موقعــیت
+              </h6>
+              <div class="d-flex align-items-center">
+                <div class="box-through"></div>
+                <div class="aside-through"></div>
               </div>
             </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                {" "}
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="SahelFlag"
-                  onChange={this.handleChangeCheckbox}
-                />
-                <label style={{ fontSize: 18 }} class="form-check-label ">
-                  &nbsp; ساحلی
-                </label>
+            <div className="d-flex align-items-start flex-wrap px-3 pt-2">
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="RostaFlag"
+                    onChange={this.handleChangeCheckbox}
+                  />
+                  <label style={{ fontSize: 18 }} class="form-check-label ">
+                    &nbsp; روستایی
+                  </label>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                {" "}
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="ShahrakFlag"
-                  onChange={this.handleChangeCheckbox}
-                />
-                <label style={{ fontSize: 18 }} class="form-check-label ">
-                  &nbsp; شهرک
-                </label>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="SahelFlag"
+                    onChange={this.handleChangeCheckbox}
+                  />
+                  <label style={{ fontSize: 18 }} class="form-check-label ">
+                    &nbsp; ساحلی
+                  </label>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                {" "}
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="YeylaFlag"
-                  onChange={this.handleChangeCheckbox}
-                />
-                <label style={{ fontSize: 18 }} class="form-check-label ">
-                  &nbsp; ییلاقی
-                </label>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="ShahrakFlag"
+                    onChange={this.handleChangeCheckbox}
+                  />
+                  <label style={{ fontSize: 18 }} class="form-check-label ">
+                    &nbsp; شهرک
+                  </label>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                {" "}
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="ShahrFlag"
-                  onChange={this.handleChangeCheckbox}
-                />
-                <label style={{ fontSize: 18 }} class="form-check-label ">
-                  &nbsp; شهری
-                </label>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="YeylaFlag"
+                    onChange={this.handleChangeCheckbox}
+                  />
+                  <label style={{ fontSize: 18 }} class="form-check-label ">
+                    &nbsp; ییلاقی
+                  </label>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}></div>
-            </div>
-            <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
-              <div className={styles["form"]}>
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="KohFlag"
-                  onChange={this.handleChangeCheckbox}
-                />
-                <label style={{ fontSize: 18 }} class="form-check-label ">
-                  &nbsp; کوهستانی
-                </label>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  {" "}
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="ShahrFlag"
+                    onChange={this.handleChangeCheckbox}
+                  />
+                  <label style={{ fontSize: 18 }} class="form-check-label ">
+                    &nbsp; شهری
+                  </label>
+                </div>
+              </div>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}></div>
+              </div>
+              <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
+                <div className={styles["form"]}>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="KohFlag"
+                    onChange={this.handleChangeCheckbox}
+                  />
+                  <label style={{ fontSize: 18 }} class="form-check-label ">
+                    &nbsp; کوهستانی
+                  </label>
+                </div>
               </div>
             </div>
           </div>
+          {/* box 6 */}
           <div
-            className={`row ${styles["panel-main-content"]}  margin-top-10px`}
+            className={`${styles["panel-main-content"]}  margin-top-10px`}
           >
-            <h3
-              className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse`}
-            >
-              {" "}
-              <FontAwesomeIcon
-                className="font-size-30  margin-top-7px ml-5 "
-                icon={faUniversity}
-              />
-              ظرفیت ویلا
-            </h3>
-            <div className={`col-lg-3 padding-3px ${styles["cap-city"]}`}>
-              <div>
-                <div className="col-lg-2 col-2">
-                  <br />
-                </div>
-                <div className="col-lg-10 col-10 no-padding">
-                  <div className="row">
-                    <div className="col-lg-5 col-5 text-right">
-                      <p
-                        className="margin-top-10px margin-bottom-0px font-size-13 "
-                        style={{ fontSize: 18 }}
-                      >
-                        متراژ زمین
-                      </p>
-                    </div>
-                    <div className="col-lg-7 col-7 padding-3px">
-                      <div
-                        className={` form-input-border  ${styles["form-input-border-private"]} `}
-                      >
-                        <PrimaryTextInput
-                          name="Metraj"
-                          onChange={this.handleChangeInput}
-                        />
+            <div class="position-relative">
+              <h6 className="mt-0 font-bold-iransanse">
+                ظرفـــیت ویــلا
+              </h6>
+              <div class="d-flex align-items-center">
+                <div class="box-through"></div>
+                <div class="aside-through"></div>
+              </div>
+            </div>
+            <div className="d-flex align-items-start px-3 pt-2">
+              <div className={`col-lg-3 padding-3px mt-0 ${styles["cap-city"]}`}>
+                <div>
+                  <div className="col-lg-2 col-2">
+                    <br />
+                  </div>
+                  <div className="col-lg-10 col-10 no-padding">
+                    <div className="row">
+                      <div className="col-lg-5 col-5 text-right">
+                        <p
+                          className="margin-top-10px margin-bottom-0px font-size-13 "
+                          style={{ fontSize: 18 }}
+                        >
+                          متراژ زمین
+                        </p>
+                      </div>
+                      <div className="col-lg-7 col-7 padding-3px">
+                        <div
+                          className={`${styles["form-input-border-private"]} `}
+                        >
+                          <PrimaryTextInput
+                            name="Metraj"
+                            onChange={this.handleChangeInput}
+                          />
+                        </div>
+                      </div>
+                      <div className="col-lg-5 col-5 text-right">
+                        <p
+                          className="margin-top-10px margin-bottom-0px font-size-13"
+                          style={{ fontSize: 18 }}
+                        >
+                          متراژ بنا
+                        </p>
+                      </div>
+                      <div className="col-lg-7 col-7 padding-3px">
+                        <div
+                          className={`${styles["form-input-border-private"]} `}
+                        >
+                          <PrimaryTextInput
+                            name="Metraj"
+                            onChange={this.roomHandleChangeInput}
+                          />
+                        </div>
                       </div>
                     </div>
-                    <div className="col-lg-5 col-5 text-right">
-                      <p
-                        className="margin-top-10px margin-bottom-0px font-size-13"
-                        style={{ fontSize: 18 }}
-                      >
-                        متراژ بنا
-                      </p>
-                    </div>
-                    <div className="col-lg-7 col-7 padding-3px">
-                      <div
-                        className={` form-input-border  ${styles["form-input-border-private"]} `}
-                      >
-                        <PrimaryTextInput
-                          name="Metraj"
+                  </div>
+                </div>
+              </div>
+              <div className={`col-lg-3 padding-3px mt-0 ${styles["cap-city"]}`}>
+                <div style={{ marginTop: -6 }}>
+                  <div className="col-lg-2 col-2">
+                    <br />
+                  </div>
+                  <div className="col-lg-10 col-10 no-padding">
+                    <div className="row">
+                      <div className="col-lg-5 col-5 text-right">
+                        <p
+                          className="margin-top-10px margin-bottom-0px font-size-13 "
+                          style={{ fontSize: 18 }}
+                        >
+                          ظرفیت
+                        </p>
+                      </div>
+                      <div className="col-lg-7 col-7 padding-3px">
+                        <PrimarySelectInput
+                          style={{ maxHeight: 32 }}
+                          name="Cap"
                           onChange={this.roomHandleChangeInput}
-                        />
+                        >
+                          {arrayOfThirty.map((number) => (
+                            <option value={number}>{number}</option>
+                          ))}
+                        </PrimarySelectInput>
+                      </div>
+                      <div className="col-lg-5 col-5 text-right">
+                        <p
+                          className="margin-top-9px margin-bottom-0px font-size-13 "
+                          style={{ fontSize: 18 }}
+                        >
+                          حداکثر ظرفیت
+                        </p>
+                      </div>
+                      <div className="col-lg-7 col-7 padding-3px">
+                        <PrimarySelectInput
+                          style={{ maxHeight: 32, marginTop: -10 }}
+                          name="CapMax"
+                          onChange={this.roomHandleChangeInput}
+                        >
+                          {arrayOfThirty.map((number) => (
+                            <option value={number}>{number}</option>
+                          ))}
+                        </PrimarySelectInput>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={`col-lg-3 padding-3px ${styles["cap-city"]}`}>
-              <div style={{ marginTop: -6 }}>
-                <div className="col-lg-2 col-2">
-                  <br />
-                </div>
-                <div className="col-lg-10 col-10 no-padding">
-                  <div className="row">
-                    <div className="col-lg-5 col-5 text-right">
-                      <p
-                        className="margin-top-10px margin-bottom-0px font-size-13 "
-                        style={{ fontSize: 18 }}
-                      >
-                        ظرفیت
-                      </p>
+              <div className={`col-lg-3 padding-3px mt-0 ${styles["cap-city"]}`}>
+                <div style={{ marginTop: -6 }}>
+                  <div className="col-lg-10 col-10 no-padding">
+                    <div className="row">
+                      <div className="col-lg-12 col-12">&nbsp;</div>
+                      <div className="col-lg-5 col-5 text-right">
+                        <p
+                          className="margin-top-10px margin-bottom-0px font-size-13 "
+                          style={{ fontSize: 18 }}
+                        >
+                          تعداد اتاق
+                        </p>
+                      </div>
+                      <div className="col-lg-7 col-7 padding-3px">
+                        <PrimarySelectInput
+                          style={{ maxHeight: 32, marginTop: -10 }}
+                          name="RoomCount"
+                          onChange={this.roomHandleChangeInput}
+                        >
+                          {arrayOfTen.map((number) => (
+                            <option value={number}>{number}</option>
+                          ))}
+                        </PrimarySelectInput>
+                      </div>
                     </div>
-                    <div className="col-lg-7 col-7 padding-3px">
-                      <PrimarySelectInput
-                        style={{ maxHeight: 32 }}
-                        name="Cap"
-                        onChange={this.roomHandleChangeInput}
-                      >
-                        {arrayOfThirty.map((number) => (
-                          <option value={number}>{number}</option>
-                        ))}
-                      </PrimarySelectInput>
-                    </div>
-                    <div className="col-lg-5 col-5 text-right">
-                      <p
-                        className="margin-top-9px margin-bottom-0px font-size-13 "
-                        style={{ fontSize: 18 }}
-                      >
-                        حداکثر ظرفیت
-                      </p>
-                    </div>
-                    <div className="col-lg-7 col-7 padding-3px">
-                      <PrimarySelectInput
-                        style={{ maxHeight: 32, marginTop: -10 }}
-                        name="CapMax"
-                        onChange={this.roomHandleChangeInput}
-                      >
-                        {arrayOfThirty.map((number) => (
-                          <option value={number}>{number}</option>
-                        ))}
-                      </PrimarySelectInput>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className={`col-lg-3 padding-3px ${styles["cap-city"]}`}>
-              <div style={{ marginTop: -6 }}>
-                <div className="col-lg-10 col-10 no-padding">
-                  <div className="row">
-                    <div className="col-lg-12 col-12">&nbsp;</div>
-                    <div className="col-lg-5 col-5 text-right">
-                      <p
-                        className="margin-top-10px margin-bottom-0px font-size-13 "
-                        style={{ fontSize: 18 }}
-                      >
-                        تعداد اتاق
-                      </p>
-                    </div>
-                    <div className="col-lg-7 col-7 padding-3px">
-                      <PrimarySelectInput
-                        style={{ maxHeight: 32, marginTop: -10 }}
-                        name="RoomCount"
-                        onChange={this.roomHandleChangeInput}
-                      >
-                        {arrayOfTen.map((number) => (
-                          <option value={number}>{number}</option>
-                        ))}
-                      </PrimarySelectInput>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-lg-5 col-5 text-right">
-                      <p
-                        className="margin-top-10px margin-bottom-0px font-size-13 "
-                        style={{ fontSize: 18 }}
-                      >
-                        تعداد تشک
-                      </p>
-                    </div>
-                    <div className="col-lg-7 col-7 padding-3px">
-                      <PrimarySelectInput
-                        name="ToshakCount"
-                        onChange={this.roomHandleChangeInput}
-                      >
-                        {arrayOfTen.map((number) => (
-                          <option value={number}>{number}</option>
-                        ))}
-                      </PrimarySelectInput>
+                    <div className="row">
+                      <div className="col-lg-5 col-5 text-right">
+                        <p
+                          className="margin-top-10px margin-bottom-0px font-size-13 "
+                          style={{ fontSize: 18 }}
+                        >
+                          تعداد تشک
+                        </p>
+                      </div>
+                      <div className="col-lg-7 col-7 padding-3px">
+                        <PrimarySelectInput
+                          name="ToshakCount"
+                          onChange={this.roomHandleChangeInput}
+                        >
+                          {arrayOfTen.map((number) => (
+                            <option value={number}>{number}</option>
+                          ))}
+                        </PrimarySelectInput>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={`col-lg-3 padding-3px ${styles["cap-city"]}`}>
-              <div style={{ marginTop: 6 }}>
-                <div className="col-lg-2 col-2">
-                  <br />
-                </div>
-                <div className="col-lg-10 col-10 no-padding">
-                  <div className="row">
-                    <div className="col-lg-5 col-5 text-right">
-                      <p
-                        className="margin-top-8px margin-bottom-0px font-size-13 "
-                        style={{ fontSize: 18 }}
+              <div className={`col-lg-3 padding-3px mt-0 ${styles["cap-city"]}`}>
+                <div style={{ marginTop: 6 }}>
+                  <div className="col-lg-2 col-2">
+                    <br />
+                  </div>
+                  <div className="col-lg-10 col-10 no-padding">
+                    <div className="row">
+                      <div className="col-lg-5 col-5 text-right">
+                        <p
+                          className="margin-top-8px margin-bottom-0px font-size-13 "
+                          style={{ fontSize: 18 }}
+                        >
+                          تخت 1 نفره
+                        </p>
+                      </div>
+                      <div
+                        style={{ marginTop: 0 }}
+                        className="col-lg-7 col-7 padding-3px"
                       >
-                        تخت 1 نفره
-                      </p>
-                    </div>
-                    <div
-                      style={{ marginTop: 0 }}
-                      className="col-lg-7 col-7 padding-3px"
-                    >
-                      <PrimarySelectInput
-                        style={{ maxHeight: 32, marginTop: -10 }}
-                        name="Takht1Count"
-                        onChange={this.roomHandleChangeInput}
+                        <PrimarySelectInput
+                          style={{ maxHeight: 32, marginTop: -10 }}
+                          name="Takht1Count"
+                          onChange={this.roomHandleChangeInput}
+                        >
+                          {arrayOfTen.map((number) => (
+                            <option value={number}>{number}</option>
+                          ))}
+                        </PrimarySelectInput>
+                      </div>
+                      <div className="col-lg-5 col-5 text-right">
+                        <p
+                          className="margin-top-10px font-size-13 "
+                          style={{ fontSize: 18 }}
+                        >
+                          تخت 2 نفره
+                        </p>
+                      </div>
+                      <div
+                        style={{ marginTop: -4 }}
+                        className="col-lg-7 col-7 padding-3px"
                       >
-                        {arrayOfTen.map((number) => (
-                          <option value={number}>{number}</option>
-                        ))}
-                      </PrimarySelectInput>
-                    </div>
-                    <div className="col-lg-5 col-5 text-right">
-                      <p
-                        className="margin-top-10px font-size-13 "
-                        style={{ fontSize: 18 }}
-                      >
-                        تخت 2 نفره
-                      </p>
-                    </div>
-                    <div
-                      style={{ marginTop: -4 }}
-                      className="col-lg-7 col-7 padding-3px"
-                    >
-                      <PrimarySelectInput
-                        style={{ maxHeight: 32, marginTop: -10 }}
-                        name="Takht2Count"
-                        onChange={this.roomHandleChangeInput}
-                      >
-                        {arrayOfTen.map((number) => (
-                          <option value={number}>{number}</option>
-                        ))}
-                      </PrimarySelectInput>
+                        <PrimarySelectInput
+                          style={{ maxHeight: 32, marginTop: -10 }}
+                          name="Takht2Count"
+                          onChange={this.roomHandleChangeInput}
+                        >
+                          {arrayOfTen.map((number) => (
+                            <option value={number}>{number}</option>
+                          ))}
+                        </PrimarySelectInput>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          {/* box 7 */}
           <div
-            className={`row ${styles["panel-main-content"]}  margin-top-10px`}
+            className={`${styles["panel-main-content"]}  margin-top-10px`}
           >
             <span className="color-secondary error-message font-size-14">
               {this.state.errors.facilities}
             </span>
-            <h3
-              className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse margin-bottom-5px`}
-            >
-              امکانات اقامتگاه{" "}
-            </h3>
+            <div class="position-relative">
+              <h6 className="mt-0 font-bold-iransanse">
+                امکــانات اقامـــتگاه
+              </h6>
+              <div class="d-flex align-items-center">
+                <div class="box-through"></div>
+                <div class="aside-through"></div>
+              </div>
+            </div>
             {this.state.facilities.map((facility) => (
               <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
                 <div className={styles["form"]}>
@@ -1159,18 +1203,22 @@ class AddVilaDesktop extends React.Component {
               </div>
             ))}
           </div>
-
+          {/* box 8 */}
           <div
-            className={`row ${styles["panel-main-content"]}  margin-top-10px`}
+            className={`${styles["panel-main-content"]}  margin-top-10px`}
           >
             <span className="color-secondary error-message font-size-14">
               {this.state.errors.roomFacilities}
             </span>
-            <h3
-              className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse margin-bottom-5px`}
-            >
-              امکانات اتاق اقامتگاه{" "}
-            </h3>
+            <div class="position-relative">
+              <h6 className="mt-0 font-bold-iransanse">
+                امکانات اتاق اقامــتگاه
+              </h6>
+              <div class="d-flex align-items-center">
+                <div class="box-through"></div>
+                <div class="aside-through"></div>
+              </div>
+            </div>
             {this.state.facilities?.map((facility) => (
               <div className="col-lg-2 col-4 no-padding form-check form-check-inline no-margin">
                 <div className={styles["form"]}>
@@ -1187,15 +1235,20 @@ class AddVilaDesktop extends React.Component {
               </div>
             ))}
           </div>
+          {/* box 9 */}
           <div
-            className={`row ${styles["panel-main-content"]}  margin-top-10px`}
+            className={`${styles["panel-main-content"]}  margin-top-10px h-auto`}
           >
-            <h3
-              className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse `}
-            >
-              با انتخاب تصاویر مناسب نمایش خوبی از اقامتگاهتان داشته باشید
-            </h3>
-            <div className="col-lg-4 col-12 margin-top-10px">
+            <div class="position-relative">
+              <h6 className="mt-0 font-bold-iransanse">
+                با انتخاب تصاویر مناسب نمایش خوبی از اقامتگاهتان داشته باشید
+              </h6>
+              <div class="d-flex align-items-center">
+                <div class="box-through"></div>
+                <div class="aside-through"></div>
+              </div>
+            </div>
+            <div className="col-lg-2 col-12 mt-3">
               <input
                 id="myInput"
                 type="file"
@@ -1204,7 +1257,7 @@ class AddVilaDesktop extends React.Component {
                 onChange={this.onChangeFile.bind(this)}
               />
               {this.state.file ? (
-                <div className={`h-100 ${styles["uploaded-image-box"]}`}>
+                <div className={`h-100 background-white rounded-3 ${styles["uploaded-image-box"]}`}>
                   <img
                     width=""
                     height=""
@@ -1222,7 +1275,7 @@ class AddVilaDesktop extends React.Component {
                 </div>
               ) : (
                 <div
-                  className={`${styles["upload-box"]} h-100`}
+                  className={`${styles["upload-box"]} h-100 py-5`}
                   onClick={() => {
                     this.upload.click();
                   }}
@@ -1234,6 +1287,7 @@ class AddVilaDesktop extends React.Component {
               )}
             </div>
           </div>
+          {/* box 10 (undefined data) */}
           <div className={` ${styles["panel-main-content"]}  margin-top-10px`}>
             <h3
               className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse `}
@@ -1243,157 +1297,160 @@ class AddVilaDesktop extends React.Component {
 
             {this.state.rules.map((rule) => (
               <div className="row">
-                <div className="col-lg-6 col-7 margin-top-10px">
-                  <div className="font-size-14 font-bold-iransanse">
-                    {rule.RulesName}
+                <div className="d-flex align-items-start flex-wrap">
+                  <div className="col-lg-6 col-7 margin-top-10px">
+                    <div className="font-size-14 font-bold-iransanse">
+                      {rule.RulesName}
+                    </div>
                   </div>
-                </div>
-                <div className="col-lg-6 col-5 margin-top-10px">
-                  <div className="font-size-14 font-bold-iransanse">
-                    <Switch
-                      height={20}
-                      onChange={this.handleChange}
-                      id={rule.RulesId}
-                      checked={this.state.selectedRules.find(
-                        (x) => x == rule.RulesId
-                      )}
-                    />
+                  <div className="col-lg-6 col-5 margin-top-10px">
+                    <div className="font-size-14 font-bold-iransanse">
+                      <Switch
+                        height={20}
+                        onChange={this.handleChange}
+                        id={rule.RulesId}
+                        checked={this.state.selectedRules.find(
+                          (x) => x == rule.RulesId
+                        )}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          <br />
+          {/* button register and back */}
           <div className="row">
-            <div className="col-lg-8"></div>
-            <div className="col-lg-2 padding-3px">
-              <PrimaryButton
-                value="ثبت"
-                onClick={() => {
-                  if (!this.validation()) {
-                    alert("لطفا مقادیر فرم را کامل پر کنید");
-                    return;
-                  }
+            <div className="d-flex align-items-stretch justify-content-end">
+              <div className="col-lg-2 padding-3px font-bold-iransanse">
+                <PrimaryButton
+                  value="ثبت"
+                  onClick={() => {
+                    if (!this.validation()) {
+                      alert("لطفا مقادیر فرم را کامل پر کنید");
+                      return;
+                    }
 
-                  let requestObject = {
-                    ...this.state.vilaMainObjcet,
-                    EghamatType:
-                      this.state.vilaTypes[this.state.currentVilaType],
-                    BuildingType:
-                      this.state.buildinType[this.state.currentVilaType][
+                    let requestObject = {
+                      ...this.state.vilaMainObjcet,
+                      EghamatType:
+                        this.state.vilaTypes[this.state.currentVilaType],
+                      BuildingType:
+                        this.state.buildinType[this.state.currentVilaType][
                         this.state.currentBuildingType
-                      ],
-                  };
+                        ],
+                    };
 
-                  fetch(`${globals.baseUrl}bj/eghamat/save`, {
-                    headers: { "Content-Type": "application/json" },
-                    method: "POST",
-                    body: JSON.stringify(requestObject),
-                  })
-                    .then((res) => res.json())
-                    .then((data) => {
-                      if (data.status == "OK") {
-                        const vilaId = parseInt(data.message);
-                        ///  step 1
-                        let param = this.state.checkedFacilities.map(
-                          (facility) => ({
-                            EghamatId: vilaId,
-                            EmkanatId: parseInt(facility),
-                            Stat: 1,
+                    fetch(`${globals.baseUrl}bj/eghamat/save`, {
+                      headers: { "Content-Type": "application/json" },
+                      method: "POST",
+                      body: JSON.stringify(requestObject),
+                    })
+                      .then((res) => res.json())
+                      .then((data) => {
+                        if (data.status == "OK") {
+                          const vilaId = parseInt(data.message);
+                          ///  step 1
+                          let param = this.state.checkedFacilities.map(
+                            (facility) => ({
+                              EghamatId: vilaId,
+                              EmkanatId: parseInt(facility),
+                              Stat: 1,
+                            })
+                          );
+                          console.log(JSON.stringify(param));
+
+                          fetch(`${globals.baseUrl}bj/eghamatEmkanat/save`, {
+                            headers: { "Content-Type": "application/json" },
+                            method: "POST",
+                            body: JSON.stringify(param),
                           })
-                        );
-                        console.log(JSON.stringify(param));
+                            .then((res) => res.json())
+                            .then((data2) => {
+                              console.log(data2);
+                            });
 
-                        fetch(`${globals.baseUrl}bj/eghamatEmkanat/save`, {
-                          headers: { "Content-Type": "application/json" },
-                          method: "POST",
-                          body: JSON.stringify(param),
-                        })
-                          .then((res) => res.json())
-                          .then((data2) => {
-                            console.log(data2);
-                          });
+                          ///  step 2
+                          param = this.state.selectedRules.map((x) => ({
+                            EghamatId: vilaId,
+                            RulesId: parseInt(x),
+                            Stat: 1,
+                          }));
+                          fetch(`${globals.baseUrl}bj/eghamatRules/save`, {
+                            headers: { "Content-Type": "application/json" },
+                            method: "POST",
+                            body: JSON.stringify(param),
+                          })
+                            .then((res) => res.json())
+                            .then((data2) => {
+                              // console.log(data2)
+                            });
 
-                        ///  step 2
-                        param = this.state.selectedRules.map((x) => ({
-                          EghamatId: vilaId,
-                          RulesId: parseInt(x),
-                          Stat: 1,
-                        }));
-                        fetch(`${globals.baseUrl}bj/eghamatRules/save`, {
-                          headers: { "Content-Type": "application/json" },
-                          method: "POST",
-                          body: JSON.stringify(param),
-                        })
-                          .then((res) => res.json())
-                          .then((data2) => {
-                            // console.log(data2)
-                          });
+                          ///  step 3
+                          requestObject = {
+                            EghamatId: vilaId,
+                            ...this.state.roomObject,
+                          };
+                          fetch(`${globals.baseUrl}bj/eghamatRoom/save`, {
+                            headers: { "Content-Type": "application/json" },
+                            method: "POST",
+                            body: JSON.stringify(requestObject),
+                          })
+                            .then((res) => res.json())
+                            .then((data2) => {
+                              if (data2.status == "OK") {
+                                param = this.state.checkedFacilitiesForRoom.map(
+                                  (x) => ({
+                                    RoomRow: parseInt(data2.message),
+                                    EmkanatId: parseInt(x),
+                                    EghamatId: vilaId,
+                                    Stat: 1,
+                                  })
+                                );
+                                fetch(
+                                  `${globals.baseUrl}bj/eghamatRoomEmkanat/save`,
+                                  {
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                    },
+                                    method: "POST",
+                                    body: JSON.stringify(param),
+                                  }
+                                )
+                                  .then((res) => res.json())
+                                  .then((data3) => {
+                                    // console.log(data2)
+                                  });
 
-                        ///  step 3
-                        requestObject = {
-                          EghamatId: vilaId,
-                          ...this.state.roomObject,
-                        };
-                        fetch(`${globals.baseUrl}bj/eghamatRoom/save`, {
-                          headers: { "Content-Type": "application/json" },
-                          method: "POST",
-                          body: JSON.stringify(requestObject),
-                        })
-                          .then((res) => res.json())
-                          .then((data2) => {
-                            if (data2.status == "OK") {
-                              param = this.state.checkedFacilitiesForRoom.map(
-                                (x) => ({
-                                  RoomRow: parseInt(data2.message),
-                                  EmkanatId: parseInt(x),
-                                  EghamatId: vilaId,
-                                  Stat: 1,
-                                })
-                              );
-                              fetch(
-                                `${globals.baseUrl}bj/eghamatRoomEmkanat/save`,
-                                {
-                                  headers: {
-                                    "Content-Type": "application/json",
-                                  },
-                                  method: "POST",
-                                  body: JSON.stringify(param),
-                                }
-                              )
-                                .then((res) => res.json())
-                                .then((data3) => {
-                                  // console.log(data2)
+                                this.props.messageBoxModify({
+                                  state: true,
+                                  message: `عملیات موفقیت آمیز بود ${vilaId}`,
                                 });
-
-                              this.props.messageBoxModify({
-                                state: true,
-                                message: `عملیات موفقیت آمیز بود ${vilaId}`,
-                              });
-                            }
+                              }
+                            });
+                        } else {
+                          this.props.messageBoxModify({
+                            state: true,
+                            message:
+                              "متاسفانه مشکلی پیش آمده است. لطفا مجدد اقدام کنید",
                           });
-                      } else {
-                        this.props.messageBoxModify({
-                          state: true,
-                          message:
-                            "متاسفانه مشکلی پیش آمده است. لطفا مجدد اقدام کنید",
-                        });
-                      }
-                    });
-                }}
-              />
-            </div>
-            <div className="col-lg-2 padding-3px">
-              <a
-                href="/panel/villas/search"
-                className="btn-outlined-cancle w-100"
-              >
-                بازگشت
-              </a>
+                        }
+                      });
+                  }}
+                />
+              </div>
+              <div className="col-lg-2 padding-3px">
+                <a
+                  href="/panel/villas/search"
+                  className="btn-outlined-cancle w-100 font-bold-iransanse"
+                >
+                  بازگشت
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }

@@ -46,11 +46,29 @@ const Filter = ({ list, cancel, setFilter, filters }) => {
   return (
     <div>
       <div className={style["headerlist"]}>
-        <div>
+        {/* child */}
+        <div className="d-flex flex-column align-items-start ms-3">
           <label className={style['label-base']}>عنوان چارتر کننده:</label>
           <input className={style['inp-base']} onChange={findByName} defaultValue={""} />
         </div>
-        <div>
+        {/* child */}
+        <div className="d-flex flex-column align-items-start ms-3">
+          <label className={style['label-base']}>درصد افزایش کلی:</label>
+          <input className={style['inp-base']}
+            onChange={(e) => setAllPrecent(e.target.value)}
+            value={allprecent}
+          />
+        </div>
+        {/* child */}
+        <div className="d-flex flex-column align-items-start ms-3">
+          <label className={style['label-base']}>مبلغ افزایش کلی:</label>
+          <input className={style['inp-base']}
+            onChange={(e) => setAllPrice(e.target.value)}
+            value={allprice}
+          />
+        </div>
+        {/* child */}
+        <div className="d-flex flex-column align-items-start ms-3">
           <label className={style['label-base']}>وضعیت آژانس</label>
           <select className={style['select-base']} value={activeStatus} onChange={findByStatus}>
             <option value="Active">فعال</option>
@@ -58,24 +76,12 @@ const Filter = ({ list, cancel, setFilter, filters }) => {
             <option value="Cancel">حذف فیلتر</option>
           </select>
         </div>
-        <div>
-          <label className={style['label-base']}>درصد افزایش کلی:</label>
-          <input className={style['inp-base']}
-            onChange={(e) => setAllPrecent(e.target.value)}
-            value={allprecent}
-          />
-        </div>
-        <div>
-          <label className={style['label-base']}>مبلغ افزایش کلی:</label>
-          <input className={style['inp-base']}
-            onChange={(e) => setAllPrice(e.target.value)}
-            value={allprice}
-          />
-        </div>
-        <div>
+      </div>
+      <div className="d-flex align-items-center justify-content-end mt-3">
+        <div className="ms-2">
           <button className={style['button-base']} onClick={changeAll}> تغییر کلی</button>
         </div>
-        <div>
+        <div className="me-2">
           <button className={style['button-base']} onClick={cancel}>حذف فیلتر ها</button>
         </div>
       </div>

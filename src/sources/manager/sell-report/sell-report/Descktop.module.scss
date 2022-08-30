@@ -68,10 +68,11 @@
 }
 
 .title-table {
-  font-size: 15px;
+  font-size: 13px;
   text-align: center;
   font-family: IranBold !important;
-  margin-top: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .header-buttn {
@@ -102,6 +103,9 @@
 
 .tablerowfont {
   font-family: BYekan !important;
+  h6{
+    font-size: 13px;
+  }
 }
 
 .name-leader {
@@ -171,10 +175,10 @@
 }
 
 .parent-buttons {
-  width: 40%;
+  width: 60%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
   z-index: 100;
 
   button {
@@ -188,6 +192,8 @@
     font-family: 'BYekan' !important;
     transition: 0.5s all;
     font-size: 14px;
+    margin-right: 5px;
+    margin-left: 5px;
     &:hover {
       transition: 0.5s all;
       color: #279692;
@@ -199,17 +205,19 @@
 
 .header-parent-sales-report{
   width: 2200px;
-  height: 60px;
+  height: 50px;
   background-color: #eee;
-  margin-top: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   place-content: center;
   padding: 0 12px;
+  span{
+    text-align: center;
+  }
 }
 .body-search-report{
   width: 2200px;
-  height: 60px;
+  height: 20px;
   margin-top: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;

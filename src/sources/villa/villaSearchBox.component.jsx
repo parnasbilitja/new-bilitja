@@ -181,7 +181,7 @@ class villaSearchBox extends React.Component {
       <div className={styles["home-villa-form"]}>
         <div>
           <div
-            className={` form-input-border  ${styles["form-input-border-private"]} `}
+            className={`${styles["form-input-border-private"]} `}
           >
             <PrimaryTextInput
               value={cityName}
@@ -211,7 +211,7 @@ class villaSearchBox extends React.Component {
 
         <div>
           <div
-            className={` form-input-border  ${styles["form-input-border-private"]} `}
+            className={`${styles["form-input-border-private"]} `}
           >
             <i className="bilitja icon-calendar form-input-icon-larger"></i>
 
@@ -228,7 +228,7 @@ class villaSearchBox extends React.Component {
         </div>
 
         <div
-          className={` form-input-border  ${styles["form-input-border-private"]} `}
+          className={`${styles["form-input-border-private"]} `}
         >
           <i className="bilitja icon-calendar form-input-icon-larger"></i>
 

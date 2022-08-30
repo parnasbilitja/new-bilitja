@@ -1,8 +1,9 @@
 .headerlist {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
+  margin-top: 30px;
 
   button {
     border-radius: 5px;
@@ -26,6 +27,7 @@
   display: grid;
   grid-template-columns: 1fr 0.6fr 1.4fr 1.7fr 1.7fr 1.2fr;
   margin: 20px auto;
+  margin-bottom: 0;
   background-color: #eee;
   height: 50px;
   width: 100%;
@@ -153,6 +155,7 @@
   font-weight: 600;
   color: #fff;
   transition: 0.5s all;
+  border-radius: 8px;
 
   &:hover {
     background-color: #fff;

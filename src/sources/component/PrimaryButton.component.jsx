@@ -10,7 +10,7 @@ export default class PrimaryButton extends React.Component {
       <input
         type="button"
         {...this.props}
-        className={styles["primary-button"]}
+        className={`${styles["primary-button"]} py-2 font-bold-iransanse`}
       />
     );
   }

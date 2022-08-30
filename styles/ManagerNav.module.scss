@@ -1,3 +1,4 @@
+$firstColor: #090026;
 @media only screen and (max-width: 1025px) {
   .manager-nav-main-container {
     right: -280px;
@@ -47,7 +48,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: #279692;
+  background-color: $firstColor;
   z-index: 999;
   transition-property: right;
   transition-duration: 0.5s;

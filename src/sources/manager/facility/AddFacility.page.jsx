@@ -38,18 +38,20 @@ const AddFacility = (props) => {
 
   return (
     <div className={styles["panel-main-content"]}>
-      <h3
-        className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse`}
-      >
-        اضافه کردن امکانات
-      </h3>
+      <div class="position-relative">
+        <h6 className="mt-0 font-bold-iransanse">
+          اضــافه کردن اقـامتــگاه
+        </h6>
+        <div class="d-flex align-items-center">
+          <div class="box-through"></div>
+          <div class="aside-through"></div>
+        </div>
+      </div>
 
-      <div className="row margin-top-10px">
+      <div className="row margin-top-10px px-3 pt-2">
         <div className="col-lg-3 col-12 padding-3px">
-          <span className="font-bold-iransanse font-size-13">نام امکانات</span>
-          <div
-            className={` form-input-border  ${styles["form-input-border-private"]} `}
-          >
+          <span className="font-bold-iransanse font-size-16">نام امکانات</span>
+          <div>
             <PrimaryTextInput
               placeholder="نام امکانات"
               value={state.facilityName}
@@ -62,7 +64,7 @@ const AddFacility = (props) => {
           </span>
         </div>
         <div className="col-lg-3 col-12 no-padding">
-          <span className="font-bold-iransanse font-size-13">نوع امکانات</span>
+          <span className="font-bold-iransanse font-size-16">نوع امکانات</span>
           <PrimarySelectInput
             value={state.facilityType}
             name="facilityType"
@@ -78,7 +80,7 @@ const AddFacility = (props) => {
         </div>
       </div>
       <div className="row">
-        <div className="col-lg-2 col-12 padding-3px">
+        <div className="col-lg-2 col-12 padding-3px me-auto ms-3">
           <PrimaryButton
             value="ثبت"
             onClick={() => {

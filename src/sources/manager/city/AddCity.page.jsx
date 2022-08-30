@@ -53,107 +53,111 @@ const AddCity = (props) => {
     setProvinces(json.Province);
   }, []);
   return (
-    <div className={styles["panel-main-content"]}>
-      <h3
-        className={` ${stylesTrack["border-bottom-black-track"]} font-size-16 font-bold-iransanse`}
-      >
-        اضافه کردن شهر
-      </h3>
-      <div className="row margin-top-10px">
-        <div className="col-lg-3 col-12 padding-3px">
-          <span className="font-bold-iransanse font-size-13">نام شهر</span>
-          <div
-            className={` form-input-border  ${styles["form-input-border-private"]} `}
-          >
-            <PrimaryTextInput
-              placeholder="نام شهر"
-              value={state.cityName}
-              name="cityName"
-              onChange={handleChange}
-            />
+    <section>
+      <div>
+        <div class="position-relative">
+          <h6 className="mt-0 font-bold-iransanse">
+            اضــافه کردن شهــر
+          </h6>
+          <div class="d-flex align-items-center">
+            <div class="box-through"></div>
+            <div class="aside-through"></div>
           </div>
-          <span className="color-secondary error-message font-size-14">
-            {errors.cityNameError}
-          </span>
         </div>
-        <div className="col-lg-3 col-12 padding-3px">
-          <span className="font-bold-iransanse font-size-13">استان</span>
-          <PrimarySelectInput
-            name="province"
-            value={state.province}
-            onChange={handleChange}
-          >
-            <option value="-1" selected></option>
-            {provinces.map((oneProvince) => (
-              <option value={oneProvince.ProvinceId}>
-                {oneProvince.ProvinceName}
-              </option>
-            ))}
-          </PrimarySelectInput>
-          <span className="color-secondary error-message font-size-14">
-            {errors.provinceError}
-          </span>
-        </div>
-        <div className="col-lg-3 col-12 padding-3px">
-          <span className="font-bold-iransanse font-size-13">کد فرودگاه</span>
-          <div
-            className={` form-input-border  ${styles["form-input-border-private"]} `}
-          >
-            <PrimaryTextInput
-              placeholder="کد فرودگاه"
-              value={state.airportCode}
-              name="airportCode"
-              onChange={handleChange}
-            />
+        <div className="px-3 pt-2">
+          <div className="row align-items-center margin-top-10px">
+            <div className="col-lg-3 col-12 padding-3px">
+              <span className="font-bold-iransanse font-size-16">نام شهر</span>
+              <div className="mt-2">
+                <PrimaryTextInput
+                  placeholder="نام شهر"
+                  value={state.cityName}
+                  name="cityName"
+                  onChange={handleChange}
+                />
+              </div>
+              <span className="color-secondary error-message font-size-14">
+                {errors.cityNameError}
+              </span>
+            </div>
+            <div className="col-lg-3 col-12 padding-3px mt-3">
+              <span className="font-bold-iransanse font-size-16">استان</span>
+              <PrimarySelectInput
+                name="province"
+                value={state.province}
+                onChange={handleChange}
+              >
+                <option value="-1" selected></option>
+                {provinces.map((oneProvince) => (
+                  <option value={oneProvince.ProvinceId}>
+                    {oneProvince.ProvinceName}
+                  </option>
+                ))}
+              </PrimarySelectInput>
+              <span className="color-secondary error-message font-size-14">
+                {errors.provinceError}
+              </span>
+            </div>
+            <div className="col-lg-3 col-12 padding-3px">
+              <span className="font-bold-iransanse font-size-16">کد فرودگاه</span>
+              <div className="mt-2">
+                <PrimaryTextInput
+                  placeholder="کد فرودگاه"
+                  value={state.airportCode}
+                  name="airportCode"
+                  onChange={handleChange}
+                />
+              </div>
+              <span className="color-secondary error-message font-size-14">
+                {errors.airportCodeError}
+              </span>
+            </div>
           </div>
-          <span className="color-secondary error-message font-size-14">
-            {errors.airportCodeError}
-          </span>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-lg-2 col-12 padding-3px">
-          <PrimaryButton
-            value="ثبت"
-            onClick={() => {
-              if (validation()) {
-                fetch(`${globals.baseUrl}bj/city/save`, {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    CityName: state.cityName,
-                    ProvinceId: state.Provinces,
-                    AirportCode: state.airportCode,
-                  }),
-                })
-                  .then((res) => res.json())
-                  .then((data) => {
-                    if (data.status == "OK") {
-                      props
-                        .messageBoxModify({
-                          state: true,
-                          message: "عملیات موفقیت آمیز بود",
-                        })
-                        .then(() => {
-                          manaulChange({
-                            cityName: "",
-                            airportCode: "",
-                            province: -1,
+          <div className="row">
+            <div className="col-lg-1 col-12 padding-3px me-auto">
+              <PrimaryButton
+                value="ثبت"
+                onClick={() => {
+                  if (validation()) {
+                    fetch(`${globals.baseUrl}bj/city/save`, {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        CityName: state.cityName,
+                        ProvinceId: state.Provinces,
+                        AirportCode: state.airportCode,
+                      }),
+                    })
+                      .then((res) => res.json())
+                      .then((data) => {
+                        if (data.status == "OK") {
+                          props
+                            .messageBoxModify({
+                              state: true,
+                              message: "عملیات موفقیت آمیز بود",
+                            })
+                            .then(() => {
+                              manaulChange({
+                                cityName: "",
+                                airportCode: "",
+                                province: -1,
+                              });
+                            });
+                        } else {
+                          props.messageBoxModify({
+                            state: true,
+                            message: "متاسفانه مشکلی پیش آمده است",
                           });
-                        });
-                    } else {
-                      props.messageBoxModify({
-                        state: true,
-                        message: "متاسفانه مشکلی پیش آمده است",
+                        }
                       });
-                    }
-                  });
-              }
-            }}
-          />
+                  }
+                }}
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 const mapDispatchesToProps = (dispatch) => ({

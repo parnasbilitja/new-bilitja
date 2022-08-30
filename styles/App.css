@@ -674,6 +674,18 @@ button:not(:disabled) {
   border-radius: 50px;
 }
 
+/* input component base style */
+
+.style-indata{
+  border: 2px solid rgb(219 219 219);
+    border-radius: 6px;
+    padding: 0 8px;
+    outline-color: rgb(219 219 219);
+    margin-top: 8px;
+    height: 40px;
+    font-family: "BYekan" !important;
+}
+
 
 @media (max-width: 768px){
   .dashboard-manager-content-container section {

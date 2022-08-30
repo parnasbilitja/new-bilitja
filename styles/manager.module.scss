@@ -10,7 +10,7 @@
   }
   .form-input-border-private {
     height: 29px;
-    margin-top: 3px !important;
+    margin-top: 9px !important;
     margin-right: 2px;
     font-size: 16px;
     font-weight: 800;
@@ -50,10 +50,18 @@
   }
 }
 .uploaded-image-box {
+  position: relative;
   img {
     width: 100px;
     height: 100px;
-    float: left;
+    border-radius: 12px;
+    object-fit: cover;
+    // float: left;
+  }
+  svg{
+    position: absolute;
+    top: 5px;
+    left: 10px;
   }
 }
 .management-one-row {
