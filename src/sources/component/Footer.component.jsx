@@ -278,7 +278,7 @@ const Footer = () => {
                         <span>کلیه حقوق این سایت محفوظ و متعلق به بلیط جا می‌باشد. </span>
                     </div>
 
-                    <div className="col-xl-4 col-lg-4 d-flex justify-content-end"><a
+                    <div className="col-xl-4 col-lg-4 d-flex justify-content-end ps-4"><a
                         referrerPolicy="origin"
                         target="_blank"
                         href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
