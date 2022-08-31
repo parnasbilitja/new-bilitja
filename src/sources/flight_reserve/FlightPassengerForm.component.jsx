@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import PrimaryTextInput from "../component/PrimaryTextInput.component";
 import PrimarySelectInput from "../component/PrimarySelectInput.component";
@@ -16,17 +16,33 @@ import {connect} from "react-redux";
 import BirthdayCalenderMiladi from "../calendar/BirthdayCalenderMiladi";
 
 
-class FlightPassengerForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+const FlightPassengerForm = (props) => {
+    // constructor(props) {
+    //     super(props);
+        const [state,setState] = useState({
             open: false,
             extOpen:false,
-        };
+        });
+    
+    const [err,setErr] = useState({
+        name:false,
+        nameErr:'لطفا نام را صحیح وارد کنید',
+        lname:false,
+        lnameErr:'لطفا نام خانوادگی را صحیح وارد کنید',
+        nationalCode:false,
+        nationalCodeErr:'لطفا کد را صحیح وارد کنید',
+    })
+    const errHandler = (e) => {
+        if (e.target.value.length<=1) {
+            setErr({...err,[e.target.name]:true})
+        }else{
+            setErr({...err,[e.target.name]:false})
+        }
     }
+    
 
     //get title of form
-    getTitleByType = (type) => {
+    const getTitleByType = (type) => {
         if (type == "ADL") {
             return "بزرگسال";
         } else if (type == "CHD") {
@@ -36,7 +52,7 @@ class FlightPassengerForm extends React.Component {
         }
     };
     // get a small description based on type of passenger
-    getSubtitleByType = (type) => {
+    const getSubtitleByType = (type) => {
         if (type == "ADL") {
             return "(12 سال به بالا)";
         } else if (type == "CHD") {
@@ -45,24 +61,24 @@ class FlightPassengerForm extends React.Component {
             return "(زیر 2 سال)";
         }
     };
-    managePopUpBirthdayCalendar = (value) => {
-        this.setState({
+    const managePopUpBirthdayCalendar = (value) => {
+        setState({
             open: value,
         });
     };
-    managePopUpExtPasCalendar = (value) => {
-        this.setState({
+    const managePopUpExtPasCalendar = (value) => {
+        setState({
             extOpen: value,
         });
     };
-    managePopUpFuturedayCalendar = (value) => {
-        this.setState({
+    const managePopUpFuturedayCalendar = (value) => {
+        setState({
             openFuture: value,
         });
     };
-    checkCharacters = (value) => {
+    const checkCharacters = (value) => {
         if (!checkCharacter(value) && value != "") {
-            this.props.messageBoxModify({
+            props.messageBoxModify({
                 message: "لطفا از کاراکتر های لاتین استفاده کنید",
                 state: true,
             });
@@ -71,22 +87,21 @@ class FlightPassengerForm extends React.Component {
         return true;
     };
 
-    render() {
         return (
             <div className={`${styles["passenger-form"]}`}>
                 <div className="row d-flex justify-content-start col-md-12">
                     <div className="col-lg-1 col-md-12 col-sm-12 col-12 no-padding hidden-xs">
                         <p className="no-margin font-size-14 font-bold-iransanse">
-                            {`${this.props.index + 1}-`}&nbsp;
-                            {this.getTitleByType(this.props.type)}
+                            {`${props.index + 1}-`}&nbsp;
+                            {getTitleByType(props.type)}
                         </p>
                         <p className="no-margin font-size-10">
-                            {this.getSubtitleByType(this.props.type)}
+                            {getSubtitleByType(props.type)}
                         </p>
                     </div>
                     <div className="hidden-xs col-lg-1 mr-4 col-md-2 col-sm-2 row-price font-size-12 p-3">
                 <span className="font-size-14 color-secondary font-bold-iransanse ">
-                  {moneyFormat(this.props.price)}
+                  {moneyFormat(props.price)}
                     &nbsp;
                 </span>
                        تومان
@@ -97,11 +112,11 @@ class FlightPassengerForm extends React.Component {
                     >
                         <div className="col-6 no-margin padding-xs-0-7 mx-3">
               <span className="font-size-13 no-margin font-bold-iransanse">
-                {`${this.props.index + 1}-`}&nbsp;
-                  {this.getTitleByType(this.props.type)}{" "}
+                {`${props.index + 1}-`}&nbsp;
+                  {getTitleByType(props.type)}{" "}
               </span>
                             <span className="no-margin font-size-11">
-                {this.getSubtitleByType(this.props.type)}
+                {getSubtitleByType(props.type)}
               </span>
                         </div>
                         <div
@@ -109,17 +124,17 @@ class FlightPassengerForm extends React.Component {
                             style={{marginRight: -14}}
                         >
               <span className="font-size-14 color-secondary font-bold-iransanse">
-                {moneyFormat(this.props.price)}
+                {moneyFormat(props.price)}
               </span>
                             <span className="font-size-12 font-bold-iransanse">تومان</span>
                         </div>
-                        {this.props.id != 0 ? (
+                        {props.id != 0 ? (
                             <div className="col-1 no-margin no-padding">
                 <span
                     style={{padding: 3}}
                     className="exit-form"
                     onClick={() => {
-                        this.props.removePassenger(this.props.id);
+                        props.removePassenger(props.id);
                     }}
                 >
                   <FontAwesomeIcon icon={faTimes}/>
@@ -136,21 +151,24 @@ class FlightPassengerForm extends React.Component {
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
                                         placeholder="نام"
+                                        name="name"
                                         onChange={(e) => {
-                                            if (!this.checkCharacters(e.target.value)) {
+                                            errHandler(e)
+                                            if (!checkCharacters(e.target.value)) {
                                                 return;
                                             }
-                                            this.props.fillPassengersData(
+                                            props.fillPassengersData(
                                                 "name",
-                                                this.props.id,
+                                                props.id,
                                                 e.target.value
                                             );
                                         }}
-                                        value={this.props.name}
+                                        value={props.name}
                                     />
                                 </div>
                                 <span className="color-secondary error-message">
-                  {this.props.nameErr}
+                                    {err.name && err.nameErr}
+                  {/* {props.nameErr} */}
                 </span>
                             </div>
                             <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px m-auto">
@@ -158,21 +176,24 @@ class FlightPassengerForm extends React.Component {
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
                                         placeholder="نام خانودگی"
+                                        name='lname'
                                         onChange={(e) => {
-                                            if (!this.checkCharacters(e.target.value)) {
+                                            errHandler(e)
+                                            if (!checkCharacters(e.target.value)) {
                                                 return;
                                             }
-                                            this.props.fillPassengersData(
+                                            props.fillPassengersData(
                                                 "family",
-                                                this.props.id,
+                                                props.id,
                                                 e.target.value
                                             );
                                         }}
-                                        value={this.props.family}
+                                        value={props.family}
                                     />
                                 </div>
                                 <span className="color-secondary error-message">
-                  {this.props.familyErr}
+                                {err.lname && err.lnameErr}
+                  {/* {props.familyErr} */}
                 </span>
                             </div>
                             <div className=" col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px m-auto">
@@ -180,15 +201,15 @@ class FlightPassengerForm extends React.Component {
                                     style={{padding: "6px 0",border:"1px solid #eee"}}
                                     name="nationality"
                                     onChange={(e) => {
-                                        this.props.fillPassengersData(
+                                        props.fillPassengersData(
                                             "nationality",
-                                            this.props.id,
+                                            props.id,
                                             e.target.value
                                         );
                                     }}
                                 >
                                     <option value="IR">ایرانی</option>
-                                    <option value="other">خارجی</option>
+                                    <option value="other">غیر ایرانی</option>
                                 </PrimarySelectInput>
                             </div>
                             <div className=" col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px m-auto ">
@@ -196,9 +217,9 @@ class FlightPassengerForm extends React.Component {
                                     style={{height: "3em", fontSize: 12}}
                                     name="gender"
                                     onChange={(e) => {
-                                        this.props.fillPassengersData(
+                                        props.fillPassengersData(
                                             "gender",
-                                            this.props.id,
+                                            props.id,
                                             e.target.value
                                         );
                                     }}
@@ -212,108 +233,112 @@ class FlightPassengerForm extends React.Component {
                             <div className="col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px m-auto">
                                 <div>
                                     <PrimaryTextInput
-                                        style={{height: "3em", fontSize: 12}}
+                                    style={{height: "3em", fontSize: 12}}
                                         placeholder="تاریخ تولد"
-                                        value={this.props.birthday}
+                                        value={props.birthday}
                                         onFocus={() => {
-                                            this.managePopUpBirthdayCalendar(true);
+                                            managePopUpBirthdayCalendar(true);
                                         }}
                                         
                                     />
                                 </div>
                                 <span className="color-secondary error-message">
-                  {this.props.birthdayErr}
-                </span>
+                                    {props.birthdayErr}
+                                </span>
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-4 col-6 padding-horizental-3px m-auto">
-                            <div  className={`d-flex align-items-center ${ this.props.pathKind !=1 ? styles["makhfi"]:""  }`} >
+                            <div  className={`d-flex align-items-center ${ props.pathKind !=1 ? styles["makhfi"]:""  }`} >
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
+                                        name="nationalCode"
                                         placeholder={`${
-                                            this.props.nationality == "IR"
+                                            props.nationality == "IR"
                                                 ? "کد ملی"
                                                 : "شماره پاسپورت"
                                         }`}
                                         inputMode={`${
-                                            this.props.nationality == "IR" ? "numeric" : "text"
+                                            props.nationality == "IR" ? "numeric" : "text"
                                         }`}
                                         onChange={(e) => {
-                                            if (this.props.nationality == "other") {
-                                                this.props.fillPassengersData(
+                                            errHandler(e)
+                                            if (props.nationality == "other") {
+                                                props.fillPassengersData(
                                                     "code",
-                                                    this.props.id,
+                                                    props.id,
                                                     e.target.value
                                                 );
                                             } else {
                                                 if (!checkNumber(e.target.value)) {
                                                     return;
                                                 } else {
-                                                    this.props.fillPassengersData(
+                                                    props.fillPassengersData(
                                                         "code",
-                                                        this.props.id,
+                                                        props.id,
                                                         e.target.value
                                                     );
                                                 }
                                             }
                                         }}
-                                        defaultValue={this.props.code}
+                                        defaultValue={props.code}
                                     />
                                 </div>
                                 
                                 
 
 
-                                <div  className={`d-flex align-items-center ${ this.props.pathKind !=2 ? styles["makhfi"]:""  }`} >
+                                <div  className={`d-flex align-items-center ${ props.pathKind !=2 ? styles["makhfi"]:""  }`} >
                                     <PrimaryTextInput 
                                         style={{height: "3em", fontSize: 12,marginRight:12}}
                                         placeholder={` شماره پاسپورت`}
+                                        name="nationalCode"
                                         onChange={(e) => {
-                                            if (!this.checkCharacters(e.target.value)) {
+                                            if (!checkCharacters(e.target.value)) {
                                                 return;
                                             }
-                                            this.props.fillPassengersData(
+                                            props.fillPassengersData(
                                                 "pasno",
-                                                this.props.id,
+                                                props.id,
                                                 e.target.value
                                             );
                                         }}
-                                        defaultValue={this.props.pasno}
+                                        defaultValue={props.pasno}
                                     />
                                     </div>
                                 <span className="color-secondary error-message">
-                   {this.props.codeErr}                                    
-                  {this.props.pasnoErr}
+                                {err.nationalCode && err.nationalCodeErr}
+                   {props.codeErr}                                    
+                  {props.pasnoErr}
                 </span>
                             </div>
                             
                             <div className="col-lg-2 col-md-3 col-sm-4 col-6 padding-horizental-3px m-auto">
-                            <div  className={`d-flex align-items-center ${ this.props.pathKind !=1 ? styles["makhfi"]:""  }`} >
+                            <div  className={`d-flex align-items-center ${ props.pathKind !=1 ? styles["makhfi"]:""  }`} >
                                     <PrimaryTextInput
-                                        style={{height: "3em", fontSize: 12,display: this.props.nationality == 'IR' && 'none'}}
+                                        style={{height: "3em", fontSize: 12,display: props.nationality == 'IR' && 'none'}}
                                         placeholder={`${ "انقضای پاسپورت"}`}
                                         inputMode={`${"text"}`} 
-                                        onChange={(e) => {console.log(this.props);
-                                                this.props.fillPassengersData(
+                                        onChange={(e) => {console.log(props);
+                                                props.fillPassengersData(
                                                     "extPasaport",
-                                                    this.props.id,
+                                                    props.id,
                                                     e.target.value
                                                 );}}
                                                 onFocus={() => {
-                                                    this.managePopUpExtPasCalendar(true);
+                                                    managePopUpExtPasCalendar(true);
                                                 }}
-                                        defaultValue={this.props.extPasaport}
-                                        value={this.props.extPasaport}
+                                        defaultValue={props.extPasaport}
+                                        value={props.extPasaport}
                                     />
                                 </div>
                             </div>
                             <div className="col-lg-2 mt-12 col-md-2 col-sm-4 col-6 padding-horizental-3px ">
-                                <div  className={`${ this.props.pathKind !=2 ? styles["makhfi"]:""  }`} >
+                                <div  className={`${ props.pathKind !=2 ? styles["makhfi"]:""  }`} >
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
                                         placeholder=" انقضا پاسپورت"
-                                        value={this.props.futureday}
+                                        value={props.futureday}
                                         onFocus={() => {
-                                            this.managePopUpFuturedayCalendar(true);
+                                            managePopUpFuturedayCalendar(true);
                                         }}
                                         
                                     />
@@ -322,7 +347,7 @@ class FlightPassengerForm extends React.Component {
                                 <span className="color-secondary error-message">
 
 
-                  {this.props.pasenddatErr}
+                  {props.pasenddatErr}
                 </span>
                             </div>
 
@@ -330,7 +355,7 @@ class FlightPassengerForm extends React.Component {
                     </div>
 
                     <div className="hidden-xs col-lg-1 col-md-2 col-sm-2 row-price font-size-12">
-                        {this.props.id != 0 ? (
+                        {props.id != 0 ? (
                             <div
                                 className="hidden-xs hidden-sm corner-position"
                                 style={{position: "absolute", left: "-33px", top: "35px"}}
@@ -338,7 +363,7 @@ class FlightPassengerForm extends React.Component {
                 <span
                     className="delete-thumbnail"
                     onClick={() => {
-                        this.props.removePassenger(this.props.id);
+                        props.removePassenger(props.id);
                     }}
                 >
                   <svg id="Layer_1" height="23" viewBox="0 0 24 24" width="23" data-name="Layer 1"><path
@@ -351,46 +376,46 @@ class FlightPassengerForm extends React.Component {
                 </div>
                 
                 <PopUp
-                    opened={this.state.open}
-                    closePopUp={this.managePopUpBirthdayCalendar}
+                    opened={state.open}
+                    closePopUp={managePopUpBirthdayCalendar}
                 >
                     <div style={{padding: 15}}>
                         <BirthdayCalenderMiladi
-                            typePassenger={this.props.type}
+                            typePassenger={props.type}
                             setBirthday={(value) => {
-                                this.props.fillPassengersData("birthday", this.props.id, value);
+                                props.fillPassengersData("birthday", props.id, value);
                             }}
-                            closePopUpCalendar={this.managePopUpBirthdayCalendar}
+                            closePopUpCalendar={managePopUpBirthdayCalendar}
                         />
                     </div>
                 </PopUp>
                 
                 <PopUp
-                    opened={this.state.extOpen}
-                    closePopUp={this.managePopUpExtPasCalendar}
+                    opened={state.extOpen}
+                    closePopUp={managePopUpExtPasCalendar}
                 >
                     <div style={{padding: 15}}>
                         <BirthdayCalenderMiladi
-                            typePassenger={this.props.type}
+                            typePassenger={props.type}
                             setBirthday={(value) => {
-                                this.props.fillPassengersData("extPasaport", this.props.id, value);
+                                props.fillPassengersData("extPasaport", props.id, value);
                             }}
-                            closePopUpCalendar={this.managePopUpExtPasCalendar}
+                            closePopUpCalendar={managePopUpExtPasCalendar}
                         />
                     </div>
                 </PopUp>
 
                 <PopUp
-                    opened={this.state.openFuture}
-                    closePopUp={this.managePopUpFuturedayCalendar}
+                    opened={state.openFuture}
+                    closePopUp={managePopUpFuturedayCalendar}
                 >
                     <div style={{padding: 15}}>
                         <FuturedayCalendar
                             numOfYear={10}
                             setFutureday={(value) => {
-                                this.props.fillPassengersData("futureday", this.props.id, value);
+                                props.fillPassengersData("futureday", props.id, value);
                             }}
-                            closePopUpCalendar={this.managePopUpFuturedayCalendar}
+                            closePopUpCalendar={managePopUpFuturedayCalendar}
                         />
                     </div>
                 </PopUp>
@@ -399,7 +424,7 @@ class FlightPassengerForm extends React.Component {
             </div>
         );
     }
-}
+
 
 const dispatchStateToProps = (dispatch) => ({
     messageBoxModify: (value) => dispatch(messageBoxModify(value)),
