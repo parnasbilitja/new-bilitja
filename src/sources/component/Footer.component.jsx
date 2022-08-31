@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../../styles/Footer.module.scss";
-import {faPhone, faGlobe} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faPhone, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faInstagram,
     faTwitter,
@@ -118,7 +118,7 @@ const Footer = () => {
                                 <li>
                                     <a href="#">همکاری</a>
                                 </li>
-                                <li style={{marginBottom: 20}}>
+                                <li style={{ marginBottom: 20 }}>
                                     <a href="#"></a>
                                 </li>
                             </ul>
@@ -126,10 +126,10 @@ const Footer = () => {
                         <div className="col-lg-2 col-md-3 item-footer col-6 mb-2">
                             {" "}
                             <div className={styles["footer-virtual-mobile"]}>
-                                <div style={{marginBottom: 8}}>
+                                <div style={{ marginBottom: 8 }}>
                                     <div className="d-flex align-items-center mb-2">
                                         <div className={styles["circle"]}></div>
-                                        <b style={{marginTop: 3}} className="mb-0">
+                                        <b style={{ marginTop: 3 }} className="mb-0">
                                             شبکه های اجتماعی{" "}
                                         </b>
                                     </div>
@@ -137,24 +137,24 @@ const Footer = () => {
 
                                 <ul className={styles["ul-soutian"]}>
                                     <li>
-                                        <FontAwesomeIcon icon={faGlobe}/>
+                                        <FontAwesomeIcon icon={faGlobe} />
                                         <a href="#">bilitja.com</a>
                                     </li>
                                     <li>
                                         <a href="https://instagram.com/bilitja">
-                                            <FontAwesomeIcon icon={faInstagram}/>
+                                            <FontAwesomeIcon icon={faInstagram} />
                                         </a>
                                         <a href="https://instagram.com/hamnavaz.tour">bilitja </a>
                                     </li>
                                     <li>
                                         <a href="https://twitter.com/bilitja">
-                                            <FontAwesomeIcon icon={faTwitter}/>
+                                            <FontAwesomeIcon icon={faTwitter} />
                                         </a>
                                         <a href="https://twitter.com/bilitja">bilitja</a>
                                     </li>
                                     <li>
                                         <a href="https://facebook.com/bilitja">
-                                            <FontAwesomeIcon icon={faFacebook}/>
+                                            <FontAwesomeIcon icon={faFacebook} />
                                         </a>
                                         <a href="https://facebook.com/bilitja">bilitja</a>
                                     </li>
@@ -169,17 +169,17 @@ const Footer = () => {
                             </div>
                             <ul className={styles["ul-lists"]}>
                                 <li>
-                                    <FontAwesomeIcon icon={faPhone}/>
+                                    <FontAwesomeIcon icon={faPhone} />
                                     <a href="#">تهران</a>
                                 </li>
                                 <li>
-                                    <FontAwesomeIcon icon={faPhone}/>
+                                    <FontAwesomeIcon icon={faPhone} />
                                     <a href="#"> تلفن پشتیبانی :
                                         <span className={'number-space'}>02184279999</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <FontAwesomeIcon icon={faPhone}/>
+                                    <FontAwesomeIcon icon={faPhone} />
                                     <a href="#">موبایل پشتیبانی :
                                         <span className={'number-space'}>09101005065</span>
                                     </a>
@@ -223,7 +223,7 @@ const Footer = () => {
           </div> */}
                         </div>
                         <div
-                            style={{display: "none"}}
+                            style={{ display: "none" }}
                             className={`col-lg-2 col-md-3 col-6${styles["contact-desktop"]}`}
                         >
                             <div className="d-flex align-items-center mb-2">
@@ -231,15 +231,15 @@ const Footer = () => {
                             </div>
                             <ul className={styles["ul-lists"]}>
                                 <li>
-                                    <FontAwesomeIcon icon={faPhone}/>
+                                    <FontAwesomeIcon icon={faPhone} />
                                     <a href="#">تهران</a>
                                 </li>
                                 <li>
-                                    <FontAwesomeIcon icon={faPhone}/>
+                                    <FontAwesomeIcon icon={faPhone} />
                                     <a href="#"> تلفن پشتیبانی : 02157912000 - 02157874</a>
                                 </li>
                                 <li>
-                                    <FontAwesomeIcon icon={faPhone}/>
+                                    <FontAwesomeIcon icon={faPhone} />
                                     <a href="#">موبایل پشتیبانی : 09101214100</a>
                                 </li>
                             </ul>
@@ -247,24 +247,24 @@ const Footer = () => {
                         <div className={styles["footer-virtual"]}>
                             <ul>
                                 <li>
-                                    <FontAwesomeIcon icon={faGlobe}/>
+                                    <FontAwesomeIcon icon={faGlobe} />
                                     <a href="#">bilitja.bilitja</a>
                                 </li>
                                 <li>
                                     <a href="https://instagram.com/bilitja">
-                                        <FontAwesomeIcon icon={faInstagram}/>
+                                        <FontAwesomeIcon icon={faInstagram} />
                                     </a>
                                     <a href="https://instagram.com/bilitja">bilitja.tour</a>
                                 </li>
                                 <li>
                                     <a href="https://twitter.com/bilitja">
-                                        <FontAwesomeIcon icon={faTwitter}/>
+                                        <FontAwesomeIcon icon={faTwitter} />
                                     </a>
                                     <a href="https://twitter.com/bilitja">bilitja</a>
                                 </li>
                                 <li>
                                     <a href="https://facebook.com/bilitja">
-                                        <FontAwesomeIcon icon={faFacebook}/>
+                                        <FontAwesomeIcon icon={faFacebook} />
                                     </a>
                                     <a href="https://facebook.com/bilitja">bilitja</a>
                                 </li>
@@ -273,12 +273,12 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className={styles["footer-copy"]}>
-                    <div className={styles["footer-right"]}>
+                    <div className={styles["footer-right"]} style="height: 95px">
                         <div>© کپی رایت 1400. Ver 1.1.1</div>
                         <span>کلیه حقوق این سایت محفوظ و متعلق به بلیط جا می‌باشد. </span>
                     </div>
 
-                    <div><a
+                    <div className="col-xl-3 col-lg-3 d-flex justify-content-end"><a
                         referrerPolicy="origin"
                         target="_blank"
                         href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
@@ -287,11 +287,11 @@ const Footer = () => {
                             referrerPolicy="origin"
                             src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
                             alt=""
-                            id="wC1opUKBlpiUx3sEWOGR"
+                            id="wC1opUKBlpiUx3sEWOGR" width={'90px'} height={'90px'}
                         />
                     </a></div>
                     <div className={styles["footer-left"]}>
-                        <strong style={{width: 500}}>طراحی و توسعه سایت : </strong>
+                        <strong style={{ width: 500 }}>طراحی و توسعه سایت : </strong>
                         <span> تیم فنی و توسعه بلیطجا </span>
                     </div>
                 </div>
