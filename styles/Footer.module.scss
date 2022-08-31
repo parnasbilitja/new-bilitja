@@ -10,6 +10,7 @@
     color: rgb(241, 241, 241);
     font-size: 14px;
     flex-direction: column !important;
+    align-items: center;
     .footer-right {
       margin-top: 17px;
       margin-right: 20px;
@@ -18,7 +19,7 @@
       }
     }
     .footer-left {
-      margin: 17px;
+      margin: 17px auto;
       margin-left: 20px;
       span {
         color: #ff0000;
@@ -123,7 +124,7 @@
       }
     }
     .footer-left {
-      margin: 17px;
+      margin: 17px auto;
       margin-left: 20px;
       span {
         color: #ff0000;
