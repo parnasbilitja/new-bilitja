@@ -273,7 +273,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className={styles["footer-copy"]}>
-                    <div className={styles["footer-right"]} style="height: 95px">
+                    <div className={styles["footer-right"]} style={{ height: 95 }}>
                         <div>© کپی رایت 1400. Ver 1.1.1</div>
                         <span>کلیه حقوق این سایت محفوظ و متعلق به بلیط جا می‌باشد. </span>
                     </div>
