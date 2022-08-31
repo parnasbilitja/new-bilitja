@@ -291,7 +291,7 @@ const Footer = () => {
                         />
                     </a></div>
                     <div className={styles["footer-left"]}>
-                        <strong style={{ width: 500 }}>طراحی و توسعه سایت : </strong>
+                        <strong>طراحی و توسعه سایت : </strong>
                         <span> تیم فنی و توسعه بلیطجا </span>
                     </div>
                 </div>
