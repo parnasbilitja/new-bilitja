@@ -144,6 +144,14 @@ class NavBar extends React.Component {
                         رزرو تور
                       </a>
                     </li>
+                    <li>
+                      <a href="/hotels">
+                        <i
+                          className={`bilitja icon-tours  ${styles["nav-icon"]} rotate-y-180`}
+                        ></i>
+                        رزرو هتل
+                      </a>
+                    </li>
                     {/* <li>
               <a href="/blog">
                 <i className={`bilitja icon-blog ${styles["nav-icon"]} `}></i>
