@@ -3,10 +3,8 @@ import axios from 'axios';
 import { useAtom } from 'jotai';
 import { tourSlug } from '../jotai/jotai';
 import Link from 'next/link';
-import NavBar from "./../sources/component/NavBar.component";
-
 import Footer from '../sources/component/Footer.component';
-//import '../../styles/manager.module.scss'
+import NavHandler from '../Components/share/NavHandler';
 
 const tours = () => {
     const [data, setData] = useState(null)
@@ -26,7 +24,7 @@ const tours = () => {
     return (
         <div>
             <div className="mt-5 bodyVar">
-                <NavBar />
+                    <NavHandler/>
                 <div className="container mt-5 pt-4">
                     <div className="d-flex flex-column mb-4">
                         <div className="d-flex align-items-center justify-content-between">

@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment-jalaali'
 import styles from '../../../styles/BirthdayCalendar.module.scss'
 class BirthdayCalendar extends React.Component {
-    current = 1401
+    current = 1402
 
     constructor(props) {
         super(props)
@@ -21,8 +21,8 @@ class BirthdayCalendar extends React.Component {
 
     getYears = () => {
         if (this.props.typePassenger == "ADL") {
-            return new Array(this.current - 11 - 1300).fill().map((x, index) => {
-                return 1300 + index
+            return new Array(this.current - 11 - this.props.numBase).fill().map((x, index) => {
+                return this.props.num + index
             }).reverse()
         } else if (this.props.typePassenger == "CHD") {
             return new Array(11).fill().map((x, index) => {
@@ -59,10 +59,20 @@ class BirthdayCalendar extends React.Component {
         return revArrayOfDay.reverse()
     }
     getMonth = () => {
-        const monthes = ["", "خرداد", "اردیبهشت", "فروردین",
-            "شهریور", "مرداد", "تیر",
-            "آذر", "آبان", "مهر",
-            "اسفند", "بهمن", "دی"]
+        const monthes = ["",
+        "فروردین",
+        "اردیبهشت",
+        "خرداد",
+        "تیر",
+        "مرداد",
+        "شهریور",
+        "مهر",
+        "آبان",
+        "آذر",
+        "دی",
+        "بهمن",
+        "اسفند",
+            ]
 
         return monthes[parseInt( this.state.month)]
     }
@@ -73,7 +83,7 @@ class BirthdayCalendar extends React.Component {
                     this.state.stage == 1 ?
                         <div>
                             <p className="font-size-14 black-color font-bold-iransanse text-center">
-                                لطفا سال تولد خود را وارد کنید
+                                {this.props.placeholder}
                             </p>
 
                             <div className={styles['birthday-year-container']}>

@@ -14,15 +14,28 @@ import {checkCharacter, checkNumber} from "../../Utils/SimpleTasks";
 import {messageBoxModify} from "../../Redux/UI/ui.action";
 import {connect} from "react-redux";
 import BirthdayCalenderMiladi from "../calendar/BirthdayCalenderMiladi";
+import PrimaryTextInputMobile from "../component/PrimaryTextInputMobile";
+import PopUpWide from "../component/PopUpWide.component";
+import CalendarComponent from "../calendar/Calendar.component";
+import BirthDayParent from "../calendar/BirthDayParent";
 
 
 const FlightPassengerForm = (props) => {
+    // console.log(props);
     // constructor(props) {
     //     super(props);
         const [state,setState] = useState({
             open: false,
             extOpen:false,
         });
+        const [calend,setCalend] = useState(false)
+        const [birthday,setBirthday] = useState('')
+        // for mobile
+            const managePopUpCalendar = (value) => {
+                setState({...state,
+                open: value,
+                });
+            };
     
     const [err,setErr] = useState({
         name:false,
@@ -86,6 +99,15 @@ const FlightPassengerForm = (props) => {
         }
         return true;
     };
+
+    // const {
+    //     credentials: {
+  
+    //       flightDatePersian,
+    //       stDate,
+    //       typeOfCalendar,
+    //     },
+    //   } = props;
 
         return (
             <div className={`${styles["passenger-form"]}`}>
@@ -247,7 +269,7 @@ const FlightPassengerForm = (props) => {
                                 </span>
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-4 col-6 padding-horizental-3px m-auto">
-                            <div  className={`d-flex align-items-center ${ props.pathKind !=1 ? styles["makhfi"]:""  }`} >
+                            <div  className={`d-flex align-items-center ${ props.pathKind ==4 ? styles["makhfi"]:""  }`} >
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
                                         name="nationalCode"
@@ -272,7 +294,7 @@ const FlightPassengerForm = (props) => {
                                                     return;
                                                 } else {
                                                     props.fillPassengersData(
-                                                        "code",
+                                                        "pasno",
                                                         props.id,
                                                         e.target.value
                                                     );
@@ -286,7 +308,7 @@ const FlightPassengerForm = (props) => {
                                 
 
 
-                                <div  className={`d-flex align-items-center ${ props.pathKind !=2 ? styles["makhfi"]:""  }`} >
+                                {/* <div  className={`d-flex align-items-center ${ props.pathKind !=2 ? styles["makhfi"]:""  }`} >
                                     <PrimaryTextInput 
                                         style={{height: "3em", fontSize: 12,marginRight:12}}
                                         placeholder={` شماره پاسپورت`}
@@ -308,11 +330,11 @@ const FlightPassengerForm = (props) => {
                                 {err.nationalCode && err.nationalCodeErr}
                    {props.codeErr}                                    
                   {props.pasnoErr}
-                </span>
+                                </span> */}
                             </div>
                             
                             <div className="col-lg-2 col-md-3 col-sm-4 col-6 padding-horizental-3px m-auto">
-                            <div  className={`d-flex align-items-center ${ props.pathKind !=1 ? styles["makhfi"]:""  }`} >
+                            <div  className={`d-flex align-items-center ${ props.pathKind !=2 ? styles["makhfi"]:""  }`} >
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12,display: props.nationality == 'IR' && 'none'}}
                                         placeholder={`${ "انقضای پاسپورت"}`}
@@ -332,7 +354,7 @@ const FlightPassengerForm = (props) => {
                                 </div>
                             </div>
                             <div className="col-lg-2 mt-12 col-md-2 col-sm-4 col-6 padding-horizental-3px ">
-                                <div  className={`${ props.pathKind !=2 ? styles["makhfi"]:""  }`} >
+                                {/* <div  className={`${ props.pathKind !=2 ? styles["makhfi"]:""  }`} >
                                     <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12}}
                                         placeholder=" انقضا پاسپورت"
@@ -343,7 +365,7 @@ const FlightPassengerForm = (props) => {
                                         
                                     />
                                       
-                                </div>
+                                </div> */}
                                 <span className="color-secondary error-message">
 
 
@@ -380,29 +402,48 @@ const FlightPassengerForm = (props) => {
                     closePopUp={managePopUpBirthdayCalendar}
                 >
                     <div style={{padding: 15}}>
-                        <BirthdayCalenderMiladi
+                    <button onClick={()=>setCalend(!calend)}>{calend?'میلادی':'شمسی'}</button>
+                        <BirthDayParent
+                            numSh={1300}
+                            numBase={1300}
+                            numMi={1920}
+                            numMiBase={1300}
+                            placeholder="لطفا تاریخ تولد را وارد کنید"
+                            calend={calend}
                             typePassenger={props.type}
-                            setBirthday={(value) => {
+                            name="birthday"
+                            setBirthdayb={(value) => {
                                 props.fillPassengersData("birthday", props.id, value);
                             }}
                             closePopUpCalendar={managePopUpBirthdayCalendar}
                         />
+                        {/* <BirthdayCalenderMiladi
+                        /> */}
                     </div>
                 </PopUp>
-                
+
                 <PopUp
                     opened={state.extOpen}
                     closePopUp={managePopUpExtPasCalendar}
                 >
                     <div style={{padding: 15}}>
-                        <BirthdayCalenderMiladi
+                    <button onClick={()=>setCalend(!calend)}>{calend?'میلادی':'شمسی'}</button>
+                        <BirthDayParent
+                            numSh={1402}
+                            numBase={1380}
+                            numMi={2022}
+                            numMiBase={1380}
+                            placeholder="لطفا تاریخ انقضا را وارد کنید"
+                            calend={calend}
                             typePassenger={props.type}
-                            setBirthday={(value) => {
+                            name="birthday"
+                            setBirthdayb={(value) => {
                                 props.fillPassengersData("extPasaport", props.id, value);
                             }}
-                            closePopUpCalendar={managePopUpExtPasCalendar}
+                            closePopUpCalendar={managePopUpBirthdayCalendar}
                         />
                     </div>
+                    
                 </PopUp>
 
                 <PopUp
@@ -428,5 +469,6 @@ const FlightPassengerForm = (props) => {
 
 const dispatchStateToProps = (dispatch) => ({
     messageBoxModify: (value) => dispatch(messageBoxModify(value)),
+    accountBoxModify: (value) => dispatch(accountBoxModify(value)),
 });
 export default connect(null, dispatchStateToProps)(FlightPassengerForm);

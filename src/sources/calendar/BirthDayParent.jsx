@@ -1,0 +1,35 @@
+import React from 'react';
+import BirthdayCalendar from './BirthdayCalendar.component';
+import BirthdayCalenderMiladi from './BirthdayCalenderMiladi';
+
+const BirthDayParent = (props) => {
+    return (
+        <div>
+            {props.calend?
+            <BirthdayCalendar
+                numBase={props.numBase}
+                num={props.numSh}
+                placeholder={props.placeholder}
+                typePassenger={props.typePassenger}
+                setBirthday={(value) => {
+                    props.setBirthdayb(value)
+                }}
+                closePopUpCalendar={props.closePopUpCalendar}
+            />
+            :
+            <BirthdayCalenderMiladi
+                num={props.numMi}
+                numBase={props.numMiBase}
+                placeholder={props.placeholder}
+                typePassenger={props.typePassenger}
+                setBirthday={(value) => {
+                    props.setBirthdayb(value)
+                }}
+                closePopUpCalendar={props.closePopUpCalendar}
+            />
+        }
+        </div>
+    );
+};
+
+export default BirthDayParent;
