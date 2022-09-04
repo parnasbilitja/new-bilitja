@@ -1197,6 +1197,7 @@ button {
 .sticky-datalist{
   position : sticky;
   position: -webkit-sticky;
+  height: fit-content;
   top: 20px;
   .c-datalist{
     box-shadow: 0 0 3px rgba($color: #676767, $alpha: .7);
