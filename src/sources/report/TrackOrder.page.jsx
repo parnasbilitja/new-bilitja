@@ -40,9 +40,6 @@ class TrackOrder extends React.Component {
                                 <div className="col-lg-10 col-md-10 col-sm-10 col-10 text-right font-size-14">
                                     <p className="track-order-second-title">جهت پیگیری رزرو، کد 6 رقمی رفرنس را وارد نمایید و بروی دکمه جستجو  کلیک کنید</p>
                                 </div>
-
-                                {/* <div className="col-lg-1 col-md-1 col-sm-0 hidden-xs"></div> */}
-
                                 <div className="w-100">
                                     <div className="col-md-10 form-input-border height-short-input">
                                         <PrimaryTextInput placeholder="رفرنس پیگیری" name="trackRef" onChange={this.handleChange} />

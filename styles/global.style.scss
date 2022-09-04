@@ -75,6 +75,10 @@ body {
   font-family: IranBold !important;
 }
 
+ul{
+  list-style: none;
+}
+
 a {
   color: $pillTextGray;
   text-decoration: none;
@@ -88,6 +92,14 @@ html {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+}
+
+.text-base-color-1{
+  color: #090026;
+}
+
+.btn-base-color-1{
+  background-color: #090026;
 }
 
 .bodyVar {
@@ -978,6 +990,10 @@ div.radio {
 $base-color-1: #279692;
 $base-color-2: #ff0000;
 
+.line-through{
+  text-decoration: line-through;
+}
+
 .color-base-color {
   color: $base-color-2;
 }
@@ -1134,6 +1150,103 @@ button {
   }
 }
 
+//style => amir.qn for ...
+.hotel-list {
+  .c-hotel{
+    box-shadow: 0 0 2px rgba($color: #000000, $alpha: .3);
+    border-radius: 15px;
+    margin-left: 7px;
+    .gallery{
+      .image{
+        img{
+          border-radius: 20px 15px 15px 20px;
+          object-fit: cover;
+        }
+      }
+    }
+    .detail-hotel{
+      height: 190px;
+    }
+  }
+}
+
+.p-room,
+.p-comment{
+  .c-room,
+  .c-comment{
+    .image{
+      img{
+        border-radius: 12px 8px 8px 12px;
+        object-fit: cover;
+      }
+    }
+    .title{
+        height: 140px;
+    }
+    .avatar{
+      img{
+        border-radius: 100px;
+        object-fit: cover;
+      }
+    }
+    box-shadow: 0 0 2px rgba($color: #777777, $alpha: .4);
+    border-radius: 5px;
+  }
+}
+
+.sticky-datalist{
+  position : sticky;
+  position: -webkit-sticky;
+  height: fit-content;
+  top: 20px;
+  .c-datalist{
+    box-shadow: 0 0 3px rgba($color: #676767, $alpha: .7);
+    border-radius: 5px;
+    padding: 10px;
+  }
+}
+
+.date-show{
+  padding-right: 10px;
+  .c-date-show{
+    flex: 0 0 12%;
+    max-width: 12%;
+  }
+  .start-date,
+  .end-date{
+    border-top: 2px solid #ff0000 !important;
+    border-bottom: 2px solid #ff0000 !important;
+  }
+  .complete-capacity{
+    opacity: .6;
+  }
+}
+
+.rotate-data{
+  animation: animation-rotate 5s 1s ease-in infinite;
+}
+
+.collection-gallery{
+  .image{
+    img{
+      border-radius: 8px;
+    }
+  }
+}
+
+
+@keyframes animation-rotate {
+    0%{
+      transform: rotate(0);
+    }
+    100%{
+      transform: rotate(-180deg);
+    }
+}
+
+
+// @media (max-width: 1290px){
+// }
 
 //style => amir.qn
 
@@ -1496,4 +1609,12 @@ $sizes: 100;
   .border-box {
     display: none;
   }
+    //style => amir.qn for ...
+    .hotel-list {
+      .c-hotel {
+        .detail-hotel {
+          height: auto;
+        }
+      }
+    }
 }

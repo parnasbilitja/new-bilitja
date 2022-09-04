@@ -125,7 +125,7 @@ const tours = () => {
                 <Footer />
             </div>
 
-        </div>
+        </div >
     );
 };
 
