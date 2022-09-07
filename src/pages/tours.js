@@ -5,8 +5,21 @@ import { tourSlug } from '../jotai/jotai';
 import Link from 'next/link';
 import Footer from '../sources/component/Footer.component';
 import NavHandler from '../Components/share/NavHandler';
+import Pagination from '../Components/pagination/Pagination';
+import MessageBox from "./../sources/component/MessageBox.component"
+import PopUp from '../sources/component/PopUp.component';
 
-const tours = () => {
+import { connect } from "react-redux";
+import { selcetAccountBox } from "../Redux/UI/ui.reselect";
+import { accountBoxModify } from "../Redux/UI/ui.action";
+import { withRouter } from "next/router";
+
+import dynamic from "next/dynamic";
+
+const Account = dynamic(() => import("./../sources/account/Account.component"));
+
+
+const tours = (props) => {
     const [data, setData] = useState(null)
     const [slug, setSlug] = useAtom(tourSlug)
     const getData = async () => {
@@ -23,8 +36,23 @@ const tours = () => {
     }
     return (
         <div>
+            <PopUp
+          opened={props.accountBox.state}
+          closePopUp={() => {
+            props.accountBoxModify({
+              state: false,
+            });
+          }}
+        >
+          <Account />
+        </PopUp>
             <div className="mt-5 bodyVar">
                     <NavHandler/>
+                    {/* <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <Pagination/> */}
                 <div className="container mt-5 pt-4">
                     <div className="d-flex flex-column mb-4">
                         <div className="d-flex align-items-center justify-content-between">
@@ -129,4 +157,10 @@ const tours = () => {
     );
 };
 
-export default tours;
+const mapStatesToProps = (state) => ({
+  accountBox: selcetAccountBox(state),
+});
+const mapDispatchesToProps = (dispatch) => ({
+  accountBoxModify: (value) => dispatch(accountBoxModify(value)),
+});
+export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(tours));

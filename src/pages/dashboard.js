@@ -11,12 +11,18 @@ import WalletBalanc from "../sources/dashboard/wallet/Wallet.component";
 import MyVilla from "../sources/dashboard/villa/MyVilla.component";
 import Requset from "../sources/dashboard/request/Requset";
 import Agency from "../sources/dashboard/agency/Agency";
-import { useRouter } from "next/router";
 import { store } from "../Redux/store";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../../styles/ManagerNav.module.scss";
-const Dashboard = () => {
+import { useRouter } from 'next/router';
+
+import { connect } from "react-redux";
+import { selcetAccountBox } from "../Redux/UI/ui.reselect";
+import { accountBoxModify,messageBoxModify }  from "../Redux/UI/ui.action";
+import { withRouter } from "next/router";
+
+const Dashboard = (props) => {
   const myRouter = useRouter();
   const [width, setWidth] = useState(0);
   const [open, setOpen] = useState(false);
@@ -36,6 +42,8 @@ const Dashboard = () => {
     var path = decodeURI(pathName);
     console.log("Test Path", path);
     switch (path) {
+      case "/dashboard":
+        return <Profile />;
       case "/dashboard/profile":
         return <Profile />;
       case "/dashboard/index":
@@ -58,9 +66,31 @@ const Dashboard = () => {
         return <div />;
     }
   }
+  const [checker,setChecker] = useState(false)
+  const router = useRouter();
+  useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      setChecker(false)
+      router.push({
+        pathname: '/',})
+        setTimeout(() => {
+        props.messageBoxModify({
+          state: true,
+          message: 'ابتدا وارد حساب خود شوید',
+        });
+      }, 2000);
+      }else{
+        setChecker(true)
+      }
+  },[])
   return (
     <div>
+      {
+    console.log(props.user.logged)
+      }
       <Provider store={store}>
+        {checker &&
+        <>
         <DashboardNav open={open} onClose={() => setOpen(false)}>
           <div className={styles["manager-small-screen-top-bar"]}>
             <FontAwesomeIcon
@@ -82,9 +112,17 @@ const Dashboard = () => {
             <MessageBox />
           </div>
         </div>
+        </>}
       </Provider>
     </div>
   );
 };
-
-export default Dashboard;
+const mapStateToProps = (state) => ({
+  // messageBox: selectMessageBox(state),
+  user: state.user,
+});
+const mapDispatchesToProps = (dispatch) => ({
+  accountBoxModify: (value) => dispatch(accountBoxModify(value)),
+  messageBoxModify: (value) => dispatch(messageBoxModify(value)),
+});
+export default withRouter(connect(mapStateToProps, mapDispatchesToProps)(Dashboard));

@@ -89,6 +89,7 @@ class PopupFlightReserve extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.message == "OK") {
           this.props
             .addReservationProperties({

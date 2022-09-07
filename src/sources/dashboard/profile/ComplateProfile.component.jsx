@@ -9,6 +9,7 @@ import { messageBoxModify } from "./../../../Redux/UI/ui.action";
 import { connect } from "react-redux";
 import PopUp from "./../../component/PopUp.component";
 import BirthdayCalendar from "./../../calendar/BirthdayCalendar.component";
+import BirthDayParent from "../../calendar/BirthDayParent";
 
 const ComplateProfile = (props) => {
   const router = useRouter();
@@ -16,9 +17,12 @@ const ComplateProfile = (props) => {
     UserId: "",
     gender: 0,
     MariedStat: 0,
+    birthDate:null
   });
 
   const [open, setOpen] = useState(false);
+  const [calend,setCalend] = useState(false)
+
 
   useEffect(() => {
     setState((prevSate) => ({
@@ -106,7 +110,7 @@ const ComplateProfile = (props) => {
                   <img
                     width=""
                     height=""
-                    src="https://profiles.utdallas.edu/img/default.png"
+                    src={"https://profiles.utdallas.edu/img/default.png"}
                     alt="بلیطجا - عکس پروفایل کاربر"
                     className="img-fluid img-responsive rounded-circle border-black profile-img"
                   />
@@ -325,13 +329,32 @@ const ComplateProfile = (props) => {
         closePopUp={() => managePopUpBirthdayCalendar(false)}
       >
         <div className="p-15">
-          <BirthdayCalendar
+        <button onClick={()=>setCalend(!calend)}>{calend?'میلادی':'شمسی'}</button>
+                        <BirthDayParent
+                            numSh={1300}
+                            numBase={1350}
+                            numMi={1920}
+                            numMiBase={1300}
+                            placeholder="لطفا تاریخ تولد را وارد کنید"
+                            calend={calend}
+                            typePassenger={"ADL"}
+                            name="birthday"
+                            setBirthdayb={(value) => {
+                              setState((prevState) => ({ ...prevState, birthDate: value }));
+                            }}
+                            closePopUpCalendar={managePopUpBirthdayCalendar}
+                        />
+          {/* <BirthdayCalendar
             typePassenger={"ADL"}
+            numBase={1300}
+                num={1300}
+                placeholder={'props.placeholder'}
+                
             setBirthday={(value) => {
               setState((prevState) => ({ ...prevState, birthDate: value }));
             }}
             closePopUpCalendar={() => managePopUpBirthdayCalendar(false)}
-          />
+          /> */}
         </div>
       </PopUp>
     </section>

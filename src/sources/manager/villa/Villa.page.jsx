@@ -27,8 +27,8 @@ class Villa extends React.Component {
   componentDidMount() {
     this.getData();
   }
-  getData = () => {
-    fetch(`${globals.baseUrl}bj/eghamat/view`)
+  getData = async() => {
+    await fetch(`${globals.baseUrl}bj/eghamat/view`)
       .then((res) => res.json())
       .then((data) => this.setState({ vilas: data.Eghamat }));
   };

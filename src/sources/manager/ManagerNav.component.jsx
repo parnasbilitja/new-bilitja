@@ -258,7 +258,7 @@ const ManagerNav = (props) => {
         <div
           className={`${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
-            myRouter.push("/logout");
+            myRouter.push("/");
           }}
         >
           <div>

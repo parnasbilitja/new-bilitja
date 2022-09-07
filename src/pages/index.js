@@ -5,10 +5,10 @@ import Head from "next/head";
 
 import dynamic from "next/dynamic";
 const Home = dynamic(() => import("./../sources/Home.page"));
-const NavBar = dynamic(() => import("./../sources/component/NavBar.component"));
-const NavBarMobile = dynamic(() =>
-  import("./../sources/component/NavBarMobile.component")
-);
+// const NavBar = dynamic(() => import("./../sources/component/NavBar.component"));
+// const NavBarMobile = dynamic(() =>
+//   import("./../sources/component/NavBarMobile.component")
+// );
 const Footer = dynamic(() => import("./../sources/component/Footer.component"));
 const MessageBox = dynamic(() =>
   import("./../sources/component/MessageBox.component")
@@ -20,6 +20,7 @@ import { connect } from "react-redux";
 import { selcetAccountBox } from "../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../Redux/UI/ui.action";
 import { withRouter } from "next/router";
+import NavHandler from "../Components/share/NavHandler";
 
 class App extends React.Component {
   constructor(props) {
@@ -30,23 +31,23 @@ class App extends React.Component {
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
-  mainRouter(pathName) {
-    pathName = decodeURI(pathName);
-    switch (this.props.mainRoute) {
-      case "index": {
-        return <Home></Home>;
-      }
+  // mainRouter(pathName) {
+  //   pathName = decodeURI(pathName);
+  //   switch (this.props.mainRoute) {
+  //     case "index": {
+  //       return <Home></Home>;
+  //     }
 
-      default:
-        return (
-          <div>
-            {" "}
-            {/* <Contextmytitle.Provider value="dark" /> */}
-            <Home></Home>
-          </div>
-        );
-    }
-  }
+  //     default:
+  //       return (
+  //         <div>
+  //           {" "}
+  //           {/* <Contextmytitle.Provider value="dark" /> */}
+  //           <Home></Home>
+  //         </div>
+  //       );
+  //   }
+  // }
 
   setTitleMeta(pathName) {
     var src = "";
@@ -87,13 +88,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="bodyVar">
-        {this.state.width <= 826 ? <NavBarMobile /> : null}
-        {this.state.width >= 826 ? <NavBar /> : null}
+        <NavHandler/>
         <div className={this.state.width <= 826 ? "mt-110" : "mt-90"}>
           {
-            this.mainRouter(this.props.router.asPath)
+            // this.mainRouter(this.props.router.asPath)
             //console.log(this.props.router)
             //   this.props.router.push("/flights")
+            <Home/>
           }
           <MessageBox />
           <Footer />

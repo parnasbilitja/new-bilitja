@@ -128,8 +128,8 @@ export default function ManagePanel() {
       //   case '/panel/facility/show/:id' : return <UpdateFacility/>  ;
       case "/panel/profile":
         return <Profile />;
-      case "/panel/index":
-        return <h1>No Content Yet</h1>;
+      case "/panel":
+        return <Profile />;
       case "/panel/complate-profile":
         return <ComplateProfile />;
       case "/panel/edit-profile":
