@@ -16,6 +16,7 @@ import FlightReciept from "./../sources/flight_receipt/FlightReciept.page";
 import TrackOrder from "./../sources/report/TrackOrder.page";
 import { withRouter } from "next/router";
 import { selectAirports } from "../Redux/Airports/airport.reselect";
+import NavHandler from "../Components/share/NavHandler";
 
 class Flights extends React.Component {
   constructor(props) {
@@ -95,8 +96,7 @@ class Flights extends React.Component {
   render() {
     return (
       <div className="bodyVar">
-        {this.state.width <= 826 ? <NavBarMobile /> : null}
-        {this.state.width >= 826 ? <NavBar /> : null}
+        <NavHandler/>
         <div className={this.state.width <= 826 ? "mt-110" : "mt-90"}>
           {
             this.mainRouter(this.props.router.asPath)

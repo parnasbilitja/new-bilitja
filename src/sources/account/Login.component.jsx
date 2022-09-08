@@ -49,7 +49,10 @@ class Login extends React.Component {
   };
 
   handleSetMobile = (e) => {
-    this.setState({ mobile: e.target.value, error: false, errText: "" });
+    
+    if(e.target.name == 'mobile' && String(e.target.value).length ==11){
+      this.setState({ mobile: e.target.value, error: false, errText: "" })
+    };
   };
   handleSetToken = (e) => {
     this.setState({ token: e.target.value, error: false, errText: "" });
@@ -253,7 +256,8 @@ class Login extends React.Component {
           </button>
         </div>
         {this.state.error === true ? (
-          <div className="alert alert-danger">{this.state.errText}</div>
+          console.log(this.state.errText),
+          <div className="alert alert-danger">{this.state.errText !==undefined ? this.state.errText:'شماره وارد شده باید ۱۱ رقم باشد'}</div>
         ) : null}
         <div className="container">
           <div className="row mb-2">

@@ -1,43 +1,69 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Image from "next/image";
 //import logo from '../../../Images/logo512.png'
 import styles from "../../../styles/NavBar.module.scss";
 import Link from "next/link";
 
 //import '../../../public/kilofont.svg'
-
 import { connect } from "react-redux";
+import { selcetAccountBox } from "../../Redux/UI/ui.reselect";
+import { withRouter } from "next/router";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
+import NavHandler from "../../Components/share/NavHandler";
 
-class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mobile: "",
-      logged: false,
-    };
-  }
+const NavBar = (props) =>{
 
-  componentDidMount() {
-    const token = localStorage.getItem("token");
+  // let checker = localStorage.getItem("token")
+
+  // if (checker) {
+    
+  // }
+
+  const [state,setState] = useState({
+    mobile: '',
+    logged: false,
+  });
+
+  useEffect(() =>{
+    let token = localStorage.getItem("token");
     if (token) {
       const user_mobile = localStorage.getItem("mobile");
-      const current_state = { ...this.state };
-      current_state.logged = true;
-      current_state.mobile = user_mobile;
-      this.setState(current_state);
+      setState({...state,
+        logged : true,
+        mobile : user_mobile,
+      });
     }
-  }
+    if (state.logged) {
+      props.user.logged = state.logged;
+      props.user.user_info = {mobile: state.mobile}
+    }
+  },[])
 
-  handleLogoutUser() {
+  useEffect (() => {
+    if (localStorage.getItem("token")) { 
+      setState({...state,
+        mobile:localStorage.getItem("mobile"),
+        logged : true
+      })
+    }
+  },[props.user.logged])
+
+  const handleLogoutUser = (e) => {
+    e.preventDefault();
     localStorage.removeItem("mobile");
     localStorage.removeItem("token");
+    setState({...state,logged:false})
   }
+  // const handleLog =() => {
+  //   let token = localStorage.getItem("mobile");
+  //   console.log(props.user.logged);
+  // }
 
-  render() {
     return (
       <div className="col-xl-12 col-lg-12">
         <nav className={styles.navVar}>
+          {/* <NavHandler/> */}
+          {/* <button onClick={handleLog}>check</button> */}
           <div className="container">
             <div className="d-flex flex-row-reverse justify-content-between">
               <div className={styles["nav-text-detail"]}>
@@ -52,27 +78,29 @@ class NavBar extends React.Component {
                 <div className="font-size-12">
                   <div
                     className={
-                      this.props.user.logged === true
+                      state.logged === true
                         ? "user-mobile-content"
                         : styles["nav-detail-first-line"]
                     }
                   >
-                    {this.props.user.logged === true ? (
+                    {state.logged == true ? (
                       <>
                         <div>
                           <Link href="/dashboard">
                             <a href="#">
                               <i className="bilitja icon-login"></i>
-                              {this.props.user && this.props.user.user_info.mobile}
+                              {console.log(state)}
+                              {state.mobile}
                             </a>
                           </Link>
                         </div>
                         <span className="mx-2"> /</span>
                         <div>
-                          <a
+                          <a 
+                            // href={props.router.route}
+                            href={'#'}
                             style={{ fontSize: 12 }}
-                            href="/"
-                            onClick={this.handleLogoutUser}
+                            onClick={(e)=>handleLogoutUser(e)}
                             className="cursor-pointer"
                           >
                             خروج
@@ -87,7 +115,7 @@ class NavBar extends React.Component {
                             href=""
                             onClick={(e) => {
                               e.preventDefault();
-                              this.props.accountBoxModify({
+                              props.accountBoxModify({
                                 state: true,
                                 type: "login",
                               });
@@ -103,7 +131,7 @@ class NavBar extends React.Component {
                             href=""
                             onClick={(e) => {
                               e.preventDefault();
-                              this.props.accountBoxModify({
+                              props.accountBoxModify({
                                 state: true,
                                 type: "register",
                               });
@@ -129,28 +157,34 @@ class NavBar extends React.Component {
                 <div className={styles["nav-items-container"]}>
                   <ul className={styles["navbar-items"]}>
                     <li>
-                      <a href="/">
+                      <Link href="/" >
+                        <a>
                         <i
                           className={`bilitja icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`}
-                        ></i>
+                          ></i>
                         بلیط هواپیما
-                      </a>
+                          </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="/tours">
+                      <Link href="/tours">
+                        <a>
                         <i
                           className={`bilitja icon-tours  ${styles["nav-icon"]} rotate-y-180`}
-                        ></i>
+                          ></i>
                         رزرو تور
-                      </a>
+                          </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="/hotels">
+                      <Link href="/hotels" >
+                        <a>
                         <i
                           className={`bilitja icon-tours  ${styles["nav-icon"]} rotate-y-180`}
-                        ></i>
+                          ></i>
                         رزرو هتل
-                      </a>
+                          </a>
+                      </Link>
                     </li>
                     {/* <li>
               <a href="/blog">
@@ -159,18 +193,20 @@ class NavBar extends React.Component {
               </a>
             </li> */}
                     <li>
-                      <a href="/flights/order">
+                      <Link href="/flights/order" >
+                        <a>
                         <i
                           className={`bilitja icon-refrence ${styles["nav-icon"]} `}
-                        ></i>
+                          ></i>
                         پیگیری خرید
-                      </a>
+                          </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
                 <div className={styles["nav-logo-container"]}>
                   <div>
-                    <a href="/">
+                    <Link href="/" >
                       <img
                         width=""
                         height=""
@@ -178,7 +214,7 @@ class NavBar extends React.Component {
                         src="../../../Images/logo512.webp"
                         alt="بلیطجا - لوگو"
                       />
-                    </a>
+                    </Link>
                     <h1 className="font-size-8">
                       خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه
                     </h1>
@@ -190,7 +226,6 @@ class NavBar extends React.Component {
         </nav>
       </div>
     );
-  }
 }
 
 const mapDispatchesToProps = (dispatch) => ({
@@ -200,4 +235,4 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, mapDispatchesToProps)(NavBar);
+export default withRouter(connect(mapStateToProps, mapDispatchesToProps)(NavBar));

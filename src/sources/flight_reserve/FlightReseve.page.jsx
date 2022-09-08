@@ -1,6 +1,5 @@
-import React from "react";
+import React , { useEffect, useState }from "react";
 import styles from "../../../styles/FlightReserve.module.scss";
-
 
 import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
 import FlightPassengerForm from "./FlightPassengerForm.component";
@@ -31,32 +30,51 @@ import { Loader } from "../../Utils/Loader";
 import RegisterComponent from "../account/Register.component";
 import PopUp from "../component/PopUp.component";
 
-class FlightReserve extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            stateRegister: false,
-            passengers: [],
-            priceAll: 0,
-            mobileSubmiter: "",
-            phoneSubmiter: "",
-            mobileSubmiterErr: "",
-            phoneSubmiterErr: "",
-            agreeWithTerm: false,
-            loading: false,
-        };
+const FlightReserve = (props) =>{
+    console.log(props);
+    const [err,setErr] = useState({
+        rule:false,
+        ruleErr:'لطفا قوانین را بپذیرید',
+        fixedNumber: false,
+        fixedNumberErr:'این فیلد الزامیست',
+        number: false,
+        numberErr:'این فیلد الزامیست',
+    })
+    const errHandler = (e) =>{
+        if (e.target.name == 'rule' && !e.target.checked) {
+            setErr({...err,[e.target.name]:true})
+        }else 
+        if (e.target.value == '') {   
+            setErr({...err,[e.target.name]:true})
+        }else {
+            setErr({...err,[e.target.name]:false})
+        }
     }
 
-    componentDidMount() {
-        this.props.addReservationProperties({
-            reqNo: this.props.router.asPath.split("/")[7],
-            reqPnr: this.props.router.asPath.split("/")[8],
-            priceMessage: "",
-        });
+    const [state,setState] = useState({
+        stateRegister: false,
+        passengers: [],
+        priceAll: 0,
+        mobileSubmiter: "",
+        phoneSubmiter: "",
+        mobileSubmiterErr: "این فیلد الزامیست",
+        mobileSubmitererror: false,
+        phoneSubmiterErr: "این فیلد الزامیست",
+        phoneSubmitererror: false,
+        agreeWithTerm: false,
+        loading: false,
+    });
+    // }
+    useEffect(() =>{
+            props.addReservationProperties({
+                reqNo: props.router.asPath.split("/")[7],
+                reqPnr: props.router.asPath.split("/")[8],
+                priceMessage: "",
+            });
         fetch(
             `${globals.baseUrlNew
-            }BilitFlightReserve/flightsReserve/ravisReserveProperty/${this.props.router.asPath.split("/")[7]
-            }-${this.props.router.asPath.split("/")[8]
+            }BilitFlightReserve/flightsReserve/ravisReserveProperty/${props.router.asPath.split("/")[7]
+            }-${props.router.asPath.split("/")[8]
             }/1a157116-a01a-4027-ab10-74098ac63815`
         )
             .then((res) => res.json())
@@ -65,7 +83,7 @@ class FlightReserve extends React.Component {
                     new Array(parseInt(data.flightReservePropertyModel.numADL))
                         .fill()
                         .forEach((x) => {
-                            this.addNewPassenger(
+                            addNewPassenger(
                                 "ADL",
                                 data.flightReservePropertyModel.priceADL
                             );
@@ -73,7 +91,7 @@ class FlightReserve extends React.Component {
                     Array(parseInt(data.flightReservePropertyModel.numCHD))
                         .fill()
                         .forEach((x) => {
-                            this.addNewPassenger(
+                            addNewPassenger(
                                 "CHD",
                                 data.flightReservePropertyModel.priceCHD
                             );
@@ -81,23 +99,25 @@ class FlightReserve extends React.Component {
                     Array(parseInt(data.flightReservePropertyModel.numINF))
                         .fill()
                         .forEach((x) => {
-                            this.addNewPassenger(
+                            addNewPassenger(
                                 "INF",
                                 data.flightReservePropertyModel.priceINF
                             );
                         });
 
-                    this.setState({
+                    setState({...state,
                         ...data.flightReservePropertyModel,
                     });
                 } else {
                 }
             });
-    }
-    fillPassengersData = (field, passengerNo, value) => {
-        let passenger = this.state.passengers.find((x) => x.id == passengerNo);
+            getAllPrice();
+        },[]);
+    // }
+    const fillPassengersData = (field, passengerNo, value) => {
+        let passenger = state.passengers.find((x) => x.id == passengerNo);
         passenger[field] = value;
-        let passengers_ = this.state.passengers.map((x) => {
+        let passengers_ = state.passengers.map((x) => {
             if (x.id == passengerNo) {
                 return passenger;
             } else {
@@ -105,14 +125,15 @@ class FlightReserve extends React.Component {
             }
         });
 
-        this.setState({
+        setState({...state,
             passengers: passengers_,
+        },() =>{
+            getAllPrice();
         });
-        this.getAllPrice();
     };
 
-    addNewPassenger = (type, price) => {
-        let passengers = this.state.passengers;
+    const addNewPassenger = (type, price) => {
+        let passengers = state.passengers;
         let max_ = -1;
         passengers.map((onePassenger) => {
             if (onePassenger.id > max_) {
@@ -147,47 +168,44 @@ class FlightReserve extends React.Component {
 
         passengers.push(additionalPassenger);
 
-        this.setState(
-            {
+        setState(
+            {...state,
                 passengers: passengers,
-            },
-            () => {
-                this.getAllPrice();
-            }
-        );
+            });
+            getAllPrice();
     };
 
-    removePassenger = (id) => {
-        let passengers = this.state.passengers;
+    const removePassenger = (id) => {
+        let passengers = state.passengers;
         passengers = passengers.filter((onePssenger) => onePssenger.id != id);
-        this.setState(
-            {
+        setState(
+            {...state,
                 passengers: passengers,
             },
             () => {
-                this.getAllPrice();
+                getAllPrice();
             }
         );
     };
 
-    validation = () => {
+    const validation = () => {
         let isValid = true;
 
         let mobileSubmiterErr = "";
         let phoneSubmiterErr = "";
-        if (this.state.mobileSubmiter == "") {
+        if (state.mobileSubmiter == "") {
             mobileSubmiterErr = "وارد کردن شماره همراه اجباری است";
             isValid = false;
         }
-        if (this.state.mobileSubmiter.length < 10) {
+        if (state.mobileSubmiter.length < 10) {
             mobileSubmiterErr = "شماره موبایل باید 11 رقمی باشد";
             isValid = false;
         }
-        if (this.state.phoneSubmiter == "") {
+        if (state.phoneSubmiter == "") {
             phoneSubmiterErr = "وارد کردن شماره ثابت اجباری است";
             isValid = false;
         }
-        const passengers = this.state.passengers.map((onePassenger) => {
+        const passengers = state.passengers.map((onePassenger) => {
             const tempPassenger = onePassenger;
 
             tempPassenger.nameErr = "";
@@ -208,15 +226,15 @@ class FlightReserve extends React.Component {
                 isValid = false;
             }
 
-            if (tempPassenger.pasno == "" && this.state.pathKind == 2) {
+            if (tempPassenger.pasno == "" && state.pathKind == 2) {
                 tempPassenger.pasnoErr = "شماره پاسپورت الزامی میباشد";
                 isValid = false;
             }
-            if (tempPassenger.futureday == "" && this.state.pathKind == 2) {
+            if (tempPassenger.futureday == "" && state.pathKind == 2) {
                 tempPassenger.pasenddatErr = "انقضای پاسپورت الزامی میباشد";
                 isValid = false;
             }
-            if (onePassenger.nationality == "IR" && this.state.pathKind != 2) {
+            if (onePassenger.nationality == "IR" && state.pathKind != 2) {
                 if (!isValidIranianNationalCode(tempPassenger.code)) {
                     tempPassenger.codeErr = "کدملی نامعتبر میباشد";
                     isValid = false;
@@ -238,7 +256,7 @@ class FlightReserve extends React.Component {
             // }
             return tempPassenger;
         });
-        this.setState({
+        setState({...state,
             passengers: passengers,
             mobileSubmiterErr: mobileSubmiterErr,
             phoneSubmiterErr: phoneSubmiterErr,
@@ -246,33 +264,38 @@ class FlightReserve extends React.Component {
         return isValid;
     };
 
-    getAllPrice = () => {
+    const getAllPrice = () => {
         let sum = 0;
-        this.state.passengers.forEach((onePassenger) => {
+        state.passengers.forEach((onePassenger) => {
             sum += onePassenger.price;
         });
-        this.setState({
+        setState({...state,
             priceAll: sum,
         });
     };
-    handleChange = (event) => {
+    const handleChange = (event) => {
         const { name, value } = event.target;
-        this.setState({
-            [name]: parseInt(value),
-        });
+        if (value.length == 11 ) {
+            setState({...state,
+                [name]: parseInt(value),
+                [`${name}error`]:false
+            });
+        }else if (value.length !==11) {
+            setState({...state,[`${name}error`]:true})
+        }
     };
 
-    authUserPopUP = () => {
-        this.setState({
-            stateRegister: false,
-        });
-    };
+    // const authUserPopUP = () => {
+    //     setState({...state,
+    //         stateRegister: false,
+    //     });
+    // };
 
-    validationNumberOfPassengers = (type = '') => {
-        const numADL = this.state.passengers.filter((x) => x.type == "ADL").length;
-        const numCHD = this.state.passengers.filter((x) => x.type == "CHD").length;
-        const numINF = this.state.passengers.filter((x) => x.type == "INF").length;
-        const cap = this.state.capLast;
+    const validationNumberOfPassengers = (type = '') => {
+        const numADL = state.passengers.filter((x) => x.type == "ADL").length;
+        const numCHD = state.passengers.filter((x) => x.type == "CHD").length;
+        const numINF = state.passengers.filter((x) => x.type == "INF").length;
+        const cap = state.capLast;
         let message = "";
         let valid = true;
 
@@ -287,48 +310,47 @@ class FlightReserve extends React.Component {
             valid = false;
         }
         if (!valid) {
-            this.props.messageBoxModify({
+            props.messageBoxModify({
                 message: message,
                 state: true,
             });
         }
-
-        console.log(this.state.passengers);
-
+        getAllPrice();
+        console.log(state.passengers);
         return valid;
     };
-    compeleteReservation = () => {
-        const numADL = this.state.passengers.filter((x) => x.type == "ADL").length;
-        const numCHD = this.state.passengers.filter((x) => x.type == "CHD").length;
-        const numINF = this.state.passengers.filter((x) => x.type == "INF").length;
+    const compeleteReservation = () => {
+        const numADL = state.passengers.filter((x) => x.type == "ADL").length;
+        const numCHD = state.passengers.filter((x) => x.type == "CHD").length;
+        const numINF = state.passengers.filter((x) => x.type == "INF").length;
 
         const reservePassengerObject = {
-            reqNo: this.props.reserveProperties.reqNo,
-            reqPnr: this.props.reserveProperties.reqPnr,
+            reqNo: props.reserveProperties.reqNo,
+            reqPnr: props.reserveProperties.reqPnr,
             nameFamily:
-                this.state.passengers[0].name + " " + this.state.passengers[0].family,
+                state.passengers[0].name + " " + state.passengers[0].family,
             nameFamilyEn:
-                this.state.passengers[0].name + " " + this.state.passengers[0].family,
-            nameEnAll: this.state.passengers.map((x) => x.name).join(","),
-            familyEnAll: this.state.passengers.map((x) => x.family).join(","),
-            nameAll: this.state.passengers.map((x) => x.name).join(","),
-            familyAll: this.state.passengers.map((x) => x.family).join(","),
-            meliCodeAll: this.state.passengers.map((x) => x.code).join(","),
-            ticketCodeAll: this.state.passengers.map((x) => x.type).join(","),
-            sexAll: this.state.passengers.map((x) => x.gender).join(","),
-            birthDayAll: this.state.passengers.map((x) => x.birthday).join(","),
-            meliatAll: this.state.passengers.map((x) => x.nationality).join(","),
-            telNo: this.state.phoneSubmiter.toString(),
-            mobileNo: this.state.mobileSubmiter.toString(),
-            pasNoAll: this.state.passengers.map((x) => x.pasno).join(","),    //Array(this.state.passengers.length).fill("").join(","),
-            pasStDateAll: Array(this.state.passengers.length).fill("").join(","),
-            pasEndDateAll: this.state.passengers.map((x) => x.futureday).join(","),
+                state.passengers[0].name + " " + state.passengers[0].family,
+            nameEnAll: state.passengers.map((x) => x.name).join(","),
+            familyEnAll: state.passengers.map((x) => x.family).join(","),
+            nameAll: state.passengers.map((x) => x.name).join(","),
+            familyAll: state.passengers.map((x) => x.family).join(","),
+            meliCodeAll: state.passengers.map((x) => x.code).join(","),
+            ticketCodeAll: state.passengers.map((x) => x.type).join(","),
+            sexAll: state.passengers.map((x) => x.gender).join(","),
+            birthDayAll: state.passengers.map((x) => x.birthday).join(","),
+            meliatAll: state.passengers.map((x) => x.nationality).join(","),
+            telNo: state.phoneSubmiter.toString(),
+            mobileNo: state.mobileSubmiter.toString(),
+            pasNoAll: state.passengers.map((x) => x.pasno).join(","),    //Array(state.passengers.length).fill("").join(","),
+            pasStDateAll: Array(state.passengers.length).fill("").join(","),
+            pasEndDateAll: state.passengers.map((x) => x.futureday).join(","),
             numADL: numADL,
             numCHD: numCHD,
             numINF: numINF,
             customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         };
-
+        getAllPrice();
         fetch(
             `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`,
             {
@@ -340,30 +362,34 @@ class FlightReserve extends React.Component {
             .then((res) => res.json())
             .then((data) => {
                 if (data.status == "0") {
-                    this.props.router.push(
+                    props.router.push(
                         `/flights/receipt/${data.reqNo}/${data.reqPnr}`
                     );
                 } else {
-                    this.props.messageBoxModify({
+                    props.messageBoxModify({
                         state: true,
                         message: data.message,
                     });
                 }
             });
     };
+    useEffect(() => {getAllPrice();},[state.passengers])
+    useEffect(() => {console.log(state);},[state])
+    // const filedsvalidator = (e) => {
 
-    render() {
+    // }
+    
         return (
             <div className="container">
                 <div className={`${styles["flight-detail"]}`}>
-                    <FlightReserveDesktopHeader {...this.state} />
-                    <FlightReserveMobileHeader {...this.state} />
+                    <FlightReserveDesktopHeader {...state} />
+                    <FlightReserveMobileHeader {...state} />
                 </div>
                 <div className="row mt-10">
                     <div className="col-lg-1"></div>
                     <div className="col-lg-12 no-padding-xs border-pill-lg mt-2">
-                        {this.state.passengers
-                            ? this.state.passengers
+                        {state.passengers
+                            ? state.passengers
                                 .filter((x) => x.type == "ADL")
                                 .map((onePassenger, index) => (
                                     <FlightPassengerForm
@@ -371,14 +397,14 @@ class FlightReserve extends React.Component {
                                         id={onePassenger.id}
                                         index={index}
                                         type="ADL"
-                                        removePassenger={this.removePassenger}
-                                        fillPassengersData={this.fillPassengersData}
-                                        pathKind={this.state.pathKind}
+                                        removePassenger={removePassenger}
+                                        fillPassengersData={fillPassengersData}
+                                        pathKind={state.pathKind}
                                     />
                                 ))
                             : null}
-                        {this.state.passengers
-                            ? this.state.passengers
+                        {state.passengers
+                            ? state.passengers
                                 .filter((x) => x.type == "CHD")
                                 .map((onePassenger, index) => (
                                     <FlightPassengerForm
@@ -386,23 +412,23 @@ class FlightReserve extends React.Component {
                                         id={onePassenger.id}
                                         index={index}
                                         type="CHD"
-                                        removePassenger={this.removePassenger}
-                                        fillPassengersData={this.fillPassengersData}
-                                        pathKind={this.state.pathKind}
+                                        removePassenger={removePassenger}
+                                        fillPassengersData={fillPassengersData}
+                                        pathKind={state.pathKind}
                                     />
                                 ))
                             : null}
-                        {this.state.passengers
-                            ? this.state.passengers
+                        {state.passengers
+                            ? state.passengers
                                 .filter((x) => x.type == "INF")
                                 .map((onePassenger, index) => (
                                     <FlightPassengerForm
                                         {...onePassenger}
                                         id={onePassenger.id}
                                         index={index}
-                                        removePassenger={this.removePassenger}
-                                        fillPassengersData={this.fillPassengersData}
-                                        pathKind={this.state.pathKind}
+                                        removePassenger={removePassenger}
+                                        fillPassengersData={fillPassengersData}
+                                        pathKind={state.pathKind}
                                     />
                                 ))
                             : null}
@@ -413,7 +439,7 @@ class FlightReserve extends React.Component {
                                         مجموع قیمت: &nbsp;
                                     </span>
                                     <span className="color-secondary font-bold-iransanse">
-                                        {moneyFormat(this.state.priceAll)}
+                                        {moneyFormat(state.priceAll)}
                                         &nbsp;
                                     </span>
                                     <span className="font-bold-iransanse">تومان</span>
@@ -427,8 +453,8 @@ class FlightReserve extends React.Component {
                                             href="#"
                                             className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
                                             onClick={(e) => {
-                                                if (this.validationNumberOfPassengers('ADL')) {
-                                                    this.addNewPassenger("ADL", this.state.priceADL);
+                                                if (validationNumberOfPassengers('ADL')) {
+                                                    addNewPassenger("ADL", state.priceADL);
                                                 }
                                                 e.preventDefault();
                                             }}
@@ -447,8 +473,8 @@ class FlightReserve extends React.Component {
                                         <div
                                             className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
                                             onClick={(e) => {
-                                                if (this.validationNumberOfPassengers('CHD')) {
-                                                    this.addNewPassenger("CHD", this.state.priceCHD);
+                                                if (validationNumberOfPassengers('CHD')) {
+                                                    addNewPassenger("CHD", state.priceCHD);
                                                 }
                                                 e.preventDefault();
                                             }}
@@ -464,8 +490,8 @@ class FlightReserve extends React.Component {
                                             href="#"
                                             className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
                                             onClick={(e) => {
-                                                if (this.validationNumberOfPassengers('INF')) {
-                                                    this.addNewPassenger("INF", this.state.priceINF);
+                                                if (validationNumberOfPassengers('INF')) {
+                                                    addNewPassenger("INF", state.priceINF);
                                                 }
                                                 e.preventDefault();
                                             }}
@@ -483,7 +509,9 @@ class FlightReserve extends React.Component {
                                         مجموع قیمت: &nbsp;
                                     </span>
                                     <span className="color-secondary font-bold-iransanse">
-                                        {moneyFormat(this.state.priceAll)}
+                                        {/* priceADL */}
+                                        {state.priceAll !== 0 ?
+                                        moneyFormat(state.priceAll):moneyFormat(state.priceADL)}
                                         &nbsp;
                                     </span>
                                     <span className="font-bold-iransanse">تومان</span>
@@ -500,13 +528,13 @@ class FlightReserve extends React.Component {
                                                 inputMode="numeric"
                                                 placeholder="شماره همراه"
                                                 name="mobileSubmiter"
-                                                onChange={this.handleChange}
+                                                onChange={(e) => handleChange(e)}
                                                 className="col-12 reserve-input px-2 h-35em"
                                                 maxLength={11}
                                             />
                                         </div>
                                         <span className="color-secondary">
-                                            {this.state.mobileSubmiterErr}
+                                            {state.mobileSubmitererror ? state.mobileSubmiterErr:''}
                                         </span>
                                     </div>
                                     <div className="col-lg-6 col-md-6 col-6 padding-3px">
@@ -516,11 +544,11 @@ class FlightReserve extends React.Component {
                                                 inputMode="numeric"
                                                 placeholder="شماره ثابت"
                                                 name="phoneSubmiter"
-                                                onChange={this.handleChange}
+                                                onChange={(e) => handleChange(e)}
                                             />
                                         </div>
                                         <span className="color-secondary">
-                                            {this.state.phoneSubmiterErr}
+                                            {state.phoneSubmitererror ? state.phoneSubmiterErr:''}
                                         </span>
                                     </div>
                                 </div>
@@ -551,8 +579,10 @@ class FlightReserve extends React.Component {
                                         <input
                                             type="checkbox"
                                             id="terms"
+                                            name='rule'
                                             onChange={(e) => {
-                                                this.setState({
+                                                errHandler(e);
+                                                setState({...state,
                                                     agreeWithTerm: e.target.checked,
                                                 });
                                             }}
@@ -562,6 +592,9 @@ class FlightReserve extends React.Component {
                                             قوانین و مقررات و صحت اطلاعات را قبول دارم.
                                         </label>
                                     </div>
+                                    {/* <span className="color-secondary error-message">
+                                        {err.rule && err.ruleErr}
+                                    </span> */}
                                     <div className="col-lg-3 text-right">
                                         <div className={styles["ruls-text"]}>
                                             <a style={{ marginRight: 10, marginTop: 5, borderBottom: '2px dashed #090026', paddingBottom: 5, color: '#090026' }} href="">
@@ -574,28 +607,27 @@ class FlightReserve extends React.Component {
                                     <div className="col-lg-8 col-md-8 col-7 padding-3px">
                                         <button
                                             onClick={(e) => {
-
-                                                e.preventDefault();
-                                                this.props.accountBoxModify({
+                                                {!props.user.logged &&
+                                                props.accountBoxModify({
                                                     state: true,
                                                     type: "register",
-                                                });
+                                                });}
 
-                                                if (!this.validation()) {
-                                                    this.setState({ loading: false });
-                                                    this.props.messageBoxModify({
+                                                if (!validation()) {
+                                                    setState({...state, loading: false });
+                                                    props.messageBoxModify({
                                                         state: true,
                                                         message: "لطفا اطلاعات را تکمیل کنید.",
                                                     });
                                                     e.preventDefault();
-                                                } else if (this.state.agreeWithTerm === true) {
-                                                    this.setState({ loading: true });
-                                                    this.compeleteReservation();
+                                                } else if (state.agreeWithTerm === true) {
+                                                    setState({...state, loading: true });
+                                                    compeleteReservation();
                                                     e.preventDefault();
                                                 } else {
-                                                    this.setState({ loading: false });
+                                                    setState({...state, loading: false });
 
-                                                    this.props.messageBoxModify({
+                                                    props.messageBoxModify({
                                                         state: true,
                                                         message: "لطفا با شرایط و مقررات موافقت کنید",
                                                     });
@@ -603,16 +635,17 @@ class FlightReserve extends React.Component {
                                             }}
                                             className="py-2 btn-block col-12 end-payment-btn btn"
                                         >
-                                            {this.state.loading == false
+                                            {state.loading == false
                                                 ? "تکمیل خرید"
-                                                : "درحال پردازش..."}
+                                                : "درحال پردازش..."
+                                                }
                                         </button>
                                     </div>
                                     <div className="col-lg-4 col-md-4 col-5 padding-3px">
                                         <a
                                             className="btn col-12 back-payment-btn py-2"
                                             onClick={() => {
-                                                this.props.router.back();
+                                                props.router.back();
                                             }}
                                         >
                                             <span>بازگشت</span>
@@ -623,19 +656,24 @@ class FlightReserve extends React.Component {
                         </div>
                     </div>
                 </div>
+                {/* {props.user.logged &&
                 <PopUp
-                    opened={this.state.stateRegister}
-                    closePopUp={this.authUserPopUP}
+                opened={state.stateRegister}
+                closePopUp={authUserPopUP}
                 >
-                    <RegisterComponent />
+                    
                 </PopUp>
+                } */}
+                        {/* <RegisterComponent /> */}
             </div>
         );
-    }
+    // }
 }
-const mapStateToProps = (state) => ({
-    reserveProperties: selectProperties(state),
-});
+function mapStateToProps(state){
+    return{
+        reserveProperties: selectProperties(state),
+        user: state.user,
+}};
 const mapDispatchToProps = (dispatch) => ({
     accountBoxModify: (value) => dispatch(accountBoxModify(value)),
     addReservationProperties: async (value) =>

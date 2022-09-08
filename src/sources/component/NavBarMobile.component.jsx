@@ -55,7 +55,7 @@ class NavBarMobile extends React.Component {
                     }}
                   >
                     <span className="font-bold-iransanse">
-                      شماره موبایل : {this.props.user.user_info.mobile}{" "}
+                      شماره موبایل : {this.props.user.user_info && this.props.user.user_info.mobile}{" "}
                     </span>
                   </a>
                 </Link>

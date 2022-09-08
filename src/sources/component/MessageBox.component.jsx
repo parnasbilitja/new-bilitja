@@ -22,7 +22,8 @@ class MessageBox extends React.Component {
   }
   render() {
     return (
-      <div
+      <div className="d-flex justify-content-center">
+        <div
         className={` ${styles["messagebox"]} ${
           this.props.messageBox.state
             ? styles["messagebox-show"]
@@ -30,6 +31,7 @@ class MessageBox extends React.Component {
         }`}
       >
         <span>{this.props.messageBox.message}</span>
+      </div>
       </div>
     );
   }

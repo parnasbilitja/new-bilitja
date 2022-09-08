@@ -181,11 +181,19 @@ class Register extends React.Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-      error: false,
-      errText: "",
-    });
+    if(name == 'mobile' && String(value).length ==11){
+      this.setState({
+        [name]: value,
+        error: false,
+        errText: "",
+      });
+    }else if(name !=='mobile'){
+      this.setState({
+        [name]: value,
+        error: false,
+        errText: "",
+      });
+    }
   };
 
   renderer = ({ minutes, seconds, completed }) => {
@@ -221,7 +229,8 @@ class Register extends React.Component {
           </span>
         </div>
         {this.state.error === true ? (
-          <div className="alert alert-danger">{this.state.errText}</div>
+          console.log(this.state.errText),
+          <div className="alert alert-danger">{this.state.errText !==undefined ? this.state.errText:'شماره وارد شده باید ۱۱ رقم باشد'}</div>
         ) : null}
         <div className="container">
           <div className="row mb-2">

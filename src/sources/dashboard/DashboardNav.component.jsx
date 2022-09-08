@@ -11,8 +11,15 @@ import {
   faUserAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "../../../styles/ManagerNav.module.scss";
+import Link from "next/link";
 
 const DashboardNav = (props) => {
+  const handleLogoutUser = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("mobile");
+    localStorage.removeItem("token");
+    // setState({...state,logged:false})
+  }
   const myRouter = useRouter();
   const [mobile, setMobile] = useState();
 
@@ -29,15 +36,17 @@ const DashboardNav = (props) => {
       >
         <div className="w-100 d-flex justify-content-between rounded-3">
           <div className={styles["manager-nav-header"]} style={{ width: "100%", display: "flex", flexDirection: 'row-reverse', justifyContent: "space-between" }}>
-            <img
-              width=""
-              height=""
-              alt="بلیطجا - لوگو"
-              src="../../../Images/bilitja-logo.webp"
-            />
+            <Link href={'/'} passHref>
+              <img
+                width=""
+                height=""
+                alt="بلیطجا - لوگو"
+                src="../../../Images/bilitja-logo.webp"
+              />
+            </Link>
             <div
               className={`${styles[""]} d-flex align-items-center flex-row-reverse cursor-pointer`}
-              onClick={() => {
+              onClick={(e) => {handleLogoutUser(e)
                 myRouter.push("/");
                 props.onClose();
               }}

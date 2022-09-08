@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useAtom } from 'jotai';
 import { tourSlug } from '../jotai/jotai';
 import Link from 'next/link';
-import NavBar from "./../sources/component/NavBar.component";
+import NavHandler from '../Components/share/NavHandler';
 import Footer from '../sources/component/Footer.component';
 import Slider from '../Components/slider/Slider';
 import RequestTour from '../Components/modal/RequestTour';
@@ -54,7 +54,7 @@ const tour = () => {
     return (
         <div>
             <div className="mt-5 bodyVar">
-                <NavBar />
+                <NavHandler/>
                 {/* section 1 */}
                 <section className="mt-5 pt-5">
                     <div className="container">

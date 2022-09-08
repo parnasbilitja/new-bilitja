@@ -1,24 +1,21 @@
 import React from "react";
 import "../../../styles/PrimaryTextInput.module.scss";
 
-export default class PrimaryTextInput extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const PrimaryTextInput = (props) =>{
+  
 
-  render() {
-    return this.props.readonlyattr ? (
+    return props.readonlyattr ? (
       <input
-        {...this.props}
+        {...props}
         // autoComplete="off"
         className="form-input primary-text px-2"
       />
     ) : (
       <input
-        {...this.props}
+        {...props}
         // autoComplete="off"
         className="form-input primary-text px-2 rounded "
       />
     );
-  }
 }
+export default PrimaryTextInput;

@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { SetUserInformation } from "../../../Redux/Dashboard/Profile/profile.action";
 
 const Profile = (props) => {
+  console.log(props);
   const router = useRouter();
   useEffect(() => {
     fetch(`${globals.baseUrlNew}auth/profileView`, {
@@ -28,7 +29,7 @@ const Profile = (props) => {
         if (data.status === "0") {
           props.setUserInformationAction(data.profilemodel);
         } else {
-          alert("Have Profnlem");
+          // alert("Have Profnlem");
         }
       });
   }, []);
@@ -69,7 +70,7 @@ const Profile = (props) => {
                 <img
                   width=""
                   height=""
-                  src="https://profiles.utdallas.edu/img/default.png"
+                  src={"https://profiles.utdallas.edu/img/default.png"}
                   alt="بلیطجا - عکس پروفایل کاربر"
                   className="img-fluid img-responsive rounded-circle border-black profile-img"
                 />

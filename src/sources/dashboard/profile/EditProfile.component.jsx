@@ -8,9 +8,12 @@ import globals from "./../../Global";
 import { messageBoxModify } from "./../../../Redux/UI/ui.action";
 import PopUp from "./../../component/PopUp.component";
 import BirthdayCalendar from "./../../calendar/BirthdayCalendar.component";
+import BirthDayParent from "../../calendar/BirthDayParent";
 
 const EditProfile = (props) => {
   const router = useRouter();
+  const [calend,setCalend] = useState(false)
+  const [open, setOpen] = useState(false);
   const [state, setState] = useState({
     name: props.user_information.name,
     family: props.user_information.family,
@@ -26,11 +29,20 @@ const EditProfile = (props) => {
     customerId: "1a157116-a01a-4027-ab10-74098ac63815",
     agencyName: "بلیطجا",
     telNumber: "02157874",
-
+    image:'https://profiles.utdallas.edu/img/default.png'
   });
 
-  console.log(state);
-  const [open, setOpen] = useState(false);
+  const imageHandler = e =>{
+      const reader = new FileReader();
+      reader.onload = () =>{
+        if(reader.readyState === 2){
+          setState({...state, image:reader.result})
+        }
+      }
+      if(e.target.files[0]){reader.readAsDataURL(e.target.files[0])}
+    }
+
+    console.log(state);
 
   const handleSetState = (e) => {
     const { name, value } = e.target;
@@ -55,6 +67,7 @@ const EditProfile = (props) => {
         })
           .then((res) => res.json())
           .then((data) => {
+            console.log(state);
             if (data.status === "0") {
               router.push("/dashboard/profile");
               props.messageBoxModify({
@@ -103,7 +116,7 @@ const EditProfile = (props) => {
                 <img
                   width=""
                   height=""
-                  src="https://profiles.utdallas.edu/img/default.png"
+                  src={state.image}
                   alt="User Profile"
                   className="img-fluid img-responsive rounded-circle border-black profile-img"
                 />
@@ -116,8 +129,10 @@ const EditProfile = (props) => {
                     type="file"
                     name="upload"
                     id="upload"
-                    className={styles["primary-button"]}
+                    className={'styles["primary-button"]'}
                     placeholder="تغییر پروفایل"
+                    onClick={(e)=>{imageHandler(e);
+                    }}
                   />
                 </div>
               </div>
@@ -271,13 +286,28 @@ const EditProfile = (props) => {
         closePopUp={() => managePopUpBirthdayCalendar(false)}
       >
         <div className="p-15">
-          <BirthdayCalendar
+        <button onClick={()=>setCalend(!calend)}>{calend?'میلادی':'شمسی'}</button>
+                        <BirthDayParent
+                            numSh={1300}
+                            numBase={1350}
+                            numMi={1920}
+                            numMiBase={1300}
+                            placeholder="لطفا تاریخ تولد را وارد کنید"
+                            calend={calend}
+                            typePassenger={"ADL"}
+                            name="birthday"
+                            setBirthdayb={(value) => {
+                              setState((prevState) => ({ ...prevState, birthDate: value }));
+                            }}
+                            closePopUpCalendar={managePopUpBirthdayCalendar}
+                        />
+          {/* <BirthdayCalendar
             typePassenger={"ADL"}
             setBirthday={(value) => {
               setState((prevState) => ({ ...prevState, birthDate: value }));
             }}
             closePopUpCalendar={() => managePopUpBirthdayCalendar(false)}
-          />
+          /> */}
         </div>
       </PopUp>
     </section>
