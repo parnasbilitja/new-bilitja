@@ -99,6 +99,7 @@ const Register = (props) =>{
           }
           localStorage.setItem("token", data.token);
           props.messageBoxModify({
+            color:true,
             state: true,
             message: "کاربر عزیز، شما با موفقیت وارد حساب کاربری خود شدید.",
           });
@@ -159,6 +160,7 @@ const Register = (props) =>{
         if (data.status == "0") {
           props.messageBoxModify({
             state: true,
+            color:true,
             message: "مسافر عزیز، شما با موفقیت ثبت نام شدید.",
           });
           props.accountBoxModify({

@@ -13,12 +13,6 @@ import NavHandler from "../../Components/share/NavHandler";
 
 const NavBar = (props) =>{
 
-  // let checker = localStorage.getItem("token")
-
-  // if (checker) {
-    
-  // }
-
   const [state,setState] = useState({
     mobile: '',
     logged: false,
@@ -54,11 +48,6 @@ const NavBar = (props) =>{
     localStorage.removeItem("token");
     setState({...state,logged:false})
   }
-  // const handleLog =() => {
-  //   let token = localStorage.getItem("mobile");
-  //   console.log(props.user.logged);
-  // }
-
     return (
       <div className="col-xl-12 col-lg-12">
         <nav className={styles.navVar}>
@@ -89,7 +78,6 @@ const NavBar = (props) =>{
                           <Link href="/dashboard">
                             <a href="#">
                               <i className="bilitja icon-login"></i>
-                              {console.log(state)}
                               {state.mobile}
                             </a>
                           </Link>

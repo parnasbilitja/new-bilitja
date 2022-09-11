@@ -59,11 +59,13 @@ const UpdateRule = (props) => {
                                 .then(data => {
                                     if (data.status == "OK") {
                                         props.messageBoxModify({
+                                            color:true,
                                             state: true,
                                             message: 'عملیات موفقیت آمیز بود'
                                         })
                                     } else {
                                         props.messageBoxModify({
+                                            color:true,
                                             state: true,
                                             message: 'متاسفانه مشکلی پیش آمده است'
                                         })

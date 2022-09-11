@@ -75,6 +75,7 @@ const UpdateFacility = (props) => {
                                     if (data.status == "OK") {
                                         props.messageBoxModify({
                                             state: true,
+                                            color:true,
                                             message: 'عملیات موفقیت آمیز بود'
                                         }).then(() => {
                                            
@@ -82,6 +83,7 @@ const UpdateFacility = (props) => {
                                     } else {
                                         props.messageBoxModify({
                                             state: true,
+                                            color:false,
                                             message: 'متاسفانه مشکلی پیش آمده است'
                                         })
                                     }

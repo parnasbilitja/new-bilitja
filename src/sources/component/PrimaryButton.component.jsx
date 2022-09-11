@@ -1,17 +1,12 @@
 import React from "react";
 import styles from "../../../styles/PrimaryButton.module.scss";
-export default class PrimaryButton extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
+const PrimaryButton = (props) => {
     return (
       <input
         type="button"
-        {...this.props}
+        {...props}
         className={`${styles["primary-button"]} py-2 font-bold-iransanse`}
       />
     );
-  }
 }
+export default PrimaryButton;

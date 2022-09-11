@@ -316,6 +316,7 @@ const FlightReserve = (props) =>{
         }
         if (!valid) {
             props.messageBoxModify({
+                color:false,
                 message: message,
                 state: true,
             });
@@ -372,6 +373,7 @@ const FlightReserve = (props) =>{
                     );
                 } else {
                     props.messageBoxModify({
+                        color:false,
                         state: true,
                         message: data.message,
                     });
@@ -624,6 +626,7 @@ const FlightReserve = (props) =>{
                                                     setState({...state, loading: false });
                                                     props.messageBoxModify({
                                                         state: true,
+                                                        color:false,
                                                         message: "لطفا اطلاعات را تکمیل کنید.",
                                                     });
                                                     e.preventDefault();
@@ -636,6 +639,7 @@ const FlightReserve = (props) =>{
 
                                                     props.messageBoxModify({
                                                         state: true,
+                                                        color:false,
                                                         message: "لطفا با شرایط و مقررات موافقت کنید",
                                                     });
                                                 }

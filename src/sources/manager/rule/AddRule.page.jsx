@@ -51,6 +51,7 @@ const AddRule = (props) => {
                                     if (data.status == "OK") {
                                         props.messageBoxModify({
                                             state: true,
+                                            color:true,
                                             message: 'عملیات موفقیت آمیز بود'
                                         }).then(()=>{
                                             manualChange({
@@ -59,6 +60,7 @@ const AddRule = (props) => {
                                         })
                                     } else {
                                         props.messageBoxModify({
+                                            color:false,
                                             state: true,
                                             message: 'متاسفانه مشکلی پیش آمده است'
                                         })

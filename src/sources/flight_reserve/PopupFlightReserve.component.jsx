@@ -112,6 +112,7 @@ const PopupFlightReserve = (props) =>{
           //         }
           // //}
           props.messageBoxModify({
+            color:false,
             state: true,
             message: `${data.message}`,
           });
@@ -285,6 +286,7 @@ const PopupFlightReserve = (props) =>{
                 } else {
                   setState({...state, loading: false });
                   props.messageBoxModify({
+                    color:false,
                     state: true,
                     message: message,
                   });

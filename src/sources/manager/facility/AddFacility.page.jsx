@@ -99,6 +99,7 @@ const AddFacility = (props) => {
                       props
                         .messageBoxModify({
                           state: true,
+                          color:true,
                           message: "عملیات موفقیت آمیز بود",
                         })
                         .then(() => {
@@ -110,6 +111,7 @@ const AddFacility = (props) => {
                     } else {
                       props.messageBoxModify({
                         state: true,
+                        color:false,
                         message: "متاسفانه مشکلی پیش آمده است",
                       });
                     }

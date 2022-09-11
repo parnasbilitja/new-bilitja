@@ -85,12 +85,14 @@ class villaSearchBox extends React.Component {
         });
       } else if (distance <= 0) {
         this.props.messageBoxModify({
+          color:false,
           state: true,
           message: "روز بازگشت باید بعد از روز رفت باشد",
         });
         this.calculateReturnDay();
       } else if (distance > 9) {
         this.props.messageBoxModify({
+          color:false,
           state: true,
           message: "تعداد روز های اقامت نمیتواند بیشتر از 9 روز باشد",
         });

@@ -83,6 +83,7 @@ const ShowallFacilities = (props) => {
                           props
                             .messageBoxModify({
                               state: true,
+                              color:true,
                               message: "عملیات موفقیت آمیز بود",
                             })
                             .then(() => {
@@ -90,6 +91,7 @@ const ShowallFacilities = (props) => {
                             });
                         } else {
                           props.messageBoxModify({
+                            color:false,
                             state: true,
                             message: data.message,
                           });

@@ -259,6 +259,7 @@ class AccommodationReceipt extends React.Component {
                                 );
                               } else {
                                 this.props.messageBoxModify({
+                                  color:false,
                                   state: true,
                                   message: json.message,
                                 });

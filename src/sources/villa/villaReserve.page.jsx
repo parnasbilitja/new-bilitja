@@ -341,6 +341,7 @@ class villaReserve extends React.Component {
                           const message = this.validation();
                           if (message != "OK") {
                             this.props.messageBoxModify({
+                              color:false,
                               state: true,
                               message: message,
                             });

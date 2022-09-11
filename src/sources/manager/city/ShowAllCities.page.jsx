@@ -81,6 +81,7 @@ const ShowallCities = (props) => {
                           props
                             .messageBoxModify({
                               state: true,
+                              color:true,
                               message: "عملیات موفقیت آمیز بود",
                             })
                             .then(() => {
@@ -89,6 +90,7 @@ const ShowallCities = (props) => {
                         } else {
                           props.messageBoxModify({
                             state: true,
+                            color:false,
                             message: data.message,
                           });
                         }

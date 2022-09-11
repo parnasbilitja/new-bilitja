@@ -1363,6 +1363,7 @@ class UpdateVila extends React.Component {
                                 });
 
                               this.props.messageBoxModify({
+                                color:true,
                                 state: true,
                                 message: `عملیات موفقیت آمیز بود ${vilaId}`,
                               });
@@ -1370,6 +1371,7 @@ class UpdateVila extends React.Component {
                           });
                       } else {
                         this.props.messageBoxModify({
+                          color:false,
                           state: true,
                           message:
                             "متاسفانه مشکلی پیش آمده است. لطفا مجدد اقدام کنید",

@@ -52,10 +52,12 @@ const ForgetPassword = (props) => {
           setState({ get_code: true, btn_text: "تایید کد احراز هویت" });
           props.messageBoxModify({
             state: true,
+            color:true,
             message: "کد احراز هویت برای شما ارسال شد.",
           });
         } else if (data.status == -111) {
           props.messageBoxModify({
+            color:false,
             state: true,
             message: "چنین کاربری در سامانه یافت نشد، لطفا ثبت نام کنید.",
           });
@@ -82,6 +84,7 @@ const ForgetPassword = (props) => {
       .then((data) => {
         if (data.status == 0) {
           props.messageBoxModify({
+            color:true,
             state: true,
             message: "احراز هویت شما تایید شد.",
           });
@@ -93,6 +96,7 @@ const ForgetPassword = (props) => {
           localStorage.setItem("f-token", data.token);
         } else if (data.status == -100) {
           props.messageBoxModify({
+            color:false,
             state: true,
             message: "کد احراز هویت شما صحیح نمی باشد.",
           });
@@ -104,6 +108,7 @@ const ForgetPassword = (props) => {
     if (state.passwordnew == "") {
       props.messageBoxModify({
         state: true,
+        color:false,
         message: "لطفا فیلد را کامل پر کنید.",
       });
     } else {
@@ -126,6 +131,7 @@ const ForgetPassword = (props) => {
           if (data.status == 0) {
             props.messageBoxModify({
               state: true,
+              color:true,
               message: "گذرواژه شما با موفقیت ثبت شد.",
             });
             localStorage.removeItem("f-token");
@@ -135,6 +141,7 @@ const ForgetPassword = (props) => {
             });
           } else if (data.status == -100) {
             props.messageBoxModify({
+              color:false,
               state: true,
               message: data.message,
             });

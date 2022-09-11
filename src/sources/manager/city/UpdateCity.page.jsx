@@ -116,11 +116,13 @@ const UpdateCity = (props) => {
                                     if (data.status == "OK") {
                                         props.messageBoxModify({
                                             state: true,
+                                            color:true,
                                             message: 'عملیات موفقیت آمیز بود'
                                         })
                                     } else {
                                         props.messageBoxModify({
                                             state: true,
+                                            color:false,
                                             message: 'متاسفانه مشکلی پیش آمده است'
                                         })
                                     }

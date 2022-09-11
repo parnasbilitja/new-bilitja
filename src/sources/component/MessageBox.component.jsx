@@ -1,40 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../../../styles/MessageBox.module.scss";
 
 import { connect } from "react-redux";
 import { selectMessageBox } from "../../Redux/UI/ui.reselect";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 // this component opens when ever a messsage is goigng to be shown to user...throughout the project
-class MessageBox extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  componentDidUpdate() {
-    if (this.props.messageBox.state) {
+const MessageBox = (props) => {
+  console.log(props.messageBox);
+  useEffect(() => {
+    if (props.messageBox.state) {
       // message disapears after 4 seconds
       setTimeout(() => {
-        this.props.messageBoxModify({
+        props.messageBoxModify({
+          color:'',
           state: false,
-          message: "adasdasadassdas",
+          message: "",
         });
       }, 4000);
     }
-  }
-  render() {
+  },[props.messageBox.state])
+
+  // componentDidUpdate() {
+    
+  // }
     return (
       <div className="d-flex justify-content-center">
+        {props.messageBox.state &&
         <div
-        className={` ${styles["messagebox"]} ${
-          this.props.messageBox.state
-            ? styles["messagebox-show"]
-            : styles["messagebox-hidden"]
-        }`}
+        className={` ${styles["messagebox"]} ${`${props.messageBox.color ?'bg-success':'bg-danger'}`
+      }`}
       >
-        <span>{this.props.messageBox.message}</span>
+        <span className={``} >{props.messageBox.message}</span>
       </div>
+      }
       </div>
     );
-  }
 }
 const mapStatesToProps = (state) => ({
   messageBox: selectMessageBox(state),

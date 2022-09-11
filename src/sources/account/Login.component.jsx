@@ -101,6 +101,7 @@ const Login = (props) => {
           //   dateLogin: moment().format("YYYY/MM/DD"),
           // });
           props.messageBoxModify({
+            color:true,
             state: true,
             message: "ورود شما موفقیت آمیز بود.",
           });
@@ -167,6 +168,7 @@ const Login = (props) => {
           //   dateLogin: moment().format("YYYY/MM/DD"),
           // });
           props.messageBoxModify({
+            color:true,
             state: true,
             message: "ورود شما موفقیت آمیز بود.",
           });
