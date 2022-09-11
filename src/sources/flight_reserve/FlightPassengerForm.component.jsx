@@ -161,7 +161,7 @@ const FlightPassengerForm = (props) => {
                         <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px">
                             <div className="pb-1 mt-1">
                                 <PrimaryTextInput
-                                    style={{ height: "3.8em", border: "1px solid #eee", fontSize: 12 }}
+                                    style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15 }}
                                     placeholder="نام"
                                     name="name"
                                     onChange={(e) => {
@@ -187,7 +187,7 @@ const FlightPassengerForm = (props) => {
                         <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px">
                             <div className="pb-1 mt-1">
                                 <PrimaryTextInput
-                                    style={{ height: "3.8em", border: "1px solid #eee", fontSize: 12 }}
+                                    style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15 }}
                                     placeholder="نام خانودگی"
                                     name='lname'
                                     onChange={(e) => {
@@ -212,7 +212,7 @@ const FlightPassengerForm = (props) => {
                                 {/* {props.familyErr} */}
                             </span>
                         </div>
-                        <div className=" col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px mt-1">
+                        <div className=" col-lg-1 col-md-1 col-sm-2 col-6 padding-horizental-3px mt-1">
                             <PrimarySelectInput
                                 style={{ padding: "6px 0", paddingBottom: 3, border: "1px solid #eee" }}
                                 name="nationality"
@@ -228,9 +228,9 @@ const FlightPassengerForm = (props) => {
                                 <option value="other">غیر ایرانی</option>
                             </PrimarySelectInput>
                         </div>
-                        <div className=" col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px mt-1">
+                        <div className=" col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px mt-1">
                             <PrimarySelectInput
-                                style={{ height: "3.8em", paddingBottom: 3, border: "1px solid #eee", fontSize: 12 }}
+                                style={{ paddingBottom: 3, border: "1px solid #eee", fontSize: 15 }}
                                 name="gender"
                                 onChange={(e) => {
                                     props.fillPassengersData(
@@ -249,7 +249,7 @@ const FlightPassengerForm = (props) => {
                         <div className="col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px">
                             <div className="pb-1 mt-1">
                                 <PrimaryTextInput
-                                    style={{ height: "3.8em", border: "1px solid #eee", fontSize: 12 }}
+                                    style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15 }}
                                     placeholder="تاریخ تولد"
                                     value={props.birthday}
                                     name="birthday"
@@ -269,7 +269,7 @@ const FlightPassengerForm = (props) => {
                         <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px mt-1">
                             <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
                                 <PrimaryTextInput
-                                    style={{ height: "3.8em", border: "1px solid #eee", marginBottom: 3, fontSize: 12 }}
+                                    style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
                                     name="nationalCode"
                                     placeholder={`${props.nationality == "IR"
                                         ? "کد ملی"
@@ -349,10 +349,10 @@ const FlightPassengerForm = (props) => {
                             </span>
                         </div>
 
-                        <div className="col-lg-2 col-md-3 col-sm-4 col-6 padding-horizental-3px">
+                        <div className="col-lg-2 col-md-3 col-sm-4 col-6 padding-horizental-3px mt-1">
                             <div className={`d-flex align-items-center ${props.nationality == 'IR' ? styles["makhfi"] : ""}`} >
                                 <PrimaryTextInput
-                                    style={{ height: "3.8em", border: "1px solid #eee", fontSize: 12, display: props.nationality == 'IR' && 'none' }}
+                                    style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15, display: props.nationality == 'IR' && 'none' }}
                                     placeholder={`${"انقضای پاسپورت"}`}
                                     name="extPasaport"
                                     inputMode={`${"text"}`}
@@ -389,8 +389,6 @@ const FlightPassengerForm = (props) => {
                                       
                                 </div> */}
                             <span className="color-secondary error-message position-absolute">
-
-
                                 {props.pasenddatErr}
                             </span>
                         </div>
