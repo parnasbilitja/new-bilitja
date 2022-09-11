@@ -17,11 +17,11 @@ const ComplateProfile = (props) => {
     UserId: "",
     gender: 0,
     MariedStat: 0,
-    birthDate:null
+    birthDate: null
   });
 
   const [open, setOpen] = useState(false);
-  const [calend,setCalend] = useState(false)
+  const [calend, setCalend] = useState(false)
 
 
   useEffect(() => {
@@ -329,21 +329,21 @@ const ComplateProfile = (props) => {
         closePopUp={() => managePopUpBirthdayCalendar(false)}
       >
         <div className="p-15">
-        <button onClick={()=>setCalend(!calend)}>{calend?'میلادی':'شمسی'}</button>
-                        <BirthDayParent
-                            numSh={1300}
-                            numBase={1350}
-                            numMi={1920}
-                            numMiBase={1300}
-                            placeholder="لطفا تاریخ تولد را وارد کنید"
-                            calend={calend}
-                            typePassenger={"ADL"}
-                            name="birthday"
-                            setBirthdayb={(value) => {
-                              setState((prevState) => ({ ...prevState, birthDate: value }));
-                            }}
-                            closePopUpCalendar={managePopUpBirthdayCalendar}
-                        />
+          <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'Christian month' : 'شمسی'}</button>
+          <BirthDayParent
+            numSh={1300}
+            numBase={1350}
+            numMi={1920}
+            numMiBase={1300}
+            placeholder="لطفا تاریخ تولد را وارد کنید"
+            calend={calend}
+            typePassenger={"ADL"}
+            name="birthday"
+            setBirthdayb={(value) => {
+              setState((prevState) => ({ ...prevState, birthDate: value }));
+            }}
+            closePopUpCalendar={managePopUpBirthdayCalendar}
+          />
           {/* <BirthdayCalendar
             typePassenger={"ADL"}
             numBase={1300}

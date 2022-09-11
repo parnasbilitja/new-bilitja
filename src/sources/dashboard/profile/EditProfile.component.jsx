@@ -291,7 +291,7 @@ const EditProfile = (props) => {
         closePopUp={() => managePopUpBirthdayCalendar(false)}
       >
         <div className="p-15">
-          <button onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
+          <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'Christian month' : 'شمسی'}</button>
           <BirthDayParent
             numSh={1300}
             numBase={1350}
