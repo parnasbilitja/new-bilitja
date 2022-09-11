@@ -60,11 +60,13 @@ const Authentication = (props) => {
           });
           props.messageBoxModify({
             state: true,
+            color:true,
             message: "ورود شما موفقیت آمیز بود.",
           });
         } else {
           setState({...state, btn_disabled: false, loading: false });
           props.messageBoxModify({
+            color:false,
             state: true,
             message: data.message,
           });

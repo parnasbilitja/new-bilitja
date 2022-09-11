@@ -1,5 +1,5 @@
 import styles from "../../../styles/SlideIn.module.scss";
-const SlideIn = function (props) {
+const SlideIn = (props) => {
   return (
     <div>
       <div

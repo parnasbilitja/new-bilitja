@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../../styles/AccommodationReceipt.module.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,20 +15,18 @@ import { connect } from "react-redux";
 import globals from "../../Globals/Global";
 
 import { messageBoxModify } from "../../Redux/UI/ui.action";
-class AccommodationReceipt extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const AccommodationReceipt = (props) => {
+  
+    const [state,setState] = useState({});
 
-  handeChange = (e) => {
+  const handeChange = (e) => {
     const { name, value } = e.target;
-    this.setState({
+    setState({...state,
       [name]: value,
     });
   };
 
-  validation = () => {
+  const validation = () => {
     const errors = {
       familyErr: "",
       nationalCodeErr: "",
@@ -36,36 +34,35 @@ class AccommodationReceipt extends React.Component {
     };
     let validated = true;
     if (
-      this.state.NameFamily == null ||
-      this.state.NameFamily == "" ||
-      this.state.NameFamily == undefined
+      state.NameFamily == null ||
+      state.NameFamily == "" ||
+      state.NameFamily == undefined
     ) {
       errors["familyErr"] = "لطفا نام و نام خانوادگی خود را وارد کنید";
       validated = false;
     }
     if (
-      this.state.NationalCode == null ||
-      this.state.NationalCode == "" ||
-      this.state.NationalCode == undefined
+      state.NationalCode == null ||
+      state.NationalCode == "" ||
+      state.NationalCode == undefined
     ) {
       errors["nationalCodeErr"] = "لطفا کد ملی خود را وارد کنید";
       validated = false;
     }
     if (
-      this.state.MobileNo == null ||
-      this.state.MobileNo == "" ||
-      this.state.MobileNo == undefined
+      state.MobileNo == null ||
+      state.MobileNo == "" ||
+      state.MobileNo == undefined
     ) {
       errors["mobileNoErr"] = "لطفا شماره موبایل خود را وارد کنید";
       validated = false;
     }
-    this.setState({
+    setState({...state,
       ...errors,
     });
     return validated;
   };
 
-  render() {
     return (
       <div className="container-fluid accommodation-receipt">
         <br />
@@ -88,21 +85,21 @@ class AccommodationReceipt extends React.Component {
                       <FontAwesomeIcon icon={faClock} />
                       <span>
                         {" "}
-                        شهر : {this.props.selectProperties.CityName}{" "}
+                        شهر : {props.selectProperties.CityName}{" "}
                       </span>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-4 col-6">
                       <FontAwesomeIcon icon={faClock} />
                       <span>
                         {" "}
-                        محدوده : {this.props.selectProperties.AddressName}{" "}
+                        محدوده : {props.selectProperties.AddressName}{" "}
                       </span>
                     </div>
                     <div className="col-lg-12 col-md-4 col-sm-4 col-6">
                       <FontAwesomeIcon icon={faClock} />
                       <span>
                         {" "}
-                        آدرس : {this.props.selectProperties.Address}{" "}
+                        آدرس : {props.selectProperties.Address}{" "}
                       </span>
                     </div>
                   </div>
@@ -122,11 +119,11 @@ class AccommodationReceipt extends React.Component {
                         <PrimaryTextInput
                           placeholder={"نام و نام‌خانوادگی"}
                           name="NameFamily"
-                          onChange={this.handeChange}
+                          onChange={handeChange}
                         />
                       </div>
                       <span className="color-secondary error-message">
-                        {this.state.familyErr}
+                        {state.familyErr}
                       </span>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-4 col-6 padding-horizental-3px">
@@ -136,11 +133,11 @@ class AccommodationReceipt extends React.Component {
                         <PrimaryTextInput
                           placeholder={"کد ملی"}
                           name="NationalCode"
-                          onChange={this.handeChange}
+                          onChange={handeChange}
                         />
                       </div>
                       <span className="color-secondary error-message">
-                        {this.state.nationalCodeErr}
+                        {state.nationalCodeErr}
                       </span>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-4 col-6">
@@ -150,11 +147,11 @@ class AccommodationReceipt extends React.Component {
                         <PrimaryTextInput
                           placeholder={"شماره موبایل"}
                           name="MobileNo"
-                          onChange={this.handeChange}
+                          onChange={handeChange}
                         />
                       </div>
                       <span className="color-secondary error-message">
-                        {this.state.mobileNoErr}
+                        {state.mobileNoErr}
                       </span>
                     </div>
                   </div>
@@ -172,7 +169,7 @@ class AccommodationReceipt extends React.Component {
                       <span className="font-size-13">
                         <FontAwesomeIcon icon={faCalendar} />
                         &nbsp;تاریخ ورود :{" "}
-                        {this.props.selectProperties.selectedDaysArray[0][0]}
+                        {props.selectProperties.selectedDaysArray[0][0]}
                       </span>
                     </div>
                     &nbsp;&nbsp;
@@ -181,8 +178,8 @@ class AccommodationReceipt extends React.Component {
                         <FontAwesomeIcon icon={faCalendar} />
                         &nbsp;تاریخ خروج :
                         {
-                          this.props.selectProperties.selectedDaysArray[
-                            this.props.selectProperties.selectedDaysArray
+                          props.selectProperties.selectedDaysArray[
+                            props.selectProperties.selectedDaysArray
                               .length - 1
                           ][0]
                         }
@@ -191,7 +188,7 @@ class AccommodationReceipt extends React.Component {
                   </div>
                   <p className="border-bottom margin-top-10px margin-bottom-5px"></p>
                   <div className="font-size-14 padding-10px">
-                    {this.props.selectProperties.selectedDaysArray.map(
+                    {props.selectProperties.selectedDaysArray.map(
                       (day) => (
                         <div className="row">
                           <div className="col-lg-3 col-md-3 col-sm-4 col-6 font-size-13 font-bold-iransanse">
@@ -204,7 +201,7 @@ class AccommodationReceipt extends React.Component {
                       )
                     )}
                     <span className="pull-left">
-                      {this.props.selectProperties.selectedDaysArray.reduce(
+                      {props.selectProperties.selectedDaysArray.reduce(
                         (a, b) => a + (b[1] || 0),
                         0
                       )}{" "}
@@ -226,23 +223,23 @@ class AccommodationReceipt extends React.Component {
                       <a
                         className="btn-encouregment"
                         onClick={() => {
-                          if (!this.validation()) {
+                          if (!validation()) {
                             return;
                           }
                           const requestObject = {
                             EghamatId: parseInt(
-                              this.props.selectProperties.EghamatId
+                              props.selectProperties.EghamatId
                             ),
-                            RoomRow: this.props.selectProperties.RoomRow,
+                            RoomRow: props.selectProperties.RoomRow,
                             DateInc:
-                              this.props.selectProperties.DateInc.replace(
+                              props.selectProperties.DateInc.replace(
                                 "/",
                                 ""
                               ).replace("/", ""),
-                            NightCount: this.props.selectProperties.NightCount,
-                            NameFamily: this.state.NameFamily,
-                            NationalCode: this.state.NationalCode,
-                            MobileNo: this.state.MobileNo,
+                            NightCount: props.selectProperties.NightCount,
+                            NameFamily: state.NameFamily,
+                            NationalCode: state.NationalCode,
+                            MobileNo: state.MobileNo,
                             Email: "",
                             PassengerDsc: "",
                           };
@@ -262,7 +259,8 @@ class AccommodationReceipt extends React.Component {
                                   `Https://bilitja.ravis.ir/ApplicationBank/CallBank?reqNo=${properties[0]}&reqPnr=${properties[1]}`
                                 );
                               } else {
-                                this.props.messageBoxModify({
+                                props.messageBoxModify({
+                                  color:false,
                                   state: true,
                                   message: json.message,
                                 });
@@ -293,7 +291,6 @@ class AccommodationReceipt extends React.Component {
         </div>
       </div>
     );
-  }
 }
 
 const mapStateToProps = (state) => ({

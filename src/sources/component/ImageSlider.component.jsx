@@ -73,8 +73,6 @@ class ImageSlider extends React.Component {
               <img
                 width=""
                 height=""
-                width=""
-                height=""
                 alt="بلیطجا - اسلایدر"
                 src={image}
               />

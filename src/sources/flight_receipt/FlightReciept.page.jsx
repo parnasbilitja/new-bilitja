@@ -138,6 +138,7 @@ class FlightReciept extends React.Component {
           alert("success");
         } else {
           this.props.messageBoxModify({
+            color:false,
             state: true,
             message: "لطفا اطلاعات را کامل وارد کنید",
           });

@@ -92,6 +92,7 @@ const FlightPassengerForm = (props) => {
     const checkCharacters = (value) => {
         if (!checkCharacter(value) && value != "") {
             props.messageBoxModify({
+                color:false,
                 message: "لطفا از کاراکتر های لاتین استفاده کنید",
                 state: true,
             });
@@ -111,7 +112,7 @@ const FlightPassengerForm = (props) => {
                         {getSubtitleByType(props.type)}
                     </p>
                 </div>
-                <div className="hidden-xs col-lg-1 mr-4 col-md-2 col-sm-2 row-price font-size-12 p-3">
+                <div className="hidden-xs col-lg-1 mr-4 col-md-2 col-sm-2 row-price font-size-12 p-3 me-auto">
                     <span className="font-size-14 color-secondary font-bold-iransanse ">
                         {moneyFormat(props.price)}
                         &nbsp;
@@ -400,7 +401,7 @@ const FlightPassengerForm = (props) => {
                     {props.id != 0 ? (
                         <div
                             className="hidden-xs hidden-sm corner-position"
-                            style={{ position: "absolute", left: "-33px", top: "35px" }}
+                            style={{ position: "absolute", left: "-33px", top: "85px" }}
                         >
                             <span
                                 className="delete-thumbnail"

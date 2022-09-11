@@ -78,6 +78,7 @@ const ShowallRules = (props) => {
                         props
                           .messageBoxModify({
                             state: true,
+                            color:true,
                             message: "عملیات موفقیت آمیز بود",
                           })
                           .then(() => {
@@ -85,6 +86,7 @@ const ShowallRules = (props) => {
                           });
                       } else {
                         props.messageBoxModify({
+                          color:false,
                           state: true,
                           message: data.message,
                         });

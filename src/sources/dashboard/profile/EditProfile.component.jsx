@@ -72,10 +72,12 @@ const EditProfile = (props) => {
               router.push("/dashboard/profile");
               props.messageBoxModify({
                 state: true,
+                color:true,
                 message: "اطلاعات شما با موفقیت ثبت شد.",
               });
             } else {
               props.messageBoxModify({
+                color:false,
                 state: true,
                 message: "خطایی رخ داده است لطفا مجداا تلاش کنید.",
               });
@@ -84,12 +86,14 @@ const EditProfile = (props) => {
       } else {
         props.messageBoxModify({
           state: true,
+          color:false,
           message: "لطفا جنسیت و وضعیت تاهل خود را مشخص کنید.",
         });
       }
     } else {
       props.messageBoxModify({
         state: true,
+        color:false,
         message: "لطفا نام و نام خانوادگی خود را پر کنید.",
       });
     }

@@ -121,6 +121,7 @@ class Filters extends React.Component {
             } else {
                 this.props.messageBoxModify({
                     state: true,
+                    color:false,
                     message: "متاسفانه در این ساعت پروازی وجود ندارد.",
                 });
 

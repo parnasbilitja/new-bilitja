@@ -148,6 +148,7 @@ class VilaDetial extends React.Component {
                                         const message = this.validation()
                                         if (message != "OK") {
                                             this.props.messageBoxModify({
+                                                color:false,
                                                 state: true,
                                                 message: message
                                             })
@@ -171,11 +172,13 @@ class VilaDetial extends React.Component {
                                             .then(data => {
                                                 if (data.status == "OK") {
                                                     this.props.messageBoxModify({
+                                                        color:true,
                                                         state: true,
                                                         message: "عملیات موفقیت آمیز بود"
                                                     })
                                                 } else {
                                                     this.props.messageBoxModify({
+                                                        color:false,
                                                         state: true,
                                                         message: data.message
                                                     })

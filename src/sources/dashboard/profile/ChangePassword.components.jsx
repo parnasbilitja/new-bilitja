@@ -47,10 +47,12 @@ const ChangePassword = (props) => {
             if (data.status === "-100") {
               props.messageBoxModify({
                 state: true,
+                color:true,
                 message: data.message,
               });
             } else if (data.status === "0") {
               props.messageBoxModify({
+                color:true,
                 state: true,
                 message: "گذرواژه شما با موفقیت تغییر یافت",
               });
@@ -61,6 +63,7 @@ const ChangePassword = (props) => {
               });
             } else {
               props.messageBoxModify({
+                color:false,
                 state: true,
                 message: "از اتصال خود به اینترنت اطمینان حاصل کنید.",
               });
@@ -69,12 +72,14 @@ const ChangePassword = (props) => {
           .catch((err) => console.log(err));
       } else {
         props.messageBoxModify({
+          color:false,
           state: true,
           message: "تکرار گذرواژه با گذرواژه جدید مطابقت ندارد.",
         });
       }
     } else {
       props.messageBoxModify({
+        color:false,
         state: true,
         message: "فیلدا هارا پر کنید.",
       });

@@ -1423,6 +1423,7 @@ class AddVilaDesktop extends React.Component {
                                   });
 
                                 this.props.messageBoxModify({
+                                  color:true,
                                   state: true,
                                   message: `عملیات موفقیت آمیز بود ${vilaId}`,
                                 });
@@ -1431,6 +1432,7 @@ class AddVilaDesktop extends React.Component {
                         } else {
                           this.props.messageBoxModify({
                             state: true,
+                            color:false,
                             message:
                               "متاسفانه مشکلی پیش آمده است. لطفا مجدد اقدام کنید",
                           });

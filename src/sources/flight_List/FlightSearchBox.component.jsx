@@ -261,6 +261,7 @@ class FlightSearchBox extends React.Component {
               if (!this.validation()) {
                 this.props.messageBoxModify({
                   state: true,
+                  color:false,
                   message: "لطفا اطلاعات را کامل وارد کنید",
                 });
                 return;

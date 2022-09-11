@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 //import logo from '../../../Images/logo512.png'
 //import footerLogo from '../../../Images/bilitja-light-logo.webp'
 import styles from "../../../styles/NavBarMobile.module.scss";
@@ -10,40 +10,39 @@ import Link from "next/link";
 import { connect } from "react-redux";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
 import router from "next/router";
-class NavBarMobile extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const NavBarMobile = (props) => {
+    const [state,setState] = useState({
       isMenuOpen: false,
       slide: false,
       mobile: "",
       logged: false,
-    };
-  }
+    });
 
-  componentDidMount() {
+  useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       const user_mobile = localStorage.getItem("mobile");
-      const current_state = { ...this.state };
+      const current_state = { ...state };
       current_state.logged = true;
       current_state.mobile = user_mobile;
-      this.setState(current_state);
+      setState(current_state);
     }
-  }
+  },[])
 
-  handleLogoutUser() {
+  // componentDidMount() {
+  // }
+
+  const handleLogoutUser = () => {
     localStorage.removeItem("mobile");
     localStorage.removeItem("token");
   }
-  render() {
-    console.log(this.props);
+    console.log(props);
     return (
       /*<div className={styles['error-mobile']}> hghgshghgsd</div>*/
       <nav className={styles["nav-mobile"]}>
         <div className={styles["nav-text-detail-mobile"]}>
           <div className="pull-right">
-            {this.props.user.logged === true ? (
+            {props.user.logged === true ? (
               <>
                 <Link href="/dashboard">
                   <a
@@ -55,7 +54,7 @@ class NavBarMobile extends React.Component {
                     }}
                   >
                     <span className="font-bold-iransanse">
-                      شماره موبایل : {this.props.user.user_info && this.props.user.user_info.mobile}{" "}
+                      شماره موبایل : {props.user.user_info && props.user.user_info.mobile}{" "}
                     </span>
                   </a>
                 </Link>
@@ -64,7 +63,7 @@ class NavBarMobile extends React.Component {
                 <a
                   href="/"
                   className="mx-2 text-dark"
-                  onClick={this.handleLogoutUser}
+                  onClick={handleLogoutUser}
                 >
                   خروج از حساب کاربری
                 </a>
@@ -77,7 +76,7 @@ class NavBarMobile extends React.Component {
                   className="font-size-13 color-black"
                   onClick={(e) => {
                     e.preventDefault();
-                    this.props.accountBoxModify({
+                    props.accountBoxModify({
                       state: true,
                       type: "login",
                     });
@@ -96,7 +95,7 @@ class NavBarMobile extends React.Component {
                   className="color-black font-size-13"
                   onClick={(e) => {
                     e.preventDefault();
-                    this.props.accountBoxModify({
+                    props.accountBoxModify({
                       state: true,
                       type: "register",
                     });
@@ -109,7 +108,7 @@ class NavBarMobile extends React.Component {
               </>
             )}
 
-            {this.props.user.logged === false ? (
+            {props.user.logged === false ? (
               ""
             ) : (
               // <a href="/villa/intro" className="font-size-10 btn-outlined">
@@ -140,7 +139,7 @@ class NavBarMobile extends React.Component {
             <FontAwesomeIcon
               icon={faBars}
               onClick={() => {
-                this.setState({
+                setState({
                   slide: true,
                 });
               }}
@@ -163,9 +162,9 @@ class NavBarMobile extends React.Component {
         </div>
 
         <SlideIn
-          slide={this.state.slide}
+          slide={state.slide}
           close={() => {
-            this.setState({
+            setState({
               slide: false,
             });
           }}
@@ -188,7 +187,7 @@ class NavBarMobile extends React.Component {
               <FontAwesomeIcon
                 icon={faTimes}
                 onClick={() => {
-                  this.setState({
+                  setState({
                     slide: false,
                   });
                 }}
@@ -257,7 +256,6 @@ class NavBarMobile extends React.Component {
         </SlideIn>
       </nav>
     );
-  }
 }
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),
