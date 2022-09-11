@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ImageSlider from "../component/ImageSlider.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,55 +15,51 @@ import { addReservationProperties } from "../../Redux/Reservevilla/reserve_villa
 import { connect } from "react-redux";
 import { withRouter } from "next/router";
 
-class AccommodationReserve extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      myId: this.props.router.asPath.substr(21),
+const AccommodationReserve = (props) => {
+     const [state,setState] = useState({
+      myId: props.router.asPath.substr(21),
       selectedDaysArray: [],
       room: {},
-    };
-  }
+    });
 
-  componentDidMount() {
+    useEffect(() => {
     fetch(
-      `${globals.baseUrl}bj/eghamat/view/${this.props.router.asPath.substr(21)}`
+      `${globals.baseUrl}bj/eghamat/view/${props.router.asPath.substr(21)}`
     )
       .then((res) => res.json())
       .then((json) => {
-        this.setState({
+        setState({
           ...json.Eghamat[0],
         });
       });
     fetch(
-      `${globals.baseUrl}bj/eghamatRoom/view/${this.props.router.asPath.substr(
+      `${globals.baseUrl}bj/eghamatRoom/view/${props.router.asPath.substr(
         21
       )}`
     )
       .then((res) => res.json())
       .then((json) => {
-        this.setState({
+        setState({
           room: {
             ...json.EghamatRoom[0],
           },
         });
       });
-  }
+  },[])
 
-  setDate = (args) => {
-    this.setState({
+
+  const setDate = (args) => {
+    setState({
       selectedDaysArray: args,
     });
   };
 
-  validation = () => {
-    if (this.state.selectedDaysArray.length == 0) {
+  const validation = () => {
+    if (state.selectedDaysArray.length == 0) {
       return "لطفا روز های اقامت را مشخص کنید";
     }
     return "OK";
   };
-
-  render() {
     return (
       <div className="container-fluid">
         <br />
@@ -78,21 +74,21 @@ class AccommodationReserve extends React.Component {
                 <div className="border-pill text-right">
                   <div className="border-bottom-black padding-10px">
                     <h1 className="font-size-20 font-bold-iransanse">
-                      {this.state.Name}
+                      {state.Name}
                     </h1>
                   </div>
                   <div className="row padding-10px">
                     <div className="col-lg-4 col-md-4 col-sm-4 col-6">
                       <FontAwesomeIcon icon={faClock} />
-                      <span> شهر : {this.state.CityName} </span>
+                      <span> شهر : {state.CityName} </span>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-4 col-6">
                       <FontAwesomeIcon icon={faClock} />
-                      <span> محدوده : {this.state.AddressName} </span>
+                      <span> محدوده : {state.AddressName} </span>
                     </div>
                     <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                       <FontAwesomeIcon icon={faClock} />
-                      <span> آدرس : {this.state.Address} </span>
+                      <span> آدرس : {state.Address} </span>
                     </div>
                   </div>
                 </div>
@@ -105,7 +101,7 @@ class AccommodationReserve extends React.Component {
                   </div>
                   <div className="row padding-10px">
                     <div className="col-12">
-                      <p>{this.state.Dsc}</p>
+                      <p>{state.Dsc}</p>
                     </div>
                   </div>
                 </div>
@@ -130,14 +126,14 @@ class AccommodationReserve extends React.Component {
                             {" "}
                             متراژ زمین:{" "}
                             <span className="color-primary">
-                              {this.state.Metraj} متر
+                              {state.Metraj} متر
                             </span>
                           </p>
                           <p className="no-margin font-size-14">
                             {" "}
                             متراژ بنا:{" "}
                             <span className="color-primary">
-                              {this.state.room.Metraj} متر
+                              {state.room.Metraj} متر
                             </span>
                           </p>
                         </div>
@@ -156,14 +152,14 @@ class AccommodationReserve extends React.Component {
                             {" "}
                             نوع بنا:{" "}
                             <span className="color-primary">
-                              {this.state.BuildingType}
+                              {state.BuildingType}
                             </span>
                           </p>
                           <p className="no-margin font-size-14">
                             {" "}
                             تعداداتاق:{" "}
                             <span className="color-primary">
-                              {this.state.room.RoomCount}
+                              {state.room.RoomCount}
                             </span>
                           </p>
                         </div>
@@ -183,13 +179,13 @@ class AccommodationReserve extends React.Component {
                           <p className="no-margin font-size-14">
                             تخت2 نفره:
                             <span className="color-primary">
-                              {this.state.room.Takht2Count} عدد
+                              {state.room.Takht2Count} عدد
                             </span>
                           </p>
                           <p className="no-margin font-size-14">
                             تخت1 نفره:
                             <span className="color-primary">
-                              {this.state.room.Takht1Count} عدد
+                              {state.room.Takht1Count} عدد
                             </span>
                           </p>
                         </div>
@@ -208,14 +204,14 @@ class AccommodationReserve extends React.Component {
                             {" "}
                             ظرفیت :{" "}
                             <span className="color-primary">
-                              {this.state.room.Cap}
+                              {state.room.Cap}
                             </span>
                           </p>
                           <p className="no-margin font-size-14">
                             {" "}
                             حداکثر ظرفیت :{" "}
                             <span className="color-primary">
-                              {this.state.room.CapMax}
+                              {state.room.CapMax}
                             </span>
                           </p>
                         </div>
@@ -236,7 +232,7 @@ class AccommodationReserve extends React.Component {
                             {" "}
                             تعداد تشک :{" "}
                             <span className="color-primary">
-                              {this.state.room.ToshakCount}
+                              {state.room.ToshakCount}
                             </span>
                           </p>
                         </div>
@@ -284,7 +280,7 @@ class AccommodationReserve extends React.Component {
               <div className="col-lg-4 col-md-4 col-sm-12 col-12 text-right">
                 <div className="border-pill padding-5px">
                   <p className="font-size-12">قیمت ها به هزار تومان می‌باشد</p>
-                  <AccommodationReserveCalendar setDate={this.setDate} />
+                  <AccommodationReserveCalendar setDate={setDate} />
 
                   <p className="border-bottom-black font-size-13 margin-top-20px margin-bottom-5px">
                     روز های انتخاب شده شما (قیمت ها به تومان می‌باشد)
@@ -295,8 +291,8 @@ class AccommodationReserve extends React.Component {
                       <span className="font-size-13">
                         <FontAwesomeIcon icon={faCalendar} />
                         &nbsp;تاریخ ورود :
-                        {this.state.selectedDaysArray[0]
-                          ? this.state.selectedDaysArray[0][0]
+                        {state.selectedDaysArray[0]
+                          ? state.selectedDaysArray[0][0]
                           : null}
                       </span>
                     </div>
@@ -305,11 +301,11 @@ class AccommodationReserve extends React.Component {
                       <span className="font-size-13">
                         <FontAwesomeIcon icon={faCalendar} />
                         &nbsp;تاریخ خروج :{" "}
-                        {this.state.selectedDaysArray[
-                          this.state.selectedDaysArray.length - 1
+                        {state.selectedDaysArray[
+                          state.selectedDaysArray.length - 1
                         ]
-                          ? this.state.selectedDaysArray[
-                              this.state.selectedDaysArray.length - 1
+                          ? state.selectedDaysArray[
+                              state.selectedDaysArray.length - 1
                             ][0]
                           : null}
                       </span>
@@ -317,7 +313,7 @@ class AccommodationReserve extends React.Component {
                   </div>
                   <p className="border-bottom margin-top-10px margin-bottom-5px"></p>
                   <div className="font-size-14 padding-10px">
-                    {this.state.selectedDaysArray.map((day) => (
+                    {state.selectedDaysArray.map((day) => (
                       <div className="row">
                         <div className="col-lg-3 col-md-3 col-sm-4 col-6 font-size-13 font-bold-iransanse">
                           {day[0]}
@@ -329,7 +325,7 @@ class AccommodationReserve extends React.Component {
                     ))}
 
                     <span className="pull-left">
-                      {this.state.selectedDaysArray.reduce(
+                      {state.selectedDaysArray.reduce(
                         (a, b) => a + (b[1] || 0),
                         0
                       )}{" "}
@@ -343,28 +339,28 @@ class AccommodationReserve extends React.Component {
                       <a
                         className="btn-outlined-reserve-tall mt-8"
                         onClick={() => {
-                          const message = this.validation();
+                          const message = validation();
                           if (message != "OK") {
-                            this.props.messageBoxModify({
+                            props.messageBoxModify({
                               color:false,
                               state: true,
                               message: message,
                             });
                             return;
                           }
-                          this.props
+                          props
                             .addReservationProperties({
-                              EghamatId: this.props.router.asPath.substr(21),
+                              EghamatId: props.router.asPath.substr(21),
                               RoomRow: 1,
-                              DateInc: this.state.selectedDaysArray[0][0],
-                              NightCount: this.state.selectedDaysArray.length,
-                              selectedDaysArray: this.state.selectedDaysArray,
-                              Address: this.state.Address,
-                              CityName: this.state.CityName,
-                              AddressName: this.state.AddressName,
+                              DateInc: state.selectedDaysArray[0][0],
+                              NightCount: state.selectedDaysArray.length,
+                              selectedDaysArray: state.selectedDaysArray,
+                              Address: state.Address,
+                              CityName: state.CityName,
+                              AddressName: state.AddressName,
                             })
                             .then(() => {
-                              this.props.router.push("/receipt/villa/tehran");
+                              props.router.push("/receipt/villa/tehran");
                             });
                         }}
                       >
@@ -384,7 +380,6 @@ class AccommodationReserve extends React.Component {
         </div>
       </div>
     );
-  }
 }
 const dispatchStatesToProps = (dispatch) => ({
   addReservationProperties: async (value) =>
