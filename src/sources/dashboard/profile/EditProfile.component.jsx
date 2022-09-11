@@ -12,7 +12,7 @@ import BirthDayParent from "../../calendar/BirthDayParent";
 
 const EditProfile = (props) => {
   const router = useRouter();
-  const [calend,setCalend] = useState(false)
+  const [calend, setCalend] = useState(false)
   const [open, setOpen] = useState(false);
   const [state, setState] = useState({
     name: props.user_information.name,
@@ -29,20 +29,20 @@ const EditProfile = (props) => {
     customerId: "1a157116-a01a-4027-ab10-74098ac63815",
     agencyName: "بلیطجا",
     telNumber: "02157874",
-    image:'https://profiles.utdallas.edu/img/default.png'
+    image: 'https://profiles.utdallas.edu/img/default.png'
   });
 
-  const imageHandler = e =>{
-      const reader = new FileReader();
-      reader.onload = () =>{
-        if(reader.readyState === 2){
-          setState({...state, image:reader.result})
-        }
+  const imageHandler = e => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setState({ ...state, image: reader.result })
       }
-      if(e.target.files[0]){reader.readAsDataURL(e.target.files[0])}
     }
+    if (e.target.files[0]) { reader.readAsDataURL(e.target.files[0]) }
+  }
 
-    console.log(state);
+  console.log(state);
 
   const handleSetState = (e) => {
     const { name, value } = e.target;
@@ -112,7 +112,7 @@ const EditProfile = (props) => {
         <form onSubmit={handleEditProfile}>
           <div className="container-fluid">
             <div className="row my-3">
-              <div className="col-lg-4 text-center">
+              <div className="col-lg-3 text-center">
                 <img
                   width=""
                   height=""
@@ -131,145 +131,150 @@ const EditProfile = (props) => {
                     id="upload"
                     className={'styles["primary-button"]'}
                     placeholder="تغییر پروفایل"
-                    onClick={(e)=>{imageHandler(e);
+                    onClick={(e) => {
+                      imageHandler(e);
                     }}
                   />
                 </div>
               </div>
-              <div className="col-lg-4">
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">نام</div>
-                  <div className="col-lg-8">
-                    <input
-                      defaultValue={state.name}
-                      onChange={handleSetState}
-                      name="name"
-                      className="col-12 complate-profile-input"
-                    />
+              <div className="col-lg-9 d-flex flex-wrap align-items-start justify-content-between">
+                <div className="flex-48">
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">نام</div>
+                    <div className="col-lg-8">
+                      <input
+                        defaultValue={state.name}
+                        onChange={handleSetState}
+                        name="name"
+                        className="col-12 complate-profile-input"
+                      />
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">نام خانوادگی</div>
+                    <div className="col-lg-8">
+                      <input
+                        defaultValue={state.family}
+                        onChange={handleSetState}
+                        name="family"
+                        className="col-12 complate-profile-input"
+                      />
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">شماره همراه</div>
+                    <div className="col-lg-8">
+                      <input
+                        value={state.mobile}
+                        className="col-12 complate-profile-input"
+                        nputMode="numeric"
+                      />
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">کد ملی</div>
+                    <div className="col-lg-8">
+                      <input
+                        defaultValue={state.meliCod}
+                        onChange={handleSetState}
+                        name="meliCod"
+                        className="col-12 complate-profile-input"
+                        nputMode="numeric"
+                      />
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">شماره پاسپورت</div>
+                    <div className="col-lg-8">
+                      <input
+                        defaultValue={state.pasNo}
+                        onChange={handleSetState}
+                        name="pasNo"
+                        className="col-12 complate-profile-input"
+                      />
+                    </div>
                   </div>
                 </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">نام خانوادگی</div>
-                  <div className="col-lg-8">
-                    <input
-                      defaultValue={state.family}
-                      onChange={handleSetState}
-                      name="family"
-                      className="col-12 complate-profile-input"
-                    />
+                <div className="flex-48">
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">جنسیت</div>
+                    <div className="col-lg-8">
+                      <select
+                        value={state.gender}
+                        onChange={handleSetState}
+                        name="gender"
+                        className="col-12 complate-profile-input"
+                      >
+                        <option value={0}>جنسیت خود را انتخاب کنید</option>
+                        <option value={1}>مرد</option>
+                        <option value={2}>زن</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">تاریخ تولد</div>
+                    <div className="col-lg-8">
+                      <input
+                        value={state.birthDate}
+                        onFocus={() => setOpen(true)}
+                        // name="birthDate"
+                        className="col-12 complate-profile-input"
+                      />
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">معرف</div>
+                    <div className="col-lg-8">
+                      <input
+                        defaultValue={state.mobileMoaref}
+                        onChange={handleSetState}
+                        name="mobileMoaref"
+                        className="col-12 complate-profile-input"
+                        nputMode="numeric"
+                      />
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">وضعیت تاهل</div>
+                    <div className="col-lg-8">
+                      <select
+                        value={state.mariedStat}
+                        onChange={handleSetState}
+                        name="mariedStat"
+                        className="col-12 complate-profile-input"
+                      >
+                        <option value={0}>وضعیت تاهل خود را انتخاب کنید</option>
+                        <option value={1}>مجرد</option>
+                        <option value={2}>متاهل</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">شماره همراه</div>
-                  <div className="col-lg-8">
-                    <input
-                      value={state.mobile}
-                      className="col-12 complate-profile-input"
-                      nputMode="numeric"
-                    />
-                  </div>
-                </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">کد ملی</div>
-                  <div className="col-lg-8">
-                    <input
-                      defaultValue={state.meliCod}
-                      onChange={handleSetState}
-                      name="meliCod"
-                      className="col-12 complate-profile-input"
-                      nputMode="numeric"
-                    />
-                  </div>
-                </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">شماره پاسپورت</div>
-                  <div className="col-lg-8">
-                    <input
-                      defaultValue={state.pasNo}
-                      onChange={handleSetState}
-                      name="pasNo"
-                      className="col-12 complate-profile-input"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4">
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">جنسیت</div>
-                  <div className="col-lg-8">
-                    <select
-                      value={state.gender}
-                      onChange={handleSetState}
-                      name="gender"
-                      className="col-12 complate-profile-input"
-                    >
-                      <option value={0}>جنسیت خود را انتخاب کنید</option>
-                      <option value={1}>مرد</option>
-                      <option value={2}>زن</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">تاریخ تولد</div>
-                  <div className="col-lg-8">
-                    <input
-                      value={state.birthDate}
-                      onFocus={() => setOpen(true)}
-                      // name="birthDate"
-                      className="col-12 complate-profile-input"
-                    />
-                  </div>
-                </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">معرف</div>
-                  <div className="col-lg-8">
-                    <input
-                      defaultValue={state.mobileMoaref}
-                      onChange={handleSetState}
-                      name="mobileMoaref"
-                      className="col-12 complate-profile-input"
-                      nputMode="numeric"
-                    />
-                  </div>
-                </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">آدرس</div>
-                  <div className="col-lg-8">
-                    <input
-                      defaultValue={state.address}
-                      onChange={handleSetState}
-                      name="address"
-                      className="col-12 complate-profile-input"
-                    />
-                  </div>
-                </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">وضعیت تاهل</div>
-                  <div className="col-lg-8">
-                    <select
-                      value={state.mariedStat}
-                      onChange={handleSetState}
-                      name="mariedStat"
-                      className="col-12 complate-profile-input"
-                    >
-                      <option value={0}>وضعیت تاهل خود را انتخاب کنید</option>
-                      <option value={1}>مجرد</option>
-                      <option value={2}>متاهل</option>
-                    </select>
+                <div className="col-lg-12">
+                  <div className="row my-2">
+                    <div className="col-lg-2 title-box">آدرس</div>
+                    <div className="flex-83">
+                      <textarea
+                        defaultValue={state.address}
+                        onChange={handleSetState}
+                        name="address"
+                        className="col-12 complate-profile-input"
+                      ></textarea>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="row my-2">
-            <div className="col-lg-8 mb-2">
+          <div className="row my-2 justify-content-end ms-3">
+            <div className="col-lg-2 mb-2">
               <button
                 className={`${styles["primary-button"]}  font-bold-iransanse py-2 `}
               >
                 ویرایش اطلاعات
               </button>
             </div>
-            <div className="col-lg-4 mb-2">
+            <div className="col-lg-2 mb-2">
               <button
                 className={`btn btn-outline-danger col-12 py-2 font-bold-iransanse h-3em `}
                 onClick={() => router.push("/dashboard/profile")}
@@ -286,21 +291,21 @@ const EditProfile = (props) => {
         closePopUp={() => managePopUpBirthdayCalendar(false)}
       >
         <div className="p-15">
-        <button onClick={()=>setCalend(!calend)}>{calend?'میلادی':'شمسی'}</button>
-                        <BirthDayParent
-                            numSh={1300}
-                            numBase={1350}
-                            numMi={1920}
-                            numMiBase={1300}
-                            placeholder="لطفا تاریخ تولد را وارد کنید"
-                            calend={calend}
-                            typePassenger={"ADL"}
-                            name="birthday"
-                            setBirthdayb={(value) => {
-                              setState((prevState) => ({ ...prevState, birthDate: value }));
-                            }}
-                            closePopUpCalendar={managePopUpBirthdayCalendar}
-                        />
+          <button onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
+          <BirthDayParent
+            numSh={1300}
+            numBase={1350}
+            numMi={1920}
+            numMiBase={1300}
+            placeholder="لطفا تاریخ تولد را وارد کنید"
+            calend={calend}
+            typePassenger={"ADL"}
+            name="birthday"
+            setBirthdayb={(value) => {
+              setState((prevState) => ({ ...prevState, birthDate: value }));
+            }}
+            closePopUpCalendar={managePopUpBirthdayCalendar}
+          />
           {/* <BirthdayCalendar
             typePassenger={"ADL"}
             setBirthday={(value) => {
