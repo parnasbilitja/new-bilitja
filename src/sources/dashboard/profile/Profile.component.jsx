@@ -66,7 +66,7 @@ const Profile = (props) => {
         <div className="card my-4 profile-cnt">
           <div className="container-fluid">
             <div className="row my-3">
-              <div className="col-lg-4 text-center">
+              <div className="col-lg-3 text-center">
                 <img
                   width=""
                   height=""
@@ -75,99 +75,103 @@ const Profile = (props) => {
                   className="img-fluid img-responsive rounded-circle border-black profile-img"
                 />
               </div>
-              <div className="col-lg-4">
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">نام</div>
-                  <div className="col-lg-7 text-box">
-                    {props.user_information.name !== null
-                      ? props.user_information.name
-                      : "------"}
+              <div className="col-lg-9 d-flex flex-wrap align-items-start justify-content-between">
+                <div className="flex-48">
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">نام</div>
+                    <div className="col-lg-7 text-box">
+                      {props.user_information.name !== null
+                        ? props.user_information.name
+                        : "------"}
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">نام خانوادگی</div>
+                    <div className="col-lg-7 text-box">
+                      {" "}
+                      {props.user_information.family !== null
+                        ? props.user_information.family
+                        : "------"}
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">شماره همراه</div>
+                    <div className="col-lg-7 text-box">
+                      {props.user_information.mobile !== null
+                        ? props.user_information.mobile
+                        : "------"}
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">کد ملی</div>
+                    <div className="col-lg-7 text-box">
+                      {" "}
+                      {props.user_information.meliCod !== null
+                        ? props.user_information.meliCod
+                        : "------"}
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">شماره پاسپورت</div>
+                    <div className="col-lg-7 text-box">
+                      {" "}
+                      {props.user_information.pasNo !== null
+                        ? props.user_information.pasNo
+                        : "------"}
+                    </div>
                   </div>
                 </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">نام خانوادگی</div>
-                  <div className="col-lg-7 text-box">
-                    {" "}
-                    {props.user_information.family !== null
-                      ? props.user_information.family
-                      : "------"}
+                <div className="flex-48">
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">جنسیت</div>
+                    <div className="col-lg-7 text-box">
+                      {props.user_information.gender !== 0
+                        ? props.user_information.gender == 1
+                          ? "مرد"
+                          : "زن"
+                        : "------"}
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">تاریخ تولد</div>
+                    <div className="col-lg-7 text-box">
+                      {" "}
+                      {props.user_information.birthDate !== null
+                        ? props.user_information.birthDate
+                        : "------"}
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">معرف</div>
+                    <div className="col-lg-7 text-box">
+                      {" "}
+                      {props.user_information.mobileMoaref != "" ||
+                        props.user_information.mobileMoaref != null
+                        ? props.user_information.mobileMoaref
+                        : "------"}
+                    </div>
+                  </div>
+                  <div className="row my-2">
+                    <div className="col-lg-4 title-box ">وضعیت تاهل</div>
+                    <div className="col-lg-7 text-box">
+                      {" "}
+                      {props.user_information.mariedStat !== 0
+                        ? props.user_information.mariedStat == 1
+                          ? "مجرد"
+                          : "متاهل"
+                        : "------"}
+                    </div>
                   </div>
                 </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">شماره همراه</div>
-                  <div className="col-lg-7 text-box">
-                    {props.user_information.mobile !== null
-                      ? props.user_information.mobile
-                      : "------"}
-                  </div>
-                </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">کد ملی</div>
-                  <div className="col-lg-7 text-box">
-                    {" "}
-                    {props.user_information.meliCod !== null
-                      ? props.user_information.meliCod
-                      : "------"}
-                  </div>
-                </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">شماره پاسپورت</div>
-                  <div className="col-lg-7 text-box">
-                    {" "}
-                    {props.user_information.pasNo !== null
-                      ? props.user_information.pasNo
-                      : "------"}
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4">
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">جنسیت</div>
-                  <div className="col-lg-7 text-box">
-                    {props.user_information.gender !== 0
-                      ? props.user_information.gender == 1
-                        ? "مرد"
-                        : "زن"
-                      : "------"}
-                  </div>
-                </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">تاریخ تولد</div>
-                  <div className="col-lg-7 text-box">
-                    {" "}
-                    {props.user_information.birthDate !== null
-                      ? props.user_information.birthDate
-                      : "------"}
-                  </div>
-                </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">معرف</div>
-                  <div className="col-lg-7 text-box">
-                    {" "}
-                    {props.user_information.mobileMoaref != "" ||
-                      props.user_information.mobileMoaref != null
-                      ? props.user_information.mobileMoaref
-                      : "------"}
-                  </div>
-                </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">آدرس</div>
-                  <div className="col-lg-7 text-box">
-                    {" "}
-                    {props.user_information.address !== null
-                      ? props.user_information.address
-                      : "------"}
-                  </div>
-                </div>
-                <div className="row my-2">
-                  <div className="col-lg-4 title-box ">وضعیت تاهل</div>
-                  <div className="col-lg-7 text-box">
-                    {" "}
-                    {props.user_information.mariedStat !== 0
-                      ? props.user_information.mariedStat == 1
-                        ? "مجرد"
-                        : "متاهل"
-                      : "------"}
+                <div className="col-lg-12">
+                  <div className="row my-2 w-100">
+                    <div className="col-lg-2 title-box ms-1">آدرس</div>
+                    <div className="flex-81 text-box">
+                      {" "}
+                      {props.user_information.address !== null
+                        ? props.user_information.address
+                        : "------"}
+                    </div>
                   </div>
                 </div>
               </div>

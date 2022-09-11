@@ -97,7 +97,7 @@ const hotel = () => {
                                     </div>
                                     {/* child */}
                                     <div className="image col-xl-6 col-lg-6 mb-2">
-                                        <img src="images/picture3.jpg" width={"97%"} height={"200px"} />
+                                        <img src="images/picture3.jpg" width={"100%"} height={"200px"} />
                                     </div>
                                     {/* child */}
                                     <div className="image col-xl-6 col-lg-6 mb-2">
@@ -105,7 +105,7 @@ const hotel = () => {
                                     </div>
                                     {/* child */}
                                     <div className="image col-xl-6 col-lg-6 mb-2">
-                                        <img src="images/picture1.jpg" width={"97%"} height={"200px"} />
+                                        <img src="images/picture1.jpg" width={"100%"} height={"200px"} />
                                     </div>
                                 </div>
                             </div>

@@ -1,198 +1,207 @@
 @import "./values.module.scss";
 @media only screen and(max-width:320px) {
-  .flight-day {
-    margin-right: 65px !important;
-  }
-  .ruls-text {
-  
-    text-align: right !important;  margin: 10px 35px 0 0 !important;
-  }
-}
-@media only screen and (max-width: 650px) {
-  .passanger-submiter {
-    .form-input-border-private {
-      height: 45px !important;
-      border: 1px solid #cfd3d8;
+    .flight-day {
+        margin-right: 65px !important;
     }
-  }
-  .container-fluid {
-    padding: 0 30px;
-  }
+    .ruls-text {
+        text-align: right !important;
+        margin: 10px 35px 0 0 !important;
+    }
 }
+
+@media only screen and (max-width: 650px) {
+    .passanger-submiter {
+        .form-input-border-private {
+            height: 45px !important;
+            border: 1px solid #cfd3d8;
+        }
+    }
+    .container-fluid {
+        padding: 0 30px;
+    }
+}
+
 .header-box {
-  border: 1px solid #eee;
-  display: grid;
-  background-color: #fff;
-  transition: 0.3s;
-  width: 100%;
-  height: 212px;
-  position: relative;
-  border-radius: 10px;
-  text-align: center;
-  padding: 12px 0px 12px 0;
-  margin-top: 10px;
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    border-radius: 50%;
-    left: 105px;
-  }
-  &:before {
-    top: -0.9em;
-    border-bottom: 1px solid #aaa8a8;
-  }
-  &:after {
-    border-top: 1px solid #aaa8a8;
-    bottom: -0.7em;
-  }
+    border: 1px solid #eee;
+    display: grid;
+    background-color: #fff;
+    transition: 0.3s;
+    width: 100%;
+    height: 212px;
+    position: relative;
+    border-radius: 10px;
+    text-align: center;
+    padding: 12px 0px 12px 0;
+    margin-top: 10px;
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border-radius: 50%;
+        left: 105px;
+    }
+    &:before {
+        top: -0.9em;
+        border-bottom: 1px solid #aaa8a8;
+    }
+    &:after {
+        border-top: 1px solid #aaa8a8;
+        bottom: -0.7em;
+    }
 }
+
 .barcod {
-  border-right: dotted #a1a1a1;
-  border-width: 2px;
-  width: 100%;
-  height: 184px;
-  position: relative;
-  right: 27px;
+    border-right: dotted #a1a1a1;
+    border-width: 2px;
+    width: 100%;
+    height: 184px;
+    position: relative;
+    right: 27px;
 }
+
 .data {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: -20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    margin-top: 90px;
 }
+
 .border-pill-private {
-  padding: 10px 15px;
-  margin-top: 20px;
-  height: 250px;
+    padding: 10px 15px;
+    margin-top: 20px;
+    height: 250px;
 }
+
 .flight-detail {
-  text-align: center;
-  .background-world {
-    background-image: url(../public/Images/worldmap.webp);
-    background-position: center;
-    background-size: contain;
-  }
+    text-align: center;
+    .background-world {
+        background-image: url(../public/Images/worldmap.webp);
+        background-position: center;
+        background-size: contain;
+    }
 }
+
 .second-column {
-  padding: 10px;
-  text-align: center;
-  img {
-    margin-left: 5px;
-    display: inline-block;
-  }
-  p {
-    display: inline-block;
-  }
+    padding: 10px;
+    text-align: center;
+    img {
+        margin-left: 5px;
+        display: inline-block;
+    }
+    p {
+        display: inline-block;
+    }
 }
 
 .passanger-submiter {
-  padding: 0px 10px;
-  text-align: right;
-  .form-input-border-private {
-    height: 29px !important;
-  }
-  .finish-reserve {
-    & > div:nth-child(1) {
-      margin-top: 15px;
-      input[type="checkbox"] {
-        margin-left: 5px;
-      }
+    padding: 0px 10px;
+    text-align: right;
+    .form-input-border-private {
+        height: 29px !important;
     }
-  }
-
-  .finish-reserve-buttons {
-    .btn-outlined-private {
-      text-align: center;
-      border-width: 2px;
-      color: $primaryColor;
-      display: inline-block;
-      width: 98%;
-      height: 56px !important;
-      padding: 12px;
-      &:hover {
-        background-color: $primaryColor;
-        color: $whiteColor;
-      }
+    .finish-reserve {
+        &>div:nth-child(1) {
+            margin-top: 15px;
+            input[type="checkbox"] {
+                margin-left: 5px;
+            }
+        }
     }
-    .btn-outlined.color-secondary {
-      border-color: $secondaryColor;
-      color: $secondaryColor;
-
-      &:hover {
-        background-color: $secondaryColor;
-        color: $whiteColor;
-      }
+    .finish-reserve-buttons {
+        .btn-outlined-private {
+            text-align: center;
+            border-width: 2px;
+            color: $primaryColor;
+            display: inline-block;
+            width: 98%;
+            height: 56px !important;
+            padding: 8px;
+            &:hover {
+                background-color: $primaryColor;
+                color: $whiteColor;
+            }
+        }
+        .btn-outlined.color-secondary {
+            border-color: $secondaryColor;
+            color: $secondaryColor;
+            &:hover {
+                background-color: $secondaryColor;
+                color: $whiteColor;
+            }
+        }
     }
-  }
 }
+
 .add-passanger {
-  padding: 16px;
-  .btn-outlined-private {
-    text-align: center;
-    border-width: 2px;
-    color: $primaryColor;
-    display: inline-block;
-    width: 98%;
-    margin-top: 5px;
-    font-size: 15px;
-    padding: 12px;
-    &:hover {
-      background-color: $primaryColor;
-      color: $whiteColor;
+    padding: 16px;
+    .btn-outlined-private {
+        text-align: center;
+        border-width: 2px;
+        color: $primaryColor;
+        display: inline-block;
+        width: 98%;
+        margin-top: 5px;
+        font-size: 15px;
+        padding: 8px;
+        &:hover {
+            background-color: $primaryColor;
+            color: $whiteColor;
+        }
+        svg {
+            margin: 3px 1px 0 2px;
+        }
     }
-    svg {
-      margin: 3px 1px 0 2px;
-    }
-  }
 }
-.airline-image {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 10px;
-}
-.reserve-mobile-hero {
-  margin-top: 10px !important;
-  .small-airplane {
-    margin-top: 10px;
-    width: 40px;
-    height: 30px;
-  }
 
-  .line-2 {
-    padding: 10px 0 0 0;
-    p {
-      margin: 0;
-    }
-  }
-  .center-p {
-    line-height: 70px;
-  }
-  .background-world {
-    background-image: url(../public/Images/worldmap.webp);
-    background-position: center;
-    background-size: cover;
-  }
-  .line-3 {
-    p {
-      margin: 0 !important;
-    }
-    svg {
-      margin-left: 5px;
-    }
-  }
+.airline-image {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
 }
+
+.reserve-mobile-hero {
+    margin-top: 10px !important;
+    .small-airplane {
+        margin-top: 10px;
+        width: 40px;
+        height: 30px;
+    }
+    .line-2 {
+        padding: 10px 0 0 0;
+        p {
+            margin: 0;
+        }
+    }
+    .center-p {
+        line-height: 70px;
+    }
+    .background-world {
+        background-image: url(../public/Images/worldmap.webp);
+        background-position: center;
+        background-size: cover;
+    }
+    .line-3 {
+        p {
+            margin: 0 !important;
+        }
+        svg {
+            margin-left: 5px;
+        }
+    }
+}
+
 .terms_and_regulation {
-  text-align: left;
-  a {
-    color: #337ab7;
-  }
+    text-align: left;
+    a {
+        color: #337ab7;
+    }
 }
+
 .flight-day {
-  margin-right: 90px;
-  font-size: 14px !important;
+    margin-right: 90px;
+    font-size: 14px !important;
 }
