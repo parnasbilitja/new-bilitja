@@ -5,9 +5,10 @@ import { tourSlug } from '../jotai/jotai';
 import Link from 'next/link';
 import Footer from '../sources/component/Footer.component';
 import NavHandler from '../Components/share/NavHandler';
-import Pagination from '../Components/pagination/Pagination';
-import MessageBox from "./../sources/component/MessageBox.component"
 import PopUp from '../sources/component/PopUp.component';
+// format
+import { moneyFormat } from "../Utils/SimpleTasks";
+
 
 import { connect } from "react-redux";
 import { selcetAccountBox } from "../Redux/UI/ui.reselect";
@@ -15,6 +16,7 @@ import { accountBoxModify } from "../Redux/UI/ui.action";
 import { withRouter } from "next/router";
 
 import dynamic from "next/dynamic";
+import { Loader } from '../Utils/Loader';
 
 const Account = dynamic(() => import("./../sources/account/Account.component"));
 
@@ -37,18 +39,21 @@ const tours = (props) => {
     return (
         <div>
             <PopUp
-          opened={props.accountBox.state}
-          closePopUp={() => {
-            props.accountBoxModify({
-              state: false,
-            });
-          }}
-        >
-          <Account />
-        </PopUp>
+                opened={props.accountBox.state}
+                closePopUp={() => {
+                    props.accountBoxModify({
+                        state: false,
+                    });
+                }}
+            >
+                <Account />
+            </PopUp>
+            <div>
+                <Loader />
+            </div>
             <div className="mt-5 bodyVar">
-                    <NavHandler/>
-                    {/* <br/>
+                <NavHandler />
+                {/* <br/>
                     <br/>
                     <br/>
                     <br/>
@@ -92,7 +97,7 @@ const tours = (props) => {
                                         <div className="text-price pt-1">
                                             <small className="title-price">شروع قیمت از :</small>
                                             <strong className="price-tour color-base-color me-2">
-                                                {item.minPrice}
+                                                {moneyFormat(item.minPrice)}
                                                 <small className="pe-1">تومان </small>
                                             </strong>
                                         </div>
@@ -158,9 +163,9 @@ const tours = (props) => {
 };
 
 const mapStatesToProps = (state) => ({
-  accountBox: selcetAccountBox(state),
+    accountBox: selcetAccountBox(state),
 });
 const mapDispatchesToProps = (dispatch) => ({
-  accountBoxModify: (value) => dispatch(accountBoxModify(value)),
+    accountBoxModify: (value) => dispatch(accountBoxModify(value)),
 });
 export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(tours));
