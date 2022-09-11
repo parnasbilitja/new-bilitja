@@ -15,11 +15,11 @@ import globals from "../Global";
 
 import { connect } from "react-redux";
 import { accountBoxModify, messageBoxModify } from "../../Redux/UI/ui.action";
+import { useState } from "react";
 
-class ForgetPassword extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const ForgetPassword = (props) => {
+  
+    const [state,setState] = useState({
       mobile: "",
       token: "",
       get_code: false,
@@ -27,16 +27,16 @@ class ForgetPassword extends React.Component {
       passwordnew: "",
       showSetPassword: false,
       btn_text: "دریافت کد احراز هویت",
-    };
-  }
+    });
+  
 
-  forgetPassword = () => {
-    this.setState({ btn_text: "در حال پردازش..." });
+  const forgetPassword = () => {
+    setState({ btn_text: "در حال پردازش..." });
     fetch(`${globals.baseUrlNew}auth/getMobile`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        mobile: this.state.mobile,
+        mobile: state.mobile,
         register: 0,
         token: "",
         password: "",
@@ -49,13 +49,13 @@ class ForgetPassword extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         if (data.status == 0) {
-          this.setState({ get_code: true, btn_text: "تایید کد احراز هویت" });
-          this.props.messageBoxModify({
+          setState({ get_code: true, btn_text: "تایید کد احراز هویت" });
+          props.messageBoxModify({
             state: true,
             message: "کد احراز هویت برای شما ارسال شد.",
           });
         } else if (data.status == -111) {
-          this.props.messageBoxModify({
+          props.messageBoxModify({
             state: true,
             message: "چنین کاربری در سامانه یافت نشد، لطفا ثبت نام کنید.",
           });
@@ -63,14 +63,14 @@ class ForgetPassword extends React.Component {
       });
   };
 
-  verifyToken = () => {
-    this.setState({ btn_text: "در حال پردازش..." });
+  const verifyToken = () => {
+    setState({ btn_text: "در حال پردازش..." });
     fetch(`${globals.baseUrlNew}auth/ForgotPassword`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        mobile: this.state.mobile,
-        token: this.state.token,
+        mobile: state.mobile,
+        token: state.token,
         hostname : "bilitja.com",
         customerId : "1a157116-a01a-4027-ab10-74098ac63815",
         agencyName : "بلیطجا",
@@ -81,18 +81,18 @@ class ForgetPassword extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         if (data.status == 0) {
-          this.props.messageBoxModify({
+          props.messageBoxModify({
             state: true,
             message: "احراز هویت شما تایید شد.",
           });
 
-          this.setState({
+          setState({
             showSetPassword: true,
             btn_text: "دریافت کد احراز هویت",
           });
           localStorage.setItem("f-token", data.token);
         } else if (data.status == -100) {
-          this.props.messageBoxModify({
+          props.messageBoxModify({
             state: true,
             message: "کد احراز هویت شما صحیح نمی باشد.",
           });
@@ -100,9 +100,9 @@ class ForgetPassword extends React.Component {
       });
   };
 
-  setNewPassword = () => {
-    if (this.state.passwordnew == "") {
-      this.props.messageBoxModify({
+  const setNewPassword = () => {
+    if (state.passwordnew == "") {
+      props.messageBoxModify({
         state: true,
         message: "لطفا فیلد را کامل پر کنید.",
       });
@@ -112,8 +112,8 @@ class ForgetPassword extends React.Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           UserId: localStorage.getItem("f-token"),
-          password: this.state.password,
-          passwordnew: this.state.passwordnew,
+          password: state.password,
+          passwordnew: state.passwordnew,
           hostname : "bilitja.com",
           customerId : "1a157116-a01a-4027-ab10-74098ac63815",
           agencyName : "بلیطجا",
@@ -124,17 +124,17 @@ class ForgetPassword extends React.Component {
         .then((res) => res.json())
         .then((data) => {
           if (data.status == 0) {
-            this.props.messageBoxModify({
+            props.messageBoxModify({
               state: true,
               message: "گذرواژه شما با موفقیت ثبت شد.",
             });
             localStorage.removeItem("f-token");
-            this.props.accountBoxModify({
+            props.accountBoxModify({
               state: true,
               type: "login",
             });
           } else if (data.status == -100) {
-            this.props.messageBoxModify({
+            props.messageBoxModify({
               state: true,
               message: data.message,
             });
@@ -142,7 +142,6 @@ class ForgetPassword extends React.Component {
         });
     }
   };
-  render() {
     return (
       <div className="popup-content-container">
         <div className="popup-heading">
@@ -150,7 +149,7 @@ class ForgetPassword extends React.Component {
           <span
             className="pull-left exit-form"
             onClick={() => {
-              this.props.accountBoxModify({
+              props.accountBoxModify({
                 state: false,
               });
             }}
@@ -158,7 +157,7 @@ class ForgetPassword extends React.Component {
             <FontAwesomeIcon icon={faTimes} />
           </span>
         </div>
-        {this.state.showSetPassword == false ? (
+        {state.showSetPassword == false ? (
           <>
             <div className="row">
               <div className="col-1 padding-horizental-3px">
@@ -170,18 +169,18 @@ class ForgetPassword extends React.Component {
                 >
                   <PrimaryTextInput
                     placeholder="نام‌کاربری(تلفن همراه)"
-                    value={this.state.mobile}
+                    value={state.mobile}
                     onChange={(e) => {
-                      this.setState({
+                      setState({
                         mobile: e.target.value,
                       });
                     }}
-                    disabled={this.state.get_code}
+                    disabled={state.get_code}
                   />
                 </div>
               </div>
             </div>
-            {this.state.get_code == true ? (
+            {state.get_code == true ? (
               <div className="row">
                 <div className="col-1 padding-horizental-3px">
                   <FontAwesomeIcon icon={faKey} className="margin-top-20px" />
@@ -192,9 +191,9 @@ class ForgetPassword extends React.Component {
                   >
                     <PrimaryTextInput
                       placeholder="کد احراز هویت"
-                      value={this.state.token}
+                      value={state.token}
                       onChange={(e) => {
-                        this.setState({
+                        setState({
                           token: e.target.value,
                           password: e.target.value,
                         });
@@ -217,10 +216,10 @@ class ForgetPassword extends React.Component {
                 >
                   <PrimaryTextInput
                     placeholder="گذرواژه"
-                    value={this.state.passwordnew}
+                    value={state.passwordnew}
                     type="password"
                     onChange={(e) => {
-                      this.setState({
+                      setState({
                         passwordnew: e.target.value,
                       });
                     }}
@@ -231,15 +230,15 @@ class ForgetPassword extends React.Component {
           </>
         )}
 
-        {this.state.showSetPassword == false ? (
+        {state.showSetPassword == false ? (
           <div className="row">
             <div className="form-input-border without-focus col-12">
               <PrimaryButton
-                defaultValue={this.state.btn_text}
+                defaultValue={state.btn_text}
                 onClick={(e) => {
-                  this.state.get_code == false
-                    ? this.forgetPassword()
-                    : this.verifyToken();
+                  state.get_code == false
+                    ? forgetPassword()
+                    : verifyToken();
                 }}
               />
             </div>
@@ -250,7 +249,7 @@ class ForgetPassword extends React.Component {
               <PrimaryButton
                 defaultValue={"ثبت گذرواژه جدید"}
                 onClick={(e) => {
-                  this.setNewPassword();
+                  setNewPassword();
                 }}
               />
             </div>
@@ -262,7 +261,7 @@ class ForgetPassword extends React.Component {
             <p
               className="text-center font-size-13 no-margin"
               onClick={() => {
-                this.props.accountBoxModify({
+                props.accountBoxModify({
                   state: true,
                   type: "login",
                 });
@@ -274,7 +273,7 @@ class ForgetPassword extends React.Component {
         </div>
       </div>
     );
-  }
+  
 }
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),

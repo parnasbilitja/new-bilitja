@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { selcetAccountBox } from "../../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
@@ -6,40 +6,36 @@ import Login from "./Login.component";
 import Authentication from "./Authentication.component";
 import Register from "./Register.component";
 import ForgetPassword from "./ForgetPassword.component";
-class Account extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const Account = (props) => {
+    const [state,setState] = useState({
       mobile: "",
-    };
-  }
+    });
+  
 
-  handleChange = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({
+    setState({...state,
       [name]: value,
     });
   };
-  render() {
     return (
       <>
-        {this.props.accountBox.type == "login" ? (
-          <Login mobile={this.state.mobile} handleChange={this.handleChange} />
+        {props.accountBox.type == "login" ? (
+          <Login mobile={state.mobile} handleChange={handleChange} />
         ) : null}
-        {this.props.accountBox.type == "authentication" ? (
-          <Authentication mobile={this.state.mobile} />
+        {props.accountBox.type == "authentication" ? (
+          <Authentication mobile={state.mobile} />
         ) : null}
-        {this.props.accountBox.type == "register" ? <Register /> : null}
-        {this.props.accountBox.type == "forget" ? <ForgetPassword /> : null}
+        {props.accountBox.type == "register" ? <Register /> : null}
+        {props.accountBox.type == "forget" ? <ForgetPassword /> : null}
         {/* {
-                this.props.accountBox.type=="forget"?
+                props.accountBox.type=="forget"?
                     <ForgetPassword/>
                 :
                 null
             } */}
       </>
     );
-  }
 }
 const mapStatesToProps = (state) => ({
   accountBox: selcetAccountBox(state),

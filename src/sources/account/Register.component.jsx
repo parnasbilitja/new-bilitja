@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
@@ -15,10 +15,10 @@ import globals from "../Global";
 
 import Countdown from "react-countdown";
 import { Loader } from "./../../Utils/Loader";
-class Register extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const Register = (props) =>{
+  // constructor() {
+  //   super(props);
+    const [state,setState] = useState({
       mobile: "",
       password: "",
       mobilemoaref: "",
@@ -29,17 +29,17 @@ class Register extends React.Component {
       error: false,
       errText: "",
       btn_text: "دریافت کد احراز هویت",
-    };
-  }
-  register = () => {
-    this.setState({ btn_disabled: true, loading: true });
+    });
+  // }
+  const register = () => {
+    setState({...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/getMobile`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        mobile: this.state.mobile,
-        token: this.state.token,
-        password: this.state.password,
+        mobile: state.mobile,
+        token: state.token,
+        password: state.password,
         register: 1,
         hostname: "bilitja.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
@@ -50,14 +50,14 @@ class Register extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "0") {
-          this.setState({
+          setState({...state,
             loading: false,
             register_status: true,
             resend_code: true,
             btn_text: "تایید کد احراز هویت",
           });
         } else if (data.status === "-110") {
-          this.setState({
+          setState({...state,
             btn_disabled: false,
             loading: false,
             error: true,
@@ -65,7 +65,7 @@ class Register extends React.Component {
               "این شماره موبایل در سامانه موجود است، لطفا از بخش ورود وارد حساب خود شوید.",
           });
         } else {
-          this.setState({
+          setState({...state,
             btn_disabled: false,
             loading: false,
             error: true,
@@ -75,14 +75,14 @@ class Register extends React.Component {
       });
   };
 
-  RegisterWithToken = () => {
-    this.setState({ btn_disabled: true, loading: true });
+  const RegisterWithToken = () => {
+    setState({...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/checkUser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        mobile: this.state.mobile,
-        token: this.state.token,
+        mobile: state.mobile,
+        token: state.token,
         hostname: "bilitja.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         agencyName: "بلیطجا",
@@ -98,19 +98,19 @@ class Register extends React.Component {
             localStorage.setItem("name", data.name + data.family);
           }
           localStorage.setItem("token", data.token);
-          this.props.messageBoxModify({
+          props.messageBoxModify({
             state: true,
             message: "کاربر عزیز، شما با موفقیت وارد حساب کاربری خود شدید.",
           });
           setTimeout(() => {
             window.location.reload();
           }, 3000);
-          // this.props.addAccountProperties({
+          // props.addAccountProperties({
           //   token: data.token,
           //   dateLogin: moment().format("YYYY/MM/DD"),
           // });
         } else if (data.status == "2") {
-          this.setState({
+          setState({...state,
             moaref_save: true,
             loading: false,
             btn_text: "ثبت نام",
@@ -122,14 +122,14 @@ class Register extends React.Component {
           }
           localStorage.setItem("token", data.token);
         } else if (data.status === "-103") {
-          this.setState({
+          setState({...state,
             btn_disabled: false,
             loading: false,
             error: true,
             errText: "کد احراز هویت وارد شده نادرست است.",
           });
         } else {
-          this.setState({
+          setState({...state,
             btn_disabled: false,
             loading: false,
             error: true,
@@ -139,15 +139,15 @@ class Register extends React.Component {
       });
   };
 
-  SendMoarefMobile = () => {
-    this.setState({ btn_disabled: true, loading: true });
+  const SendMoarefMobile = () => {
+    setState({...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/MoarefSave`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        mobile: this.state.mobile,
+        mobile: state.mobile,
         userid: localStorage.getItem("token"),
-        mobilemoaref: this.state.mobilemoaref,
+        mobilemoaref: state.mobilemoaref,
         hostname: "bilitja.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         agencyName: "بلیطجا",
@@ -157,11 +157,11 @@ class Register extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "0") {
-          this.props.messageBoxModify({
+          props.messageBoxModify({
             state: true,
             message: "مسافر عزیز، شما با موفقیت ثبت نام شدید.",
           });
-          this.props.accountBoxModify({
+          props.accountBoxModify({
             state: false,
             type: "authentication",
           });
@@ -169,7 +169,7 @@ class Register extends React.Component {
             window.location.reload();
           }, 2000);
         } else {
-          this.setState({
+          setState({...state,
             btn_disabled: false,
             loading: false,
             error: true,
@@ -179,16 +179,16 @@ class Register extends React.Component {
       });
   };
 
-  handleChange = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     if(name == 'mobile' && String(value).length ==11){
-      this.setState({
+      setState({...state,
         [name]: value,
         error: false,
         errText: "",
       });
     }else if(name !=='mobile'){
-      this.setState({
+      setState({...state,
         [name]: value,
         error: false,
         errText: "",
@@ -196,9 +196,9 @@ class Register extends React.Component {
     }
   };
 
-  renderer = ({ minutes, seconds, completed }) => {
+  const renderer = ({ minutes, seconds, completed }) => {
     if (completed) {
-      this.setState({
+      setState({...state,
         resend_code: false,
         register_status: false,
         btn_text: "  دریافت مجدد کد احراز هویت",
@@ -212,7 +212,6 @@ class Register extends React.Component {
       );
     }
   };
-  render() {
     return (
       <div className="popup-content-container">
         <div className="popup-heading text-center">
@@ -220,7 +219,7 @@ class Register extends React.Component {
           <span
             className="pull-left exit-form"
             onClick={() => {
-              this.props.accountBoxModify({
+              props.accountBoxModify({
                 state: false,
               });
             }}
@@ -228,9 +227,9 @@ class Register extends React.Component {
             <FontAwesomeIcon icon={faTimes} />
           </span>
         </div>
-        {this.state.error === true ? (
-          console.log(this.state.errText),
-          <div className="alert alert-danger">{this.state.errText !==undefined ? this.state.errText:'شماره وارد شده باید ۱۱ رقم باشد'}</div>
+        {state.error === true ? (
+          console.log(state.errText),
+          <div className="alert alert-danger">{state.errText !==undefined ? state.errText:'شماره وارد شده باید ۱۱ رقم باشد'}</div>
         ) : null}
         <div className="container">
           <div className="row mb-2">
@@ -244,15 +243,15 @@ class Register extends React.Component {
                   className="form-input-auth px-2  col-12"
                   placeholder="نام کاربری ( شماره همراه )"
                   name="mobile"
-                  onChange={this.handleChange}
-                  disabled={this.state.register_status}
+                  onChange={handleChange}
+                  disabled={state.register_status}
                   inputMode="numeric"
                 />
               </div>
             </div>
           </div>
 
-          {this.state.register_status === true ? (
+          {state.register_status === true ? (<>
             <div className="row mb-2">
               <div className="col-1 padding-horizental-3px">
                 <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
@@ -263,16 +262,14 @@ class Register extends React.Component {
                     className="form-input-auth px-2  col-12"
                     placeholder="کد ارسال شده را وارد نمایید."
                     name="token"
-                    onChange={this.handleChange}
-                    disabled={this.state.moaref_save}
+                    onChange={handleChange}
+                    disabled={state.moaref_save}
                     autoFocus
                     inputMode="numeric"
-                  />
+                    />
                 </div>
               </div>
             </div>
-          ) : null}
-          {this.state.moaref_save === true ? (
             <div className="row mb-2">
               <div className="col-1 padding-horizental-3px">
                 <FontAwesomeIcon icon={faUsers} className="margin-top-20px" />
@@ -283,12 +280,13 @@ class Register extends React.Component {
                     className="form-input-auth px-2  col-12"
                     placeholder="شماره موبایل معرف ( اختیاری )"
                     name="mobilemoaref"
-                    onChange={this.handleChange}
+                    onChange={handleChange}
                     inputMode="numeric"
-                  />
+                    />
                 </div>
               </div>
             </div>
+            </>
           ) : null}
         </div>
 
@@ -296,22 +294,22 @@ class Register extends React.Component {
           <div className="form-input-auth-border px-2 without-focus col-12">
             <button
               onClick={(e) => {
-                this.state.moaref_save === false
-                  ? this.state.register_status === false
-                    ? this.register()
-                    : this.RegisterWithToken()
-                  : this.SendMoarefMobile();
+                state.moaref_save === false
+                  ? state.register_status === false
+                    ? register()
+                    : RegisterWithToken()
+                  : SendMoarefMobile();
               }}
               className="register-btn col-12 rounded h-3em"
             >
-              {this.state.loading === true ? <Loader /> : this.state.btn_text}
+              {state.loading === true ? <Loader /> : state.btn_text}
             </button>
           </div>
         </div>
-        {this.state.resend_code === true ? (
+        {state.resend_code === true ? (
           <div className="row mt-3 text-center">
             <div className="col-12">
-              <Countdown renderer={this.renderer} date={Date.now() + 60000} />
+              <Countdown renderer={renderer} date={Date.now() + 60000} />
             </div>
           </div>
         ) : null}
@@ -322,7 +320,7 @@ class Register extends React.Component {
               حساب کاربری دارید؟{" "}
               <a
                 onClick={() => {
-                  this.props.accountBoxModify({
+                  props.accountBoxModify({
                     state: true,
                     type: "login",
                   });
@@ -337,7 +335,6 @@ class Register extends React.Component {
         </div>
       </div>
     );
-  }
 }
 
 const mapDispatchesToProps = (dispatch) => ({

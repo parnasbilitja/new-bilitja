@@ -83,6 +83,7 @@ class Flights extends React.Component {
     }
   }
   componentDidMount() {
+    localStorage.setItem("url", JSON.stringify(this.props.router.asPath))
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
   }

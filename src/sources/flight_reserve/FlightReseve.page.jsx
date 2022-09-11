@@ -29,6 +29,7 @@ import { withRouter } from "next/router";
 import { Loader } from "../../Utils/Loader";
 import RegisterComponent from "../account/Register.component";
 import PopUp from "../component/PopUp.component";
+import Link from "next/link";
 
 const FlightReserve = (props) =>{
     console.log(props);
@@ -55,7 +56,7 @@ const FlightReserve = (props) =>{
         stateRegister: false,
         passengers: [],
         priceAll: 0,
-        mobileSubmiter: "",
+        mobileSubmiter: localStorage.getItem('mobile'),
         phoneSubmiter: "",
         mobileSubmiterErr: "این فیلد الزامیست",
         mobileSubmitererror: false,
@@ -273,16 +274,20 @@ const FlightReserve = (props) =>{
             priceAll: sum,
         });
     };
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        if (value.length == 11 ) {
-            setState({...state,
-                [name]: parseInt(value),
-                [`${name}error`]:false
-            });
-        }else if (value.length !==11) {
-            setState({...state,[`${name}error`]:true})
-        }
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        // let mobile = localStorage.getItem('mobile')
+        // if (value.length == 11 && !localStorage.getItem('mobile')) {
+            if (value.length == 11 ) {
+                setState({...state,
+                    // [name]: parseInt(value),
+                    [`${name}error`]:false
+                });
+            }else if (value.length !==11) {
+                setState({...state,[`${name}error`]:true})
+            }
+            // }
+            setState({...state,[name]:value})
     };
 
     // const authUserPopUP = () => {
@@ -525,7 +530,8 @@ const FlightReserve = (props) =>{
                                     <div className="col-lg-6 col-md-6 col-6 padding-3px">
                                         <div>
                                             <input
-                                                inputMode="numeric"
+                                                value={state.mobileSubmiter}
+                                                type="text"
                                                 placeholder="شماره همراه"
                                                 name="mobileSubmiter"
                                                 onChange={(e) => handleChange(e)}
@@ -540,8 +546,9 @@ const FlightReserve = (props) =>{
                                     <div className="col-lg-6 col-md-6 col-6 padding-3px">
                                         <div>
                                             <input
+                                                // value={state.phoneSubmiter}
                                                 className="col-12 reserve-input px-2 h-35em"
-                                                inputMode="numeric"
+                                                type="text"
                                                 placeholder="شماره ثابت"
                                                 name="phoneSubmiter"
                                                 onChange={(e) => handleChange(e)}
@@ -642,14 +649,18 @@ const FlightReserve = (props) =>{
                                         </button>
                                     </div>
                                     <div className="col-lg-4 col-md-4 col-5 padding-3px">
-                                        <a
+                                        {/* <a
                                             className="btn col-12 back-payment-btn py-2"
                                             onClick={() => {
                                                 props.router.back();
                                             }}
-                                        >
-                                            <span>بازگشت</span>
-                                        </a>
+                                        > */}
+                                        <Link href={`/${JSON.parse(localStorage.getItem('url'))}`}>
+                                            <span
+                                            className="btn col-12 back-payment-btn py-2"
+                                            >بازگشت</span>
+                                        </Link>
+                                        {/* </a> */}
                                     </div>
                                 </div>
                             </div>

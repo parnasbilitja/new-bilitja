@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faLock } from "@fortawesome/free-solid-svg-icons";
 import PrimaryTextInput from "../component/PrimaryTextInput.component";
@@ -11,31 +11,29 @@ import { addAccountProperties } from "../../Redux/Account/account.action";
 
 import globals from "../Global";
 import { Loader } from "./../../Utils/Loader";
-class Authentication extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const Authentication = (props) => {
+    const [state,setState] = useState({
       token: "",
       forseUpdate: false,
       btn_disabled: false,
       loading: false,
-    };
-  }
-  handleChange = (event) => {
+    });
+  
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({
+    setState({...state,
       [name]: value,
     });
   };
 
-  loginWithToken = () => {
-    this.setState({ btn_disabled: true, loading: true });
+  const loginWithToken = () => {
+    setState({...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/checkUser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        mobile: this.props.mobile,
-        token: this.state.token,
+        mobile: props.mobile,
+        token: state.token,
         hostname : "bilitja.com",
         customerId : "1a157116-a01a-4027-ab10-74098ac63815",
         agencyName : "بلیطجا",
@@ -46,34 +44,33 @@ class Authentication extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "0") {
-          this.setState({ btn_disabled: false, loading: false });
+          setState({...state, btn_disabled: false, loading: false });
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
           setTimeout(() => {
             window.location.reload();
           }, 2000);
-          this.props.accountBoxModify({
+          props.accountBoxModify({
             state: false,
             type: "authentication",
           });
-          this.props.addAccountProperties({
+          props.addAccountProperties({
             token: data.token,
             dateLogin: moment().format("YYYY/MM/DD"),
           });
-          this.props.messageBoxModify({
+          props.messageBoxModify({
             state: true,
             message: "ورود شما موفقیت آمیز بود.",
           });
         } else {
-          this.setState({ btn_disabled: false, loading: false });
-          this.props.messageBoxModify({
+          setState({...state, btn_disabled: false, loading: false });
+          props.messageBoxModify({
             state: true,
             message: data.message,
           });
         }
       });
   };
-  render() {
     return (
       <div className="popup-content-container">
         <div className="popup-heading">
@@ -81,7 +78,7 @@ class Authentication extends React.Component {
           <span
             className="pull-left exit-form"
             onClick={() => {
-              this.props.accountBoxModify({
+              props.accountBoxModify({
                 state: false,
               });
             }}
@@ -98,7 +95,7 @@ class Authentication extends React.Component {
               <PrimaryTextInput
                 placeholder="کد ارسال شده"
                 name="token"
-                onChange={this.handleChange}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -108,16 +105,16 @@ class Authentication extends React.Component {
           <div className="form-input-border without-focus col-12">
             <button
               onClick={(e) => {
-                this.loginWithToken();
+                loginWithToken();
               }}
               className={
-                this.props.disabled === false
+                props.disabled === false
                   ? "btn btn-info py-3 mb-3 col-12 btn-block"
                   : styles["primary-button"]
               }
-              disabled={this.state.btn_disabled}
+              disabled={state.btn_disabled}
             >
-              {this.state.loading === false ? "  ورود" : <Loader />}
+              {state.loading === false ? "  ورود" : <Loader />}
             </button>
           </div>
         </div>
@@ -125,7 +122,7 @@ class Authentication extends React.Component {
                     <div className="col-lg-6 col-md-6 col-sm-6 col-12 no-padding-horizental">
                         <br />
                         <p className="text-center no-margin font-size-13" onClick={() => {
-                            this.props.accountBoxModify({
+                            props.accountBoxModify({
                                 state: true,
                                 type: 'forget'
                             })
@@ -134,7 +131,7 @@ class Authentication extends React.Component {
                     <div className="col-lg-6 col-md-6 col-sm-6 col-12 no-padding-horizental">
                         <br />
                         <p className="text-center font-size-13 no-margin" onClick={() => {
-                            this.props.accountBoxModify({
+                            props.accountBoxModify({
                                 state: true,
                                 type: 'register'
                             })
@@ -143,7 +140,6 @@ class Authentication extends React.Component {
                 </div> */}
       </div>
     );
-  }
 }
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),

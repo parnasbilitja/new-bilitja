@@ -35,7 +35,7 @@ import ConsularReport from "../sources/manager/sell-report/sell-report/Consular-
 import Reserving from "../sources/manager/sell-report/sell-report/reserving";
 import Transaction from "../sources/manager/sell-report/sell-report/transaction";
 
-export default function ManagePanel() {
+const ManagePanel = () =>{
   const myRouter = useRouter();
   const [width, setWidth] = useState(0);
   const [myid, setmyId] = useState(0);
@@ -211,3 +211,4 @@ export default function ManagePanel() {
           }} />
 
   */
+          export default ManagePanel;

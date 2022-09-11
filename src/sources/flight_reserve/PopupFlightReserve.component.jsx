@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "../../../styles/PopupFlightReserve.module.scss";
 
@@ -20,25 +20,23 @@ import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
 import { getweekday } from "../../Utils/SimpleTasks";
 import Loader from "../../Utils/Loader";
-class PopupFlightReserve extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const PopupFlightReserve = (props) =>{
+  
+    const [state,setState] = useState({
       numADL: 1,
       numCHD: 0,
       numINF: 0,
       loading: false,
-    };
-  }
-
-  handleChange = (event) => {
+    });
+  
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({
+    setState({...state,
       [name]: parseInt(value),
     });
   };
 
-  submitReserve = () => {
+  const submitReserve = () => {
     const {
       flightId,
       classId,
@@ -55,13 +53,13 @@ class PopupFlightReserve extends React.Component {
       serviceType,
       priceView,
       faranegarId,
-    } = this.props;
+    } = props;
 
-    console.log(this.props);
+    console.log(props);
     const reserveObject = {
-      numADL: this.state.numADL,
-      numCHD: this.state.numCHD,
-      numINF: this.state.numINF,
+      numADL: state.numADL,
+      numCHD: state.numCHD,
+      numINF: state.numINF,
       flightId: flightId,
       classId: classId,
       kndSys: kndSys,
@@ -91,36 +89,36 @@ class PopupFlightReserve extends React.Component {
       .then((data) => {
         console.log(data);
         if (data.message == "OK") {
-          this.props
+          props
             .addReservationProperties({
               reqNo: data.reqNo,
               reqPnr: data.reqPnr,
               priceMessage: data.priceMessage,
             })
             .then(() => {
-              console.log(this.props.router);
-              this.props.router.push(
-                `${this.props.router.asPath}/info/${data.reqNo}/${data.reqPnr}`
+              console.log(props.router);
+              props.router.push(
+                `${props.router.asPath}/info/${data.reqNo}/${data.reqPnr}`
               );
             });
         } else {
           // //  پیام تغییر قیمت
           // //if(data.priceMessage != null){
           //         if(data.priceMessage != ""){
-          //             this.props.messageBoxModify({
+          //             props.messageBoxModify({
           //                 state: true,
           //                 message: `${data.priceMessage}`
           //             })
           //         }
           // //}
-          this.props.messageBoxModify({
+          props.messageBoxModify({
             state: true,
             message: `${data.message}`,
           });
         }
       });
   };
-  validation = (numADL, numCHD, numINF, cap) => {
+  const validation = (numADL, numCHD, numINF, cap) => {
     if (numADL <= 0) {
       return "باید حداقل یک بزرگسال در بین مسافرین باشد";
     }
@@ -132,7 +130,6 @@ class PopupFlightReserve extends React.Component {
     }
     return "OK";
   };
-  render() {
     const numberOfPassengers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const numberOfPassengers_ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const {
@@ -144,7 +141,7 @@ class PopupFlightReserve extends React.Component {
       cap,
       airlineIataCode,
       airline,
-    } = this.props;
+    } = props;
     return (
       <div className={styles["pop-up-flight-reserve-box"]}>
         <p className="font-bold-iransanse">
@@ -207,10 +204,10 @@ class PopupFlightReserve extends React.Component {
               <PrimarySelectInput
                 name="numADL"
                 style={{ height: "2.5em" }}
-                onChange={this.handleChange}
+                onChange={handleChange}
               >
                 {numberOfPassengers_.map((x) =>
-                  this.state.numADL == x ? (
+                  state.numADL == x ? (
                     <option selected>{x}</option>
                   ) : (
                     <option>{x}</option>
@@ -231,10 +228,10 @@ class PopupFlightReserve extends React.Component {
               <PrimarySelectInput
                 name="numCHD"
                 style={{ height: "2.5em" }}
-                onChange={this.handleChange}
+                onChange={handleChange}
               >
                 {numberOfPassengers.map((x) =>
-                  this.state.numCHD == x ? (
+                  state.numCHD == x ? (
                     <option selected>{x}</option>
                   ) : (
                     <option>{x}</option>
@@ -255,10 +252,10 @@ class PopupFlightReserve extends React.Component {
               <PrimarySelectInput
                 name="numINF"
                 style={{ height: "2.5em" }}
-                onChange={this.handleChange}
+                onChange={handleChange}
               >
                 {numberOfPassengers.map((x) =>
-                  this.state.numINF == x ? (
+                  state.numINF == x ? (
                     <option selected>{x}</option>
                   ) : (
                     <option>{x}</option>
@@ -273,21 +270,21 @@ class PopupFlightReserve extends React.Component {
           >
             <PrimaryButton
               defaultValue={
-                this.state.loading == false ? "مرحله بعد" : "درحال پردازش .."
+                state.loading == false ? "مرحله بعد" : "درحال پردازش .."
               }
               onClick={() => {
-                const message = this.validation(
-                  this.state.numADL,
-                  this.state.numCHD,
-                  this.state.numINF,
-                  this.props.cap
+                const message = validation(
+                  state.numADL,
+                  state.numCHD,
+                  state.numINF,
+                  props.cap
                 );
                 if (message == "OK") {
-                  this.setState({ loading: true });
-                  this.submitReserve();
+                  setState({...state, loading: true });
+                  submitReserve();
                 } else {
-                  this.setState({ loading: false });
-                  this.props.messageBoxModify({
+                  setState({...state, loading: false });
+                  props.messageBoxModify({
                     state: true,
                     message: message,
                   });
@@ -298,7 +295,6 @@ class PopupFlightReserve extends React.Component {
         </div>
       </div>
     );
-  }
 }
 const mapDispatchesToProps = (dispatch) => ({
   addReservationProperties: async (value) =>
