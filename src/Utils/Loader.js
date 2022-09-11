@@ -3,8 +3,13 @@ import React from "react";
 export const Loader = () => {
   return (
     <>
-      <div className="spinner-border text-primary" role="status">
-        <span className="sr-only">Loading...</span>
+      <div className="loader-data d-flex flex-column align-items-center justify-content-center" style={{ width: '100%', height: '100vh' }}>
+        <div className="image">
+          <img src="/images/Loading_Circle.gif" width={'150px'} height={'150px'} />
+        </div>
+        <div className="text mt-5">
+          <span className="font-yekan font-bold font-size-24">لــطفا صــبر کـنید</span>
+        </div>
       </div>
     </>
   );
