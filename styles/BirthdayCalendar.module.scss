@@ -64,6 +64,7 @@
     border-radius: 5px;
     color: $primaryColor;
     font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
     &:hover {
       background-color: $primaryColor;
@@ -91,6 +92,10 @@
     padding: 7px;
     width: 85%;
   }
+}
+
+.font-en{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
 }
 
 .birthday-year-container {

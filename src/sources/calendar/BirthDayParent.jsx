@@ -5,29 +5,30 @@ import BirthdayCalenderMiladi from './BirthdayCalenderMiladi';
 const BirthDayParent = (props) => {
     return (
         <div>
-            {props.calend?
-            <BirthdayCalendar
-                numBase={props.numBase}
-                num={props.numSh}
-                placeholder={props.placeholder}
-                typePassenger={props.typePassenger}
-                setBirthday={(value) => {
-                    props.setBirthdayb(value)
-                }}
-                closePopUpCalendar={props.closePopUpCalendar}
-            />
-            :
-            <BirthdayCalenderMiladi
-                num={props.numMi}
-                numBase={props.numMiBase}
-                placeholder={props.placeholder}
-                typePassenger={props.typePassenger}
-                setBirthday={(value) => {
-                    props.setBirthdayb(value)
-                }}
-                closePopUpCalendar={props.closePopUpCalendar}
-            />
-        }
+            {props.calend ?
+                <BirthdayCalendar
+                    numBase={props.numBase}
+                    num={props.numSh}
+                    placeholder={props.placeholder}
+                    typePassenger={props.typePassenger}
+                    setBirthday={(value) => {
+                        props.setBirthdayb(value)
+                    }}
+                    closePopUpCalendar={props.closePopUpCalendar}
+                />
+                :
+                <BirthdayCalenderMiladi
+                    num={props.numMi}
+                    numBase={props.numMiBase}
+                    placeholder={props.placeholder}
+                    title={props.title}
+                    typePassenger={props.typePassenger}
+                    setBirthday={(value) => {
+                        props.setBirthdayb(value)
+                    }}
+                    closePopUpCalendar={props.closePopUpCalendar}
+                />
+            }
         </div>
     );
 };

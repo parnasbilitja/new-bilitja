@@ -12,9 +12,9 @@ class CalendarComponent extends React.Component {
             typeOfCalendar: "GAR"
         }
 
-       console.log('Cosntructor GAR')
+        console.log('Cosntructor GAR')
     }
-    componentDidMount(){
+    componentDidMount() {
         console.log('componentDidMount JAL')
         this.setState({
             typeOfCalendar: "JAL"
@@ -26,21 +26,21 @@ class CalendarComponent extends React.Component {
             <div onClick={(e) => {
                 e.stopPropagation()
             }}>
-               
+
 
                 {
                     this.state.typeOfCalendar == "JAL" ?
-                        
-                        <JalaliDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar}/>
+
+                        <JalaliDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar} />
                         :
-                        <GarigorianDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar}/>
+                        <GarigorianDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar} />
                 }
-                 <div className="rtl text-right">
+                <div className="rtl text-right">
                     <label className="no-margin" onClick={() => {
                         this.setState({
                             typeOfCalendar: this.state.typeOfCalendar == "JAL" ? "GAR" : "JAL"
                         })
-                    }} >&nbsp;{this.state.typeOfCalendar == "JAL" ? "تقویم میلادی" : "تقویم شمسی"}</label>
+                    }} >&nbsp;{this.state.typeOfCalendar == "JAL" ? "Christian month" : "تقویم شمسی"}</label>
                 </div>
             </div>
         )
