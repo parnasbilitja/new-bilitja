@@ -136,7 +136,7 @@ const NavBar = (props) =>{
                     <a href="#" style={{ fontSize: 12 }}>
                       <span>مشاوره تلفنی : </span>
                       <i className="bilitja icon-phone"></i>
-                      <a href="tel:۰۲۱۵۷۸۷۴">۰۲۱۵۷۸۷۴</a>
+                      <a href="tel:02184279999">02184279999</a>
                     </a>
                   </div>
                 </div>

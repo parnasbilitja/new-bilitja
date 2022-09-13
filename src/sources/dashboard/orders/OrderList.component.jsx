@@ -1,6 +1,33 @@
 import { withRouter } from "next/router";
+import globals from "./../../Global";
+import { useEffect, useState } from "react";
 
 const OrderList = () => {
+  const [state,setState] = useState({
+    UserId:'',
+    customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+  })
+  useEffect(() => {
+    setState({...state,UserId: localStorage.getItem("token")});
+
+  fetch(`${globals.baseUrlNew}Auth/reports/${localStorage.getItem("token")}/${state.customerId}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+    // body: JSON.stringify({
+    //   UserId: state.UserId,
+    //   customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+    // }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => 
+    console.log(err)
+    );
+  }, []);
+
+
   return (
     <section>
       <div className="position-relative">

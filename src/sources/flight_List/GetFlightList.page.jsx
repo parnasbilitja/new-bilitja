@@ -38,6 +38,7 @@ import MinimumPriceCalendar from "./MinimumPriceCalendar.component";
 import { getCustomFormat } from "../../Utils/SimpleTasks";
 import { withRouter } from "next/router";
 import Descflightlist from "./Descflitlist";
+import FutureDays from "./FutureDays";
 
 class GetFlightList extends React.Component {
   constructor(props) {
@@ -605,6 +606,7 @@ class GetFlightList extends React.Component {
           <div className="col-lg-12 col-md-12 col-sm-12">
             <div className="row min-height">
               <div className="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-12 padding-5px">
+                <FutureDays refreshAction={this.getData}  />
                 {this.state.loading ? (
                   <div className="mt-4">
                     <Loading />

@@ -9,6 +9,7 @@ import { messageBoxModify } from "./../../../Redux/UI/ui.action";
 import PopUp from "./../../component/PopUp.component";
 import BirthdayCalendar from "./../../calendar/BirthdayCalendar.component";
 import BirthDayParent from "../../calendar/BirthDayParent";
+import ImgPrev from "./Image";
 
 const EditProfile = (props) => {
   const router = useRouter();
@@ -117,29 +118,7 @@ const EditProfile = (props) => {
           <div className="container-fluid">
             <div className="row my-3">
               <div className="col-lg-3 text-center">
-                <img
-                  width=""
-                  height=""
-                  src={state.image}
-                  alt="User Profile"
-                  className="img-fluid img-responsive rounded-circle border-black profile-img"
-                />
-                <div className="button-wrapper">
-                  <span className="label font-bold-iransanse">
-                    تغییر پروفایل
-                  </span>
-
-                  <input
-                    type="file"
-                    name="upload"
-                    id="upload"
-                    className={'styles["primary-button"]'}
-                    placeholder="تغییر پروفایل"
-                    onClick={(e) => {
-                      imageHandler(e);
-                    }}
-                  />
-                </div>
+                <ImgPrev state={state} setState={setState} />
               </div>
               <div className="col-lg-9 d-flex flex-wrap align-items-start justify-content-between">
                 <div className="flex-48">

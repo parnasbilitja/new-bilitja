@@ -272,7 +272,7 @@ const FlightPassengerForm = (props) => {
                                 <PrimaryTextInput
                                     style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
                                     name="nationalCode"
-                                    placeholder={`${props.nationality == "IR"
+                                    placeholder={`${props.nationality == "IR" && props.pathKind == 1
                                         ? "کد ملی"
                                         : "شماره پاسپورت"
                                         }`}
@@ -280,7 +280,7 @@ const FlightPassengerForm = (props) => {
                                         }`}
                                     onChange={(e) => {
                                         errHandler(e)
-                                        if (props.nationality !== "other") {
+                                        if ( props.nationality == "IR" && props.pathKind == 1 ) {
                                             props.fillPassengersData(
                                                 "code",
                                                 props.id,
@@ -305,7 +305,7 @@ const FlightPassengerForm = (props) => {
 
 
 
-                            <div className={`d-flex align-items-center ${props.nationality == 'IR' ? styles["makhfi"] : ""}`} >
+                            <div className={`d-flex align-items-center `} >
                                 {/* <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12,display: props.nationality == 'IR' && 'none'}}
                                         placeholder={`${ "انقضای پاسپورت"}`}
@@ -340,9 +340,6 @@ const FlightPassengerForm = (props) => {
                                     /> */}
                             </div>
                             <span className="color-secondary error-message position-absolute">
-                                {/* {err.nationalCode && err.nationalCodeErr} */}
-                                {/* {props.codeErr}
-                                {props.pasnoErr} */}
                                 {props.codeErr == '' && props.pasnoErr == '' && err.nationalCode ? err.nationalCodeErr : ''}
                                 {props.code.length < 10 ? props.codeErr : ""}
                                 {props.nationality == 'other' && props.pasno.length < 10 && props.pasno.length > 1 ? 'شماره پاسپورت اشتباه است' : ''}
@@ -351,16 +348,17 @@ const FlightPassengerForm = (props) => {
                         </div>
 
                         <div className="col-lg-2 col-md-3 col-sm-4 col-6 padding-horizental-3px mt-1">
-                            <div className={`d-flex align-items-center ${props.nationality == 'IR' ? styles["makhfi"] : ""}`} >
+                            <div className={`d-flex align-items-center `} >
                                 <PrimaryTextInput
-                                    style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15, display: props.nationality == 'IR' && 'none' }}
+                                    disabled={props.nationality == 'IR' && props.pathKind == 1 ?true:false}
+                                    style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15}}
                                     placeholder={`${"انقضای پاسپورت"}`}
-                                    name="extPasaport"
+                                    name="futureday"
                                     inputMode={`${"text"}`}
                                     onChange={(e) => {
                                         errHandler(e);
                                         props.fillPassengersData(
-                                            "extPasaport",
+                                            "futureday",
                                             props.id,
                                             e.target.value
                                         );
@@ -368,12 +366,12 @@ const FlightPassengerForm = (props) => {
                                     onFocus={() => {
                                         managePopUpExtPasCalendar(true);
                                     }}
-                                    defaultValue={props.extPasaport}
-                                    value={props.extPasaport}
+                                    defaultValue={props.pasenddat}
+                                    value={props.futureday}
                                 />
                             </div>
                             <span className="color-secondary error-message position-absolute">
-                                {props.extPasaport == "" && err.extPasaport ? err.extPasaportErr : ''}
+                                {props.pasenddat == "" && err.extPasaport ? err.extPasaportErr : ''}
                             </span>
                         </div>
                         <div className="col-lg-2 mt-12 col-md-2 col-sm-4 col-6 padding-horizental-3px ">
@@ -390,7 +388,7 @@ const FlightPassengerForm = (props) => {
                                       
                                 </div> */}
                             <span className="color-secondary error-message position-absolute">
-                                {props.pasenddatErr}
+                                {props.pasenddatErr}{console.log(props)}
                             </span>
                         </div>
 
@@ -461,7 +459,7 @@ const FlightPassengerForm = (props) => {
                         typePassenger={props.type}
                         name="birthday"
                         setBirthdayb={(value) => {
-                            props.fillPassengersData("extPasaport", props.id, value);
+                            props.fillPassengersData("futureday", props.id, value);
                         }}
                         closePopUpCalendar={managePopUpBirthdayCalendar}
                     />

@@ -31,7 +31,7 @@ const ForgetPassword = (props) => {
   
 
   const forgetPassword = () => {
-    setState({ btn_text: "در حال پردازش..." });
+    setState({...state, btn_text: "در حال پردازش..." });
     fetch(`${globals.baseUrlNew}auth/getMobile`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -49,7 +49,7 @@ const ForgetPassword = (props) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.status == 0) {
-          setState({ get_code: true, btn_text: "تایید کد احراز هویت" });
+          setState({...state, get_code: true, btn_text: "تایید کد احراز هویت" });
           props.messageBoxModify({
             state: true,
             color:true,
@@ -66,7 +66,7 @@ const ForgetPassword = (props) => {
   };
 
   const verifyToken = () => {
-    setState({ btn_text: "در حال پردازش..." });
+    setState({...state, btn_text: "در حال پردازش..." });
     fetch(`${globals.baseUrlNew}auth/ForgotPassword`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -89,7 +89,7 @@ const ForgetPassword = (props) => {
             message: "احراز هویت شما تایید شد.",
           });
 
-          setState({
+          setState({...state,
             showSetPassword: true,
             btn_text: "دریافت کد احراز هویت",
           });
@@ -178,7 +178,7 @@ const ForgetPassword = (props) => {
                     placeholder="نام‌کاربری(تلفن همراه)"
                     value={state.mobile}
                     onChange={(e) => {
-                      setState({
+                      setState({...state, 
                         mobile: e.target.value,
                       });
                     }}
@@ -200,7 +200,7 @@ const ForgetPassword = (props) => {
                       placeholder="کد احراز هویت"
                       value={state.token}
                       onChange={(e) => {
-                        setState({
+                        setState({...state,
                           token: e.target.value,
                           password: e.target.value,
                         });
@@ -226,7 +226,7 @@ const ForgetPassword = (props) => {
                     value={state.passwordnew}
                     type="password"
                     onChange={(e) => {
-                      setState({
+                      setState({...state,
                         passwordnew: e.target.value,
                       });
                     }}
