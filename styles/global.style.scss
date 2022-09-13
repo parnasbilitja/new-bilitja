@@ -108,7 +108,7 @@ html {
   direction: rtl;
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 
   a {
     color: $pillTextGray;
@@ -1198,7 +1198,7 @@ button {
   position : sticky;
   position: -webkit-sticky;
   height: fit-content;
-  top: 20px;
+  top: 100px;
   .c-datalist{
     box-shadow: 0 0 3px rgba($color: #676767, $alpha: .7);
     border-radius: 5px;

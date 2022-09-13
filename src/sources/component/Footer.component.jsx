@@ -272,27 +272,28 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className={styles["footer-copy"]} style={{ height: 95 }}>
+                <div className={styles["footer-copy"]}>
                     <div className={styles["footer-right"]}>
+                        <div className="d-flex justify-content-end ps-4">
+                            <a
+                                referrerPolicy="origin"
+                                target="_blank"
+                                href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                            >
+                                <img
+                                    referrerPolicy="origin"
+                                    src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                                    alt=""
+                                    id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                />
+                            </a>
+                        </div>
                         <div>© کپی رایت 1400. Ver 1.1.1</div>
                         <span>کلیه حقوق این سایت محفوظ و متعلق به بلیط جا می‌باشد. </span>
                     </div>
-
-                    <div className="col-xl-4 col-lg-4 d-flex justify-content-end ps-4 pt-3"><a
-                        referrerPolicy="origin"
-                        target="_blank"
-                        href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                    >
-                        <img
-                            referrerPolicy="origin"
-                            src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                            alt=""
-                            id="wC1opUKBlpiUx3sEWOGR" width={'90px'} height={'90px'}
-                        />
-                    </a></div>
                     <div className={styles["footer-left"]}>
-                        <strong style={{ maxWidth: 500 }}> طراحی و توسعه سایت : </strong>
-                        <span> تیم فنی و توسعه بلیطجا </span>
+                        <strong style={{ maxWidth: 500, paddingLeft: 20 }}> طراحی و توسعه سایت : </strong>
+                        <strong className="text-white">تیم توسعه فنی بلیط جا ( پارناس )</strong>
                     </div>
                 </div>
             </div>
