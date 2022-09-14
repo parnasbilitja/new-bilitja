@@ -1,5 +1,7 @@
 import React from "react";
 import StyleCalendarPrice from "../../../styles/MinimumPriceCalendar.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import globals from "../Global";
 import moment from "jalali-moment";
 import { connect } from "react-redux";
@@ -142,7 +144,7 @@ componentDidUpdate(){
   };
   increaseMonth = () => {
     let month = parseInt(this.state.month) + 1;
-    if (month > 12) {
+    if (month == 12) {
       this.setState(
         {
           month: 1,
@@ -162,23 +164,43 @@ componentDidUpdate(){
   render() {
     return (
       <div className="row mt-5 mx-2">
+        {/* <div className="row">
+              <div className="col-lg-1 col-1">
+                <FontAwesomeIcon
+                  icon={faAngleRight}
+                  onClick={this.decreaseMonth}
+                />
+              </div>
+
+              <div className="col-lg-2 col-2">
+                <p className="no-margin-vertical font-size-14 black-color font-bold-iransanse text-center">
+                  {this.getTitle()}
+                </p>
+              </div>
+
+              <div className="col-lg-1 col-1">
+                <FontAwesomeIcon
+                  icon={faAngleLeft}
+                  onClick={this.increaseMonth}
+                />
+              </div>
+            </div> */}
         {/* <div className="col-lg-3 col-md-3 col-sm-1 col-0"></div> */}
         {this.state.firstMonth ? (
-          <div className="col-lg-12 col-md-12 col-md-12 col-12">
-            
-            <div className={`date-show`}  style={{height: "fit-content" , display: "flex" , justifyContent: "center"}}>
+          <div className="col-lg-12 col-md-12 col-md-12 col-12 mt-3">
+            <div className={`date-show `}  style={{height: "fit-content" , display: "flex" , justifyContent: "center"}}>
               {console.log(this.props.credentials.flightDatePersian.split('/'))}
               {this.state.firstMonth.map((day) => (<>
                 {
-                
-                  parseInt(this.props.credentials.flightDatePersian.split('/')[2]) - 2 <= day.day 
+                //  day.minPrice !== null && day.minPrice > 0 &&
+                  parseInt(this.props.credentials.flightDatePersian.split('/')[2]) <= day.day 
                 && 
                   (parseInt(this.props.credentials.flightDatePersian.split('/')[1]) == parseInt(day.month) 
                 || 
                   parseInt(this.props.credentials.flightDatePersian.split('/')[1]) == parseInt(day.month) + 1)
                 && 
                   (
-                    parseInt(this.props.credentials.flightDatePersian.split('/')[2]) + 4 >= day.day
+                    parseInt(this.props.credentials.flightDatePersian.split('/')[2]) + 6 >= day.day
                   )
                   
                  ? 

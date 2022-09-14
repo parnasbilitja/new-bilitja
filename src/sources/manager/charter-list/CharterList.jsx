@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Row from "./Row";
 import axios from "axios";
 import globals from "./../../Global";
 import style from "./Charetr.module.scss";
 const CharterList = () => {
-  const [agency, setAgency] = React.useState(null);
+  const [agency, setAgency] = useState(null);
 
   const getList = async () => {
     const { data } = await axios.get(
@@ -13,7 +13,7 @@ const CharterList = () => {
     setAgency(data);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     getList();
   }, []);
   return (

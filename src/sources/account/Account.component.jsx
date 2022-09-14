@@ -6,6 +6,7 @@ import Login from "./Login.component";
 import Authentication from "./Authentication.component";
 import Register from "./Register.component";
 import ForgetPassword from "./ForgetPassword.component";
+import Auth from "./Auth";
 const Account = (props) => {
     const [state,setState] = useState({
       mobile: "",
@@ -26,8 +27,9 @@ const Account = (props) => {
         {props.accountBox.type == "authentication" ? (
           <Authentication mobile={state.mobile} />
         ) : null}
-        {props.accountBox.type == "register" ? <Register /> : null}
+        {props.accountBox.type == "register" ? <Auth /> : null}
         {props.accountBox.type == "forget" ? <ForgetPassword /> : null}
+
         {/* {
                 props.accountBox.type=="forget"?
                     <ForgetPassword/>

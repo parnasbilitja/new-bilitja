@@ -271,7 +271,7 @@ const FlightPassengerForm = (props) => {
                             <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
                                 <PrimaryTextInput
                                     style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
-                                    name="nationalCode"
+                                    name={`nationalCode `}
                                     placeholder={`${props.nationality == "IR" && props.pathKind == 1
                                         ? "کد ملی"
                                         : "شماره پاسپورت"
@@ -280,6 +280,7 @@ const FlightPassengerForm = (props) => {
                                         }`}
                                     onChange={(e) => {
                                         errHandler(e)
+
                                         if ( props.nationality == "IR" && props.pathKind == 1 ) {
                                             props.fillPassengersData(
                                                 "code",
@@ -290,6 +291,11 @@ const FlightPassengerForm = (props) => {
                                             if (!checkNumber(e.target.value)) {
                                                 return;
                                             } else {
+                                                props.fillPassengersData(
+                                                    "pasaport",
+                                                    props.id,
+                                                    e.target.value
+                                                );
                                                 props.fillPassengersData(
                                                     "pasno",
                                                     props.id,
@@ -388,7 +394,8 @@ const FlightPassengerForm = (props) => {
                                       
                                 </div> */}
                             <span className="color-secondary error-message position-absolute">
-                                {props.pasenddatErr}{console.log(props)}
+                                {/* {props.pasenddatErr} */}
+                                {/* {console.log(props)} */}
                             </span>
                         </div>
 
@@ -476,6 +483,7 @@ const FlightPassengerForm = (props) => {
                         numOfYear={10}
                         setFutureday={(value) => {
                             props.fillPassengersData("futureday", props.id, value);
+                            // props.fillPassengersData("pasenddat", props.id, value);
                         }}
                         closePopUpCalendar={managePopUpFuturedayCalendar}
                     />

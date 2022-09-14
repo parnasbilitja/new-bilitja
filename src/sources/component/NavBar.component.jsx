@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 import { selcetAccountBox } from "../../Redux/UI/ui.reselect";
 import { withRouter } from "next/router";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
-import NavHandler from "../../Components/share/NavHandler";
 
 const NavBar = (props) =>{
 
@@ -40,7 +39,7 @@ const NavBar = (props) =>{
         logged : true
       })
     }
-  },[props.user.logged])
+  },[props.user])
 
   const handleLogoutUser = (e) => {
     e.preventDefault();
@@ -97,7 +96,7 @@ const NavBar = (props) =>{
                       </>
                     ) : (
                       <>
-                        <div>
+                        {/* <div>
                           <a
                             style={{ fontSize: 12 }}
                             href=""
@@ -112,7 +111,7 @@ const NavBar = (props) =>{
                             <i className="bilitja icon-login"></i>
                             <span>ورود کاربر</span>
                           </a>
-                        </div>
+                        </div> */}
                         <div className="border-right">
                           <a
                             style={{ fontSize: 12 }}
@@ -125,8 +124,9 @@ const NavBar = (props) =>{
                               });
                             }}
                           >
-                            <i className="bilitja icon-register"></i>
-                            <span>ثبت نام</span>
+                            {/* <i className="bilitja icon-register"></i> */}
+                            <i className="bilitja icon-login"></i>
+                            <span>ورود / ثبت نام</span>
                           </a>
                         </div>
                       </>

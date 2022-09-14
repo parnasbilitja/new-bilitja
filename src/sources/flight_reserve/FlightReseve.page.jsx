@@ -32,7 +32,7 @@ import PopUp from "../component/PopUp.component";
 import Link from "next/link";
 
 const FlightReserve = (props) =>{
-    console.log(props);
+    // console.log(props);
     const [err,setErr] = useState({
         rule:false,
         ruleErr:'لطفا قوانین را بپذیرید',
@@ -58,12 +58,13 @@ const FlightReserve = (props) =>{
         priceAll: 0,
         mobileSubmiter: localStorage.getItem('mobile'),
         phoneSubmiter: "",
-        mobileSubmiterErr: "این فیلد الزامیست",
-        mobileSubmitererror: false,
-        phoneSubmiterErr: "این فیلد الزامیست",
-        phoneSubmitererror: false,
+        // mobileSubmiterErr: "این فیلد الزامیست",
+        // mobileSubmitererror: false,
+        // phoneSubmiterErr: "این فیلد الزامیست",
+        // phoneSubmitererror: false,
         agreeWithTerm: false,
         loading: false,
+        email:''
     });
     // }
     useEffect(() =>{
@@ -251,10 +252,10 @@ const FlightReserve = (props) =>{
                 tempPassenger.birthdayErr = "تاریخ تولد الزامی میباشد";
                 isValid = false;
             }
-            // if (tempPassenger.pasaport == "") {
-            //     tempPassenger.pasaportErr = "پاسپورت الزامی میباشد"
-            //     isValid = false
-            // }
+            if (tempPassenger.pasaport == "") {
+                tempPassenger.pasaportErr = "پاسپورت الزامی میباشد"
+                isValid = false
+            }
             return tempPassenger;
         });
         setState({...state,
@@ -329,18 +330,17 @@ const FlightReserve = (props) =>{
         const numADL = state.passengers.filter((x) => x.type == "ADL").length;
         const numCHD = state.passengers.filter((x) => x.type == "CHD").length;
         const numINF = state.passengers.filter((x) => x.type == "INF").length;
-
+        debugger
         const reservePassengerObject = {
             reqNo: props.reserveProperties.reqNo,
             reqPnr: props.reserveProperties.reqPnr,
-            nameFamily:
-                state.passengers[0].name + " " + state.passengers[0].family,
-            nameFamilyEn:
-                state.passengers[0].name + " " + state.passengers[0].family,
+            // nameFamily: state.passengers[0].family,
+            // nameFamilyEn: state.passengers[0].family,
             nameEnAll: state.passengers.map((x) => x.name).join(","),
             familyEnAll: state.passengers.map((x) => x.family).join(","),
             nameAll: state.passengers.map((x) => x.name).join(","),
-            familyAll: state.passengers.map((x) => x.family).join(","),
+            nameFamily: state.passengers.map((x) => x.family).join(","),
+            nameFamilyEn: state.passengers.map((x) => x.family).join(","),
             meliCodeAll: state.passengers.map((x) => x.code).join(","),
             ticketCodeAll: state.passengers.map((x) => x.type).join(","),
             sexAll: state.passengers.map((x) => x.gender).join(","),
@@ -348,6 +348,24 @@ const FlightReserve = (props) =>{
             meliatAll: state.passengers.map((x) => x.nationality).join(","),
             telNo: state.phoneSubmiter.toString(),
             mobileNo: state.mobileSubmiter.toString(),
+            email: state.email.toString(),
+            // "nameFamily": "string",
+            // "nameFamilyEn": "string",
+            // "nameAll": "string",
+            // "familyAll": "string",
+            // "nameEnAll": "string",
+            // "familyEnAll": "string",
+            // "meliCodeAll": "string",
+            // "ticketCodeAll": "string",
+            // "sexAll": "string",
+            // "birthDayAll": "string",
+            // "pasNoAll": "string",
+            // "pasStDateAll": "string",
+            // "pasEndDateAll": "string",
+            // "meliatAll": "string",
+            // "mobileNo": "string",
+            // "telNo": "string",
+            // "email": "string",
             pasNoAll: state.passengers.map((x) => x.pasno).join(","),    //Array(state.passengers.length).fill("").join(","),
             pasStDateAll: Array(state.passengers.length).fill("").join(","),
             pasEndDateAll: state.passengers.map((x) => x.futureday).join(","),
@@ -357,6 +375,9 @@ const FlightReserve = (props) =>{
             customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         };
         getAllPrice();
+        // useEffect(() => {
+            console.log(reservePassengerObject);
+        // },[reservePassengerObject])
         fetch(
             `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`,
             {
@@ -381,7 +402,7 @@ const FlightReserve = (props) =>{
             });
     };
     useEffect(() => {getAllPrice();},[state.passengers])
-    useEffect(() => {console.log(state);},[state])
+    // useEffect(() => {console.log(state);},[state])
     // const filedsvalidator = (e) => {
 
     // }
@@ -568,6 +589,8 @@ const FlightReserve = (props) =>{
                                             <input
                                                 className="col-12 reserve-input px-2 h-35em"
                                                 placeholder="ایمیل (اختیاری)"
+                                                name="email"
+                                                onChange={(e) => handleChange(e)}
                                             />
                                         </div>
                                     </div>

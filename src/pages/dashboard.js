@@ -40,7 +40,7 @@ const Dashboard = (props) => {
 
   function mainRouter(pathName) {
     var path = decodeURI(pathName);
-    console.log("Test Path", path);
+    // console.log("Test Path", path);
     switch (path) {
       case "/dashboard":
         return <Profile />;
@@ -86,7 +86,7 @@ const Dashboard = (props) => {
   return (
     <div>
       {
-    console.log(props.user.logged)
+    // console.log(props.user.logged)
       }
       <Provider store={store}>
         {checker &&

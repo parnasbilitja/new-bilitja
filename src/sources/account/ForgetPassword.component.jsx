@@ -30,6 +30,10 @@ const ForgetPassword = (props) => {
     });
   
 
+    // setTimeout(() => {
+    //   setState({...state, get_code: true, btn_text: "تایید کد احراز هویت" });
+    // }, 2000)
+
   const forgetPassword = () => {
     setState({...state, btn_text: "در حال پردازش..." });
     fetch(`${globals.baseUrlNew}auth/getMobile`, {
@@ -56,6 +60,7 @@ const ForgetPassword = (props) => {
             message: "کد احراز هویت برای شما ارسال شد.",
           });
         } else if (data.status == -111) {
+          setState({...state, btn_text: "دریافت کد احراز هویت" });
           props.messageBoxModify({
             color:false,
             state: true,
@@ -66,6 +71,7 @@ const ForgetPassword = (props) => {
   };
 
   const verifyToken = () => {
+    console.log(localStorage.getItem("f-token"));
     setState({...state, btn_text: "در حال پردازش..." });
     fetch(`${globals.baseUrlNew}auth/ForgotPassword`, {
       method: "POST",
@@ -73,10 +79,10 @@ const ForgetPassword = (props) => {
       body: JSON.stringify({
         mobile: state.mobile,
         token: state.token,
-        hostname : "bilitja.com",
-        customerId : "1a157116-a01a-4027-ab10-74098ac63815",
-        agencyName : "بلیطجا",
-        telNumber : "02157874",
+        customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+        hostname: "bilitja.com",
+        agencyName: "بلیطجا",
+        telNumber: "02157874"
 
       }),
     })
@@ -178,6 +184,7 @@ const ForgetPassword = (props) => {
                     placeholder="نام‌کاربری(تلفن همراه)"
                     value={state.mobile}
                     onChange={(e) => {
+                      console.log(state);
                       setState({...state, 
                         mobile: e.target.value,
                       });
@@ -200,6 +207,7 @@ const ForgetPassword = (props) => {
                       placeholder="کد احراز هویت"
                       value={state.token}
                       onChange={(e) => {
+                      console.log(state);
                         setState({...state,
                           token: e.target.value,
                           password: e.target.value,
