@@ -7,6 +7,7 @@ const BirthDayParent = (props) => {
         <div>
             {props.calend ?
                 <BirthdayCalendar
+                    type={props.type}
                     numBase={props.numBase}
                     num={props.numSh}
                     placeholder={props.placeholder}

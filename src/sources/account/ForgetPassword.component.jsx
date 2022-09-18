@@ -16,6 +16,7 @@ import globals from "../Global";
 import { connect } from "react-redux";
 import { accountBoxModify, messageBoxModify } from "../../Redux/UI/ui.action";
 import { useState } from "react";
+import Countdown from "react-countdown";
 
 const ForgetPassword = (props) => {
   
@@ -141,10 +142,11 @@ const ForgetPassword = (props) => {
               message: "گذرواژه شما با موفقیت ثبت شد.",
             });
             localStorage.removeItem("f-token");
-            props.accountBoxModify({
-              state: true,
-              type: "login",
-            });
+            // props.accountBoxModify({
+            //   state: true,
+            //   type: "login",
+            // });
+            props.router.push("/")
           } else if (data.status == -100) {
             props.messageBoxModify({
               color:false,
@@ -153,6 +155,22 @@ const ForgetPassword = (props) => {
             });
           }
         });
+    }
+  };
+  // Renderer callback with condition
+  const renderer = ({ minutes, seconds, completed }) => {
+    if (completed) {
+      setState({...state,
+        get_mobile_status: false,
+        btn_text: "  دریافت مجدد کد احراز هویت",
+      });
+      return null;
+    } else {
+      return (
+        <span className="font-bold-iransanse text-danger">
+          {minutes}:{seconds}
+        </span>
+      );
     }
   };
     return (
@@ -194,7 +212,7 @@ const ForgetPassword = (props) => {
                 </div>
               </div>
             </div>
-            {state.get_code == true ? (
+            {state.get_code == true ? (<>
               <div className="row">
                 <div className="col-1 padding-horizental-3px">
                   <FontAwesomeIcon icon={faKey} className="margin-top-20px" />
@@ -217,6 +235,12 @@ const ForgetPassword = (props) => {
                   </div>
                 </div>
               </div>
+              <div className="row mt-3 text-center">
+              <div className="col-12">
+                <Countdown renderer={renderer} date={Date.now() + 60000} />
+              </div>
+            </div>
+            </>
             ) : null}
           </>
         ) : (
@@ -258,7 +282,7 @@ const ForgetPassword = (props) => {
               />
             </div>
           </div>
-        ) : (
+        ) : (<>
           <div className="row">
             <div className="form-input-border without-focus col-12">
               <PrimaryButton
@@ -266,27 +290,30 @@ const ForgetPassword = (props) => {
                 onClick={(e) => {
                   setNewPassword();
                 }}
-              />
+                />
             </div>
           </div>
+        
+                </>
         )}
         <div className="row">
           <div className="col-12 no-padding-horizental">
             <br />
             <p
-              className="text-center font-size-13 no-margin"
-              onClick={() => {
-                props.accountBoxModify({
-                  state: true,
-                  type: "login",
-                });
-              }}
+              className="text-center font-size-13 no-margin cursor-pointer"
+              // onClick={() => {
+              //   props.accountBoxModify({
+              //     state: true,
+              //     type: "login",
+              //   });
+              // }}
             >
               بازگشت
             </p>
           </div>
         </div>
       </div>
+      
     );
   
 }

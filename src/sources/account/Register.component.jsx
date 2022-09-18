@@ -6,8 +6,6 @@ import {
   faLock,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import PrimaryTextInput from "../component/PrimaryTextInput.component";
-import PrimaryButton from "../component/PrimaryButton.component";
 
 import { connect } from "react-redux";
 import { accountBoxModify, messageBoxModify } from "../../Redux/UI/ui.action";

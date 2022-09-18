@@ -70,7 +70,7 @@ const NavBarMobile = (props) => {
               </>
             ) : (
               <>
-                {" "}
+                {/* {" "}
                 <a
                   href=""
                   className="font-size-13 color-black"
@@ -83,13 +83,8 @@ const NavBarMobile = (props) => {
                   }}
                 >
                   {" "}
-                  <i className="bilitja icon-login font-size-14 text-dark"></i>{" "}
-                  &nbsp;
-                  <span className="font-bold-iransanse text-dark mr-2">
-                    ورود{" "}
-                  </span>
-                  /
-                </a>
+                </a> */}
+                  <i className="bilitja icon-login font-size-14 text-dark"></i>
                 <a
                   href=""
                   className="color-black font-size-13"
@@ -101,14 +96,14 @@ const NavBarMobile = (props) => {
                     });
                   }}
                 >
-                  <i className="bilitja icon-register font-size-14 text-dark"></i>
+                  {/* <i className="bilitja icon-register font-size-14 text-dark"></i> */}
                   &nbsp;
-                  <span className="font-bold-iransanse text-dark">ثبت نام</span>
+                  <span className="font-bold-iransanse text-dark">ورود / ثبت نام</span>
                 </a>
               </>
             )}
 
-            {props.user.logged === false ? (
+            {/* {props.user.logged === false ? (
               ""
             ) : (
               // <a href="/villa/intro" className="font-size-10 btn-outlined">
@@ -124,7 +119,7 @@ const NavBarMobile = (props) => {
               >
                 داشبورد
               </a>
-            )}
+            )} */}
           </div>
           <div className="pull-left">
             <a href="#" className="color-black font-bold-iransanse">

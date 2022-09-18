@@ -96,10 +96,6 @@ const Auth = (props) => {
             state: false,
             type: "authentication",
           });
-          // props.addAccountProperties({
-          //   token: data.token,
-          //   dateLogin: moment().format("YYYY/MM/DD"),
-          // });
           props.messageBoxModify({
             color:true,
             state: true,
@@ -110,13 +106,6 @@ const Auth = (props) => {
             type: "authentication",
           });
         } else if (data.status === "-111") {
-        //   setState({...state,
-        //     btn_disabled: false,
-        //     loading: false,
-        //     error: true,
-        //     errText:
-        //       "چنین شماره موبایلی در سامانه ثبت نشده است، لطفا ثبت نام کنید.",
-        //   });
           register();
         } else if (data.status === "-200") {
           setState({...state,

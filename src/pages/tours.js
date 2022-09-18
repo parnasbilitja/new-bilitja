@@ -48,9 +48,9 @@ const tours = (props) => {
             >
                 <Account />
             </PopUp>
-            <div>
+            {/* <div>
                 <Loader />
-            </div>
+            </div> */}
             <div className="mt-5 bodyVar">
                 <NavHandler />
                 {/* <br/>
@@ -59,7 +59,7 @@ const tours = (props) => {
                     <br/>
                     <Pagination/> */}
                 <div className="container mt-5 pt-4">
-                    <div className="d-flex flex-column mb-4">
+                    <div className="d-flex mt-5 flex-column mb-4">
                         <div className="d-flex align-items-center justify-content-between">
                             <div className="d-flex align-items-center">
                                 <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.326" height="30.086" viewBox="0 0 14.326 17.086">
@@ -80,7 +80,7 @@ const tours = (props) => {
                         </div>
                     </div>
                     {/* <div  classNameName="m-2" > */}
-                    {data && data.map((item) => (
+                    {data != null ? data.map((item) => (
                         <div onClick={() => slugHandler(item.slug)} key={item.id} className="w-100 col-xl-12 col-lg-12 w-100 d-flex flex-column">
                             <div className="tour-item col-xl-12 col-lg-12 mb-3">
                                 <div className="tour-city">
@@ -151,7 +151,11 @@ const tours = (props) => {
                                 </Link>
                             </div>
                         </div>
-                    ))}
+                )
+                )
+                :
+                <Loader />
+            }
                     {/* </div> */}
                 </div>
                 {/* footer */}

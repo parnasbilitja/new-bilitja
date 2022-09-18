@@ -31,14 +31,14 @@ const PageTabls = (props) => {
               props.tabActice == 2 ? styles["home-tab-active"] : null
             }`}
             onClick={() => {
-              myRouter.push("/villa");
+              myRouter.push("/tours");
             }}
           >
             <div className="pull-right icon-container">
               <i className="bilitja font-size-20 icon-villa"></i>
             </div>
             <div className="pull-right">
-              <span className="font-size-14"> اقامتگاه </span>
+              <span className="font-size-14"> تور </span>
             </div>
           </div>
         </div>

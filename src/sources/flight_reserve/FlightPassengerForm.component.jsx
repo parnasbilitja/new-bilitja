@@ -4,7 +4,6 @@ import PrimaryTextInput from "../component/PrimaryTextInput.component";
 import PrimarySelectInput from "../component/PrimarySelectInput.component";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import BirthdayCalendar from "../calendar/BirthdayCalendar.component";
 import FuturedayCalendar from "../calendar/FutureCalendar.component";
 
 import { moneyFormat } from "../../Utils/SimpleTasks";
@@ -13,10 +12,6 @@ import styles from "../../../styles/FlightPassengerForm.module.scss";
 import { checkCharacter, checkNumber } from "../../Utils/SimpleTasks";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { connect } from "react-redux";
-import BirthdayCalenderMiladi from "../calendar/BirthdayCalenderMiladi";
-import PrimaryTextInputMobile from "../component/PrimaryTextInputMobile";
-import PopUpWide from "../component/PopUpWide.component";
-import CalendarComponent from "../calendar/Calendar.component";
 import BirthDayParent from "../calendar/BirthDayParent";
 
 
@@ -428,9 +423,9 @@ const FlightPassengerForm = (props) => {
                 closePopUp={managePopUpBirthdayCalendar}
             >
                 <div style={{ padding: 15 }}>
-                    <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'Christian month' : 'شمسی'}</button>
+                    <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
                     <BirthDayParent
-                        numSh={1300}
+                        numSh={1301}
                         numBase={1300}
                         numMi={1920}
                         numMiBase={1300}
@@ -438,6 +433,7 @@ const FlightPassengerForm = (props) => {
                         placeholder="لطفا تاریخ تولد را وارد کنید"
                         calend={calend}
                         typePassenger={props.type}
+                        type={'BD'}
                         name="birthday"
                         setBirthdayb={(value) => {
                             props.fillPassengersData("birthday", props.id, value);
@@ -454,17 +450,18 @@ const FlightPassengerForm = (props) => {
                 closePopUp={managePopUpExtPasCalendar}
             >
                 <div style={{ padding: 15 }}>
-                    <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'Christian month' : 'شمسی'}</button>
+                    {/* <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'Christian month' : 'شمسی'}</button> */}
                     <BirthDayParent
-                        numSh={1402}
+                        numSh={1401}
                         numBase={1380}
                         numMi={2022}
                         numMiBase={1380}
                         title="Please enter an expiration date"
                         placeholder="لطفا تاریخ انقضا را وارد کنید"
-                        calend={calend}
+                        // calend={calend}
                         typePassenger={props.type}
-                        name="birthday"
+                        type={'EXT'}
+                        name="futureday"
                         setBirthdayb={(value) => {
                             props.fillPassengersData("futureday", props.id, value);
                         }}
@@ -474,7 +471,7 @@ const FlightPassengerForm = (props) => {
 
             </PopUp>
 
-            <PopUp
+            {/* <PopUp
                 opened={state.openFuture}
                 closePopUp={managePopUpFuturedayCalendar}
             >
@@ -488,7 +485,7 @@ const FlightPassengerForm = (props) => {
                         closePopUpCalendar={managePopUpFuturedayCalendar}
                     />
                 </div>
-            </PopUp>
+            </PopUp> */}
 
 
         </div>

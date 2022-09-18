@@ -1,6 +1,6 @@
 import React , { useEffect, useState }from "react";
 import styles from "../../../styles/FlightReserve.module.scss";
-
+import * as moment from 'jalali-moment';
 import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
 import FlightPassengerForm from "./FlightPassengerForm.component";
 import FlightReserveDesktopHeader from "./FlightReserveDesktopHeader.component";
@@ -199,7 +199,7 @@ const FlightReserve = (props) =>{
             mobileSubmiterErr = "وارد کردن شماره همراه اجباری است";
             isValid = false;
         }
-        if (state.mobileSubmiter.length < 10) {
+        if (state.mobileSubmiter && state.mobileSubmiter.length < 10) {
             mobileSubmiterErr = "شماره موبایل باید 11 رقمی باشد";
             isValid = false;
         }
@@ -330,7 +330,7 @@ const FlightReserve = (props) =>{
         const numADL = state.passengers.filter((x) => x.type == "ADL").length;
         const numCHD = state.passengers.filter((x) => x.type == "CHD").length;
         const numINF = state.passengers.filter((x) => x.type == "INF").length;
-        debugger
+        // debugger
         const reservePassengerObject = {
             reqNo: props.reserveProperties.reqNo,
             reqPnr: props.reserveProperties.reqPnr,
@@ -338,35 +338,20 @@ const FlightReserve = (props) =>{
             // nameFamilyEn: state.passengers[0].family,
             nameEnAll: state.passengers.map((x) => x.name).join(","),
             familyEnAll: state.passengers.map((x) => x.family).join(","),
+            familyAll: state.passengers.map((x) => x.family).join(","),
             nameAll: state.passengers.map((x) => x.name).join(","),
             nameFamily: state.passengers.map((x) => x.family).join(","),
             nameFamilyEn: state.passengers.map((x) => x.family).join(","),
             meliCodeAll: state.passengers.map((x) => x.code).join(","),
             ticketCodeAll: state.passengers.map((x) => x.type).join(","),
             sexAll: state.passengers.map((x) => x.gender).join(","),
-            birthDayAll: state.passengers.map((x) => x.birthday).join(","),
+            birthDayAll: state.passengers.map((x) => moment(x.birthday).locale('fa').format('YYYY/M/D')).join(","),
+            // moment("1989/1/24").locale('fa').format('YYYY/M/D');
             meliatAll: state.passengers.map((x) => x.nationality).join(","),
             telNo: state.phoneSubmiter.toString(),
             mobileNo: state.mobileSubmiter.toString(),
             email: state.email.toString(),
-            // "nameFamily": "string",
-            // "nameFamilyEn": "string",
-            // "nameAll": "string",
-            // "familyAll": "string",
-            // "nameEnAll": "string",
-            // "familyEnAll": "string",
-            // "meliCodeAll": "string",
-            // "ticketCodeAll": "string",
-            // "sexAll": "string",
-            // "birthDayAll": "string",
-            // "pasNoAll": "string",
-            // "pasStDateAll": "string",
-            // "pasEndDateAll": "string",
-            // "meliatAll": "string",
-            // "mobileNo": "string",
-            // "telNo": "string",
-            // "email": "string",
-            pasNoAll: state.passengers.map((x) => x.pasno).join(","),    //Array(state.passengers.length).fill("").join(","),
+            pasNoAll: state.passengers.map((x) => x.pasno).join(","),   
             pasStDateAll: Array(state.passengers.length).fill("").join(","),
             pasEndDateAll: state.passengers.map((x) => x.futureday).join(","),
             numADL: numADL,
@@ -375,9 +360,7 @@ const FlightReserve = (props) =>{
             customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         };
         getAllPrice();
-        // useEffect(() => {
-            console.log(reservePassengerObject);
-        // },[reservePassengerObject])
+        console.log(reservePassengerObject);
         fetch(
             `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`,
             {
@@ -406,7 +389,124 @@ const FlightReserve = (props) =>{
     // const filedsvalidator = (e) => {
 
     // }
+
+    // login user with code
+    const login = () => {
+        console.log(state);
+        localStorage.setItem("mobile",state.mobileSubmiter)
+        setState({...state, btn_disabled: true, loading: true });
+        fetch(`${globals.baseUrlNew}auth/getMobile`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            
+            mobile: state.mobileSubmiter,
+            password: '',
+            register: 0,
+
+            customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+            hostname: "bilitja.com",
+            agencyName: "بلیطجا",
+            telNumber: "02157874",
+            // token: state.token|'',
+        }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status == "0") {
+              setState({...state,
+                btn_disabled: false,
+                loading: false,
+                get_mobile_status: true,
+                btn_text: "تایید کد احراز هویت",
+              });
+            } else if (data.status == "10") {
+              setState({...state, btn_disabled: false, loading: false });
+              localStorage.setItem("mobile", data.mobile);
+              localStorage.setItem("token", data.token);
+              props.checkUserLogged();
+              props.getUserInfo({
+                mobile: data.mobile,
+              });
+              props.accountBoxModify({
+                state: false,
+                type: "authentication",
+              });
+              props.messageBoxModify({
+                color:true,
+                state: true,
+                message: "ورود شما موفقیت آمیز بود.",
+              });
+              props.accountBoxModify({
+                state: false,
+                type: "authentication",
+              });
+            } else if (data.status === "-111") {
+              register();
+            } else if (data.status === "-200") {
+              setState({...state,
+                btn_disabled: false,
+                loading: false,
+                error: true,
+                errText: "شماره موبایل یا رمز ثابت نادرست می باشد.",
+              });
+            } else {
+              setState({...state,
+                btn_disabled: false,
+                loading: false,
+                error: true,
+                errText: data.message,
+              });
+            }
+          });
+      };
     
+      const register = () => {
+        setState({...state, btn_disabled: true, loading: true });
+        fetch(`${globals.baseUrlNew}auth/getMobile`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            mobile: state.mobile,
+            token: state.token,
+            password: state.password,
+            register: 1,
+            hostname: "bilitja.com",
+            customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+            agencyName: "بلیطجا",
+            telNumber: "02157874",
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status == "0") {
+              setState({...state,
+                get_mobile_status:true,
+                loading: false,
+                register_status: true,
+                resend_code: true,
+                btn_text: "تایید کد احراز هویت",
+              });
+            } else if (data.status === "-110") {
+            //   setState({...state,
+            //     btn_disabled: false,
+            //     loading: false,
+            //     error: true,
+            //     errText:
+            //       "این شماره موبایل در سامانه موجود است، لطفا از بخش ورود وارد حساب خود شوید.",
+            //   });
+            } else {
+              setState({...state,
+                btn_disabled: false,
+                loading: false,
+                error: true,
+                errText: data.message,
+              });
+            }
+          });
+      };
+
+
         return (
             <div className="container">
                 <div className={`${styles["flight-detail"]}`}>
@@ -639,11 +739,11 @@ const FlightReserve = (props) =>{
                                     <div className="col-lg-8 col-md-8 col-7 padding-3px">
                                         <button
                                             onClick={(e) => {
-                                                {!props.user.logged &&
-                                                props.accountBoxModify({
-                                                    state: true,
-                                                    type: "register",
-                                                });}
+                                                // {!props.user.logged && !localStorage.getItem('token') &&
+                                                // props.accountBoxModify({
+                                                //     state: true,
+                                                //     type: "register",
+                                                // });}
 
                                                 if (!validation()) {
                                                     setState({...state, loading: false });
@@ -653,11 +753,11 @@ const FlightReserve = (props) =>{
                                                         message: "لطفا اطلاعات را تکمیل کنید.",
                                                     });
                                                     e.preventDefault();
-                                                } else if (state.agreeWithTerm === true) {
+                                                } else if (state.agreeWithTerm === true && props.user.logged && localStorage.getItem('token')) {
                                                     setState({...state, loading: true });
                                                     compeleteReservation();
                                                     e.preventDefault();
-                                                } else {
+                                                } else if(state.agreeWithTerm === false) {
                                                     setState({...state, loading: false });
 
                                                     props.messageBoxModify({
@@ -665,6 +765,18 @@ const FlightReserve = (props) =>{
                                                         color:false,
                                                         message: "لطفا با شرایط و مقررات موافقت کنید",
                                                     });
+                                                }else if(!props.user.logged && !localStorage.getItem('token')){
+                                                    setState({...state, stateRegister: false });
+                                                    login();
+                                                    props.messageBoxModify({
+                                                        state: true,
+                                                        color:false,
+                                                        message: "لطفا کد تایید ارسال شده را وارد کنید!",
+                                                    });
+                                                    props.accountBoxModify({
+                                                            state: true,
+                                                            type: "login",
+                                                        });
                                                 }
                                             }}
                                             className="py-2 btn-block col-12 end-payment-btn btn"

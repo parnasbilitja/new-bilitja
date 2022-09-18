@@ -29,6 +29,7 @@ class FlightReciept extends React.Component {
       birthDayAll_: [],
       familyAll_: [],
       meliCodeAll_: [],
+      pasNoAll_: [],
       meliatAll_: [],
       nameAll_: [],
       sexAll_: [],
@@ -86,12 +87,17 @@ class FlightReciept extends React.Component {
           const ticketCodeAll = String(
             data.flightReservePropertyModel.ticketCodeAll
           ).split(",");
+          const pasNoAll = String(
+            data.flightReservePropertyModel.pasNoAll
+          ).split(",");
+          
           this.setState(
             {
               ...data.flightReservePropertyModel,
               birthDayAll_: birthDayAll,
               familyAll_: familyAll,
               meliCodeAll_: meliCodeAll,
+              pasNoAll_: pasNoAll,
               meliatAll_: meliatAll,
               nameAll_: nameAll,
               sexAll_: sexAll,
@@ -303,7 +309,7 @@ class FlightReciept extends React.Component {
                           </span>
                           <p>
                             <FontAwesomeIcon icon={faInfoCircle} />
-                            {this.state.meliCodeAll_[index]}
+                            {this.state.meliCodeAll_[index]?this.state.meliCodeAll_[index]:this.state.pasNoAll_[index]}
                           </p>
                         </div>
                       </td>
@@ -316,7 +322,7 @@ class FlightReciept extends React.Component {
                           : "خارجی"}
                       </td>
                       <td className="hidden-xs">
-                        {this.state.meliCodeAll_[index]}
+                        {this.state.meliCodeAll_[index]?this.state.meliCodeAll_[index]:this.state.pasNoAll_[index]}
                       </td>
                       <td>
                         <div className="hidden-xs">
@@ -430,7 +436,15 @@ class FlightReciept extends React.Component {
                         if (this.state.isUpdated) {
                           this.compeleteReservation();
                         }
-                        this.getBanks();
+                        if (props.user.logged && localStorage.getItem('token')) { 
+                          this.getBanks();
+                        }else{
+                          this.props.messageBoxModify({
+                            color:false,
+                            state: true,
+                            message: "لطفا وارد حساب کاربری خود شوید",
+                          });
+                        }
                       }}
                     >
                       پرداخت با کارت شتاب
