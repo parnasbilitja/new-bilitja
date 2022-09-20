@@ -73,7 +73,7 @@ class MinimumPriceCalendar extends React.Component {
               month: month,
             };
             fetch(
-              `${globals.baseUrl2}BilitAirLines/getFlightCalendar/${requestParams1.airport1}/${requestParams1.airport2}/${this.state.year}/${this.state.month}/customerId=1a157116-a01a-4027-ab10-74098ac63815`
+              `${globals.baseUrl2}BilitAirLines/getFlightCalendar/${requestParams1.airport1}/${requestParams1.airport2}/${this.state.year}/${this.state.month}?customerId=1a157116-a01a-4027-ab10-74098ac63815`
             )
               .then((res) => res.json())
               .then((data) => {

@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import globals from "./../../Global";
 import { messageBoxModify } from "./../../../Redux/UI/ui.action";
 import PopUp from "./../../component/PopUp.component";
-import BirthdayCalendar from "./../../calendar/BirthdayCalendar.component";
 import BirthDayParent from "../../calendar/BirthDayParent";
 import ImgPrev from "./Image";
 
@@ -33,21 +32,11 @@ const EditProfile = (props) => {
     image: 'https://profiles.utdallas.edu/img/default.png'
   });
 
-  const imageHandler = e => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setState({ ...state, image: reader.result })
-      }
-    }
-    if (e.target.files[0]) { reader.readAsDataURL(e.target.files[0]) }
-  }
-
   console.log(state);
 
   const handleSetState = (e) => {
     const { name, value } = e.target;
-    setState((prevState) => ({ ...prevState, [name]: value }));
+    setState(({ ...state, [name]: value }));
   };
 
   useEffect(() => {
@@ -59,6 +48,7 @@ const EditProfile = (props) => {
 
   const handleEditProfile = (event) => {
     event.preventDefault();
+    console.log(state);
     if (state.name != "" && state.family != "") {
       if (state.gender != 0 && state.mariedStat != 0) {
         fetch(`${globals.baseUrlNew}auth/ProfileSave`, {
@@ -68,7 +58,7 @@ const EditProfile = (props) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(state);
+            console.log(data);
             if (data.status === "0") {
               router.push("/dashboard/profile");
               props.messageBoxModify({

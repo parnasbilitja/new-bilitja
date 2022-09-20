@@ -25,6 +25,7 @@ class FlightSearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      searchBool:false,
       sourceSearch: "",
       destinationSearch: "",
       width: 0,
@@ -256,8 +257,13 @@ class FlightSearchBox extends React.Component {
         <div className=" without-focus">
           <PrimaryButton
             style={{ height: "45px", marginTop: "7px" }}
-            defaultValue={"جستجو"}
+            defaultValue={
+              this.state.searchBool == false ? "جستجو" : "لطفا صبر کنید..."
+            }
             onClick={() => {
+              setTimeout(() => {
+                this.setState({ searchBool:true})
+              },2000)
               if (!this.validation()) {
                 this.props.messageBoxModify({
                   state: true,

@@ -1,5 +1,7 @@
 import React from "react";
 
+import Router from 'next/router'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
@@ -146,7 +148,7 @@ const ForgetPassword = (props) => {
             //   state: true,
             //   type: "login",
             // });
-            props.router.push("/")
+            Router.push("/")
           } else if (data.status == -100) {
             props.messageBoxModify({
               color:false,

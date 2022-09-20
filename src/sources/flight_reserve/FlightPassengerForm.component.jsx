@@ -35,6 +35,7 @@ const FlightPassengerForm = (props) => {
         birthdayErr: 'لطفا تاریخ تولد را وارد کنید',
         extPasaport: false,
         extPasaportErr: 'لطفا فیلد انقضا را پر کنید',
+        pasaportErr : "پاسپورت الزامی میباشد",
     })
     const errHandler = (e) => {
         if (e.target.name = 'extPasaport' && e.target.value !== '') {
@@ -303,47 +304,11 @@ const FlightPassengerForm = (props) => {
                                 />
                             </div>
 
-
-
-
-                            <div className={`d-flex align-items-center `} >
-                                {/* <PrimaryTextInput
-                                        style={{height: "3em", fontSize: 12,display: props.nationality == 'IR' && 'none'}}
-                                        placeholder={`${ "انقضای پاسپورت"}`}
-                                        inputMode={`${"text"}`} 
-                                        onChange={(e) => {
-                                                props.fillPassengersData(
-                                                    "extPasaport",
-                                                    props.id,
-                                                    e.target.value
-                                                );}}
-                                                onFocus={() => {
-                                                    managePopUpExtPasCalendar(true);
-                                                }}
-                                        defaultValue={props.extPasaport}
-                                        value={props.extPasaport}
-                                    /> */}
-                                {/* <PrimaryTextInput 
-                                        style={{height: "3em", fontSize: 12,marginRight:12}}
-                                        placeholder={` شماره پاسپورت`}
-                                        name="nationalCode"
-                                        onChange={(e) => {
-                                            if (!checkCharacters(e.target.value)) {
-                                                return;
-                                            }
-                                            props.fillPassengersData(
-                                                "pasno",
-                                                props.id,
-                                                e.target.value
-                                            );
-                                        }}
-                                        defaultValue={props.pasno}
-                                    /> */}
-                            </div>
                             <span className="color-secondary error-message position-absolute">
-                                {props.codeErr == '' && props.pasnoErr == '' && err.nationalCode ? err.nationalCodeErr : ''}
-                                {props.code.length < 10 ? props.codeErr : ""}
-                                {props.nationality == 'other' && props.pasno.length < 10 && props.pasno.length > 1 ? 'شماره پاسپورت اشتباه است' : ''}
+                                {props.pathKind == 2 && props.pasaport === ""? props.pasaportErr : ''}
+                                {props.nationality == "IR" && props.code === ""? props.codeErr : ''}
+                                {/* {props.code.length < 10 ? props.pasaportErr : ""}
+                                {props.nationality == 'other' && props.pasno.length < 10 && props.pasno.length > 1 ? 'شماره پاسپورت اشتباه است' : ''} */}
 
                             </span>
                         </div>
@@ -372,7 +337,7 @@ const FlightPassengerForm = (props) => {
                                 />
                             </div>
                             <span className="color-secondary error-message position-absolute">
-                                {props.pasenddat == "" && err.extPasaport ? err.extPasaportErr : ''}
+                                { props.futureday === "" ? props.pasenddatErr : ''}
                             </span>
                         </div>
                         <div className="col-lg-2 mt-12 col-md-2 col-sm-4 col-6 padding-horizental-3px ">
@@ -498,3 +463,41 @@ const dispatchStateToProps = (dispatch) => ({
     accountBoxModify: (value) => dispatch(accountBoxModify(value)),
 });
 export default connect(null, dispatchStateToProps)(FlightPassengerForm);
+
+
+
+
+{/* <div className={`d-flex align-items-center `} > */}
+                                {/* <PrimaryTextInput
+                                        style={{height: "3em", fontSize: 12,display: props.nationality == 'IR' && 'none'}}
+                                        placeholder={`${ "انقضای پاسپورت"}`}
+                                        inputMode={`${"text"}`} 
+                                        onChange={(e) => {
+                                                props.fillPassengersData(
+                                                    "extPasaport",
+                                                    props.id,
+                                                    e.target.value
+                                                );}}
+                                                onFocus={() => {
+                                                    managePopUpExtPasCalendar(true);
+                                                }}
+                                        defaultValue={props.extPasaport}
+                                        value={props.extPasaport}
+                                    /> */}
+                                {/* <PrimaryTextInput 
+                                        style={{height: "3em", fontSize: 12,marginRight:12}}
+                                        placeholder={` شماره پاسپورت`}
+                                        name="nationalCode"
+                                        onChange={(e) => {
+                                            if (!checkCharacters(e.target.value)) {
+                                                return;
+                                            }
+                                            props.fillPassengersData(
+                                                "pasno",
+                                                props.id,
+                                                e.target.value
+                                            );
+                                        }}
+                                        defaultValue={props.pasno}
+                                    /> */}
+                            {/* </div> */}

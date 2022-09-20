@@ -26,6 +26,7 @@ const Profile = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.status === "0") {
           props.setUserInformationAction(data.profilemodel);
         } else {

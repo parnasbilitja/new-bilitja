@@ -46,6 +46,7 @@ class FlightReciept extends React.Component {
         index: 0,
       },
     };
+    console.log(this.props);
   }
 
   componentDidMount() {
@@ -107,6 +108,7 @@ class FlightReciept extends React.Component {
           );
         }
       });
+      
   }
   compeleteReservation = () => {
     const reservePassengerObject = {
@@ -150,6 +152,7 @@ class FlightReciept extends React.Component {
           });
         }
       });
+      
   };
   getBanks = () => {
     fetch(
@@ -365,6 +368,7 @@ class FlightReciept extends React.Component {
                                     name: this.state.nameAll_[index],
                                     family: this.state.familyAll_[index],
                                     meliat: this.state.meliatAll_[index],
+                                    pasNoAll:this.state.pasNoAll_[index],
                                     meliCode: this.state.meliCodeAll_[index],
                                     sex: this.state.sexAll_[index],
                                     birthday: this.state.birthDayAll_[index],
@@ -436,15 +440,15 @@ class FlightReciept extends React.Component {
                         if (this.state.isUpdated) {
                           this.compeleteReservation();
                         }
-                        if (props.user.logged && localStorage.getItem('token')) { 
+                        // if (props.user.logged && localStorage.getItem('token')) { 
                           this.getBanks();
-                        }else{
-                          this.props.messageBoxModify({
-                            color:false,
-                            state: true,
-                            message: "لطفا وارد حساب کاربری خود شوید",
-                          });
-                        }
+                        // }else{
+                        //   this.props.messageBoxModify({
+                        //     color:false,
+                        //     state: true,
+                        //     message: "لطفا وارد حساب کاربری خود شوید",
+                        //   });
+                        // }
                       }}
                     >
                       پرداخت با کارت شتاب

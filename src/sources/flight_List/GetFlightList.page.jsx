@@ -458,7 +458,7 @@ class GetFlightList extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(` datalength=${data}`);
+        // console.log(` datalength=${data}`);
         if (data.length != 0 && data != undefined) {
           this.props.addCredentials({
             flightDateNext: data[0].flightDateNext,
@@ -606,7 +606,7 @@ class GetFlightList extends React.Component {
           <div className="col-lg-12 col-md-12 col-sm-12">
             <div className="row min-height">
               <div className="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-12 padding-5px">
-                <FutureDays refreshAction={this.getData}  />
+                {/* <FutureDays refreshAction={this.getData}  /> */}
                 {this.state.loading ? (
                   <div className="mt-4">
                     <Loading />
@@ -650,7 +650,7 @@ class GetFlightList extends React.Component {
                           ).airportName
                         }
                       </strong>{" "}
-                      یافت نشد لطفا از تقویم زیر انتخاب کنید.
+                      یافت نشد لطفا از تقویم انتخاب کنید.
                     </p>
                     <MinimumPriceCalendar refreshAction={this.getData} />
                   </>

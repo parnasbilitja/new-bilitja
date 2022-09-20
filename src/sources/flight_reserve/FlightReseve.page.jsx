@@ -56,13 +56,15 @@ const FlightReserve = (props) =>{
         stateRegister: false,
         passengers: [],
         priceAll: 0,
-        mobileSubmiter: localStorage.getItem('mobile'),
-        phoneSubmiter: "",
-        // mobileSubmiterErr: "این فیلد الزامیست",
+        mobileSubmiter: localStorage.getItem('mobile') || '',
+        phoneSubmiter: '',
+        mobileSubmiterErr: "",
         // mobileSubmitererror: false,
-        // phoneSubmiterErr: "این فیلد الزامیست",
+        // phoneSubmiterErr: "وارد کردن شماره ثابت اجباری است",
+        phoneSubmiterErr: "شماره ثابت را وارد کنید",
         // phoneSubmitererror: false,
         agreeWithTerm: false,
+        agreeWithTermerr: false,
         loading: false,
         email:''
     });
@@ -193,19 +195,24 @@ const FlightReserve = (props) =>{
     const validation = () => {
         let isValid = true;
 
-        let mobileSubmiterErr = "";
-        let phoneSubmiterErr = "";
         if (state.mobileSubmiter == "") {
-            mobileSubmiterErr = "وارد کردن شماره همراه اجباری است";
+            setState({...state,
+                mobileSubmiterErr : "وارد کردن شماره همراه اجباری است",
+            })
             isValid = false;
         }
         if (state.mobileSubmiter && state.mobileSubmiter.length < 10) {
-            mobileSubmiterErr = "شماره موبایل باید 11 رقمی باشد";
+            setState({...state,
+                mobileSubmiterErr : "شماره موبایل باید 11 رقمی باشد"
+            })
             isValid = false;
         }
-        if (state.phoneSubmiter == "") {
-            phoneSubmiterErr = "وارد کردن شماره ثابت اجباری است";
+        if (state.phoneSubmiter == '') {
             isValid = false;
+            setState({...state,
+                phoneSubmiterErr:"شماره ثابت را وارد کنید",
+            })
+            console.log("شماره ثابت را وارد کنید");
         }
         const passengers = state.passengers.map((onePassenger) => {
             const tempPassenger = onePassenger;
@@ -241,11 +248,11 @@ const FlightReserve = (props) =>{
                     tempPassenger.codeErr = "کدملی نامعتبر میباشد";
                     isValid = false;
                 }
-            } else {
-                if (!isValidPassportCode(tempPassenger.code)) {
-                    tempPassenger.codeErr = "کد پاسپورت نا معتبر میباشد";
-                    isValid = false;
-                }
+            // } else {
+            //     if (!isValidPassportCode(tempPassenger.code)) {
+            //         tempPassenger.codeErr = "کد پاسپورت نا معتبر میباشد";
+            //         isValid = false;
+            //     }
             }
 
             if (tempPassenger.birthday == "") {
@@ -260,8 +267,6 @@ const FlightReserve = (props) =>{
         });
         setState({...state,
             passengers: passengers,
-            mobileSubmiterErr: mobileSubmiterErr,
-            phoneSubmiterErr: phoneSubmiterErr,
         });
         return isValid;
     };
@@ -389,6 +394,8 @@ const FlightReserve = (props) =>{
     // const filedsvalidator = (e) => {
 
     // }
+
+    useEffect(() => {console.log(state)},[state])
 
     // login user with code
     const login = () => {
@@ -663,12 +670,15 @@ const FlightReserve = (props) =>{
                                             />
                                         </div>
                                         <span className="color-secondary">
-                                            {state.mobileSubmitererror ? state.mobileSubmiterErr:''}
+                                            { state.mobileSubmiter.length <= 10 ? 'شماره همراه باید ۱۱ رقمی باشد' :
+                                            state.mobileSubmiter == ''?'لطفا شماره را وارد کنید':
+                                            ''}
                                         </span>
                                     </div>
                                     <div className="col-lg-6 col-md-6 col-6 padding-3px">
                                         <div>
                                             <input
+                                                maxLength={11}
                                                 // value={state.phoneSubmiter}
                                                 className="col-12 reserve-input px-2 h-35em"
                                                 type="text"
@@ -678,7 +688,11 @@ const FlightReserve = (props) =>{
                                             />
                                         </div>
                                         <span className="color-secondary">
-                                            {state.phoneSubmitererror ? state.phoneSubmiterErr:''}
+                                            {state.phoneSubmiter =='' && state.phoneSubmiterErr}
+
+                                            { state.phoneSubmitererror ? state.phoneSubmiterErr 
+                                            : state.phoneSubmiter.length <= 10 && state.phoneSubmiter.length > 0 ? 'شماره ثابت باید ۱۱ رقمی باشد' 
+                                            :''}
                                         </span>
                                     </div>
                                 </div>
@@ -716,6 +730,7 @@ const FlightReserve = (props) =>{
                                                 errHandler(e);
                                                 setState({...state,
                                                     agreeWithTerm: e.target.checked,
+                                                    agreeWithTermerr:!state.agreeWithTermerr
                                                 });
                                             }}
                                             className="mx-2"
@@ -724,6 +739,7 @@ const FlightReserve = (props) =>{
                                             قوانین و مقررات و صحت اطلاعات را قبول دارم.
                                         </label>
                                     </div>
+                                        
                                     {/* <span className="color-secondary error-message">
                                         {err.rule && err.ruleErr}
                                     </span> */}
@@ -735,6 +751,10 @@ const FlightReserve = (props) =>{
                                         </div>
                                     </div>
                                 </div>
+                                <span className="color-secondary">
+                                        {state.agreeWithTermerr==true && state.agreeWithTerm == false && 'قوانین و مقررات و صحت اطلاعات را بپذیرید!!!.'}
+                                        </span>
+                            
                                 <div className="row finish-reserve-buttons mb-3 ml-5 mt-4">
                                     <div className="col-lg-8 col-md-8 col-7 padding-3px">
                                         <button
@@ -758,7 +778,7 @@ const FlightReserve = (props) =>{
                                                     compeleteReservation();
                                                     e.preventDefault();
                                                 } else if(state.agreeWithTerm === false) {
-                                                    setState({...state, loading: false });
+                                                    setState({...state, loading: false,agreeWithTermerr:true });
 
                                                     props.messageBoxModify({
                                                         state: true,
@@ -778,6 +798,7 @@ const FlightReserve = (props) =>{
                                                             type: "login",
                                                         });
                                                 }
+
                                             }}
                                             className="py-2 btn-block col-12 end-payment-btn btn"
                                         >

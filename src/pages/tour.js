@@ -12,6 +12,11 @@ import Slider from '../Components/slider/Slider';
 import RequestTour from '../Components/modal/RequestTour';
 import PopUp from '../sources/component/PopUp.component';
 
+import Loading from "../sources/component/SmallLoading.component.jsx";
+import { Loader } from '../Utils/Loader';
+import Head from 'next/head';
+
+
 const tour = () => {
     // mui
     const handleClose = (event, reason) => {
@@ -53,11 +58,16 @@ const tour = () => {
     }
     return (
         <div>
+            <Head>
+                <title>بلیطجا {data && `|  ${data.title}`}</title>
+            </Head>
             <div className="mt-5 bodyVar">
                 <NavHandler/>
                 {/* section 1 */}
+                {data ?
+                <>
                 <section className="mt-5 pt-5">
-                    <div className="container">
+                    <div className="container mt-2">
                         <div className="m-main-data detail-title col-xl-12 col-lg-12 col-12 d-flex justify-content-between border-bottom pb-2">
                             <div className="title d-flex align-items-center">
                                 <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.643" height="30.68" viewBox="0 0 19.643 19.68">
@@ -100,7 +110,9 @@ const tour = () => {
                             <div className="right col-xl-6 col-lg-6 col-12">
                                 <div className="gallery-image">
                                     <div className="image">
+                                    {data ?
                                         <Slider data={data && data.endCity.images} />
+                                    :<Loading />}
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +122,10 @@ const tour = () => {
                                     <div className="c-info__tour d-flex align-items-center col-xl-12 col-gl-12">
                                         <div className="bg-white py-3">
                                             <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
+                                            {data ?
                                                 <img src={data && data.transfers[0].logo} width={"35px"} height={"35px"} alt="company" style={{ objectFit: 'cover' }} />
+                                            :
+                                                <Loading />}
                                             </div>
                                         </div>
                                         <div className="text pe-2">
@@ -170,7 +185,9 @@ const tour = () => {
                                     <div className="c-info__tour d-flex flex-row-reverse align-items-center col-xl-12 col-lg-12 col-12">
                                         <div className="bg-white py-3">
                                             <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
+                                            {data ?
                                                 <img src={data && data.transfers[1].logo} width={"35px"} height={"35px"} alt="company" style={{ objectFit: 'cover' }} />
+                                            :<Loading />}
                                             </div>
                                         </div>
                                         <div className="text pe-2 ps-3">
@@ -205,7 +222,6 @@ const tour = () => {
                         </div>
                     </div>
                 </section>
-                {/* section 2 */}
                 <section className="select-hotel mt-4">
                     <div className="container">
                         <div className="p-data">
@@ -264,7 +280,7 @@ const tour = () => {
                                         <span className="font-bold font-size-16">سن کودک</span>
                                     </div>
                                 </div>
-                                {data && data.packages.map((pack) => (
+                                {data ? data.packages.map((pack) => (
                                     <div className="p-detail col-xl-12 col-lg-12 mt-2" key={pack.id}>
                                         <div className="d-detail position-relative col-xl-12 col-lg-12 col-12 d-flex flex-wrap align-items-center bg-white py-2 px-2 mb-2">
                                             <div className="c-detail ms-2">
@@ -278,7 +294,9 @@ const tour = () => {
                                                 <div className="info-detail pos-relative d-flex align-items-center">
                                                     <a href="">
                                                         <div className="image d-flex align-items-center">
+                                                        {data ?
                                                             <img src={pack.hotel.thumbnail} width="100px" height="100px" className="rounded-2" alt="" />
+                                                            :<Loading />}
                                                         </div>
                                                     </a>
                                                     <div className="text d-flex flex-column justify-content-between mt-1 pe-2 w-100">
@@ -408,12 +426,15 @@ const tour = () => {
                                         </div>
 
                                     </div>
-                                ))}
+                                ))
+                                :
+                                // <Loading />
+                                ''
+                            }
                             </div>
                         </div>
                     </div>
                 </section>
-                {/* section 3 */}
                 <section className="description mt-4">
                     <div className="container">
                         <div className="p-data">
@@ -520,7 +541,6 @@ const tour = () => {
                         </div>
                     </div>
                 </section>
-                {/* section 4 */}
                 <section className="mt-4">
                     <div className="container">
                         <div className="p-data">
@@ -617,6 +637,9 @@ const tour = () => {
                         </div>
                     </div>
                 </section>
+                </>
+                :<Loader/>
+                }
                 {/* footer */}
                 <Footer />
             </div>

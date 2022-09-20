@@ -54,8 +54,8 @@ class Flights extends React.Component {
         } else {
             // srcEn = decodeURI(pathName.split("/")[2]).split("-")[0];
             // destEn = decodeURI(pathName.split("/")[2]).split("-")[1];
-            console.log("this.props.  ");
-            console.log(this.props);
+            // console.log("this.props.  ");
+            // console.log(this.props);
 
             return (
                 " خرید اینترنتی بلیط هواپیما " +

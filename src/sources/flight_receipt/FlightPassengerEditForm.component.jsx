@@ -26,6 +26,7 @@ class FlightPassengerEditForm extends React.Component {
       pasenddatErr : "",
 
     };
+    console.log(this.props);
   }
   // when a new user gets selected from parent component, this method will be triggered
   componentWillReceiveProps(nextProps) {
@@ -33,7 +34,7 @@ class FlightPassengerEditForm extends React.Component {
       name: nextProps.name,
       family: nextProps.family,
       meliat: nextProps.meliat,
-      meliCode: nextProps.meliCode,
+      meliCode: nextProps.pasNoAll,
       sex: nextProps.sex,
       birthday: nextProps.birthday,
       index: nextProps.index,

@@ -17,6 +17,7 @@ import { withRouter } from "next/router";
 
 import dynamic from "next/dynamic";
 import { Loader } from '../Utils/Loader';
+import Head from 'next/head';
 
 const Account = dynamic(() => import("./../sources/account/Account.component"));
 
@@ -38,6 +39,9 @@ const tours = (props) => {
     }
     return (
         <div>
+            <Head>
+                <title>بلیطجا | لیست تورها</title>
+            </Head>
             <PopUp
                 opened={props.accountBox.state}
                 closePopUp={() => {

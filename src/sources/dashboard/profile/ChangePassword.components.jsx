@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 const ChangePassword = (props) => {
   const router = useRouter();
   const [state, setState] = useState({
+    mobile:localStorage.getItem("mobile"),
     password: "",
     passwordnew: "",
     confirm_password: "",
@@ -24,67 +25,136 @@ const ChangePassword = (props) => {
     }));
   }, []);
 
-  const handleSetPassword = (event) => {
-    event.preventDefault();
-    if (state.passwordnew !== "" && state.confirm_password !== "") {
-      if (state.passwordnew == state.confirm_password) {
-        fetch(`${globals.baseUrlNew}auth/setPassword`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            UserId: state.UserId,
-            password: state.password,
-            passwordnew: state.passwordnew,
-            hostname : "bilitja.com",
-            customerId : "1a157116-a01a-4027-ab10-74098ac63815",
-            agencyName : "بلیطجا",
-            telNumber : "02157874",
-    
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.status === "-100") {
-              props.messageBoxModify({
-                state: true,
-                color:true,
-                message: data.message,
-              });
-            } else if (data.status === "0") {
-              props.messageBoxModify({
-                color:true,
-                state: true,
-                message: "گذرواژه شما با موفقیت تغییر یافت",
-              });
-              setState({
-                password: "",
-                passwordnew: "",
-                confirm_password: "",
-              });
-            } else {
-              props.messageBoxModify({
-                color:false,
-                state: true,
-                message: "از اتصال خود به اینترنت اطمینان حاصل کنید.",
-              });
-            }
-          })
-          .catch((err) => console.log(err));
-      } else {
-        props.messageBoxModify({
-          color:false,
-          state: true,
-          message: "تکرار گذرواژه با گذرواژه جدید مطابقت ندارد.",
-        });
-      }
-    } else {
+  const handleSetPassword = () => {
+    if (state.passwordnew == "") {
       props.messageBoxModify({
-        color:false,
         state: true,
-        message: "فیلدا هارا پر کنید.",
+        color:false,
+        message: "لطفا فیلد را کامل پر کنید.",
       });
+    } else {
+      fetch(`${globals.baseUrlNew}auth/setPassword`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          UserId: localStorage.getItem("token"),
+          password: state.password,
+          passwordnew: state.passwordnew,
+          hostname : "bilitja.com",
+          customerId : "1a157116-a01a-4027-ab10-74098ac63815",
+          agencyName : "بلیطجا",
+          telNumber : "02157874",
+  
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status == 0) {
+            props.messageBoxModify({
+              state: true,
+              color:true,
+              message: "گذرواژه شما با موفقیت ثبت شد.",
+            });
+            localStorage.removeItem("f-token");
+            // props.history.push("/")
+          } else if (data.status == -100) {
+            props.messageBoxModify({
+              color:false,
+              state: true,
+              message: data.message,
+            });
+          }
+        });
     }
   };
+
+  const verifyToken = (e) => {
+    setState({...state, password: e.target.valueAsNumber || e.target.value });
+    console.log(state.password);
+    if (state.password.length > 3 && state.password.length < 5) {
+    fetch(`${globals.baseUrlNew}auth/ForgotPassword`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        mobile: state.mobile,
+        token: e.target.value.length > 3 ? e.target.value :state.password,
+        customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+        hostname: "bilitja.com",
+        agencyName: "بلیطجا",
+        telNumber: "02157874"
+
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status == 0) {
+          props.messageBoxModify({
+            color:true,
+            state: true,
+            message: "احراز هویت شما تایید شد.",
+          });
+
+          setState({...state,
+            showSetPassword: true,
+            btn_text: "دریافت کد احراز هویت",
+          });
+          localStorage.setItem("f-token", data.token);
+        } else if (data.status == -100) {
+          props.messageBoxModify({
+            color:false,
+            state: true,
+            message: "کد احراز هویت شما صحیح نمی باشد.",
+          });
+        }
+      }); 
+    }
+  };
+
+  useEffect(() => {
+    const verifyToken = () => {
+      // setState({...state, password: e.target.valueAsNumber || e.target.value });
+      console.log(state.password);
+      if (state.password.length > 3 && state.password.length < 5) {
+      fetch(`${globals.baseUrlNew}auth/ForgotPassword`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          mobile: state.mobile,
+          token: state.password,
+          customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+          hostname: "bilitja.com",
+          agencyName: "بلیطجا",
+          telNumber: "02157874"
+  
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status == 0) {
+            props.messageBoxModify({
+              color:true,
+              state: true,
+              message: "احراز هویت شما تایید شد.",
+            });
+  
+            setState({...state,
+              showSetPassword: true,
+              btn_text: "دریافت کد احراز هویت",
+            });
+            localStorage.setItem("f-token", data.token);
+          } else if (data.status == -100) {
+            props.messageBoxModify({
+              color:false,
+              state: true,
+              message: "کد احراز هویت شما صحیح نمی باشد.",
+            });
+          }
+        }); 
+      }
+    };
+    verifyToken()
+  },[state.password])
+
   return (
     <section>
       <div className="border-bottom-black">
@@ -96,19 +166,25 @@ const ChangePassword = (props) => {
           </span>
         </div>
       </div>
-      <form className="mb-4" onSubmit={handleSetPassword}>
+      <form className="mb-4">
         <div className="row">
           <div className="col-lg-4  form-groupe my-3">
-            <label className="font-bold-iransanse">گذرواژه فعلی:</label>
+            <label className="font-bold-iransanse">کد احراز هویت:</label>
             <input
               value={state.password}
-              onChange={(e) =>
+              maxLength={4}
+              onChange={(e) =>{
                 setState((prevState) => ({
                   ...prevState,
                   password: e.target.value,
                 }))
+                // {state.password.length > 2 &&
+                verifyToken(e)
+              // }
+                console.log(e.target.valueAsNumber || e.target.value);
               }
-              type="password"
+              }
+              type="text"
               className="col-12 change-password-input"
             />
           </div>
@@ -143,7 +219,7 @@ const ChangePassword = (props) => {
         </div>
         <div className="row my-2">
           <div className="col-lg-8 mb-2">
-            <button
+            <button onClick={() => {handleSetPassword();router.push("/dashboard/profile")}}
               className={`${styles["primary-button"]}  font-bold-iransanse py-2  `}
               type="submit"
             >
