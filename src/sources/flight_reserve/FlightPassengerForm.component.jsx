@@ -35,7 +35,7 @@ const FlightPassengerForm = (props) => {
         birthdayErr: 'لطفا تاریخ تولد را وارد کنید',
         extPasaport: false,
         extPasaportErr: 'لطفا فیلد انقضا را پر کنید',
-        pasaportErr : "پاسپورت الزامی میباشد",
+        // pasaportErr : "پاسپورت الزامی میباشد",
     })
     const errHandler = (e) => {
         if (e.target.name = 'extPasaport' && e.target.value !== '') {
@@ -275,37 +275,33 @@ const FlightPassengerForm = (props) => {
                                     inputMode={`${props.nationality == "IR" ? "numeric" : "text"
                                         }`}
                                     onChange={(e) => {
-                                        errHandler(e)
+                                        // errHandler(e)
 
-                                        if ( props.nationality == "IR" && props.pathKind == 1 ) {
+                                        // if ( props.nationality == "IR" && props.pathKind == 1 ) {
                                             props.fillPassengersData(
                                                 "code",
                                                 props.id,
                                                 e.target.value
                                             );
-                                        } else {
-                                            if (!checkNumber(e.target.value)) {
-                                                return;
-                                            } else {
-                                                props.fillPassengersData(
-                                                    "pasaport",
-                                                    props.id,
-                                                    e.target.value
-                                                );
-                                                props.fillPassengersData(
-                                                    "pasno",
-                                                    props.id,
-                                                    e.target.value
-                                                );
-                                            }
-                                        }
-                                    }}
+                                        // } else {
+                                        //     if (!checkNumber(e.target.value)) {
+                                        //         return;
+                                        //     } else {
+                                        //         props.fillPassengersData(
+                                        //             "code",
+                                        //             props.id,
+                                        //             e.target.value
+                                        //         );
+                                        //     }
+                                        // }
+                                    }
+                                }
                                     defaultValue={props.code}
                                 />
                             </div>
 
                             <span className="color-secondary error-message position-absolute">
-                                {props.pathKind == 2 && props.pasaport === ""? props.pasaportErr : ''}
+                                {/* {props.pathKind == 2 && props.pasaport === ""? props.pasaportErr : ''} */}
                                 {props.nationality == "IR" && props.code === ""? props.codeErr : ''}
                                 {/* {props.code.length < 10 ? props.pasaportErr : ""}
                                 {props.nationality == 'other' && props.pasno.length < 10 && props.pasno.length > 1 ? 'شماره پاسپورت اشتباه است' : ''} */}

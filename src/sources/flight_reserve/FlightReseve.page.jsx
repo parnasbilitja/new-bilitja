@@ -153,7 +153,7 @@ const FlightReserve = (props) =>{
             gender: "1",
             code: "",
             birthday: "",
-            pasaport: "",
+            // pasaport: "",
             // add new fild for extPasaport
             extPasaport: "",
             price: price,
@@ -161,7 +161,7 @@ const FlightReserve = (props) =>{
             familyErr: "",
             codeErr: "",
             birthdayErr: "",
-            pasaportErr: "",
+            // pasaportErr: "",
             futureday: "",
             pasno: "",
             birthdate: "",
@@ -221,7 +221,7 @@ const FlightReserve = (props) =>{
             tempPassenger.familyErr = "";
             tempPassenger.codeErr = "";
             tempPassenger.birthdayErr = "";
-            tempPassenger.pasaportErr = "";
+            // tempPassenger.pasaportErr = "";
             tempPassenger.pasnoErr = "";
             tempPassenger.pasenddatErr = "";
 
@@ -235,8 +235,8 @@ const FlightReserve = (props) =>{
                 isValid = false;
             }
 
-            if (tempPassenger.pasno == "" && state.pathKind == 2) {
-                tempPassenger.pasnoErr = "شماره پاسپورت الزامی میباشد";
+            if (tempPassenger.code == "" && state.pathKind == 2) {
+                tempPassenger.codeErr = "شماره پاسپورت الزامی میباشد";
                 isValid = false;
             }
             if (tempPassenger.futureday == "" && state.pathKind == 2) {
@@ -259,10 +259,10 @@ const FlightReserve = (props) =>{
                 tempPassenger.birthdayErr = "تاریخ تولد الزامی میباشد";
                 isValid = false;
             }
-            if (tempPassenger.pasaport == "") {
-                tempPassenger.pasaportErr = "پاسپورت الزامی میباشد"
-                isValid = false
-            }
+            // if (tempPassenger.pasaport == "") {
+            //     tempPassenger.pasaportErr = "پاسپورت الزامی میباشد"
+            //     isValid = false
+            // }
             return tempPassenger;
         });
         setState({...state,
@@ -356,7 +356,7 @@ const FlightReserve = (props) =>{
             telNo: state.phoneSubmiter.toString(),
             mobileNo: state.mobileSubmiter.toString(),
             email: state.email.toString(),
-            pasNoAll: state.passengers.map((x) => x.pasno).join(","),   
+            pasNoAll: state.passengers.map((x) => x.code).join(","),   
             pasStDateAll: Array(state.passengers.length).fill("").join(","),
             pasEndDateAll: state.passengers.map((x) => x.futureday).join(","),
             numADL: numADL,
