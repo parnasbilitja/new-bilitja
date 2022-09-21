@@ -46,10 +46,10 @@ const FlightReserveMobileHeader = (props) =>
               src={globals.website + `Airlines/${props.airlineCode}.png?ver=1`}
               alt="بلیطجا - لوگو ایرلاین"
             />
-            <div className="font-size-14">
+            <p className="font-size-14">
               <span className="font-bold-iransanse">ایرلاین</span>{" "}
               <div className="color-secondary">{props.airline}</div>
-            </div>
+            </p>
           </div>
           <div className="col-4 padding-3px">
             <p className="font-size-14 center-p">

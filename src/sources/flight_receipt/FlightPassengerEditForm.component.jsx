@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import PrimaryTextInput from "../component/PrimaryTextInput.component";
 import PrimarySelectInput from "../component/PrimarySelectInput.component";
@@ -14,44 +14,39 @@ import {
   isValidIranianNationalCode,
 } from "../../Utils/SimpleTasks";
 import styles from "../../../styles/FlightPassengerEditForm.module.scss";
-class FlightPassengerEditForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const FlightPassengerEditForm = (props) => {
+  
+    const [state, setState] = useState({
       nameErr: "",
       familyErr: "",
       melliCodeErr: "",
       birthdayErr: "",
       pasnoErr : "",
       pasenddatErr : "",
-
-    };
-    console.log(this.props);
-  }
-  // when a new user gets selected from parent component, this method will be triggered
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      name: nextProps.name,
-      family: nextProps.family,
-      meliat: nextProps.meliat,
-      meliCode: nextProps.pasNoAll,
-      sex: nextProps.sex,
-      birthday: nextProps.birthday,
-      index: nextProps.index,
+      name: props.name,
+      family: props.family,
+      meliat: props.meliat,
+      meliCode: props.pasNoAll,
+      pathKind: props.pathKind,
+      sex: props.sex,
+      birthday: props.birthday,
+      index: props.index,
     });
-  }
-  handleChange = (event) => {
+    console.log(props);
+  
+  
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({
+    setState({...state,
       [name]: value,
     });
   };
-  managePopUpBirthdayCalendar = (value) => {
-    this.setState({
+  const managePopUpBirthdayCalendar = (value) => {
+    setState({...state,
       open: value,
     });
   };
-  validation = () => {
+  const validation = () => {
     let isValid = true;
     let nameErr = "";
     let familyErr = "";
@@ -60,31 +55,31 @@ class FlightPassengerEditForm extends React.Component {
     let pasnoErr = "";
     let pasenddatErr = "";
 
-    if (this.state.name == "") {
+    if (state.name == "") {
       nameErr = "نام الزامی میباشد";
       isValid = false;
     }
-    if (this.state.family == "") {
+    if (state.family == "") {
       familyErr = "نام‌خانوادگی الزامی میباشد";
       isValid = false;
     }
-    if (this.state.meliat == "IR") {
-      if (!isValidIranianNationalCode(this.state.meliCode)) {
+    if (state.pathKind == 1) {
+      if (!isValidIranianNationalCode(state.meliCode)) {
         codeErr = "کدملی نامعتبر میباشد";
         isValid = false;
       }
-    } else {
-      // if (!isValidPassportCode(tempPassenger.code)) {
-      //     codeErr = "کد پاسورت نا معتبر میباشد"
-      //     isValid = false
-      // }
+    } else if (state.pathKind == 2){
+      if (!isValidPassportCode(state.meliCode)) {
+          codeErr = "کد پاسورت نا معتبر میباشد"
+          isValid = false
+      }
     }
 
-    if (this.state.birthday == "") {
+    if (state.birthday == "") {
       birthdayErr = "تاریخ تولد الزامی میباشد";
       isValid = false;
     }
-    this.setState({
+    setState({...state,
       birthdayErr: birthdayErr,
       melliCodeErr: codeErr,
       familyErr: familyErr,
@@ -96,8 +91,6 @@ class FlightPassengerEditForm extends React.Component {
 
     return isValid;
   };
-
-  render() {
     return (
       <div
         className="passenger-form mx-3"
@@ -112,13 +105,13 @@ class FlightPassengerEditForm extends React.Component {
             >
               <PrimaryTextInput
                 placeholder="نام"
-                value={this.state.name}
+                value={state.name}
                 name="name"
-                onChange={this.handleChange}
+                onChange={(e)=>handleChange(e)}
               />
             </div>
             <span className="color-secondary error-message">
-              {this.state.nameErr}
+              {state.nameErr}
             </span>
           </div>
           <div className="col-lg-3 col-md-3 col-sm-3 col-12 padding-horizental-3px">
@@ -127,13 +120,13 @@ class FlightPassengerEditForm extends React.Component {
             >
               <PrimaryTextInput
                 placeholder="نام‌خانوادگی"
-                value={this.state.family}
+                value={state.family}
                 name="family"
-                onChange={this.handleChange}
+                onChange={(e)=>handleChange(e)}
               />
             </div>
             <span className="color-secondary error-message">
-              {this.state.familyErr}
+              {state.familyErr}
             </span>
           </div>
           <div className="col-lg-2 col-md-2 col-sm-3 col-12 padding-horizental-3px">
@@ -141,21 +134,21 @@ class FlightPassengerEditForm extends React.Component {
               className={` form-input-border h-30  ${styles["form-input-border-private"]} `}
             >
               <PrimaryTextInput
-                placeholder="کدملی"
-                value={this.state.meliCode}
+                placeholder={`${state.pathKind == 1 ? 'کدملی' : 'شماره پاسپورت'}`}
+                value={state.meliCode}
                 name="meliCode"
-                onChange={this.handleChange}
+                onChange={(e)=>handleChange(e)}
               />
             </div>
             <span className="color-secondary error-message">
-              {this.state.melliCodeErr}
+              {state.melliCodeErr}
             </span>
           </div>
           <div className="col-lg-1 col-md-1 col-sm-1 col-12 padding-horizental-3px selectbox-receipt">
             <PrimarySelectInput
-              value={this.state.sex}
+              value={state.sex}
               name="sex"
-              onChange={this.handleChange}
+              onChange={(e)=>handleChange(e)}
               style={{ height: "30px", position: "relative", bottom: "2px" }}
             >
               <option value="1">مرد</option>
@@ -164,9 +157,9 @@ class FlightPassengerEditForm extends React.Component {
           </div>
           <div className="col-lg-1 col-md-1 col-sm-1 col-12 padding-horizental-3px selectbox-receipt">
             <PrimarySelectInput
-              value={this.state.meliat}
+              value={state.meliat}
               name="meliat"
-              onChange={this.handleChange}
+              onChange={(e)=>handleChange(e)}
               style={{ height: "30px", position: "relative", bottom: "2px" }}
             >
               <option value="IR">ایرانی</option>
@@ -179,15 +172,15 @@ class FlightPassengerEditForm extends React.Component {
             >
               <PrimaryTextInput
                 placeholder="تاریخ تولد"
-                value={this.state.birthday}
+                value={state.birthday}
                 name="birthday"
                 onFocus={() => {
-                  this.managePopUpBirthdayCalendar(true);
+                  managePopUpBirthdayCalendar(true);
                 }}
               />
             </div>
             <span className="color-secondary error-message">
-              {this.state.birthdayErr}
+              {state.birthdayErr}
             </span>
           </div>
         </div>
@@ -197,10 +190,10 @@ class FlightPassengerEditForm extends React.Component {
             <PrimaryButton
               value="ثبت"
               onClick={() => {
-                if (this.validation()) {
-                  this.props.closePopUpEditFrom(false);
-                  this.props.changeProperty(this.props.index, {
-                    ...this.state,
+                if (validation()) {
+                  props.closePopUpEditFrom(false);
+                  props.changeProperty(props.index, {
+                    ...state,
                   });
                 }
               }}
@@ -210,7 +203,7 @@ class FlightPassengerEditForm extends React.Component {
           <div className="col-lg-1 padding-3px">
             <a
               onClick={() => {
-                this.props.closePopUpEditFrom(false);
+                props.closePopUpEditFrom(false);
               }}
               className="btn-outlined-cancle color-secondary"
             >
@@ -219,21 +212,21 @@ class FlightPassengerEditForm extends React.Component {
           </div>
         </div>
         <PopUp
-          opened={this.state.open}
-          closePopUp={this.managePopUpBirthdayCalendar}
+          opened={state.open}
+          closePopUp={managePopUpBirthdayCalendar}
         >
           <div className="p-15">
             <BirthdayCalendar
               typePassenger={"ADL"}
               setBirthday={(value) => {
-                this.setState({ birthday: value });
+                setState({...state, birthday: value });
               }}
-              closePopUpCalendar={this.managePopUpBirthdayCalendar}
+              closePopUpCalendar={managePopUpBirthdayCalendar}
             />
           </div>
         </PopUp>
       </div>
     );
-  }
+  
 }
 export default FlightPassengerEditForm;

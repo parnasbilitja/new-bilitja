@@ -43,7 +43,7 @@ const NavBar = (props) =>{
 
   const handleLogoutUser = (e) => {
     e.preventDefault();
-    localStorage.removeItem("mobile");
+    // localStorage.removeItem("mobile");
     localStorage.removeItem("token");
     setState({...state,logged:false})
   }

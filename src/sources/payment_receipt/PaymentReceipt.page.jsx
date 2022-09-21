@@ -7,6 +7,7 @@ import PaymentReceiptDesktopHeader from "./PaymentReceiptDesktopHeader.component
 import PaymentReciptMobileHeader from "./PaymentReceiptMobileHeader.component";
 
 const PaymentReceiptPage = (props) => {
+  debugger
   const [btn_disabel, setBtnDisabel] = React.useState(false);
   let i = 1;
 
@@ -17,6 +18,7 @@ const PaymentReceiptPage = (props) => {
     )
       .then((res) => res.blob())
       .then((blob) => {
+        console.log(blob);
         setBtnDisabel(false);
         var file = window.URL.createObjectURL(blob);
         window.location.assign(file);

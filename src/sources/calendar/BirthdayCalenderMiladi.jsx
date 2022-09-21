@@ -95,8 +95,8 @@ class BirthdayCalenderMiladi extends React.Component {
                             <div className={styles['birthday-year-container']}>
                                 {
                                     this.getYears()
-                                        .map(x => (
-                                            <div className={styles['birthday-item']} style={{ fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" }} onClick={() => {
+                                        .map((x,i) => (
+                                            <div key={i} className={styles['birthday-item']} style={{ fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" }} onClick={() => {
                                                 this.setState({ year: x, stage: 2 })
                                             }}>
                                                 {x}
@@ -233,9 +233,9 @@ class BirthdayCalenderMiladi extends React.Component {
                                 <div className="font-size-13 color-black">Friday</div>
 
                                 {
-                                    this.getDays().map(x => (
+                                    this.getDays().map((x,i) => (
                                         x != undefined ?
-                                            <div className={styles['birthday-item']} style={{ fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" }} onClick={() => {
+                                            <div key={i} className={styles['birthday-item']} style={{ fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" }} onClick={() => {
                                                 const m = moment(`${this.state.year + '/' + this.state.month + '/' + x}`, 'jYYYY/jMM/jDD')
                                                 const date = m.format('jYYYY/jMM/jDD')
                                                 this.props.setBirthday(date)

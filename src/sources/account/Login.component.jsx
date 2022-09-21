@@ -16,20 +16,148 @@ import {
   getUserInfo,
 } from "../../Redux/Account/account.action";
 import { useState } from "react";
+import Timer from "../../Utils/Timer";
 const Login = (props) => {
+  
     const [state,setState] = useState({
       btn_disabled: false,
       loading: false,
+      date:'',
       login_with_code: true,
       get_mobile_status: false,
       btn_text: "ثبت کد احراز هویت",
-      mobile: "",
+      mobile: localStorage.getItem('mobile') | "",
       password: "",
       token: "",
       error: false,
+      phoneErrType:false,
       errText: "",
+      timer:false,
+      minutes:'',
+      seconds:'',
+      value:false
     });
+    
   
+    useEffect(() => {console.log(state)},[state])
+
+    const login = () => {
+      console.log(state);
+      localStorage.getItem("mobile")
+      setState({...state, btn_disabled: true, loading: true });
+      fetch(`${globals.baseUrlNew}auth/getMobile`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          
+          mobile: localStorage.getItem("mobile"),
+          password: '',
+          register: 0,
+
+          customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+          hostname: "bilitja.com",
+          agencyName: "بلیطجا",
+          telNumber: "02157874",
+          // token: state.token|'',
+      }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status == "0") {
+
+            // setState({...state,
+            //   btn_disabled: false,
+            //   loading: false,
+            //   get_mobile_status: true,
+            //   btn_text: "تایید کد احراز هویت",
+            // });
+          } else if (data.status == "10") {
+            // setState({...state, btn_disabled: false, loading: false });
+            localStorage.setItem("mobile", data.mobile);
+            localStorage.setItem("token", data.token);
+            props.checkUserLogged();
+            props.getUserInfo({
+              mobile: data.mobile,
+            });
+            props.accountBoxModify({
+              state: false,
+              type: "authentication",
+            });
+            props.messageBoxModify({
+              color:true,
+              state: true,
+              message: "ورود شما موفقیت آمیز بود.",
+            });
+            props.accountBoxModify({
+              state: false,
+              type: "authentication",
+            });
+          } else if (data.status === "-111") {
+
+            register();
+
+          } else if (data.status === "-200") {
+            setState({...state,
+              btn_disabled: false,
+              loading: false,
+              error: true,
+              errText: "شماره موبایل یا رمز ثابت نادرست می باشد.",
+            });
+          } else {
+            setState({...state,
+              btn_disabled: false,
+              loading: false,
+              error: true,
+              errText: data.message,
+            });
+          }
+        });
+    };
+  
+  const register = () => {
+      setState({...state, btn_disabled: true, loading: true });
+      fetch(`${globals.baseUrlNew}auth/getMobile`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          mobile: state.mobile,
+          token: state.token,
+          password: state.password,
+          register: 1,
+          hostname: "bilitja.com",
+          customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+          agencyName: "بلیطجا",
+          telNumber: "02157874",
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status == "0") {
+            setState({...state,
+              get_mobile_status:true,
+              loading: false,
+              register_status: true,
+              resend_code: true,
+              btn_text: "تایید کد احراز هویت",
+            });
+          } else if (data.status === "-110") {
+          //   setState({...state,
+          //     btn_disabled: false,
+          //     loading: false,
+          //     error: true,
+          //     errText:
+          //       "این شماره موبایل در سامانه موجود است، لطفا از بخش ورود وارد حساب خود شوید.",
+          //   });
+          } else {
+            setState({...state,
+              btn_disabled: false,
+              loading: false,
+              error: true,
+              errText: data.message,
+            });
+          }
+        });
+    };
 
   const handleLoginWithCode = () => {
     setState({...state,
@@ -38,13 +166,11 @@ const Login = (props) => {
       btn_text: "دریافت کد احراز هویت",
     });
   };
-  // const handleLoginWithPassword = () => {
-  //   setState({...state,
-  //     login_with_code: false,
-  //     token: "",
-  //     btn_text: "ورود به حساب",
-  //   });
-  // };
+
+  const phoneHandler = () => {
+    setState({...state,phoneErrType: true, mobile:'',timer:false})
+  }
+
 useEffect(() => {
   const handleSetMobile = () => {
     let mobile = localStorage.getItem("mobile");
@@ -53,89 +179,14 @@ useEffect(() => {
     };
   };
   handleSetMobile();
+  console.log(state);
 },[])
+useEffect(() => {
+  let mobile = localStorage.setItem("mobile",state.mobile);
+},[state.mobile])
   const handleSetToken = (e) => {
-    setState({...state, token: e.target.value, error: false, errText: "" });
+    setState({...state, [e.target.name]: e.target.value, error: false, errText: "" });
   };
-  // const handleSetPassword = (e) => {
-  //   setState({...state, password: e.target.value, error: false, errText: "" });
-  // };
-
-  // const login = () => {
-  //   setState({...state, btn_disabled: true, loading: true });
-  //   fetch(`${globals.baseUrlNew}auth/getMobile`, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       mobile: state.mobile,
-  //       token: state.token,
-  //       password: state.password,
-  //       register: 0,
-  //       hostname: "bilitja.com",
-  //       customerId: "1a157116-a01a-4027-ab10-74098ac63815",
-  //       agencyName: "بلیطجا",
-  //       telNumber: "02157874",
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.status == "0") {
-  //         setState({...state,
-  //           btn_disabled: false,
-  //           loading: false,
-  //           get_mobile_status: true,
-  //           btn_text: "تایید کد احراز هویت",
-  //         });
-  //       } else if (data.status == "10") {
-  //         setState({...state, btn_disabled: false, loading: false });
-  //         localStorage.setItem("mobile", data.mobile);
-  //         localStorage.setItem("token", data.token);
-  //         props.checkUserLogged();
-  //         props.getUserInfo({
-  //           mobile: data.mobile,
-  //         });
-  //         props.accountBoxModify({
-  //           state: false,
-  //           type: "authentication",
-  //         });
-  //         // props.addAccountProperties({
-  //         //   token: data.token,
-  //         //   dateLogin: moment().format("YYYY/MM/DD"),
-  //         // });
-  //         props.messageBoxModify({
-  //           color:true,
-  //           state: true,
-  //           message: "ورود شما موفقیت آمیز بود.",
-  //         });
-  //         props.accountBoxModify({
-  //           state: false,
-  //           type: "authentication",
-  //         });
-  //       } else if (data.status === "-111") {
-  //         setState({...state,
-  //           btn_disabled: false,
-  //           loading: false,
-  //           error: true,
-  //           errText:
-  //             "چنین شماره موبایلی در سامانه ثبت نشده است، لطفا ثبت نام کنید.",
-  //         });
-  //       } else if (data.status === "-200") {
-  //         setState({...state,
-  //           btn_disabled: false,
-  //           loading: false,
-  //           error: true,
-  //           errText: "شماره موبایل یا رمز ثابت نادرست می باشد.",
-  //         });
-  //       } else {
-  //         setState({...state,
-  //           btn_disabled: false,
-  //           loading: false,
-  //           error: true,
-  //           errText: data.message,
-  //         });
-  //       }
-  //     });
-  // };
 
   const loginWithToken = () => {
     console.log(state);
@@ -194,28 +245,26 @@ useEffect(() => {
             btn_disabled: false,
             loading: false,
             error: true,
-            errText: "لطفا از اتصال خود به اینترنت اطمینان حاصل کنید.",
+            errText: "لطفا شماره خود را وارد کنید",
           });
         }
       });
   };
+ 
+  // const renderer = ({ minutes, seconds, completed }) => {
+  //   console.log(completed);
+  //   // setState({...state,completed:completed||''})
+  //   if (completed) {  
+  //     return <Countdown renderer={renderer} date={Date.now() + 3000 } />
+  //   } else {
+  //     return (
+  //       <span className="font-bold-iransanse text-danger">
+  //         {minutes}:{seconds}
+  //       </span>
+  //     );
+  //   }
+  // };
 
-  // Renderer callback with condition
-  const renderer = ({ minutes, seconds, completed }) => {
-    if (completed) {
-      setState({...state,
-        get_mobile_status: false,
-        btn_text: "  دریافت مجدد کد احراز هویت",
-      });
-      return null;
-    } else {
-      return (
-        <span className="font-bold-iransanse text-danger">
-          {minutes}:{seconds}
-        </span>
-      );
-    }
-  };
     return (
       <div className="popup-content-container">
         <div className="popup-heading text-center">
@@ -300,31 +349,58 @@ useEffect(() => {
               </div>
             </div>
           ) : null} */}
-          {state.get_mobile_status === false ? (
+          {/* {state.get_mobile_status === false ? ( */}
+
             <div className="row mb-2">
               <div className="col-1 padding-horizental-3px">
                 <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
               </div>
               <div className="col-11 padding-horizental-3px">
                 <div>
+                  {state.phoneErrType == true ? 
+                  
                   <input
+                  className="form-input-auth px-2 col-12"
+                  placeholder="شماره موبایل"
+                  name="mobile"
+                  onChange={e => handleSetToken(e)}
+                  autoFocus
+                  inputMode="numeric"
+                  />
+
+                  :
+                  <>
+                  <div onClick={(e) =>phoneHandler(e)}>تغییر شماره</div>
+                    <input
                     className="form-input-auth px-2 col-12"
                     placeholder="کد ارسال شده را وارد نمایید."
-                    name="moaref"
-                    onChange={handleSetToken}
+                    name="token"
+                    onChange={e => handleSetToken(e)}
                     autoFocus
                     inputMode="numeric"
-                  />
+                    />
+                  </>
+
+                }
                 </div>
               </div>
             </div>
-          ) : null}
+            
+          {/* ) : null} */}
         </div>
         <div className="row mt-3">
+            
           <div className=" without-focus col-12">
             <button
               onClick={(e) => {
-                loginWithToken();
+                if (state.phoneErrType && state.mobile.length == 11) {
+                  login()
+                  setState({...state,phoneErrType: false,timer:true})
+                }else{
+                  loginWithToken() 
+                  // setState({...state})
+                }
+
               }}
               className={
                 props.disabled === false
@@ -333,17 +409,21 @@ useEffect(() => {
               }
               disabled={state.btn_disabled}
             >
-              {state.loading === false ? state.btn_text : <Loader />}
+              {state.loading ? state.btn_text :state.minutes == 0 && state.seconds && state.seconds == 0? "ارسال مجدد کد تایید" : 'دریافت کد'}
             </button>
+            
           </div>
         </div>
-        {state.get_mobile_status === true ? (
+        {!state.phoneErrType &&
           <div className="row mt-3 text-center">
             <div className="col-12">
-              <Countdown renderer={renderer} date={Date.now() + 60000} />
+              <p className="cursor-pointer" onClick={()=>loginWithToken()}>ارسال مجدد کد</p>
+              {/* <Countdown renderer={renderer} date={Date.now() + 3000 } /> */}
+              <Timer setState={setState} phoneErrType={state.phoneErrType} />
             </div>
           </div>
-        ) : null}
+          }
+         
 
         {/* <div className="row">
           <div className="col-12 no-padding-horizental">
@@ -420,3 +500,4 @@ const mapDispatchesToProps = (dispatch) => ({
   getUserInfo: (value) => dispatch(getUserInfo(value)),
 });
 export default connect(null, mapDispatchesToProps)(Login);
+

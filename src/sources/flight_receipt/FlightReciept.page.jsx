@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "../../../styles/FlightReciept.module.scss";
 import stylesflight from "../../../styles/FlightSearchBox.module.scss";
-import FlightRecieptDesktopHeader from "./FlightRecieptDesktopHeader.compnent";
-import FlightRecieptMobileHero from "./FlightRecieptMobileHeader.compnent";
+import FlightReserveDesktopHeader from "./FlightReserveDesktopHeader.component";
+import FlightReserveMobileHeder from "./FlightReserveMobileHeader.component";
 import {
   faUser,
   faEdit,
@@ -25,6 +25,7 @@ import router, { withRouter } from "next/router";
 class FlightReciept extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props);
     this.state = {
       birthDayAll_: [],
       familyAll_: [],
@@ -92,6 +93,8 @@ class FlightReciept extends React.Component {
             data.flightReservePropertyModel.pasNoAll
           ).split(",");
           
+          const pathKind = data.flightReservePropertyModel.pathKind;
+
           this.setState(
             {
               ...data.flightReservePropertyModel,
@@ -102,6 +105,7 @@ class FlightReciept extends React.Component {
               meliatAll_: meliatAll,
               nameAll_: nameAll,
               sexAll_: sexAll,
+              pathKind:pathKind,
               ticketCodeAll_: ticketCodeAll,
             },
             this.getAllPrice
@@ -264,8 +268,8 @@ class FlightReciept extends React.Component {
     return (
       <div className="container">
         <div className={styles["flight-detail"]}>
-          <FlightRecieptDesktopHeader {...this.state} />
-          <FlightRecieptMobileHero {...this.state} />
+          <FlightReserveDesktopHeader {...this.state} />
+          <FlightReserveMobileHeder {...this.state} />
         </div>
         <div className="row mt-10">
           {/* <div className="col-lg-1"></div> */}
@@ -474,6 +478,7 @@ class FlightReciept extends React.Component {
           <div className={stylesflight["flight-search-box-calendar-container"]}>
             <FlightPassengerEditForm
               {...this.state.current}
+              pathKind={this.state.pathKind}
               closePopUpEditFrom={this.managePopUpEditForm}
               changeProperty={this.updatePassengerData}
             />

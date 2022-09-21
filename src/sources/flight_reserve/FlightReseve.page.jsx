@@ -212,7 +212,6 @@ const FlightReserve = (props) =>{
             setState({...state,
                 phoneSubmiterErr:"شماره ثابت را وارد کنید",
             })
-            console.log("شماره ثابت را وارد کنید");
         }
         const passengers = state.passengers.map((onePassenger) => {
             const tempPassenger = onePassenger;
@@ -282,7 +281,9 @@ const FlightReserve = (props) =>{
     };
     const handleChange = (e) => {
         const { name, value } = e.target;
-        // let mobile = localStorage.getItem('mobile')
+        if (name == 'mobileSubmiter') {   
+            localStorage.setItem('mobile',value);
+        }
         // if (value.length == 11 && !localStorage.getItem('mobile')) {
             if (value.length == 11 ) {
                 setState({...state,
@@ -328,7 +329,7 @@ const FlightReserve = (props) =>{
             });
         }
         getAllPrice();
-        console.log(state.passengers);
+        // console.log(state.passengers);
         return valid;
     };
     const compeleteReservation = () => {
@@ -365,7 +366,7 @@ const FlightReserve = (props) =>{
             customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         };
         getAllPrice();
-        console.log(reservePassengerObject);
+        // console.log(reservePassengerObject);
         fetch(
             `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`,
             {
@@ -395,7 +396,7 @@ const FlightReserve = (props) =>{
 
     // }
 
-    useEffect(() => {console.log(state)},[state])
+    // useEffect(() => {console.log(state)},[state])
 
     // login user with code
     const login = () => {
@@ -449,7 +450,9 @@ const FlightReserve = (props) =>{
                 type: "authentication",
               });
             } else if (data.status === "-111") {
+
               register();
+
             } else if (data.status === "-200") {
               setState({...state,
                 btn_disabled: false,
@@ -468,7 +471,7 @@ const FlightReserve = (props) =>{
           });
       };
     
-      const register = () => {
+    const register = () => {
         setState({...state, btn_disabled: true, loading: true });
         fetch(`${globals.baseUrlNew}auth/getMobile`, {
           method: "POST",
@@ -664,7 +667,7 @@ const FlightReserve = (props) =>{
                                                 type="text"
                                                 placeholder="شماره همراه"
                                                 name="mobileSubmiter"
-                                                onChange={(e) => handleChange(e)}
+                                                onChange={(e) => {handleChange(e)}}
                                                 className="col-12 reserve-input px-2 h-35em"
                                                 maxLength={11}
                                             />
@@ -753,18 +756,25 @@ const FlightReserve = (props) =>{
                                 </div>
                                 <span className="color-secondary">
                                         {state.agreeWithTermerr==true && state.agreeWithTerm == false && 'قوانین و مقررات و صحت اطلاعات را بپذیرید!!!.'}
-                                        </span>
+                                </span>
                             
                                 <div className="row finish-reserve-buttons mb-3 ml-5 mt-4">
                                     <div className="col-lg-8 col-md-8 col-7 padding-3px">
                                         <button
                                             onClick={(e) => {
-                                                // {!props.user.logged && !localStorage.getItem('token') &&
-                                                // props.accountBoxModify({
-                                                //     state: true,
-                                                //     type: "register",
-                                                // });}
-
+                                                // if(  !localStorage.getItem('token')){
+                                                //     setState({...state, stateRegister: false });
+                                                //     login();
+                                                //     props.messageBoxModify({
+                                                //         state: true,
+                                                //         color:false,
+                                                //         message: "لطفا کد تایید ارسال شده را وارد کنید!",
+                                                //     });
+                                                //     props.accountBoxModify({
+                                                //         state: true,
+                                                //         type: "login",
+                                                //     });
+                                                // }
                                                 if (!validation()) {
                                                     setState({...state, loading: false });
                                                     props.messageBoxModify({
@@ -772,11 +782,11 @@ const FlightReserve = (props) =>{
                                                         color:false,
                                                         message: "لطفا اطلاعات را تکمیل کنید.",
                                                     });
-                                                    e.preventDefault();
                                                 } else if (state.agreeWithTerm === true && props.user.logged && localStorage.getItem('token')) {
+
                                                     setState({...state, loading: true });
                                                     compeleteReservation();
-                                                    e.preventDefault();
+
                                                 } else if(state.agreeWithTerm === false) {
                                                     setState({...state, loading: false,agreeWithTermerr:true });
 
@@ -785,7 +795,7 @@ const FlightReserve = (props) =>{
                                                         color:false,
                                                         message: "لطفا با شرایط و مقررات موافقت کنید",
                                                     });
-                                                }else if(!props.user.logged && !localStorage.getItem('token')){
+                                                }else if(  !localStorage.getItem('token')){
                                                     setState({...state, stateRegister: false });
                                                     login();
                                                     props.messageBoxModify({
@@ -827,15 +837,6 @@ const FlightReserve = (props) =>{
                         </div>
                     </div>
                 </div>
-                {/* {props.user.logged &&
-                <PopUp
-                opened={state.stateRegister}
-                closePopUp={authUserPopUP}
-                >
-                    
-                </PopUp>
-                } */}
-                        {/* <RegisterComponent /> */}
             </div>
         );
     // }

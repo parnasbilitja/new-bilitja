@@ -25,6 +25,7 @@ function convertUtftoAscii(str) {
 }
 
 function Page({ data, PaymentInfo }) {
+  debugger
   //const Page({ data, PaymentInfo }) {
   console.log("top");
   console.log(data);
