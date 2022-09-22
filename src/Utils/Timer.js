@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 
 
-const Timer = ({phoneErrType,setState}) => {
+const Timer = ({phoneErrType,setState,state}) => {
 
 	const Ref = useRef(null);
 
@@ -32,13 +32,14 @@ const Timer = ({phoneErrType,setState}) => {
 
 	const clearTimer = (e) => {
 
-		setTimer('00:30');
+		setTimer('01:30');
 
 		if (Ref.current) clearInterval(Ref.current);
 		const id = setInterval(() => {
 			startTimer(e);
 		}, 1000)
 		Ref.current = id;
+        // setState({...state,value:id})
 	}
 
 	const getDeadTime = () => {
@@ -59,6 +60,14 @@ const Timer = ({phoneErrType,setState}) => {
     useEffect(() => {
         onClickReset()
     },[phoneErrType])
+    useEffect(() => {
+        console.log(timer);
+        console.log(state.timer);
+        setState({...state,value:timer})
+        if (timer.split("")[0]== '0' && timer.split("")[1]== '0' && timer.split("")[3]== '0' && timer.split("")[4]== '0') {
+        setState({...state,value:true})
+        }
+    },[timer])
 
 	return (
 		<div className="App">

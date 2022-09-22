@@ -417,9 +417,13 @@ useEffect(() => {
         {!state.phoneErrType &&
           <div className="row mt-3 text-center">
             <div className="col-12">
-              <p className="cursor-pointer" onClick={()=>loginWithToken()}>ارسال مجدد کد</p>
+              {state.value <= 1000 &&
+                <p className="cursor-pointer" onClick={()=>loginWithToken()}>ارسال مجدد کد</p>
+              }
               {/* <Countdown renderer={renderer} date={Date.now() + 3000 } /> */}
-              <Timer setState={setState} phoneErrType={state.phoneErrType} />
+              {/* {state.value != "00:00" &&  */}
+                <Timer setState={setState} state={state} phoneErrType={state.phoneErrType} />
+              {/* } */}
             </div>
           </div>
           }

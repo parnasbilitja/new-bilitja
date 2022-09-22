@@ -762,19 +762,19 @@ const FlightReserve = (props) =>{
                                     <div className="col-lg-8 col-md-8 col-7 padding-3px">
                                         <button
                                             onClick={(e) => {
-                                                // if(  !localStorage.getItem('token')){
-                                                //     setState({...state, stateRegister: false });
-                                                //     login();
-                                                //     props.messageBoxModify({
-                                                //         state: true,
-                                                //         color:false,
-                                                //         message: "لطفا کد تایید ارسال شده را وارد کنید!",
-                                                //     });
-                                                //     props.accountBoxModify({
-                                                //         state: true,
-                                                //         type: "login",
-                                                //     });
-                                                // }
+                                                if(  !localStorage.getItem('token')){
+                                                    setState({...state, stateRegister: false });
+                                                    login();
+                                                    props.messageBoxModify({
+                                                        state: true,
+                                                        color:false,
+                                                        message: "لطفا کد تایید ارسال شده را وارد کنید!",
+                                                    });
+                                                    props.accountBoxModify({
+                                                        state: true,
+                                                        type: "login",
+                                                    });
+                                                }
                                                 if (!validation()) {
                                                     setState({...state, loading: false });
                                                     props.messageBoxModify({

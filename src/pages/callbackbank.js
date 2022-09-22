@@ -153,6 +153,7 @@ export async function getServerSideProps({ req }) {
           case "-100":
             data.RRN = "کد دریافتی از طرف بانک معتبر نیست.";
             break;
+          
           case "-101":
             data.RRN = "کد دریافتی از طرف بانک معتبر نیست.";
             break;
