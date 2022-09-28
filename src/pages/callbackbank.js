@@ -74,6 +74,7 @@ function Page({ data, PaymentInfo }) {
 //export const getServerSideProps = async (req) => {  
 export async function getServerSideProps({ req }) {
   debugger
+  
   console.log(req);
   if (req.method == "POST") 
   {
