@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../../styles/FlightReciept.module.scss";
 import stylesflight from "../../../styles/FlightSearchBox.module.scss";
 import FlightReserveDesktopHeader from "./FlightReserveDesktopHeader.component";
@@ -21,12 +21,12 @@ import PopUpWide from "../component/PopUpWide.component";
 import FlightPassengerEditForm from "./FlightPassengerEditForm.component";
 import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
 import router, { withRouter } from "next/router";
+import PopUp from "../component/PopUp.component";
 
-class FlightReciept extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props);
-    this.state = {
+const FlightReciept = (props) => {
+
+    console.log(props);
+    const [state, setState] = useState({
       birthDayAll_: [],
       familyAll_: [],
       meliCodeAll_: [],
@@ -46,22 +46,23 @@ class FlightReciept extends React.Component {
         birthday: "",
         index: 0,
       },
-    };
-    console.log(this.props);
-  }
+    });
+    console.log(state);
+  
+    useEffect(() => {
 
-  componentDidMount() {
+  // componentDidMount() {
     //console.log(`${window.location.origin}/api/callbackbank`);
 
-    this.props.addReservationProperties({
-      reqNo: this.props.router.asPath.split("/")[3],
-      reqPnr: this.props.router.asPath.split("/")[4],
+    props.addReservationProperties({
+      reqNo: props.router.asPath.split("/")[3],
+      reqPnr: props.router.asPath.split("/")[4],
       priceMessage: "",
     });
     fetch(
       `${globals.baseUrlNew
-      }BilitFlightReserve/flightsReserve/ravisReserveProperty/${this.props.router.asPath.split("/")[3]
-      }-${this.props.router.asPath.split("/")[4]
+      }BilitFlightReserve/flightsReserve/ravisReserveProperty/${props.router.asPath.split("/")[3]
+      }-${props.router.asPath.split("/")[4]
       }/1a157116-a01a-4027-ab10-74098ac63815`
     )
       .then((res) => res.json())
@@ -94,9 +95,9 @@ class FlightReciept extends React.Component {
           ).split(",");
           
           const pathKind = data.flightReservePropertyModel.pathKind;
-
-          this.setState(
-            {
+            const feeGet = data.flightReservePropertyModel.feeGet;
+          setState(
+            {...state,
               ...data.flightReservePropertyModel,
               birthDayAll_: birthDayAll,
               familyAll_: familyAll,
@@ -107,33 +108,37 @@ class FlightReciept extends React.Component {
               sexAll_: sexAll,
               pathKind:pathKind,
               ticketCodeAll_: ticketCodeAll,
+              feeGet:feeGet,
             },
-            this.getAllPrice
+            console.log(state),
+            getAllPrice()
           );
         }
       });
       
-  }
-  compeleteReservation = () => {
+  // }
+},[])
+
+  const compeleteReservation = () => {
     const reservePassengerObject = {
-      reqNo: this.props.reserveProperties.reqNo,
-      reqPnr: this.props.reserveProperties.reqPnr,
-      nameFamily: this.state.nameAll_[0] + " " + this.state.familyAll_[0],
-      nameFamilyEn: this.state.nameAll_[0] + " " + this.state.familyAll_[0],
-      nameEnAll: this.state.nameAll_.join(","),
-      familyEnAll: this.state.familyAll_.join(","),
-      nameAll: this.state.nameAll_.join(","),
-      familyAll: this.state.familyAll_.join(","),
-      meliCodeAll: this.state.meliCodeAll_.join(","),
-      ticketCodeAll: this.state.ticketCodeAll_.join(","),
-      sexAll: this.state.sexAll_.join(","),
-      birthDayAll: this.state.birthDayAll_.join(","),
-      meliatAll: this.state.meliatAll_.join(","),
+      reqNo: props.reserveProperties.reqNo,
+      reqPnr: props.reserveProperties.reqPnr,
+      nameFamily: state.nameAll_[0] + " " + state.familyAll_[0],
+      nameFamilyEn: state.nameAll_[0] + " " + state.familyAll_[0],
+      nameEnAll: state.nameAll_.join(","),
+      familyEnAll: state.familyAll_.join(","),
+      nameAll: state.nameAll_.join(","),
+      familyAll: state.familyAll_.join(","),
+      meliCodeAll: state.meliCodeAll_.join(","),
+      ticketCodeAll: state.ticketCodeAll_.join(","),
+      sexAll: state.sexAll_.join(","),
+      birthDayAll: state.birthDayAll_.join(","),
+      meliatAll: state.meliatAll_.join(","),
       telNo: "66955766",
-      mobileNo: this.state.mobileNo,
-      numADL: this.state.numADL,
-      numCHD: this.state.numCHD,
-      numINF: this.state.numINF,
+      mobileNo: state.mobileNo,
+      numADL: state.numADL,
+      numCHD: state.numCHD,
+      numINF: state.numINF,
       customerId: "1a157116-a01a-4027-ab10-74098ac63815",
     };
     fetch(
@@ -149,7 +154,7 @@ class FlightReciept extends React.Component {
         if (data.message == "0") {
           alert("success");
         } else {
-          this.props.messageBoxModify({
+          props.messageBoxModify({
             color:false,
             state: true,
             message: "لطفا اطلاعات را کامل وارد کنید",
@@ -158,9 +163,9 @@ class FlightReciept extends React.Component {
       });
       
   };
-  getBanks = () => {
+  const getBanks = () => {
     fetch(
-      `${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/getBanks/${this.props.reserveProperties.reqNo}/${this.props.reserveProperties.reqPnr}?customerId=1a157116-a01a-4027-ab10-74098ac63815`
+      `${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/getBanks/${props.reserveProperties.reqNo}/${props.reserveProperties.reqPnr}?customerId=1a157116-a01a-4027-ab10-74098ac63815`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -170,8 +175,8 @@ class FlightReciept extends React.Component {
             headers: { "Content-Type": "application/json" },
             method: "POST",
             body: JSON.stringify({
-              reqNo: this.props.reserveProperties.reqNo,
-              reqPnr: this.props.reserveProperties.reqPnr,
+              reqNo: props.reserveProperties.reqNo,
+              reqPnr: props.reserveProperties.reqPnr,
               bankId: data.bankId,
               kndRequest: 1,
               customerId: "1a157116-a01a-4027-ab10-74098ac63815",
@@ -204,7 +209,7 @@ class FlightReciept extends React.Component {
           });
       });
   };
-  getTicketType = (type) => {
+  const getTicketType = (type) => {
     switch (type) {
       case "ADL":
         return "بزرگسال";
@@ -214,32 +219,33 @@ class FlightReciept extends React.Component {
         return "نوزاد";
     }
   };
-  getTicketPrice = (type) => {
+  const getTicketPrice = (type) => {
     switch (type) {
       case "ADL":
-        return this.state.priceADL;
+        return state.priceADL;
       case "CHD":
-        return this.state.priceCHD;
+        return state.priceCHD;
       case "INF":
-        return this.state.priceINF;
+        return state.priceINF;
     }
   };
-  getAllPrice = () => {
+  const getAllPrice = () => {
     let sum = 0;
-    this.state.ticketCodeAll_.forEach((oneTicket) => {
-      sum += this.getTicketPrice(oneTicket);
+    state.ticketCodeAll_.map((oneTicket) => {
+      sum += getTicketPrice(oneTicket);
+      // console.log(oneTicket);
     });
-    this.setState({
+    setState({...state,
       priceAll: sum,
     });
   };
-  updatePassengerData = (index, value) => {
-    let names = this.state.nameAll_;
-    let families = this.state.familyAll_;
-    let sexes = this.state.sexAll_;
-    let meliats = this.state.meliatAll_;
-    let meliCodes = this.state.meliCodeAll_;
-    let birthdays = this.state.birthDayAll_;
+  const updatePassengerData = (index, value) => {
+    let names = state.nameAll_;
+    let families = state.familyAll_;
+    let sexes = state.sexAll_;
+    let meliats = state.meliatAll_;
+    let meliCodes = state.meliCodeAll_;
+    let birthdays = state.birthDayAll_;
 
     names[index] = value.name;
     families[index] = value.family;
@@ -248,7 +254,7 @@ class FlightReciept extends React.Component {
     meliCodes[index] = value.meliCode;
     birthdays[index] = value.birthday;
 
-    this.setState({
+    setState({...state,
       nameAll_: names,
       familyAll_: families,
       sexAll_: sexes,
@@ -258,18 +264,19 @@ class FlightReciept extends React.Component {
       isUpdated: true,
     });
   };
-  managePopUpEditForm = (value) => {
-    this.setState({
-      open: value,
+  const [open, setOpen] = useState(false);
+  const managePopUpEditForm = () => {
+    console.log('state');
+    setOpen({
+      open: !open,
     });
   };
 
-  render() {
     return (
       <div className="container">
         <div className={styles["flight-detail"]}>
-          <FlightReserveDesktopHeader {...this.state} />
-          <FlightReserveMobileHeder {...this.state} />
+          <FlightReserveDesktopHeader {...state} />
+          <FlightReserveMobileHeder {...state} />
         </div>
         <div className="row mt-10">
           {/* <div className="col-lg-1"></div> */}
@@ -296,57 +303,57 @@ class FlightReciept extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.birthDayAll_.length > 0
-                  ? this.state.birthDayAll_.map((oneRow, index) => (
+                {state.birthDayAll_.length > 0
+                  ? state.birthDayAll_.map((oneRow, index) => (
                     <tr className="font-size-13">
                       <td className="hidden-xs">
-                        {this.getTicketType(this.state.ticketCodeAll_[index])}
+                        {getTicketType(state.ticketCodeAll_[index])}
                       </td>
                       <td>
                         <div className="hidden-xs">
-                          {this.state.nameAll_[index]}
+                          {state.nameAll_[index]}
                         </div>
                         <div className="visible-xs font-bold-iransanse">
                           <span>
                             <FontAwesomeIcon icon={faUser} />
-                            {`${this.state.nameAll_[index]} ${this.state.familyAll_[index]
-                              } (${this.getTicketType(
-                                this.state.ticketCodeAll_[index]
+                            {`${state.nameAll_[index]} ${state.familyAll_[index]
+                              } (${getTicketType(
+                                state.ticketCodeAll_[index]
                               )})`}
                           </span>
                           <p>
                             <FontAwesomeIcon icon={faInfoCircle} />
-                            {this.state.meliCodeAll_[index]?this.state.meliCodeAll_[index]:this.state.pasNoAll_[index]}
+                            {state.meliCodeAll_[index]?state.meliCodeAll_[index]:state.pasNoAll_[index]}
                           </p>
                         </div>
                       </td>
                       <td className="hidden-xs">
-                        {this.state.familyAll_[index]}
+                        {state.familyAll_[index]}
                       </td>
                       <td className="hidden-xs">
-                        {this.state.meliatAll_[index] == "IR"
+                        {state.meliatAll_[index] == "IR"
                           ? "ایرانی"
                           : "خارجی"}
                       </td>
                       <td className="hidden-xs">
-                        {this.state.meliCodeAll_[index]?this.state.meliCodeAll_[index]:this.state.pasNoAll_[index]}
+                        {state.meliCodeAll_[index]?state.meliCodeAll_[index]:state.pasNoAll_[index]}
                       </td>
                       <td>
                         <div className="hidden-xs">
-                          {this.state.birthDayAll_[index]}
+                          {state.birthDayAll_[index]}
                         </div>
                         <div className="visible-xs font-bold-iransanse">
                           <span>
                             <FontAwesomeIcon icon={faCalendar} />
-                            {this.state.birthDayAll_[index]}
+                            {state.birthDayAll_[index]}
                           </span>
                           <p>
                             <FontAwesomeIcon icon={faDollarSign} />
                             <span className="color-secondary">
                               {" "}
                               {moneyFormat(
-                                this.getTicketPrice(
-                                  this.state.ticketCodeAll_[index]
+                                getTicketPrice(
+                                  state.ticketCodeAll_[index]
                                 )
                               )}
                             </span>
@@ -355,34 +362,32 @@ class FlightReciept extends React.Component {
                       </td>
                       <td className="hidden-xs">
                         {moneyFormat(
-                          this.getTicketPrice(
-                            this.state.ticketCodeAll_[index]
+                          getTicketPrice(
+                            state.ticketCodeAll_[index]
                           )
                         )}
                       </td>
                       <td>
                         <div className="font-size-14">
-                          <FontAwesomeIcon
+                          <FontAwesomeIcon style={{cursor: "pointer"}}
                             icon={faEdit}
                             onClick={() => {
-                              this.setState(
-                                {
+                              managePopUpEditForm()
+                              setState({...state,
                                   current: {
                                     index: index,
-                                    name: this.state.nameAll_[index],
-                                    family: this.state.familyAll_[index],
-                                    meliat: this.state.meliatAll_[index],
-                                    pasNoAll:this.state.pasNoAll_[index],
-                                    meliCode: this.state.meliCodeAll_[index],
-                                    sex: this.state.sexAll_[index],
-                                    birthday: this.state.birthDayAll_[index],
-                                  },
-                                },
-                                () => {
-                                  this.managePopUpEditForm(true);
+                                    name: state.nameAll_[index],
+                                    family: state.familyAll_[index],
+                                    meliat: state.meliatAll_[index],
+                                    pasNoAll:state.pasNoAll_[index],
+                                    meliCode: state.meliCodeAll_[index],
+                                    sex: state.sexAll_[index],
+                                    birthday: state.birthDayAll_[index],
+                                  }
                                 }
-                              );
-                            }}
+                                );
+                              }
+                            }
                           />
                         </div>
                       </td>
@@ -407,7 +412,7 @@ class FlightReciept extends React.Component {
                   </div>
                   <div className="col-lg-5 col-6 text-left">
                     <p className="font-size-13">
-                      {moneyFormat(this.state.priceAll)} تومان
+                      {moneyFormat(state.feeGet)} تومان
                     </p>
                   </div>
                 </div>
@@ -429,7 +434,7 @@ class FlightReciept extends React.Component {
                   </div>
                   <div className="col-lg-5 col-6 text-left">
                     <p className="font-size-13">
-                      {moneyFormat(this.state.priceAll)} تومان
+                      {moneyFormat(state.feeGet)} تومان
                     </p>
                   </div>
                 </div>
@@ -441,13 +446,13 @@ class FlightReciept extends React.Component {
                     <button
                       className="btn btn-success-payment py-2 col-12 mb-1"
                       onClick={() => {
-                        if (this.state.isUpdated) {
-                          this.compeleteReservation();
+                        if (state.isUpdated) {
+                          compeleteReservation();
                         }
                         // if (props.user.logged && localStorage.getItem('token')) { 
-                          this.getBanks();
+                          getBanks();
                         // }else{
-                        //   this.props.messageBoxModify({
+                        //   props.messageBoxModify({
                         //     color:false,
                         //     state: true,
                         //     message: "لطفا وارد حساب کاربری خود شوید",
@@ -472,21 +477,21 @@ class FlightReciept extends React.Component {
           </div>
         </div>
         <PopUpWide
-          opened={this.state.open}
-          closePopUp={this.managePopUpEditForm}
+          opened={open}
+          closePopUp={managePopUpEditForm}
         >
           <div className={stylesflight["flight-search-box-calendar-container"]}>
             <FlightPassengerEditForm
-              {...this.state.current}
-              pathKind={this.state.pathKind}
-              closePopUpEditFrom={this.managePopUpEditForm}
-              changeProperty={this.updatePassengerData}
+              {...state.current}
+              pathKind={state.pathKind}
+              setOpen={setOpen}
+              changeProperty={updatePassengerData}
             />
           </div>
         </PopUpWide>
       </div>
     );
-  }
+
 }
 const mapStateToProps = (state) => ({
   reserveProperties: selectProperties(state),

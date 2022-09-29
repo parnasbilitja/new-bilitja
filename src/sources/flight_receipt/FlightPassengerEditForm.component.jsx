@@ -6,16 +6,19 @@ import PrimaryButton from "../component/PrimaryButton.component";
 import PopUp from "../component/PopUp.component";
 import BirthdayCalendar from "../calendar/BirthdayCalendar.component";
 
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
   isValidPassportCode,
   isValidIranianNationalCode,
 } from "../../Utils/SimpleTasks";
 import styles from "../../../styles/FlightPassengerEditForm.module.scss";
+import BirthDayParent from "../calendar/BirthDayParent";
+import PopUpWide from "../component/PopUpWide.component";
+import * as moment from 'jalali-moment';
+
 const FlightPassengerEditForm = (props) => {
-  
+  const [calend, setCalend] = useState(false)
+  const [date, setDate] = useState('')
     const [state, setState] = useState({
       nameErr: "",
       familyErr: "",
@@ -32,7 +35,21 @@ const FlightPassengerEditForm = (props) => {
       birthday: props.birthday,
       index: props.index,
     });
-    console.log(props);
+    // console.log(props);
+    useEffect(() => {
+      setState({
+        ...state,
+        name: props.name,
+        family: props.family,
+        meliat: props.meliat,
+        meliCode: props.pasNoAll,
+        pathKind: props.pathKind,
+        sex: props.sex,
+        birthday: props.birthday,
+        index: props.index,
+      })
+    },[props])
+    console.log(state);
   
   
   const handleChange = (event) => {
@@ -91,6 +108,10 @@ const FlightPassengerEditForm = (props) => {
 
     return isValid;
   };
+  useEffect(() => {
+    let res = date && calend == true ? date :date && calend ==false?moment(date).locale('fa').format('YYYY/M/D'):''
+    setState({...state,birthday:res })
+  },[date])
     return (
       <div
         className="passenger-form mx-3"
@@ -174,6 +195,7 @@ const FlightPassengerEditForm = (props) => {
                 placeholder="تاریخ تولد"
                 value={state.birthday}
                 name="birthday"
+                onChange={''}
                 onFocus={() => {
                   managePopUpBirthdayCalendar(true);
                 }}
@@ -191,7 +213,7 @@ const FlightPassengerEditForm = (props) => {
               value="ثبت"
               onClick={() => {
                 if (validation()) {
-                  props.closePopUpEditFrom(false);
+                  props.setOpen(false);
                   props.changeProperty(props.index, {
                     ...state,
                   });
@@ -202,8 +224,9 @@ const FlightPassengerEditForm = (props) => {
           </div>
           <div className="col-lg-1 padding-3px">
             <a
-              onClick={() => {
-                props.closePopUpEditFrom(false);
+              onClick={(e)=> {
+                e.preventDefault();
+                props.setOpen(false)
               }}
               className="btn-outlined-cancle color-secondary"
             >
@@ -216,13 +239,41 @@ const FlightPassengerEditForm = (props) => {
           closePopUp={managePopUpBirthdayCalendar}
         >
           <div className="p-15">
-            <BirthdayCalendar
+              {/* <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
+              <BirthDayParent
+              numSh={1301}
+              numBase={1300}
+              numMi={1920}
+              numMiBase={1300}
+              title="Please enter date of birth"
+              placeholder="لطفا تاریخ تولد را وارد کنید"
+              calend={calend}
               typePassenger={"ADL"}
+              type={'BD'}
+              name="birthday"
               setBirthday={(value) => {
                 setState({...state, birthday: value });
               }}
               closePopUpCalendar={managePopUpBirthdayCalendar}
-            />
+            /> */}
+                      <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
+                      <BirthDayParent
+                        numSh={1301}
+                        numBase={1300}
+                        numMi={1920}
+                        numMiBase={1300}
+                        title="Please enter date of birth"
+                        placeholder="لطفا تاریخ تولد را وارد کنید"
+                        calend={calend}
+                        typePassenger={'ADL'}
+                        type={'BD'}
+                        name="birthday"
+                        setBirthdayb={(value) => {
+                          setDate(value);
+                          console.log(date);
+                        }}
+                        closePopUpCalendar={managePopUpBirthdayCalendar}
+                    />
           </div>
         </PopUp>
       </div>
