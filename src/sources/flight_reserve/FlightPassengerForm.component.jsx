@@ -264,48 +264,45 @@ const FlightPassengerForm = (props) => {
                             </span>
                         </div>
                         <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px mt-1">
+                            {props.pathKind == 1 && props.nationality == "IR"?
                             <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
                                 <PrimaryTextInput
                                     style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
                                     name={`nationalCode `}
-                                    placeholder={`${props.nationality == "IR" && props.pathKind == 1
-                                        ? "کد ملی"
-                                        : "شماره پاسپورت"
-                                        }`}
-                                    inputMode={`${props.nationality == "IR" ? "numeric" : "text"
-                                        }`}
+                                    placeholder={`"کد ملی"`}
+                                    inputMode={`"numeric"`}
                                     onChange={(e) => {
-                                        // errHandler(e)
-
-                                        if ( props.nationality == "IR" && props.pathKind == 1 ) {
                                             props.fillPassengersData(
                                                 "code",
                                                 props.id,
                                                 e.target.value
                                             );
-                                        } else {
-                                            if (!checkNumber(e.target.value)) {
-                                                return;
-                                            } else {
-                                                props.fillPassengersData(
-                                                    "pasno",
-                                                    props.id,
-                                                    e.target.value
-                                                );
-                                            }
-                                        }
                                     }
                                 }
                                     defaultValue={props.code}
                                 />
+                            </div>:
+                                <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
+                                <PrimaryTextInput
+                                    style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
+                                    name={`nationalCode`}
+                                    placeholder={`شماره پاسپورت`}
+                                    inputMode={`"numeric"`}
+                                    onChange={(e) => {
+                                            props.fillPassengersData(
+                                                "pasno",
+                                                props.id,
+                                                e.target.value
+                                            );
+                                    }
+                                }
+                                    defaultValue={props.pasno}
+                                />
                             </div>
+                            }
 
                             <span className="color-secondary error-message position-absolute">
-                                {/* {props.pathKind == 2 && props.pasaport === ""? props.pasaportErr : ''} */}
                                 {props.nationality == "IR" && props.code === ""? props.codeErr : ''}
-                                {/* {props.code.length < 10 ? props.pasaportErr : ""}
-                                {props.nationality == 'other' && props.pasno.length < 10 && props.pasno.length > 1 ? 'شماره پاسپورت اشتباه است' : ''} */}
-
                             </span>
                         </div>
 
