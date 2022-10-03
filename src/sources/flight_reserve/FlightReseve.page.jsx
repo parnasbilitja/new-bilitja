@@ -361,7 +361,7 @@ const FlightReserve = (props) =>{
             meliCodeAll: state.passengers.map((x) => x.code).join(","),
             ticketCodeAll: state.passengers.map((x) => x.type).join(","),
             sexAll: state.passengers.map((x) => x.gender).join(","),
-            birthDayAll: state.passengers.map((x) => moment(x.birthday).locale('fa').format('YYYY/M/D')).join(","),
+            birthDayAll: state.passengers.map((x) => moment(x.birthday).locale('fa').format('YYYY/MM/DD')).join(","),
             // moment("1989/1/24").locale('fa').format('YYYY/M/D');
             meliatAll: state.passengers.map((x) => x.nationality).join(","),
             telNo: state.phoneSubmiter.toString(),
@@ -526,6 +526,9 @@ const FlightReserve = (props) =>{
           });
       };
 
+    //   useEffect(() => {
+    //     console.log(props);
+    // },[])
 
         return (
             <div className="container">
