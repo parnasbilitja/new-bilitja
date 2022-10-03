@@ -270,7 +270,7 @@ const FlightPassengerForm = (props) => {
                                     style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
                                     name={`nationalCode `}
                                     placeholder={`کد ملی`}
-                                    inputMode={`"numeric"`}
+                                    inputMode={`numeric`}
                                     onChange={(e) => {
                                             props.fillPassengersData(
                                                 "code",
@@ -287,7 +287,7 @@ const FlightPassengerForm = (props) => {
                                     style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
                                     name={`nationalCode`}
                                     placeholder={`شماره پاسپورت`}
-                                    inputMode={`"numeric"`}
+                                    inputMode={`text`}
                                     onChange={(e) => {
                                             props.fillPassengersData(
                                                 "pasno",
