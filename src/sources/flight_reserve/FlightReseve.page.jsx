@@ -347,6 +347,7 @@ const FlightReserve = (props) =>{
         const numCHD = state.passengers.filter((x) => x.type == "CHD").length;
         const numINF = state.passengers.filter((x) => x.type == "INF").length;
         // debugger
+
         const reservePassengerObject = {
             reqNo: props.reserveProperties.reqNo,
             reqPnr: props.reserveProperties.reqPnr,
@@ -376,7 +377,7 @@ const FlightReserve = (props) =>{
             customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         };
         getAllPrice();
-        // console.log(reservePassengerObject);
+        console.log(reservePassengerObject);
         fetch(
             `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`,
             {
@@ -555,7 +556,7 @@ const FlightReserve = (props) =>{
                                 ))
                             : null
                             }
-                        {/* {state.passengers
+                        {state.passengers
                             ? state.passengers
                                 .filter((x) => x.type == "CHD")
                                 .map((onePassenger, index) => (
@@ -583,7 +584,7 @@ const FlightReserve = (props) =>{
                                         pathKind={state.pathKind}
                                     />
                                 ))
-                            : null} */}
+                            : null}
                         <div className={`row ${styles["add-passanger"]} text-left`}>
                             <div className="visible-xs col-12 ">
                                 <p className="font-size-14">

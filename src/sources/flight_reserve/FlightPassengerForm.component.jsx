@@ -269,7 +269,7 @@ const FlightPassengerForm = (props) => {
                                 <PrimaryTextInput
                                     style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
                                     name={`nationalCode `}
-                                    placeholder={`"کد ملی"`}
+                                    placeholder={`کد ملی`}
                                     inputMode={`"numeric"`}
                                     onChange={(e) => {
                                             props.fillPassengersData(
