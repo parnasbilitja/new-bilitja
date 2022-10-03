@@ -244,7 +244,7 @@ const FlightReserve = (props) =>{
                 isValid = false;
             }
 
-            if (tempPassenger.code == "" && state.pathKind == 2) {
+            if (tempPassenger.pasno == "" && state.pathKind == 2) {
                 tempPassenger.codeErr = "شماره پاسپورت الزامی میباشد";
                 isValid = false;
             }
