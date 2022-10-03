@@ -277,23 +277,23 @@ const FlightPassengerForm = (props) => {
                                     onChange={(e) => {
                                         // errHandler(e)
 
-                                        // if ( props.nationality == "IR" && props.pathKind == 1 ) {
+                                        if ( props.nationality == "IR" && props.pathKind == 1 ) {
                                             props.fillPassengersData(
                                                 "code",
                                                 props.id,
                                                 e.target.value
                                             );
-                                        // } else {
-                                        //     if (!checkNumber(e.target.value)) {
-                                        //         return;
-                                        //     } else {
-                                        //         props.fillPassengersData(
-                                        //             "code",
-                                        //             props.id,
-                                        //             e.target.value
-                                        //         );
-                                        //     }
-                                        // }
+                                        } else {
+                                            if (!checkNumber(e.target.value)) {
+                                                return;
+                                            } else {
+                                                props.fillPassengersData(
+                                                    "pasno",
+                                                    props.id,
+                                                    e.target.value
+                                                );
+                                            }
+                                        }
                                     }
                                 }
                                     defaultValue={props.code}

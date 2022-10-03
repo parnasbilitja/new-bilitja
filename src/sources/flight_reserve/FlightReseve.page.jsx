@@ -367,7 +367,7 @@ const FlightReserve = (props) =>{
             telNo: state.phoneSubmiter.toString(),
             mobileNo: state.mobileSubmiter.toString(),
             email: state.email.toString(),
-            pasNoAll: state.passengers.map((x) => x.code).join(","),   
+            pasNoAll: state.passengers.map((x) => x.pasno).join(","),   
             pasStDateAll: Array(state.passengers.length).fill("").join(","),
             pasEndDateAll: state.passengers.map((x) => x.futureday).join(","),
             numADL: numADL,
