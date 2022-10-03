@@ -5,6 +5,10 @@ import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import globals from "./../Global";
 import PaymentReceiptDesktopHeader from "./PaymentReceiptDesktopHeader.component";
 import PaymentReciptMobileHeader from "./PaymentReceiptMobileHeader.component";
+import { moneyFormat } from "../../Utils/SimpleTasks";
+import FlightReserveDesktopHeader from "../flight_reserve/FlightReserveDesktopHeader.component";
+import FlightReserveMobileHeader from "../flight_reserve/FlightReserveMobileHeader.component";
+
 
 const PaymentReceiptPage = (props) => {
   debugger
@@ -44,21 +48,25 @@ const PaymentReceiptPage = (props) => {
           {props.referenceEbank.dateTimeSabt}
         </h6>
         <h6 className="font-bold-iransanse">
-          مبلغ: {props.referenceEbank.amount}
+          مبلغ: {moneyFormat(props.referenceEbank.amount)}
         </h6>
       </div>
-      <PaymentReceiptDesktopHeader info={props} />
-      <PaymentReciptMobileHeader info={props} />
+      <div className={`${styles["flight-detail"]}`}>
+                    <FlightReserveDesktopHeader info={props} />
+                    <FlightReserveMobileHeader  info={props} />
+                </div>
       <div className="container pt-4">
         <div className="card">
           <div className="table-responsive">
             <table class="table table-striped font-bold-iransanse text-center">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">محدوده سنی</th>
                   <th scope="col">نام</th>
                   <th scope="col">نام خانوادگی</th>
+                  <th scope="col">کدملی/پاسپورت</th>
                   <th scope="col">رفرنس</th>
+                  <th scope="col">شماره درخواست</th>
                   <th scope="col">ملیت</th>
                   <th scope="col">قیمت</th>
                 </tr>
@@ -71,8 +79,9 @@ const PaymentReceiptPage = (props) => {
                     </th>
                     <td>{option.nameEn}</td>
                     <td>{option.familyEn}</td>
-
+                    <td>{option.meliCode}</td>
                     <td>{option.reqPnr}</td>
+                    <td>{option.reqNo}</td>
                     <td>{option.meliat}</td>
 
                     <td>{option.ticketPrice}</td>

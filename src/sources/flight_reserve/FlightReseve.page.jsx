@@ -172,6 +172,15 @@ const FlightReserve = (props) =>{
 
         passengers.push(additionalPassenger);
 
+        passengers.sort((a, b) => {
+            if (a.value > b.value) {
+                return 1;
+            }
+            if (a.value < b.value) {
+                return -1;
+            }
+            return 0;
+        });
         setState(
             {...state,
                 passengers: passengers,
@@ -182,6 +191,7 @@ const FlightReserve = (props) =>{
     const removePassenger = (id) => {
         let passengers = state.passengers;
         passengers = passengers.filter((onePssenger) => onePssenger.id != id);
+        
         setState(
             {...state,
                 passengers: passengers,
@@ -540,8 +550,9 @@ const FlightReserve = (props) =>{
                                         pathKind={state.pathKind}
                                     />
                                 ))
-                            : null}
-                        {state.passengers
+                            : null
+                            }
+                        {/* {state.passengers
                             ? state.passengers
                                 .filter((x) => x.type == "CHD")
                                 .map((onePassenger, index) => (
@@ -569,7 +580,7 @@ const FlightReserve = (props) =>{
                                         pathKind={state.pathKind}
                                     />
                                 ))
-                            : null}
+                            : null} */}
                         <div className={`row ${styles["add-passanger"]} text-left`}>
                             <div className="visible-xs col-12 ">
                                 <p className="font-size-14">
