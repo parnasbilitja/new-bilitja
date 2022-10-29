@@ -5,6 +5,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import HotelView from '../../../Images/hotel_view.jpg'
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const villaListDesktop = ({ history, villaList }) => {
   const myRouter = useRouter();
@@ -64,15 +65,15 @@ const villaListDesktop = ({ history, villaList }) => {
                   <p className="no-margin font-size-13">از شبی {highest}</p>
                   <p className="no-margin font-size-13">تومان</p>
 
-                  <a
+                  <Link href={`/reserve/villa/tehran/${villa.EghamatId}`}
                     className="btn-outlined-cancle villa-reserve-btn "
-                    onClick={(e) => {
-                      e.preventDefault();
-                      myRouter.push(`/reserve/villa/tehran/${villa.EghamatId}`);
-                    }}
+                    // onClick={(e) => {
+                    //   e.preventDefault();
+                    //   myRouter.push(`/reserve/villa/tehran/${villa.EghamatId}`);
+                    // }}
                   >
                     رزرو
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

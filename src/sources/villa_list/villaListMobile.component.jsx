@@ -3,6 +3,7 @@ import Image from "next/image";
 //import HotelView from '../../../Images/hotel_view.jpg'
 
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const villaListMobile = ({ history, villaList }) => {
   const myRouter = useRouter();
@@ -49,15 +50,15 @@ const villaListMobile = ({ history, villaList }) => {
                       <p className="font-size-13 color-textpill no-margin">
                         1 شب
                       </p>
-                      <a
+                      <Link href={"/reserve/villa/tehran"}
                         className="btn-outlined-cancle villa-reserve-btn"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          myRouter.push("/reserve/villa/tehran");
-                        }}
+                        // onClick={(e) => {
+                        //   e.preventDefault();
+                        //   myRouter.push("/reserve/villa/tehran");
+                        // }}
                       >
                         رزرو
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

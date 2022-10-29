@@ -23,12 +23,8 @@ import { messageBoxModify, accountBoxModify } from "../../Redux/UI/ui.action";
 import {
     isValidIranianNationalCode,
     moneyFormat,
-    isValidPassportCode,
 } from "../../Utils/SimpleTasks";
 import { withRouter } from "next/router";
-import { Loader } from "../../Utils/Loader";
-import RegisterComponent from "../account/Register.component";
-import PopUp from "../component/PopUp.component";
 import Link from "next/link";
 
 const FlightReserve = (props) =>{
@@ -51,18 +47,15 @@ const FlightReserve = (props) =>{
             setErr({...err,[e.target.name]:false})
         }
     }
-
+    const [numbers ,setNumbers] = useState(false)
     const [state,setState] = useState({
         stateRegister: false,
         passengers: [],
         priceAll: 0,
-        mobileSubmiter: localStorage.getItem('mobile') || '',
+        mobileSubmiter: localStorage.getItem('mobile') ? localStorage.getItem('mobile') : '',
         phoneSubmiter: '',
         mobileSubmiterErr: "",
-        // mobileSubmitererror: false,
-        // phoneSubmiterErr: "وارد کردن شماره ثابت اجباری است",
-        phoneSubmiterErr: "شماره ثابت را وارد کنید",
-        // phoneSubmitererror: false,
+        phoneSubmiterErr: "شماره ثابت اجباریست!!",
         agreeWithTerm: false,
         agreeWithTermerr: false,
         loading: false,
@@ -129,6 +122,18 @@ const FlightReserve = (props) =>{
             }
         });
 
+        passengers_.sort((a, b) => {
+            const A = a.type;
+            const B = b.type;
+            if (A < B) {
+              return -1;
+            }
+            if (A > B) {
+              return 1;
+            }
+            return 0;
+          });
+
         setState({...state,
             passengers: passengers_,
         },() =>{
@@ -173,14 +178,16 @@ const FlightReserve = (props) =>{
         passengers.push(additionalPassenger);
 
         passengers.sort((a, b) => {
-            if (a.value > b.value) {
-                return 1;
+            const A = a.type;
+            const B = b.type;
+            if (A < B) {
+              return -1;
             }
-            if (a.value < b.value) {
-                return -1;
+            if (A > B) {
+              return 1;
             }
             return 0;
-        });
+          });
         setState(
             {...state,
                 passengers: passengers,
@@ -188,9 +195,12 @@ const FlightReserve = (props) =>{
             getAllPrice();
     };
 
-    const removePassenger = (id) => {
+    const removePassenger = (type, id) => {
         let passengers = state.passengers;
         passengers = passengers.filter((onePssenger) => onePssenger.id != id);
+        if(type == 'ADL' && passengers[passengers.length - 1].type == 'INF'){
+            passengers.pop();
+        }
         
         setState(
             {...state,
@@ -203,6 +213,7 @@ const FlightReserve = (props) =>{
     };
 
     const validation = () => {
+        console.log(state);
         let isValid = true;
 
         if (state.mobileSubmiter == "") {
@@ -217,7 +228,7 @@ const FlightReserve = (props) =>{
             })
             isValid = false;
         }
-        if (state.phoneSubmiter == '') {
+        if (state.phoneSubmiter == "") {
             isValid = false;
             setState({...state,
                 phoneSubmiterErr:"شماره ثابت را وارد کنید",
@@ -229,8 +240,7 @@ const FlightReserve = (props) =>{
             tempPassenger.nameErr = "";
             tempPassenger.familyErr = "";
             tempPassenger.codeErr = "";
-            tempPassenger.birthdayErr = "";
-            // tempPassenger.pasaportErr = "";
+            tempPassenger.birthdayErr = ""; 
             tempPassenger.pasnoErr = "";
             tempPassenger.pasenddatErr = "";
 
@@ -257,21 +267,12 @@ const FlightReserve = (props) =>{
                     tempPassenger.codeErr = "کدملی نامعتبر میباشد";
                     isValid = false;
                 }
-            // } else {
-            //     if (!isValidPassportCode(tempPassenger.code)) {
-            //         tempPassenger.codeErr = "کد پاسپورت نا معتبر میباشد";
-            //         isValid = false;
-            //     }
             }
 
             if (tempPassenger.birthday == "") {
                 tempPassenger.birthdayErr = "تاریخ تولد الزامی میباشد";
                 isValid = false;
             }
-            // if (tempPassenger.pasaport == "") {
-            //     tempPassenger.pasaportErr = "پاسپورت الزامی میباشد"
-            //     isValid = false
-            // }
             return tempPassenger;
         });
         setState({...state,
@@ -291,27 +292,19 @@ const FlightReserve = (props) =>{
     };
     const handleChange = (e) => {
         const { name, value } = e.target;
-        if (name == 'mobileSubmiter') {   
+        if (name == 'mobileSubmiter' && state.mobileSubmiter.length >= 10 ) {   
             localStorage.setItem('mobile',value);
+            console.log(value);
         }
-        // if (value.length == 11 && !localStorage.getItem('mobile')) {
             if (value.length == 11 ) {
                 setState({...state,
-                    // [name]: parseInt(value),
                     [`${name}error`]:false
                 });
             }else if (value.length !==11) {
                 setState({...state,[`${name}error`]:true})
             }
-            // }
             setState({...state,[name]:value})
     };
-
-    // const authUserPopUP = () => {
-    //     setState({...state,
-    //         stateRegister: false,
-    //     });
-    // };
 
     const validationNumberOfPassengers = (type = '') => {
         const numADL = state.passengers.filter((x) => x.type == "ADL").length;
@@ -346,7 +339,6 @@ const FlightReserve = (props) =>{
         const numADL = state.passengers.filter((x) => x.type == "ADL").length;
         const numCHD = state.passengers.filter((x) => x.type == "CHD").length;
         const numINF = state.passengers.filter((x) => x.type == "INF").length;
-        // debugger
 
         const reservePassengerObject = {
             reqNo: props.reserveProperties.reqNo,
@@ -540,15 +532,16 @@ const FlightReserve = (props) =>{
                 <div className="row mt-10">
                     <div className="col-lg-1"></div>
                     <div className="col-lg-12 no-padding-xs border-pill-lg mt-2">
+                        {console.log(state.passengers.sort())}
                         {state.passengers
                             ? state.passengers
-                                .filter((x) => x.type == "ADL")
+                                // .filter((x) => x.type == "ADL")
                                 .map((onePassenger, index) => (
                                     <FlightPassengerForm
                                         {...onePassenger}
                                         id={onePassenger.id}
                                         index={index}
-                                        type="ADL"
+                                        type={onePassenger.type}
                                         removePassenger={removePassenger}
                                         fillPassengersData={fillPassengersData}
                                         pathKind={state.pathKind}
@@ -556,7 +549,7 @@ const FlightReserve = (props) =>{
                                 ))
                             : null
                             }
-                        {state.passengers
+                        {/* {state.passengers
                             ? state.passengers
                                 .filter((x) => x.type == "CHD")
                                 .map((onePassenger, index) => (
@@ -584,7 +577,7 @@ const FlightReserve = (props) =>{
                                         pathKind={state.pathKind}
                                     />
                                 ))
-                            : null}
+                            : null} */}
                         <div className={`row ${styles["add-passanger"]} text-left`}>
                             <div className="visible-xs col-12 ">
                                 <p className="font-size-14">
@@ -689,7 +682,7 @@ const FlightReserve = (props) =>{
                                         </div>
                                         <span className="color-secondary">
                                             { state.mobileSubmiter.length <= 10 ? 'شماره همراه باید ۱۱ رقمی باشد' :
-                                            state.mobileSubmiter == ''?'لطفا شماره را وارد کنید':
+                                            state.mobileSubmiter == null ||state.mobileSubmiter == ''?'لطفا شماره را وارد کنید':
                                             ''}
                                         </span>
                                     </div>
@@ -697,7 +690,7 @@ const FlightReserve = (props) =>{
                                         <div>
                                             <input
                                                 maxLength={11}
-                                                // value={state.phoneSubmiter}
+                                                value={state.phoneSubmiter}
                                                 className="col-12 reserve-input px-2 h-35em"
                                                 type="text"
                                                 placeholder="شماره ثابت"
@@ -706,11 +699,11 @@ const FlightReserve = (props) =>{
                                             />
                                         </div>
                                         <span className="color-secondary">
-                                            {state.phoneSubmiter =='' && state.phoneSubmiterErr}
+                                            {state.phoneSubmiter =='' && numbers && state.phoneSubmiterErr}
 
-                                            { state.phoneSubmitererror ? state.phoneSubmiterErr 
+                                            {/* {state.phoneSubmiterErr 
                                             : state.phoneSubmiter.length <= 10 && state.phoneSubmiter.length > 0 ? 'شماره ثابت باید ۱۱ رقمی باشد' 
-                                            :''}
+                                            :''} */}
                                         </span>
                                     </div>
                                 </div>
@@ -797,6 +790,7 @@ const FlightReserve = (props) =>{
                                                         color:false,
                                                         message: "لطفا اطلاعات را تکمیل کنید.",
                                                     });
+                                                    setNumbers(true)
                                                 } else if (state.agreeWithTerm === true && props.user.logged && localStorage.getItem('token')) {
 
                                                     setState({...state, loading: true });

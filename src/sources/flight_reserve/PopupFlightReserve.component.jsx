@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "../../../styles/PopupFlightReserve.module.scss";
 
@@ -28,7 +28,11 @@ const PopupFlightReserve = (props) =>{
       numINF: 0,
       loading: false,
     });
-  
+
+  useEffect(() =>{
+    setState({...state,loading:false})
+  },[])
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setState({...state,
@@ -102,15 +106,7 @@ const PopupFlightReserve = (props) =>{
               );
             });
         } else {
-          // //  پیام تغییر قیمت
-          // //if(data.priceMessage != null){
-          //         if(data.priceMessage != ""){
-          //             props.messageBoxModify({
-          //                 state: true,
-          //                 message: `${data.priceMessage}`
-          //             })
-          //         }
-          // //}
+          setState({...state,loading:false})
           props.messageBoxModify({
             color:false,
             state: true,

@@ -61,8 +61,8 @@ const Timer = ({phoneErrType,setState,state}) => {
         onClickReset()
     },[phoneErrType])
     useEffect(() => {
-        console.log(timer);
-        console.log(state.timer);
+        // console.log(timer);
+        // console.log(state.timer);
         setState({...state,value:timer})
         if (timer.split("")[0]== '0' && timer.split("")[1]== '0' && timer.split("")[3]== '0' && timer.split("")[4]== '0') {
         setState({...state,value:true})

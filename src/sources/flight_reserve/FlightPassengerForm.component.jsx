@@ -143,7 +143,7 @@ const FlightPassengerForm = (props) => {
                                 style={{ padding: 3 }}
                                 className="exit-form"
                                 onClick={() => {
-                                    props.removePassenger(props.id);
+                                    props.removePassenger(props.type,props.id);
                                 }}
                             >
                                 <FontAwesomeIcon icon={faTimes} />
@@ -364,7 +364,7 @@ const FlightPassengerForm = (props) => {
                             <span
                                 className="delete-thumbnail"
                                 onClick={() => {
-                                    props.removePassenger(props.id);
+                                    props.removePassenger(props.type,props.id);
                                 }}
                             >
                                 <svg id="Layer_1" height="23" viewBox="0 0 24 24" width="23" data-name="Layer 1"><path

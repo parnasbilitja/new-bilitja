@@ -550,11 +550,13 @@ class GetFlightList extends React.Component {
 
     return (
       <div className="container">
+        {!this.state.loading && 
         <div className="row text-right">
+        {window.innerWidth > 826 ? (
           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-5">
             <div className="row">
               <div className="col-xl-9 col-lg-9 col-md-9 col-sm-9 padding-5px">
-                <FlightSearchBox refreshAction={this.getData} />
+                <FlightSearchBox refreshAction={this.getData} len={this.state.flights} />
               </div>
               <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 padding-5px m-auto">
                 <div className="row">
@@ -599,7 +601,8 @@ class GetFlightList extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+          ) : null}
+        </div>}
 
         <div className="row">
           {/* <div className="col-lg-1 col-md-1 col-sm-1"></div> */}
@@ -690,7 +693,7 @@ class GetFlightList extends React.Component {
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </div>
-            <FlightSearchBox showSwitch={true} refreshAction={this.getData} />
+            <FlightSearchBox showSwitch={true} refreshAction={this.getData} length={this.state.flights} />
           </div>
         </PopUp>
 

@@ -1307,6 +1307,8 @@ $sizes: 100;
   border-radius: 10px;
   .thead,
   .d-detail{
+    display: flex;
+    align-items: center;
     .head,
     .detail{
       display: flex;

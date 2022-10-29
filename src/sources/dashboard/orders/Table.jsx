@@ -27,19 +27,18 @@ const Table = ({props}) => {
                 <span className="font-size-14 font-bold-iransanse">وضعیت</span>
               </div>
               <div className="head flex-14 m-flex-20">
+                <span className="font-size-14 font-bold-iransanse">رفرنس</span>
+              </div>
+              <div className="head flex-14 m-flex-20">
                 <span className="font-size-14 font-bold-iransanse">چاپ بلیط</span>
               </div>
               <div className="head flex-14 m-flex-20">
                 <span className="font-size-14 font-bold-iransanse">گزارش تراکنش</span>
               </div>
-              {/* <div className="head flex-12 m-flex-20">
-                <span className="font-size-14 font-bold-iransanse">عملیات</span>
-              </div> */}
             </div>
-            {/* parent detail */}
             <div className="data-detail">
 
-              {/* child loop */}
+              {console.log(props)}
               {props && props.map((item)=>(
                   <Row props={item} />
               ))}

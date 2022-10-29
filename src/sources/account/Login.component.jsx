@@ -38,12 +38,15 @@ const Login = (props) => {
       value:false
     });
     
-  
-    useEffect(() => {console.log(state)},[state])
+    useEffect(() => {
+      console.log(state);
+      if (String(state.mobile).length >=10 || String(state.mobile) == '0' ) {
+        console.log(state);
+        setState({...state,phoneErrType: true, mobile:'',timer:false})
+      }
+    },[])
 
     const login = () => {
-      console.log(state);
-      localStorage.getItem("mobile")
       setState({...state, btn_disabled: true, loading: true });
       fetch(`${globals.baseUrlNew}auth/getMobile`, {
         method: "POST",
@@ -159,13 +162,6 @@ const Login = (props) => {
         });
     };
 
-  const handleLoginWithCode = () => {
-    setState({...state,
-      login_with_code: true,
-      password: "",
-      btn_text: "دریافت کد احراز هویت",
-    });
-  };
 
   const phoneHandler = () => {
     setState({...state,phoneErrType: true, mobile:'',timer:false})
@@ -174,7 +170,7 @@ const Login = (props) => {
 useEffect(() => {
   const handleSetMobile = () => {
     let mobile = localStorage.getItem("mobile");
-    if( String(mobile).length ==11){
+    if( String(mobile).length == 11){
       setState({...state, mobile: mobile, error: false, errText: "" })
     };
   };
@@ -250,25 +246,11 @@ useEffect(() => {
         }
       });
   };
- 
-  // const renderer = ({ minutes, seconds, completed }) => {
-  //   console.log(completed);
-  //   // setState({...state,completed:completed||''})
-  //   if (completed) {  
-  //     return <Countdown renderer={renderer} date={Date.now() + 3000 } />
-  //   } else {
-  //     return (
-  //       <span className="font-bold-iransanse text-danger">
-  //         {minutes}:{seconds}
-  //       </span>
-  //     );
-  //   }
-  // };
 
     return (
       <div className="popup-content-container">
         <div className="popup-heading text-center">
-          <span>کد را وارد کنید</span>
+          <span>کد ارسال شده به {state.mobile} را وارد کنید</span>
           <span
             className="pull-left exit-form"
             onClick={() => {
@@ -280,77 +262,11 @@ useEffect(() => {
             <FontAwesomeIcon icon={faTimes} />
           </span>
         </div>
-        {/* <div className="row btn-container-header-login rounded-pill m-2">
-          <button
-            className={
-              state.login_with_code === true
-                ? "btn btn-header-login-active col-6 rounded-pill"
-                : "btn btn-header-login col-6 rounded-pill"
-            }
-            onClick={handleLoginWithCode}
-          >
-            ورود با رمز یکبار مصرف
-          </button>
-          <button
-            className={
-              state.login_with_code === false
-                ? "btn btn-header-login-active col-6 rounded-pill"
-                : "btn btn-header-login col-6 rounded-pill"
-            }
-            onClick={handleLoginWithPassword}
-          >
-            ورود با رمز ثابت
-          </button>
-        </div> */}
         {state.error === true ? (
           console.log(state.errText),
           <div className="alert alert-danger">{state.errText !==undefined ? state.errText:'شماره وارد شده باید ۱۱ رقم باشد'}</div>
         ) : null}
         <div className="container">
-          <div className="row mb-2">
-            {/* <div className="col-1 padding-horizental-3px"> */}
-              {/* <FontAwesomeIcon icon={faUser} className="margin-top-20px" /> */}
-            </div>
-            {/* <div className="col-11 padding-horizental-3px">
-              <div>
-                <input
-                  className="form-input-auth px-2 col-12"
-                  placeholder="نام کاربری ( شماره همراه )"
-                  name="mobile"
-                  onChange={handleSetMobile}
-                  disabled={
-                    state.login_with_code === true
-                      ? state.get_mobile_status === true
-                        ? true
-                        : false
-                      : null
-                  }
-                  inputMode="numeric"
-                />
-              </div>
-            </div> */}
-          {/* </div> */}
-          {/* {state.login_with_code === true ? (
-            <div className="row mb-2">
-              <div className="col-1 padding-horizental-3px">
-                <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
-              </div>
-              <div className="col-11 padding-horizental-3px">
-                <div>
-                  <input
-                    className="form-input-auth px-2 col-12"
-                    placeholder="رمز عبور"
-                    name="password"
-                    onChange={handleSetPassword}
-                    inputMode="numeric"
-                    type="password"
-                  />
-                </div>
-              </div>
-            </div>
-          ) : null} */}
-          {/* {state.get_mobile_status === false ? ( */}
-
             <div className="row mb-2">
               <div className="col-1 padding-horizental-3px">
                 <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
@@ -367,7 +283,6 @@ useEffect(() => {
                   autoFocus
                   inputMode="numeric"
                   />
-
                   :
                   <>
                   <div onClick={(e) =>phoneHandler(e)}>تغییر شماره</div>
@@ -380,13 +295,10 @@ useEffect(() => {
                     inputMode="numeric"
                     />
                   </>
-
                 }
                 </div>
               </div>
             </div>
-            
-          {/* ) : null} */}
         </div>
         <div className="row mt-3">
             
@@ -398,7 +310,6 @@ useEffect(() => {
                   setState({...state,phoneErrType: false,timer:true})
                 }else{
                   loginWithToken() 
-                  // setState({...state})
                 }
 
               }}

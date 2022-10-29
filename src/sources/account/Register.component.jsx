@@ -318,7 +318,7 @@ const Register = (props) =>{
             <br />
             <p className="text-center font-size-13 no-margin font-bold-iransanse">
               حساب کاربری دارید؟{" "}
-              <a
+              <Link
                 onClick={() => {
                   props.accountBoxModify({
                     state: true,
@@ -329,7 +329,7 @@ const Register = (props) =>{
               >
                 {" "}
                 ورود به حساب کاربری
-              </a>
+              </Link>
             </p>
           </div>
         </div>

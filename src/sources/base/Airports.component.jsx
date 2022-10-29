@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { selectCredentials } from "../../Redux/Search/search.reselect";
 import { addCredentials } from "../../Redux/Search/search.action";
 const Airports = (props) => {
+  console.log(props);
   return (
     <div
       style={{
@@ -22,7 +23,7 @@ const Airports = (props) => {
       {
         //fill airport
         props.airports
-          ? props.credenrialType != "source"
+          ? props.credenrialType != "source" || props.credenrialType != "destination"
             ? //to remove source airport from destination airport list
               props.airports
                 .filter(
@@ -32,6 +33,13 @@ const Airports = (props) => {
                       .includes(props.searchTerm) &&
                     oneAirport.airportName.toLowerCase() !=
                       props.credentials.sourceName.toLowerCase()
+                ).filter(
+                  (oneAirport) =>
+                    oneAirport.airportKey
+                      .toLowerCase()
+                      .includes(props.searchTerm) &&
+                    oneAirport.airportName.toLowerCase() !=
+                      props.credentials.destinationName.toLowerCase()
                 )
                 .map((oneAirport) => (
                   <div
@@ -66,8 +74,13 @@ const Airports = (props) => {
                   </div>
                 ))
             : props.airports
-                .filter((oneAirport) =>
-                  oneAirport.airportKey.toLowerCase().includes(props.searchTerm)
+                .filter(
+                  (oneAirport) =>
+                    oneAirport.airportKey
+                      .toLowerCase()
+                      .includes(props.searchTerm) &&
+                    oneAirport.airportName.toLowerCase() !=
+                      props.credentials.sourceName.toLowerCase()
                 )
                 .map((oneAirport) => (
                   <div

@@ -20,10 +20,10 @@ const Row = ({props}) => {
                   <span className="font-size-14">{props.amount} تومان</span>
                 </div>
                 <div className="detail flex-14 m-flex-20">
-                  <span className="font-size-14"></span>
+                  <span className="font-size-14">{props.stat}</span>
                 </div>
                 <div className="detail flex-14 m-flex-20">
-                  <span className="font-size-14"></span>
+                  <span className="font-size-14">{props.reqPnr}</span>
                 </div>
                 <div className="detail flex-14 m-flex-20">
                   <span className="font-size-14">{props.stat}</span>

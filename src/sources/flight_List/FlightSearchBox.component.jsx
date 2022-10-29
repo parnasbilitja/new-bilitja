@@ -37,6 +37,7 @@ class FlightSearchBox extends React.Component {
       mobileSearchTerm: "",
       searchTermSource: "",
       searchTermDestination: "",
+      searchReset: false,
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -160,7 +161,6 @@ class FlightSearchBox extends React.Component {
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
             <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
-            {/* className={`bilitja icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`} */}
             <PrimaryTextInputMobile
               value={sourceName}
               readonlyattr={this.state.width <= mobileSize ? "false" : "false"}
@@ -255,16 +255,16 @@ class FlightSearchBox extends React.Component {
           />
         </div>
         <div className=" without-focus">
+          {console.log(this.props)}
           <PrimaryButton
             style={{ height: "45px", marginTop: "7px" }}
-            defaultValue={
-              this.state.searchBool == false ? "جستجو" : "لطفا صبر کنید..."
+            value={
+              this.state.searchReset == false  ? "جستجو" : "لطفا صبر کنید..."
             }
             onClick={() => {
-              setTimeout(() => {
-                this.setState({ searchBool:true})
-              },2000)
+                this.setState({ searchReset:true})
               if (!this.validation()) {
+                this.setState({ searchReset:false})
                 this.props.messageBoxModify({
                   state: true,
                   color:false,
@@ -285,6 +285,7 @@ class FlightSearchBox extends React.Component {
                 dest != this.props.credentials.destinationNameEn
               ) {
                 if (this.props.refreshAction) {
+                this.setState({ searchReset:true})
                   this.props
                     .addCredentials({
                       withFilters: false,
@@ -302,6 +303,7 @@ class FlightSearchBox extends React.Component {
                   );
                 }
               } else {
+                this.setState({ searchReset:false})
                 this.props
                   .addCredentials({
                     withFilters: false,

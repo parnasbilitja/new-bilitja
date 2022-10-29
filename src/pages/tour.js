@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // mui
 import { Alert, Snackbar } from '@mui/material';
 
@@ -11,13 +11,15 @@ import Footer from '../sources/component/Footer.component';
 import Slider from '../Components/slider/Slider';
 import RequestTour from '../Components/modal/RequestTour';
 import PopUp from '../sources/component/PopUp.component';
-
+import { moneyFormat } from "../Utils/SimpleTasks";
 import Loading from "../sources/component/SmallLoading.component.jsx";
 import { Loader } from '../Utils/Loader';
 import Head from 'next/head';
 
 
 const tour = () => {
+    const ref = useRef(null);
+
     // mui
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -50,7 +52,9 @@ const tour = () => {
         getData();
         console.log(data);
     }, [slug])
-
+    const handleClick = () => {
+        ref.current?.scrollIntoView({behavior: 'smooth'});
+      };
 
     const slugHandler = (slug) => {
         setSlug(slug)
@@ -61,6 +65,7 @@ const tour = () => {
             <Head>
                 <title>بلیطجا {data && `|  ${data.title}`}</title>
             </Head>
+            <div className="mt-5 pt-1" ref={ref}></div>
             <div className="mt-5 bodyVar">
                 <NavHandler/>
                 {/* section 1 */}
@@ -78,7 +83,7 @@ const tour = () => {
                                 </svg>
                                 <div className="text">
                                     <h5 className="font-bold" >{data && data.title}</h5>
-                                    <span className="font-bold">قیمت: {data && data.minPrice}</span>
+                                    <span className="font-bold">قیمت: {data && moneyFormat(data.minPrice)}</span>
                                 </div>
                             </div>
                             <div className="d-flex flex-column justify-content-around me-auto mt-2">
@@ -292,13 +297,11 @@ const tour = () => {
                                                     </div>
                                                 }
                                                 <div className="info-detail pos-relative d-flex align-items-center">
-                                                    <a href="">
                                                         <div className="image d-flex align-items-center">
                                                         {data ?
                                                             <img src={pack.hotel.thumbnail} width="100px" height="100px" className="rounded-2" alt="" />
                                                             :<Loading />}
                                                         </div>
-                                                    </a>
                                                     <div className="text d-flex flex-column justify-content-between mt-1 pe-2 w-100">
                                                         <span className="pb-1 font-size-13 iranBold">{pack.hotel.nameEn}</span>
                                                         <span className="font-light pb-1 font-size-12">{pack.hotel.name}</span>
@@ -354,8 +357,8 @@ const tour = () => {
                                                 <div className="info-price position-relative d-flex align-items-start mx-2">
                                                     <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                         <span className="text-show-m mb-2 color-base-color font-bold d-none">دو تخته (هر نفر)</span>
-                                                        {data.defineTour && <span className="font-size-13 font-bold color-gray">{pack.prices.twinRate} تومان</span>}
-                                                        {!data.defineTour && <span className="font-size-14 font-bold color-gray">{pack.prices.twin} {pack.rate.name}</span>}
+                                                        {data.defineTour && <span className="font-size-13 font-bold color-gray">{moneyFormat(pack.prices.twinRate)} تومان</span>}
+                                                        {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormat(pack.prices.twin)} {pack.rate.name}</span>}
                                                         {/* <span className="font-font-size-16 font-bold">تومان</span> */}
                                                     </div>
                                                 </div>
@@ -365,8 +368,8 @@ const tour = () => {
                                                     <div className="info-price position-relative d-flex align-items-start mx-2">
                                                         <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                             <span className="text-show-m mb-2 color-base-color font-bold d-none">سه تخته (هر نفر)</span>
-                                                            {data.defineTour && <span className="font-size-13 font-bold color-gray">{pack.prices.tripleRate} تومان</span>}
-                                                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{pack.prices.triple} {pack.rate.name}</span>}
+                                                            {data.defineTour && <span className="font-size-13 font-bold color-gray"> {moneyFormat(pack.prices.tripleRate)} تومان</span>}
+                                                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormat(pack.prices.triple)} {pack.rate.name}</span>}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -374,8 +377,8 @@ const tour = () => {
                                                     <div className="info-price position-relative d-flex align-items-start mx-2">
                                                         <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                             <span className="text-show-m mb-2 color-base-color font-bold d-none">چهار تخته (هر نفر)</span>
-                                                            {data.defineTour && <span className="font-size-13 font-bold color-gray">{pack.prices.quadRate} تومان</span>}
-                                                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{pack.prices.quad} {pack.rate.name}</span>}
+                                                            {data.defineTour && <span className="font-size-13 font-bold color-gray"> {moneyFormat(pack.prices.quadRate)} تومان</span>}
+                                                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormat(pack.prices.quad)} {pack.rate.name}</span>}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -388,8 +391,8 @@ const tour = () => {
                                                         <div
                                                             className="text d-flex flex-column align-items-center w-100 py-3">
                                                             <span className="text-show-m mb-2 color-base-color font-bold d-none"> سینگل</span>
-                                                            {data.defineTour && <span className="font-size-13 font-bold color-gray">{pack.prices.singleRate} تومان</span>}
-                                                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{pack.prices.single} {pack.rate.name}</span>}
+                                                            {data.defineTour && <span className="font-size-13 font-bold color-gray"> {moneyFormat(pack.prices.singleRate)} تومان</span>}
+                                                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormat(pack.prices.single)} {pack.rate.name}</span>}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -400,8 +403,8 @@ const tour = () => {
                                                     <div className="info-price position-relative d-flex align-items-start mx-2">
                                                         <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                             <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک با تخت</span>
-                                                            {data.defineTour && <span className="font-size-13 font-bold color-gray">{pack.prices.cwbRate} تومان</span>}
-                                                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{pack.prices.cwb} {pack.rate.name}</span>}
+                                                            {data.defineTour && <span className="font-size-13 font-bold color-gray"> {moneyFormat(pack.prices.cwbRate)} تومان</span>}
+                                                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormat(pack.prices.cwb)} {pack.rate.name}</span>}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -410,7 +413,7 @@ const tour = () => {
                                                 <div className="info-price position-relative d-flex align-items-start mx-2">
                                                     <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                         <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک بدون تخت</span>
-                                                        <span className="font-size-14 font-bold color-gray">{pack.prices.cnb} تومان</span>
+                                                        <span className="font-size-14 font-bold color-gray">{pack.prices.cnb.includes(',') && pack.prices.cnb.includes(',') == true ?`${pack.prices.cnb}تومان`: `${moneyFormat(`${pack.prices.cnb}0`)}تومان` } </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -579,7 +582,7 @@ const tour = () => {
                                                 <div className="text-price pt-1">
                                                     <small className="title-price">شروع قیمت از :</small>
                                                     <strong className="price-tour color-base-color me-2">
-                                                        {item.minPrice}
+                                                        {moneyFormat(item.minPrice)}
                                                         <small className="pe-1">تومان </small>
                                                     </strong>
                                                 </div>
@@ -623,13 +626,13 @@ const tour = () => {
                                             <img width="28" src={data && data.transfers[0].logo} />
                                             <span className="text-dark me-2">{item.transfers[0].transfer}</span>
                                         </div>
-                                        <div className="ino-tour-btn" >
-                                            <a href={'/tour'}>
+                                        <div className="ino-tour-btn" onClick={handleClick}>
+                                            <Link href={'/tour'}>
                                                 {/* <span className="text-mobi-btn">جزییات</span> */}
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="27.414" height="18.453" viewBox="0 0 27.414 18.453">
                                                     <path id="Right_Arrow_2" data-name="Right Arrow 2" d="M18.188,1,26,8.812m0,0H1m25,0-7.812,7.813" transform="translate(27.414 18.039) rotate(180)" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
                                                 </svg>
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 ))}

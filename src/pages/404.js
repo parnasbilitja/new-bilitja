@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const NotFountPage = () => {
@@ -14,9 +15,9 @@ const NotFountPage = () => {
         <h5 className="font-bold-iransanse text-center mt-4">
           مسافر گرامی، صفحه مورد نظر شما یافت نشد.
         </h5>
-        <a href="/" className="font-bold-iransanse text-center mt-4">
+        <Link href="/" className="font-bold-iransanse text-center mt-4">
           بازگشت به صفحه اصلی
-        </a>
+        </Link>
       </div>
     </>
   );
