@@ -263,7 +263,7 @@ const FlightPassengerForm = (props) => {
                                 {props.birthday == '' && err.birthdayErr ? props.birthdayErr : ''}
                             </span>
                         </div>
-                        <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px mt-1 me-1">
+                        <div className="national-codeData col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px mt-1 me-1">
                             {props.pathKind == 1 && props.nationality == "IR" ?
                                 <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
                                     <PrimaryTextInput
