@@ -26,6 +26,7 @@ import {
 } from "../../Utils/SimpleTasks";
 import { withRouter } from "next/router";
 import Link from "next/link";
+import PopUp from "../component/PopUp.component";
 
 const FlightReserve = (props) =>{
     // console.log(props);
@@ -48,6 +49,8 @@ const FlightReserve = (props) =>{
         }
     }
     const [numbers ,setNumbers] = useState(false)
+    const [closePopUp, setClosePopUp] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [state,setState] = useState({
         stateRegister: false,
         passengers: [],
@@ -58,7 +61,6 @@ const FlightReserve = (props) =>{
         phoneSubmiterErr: "شماره ثابت اجباریست!!",
         agreeWithTerm: false,
         agreeWithTermerr: false,
-        loading: false,
         email:''
     });
     // }
@@ -385,10 +387,11 @@ const FlightReserve = (props) =>{
                         `/flights/receipt/${data.reqNo}/${data.reqPnr}`
                     );
                 } else {
+                    setLoading(false)
                     props.messageBoxModify({
                         color:false,
                         state: true,
-                        message: data.message,
+                        message: `${data.message}`,
                     });
                 }
             });
@@ -405,7 +408,8 @@ const FlightReserve = (props) =>{
     const login = () => {
         console.log(state);
         localStorage.setItem("mobile",state.mobileSubmiter)
-        setState({...state, btn_disabled: true, loading: true });
+        setState({...state, btn_disabled: true});
+        setLoading(true)
         fetch(`${globals.baseUrlNew}auth/getMobile`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -427,12 +431,13 @@ const FlightReserve = (props) =>{
             if (data.status == "0") {
               setState({...state,
                 btn_disabled: false,
-                loading: false,
                 get_mobile_status: true,
                 btn_text: "تایید کد احراز هویت",
               });
+              setLoading(false)
             } else if (data.status == "10") {
-              setState({...state, btn_disabled: false, loading: false });
+              setState({...state, btn_disabled: false });
+              setLoading(false)
               localStorage.setItem("mobile", data.mobile);
               localStorage.setItem("token", data.token);
               props.checkUserLogged();
@@ -459,14 +464,14 @@ const FlightReserve = (props) =>{
             } else if (data.status === "-200") {
               setState({...state,
                 btn_disabled: false,
-                loading: false,
                 error: true,
                 errText: "شماره موبایل یا رمز ثابت نادرست می باشد.",
               });
+              setLoading(false)
             } else {
+                setLoading(false)
               setState({...state,
                 btn_disabled: false,
-                loading: false,
                 error: true,
                 errText: data.message,
               });
@@ -475,7 +480,8 @@ const FlightReserve = (props) =>{
       };
     
     const register = () => {
-        setState({...state, btn_disabled: true, loading: true });
+        setState({...state, btn_disabled: true});
+        setLoading(true)
         fetch(`${globals.baseUrlNew}auth/getMobile`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -493,9 +499,9 @@ const FlightReserve = (props) =>{
           .then((res) => res.json())
           .then((data) => {
             if (data.status == "0") {
+                setLoading(false)
               setState({...state,
                 get_mobile_status:true,
-                loading: false,
                 register_status: true,
                 resend_code: true,
                 btn_text: "تایید کد احراز هویت",
@@ -509,9 +515,9 @@ const FlightReserve = (props) =>{
             //       "این شماره موبایل در سامانه موجود است، لطفا از بخش ورود وارد حساب خود شوید.",
             //   });
             } else {
+                setLoading(false)
               setState({...state,
                 btn_disabled: false,
-                loading: false,
                 error: true,
                 errText: data.message,
               });
@@ -756,9 +762,9 @@ const FlightReserve = (props) =>{
                                     </span> */}
                                     <div className="col-lg-3 text-right">
                                         <div className={styles["ruls-text"]}>
-                                            <a style={{ marginRight: 10, marginTop: 5, borderBottom: '2px dashed #090026', paddingBottom: 5, color: '#090026' }} href="">
+                                            <div onClick={() =>setClosePopUp(true)} style={{ marginRight: 10, marginTop: 5, borderBottom: '2px dashed #090026', paddingBottom: 5, color: '#090026' }}>
                                                 قوانین و مقررات
-                                            </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -784,7 +790,7 @@ const FlightReserve = (props) =>{
                                                     });
                                                 }
                                                 if (!validation()) {
-                                                    setState({...state, loading: false });
+                                                    setLoading(false)
                                                     props.messageBoxModify({
                                                         state: true,
                                                         color:false,
@@ -793,12 +799,13 @@ const FlightReserve = (props) =>{
                                                     setNumbers(true)
                                                 } else if (state.agreeWithTerm === true && props.user.logged && localStorage.getItem('token')) {
 
-                                                    setState({...state, loading: true });
+                                                    setLoading(true)
+                                                    
                                                     compeleteReservation();
 
                                                 } else if(state.agreeWithTerm === false) {
-                                                    setState({...state, loading: false,agreeWithTermerr:true });
-
+                                                    setState({...state,agreeWithTermerr:true });
+                                                    setLoading(false)
                                                     props.messageBoxModify({
                                                         state: true,
                                                         color:false,
@@ -821,7 +828,7 @@ const FlightReserve = (props) =>{
                                             }}
                                             className="py-2 btn-block col-12 end-payment-btn btn"
                                         >
-                                            {state.loading == false
+                                            {loading == false
                                                 ? "تکمیل خرید"
                                                 : "درحال پردازش..."
                                                 }
@@ -846,6 +853,14 @@ const FlightReserve = (props) =>{
                         </div>
                     </div>
                 </div>
+                <PopUp opened={closePopUp} closePopUp={setClosePopUp} >
+                    <div className="p-2">
+                        <p onClick={() =>setClosePopUp(false)} className='cursor-pointer mb-0 text-danger' style={{fontSize:20}}>X</p>
+                        <div onClick={() =>setClosePopUp(false)} className="p-5">
+                            قوانین و مقررات
+                        </div>
+                    </div>
+                </PopUp>
             </div>
         );
     // }

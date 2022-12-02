@@ -285,7 +285,6 @@ useEffect(() => {
                   />
                   :
                   <>
-                  <div onClick={(e) =>phoneHandler(e)}>تغییر شماره</div>
                     <input
                     className="form-input-auth px-2 col-12"
                     placeholder="کد ارسال شده را وارد نمایید."
@@ -311,18 +310,21 @@ useEffect(() => {
                 }else{
                   loginWithToken() 
                 }
-
+                
               }}
               className={
                 props.disabled === false
-                  ? "btn btn-info py-3 mb-3 col-12 btn-block"
-                  : `${styles["primary-button"]} py-2`
+                ? "btn btn-info py-3 mb-3 col-12 btn-block"
+                : `${styles["primary-button"]} py-2`
               }
               disabled={state.btn_disabled}
             >
-              {state.loading ? state.btn_text :state.minutes == 0 && state.seconds && state.seconds == 0? "ارسال مجدد کد تایید" : 'دریافت کد'}
+              {state.loading ? state.btn_text :state.minutes == 0 && state.seconds && state.seconds == 0? "ارسال مجدد کد تایید" : 'ثبت کد'}
             </button>
             
+          </div>
+          <div className="col-12 justify-content-center d-flex">
+              <button className={'btn btn-outline-dark p-2 my-1 cursor-pointer'} onClick={(e) =>phoneHandler(e)}>تغییر شماره</button>
           </div>
         </div>
         {!state.phoneErrType &&

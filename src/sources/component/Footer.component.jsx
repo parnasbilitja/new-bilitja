@@ -7,8 +7,11 @@ import {
     faTwitter,
     faFacebook,
 } from "@fortawesome/free-brands-svg-icons";
+import { footerLinks, footerLinksOut} from '../../Utils/data'
 
 const Footer = () => {
+    let today = new Date().toLocaleDateString('fa-IR-u-nu-latn');
+    console.log(today);
     return (
         <>
             <div className={styles["footer"]}>
@@ -30,36 +33,14 @@ const Footer = () => {
                                 <b className="mb-0"> مقاصد داخلی </b>
                             </div>
                             <ul className={styles["ul-lists"]}>
-                                <li>
-                                    <h6>
-                                        {" "}
-                                        <a href="#">اصفهان</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6>
-                                        {" "}
-                                        <a href="#">کیش</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6>
-                                        {" "}
-                                        <a href="#">یزد</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6>
-                                        {" "}
-                                        <a href="#">کرمانشاه</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6>
-                                        {" "}
-                                        <a href="#">مشهد</a>
-                                    </h6>
-                                </li>
+                                {footerLinks.map((item, i) =>(
+                                    <li key={i} >
+                                        <h6>
+                                            {" "}
+                                            <a href={`${item.href}${today}`}>{item.name}</a>
+                                        </h6>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                         <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
@@ -68,30 +49,15 @@ const Footer = () => {
                                 <b className="mb-0"> مقاصد خارجی </b>
                             </div>
                             <ul className={styles["ul-lists"]}>
-                                <li>
-                                    <h6>
-                                        {" "}
-                                        <a href="#">ترکیه</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6>
-                                        {" "}
-                                        <a href="#">گرجستان</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6>
-                                        {" "}
-                                        <a href="#">دبی</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6>
-                                        {" "}
-                                        <a href="#">آنتالیا</a>
-                                    </h6>
-                                </li>
+                                {footerLinksOut.map((item, i) =>(
+                                    <li key={i}>
+                                        <h6>
+                                            {" "}
+                                            <a href={`${item.href}${today}`}>{item.name}</a>
+                                        </h6>
+                                    </li>
+                                    ))}
+                                
                             </ul>
                         </div>
                         <div className="col-lg-2 col-md-5 item-footer col-6 mb-2">
