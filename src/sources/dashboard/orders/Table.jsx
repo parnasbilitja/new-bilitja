@@ -8,31 +8,31 @@ const Table = ({ props }) => {
       {/* head */}
       <div className="thead d-flex align-items-center">
         {/* <div className="head flex-5 m-flex-15"></div> */}
-        <div className="head flex-7 m-flex-15">
+        <div className="head flex-7 m-flex-25">
           <span className="font-size-14 font-bold-iransanse">شناسه</span>
         </div>
-        <div className="head flex-25 m-flex-50">
+        <div className="head flex-25 m-flex-100">
           <span className="font-size-14 font-bold-iransanse">نام و نام خانوادگی</span>
         </div>
-        <div className="head flex-14 m-flex-20">
+        <div className="head flex-14 m-flex-80">
           <span className="font-size-14 font-bold-iransanse">موبایل</span>
         </div>
-        <div className="head flex-14 m-flex-20">
+        <div className="head flex-14 m-flex-60">
           <span className="font-size-14 font-bold-iransanse">تاریخ</span>
         </div>
-        <div className="head flex-14 m-flex-20">
+        <div className="head flex-14 m-flex-60">
           <span className="font-size-14 font-bold-iransanse">قیمت خرید</span>
         </div>
-        <div className="head flex-14 m-flex-20">
+        <div className="head flex-14 m-flex-60">
           <span className="font-size-14 font-bold-iransanse">وضعیت</span>
         </div>
-        <div className="head flex-14 m-flex-20">
+        <div className="head flex-14 m-flex-60">
           <span className="font-size-14 font-bold-iransanse">رفرنس</span>
         </div>
-        <div className="head flex-14 m-flex-20">
+        <div className="head flex-14 m-flex-60">
           <span className="font-size-14 font-bold-iransanse">چاپ بلیط</span>
         </div>
-        <div className="head flex-14 m-flex-20">
+        <div className="head flex-14 m-flex-60">
           <span className="font-size-14 font-bold-iransanse">گزارش تراکنش</span>
         </div>
       </div>
