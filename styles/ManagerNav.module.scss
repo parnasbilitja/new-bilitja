@@ -17,14 +17,16 @@ $firstColor: #090026;
   }
 }
 
-// .manager-nav-main-container {
-//   width: 19%;
-//   right: 0;
-// }
-
 @media only screen and (max-width: 1536px){
   .manager-nav-main-container{
-    width: 19% !important;
+    width: 19%;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  .manager-nav-main-container{
+    width: 60%;
+    margin-top: 40px;
   }
 }
 
