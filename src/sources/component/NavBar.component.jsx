@@ -94,7 +94,7 @@ const NavBar = (props) => {
                     <>
                       <div>
                         <Link href="/dashboard">
-                          <a href="#">
+                          <a>
                             <i className="bilitja icon-login"></i>
                             {state.mobile}
                           </a>

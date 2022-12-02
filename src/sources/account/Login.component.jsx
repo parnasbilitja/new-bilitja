@@ -289,11 +289,10 @@ const Login = (props) => {
                   onChange={e => handleSetToken(e)}
                   autoFocus
                   inputMode="numeric"
-                />
-                :
-                <>
-                  <div onClick={(e) => phoneHandler(e)}>تغییر شماره</div>
-                  <input
+                  />
+                  :
+                  <>
+                    <input
                     className="form-input-auth px-2 col-12"
                     placeholder="کد ارسال شده را وارد نمایید."
                     name="token"
@@ -306,30 +305,33 @@ const Login = (props) => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="row mt-3">
-
-        <div className=" without-focus col-12">
-          <button
-            onClick={(e) => {
-              if (state.phoneErrType && state.mobile.length == 11) {
-                login()
-                setState({ ...state, phoneErrType: false, timer: true })
-              } else {
-                loginWithToken()
-              }
-
-            }}
-            className={
-              props.disabled === false
+        <div className="row mt-3">
+            
+          <div className=" without-focus col-12">
+            <button
+              onClick={(e) => {
+                if (state.phoneErrType && state.mobile.length == 11) {
+                  login()
+                  setState({...state,phoneErrType: false,timer:true})
+                }else{
+                  loginWithToken() 
+                }
+                
+              }}
+              className={
+                props.disabled === false
                 ? "btn btn-info py-3 mb-3 col-12 btn-block"
                 : `${styles["primary-button"]} py-2`
-            }
-            disabled={state.btn_disabled}
-          >
-            {state.loading ? state.btn_text : state.minutes == 0 && state.seconds && state.seconds == 0 ? "ارسال مجدد کد تایید" : 'ثبت کد'}
-          </button>
-
+              }
+              disabled={state.btn_disabled}
+            >
+              {state.loading ? state.btn_text :state.minutes == 0 && state.seconds && state.seconds == 0? "ارسال مجدد کد تایید" : 'ثبت کد'}
+            </button>
+            
+          </div>
+          <div className="col-12 justify-content-center d-flex">
+              <button className={'btn btn-outline-dark p-2 my-1 cursor-pointer'} onClick={(e) =>phoneHandler(e)}>تغییر شماره</button>
+          </div>
         </div>
       </div>
       {!state.phoneErrType &&
