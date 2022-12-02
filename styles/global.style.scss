@@ -1302,6 +1302,22 @@ $sizes: 100;
 
 @include grid-classes;
 
+@media only screen and(max-width:768px){
+  $sizes_mobile: 100;
+  @mixin mobile-grid-classes {
+    @for $i from 5 through $sizes_mobile {
+      $grids: $i * 1%;
+
+      /* flex #{$grids} */
+      .m-flex-#{$i} {
+        flex: 0 0 $grids;
+        max-width: $grids;
+      }
+    }
+  }
+  @include mobile-grid-classes;
+}
+
 //component table => amir.qn
 .controller-table {
   border: 5px solid #fff;
