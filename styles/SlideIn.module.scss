@@ -3,9 +3,10 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 999999;
-  width: 220px;
+  overflow-y: scroll;
+  width: 250px;
   background-color: white;
   transition-duration: 0.5s;
   transition-property: right;
@@ -22,7 +23,7 @@
 }
 
 .slideout {
-  right: -220px;
+  right: -250px;
 }
 .slidein {
   right: 0;
