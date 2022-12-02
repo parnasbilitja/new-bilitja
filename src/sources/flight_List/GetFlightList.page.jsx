@@ -284,7 +284,7 @@ class GetFlightList extends React.Component {
                   });
                   this.props.messageBoxModify({
                     state: true,
-                    color:false,
+                    color: false,
                     message: "لطفا از تقویم روز دیگری را انتخاب کنید",
                   });
                 }
@@ -356,7 +356,7 @@ class GetFlightList extends React.Component {
                   });
                   this.props.messageBoxModify({
                     state: true,
-                    color:false,
+                    color: false,
                     message: "لطفا از تقویم روز دیگری را انتخاب کنید",
                   });
                 }
@@ -424,7 +424,7 @@ class GetFlightList extends React.Component {
             });
             this.props.messageBoxModify({
               state: true,
-              color:false,
+              color: false,
               message: "لطفا از تقویم روز دیگری را انتخاب کنید",
             });
           }
@@ -485,7 +485,7 @@ class GetFlightList extends React.Component {
           });
           this.props.messageBoxModify({
             state: true,
-            color:false,
+            color: false,
             message: "لطفا از تقویم روز دیگری را انتخاب کنید",
           });
         }
@@ -550,59 +550,59 @@ class GetFlightList extends React.Component {
 
     return (
       <div className="container">
-        {!this.state.loading && 
-        <div className="row text-right">
-        {window.innerWidth > 826 ? (
-          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-5">
-            <div className="row">
-              <div className="col-xl-9 col-lg-9 col-md-9 col-sm-9 padding-5px">
-                <FlightSearchBox refreshAction={this.getData} len={this.state.flights} />
-              </div>
-              <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 padding-5px m-auto">
+        {!this.state.loading &&
+          <div className="row text-right">
+            {window.innerWidth > 826 ? (
+              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-5">
                 <div className="row">
-                  <div className="col-lg-6 col-6">
-                    <a
-                      className="btn btn-outlined col-12 btn-block prev-next-btn"
-                      onClick={() => {
-                        const date_ = this.props.searchobject.flightDatePrev;
-                        if (date_ != null) {
-                          this.changeDate(date_);
-                        }
-                      }}
-                    >
-                      <FontAwesomeIcon
-                        icon={faAngleRight}
-                        className="prev-icon"
-                      />
-                      <span>قبل</span>
-                    </a>
+                  <div className="col-xl-9 col-lg-9 col-md-9 col-sm-9 padding-5px">
+                    <FlightSearchBox refreshAction={this.getData} len={this.state.flights} />
                   </div>
-                  <div className="col-lg-6 col-6">
-                    <a
-                      className="btn btn-outlined col-12 btn-block  prev-next-btn"
-                      onClick={() => {
-                        const date_ = this.props.searchobject.flightDateNext;
-                        if (date_ != null) {
-                          this.changeDate(date_);
-                          // window.Filters.reload();
-                          localStorage.clear();
-                        }
-                        // this.Filters.checked == false;
-                      }}
-                    >
-                      <span>بعد</span>
-                      <FontAwesomeIcon
-                        icon={faAngleLeft}
-                        className="next-icon"
-                      />
-                    </a>
+                  <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 padding-5px m-auto">
+                    <div className="row">
+                      <div className="col-lg-6 col-6">
+                        <a
+                          className="btn btn-outlined col-12 btn-block prev-next-btn"
+                          onClick={() => {
+                            const date_ = this.props.searchobject.flightDatePrev;
+                            if (date_ != null) {
+                              this.changeDate(date_);
+                            }
+                          }}
+                        >
+                          <FontAwesomeIcon
+                            icon={faAngleRight}
+                            className="prev-icon"
+                          />
+                          <span>قبل</span>
+                        </a>
+                      </div>
+                      <div className="col-lg-6 col-6">
+                        <a
+                          className="btn btn-outlined col-12 btn-block  prev-next-btn"
+                          onClick={() => {
+                            const date_ = this.props.searchobject.flightDateNext;
+                            if (date_ != null) {
+                              this.changeDate(date_);
+                              // window.Filters.reload();
+                              localStorage.clear();
+                            }
+                            // this.Filters.checked == false;
+                          }}
+                        >
+                          <span>بعد</span>
+                          <FontAwesomeIcon
+                            icon={faAngleLeft}
+                            className="next-icon"
+                          />
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          ) : null}
-        </div>}
+            ) : null}
+          </div>}
 
         <div className="row">
           {/* <div className="col-lg-1 col-md-1 col-sm-1"></div> */}
@@ -662,7 +662,7 @@ class GetFlightList extends React.Component {
               <div
                 className={`col-lg-3 col-md-4 col-sm-4 ${styles["hidden-xs-flight"]} padding-5px`}
               >
-                <div className="position-sticky">
+                <div className="position-sticky" style={{ top: 100 }}>
                   <Filters
                     getData={this.getData}
                     closeSide={() => {
