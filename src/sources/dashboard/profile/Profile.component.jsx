@@ -167,7 +167,7 @@ const Profile = (props) => {
                 <div className="col-lg-12">
                   <div className="row my-2 w-100">
                     <div className="col-lg-2 title-box ms-1">آدرس</div>
-                    <div className="flex-81 text-box">
+                    <div className="col-xl-12 col-lg-12 col-12 text-box me-0">
                       {" "}
                       {props.user_information.address !== null
                         ? props.user_information.address
