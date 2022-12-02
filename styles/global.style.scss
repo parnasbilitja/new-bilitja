@@ -815,12 +815,13 @@ div.radio {
 }
 .accordion-button::after {
   content: "";
-  background-image: url("../public/Images/arrow-small-left.svg") !important;
+  background-image: url("../public/Images/arrow-left-filter.svg") !important;
+  background-size: 90% !important;
   background-color: $secondaryColor !important;
-  width: 1.7rem !important;
-  height: 1.7rem !important;
+  width: 1.6rem !important;
+  height: 1.6rem !important;
   background-position: center;
-  border-radius: 50% !important;
+  border-radius: 20% !important;
   display: flex;
   align-items: center;
   justify-content: center;
