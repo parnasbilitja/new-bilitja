@@ -47,83 +47,83 @@ class ShowFlightListMobile extends React.Component {
           </div>
           {this.props.flightList.length != 0
             ? this.props.flightList.map((oneFlight) => (
-                <div
-                  key={oneFlight.flightId}
-                  className={styles["mobile-flight-list-one-row"]}
-                >
-                  <div className={styles["mobile-one-row-price"]}>
-                    <div style={{ marginTop: 9 }}>
-                      <span className="font-size-15 color-secondary font-bold-iransanse">
-                        {moneyFormat(oneFlight.priceView)}
-                      </span>
-                      <span className="color-black font-size-12"> تومان</span>
-                    </div>
-                    <div
-                      className="btn-buy-action"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        this.props.setReserveBoxData(oneFlight);
-                      }}
-                    >
-                      <i className="bilitja icon-refrence"></i>
-                      <a href="">خرید آنلاین</a>
-                    </div>
+              <div
+                key={oneFlight.flightId}
+                className={styles["mobile-flight-list-one-row"]}
+              >
+                <div className={styles["mobile-one-row-price"]}>
+                  <div style={{ marginTop: 9 }}>
+                    <span className="font-size-15 color-secondary font-bold-iransanse">
+                      {moneyFormat(oneFlight.priceView)}
+                    </span>
+                    <span className="color-black font-size-12"> تومان</span>
                   </div>
-
-                  <div>
-                    <div
-                      style={{ marginBottom: 18 }}
-                      className={styles["mobile-one-row-provider"]}
-                    >
-                      <img
-                        width=""
-                        height=""
-                        src={
-                          globals.website +
-                          `Airlines/${oneFlight.airlineIataCode}.png?ver=1`
-                        }
-                        alt="بلیطجا - لوگو ایرلاین"
-                      />
-                      <span style={{ fontSize: 15 }}>{oneFlight.airline}</span>
-                    </div>
-
-                    <div className={styles["mobile-one-row-flight-number"]}>
-                      <span>شماره پرواز </span>
-                      <span
-                        style={{ fontSize: 15 }}
-                        className="font-bold-iransanse"
-                      >
-                        {oneFlight.flightNo}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className={styles["mobile-one-row-time"]}>
-                      <span
-                        style={{ fontSize: 15 }}
-                        className="font-size-18 font-bold-iransanse"
-                      >
-                        {String(oneFlight.flightDateTime)
-                          .split("T")[1]
-                          .slice(0, 5)}
-                      </span>
-                      <i className="bilitja icon-clock"></i>
-                    </div>
-                    <div className={styles["mobile-one-row-cap"]}>
-                      <span
-                        style={{ fontSize: 15 }}
-                        className="font-bold-iransanse"
-                      >
-                        {oneFlight.cap}
-                      </span>
-                      <i className="bilitja icon-seat"></i>
-
-                      <span className="font-size-18">&nbsp;صندلی خالی</span>
-                    </div>
+                  <div
+                    className="btn-buy-action"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      this.props.setReserveBoxData(oneFlight);
+                    }}
+                  >
+                    <i className="bilitja icon-refrence"></i>
+                    <a href="">خرید آنلاین</a>
                   </div>
                 </div>
-              ))
+
+                <div>
+                  <div
+                    style={{ marginBottom: 18 }}
+                    className={styles["mobile-one-row-provider"]}
+                  >
+                    <img
+                      width=""
+                      height=""
+                      src={
+                        globals.website +
+                        `Airlines/${oneFlight.airlineIataCode}.png?ver=1`
+                      }
+                      alt="بلیطجا - لوگو ایرلاین"
+                    />
+                    <span style={{ fontSize: 15 }}>{oneFlight.airline}</span>
+                  </div>
+
+                  <div className={styles["mobile-one-row-flight-number"]}>
+                    <span>شماره پرواز </span>
+                    <span
+                      style={{ fontSize: 15 }}
+                      className="font-bold-iransanse"
+                    >
+                      {oneFlight.flightNo}
+                    </span>
+                  </div>
+                </div>
+
+                <div>
+                  <div className={styles["mobile-one-row-time"]}>
+                    <span
+                      style={{ fontSize: 15 }}
+                      className="font-size-18 font-bold-iransanse"
+                    >
+                      {String(oneFlight.flightDateTime)
+                        .split("T")[1]
+                        .slice(0, 5)}
+                    </span>
+                    <i className="bilitja icon-clock"></i>
+                  </div>
+                  <div className={styles["mobile-one-row-cap"]}>
+                    <span
+                      style={{ fontSize: 15 }}
+                      className="font-bold-iransanse"
+                    >
+                      {oneFlight.cap}
+                    </span>
+                    <i className="bilitja icon-seat"></i>
+
+                    <span className="font-size-18">&nbsp;صندلی خالی</span>
+                  </div>
+                </div>
+              </div>
+            ))
             : null}
         </div>
       </div>
