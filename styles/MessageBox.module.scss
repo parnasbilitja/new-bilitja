@@ -2,14 +2,14 @@
   justify-content: center;
   position: absolute;
   background-color: rgb(230, 86, 86);
-  border: 1px solid red;
+  border: 1px solid transparent;
   border-radius: 5px;
   box-shadow: -3px 3px 26px -9px rgba(0, 0, 0, 0.67);
   width: auto;
   top: 0;
   bottom: 0px;
   z-index: 10000000;
-  padding: 5px;
+  padding: 5px 50px;
   text-align: center;
   height: 60px;
   margin: 10px auto;
