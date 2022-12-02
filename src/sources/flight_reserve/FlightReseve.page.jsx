@@ -600,7 +600,7 @@ const FlightReserve = (props) =>{
 
                             <div className="col-lg-9 col-md-8 col-12">
                                 <div className="row">
-                                    <div className="col-lg-2 col-md-4 col-6 no-padding">
+                                    <div className="col-lg-2 col-md-4 col-4 no-padding">
                                         <a
                                             href="#"
                                             className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
@@ -621,7 +621,7 @@ const FlightReserve = (props) =>{
                                         </a>
                                     </div>
 
-                                    <div className="col-lg-2 col-md-4 col-6 no-padding">
+                                    <div className="col-lg-2 col-md-4 col-4 no-padding">
                                         <div
                                             className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
                                             onClick={(e) => {
@@ -637,7 +637,7 @@ const FlightReserve = (props) =>{
                                         </div>
                                     </div>
 
-                                    <div className="col-lg-2 col-md-4 col-6 no-padding">
+                                    <div className="col-lg-2 col-md-4 col-4 no-padding">
                                         <a
                                             href="#"
                                             className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
