@@ -1510,6 +1510,12 @@ $sizes: 100;
   .isDesktop {
     display: none !important;
   }
+  .error-message{
+    position: relative !important;
+  }
+  .national-codeData{
+    margin-right: 0 !important;
+  }
   .left-border-line {
     display: none;
   }

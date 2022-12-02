@@ -146,7 +146,18 @@
 }
 
 .nav-items-container{
-    grid-area:items ;
+    grid-area:items;
+    .navbar-items{
+        li{
+            &:hover{
+                svg{
+                    path,circle,rect{
+                        stroke: #ff0000;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .border-right{

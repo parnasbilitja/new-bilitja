@@ -88,7 +88,7 @@ const FlightPassengerForm = (props) => {
     const checkCharacters = (value) => {
         if (!checkCharacter(value) && value != "") {
             props.messageBoxModify({
-                color:false,
+                color: false,
                 message: "لطفا از کاراکتر های لاتین استفاده کنید",
                 state: true,
             });
@@ -143,7 +143,7 @@ const FlightPassengerForm = (props) => {
                                 style={{ padding: 3 }}
                                 className="exit-form"
                                 onClick={() => {
-                                    props.removePassenger(props.type,props.id);
+                                    props.removePassenger(props.type, props.id);
                                 }}
                             >
                                 <FontAwesomeIcon icon={faTimes} />
@@ -263,54 +263,54 @@ const FlightPassengerForm = (props) => {
                                 {props.birthday == '' && err.birthdayErr ? props.birthdayErr : ''}
                             </span>
                         </div>
-                        <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px mt-1">
-                            {props.pathKind == 1 && props.nationality == "IR"?
-                            <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
-                                <PrimaryTextInput
-                                    style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
-                                    name={`nationalCode `}
-                                    placeholder={`کد ملی`}
-                                    inputMode={`numeric`}
-                                    onChange={(e) => {
+                        <div className="national-codeData col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px mt-1 me-1">
+                            {props.pathKind == 1 && props.nationality == "IR" ?
+                                <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
+                                    <PrimaryTextInput
+                                        style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
+                                        name={`nationalCode `}
+                                        placeholder={`کد ملی`}
+                                        inputMode={`numeric`}
+                                        onChange={(e) => {
                                             props.fillPassengersData(
                                                 "code",
                                                 props.id,
                                                 e.target.value
                                             );
-                                    }
-                                }
-                                    defaultValue={props.code}
-                                />
-                            </div>:
+                                        }
+                                        }
+                                        defaultValue={props.code}
+                                    />
+                                </div> :
                                 <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
-                                <PrimaryTextInput
-                                    style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
-                                    name={`nationalCode`}
-                                    placeholder={`شماره پاسپورت`}
-                                    inputMode={`text`}
-                                    onChange={(e) => {
+                                    <PrimaryTextInput
+                                        style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
+                                        name={`nationalCode`}
+                                        placeholder={`شماره پاسپورت`}
+                                        inputMode={`text`}
+                                        onChange={(e) => {
                                             props.fillPassengersData(
                                                 "pasno",
                                                 props.id,
                                                 e.target.value
                                             );
-                                    }
-                                }
-                                    defaultValue={props.pasno}
-                                />
-                            </div>
+                                        }
+                                        }
+                                        defaultValue={props.pasno}
+                                    />
+                                </div>
                             }
 
                             <span className="color-secondary error-message position-absolute">
-                                {props.nationality == "IR" && props.code === ""? props.codeErr : ''}
+                                {props.nationality == "IR" && props.code === "" ? props.codeErr : ''}
                             </span>
                         </div>
 
                         <div className="col-lg-2 col-md-3 col-sm-4 col-6 padding-horizental-3px mt-1">
                             <div className={`d-flex align-items-center `} >
                                 <PrimaryTextInput
-                                    disabled={props.nationality == 'IR' && props.pathKind == 1 ?true:false}
-                                    style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15}}
+                                    disabled={props.nationality == 'IR' && props.pathKind == 1 ? true : false}
+                                    style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15 }}
                                     placeholder={`${"انقضای پاسپورت"}`}
                                     name="futureday"
                                     inputMode={`${"text"}`}
@@ -330,7 +330,7 @@ const FlightPassengerForm = (props) => {
                                 />
                             </div>
                             <span className="color-secondary error-message position-absolute">
-                                { props.futureday === "" ? props.pasenddatErr : ''}
+                                {props.futureday === "" ? props.pasenddatErr : ''}
                             </span>
                         </div>
                         <div className="col-lg-2 mt-12 col-md-2 col-sm-4 col-6 padding-horizental-3px ">
@@ -364,7 +364,7 @@ const FlightPassengerForm = (props) => {
                             <span
                                 className="delete-thumbnail"
                                 onClick={() => {
-                                    props.removePassenger(props.type,props.id);
+                                    props.removePassenger(props.type, props.id);
                                 }}
                             >
                                 <svg id="Layer_1" height="23" viewBox="0 0 24 24" width="23" data-name="Layer 1"><path
@@ -460,8 +460,8 @@ export default connect(null, dispatchStateToProps)(FlightPassengerForm);
 
 
 
-{/* <div className={`d-flex align-items-center `} > */}
-                                {/* <PrimaryTextInput
+{/* <div className={`d-flex align-items-center `} > */ }
+{/* <PrimaryTextInput
                                         style={{height: "3em", fontSize: 12,display: props.nationality == 'IR' && 'none'}}
                                         placeholder={`${ "انقضای پاسپورت"}`}
                                         inputMode={`${"text"}`} 
@@ -477,7 +477,7 @@ export default connect(null, dispatchStateToProps)(FlightPassengerForm);
                                         defaultValue={props.extPasaport}
                                         value={props.extPasaport}
                                     /> */}
-                                {/* <PrimaryTextInput 
+{/* <PrimaryTextInput 
                                         style={{height: "3em", fontSize: 12,marginRight:12}}
                                         placeholder={` شماره پاسپورت`}
                                         name="nationalCode"
@@ -493,4 +493,4 @@ export default connect(null, dispatchStateToProps)(FlightPassengerForm);
                                         }}
                                         defaultValue={props.pasno}
                                     /> */}
-                            {/* </div> */}
+{/* </div> */ }
