@@ -41,7 +41,7 @@ const NavBarMobile = (props) => {
     /*<div className={styles['error-mobile']}> hghgshghgsd</div>*/
     <nav className={styles["nav-mobile"]}>
       <div className={styles["nav-text-detail-mobile"]}>
-        <div className="pull-right mb-3">
+        <div className="pull-right mb-1">
           {props.user.logged === true ? (
             <>
               <Link href="/dashboard">
@@ -65,14 +65,14 @@ const NavBarMobile = (props) => {
                   </div>
                 </a>
               </Link>
-              <span className="mx-2">/</span>
+              <span className="mx-2 ms-0 font-size-16">/</span>
 
               <a
                 href="/"
-                className="mx-2 text-dark"
+                className="mx-2 text-danger"
                 onClick={handleLogoutUser}
               >
-                خروج از حساب کاربری
+                خروج
               </a>
             </>
           ) : (
@@ -128,11 +128,11 @@ const NavBarMobile = (props) => {
               </a>
             )} */}
         </div>
-        <div className="pull-left">
-          <a href="#" className="color-black font-bold-iransanse">
-            <span className="text-dark">مشاوره تلفنی : </span>
-            <i className="bilitja icon-phone font-size-14"></i>
-            <span className="font-size-17 text-dark"> &nbsp;021-84279999</span>
+        <div className="pull-left mt-1">
+          <a href="tel:021-84279999" className="color-black font-bold-iransanse">
+            <span className="text-dark mx-2">مشاوره تلفنی</span>
+            <i className="bilitja icon-phone font-size-16"></i>
+            {/* <span className="font-size-17 text-dark"> &nbsp;021-84279999</span> */}
           </a>
         </div>
       </div>
