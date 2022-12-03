@@ -1302,7 +1302,7 @@ $sizes: 100;
 
 @include grid-classes;
 
-@media only screen and(max-width:768px){
+@media only screen and (max-width:768px){
   $sizes_mobile: 100;
   @mixin mobile-grid-classes {
     @for $i from 5 through $sizes_mobile {
