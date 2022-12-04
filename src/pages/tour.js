@@ -413,7 +413,7 @@ const tour = () => {
                                                 <div className="info-price position-relative d-flex align-items-start mx-2">
                                                     <div className="text d-flex flex-column align-items-center w-100 py-3">
                                                         <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک بدون تخت</span>
-                                                        <span className="font-size-14 font-bold color-gray">{pack.prices.cnb.includes(',') && pack.prices.cnb.includes(',') == true ?`${pack.prices.cnb}تومان`: `${moneyFormat(`${pack.prices.cnb}0`)}تومان` } </span>
+                                                        <span className="font-size-14 font-bold color-gray">{pack.prices.cnb?.includes(',') && pack.prices.cnb.includes(',') == true ?`${pack.prices.cnb}تومان`: `${moneyFormat(`${pack.prices.cnb}0`)}تومان` } </span>
                                                     </div>
                                                 </div>
                                             </div>

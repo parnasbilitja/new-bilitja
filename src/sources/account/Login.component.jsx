@@ -24,7 +24,7 @@ const Login = (props) => {
     value: false,
     timer: false,
   })
-
+  const [Errors,setErrors] = useState('')
   const [UserMobileAndCode, setUserMobileAndCode] = useState({
     mobile:localStorage.getItem('mobile').length == 11 ? localStorage.getItem('mobile') : "",
     code:''
@@ -73,6 +73,7 @@ const Login = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.status == "0") {
 
           // setState({...state,
@@ -191,6 +192,7 @@ const Login = (props) => {
     setState({ ...state, [e.target.name]: e.target.value, error: false, errText: "" });
   };
 
+
   useEffect(() => {
     if (localStorage.getItem('mobile').length == 11) { 
       setTestForValue({...TestForValue,num: true})
@@ -200,6 +202,7 @@ const Login = (props) => {
 
 
   const loginWithToken = () => {
+    console.log(UserMobileAndCode);
     setState({ ...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/checkUser`, {
       method: "POST",
@@ -217,6 +220,7 @@ const Login = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.status == "2" || data.status == "1") {
           setState({ ...state, btn_disabled: false, loading: false });
           localStorage.setItem("mobile", data.mobile);
@@ -269,10 +273,12 @@ const Login = (props) => {
   const userMobileHandler = (e) => {
     setUserMobileAndCode({...UserMobileAndCode, [e.target.name]: e.target.value});
     console.log(UserMobileAndCode);
+    console.log(TestForValue);
   }
 
   return (
     <div className="popup-content-container">
+      
       <div className="popup-heading text-center">
         {TestForValue.num !== true ?
         <span>لطفا شماره خود را وارد کنید</span>:TestForValue.num == true?
@@ -300,7 +306,7 @@ const Login = (props) => {
           </div>
           <div className="col-11 padding-horizental-3px">
             <div>
-            {TestForValue.num == false && UserMobileAndCode.mobile.length < 11 ?
+            {TestForValue.num == false?
               <input
               className="form-input-auth px-2 col-12"
               placeholder="شماره موبایل"
@@ -340,24 +346,22 @@ const Login = (props) => {
           <div className=" without-focus col-12">
             <button
               onClick={() => {
-                console.log(UserMobileAndCode.mobile);
-                // if (UserMobileAndCode.mobile.length == 11) {
-                // }
-                if (UserMobileAndCode.mobile.length == 11) {
+                console.log(UserMobileAndCode,UserMobileAndCode.code.length);
+                if (UserMobileAndCode.code.length !==4 && UserMobileAndCode.mobile.length == 11) {
                   setTestForValue({...TestForValue,num:true})
                   login()
-                  // setState({...state,phoneErrType: false,timer:true})
                 }else if(UserMobileAndCode.code.length == 4) {
-                  loginWithToken() 
+                  console.log(UserMobileAndCode.code);
+                  loginWithToken()
                 }
                 
               }}
               className={
-                props.disabled === false
-                ? "btn btn-info py-3 mb-3 col-12 btn-block"
-                : `${styles["primary-button"]} py-2`
+                // props.disabled === false
+                //  "btn btn-info py-3 mb-3 col-12 btn-block"
+                 `${styles["primary-button"]} py-2`
               }
-              disabled={state.btn_disabled}
+              // disabled={state.btn_disabled}
             >
               {TestForValue.num == false  ?"دریافت کد":
               TestForValue.num  == true && TestForValue.code == false?'ثبت کد':
@@ -365,12 +369,14 @@ const Login = (props) => {
             </button>
             
           </div>
+          {TestForValue.num == true &&
           <div className="col-12 justify-content-center d-flex">
               <button className={'btn btn-outline-dark p-2 my-1 cursor-pointer'} onClick={() =>phoneHandler()}>تغییر شماره</button>
           </div>
+          }
         </div>
       </div>
-      {/* {!state.phoneErrType && */}
+      {!TimerChecker.phoneErrType && TestForValue.num == true &&
         <div className="row mt-3 text-center">
           <div className="col-12">
             {TimerChecker.value <= 1000 &&
@@ -381,7 +387,7 @@ const Login = (props) => {
           <Timer setTimerChecker={setTimerChecker} TimerChecker={TimerChecker} phoneErrType={TimerChecker.phoneErrType} />
           </div>
         </div>
-      {/* } */}
+      } 
 
 
       {/* <div className="row">

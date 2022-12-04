@@ -1318,6 +1318,14 @@ $sizes: 100;
   @include mobile-grid-classes;
 }
 
+.BEFORE {
+  background-color: #fff;
+  border: 1px solid #c1c1c1;
+  border-radius: 3px;
+  cursor: default !important;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 8px, #eee 0, #eee 10px) !important;
+  font-family: BYekan !important;
+}
 //component table => amir.qn
 .controller-table {
   border: 5px solid #fff;
