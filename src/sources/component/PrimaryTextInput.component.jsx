@@ -2,7 +2,6 @@ import React from "react";
 import "../../../styles/PrimaryTextInput.module.scss";
 
 const PrimaryTextInput = (props) =>{
-  console.log(props);
 
     return props.readonlyattr ? (
       <input
