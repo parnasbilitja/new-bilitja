@@ -309,6 +309,7 @@ const FlightPassengerForm = (props) => {
                         <div className="col-lg-2 col-md-3 col-sm-4 col-6 padding-horizental-3px mt-1">
                             <div className={`d-flex align-items-center `} >
                                 <PrimaryTextInput
+                                    ext={props.nationality == 'IR' && props.pathKind == 1 ?'BEFORE':''}
                                     disabled={props.nationality == 'IR' && props.pathKind == 1 ? true : false}
                                     style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15 }}
                                     placeholder={`${"انقضای پاسپورت"}`}

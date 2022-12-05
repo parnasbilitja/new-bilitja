@@ -27,21 +27,21 @@ class CalendarComponent extends React.Component {
                 e.stopPropagation()
             }}>
 
-
-                {
-                    this.state.typeOfCalendar == "JAL" ?
-
-                        <JalaliDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar} />
-                        :
-                        <GarigorianDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar} />
-                }
                 <div className="rtl text-right">
-                    <label className="no-margin" onClick={() => {
+                    <button className="py-2 px-4 no-margin" onClick={() => {
                         this.setState({
                             typeOfCalendar: this.state.typeOfCalendar == "JAL" ? "GAR" : "JAL"
                         })
-                    }} >&nbsp;{this.state.typeOfCalendar == "JAL" ? "Christian month" : "تقویم شمسی"}</label>
+                    }} >&nbsp;  {this.state.typeOfCalendar == "JAL" ? "میلادی" : " شمسی"}</button>
                 </div>
+                    
+                                    {
+                                        this.state.typeOfCalendar == "JAL" ?
+                    
+                                            <JalaliDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar} />
+                                            :
+                                            <GarigorianDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar} />
+                                    }
             </div>
         )
     }

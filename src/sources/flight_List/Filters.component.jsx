@@ -209,19 +209,19 @@ class Filters extends React.Component {
                                     </div>
                                     <div>
                                         <div className="radio">
-                                            <inputparent-type-airline
+                                        <input
                                                 type="checkbox"
                                                 name="sortable"
                                                 value="2"
                                                 className="checkbox"
+                                                id="earlieast"
                                                 onChange={(e) => this.handleFindByPrice(false, e)}
                                                 checked={
-                                                    this.state.lowPrice != null &&
-                                                        this.state.lowPrice == false
+                                                    this.state.lowPrice == null &&
+                                                        this.state.lowPrice != true
                                                         ? true
                                                         : false
                                                 }
-                                                id="earlieast"
                                             />
                                         </div>
                                         <label className="font-size-14" htmlFor="earlieast">

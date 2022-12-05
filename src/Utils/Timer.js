@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 
 
-const Timer = ({phoneErrType,setState,state}) => {
+const Timer = ({phoneErrType,setTimerChecker,TimerChecker,}) => {
 
 	const Ref = useRef(null);
 
@@ -39,12 +39,10 @@ const Timer = ({phoneErrType,setState,state}) => {
 			startTimer(e);
 		}, 1000)
 		Ref.current = id;
-        // setState({...state,value:id})
 	}
 
 	const getDeadTime = () => {
 		let deadline = new Date();
-
 		deadline.setSeconds(deadline.getSeconds() + 90);
 		return deadline;
 	}
@@ -59,20 +57,26 @@ const Timer = ({phoneErrType,setState,state}) => {
 
     useEffect(() => {
         onClickReset()
-    },[phoneErrType])
+		clearTimer(getDeadTime());
+    },[TimerChecker.phoneErrType])
+
+	const resetValue = () => {
+		if (phoneErrType) {
+			onClickReset()	
+		}
+	}
+
     useEffect(() => {
-        // console.log(timer);
-        // console.log(state.timer);
-        setState({...state,value:timer})
+        setTimerChecker({...TimerChecker,value:timer})
         if (timer.split("")[0]== '0' && timer.split("")[1]== '0' && timer.split("")[3]== '0' && timer.split("")[4]== '0') {
-        setState({...state,value:true})
+        setTimerChecker({...TimerChecker,value:true})
         }
     },[timer])
 
 	return (
 		<div className="App">
-			<h2>{timer}</h2>
-			{/* <button onClick={onClickReset}>Reset</button> */}
+			<h2 onClick={onClickReset}>{timer}</h2>
+			
 		</div>
 	)
 }

@@ -130,9 +130,9 @@ const NavBarMobile = (props) => {
         </div>
         <div className="pull-left mt-1">
           <a href="tel:021-84279999" className="color-black font-bold-iransanse">
-            <span className="text-dark mx-2">مشاوره تلفنی</span>
+            {/* <span className="text-dark mx-2">مشاوره تلفنی</span> */}
             <i className="bilitja icon-phone font-size-16"></i>
-            {/* <span className="font-size-17 text-dark"> &nbsp;021-84279999</span> */}
+            <span className="font-size-17 text-dark"> &nbsp;021-84279999</span>
           </a>
         </div>
       </div>

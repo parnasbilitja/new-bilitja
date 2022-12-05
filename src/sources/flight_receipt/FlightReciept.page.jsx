@@ -120,6 +120,7 @@ const FlightReciept = (props) => {
 },[])
 
   const compeleteReservation = () => {
+    
     const reservePassengerObject = {
       reqNo: props.reserveProperties.reqNo,
       reqPnr: props.reserveProperties.reqPnr,
@@ -446,11 +447,17 @@ const FlightReciept = (props) => {
                     <button
                       className="btn btn-success-payment py-2 col-12 mb-1"
                       onClick={() => {
-                        if (state.isUpdated) {
+                        if (!localStorage.getItem('mobile')) {
+                          props.messageBoxModify({
+                            color:false,
+                            state: true,
+                            message: "لطفا وارد حساب خود شوید",
+                          });
+                        }else if (state.isUpdated) {
                           compeleteReservation();
-                        }
-                        // if (props.user.logged && localStorage.getItem('token')) { 
-                          getBanks();
+                          // if (props.user.logged && localStorage.getItem('token')) { 
+                            getBanks();
+                          }
                         // }else{
                         //   props.messageBoxModify({
                         //     color:false,

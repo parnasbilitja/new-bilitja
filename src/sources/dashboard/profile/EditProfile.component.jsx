@@ -266,12 +266,14 @@ const EditProfile = (props) => {
         <div className="p-15">
           <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'Christian month' : 'شمسی'}</button>
           <BirthDayParent
-            numSh={1300}
-            numBase={1350}
+            numSh={1301}
+            numBase={1300}
             numMi={1920}
             numMiBase={1300}
+            title="Please enter date of birth"
             placeholder="لطفا تاریخ تولد را وارد کنید"
             calend={calend}
+            type={'BD'}
             typePassenger={"ADL"}
             name="birthday"
             setBirthdayb={(value) => {

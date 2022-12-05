@@ -40,7 +40,7 @@ const RequestTour = ({ messages, setMessages, setShow, setPackData, packData, se
                     </svg>
                 </div> */}
                 <div className="ic-close position-absolute cursor-pointer" style={{ left: "-5px", top: "-13px" }}>
-                    <svg width="40" height="40" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="40" height="40" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={() =>{setShow(false)}}>
                         <path fillRule="evenodd" clipRule="evenodd" d="M40.4293 23.0799C40.4293 32.6089 32.7238 40.3337 23.2186 40.3337C13.7133 40.3337 6.00781 32.6089 6.00781 23.0799C6.00781 13.5509 13.7133 5.82617 23.2186 5.82617C32.7238 5.82617 40.4293 13.5509 40.4293 23.0799ZM23.2185 24.4957L16.2753 31.4562L14.8629 30.0403L21.8061 23.0797L14.8633 16.1196L16.2757 14.7036L23.2185 21.6638L30.1613 14.7036L31.5738 16.1196L24.631 23.0797L31.5742 30.0403L30.1617 31.4562L23.2185 24.4957Z" fill="#ff2222" />
                     </svg>
                 </div>
