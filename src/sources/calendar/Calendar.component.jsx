@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { addCredentials } from '../../Redux/Search/search.action'
 import JalaliDays from './JalaliDays'
 import GarigorianDays from './GarigorianDays'
-import calendar from './calendar.svg'
 class CalendarComponent extends React.Component {
     constructor(props) {
         super(props)
