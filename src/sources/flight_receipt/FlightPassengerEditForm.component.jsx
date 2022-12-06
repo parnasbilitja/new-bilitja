@@ -48,7 +48,7 @@ const FlightPassengerEditForm = (props) => {
       sex: props.sex,
       birthday: props.birthday ,
       index: props.index,
-    });
+    })});
     // console.log(props);
     useEffect(() => {
       setState({
