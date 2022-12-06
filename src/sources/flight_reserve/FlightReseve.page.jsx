@@ -438,6 +438,8 @@ const FlightReserve = (props) =>{
             } else if (data.status == "10") {
               setState({...state, btn_disabled: false });
               setLoading(false)
+              console.log('compeleteReservation();');
+              compeleteReservation();
               localStorage.setItem("mobile", data.mobile);
               localStorage.setItem("token", data.token);
               props.checkUserLogged();
@@ -457,6 +459,8 @@ const FlightReserve = (props) =>{
                 state: false,
                 type: "authentication",
               });
+              
+
             } else if (data.status === "-111") {
 
               register();

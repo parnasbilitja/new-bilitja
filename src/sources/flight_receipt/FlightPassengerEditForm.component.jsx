@@ -17,6 +17,7 @@ import PopUpWide from "../component/PopUpWide.component";
 import * as moment from 'jalali-moment';
 
 const FlightPassengerEditForm = (props) => {
+  console.log(props);
   const [calend, setCalend] = useState(false)
   const [date, setDate] = useState('')
     const [state, setState] = useState({
@@ -29,10 +30,10 @@ const FlightPassengerEditForm = (props) => {
       name: props.name,
       family: props.family,
       meliat: props.meliat,
-      meliCode: props.pasNoAll,
+      meliCode: props.meliCode,
       pathKind: props.pathKind,
       sex: props.sex,
-      birthday: props.birthday,
+      birthday: props.birthday ,
       index: props.index,
     });
     // console.log(props);
@@ -42,7 +43,7 @@ const FlightPassengerEditForm = (props) => {
         name: props.name,
         family: props.family,
         meliat: props.meliat,
-        meliCode: props.pasNoAll,
+        meliCode: props.pasNoAll || props.meliCode,
         pathKind: props.pathKind,
         sex: props.sex,
         birthday: props.birthday,
