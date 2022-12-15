@@ -25,7 +25,7 @@ import { withRouter } from "next/router";
 const Dashboard = (props) => {
   const myRouter = useRouter();
   const [width, setWidth] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const handleResize = () => {
     setWidth(window.innerWidth);
@@ -85,29 +85,22 @@ const Dashboard = (props) => {
   },[])
   return (
     <div>
-      {
-    // console.log(props.user.logged)
-      }
       <Provider store={store}>
         {checker &&
         <>
-        <DashboardNav open={open} onClose={() => setOpen(false)}>
+        <DashboardNav open={open} setOpen={setOpen}>
           <div className={styles["manager-small-screen-top-bar"]}>
             <FontAwesomeIcon
               icon={faBars}
               onClick={() => {
-                setOpen(true);
+                setOpen(!open);
+                console.log(open);
               }}
             />
           </div>
         </DashboardNav>
         <div className="panel-manager-main-container">
-          <div
-            className="dashboard-manager-content-container"
-            onClick={() => {
-              setOpen(false);
-            }}
-          >
+          <div className="dashboard-manager-content-container">
             {mainRouter(myRouter.asPath)}
             <MessageBox />
           </div>

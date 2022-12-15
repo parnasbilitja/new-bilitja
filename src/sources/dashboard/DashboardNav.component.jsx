@@ -30,6 +30,7 @@ const DashboardNav = (props) => {
   return (
     <div>
       {props.children}
+      {!props.open?
       <div
         className={`${styles["manager-nav-main-container"]} ${props.open === true ? styles["slidein-manager"] : ""
           }`}
@@ -250,6 +251,7 @@ const DashboardNav = (props) => {
           </div>
         </div>
       </div>
+      :''}
     </div>
   );
 };
