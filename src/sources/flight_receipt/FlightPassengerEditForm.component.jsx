@@ -20,10 +20,13 @@ const FlightPassengerEditForm = (props) => {
   console.log(props);
   const [calend, setCalend] = useState(false)
   const [date, setDate] = useState('')
+  const [EXT, setEXT] = useState('')
   const [state, setState] = useState({
+    EXTOPEN:false,
     nameErr: "",
     familyErr: "",
     melliCodeErr: "",
+    pasEndDateAllErr: "",
     birthdayErr: "",
     pasnoErr: "",
     pasenddatErr: "",
@@ -32,11 +35,11 @@ const FlightPassengerEditForm = (props) => {
     meliat: props.meliat,
     meliCode: props.pasNoAll,
     pathKind: props.pathKind,
+    pasEndDateAll:props.pasEndDateAll,
     sex: props.sex,
     birthday: props.birthday,
     index: props.index,
   });
-  // console.log(props);
   useEffect(() => {
     setState({
       ...state,
@@ -44,18 +47,19 @@ const FlightPassengerEditForm = (props) => {
       family: props.family,
       meliat: props.meliat,
       meliCode: props.meliCode,
+      pasEndDateAll:props.pasEndDateAll,
       pathKind: props.pathKind,
       sex: props.sex,
       birthday: props.birthday ,
       index: props.index,
-    })});
-    // console.log(props);
+    })},[]);
     useEffect(() => {
       setState({
         ...state,
         name: props.name,
         family: props.family,
         meliat: props.meliat,
+        pasEndDateAll:props.pasEndDateAll,
         meliCode: props.pasNoAll || props.meliCode,
         pathKind: props.pathKind,
         sex: props.sex,
@@ -63,7 +67,6 @@ const FlightPassengerEditForm = (props) => {
         index: props.index,
       })
     },[props])
-    console.log(state);
   
   
   const handleChange = (event) => {
@@ -79,6 +82,12 @@ const FlightPassengerEditForm = (props) => {
       open: value,
     });
   };
+  const managePopUpEXTCalendar = (value) => {
+    setState({
+      ...state,
+      EXTOPEN: value,
+    });
+  };
   const validation = () => {
     let isValid = true;
     let nameErr = "";
@@ -87,6 +96,7 @@ const FlightPassengerEditForm = (props) => {
     let birthdayErr = "";
     let pasnoErr = "";
     let pasenddatErr = "";
+    let pasEndDateAllErr = "";
 
     if (state.name == "") {
       nameErr = "نام الزامی میباشد";
@@ -112,15 +122,19 @@ const FlightPassengerEditForm = (props) => {
       birthdayErr = "تاریخ تولد الزامی میباشد";
       isValid = false;
     }
+    if (state.pasEndDateAll == "") {
+      pasEndDateAllErr = "تاریخ انقضا الزامی میباشد";
+      isValid = false;
+    }
     setState({
       ...state,
       birthdayErr: birthdayErr,
       melliCodeErr: codeErr,
       familyErr: familyErr,
+      pasEndDateAll:pasEndDateAllErr,
       nameErr: nameErr,
       pasnoErr: pasnoErr,
       pasenddatErr: pasenddatErr,
-
     });
 
     return isValid;
@@ -129,6 +143,10 @@ const FlightPassengerEditForm = (props) => {
     let res = date && calend == true ? date : date && calend == false ? moment(date).locale('fa').format('YYYY/M/D') : ''
     setState({ ...state, birthday: res })
   }, [date])
+  useEffect(() => {
+    // let res = EXT && calend == true ? EXT : EXT && calend == false ? moment(EXT).locale('fa').format('YYYY/M/D') : ''
+    setState({ ...state, pasEndDateAll: EXT })
+  }, [EXT])
   return (
     <div
       className="passenger-form mx-3"
@@ -185,6 +203,26 @@ const FlightPassengerEditForm = (props) => {
           </div>
           <span className="color-secondary error-message">
             {state.melliCodeErr}
+          </span>
+        </div>
+        <div className="col-lg-4 col-md-4 col-sm-4 col-12 padding-horizental-3px mb-4"
+          style={{ height: 40 }}>
+          <div
+            className={` form-input-border  ${styles["form-input-border-private"]} `}
+          >
+            <PrimaryTextInput
+              placeholder={`انقضای پاسپورت`}
+              value={state.pasEndDateAll}
+              name="pasEndDateAll"
+              onChange={(e) => handleChange(e)}
+              style={{ height: 40 }}
+              onFocus={() => {
+                managePopUpEXTCalendar(true);
+              }}
+            />
+          </div>
+          <span className="color-secondary error-message">
+            {state.pasEndDateAllErr}
           </span>
         </div>
         <div className="col-lg-4 col-md-4 col-sm-4 col-12 padding-horizental-3px selectbox-receipt mb-4">
@@ -263,23 +301,6 @@ const FlightPassengerEditForm = (props) => {
         closePopUp={managePopUpBirthdayCalendar}
       >
         <div className="p-15">
-          {/* <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
-              <BirthDayParent
-              numSh={1301}
-              numBase={1300}
-              numMi={1920}
-              numMiBase={1300}
-              title="Please enter date of birth"
-              placeholder="لطفا تاریخ تولد را وارد کنید"
-              calend={calend}
-              typePassenger={"ADL"}
-              type={'BD'}
-              name="birthday"
-              setBirthday={(value) => {
-                setState({...state, birthday: value });
-              }}
-              closePopUpCalendar={managePopUpBirthdayCalendar}
-            /> */}
           <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
           <BirthDayParent
             numSh={1301}
@@ -300,6 +321,31 @@ const FlightPassengerEditForm = (props) => {
           />
         </div>
       </PopUp>
+      <PopUp
+      opened={state.EXTOPEN}
+      closePopUp={managePopUpEXTCalendar}>
+      <div className="p-15">
+      <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
+      <BirthDayParent
+        numSh={1301}
+        numBase={1300}
+        numMi={1920}
+        numMiBase={1300}
+        title="Please enter an expiration date"
+        placeholder="لطفا تاریخ انقضا را وارد کنید"
+        // calend={calend}
+        typePassenger={'ADL'}
+        type={'EXT'}
+        name="pasEndDateAll"
+        setBirthdayb={(value) => {
+          setEXT(value);
+        }}
+        closePopUpCalendar={managePopUpEXTCalendar}
+    />
+      </div>
+      </PopUp>
+
+      
     </div>
   );
 

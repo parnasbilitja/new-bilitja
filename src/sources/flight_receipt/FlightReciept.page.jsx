@@ -32,6 +32,7 @@ const FlightReciept = (props) => {
       meliCodeAll_: [],
       pasNoAll_: [],
       meliatAll_: [],
+      pasEndDateAll_: [],
       nameAll_: [],
       sexAll_: [],
       ticketCodeAll_: [],
@@ -41,6 +42,7 @@ const FlightReciept = (props) => {
         name: "",
         family: "",
         meliat: "",
+        pasEndDateAll:'',
         meliCode: "",
         sex: "",
         birthday: "",
@@ -78,6 +80,9 @@ const FlightReciept = (props) => {
           const meliCodeAll = String(
             data.flightReservePropertyModel.meliCodeAll
           ).split(",");
+          const pasEndDateAll = String(
+            data.flightReservePropertyModel.pasEndDateAll
+          ).split(",");
           const meliatAll = String(
             data.flightReservePropertyModel.meliatAll
           ).split(",");
@@ -102,6 +107,7 @@ const FlightReciept = (props) => {
               birthDayAll_: birthDayAll,
               familyAll_: familyAll,
               meliCodeAll_: meliCodeAll,
+              pasEndDateAll_:pasEndDateAll,
               pasNoAll_: pasNoAll,
               meliatAll_: meliatAll,
               nameAll_: nameAll,
@@ -247,6 +253,7 @@ const FlightReciept = (props) => {
     let meliats = state.meliatAll_;
     let meliCodes = state.meliCodeAll_;
     let birthdays = state.birthDayAll_;
+    let pasEndDateAll = state.pasEndDateAll_;
 
     names[index] = value.name;
     families[index] = value.family;
@@ -254,6 +261,7 @@ const FlightReciept = (props) => {
     meliats[index] = value.meliat;
     meliCodes[index] = value.meliCode;
     birthdays[index] = value.birthday;
+    pasEndDateAll[index] = value.pasEndDateAll;
 
     setState({...state,
       nameAll_: names,
@@ -262,6 +270,7 @@ const FlightReciept = (props) => {
       meliatAll_: meliats,
       meliCodeAll_: meliCodes,
       birthDayAll_: birthdays,
+      pasEndDateAll_ : pasEndDateAll,
       isUpdated: true,
     });
   };
@@ -298,6 +307,7 @@ const FlightReciept = (props) => {
                   <th>نام‌خانوادگی</th>
                   <th>ملیت</th>
                   <th>کدملی/گذرنامه</th>
+                  {state.pasEndDateAll && <th>انقضای گذرنامه</th>}
                   <th>تاریخ تولد</th>
                   <th>قیمت تومان</th>
                   <th></th>
@@ -339,6 +349,11 @@ const FlightReciept = (props) => {
                       <td className="hidden-xs">
                         {state.meliCodeAll_[index]?state.meliCodeAll_[index]:state.pasNoAll_[index]}
                       </td>
+                      {state.pasEndDateAll && 
+                      <td className="hidden-xs">
+                        {state.pasEndDateAll_[index]}
+                      </td>
+                      }
                       <td>
                         <div className="hidden-xs">
                           {state.birthDayAll_[index]}
@@ -381,7 +396,8 @@ const FlightReciept = (props) => {
                                     family: state.familyAll_[index],
                                     meliat: state.meliatAll_[index],
                                     pasNoAll:state.pasNoAll_[index],
-                                    meliCode: state.meliCodeAll_[index],
+                                    meliCode: state.meliCodeAll_[index] ,
+                                    pasEndDateAll:state.pasEndDateAll_[index],
                                     sex: state.sexAll_[index],
                                     birthday: state.birthDayAll_[index],
                                   }

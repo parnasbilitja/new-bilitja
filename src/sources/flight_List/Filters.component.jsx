@@ -217,7 +217,7 @@ class Filters extends React.Component {
                                                 id="earlieast"
                                                 onChange={(e) => this.handleFindByPrice(false, e)}
                                                 checked={
-                                                    this.state.lowPrice == null &&
+                                                    this.state.lowPrice !== null &&
                                                         this.state.lowPrice != true
                                                         ? true
                                                         : false
