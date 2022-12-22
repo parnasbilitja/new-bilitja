@@ -310,7 +310,7 @@ const FlightReserve = (props) =>{
 
 
     useEffect(() => {
-        setState({...state,mobileSubmiter:props.user.user_info.mobile})
+        setState({...state,mobileSubmiter:props?.user?.user_info?.mobile})
       }, [props.user])
 
     const validationNumberOfPassengers = (type = '') => {

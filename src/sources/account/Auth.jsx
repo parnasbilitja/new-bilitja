@@ -31,7 +31,10 @@ const Auth = (props) => {
     });
   
 
+    const [type,setType] = useState(1)
+
   const handleLoginWithCode = () => {
+    setType(1)
     setState({...state,
       login_with_code: true,
       password: "",
@@ -39,7 +42,10 @@ const Auth = (props) => {
     });
   };
   const handleLoginWithPassword = () => {
+
+    setType(2)
     setState({...state,
+      get_mobile_status:false,
       login_with_code: false,
       token: "",
       btn_text: "ورود به حساب",
@@ -81,7 +87,7 @@ const Auth = (props) => {
           setState({...state,
             btn_disabled: false,
             loading: false,
-            get_mobile_status: true,
+            get_mobile_status:true,
             btn_text: "تایید کد احراز هویت",
           });
         } else if (data.status == "10") {
@@ -319,6 +325,8 @@ const Auth = (props) => {
           </div>
           {state.login_with_code === false ? (
             <div className="row mb-2">
+              {type == 2 &&
+              <>
               <div className="col-1 padding-horizental-3px">
                 <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
               </div>
@@ -331,13 +339,17 @@ const Auth = (props) => {
                     onChange={handleSetPassword}
                     inputMode="numeric"
                     type="password"
-                  />
+                    />
                 </div>
               </div>
+              </>
+              }
             </div>
           ) : null}
           {state.get_mobile_status === true ? (
             <div className="row mb-2">
+              {type == 1 &&
+              <>
               <div className="col-1 padding-horizental-3px">
                 <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
               </div>
@@ -353,6 +365,8 @@ const Auth = (props) => {
                   />
                 </div>
               </div>
+              </>
+              }
             </div>
           ) : null}
         </div>
@@ -360,9 +374,9 @@ const Auth = (props) => {
           <div className=" without-focus col-12">
             <button
               onClick={(e) => {
-                state.get_mobile_status === false
-                  ? login()
-                  : loginWithToken();
+                state.get_mobile_status == false ? login():
+                state.get_mobile_status == true  ? loginWithToken():
+                  ''
               }}
               className={
                 props.disabled === false
