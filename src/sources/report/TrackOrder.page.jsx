@@ -8,20 +8,25 @@ import { moneyFormat } from "../../Utils/SimpleTasks";
 
 const TrackOrder = () =>{
         const [state,setState] = useState({
-            trackRef:''
+            trackRef:'',
+            err:'لطفارفرنس پیگیری را وارد کنید ',
+            errSate:false
         })
     
     const checkTheRefrence = () => {
+        state.trackRef !== '' ?
         fetch(`${globals.baseUrlNew}OnlinePay/api/onlinePay/reference/${state.trackRef}/1a157116-a01a-4027-ab10-74098ac63815`).then(res => res.json())
             .then(data => {
                 setState({ ...state,...data })
                 console.log(state)
-                console.log(data)
-            })
+                // console.log(data)
+            }):setState({...state,errSate:true})
     }
     const handleChange = (e) => {
         const { name, value } = e.target
-        setState({
+        state.trackRef == '' && setState({...state,errSate:true})
+        setState({...state,
+            errSate:false,
             [name]: value
         })
     }
@@ -42,6 +47,7 @@ const TrackOrder = () =>{
                                     <div className="col-md-10 form-input-border height-short-input">
                                         <PrimaryTextInput placeholder="رفرنس پیگیری" name="trackRef" onChange={(e)=>handleChange(e)} />
                                     </div>
+                                    <span className='text-danger'>{state.errSate? state.err: state.message}</span>
                                 </div>
                                 <div className="col-lg-5 col-md-5 col-sm-5 col-5">
                                     <div className="form-input-border height-short-input without-focus">

@@ -152,7 +152,7 @@ const NavBarMobile = (props) => {
             خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه{" "}
           </h1>
         </div>
-        <a href="/">
+        <Link href="/">
           <img
             width=""
             height=""
@@ -160,7 +160,7 @@ const NavBarMobile = (props) => {
             src="../../../Images/logo512.webp"
             className="pull-left"
           />
-        </a>
+        </Link>
       </div>
 
       <SlideIn
@@ -173,14 +173,14 @@ const NavBarMobile = (props) => {
       >
         <div className={styles["nav-items-container-mobile"]}>
           <div className={styles["logo-menu-mobile"]}>
-            <a href="/">
+            <Link href="/">
               <img
                 width=""
                 height=""
                 alt="بلیطجا - لوگو"
                 src="../../../Images/bilitja-light-logo.webp"
               />
-            </a>
+            </Link>
             <p className="no-margin color-white">
               ارزان ترین بلیط های هواپیما
             </p>

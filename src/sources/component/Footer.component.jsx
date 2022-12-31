@@ -136,17 +136,17 @@ const Footer = () => {
                             <ul className={styles["ul-lists"]}>
                                 <li>
                                     <FontAwesomeIcon icon={faPhone} />
-                                    <a href="#">تهران</a>
+                                    <a href="tel:">تهران</a>
                                 </li>
                                 <li>
                                     <FontAwesomeIcon icon={faPhone} />
-                                    <a href="#"> تلفن پشتیبانی :
+                                    <a href="tel:02184279999"> تلفن پشتیبانی :
                                         <span className={'number-space'}>02184279999</span>
                                     </a>
                                 </li>
                                 <li>
                                     <FontAwesomeIcon icon={faPhone} />
-                                    <a href="#">موبایل پشتیبانی :
+                                    <a href="tel:09101005065">موبایل پشتیبانی :
                                         <span className={'number-space'}>09101005065</span>
                                     </a>
                                 </li>

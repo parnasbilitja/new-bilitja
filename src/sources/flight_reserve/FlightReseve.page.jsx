@@ -650,8 +650,9 @@ const FlightReserve = (props) =>{
                                             />
                                         </div>
                                         <span className="color-secondary">
-                                            { state.mobileSubmiter?.length <= 10 ? 'شماره همراه باید ۱۱ رقمی باشد' :
+                                            { 
                                             state.mobileSubmiter == null ||state.mobileSubmiter == ''?'لطفا شماره را وارد کنید':
+                                            state.mobileSubmiter?.length <= 10 ? 'شماره همراه باید ۱۱ رقمی باشد' :
                                             ''}
                                         </span>
                                     </div>

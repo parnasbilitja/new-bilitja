@@ -205,6 +205,7 @@ const FlightPassengerEditForm = (props) => {
             {state.melliCodeErr}
           </span>
         </div>
+        {props.pasEndDateAll &&
         <div className="col-lg-4 col-md-4 col-sm-4 col-12 padding-horizental-3px mb-4"
           style={{ height: 40 }}>
           <div
@@ -224,7 +225,7 @@ const FlightPassengerEditForm = (props) => {
           <span className="color-secondary error-message">
             {state.pasEndDateAllErr}
           </span>
-        </div>
+        </div>}
         <div className="col-lg-4 col-md-4 col-sm-4 col-12 padding-horizental-3px selectbox-receipt mb-4">
           <PrimarySelectInput
             value={state.sex}

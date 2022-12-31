@@ -20,6 +20,11 @@ import Head from 'next/head';
 const tour = () => {
     const ref = useRef(null);
 
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+      }, []);
+
     // mui
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -83,7 +88,7 @@ const tour = () => {
                                 </svg>
                                 <div className="text">
                                     <h5 className="font-bold" >{data && data.title}</h5>
-                                    <span className="font-bold">قیمت: {data && moneyFormat(data.minPrice)}</span>
+                                    <span className="font-bold">قیمت: {data && moneyFormat(data.minPrice)} تومان</span>
                                 </div>
                             </div>
                             <div className="d-flex flex-column justify-content-around me-auto mt-2">
@@ -264,8 +269,8 @@ const tour = () => {
                                     </button>
                                 </div> */}
                             </div>
-                            <div className="p-info__tour col-xl-12 col-lg-12 col-12 mt-2 border-bottom pb-4">
-                                <div className="p-thead d-flex align-items-center col-xl-12 col-lg-12 col-12">
+                            <div className="p-info__tour col-xl-12 col-lg-12 col-12 mt-2 border-bottom pb-4 pos-relative">
+                                <div className="p-thead d-flex align-items-center col-xl-12 col-lg-12 col-12 pos-absolute ">
                                     <div className="c-thead text-center rounded py-2 me-2 isDesktop">
                                         <span className="font-bold font-size-16">اطلاعات هتل</span>
                                     </div>
