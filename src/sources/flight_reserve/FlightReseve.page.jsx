@@ -30,8 +30,8 @@ import PopUp from "../component/PopUp.component";
 
 const FlightReserve = (props) =>{
     useEffect(() => {
-        // 👇️ scroll to top on page load
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        // window.scrollTo(0, 0,);
+        location.reload();
       }, []);
     // console.log(props);
     const [err,setErr] = useState({
