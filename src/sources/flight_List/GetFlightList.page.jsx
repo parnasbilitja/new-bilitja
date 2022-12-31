@@ -68,9 +68,9 @@ class GetFlightList extends React.Component {
 
   hashchange() {
     console.log("hashchange");
-    var flightdate = location.hash.substring(1);
-    console.log(flightdate);
-    location.reload();
+    // var flightdate = location.hash.substring(1);
+    // console.log(flightdate);
+    // location.reload();
   }
 
   getingAirlines = () => {
