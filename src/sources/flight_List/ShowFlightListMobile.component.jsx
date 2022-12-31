@@ -61,7 +61,7 @@ class ShowFlightListMobile extends React.Component {
                   <div
                     className="btn-buy-action"
                     onClick={(e) => {
-                      e.preventDefault();
+                      // e.preventDefault();
                       this.props.setReserveBoxData(oneFlight);
                     }}
                   >

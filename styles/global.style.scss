@@ -60,7 +60,8 @@
     border: none !important;
   }
 }
-
+html { height: 100%; overflow:auto; }
+body { height: 100%; }
 body {
   font-family: BYekan;
   z-index: 1 !important;
