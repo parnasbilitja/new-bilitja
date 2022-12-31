@@ -249,6 +249,7 @@ const FlightPassengerForm = (props) => {
                                     style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15 }}
                                     placeholder="تاریخ تولد"
                                     value={props.birthday}
+                                    readonly="readonly"
                                     name="birthday"
                                     onClick={(e) => {
                                         errHandler(e)
@@ -268,7 +269,8 @@ const FlightPassengerForm = (props) => {
                                 <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
                                     <PrimaryTextInput
                                         style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
-                                        name={`nationalCode `}
+                                        name={`nationalCode`}
+                                        maxlength={10}
                                         placeholder={`کد ملی`}
                                         inputMode={`numeric`}
                                         onChange={(e) => {
@@ -315,6 +317,7 @@ const FlightPassengerForm = (props) => {
                                     placeholder={`${"انقضای پاسپورت"}`}
                                     name="futureday"
                                     inputMode={`${"text"}`}
+                                    readonly="readonly"
                                     onChange={(e) => {
                                         errHandler(e);
                                         props.fillPassengersData(
