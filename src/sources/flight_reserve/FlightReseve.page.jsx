@@ -30,10 +30,7 @@ import PopUp from "../component/PopUp.component";
 
 const FlightReserve = (props) =>{
     useEffect(() => {
-        // window.scrollTo(0, 0,);
-        var flightdate = location.hash.substring(1);
-        console.log(flightdate);
-        location.reload();
+        window.scrollTo(0, 0,);
       }, []);
     // console.log(props);
     const [err,setErr] = useState({
