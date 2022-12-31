@@ -27,12 +27,10 @@ import {
 import { withRouter } from "next/router";
 import Link from "next/link";
 import PopUp from "../component/PopUp.component";
+import Scrolltoprefresh from "../component/Scrolltoprefresh";
 
 const FlightReserve = (props) =>{
-    useEffect(() => {
-        window.scrollTo(0, 0,);
-      }, []);
-    // console.log(props);
+    
     const [err,setErr] = useState({
         rule:false,
         ruleErr:'لطفا قوانین را بپذیرید',
@@ -529,9 +527,12 @@ const FlightReserve = (props) =>{
             }
           });
       };
-
+    //   html { height: 100%; overflow:auto; }
+    //   body { height: 100%; }
         return (
-            <div className="container">
+            <div className="container" style={{height: '100%'}}>
+            <Scrolltoprefresh/>
+
                 <div className={`${styles["flight-detail"]}`}>
                     <FlightReserveDesktopHeader {...state} />
                     <FlightReserveMobileHeader {...state} />

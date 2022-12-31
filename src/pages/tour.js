@@ -15,15 +15,11 @@ import { moneyFormat } from "../Utils/SimpleTasks";
 import Loading from "../sources/component/SmallLoading.component.jsx";
 import { Loader } from '../Utils/Loader';
 import Head from 'next/head';
+import Scrolltoprefresh from '../sources/component/Scrolltoprefresh';
 
 
 const tour = () => {
     const ref = useRef(null);
-
-    useEffect(() => {
-        // 👇️ scroll to top on page load
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-      }, []);
 
     // mui
     const handleClose = (event, reason) => {
@@ -53,6 +49,7 @@ const tour = () => {
         setData(val.data.data)
 
     }
+
     useEffect(() => {
         getData();
         console.log(data);
@@ -71,6 +68,7 @@ const tour = () => {
                 <title>بلیطجا {data && `|  ${data.title}`}</title>
             </Head>
             <div className="mt-5 pt-1" ref={ref}></div>
+            <Scrolltoprefresh/>
             <div className="mt-5 bodyVar">
                 <NavHandler/>
                 {/* section 1 */}

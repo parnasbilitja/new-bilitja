@@ -39,6 +39,7 @@ import { getCustomFormat } from "../../Utils/SimpleTasks";
 import { withRouter } from "next/router";
 import Descflightlist from "./Descflitlist";
 import FutureDays from "./FutureDays";
+import Scrolltoprefresh from "../component/Scrolltoprefresh";
 
 class GetFlightList extends React.Component {
   constructor(props) {
@@ -550,6 +551,7 @@ class GetFlightList extends React.Component {
 
     return (
       <div className="container">
+            <Scrolltoprefresh/>
         {!this.state.loading &&
           <div className="row text-right">
             {window.innerWidth > 826 ? (

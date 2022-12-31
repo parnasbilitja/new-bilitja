@@ -8,6 +8,7 @@ import {
     faFacebook,
 } from "@fortawesome/free-brands-svg-icons";
 import { footerLinks, footerLinksOut} from '../../Utils/data'
+import Link from "next/link";
 
 const Footer = () => {
     let today = new Date().toLocaleDateString('fa-IR-u-nu-latn');
@@ -37,7 +38,7 @@ const Footer = () => {
                                     <li key={i} >
                                         <h6>
                                             {" "}
-                                            <a href={`${item.href}${today}`}>{item.name}</a>
+                                            <Link href={`${item.href}${today}`}>{item.name}</Link>
                                         </h6>
                                     </li>
                                 ))}
@@ -53,7 +54,7 @@ const Footer = () => {
                                     <li key={i}>
                                         <h6>
                                             {" "}
-                                            <a href={`${item.href}${today}`}>{item.name}</a>
+                                            <Link href={`${item.href}${today}`}>{item.name}</Link>
                                         </h6>
                                     </li>
                                     ))}
