@@ -29,6 +29,10 @@ import Link from "next/link";
 import PopUp from "../component/PopUp.component";
 
 const FlightReserve = (props) =>{
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+      }, []);
     // console.log(props);
     const [err,setErr] = useState({
         rule:false,
