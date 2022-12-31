@@ -290,7 +290,7 @@ const FlightReciept = (props) => {
         </div>
         <div className="row mt-10">
           {/* <div className="col-lg-1"></div> */}
-          <div className="col-lg-12 no-padding-xs border-pill-lg">
+          <div className="col-lg-12 no-padding-xs border-pill-lg px-4">
             <p
               className={`text-right font-size-14 ${styles["pcolor-textpill"]}  `}
             >
@@ -417,39 +417,39 @@ const FlightReciept = (props) => {
         </div>
         <div className="row mt-10">
           <div className="col-lg-1 col-0"></div>
-          <div className="col-lg-12 col-12 no-padding-xs border-pill-lg pt-10">
+          <div className="col-lg-12 col-12 no-padding-xs border-pill-lg pt-10 px-3">
             <div className="row justify-content-between">
               {/* child */}
               <div className="col-lg-4 text-right">
                 <div className="row">
-                  <div className="col-lg-7 col-6">
+                  <div className="col-lg-7 col-6 pe-4">
                     <p className="font-size-13 font-bold-iransanse">
                       مبلغ کل :
                     </p>
                   </div>
-                  <div className="col-lg-5 col-6 text-left">
+                  <div className="col-lg-5 col-6 text-left ps-4">
                     <p className="font-size-13">
                       {moneyFormat(state.feeGet)} تومان
                     </p>
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-lg-7 col-6">
+                  <div className="col-lg-7 col-6 pe-4">
                     <p className="font-size-13 font-bold-iransanse">
                       اعتبار کیف پول شما :‌
                     </p>
                   </div>
-                  <div className="col-lg-5 col-6 text-left">
+                  <div className="col-lg-5 col-6 text-left ps-4">
                     <p className="font-size-13">{moneyFormat(0)} تومان</p>
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-lg-7 col-6">
+                  <div className="col-lg-7 col-6 pe-4">
                     <p className="font-size-13 font-bold-iransanse">
                       مبلغ قابل پرداخت :‌
                     </p>
                   </div>
-                  <div className="col-lg-5 col-6 text-left">
+                  <div className="col-lg-5 col-6 text-left ps-4">
                     <p className="font-size-13">
                       {moneyFormat(state.feeGet)} تومان
                     </p>
