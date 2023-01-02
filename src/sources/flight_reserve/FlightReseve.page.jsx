@@ -449,7 +449,6 @@ const FlightReserve = (props) =>{
               setState({...state, btn_disabled: false });
               setLoading(false)
               console.log('compeleteReservation();');
-              compeleteReservation();
               localStorage.setItem("mobile", data.mobile);
               localStorage.setItem("token", data.token);
               props.checkUserLogged();
@@ -469,7 +468,6 @@ const FlightReserve = (props) =>{
                 state: false,
                 type: "authentication",
               });
-              
 
             } else if (data.status === "-111") {
 
@@ -569,7 +567,8 @@ const FlightReserve = (props) =>{
                                         مجموع قیمت: &nbsp;
                                     </span>
                                     <span className="color-secondary font-bold-iransanse">
-                                        {moneyFormat(state.priceAll)}
+                                    {state.priceAll !== 0 ?
+                                        moneyFormat(state.priceAll):moneyFormat(state.priceADL)}
                                         &nbsp;
                                     </span>
                                     <span className="font-bold-iransanse">تومان</span>
@@ -764,7 +763,24 @@ const FlightReserve = (props) =>{
                                                         message: "لطفا اطلاعات را تکمیل کنید.",
                                                     });
                                                     setNumbers(true)
-                                                }else if(localStorage.getItem('mobile')?.length==11 && !localStorage.getItem('token')){
+                                                }
+                                                else if (state.agreeWithTerm === true && props.user.logged && localStorage.getItem('token')) {
+                                                    
+                                                    setLoading(true)
+                                                    
+                                                    compeleteReservation();
+                                                    
+                                                } 
+                                                else if(state.agreeWithTerm === false) {
+                                                    setState({...state,agreeWithTermerr:true });
+                                                    setLoading(false)
+                                                    props.messageBoxModify({
+                                                        state: true,
+                                                        color:false,
+                                                        message: "لطفا با شرایط و مقررات موافقت کنید",
+                                                    });
+                                                }
+                                                else if(localStorage.getItem('mobile')?.length==11 && !localStorage.getItem('token')){
                                                     setState({...state, stateRegister: false });
                                                     login();
                                                     props.messageBoxModify({
@@ -777,21 +793,7 @@ const FlightReserve = (props) =>{
                                                         type: "login",
                                                     });
                                                 }
-                                                 else if (state.agreeWithTerm === true && props.user.logged && localStorage.getItem('token')) {
-
-                                                    setLoading(true)
-                                                    
-                                                    compeleteReservation();
-
-                                                } else if(state.agreeWithTerm === false) {
-                                                    setState({...state,agreeWithTermerr:true });
-                                                    setLoading(false)
-                                                    props.messageBoxModify({
-                                                        state: true,
-                                                        color:false,
-                                                        message: "لطفا با شرایط و مقررات موافقت کنید",
-                                                    });
-                                                }else if(!localStorage.getItem('token')){
+                                                else if(!localStorage.getItem('token')){
                                                     setState({...state, stateRegister: false });
                                                     login();
                                                     props.messageBoxModify({
