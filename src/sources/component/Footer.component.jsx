@@ -26,7 +26,7 @@ const Footer = () => {
                                 src="../../../Images/bilitja-light-logo.webp"
                             />
                             <p>ارزان ترین بلیط های هواپیما</p>
-                            <a href="">www. B i l i t j a .com</a>
+                            <Link href="/">www. B i l i t j a .com</Link>
                         </div>
                         <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
                             <div className="d-flex align-items-center mb-2">
@@ -105,7 +105,7 @@ const Footer = () => {
                                 <ul className={styles["ul-soutian"]}>
                                     <li>
                                         <FontAwesomeIcon icon={faGlobe} />
-                                        <a href="#">bilitja.com</a>
+                                        <Link href="/">bilitja.com</Link>
                                     </li>
                                     <li>
                                         <a href="https://instagram.com/bilitja">

@@ -67,7 +67,7 @@ const Profile = (props) => {
         <div className="card my-4 profile-cnt">
           <div className="container-fluid">
             <div className="row my-3">
-              <div className="col-lg-3 text-center">
+              {/* <div className="col-lg-3 text-center">
                 <img
                   width=""
                   height=""
@@ -75,7 +75,7 @@ const Profile = (props) => {
                   alt="بلیطجا - عکس پروفایل کاربر"
                   className="img-fluid img-responsive rounded-circle border-black profile-img"
                 />
-              </div>
+              </div> */}
               <div className="col-lg-9 d-flex flex-wrap align-items-start justify-content-between">
                 <div className="flex-48">
                   <div className="row my-2">

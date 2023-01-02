@@ -1,4 +1,4 @@
-import React , { useEffect, useState }from "react";
+import React , { useEffect, useRef, useState }from "react";
 import styles from "../../../styles/FlightReserve.module.scss";
 import * as moment from 'jalali-moment';
 import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
@@ -52,6 +52,7 @@ const FlightReserve = (props) =>{
     const [numbers ,setNumbers] = useState(false)
     const [closePopUp, setClosePopUp] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [scrollTop, setScrollTop] = useState(0)
     const [state,setState] = useState({
         stateRegister: false,
         passengers: [],
@@ -59,7 +60,7 @@ const FlightReserve = (props) =>{
         mobileSubmiter: localStorage.getItem('mobile') ? localStorage.getItem('mobile') : '',
         phoneSubmiter: '',
         mobileSubmiterErr: "",
-        phoneSubmiterErr: "شماره ثابت اجباریست!!",
+        phoneSubmiterErr: "شماره ثابت اجباریست",
         agreeWithTerm: false,
         agreeWithTermerr: false,
         email:''
@@ -309,6 +310,16 @@ const FlightReserve = (props) =>{
             setState({...state,[name]:value})
     };
 
+    const Ref = useRef(null);
+
+  const scrollToBottom = () => {
+    Ref.current.scrollIntoView({ block: "end", behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+    setScrollTop(false)
+  }, [scrollTop]);
 
     useEffect(() => {
         setState({...state,mobileSubmiter:props?.user?.user_info?.mobile})
@@ -533,11 +544,11 @@ const FlightReserve = (props) =>{
             <div className="container" style={{height: '100%'}}>
             <Scrolltoprefresh/>
 
-                <div className={`${styles["flight-detail"]}`}>
+                <div className={`${styles["flight-detail"]}`} ref={Ref}>
                     <FlightReserveDesktopHeader {...state} />
                     <FlightReserveMobileHeader {...state} />
                 </div>
-                <div className="row mt-10">
+                <div className="row mt-10" >
                     <div className="col-lg-1"></div>
                     <div className="col-lg-12 no-padding-xs border-pill-lg mt-2">
                         {state.passengers ? state.passengers.map((onePassenger, index) => (
@@ -715,7 +726,7 @@ const FlightReserve = (props) =>{
                                                 errHandler(e);
                                                 setState({...state,
                                                     agreeWithTerm: e.target.checked,
-                                                    agreeWithTermerr:!state.agreeWithTermerr
+                                                    agreeWithTermerr:e.target.checked ? false:true
                                                 });
                                             }}
                                             className="mx-2"
@@ -744,7 +755,16 @@ const FlightReserve = (props) =>{
                                     <div className="col-lg-8 col-md-8 col-7 padding-3px">
                                         <button
                                             onClick={(e) => {
-                                                if(localStorage.getItem('mobile')?.length==11 && !localStorage.getItem('token')){
+                                                if (!validation()) {
+                                                    setLoading(false)
+                                                    setScrollTop(true)
+                                                    props.messageBoxModify({
+                                                        state: true,
+                                                        color:false,
+                                                        message: "لطفا اطلاعات را تکمیل کنید.",
+                                                    });
+                                                    setNumbers(true)
+                                                }else if(localStorage.getItem('mobile')?.length==11 && !localStorage.getItem('token')){
                                                     setState({...state, stateRegister: false });
                                                     login();
                                                     props.messageBoxModify({
@@ -757,15 +777,7 @@ const FlightReserve = (props) =>{
                                                         type: "login",
                                                     });
                                                 }
-                                                if (!validation()) {
-                                                    setLoading(false)
-                                                    props.messageBoxModify({
-                                                        state: true,
-                                                        color:false,
-                                                        message: "لطفا اطلاعات را تکمیل کنید.",
-                                                    });
-                                                    setNumbers(true)
-                                                } else if (state.agreeWithTerm === true && props.user.logged && localStorage.getItem('token')) {
+                                                 else if (state.agreeWithTerm === true && props.user.logged && localStorage.getItem('token')) {
 
                                                     setLoading(true)
                                                     

@@ -28,6 +28,7 @@ class Filters extends React.Component {
             checked: this.state.checked,
         });
     }
+    
 
     handleFindByFlightNo = (e) => {
         if (e.target.value != "") {
@@ -145,6 +146,7 @@ class Filters extends React.Component {
                 <div className="title-filter">
                     <h3>فیلتر ها</h3>
                 </div>
+                {console.log(this.props)}
                 <Accordion style={{ width: "94%", marginRight: 15, }}>
                     <Accordion.Item className={`${styles["text"]} accordion-item-prs `}>
                         <Accordion.Button className={'acr-btn'} style={{ background: " rgb(243, 243, 243)", paddingRight: 10, paddingLeft: 10 }}>
@@ -362,6 +364,9 @@ class Filters extends React.Component {
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>
+                    <div className="text-center">
+                        <button onClick={this.props.closeSide}>اعمال فیلتر</button>
+                    </div>
                 </Accordion>
             </div>
         );

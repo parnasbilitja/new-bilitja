@@ -262,8 +262,8 @@ class GetFlightList extends React.Component {
               .then((data) => {
                 if (data.length != 0 && data != undefined) {
                   this.props.addCredentials({
-                    flightDateNext: data[0].flightDateNext,
-                    flightDatePrev: data[0].flightDatePrev,
+                    flightDateNext: data[0]?.flightDateNext,
+                    flightDatePrev: data[0]?.flightDatePrev,
                   });
                   // if (this.props.searchobject.withFilters == "true") {
                   //   this.props.addFilters({ airlines: data.airlines });
@@ -665,6 +665,7 @@ class GetFlightList extends React.Component {
                 className={`col-lg-3 col-md-4 col-sm-4 ${styles["hidden-xs-flight"]} padding-5px`}
               >
                 <div className="position-sticky" style={{ top: 100 }}>
+                  {}
                   <Filters
                     getData={this.getData}
                     closeSide={() => {

@@ -56,7 +56,7 @@ export const checkNumber = (char) => {
   return res;
 };
 export const getweekday = (value) => {
-  switch (value.toLowerCase()) {
+  switch (value?.toLowerCase()) {
     case "saturday":
       return "شنبه";
     case "sunday":

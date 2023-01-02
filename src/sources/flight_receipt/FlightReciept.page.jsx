@@ -22,6 +22,7 @@ import FlightPassengerEditForm from "./FlightPassengerEditForm.component";
 import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
 import router, { withRouter } from "next/router";
 import PopUp from "../component/PopUp.component";
+import Scrolltoprefresh from "../component/Scrolltoprefresh";
 
 const FlightReciept = (props) => {
 
@@ -287,6 +288,7 @@ const FlightReciept = (props) => {
         <div className={styles["flight-detail"]}>
           <FlightReserveDesktopHeader {...state} />
           <FlightReserveMobileHeder {...state} />
+          <Scrolltoprefresh/>
         </div>
         <div className="row mt-10">
           {/* <div className="col-lg-1"></div> */}

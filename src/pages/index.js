@@ -21,6 +21,7 @@ import { selcetAccountBox } from "../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../Redux/UI/ui.action";
 import { withRouter } from "next/router";
 import NavHandler from "../Components/share/NavHandler";
+import Scrolltoprefresh from "../sources/component/Scrolltoprefresh";
 
 class App extends React.Component {
   constructor(props) {
@@ -89,6 +90,7 @@ class App extends React.Component {
     return (
       <div className="bodyVar">
         <NavHandler />
+        <Scrolltoprefresh/>
         <div className={this.state.width <= 826 ? "mt-140" : "mt-90"}>
           {
             // this.mainRouter(this.props.router.asPath)

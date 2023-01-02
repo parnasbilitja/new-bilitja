@@ -25,23 +25,23 @@ class ShowFlightListMobile extends React.Component {
               خريد بليط هواپيما{" "}
               <span className="color-secondary font-bold-iransanse">
                 {this.props.flightList.length != 0
-                  ? this.props.flightList[0].source
+                  ? this.props.flightList[0]?.source
                   : ""}
               </span>{" "}
               به{" "}
               <span className="color-secondary font-bold-iransanse">
                 {this.props.flightList.length != 0
-                  ? this.props.flightList[0].destinate
+                  ? this.props.flightList[0]?.destinate
                   : ""}
               </span>
             </p>
             <p>
               {this.props.flightList.length != 0
-                ? getweekday(this.props.flightList[0].flightDay)
+                ? getweekday(this.props.flightList[0]?.flightDay)
                 : ""}{" "}
               &nbsp;
               {this.props.flightList.length != 0
-                ? `${this.props.flightList[0].flightDate}`
+                ? `${this.props.flightList[0]?.flightDate}`
                 : ""}
             </p>
           </div>

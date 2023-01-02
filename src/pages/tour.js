@@ -47,7 +47,6 @@ const tour = () => {
     const getData = async () => {
         const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${slug ? slug : JSON.parse(localStorage.getItem("slug"))}`)
         setData(val.data.data)
-
     }
 
     useEffect(() => {
@@ -91,6 +90,7 @@ const tour = () => {
                             </div>
                             <div className="d-flex flex-column justify-content-around me-auto mt-2">
                                 <div className="d-flex">
+                                    <img src={data.transfers[0].logo} width='30px' height={'30px'} />
                                     <div className="text">
                                         <span className="font-bold">ایرلاین رفت :</span>
                                     </div>
@@ -101,6 +101,7 @@ const tour = () => {
                                     </div>
                                 </div>
                                 <div className="d-flex">
+                                <img src={data.transfers[1].logo} width='30px' height={'30px'} />
                                     <div className="text">
                                         <span className="font-bold">ایرلاین برگشت :</span>
                                     </div>
