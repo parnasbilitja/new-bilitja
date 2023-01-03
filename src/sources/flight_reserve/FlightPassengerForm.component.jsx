@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import PrimaryTextInput from "../component/PrimaryTextInput.component";
 import PrimarySelectInput from "../component/PrimarySelectInput.component";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { CloseOutlined } from "@ant-design/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FuturedayCalendar from "../calendar/FutureCalendar.component";
 
@@ -132,7 +133,7 @@ const FlightPassengerForm = (props) => {
                         className="col-6 no-padding text-left"
                         style={{ marginRight: -14 }}
                     >
-                        <span className="font-size-14 color-secondary font-bold-iransanse">
+                        <span className="font-size-14 color-secondary font-bold-iransanse ps-1">
                             {moneyFormat(props.price)}
                         </span>
                         <span className="font-size-12 font-bold-iransanse">تومان</span>
@@ -140,13 +141,13 @@ const FlightPassengerForm = (props) => {
                     {props.id != 0 ? (
                         <div className="col-1 no-margin no-padding">
                             <span
-                                style={{ padding: 3 }}
-                                className="exit-form"
+                                className="exit-form position-absolute"
                                 onClick={() => {
                                     props.removePassenger(props.type, props.id);
                                 }}
+                                style={{ bottom: 0, left: 5 }}
                             >
-                                <FontAwesomeIcon icon={faTimes} />
+                                <CloseOutlined style={{ color: "red" }} />
                             </span>
                             <span className="color-secondary error-message">&nbsp;</span>
                         </div>
@@ -311,7 +312,7 @@ const FlightPassengerForm = (props) => {
                         <div className="col-lg-2 col-md-3 col-sm-4 col-6 padding-horizental-3px mt-1">
                             <div className={`d-flex align-items-center `} >
                                 <PrimaryTextInput
-                                    ext={props.nationality == 'IR' && props.pathKind == 1 ?'BEFORE':''}
+                                    ext={props.nationality == 'IR' && props.pathKind == 1 ? 'BEFORE' : ''}
                                     disabled={props.nationality == 'IR' && props.pathKind == 1 ? true : false}
                                     style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15 }}
                                     placeholder={`${"انقضای پاسپورت"}`}
