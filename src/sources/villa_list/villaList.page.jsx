@@ -69,14 +69,13 @@ class villaList extends React.Component {
 
                 <PopUp opened={this.state.open} closePopUp={this.managePopUpSearch}>
                     <div className="popup-content-container">
-                        <div className="popup-heading">
+                        <div className="popup-heading d-flex align-items-center justify-content-between">
                             <span>جستجو مجدد</span>
-                            <span className="pull-left exit-form" onClick={() => {
+                            <span className="exit-form" onClick={() => {
                                 this.managePopUpSearch(false)
                             }}>
-                                <FontAwesomeIcon icon={faTimes} />
+                                <CloseOutlined style={{ color: "red" }} />
                             </span>
-
                         </div>
                         <villaSearchBox />
                     </div>
