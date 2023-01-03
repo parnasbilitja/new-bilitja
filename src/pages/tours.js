@@ -63,36 +63,38 @@ const tours = (props) => {
             </div> */}
             <div className="mt-5 bodyVar">
                 <NavHandler />
-                <div className="container mt-5 pt-4">
-                    <div className="c-input col-xl-3 col-lg-3 col-sm-4 col-12 mt-5 position-relative mb-4">
-                        <input type="text" value={searchBar} onChange={e=>searchBarHandler(e)} class="w-100 pe-2" style={{height: 43,outline: "none",borderRadius: 8,border:"1px solid #fff",boxShadow: "0 0 3px #cccaca"}}  />
-                        <div className="ic-search  position-absolute" style={{left: 10,top: 10}}>
-                            <svg width="25" height="25" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <ellipse cx="14.0569" cy="14.6788" rx="8.9241" ry="8.94638" stroke="#CCD2E3" stroke-width="2"></ellipse>
-                                <path d="M14.059 10.8457C13.5567 10.8457 13.0594 10.9449 12.5954 11.1376C12.1313 11.3302 11.7097 11.6127 11.3546 11.9687C10.9994 12.3247 10.7177 12.7474 10.5255 13.2126C10.3333 13.6778 10.2344 14.1764 10.2344 14.6799" stroke="#CCD2E3" stroke-width="2" stroke-linecap="round"></path>
-                                <path d="M25.5316 26.1818L21.707 22.3477" stroke="#CCD2E3" stroke-width="2" stroke-linecap="round"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div className="d-flex mt-2 flex-column mb-4">
-                        <div className="d-flex align-items-center justify-content-between">
-                            <div className="d-flex align-items-center">
-                                <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.326" height="30.086" viewBox="0 0 14.326 17.086">
-                                    <g id="Bookmark" transform="translate(1 1)">
-                                        <path id="Path_835" data-name="Path 835" d="M3.213,15.826h0l-.007,0a1.265,1.265,0,0,1-2-.941C1.121,13.721,1,11.579,1,8.464V8.408H1c0-1.236,0-2.314.089-3.213A5.283,5.283,0,0,1,1.795,2.8C2.7,1.413,4.432,1.011,7.16,1s4.469.388,5.372,1.787a5.329,5.329,0,0,1,.705,2.4c.088.9.089,1.982.089,3.219v.056c0,3.115-.121,5.257-.211,6.426a1.265,1.265,0,0,1-1.995.941h0l-.007,0c-.707-.483-1.361-1-1.87-1.41l-.009-.007c-.232-.184-.442-.352-.607-.474a3.743,3.743,0,0,0-.807-.482,1.755,1.755,0,0,0-1.313,0,3.744,3.744,0,0,0-.807.482h0c-.165.122-.375.29-.607.474l-.009.007C4.574,14.822,3.92,15.343,3.213,15.826Z" transform="translate(-1 -1)" fill="none" stroke="#ff0000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} />
-                                        <path id="Path_836" data-name="Path 836" d="M12,5a1.727,1.727,0,0,1,1.541.51c.514.512.514,2.227.514,2.911" transform="translate(-4.468 -2.262)" fill="none" stroke="#279692" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} />
-                                    </g>
-                                </svg>
-                                <div className="text">
-                                    <h5 className="font-bold">لیست تورها</h5>
-                                    <h6>مشاهده مناسب ترین تور های لحظه آخری</h6>
+                <div className="container mt-5 pt-5">
+                    <div className="d-flex align-items-center justify-content-between mt-5">
+                        <div className="d-flex mt-2 flex-column">
+                            <div className="d-flex align-items-center justify-content-between">
+                                <div className="d-flex align-items-center">
+                                    <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.326" height="30.086" viewBox="0 0 14.326 17.086">
+                                        <g id="Bookmark" transform="translate(1 1)">
+                                            <path id="Path_835" data-name="Path 835" d="M3.213,15.826h0l-.007,0a1.265,1.265,0,0,1-2-.941C1.121,13.721,1,11.579,1,8.464V8.408H1c0-1.236,0-2.314.089-3.213A5.283,5.283,0,0,1,1.795,2.8C2.7,1.413,4.432,1.011,7.16,1s4.469.388,5.372,1.787a5.329,5.329,0,0,1,.705,2.4c.088.9.089,1.982.089,3.219v.056c0,3.115-.121,5.257-.211,6.426a1.265,1.265,0,0,1-1.995.941h0l-.007,0c-.707-.483-1.361-1-1.87-1.41l-.009-.007c-.232-.184-.442-.352-.607-.474a3.743,3.743,0,0,0-.807-.482,1.755,1.755,0,0,0-1.313,0,3.744,3.744,0,0,0-.807.482h0c-.165.122-.375.29-.607.474l-.009.007C4.574,14.822,3.92,15.343,3.213,15.826Z" transform="translate(-1 -1)" fill="none" stroke="#ff0000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} />
+                                            <path id="Path_836" data-name="Path 836" d="M12,5a1.727,1.727,0,0,1,1.541.51c.514.512.514,2.227.514,2.911" transform="translate(-4.468 -2.262)" fill="none" stroke="#279692" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} />
+                                        </g>
+                                    </svg>
+                                    <div className="text">
+                                        <h5 className="font-bold">لیست تورها</h5>
+                                        <h6>مشاهده مناسب ترین تور های لحظه آخری</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="bottom d-flex align-items-center mt-3">
-                            <div className="border-right"></div>
-                            <div className="border-left"></div>
+                        <div className="c-input col-xl-3 col-lg-3 col-sm-4 col-12 position-relative">
+                            <input type="text" value={searchBar} onChange={e=>searchBarHandler(e)} class="w-100 pe-2" style={{height: 43,outline: "none",borderRadius: 8,border:"1px solid #fff",boxShadow: "0 0 3px #cccaca"}}  />
+                            <div className="ic-search  position-absolute" style={{left: 10,top: 10}}>
+                                <svg width="25" height="25" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="14.0569" cy="14.6788" rx="8.9241" ry="8.94638" stroke="#CCD2E3" stroke-width="2"></ellipse>
+                                    <path d="M14.059 10.8457C13.5567 10.8457 13.0594 10.9449 12.5954 11.1376C12.1313 11.3302 11.7097 11.6127 11.3546 11.9687C10.9994 12.3247 10.7177 12.7474 10.5255 13.2126C10.3333 13.6778 10.2344 14.1764 10.2344 14.6799" stroke="#CCD2E3" stroke-width="2" stroke-linecap="round"></path>
+                                    <path d="M25.5316 26.1818L21.707 22.3477" stroke="#CCD2E3" stroke-width="2" stroke-linecap="round"></path>
+                                </svg>
+                            </div>
                         </div>
+                    </div>
+                    <div className="bottom d-flex align-items-center mt-3 mb-3">
+                        <div className="border-right"></div>
+                        <div className="border-left"></div>
                     </div>
                     {/* <div  classNameName="m-2" > */}
                     {data != null ? data.filter(post => {
