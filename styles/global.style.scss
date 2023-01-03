@@ -12,6 +12,11 @@
 }
 
 @font-face {
+  font-family: IranLight;
+  src: url("../public/Font/IranSans2/eot/IRANSansWebFaNumLight.woff");
+}
+
+@font-face {
   font-family: bilitja;
   src: url("../public/Font/kilofont.woff");
 }
@@ -73,7 +78,11 @@ body {
 }
 
 .font-bold-iransanse {
-  font-family: IranBold !important;
+  font-family: "IranBold" !important;
+}
+
+.font-light-iransans{
+  font-family: "IranLight" !important;
 }
 
 ul{
@@ -603,7 +612,10 @@ html {
   border: 2px solid #ff0000;
   color: #ff0000;
   text-align: center;
-  height: 30px;
+  height: 37px;
+  margin: 5px 0;
+  padding: 4px 8px 0px 8px !important;
+  display: inline-block;
 }
 
 .exit-form-circle {
@@ -652,13 +664,11 @@ html {
 
   .popup-heading {
     padding: 10px 0;
-    text-align: right;
-
-    span {
-      margin: 5px 0;
-      padding: 4px 8px 0px 8px;
-      display: inline-block;
-    }
+    // span {
+    //   margin: 5px 0;
+    //   padding: 4px 8px 0px 8px;
+    //   display: inline-block;
+    // }
   }
 }
 
@@ -876,7 +886,7 @@ div.radio {
 }
 
 .iranBold {
-  font-family: IranBold !important;
+  font-family: "IranBold" !important;
 }
 .border-between {
   display: flex;
@@ -1052,7 +1062,7 @@ button {
 .type {
   align-items: center;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   width: 14%;
 }
 .text-mobi-btn {
@@ -1581,7 +1591,7 @@ $sizes: 100;
   }
   .m-main-data {
     flex-direction: column !important;
-    align-items: start !important;
+    align-items: flex-start !important;
   }
   .val {
     span {
