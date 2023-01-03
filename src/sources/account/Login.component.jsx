@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { CloseOutlined } from "@ant-design/icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import PrimaryTextInput from "../../sources/component/PrimaryTextInput.component";
@@ -19,19 +21,19 @@ import { useState } from "react";
 import Timer from "../../Utils/Timer";
 const Login = (props) => {
 
-  const [TimerChecker,setTimerChecker] = useState({
+  const [TimerChecker, setTimerChecker] = useState({
     phoneErrType: false,
     value: false,
     timer: false,
   })
-  const [Errors,setErrors] = useState('')
+  const [Errors, setErrors] = useState('')
   const [UserMobileAndCode, setUserMobileAndCode] = useState({
-    mobile:localStorage.getItem('mobile').length == 11 ? localStorage.getItem('mobile') : "",
-    code:''
+    mobile: localStorage.getItem('mobile').length == 11 ? localStorage.getItem('mobile') : "",
+    code: ''
   })
-  const [TestForValue,setTestForValue] = useState({
-    num:false,
-    code:false,
+  const [TestForValue, setTestForValue] = useState({
+    num: false,
+    code: false,
   })
 
   const [state, setState] = useState({
@@ -177,12 +179,12 @@ const Login = (props) => {
 
   const phoneHandler = () => {
     setState({ ...state, phoneErrType: true, timer: false })
-    setTestForValue({code:false,num: false})
-    setUserMobileAndCode({code:'',mobile:''})
+    setTestForValue({ code: false, num: false })
+    setUserMobileAndCode({ code: '', mobile: '' })
   }
 
   useEffect(() => {
-    if (UserMobileAndCode.mobile.length == 11) { 
+    if (UserMobileAndCode.mobile.length == 11) {
       localStorage.setItem("mobile", UserMobileAndCode.mobile);
       console.log(UserMobileAndCode.mobile);
     }
@@ -194,11 +196,11 @@ const Login = (props) => {
 
 
   useEffect(() => {
-    if (localStorage.getItem('mobile').length == 11) { 
-      setTestForValue({...TestForValue,num: true})
-      setUserMobileAndCode({...UserMobileAndCode,mobile:localStorage.getItem('mobile')})
+    if (localStorage.getItem('mobile').length == 11) {
+      setTestForValue({ ...TestForValue, num: true })
+      setUserMobileAndCode({ ...UserMobileAndCode, mobile: localStorage.getItem('mobile') })
     }
-  },[])
+  }, [])
 
 
   const loginWithToken = () => {
@@ -271,28 +273,28 @@ const Login = (props) => {
   };
 
   const userMobileHandler = (e) => {
-    setUserMobileAndCode({...UserMobileAndCode, [e.target.name]: e.target.value});
+    setUserMobileAndCode({ ...UserMobileAndCode, [e.target.name]: e.target.value });
     console.log(UserMobileAndCode);
     console.log(TestForValue);
   }
 
   return (
     <div className="popup-content-container">
-      
-      <div className="popup-heading text-center">
+
+      <div className="popup-heading d-flex align-items-center justify-content-between">
         {TestForValue.num !== true ?
-        <span>لطفا شماره خود را وارد کنید</span>:TestForValue.num == true?
-        <span>کد ارسال شده به {UserMobileAndCode.mobile} را وارد کنید</span>:''
+          <span>لطفا شماره خود را وارد کنید</span> : TestForValue.num == true ?
+            <span>کد ارسال شده به {UserMobileAndCode.mobile} را وارد کنید</span> : ''
         }
         <span
-          className="pull-left exit-form"
+          className="exit-form position-absolute"
           onClick={() => {
             props.accountBoxModify({
               state: false,
             });
-          }}
+          }} style={{ left: 10 }}
         >
-          <FontAwesomeIcon icon={faTimes} />
+          <CloseOutlined style={{ color: "red" }} />
         </span>
       </div>
       {state.error === true ? (
@@ -306,73 +308,73 @@ const Login = (props) => {
           </div>
           <div className="col-11 padding-horizental-3px">
             <div>
-            {TestForValue.num == false?
-              <input
-              className="form-input-auth px-2 col-12"
-              placeholder="شماره موبایل"
-              name="mobile"
-              value={UserMobileAndCode.mobile}
-              onChange={e => userMobileHandler(e)}
-              autoFocus
-              inputMode="numeric"
-              />
-            :
-              TestForValue.num  == true && TestForValue.code == false?
+              {TestForValue.num == false ?
                 <input
-                className="form-input-auth px-2 col-12"
-                value={UserMobileAndCode.code}
-                placeholder="کد ارسال شده را وارد نمایید."
-                name="code"
-                onChange={e => userMobileHandler(e)}
-                // autoFocus
-                inputMode="numeric"
-              />
-            :
-              <input
-              value={UserMobileAndCode.code}
-              className="form-input-auth px-2 col-12"
-              placeholder="کد ارسال شده را وارد نمایید."
-              name="code"
-              onChange={e => userMobileHandler(e)}
-              // autoFocus
-              inputMode="numeric"
-            />
+                  className="form-input-auth px-2 col-12"
+                  placeholder="شماره موبایل"
+                  name="mobile"
+                  value={UserMobileAndCode.mobile}
+                  onChange={e => userMobileHandler(e)}
+                  autoFocus
+                  inputMode="numeric"
+                />
+                :
+                TestForValue.num == true && TestForValue.code == false ?
+                  <input
+                    className="form-input-auth px-2 col-12"
+                    value={UserMobileAndCode.code}
+                    placeholder="کد ارسال شده را وارد نمایید."
+                    name="code"
+                    onChange={e => userMobileHandler(e)}
+                    // autoFocus
+                    inputMode="numeric"
+                  />
+                  :
+                  <input
+                    value={UserMobileAndCode.code}
+                    className="form-input-auth px-2 col-12"
+                    placeholder="کد ارسال شده را وارد نمایید."
+                    name="code"
+                    onChange={e => userMobileHandler(e)}
+                    // autoFocus
+                    inputMode="numeric"
+                  />
               }
             </div>
           </div>
         </div>
         <div className="row mt-3">
-            
+
           <div className=" without-focus col-12">
             <button
               onClick={() => {
-                console.log(UserMobileAndCode,UserMobileAndCode.code.length);
-                if (UserMobileAndCode.code.length !==4 && UserMobileAndCode.mobile.length == 11) {
-                  setTestForValue({...TestForValue,num:true})
+                console.log(UserMobileAndCode, UserMobileAndCode.code.length);
+                if (UserMobileAndCode.code.length !== 4 && UserMobileAndCode.mobile.length == 11) {
+                  setTestForValue({ ...TestForValue, num: true })
                   login()
-                }else if(UserMobileAndCode.code.length == 4) {
+                } else if (UserMobileAndCode.code.length == 4) {
                   console.log(UserMobileAndCode.code);
                   loginWithToken()
                 }
-                
+
               }}
               className={
                 // props.disabled === false
                 //  "btn btn-info py-3 mb-3 col-12 btn-block"
-                 `${styles["primary-button"]} py-2`
+                `${styles["primary-button"]} py-2`
               }
-              // disabled={state.btn_disabled}
+            // disabled={state.btn_disabled}
             >
-              {TestForValue.num == false  ?"دریافت کد":
-              TestForValue.num  == true && TestForValue.code == false?'ثبت کد':
-              'ارسال مجدد کد تایید' && setTestForValue({...TestForValue, code:false}) }
+              {TestForValue.num == false ? "دریافت کد" :
+                TestForValue.num == true && TestForValue.code == false ? 'ثبت کد' :
+                  'ارسال مجدد کد تایید' && setTestForValue({ ...TestForValue, code: false })}
             </button>
-            
+
           </div>
           {TestForValue.num == true &&
-          <div className="col-12 justify-content-center d-flex">
-              <button className={'btn btn-outline-dark p-2 my-1 cursor-pointer'} onClick={() =>phoneHandler()}>تغییر شماره</button>
-          </div>
+            <div className="col-12 justify-content-center d-flex">
+              <button className={'btn btn-outline-dark p-2 my-1 cursor-pointer'} onClick={() => phoneHandler()}>تغییر شماره</button>
+            </div>
           }
         </div>
       </div>
@@ -382,12 +384,13 @@ const Login = (props) => {
             {TimerChecker.value <= 1000 &&
               <p className="cursor-pointer" onClick={() => {
                 login();
-                setTimerChecker({...TimerChecker,phoneErrType:!TimerChecker.phoneErrType})}}>ارسال مجدد کد</p>
+                setTimerChecker({ ...TimerChecker, phoneErrType: !TimerChecker.phoneErrType })
+              }}>ارسال مجدد کد</p>
             }
-          <Timer setTimerChecker={setTimerChecker} TimerChecker={TimerChecker} phoneErrType={TimerChecker.phoneErrType} />
+            <Timer setTimerChecker={setTimerChecker} TimerChecker={TimerChecker} phoneErrType={TimerChecker.phoneErrType} />
           </div>
         </div>
-      } 
+      }
 
 
       {/* <div className="row">
