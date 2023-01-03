@@ -20,22 +20,23 @@ import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
 import { getweekday } from "../../Utils/SimpleTasks";
 import Loader from "../../Utils/Loader";
-const PopupFlightReserve = (props) =>{
-  
-    const [state,setState] = useState({
-      numADL: 1,
-      numCHD: 0,
-      numINF: 0,
-      loading: false,
-    });
+const PopupFlightReserve = (props) => {
 
-  useEffect(() =>{
-    setState({...state,loading:false})
-  },[])
+  const [state, setState] = useState({
+    numADL: 1,
+    numCHD: 0,
+    numINF: 0,
+    loading: false,
+  });
+
+  useEffect(() => {
+    setState({ ...state, loading: false })
+  }, [])
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setState({...state,
+    setState({
+      ...state,
       [name]: parseInt(value),
     });
   };
@@ -106,9 +107,9 @@ const PopupFlightReserve = (props) =>{
               );
             });
         } else {
-          setState({...state,loading:false})
+          setState({ ...state, loading: false })
           props.messageBoxModify({
-            color:false,
+            color: false,
             state: true,
             message: `${data.message}`,
           });
@@ -127,172 +128,172 @@ const PopupFlightReserve = (props) =>{
     }
     return "OK";
   };
-    const numberOfPassengers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const numberOfPassengers_ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const {
-      source,
-      destinate,
-      flightDay,
-      flightDate,
-      flightDateTime,
-      cap,
-      airlineIataCode,
-      airline,
-    } = props;
-    return (
-      <div className={styles["pop-up-flight-reserve-box"]}>
-        <p className="font-bold-iransanse">
-          خرید بلیط هواپیما &nbsp;
-          <span className="color-secondary font-bold-iransanse">{source}</span>
-          &nbsp;به &nbsp;
-          <span className="color-secondary font-bold-iransanse">
-            {destinate}
+  const numberOfPassengers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const numberOfPassengers_ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const {
+    source,
+    destinate,
+    flightDay,
+    flightDate,
+    flightDateTime,
+    cap,
+    airlineIataCode,
+    airline,
+  } = props;
+  return (
+    <div className={styles["pop-up-flight-reserve-box"]}>
+      <p className="font-light-iransanse">
+        خرید بلیط هواپیما &nbsp;
+        <span className="color-secondary font-bold-iransanse">{source}</span>
+        &nbsp;به &nbsp;
+        <span className="color-secondary font-bold-iransanse">
+          {destinate}
+        </span>
+      </p>
+      <p className="font-size-15 font-bold-iransanse">
+        {getweekday(flightDay)} &nbsp;{flightDate}
+      </p>
+
+      <div className={styles["pop-up-flight-detail-reserve-box"]}>
+        <div>
+          <div>
+            <i className="bilitja icon-clock"></i>
+          </div>
+          <span className="font-size-12 xs-font-size-13">
+            {String(flightDateTime).split("T")[1].slice(0, 5)}
           </span>
-        </p>
-        <p className="font-size-15 font-bold-iransanse">
-          {getweekday(flightDay)} &nbsp;{flightDate}
-        </p>
-
-        <div className={styles["pop-up-flight-detail-reserve-box"]}>
-          <div>
-            <div>
-              <i className="bilitja icon-clock"></i>
-            </div>
-            <span className="font-size-12 xs-font-size-13">
-              {String(flightDateTime).split("T")[1].slice(0, 5)}
-            </span>
-          </div>
-
-          <div>
-            <div>
-              <i className="bilitja icon-seat"></i>
-            </div>
-            <span className="font-size-12 xs-font-size-13">
-              {cap + " صندلی خالی"}
-            </span>
-          </div>
-
-          <div>
-            <div>
-              <img
-                style={{ width: 35 }}
-                src={globals.website + `Airlines/${airlineIataCode}.png?ver=1`}
-                alt="بلیطجا - لوگو ایرلاین"
-              />
-            </div>
-            <span className="font-size-15 xs-font-size-14">{airline}</span>
-          </div>
         </div>
 
-        <div className={styles["pop-up-flight-passengers-reserve-box"]}>
-          <div className="row">
-            <div
-              style={{ margin: "auto" }}
-              className="col-lg-5 col-md-5 col-sm-5 col-6 m-auto"
-            >
-              <FontAwesomeIcon icon={faMale} />
-              <FontAwesomeIcon icon={faFemale} />
-              <span className="font-size-14 font-bold-iransanse">
-                تعداد بزرگسال
-              </span>
-              <p className="font-size-11">(12 سال به بالا)</p>
-            </div>
-            <div className="col-lg-7 col-md-7 col-sm-7 col-6">
-              <PrimarySelectInput
-                name="numADL"
-                style={{ height: "2.5em" }}
-                onChange={handleChange}
-              >
-                {numberOfPassengers_.map((x) =>
-                  state.numADL == x ? (
-                    <option selected>{x}</option>
-                  ) : (
-                    <option>{x}</option>
-                  )
-                )}
-              </PrimarySelectInput>
-            </div>
+        <div>
+          <div>
+            <i className="bilitja icon-seat"></i>
           </div>
-          <div className="row">
-            <div className="col-lg-5 col-md-5 col-sm-5 col-6">
-              <FontAwesomeIcon icon={faChild} />
-              <span className="font-size-14 font-bold-iransanse">
-                تعداد کودک
-              </span>
-              <p className="font-size-11">(2 تا 12 سال)</p>
-            </div>
-            <div className="col-lg-7 col-md-7 col-sm-7 col-6">
-              <PrimarySelectInput
-                name="numCHD"
-                style={{ height: "2.5em" }}
-                onChange={handleChange}
-              >
-                {numberOfPassengers.map((x) =>
-                  state.numCHD == x ? (
-                    <option selected>{x}</option>
-                  ) : (
-                    <option>{x}</option>
-                  )
-                )}
-              </PrimarySelectInput>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-lg-5 col-md-5 col-sm-5 col-6">
-              <FontAwesomeIcon icon={faBaby} />
-              <span className="font-size-14 font-bold-iransanse">
-                تعداد نوزاد
-              </span>
-              <p className="font-size-11">(زیر 2 سال)</p>
-            </div>
-            <div className="col-lg-7 col-md-7 col-sm-7 col-6">
-              <PrimarySelectInput
-                name="numINF"
-                style={{ height: "2.5em" }}
-                onChange={handleChange}
-              >
-                {numberOfPassengers.map((x) =>
-                  state.numINF == x ? (
-                    <option selected>{x}</option>
-                  ) : (
-                    <option>{x}</option>
-                  )
-                )}
-              </PrimarySelectInput>
-            </div>
-          </div>
+          <span className="font-size-12 xs-font-size-13">
+            {cap + " صندلی خالی"}
+          </span>
+        </div>
 
-          <div
-            className={` form-input-border  ${styles["form-input-border-private"]} without-focus`}
-          >
-            <PrimaryButton
-              defaultValue={
-                state.loading == false ? "مرحله بعد" : "درحال پردازش .."
-              }
-              onClick={() => {
-                const message = validation(
-                  state.numADL,
-                  state.numCHD,
-                  state.numINF,
-                  props.cap
-                );
-                if (message == "OK") {
-                  setState({...state, loading: true });
-                  submitReserve();
-                } else {
-                  setState({...state, loading: false });
-                  props.messageBoxModify({
-                    color:false,
-                    state: true,
-                    message: message,
-                  });
-                }
-              }}
+        <div>
+          <div>
+            <img
+              style={{ width: 35 }}
+              src={globals.website + `Airlines/${airlineIataCode}.png?ver=1`}
+              alt="بلیطجا - لوگو ایرلاین"
             />
           </div>
+          <span className="font-size-15 xs-font-size-14">{airline}</span>
         </div>
       </div>
-    );
+
+      <div className={styles["pop-up-flight-passengers-reserve-box"]}>
+        <div className="row">
+          <div
+            style={{ margin: "auto" }}
+            className="col-lg-5 col-md-5 col-sm-5 col-6 m-auto"
+          >
+            <FontAwesomeIcon icon={faMale} />
+            <FontAwesomeIcon icon={faFemale} />
+            <span className="font-size-14 font-bold-iransanse">
+              تعداد بزرگسال
+            </span>
+            <p className="font-size-11">(12 سال به بالا)</p>
+          </div>
+          <div className="col-lg-7 col-md-7 col-sm-7 col-6">
+            <PrimarySelectInput
+              name="numADL"
+              style={{ height: "2.5em" }}
+              onChange={handleChange}
+            >
+              {numberOfPassengers_.map((x) =>
+                state.numADL == x ? (
+                  <option selected>{x}</option>
+                ) : (
+                  <option>{x}</option>
+                )
+              )}
+            </PrimarySelectInput>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-lg-5 col-md-5 col-sm-5 col-6">
+            <FontAwesomeIcon icon={faChild} />
+            <span className="font-size-14 font-bold-iransanse">
+              تعداد کودک
+            </span>
+            <p className="font-size-11">(2 تا 12 سال)</p>
+          </div>
+          <div className="col-lg-7 col-md-7 col-sm-7 col-6">
+            <PrimarySelectInput
+              name="numCHD"
+              style={{ height: "2.5em" }}
+              onChange={handleChange}
+            >
+              {numberOfPassengers.map((x) =>
+                state.numCHD == x ? (
+                  <option selected>{x}</option>
+                ) : (
+                  <option>{x}</option>
+                )
+              )}
+            </PrimarySelectInput>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-lg-5 col-md-5 col-sm-5 col-6">
+            <FontAwesomeIcon icon={faBaby} />
+            <span className="font-size-14 font-bold-iransanse">
+              تعداد نوزاد
+            </span>
+            <p className="font-size-11">(زیر 2 سال)</p>
+          </div>
+          <div className="col-lg-7 col-md-7 col-sm-7 col-6">
+            <PrimarySelectInput
+              name="numINF"
+              style={{ height: "2.5em" }}
+              onChange={handleChange}
+            >
+              {numberOfPassengers.map((x) =>
+                state.numINF == x ? (
+                  <option selected>{x}</option>
+                ) : (
+                  <option>{x}</option>
+                )
+              )}
+            </PrimarySelectInput>
+          </div>
+        </div>
+
+        <div
+          className={` form-input-border  ${styles["form-input-border-private"]} without-focus`}
+        >
+          <PrimaryButton
+            defaultValue={
+              state.loading == false ? "مرحله بعد" : "درحال پردازش .."
+            }
+            onClick={() => {
+              const message = validation(
+                state.numADL,
+                state.numCHD,
+                state.numINF,
+                props.cap
+              );
+              if (message == "OK") {
+                setState({ ...state, loading: true });
+                submitReserve();
+              } else {
+                setState({ ...state, loading: false });
+                props.messageBoxModify({
+                  color: false,
+                  state: true,
+                  message: message,
+                });
+              }
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
 }
 const mapDispatchesToProps = (dispatch) => ({
   addReservationProperties: async (value) =>
