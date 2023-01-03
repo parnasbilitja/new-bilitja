@@ -7,7 +7,7 @@ import {
     faTwitter,
     faFacebook,
 } from "@fortawesome/free-brands-svg-icons";
-import { footerLinks, footerLinksOut} from '../../Utils/data'
+import { footerLinks, footerLinksOut } from '../../Utils/data'
 import Link from "next/link";
 
 const Footer = () => {
@@ -18,7 +18,7 @@ const Footer = () => {
             <div className={styles["footer"]}>
                 <div className="container-fluid">
                     <div className="row parent-footer-top">
-                        <div className={`col-lg-2 item-footer col-md-12 col-sm-12 col-12 ${styles["footer-logo"]}`}>
+                        <div className={`col-lg-2 col-md-12 col-sm-12 col-12 ${styles["footer-logo"]}`}>
                             <img
                                 width=""
                                 height=""
@@ -28,130 +28,132 @@ const Footer = () => {
                             <p>ارزان ترین بلیط های هواپیما</p>
                             <a href="">www. B i l i t j a .com</a>
                         </div>
-                        <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
-                            <div className="d-flex align-items-center mb-2">
-                                <div className={styles["circle"]}></div>
-                                <b className="mb-0"> مقاصد داخلی </b>
-                            </div>
-                            <ul className={styles["ul-lists"]}>
-                                {footerLinks.map((item, i) =>(
-                                    <li key={i} >
-                                        <h6>
-                                            {" "}
-                                            <Link href={`${item.href}${today}`}>{item.name}</Link>
-                                        </h6>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
-                            <div className="d-flex align-items-center mb-2">
-                                <div className={styles["circle"]}></div>
-                                <b className="mb-0"> مقاصد خارجی </b>
-                            </div>
-                            <ul className={styles["ul-lists"]}>
-                                {footerLinksOut.map((item, i) =>(
-                                    <li key={i}>
-                                        <h6>
-                                            {" "}
-                                            <Link href={`${item.href}${today}`}>{item.name}</Link>
-                                        </h6>
-                                    </li>
-                                    ))}
-                                
-                            </ul>
-                        </div>
-                        <div className="col-lg-2 col-md-5 item-footer col-6 mb-2">
-                            <div className="d-flex align-items-center mb-2">
-                                <div className={styles["circle"]}></div>
-                                <b className="mb-0">مطالب خواندنی</b>
-                            </div>
-                            <ul className={styles["ul-lists"]}>
-                                <li>
-                                    <a href="#">راهنمای گردشگری</a>{" "}
-                                </li>
-                                <li>
-                                    <a href="#">بلیط چارتر</a>
-                                </li>
-                                <li>
-                                    <a href="#">راهنمای خرید بلیط</a>
-                                </li>
-                                <li>
-                                    <a href="#">راهنمای استرداد بلیط</a>
-                                </li>
-                                <li>
-                                    <a href="#">قوانین و مقررات</a>
-                                </li>
-                                <li>
-                                    <a href="#">همکاری</a>
-                                </li>
-                                <li style={{ marginBottom: 20 }}>
-                                    <a href="#"></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="col-lg-2 col-md-3 item-footer col-6 mb-2">
-                            {" "}
-                            <div className={styles["footer-virtual-mobile"]}>
-                                <div style={{ marginBottom: 8 }}>
-                                    <div className="d-flex align-items-center mb-2">
-                                        <div className={styles["circle"]}></div>
-                                        <b style={{ marginTop: 3 }} className="mb-0">
-                                            شبکه های اجتماعی{" "}
-                                        </b>
-                                    </div>
+                        <div className="d-flex flex-wrap align-items-start justify-content-between px-0">
+                            <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
+                                <div className="d-flex align-items-center mb-2">
+                                    <div className={styles["circle"]}></div>
+                                    <b className="mb-0"> مقاصد داخلی </b>
                                 </div>
+                                <ul className={styles["ul-lists"]}>
+                                    {footerLinks.map((item, i) => (
+                                        <li key={i} >
+                                            <h6>
+                                                {" "}
+                                                <Link href={`${item.href}${today}`}>{item.name}</Link>
+                                            </h6>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
+                                <div className="d-flex align-items-center mb-2">
+                                    <div className={styles["circle"]}></div>
+                                    <b className="mb-0"> مقاصد خارجی </b>
+                                </div>
+                                <ul className={styles["ul-lists"]}>
+                                    {footerLinksOut.map((item, i) => (
+                                        <li key={i}>
+                                            <h6>
+                                                {" "}
+                                                <Link href={`${item.href}${today}`}>{item.name}</Link>
+                                            </h6>
+                                        </li>
+                                    ))}
 
-                                <ul className={styles["ul-soutian"]}>
+                                </ul>
+                            </div>
+                            <div className="col-lg-2 col-md-5 item-footer col-6 mb-2">
+                                <div className="d-flex align-items-center mb-2">
+                                    <div className={styles["circle"]}></div>
+                                    <b className="mb-0">مطالب خواندنی</b>
+                                </div>
+                                <ul className={styles["ul-lists"]}>
                                     <li>
-                                        <FontAwesomeIcon icon={faGlobe} />
-                                        <a href="#">bilitja.com</a>
+                                        <a href="#">راهنمای گردشگری</a>{" "}
                                     </li>
                                     <li>
-                                        <a href="https://instagram.com/bilitja">
-                                            <FontAwesomeIcon icon={faInstagram} />
-                                        </a>
-                                        <a href="https://instagram.com/hamnavaz.tour">bilitja </a>
+                                        <a href="#">بلیط چارتر</a>
                                     </li>
                                     <li>
-                                        <a href="https://twitter.com/bilitja">
-                                            <FontAwesomeIcon icon={faTwitter} />
-                                        </a>
-                                        <a href="https://twitter.com/bilitja">bilitja</a>
+                                        <a href="#">راهنمای خرید بلیط</a>
                                     </li>
                                     <li>
-                                        <a href="https://facebook.com/bilitja">
-                                            <FontAwesomeIcon icon={faFacebook} />
-                                        </a>
-                                        <a href="https://facebook.com/bilitja">bilitja</a>
+                                        <a href="#">راهنمای استرداد بلیط</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">قوانین و مقررات</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">همکاری</a>
+                                    </li>
+                                    <li style={{ marginBottom: 20 }}>
+                                        <a href="#"></a>
                                     </li>
                                 </ul>
                             </div>
+                            <div className="col-lg-2 col-md-3 item-footer col-6 mb-2">
+                                {" "}
+                                <div className={styles["footer-virtual-mobile"]}>
+                                    <div style={{ marginBottom: 8 }}>
+                                        <div className="d-flex align-items-center mb-2">
+                                            <div className={styles["circle"]}></div>
+                                            <b style={{ marginTop: 3 }} className="mb-0">
+                                                شبکه های اجتماعی{" "}
+                                            </b>
+                                        </div>
+                                    </div>
 
-                        </div>
-                        <div className={`"col-lg-2 col-md-3 item-footer col-6"${styles["footer-contact"]}`}>
-                            <div className="d-flex align-items-center mb-2">
-                                <div className={styles["circle"]}></div>
-                                <b className="mb-0">تماس با ما</b>
+                                    <ul className={styles["ul-soutian"]}>
+                                        <li>
+                                            <FontAwesomeIcon icon={faGlobe} />
+                                            <a href="#">bilitja.com</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://instagram.com/bilitja">
+                                                <FontAwesomeIcon icon={faInstagram} />
+                                            </a>
+                                            <a href="https://instagram.com/hamnavaz.tour">bilitja </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/bilitja">
+                                                <FontAwesomeIcon icon={faTwitter} />
+                                            </a>
+                                            <a href="https://twitter.com/bilitja">bilitja</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://facebook.com/bilitja">
+                                                <FontAwesomeIcon icon={faFacebook} />
+                                            </a>
+                                            <a href="https://facebook.com/bilitja">bilitja</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
                             </div>
-                            <ul className={styles["ul-lists"]}>
-                                <li>
-                                    <FontAwesomeIcon icon={faPhone} />
-                                    <a href="tel:">تهران</a>
-                                </li>
-                                <li>
-                                    <FontAwesomeIcon icon={faPhone} />
-                                    <a href="tel:02184279999"> تلفن پشتیبانی :
-                                        <span className={'number-space'}>02184279999</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <FontAwesomeIcon icon={faPhone} />
-                                    <a href="tel:09101005065">موبایل پشتیبانی :
-                                        <span className={'number-space'}>09101005065</span>
-                                    </a>
-                                </li>
-                            </ul>
+                            <div className={`"col-lg-2 col-md-3 item-footer col-6"${styles["footer-contact"]}`}>
+                                <div className="d-flex align-items-center mb-2">
+                                    <div className={styles["circle"]}></div>
+                                    <b className="mb-0">تماس با ما</b>
+                                </div>
+                                <ul className={styles["ul-lists"]}>
+                                    <li>
+                                        <FontAwesomeIcon icon={faPhone} />
+                                        <a href="tel:">تهران</a>
+                                    </li>
+                                    <li>
+                                        <FontAwesomeIcon icon={faPhone} />
+                                        <a href="tel:02184279999"> تلفن پشتیبانی :
+                                            <span className={'number-space'}>02184279999</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <FontAwesomeIcon icon={faPhone} />
+                                        <a href="tel:09101005065">موبایل پشتیبانی :
+                                            <span className={'number-space'}>09101005065</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
                         <div className={styles["mobile-footer-soccialmedia"]}>
