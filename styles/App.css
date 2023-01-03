@@ -25,6 +25,12 @@ span {
     display: none;
 }
 
+input,textarea,button{
+    -webkit-appearance: inherit;
+    -moz-appearance: inherit;
+    appearance: inherit;
+}
+
 .form-input-auth {
     height: 45px !important;
     border: 1px solid #ccc !important;
@@ -775,8 +781,18 @@ button:not(:disabled) {
     font-family: "BYekan" !important;
 }
 
+@media (max-width:900px){
+    .isDesktop {
+        display: none !important;
+    }
+    .isMobile {
+        display: block !important;
+    }
+}
+
 @media (max-width: 768px) {
     .dashboard-manager-content-container section {
         margin-right: 8px;
     }
 }
+
