@@ -52,7 +52,7 @@ const DashboardNav = (props) => {
               className={`${styles[""]} d-flex align-items-center flex-row-reverse cursor-pointer`}
               onClick={(e) => {handleLogoutUser(e)
                 myRouter.push("/");
-                props.onClose();
+                props.onClose && props.onClose();
               }}
             >
               <div>

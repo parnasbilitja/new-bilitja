@@ -163,9 +163,9 @@ class FlightSearchBox extends React.Component {
             <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
             <PrimaryTextInputMobile
               value={sourceName}
-              readonlyattr={this.state.width <= mobileSize ? "false" : "false"}
+              readonly={this.state.width <= mobileSize ? "false" : "true"}
               name="sourceName"
-              onFocus={(e) => {
+              onClick={(e) => {
                 // for mobile
                 if (this.state.width <= mobileSize) {
                   e.preventDefault();
@@ -215,7 +215,7 @@ class FlightSearchBox extends React.Component {
             ></i>
             <PrimaryTextInputMobile
               value={destinationName}
-              readonlyattr={this.state.width <= mobileSize ? "false" : "false"}
+              readonly={this.state.width <= mobileSize ? "false" : "true"}
               name="destinationName"
               onFocus={(e) => {
                 // for mobile
@@ -246,7 +246,7 @@ class FlightSearchBox extends React.Component {
 
           <PrimaryTextInputMobile
             placeholder={" تاریخ پرواز رفت"}
-            readOnly
+            readOnly='true'
             value={typeOfCalendar == "GAR" ? stDate : flightDatePersian}
             onFocus={(e) => {
               e.preventDefault();

@@ -15,12 +15,25 @@ class Filters extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            width: 1024,
             airlines: [],
             lowPrice: null,
             endtime: "",
             checked: false,
         };
         this.handleClick = this.handleClick.bind(this);
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    }
+  componentDidMount() {
+      this.updateWindowDimensions();
+      window.addEventListener("resize", this.updateWindowDimensions);
+    }
+    componentWillUnmount() {
+      window.removeEventListener("resize", this.updateWindowDimensions);
+    }
+  
+    updateWindowDimensions() {
+      this.setState({ width: window.innerWidth });
     }
 
     handleClick() {
@@ -28,6 +41,7 @@ class Filters extends React.Component {
             checked: this.state.checked,
         });
     }
+    
 
     handleFindByFlightNo = (e) => {
         if (e.target.value != "") {
@@ -145,6 +159,7 @@ class Filters extends React.Component {
                 <div className="title-filter">
                     <h3>فیلتر ها</h3>
                 </div>
+                {console.log(this.props)}
                 <Accordion style={{ width: "94%", marginRight: 15, }}>
                     <Accordion.Item className={`${styles["text"]} accordion-item-prs `}>
                         <Accordion.Button className={'acr-btn'} style={{ background: " rgb(243, 243, 243)", paddingRight: 10, paddingLeft: 10 }}>
@@ -362,6 +377,11 @@ class Filters extends React.Component {
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>
+                { this.state.width <= 826 &&
+                    <div className="text-center">
+                        <button onClick={this.props.closeSide}>اعمال فیلتر</button>
+                    </div>
+                }
                 </Accordion>
             </div>
         );

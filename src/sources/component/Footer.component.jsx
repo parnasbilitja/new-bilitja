@@ -26,7 +26,7 @@ const Footer = () => {
                                 src="../../../Images/bilitja-light-logo.webp"
                             />
                             <p>ارزان ترین بلیط های هواپیما</p>
-                            <a href="">www. B i l i t j a .com</a>
+                            <Link href="/">www. B i l i t j a .com</Link>
                         </div>
                         <div className="d-flex flex-wrap align-items-start justify-content-between px-0">
                             <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
