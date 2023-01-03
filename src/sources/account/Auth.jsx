@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CloseOutlined } from "@ant-design/icons";
 import { faTimes, faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import PrimaryTextInput from "../../sources/component/PrimaryTextInput.component";
 import styles from "../../../styles/PrimaryButton.module.scss";
@@ -17,25 +18,26 @@ import {
 } from "../../Redux/Account/account.action";
 import { useState } from "react";
 const Auth = (props) => {
-    const [state,setState] = useState({
-      btn_disabled: false,
-      loading: false,
-      login_with_code: true,
-      get_mobile_status: false,
-      btn_text: "دریافت کد احراز هویت",
-      mobile: "",
-      password: "",
-      token: "",
-      error: false,
-      errText: "",
-    });
-  
+  const [state, setState] = useState({
+    btn_disabled: false,
+    loading: false,
+    login_with_code: true,
+    get_mobile_status: false,
+    btn_text: "دریافت کد احراز هویت",
+    mobile: "",
+    password: "",
+    token: "",
+    error: false,
+    errText: "",
+  });
 
-    const [type,setType] = useState(1)
+
+  const [type, setType] = useState(1)
 
   const handleLoginWithCode = () => {
     setType(1)
-    setState({...state,
+    setState({
+      ...state,
       login_with_code: true,
       password: "",
       btn_text: "دریافت کد احراز هویت",
@@ -44,8 +46,9 @@ const Auth = (props) => {
   const handleLoginWithPassword = () => {
 
     setType(2)
-    setState({...state,
-      get_mobile_status:false,
+    setState({
+      ...state,
+      get_mobile_status: false,
       login_with_code: false,
       token: "",
       btn_text: "ورود به حساب",
@@ -53,20 +56,20 @@ const Auth = (props) => {
   };
 
   const handleSetMobile = (e) => {
-    
-    if(e.target.name == 'mobile' && String(e.target.value).length ==11){
-      setState({...state, mobile: e.target.value, error: false, errText: "" })
+
+    if (e.target.name == 'mobile' && String(e.target.value).length == 11) {
+      setState({ ...state, mobile: e.target.value, error: false, errText: "" })
     };
   };
   const handleSetToken = (e) => {
-    setState({...state, token: e.target.value, error: false, errText: "" });
+    setState({ ...state, token: e.target.value, error: false, errText: "" });
   };
   const handleSetPassword = (e) => {
-    setState({...state, password: e.target.value, error: false, errText: "" });
+    setState({ ...state, password: e.target.value, error: false, errText: "" });
   };
 
   const login = () => {
-    setState({...state, btn_disabled: true, loading: true });
+    setState({ ...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/getMobile`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -84,14 +87,15 @@ const Auth = (props) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "0") {
-          setState({...state,
+          setState({
+            ...state,
             btn_disabled: false,
             loading: false,
-            get_mobile_status:true,
+            get_mobile_status: true,
             btn_text: "تایید کد احراز هویت",
           });
         } else if (data.status == "10") {
-          setState({...state, btn_disabled: false, loading: false });
+          setState({ ...state, btn_disabled: false, loading: false });
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
           props.checkUserLogged();
@@ -103,7 +107,7 @@ const Auth = (props) => {
             type: "authentication",
           });
           props.messageBoxModify({
-            color:true,
+            color: true,
             state: true,
             message: "ورود شما موفقیت آمیز بود.",
           });
@@ -114,14 +118,16 @@ const Auth = (props) => {
         } else if (data.status === "-111") {
           register();
         } else if (data.status === "-200") {
-          setState({...state,
+          setState({
+            ...state,
             btn_disabled: false,
             loading: false,
             error: true,
             errText: "شماره موبایل یا رمز ثابت نادرست می باشد.",
           });
         } else {
-          setState({...state,
+          setState({
+            ...state,
             btn_disabled: false,
             loading: false,
             error: true,
@@ -132,7 +138,7 @@ const Auth = (props) => {
   };
 
   const register = () => {
-    setState({...state, btn_disabled: true, loading: true });
+    setState({ ...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/getMobile`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -150,23 +156,25 @@ const Auth = (props) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "0") {
-          setState({...state,
-            get_mobile_status:true,
+          setState({
+            ...state,
+            get_mobile_status: true,
             loading: false,
             register_status: true,
             resend_code: true,
             btn_text: "تایید کد احراز هویت",
           });
         } else if (data.status === "-110") {
-        //   setState({...state,
-        //     btn_disabled: false,
-        //     loading: false,
-        //     error: true,
-        //     errText:
-        //       "این شماره موبایل در سامانه موجود است، لطفا از بخش ورود وارد حساب خود شوید.",
-        //   });
+          //   setState({...state,
+          //     btn_disabled: false,
+          //     loading: false,
+          //     error: true,
+          //     errText:
+          //       "این شماره موبایل در سامانه موجود است، لطفا از بخش ورود وارد حساب خود شوید.",
+          //   });
         } else {
-          setState({...state,
+          setState({
+            ...state,
             btn_disabled: false,
             loading: false,
             error: true,
@@ -177,7 +185,7 @@ const Auth = (props) => {
   };
 
   const loginWithToken = () => {
-    setState({...state, btn_disabled: true, loading: true });
+    setState({ ...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/checkUser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -193,7 +201,7 @@ const Auth = (props) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "2" || data.status == "1") {
-          setState({...state, btn_disabled: false, loading: false });
+          setState({ ...state, btn_disabled: false, loading: false });
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
           props.checkUserLogged();
@@ -209,7 +217,7 @@ const Auth = (props) => {
           //   dateLogin: moment().format("YYYY/MM/DD"),
           // });
           props.messageBoxModify({
-            color:true,
+            color: true,
             state: true,
             message: "ورود شما موفقیت آمیز بود.",
           });
@@ -218,21 +226,24 @@ const Auth = (props) => {
             type: "authentication",
           });
         } else if (data.status == "-103") {
-          setState({...state,
+          setState({
+            ...state,
             btn_disabled: false,
             loading: false,
             error: true,
             errText: "کد احراز هویت وارد شده نادرست می باشد.",
           });
         } else if (data.status == "-104") {
-          setState({...state,
+          setState({
+            ...state,
             btn_disabled: false,
             loading: false,
             error: true,
             errText: data.message,
           });
         } else {
-          setState({...state,
+          setState({
+            ...state,
             btn_disabled: false,
             loading: false,
             error: true,
@@ -245,7 +256,8 @@ const Auth = (props) => {
   // Renderer callback with condition
   const renderer = ({ minutes, seconds, completed }) => {
     if (completed) {
-      setState({...state,
+      setState({
+        ...state,
         get_mobile_status: false,
         btn_text: "  دریافت مجدد کد احراز هویت",
       });
@@ -258,169 +270,169 @@ const Auth = (props) => {
       );
     }
   };
-    return (
-      <div className="popup-content-container">
-        <div className="popup-heading text-center">
-          <span>ورود / ثبت نام</span>
-          <span
-            className="pull-left exit-form"
-            onClick={() => {
-              props.accountBoxModify({
-                state: false,
-              });
-            }}
-          >
-            <FontAwesomeIcon icon={faTimes} />
-          </span>
+  return (
+    <div className="popup-content-container">
+      <div className="popup-heading d-flex align-items-center justify-content-center">
+        <span>ورود / ثبت نام</span>
+        <span
+          className="exit-form position-absolute"
+          onClick={() => {
+            props.accountBoxModify({
+              state: false,
+            });
+          }} style={{ left: 10 }}
+        >
+          <CloseOutlined style={{ color: "red" }} />
+        </span>
+      </div>
+      <div className="row btn-container-header-login rounded-pill m-2">
+        <button
+          className={
+            state.login_with_code === true
+              ? "btn btn-header-login-active col-6 rounded-pill"
+              : "btn btn-header-login col-6 rounded-pill"
+          }
+          onClick={handleLoginWithCode}
+        >
+          ورود با رمز یکبار مصرف
+        </button>
+        <button
+          className={
+            state.login_with_code === false
+              ? "btn btn-header-login-active col-6 rounded-pill"
+              : "btn btn-header-login col-6 rounded-pill"
+          }
+          onClick={handleLoginWithPassword}
+        >
+          ورود با رمز ثابت
+        </button>
+      </div>
+      {state.error === true ? (
+        console.log(state.errText),
+        <div className="alert alert-danger">{state.errText !== undefined ? state.errText : 'شماره وارد شده باید ۱۱ رقم باشد'}</div>
+      ) : null}
+      <div className="container">
+        <div className="row mb-2">
+          <div className="col-1 padding-horizental-3px">
+            <FontAwesomeIcon icon={faUser} className="margin-top-20px" />
+          </div>
+          <div className="col-11 padding-horizental-3px">
+            <div>
+              <input
+                className="form-input-auth px-2 col-12"
+                placeholder=".ورود / ثبت نام ( شماره همراه )"
+                name="mobile"
+                onChange={handleSetMobile}
+                disabled={
+                  state.login_with_code === true
+                    ? state.get_mobile_status === true
+                      ? true
+                      : false
+                    : null
+                }
+                inputMode="numeric"
+              />
+            </div>
+          </div>
         </div>
-        <div className="row btn-container-header-login rounded-pill m-2">
-          <button
-            className={
-              state.login_with_code === true
-                ? "btn btn-header-login-active col-6 rounded-pill"
-                : "btn btn-header-login col-6 rounded-pill"
-            }
-            onClick={handleLoginWithCode}
-          >
-            ورود با رمز یکبار مصرف
-          </button>
-          <button
-            className={
-              state.login_with_code === false
-                ? "btn btn-header-login-active col-6 rounded-pill"
-                : "btn btn-header-login col-6 rounded-pill"
-            }
-            onClick={handleLoginWithPassword}
-          >
-            ورود با رمز ثابت
-          </button>
-        </div>
-        {state.error === true ? (
-          console.log(state.errText),
-          <div className="alert alert-danger">{state.errText !==undefined ? state.errText:'شماره وارد شده باید ۱۱ رقم باشد'}</div>
-        ) : null}
-        <div className="container">
+        {state.login_with_code === false ? (
           <div className="row mb-2">
-            <div className="col-1 padding-horizental-3px">
-              <FontAwesomeIcon icon={faUser} className="margin-top-20px" />
-            </div>
-            <div className="col-11 padding-horizental-3px">
-              <div>
-                <input
-                  className="form-input-auth px-2 col-12"
-                  placeholder=".ورود / ثبت نام ( شماره همراه )"
-                  name="mobile"
-                  onChange={handleSetMobile}
-                  disabled={
-                    state.login_with_code === true
-                      ? state.get_mobile_status === true
-                        ? true
-                        : false
-                      : null
-                  }
-                  inputMode="numeric"
-                />
-              </div>
-            </div>
-          </div>
-          {state.login_with_code === false ? (
-            <div className="row mb-2">
-              {type == 2 &&
+            {type == 2 &&
               <>
-              <div className="col-1 padding-horizental-3px">
-                <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
-              </div>
-              <div className="col-11 padding-horizental-3px">
-                <div>
-                  <input
-                    className="form-input-auth px-2 col-12"
-                    placeholder="رمز عبور"
-                    name="password"
-                    onChange={handleSetPassword}
-                    inputMode="numeric"
-                    type="password"
+                <div className="col-1 padding-horizental-3px">
+                  <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
+                </div>
+                <div className="col-11 padding-horizental-3px">
+                  <div>
+                    <input
+                      className="form-input-auth px-2 col-12"
+                      placeholder="رمز عبور"
+                      name="password"
+                      onChange={handleSetPassword}
+                      inputMode="numeric"
+                      type="password"
                     />
+                  </div>
                 </div>
-              </div>
               </>
-              }
-            </div>
-          ) : null}
-          {state.get_mobile_status === true ? (
-            <div className="row mb-2">
-              {type == 1 &&
-              <>
-              <div className="col-1 padding-horizental-3px">
-                <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
-              </div>
-              <div className="col-11 padding-horizental-3px">
-                <div>
-                  <input
-                    className="form-input-auth px-2 col-12"
-                    placeholder="کد ارسال شده را وارد نمایید."
-                    name="moaref"
-                    onChange={handleSetToken}
-                    autoFocus
-                    inputMode="numeric"
-                  />
-                </div>
-              </div>
-              </>
-              }
-            </div>
-          ) : null}
-        </div>
-        <div className="row mt-3">
-          <div className=" without-focus col-12">
-            <button
-              onClick={(e) => {
-                state.get_mobile_status == false ? login():
-                state.get_mobile_status == true  ? loginWithToken():
-                  ''
-              }}
-              className={
-                props.disabled === false
-                  ? "btn btn-info py-3 mb-3 col-12 btn-block"
-                  : `${styles["primary-button"]} py-2`
-              }
-              disabled={state.btn_disabled}
-            >
-              {state.loading === false ? state.btn_text : <Loader />}
-            </button>
-          </div>
-        </div>
-        {state.get_mobile_status === true ? (
-          <div className="row mt-3 text-center">
-            <div className="col-12">
-              <Countdown renderer={renderer} date={Date.now() + 60000} />
-            </div>
+            }
           </div>
         ) : null}
-
-        <div className="row">
-          <div
-            style={{ marginTop: -20 }}
-            className="col-12 no-padding-horizental"
+        {state.get_mobile_status === true ? (
+          <div className="row mb-2">
+            {type == 1 &&
+              <>
+                <div className="col-1 padding-horizental-3px">
+                  <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
+                </div>
+                <div className="col-11 padding-horizental-3px">
+                  <div>
+                    <input
+                      className="form-input-auth px-2 col-12"
+                      placeholder="کد ارسال شده را وارد نمایید."
+                      name="moaref"
+                      onChange={handleSetToken}
+                      autoFocus
+                      inputMode="numeric"
+                    />
+                  </div>
+                </div>
+              </>
+            }
+          </div>
+        ) : null}
+      </div>
+      <div className="row mt-3">
+        <div className=" without-focus col-12">
+          <button
+            onClick={(e) => {
+              state.get_mobile_status == false ? login() :
+                state.get_mobile_status == true ? loginWithToken() :
+                  ''
+            }}
+            className={
+              props.disabled === false
+                ? "btn btn-info py-3 mb-3 col-12 btn-block"
+                : `${styles["primary-button"]} py-2`
+            }
+            disabled={state.btn_disabled}
           >
-            <br />
-            <p className="text-center font-size-13 no-margin font-bold-iransanse">
-              گذرواژه خود را فراموش کرده اید؟{" "}
-              <a
-                onClick={() => {
-                  props.accountBoxModify({
-                    state: true,
-                    type: "forget",
-                  });
-                }}
-                className="cursor-pointer"
-              >
-                {" "}
-                (بازیابی گذرواژه )
-              </a>
-            </p>
+            {state.loading === false ? state.btn_text : <Loader />}
+          </button>
+        </div>
+      </div>
+      {state.get_mobile_status === true ? (
+        <div className="row mt-3 text-center">
+          <div className="col-12">
+            <Countdown renderer={renderer} date={Date.now() + 60000} />
           </div>
         </div>
-        {/*<div className="row">
+      ) : null}
+
+      <div className="row">
+        <div
+          style={{ marginTop: -20 }}
+          className="col-12 no-padding-horizental"
+        >
+          <br />
+          <p className="text-center font-size-13 no-margin font-bold-iransanse">
+            گذرواژه خود را فراموش کرده اید؟{" "}
+            <a
+              onClick={() => {
+                props.accountBoxModify({
+                  state: true,
+                  type: "forget",
+                });
+              }}
+              className="cursor-pointer"
+            >
+              {" "}
+              (بازیابی گذرواژه )
+            </a>
+          </p>
+        </div>
+      </div>
+      {/*<div className="row">
                     
                    
                      <div className="col-lg-6 col-md-6 col-sm-6 col-12 no-padding-horizental">
@@ -442,8 +454,8 @@ const Auth = (props) => {
                         }}>ثبت نام</p>
                     </div> 
                 </div>*/}
-      </div>
-    );
+    </div>
+  );
 }
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),
