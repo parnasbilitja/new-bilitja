@@ -21,7 +21,7 @@ class ShowFlightListMobile extends React.Component {
           <div
             className={` ${styles["mobile-flight-list-header"]} font-bold-iransanse `}
           >
-            <p>
+            <p className="font-light-iransans">
               خريد بليط هواپيما{" "}
               <span className="color-secondary font-bold-iransanse">
                 {this.props.flightList.length != 0
