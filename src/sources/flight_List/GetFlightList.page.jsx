@@ -551,7 +551,7 @@ class GetFlightList extends React.Component {
 
     return (
       <div className="container">
-            <Scrolltoprefresh/>
+        <Scrolltoprefresh />
         {!this.state.loading &&
           <div className="row text-right">
             {window.innerWidth > 826 ? (
@@ -684,15 +684,15 @@ class GetFlightList extends React.Component {
 
         <PopUp opened={this.state.open} closePopUp={this.managePopUpSearch}>
           <div className="popup-content-container">
-            <div className="popup-heading">
+            <div className="popup-heading d-flex align-items-center justify-content-between">
               <span>جستجو مجدد</span>
               <span
-                className="pull-left exit-form"
+                className="exit-form"
                 onClick={() => {
                   this.managePopUpSearch(false);
                 }}
               >
-                <FontAwesomeIcon icon={faTimes} />
+                <CloseOutlined style={{ color: "red" }} />
               </span>
             </div>
             <FlightSearchBox showSwitch={true} refreshAction={this.getData} length={this.state.flights} />
@@ -705,10 +705,10 @@ class GetFlightList extends React.Component {
             closePopUp={this.managePopUpReserve}
           >
             <div className="popup-content-container">
-              <div>
+              <div className="d-flex align-items-center justify-content-between">
                 <span className="font-iransanse">انتخاب تعداد مسافران</span>
                 <span
-                  className="pull-left exit-form"
+                  className="exit-form"
                   onClick={() => {
                     this.managePopUpReserve(false);
                   }}
