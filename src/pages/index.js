@@ -89,7 +89,7 @@ class App extends React.Component {
     return (
       <div className="bodyVar">
         <NavHandler />
-        <div className={this.state.width <= 826 ? "mt-140" : "mt-90"}>
+        <div className={this.state.width <= 826 ? "mt-100" : "mt-90"}>
           {
             // this.mainRouter(this.props.router.asPath)
             //console.log(this.props.router)
