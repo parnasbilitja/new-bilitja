@@ -64,8 +64,8 @@ const tours = (props) => {
             <div className="mt-5 bodyVar">
                 <NavHandler />
                 <div className="container mt-5 pt-5">
-                    <div className="d-flex align-items-center justify-content-between mt-5">
-                        <div className="d-flex mt-2 flex-column">
+                    <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
+                        <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-4 col-12">
                             <div className="d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center">
                                     <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.326" height="30.086" viewBox="0 0 14.326 17.086">
@@ -81,9 +81,9 @@ const tours = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="c-input col-xl-3 col-lg-3 col-sm-4 col-12 position-relative">
+                        <div className="c-input col-xl-3 col-lg-3 col-sm-4 col-12 position-relative pt-2">
                             <input type="text" value={searchBar} onChange={e=>searchBarHandler(e)} class="w-100 pe-2" style={{height: 43,outline: "none",borderRadius: 8,border:"1px solid #fff",boxShadow: "0 0 3px #cccaca"}}  />
-                            <div className="ic-search  position-absolute" style={{left: 10,top: 10}}>
+                            <div className="ic-search  position-absolute" style={{left: 10,top: 17}}>
                                 <svg width="25" height="25" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <ellipse cx="14.0569" cy="14.6788" rx="8.9241" ry="8.94638" stroke="#CCD2E3" stroke-width="2"></ellipse>
                                     <path d="M14.059 10.8457C13.5567 10.8457 13.0594 10.9449 12.5954 11.1376C12.1313 11.3302 11.7097 11.6127 11.3546 11.9687C10.9994 12.3247 10.7177 12.7474 10.5255 13.2126C10.3333 13.6778 10.2344 14.1764 10.2344 14.6799" stroke="#CCD2E3" stroke-width="2" stroke-linecap="round"></path>
@@ -166,7 +166,7 @@ const tours = (props) => {
                                 </div>
                                 <Link href={'/tour'}>
                                     <div className="ino-tour-btn">
-                                        {/* <span className="text-mobi-btn">جزییات</span> */}
+                                        <span className="text-white isMobile ms-2 font-bold-iransanse" style={{display: "none"}}>جزییات</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="27.414" height="18.453" viewBox="0 0 27.414 18.453">
                                             <path id="Right_Arrow_2" data-name="Right Arrow 2" d="M18.188,1,26,8.812m0,0H1m25,0-7.812,7.813" transform="translate(27.414 18.039) rotate(180)" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
                                         </svg>
