@@ -28,7 +28,7 @@ const Footer = () => {
                             <p>ارزان ترین بلیط های هواپیما</p>
                             <Link href="/">www. B i l i t j a .com</Link>
                         </div>
-                        <div className="d-flex flex-wrap align-items-start justify-content-between px-0">
+                        <div className="d-flex flex-wrap align-items-start justify-content-between">
                             <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
                                 <div className="d-flex align-items-center mb-2">
                                     <div className={styles["circle"]}></div>
