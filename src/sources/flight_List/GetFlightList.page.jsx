@@ -401,7 +401,7 @@ class GetFlightList extends React.Component {
         .then((res) => res.json())
         .then((data) => {
           console.log('111111111111');
-                console.log(data);
+          console.log(data);
           console.log(JSON.stringify({ ...this.props.searchobject }));
           if (data.length != 0 && data != undefined) {
             this.props.addCredentials({
@@ -667,8 +667,8 @@ class GetFlightList extends React.Component {
               <div
                 className={`col-lg-3 col-md-4 col-sm-4 ${styles["hidden-xs-flight"]} padding-5px`}
               >
-                <div className="position-sticky" style={{ top: 100 }}>
-                  {}
+                <div>
+                  { }
                   <Filters
                     getData={this.getData}
                     closeSide={() => {
