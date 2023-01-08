@@ -83,7 +83,7 @@ const NavBar = (props) => {
               میزبان شوید
             </a> */}
               </div>
-              <div className="font-size-12">
+              <div className="font-size-12 d-flex flex-column justify-content-center">
                 <div
                   className={
                     state.logged === true
@@ -101,14 +101,14 @@ const NavBar = (props) => {
                           </a>
                         </Link>
                       </div>
-                      <span className="mx-2"> /</span>
+                      <span className="mx-2">&nbsp;/</span>
                       <div>
                         <a
                           // href={props.router.route}
                           href={'#'}
                           style={{ fontSize: 12 }}
                           onClick={(e) => handleLogoutUser(e)}
-                          className="cursor-pointer"
+                          className="cursor-pointer font-bold-iransanse"
                         >
                           خروج
                         </a>
@@ -132,7 +132,7 @@ const NavBar = (props) => {
                             <span>ورود کاربر</span>
                           </a>
                         </div> */}
-                      <div className="border-right">
+                      <div className="border-right pb-2">
                         <a
                           style={{ fontSize: 12 }}
                           href=""
@@ -146,7 +146,7 @@ const NavBar = (props) => {
                         >
                           {/* <i className="bilitja icon-register"></i> */}
                           <i className="bilitja icon-login"></i>
-                          <span>ورود / ثبت نام</span>
+                          <span className="font-bold-iransanse font-size-14">ورود / ثبت نام</span>
                         </a>
                       </div>
                     </>
@@ -154,7 +154,7 @@ const NavBar = (props) => {
                 </div>
                 <div className={styles["nav-detail-second-line"]}>
                   <a href="#" style={{ fontSize: 12 }}>
-                    <span>مشاوره تلفنی : </span>
+                    <span className="font-bold-iransanse">مشاوره تلفنی : </span>
                     <i className="bilitja icon-phone"></i>
                     <a href="tel:02184279999">02184279999</a>
                   </a>
@@ -233,7 +233,7 @@ const NavBar = (props) => {
                       style={{ cursor: "pointer" }}
                     />
                   </Link>
-                  <h1 className="font-size-8">
+                  <h1 className="font-size-13 font-bold-iransanse pt-1">
                     خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه
                   </h1>
                 </div>
