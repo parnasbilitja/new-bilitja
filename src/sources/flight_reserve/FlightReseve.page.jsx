@@ -222,30 +222,31 @@ const FlightReserve = (props) => {
     const validation = () => {
         let isValid = true;
         console.log(mobileNumber.mobile)
-        if (mobileNumber.mobile.length <1 || mobileNumber.mobile == null ) {
-            setState({
-                ...state,
-                mobileSubmiterErr: "وارد کردن شماره همراه اجباری است",
-            })
-            setMobileNumber({...mobileNumber,error:'وارد کردن شماره همراه اجباری است'})
-            isValid = false;
-        }else if (mobileNumber.mobile.length != 11) {
-            setState({
-                ...state,
-                mobileSubmiterErr: "شماره موبایل باید 11 رقمی باشد"
-            })
-            setMobileNumber({...mobileNumber,error:'شماره موبایل باید 11 رقمی باشد'})
+        console.log(state.mobileSubmiter)
+        // if (mobileNumber.mobile.length <1 || mobileNumber.mobile == null ) {
+        //     setState({
+        //         ...state,
+        //         mobileSubmiterErr: "وارد کردن شماره همراه اجباری است",
+        //     })
+        //     setMobileNumber({...mobileNumber,error:'وارد کردن شماره همراه اجباری است'})
+        //     isValid = false;
+        // }else if (mobileNumber.mobile.length != 11) {
+        //     setState({
+        //         ...state,
+        //         mobileSubmiterErr: "شماره موبایل باید 11 رقمی باشد"
+        //     })
+        //     setMobileNumber({...mobileNumber,error:'شماره موبایل باید 11 رقمی باشد'})
             
-            isValid = false;
-        }else if (mobileNumber.mobile.length == 11) {
-            // setState({
-            //     ...state,
-            //     mobileSubmiterErr: "شماره موبایل باید 11 رقمی باشد"
-            // })
-            setMobileNumber({...mobileNumber,error:''})
+        //     isValid = false;
+        // }else if (mobileNumber.mobile.length == 11) {
+        //     // setState({
+        //     //     ...state,
+        //     //     mobileSubmiterErr: "شماره موبایل باید 11 رقمی باشد"
+        //     // })
+        //     setMobileNumber({...mobileNumber,error:''})
             
-            isValid = false;
-        }
+        //     isValid = false;
+        // }
         if (state.phoneSubmiter == "") {
             isValid = false;
             setState({
@@ -298,6 +299,7 @@ const FlightReserve = (props) => {
             ...state,
             passengers: passengers,
         });
+        // isValid = true;
         return isValid;
     };
 
@@ -326,8 +328,10 @@ const FlightReserve = (props) => {
         }
         setState({ ...state, [name]: value })
         if (name == 'mobileSubmiter'){
+            // setState({ ...state, mobileSubmiter:value })
             setMobileNumber({...mobileNumber,mobile: value})
         }
+        console.log(state);
     };
 
     const Ref = useRef(null);
@@ -374,6 +378,7 @@ const FlightReserve = (props) => {
         return valid;
     };
     const compeleteReservation = () => {
+        console.log(state);
         const numADL = state.passengers.filter((x) => x.type == "ADL").length;
         const numCHD = state.passengers.filter((x) => x.type == "CHD").length;
         const numINF = state.passengers.filter((x) => x.type == "INF").length;

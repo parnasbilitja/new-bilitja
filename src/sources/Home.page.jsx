@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FlightSearchBox from "./flight_List/FlightSearchBox.component";
 import PageTabls from "./component/PageTabs.component";
 import moment from "moment-jalaali";
@@ -16,55 +16,51 @@ import { loadAirports } from "../Redux/Airports/airport.action";
 import { connect } from "react-redux";
 import { compareTwoStringDates } from "../Utils/SimpleTasks";
 import Scrolltoprefresh from "./component/Scrolltoprefresh";
-import Formsolotion from "./Formsolotion";
+import { useEffect } from "react";
+import {flightsData, homeText} from '../Utils/data';
+import FlightsUrl from "./component/FlightsUrl";
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const Home =(props) => {
+    const [state,setState] = useState({
       open: false,
       dateSelected: null,
       width: 100,
-    };
-  }
-  componentDidMount() {
-    if (!this.props.airports) {
-      console.log("asasasas");
-      this.props.setAirports(null);
-    } else {
-      if (
-        !this.props.airports[0] ||
-        !this.props.airports[0].Version ||
-        this.props.airports[0].Version != "1.7"
-      ) {
-        console.log("asasasas111");
-        this.props.setAirports(null);
-      }
-    }
-
-    this.props.checkUserLogged();
-    this.props.getUserInfo({
-      mobile: localStorage.getItem("mobile"),
     });
-    if (this.props.account) {
-      if (
-        compareTwoStringDates(
-          this.props.account.dateLogin,
-          moment().format("YYYY/MM/DD")
-        ) == -1
-      ) {
-        this.props.addAccountProperties(null);
+  
+  useEffect(()=>{
+      if (!props.airports) {
+        props.setAirports(null);
+      } else {
+        if (
+          !props.airports[0] ||
+          !props.airports[0].Version ||
+          props.airports[0].Version != "1.7"
+        ) {
+          props.setAirports(null);
+        }
       }
-    }
-    this.setState({
-      width: window.innerWidth,
-    });
-  }
-
-  render() {
+      props.checkUserLogged();
+      props.getUserInfo({
+        mobile: localStorage.getItem("mobile"),
+      });
+      if (props.account) {
+        if (
+          compareTwoStringDates(
+            props.account.dateLogin,
+            moment().format("YYYY/MM/DD")
+          ) == -1
+        ) {
+          props.addAccountProperties(null);
+        }
+      }
+      setState({...state,
+        width: window.innerWidth,
+      });
+  },[])
+  
     return (
       <div>
-        {this.state.width >= 826 ? (
+        {state.width >= 826 ? (
           <div className="hidden-xs hidden-sm row">
             <div className="col-md-4">
               <img
@@ -75,7 +71,6 @@ class Home extends React.Component {
                 className={`${styles["hero-image-2"]} pull-right`}
               />
             </div>
-
             <div className="text-center col-md-4 pt-10 mt-5">
               <img
                 width=""
@@ -103,11 +98,11 @@ class Home extends React.Component {
           <div className="row">
             <div className="col-md-1"></div>
             <div className="col-md-10">
-              <FlightSearchBox dateSelected={this.state.dateSelected} />
+              <FlightSearchBox dateSelected={state.dateSelected} />
             </div>
           </div>
         </div>
-        {this.state.width >= 826 ? (
+        {state.width >= 826 ? (
           <div className={`${styles["hero-big-image"]} container`}>
             <img
               width=""
@@ -117,7 +112,7 @@ class Home extends React.Component {
             />
           </div>
         ) : null}
-        {this.state.width < 826 ? (
+        {state.width < 826 ? (
           <div className={`${styles["hero-big-image"]} container`}>
             <img
               width=""
@@ -210,165 +205,7 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <div
-          className={` ${styles["home-flight-suggestion"]} text-center container`}
-        >
-          <h2 className="font-bold-iransanse">بلیط هواپیمـا</h2>
-          <h4 className="mb-3">قیمت های لحظه آخری بلیطـجا</h4>
-          <div className="col-xl-12 col-lg-12 col-sm-12 d-flex flex-wrap align-items-center justify-content-between">
-            <div className={`${styles["suggestion-list"]} col-xl-6 col-lg-6 col-sm-6 col-12`}>
-              <div className="py-2 mb-2">
-                <a href="flights/tehran-to-mashhad/airfares-thr,ika-mhd">
-                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
-                  <span
-                    style={{ marginRight: 10 }}
-                    className="pull-right font-size-14"
-                  >
-                    <strong>بلیط هواپیما مشهد</strong>
-                  </span>
-                </a>
-                <div className="clear"></div>
-              </div>
-              <div className="py-2 mb-2">
-                <a href="flights/tehran-to-kish/airfares-thr,ika-kih">
-                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
-                  <span
-                    style={{ marginRight: 10 }}
-                    className="pull-right font-size-14"
-                  >
-                    <strong>بلیط هواپیما کیش</strong>
-                  </span>
-                </a>
-                <div className="clear"></div>
-              </div>
-              <div className="py-2 mb-2">
-                <a href="flights/tehran-to-isfahan/airfares-thr,ika-ifn">
-                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
-                  <span
-                    style={{ marginRight: 10 }}
-                    className="pull-right font-size-13"
-                  >
-                    <strong>بلیط هواپیما اصفهان</strong>
-                  </span>
-                </a>
-                <div className="clear"></div>
-              </div>
-              <div className="py-2 mb-2">
-                <a href="flights/tehran-to-ahwaz/airfares-thr,ika-awz">
-                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
-                  <span
-                    style={{ marginRight: 10 }}
-                    className="pull-right font-size-14"
-                  >
-                    <strong>بلیط هواپیما اهواز</strong>
-                  </span>
-                </a>
-                <div className="clear"></div>
-              </div>
-              <div className="py-2 mb-2">
-                <a href="flights/tehran-to-tabriz/airfares-thr,ika-tbz">
-                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
-                  <span
-                    style={{ marginRight: 10 }}
-                    className="pull-right font-size-14"
-                  >
-                    <strong>بلیط هواپیما تبریز</strong>
-                  </span>
-                </a>
-                <div className="clear"></div>
-              </div>
-              <div className="py-2 mb-2">
-                <a href="flights/tehran-to-shiraz/airfares-thr,ika-syz">
-                  <i className="bilitja font-size-24  icon-plane-departure pull-right"></i>
-                  <span
-                    style={{ marginRight: 10 }}
-                    className="pull-right font-size-14"
-                  >
-                    <strong>بلیط هواپیما شیراز</strong>
-                  </span>
-                </a>
-                <div className="clear"></div>
-              </div>
-            </div>
-            <div className={`${styles["suggestion-list"]} col-xl-6 col-lg-6 col-sm-6 col-12`}>
-              <div className="py-2 mb-2">
-                <a href="flights/tehran-to-istanbul/airfares-thr,ika-ist">
-                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
-                  <span
-                    style={{ marginRight: 10 }}
-                    className="pull-right font-size-13"
-                  >
-                    <strong>بلیط هواپیما استانبول</strong>
-                  </span>
-                </a>
-                <div className="clear"></div>
-              </div>
-              <div className="py-2 mb-2">
-                <a href="flights/tehran-to-dubi/airfares-thr,ika-dxb">
-                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
-                  <span
-                    style={{ marginRight: 10 }}
-                    className="pull-right font-size-14"
-                  >
-                    <strong>بلیط هواپیما دبی</strong>
-                  </span>
-                </a>
-                <div className="clear"></div>
-              </div>
-              <div className="py-2 mb-2">
-                <a href="flights/tehran-to-teflis/airfares-thr,ika-tbs">
-                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
-                  <span className={"pull-right font-size-14"}>
-                    <strong
-                      style={{ marginRight: 10 }}
-                      className={styles["strong-airline"]}
-                    >
-                      بلیط هواپیما تفلیس
-                    </strong>
-                  </span>
-                </a>
-                <div className="clear"></div>
-              </div>
-              <div className="py-2 mb-2">
-                <a href="flights/tehran-to-abadan/airfares-thr,ika-abd">
-                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
-                  <span
-                    style={{ marginRight: 10 }}
-                    className="pull-right font-size-14"
-                  >
-                    <strong>بلیط هواپیما آبادان</strong>
-                  </span>
-                </a>
-                <div className="clear"></div>
-              </div>
-              <div className="py-2 mb-2">
-                <a href="flights/tehran-to-baku/airfares-thr,ika-gyd">
-                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
-                  <span
-                    style={{ marginRight: 10 }}
-                    className="pull-right font-size-14"
-                  >
-                    <strong>بلیط هواپیما باکو</strong>
-                  </span>
-                </a>
-                <div className="clear"></div>
-              </div>
-              <div className="py-2 mb-2">
-                <a href="flights/tehran-to-najaf/airfares-thr,ika-njf">
-                  <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
-                  <span
-                    style={{ marginRight: 10 }}
-                    className="pull-right font-size-14"
-                  >
-                    <strong>بلیط هواپیما نجف</strong>
-                  </span>
-                </a>
-                <div className="clear"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* <Formsolotion /> */}
+        <FlightsUrl flightsData={flightsData} />
 
         <div className="row padding-xs-5-25">
           <div className="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>
@@ -380,26 +217,13 @@ class Home extends React.Component {
               خرید بلیط هواپیما
             </h3>
             <p className={'description-shop-ticket'}>
-              در دنیای امروزی با توجه به گسترش خرید بلیط هواپیما به صورت آنلاین
-              و جستجوی کاربران برای بلیط چارتری و بلیط ارزان هواپیما و افزایش
-              تمایل مردم برای سفر با هواپیما و از طرفی به صرفه بودن سفر با
-              هواپیما شرکت های زیادی اقدام به فروش بلیط هواپیما به صورت بلیط
-              چارتر و بلیط سیستمی و هم چنین اقدام به پدید آوردن بستری مناسب جهت
-              رزرو آنلاین هتل نموده اند، لذا با توجه به نیاز مردم به رزرو آنلاین
-              بلیط هواپیما و رزرو آنلاین هتل در داخل و خارج جهت آسایش و راحتی
-              مسافران گرامی اقدام به ایجاد یک سیستم رزرواسیون به نام بلیط جا با
-              امکان رزرو آنلاین بلیط هواپیما و هم چنین خرید بلیط ارزان هواپیما و
-              رزرو آنلاین هتل در تهران، رزرو هتل مشهد و کیش، قشم، شیراز و دیگر
-              شهرهای داخل ایران و امکان رزرو آنلاین هتل تفلیس گرجستان و رزرو هتل
-              استانبول نموده ایم تا قدم کوچکی در راه بهبود ارائه خدمات رزرو
-              آنلاین هتل و خرید آنلاین بلیط هواپیما داشته باشیم.
+              {homeText}
             </p>
           </div>
         </div>
       </div >
     );
   }
-}
 
 const mapStateToProps = (state) => ({
   airports: selectAirports(state),
