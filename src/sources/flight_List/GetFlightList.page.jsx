@@ -400,6 +400,9 @@ class GetFlightList extends React.Component {
       })
         .then((res) => res.json())
         .then((data) => {
+          console.log('111111111111');
+                console.log(data);
+          console.log(JSON.stringify({ ...this.props.searchobject }));
           if (data.length != 0 && data != undefined) {
             this.props.addCredentials({
               flightDateNext: data[0].flightDateNext,

@@ -25,11 +25,11 @@ span {
     display: none;
 }
 
-input,textarea,button{
+/* input,textarea,button{
     -webkit-appearance: inherit;
     -moz-appearance: inherit;
     appearance: inherit;
-}
+} */
 
 .form-input-auth {
     height: 45px !important;

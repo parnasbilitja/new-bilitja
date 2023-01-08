@@ -12,7 +12,7 @@ const PrimaryTextInputMobile = (props) => {
     ) : (
       <input
         {...props}
-        readOnly
+        // readOnly
         autoComplete="off"
         className="form-input primary-text px-2 rounded "
       />

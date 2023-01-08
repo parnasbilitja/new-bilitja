@@ -30,7 +30,6 @@ import PopUp from "../component/PopUp.component";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 
 const FlightReserve = (props) =>{
-    
     const [err,setErr] = useState({
         rule:false,
         ruleErr:'لطفا قوانین را بپذیرید',
@@ -65,7 +64,6 @@ const FlightReserve = (props) =>{
         agreeWithTermerr: false,
         email:''
     });
-    // }
     useEffect(() =>{
             props.addReservationProperties({
                 reqNo: props.router.asPath.split("/")[7],
@@ -162,15 +160,12 @@ const FlightReserve = (props) =>{
             gender: "1",
             code: "",
             birthday: "",
-            // pasaport: "",
-            // add new fild for extPasaport
             extPasaport: "",
             price: price,
             nameErr: "",
             familyErr: "",
             codeErr: "",
             birthdayErr: "",
-            // pasaportErr: "",
             futureday: "",
             pasno: "",
             birthdate: "",
@@ -217,7 +212,6 @@ const FlightReserve = (props) =>{
     };
 
     const validation = () => {
-        console.log(state);
         let isValid = true;
 
         if (state.mobileSubmiter == "") {
@@ -298,7 +292,6 @@ const FlightReserve = (props) =>{
         const { name, value } = e.target;
         if (name == 'mobileSubmiter' && state.mobileSubmiter.length >= 10 ) {   
             localStorage.setItem('mobile',value);
-            console.log(value);
         }
             if (value.length == 11 ) {
                 setState({...state,
@@ -351,7 +344,6 @@ const FlightReserve = (props) =>{
             });
         }
         getAllPrice();
-        // console.log(state.passengers);
         return valid;
     };
     const compeleteReservation = () => {
@@ -388,7 +380,6 @@ const FlightReserve = (props) =>{
             customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         };
         getAllPrice();
-        console.log(reservePassengerObject);
         fetch(
             `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`,
             {
@@ -416,7 +407,6 @@ const FlightReserve = (props) =>{
     useEffect(() => {getAllPrice();},[state.passengers])
 
     const login = () => {
-        console.log(state);
         localStorage.setItem("mobile",state.mobileSubmiter)
         setState({...state, btn_disabled: true});
         setLoading(true)
@@ -448,7 +438,6 @@ const FlightReserve = (props) =>{
             } else if (data.status == "10") {
               setState({...state, btn_disabled: false });
               setLoading(false)
-              console.log('compeleteReservation();');
               localStorage.setItem("mobile", data.mobile);
               localStorage.setItem("token", data.token);
               props.checkUserLogged();
@@ -536,12 +525,9 @@ const FlightReserve = (props) =>{
             }
           });
       };
-    //   html { height: 100%; overflow:auto; }
-    //   body { height: 100%; }
         return (
             <div className="container" style={{height: '100%'}}>
             <Scrolltoprefresh/>
-
                 <div className={`${styles["flight-detail"]}`} ref={Ref}>
                     <FlightReserveDesktopHeader {...state} />
                     <FlightReserveMobileHeader {...state} />

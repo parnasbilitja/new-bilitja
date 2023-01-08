@@ -151,8 +151,8 @@ class FlightSearchBox extends React.Component {
       },
       history,
     } = this.props;
-    console.log("flightDatePersian");
-    console.log(flightDatePersian);
+    // console.log("flightDatePersian");
+    // console.log(flightDatePersian);
     return (
       <div className={styles["home-flight-form"]}>
         <div>
@@ -163,7 +163,7 @@ class FlightSearchBox extends React.Component {
             <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
             <PrimaryTextInputMobile
               value={sourceName}
-              readonly={this.state.width <= mobileSize ? "false" : "true"}
+              // readonly={this.state.width <= mobileSize ? "false" : "true"}
               name="sourceName"
               onClick={(e) => {
                 // for mobile
@@ -255,7 +255,7 @@ class FlightSearchBox extends React.Component {
           />
         </div>
         <div className=" without-focus">
-          {console.log(this.props)}
+          {/* {console.log(this.props)} */}
           <PrimaryButton
             style={{ height: "45px", marginTop: "7px" }}
             value={
