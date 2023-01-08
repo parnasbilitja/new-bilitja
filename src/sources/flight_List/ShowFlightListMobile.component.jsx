@@ -84,7 +84,7 @@ class ShowFlightListMobile extends React.Component {
                       }
                       alt="بلیطجا - لوگو ایرلاین"
                     />
-                    <span style={{ fontSize: 15 }}>{oneFlight.airline}</span>
+                    <span className="font-bold-iransanse" style={{ fontSize: 15 }}>{oneFlight.airline}</span>
                   </div>
 
                   <div className={styles["mobile-one-row-flight-number"]}>

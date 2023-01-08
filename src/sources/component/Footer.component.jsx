@@ -18,7 +18,7 @@ const Footer = () => {
             <div className={styles["footer"]}>
                 <div className="container-fluid">
                     <div className="row parent-footer-top">
-                        <div className={`col-lg-2 col-md-12 col-sm-12 col-12 ${styles["footer-logo"]}`}>
+                        <div className={`col-lg-2 col-md-12 col-sm-12 col-12 pe-0 pt-1 pb-4 ${styles["footer-logo"]}`}>
                             <img
                                 width=""
                                 height=""

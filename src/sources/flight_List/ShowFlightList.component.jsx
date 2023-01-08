@@ -31,8 +31,8 @@ const ShowFlightList = (props) => {
                 <span style={{ fontWeight: 900 }} className="font-size-20">
                   {moneyFormat(oneFlight?.priceView)}
                 </span>
-                <span style={{ color: "blue" }} className=" font-size-14 p-1">
-                  تومان
+                <span className="text-dark font-size-14 p-1 font-bold-iransanse">
+                  تـومان
                 </span>
               </div>
               <div
@@ -42,8 +42,8 @@ const ShowFlightList = (props) => {
                   e.preventDefault();
                   props.setReserveBoxData(oneFlight);
                 }}>
-                  <svg className={'svg-bg-white'}  id="Filled" viewBox="0 0 24 24" width="17" height="17"><path  d="M2,7.177V19a5.006,5.006,0,0,0,5,5H17a5.006,5.006,0,0,0,5-5V7.177a3,3,0,0,0-1.543-2.622L12.486.126a1,1,0,0,0-.972,0L3.543,4.555A3,3,0,0,0,2,7.177ZM12,5.5A1.5,1.5,0,1,1,10.5,7,1.5,1.5,0,0,1,12,5.5Z"/></svg>
-                  <a className={'mr-8px'} href="">خرید بلیط</a>
+                <svg className={'svg-bg-white'} id="Filled" viewBox="0 0 24 24" width="17" height="17"><path d="M2,7.177V19a5.006,5.006,0,0,0,5,5H17a5.006,5.006,0,0,0,5-5V7.177a3,3,0,0,0-1.543-2.622L12.486.126a1,1,0,0,0-.972,0L3.543,4.555A3,3,0,0,0,2,7.177ZM12,5.5A1.5,1.5,0,1,1,10.5,7,1.5,1.5,0,0,1,12,5.5Z" /></svg>
+                <a className={'mr-8px'} href="">خرید بلیط</a>
               </div>
             </div>
             <div className={styles["one-row-detail"]}>
@@ -57,7 +57,8 @@ const ShowFlightList = (props) => {
                 </span>
               </div>
               <div className="p-1">
-                <span>ش.پرواز : {oneFlight.flightNo}</span>
+                <span className="font-bold-iransanse">ش.پرواز :</span>
+                <span>{oneFlight.flightNo}</span>
               </div>
             </div>
             <div className={styles["one-row-provider"]}>
@@ -69,20 +70,20 @@ const ShowFlightList = (props) => {
                 }
                 alt="بلیطجا - لوگو ایرلاین"
               />
-              <p>{oneFlight.airline}</p>
+              <p className="font-bold-iransanse">{oneFlight.airline}</p>
             </div>
             <div className={styles["one-row-date"]}>
-              <div> {getweekday(oneFlight.flightDay)}</div>
+              <div className="font-size-18 font-bold-iransanse"> {getweekday(oneFlight.flightDay)}</div>
               <div style={{ marginTop: 8 }}>
-                <div>{oneFlight.flightDate}</div>
-                <div dir="ltr">{oneFlight.flightDateM}</div>
+                <div className="font-size-14">{oneFlight.flightDate}</div>
+                <div className="font-size-14" dir="ltr">{oneFlight.flightDateM}</div>
               </div>
             </div>
             <div className={styles["one-row-time"]}>
               <div>
                 <i className="bilitja icon-clock"></i>
               </div>
-              <span className="font-size-18">
+              <span className="font-size-18 font-bold-iransanse">
                 {String(oneFlight.flightDateTime).split("T")[1].slice(0, 5)}
               </span>
             </div>
@@ -90,12 +91,12 @@ const ShowFlightList = (props) => {
               <div>
                 <i className="bilitja icon-seat"></i>
               </div>
-              <span className="font-size-18">
+              <span className="font-size-18 font-bold-iransanse">
                 {oneFlight.cap + " صندلی خالی"}
               </span>
             </div>
           </div>
-  
+
         ))}
       </div>{" "}
     </>
