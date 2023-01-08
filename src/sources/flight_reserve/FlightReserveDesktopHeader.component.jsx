@@ -21,7 +21,7 @@ const FlightReserveDesktopHeader = (props) =>
 
               <div className="border-between col-md-1 col-lg-1" style={{ transform: 'translate(0, 35px)' }}>
                 {/* <svg id="Outline" viewBox="0 0 24 24" width="45" height="45"><path fill="#dbdbdb" d="M.88,14.09,4.75,18a1,1,0,0,0,1.42,0h0a1,1,0,0,0,0-1.42L2.61,13H23a1,1,0,0,0,1-1h0a1,1,0,0,0-1-1H2.55L6.17,7.38A1,1,0,0,0,6.17,6h0A1,1,0,0,0,4.75,6L.88,9.85A3,3,0,0,0,.88,14.09Z" /></svg> */}
-                <i className ="bilitja icon-plane-departure form-input-icon rotate-y-180" style={{ fontSize: 45 }}></i>
+                <i className="bilitja icon-plane-departure form-input-icon rotate-y-180" style={{ fontSize: 45 }}></i>
               </div>
 
               <div className="col-lg-1 col-md-1 col-sm-1 col-4">
@@ -29,7 +29,7 @@ const FlightReserveDesktopHeader = (props) =>
               </div>
               <div className="border-between col-md-1 col-lg-1" style={{ transform: 'translate(-40px, 35px)' }}>
                 {/* <svg id="Outline" viewBox="0 0 24 24" width="45" height="45"><path fill="#dbdbdb" d="M.88,14.09,4.75,18a1,1,0,0,0,1.42,0h0a1,1,0,0,0,0-1.42L2.61,13H23a1,1,0,0,0,1-1h0a1,1,0,0,0-1-1H2.55L6.17,7.38A1,1,0,0,0,6.17,6h0A1,1,0,0,0,4.75,6L.88,9.85A3,3,0,0,0,.88,14.09Z" /></svg> */}
-                <i className ="bilitja icon-plane-departure form-input-icon rotate-upsidedown-reverse" style={{ fontSize: 45 }}></i>
+                <i className="bilitja icon-plane-departure form-input-icon rotate-upsidedown-reverse" style={{ fontSize: 45 }}></i>
               </div>
 
               <div className="col-lg-4 col-md-4 col-sm-4 col-4 d-flex justify-content-center pe-3">
@@ -82,12 +82,14 @@ const FlightReserveDesktopHeader = (props) =>
               </div>
               <div className="col-lg-6 col-md-6 col-sm-6 col-6 second-column">
                 <br />
-                <div>
+                <div className="d-flex align-items-center justify-content-center pb-4">
                   <img
                     width=""
                     height=""
                     alt="بلیطجا - لوگو رزرو بلیط هواپیما"
-                    src="../../../../../Images/airplane_reserve.webp"
+                    className="pe-3"
+                    src="../../../../../Images/airplane_reserve.png"
+                    style={{ transform: 'rotateY(180deg)' }}
                   />
                   <p className="pt-2">
                     {" "}
@@ -98,9 +100,9 @@ const FlightReserveDesktopHeader = (props) =>
                   </p>
                 </div>
                 <div className="clear"></div>
-                <div>
-                  <i className="bilitja icon-seat mx-1 font-size-30"></i>
-                  <p className="font-size-14">
+                <div className="d-flex align-items-center justify-content-center">
+                  <i className="bilitja icon-seat mx-1 font-size-30 me-4"></i>
+                  <p className="font-size-14 mb-0 pe-3">
                     ظرفیت :
                     <span className="color-secondary">
                       &nbsp;{props.capLast}&nbsp;

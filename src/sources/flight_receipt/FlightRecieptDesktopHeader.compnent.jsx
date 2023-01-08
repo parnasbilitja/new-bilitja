@@ -74,14 +74,16 @@ const FlightRecieptDesktopHeader = (props) =>
                     <span className="color-secondary">{props.airline}</span>
                   </p>
                 </div>
-                <div className="col-lg-6 col-md-6 col-sm-6 col-6 second-column">
+                <div className="col-lg-6 col-md-6 col-sm-6 col-6 second-column ">
                   <br />
-                  <div>
+                  <div className="d-flex align-items-center justify-content-center pb-4">
                     <img
                       width=""
                       height=""
                       alt="بلیطجا - لوگو رزرو بلیط"
-                      src="../../../../../Images/airplane_reserve.webp"
+                      className="pe-3"
+                      src="../../../../../Images/airplane_reserve.png"
+                      style={{ transform: 'rotateY(180deg)' }}
                     />
                     <p>
                       {" "}
@@ -92,9 +94,9 @@ const FlightRecieptDesktopHeader = (props) =>
                     </p>
                   </div>
                   <div className="clear"></div>
-                  <div>
-                    <i className="bilitja icon-seat mx-1 font-size-30"></i>
-                    <p className="font-size-14">
+                  <div className="d-flex align-items-center justify-content-center">
+                    <i className="bilitja icon-seat mx-1 font-size-30 me-4"></i>
+                    <p className="font-size-14 mb-0">
                       ظرفیت :
                       <span className="color-secondary">
                         &nbsp;{props.capLast}&nbsp;
