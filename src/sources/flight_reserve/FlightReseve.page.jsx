@@ -742,7 +742,7 @@ const FlightReserve = (props) => {
                                     </span> */}
                                 <div className="col-lg-3 text-right">
                                     <div className={styles["ruls-text"]}>
-                                        <div className="text-center" onClick={() => setClosePopUp(true)} style={{ marginRight: 10, marginTop: 5, borderBottom: '2px dashed #090026', paddingBottom: 5, color: '#090026' }}>
+                                        <div className="text-center cursor-pointer" onClick={() => setClosePopUp(true)} style={{ marginRight: 10, marginTop: 5, borderBottom: '2px dashed #090026', paddingBottom: 5, color: '#090026' }}>
                                             قوانین و مقررات
                                         </div>
                                     </div>
