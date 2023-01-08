@@ -213,12 +213,11 @@ class Home extends React.Component {
         <div
           className={` ${styles["home-flight-suggestion"]} text-center container`}
         >
-          <h2 className="font-bold-iransanse">بلیط هواپیما</h2>
-          <h3>قیمت های لحظه آخری بلیطـجا</h3>
-
-          <div>
-            <div className={styles["suggestion-list"]}>
-              <div>
+          <h2 className="font-bold-iransanse">بلیط هواپیمـا</h2>
+          <h4 className="mb-3">قیمت های لحظه آخری بلیطـجا</h4>
+          <div className="col-xl-12 col-lg-12 col-sm-12 d-flex flex-wrap align-items-center justify-content-between">
+            <div className={`${styles["suggestion-list"]} col-xl-6 col-lg-6 col-sm-6 col-12`}>
+              <div className="py-2 mb-2">
                 <a href="flights/tehran-to-mashhad/airfares-thr,ika-mhd">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                   <span
@@ -230,7 +229,7 @@ class Home extends React.Component {
                 </a>
                 <div className="clear"></div>
               </div>
-              <div>
+              <div className="py-2 mb-2">
                 <a href="flights/tehran-to-kish/airfares-thr,ika-kih">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                   <span
@@ -242,7 +241,7 @@ class Home extends React.Component {
                 </a>
                 <div className="clear"></div>
               </div>
-              <div>
+              <div className="py-2 mb-2">
                 <a href="flights/tehran-to-isfahan/airfares-thr,ika-ifn">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                   <span
@@ -254,7 +253,7 @@ class Home extends React.Component {
                 </a>
                 <div className="clear"></div>
               </div>
-              <div>
+              <div className="py-2 mb-2">
                 <a href="flights/tehran-to-ahwaz/airfares-thr,ika-awz">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                   <span
@@ -266,7 +265,7 @@ class Home extends React.Component {
                 </a>
                 <div className="clear"></div>
               </div>
-              <div>
+              <div className="py-2 mb-2">
                 <a href="flights/tehran-to-tabriz/airfares-thr,ika-tbz">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                   <span
@@ -278,7 +277,7 @@ class Home extends React.Component {
                 </a>
                 <div className="clear"></div>
               </div>
-              <div>
+              <div className="py-2 mb-2">
                 <a href="flights/tehran-to-shiraz/airfares-thr,ika-syz">
                   <i className="bilitja font-size-24  icon-plane-departure pull-right"></i>
                   <span
@@ -291,8 +290,8 @@ class Home extends React.Component {
                 <div className="clear"></div>
               </div>
             </div>
-            <div className={styles["suggestion-list"]}>
-              <div>
+            <div className={`${styles["suggestion-list"]} col-xl-6 col-lg-6 col-sm-6 col-12`}>
+              <div className="py-2 mb-2">
                 <a href="flights/tehran-to-istanbul/airfares-thr,ika-ist">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                   <span
@@ -304,7 +303,7 @@ class Home extends React.Component {
                 </a>
                 <div className="clear"></div>
               </div>
-              <div>
+              <div className="py-2 mb-2">
                 <a href="flights/tehran-to-dubi/airfares-thr,ika-dxb">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                   <span
@@ -316,7 +315,7 @@ class Home extends React.Component {
                 </a>
                 <div className="clear"></div>
               </div>
-              <div>
+              <div className="py-2 mb-2">
                 <a href="flights/tehran-to-teflis/airfares-thr,ika-tbs">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                   <span className={"pull-right font-size-14"}>
@@ -330,7 +329,7 @@ class Home extends React.Component {
                 </a>
                 <div className="clear"></div>
               </div>
-              <div>
+              <div className="py-2 mb-2">
                 <a href="flights/tehran-to-abadan/airfares-thr,ika-abd">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                   <span
@@ -342,19 +341,19 @@ class Home extends React.Component {
                 </a>
                 <div className="clear"></div>
               </div>
-              <div>
+              <div className="py-2 mb-2">
                 <a href="flights/tehran-to-baku/airfares-thr,ika-gyd">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                   <span
                     style={{ marginRight: 10 }}
-                    className="pull-right font-size-16"
+                    className="pull-right font-size-14"
                   >
                     <strong>بلیط هواپیما باکو</strong>
                   </span>
                 </a>
                 <div className="clear"></div>
               </div>
-              <div>
+              <div className="py-2 mb-2">
                 <a href="flights/tehran-to-najaf/airfares-thr,ika-njf">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                   <span
@@ -397,7 +396,7 @@ class Home extends React.Component {
             </p>
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }
