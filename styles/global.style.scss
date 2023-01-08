@@ -949,6 +949,12 @@ div.radio {
   }
 }
 
+@media screen and (max-width: 800px){
+  .footer-detail{
+    padding-right: 0 !important;
+  }
+}
+
 //order-dashboard
 .header-parent {
   width: 1400px;
