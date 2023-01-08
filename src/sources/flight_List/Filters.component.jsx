@@ -25,8 +25,12 @@ class Filters extends React.Component {
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
   componentDidMount() {
-      this.updateWindowDimensions();
-      window.addEventListener("resize", this.updateWindowDimensions);
+        // const prevTickets = [...this.props.realData];
+        // const filtring = prevTickets.sort((a, b) => a.priceView - b.priceView);
+        // console.log(filtring);
+        // this.props.setFilter(filtring);
+        this.updateWindowDimensions();
+        window.addEventListener("resize", this.updateWindowDimensions);
     }
     componentWillUnmount() {
       window.removeEventListener("resize", this.updateWindowDimensions);
@@ -98,16 +102,32 @@ class Filters extends React.Component {
                 this.setState({
                     lowPrice: true,
                 });
-                const prevTickets = [...this.props.realData];
-                const filtring = prevTickets.sort((a, b) => a.priceView - b.priceView);
+                let prevTickets = [...this.props.realData];
+                let filtring = prevTickets.sort((a, b) => {
+                        if (a.priceView > b.priceView) {
+                            return 1;
+                        }
+                        if (a.priceView < b.priceView) {
+                            return -1;
+                        }
+                        return 0;
+                        });
                 this.props.setFilter(filtring);
             } else {
                 this.setState({
                     lowPrice: false,
                 });
-                const prevTickets = [...this.props.realData];
-                const filtring = prevTickets.sort((a, b) => a.priceView - b.priceView);
-                const reversed = filtring.reverse();
+                let prevTickets = [...this.props.realData];
+                let filtring = prevTickets.sort((a, b) => {
+                        if (a.priceView > b.priceView) {
+                            return 1;
+                        }
+                        if (a.priceView < b.priceView) {
+                            return -1;
+                        }
+                        return 0;
+                        });
+                let reversed = filtring.reverse();
                 this.props.setFilter(reversed);
             }
         } else {

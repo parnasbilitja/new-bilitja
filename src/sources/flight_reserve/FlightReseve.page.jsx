@@ -52,6 +52,10 @@ const FlightReserve = (props) => {
     const [closePopUp, setClosePopUp] = useState(false)
     const [loading, setLoading] = useState(false)
     const [scrollTop, setScrollTop] = useState(0)
+    const [mobileNumber, setMobileNumber] = useState({
+        mobile:localStorage.getItem('mobile') ? localStorage.getItem('mobile') : '',
+        error: "",
+    })
     const [state, setState] = useState({
         stateRegister: false,
         passengers: [],
@@ -217,19 +221,29 @@ const FlightReserve = (props) => {
 
     const validation = () => {
         let isValid = true;
-
-        if (state.mobileSubmiter == "") {
+        console.log(mobileNumber.mobile)
+        if (mobileNumber.mobile.length <1 || mobileNumber.mobile == null ) {
             setState({
                 ...state,
                 mobileSubmiterErr: "وارد کردن شماره همراه اجباری است",
             })
+            setMobileNumber({...mobileNumber,error:'وارد کردن شماره همراه اجباری است'})
             isValid = false;
-        }
-        if (state.mobileSubmiter && state.mobileSubmiter.length < 10) {
+        }else if (mobileNumber.mobile.length != 11) {
             setState({
                 ...state,
                 mobileSubmiterErr: "شماره موبایل باید 11 رقمی باشد"
             })
+            setMobileNumber({...mobileNumber,error:'شماره موبایل باید 11 رقمی باشد'})
+            
+            isValid = false;
+        }else if (mobileNumber.mobile.length == 11) {
+            // setState({
+            //     ...state,
+            //     mobileSubmiterErr: "شماره موبایل باید 11 رقمی باشد"
+            // })
+            setMobileNumber({...mobileNumber,error:''})
+            
             isValid = false;
         }
         if (state.phoneSubmiter == "") {
@@ -299,7 +313,7 @@ const FlightReserve = (props) => {
     };
     const handleChange = (e) => {
         const { name, value } = e.target;
-        if (name == 'mobileSubmiter' && state.mobileSubmiter.length >= 10) {
+        if (name == 'mobileSubmiter' && mobileNumber.mobile.length == 11) {
             localStorage.setItem('mobile', value);
         }
         if (value.length == 11) {
@@ -311,6 +325,9 @@ const FlightReserve = (props) => {
             setState({ ...state, [`${name}error`]: true })
         }
         setState({ ...state, [name]: value })
+        if (name == 'mobileSubmiter'){
+            setMobileNumber({...mobileNumber,mobile: value})
+        }
     };
 
     const Ref = useRef(null);
@@ -665,10 +682,11 @@ const FlightReserve = (props) => {
                                         />
                                     </div>
                                     <span className="color-secondary">
-                                        {
-                                            state.mobileSubmiter == null || state.mobileSubmiter == '' ? 'لطفا شماره را وارد کنید' :
+                                        { mobileNumber.error }
+                                        {/* {
+                                            state.mobileSubmiter == null || state.mobileSubmiterErr == '' ? 'لطفا شماره را وارد کنید' :
                                                 state.mobileSubmiter?.length <= 10 ? 'شماره همراه باید ۱۱ رقمی باشد' :
-                                                    ''}
+                                                    ''} */}
                                     </span>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-6 padding-3px">

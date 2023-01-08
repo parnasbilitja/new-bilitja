@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import globals from "../Global";
 import styles from "../../../styles/FlightList.module.scss";
@@ -7,6 +7,17 @@ import { moneyFormat, getweekday } from "../../Utils/SimpleTasks";
 
 const ShowFlightList = (props) => {
   // console.log("props", props);
+  useEffect(() => {
+    props?.flightList?.sort((a, b) => {
+      if (a.priceView > b.priceView) {
+        return 1;
+      }
+      if (a.priceView < b.priceView) {
+        return -1;
+      }
+      return 0;
+    })
+  },[])
   return (
     <>
       <div>

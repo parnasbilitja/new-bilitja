@@ -215,7 +215,7 @@ class FlightSearchBox extends React.Component {
             ></i>
             <PrimaryTextInputMobile
               value={destinationName}
-              readonly={this.state.width <= mobileSize ? "false" : "true"}
+              // readonly={this.state.width <= mobileSize ? "false" : "true"}
               name="destinationName"
               onFocus={(e) => {
                 // for mobile
