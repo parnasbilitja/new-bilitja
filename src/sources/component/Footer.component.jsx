@@ -28,9 +28,9 @@ const Footer = () => {
                             <p>ارزان ترین بلیط های هواپیما</p>
                             <Link href="/">www. B i l i t j a .com</Link>
                         </div>
-                        <div className="d-flex flex-wrap align-items-start justify-content-between">
-                            <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2 d-flex flex-column align-items-center">
-                                <div className="d-flex align-items-center mb-2 pe-5">
+                        <div className="footer-detail d-flex flex-wrap align-items-start justify-content-between" style={{ paddingRight: 130 }}>
+                            <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
+                                <div className="d-flex align-items-center mb-2">
                                     <div className={styles["circle"]}></div>
                                     <b className="mb-0"> مقاصد داخلی </b>
                                 </div>
@@ -45,8 +45,8 @@ const Footer = () => {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2 d-flex flex-column align-items-center">
-                                <div className="d-flex align-items-center mb-2 pe-5">
+                            <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
+                                <div className="d-flex align-items-center mb-2">
                                     <div className={styles["circle"]}></div>
                                     <b className="mb-0"> مقاصد خارجی </b>
                                 </div>
@@ -62,7 +62,7 @@ const Footer = () => {
 
                                 </ul>
                             </div>
-                            <div className="col-lg-2 col-md-5 item-footer col-6 mb-2 d-flex flex-column align-items-center">
+                            <div className="col-lg-2 col-md-5 item-footer col-6 mb-2">
                                 <div className="d-flex align-items-center mb-2">
                                     <div className={styles["circle"]}></div>
                                     <b className="mb-0">مطالب خواندنی</b>
@@ -91,7 +91,7 @@ const Footer = () => {
                                     </li>
                                 </ul>
                             </div>
-                            <div className="col-lg-2 col-md-3 item-footer col-6 mb-2 d-flex flex-column align-items-center">
+                            <div className="col-lg-2 col-md-3 item-footer col-6 mb-2">
                                 {" "}
                                 <div className={styles["footer-virtual-mobile"]}>
                                     <div style={{ marginBottom: 8 }}>
