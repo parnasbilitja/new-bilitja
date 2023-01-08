@@ -109,7 +109,7 @@ const FlightPassengerForm = (props) => {
                         {getSubtitleByType(props.type)}
                     </p>
                 </div>
-                <div className="hidden-xs col-lg-1 mr-4 col-md-2 col-sm-2 row-price font-size-12 p-3 me-auto">
+                <div className="hidden-xs col-xl-2 col-lg-2 d-flex justify-content-end mr-4 col-md-2 col-sm-2 row-price font-size-12 p-3 me-auto py-3 px-4">
                     <span className="font-size-14 color-secondary font-bold-iransanse ">
                         {moneyFormat(props.price)}
                         &nbsp;
@@ -155,7 +155,7 @@ const FlightPassengerForm = (props) => {
                 </div>
                 {/* shows up just for mobile ----- end */}
                 <div className={`"col-lg-12 col-md-12 col-sm-12 col-12 m-auto" ${styles["container"]}`}>
-                    <div className="row justify-content-start">
+                    <div className="row justify-content-between">
                         <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px">
                             <div className="pb-1 mt-1">
                                 <PrimaryTextInput
