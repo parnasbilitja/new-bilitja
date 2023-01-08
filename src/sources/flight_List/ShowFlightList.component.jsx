@@ -20,8 +20,8 @@ const ShowFlightList = (props) => {
                 <span style={{ fontWeight: 900 }} className="font-size-20">
                   {moneyFormat(oneFlight?.priceView)}
                 </span>
-                <span style={{ color: "blue" }} className=" font-size-14 p-1">
-                  تومان
+                <span className="text-dark font-size-14 p-1 font-bold-iransanse">
+                  تـومان
                 </span>
               </div>
               <div
