@@ -12,9 +12,8 @@ const PageTabls = (props) => {
       <div className="col-md-10">
         <div className={styles["tab-container"]}>
           <div
-            className={`${styles["home-tab"]}  cursor-pointer ${
-              props.tabActice == 1 ? styles["home-tab-active"] : null
-            }`}
+            className={`${styles["home-tab"]}  cursor-pointer ${props.tabActice == 1 ? styles["home-tab-active"] : null
+              }`}
             onClick={() => {
               myRouter.push("/");
             }}
@@ -23,13 +22,12 @@ const PageTabls = (props) => {
               <i className="bilitja font-size-24 icon-plane-departure"></i>
             </div>
             <div className="pull-right">
-              <span className="font-size-14"> بلیط هواپیما </span>
+              <span className="font-size-14 font-bold-iransanse"> بلیط هواپیما </span>
             </div>
           </div>
           <div
-            className={`${styles["home-tab"]} cursor-pointer ${
-              props.tabActice == 2 ? styles["home-tab-active"] : null
-            }`}
+            className={`${styles["home-tab"]} cursor-pointer ${props.tabActice == 2 ? styles["home-tab-active"] : null
+              }`}
             onClick={() => {
               myRouter.push("/tours");
             }}
@@ -38,7 +36,7 @@ const PageTabls = (props) => {
               <i className="bilitja font-size-20 icon-villa"></i>
             </div>
             <div className="pull-right">
-              <span className="font-size-14"> تور </span>
+              <span className="font-size-14 font-bold-iransanse"> تور </span>
             </div>
           </div>
         </div>
