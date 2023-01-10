@@ -334,7 +334,7 @@ input[type="button"]:hover {
 
 .end-payment-btn:hover {
     background-color: #fff !important;
-    border: 1px solid #279692 !important;
+    border: 2px solid #279692 !important;
     color: #279692 !important;
 }
 
