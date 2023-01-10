@@ -329,6 +329,7 @@ input[type="button"]:hover {
 .end-payment-btn {
     background-color: #279692;
     color: #fff !important;
+    border: 2px solid #279692;
     margin-right: 15px;
 }
 
