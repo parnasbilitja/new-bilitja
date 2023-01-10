@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../../styles/FlightReciept.module.scss";
 import stylesflight from "../../../styles/FlightSearchBox.module.scss";
-import FlightReserveDesktopHeader from "./FlightReserveDesktopHeader.component";
-import FlightReserveMobileHeder from "./FlightReserveMobileHeader.component";
+import FlightReserveDesktopHeader from "../flight_reserve/FlightReserveDesktopHeader.component";
+import FlightReserveMobileHeder from "../flight_reserve/FlightReserveMobileHeader.component";
 import {
   faUser,
   faEdit,
@@ -21,12 +21,9 @@ import PopUpWide from "../component/PopUpWide.component";
 import FlightPassengerEditForm from "./FlightPassengerEditForm.component";
 import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
 import router, { withRouter } from "next/router";
-import PopUp from "../component/PopUp.component";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 
 const FlightReciept = (props) => {
-
-    console.log(props);
     const [state, setState] = useState({
       birthDayAll_: [],
       familyAll_: [],
@@ -50,13 +47,8 @@ const FlightReciept = (props) => {
         index: 0,
       },
     });
-    console.log(state);
   
     useEffect(() => {
-
-  // componentDidMount() {
-    //console.log(`${window.location.origin}/api/callbackbank`);
-
     props.addReservationProperties({
       reqNo: props.router.asPath.split("/")[3],
       reqPnr: props.router.asPath.split("/")[4],
@@ -127,7 +119,7 @@ const FlightReciept = (props) => {
 },[])
 
   const compeleteReservation = () => {
-    
+    console.log(props);
     const reservePassengerObject = {
       reqNo: props.reserveProperties.reqNo,
       reqPnr: props.reserveProperties.reqPnr,
@@ -149,6 +141,7 @@ const FlightReciept = (props) => {
       numINF: state.numINF,
       customerId: "1a157116-a01a-4027-ab10-74098ac63815",
     };
+    console.log(reservePassengerObject);
     fetch(
       `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`,
       {
@@ -159,14 +152,15 @@ const FlightReciept = (props) => {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.message == "0") {
           alert("success");
-        } else {
-          props.messageBoxModify({
-            color:false,
-            state: true,
-            message: "لطفا اطلاعات را کامل وارد کنید",
-          });
+        // } else {
+        //   props.messageBoxModify({
+        //     color:false,
+        //     state: true,
+        //     message: "لطفا اطلاعات را کامل وارد کنید",
+        //   });
         }
       });
       
@@ -282,9 +276,9 @@ const FlightReciept = (props) => {
       open: !open,
     });
   };
-
+console.log(state);
     return (
-      <div className="container">
+      <div className="container mt-100">
         <div className={styles["flight-detail"]}>
           <FlightReserveDesktopHeader {...state} />
           <FlightReserveMobileHeder {...state} />
@@ -321,6 +315,7 @@ const FlightReciept = (props) => {
                     <tr className="font-size-13">
                       <td className="hidden-xs">
                         {getTicketType(state.ticketCodeAll_[index])}
+                        ({(state.sexAll_[index] == 1?'مرد':'زن')})
                       </td>
                       <td>
                         <div className="hidden-xs">
@@ -465,17 +460,17 @@ const FlightReciept = (props) => {
                     <button
                       className="btn btn-success-payment py-2 col-12 mb-1"
                       onClick={() => {
-                        if (!localStorage.getItem('mobile')) {
-                          props.messageBoxModify({
-                            color:false,
-                            state: true,
-                            message: "لطفا وارد حساب خود شوید",
-                          });
-                        }else if (state.isUpdated) {
+                        // if (!localStorage.getItem('mobile')) {
+                        //   props.messageBoxModify({
+                        //     color:false,
+                        //     state: true,
+                        //     message: "لطفا وارد حساب خود شوید",
+                        //   });
+                        // }else{
                           compeleteReservation();
                           // if (props.user.logged && localStorage.getItem('token')) { 
                             getBanks();
-                          }
+                          // }
                         // }else{
                         //   props.messageBoxModify({
                         //     color:false,

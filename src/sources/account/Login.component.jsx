@@ -19,7 +19,16 @@ import {
 } from "../../Redux/Account/account.action";
 import { useState } from "react";
 import Timer from "../../Utils/Timer";
+import Router from "next/router";
+
+
 const Login = (props) => {
+  let route = {
+    reqPnr:localStorage.getItem('reqPnr'),
+    reqNo:localStorage.getItem('reqNo')
+  }
+  
+  // props.router.push(`/flights/receipt/${route.reqNo}/${route.reqPnr}`)
 
   const [TimerChecker, setTimerChecker] = useState({
     phoneErrType: false,
@@ -76,15 +85,7 @@ const Login = (props) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.status == "0") {
-
-          // setState({...state,
-          //   btn_disabled: false,
-          //   loading: false,
-          //   get_mobile_status: true,
-          //   btn_text: "تایید کد احراز هویت",
-          // });
-        } else if (data.status == "10") {
+        if (data.status == "10") {
           // setState({...state, btn_disabled: false, loading: false });
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
@@ -101,6 +102,7 @@ const Login = (props) => {
             state: true,
             message: "ورود شما موفقیت آمیز بود.",
           });
+          
           props.accountBoxModify({
             state: false,
             type: "authentication",
@@ -224,6 +226,7 @@ const Login = (props) => {
       .then((data) => {
         console.log(data);
         if (data.status == "2" || data.status == "1") {
+          localStorage.setItem('loginGoNext',JSON.stringify(1))
           setState({ ...state, btn_disabled: false, loading: false });
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);

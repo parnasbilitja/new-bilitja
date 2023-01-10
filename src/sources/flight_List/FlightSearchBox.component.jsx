@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../../styles/FlightSearchBox.module.scss";
 import PrimaryButton from "../component/PrimaryButton.component";
 import PrimaryTextInputMobile from "../component/PrimaryTextInputMobile";
@@ -18,17 +18,15 @@ import { addCredentials, switchRoute } from "../../Redux/Search/search.action";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
-
 //import BirthdayCalendar from "../calendar/BirthdayCalendar.component"
 
-class FlightSearchBox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const FlightSearchBox = (props) =>{
+  // const { height, width } = useWindowDimensions();
+    const [state, setState] = useState({
       searchBool:false,
       sourceSearch: "",
       destinationSearch: "",
-      width: 0,
+      width: 1024,
       open: false,
       openSource: false,
       openDestination: false,
@@ -38,79 +36,77 @@ class FlightSearchBox extends React.Component {
       searchTermSource: "",
       searchTermDestination: "",
       searchReset: false,
-    };
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-  }
-  componentDidMount() {
-    this.updateWindowDimensions();
-    // window.addEventListener('resize', this.updateWindowDimensions);
-  }
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth });
-  }
-
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.props.addCredentials({
-      [name]: value,
     });
-  };
-  handleChangeCre = (event) => {
+
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   props.addCredentials({
+  //     [name]: value,
+  //   });
+  // };
+  const handleChangeCre = (event) => {
     const { name, value } = event.target;
-    this.props.addCredentials({
+    props.addCredentials({
       [name]: value,
     });
     if (name == "sourceName") {
-      this.setState({
+      setState({...state,
         searchTermSource: value,
       });
     } else {
-      this.setState({
+      setState({...state,
         searchTermDestination: value,
       });
     }
   };
+  const handleFocus = (event) => {
+    console.log(props);
+    const { name } = event.target;
+    props.addCredentials({
+      [name]: '',
+    });
+  };
   // for mobile
-  managePopUpCalendar = (value) => {
-    this.setState({
+  const managePopUpCalendar = (value) => {
+    setState({...state,
       open: value,
     });
   };
   // for mobile
-  managePopUpSource = (value) => {
-    this.setState({
+  const managePopUpSource = (value) => {
+    setState({...state,
       openSource: value,
       mobileSearchTerm: "",
     });
   };
   // for mobile
-  managePopUpDestination = (value) => {
-    this.setState({
+  const managePopUpDestination = (value) => {
+    setState({...state,
       openDestination: value,
       mobileSearchTerm: "",
     });
   };
   // for mobile
-  mobileHandleSearchTerm = (value) => {
-    this.setState({
+  const mobileHandleSearchTerm = (value) => {
+    setState({...state,
       mobileSearchTerm: value,
     });
   };
   // for desktop
-  manageSuggestSource = (value) => {
-    this.setState({
+  const manageSuggestSource = (value) => {
+    setState({...state,
       suggestSource: value,
       searchTermSource: "",
     });
   };
   // for desktop
-  manageSuggestDestination = (value) => {
-    this.setState({
+  const manageSuggestDestination = (value) => {
+    setState({...state,
       suggestDestination: value,
       searchTermDestination: "",
     });
   };
-  validation = () => {
+  const validation = () => {
     const {
       credentials: {
         sourceName,
@@ -123,7 +119,7 @@ class FlightSearchBox extends React.Component {
         stDate,
         typeOfCalendar,
       },
-    } = this.props;
+    } = props;
     if (sourceName == "" || source == "") {
       return false;
     }
@@ -136,7 +132,6 @@ class FlightSearchBox extends React.Component {
     }
     return true;
   };
-  render() {
     const mobileSize = 626;
     const {
       credentials: {
@@ -150,7 +145,7 @@ class FlightSearchBox extends React.Component {
         typeOfCalendar,
       },
       history,
-    } = this.props;
+    } = props;
     // console.log("flightDatePersian");
     // console.log(flightDatePersian);
     return (
@@ -163,26 +158,27 @@ class FlightSearchBox extends React.Component {
             <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
             <PrimaryTextInputMobile
               value={sourceName}
-              // readonly={this.state.width <= mobileSize ? "false" : "true"}
+              // readonly={state.width <= mobileSize ? "false" : "true"}
               name="sourceName"
               onClick={(e) => {
                 // for mobile
-                if (this.state.width <= mobileSize) {
+                if (state.width <= mobileSize) {
                   e.preventDefault();
-                  this.managePopUpSource(true);
+                  managePopUpSource(true);
                 } else {
-                  this.manageSuggestSource(true);
+                  manageSuggestSource(true);
                 }
               }}
-              onChange={this.handleChangeCre}
+              onChange={handleChangeCre}
+              onFocus={handleFocus}
               placeholder={"مبدا خود را وارد کنید"}
             />
 
-            {this.state.suggestSource ? (
+            {state.suggestSource ? (
               <Airports
                 credenrialType="source"
-                closeSuggest={this.manageSuggestSource}
-                searchTerm={this.state.searchTermSource}
+                closeSuggest={manageSuggestSource}
+                searchTerm={state.searchTermSource}
               />
             ) : null}
           </div>
@@ -190,12 +186,12 @@ class FlightSearchBox extends React.Component {
 
         <div
           className={`${
-            this.props.showSwitch ? null : "hidden-xs"
+            props.showSwitch ? null : "hidden-xs"
           } form-input-border text-center ${
             styles["home-swtich-button-container"]
           }`}
           onClick={() => {
-            this.props.switchRoute();
+            props.switchRoute();
           }}
         >
           <FontAwesomeIcon
@@ -215,25 +211,27 @@ class FlightSearchBox extends React.Component {
             ></i>
             <PrimaryTextInputMobile
               value={destinationName}
-              // readonly={this.state.width <= mobileSize ? "false" : "true"}
+              // readonly={state.width <= mobileSize ? "false" : "true"}
               name="destinationName"
-              onFocus={(e) => {
+              onClick={(e) => {
                 // for mobile
-                if (this.state.width <= mobileSize) {
+                if (state.width <= mobileSize) {
                   e.preventDefault();
-                  this.managePopUpDestination(true);
+                  managePopUpDestination(true);
                 } else {
-                  this.manageSuggestDestination(true);
+                  manageSuggestDestination(true);
                 }
               }}
-              onChange={this.handleChangeCre}
+              onChange={handleChangeCre}
+              onFocus={handleFocus}
+              
               placeholder={"مقصد خود را وارد کنید"}
             />
-            {this.state.width > mobileSize && this.state.suggestDestination ? (
+            {state.width > mobileSize && state.suggestDestination ? (
               <Airports
                 credenrialType="destination"
-                closeSuggest={this.manageSuggestDestination}
-                searchTerm={this.state.searchTermDestination}
+                closeSuggest={manageSuggestDestination}
+                searchTerm={state.searchTermDestination}
               />
             ) : null}
           </div>
@@ -250,22 +248,22 @@ class FlightSearchBox extends React.Component {
             value={typeOfCalendar == "GAR" ? stDate : flightDatePersian}
             onFocus={(e) => {
               e.preventDefault();
-              this.managePopUpCalendar(true);
+              managePopUpCalendar(true);
             }}
           />
         </div>
         <div className=" without-focus">
-          {/* {console.log(this.props)} */}
+          {/* {console.log(props)} */}
           <PrimaryButton
             style={{ height: "45px", marginTop: "7px" }}
             value={
-              this.state.searchReset == false  ? "جستجو" : "لطفا صبر کنید..."
+              state.searchReset == false  ? "جستجو" : "لطفا صبر کنید..."
             }
             onClick={() => {
-                this.setState({ searchReset:true})
-              if (!this.validation()) {
-                this.setState({ searchReset:false})
-                this.props.messageBoxModify({
+                setState({...state, searchReset:true})
+              if (!validation()) {
+                setState({...state, searchReset:false})
+                props.messageBoxModify({
                   state: true,
                   color:false,
                   message: "لطفا اطلاعات را کامل وارد کنید",
@@ -273,7 +271,7 @@ class FlightSearchBox extends React.Component {
                 return;
               }
 
-              const pathquery = this.props.router.asPath;
+              const pathquery = props.router.asPath;
               const path = pathquery.split("#")[0];
               const src = decodeURI(path.split("/")[2]).split("-to-")[0];
               const srccod = decodeURI(path.split("/")[3]).split("-")[1];
@@ -281,39 +279,39 @@ class FlightSearchBox extends React.Component {
               const destcod = decodeURI(path.split("/")[3]).split("-")[2];
 
               if (
-                src != this.props.credentials.sourceNameEn ||
-                dest != this.props.credentials.destinationNameEn
+                src != props.credentials.sourceNameEn ||
+                dest != props.credentials.destinationNameEn
               ) {
-                if (this.props.refreshAction) {
-                this.setState({ searchReset:true})
-                  this.props
+                if (props.refreshAction) {
+                setState({...state, searchReset:true})
+                  props
                     .addCredentials({
                       withFilters: false,
                       currentPage: 1,
                     })
                     .then(() => {
-                      this.props.router.push(
-                        `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}/airfares-${this.props.credentials.source}-${this.props.credentials.dest}#${this.props.credentials.flightDatePersian}`
+                      props.router.push(
+                        `/flights/${props.credentials.sourceNameEn}-to-${props.credentials.destinationNameEn}/airfares-${props.credentials.source}-${props.credentials.dest}#${props.credentials.flightDatePersian}`
                       );
-                      this.props.refreshAction();
+                      props.refreshAction();
                     });
                 } else {
-                  this.props.router.push(
-                    `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}/airfares-${this.props.credentials.source}-${this.props.credentials.dest}#${this.props.credentials.flightDatePersian}`
+                  props.router.push(
+                    `/flights/${props.credentials.sourceNameEn}-to-${props.credentials.destinationNameEn}/airfares-${props.credentials.source}-${props.credentials.dest}#${props.credentials.flightDatePersian}`
                   );
                 }
               } else {
-                this.setState({ searchReset:false})
-                this.props
+                setState({...state, searchReset:false})
+                props
                   .addCredentials({
                     withFilters: false,
                     currentPage: 1,
                   })
                   .then(() => {
-                    this.props.router.push(
-                      `/flights/${this.props.credentials.sourceNameEn}-to-${this.props.credentials.destinationNameEn}/airfares-${this.props.credentials.source}-${this.props.credentials.dest}#${this.props.credentials.flightDatePersian}`
+                    props.router.push(
+                      `/flights/${props.credentials.sourceNameEn}-to-${props.credentials.destinationNameEn}/airfares-${props.credentials.source}-${props.credentials.dest}#${props.credentials.flightDatePersian}`
                     );
-                    this.props.refreshAction();
+                    props.refreshAction();
                   });
               }
             }}
@@ -321,34 +319,34 @@ class FlightSearchBox extends React.Component {
         </div>
 
         <PopUpWide
-          opened={this.state.open}
-          closePopUp={this.managePopUpCalendar}
+          opened={state.open}
+          closePopUp={managePopUpCalendar}
         >
           <div className={styles["flight-search-box-calendar-container"]}>
             <CalendarComponent
               setDate={(value) => {
-                this.props.addCredentials({
+                props.addCredentials({
                   stDate: value.garigorian,
                   flightDatePersian: value.jalali,
                   typeOfCalendar: value.typeOfCalendar,
                 });
               }}
-              closePopUpCalendar={this.managePopUpCalendar}
+              closePopUpCalendar={managePopUpCalendar}
             />
           </div>
         </PopUpWide>
         {
           // for mobile
-          this.state.width <= mobileSize ? (
+          state.width <= mobileSize ? (
             <PopUp
-              opened={this.state.openSource}
-              closePopUp={this.managePopUpSource}
+              opened={state.openSource}
+              closePopUp={managePopUpSource}
             >
               <AirportsMobile
                 credenrialType="source"
-                searchTerm={this.state.mobileSearchTerm}
-                handleChange={this.mobileHandleSearchTerm}
-                closePopUp={this.managePopUpSource}
+                searchTerm={state.mobileSearchTerm}
+                handleChange={mobileHandleSearchTerm}
+                closePopUp={managePopUpSource}
                 title="مبدا"
               />
             </PopUp>
@@ -356,16 +354,16 @@ class FlightSearchBox extends React.Component {
         }
         {
           // for mobile
-          this.state.width <= mobileSize ? (
+          state.width <= mobileSize ? (
             <PopUp
-              opened={this.state.openDestination}
-              closePopUp={this.managePopUpDestination}
+              opened={state.openDestination}
+              closePopUp={managePopUpDestination}
             >
               <AirportsMobile
                 credenrialType="destination"
-                searchTerm={this.state.mobileSearchTerm}
-                handleChange={this.mobileHandleSearchTerm}
-                closePopUp={this.managePopUpDestination}
+                searchTerm={state.mobileSearchTerm}
+                handleChange={mobileHandleSearchTerm}
+                closePopUp={managePopUpDestination}
                 title="مقصد"
               />
             </PopUp>
@@ -374,7 +372,7 @@ class FlightSearchBox extends React.Component {
       </div>
     );
   }
-}
+
 
 const mapStatesToProps = (state) => ({
   credentials: selectCredentials(state),

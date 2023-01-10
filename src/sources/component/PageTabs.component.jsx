@@ -9,10 +9,10 @@ const PageTabls = (props) => {
   return (
     <div className="row">
       <div className="col-md-1"></div>
-      <div className="col-md-10">
+      <div className="col-md-10 mb-2">
         <div className={styles["tab-container"]}>
           <div
-            className={`${styles["home-tab"]}  cursor-pointer ${props.tabActice == 1 ? styles["home-tab-active"] : null
+            className={`${styles["home-tab"]} cursor-pointer ${props.tabActice == 1 ? styles["home-tab-active"] : null
               }`}
             onClick={() => {
               myRouter.push("/");
@@ -22,7 +22,7 @@ const PageTabls = (props) => {
               <i className="bilitja font-size-24 icon-plane-departure"></i>
             </div>
             <div className="pull-right">
-              <span className="font-size-14 font-bold-iransanse"> بلیط هواپیما </span>
+              <span className="font-size-15 "> بلیط هواپیما </span>
             </div>
           </div>
           <div
@@ -36,7 +36,7 @@ const PageTabls = (props) => {
               <i className="bilitja font-size-20 icon-villa"></i>
             </div>
             <div className="pull-right">
-              <span className="font-size-14 font-bold-iransanse"> تور </span>
+              <span className="font-size-15 "> تور </span>
             </div>
           </div>
         </div>
