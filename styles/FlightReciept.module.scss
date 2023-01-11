@@ -2,7 +2,7 @@
 .flight-detail {
   text-align: center;
   .background-world {
-    background-image: url(../public/Images/worldmap.webp);
+    background-image: url(../public/Images/worldmap.webp) !important;
     background-position: center;
     background-size: contain;
   }

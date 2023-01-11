@@ -6,6 +6,14 @@
     gap: 8px;
   }
 }
+.flight-detail {
+  text-align: center;
+  .background-world {
+      background-image: url(../public/Images/worldmap.webp);
+      background-position: center;
+      background-size: contain;
+  }
+}
 @media only screen and (max-width: 694px) and (min-width: 650px) {
   .home-flight-form {
     grid-template-columns: 8fr 2.5fr 8fr 8fr 4fr;

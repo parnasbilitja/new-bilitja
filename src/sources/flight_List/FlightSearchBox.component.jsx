@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../../styles/FlightSearchBox.module.scss";
 import PrimaryButton from "../component/PrimaryButton.component";
 import PrimaryTextInputMobile from "../component/PrimaryTextInputMobile";
@@ -21,12 +21,15 @@ import Scrolltoprefresh from "../component/Scrolltoprefresh";
 //import BirthdayCalendar from "../calendar/BirthdayCalendar.component"
 
 const FlightSearchBox = (props) =>{
-  // const { height, width } = useWindowDimensions();
+  const [width, setWidth]   = useState();
+  useEffect(() => {
+    setWidth(window.innerWidth)
+  },[])
     const [state, setState] = useState({
       searchBool:false,
       sourceSearch: "",
       destinationSearch: "",
-      width: 1024,
+      width: width,
       open: false,
       openSource: false,
       openDestination: false,
@@ -38,12 +41,6 @@ const FlightSearchBox = (props) =>{
       searchReset: false,
     });
 
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-  //   props.addCredentials({
-  //     [name]: value,
-  //   });
-  // };
   const handleChangeCre = (event) => {
     const { name, value } = event.target;
     props.addCredentials({
@@ -59,9 +56,20 @@ const FlightSearchBox = (props) =>{
       });
     }
   };
+  const [list, setList] = useState({
+  })
+  const handleFocusOut = (event) => {
+    console.log(list);
+    const { name,value } = event.target;
+    setList({...list,[name]:value});
+    props.addCredentials({
+      [name]: list[name],
+    });
+  };
   const handleFocus = (event) => {
-    console.log(props);
-    const { name } = event.target;
+    console.log(list);
+    const { name,value } = event.target;
+    setList({...list,[name]:value});
     props.addCredentials({
       [name]: '',
     });
@@ -162,7 +170,7 @@ const FlightSearchBox = (props) =>{
               name="sourceName"
               onClick={(e) => {
                 // for mobile
-                if (state.width <= mobileSize) {
+                if (width <= mobileSize) {
                   e.preventDefault();
                   managePopUpSource(true);
                 } else {
@@ -171,6 +179,7 @@ const FlightSearchBox = (props) =>{
               }}
               onChange={handleChangeCre}
               onFocus={handleFocus}
+              onBlur={handleFocusOut}
               placeholder={"مبدا خود را وارد کنید"}
             />
 
@@ -215,7 +224,7 @@ const FlightSearchBox = (props) =>{
               name="destinationName"
               onClick={(e) => {
                 // for mobile
-                if (state.width <= mobileSize) {
+                if (width <= mobileSize) {
                   e.preventDefault();
                   managePopUpDestination(true);
                 } else {
@@ -224,10 +233,10 @@ const FlightSearchBox = (props) =>{
               }}
               onChange={handleChangeCre}
               onFocus={handleFocus}
-              
+              onBlur={handleFocusOut}
               placeholder={"مقصد خود را وارد کنید"}
             />
-            {state.width > mobileSize && state.suggestDestination ? (
+            {width > mobileSize && state.suggestDestination ? (
               <Airports
                 credenrialType="destination"
                 closeSuggest={manageSuggestDestination}
@@ -337,7 +346,7 @@ const FlightSearchBox = (props) =>{
         </PopUpWide>
         {
           // for mobile
-          state.width <= mobileSize ? (
+          width <= mobileSize ? (
             <PopUp
               opened={state.openSource}
               closePopUp={managePopUpSource}
@@ -354,7 +363,7 @@ const FlightSearchBox = (props) =>{
         }
         {
           // for mobile
-          state.width <= mobileSize ? (
+          width <= mobileSize ? (
             <PopUp
               opened={state.openDestination}
               closePopUp={managePopUpDestination}
