@@ -1,48 +1,44 @@
-import React from 'react'
-//import styles from '../../../styles/Calendar.module.scss'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { addCredentials } from '../../Redux/Search/search.action'
 import JalaliDays from './JalaliDays'
 import GarigorianDays from './GarigorianDays'
-class CalendarComponent extends React.Component {
-    constructor(props) {
-        super(props)
+const CalendarComponent = (props) => {
 
-        this.state = {
+    const [state,setState] = useState({
             typeOfCalendar: "GAR"
-        }
-    }
-    componentDidMount() {
-        this.setState({
+        })
+    useEffect(()=>{
+        setState({...state,
             typeOfCalendar: "JAL"
         });
-    }
-    render() {
 
-        return (
-            <div onClick={(e) => {
-                e.stopPropagation()
-            }}>
+    },[])
 
-                <div className="rtl text-right">
-                    <button className="py-2 px-4 no-margin" onClick={() => {
-                        this.setState({
-                            typeOfCalendar: this.state.typeOfCalendar == "JAL" ? "GAR" : "JAL"
-                        })
-                    }} >&nbsp;  {this.state.typeOfCalendar == "JAL" ? "میلادی" : " شمسی"}</button>
-                </div>
-                    
-                                    {
-                                        this.state.typeOfCalendar == "JAL" ?
-                    
-                                            <JalaliDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar} />
-                                            :
-                                            <GarigorianDays setDate={this.props.setDate} closePopUpCalendar={this.props.closePopUpCalendar} />
-                                    }
+    return (
+        <div onClick={(e) => {
+            e.stopPropagation()
+        }}
+        style={{height: '330px',
+            overflowY: 'auto'}}
+        >
+
+            <div className="rtl text-right">
+                <button className="py-2 px-4 no-margin" onClick={() => {
+                    setState({...state,
+                        typeOfCalendar: state.typeOfCalendar == "JAL" ? "GAR" : "JAL"
+                    })
+                }} >&nbsp;  {state.typeOfCalendar == "JAL" ? "میلادی" : " شمسی"}</button>
             </div>
-        )
-    }
+                
+            {state.typeOfCalendar == "JAL" ?
+                <JalaliDays setDate={props.setDate} closePopUpCalendar={props.closePopUpCalendar} />:
+                <GarigorianDays setDate={props.setDate} closePopUpCalendar={props.closePopUpCalendar} />
+            }
+        </div>
+    )        
 }
+
 
 const mapDispatchesToProps = (dispatch) => ({
     addCredentials: value => dispatch(addCredentials(value))
