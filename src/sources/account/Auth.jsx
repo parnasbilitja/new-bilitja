@@ -400,9 +400,11 @@ const Auth = (props) => {
             {state.loading === false ? state.btn_text : <Loader />}
           </button>
         </div>
+        {state.get_mobile_status && 
         <div className="justify-content-center row mt-3">
             <span className="btn btn-outline-info col-5 btn-block" onClick={()=>{console.log('change');setState({...state,get_mobile_status:false})}}>تغییر شماره</span>
         </div>
+        }
       </div>
       {state.get_mobile_status === true ? (
         <div className="row mt-3 text-center">
