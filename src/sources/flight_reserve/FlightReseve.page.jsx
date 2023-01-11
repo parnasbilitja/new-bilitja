@@ -555,7 +555,7 @@ const FlightReserve = (props) => {
     },[loginGoNext])
 
     return (
-        <div className="container" style={{ height: '100%' }}>
+        <div className="container mt-100" style={{ height: '100%' }}>
             <Scrolltoprefresh />
             <div className={`${styles["flight-detail"]}`} ref={Ref}>
                 <FlightReserveDesktopHeader {...state} />
