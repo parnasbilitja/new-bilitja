@@ -29,7 +29,7 @@ const Home =(props) => {
       dateSelected2: null,
       width: 100,
     });
-    const [type, setType] = useState(2) 
+    const [type, setType] = useState(1) 
   useEffect(()=>{
       if (!props.airports) {
         props.setAirports(null);
