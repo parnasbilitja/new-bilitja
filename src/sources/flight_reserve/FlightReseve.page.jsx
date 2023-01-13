@@ -30,6 +30,7 @@ import PopUp from "../component/PopUp.component";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 
 const FlightReserve = (props) => {
+    // console.log(props);
     const [err, setErr] = useState({
         rule: false,
         ruleErr: 'لطفا قوانین را بپذیرید',
@@ -49,6 +50,7 @@ const FlightReserve = (props) => {
             }
     }
     const [numbers, setNumbers] = useState(false)
+    const [numbers2, setNumbers2] = useState(false)
     const [closePopUp, setClosePopUp] = useState(false)
     const [loading, setLoading] = useState(false)
     const [scrollTop, setScrollTop] = useState(0)
@@ -62,13 +64,14 @@ const FlightReserve = (props) => {
         priceAll: 0,
         mobileSubmiter: localStorage.getItem('mobile') ? localStorage.getItem('mobile') : '',
         phoneSubmiter: '',
-        mobileSubmiterErr: "",
-        phoneSubmiterErr: "شماره ثابت اجباریست",
+        mobileSubmiterErr: "شماره همراه اجباری است",
+        phoneSubmiterErr: "شماره ثابت اجباری است",
         agreeWithTerm: false,
         agreeWithTermerr: false,
         email: ''
     });
     useEffect(() => {
+        console.log(props);
         props.addReservationProperties({
             reqNo: props.router.asPath.split("/")[7],
             reqPnr: props.router.asPath.split("/")[8],
@@ -221,32 +224,14 @@ const FlightReserve = (props) => {
 
     const validation = () => {
         let isValid = true;
-        console.log(mobileNumber.mobile)
-        console.log(state.mobileSubmiter)
-        // if (mobileNumber.mobile.length <1 || mobileNumber.mobile == null ) {
-        //     setState({
-        //         ...state,
-        //         mobileSubmiterErr: "وارد کردن شماره همراه اجباری است",
-        //     })
-        //     setMobileNumber({...mobileNumber,error:'وارد کردن شماره همراه اجباری است'})
-        //     isValid = false;
-        // }else if (mobileNumber.mobile.length != 11) {
-        //     setState({
-        //         ...state,
-        //         mobileSubmiterErr: "شماره موبایل باید 11 رقمی باشد"
-        //     })
-        //     setMobileNumber({...mobileNumber,error:'شماره موبایل باید 11 رقمی باشد'})
-            
-        //     isValid = false;
-        // }else if (mobileNumber.mobile.length == 11) {
-        //     // setState({
-        //     //     ...state,
-        //     //     mobileSubmiterErr: "شماره موبایل باید 11 رقمی باشد"
-        //     // })
-        //     setMobileNumber({...mobileNumber,error:''})
-            
-        //     isValid = false;
-        // }
+        
+        if (state.mobileSubmiter == "") {
+            setState({
+                ...state,
+                mobileSubmiterErr: "شماره موبایل باید 11 رقمی باشد"
+            })
+            isValid = false;
+        }
         if (state.phoneSubmiter == "") {
             isValid = false;
             setState({
@@ -315,22 +300,14 @@ const FlightReserve = (props) => {
     };
     const handleChange = (e) => {
         const { name, value } = e.target;
-        if (name == 'mobileSubmiter' && mobileNumber.mobile.length == 11) {
+        if (name == 'mobileSubmiter' && state.mobileSubmiter.length >= 10) {
             localStorage.setItem('mobile', value);
         }
-        if (value.length == 11) {
-            setState({
-                ...state,
-                [`${name}error`]: false
-            });
-        } else if (value.length !== 11) {
-            setState({ ...state, [`${name}error`]: true })
-        }
         setState({ ...state, [name]: value })
-        if (name == 'mobileSubmiter'){
+        // if (name == 'mobileSubmiter'){
             // setState({ ...state, mobileSubmiter:value })
-            setMobileNumber({...mobileNumber,mobile: value})
-        }
+        //     setMobileNumber({...mobileNumber,mobile: value})
+        // }
         console.log(state);
     };
 
@@ -423,9 +400,7 @@ const FlightReserve = (props) => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.status == "0") {
-                    props.router.push(
-                        `/flights/receipt/${data.reqNo}/${data.reqPnr}`
-                    );
+                    props.router.push(`/flights/receipt/${data.reqNo}/${data.reqPnr}`);
                 } else {
                     setLoading(false)
                     props.messageBoxModify({
@@ -436,7 +411,7 @@ const FlightReserve = (props) => {
                 }
             });
     };
-    useEffect(() => { getAllPrice(); }, [state.passengers])
+    useEffect(() => { getAllPrice() }, [state.passengers])
 
     const login = () => {
         localStorage.setItem("mobile", state.mobileSubmiter)
@@ -455,11 +430,11 @@ const FlightReserve = (props) => {
                 hostname: "bilitja.com",
                 agencyName: "بلیطجا",
                 telNumber: "02157874",
-                // token: state.token|'',
             }),
         })
             .then((res) => res.json())
             .then((data) => {
+                console.log(data);
                 if (data.status == "0") {
                     setState({
                         ...state,
@@ -472,7 +447,7 @@ const FlightReserve = (props) => {
                     setState({ ...state, btn_disabled: false });
                     setLoading(false)
                     localStorage.setItem("mobile", data.mobile);
-                    localStorage.setItem("token", data.token);
+                    // localStorage.setItem("token", data.token);
                     props.checkUserLogged();
                     props.getUserInfo({
                         mobile: data.mobile,
@@ -562,8 +537,25 @@ const FlightReserve = (props) => {
                 }
             });
     };
+    let loginGoNext = ''
+    loginGoNext = localStorage.getItem('loginGoNext')  && localStorage.getItem('loginGoNext')
+    useEffect(()=>{
+        console.log(loginGoNext);
+        if (loginGoNext == 1) {
+            compeleteReservation()
+            setLoading(true)
+            localStorage.setItem('loginGoNext',JSON.stringify(''))
+            console.log(loginGoNext);
+        }
+        // console.log(`/flights/receipt/${props.reserveProperties.reqNo}/${props.reserveProperties.reqPnr}`);
+        // props.router.push(`/flights/receipt/${props.reserveProperties.reqNo}/${props.reserveProperties.reqPnr}`)
+    // localStorage.setItem('reqPnr',JSON.stringify(props.reserveProperties.reqPnr))
+    // localStorage.setItem('reqNo',JSON.stringify(props.reserveProperties.reqNo))
+                    
+    },[loginGoNext])
+
     return (
-        <div className="container" style={{ height: '100%' }}>
+        <div className="container mt-100" style={{ height: '100%' }}>
             <Scrolltoprefresh />
             <div className={`${styles["flight-detail"]}`} ref={Ref}>
                 <FlightReserveDesktopHeader {...state} />
@@ -687,7 +679,11 @@ const FlightReserve = (props) => {
                                         />
                                     </div>
                                     <span className="color-secondary">
-                                        { mobileNumber.error }
+                                        {/* { state.mobileSubmiterErr } */}
+                                        {
+                                            state.mobileSubmiter?.length < 11 && state.mobileSubmiter !='' ? 'شماره همراه باید ۱۱ رقمی باشد' :
+                                            state.mobileSubmiter == '' && numbers2 ? state.mobileSubmiterErr:
+                                                    ''}
                                         {/* {
                                             state.mobileSubmiter == null || state.mobileSubmiterErr == '' ? 'لطفا شماره را وارد کنید' :
                                                 state.mobileSubmiter?.length <= 10 ? 'شماره همراه باید ۱۱ رقمی باشد' :
@@ -777,7 +773,8 @@ const FlightReserve = (props) => {
 
                             <div className="row finish-reserve-buttons mb-3 ml-5 mt-4">
                                 <div className="col-lg-8 col-md-8 col-7 padding-3px">
-                                    <button
+                                    <button 
+                                    disabled={loading}
                                         onClick={(e) => {
                                             if (!validation()) {
                                                 setLoading(false)
@@ -788,6 +785,7 @@ const FlightReserve = (props) => {
                                                     message: "لطفا اطلاعات را تکمیل کنید.",
                                                 });
                                                 setNumbers(true)
+                                                setNumbers2(true)
                                             }
                                             else if (state.agreeWithTerm === true && props.user.logged && localStorage.getItem('token')) {
 
@@ -837,7 +835,7 @@ const FlightReserve = (props) => {
                                     >
                                         {loading == false
                                             ? "تکمیل خرید"
-                                            : "درحال پردازش..."
+                                            : "لطفا منتظر بمانید..."
                                         }
                                     </button>
                                 </div>

@@ -6,6 +6,14 @@
     gap: 8px;
   }
 }
+.flight-detail {
+  text-align: center;
+  .background-world {
+      background-image: url(../public/Images/worldmap.webp);
+      background-position: center;
+      background-size: contain;
+  }
+}
 @media only screen and (max-width: 694px) and (min-width: 650px) {
   .home-flight-form {
     grid-template-columns: 8fr 2.5fr 8fr 8fr 4fr;
@@ -26,6 +34,19 @@
     grid-template-rows: 1fr;
     gap: 8px;
   }
+
+}
+@media only screen and (max-width: 868px) {
+  .home-tour-form{
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 3fr !important; 
+    gap: 10px !important;
+    display: grid !important;
+    .primary-button{
+      width: 200px !important;
+    }
+  }
+
 }
 .home-flight-form {
   display: grid;
@@ -47,4 +68,16 @@
 }
 .flight-search-box-calendar-container {
   padding: 10px 15px;
+}
+.home-tour-form{
+  grid-template-columns: 2fr 2fr 1fr ;
+  grid-template-rows: 1fr !important; 
+  gap: 60px;
+  display: grid !important;
+  .primary-button{
+    width: 200px !important;
+  }
+}
+.suggestion-box{
+  border: 1px solid #cfd3d8 !important;
 }

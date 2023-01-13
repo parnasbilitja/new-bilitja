@@ -400,6 +400,11 @@ const Auth = (props) => {
             {state.loading === false ? state.btn_text : <Loader />}
           </button>
         </div>
+        {state.get_mobile_status && 
+        <div className="justify-content-center row mt-3">
+            <span className="btn btn-outline-info col-5 btn-block" onClick={()=>{console.log('change');setState({...state,get_mobile_status:false})}}>تغییر شماره</span>
+        </div>
+        }
       </div>
       {state.get_mobile_status === true ? (
         <div className="row mt-3 text-center">
@@ -432,28 +437,6 @@ const Auth = (props) => {
           </p>
         </div>
       </div>
-      {/*<div className="row">
-                    
-                   
-                     <div className="col-lg-6 col-md-6 col-sm-6 col-12 no-padding-horizental">
-                        <br />
-                        <p className="text-center no-margin font-size-13" onClick={() => {
-                            props.accountBoxModify({
-                                state: true,
-                                type: 'forget'
-                            })
-                        }}>رمز عبور را فراموش کرده ام</p>
-                    </div> 
-                    <div className="col-lg-6 col-md-6 col-sm-6 col-12 no-padding-horizental">
-                        <br />
-                        <p className="text-center font-size-13 no-margin" onClick={() => {
-                            props.accountBoxModify({
-                                state: true,
-                                type: 'register'
-                            })
-                        }}>ثبت نام</p>
-                    </div> 
-                </div>*/}
     </div>
   );
 }
