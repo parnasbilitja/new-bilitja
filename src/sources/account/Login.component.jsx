@@ -261,7 +261,7 @@ const Login = (props) => {
             btn_disabled: false,
             loading: false,
             error: true,
-            errText: data.message,
+            // errText: data.message,
           });
         } else {
           setState({
@@ -302,7 +302,7 @@ const Login = (props) => {
       </div>
       {state.error === true ? (
         console.log(state.errText),
-        <div className="alert alert-danger">{state.errText !== undefined ? state.errText : 'شماره وارد شده باید ۱۱ رقم باشد'}</div>
+        <div className="alert alert-danger">{state.errText !== undefined ? state.errText : 'شماره یا پسورد اشتباه است'}</div>
       ) : null}
       <div className="container">
         <div className="row mb-2">

@@ -12,9 +12,10 @@ const PageTabls = (props) => {
       <div className="col-md-10 mb-2">
         <div className={styles["tab-container"]}>
           <div
-            className={`${styles["home-tab"]} cursor-pointer ${props.tabActice == 1 ? styles["home-tab-active"] : null
+            className={`${styles["home-tab"]} cursor-pointer ${props.type == 1 ? styles["home-tab-active"] : null
               }`}
             onClick={() => {
+              props.setType(1)
               myRouter.push("/");
             }}
           >
@@ -26,10 +27,11 @@ const PageTabls = (props) => {
             </div>
           </div>
           <div
-            className={`${styles["home-tab"]} cursor-pointer ${props.tabActice == 2 ? styles["home-tab-active"] : null
+            className={`${styles["home-tab"]} cursor-pointer ${props.type == 2 ? styles["home-tab-active"] : null
               }`}
             onClick={() => {
-              myRouter.push("/tours");
+              props.setType(2)
+              myRouter.push("/");
             }}
           >
             <div className="pull-right icon-container">
