@@ -364,7 +364,7 @@ const FlightPassengerForm = (props) => {
                     {props.id != 0 ? (
                         <div
                             className="hidden-xs hidden-sm corner-position"
-                            style={{ position: "absolute", left: "-33px", top: "85px" }}
+                            style={{ position: "absolute", left: "0px", top: "103px" }}
                         >
                             <span
                                 className="delete-thumbnail"
@@ -372,7 +372,7 @@ const FlightPassengerForm = (props) => {
                                     props.removePassenger(props.type, props.id);
                                 }}
                             >
-                                <svg id="Layer_1" height="23" viewBox="0 0 24 24" width="23" data-name="Layer 1"><path
+                                <svg id="Layer_1" height="18" viewBox="0 0 24 24" width="18" data-name="Layer 1"><path
                                     d="m9 12a6 6 0 1 0 -6-6 6.006 6.006 0 0 0 6 6zm0-10a4 4 0 1 1 -4 4 4 4 0 0 1 4-4zm9 17v5h-2v-5a3 3 0 0 0 -3-3h-8a3 3 0 0 0 -3 3v5h-2v-5a5.006 5.006 0 0 1 5-5h8a5.006 5.006 0 0 1 5 5zm3.414-9 2.543 2.543-1.414 1.414-2.543-2.543-2.543 2.543-1.414-1.414 2.543-2.543-2.543-2.543 1.414-1.414 2.543 2.543 2.543-2.543 1.414 1.414z" /></svg>
                             </span>
                             <span className="color-secondary error-message position-absolute top-50">&nbsp;</span>
