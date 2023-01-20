@@ -63,6 +63,7 @@ const tour = () => {
     }
     return (
         <div>
+          <Scrolltoprefresh />
             <Head>
                 <title>بلیطجا {data && `|  ${data.title}`}</title>
             </Head>

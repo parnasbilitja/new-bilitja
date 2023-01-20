@@ -166,7 +166,7 @@ const List = (props) => {
                                     <img width="28" src={item.transfers[0].logo} />
                                     <span className="text-dark me-2 font-size-14">{item.transfers[0].transfer}</span>
                                 </div>
-                                <Link href={'/tour'}>
+                                <Link href={`/${item.slug}`}>
                                     <div className="ino-tour-btn">
                                         <span className="text-white isMobile ms-2 font-bold-iransanse" style={{display: "none"}}>جزییات</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="27.414" height="18.453" viewBox="0 0 27.414 18.453">
