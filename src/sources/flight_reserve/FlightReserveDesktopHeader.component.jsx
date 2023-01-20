@@ -67,13 +67,14 @@ const FlightReserveDesktopHeader = (props) =>
               <div className="col-lg-3 col-md-3 col-sm-3 col-12">
                 <br />
                 <img
-                  width="70%"
-                  height=""
+                  width="85px"
+                  height="65px"
                   className="airline-image"
                   src={
                     globals.website + `Airlines/${props.airlineCode}.png?ver=1`
                   }
                   alt="بلیطجا - لوگو ایرلاین"
+                  style={{ objectFit: 'scale-down' }}
                 />
                 <p className="pt-4">
                   ایرلاین :

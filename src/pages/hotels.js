@@ -25,7 +25,7 @@ const hotels = () => {
     // }
     return (
         <div>
-            <div className="mt-5 bodyVar">
+            <div className="mt-5 bodyVar pt-4">
                 <NavBar />
                 {/* hotel structure */}
                 <div className="container mt-5 pt-4">
