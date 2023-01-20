@@ -21,7 +21,6 @@ import Head from 'next/head';
 
 const Account = dynamic(() => import("./../../sources/account/Account.component"));
 
-
 const List = (props) => {
     const [data, setData] = useState(null)
     const getData = async () => {
@@ -32,6 +31,10 @@ const List = (props) => {
         getData();
         console.log(data);
     }, [])
+    useEffect(() => {
+        props.tourData !==null && props.tourData !==[] &&
+        setData(props.tourData)
+    },[props.tourData])
     const slugHandler = (slug) => {
         // setSlug(slug)
         localStorage.setItem("slug", JSON.stringify(slug))
@@ -43,7 +46,7 @@ const List = (props) => {
       };
       
     return (
-        <div>
+        <div ref={props.myRef}>
             <Head>
                 <title>بلیطجا | لیست تورها</title>
             </Head>
@@ -80,7 +83,7 @@ const List = (props) => {
                             </div>
                         </div>
                         <div className="c-input col-xl-3 col-lg-3 col-sm-4 col-12 position-relative pt-2">
-                            <input type="text" value={searchBar} onChange={e=>searchBarHandler(e)} class="w-100 pe-2" style={{height: 43,outline: "none",borderRadius: 8,border:"1px solid #fff",boxShadow: "0 0 3px #cccaca"}}  />
+                            <input type="text" value={searchBar} onChange={e=>searchBarHandler(e)} placeholder='جستجوی تور...' class="w-100 pe-2" style={{height: 43,outline: "none",borderRadius: 8,border:"1px solid #fff",boxShadow: "0 0 3px #cccaca"}}  />
                             <div className="ic-search  position-absolute" style={{left: 10,top: 17}}>
                                 <svg width="25" height="25" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <ellipse cx="14.0569" cy="14.6788" rx="8.9241" ry="8.94638" stroke="#CCD2E3" stroke-width="2"></ellipse>
@@ -94,14 +97,15 @@ const List = (props) => {
                         <div className="border-right"></div>
                         <div className="border-left"></div>
                     </div>
-                    {/* <div  classNameName="m-2" > */}
-                    {data != null ? data.filter(post => {
+                    { data != null ? data
+                    .filter(post => {
                         if (searchBar === '') {
                             return post;
                         } else if (post.title.includes(searchBar)) {
                             return post;
                         }
-                    }).map((item) => (
+                    })
+                    .map((item) => (
                         <div onClick={() => slugHandler(item.slug)} key={item.id} className="w-100 col-xl-12 col-lg-12 w-100 d-flex flex-column">
                             <div className="tour-item col-xl-12 col-lg-12 mb-3">
                                 <div className="tour-city">
@@ -177,9 +181,7 @@ const List = (props) => {
                 :
                 <Loader />
             }
-                    {/* </div> */}
                 </div>
-                {/* footer */}
             </div>
 
         </div >

@@ -56,8 +56,7 @@ const FlightSearchBox = (props) =>{
       });
     }
   };
-  const [list, setList] = useState({
-  })
+  const [list, setList] = useState({})
   const handleFocusOut = (event) => {
     console.log(list);
     const { name,value } = event.target;

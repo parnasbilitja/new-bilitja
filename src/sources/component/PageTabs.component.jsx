@@ -3,6 +3,7 @@ import "../../../styles/PageTabs.module.scss";
 import styles from "../../../styles/Home.module.scss";
 
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const PageTabls = (props) => {
   const myRouter = useRouter();
@@ -26,21 +27,21 @@ const PageTabls = (props) => {
               <span className="font-size-15 "> بلیط هواپیما </span>
             </div>
           </div>
-          <div
-            className={`${styles["home-tab"]} cursor-pointer ${props.type == 2 ? styles["home-tab-active"] : null
-              }`}
-            onClick={() => {
-              props.setType(2)
-              myRouter.push("/");
-            }}
-          >
-            <div className="pull-right icon-container">
-              <i className="bilitja font-size-20 icon-villa"></i>
+            <div
+              className={`${styles["home-tab"]} cursor-pointer ${props.type == 2 ? styles["home-tab-active"] : null
+                }`}
+              onClick={() => {
+                props.setType(2)
+                myRouter.push("/tours");
+              }}
+            >
+              <div className="pull-right icon-container">
+                <i className="bilitja font-size-20 icon-villa"></i>
+              </div>
+              <div className="pull-right">
+                <span className="font-size-15 "> تور </span>
+              </div>
             </div>
-            <div className="pull-right">
-              <span className="font-size-15 "> تور </span>
-            </div>
-          </div>
         </div>
       </div>
     </div>

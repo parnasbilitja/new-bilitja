@@ -6,7 +6,7 @@ import styles from "../../../styles/FlightList.module.scss";
 import { moneyFormat, getweekday } from "../../Utils/SimpleTasks";
 
 const ShowFlightList = (props) => {
-  // console.log("props", props);
+  console.log("props", props);
   useEffect(() => {
     props?.flightList?.sort((a, b) => {
       if (a.priceView > b.priceView) {
