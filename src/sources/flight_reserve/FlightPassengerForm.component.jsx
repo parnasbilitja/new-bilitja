@@ -17,11 +17,12 @@ import BirthDayParent from "../calendar/BirthDayParent";
 
 
 const FlightPassengerForm = (props) => {
+    // console.log(props);
     const [state, setState] = useState({
         open: false,
         extOpen: false,
     });
-    const [calend, setCalend] = useState(false)
+    const [calend, setCalend] = useState(true)
     const [birthday, setBirthday] = useState('')
 
     const [err, setErr] = useState({
@@ -220,7 +221,9 @@ const FlightPassengerForm = (props) => {
                                         props.id,
                                         e.target.value
                                     );
-                                }}
+                                    setCalend(!calend)
+                                }
+                            }
                             >
                                 <option value="IR">ایرانی</option>
                                 <option value="other">غیر ایرانی</option>
