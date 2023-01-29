@@ -50,7 +50,7 @@ const HotelsSuggest = () => {
                 slidesPerView: 3,
               },
               1280: {
-                slidesPerGroup: 2,
+                // slidesPerGroup: 2,
                 slidesPerView: 4,
               },
             }}

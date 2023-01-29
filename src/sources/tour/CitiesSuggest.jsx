@@ -36,12 +36,12 @@ const CitiesSuggest = () => {
                 slidesPerGroup={1}
                 breakpoints={{
                   0: {
-                    slidesPerGroup: 2,
+                    // slidesPerGroup: 2,
                     spaceBetween: 20,
                     slidesPerView: 1,
                   },
                     480: {
-                    slidesPerGroup: 2,
+                    // slidesPerGroup: 2,
                     slidesPerView: 2,
                   },
                 850: {
