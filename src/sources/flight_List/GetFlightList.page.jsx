@@ -252,6 +252,7 @@ class GetFlightList extends React.Component {
           })
           .then(() => {
             // Get Flights List
+            console.log(this.props),
             this.setState({ loading: true, open: false });
             fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
               method: "POST",
@@ -305,6 +306,7 @@ class GetFlightList extends React.Component {
             customerId: "1a157116-a01a-4027-ab10-74098ac63815",
           })
           .then(() => {
+            console.log(this.props)
             // Get Flights List
             this.setState({ loading: true, open: false, sourceName: src });
             fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
@@ -398,8 +400,9 @@ class GetFlightList extends React.Component {
         body: JSON.stringify({ ...this.props.searchobject }),
         headers: { "Content-Type": "application/json" },
       })
-        .then((res) => res.json())
-        .then((data) => {
+      .then((res) => res.json())
+      .then((data) => {
+          console.log(this.props.searchobject)
           console.log('111111111111');
           console.log(data);
           console.log(JSON.stringify({ ...this.props.searchobject }));
@@ -449,6 +452,8 @@ class GetFlightList extends React.Component {
   };
 
   getData = () => {
+    console.log(this.props.searchobject);
+
     //////////////////////////
     //
     //  استخراج لیست پروازها

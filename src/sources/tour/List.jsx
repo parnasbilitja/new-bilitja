@@ -10,7 +10,7 @@ import PopUp from '../../sources/component/PopUp.component';
 import { moneyFormat } from "../../Utils/SimpleTasks";
 
 
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { selcetAccountBox } from "../../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
@@ -44,7 +44,6 @@ const List = (props) => {
         e.preventDefault();
         setSearchBar(e.target.value);
       };
-      
     return (
         <div ref={props.myRef}>
             <Head>

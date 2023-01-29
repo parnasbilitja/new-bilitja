@@ -10,6 +10,8 @@ import SearchBox from '../sources/tour/SearchBox';
 import Scrolltoprefresh from '../sources/component/Scrolltoprefresh';
 import HomePicture from '../sources/component/HomePicture';
 import axios from 'axios';
+import HotelsSuggest from '../sources/tour/HotelsSuggest';
+import CitiesSuggest from '../sources/tour/CitiesSuggest';
 
 
 const tours = () => {
@@ -89,6 +91,8 @@ const tours = () => {
           </div>
             <NavHandler />
               <List ref={myRef} tourData={tourData} />
+              <HotelsSuggest />
+              <CitiesSuggest />
             <Footer />
         </div>
     );

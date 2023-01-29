@@ -146,7 +146,6 @@ const FlightSearchBox = (props) =>{
         destinationName,
         sourceNameEn,
         destinationNameEn,
-
         flightDatePersian,
         stDate,
         typeOfCalendar,
