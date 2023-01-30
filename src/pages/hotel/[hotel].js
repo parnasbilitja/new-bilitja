@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/router'
 import Footer from '../../sources/component/Footer.component';
 import NavHandler from '../../Components/share/NavHandler';
@@ -17,8 +18,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import Image from 'next/image';
 
 const hotel = (props) => {
     const [hotel, setHotel] = useState({})
@@ -36,7 +35,7 @@ const hotel = (props) => {
         <>
         <NavHandler />
         <Scrolltoprefresh/>
-        <div className="col-md-10 m-auto parent-info-hotel" style={{marginTop:'120px!important'}}>
+        <div className="col-md-10 m-auto parent-info-hotel marginTop120">
             <div class="title-info-hotel">
                 <div class="right">
                     <img src="/Images/Tag.png" width="35" alt="اطلاعات-هتل"/>
