@@ -68,10 +68,10 @@ const HotelsSuggest = () => {
                         </div>
                         <div style={{display: 'flex'}}>
                                 <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slidePrev()}>
-                                    <FontAwesomeIcon onClick={() => swiperRef.current?.slidePrev()} icon={faAngleRight} />
+                                    <FontAwesomeIcon icon={faAngleRight} />
                                 </button>
                                 <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slideNext()}>
-                                    <FontAwesomeIcon onClick={() => swiperRef.current?.slidePrev()} icon={faAngleLeft} />
+                                    <FontAwesomeIcon icon={faAngleLeft} />
                                 </button>
                         </div>
                     </div>

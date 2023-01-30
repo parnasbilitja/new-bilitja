@@ -4,9 +4,25 @@ import { useRouter } from 'next/router'
 import Footer from '../../sources/component/Footer.component';
 import NavHandler from '../../Components/share/NavHandler';
 import Scrolltoprefresh from '../../sources/component/Scrolltoprefresh';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import PopUp from '../../sources/component/PopUp.component';
+// import Swiper core and required modules
+import { Navigation, Pagination } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import Image from 'next/image';
 
 const hotel = (props) => {
     const [hotel, setHotel] = useState({})
+    const [show, setShow] = useState(false)
     const router = useRouter()
     useEffect(()=>{
         const getData = async () => {
@@ -23,7 +39,7 @@ const hotel = (props) => {
         <div className="col-md-10 m-auto parent-info-hotel" style={{marginTop:'120px!important'}}>
             <div class="title-info-hotel">
                 <div class="right">
-                    <img src="https://hamnavaz.com/img/Tag.svg" width="35" alt="اطلاعات-هتل"/>
+                    <img src="/Images/Tag.png" width="35" alt="اطلاعات-هتل"/>
                     <div class="text">
                         <h2 class="title-fa">{hotel.name}</h2>
                         <h2 class="title-en">{hotel.nameEn}</h2>
@@ -32,7 +48,7 @@ const hotel = (props) => {
             </div>
             <div class="title-hotel">
                 <div class="name-city-country">
-                    <img src="https://hamnavaz.com/img/Location.svg" width="20" alt="آدرس-شهر و منطقه"/>
+                    <img src="/Images/Location.png" width="20" alt="آدرس-شهر و منطقه"/>
                     <span class="title-small-fa">شهر و منطقه :</span>
                     <span class="title-fa mr-2">{ hotel.city?.name}</span>
                     <span class="title-fa mr-2">{ hotel.city?.nameEn}</span>
@@ -74,13 +90,13 @@ const hotel = (props) => {
                     ))}
                 </div>
                 <div class="left-gallery" style={{backgroundImage: `url(${hotel.images && hotel.images[0] && hotel.images[0]})`}}>
-                    {/* <div class="parent-view-all-photo">
-                        <a class="btn-photos" data-lightbox="roadtrip" href={hotel.images && hotel.images[0]}>
+                    <div class="parent-view-all-photo">
+                        <div class="btn-photos" onClick={() =>setShow(true)}>
                             <img class="d-none" src="https://api.hamnavaz.com/source/jadid/اس8.jpg" alt="مشاهده-عکس ها"/>
                             <img src="https://hamnavaz.com/img/Menu-hotel.svg" width="20" alt=""/>
                             <span class="text-dark">مشاهده همه عکس ها</span>
-                        </a>
-                    </div> */}
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="about-hotel">
@@ -92,17 +108,18 @@ const hotel = (props) => {
                     <a class="btn-map">مسیریابی از مبدا شما !</a>
                     <div class="address">
                         <img src="https://hamnavaz.com/img/008-maps.svg" width="20" alt="آدرس-روی-نقشه"/>
-                        <p class="text-en">تهران- سعادت آباد- بلوار پیام- میدان بهرود- خیابان 33- هتل اسپیناس پالاس تهران</p>
+                        <p class="text-en">{hotel.address}</p>
                     </div>
-                    <div class="telephone">
+                    {/* <div class="telephone">
                         <img src="https://hamnavaz.com/img/003-telephone.svg" width="20" alt="تلفن-تماس"/>
                         <p> -</p>
-                    </div>
+                    </div> */}
                 </div>
                 <div class="info-about-hotel">
-                    <h2>درباره هتل اسپیناس پالاس تهران بیشتر بدانید :</h2>
+                    <h2>درباره {hotel.name} بیشتر بدانید :</h2>
                     <div class="scrollbar" id="style-1"></div>
-                    <span class="editor"><p dir="RTL" style={{marginBottom:"0cm",textAlign:'justify',lineHeight:'normal'}}>
+                    <span class="editor">
+                        <p dir="RTL" style={{marginBottom:"0cm",textAlign:'justify',lineHeight:'normal'}}>
                         {hotel.city?.description}
                         </p></span>
                 </div>
@@ -114,6 +131,7 @@ const hotel = (props) => {
                         <div class="d-flex flex-wrap align-items-center mt-5">
                             {hotel?.services && hotel?.services[0]?.services?.map(service =>(
                                 <div key={service.id} class="col-6 col-sm-4 col-md-3">
+                                    <FontAwesomeIcon icon={faAngleLeft} />
                                     <span className="text-dark">{service.name}</span>
                                 </div>
                             ))}
@@ -123,6 +141,24 @@ const hotel = (props) => {
             </div>
         </div>
             <Footer />
+            <PopUp opened={show} closePopUp={setShow}>
+                <Swiper
+        // install Swiper modules
+                    modules={[Navigation, Pagination]}
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    navigation
+                    pagination={{ clickable: true }}
+                    >
+                        {hotel.images?.map(image => (
+                            <SwiperSlide>
+                                <div style={{paddingBottom: '30px'}}>
+                                    <Image class="img-blog" src={image} width='800%' height='800%' />     
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                </Swiper>
+            </PopUp>
         </>
     );
 };

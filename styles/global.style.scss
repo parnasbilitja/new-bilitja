@@ -1701,7 +1701,7 @@ $sizes: 100;
   padding: 8px 10px;
 }
 .opacity-bg-parent:hover {
-  background-color: #137cb6b3;
+  background-color: #279692b3;
 }
 .opacity-bg-parent .info-img {
   display: flex;
@@ -1872,12 +1872,12 @@ $sizes: 100;
   margin: 10px auto;
 }
 .notes-hotel h2 {
-  color: #137cb6;
+  color: #279692;
   font-size: 18px;
   margin-bottom: 12px;
 }
 .option h2 {
-  color: #137cb6;
+  color: #279692;
   font-size: 18px;
 }
 .text-dark{
@@ -1903,6 +1903,9 @@ $sizes: 100;
   padding: 12px;
   width: 29%;
 }
+.info-about-hotel h2{
+  color: #279692;
+}
 .about-hotel .info-about-hotel {
   display: flex;
   flex-direction: column;
@@ -1922,7 +1925,7 @@ $sizes: 100;
 }
 .btn-map {
   align-items: center;
-  background-color: #137cb6;
+  background-color: #279692;
   border-radius: 15px 15px 1px 15px;
   bottom: 25px;
   color: white;
@@ -1981,7 +1984,7 @@ $sizes: 100;
   background-color: white;
   border: 1px solid #eee;
   border-radius: 15px 15px 1px 15px;
-  color: #137cb6!important;
+  color: #279692!important;
   display: flex;
   height: 42px;
   justify-content: center;
@@ -2025,7 +2028,7 @@ $sizes: 100;
 }
 .title-info-hotel {
     align-items: center;
-    border-bottom: 2px solid #c6ecff;
+    border-bottom: 2px solid #27969240;
     display: flex;
     justify-content: space-between;
     margin-top: 1.5rem;
@@ -2161,7 +2164,7 @@ h2 {
 }
 
 .title-en {
-  color: var(--base-color);
+  color: #279692;
   font-family: Ubuntu,sans-serif!important;
   font-size: 15px;
   font-weight: 700!important;
