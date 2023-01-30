@@ -18,7 +18,8 @@ import Head from 'next/head';
 import Scrolltoprefresh from '../sources/component/Scrolltoprefresh';
 
 
-const tour = () => {
+const tour = (props) => {
+    console.log(props);
     const ref = useRef(null);
 
     // mui
@@ -45,7 +46,7 @@ const tour = () => {
         message: ''
     })
     const getData = async () => {
-        const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${slug ? slug : JSON.parse(localStorage.getItem("slug"))}`)
+        const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${props.Pathname.tour}`)
         setData(val.data.data)
     }
 
@@ -249,25 +250,6 @@ const tour = () => {
                                         <h5 className="font-bold mb-0">انـتخاب هــتل</h5>
                                     </div>
                                 </div>
-                                {/* <div className="c-btn">
-                                    <button
-                                        className="ancher f-15 btn-effect bg-custom-color text-dark font-ExtraBold py-2 ps-2 pe-3 f-bold">
-                                        <div className="line-effect bg-dark-light"></div>
-                                        <svg className="ml-30" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 24 24">
-                                            <g id="Right" transform="translate(1 1)">
-                                                <path id="Path_1110" data-name="Path 1110"
-                                                    d="M23,12a27.833,27.833,0,0,1-.462,5.827A6.193,6.193,0,0,1,21,21a6.193,6.193,0,0,1-3.172,1.54A27.838,27.838,0,0,1,12,23a27.838,27.838,0,0,1-5.827-.462A6.193,6.193,0,0,1,3,21a6.193,6.193,0,0,1-1.54-3.172A27.838,27.838,0,0,1,1,12a27.838,27.838,0,0,1,.462-5.827A6.193,6.193,0,0,1,3,3a6.193,6.193,0,0,1,3.172-1.54A27.833,27.833,0,0,1,12,1a27.833,27.833,0,0,1,5.827.462A6.193,6.193,0,0,1,21,3a6.193,6.193,0,0,1,1.54,3.172A27.833,27.833,0,0,1,23,12Z"
-                                                    transform="translate(-1 -1)" fill="none" stroke="#292929"
-                                                    strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}></path>
-                                                <path id="Path_1111" data-name="Path 1111" d="M14,8l-4,4,4,4"
-                                                    transform="translate(-1 -1)" fill="none" stroke="#292929"
-                                                    strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}></path>
-                                            </g>
-                                        </svg>
-                                        دانلود فایل PDF
-                                    </button>
-                                </div> */}
                             </div>
                             <div className="p-info__tour col-xl-12 col-lg-12 col-12 mt-2 border-bottom pb-4 pos-relative">
                                 <div className="p-thead d-flex align-items-center col-xl-12 col-lg-12 col-12 pos-absolute ">
@@ -673,5 +655,11 @@ const tour = () => {
         </div>
     );
 };
+
+tour.getInitialProps = ({ query }) => {
+    return {
+      Pathname: query
+    }
+  }
 
 export default tour;

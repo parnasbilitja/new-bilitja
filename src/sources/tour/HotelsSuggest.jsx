@@ -11,13 +11,12 @@ import { Navigation } from 'swiper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import Loader from '../../Utils/Loader';
+import Link from 'next/link';
 
 const HotelsSuggest = () => {
     const swiperRef = useRef();
     const [cities, setCities] = useState([]);
     const [hotels, setHotels] = useState([]);
-    const [loading, setLoading] = useState(false);
     const [city, setCity] = useState('1');
     useEffect(() => {
         const getData = async () => {
@@ -27,13 +26,11 @@ const HotelsSuggest = () => {
         getData()
     },[])
     useEffect(()=>{
-        setLoading(true)
         const getData = async () => {
             await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
             .then(res => setHotels(res.data.data))
         }
         getData()
-        setLoading(false)
     },[city])
     useEffect(()=>{
         const getData = async () => {
@@ -43,9 +40,11 @@ const HotelsSuggest = () => {
         getData()
         
     },[])
+    const slugHandler = (hotelSlug) => {
+        localStorage.setItem("hotelSlug", JSON.stringify(hotelSlug))
+    }
     return (
         <div style={{marginLeft:'5rem',marginRight:'5rem'}}>
-
                     <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
                         <div className="d-flex mt-2 flex-column col-xl-9 col-lg-9 col-sm-9 col-12">
                             <div className="d-flex align-items-center justify-content-between">
@@ -67,20 +66,19 @@ const HotelsSuggest = () => {
                                 </div>
                             </div>
                         </div>
-                            <div style={{display: 'flex'}}>
-                                    <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slidePrev()}>
-                                        <FontAwesomeIcon onClick={() => swiperRef.current?.slidePrev()} icon={faAngleRight} />
-                                    </button>
-                                    <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slideNext()}>
-                                        <FontAwesomeIcon onClick={() => swiperRef.current?.slidePrev()} icon={faAngleLeft} />
-                                    </button>
-                                </div>
+                        <div style={{display: 'flex'}}>
+                                <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slidePrev()}>
+                                    <FontAwesomeIcon onClick={() => swiperRef.current?.slidePrev()} icon={faAngleRight} />
+                                </button>
+                                <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slideNext()}>
+                                    <FontAwesomeIcon onClick={() => swiperRef.current?.slidePrev()} icon={faAngleLeft} />
+                                </button>
+                        </div>
                     </div>
                     <div className="bottom d-flex align-items-center mt-3 mb-3">
                         <div className="border-right"></div>
                         <div className="border-left"></div>
                     </div>
-                    {loading && <Loader /> }
                     {hotels.length>0?
                     <Swiper
                     modules={[Navigation]}
@@ -105,10 +103,10 @@ const HotelsSuggest = () => {
                     >
                         {hotels.map((item)=>(
                             <SwiperSlide>
-                                <div>
+                                <div onClick={() => slugHandler(item.slug)}>
                                     <div class="box-hotel">
                                         <img  class="img-blog" src={item.thumbnail}/>
-                                        <a  rel="noreferrer" href="/hotels/زانادو-ریزورت">
+                                        <Link href={`/hotel/${item.slug}`}>
                                             <div class="opacity-bg-parent">
                                                 <div class="info-img"><img src="https://hamnavaz.com/img/Information.svg" width="22" alt="توضیحات-هتل"/>
                                                 </div>
@@ -117,7 +115,7 @@ const HotelsSuggest = () => {
                                                     <div class="footer-hotel-info">
                                                         <div class="location-hotel">
                                                             <img src="https://hamnavaz.com/img/Location-white.svg" width="17" alt="آدرس-هتل"/>
-                                                            <span x-text="hotel.city + ' - ' + hotel.location">{item.city}-{item.location}</span>
+                                                            <span x-text="hotel.city + ' - ' + hotel.location" style={{marginBottom: "0"}}>{item.city}-{item.location}</span>
                                                         </div>
                                                         <div className="star d-flex align-items-center pb-1">
                                                                     <div className="d-flex align-items-center">
@@ -144,7 +142,7 @@ const HotelsSuggest = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </SwiperSlide>

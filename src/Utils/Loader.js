@@ -1,6 +1,6 @@
 import React from "react";
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <>
       <div className="loader-data d-flex flex-column align-items-center justify-content-center" style={{ width: '100%', height: '25vh' }}>
@@ -14,4 +14,3 @@ const Loader = () => {
     </>
   );
 };
-export default Loader;
