@@ -1802,6 +1802,48 @@ $sizes: 100;
 .img-blog{
   height: 100%;
 }
-@media only screen and (max-width: 768px) and (min-width: 451px) {
-  
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@keyframes fadeInDown{
+  0%{
+    opacity:0;
+    transform:translate3d(0,-100%,0)}to{opacity:1;transform:none}
+  }
+.fadeInDown{
+  -webkit-animation-name:fadeInDown;
+  animation-name:fadeInDown;
+}
+.prevNextbtnSwiper{
+  border: 2px solid #279692;
+    color: #279692;
+    padding: 5px;
+    font-size: 25px;
+    border-radius: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    display: flex;
+    margin: 5px;
+}
+.selectCity{
+  border: none;
+  margin-right: 5px;
+}
+.selectCity:focus,.selectCity:active{
+    border: none;
+    outline: none;
+}
+.hotelNotFound{
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  color: #279692;
 }

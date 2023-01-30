@@ -1,21 +1,53 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
 
-// import styles from '../../../styles/HotelsSuggest.module.scss'
+import { Navigation } from 'swiper';
 
+// import styles from '../../../styles/HotelsSuggest.module.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import Loader from '../../Utils/Loader';
 
 const HotelsSuggest = () => {
-
-    
+    const swiperRef = useRef();
+    const [cities, setCities] = useState([]);
+    const [hotels, setHotels] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [city, setCity] = useState('1');
+    useEffect(() => {
+        const getData = async () => {
+            await axios.post('https://api.hamnavaz.com/api/v1/city/getCities')
+            .then(res => setCities(res.data.data))
+        }
+        getData()
+    },[])
+    useEffect(()=>{
+        setLoading(true)
+        const getData = async () => {
+            await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
+            .then(res => setHotels(res.data.data))
+        }
+        getData()
+        setLoading(false)
+    },[city])
+    useEffect(()=>{
+        const getData = async () => {
+            await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
+            .then(res => {setHotels(res.data.data),console.log(res)})
+        }
+        getData()
+        
+    },[])
     return (
         <div style={{marginLeft:'5rem',marginRight:'5rem'}}>
 
                     <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
-                        <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-4 col-12">
+                        <div className="d-flex mt-2 flex-column col-xl-9 col-lg-9 col-sm-9 col-12">
                             <div className="d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center">
                                     <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.326" height="30.086" viewBox="0 0 14.326 17.086">
@@ -24,146 +56,103 @@ const HotelsSuggest = () => {
                                             <path id="Path_836" data-name="Path 836" d="M12,5a1.727,1.727,0,0,1,1.541.51c.514.512.514,2.227.514,2.911" transform="translate(-4.468 -2.262)" fill="none" stroke="#279692" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} />
                                         </g>
                                     </svg>
-                                    <div className="text">
+                                    <div className="text" style={{display:'flex'}}>
                                         <h5 className="font-bold">هتل های برگزیده شهر</h5>
-                                        {/* <h6>مشاهده مناسب ترین تور های لحظه آخری</h6> */}
+                                        <select className="selectCity font-bold" value={city} onChange={(val) => setCity(val.target.value)}>
+                                            {cities.map(item=>(
+                                                <option key={item.id} value={item.id}>{item.name}</option>
+                                            ))}
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                            <div style={{display: 'flex'}}>
+                                    <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slidePrev()}>
+                                        <FontAwesomeIcon onClick={() => swiperRef.current?.slidePrev()} icon={faAngleRight} />
+                                    </button>
+                                    <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slideNext()}>
+                                        <FontAwesomeIcon onClick={() => swiperRef.current?.slidePrev()} icon={faAngleLeft} />
+                                    </button>
+                                </div>
                     </div>
                     <div className="bottom d-flex align-items-center mt-3 mb-3">
                         <div className="border-right"></div>
                         <div className="border-left"></div>
                     </div>
-
-        <Swiper
-            slidesPerView={1}
-            spaceBetween={10}
-            slidesPerGroup={1}
-            breakpoints={{
-              770: {
-                slidesPerView: 2,
-              },
-              1024: {
-                spaceBetween: 10,
-                slidesPerView: 3,
-              },
-              1280: {
-                // slidesPerGroup: 2,
-                slidesPerView: 4,
-              },
-            }}
-            >
-            <SwiperSlide>
-                <div>
-                    <div class="box-hotel">
-                        <img  class="img-blog" src="https://api.hamnavaz.com/source/images/2021/126290605.jpg"/>
-                        <a  rel="noreferrer" href="/hotels/زانادو-ریزورت">
-                            <div class="opacity-bg-parent">
-                                <div class="info-img"><img src="https://hamnavaz.com/img/Information.svg" width="22" alt="توضیحات-هتل"/>
-                                </div>
-                                <div class="info-hotel">
-                                    <span x-text="hotel.name">هتل زانادو ریزورت</span>
-                                    <div class="footer-hotel-info">
-                                        <div class="location-hotel">
-                                            <img src="https://hamnavaz.com/img/Location-white.svg" width="17" alt="آدرس-هتل"/>
-                                            <span x-text="hotel.city + ' - ' + hotel.location">آنتالیا - BELEK</span>
-                                        </div>
-                                        <div class="rate">
-                                            <template x-for="star in +hotel.stars">
-                                                <i class="icon-star"></i>
-                                            </template><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
-                                        </div>
+                    {loading && <Loader /> }
+                    {hotels.length>0?
+                    <Swiper
+                    modules={[Navigation]}
+                    onBeforeInit={(swiper) => {
+                        swiperRef.current = swiper;
+                    }}
+                    slidesPerView={1}
+                    spaceBetween={10}
+                    slidesPerGroup={1}
+                    breakpoints={{
+                    770: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        spaceBetween: 10,
+                        slidesPerView: 3,
+                    },
+                    1280: {
+                        slidesPerView: 4,
+                    },
+                    }}
+                    >
+                        {hotels.map((item)=>(
+                            <SwiperSlide>
+                                <div>
+                                    <div class="box-hotel">
+                                        <img  class="img-blog" src={item.thumbnail}/>
+                                        <a  rel="noreferrer" href="/hotels/زانادو-ریزورت">
+                                            <div class="opacity-bg-parent">
+                                                <div class="info-img"><img src="https://hamnavaz.com/img/Information.svg" width="22" alt="توضیحات-هتل"/>
+                                                </div>
+                                                <div class="info-hotel">
+                                                    <span x-text="hotel.name">{item.name}</span>
+                                                    <div class="footer-hotel-info">
+                                                        <div class="location-hotel">
+                                                            <img src="https://hamnavaz.com/img/Location-white.svg" width="17" alt="آدرس-هتل"/>
+                                                            <span x-text="hotel.city + ' - ' + hotel.location">{item.city}-{item.location}</span>
+                                                        </div>
+                                                        <div className="star d-flex align-items-center pb-1">
+                                                                    <div className="d-flex align-items-center">
+                                                                        <div className="image d-flex align-items-center">
+                                                                        {(() => {
+                                                                            let stars = [];
+                                                                            for (let i = 1; i <= parseInt(item.stars); i++) {
+                                                                            stars.push(
+                                                                                <svg className="mx-1" xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                                    height="16" viewBox="0 0 21.443 21.387">
+                                                                                    <path id="Star"
+                                                                                        d="M10.749,1c.915,0,2.352,4.154,2.871,5.751a.916.916,0,0,0,.84.632c1.666.057,5.983.3,5.983,1.273s-3.077,3.38-4.335,4.328A.915.915,0,0,0,15.789,14c.512,1.585,1.742,5.7.952,6.343s-4.1-1.885-5.447-2.963a.919.919,0,0,0-1.147,0c-1.35,1.078-4.669,3.6-5.392,2.964s.431-4.772.912-6.351a.914.914,0,0,0-.324-1C4.093,12.047,1,9.619,1,8.655S5.326,7.438,6.988,7.382a.916.916,0,0,0,.838-.625C8.357,5.165,9.833,1,10.749,1Z"
+                                                                                        fill="#f7db06" stroke="#f7db06"
+                                                                                        strokeLinecap="round" strokeLinejoin="round"
+                                                                                        strokeWidth={2} />
+                                                                                </svg>
+                                                                                );
+                                                                            }
+                                                                            return stars;
+                                                                        })()}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div>
-                    <div class="box-hotel">
-                        <img  class="img-blog" src="https://api.hamnavaz.com/source/images/2021/126290605.jpg"/>
-                        <a  rel="noreferrer" href="/hotels/زانادو-ریزورت">
-                            <div class="opacity-bg-parent">
-                                <div class="info-img"><img src="https://hamnavaz.com/img/Information.svg" width="22" alt="توضیحات-هتل"/>
-                                </div>
-                                <div class="info-hotel">
-                                    <span x-text="hotel.name">هتل زانادو ریزورت</span>
-                                    <div class="footer-hotel-info">
-                                        <div class="location-hotel">
-                                            <img src="https://hamnavaz.com/img/Location-white.svg" width="17" alt="آدرس-هتل"/>
-                                            <span x-text="hotel.city + ' - ' + hotel.location">آنتالیا - BELEK</span>
-                                        </div>
-                                        <div class="rate">
-                                            <template x-for="star in +hotel.stars">
-                                                <i class="icon-star"></i>
-                                            </template><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div>
-                    <div class="box-hotel">
-                        <img  class="img-blog" src="https://api.hamnavaz.com/source/images/2021/126290605.jpg"/>
-                        <a  rel="noreferrer" href="/hotels/زانادو-ریزورت">
-                            <div class="opacity-bg-parent">
-                                <div class="info-img"><img src="https://hamnavaz.com/img/Information.svg" width="22" alt="توضیحات-هتل"/>
-                                </div>
-                                <div class="info-hotel">
-                                    <span x-text="hotel.name">هتل زانادو ریزورت</span>
-                                    <div class="footer-hotel-info">
-                                        <div class="location-hotel">
-                                            <img src="https://hamnavaz.com/img/Location-white.svg" width="17" alt="آدرس-هتل"/>
-                                            <span x-text="hotel.city + ' - ' + hotel.location">آنتالیا - BELEK</span>
-                                        </div>
-                                        <div class="rate">
-                                            <template x-for="star in +hotel.stars">
-                                                <i class="icon-star"></i>
-                                            </template><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div>
-                    <div class="box-hotel">
-                        <img  class="img-blog" src="https://api.hamnavaz.com/source/images/2021/126290605.jpg"/>
-                        <a  rel="noreferrer" href="/hotels/زانادو-ریزورت">
-                            <div class="opacity-bg-parent">
-                                <div class="info-img"><img src="https://hamnavaz.com/img/Information.svg" width="22" alt="توضیحات-هتل"/>
-                                </div>
-                                <div class="info-hotel">
-                                    <span x-text="hotel.name">هتل زانادو ریزورت</span>
-                                    <div class="footer-hotel-info">
-                                        <div class="location-hotel">
-                                            <img src="https://hamnavaz.com/img/Location-white.svg" width="17" alt="آدرس-هتل"/>
-                                            <span x-text="hotel.city + ' - ' + hotel.location">آنتالیا - BELEK</span>
-                                        </div>
-                                        <div class="rate">
-                                            <template x-for="star in +hotel.stars">
-                                                <i class="icon-star"></i>
-                                            </template><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </SwiperSlide>
-            </Swiper>
+                            </SwiperSlide>
+                        ))}
+                    
+                    </Swiper>:
+                    <div className="hotelNotFound">متاسفانه هتلی موجود نیست</div>
+}
         </div>
     );
 };
