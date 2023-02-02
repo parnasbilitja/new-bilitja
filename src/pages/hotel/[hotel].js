@@ -93,7 +93,7 @@ const hotel = (props) => {
                         <div class="btn-photos" onClick={() =>setShow(true)}>
                             <img class="d-none" src="https://api.hamnavaz.com/source/jadid/اس8.jpg" alt="مشاهده-عکس ها"/>
                             <img src="https://hamnavaz.com/img/Menu-hotel.svg" width="20" alt=""/>
-                            <span class="text-dark">مشاهده همه عکس ها</span>
+                            <span class="text-dark" style={{cursor:'pointer'}}>&nbsp;مشاهده همه عکس ها</span>
                         </div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@ const hotel = (props) => {
                         {hotel.images?.map(image => (
                             <SwiperSlide>
                                 <div style={{paddingBottom: '30px'}}>
-                                    <Image class="img-blog" src={image} width='800%' height='800%' />     
+                                    <Image class="img-blog" src={image} width='1200%' height='1200%' />     
                                 </div>
                             </SwiperSlide>
                         ))}

@@ -9,21 +9,25 @@ import 'swiper/css';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
+import { Loader } from '../../Utils/Loader';
 
 const CitiesSuggest = () => {
+    const [loading, setLoading] = useState(true)
     const [ data, setData ] = useState([])
     useEffect(() => {
+        setLoading(true)
         const getData = async () => {
             await axios.post('https://api.hamnavaz.com/api/v1/city/getCities',{hasTour:true})
-            .then(res => setData(res.data.data))
+            .then(res => {setData(res.data.data),setLoading(false)})
         }
         getData()
     },[])
     const swiperRef = useRef();
     return (
-        <div class="" style={{marginLeft:'5rem',marginRight:'5rem'}}>
+        <div className="marginLeftRight">
             <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
-                        <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-9 col-12">
+                        <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-9 col-9">
                             <div className="d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center">
                                     <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.326" height="30.086" viewBox="0 0 14.326 17.086">
@@ -52,30 +56,35 @@ const CitiesSuggest = () => {
                         <div className="border-right"></div>
                         <div className="border-left"></div>
                     </div>
+                    {
+                        loading?
+                        <Loader/>:
+                        data.length>0?
+                    
             <Swiper
                 modules={[Navigation]}
                 onBeforeInit={(swiper) => {
                     swiperRef.current = swiper;
                   }}
-                slidesPerView={1}
+                slidesPerView={2}
                 spaceBetween={10}
                 slidesPerGroup={1}
                 breakpoints={{
-                  0: {
-                    spaceBetween: 20,
-                    slidesPerView: 1,
-                  },
+                    0: {
+                        spaceBetween: 20,
+                        slidesPerView: 2,
+                    },
                     480: {
-                    slidesPerView: 2,
-                  },
-                850: {
-                    spaceBetween: 20,
-                    slidesPerView: 3,
-                  },
-                  1024: {
-                    spaceBetween: 10,
-                    slidesPerView: 5,
-                  },
+                        slidesPerView: 2,
+                    },
+                    850: {
+                        spaceBetween: 20,
+                        slidesPerView: 3,
+                    },
+                    1024: {
+                        spaceBetween: 10,
+                        slidesPerView: 5,
+                    },
                 
                 }}
             >
@@ -87,16 +96,15 @@ const CitiesSuggest = () => {
                             <div class="img-sort-tour-city">
                                 <div class="info-img-sort-tour-city animated fadeInDown">
                                     <img class="img-hover-child" src="https://hamnavaz.com/img/Attachment%201.svg" width="30" alt="جزئیات بیشتر"/>
-                                    <a class="view-details-more" href="https://hamnavaz.com/%D8%AA%D9%88%D8%B1-%DA%A9%DB%8C%D8%B4">مشاهده
-                                        جزئیات بیشتر</a>
+                                    <Link class="view-details-more" href={`/cityTour/${item.slug}`}>مشاهده جزئیات بیشتر</Link>
                                 </div>
                                 <img src={item.image} alt={item.name} />
                             </div>
                             <div class="text-sort-tour-city">
                                 <h2>
-                                    <a class="view-details-more" href="https://hamnavaz.com/%D8%AA%D9%88%D8%B1-%DA%A9%DB%8C%D8%B4">
-                                        تور {item.name}
-                                    </a>
+                                    <Link class="view-details-more" href={`/cityTour/${item.slug}`}>
+                                        {`تور ${item.name}`}
+                                    </Link>
                                 </h2>
                             </div>
                         </div>
@@ -104,6 +112,9 @@ const CitiesSuggest = () => {
                     </SwiperSlide>
                 ))}
             </Swiper>    
+            :
+            <div className="hotelNotFound">متاسفانه هیج توری موجود نیست</div>
+            }
         </div>
     );
 };

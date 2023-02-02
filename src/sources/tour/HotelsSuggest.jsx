@@ -12,41 +12,49 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Link from 'next/link';
+import { Loader } from '../../Utils/Loader';
 
 const HotelsSuggest = () => {
     const swiperRef = useRef();
     const [cities, setCities] = useState([]);
+    const [loading, setLoading] = useState(true)
     const [hotels, setHotels] = useState([]);
     const [city, setCity] = useState('1');
     useEffect(() => {
         const getData = async () => {
             await axios.post('https://api.hamnavaz.com/api/v1/city/getCities')
-            .then(res => setCities(res.data.data))
+            .then(res => {setCities(res.data.data)})
         }
         getData()
     },[])
     useEffect(()=>{
+        setLoading(true)
         const getData = async () => {
             await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
-            .then(res => setHotels(res.data.data))
+            .then(res => {setHotels(res.data.data),setLoading(false)})
         }
-        getData()
-    },[city])
-    useEffect(()=>{
-        const getData = async () => {
-            await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
-            .then(res => {setHotels(res.data.data),console.log(res)})
-        }
+        console.log(loading);
+        console.log(hotels);
         getData()
         
+        console.log(loading);
+    },[city])
+    useEffect(()=>{
+        setLoading(true)
+        const getData = async () => {
+            await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
+            .then(res => {setHotels(res.data.data),setLoading(false)})
+        }
+        console.log(loading);
+        getData()
+        console.log(loading);
+        
     },[])
-    const slugHandler = (hotelSlug) => {
-        localStorage.setItem("hotelSlug", JSON.stringify(hotelSlug))
-    }
+
     return (
-        <div style={{marginLeft:'5rem',marginRight:'5rem'}}>
+        <div className="marginLeftRight">
                     <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
-                        <div className="d-flex mt-2 flex-column col-xl-9 col-lg-9 col-sm-9 col-12">
+                        <div className="d-flex mt-2 flex-column col-xl-9 col-lg-9 col-sm-9 col-9">
                             <div className="d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center">
                                     <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.326" height="30.086" viewBox="0 0 14.326 17.086">
@@ -79,13 +87,15 @@ const HotelsSuggest = () => {
                         <div className="border-right"></div>
                         <div className="border-left"></div>
                     </div>
-                    {hotels.length>0?
+                    {loading ?
+                    <Loader/> :
+                    hotels.length>0 && !loading?
                     <Swiper
+                    slidesPerView={'auto'}
                     modules={[Navigation]}
                     onBeforeInit={(swiper) => {
                         swiperRef.current = swiper;
                     }}
-                    slidesPerView={1}
                     spaceBetween={10}
                     slidesPerGroup={1}
                     breakpoints={{
@@ -103,7 +113,7 @@ const HotelsSuggest = () => {
                     >
                         {hotels.map((item)=>(
                             <SwiperSlide>
-                                <div onClick={() => slugHandler(item.slug)}>
+                                <div>
                                     <div class="box-hotel">
                                         <img  class="img-blog" src={item.thumbnail}/>
                                         <Link href={`/hotel/${item.slug}`}>
@@ -118,27 +128,27 @@ const HotelsSuggest = () => {
                                                             <span x-text="hotel.city + ' - ' + hotel.location" style={{marginBottom: "0"}}>{item.city}-{item.location}</span>
                                                         </div>
                                                         <div className="star d-flex align-items-center pb-1">
-                                                                    <div className="d-flex align-items-center">
-                                                                        <div className="image d-flex align-items-center">
-                                                                        {(() => {
-                                                                            let stars = [];
-                                                                            for (let i = 1; i <= parseInt(item.stars); i++) {
-                                                                            stars.push(
-                                                                                <svg className="mx-1" xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                                    height="16" viewBox="0 0 21.443 21.387">
-                                                                                    <path id="Star"
-                                                                                        d="M10.749,1c.915,0,2.352,4.154,2.871,5.751a.916.916,0,0,0,.84.632c1.666.057,5.983.3,5.983,1.273s-3.077,3.38-4.335,4.328A.915.915,0,0,0,15.789,14c.512,1.585,1.742,5.7.952,6.343s-4.1-1.885-5.447-2.963a.919.919,0,0,0-1.147,0c-1.35,1.078-4.669,3.6-5.392,2.964s.431-4.772.912-6.351a.914.914,0,0,0-.324-1C4.093,12.047,1,9.619,1,8.655S5.326,7.438,6.988,7.382a.916.916,0,0,0,.838-.625C8.357,5.165,9.833,1,10.749,1Z"
-                                                                                        fill="#f7db06" stroke="#f7db06"
-                                                                                        strokeLinecap="round" strokeLinejoin="round"
-                                                                                        strokeWidth={2} />
-                                                                                </svg>
-                                                                                );
-                                                                            }
-                                                                            return stars;
-                                                                        })()}
-                                                                        </div>
-                                                                    </div>
+                                                            <div className="d-flex align-items-center">
+                                                                <div className="image d-flex align-items-center">
+                                                                {(() => {
+                                                                    let stars = [];
+                                                                    for (let i = 1; i <= parseInt(item.stars); i++) {
+                                                                    stars.push(
+                                                                        <svg className="mx-1" xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                            height="16" viewBox="0 0 21.443 21.387">
+                                                                            <path id="Star"
+                                                                                d="M10.749,1c.915,0,2.352,4.154,2.871,5.751a.916.916,0,0,0,.84.632c1.666.057,5.983.3,5.983,1.273s-3.077,3.38-4.335,4.328A.915.915,0,0,0,15.789,14c.512,1.585,1.742,5.7.952,6.343s-4.1-1.885-5.447-2.963a.919.919,0,0,0-1.147,0c-1.35,1.078-4.669,3.6-5.392,2.964s.431-4.772.912-6.351a.914.914,0,0,0-.324-1C4.093,12.047,1,9.619,1,8.655S5.326,7.438,6.988,7.382a.916.916,0,0,0,.838-.625C8.357,5.165,9.833,1,10.749,1Z"
+                                                                                fill="#f7db06" stroke="#f7db06"
+                                                                                strokeLinecap="round" strokeLinejoin="round"
+                                                                                strokeWidth={2} />
+                                                                        </svg>
+                                                                        );
+                                                                    }
+                                                                    return stars;
+                                                                })()}
                                                                 </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,8 +158,9 @@ const HotelsSuggest = () => {
                             </SwiperSlide>
                         ))}
                     
-                    </Swiper>:
-                    <div className="hotelNotFound">متاسفانه هتلی موجود نیست</div>
+                    </Swiper>
+                    : hotels.length == 0 ?
+                    <div className="hotelNotFound">متاسفانه هتلی موجود نیست</div>:<Loader/>
 }
         </div>
     );

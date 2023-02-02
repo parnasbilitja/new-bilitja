@@ -12,7 +12,6 @@ import Link from "next/link";
 
 const Footer = () => {
     let today = new Date().toLocaleDateString('fa-IR-u-nu-latn');
-    console.log(today);
     return (
         <>
             <div className={styles["footer"]}>

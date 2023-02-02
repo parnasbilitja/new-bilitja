@@ -23,9 +23,12 @@ const Account = dynamic(() => import("./../../sources/account/Account.component"
 
 const List = (props) => {
     const [data, setData] = useState(null)
+    const [loading, setLoading] = useState(false)
     const getData = async () => {
+        setLoading(true)
         const val = await axios.post('https://api.hamnavaz.com/api/v1/tour/getTours')
         setData(val.data.data)
+        setLoading(false)
     }
     useEffect(() => {
         getData();
@@ -36,7 +39,6 @@ const List = (props) => {
         setData(props.tourData)
     },[props.tourData])
     const slugHandler = (slug) => {
-        // setSlug(slug)
         localStorage.setItem("slug", JSON.stringify(slug))
     }
     const [searchBar, setSearchBar] = useState('')
@@ -59,9 +61,6 @@ const List = (props) => {
             >
                 <Account />
             </PopUp>
-            {/* <div>
-                <Loader />
-            </div> */}
             <div className="mt-5 bodyVar">
                 <div className="container">
                     <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
@@ -96,7 +95,9 @@ const List = (props) => {
                         <div className="border-right"></div>
                         <div className="border-left"></div>
                     </div>
-                    { data != null ? data
+                    { loading ?
+                    <Loader />:
+                    data != null ? data
                     .filter(post => {
                         if (searchBar === '') {
                             return post;
@@ -177,8 +178,8 @@ const List = (props) => {
                         </div>
                 )
                 )
-                :
-                <Loader />
+                :''
+                // <Loader />
             }
                 </div>
             </div>

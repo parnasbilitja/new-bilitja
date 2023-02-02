@@ -12,6 +12,7 @@ import HomePicture from '../sources/component/HomePicture';
 import axios from 'axios';
 import HotelsSuggest from '../sources/tour/HotelsSuggest';
 import CitiesSuggest from '../sources/tour/CitiesSuggest';
+import Posts from '../sources/tour/Posts';
 
 
 const tours = () => {
@@ -31,14 +32,13 @@ const tours = () => {
         });
     },[])
     const [tourData, SetTourData ] = useState([])
-    // useEffect(()=>{
-        
-    // },[state.searchReset])
+
     const toursHandler = (search) => {
       setState({...state, city:search.slug})
       axios.post('https://api.hamnavaz.com/api/v1/tour/getTours',{city:state.city})
         .then(res=>{SetTourData(res.data.data),console.log(res.data.data)})
     }
+
     const myRef = useRef(null)
     const executeScroll = () => { myRef.current.scrollIntoView()}
 
@@ -82,7 +82,13 @@ const tours = () => {
           <div className="row">
             <div className="col-md-1"></div>
             <div className="col-md-10">
-                <SearchBox executeScroll={executeScroll} toursHandler={toursHandler} setState={setState} state={state}  dateSelected={state.dateSelected2} />
+                <SearchBox 
+                dateSelected={state.dateSelected2}
+                executeScroll={executeScroll} 
+                toursHandler={toursHandler} 
+                setState={setState} 
+                state={state}  
+                 />
             <div ref={myRef}>
                 <HomePicture state={state} />
             </div>
@@ -90,9 +96,12 @@ const tours = () => {
           </div>
           </div>
             <NavHandler />
-              <List ref={myRef} tourData={tourData} />
-              <HotelsSuggest />
-              <CitiesSuggest />
+                <List ref={myRef} tourData={tourData} />
+                <HotelsSuggest />
+                <CitiesSuggest />
+                <div className="col-md-10 m-auto">
+                  <Posts/>
+                </div>
             <Footer />
         </div>
     );
