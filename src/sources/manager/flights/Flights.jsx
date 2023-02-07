@@ -110,14 +110,17 @@ const Flights = (props) => {
           </div>
         </div>
         <FlightSearchBox seachData={seachData} searchReset={searchReset} setSearchReset={setSearchReset} type='panel' />
+        <div className="mt-5">
           {
             loading?
-            <Loader/>:
+            <Loader/>
+            :
             data.length>0 ?
-              <ShowFlightList flightList={data} />:
-              data.length==[]?
-              <MiniClaender setDate={setDate} {...props.credentials} seachData={seachData} />:''
+            <ShowFlightList flightList={data} />:
+            data.length==[]?
+            <MiniClaender setDate={setDate} {...props.credentials} seachData={seachData} />:''
           }
+          </div>
          {/* } */}
       </div>
     </section>
