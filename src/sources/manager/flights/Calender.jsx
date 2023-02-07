@@ -12,16 +12,26 @@ import globals from "../../Global";
 
 const Calendar = (props) => { 
     console.log(props)
-    let year, month;
+    let year, month,day;
     if (props.credentials.flightDatePersian == "") {
       const currentMoment = moment().format("jYYYY,jMM,jDD");
       year = currentMoment.split(",")[0];
       month = currentMoment.split(",")[1];
+      day = currentMoment.split(",")[2];
     } else {
       const currentMoment = props.credentials.flightDatePersian;
       year = currentMoment.split("/")[0];
       month = currentMoment.split("/")[1];
+      day = currentMoment.split("/")[2];
     }
+    useEffect(() => {
+        props.setDate({
+          year:year,
+          month:month,
+          day:day,
+        })
+
+    },[year,month,day])
 
     const [state,setState] = useState({
       firstMonth: null,
@@ -136,30 +146,24 @@ const Calendar = (props) => {
     }
   };
   const ClickDay = (day) => {
-    console.log('day',day);
-        if (day.minPrice == null || day.minPrice <= 0) {
-          return;
-        }
-        const m = moment(
-          `${state.year}/${state.month}/${day.day}`,
-          "jYYYY/jMM/jDD"
-        );
-        const persianDate = m.format("jYYYY/jMM/jDD");
-        const miladidate = m.format("YYYY/MM/DD");
-
-        if (props.refreshAction) {
-          props.addCredentials({
-              stDate: miladidate,
-              flightDatePersian: persianDate,
-            })
-            props.refreshAction();
-        }
-        props.addCredentials({
-            stDate: miladidate,
-            flightDatePersian: persianDate,
-          })
-          props.refreshAction();
+    if (day.minPrice == null || day.minPrice <= 0) {
+      return;
     }
+    const m = moment(`${state.year}/${state.month}/${day.day}`,"jYYYY/jMM/jDD");
+    const persianDate = m.format("jYYYY/jMM/jDD");
+    const miladidate = m.format("YYYY/MM/DD");
+    props.addCredentials({
+        stDate: miladidate,
+        flightDatePersian: persianDate,
+      })
+    //   props.refreshAction();
+    }
+
+
+    // useEffect(()=>{
+    //     props.refreshAction()
+    // },[day])
+
     return (
       <div className="row mt-5 mx-2" style={{justifyContent: 'center'}}>
         <div className="col-lg-3 col-md-3 col-sm-1 col-0"></div>
@@ -201,9 +205,7 @@ const Calendar = (props) => {
                   onClick={() => ClickDay(day)}
                 >
                   <div>{day.day}</div>
-                  <div
-                    className={`${day.minPrice != null && day.minPrice > 0 ? "color-secondary": null} font-size-13`}
-                  >
+                  <div className={`${day.minPrice != null && day.minPrice > 0 ? "color-secondary": null} font-size-13`}>
                     {Math.floor(day.minPrice / 10000)}
                   </div>
                 </div>

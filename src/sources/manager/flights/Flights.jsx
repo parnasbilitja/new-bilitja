@@ -16,11 +16,21 @@ const Flights = (props) => {
     const [ data, setData ] = useState([])
     const [ searchReset, setSearchReset ] = useState(false)
     const [ loading, setLoading ] = useState(true)
+    const [state, setState] = useState({...props.credentials})
+    const [date,setDate] = useState({
+      year:'',
+      month:'',
+      day:'',
+    })
+    useEffect(() => {
+      setState({...props.credentials})
+    },[props.credentials])
+    
     useEffect(() => {
         setLoading(true)
         fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
             method: "POST",
-            body: JSON.stringify({ ...props.credentials }),
+            body: JSON.stringify({ ...state }),
             headers: { "Content-Type": "application/json" },
           })
             .then((res) => res.json())
@@ -49,12 +59,13 @@ const Flights = (props) => {
               }
             });
     },[])
+    
     const seachData = async() => {
       console.log('props.credentials',props.credentials)
       setLoading(true)
       await fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
           method: "POST",
-          body: JSON.stringify({ ...props.credentials }),
+          body: JSON.stringify({ ...state }),
           headers: { "Content-Type": "application/json" },
         })
           .then((res) => res.json())
@@ -80,6 +91,12 @@ const Flights = (props) => {
             }
           });
     }
+    useEffect(() => {
+      setState({...state,
+        flightDatePersian:`${date.year}/${date.month}/${date.day}`,
+      })
+      seachData()
+    },[date.day,date.month,date.year])
   return (
     <section>
       <div>
@@ -99,7 +116,7 @@ const Flights = (props) => {
             data.length>0 ?
               <ShowFlightList flightList={data} />:
               data.length==[]?
-              <MiniClaender {...props.credentials} seachData={seachData} />:''
+              <MiniClaender setDate={setDate} {...props.credentials} seachData={seachData} />:''
           }
          {/* } */}
       </div>

@@ -8,24 +8,14 @@ const MiniClaender = (props) => {
               متاسفانه هیچ پروازی از{" "}
               <strong className="text-danger">
                 {props.sourceName}
-                {/* {
-                  props.airports.find(
-                    (x) => x.airportNameEn == src
-                  ).airportName
-                } */}
               </strong>{" "}
               <strong>به </strong>
               <strong className="text-danger">
                 {props.destinationName}
-                {/* {
-                  props.airports.find(
-                    (x) => x.airportNameEn == dest
-                  ).airportName
-                } */}
               </strong>{" "}
               یافت نشد لطفا از تقویم انتخاب کنید.
             </p>
-            <Calendar refreshAction={props.seachData} />
+            <Calendar setDate={props.setDate} refreshAction={props.seachData} />
         </div>
     );
 };
