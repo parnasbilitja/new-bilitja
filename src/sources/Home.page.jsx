@@ -96,15 +96,20 @@ const Home =(props) => {
         ) : null}
 
         <div className={`${styles["heor-main-container"]}`}>
-          <PageTabls type={type} setType={setType} />
           <Scrolltoprefresh />
+            {type == 1? 
+            <>
           <div className="row">
             <div className="col-md-1"></div>
             <div className="col-md-10">
-            {type == 1? 
-            <>
-              <FlightSearchBox dateSelected={state.dateSelected} />
+              <div className={`${styles["padingSearchBox"]}`}>
+                <PageTabls type={type} setType={setType} />
+                <FlightSearchBox dateSelected={state.dateSelected} />
+              </div>
+            </div>
               <HomeDetails state={state} />
+            </div>
+          
             </>
             :
             <>
@@ -113,8 +118,6 @@ const Home =(props) => {
               <List/>
             </>
             }
-            </div>
-          </div>
         </div>
      
       </div >

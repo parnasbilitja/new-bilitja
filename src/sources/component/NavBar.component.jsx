@@ -162,10 +162,10 @@ const NavBar = (props) => {
               </div>
             </div>
             <div className="d-flex flex-row-reverse">
-              <div className={styles["nav-items-container"]}>
+              <div className={"nav-items-container"}>
                 <ul className={styles["navbar-items"]}>
                   <li>
-                    <Link href="/" >
+                    <Link href="/ticket" >
                       <a>
                         <i
                           className={`bilitja icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`}
@@ -203,12 +203,12 @@ const NavBar = (props) => {
                       </a>
                     </Link>
                   </li>
-                  {/* <li>
+                  <li>
               <a href="/blog">
                 <i className={`bilitja icon-blog ${styles["nav-icon"]} `}></i>
                 بلاگ
               </a>
-            </li> */}
+            </li>
                   <li>
                     <Link href="/flights/order" >
                       <a>

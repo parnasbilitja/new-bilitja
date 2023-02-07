@@ -11,34 +11,34 @@ const FlightReserveMobileHeader = (props) =>
     <div className={`row visible-xs ${styles["reserve-mobile-hero"]} `}>
       <br />
       <div
-        className={`col-12 border-pill  ${styles["border-pill-private"]}  ${styles["background-world"]}`}
+        className={`col-12 border-pill ${styles["border-pill-private"]}  ${styles["background-world"]}`}
       >
         <div className="row">
           <div className="col-4">
-            <strong className="color-secondary font-size-25">
+            <strong className="color-secondary font-size-15">
               {props.airport1}
             </strong>
           </div>
           <div className="col-4">
-            <strong className="color-secondary font-size-25">به</strong>
+            <strong className="color-secondary font-size-15">به</strong>
           </div>
           <div className="col-4">
-            <strong className="color-secondary font-size-25">
+            <strong className="color-secondary font-size-15">
               {props.airport2}
             </strong>
           </div>
         </div>
         <div className="row line-2">
-          <div className="col-4 pl-0">
+          <div className="col-4 mt-1rem-mobi">
             <p className="text-right font-size-12 center-p">
               {" "}
               شماره پرواز &nbsp;
-              <span className="color-secondary font-bold-iransanse">
+              <span style={{color: '#ff0000'}} className="font-bold-iransanse font-size-15">
                 {props.flightNo}
               </span>
             </p>
           </div>
-          <div className="col-4" style={{ marginTop: 51 }}>
+          <div className="col-4" style={{ marginTop: 10 }}>
             <img
               width=""
               height=""
@@ -48,10 +48,10 @@ const FlightReserveMobileHeader = (props) =>
             />
             <div className="font-size-14">
               <span className="font-bold-iransanse">ایرلاین</span>{" "}
-              <div className="color-secondary">{props.airline}</div>
+              -<span className="color-secondary font-size-15" style={{ fontSize: '15px' }}>{props.airline}</span>
             </div>
           </div>
-          <div className="col-4 padding-3px">
+          <div className="col-4 mt-1rem-mobi padding-3pxheader">
             <p className="font-size-14 center-p">
               <span className="text-danger font-bold-iransanse mx-1 font-size-14">
                 {props.capLast}
@@ -72,9 +72,9 @@ const FlightReserveMobileHeader = (props) =>
             <span className="text-right mx-2">
               <span className="color-secondary" style={{ marginRight: -15 }}>
                 {String(props.flightDate).replace("-", "/").replace("-", "/")}
-                <p style={{ fontSize: 15 }} className={styles["flight-day"]}>
-                  {props.flightDay}
-                </p>
+                  -{props.flightDay}
+                {/* <p style={{ fontSize: 15 }} className={styles["flight-day"]}>
+                </p> */}
               </span>
             </span>
           </div>

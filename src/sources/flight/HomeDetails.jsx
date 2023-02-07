@@ -28,12 +28,10 @@ const HomeDetails = ({state}) => {
           </div>
         ) : null}
 
-        <div className="row padding-xs-5-15">
-          <div className="col-lg-2 col-md-1 hidden-xs"></div>
-          <div className="col-lg-8 col-md-10 col-sm-12">
-            <div className="row">
-              <div className="col-lg-1 hidden-sm col-sm-12 hidden-xs"></div>
-              <div className="col-lg-5 col-md-6 col-sm-12 padding-5px">
+        <div className="row padding-xs-5-15" style={{justifyContent: 'center'}}>
+          
+              {/* <div className="col-lg-1 hidden-sm hidden-xs"></div> */}
+              <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
                 <div className={styles["home-value-propsal"]}>
                   <img
                     width=""
@@ -54,7 +52,7 @@ const HomeDetails = ({state}) => {
                   </p>
                 </div>
               </div>
-              <div className="col-lg-5 col-md-6 col-sm-12 padding-5px">
+              <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
                 <div className={styles["home-value-propsal"]}>
                   <img
                     width=""
@@ -75,8 +73,7 @@ const HomeDetails = ({state}) => {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
+            
         </div>
         <div className={styles["home-become-host"]}>
           <div>
@@ -92,21 +89,28 @@ const HomeDetails = ({state}) => {
         </div>
         <div className="row">
           <div className="col-md-1"></div>
-          <div className={`col-md-10 ${styles["home-tour-intro"]} `}>
-            <p>دیدن تور های ویژه</p>
-            <div className="align-center">
-              <p>
-                تور های ویژه گردشگری ، بازدید از موزه ها و مکان های دیدنی کشور
-                ها
-              </p>
+          <div className={`col-12 col-md-10 ${styles["home-tour-intro"]} `}>
+            <div className="row">
+              <div className={'col-9'}>
+                <p>دیدن تور های ویژه</p>
+                <div className="align-center">
+                  <p>
+                    تور های ویژه گردشگری ، بازدید از موزه ها و مکان های دیدنی کشور
+                    ها
+                  </p>
+                  
+                </div>
+              </div>
+              <div className={`col-3 ${styles["tour-intro-button"]}`} >
               <a
-                href="https://www.hamnavaz.com/"
-                className="pull-left font-size-13 btn-fiiled mx-2  py-3 col-lg-2 mb-4 text-center"
-              >
-                جستجوی مقاصد
-              </a>
+                  href="https://www.hamnavaz.com/"
+                  className="pull-left font-size-13 btn-fiiled mx-2  py-3 col-lg-2 mb-4 text-center"
+                >
+                  جستجوی مقاصد
+                </a>
             </div>
-          </div>
+              </div>
+            </div>
         </div>
         <FlightsUrl flightsData={flightsData} />
         <div className="row padding-xs-5-25">

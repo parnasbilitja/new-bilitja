@@ -200,7 +200,7 @@ const NavBarMobile = (props) => {
           <ul className="mt-2">
             <li>
               <div>
-                <a href="/">
+                <a href="/ticket">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right rotate-y-180"></i>
                   <span className="pull-right font-size-14 color-black">
                     بلیط هواپیما

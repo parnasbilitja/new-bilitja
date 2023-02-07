@@ -17,7 +17,7 @@ const PageTabls = (props) => {
               }`}
             onClick={() => {
               props.setType(1)
-              myRouter.push("/");
+              myRouter.push("/ticket");
             }}
           >
             <div className="pull-right">

@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../../styles/FlightSearchBox.module.scss";
-import PrimaryButton from "../component/PrimaryButton.component";
-import PrimaryTextInputMobile from "../component/PrimaryTextInputMobile";
-import PrimaryTextInput from "../component/PrimarySelectInput.component";
-import Airports from "../base/Airports.component";
-import AirportsMobile from "../base/AirportsMobile.component";
-import PopUp from "../component/PopUp.component";
-import PopUpWide from "../component/PopUpWide.component";
-import CalendarComponent from "../calendar/Calendar.component";
-import Filters from "./Filters.component";
+import styles from "../../../../styles/FlightSearchBox.module.scss";
+import PrimaryButton from "../../component/PrimaryButton.component";
+import PrimaryTextInputMobile from "../../component/PrimaryTextInputMobile";
+import PrimaryTextInput from "../../component/PrimarySelectInput.component";
+import Airports from "../../base/Airports.component";
+import AirportsMobile from "../../base/AirportsMobile.component";
+import PopUp from "../../component/PopUp.component";
+import PopUpWide from "../../component/PopUpWide.component";
+import CalendarComponent from "../../calendar/Calendar.component";
+// import Filters from "./Filters.component";
 import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { connect } from "react-redux";
-import { selectCredentials } from "../../Redux/Search/search.reselect";
-import { addCredentials, switchRoute } from "../../Redux/Search/search.action";
-import { messageBoxModify } from "../../Redux/UI/ui.action";
+import { selectCredentials } from "../../../Redux/Search/search.reselect";
+import { addCredentials, switchRoute } from "../../../Redux/Search/search.action";
+import { messageBoxModify } from "../../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
-import Scrolltoprefresh from "../component/Scrolltoprefresh";
-//import BirthdayCalendar from "../calendar/BirthdayCalendar.component"
+import Scrolltoprefresh from "../../component/Scrolltoprefresh";
 
 const FlightSearchBox = (props) =>{
+    console.log(props);
   const [width, setWidth]   = useState();
   useEffect(() => {
     setWidth(window.innerWidth)
@@ -259,17 +259,17 @@ const FlightSearchBox = (props) =>{
             }}
           />
         </div>
-        <div className=" without-focus">
-          {/* {console.log(props)} */}
+        <div className="without-focus">
           <PrimaryButton
             style={{ height: "45px", marginTop: "7px" }}
             value={
-              state.searchReset == false  ? "جستجو" : "لطفا صبر کنید..."
+              props.searchReset == false  ? "جستجو" : "لطفا صبر کنید..."
             }
             onClick={() => {
-                setState({...state, searchReset:true})
+                props.setSearchReset(true)
+                props.seachData()
               if (!validation()) {
-                setState({...state, searchReset:false})
+                props.setSearchReset(false)
                 props.messageBoxModify({
                   state: true,
                   color:false,
@@ -297,15 +297,15 @@ const FlightSearchBox = (props) =>{
                       currentPage: 1,
                     })
                     .then(() => {
-                      props.router.push(
-                        `/flights/${props.credentials.sourceNameEn}-to-${props.credentials.destinationNameEn}/airfares-${props.credentials.source}-${props.credentials.dest}#${props.credentials.flightDatePersian}`
-                      );
-                      props.refreshAction();
+                    //   props.router.push(
+                    //     `/flights/${props.credentials.sourceNameEn}-to-${props.credentials.destinationNameEn}/airfares-${props.credentials.source}-${props.credentials.dest}#${props.credentials.flightDatePersian}`
+                    //   );
+                    //   props.refreshAction();
                     });
                 } else {
-                  props.router.push(
-                    `/flights/${props.credentials.sourceNameEn}-to-${props.credentials.destinationNameEn}/airfares-${props.credentials.source}-${props.credentials.dest}#${props.credentials.flightDatePersian}`
-                  );
+                //   props.router.push(
+                //     `/flights/${props.credentials.sourceNameEn}-to-${props.credentials.destinationNameEn}/airfares-${props.credentials.source}-${props.credentials.dest}#${props.credentials.flightDatePersian}`
+                //   );
                 }
               } else {
                 setState({...state, searchReset:false})
@@ -315,15 +315,8 @@ const FlightSearchBox = (props) =>{
                     currentPage: 1,
                   })
                   .then(() => {
-                    console.log('props.type',props.type)
-                    if(props.type=='panel'){
-                      return
-                    }else{
-                      props.router.push(
-                        `/flights/${props.credentials.sourceNameEn}-to-${props.credentials.destinationNameEn}/airfares-${props.credentials.source}-${props.credentials.dest}#${props.credentials.flightDatePersian}`
-                        );
-                      }
-                    props.refreshAction();
+                    
+                    // props.refreshAction();
                   });
               }
             }}

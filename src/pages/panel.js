@@ -34,6 +34,7 @@ import SalesReport from "../sources/manager/sell-report/sell-report/Sales-report
 import ConsularReport from "../sources/manager/sell-report/sell-report/Consular-report";
 import Reserving from "../sources/manager/sell-report/sell-report/reserving";
 import Transaction from "../sources/manager/sell-report/sell-report/transaction";
+import Flights from "../sources/manager/flights/Flights";
 
 const ManagePanel = () =>{
   const myRouter = useRouter();
@@ -144,6 +145,8 @@ const ManagePanel = () =>{
         return <FlightSellReport />;
       case "/panel/price-handling":
         return <PriceHandling />;
+      case "/panel/flight":
+        return <Flights />;
       case "/panel/all-flight-sell-report":
         return <AllFlightSellReport />;
       case "/panel/Consular-report":

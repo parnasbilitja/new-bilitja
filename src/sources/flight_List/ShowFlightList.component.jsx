@@ -21,7 +21,7 @@ const ShowFlightList = (props) => {
   return (
     <>
       <div>
-        {props?.flightList?.map((oneFlight) => (
+        {props.flightList && props?.flightList?.map((oneFlight) => (
           <div
             key={oneFlight.flightId}
             className={styles["flight-list-one-row"]}

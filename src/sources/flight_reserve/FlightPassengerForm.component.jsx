@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import PrimaryTextInput from "../component/PrimaryTextInput.component";
 import PrimarySelectInput from "../component/PrimarySelectInput.component";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { CloseOutlined } from "@ant-design/icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import FuturedayCalendar from "../calendar/FutureCalendar.component";
 
 import { moneyFormat } from "../../Utils/SimpleTasks";
 import PopUp from "../component/PopUp.component";
@@ -17,13 +14,21 @@ import BirthDayParent from "../calendar/BirthDayParent";
 
 
 const FlightPassengerForm = (props) => {
-    // console.log(props);
+    const [calend, setCalend] = useState(true)
     const [state, setState] = useState({
         open: false,
         extOpen: false,
     });
-    const [calend, setCalend] = useState(true)
-    const [birthday, setBirthday] = useState('')
+    useEffect(() => {
+        console.log('props',props)
+        console.log(props.pathKind);
+        props.pathKind == 2  && setCalend(false)
+        
+    },[])
+    useEffect(() => {
+        console.log('props',props)
+        props.pathKind == 2  && setCalend(false)
+    },[props.pathKind])
 
     const [err, setErr] = useState({
         checker: false,
@@ -50,8 +55,6 @@ const FlightPassengerForm = (props) => {
             setErr({ ...err, [e.target.name]: false })
         }
     }
-
-
     //get title of form
     const getTitleByType = (type) => {
         if (type == "ADL") {
@@ -160,7 +163,7 @@ const FlightPassengerForm = (props) => {
                         <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px">
                             <div className="pb-1 mt-1">
                                 <PrimaryTextInput
-                                    style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15 }}
+                                    style={{ height: "2em", border: "1px solid #eee", fontSize: 15 }}
                                     placeholder="نام"
                                     name="name"
                                     onChange={(e) => {
@@ -186,7 +189,7 @@ const FlightPassengerForm = (props) => {
                         <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px">
                             <div className="pb-1 mt-1">
                                 <PrimaryTextInput
-                                    style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15 }}
+                                    style={{ height: "2em", border: "1px solid #eee", fontSize: 15 }}
                                     placeholder="نام خانودگی"
                                     name='lname'
                                     onChange={(e) => {
@@ -213,7 +216,7 @@ const FlightPassengerForm = (props) => {
                         </div>
                         <div className=" col-lg-1 col-md-1 col-sm-2 col-6 padding-horizental-3px mt-1">
                             <PrimarySelectInput
-                                style={{ padding: "6px 0", paddingBottom: 3, border: "1px solid #eee" }}
+                                style={{ padding: "6px 0", height: "2em", paddingBottom: 3, border: "1px solid #eee" }}
                                 name="nationality"
                                 onChange={(e) => {
                                     props.fillPassengersData(
@@ -221,7 +224,11 @@ const FlightPassengerForm = (props) => {
                                         props.id,
                                         e.target.value
                                     );
-                                    setCalend(!calend)
+                                    if(props.pathKind == 1 && e.target.value=='IR'){
+                                        setCalend(true)
+                                    }else if(props.pathKind == 1 && e.target.value=='other'){
+                                        setCalend(false)
+                                    }
                                 }
                             }
                             >
@@ -231,7 +238,7 @@ const FlightPassengerForm = (props) => {
                         </div>
                         <div className=" col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px mt-1">
                             <PrimarySelectInput
-                                style={{ paddingBottom: 3, border: "1px solid #eee", fontSize: 15 }}
+                                style={{ height: "2em", paddingBottom: 3, border: "1px solid #eee", fontSize: 15 }}
                                 name="gender"
                                 onChange={(e) => {
                                     props.fillPassengersData(
@@ -250,7 +257,7 @@ const FlightPassengerForm = (props) => {
                         <div className="col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px">
                             <div className="pb-1 mt-1">
                                 <PrimaryTextInput
-                                    style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15 }}
+                                    style={{ height: "2em", border: "1px solid #eee", fontSize: 15 }}
                                     placeholder="تاریخ تولد"
                                     value={props.birthday}
                                     readonly="readonly"
@@ -272,7 +279,7 @@ const FlightPassengerForm = (props) => {
                             {props.pathKind == 1 && props.nationality == "IR" ?
                                 <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
                                     <PrimaryTextInput
-                                        style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
+                                        style={{ height: "2em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
                                         name={`nationalCode`}
                                         maxlength={10}
                                         placeholder={`کد ملی`}
@@ -290,7 +297,7 @@ const FlightPassengerForm = (props) => {
                                 </div> :
                                 <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
                                     <PrimaryTextInput
-                                        style={{ height: "3.1em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
+                                        style={{ height: "2em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
                                         name={`nationalCode`}
                                         placeholder={`شماره پاسپورت`}
                                         inputMode={`text`}
@@ -317,7 +324,7 @@ const FlightPassengerForm = (props) => {
                                 <PrimaryTextInput
                                     ext={props.nationality == 'IR' && props.pathKind == 1 ? 'BEFORE' : ''}
                                     disabled={props.nationality == 'IR' && props.pathKind == 1 ? true : false}
-                                    style={{ height: "3.1em", border: "1px solid #eee", fontSize: 15 }}
+                                    style={{ height: "2em", border: "1px solid #eee", fontSize: 15 }}
                                     placeholder={`${"انقضای پاسپورت"}`}
                                     name="futureday"
                                     inputMode={`${"text"}`}
@@ -436,24 +443,6 @@ const FlightPassengerForm = (props) => {
                 </div>
 
             </PopUp>
-
-            {/* <PopUp
-                opened={state.openFuture}
-                closePopUp={managePopUpFuturedayCalendar}
-            >
-                <div style={{ padding: 15 }}>
-                    <FuturedayCalendar
-                        numOfYear={10}
-                        setFutureday={(value) => {
-                            props.fillPassengersData("futureday", props.id, value);
-                            // props.fillPassengersData("pasenddat", props.id, value);
-                        }}
-                        closePopUpCalendar={managePopUpFuturedayCalendar}
-                    />
-                </div>
-            </PopUp> */}
-
-
         </div>
     );
 }
@@ -464,41 +453,3 @@ const dispatchStateToProps = (dispatch) => ({
     accountBoxModify: (value) => dispatch(accountBoxModify(value)),
 });
 export default connect(null, dispatchStateToProps)(FlightPassengerForm);
-
-
-
-
-{/* <div className={`d-flex align-items-center `} > */ }
-{/* <PrimaryTextInput
-                                        style={{height: "3em", fontSize: 12,display: props.nationality == 'IR' && 'none'}}
-                                        placeholder={`${ "انقضای پاسپورت"}`}
-                                        inputMode={`${"text"}`} 
-                                        onChange={(e) => {
-                                                props.fillPassengersData(
-                                                    "extPasaport",
-                                                    props.id,
-                                                    e.target.value
-                                                );}}
-                                                onFocus={() => {
-                                                    managePopUpExtPasCalendar(true);
-                                                }}
-                                        defaultValue={props.extPasaport}
-                                        value={props.extPasaport}
-                                    /> */}
-{/* <PrimaryTextInput 
-                                        style={{height: "3em", fontSize: 12,marginRight:12}}
-                                        placeholder={` شماره پاسپورت`}
-                                        name="nationalCode"
-                                        onChange={(e) => {
-                                            if (!checkCharacters(e.target.value)) {
-                                                return;
-                                            }
-                                            props.fillPassengersData(
-                                                "pasno",
-                                                props.id,
-                                                e.target.value
-                                            );
-                                        }}
-                                        defaultValue={props.pasno}
-                                    /> */}
-{/* </div> */ }

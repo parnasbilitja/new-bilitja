@@ -2,22 +2,15 @@ import React, { useState } from 'react'
 import moment from 'moment-jalaali'
 import styles from '../../../styles/BirthdayCalendar.module.scss'
 const BirthdayCalendar = (props) => {
-    // console.log(num, numBase);
-    console.log(props);
     let current = 1402
-
-        const today = moment().format('jYYYY/jMM/jDD')
-        const date = today.split("/")
-        current = parseInt(date[0]) 
-//        console.log('current tavalod')
-//        console.log(current)
-        const [state,setState] = useState({
-            stage: 1,
-            year: '',
-            month: '',
-        });
-
-        // console.log(props.num == undefined ? 1401:props.num  );
+    const today = moment().format('jYYYY/jMM/jDD')
+    const date = today.split("/")
+    current = parseInt(date[0]) 
+    const [state,setState] = useState({
+        stage: 1,
+        year: '',
+        month: '',
+    });
 
     const getYears = () => {
         if (props.typePassenger == "ADL") {

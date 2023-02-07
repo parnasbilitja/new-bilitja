@@ -30,7 +30,6 @@ import PopUp from "../component/PopUp.component";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 
 const FlightReserve = (props) => {
-    // console.log(props);
     const [err, setErr] = useState({
         rule: false,
         ruleErr: 'لطفا قوانین را بپذیرید',
@@ -85,6 +84,8 @@ const FlightReserve = (props) => {
         )
             .then((res) => res.json())
             .then((data) => {
+                console.log(data)
+                console.log(data.flightReservePropertyModel)
                 if (data.status == "0") {
                     new Array(parseInt(data.flightReservePropertyModel.numADL))
                         .fill()
@@ -107,7 +108,8 @@ const FlightReserve = (props) => {
                         .forEach((x) => {
                             addNewPassenger(
                                 "INF",
-                                data.flightReservePropertyModel.priceINF
+                                data.flightReservePropertyModel.priceINF,
+                                data.flightReservePropertyModel.pathKind,
                             );
                         });
 
@@ -152,7 +154,7 @@ const FlightReserve = (props) => {
         });
     };
 
-    const addNewPassenger = (type, price) => {
+    const addNewPassenger = (type, price,pathKind) => {
         let passengers = state.passengers;
         let max_ = -1;
         passengers.map((onePassenger) => {
@@ -167,6 +169,7 @@ const FlightReserve = (props) => {
             family: "",
             nationality: "IR",
             gender: "1",
+            pathKind:pathKind,
             code: "",
             birthday: "",
             extPasaport: "",
@@ -355,7 +358,7 @@ const FlightReserve = (props) => {
         return valid;
     };
     const compeleteReservation = () => {
-        console.log(state);
+        console.log('state',state);
         const numADL = state.passengers.filter((x) => x.type == "ADL").length;
         const numCHD = state.passengers.filter((x) => x.type == "CHD").length;
         const numINF = state.passengers.filter((x) => x.type == "INF").length;
@@ -555,15 +558,15 @@ const FlightReserve = (props) => {
     },[loginGoNext])
 
     return (
-        <div className="container mt-100" style={{ height: '100%' }}>
+        <div className="container mt-90" style={{ height: '100%' }}>
             <Scrolltoprefresh />
             <div className={`${styles["flight-detail"]}`} ref={Ref}>
                 <FlightReserveDesktopHeader {...state} />
                 <FlightReserveMobileHeader {...state} />
             </div>
-            <div className="row mt-10" >
+            <div className="row" >
                 <div className="col-lg-1"></div>
-                <div className="col-lg-12 no-padding-xs border-pill-lg mt-2">
+                <div className="col-lg-12 no-padding-xs border-pill-lg">
                     {state.passengers ? state.passengers.map((onePassenger, index) => (
                         <FlightPassengerForm
                             {...onePassenger}

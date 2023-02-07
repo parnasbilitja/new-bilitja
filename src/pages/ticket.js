@@ -13,24 +13,14 @@ import { withRouter } from "next/router";
 import NavHandler from "../Components/share/NavHandler";
 import Scrolltoprefresh from "../sources/component/Scrolltoprefresh";
 import HeadSeo from "../sources/component/HeadSeo";
-import List from "../sources/tour/List";
-import HotelsSuggest from "../sources/tour/HotelsSuggest";
-import CitiesSuggest from "../sources/tour/CitiesSuggest";
-import Posts from "../sources/tour/Posts";
 
-const App = (props) =>  {
+const ticket = (props) =>  {
     return (
       <div className="bodyVar">
         <NavHandler />
         <Scrolltoprefresh/>
-        <div className={"mt-85"}>
+        <div className={"mt-100"}>
           <Home />
-          <List  />
-          <HotelsSuggest />
-          <CitiesSuggest />
-          <div className="col-md-10 m-auto">
-            <Posts/>
-          </div>
           <MessageBox />
           <Footer />
           <HeadSeo props={props} pathName={props.router.asPath} />
@@ -50,4 +40,4 @@ const mapStatesToProps = (state) => ({
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),
 });
-export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(App));
+export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(ticket));

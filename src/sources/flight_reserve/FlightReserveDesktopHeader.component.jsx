@@ -7,9 +7,9 @@ import { fontSize } from "@mui/system";
 
 const FlightReserveDesktopHeader = (props) =>
   props.airport1 ? (
-    <div className="row hidden-xs font-bold-iransanse mt-4">
+    <div className="row hidden-xs font-bold-iransanse mt-5">
       {/* <div className="col-lg-1"></div> */}
-      <div className={styles["header-box"]}>
+      <div className={`mt-3 ${styles["header-box"]}`}>
         <div className="row">
           <div
             className={`col-lg-6 col-md-12 col-sm-12 col-12 ${styles["background-world"]}`}

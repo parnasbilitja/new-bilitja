@@ -73,7 +73,7 @@ const Blog = () => {
                 </>
             ))
             :
-            <div className="hotelNotFound">متاسفانه مرطبتی موجود نیست</div>
+            <div className="hotelNotFound">متاسفانه مورد مرطبتی موجود نیست</div>
             }
         </div>                    
     <div>

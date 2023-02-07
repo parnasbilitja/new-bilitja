@@ -190,7 +190,21 @@ html {
 .padding-5px {
   padding: 5px;
 }
+.line-2{
+  // margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center ;
+  align-items: center ;
+  justify-content: center;
+}
 
+.padding-3pxheader {
+  // margin-top: 10px;
+
+  padding: 3px;
+}
 .padding-3px {
   margin-top: 10px;
 
@@ -721,8 +735,8 @@ div.radio {
 }
 
 .airline-icon {
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
 }
 
 .parent-footer-top {
@@ -782,6 +796,7 @@ div.radio {
 
 .accordion-item-prs {
   overflow: hidden;
+  // margin-left: 0;
   border: 2px solid #dbdbdb !important;
 }
 
@@ -2006,7 +2021,12 @@ $sizes: 100;
 @media only screen and (max-width: 868px){
 .parent-gallery {
     flex-direction: column-reverse;
-}}
+}
+.mt-1rem-mobi{
+  position: relative;
+  top: 10px;
+}
+}
 @media only screen and (max-width: 868px){
 .right-gallery {
     width: 100%;
@@ -3042,4 +3062,18 @@ p img {
 .box-details-top .view-number span {
   margin-right: 10px;
   color: #3e3e3e;
+}
+.nav-items-container{
+  display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.scrollTop{
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  background-color: white;
+  color: black;
+  padding: 3px;
+  border-radius: 5px;
 }
