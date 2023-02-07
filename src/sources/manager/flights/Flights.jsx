@@ -10,6 +10,7 @@ import { withRouter } from "next/router";
 import globals from "../../Global";
 import { Loader } from "../../../Utils/Loader";
 import MiniClaender from "./MiniClaender";
+import ShowFlightListMobile from "../../flight_List/ShowFlightListMobile.component";
 
 
 const Flights = (props) => {
@@ -17,6 +18,7 @@ const Flights = (props) => {
     const [ searchReset, setSearchReset ] = useState(false)
     const [ loading, setLoading ] = useState(true)
     const [state, setState] = useState({...props.credentials})
+    const [width, setWidth] = useState(0)
     const [date,setDate] = useState({
       year:'',
       month:'',
@@ -27,6 +29,7 @@ const Flights = (props) => {
     },[props.credentials])
     
     useEffect(() => {
+      setWidth(window.innerWidth)
         setLoading(true)
         fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
             method: "POST",
@@ -116,7 +119,14 @@ const Flights = (props) => {
             <Loader/>
             :
             data.length>0 ?
-            <ShowFlightList flightList={data} />:
+            <>
+            {width>826 ?
+              <ShowFlightList flightList={data} />
+              :
+              <ShowFlightListMobile flightList={data}/>
+            }
+            </>
+            :
             data.length==[]?
             <MiniClaender setDate={setDate} {...props.credentials} seachData={seachData} />:''
           }

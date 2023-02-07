@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
 
 const ManagerNav = (props) => {
   const myRouter = useRouter();
-  const [isOpend, setOpend] = useState(false);
+  const [isOpend, setOpend] = useState(true);
   const [mobile, setMobile] = useState();
 
   useEffect(() => {
@@ -35,6 +35,7 @@ const ManagerNav = (props) => {
           }}
         />
       </div>
+      {isOpend &&
       <div
         className={`${styles["manager-nav-main-container"]} ${isOpend ? styles["slidein-manager"] : ""
           }`}
@@ -293,6 +294,7 @@ const ManagerNav = (props) => {
           </div>
         </div>
       </div>
+      }
     </div>
   );
 };
