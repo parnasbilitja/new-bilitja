@@ -572,7 +572,7 @@ class GetFlightList extends React.Component {
                     <div className="row">
                       <div className="col-lg-6 col-6">
                         <a
-                          className="btn btn-outlined col-12 btn-block prev-next-btn"
+                          className="btn-outlined col-12 btn-block prev-next-btn"
                           onClick={() => {
                             const date_ = this.props.searchobject.flightDatePrev;
                             if (date_ != null) {
@@ -589,7 +589,7 @@ class GetFlightList extends React.Component {
                       </div>
                       <div className="col-lg-6 col-6">
                         <a
-                          className="btn btn-outlined col-12 btn-block  prev-next-btn"
+                          className="btn-outlined col-12 btn-block  prev-next-btn"
                           onClick={() => {
                             const date_ = this.props.searchobject.flightDateNext;
                             if (date_ != null) {

@@ -26,9 +26,9 @@ const App = (props) =>  {
         <div className={"mt-85"}>
           <Home />
           <List  />
+          <div className="col-md-10 m-auto">
           <HotelsSuggest />
           <CitiesSuggest />
-          <div className="col-md-10 m-auto">
             <Posts/>
           </div>
           <MessageBox />

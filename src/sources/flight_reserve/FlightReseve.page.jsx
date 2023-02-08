@@ -564,6 +564,8 @@ const FlightReserve = (props) => {
                 <FlightReserveDesktopHeader {...state} />
                 <FlightReserveMobileHeader {...state} />
             </div>
+            test
+            {state.passengers ? 
             <div className="row" >
                 <div className="col-lg-1"></div>
                 <div className="col-lg-12 no-padding-xs border-pill-lg">
@@ -861,6 +863,8 @@ const FlightReserve = (props) => {
                     </div>
                 </div>
             </div>
+            :<button>test</button>
+            }
             <PopUp opened={closePopUp} closePopUp={setClosePopUp} >
                 <div className="p-2">
                     <p onClick={() => setClosePopUp(false)} className='cursor-pointer mb-0 text-danger' style={{ fontSize: 20 }}>X</p>

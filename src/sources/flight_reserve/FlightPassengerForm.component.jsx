@@ -20,13 +20,10 @@ const FlightPassengerForm = (props) => {
         extOpen: false,
     });
     useEffect(() => {
-        console.log('props',props)
-        console.log(props.pathKind);
         props.pathKind == 2  && setCalend(false)
         
     },[])
     useEffect(() => {
-        console.log('props',props)
         props.pathKind == 2  && setCalend(false)
     },[props.pathKind])
 
@@ -113,7 +110,7 @@ const FlightPassengerForm = (props) => {
                         {getSubtitleByType(props.type)}
                     </p>
                 </div>
-                <div className="hidden-xs col-xl-2 col-lg-2 d-flex justify-content-end mr-4 col-md-2 col-sm-2 row-price font-size-12 p-3 me-auto py-3 px-4">
+                <div className="hidden-xs col-xl-2 col-lg-2 d-flex justify-content-end mr-4 ms-5 col-md-2 col-sm-2 row-price font-size-12 p-3 me-auto py-3 px-4">
                     <span className="font-size-14 color-secondary font-bold-iransanse ">
                         {moneyFormat(props.price)}
                         &nbsp;
@@ -122,7 +119,7 @@ const FlightPassengerForm = (props) => {
                 </div>
                 {/* shows up just for mobile ----- start*/}
                 <div
-                    className={` ${styles["visible-xs-passenger-form-header"]} col-12 padding-3px`}
+                    className={` ${styles["visible-xs-passenger-form-header"]} col-12 px-1`}
                 >
                     <div className="col-6 no-margin padding-xs-0-7 mx-3">
                         <span className="font-size-13 no-margin font-bold-iransanse">
@@ -134,8 +131,8 @@ const FlightPassengerForm = (props) => {
                         </span>
                     </div>
                     <div
-                        className="col-6 no-padding text-left"
-                        style={{ marginRight: -14 }}
+                        className="col-6 no-padding text-left ms-5"
+                        style={{ marginRight: -40 }}
                     >
                         <span className="font-size-14 color-secondary font-bold-iransanse ps-1">
                             {moneyFormat(props.price)}
@@ -143,17 +140,21 @@ const FlightPassengerForm = (props) => {
                         <span className="font-size-12 font-bold-iransanse">تومان</span>
                     </div>
                     {props.id != 0 ? (
-                        <div className="col-1 no-margin no-padding">
+                            <div
+                            className="col-1 no-margin no-padding corner-position"
+                            style={{ position: "absolute", left: "10px", top: "5px" }}
+                        >
                             <span
-                                className="exit-form position-absolute"
+                                className="delete-thumbnail"
                                 onClick={() => {
                                     props.removePassenger(props.type, props.id);
                                 }}
-                                style={{ bottom: 0, left: 5 }}
                             >
-                                <CloseOutlined style={{ color: "red" }} />
+                                <svg id="Layer_1" height="18" viewBox="0 0 24 24" width="18" data-name="Layer 1"><path
+                                    d="m9 12a6 6 0 1 0 -6-6 6.006 6.006 0 0 0 6 6zm0-10a4 4 0 1 1 -4 4 4 4 0 0 1 4-4zm9 17v5h-2v-5a3 3 0 0 0 -3-3h-8a3 3 0 0 0 -3 3v5h-2v-5a5.006 5.006 0 0 1 5-5h8a5.006 5.006 0 0 1 5 5zm3.414-9 2.543 2.543-1.414 1.414-2.543-2.543-2.543 2.543-1.414-1.414 2.543-2.543-2.543-2.543 1.414-1.414 2.543 2.543 2.543-2.543 1.414 1.414z" /></svg>
                             </span>
-                            <span className="color-secondary error-message">&nbsp;</span>
+                            <span className="color-secondary error-message position-absolute top-50">&nbsp;</span>
+                        
                         </div>
                     ) : null}
                 </div>
@@ -374,7 +375,7 @@ const FlightPassengerForm = (props) => {
                     {props.id != 0 ? (
                         <div
                             className="hidden-xs hidden-sm corner-position"
-                            style={{ position: "absolute", left: "0px", top: "103px" }}
+                            style={{ position: "absolute", left: "10px", top: "15px" }}
                         >
                             <span
                                 className="delete-thumbnail"

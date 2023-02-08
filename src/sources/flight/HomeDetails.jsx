@@ -87,13 +87,12 @@ const HomeDetails = ({state}) => {
             </a>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-1"></div>
-          <div className={`col-12 col-md-10 ${styles["home-tour-intro"]} `}>
+        <div className="row d-flex justify-content-center">
+          <div className={`col-11 col-md-10 ${styles["home-tour-intro"]} mx-4`}>
             <div className="row">
-              <div className={'col-9'}>
+              <div className={'col-8 col-md-10'}>
                 <p>دیدن تور های ویژه</p>
-                <div className="align-center">
+                <div className="align-center font-size-10">
                   <p>
                     تور های ویژه گردشگری ، بازدید از موزه ها و مکان های دیدنی کشور
                     ها
@@ -101,7 +100,7 @@ const HomeDetails = ({state}) => {
                   
                 </div>
               </div>
-              <div className={`col-3 ${styles["tour-intro-button"]}`} >
+              <div className={`col-4 col-md-2 justify-content-end ${styles["tour-intro-button"]}`} >
               <a
                   href="https://www.hamnavaz.com/"
                   className="pull-left font-size-13 btn-fiiled mx-2  py-3 col-lg-2 mb-4 text-center"

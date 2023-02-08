@@ -17,9 +17,9 @@ const Posts = () => {
         
     },[])
     return (
-        <div className="">
+        <div className="px-1">
             <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
-                <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-9 col-9">
+                <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-9 col-12">
                     <div className="d-flex align-items-center justify-content-between">
                         <div className="d-flex align-items-center">
                             <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.326" height="30.086" viewBox="0 0 14.326 17.086">

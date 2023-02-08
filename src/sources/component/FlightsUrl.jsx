@@ -14,8 +14,7 @@ const FlightsUrl = ({flightsData}) => {
                     <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                     <span
                       style={{ marginRight: 10 }}
-                      className="pull-right font-size-14"
-                    >
+                      className="pull-right font-size-12">
                       <strong>بلیط هواپیما {item.name}</strong>
                     </span>
                   </a>
@@ -30,7 +29,7 @@ const FlightsUrl = ({flightsData}) => {
                     <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                     <span
                       style={{ marginRight: 10 }}
-                      className="pull-right font-size-14">
+                      className="pull-right font-size-12">
                       <strong>بلیط هواپیما {item.name}</strong>
                     </span>
                   </a>

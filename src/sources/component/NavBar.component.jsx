@@ -233,7 +233,7 @@ const NavBar = (props) => {
                       style={{ cursor: "pointer" }}
                     />
                   </Link>
-                  <h1 className="font-size-13 font-bold-iransanse pt-1">
+                  <h1 className="font-size-10 font-bold-iransanse pt-1">
                     خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه
                   </h1>
                 </div>

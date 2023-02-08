@@ -25,9 +25,9 @@ const CitiesSuggest = () => {
     },[])
     const swiperRef = useRef();
     return (
-        <div className="marginLeftRight">
+        <div className="">
             <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
-                        <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-9 col-9">
+                        <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-9 col-12">
                             <div className="d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center">
                                     <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.326" height="30.086" viewBox="0 0 14.326 17.086">
@@ -43,19 +43,20 @@ const CitiesSuggest = () => {
                                 </div>
                             </div>
                         </div>
-                        <div style={{display: 'flex'}}>
+                        <div className='col-12 col-md-2 d-flex justify-content-end'>
                             <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slidePrev()}>
-                                <FontAwesomeIcon onClick={() => swiperRef.current?.slidePrev()} icon={faAngleRight} />
+                                <FontAwesomeIcon icon={faAngleRight} />
                             </button>
                             <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slideNext()}>
-                                <FontAwesomeIcon onClick={() => swiperRef.current?.slidePrev()} icon={faAngleLeft} />
+                                <FontAwesomeIcon icon={faAngleLeft} />
                             </button>
                         </div>
-                    </div>
-                    <div className="bottom d-flex align-items-center mt-3 mb-3">
-                        <div className="border-right"></div>
-                        <div className="border-left"></div>
-                    </div>
+                        
+                        </div>
+                        <div className="bottom d-flex align-items-center mt-3 mb-3">
+                            <div className="border-right"></div>
+                            <div className="border-left"></div>
+                        </div>
                     {
                         loading?
                         <Loader/>:
@@ -75,14 +76,14 @@ const CitiesSuggest = () => {
                         slidesPerView: 2,
                     },
                     480: {
-                        slidesPerView: 2,
-                    },
-                    850: {
-                        spaceBetween: 20,
                         slidesPerView: 3,
                     },
-                    1024: {
-                        spaceBetween: 10,
+                    855: {
+                        spaceBetween: 20,
+                        slidesPerView: 4,
+                    },
+                    1210: {
+                        spaceBetween: 50,
                         slidesPerView: 5,
                     },
                 

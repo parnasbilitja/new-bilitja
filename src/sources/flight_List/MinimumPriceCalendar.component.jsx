@@ -155,10 +155,10 @@ class MinimumPriceCalendar extends React.Component {
   };
   render() {
     return (
-      <div className="row mt-5 mx-2">
-        <div className="col-lg-3 col-md-3 col-sm-1 col-0"></div>
+      <div className="row mt-5 mx-2 justify-content-center">
+        {/* <div className="col-lg-3 col-md-3 col-sm-1 col-0"></div> */}
         {this.state.firstMonth ? (
-          <div className="col-lg-6 col-md-6 col-md-10 col-12">
+          <div className="col-lg-6 col-md-6 col-md-10 col-12 w-50">
             <div className="row">
               <div className="col-lg-1 col-1">
                 <FontAwesomeIcon

@@ -41,7 +41,7 @@ const NavBarMobile = (props) => {
     /*<div className={styles['error-mobile']}> hghgshghgsd</div>*/
     <nav className={styles["nav-mobile"]}>
       <div className={styles["nav-text-detail-mobile"]}>
-        <div className="pull-right mb-1">
+        <div className="pull-right">
           {props.user.logged === true ? (
             <>
               <Link href="/dashboard">
@@ -77,21 +77,7 @@ const NavBarMobile = (props) => {
             </>
           ) : (
             <>
-              {/* {" "}
-                <a
-                  href=""
-                  className="font-size-13 color-black"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    props.accountBoxModify({
-                      state: true,
-                      type: "login",
-                    });
-                  }}
-                >
-                  {" "}
-                </a> */}
-              <i className="bilitja icon-login font-size-14 text-dark"></i>
+              <i className="bilitja icon-login font-size-12 text-dark"></i>
               <a
                 href=""
                 className="color-black font-size-13"
@@ -104,40 +90,22 @@ const NavBarMobile = (props) => {
                 }}
               >
                 {/* <i className="bilitja icon-register font-size-14 text-dark"></i> */}
-                &nbsp;
-                <span className="font-bold-iransanse text-dark">ورود / ثبت نام</span>
+                {/* &nbsp; */}
+                <span className="font-bold-iransanse text-dark font-size-10">ورود / ثبت نام</span>
               </a>
             </>
           )}
-
-          {/* {props.user.logged === false ? (
-              ""
-            ) : (
-              // <a href="/villa/intro" className="font-size-10 btn-outlined">
-              //   میزبان شوید
-              // </a>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  router.push("/dashboard");
-                }}
-                className="font-size-13 btn-outlined px-2 "
-              >
-                داشبورد
-              </a>
-            )} */}
         </div>
-        <div className="pull-left mt-1">
+        <div className="pull-left">
           <a href="tel:021-84279999" className="color-black font-bold-iransanse">
             {/* <span className="text-dark mx-2">مشاوره تلفنی</span> */}
             <i className="bilitja icon-phone font-size-16"></i>
-            <span className="font-size-17 text-dark"> &nbsp;021-84279999</span>
+            <span className="font-size-17 text-dark font-size-14"> &nbsp;021-84279999</span>
           </a>
         </div>
       </div>
       <div className={styles["nav-logo-container-mobile"]}>
-        <div className="pull-right">
+        <div className="pull-right d-flex mb-0">
           <FontAwesomeIcon
             icon={faBars}
             onClick={() => {
@@ -147,7 +115,7 @@ const NavBarMobile = (props) => {
             }}
             className="mobile-nav-barsicon"
           />
-          <h1 className="font-bold-iransanse">
+          <h1 className="font-bold-iransanse font-size-10">
             {" "}
             خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه{" "}
           </h1>

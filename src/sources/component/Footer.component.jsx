@@ -153,6 +153,20 @@ const Footer = () => {
                                     </li>
                                 </ul>
                             </div>
+                                <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex col-4 justify-content-start ps-4" style={{alignContent: 'center',flexWrap: 'wrap'}}>
+                            <a
+                                referrerPolicy="origin"
+                                target="_blank"
+                                href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                            >
+                                <img
+                                    referrerPolicy="origin"
+                                    src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                                    alt=""
+                                    id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                />
+                            </a>
+                                </div>
                         </div>
 
                         <div className={styles["mobile-footer-soccialmedia"]}>
@@ -242,20 +256,6 @@ const Footer = () => {
                 </div>
                 <div className={styles["footer-copy"]}>
                     <div className={styles["footer-right"]}>
-                        <div className="d-flex justify-content-end ps-4">
-                            <a
-                                referrerPolicy="origin"
-                                target="_blank"
-                                href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                            >
-                                <img
-                                    referrerPolicy="origin"
-                                    src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                    alt=""
-                                    id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
-                                />
-                            </a>
-                        </div>
                         <div>© کپی رایت 1400. Ver 1.1.1</div>
                         <span>کلیه حقوق این سایت محفوظ و متعلق به بلیط جا می‌باشد. </span>
                     </div>
