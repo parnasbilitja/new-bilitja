@@ -101,16 +101,16 @@ const FlightPassengerForm = (props) => {
     return (
         <div className={`${styles["passenger-form"]}`}>
             <div className="row d-flex justify-content-start col-md-12">
-                <div className="col-lg-1 col-md-12 col-sm-12 col-12 no-padding hidden-xs">
-                    <p className="no-margin font-size-14 font-bold-iransanse">
+                <div className="col-lg-2 col-md-12 col-sm-12 col-12 no-padding hidden-xs">
+                    <span className="no-margin font-size-14 font-bold-iransanse">
                         {`${props.index + 1}-`}&nbsp;
                         {getTitleByType(props.type)}
-                    </p>
-                    <p className="no-margin font-size-10">
+                    </span>
+                    <span className="no-margin font-size-10">
                         {getSubtitleByType(props.type)}
-                    </p>
+                    </span>
                 </div>
-                <div className="hidden-xs col-xl-2 col-lg-2 d-flex justify-content-end mr-4 ms-5 col-md-2 col-sm-2 row-price font-size-12 p-3 me-auto py-3 px-4">
+                <div className="hidden-xs col-xl-2 col-lg-2 d-flex justify-content-end mr-4 ms-5 col-md-2 col-sm-2 row-price font-size-12 p-3 me-auto py-2 px-4">
                     <span className="font-size-14 color-secondary font-bold-iransanse ">
                         {moneyFormat(props.price)}
                         &nbsp;

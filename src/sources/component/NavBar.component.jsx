@@ -72,9 +72,9 @@ const NavBar = (props) => {
       <nav className={styles.navVar}>
         {/* <NavHandler/> */}
         {/* <button onClick={handleLog}>check</button> */}
-        <div className="container">
+        
           <div className="d-flex flex-row-reverse justify-content-between">
-            <div className={styles["nav-text-detail"]}>
+            <div className={` ${styles["nav-text-detail"]}`}>
               <div>
                 {/* <a
               href="/villa/intro"
@@ -221,6 +221,7 @@ const NavBar = (props) => {
                   </li>
                 </ul>
               </div>
+            </div>
               <div className={styles["nav-logo-container"]}>
                 <div>
                   <Link href="/" >
@@ -238,9 +239,8 @@ const NavBar = (props) => {
                   </h1>
                 </div>
               </div>
-            </div>
           </div>
-        </div>
+        
       </nav>
     </div>
   );

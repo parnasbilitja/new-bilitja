@@ -46,7 +46,7 @@ const CityTour = (props) => {
                         </select>
                         </div>
                         <Link href={`/cityTour/${currentCity}`}>
-                            <button class="btn-search btn-search-city" onClick={()=>setSearch(true)}>جستجو کن !</button>
+                            <button class="btn-search btn-search-city" onClick={()=>setSearch(true)}>جستجو</button>
                         </Link>
                     </div>
                 </div>

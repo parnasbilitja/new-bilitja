@@ -497,6 +497,9 @@ input[type="button"]:hover {
 .h-3em {
     height: 3em;
 }
+.h-2em {
+    height: 2.6em;
+}
 
 .h-35em {
     height: 3.5em;

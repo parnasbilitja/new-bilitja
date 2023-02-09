@@ -161,7 +161,7 @@ const FlightSearchBox = (props) =>{
           <div
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
-            <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
+            <i className="bilitja icon-plane-departure form-input-icon rotate-y-180" style={{fontSize: '32px'}}></i>
             <PrimaryTextInputMobile
               value={sourceName}
               // readonly={state.width <= mobileSize ? "false" : "true"}

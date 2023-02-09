@@ -121,7 +121,7 @@ const Flights = (props) => {
             data.length>0 ?
             <>
             {width>826 ?
-              <ShowFlightList flightList={data} />
+              <ShowFlightList type='panel' flightList={data} />
               :
               <ShowFlightListMobile flightList={data}/>
             }

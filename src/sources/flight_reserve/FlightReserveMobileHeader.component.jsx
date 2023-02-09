@@ -8,7 +8,7 @@ import styles from "../../../styles/FlightReserve.module.scss";
 import { getweekday } from "../../Utils/SimpleTasks";
 const FlightReserveMobileHeader = (props) =>
   props.airport1 ? (
-    <div className={`row visible-xs ${styles["reserve-mobile-hero"]} `}>
+    <div className={`row visible-xs ${styles["reserve-mobile-hero"]} `} style={{height: 'auto'}} >
       <br />
       <div
         className={`col-12 border-pill ${styles["border-pill-private"]}  ${styles["background-world"]}`}
@@ -30,10 +30,10 @@ const FlightReserveMobileHeader = (props) =>
         </div>
         <div className="row line-2">
           <div className="col-4 mt-1rem-mobi">
-            <p className="text-right font-size-12 center-p">
+            <p className="font-size-10 center-p">
               {" "}
               شماره پرواز &nbsp;
-              <span style={{color: '#ff0000'}} className="font-bold-iransanse font-size-15">
+              <span style={{color: 'red'}} className="font-size-12">
                 {props.flightNo}
               </span>
             </p>
@@ -46,42 +46,46 @@ const FlightReserveMobileHeader = (props) =>
               src={globals.website + `Airlines/${props.airlineCode}.png?ver=1`}
               alt="بلیطجا - لوگو ایرلاین"
             />
-            <div className="font-size-14">
-              <span className="font-bold-iransanse">ایرلاین</span>{" "}
-              -<span className="color-secondary font-size-15" style={{ fontSize: '15px' }}>{props.airline}</span>
+            <div className="">
+              <span className="font-size-10">ایرلاین</span>{" "}
+              <span className="text-danger font-size-12">{props.airline}</span>
             </div>
           </div>
           <div className="col-4 mt-1rem-mobi padding-3pxheader">
-            <p className="font-size-14 center-p">
-              <span className="text-danger font-bold-iransanse mx-1 font-size-14">
+            <p className="font-size-12 center-p">
+              <span className="text-danger mx-1 font-size-14">
                 {props.capLast}
               </span>
-              <i className="bilitja icon-seat mx-1 font-size-24"></i>
-              صندلی خالی
+              <i className="bilitja icon-seat font-size-16"></i>
+              صندلی
+               خالی
             </p>
           </div>
         </div>
         <div className="row line-3">
-          <div className="col-8" style={{ marginRight: -40 }}>
+          <div className="col-7" style={{ marginRight: -25 }}>
             <span className="text-right">
               <FontAwesomeIcon icon={faCalendarAlt} className="mx-2" />
-              <span className="color-secondary">
+              <span className="text-danger font-size-8">
                 {getweekday(String(props.flightDay))} &nbsp;{" "}
               </span>
             </span>
-            <span className="text-right mx-2">
-              <span className="color-secondary" style={{ marginRight: -15 }}>
+            <span className="mx-2">
+              <span className="text-danger font-size-16 " style={{ marginRight: -15 }}>
                 {String(props.flightDate).replace("-", "/").replace("-", "/")}
-                  -{props.flightDay}
+                  {/* <br/> */}{' '}
+                  {props.flightDay}
                 {/* <p style={{ fontSize: 15 }} className={styles["flight-day"]}>
                 </p> */}
               </span>
             </span>
           </div>
           <div className="col-4" style={{ marginRight: 25 }}>
-            <p className="text-left">
+            <p className="text-left ">
               <FontAwesomeIcon icon={faClock} className="mx-2" />
-              {props.flightTime}
+              <span className="text-danger font-size-16 ">
+                {props.flightTime}
+              </span>
             </p>
           </div>
         </div>

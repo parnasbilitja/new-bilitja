@@ -165,6 +165,7 @@ class GetFlightList extends React.Component {
     };
   }
   componentDidMount() {
+    localStorage.removeItem('reqNo');
     window.addEventListener("hashchange", this.hashchange, false);
     //  if (this.props.searchobject.source == '') {
     // console.log("compoMOUNT");

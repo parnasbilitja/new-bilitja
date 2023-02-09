@@ -218,13 +218,13 @@ const BirthdayCalenderMiladi = (props) => {
                                 {getMonth()}&nbsp;&nbsp;{state.year}
                             </p>
                             <div className={styles['birthday-day-container']}>
-                                <div className="font-size-13 color-black">Saturday</div>
-                                <div className="font-size-13 color-black">Sunday</div>
-                                <div className="font-size-13 color-black">Monday</div>
-                                <div className="font-size-13 color-black">Tuesday</div>
-                                <div className="font-size-13 color-black">Wednesday</div>
-                                <div className="font-size-13 color-black">Thursday</div>
-                                <div className="font-size-13 color-black">Friday</div>
+                                <div className="font-size-13 color-black">Sat</div>
+                                <div className="font-size-13 color-black">Sun</div>
+                                <div className="font-size-13 color-black">Mon</div>
+                                <div className="font-size-13 color-black">Tues</div>
+                                <div className="font-size-13 color-black">Wednes</div>
+                                <div className="font-size-13 color-black">Thurs</div>
+                                <div className="font-size-13 color-black">Fri</div>
 
                                 {
                                     getDays().map((x,i) => (
