@@ -115,7 +115,7 @@ const NavBarMobile = (props) => {
             }}
             className="mobile-nav-barsicon"
           />
-          <h1 className="font-bold-iransanse font-size-12">
+          <h1 className="font-bold-iransanse font-size-11 mb-0 d-flex align-center" style={{alignItems: 'center'}}>
             {" "}
             خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه{" "}
           </h1>
