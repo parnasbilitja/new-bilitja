@@ -77,7 +77,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
             />
           
         </div>
-        <div className={`col-12 col-md-5 mx-2 form-input-border ${styles["form-input-border-private"]} `}>
+        <div className={`col-12 col-md-5 mx-1 form-input-border ${styles["form-input-border-private"]} `}>
             <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
             <PrimaryTextInputMobile
               value={search.value}
@@ -99,7 +99,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
             />
           </div>
 
-        <div className="col-12 col-md-2 without-focus px-0">
+        <div className="col-12 col-md-1 without-focus px-0">
           <PrimaryButton className={`px-0`}
             style={{ height: "45px", marginTop: "7px" }}
             value={ "جستجو" }

@@ -80,7 +80,6 @@ const tours = () => {
           <PageTabls type={type} setType={setType} />
           <Scrolltoprefresh />
           <div className="row justify-content-center">
-            {/* <div className="col-md-1"></div> */}
             <div className="col-md-10">
                 <SearchBox 
                 dateSelected={state.dateSelected2}
