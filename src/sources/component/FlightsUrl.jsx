@@ -10,7 +10,7 @@ const FlightsUrl = ({flightsData}) => {
             <div className={`${styles["suggestion-list"]} col-xl-6 col-lg-6 col-sm-6 col-6`}>
               {flightsData[0].map((item,index)=>(
                 <div className="py-2 mb-2" key={index}>
-                  <a href={`flights/{item.url}`}>
+                  <a href={`flights/${item.url}`}>
                     <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                     <span
                       style={{ marginRight: 10 }}

@@ -134,8 +134,8 @@ const flightsData = [
       url: "tehran-to-teflis/airfares-thr,ika-tbs",
     },
     {
-      name: "آبادان",
-      url: "tehran-to-abadan/airfares-thr,ika-abd",
+      name: "آنتالیا",
+      url: "tehran-to-antalya-all/airfares-thr,ika-ayt,dnz,ise",
     },
     {
       name: "باکو",

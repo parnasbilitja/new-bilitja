@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import style from "./Filter.module.scss";
 
@@ -7,6 +8,7 @@ const Filter = ({ list, cancel, setFilter, filters }) => {
 
   const [allprecent, setAllPrecent] = React.useState(0);
   const [allprice, setAllPrice] = React.useState(0);
+  const Router = useRouter();
 
   const changeAll = () => {
     const newList = [];
@@ -78,6 +80,9 @@ const Filter = ({ list, cancel, setFilter, filters }) => {
         </div>
       </div>
       <div className="d-flex align-items-center justify-content-end mt-3">
+      <div className="ms-2">
+          <button className={style['button-base']} onClick={()=>Router.push('/panel/flight')}>جستجوی مسیر ها</button>
+        </div>
         <div className="ms-2">
           <button className={style['button-base']} onClick={changeAll}> تغییر کلی</button>
         </div>

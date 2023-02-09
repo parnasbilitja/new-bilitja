@@ -73,7 +73,14 @@ const FlightReserve = (props) => {
             console.log(localStorage.getItem('url'))
             console.log(localStorage.getItem('reqNo'))
             // router.push({pathname: localStorage.getItem('url').split('"')[1].split('info')[0]})
-            // router.back() 
+            props.messageBoxModify({
+                color: false,
+                message: 'شما در حال انتقال به صفحه لیست پرواز ها هستید',
+                state: true,
+            })
+            setTimeout(() => {
+                router.back()
+            }, "3000")
     }
         
         localStorage.setItem('reqNo',props.router.asPath.split("/")[7])

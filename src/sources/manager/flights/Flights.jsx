@@ -17,8 +17,8 @@ const Flights = (props) => {
     const [ data, setData ] = useState([])
     const [ searchReset, setSearchReset ] = useState(false)
     const [ loading, setLoading ] = useState(true)
-    const [state, setState] = useState({...props.credentials})
-    const [width, setWidth] = useState(0)
+    const [ state, setState ] = useState({...props.credentials})
+    const [ width, setWidth ] = useState(0)
     const [date,setDate] = useState({
       year:'',
       month:'',
@@ -131,7 +131,6 @@ const Flights = (props) => {
             <MiniClaender setDate={setDate} {...props.credentials} seachData={seachData} />:''
           }
           </div>
-         {/* } */}
       </div>
     </section>
   );
