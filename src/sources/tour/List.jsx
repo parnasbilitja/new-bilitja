@@ -81,7 +81,7 @@ const List = (props) => {
                             </div>
                         </div>
                         <div className="c-input col-xl-3 col-lg-3 col-sm-4 col-12 position-relative pt-2">
-                            <input type="text" value={searchBar} onChange={e=>searchBarHandler(e)} placeholder='جستجوی تور...' class="w-100 pe-2" style={{height: 43,outline: "none",borderRadius: 8,border:"1px solid #fff",boxShadow: "0 0 3px #cccaca"}}  />
+                            <input type="text" value={searchBar} onChange={e=>searchBarHandler(e)} placeholder='جستجوی تور...' class="w-100 pe-2" style={{height: 43,outline: "none",borderRadius: 8,border:"1px solid #fff",boxShadow: "0 0 4px #b9b0b0"}}  />
                             <div className="ic-search  position-absolute" style={{left: 10,top: 17}}>
                                 <svg width="25" height="25" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <ellipse cx="14.0569" cy="14.6788" rx="8.9241" ry="8.94638" stroke="#CCD2E3" stroke-width="2"></ellipse>

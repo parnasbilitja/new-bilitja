@@ -629,12 +629,13 @@ html {
   border: 2px solid #ff0000;
   color: #ff0000;
   text-align: center;
-  height: 37px;
-  margin: 5px 0;
+  height: 30px;
   padding: 4px 8px 0px 8px !important;
   display: inline-block;
 }
-
+.pb-1Important {
+  padding-top: 1px !important;
+}
 .exit-form-circle {
   border: 2px solid $secondaryColor;
   border-radius: 3px;
@@ -1057,7 +1058,7 @@ button {
   overflow: hidden;
   padding-right: 1rem;
   // border: 2px solid #E0E0E0;
-  box-shadow: 0 0 4px #e0e0e0;
+  box-shadow: 0 0 4px #b9b0b0;
 }
 .tourImages{
   .swiper-button-next{
@@ -1566,6 +1567,12 @@ $sizes: 100;
 }
 
 @media only screen and (max-width: 800px) {
+  h5, .h5{
+    font-size:1em;
+  }
+  .h6, h6 {
+    font-size: 0.8rem;
+  }
   .isDesktop {
     display: none !important;
   }
@@ -1607,7 +1614,7 @@ $sizes: 100;
     padding-left: 10px;
   }
   .ino-tour-btn {
-    border-radius: $radius-btn !important;
+    border-radius: 15px 15px 1px 1px !important;
     height: 55px !important;
     margin-top: 1rem !important;
     width: 100% !important;

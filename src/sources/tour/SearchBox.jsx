@@ -49,11 +49,9 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
     setState && setState({...state, city:search.slug})
   },[search.slug])
     return (
-        <>
-      <div className={styles["home-tour-form"]}>
-        <div>
-          <Scrolltoprefresh />
-          <div className={` form-input-border  ${styles["form-input-border-private"]} `}>
+      <div className={'row justify-content-center px-4'}>
+        <Scrolltoprefresh />
+          <div className={`col-12 col-md-5 form-input-border ${styles["form-input-border-private"]} `}>
             <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
             <PrimaryTextInputMobile
               value={search.slug==" "?'همه':search.slug}
@@ -77,9 +75,9 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
               },...cities]}
                 
             />
-          </div>
+          
         </div>
-        <div className={`form-input-border ${styles["form-input-border-private"]} `}>
+        <div className={`col-12 col-md-5 mx-2 form-input-border ${styles["form-input-border-private"]} `}>
             <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
             <PrimaryTextInputMobile
               value={search.value}
@@ -101,21 +99,15 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
             />
           </div>
 
-        <div className=" without-focus">
-          <PrimaryButton className={`${styles['w-200']}`}
+        <div className="col-12 col-md-2 without-focus px-0">
+          <PrimaryButton className={`px-0`}
             style={{ height: "45px", marginTop: "7px" }}
-            value={
-              // state.searchReset == false  ? 
-              " جستجو کن!" 
-              // :
-              //  "لطفا صبر کنید..."
-            }
+            value={ "جستجو" }
             onClick={() =>{toursHandler(search),executeScroll()}}
           />
         </div>
         
       </div>
-        </>
     );
   }
 export default SearchBox

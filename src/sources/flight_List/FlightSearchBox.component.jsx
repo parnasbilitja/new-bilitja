@@ -164,7 +164,6 @@ const FlightSearchBox = (props) =>{
             <i className="bilitja icon-plane-departure form-input-icon rotate-y-180" style={{fontSize: '32px'}}></i>
             <PrimaryTextInputMobile
               value={sourceName}
-              // readonly={state.width <= mobileSize ? "false" : "true"}
               name="sourceName"
               onClick={(e) => {
                 // for mobile
@@ -218,7 +217,6 @@ const FlightSearchBox = (props) =>{
             ></i>
             <PrimaryTextInputMobile
               value={destinationName}
-              // readonly={state.width <= mobileSize ? "false" : "true"}
               name="destinationName"
               onClick={(e) => {
                 // for mobile

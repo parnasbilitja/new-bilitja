@@ -718,7 +718,7 @@ class GetFlightList extends React.Component {
               <div className="d-flex align-items-center justify-content-between">
                 <span className="font-iransanse">انتخاب تعداد مسافران</span>
                 <span
-                  className="exit-form"
+                  className="exit-form pb-1Important"
                   onClick={() => {
                     this.managePopUpReserve(false);
                   }}

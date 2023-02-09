@@ -79,8 +79,8 @@ const tours = () => {
 <div className={`${styles["heor-main-container"]}`}>
           <PageTabls type={type} setType={setType} />
           <Scrolltoprefresh />
-          <div className="row">
-            <div className="col-md-1"></div>
+          <div className="row justify-content-center">
+            {/* <div className="col-md-1"></div> */}
             <div className="col-md-10">
                 <SearchBox 
                 dateSelected={state.dateSelected2}
@@ -97,9 +97,9 @@ const tours = () => {
           </div>
             <NavHandler />
                 <List ref={myRef} tourData={tourData} />
+                <div className="col-md-10 m-auto">
                 <HotelsSuggest />
                 <CitiesSuggest />
-                <div className="col-md-10 m-auto">
                   <Posts/>
                 </div>
             <Footer />
