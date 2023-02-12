@@ -2,17 +2,17 @@ import React, { useEffect, useRef, useState } from 'react';
 import NavHandler from '../Components/share/NavHandler';
 import Footer from '../sources/component/Footer.component';
 import PageTabls from '../sources/component/PageTabs.component';
-
+import dynamic from "next/dynamic";
 import styles from "../../styles/Home.module.scss";
 
-import List from '../sources/tour/List';
 import SearchBox from '../sources/tour/SearchBox';
 import Scrolltoprefresh from '../sources/component/Scrolltoprefresh';
 import HomePicture from '../sources/component/HomePicture';
 import axios from 'axios';
-import HotelsSuggest from '../sources/tour/HotelsSuggest';
-import CitiesSuggest from '../sources/tour/CitiesSuggest';
-import Posts from '../sources/tour/Posts';
+const List = dynamic(()=>import( "../sources/tour/List"));
+const HotelsSuggest = dynamic(()=>import( "../sources/tour/HotelsSuggest"));
+const CitiesSuggest = dynamic(()=>import( "../sources/tour/CitiesSuggest"));
+const Posts = dynamic(()=>import( "../sources/tour/Posts"));
 
 
 const tours = () => {
@@ -81,16 +81,16 @@ const tours = () => {
           <Scrolltoprefresh />
           <div className="row justify-content-center">
             <div className="col-md-10">
-                <SearchBox 
-                dateSelected={state.dateSelected2}
-                executeScroll={executeScroll} 
-                toursHandler={toursHandler} 
-                setState={setState} 
-                state={state}  
-                 />
-            <div ref={myRef}>
-                <HomePicture state={state} />
-            </div>
+              <SearchBox 
+              dateSelected={state.dateSelected2}
+              executeScroll={executeScroll} 
+              toursHandler={toursHandler} 
+              setState={setState} 
+              state={state}  
+               />
+              <div ref={myRef}>
+                  <HomePicture state={state} />
+              </div>
             </div>
           </div>
           </div>

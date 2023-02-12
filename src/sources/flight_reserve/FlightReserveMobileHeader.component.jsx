@@ -20,7 +20,7 @@ const FlightReserveMobileHeader = (props) =>
             </strong>
           </div>
           <div className="col-4">
-            <strong className="color-secondary font-size-15">به</strong>
+            <strong className="color-secondary font-size-14">به</strong>
           </div>
           <div className="col-4">
             <strong className="color-secondary font-size-15">
@@ -30,13 +30,13 @@ const FlightReserveMobileHeader = (props) =>
         </div>
         <div className="row line-2">
           <div className="col-4 mt-1rem-mobi">
-            <p className="font-size-10 center-p">
+            <strong className="font-size-10 center-p">
               {" "}
               شماره پرواز &nbsp;
               <span style={{color: 'red'}} className="font-size-12">
                 {props.flightNo}
               </span>
-            </p>
+            </strong>
           </div>
           <div className="col-4" style={{ marginTop: 10 }}>
             <img
@@ -48,14 +48,14 @@ const FlightReserveMobileHeader = (props) =>
             />
             <div className="">
               <span className="font-size-10">ایرلاین</span>{" "}
-              <span className="text-danger font-size-12">{props.airline}</span>
+              <strong className="text-danger font-size-12">{props.airline}</strong>
             </div>
           </div>
           <div className="col-4 mt-1rem-mobi padding-3pxheader">
             <p className="font-size-12 center-p">
-              <span className="text-danger mx-1 font-size-14">
+              <strong className="text-danger mx-1 font-size-14">
                 {props.capLast}
-              </span>
+              </strong>
               <i className="bilitja icon-seat font-size-16"></i>
               صندلی
                خالی

@@ -29,7 +29,7 @@ const Posts = () => {
                                 </g>
                             </svg>
                             <div className="text">
-                                <h5 className="font-bold">وبلاگ گردشگری بیلیطجا</h5>
+                                <h5 className="font-bold">وبلاگ گردشگری بلیطجا</h5>
                                 <h6>هتل ها، مکان های دیدنی، پارک های آبی، همه و همه در اینجا</h6>
                             </div>
                         </div>

@@ -46,10 +46,10 @@
     }
   }
   .tab-container {
-    width: 65%;
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 5px;
+    // width: 65%;
+    // grid-template-columns: 1.3fr 1fr;
+    // grid-template-rows: 1fr;
+    // gap: 5px;
   }
   .home-flight-suggestion {
     & > div {
@@ -88,10 +88,10 @@
 
 @media only screen and (max-width: 649px) and (min-width: 441px) {
   .tab-container {
-    width: 50%;
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 5px;
+    // width: 50%;
+    // grid-template-columns: 1.3fr 1fr;
+    // grid-template-rows: 1fr;
+    // gap: 5px;
   }
   .home-flight-suggestion {
     & > div {
@@ -105,10 +105,10 @@
 
 @media only screen and (max-width: 694px) and (min-width: 650px) {
   .tab-container {
-    width: 30%;
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 5px;
+    // width: 30%;
+    // grid-template-columns: 1.3fr 1fr;
+    // grid-template-rows: 1fr;
+    // gap: 5px;
   }
   .home-flight-suggestion {
     & > div {
@@ -122,10 +122,10 @@
 
 @media only screen and (max-width: 979px) and (min-width: 695px) {
   .tab-container {
-    width: 35%;
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 5px;
+    // width: 35%;
+    // grid-template-columns: 1.3fr 1fr;
+    // grid-template-rows: 1fr;
+    // gap: 5px;
   }
   .home-flight-suggestion {
     & > div {
@@ -138,10 +138,10 @@
 }
 @media only screen and (max-width: 1024px) and (min-width: 980px) {
   .tab-container {
-    width: 25%;
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 5px;
+    // width: 25%;
+    // grid-template-columns: 1.3fr 1fr;
+    // grid-template-rows: 1fr;
+    // gap: 5px;
   }
   .home-flight-suggestion {
     & > div {
@@ -155,10 +155,7 @@
 @media only screen and (max-width: 2000px) and (min-width: 1025px) {
 
   .tab-container {
-    width: 20%;
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 5px;
+    
   }
   .home-flight-suggestion {
     & > div {
@@ -187,7 +184,7 @@
   height: 175px;
 }
 .tab-container {
-  display: grid;
+  display: flex;
   margin-bottom: -6px;
   margin-top: 20px;
 }
@@ -207,7 +204,7 @@
   }
 }
 .card-box-shadow {
-  box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
+  // box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
 }
 .home-tab-active {
   @extend .card-box-shadow;
@@ -404,4 +401,8 @@
   display: flex;
   align-content: flex-end;
   flex-wrap: wrap;
+}
+.border-bottom{
+  border-bottom: 1px solid gray;
+  padding-bottom: 5.2px;
 }

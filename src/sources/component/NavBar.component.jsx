@@ -221,7 +221,6 @@ const NavBar = (props) => {
                   </li>
                 </ul>
               </div>
-            </div>
               <div className={styles["nav-logo-container"]}>
                 <div>
                   <Link href="/" >
@@ -239,6 +238,8 @@ const NavBar = (props) => {
                   </h1>
                 </div>
               </div>
+            </div>
+            
           </div>
         
       </nav>

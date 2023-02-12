@@ -54,6 +54,7 @@ const FlightReserve = (props) => {
     const [closePopUp, setClosePopUp] = useState(false)
     const [loading, setLoading] = useState(false)
     const [scrollTop, setScrollTop] = useState(0)
+    const [ closePopUpPrice, setClosePopUpPrice ] = useState(false)
     const [state, setState] = useState({
         stateRegister: false,
         passengers: [],
@@ -68,14 +69,21 @@ const FlightReserve = (props) => {
     });
     const router = useRouter();
     useEffect(() => {
-        console.log(props);
+        let price =''
+        setTimeout(function() {
+             price = localStorage.getItem('priceChecker');
+        }, 50);
+        if (price!==state.priceAll || 
+            price!==state.priceADL) {
+                setClosePopUpPrice(true)
+            }
+                                 
+        
         if(localStorage.getItem('reqNo') !==null){
-            console.log(localStorage.getItem('url'))
-            console.log(localStorage.getItem('reqNo'))
             // router.push({pathname: localStorage.getItem('url').split('"')[1].split('info')[0]})
             props.messageBoxModify({
                 color: false,
-                message: 'شما در حال انتقال به صفحه لیست پرواز ها هستید',
+                message: 'به علت تغییر قیمت, جستجو مجدد انجام می شود!<br/> درحال انتقال به صفحه پرواز ...',
                 state: true,
             })
             setTimeout(() => {
@@ -136,7 +144,6 @@ const FlightReserve = (props) => {
         getAllPrice();
         // localStorage.removeItem('reqNo');
     }, []);
-    // }
     const fillPassengersData = (field, passengerNo, value) => {
         let passenger = state.passengers.find((x) => x.id == passengerNo);
         passenger[field] = value;
@@ -598,6 +605,9 @@ const FlightReserve = (props) => {
                                     &nbsp;
                                 </span>
                                 <span className="font-bold-iransanse">تومان</span>
+                                {state.priceAll == localStorage.getItem('priceChecker') || state.priceADL == localStorage.getItem('priceChecker') &&
+                                <span>{localStorage.getItem('priceChecker')}</span> 
+                                }
                             </p>
                         </div>
 
@@ -869,6 +879,23 @@ const FlightReserve = (props) => {
                         قوانین و مقررات
                     </div>
                 </div>
+            </PopUp>
+            <PopUp opened={closePopUpPrice} closePopUp={setClosePopUpPrice} >
+            {/* {localStorage.getItem('priceChecker')==state.priceAll || localStorage.getItem('priceChecker')==state.priceADL && */}
+                <div className="p-2">
+                    <p onClick={() => setClosePopUpPrice(false)} className='cursor-pointer mb-0 text-danger' style={{ fontSize: 20 }}>X</p>
+                    <p>پرواز انتخابی شما با تغییر قیمت مواجه شده
+                    </p>
+                    <span className="color-secondary font-bold-iransanse">
+                        قیمت جدید:
+                        {state.priceAll !== 0 ?
+                            moneyFormat(state.priceAll) : moneyFormat(state.priceADL)}
+                        &nbsp;
+                    </span>
+                    <span className="font-bold-iransanse">تومان</span>
+                    <div className="font-bold-iransanse">قیمت قبل:{localStorage.getItem('priceChecker')} تومان</div>
+                </div>
+            {/* } */}
             </PopUp>
         </div>
     );

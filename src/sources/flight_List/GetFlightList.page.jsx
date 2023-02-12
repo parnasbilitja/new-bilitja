@@ -68,9 +68,7 @@ class GetFlightList extends React.Component {
   };
 
   hashchange() {
-    // console.log("hashchange");
     var flightdate = location.hash.substring(1);
-    // console.log(flightdate);
     location.reload();
   }
 
@@ -96,7 +94,6 @@ class GetFlightList extends React.Component {
     window.removeEventListener("hashchange", this.hashchange, false);
   }
   componentDidUpdate() {
-    // console.log("componentDidUpdate");
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
     const src = decodeURI(path.split("/")[2]).split("-to-")[0];
@@ -111,11 +108,8 @@ class GetFlightList extends React.Component {
 
     window.onpopstate = (e) => {
       //  when back or forward in browser occured
-      // console.log("window.onpopstate");
       // const source = srccod;
       // const destinationn = destcod;
-      //       console.log('NEW1');
-      //       console.log(source);
 
       const source = this.props.airports.find((x) => x.airportNameEn == src);
       const destinationn = this.props.airports.find(
@@ -123,9 +117,6 @@ class GetFlightList extends React.Component {
       );
 
       if (pathquery.includes("#")) {
-        //  console.log('path start');
-        // console.log(path.split("#")[1]);
-        //  console.log('path end');
         const flightdate = pathquery.split("#")[1];
         this.props
           .addCredentials({
@@ -168,7 +159,6 @@ class GetFlightList extends React.Component {
     localStorage.removeItem('reqNo');
     window.addEventListener("hashchange", this.hashchange, false);
     //  if (this.props.searchobject.source == '') {
-    // console.log("compoMOUNT");
     const pathquery = this.props.router.asPath;
     const path = pathquery.split("#")[0];
     const src = decodeURI(path.split("/")[2]).split("-to-")[0];
@@ -182,9 +172,6 @@ class GetFlightList extends React.Component {
         : getCustomFormat(moment().startOf("day"), false);
     const m = moment(flightdate, "jYYYY/jMM/jDD");
     const flightdatemiladi = m.format("YYYY/MM/DD");
-    // console.log(flightdatemiladi);
-
-    // console.log(flightdate);
 
     // this.setState({
     //   sourceNameEn: src,
@@ -201,9 +188,6 @@ class GetFlightList extends React.Component {
     //     destinationNameEn: dest,
     //   });
     // }
-    // console.log("abc");
-    // console.log(src);
-    // console.log(dest);
     //////////////////////////
     //
     //  استخراج لیست فرودگاهها
@@ -211,10 +195,8 @@ class GetFlightList extends React.Component {
     //////////////////////////
 
     if (this.props.searchobject.source == "") {
-      // console.log("not source");
 
       if (!this.props.airports) {
-        // console.log("this.props.airports is null");
         this.props.setAirports(null);
       } else {
         if (
@@ -222,17 +204,13 @@ class GetFlightList extends React.Component {
           !this.props.airports[0].Version ||
           this.props.airports[0].Version != "1.7"
         ) {
-          // console.log("airport version is changed");
           this.props.setAirports(null);
         }
       }
 
       if (this.props.airports) {
-        // console.log("this.props.airports has data");
         // const source = srccod;
         // const destinationn = destcod;
-        // console.log('NEW2');
-        // console.log(source);
         const source = this.props.airports.find((x) => x.airportNameEn == src);
         const destinationn = this.props.airports.find(
           (x) => x.airportNameEn == dest
@@ -253,7 +231,6 @@ class GetFlightList extends React.Component {
           })
           .then(() => {
             // Get Flights List
-            console.log(this.props),
             this.setState({ loading: true, open: false });
             fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
               method: "POST",
@@ -307,7 +284,6 @@ class GetFlightList extends React.Component {
             customerId: "1a157116-a01a-4027-ab10-74098ac63815",
           })
           .then(() => {
-            console.log(this.props)
             // Get Flights List
             this.setState({ loading: true, open: false, sourceName: src });
             fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
@@ -317,9 +293,6 @@ class GetFlightList extends React.Component {
             })
               .then((res) => res.json())
               .then((data) => {
-                // console.log("load flight");
-
-                // console.log(this.props.searchobject.sourceName);
                 if (!this.props.searchobject.sourceName) {
                   const source = this.props.airports.find(
                     (x) => x.airportNameEn == src
@@ -327,7 +300,6 @@ class GetFlightList extends React.Component {
                   const destinationn = this.props.airports.find(
                     (x) => x.airportNameEn == dest
                   );
-                  // console.log("sourcename after flight");
                   this.props.addCredentials({
                     sourceName: source.airportName,
                     destinationName: destinationn.airportName,
@@ -368,8 +340,6 @@ class GetFlightList extends React.Component {
           });
       }
     } else if (this.props.searchobject.source != "") {
-      // console.log("send data to api");
-      // console.log(this.props.searchobject);
       this.setState({
         loading: true,
         open: false,
@@ -403,10 +373,6 @@ class GetFlightList extends React.Component {
       })
       .then((res) => res.json())
       .then((data) => {
-          console.log(this.props.searchobject)
-          console.log('111111111111');
-          console.log(data);
-          console.log(JSON.stringify({ ...this.props.searchobject }));
           if (data.length != 0 && data != undefined) {
             this.props.addCredentials({
               flightDateNext: data[0].flightDateNext,
@@ -453,7 +419,6 @@ class GetFlightList extends React.Component {
   };
 
   getData = () => {
-    console.log(this.props.searchobject);
 
     //////////////////////////
     //
@@ -468,7 +433,6 @@ class GetFlightList extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(` datalength=${data}`);
         if (data.length != 0 && data != undefined) {
           this.props.addCredentials({
             flightDateNext: data[0].flightDateNext,
@@ -564,7 +528,7 @@ class GetFlightList extends React.Component {
         {!this.state.loading &&
           <div className="row text-right">
             {window.innerWidth > 826 ? (
-              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-5">
+              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-1">
                 <div className="row">
                   <div className="col-xl-9 col-lg-9 col-md-9 col-sm-9 padding-5px">
                     <FlightSearchBox refreshAction={this.getData} len={this.state.flights} />
@@ -671,9 +635,9 @@ class GetFlightList extends React.Component {
                 )}
               </div>
               <div
-                className={`col-lg-3 col-md-3 col-sm-4 ${styles["hidden-xs-flight"]} padding-5px`}
+                className={`col-lg-3 col-md-3 col-sm-4 ${styles["hidden-xs-flight","flight-filter-box"]}`}
               >
-                <div>
+                <div styles={styles["marginLeftFilter"]}>
                   { }
                   <Filters
                     getData={this.getData}

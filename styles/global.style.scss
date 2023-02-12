@@ -549,6 +549,12 @@ html {
     border-radius: 3px;
   }
 }
+.tour-input-icon {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  font-size: 22px;
+}
 
 .form-input-icon {
   position: absolute;
@@ -831,7 +837,7 @@ div.radio {
   margin-bottom: 15px;
   padding-bottom: 8px;
   border-bottom: 2px solid $pillGray;
-  width: 94%;
+  width: 85%;
 
   h3 {
     font-size: 18px;
@@ -2129,6 +2135,10 @@ $sizes: 100;
   margin-right: 8px;
 }
 @media (min-width: 768px){
+.custom-col-md-5{
+  flex: 0 0 auto;
+  width: 41%;
+}
 .col-md-10 {
     flex: 0 0 auto;
     width: 83.3333333333%;

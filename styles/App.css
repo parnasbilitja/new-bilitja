@@ -290,14 +290,14 @@ input[type="button"]:hover {
 .prev-next-btn {
     background-color: #fff;
     border: 2px solid #279692;
-    padding: 2px 0;
+    padding: 10px 40px;
     font-size: 14px;
-    height: 27px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    top: 10px;
+    top: 3px;
     color: #279692 !important;
     border-radius: 3px;
 }

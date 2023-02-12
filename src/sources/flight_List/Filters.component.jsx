@@ -181,7 +181,7 @@ class Filters extends React.Component {
                     <h3>فیلتر ها</h3>
                 </div>
                 {/* {console.log(this.props)} */}
-                <Accordion style={{ width: "95%", marginRight: 15, }}>
+                <Accordion style={{  }}>
                     <Accordion.Item className={`${styles["text"]} accordion-item-prs `}>
                         <Accordion.Button className={'acr-btn'} style={{ background: " rgb(243, 243, 243)", paddingRight: 10, paddingLeft: 10 }}>
                             <div className={styles["filter-list-heading"]}>

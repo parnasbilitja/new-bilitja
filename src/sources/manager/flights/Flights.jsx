@@ -11,6 +11,7 @@ import globals from "../../Global";
 import { Loader } from "../../../Utils/Loader";
 import MiniClaender from "./MiniClaender";
 import ShowFlightListMobile from "../../flight_List/ShowFlightListMobile.component";
+import axios from "axios";
 
 
 const Flights = (props) => {
@@ -18,7 +19,8 @@ const Flights = (props) => {
     const [ searchReset, setSearchReset ] = useState(false)
     const [ loading, setLoading ] = useState(true)
     const [ state, setState ] = useState({...props.credentials})
-    const [ width, setWidth ] = useState(0)
+    const [ width, setWidth ] = useState(827)
+    const [azhansName, setAzhansName ] = useState([])
     const [date,setDate] = useState({
       year:'',
       month:'',
@@ -28,43 +30,12 @@ const Flights = (props) => {
       setState({...props.credentials})
     },[props.credentials])
     
-    useEffect(() => {
-      setWidth(window.innerWidth)
-        setLoading(true)
-        fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
-            method: "POST",
-            body: JSON.stringify({ ...state }),
-            headers: { "Content-Type": "application/json" },
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
-              setData(data)
-              setLoading(false)
-              setSearchReset(false)
-              if (data.length != 0 && data != undefined) {
-                props.addCredentials({
-                  flightDateNext: data[0]?.flightDateNext,
-                  flightDatePrev: data[0]?.flightDatePrev,
-                });
-                if (props.searchobject?.withFilters == "true") {
-                  props.addFilters({ airlines: data.airlines });
-      
-                }
-                
-              } else {
-                setSearchReset(false)
-                props.messageBoxModify({
-                  state: true,
-                  color: false,
-                  message: "لطفا از تقویم روز دیگری را انتخاب کنید",
-                });
-              }
-            });
-    },[])
-    
     const seachData = async() => {
       console.log('props.credentials',props.credentials)
+      const agenciesDeclare = await axios.get(
+        `${globals.baseUrlNew}BilitAirLines/GetRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`
+      );
+      setAzhansName(agenciesDeclare.data)
       setLoading(true)
       await fetch(`${globals.baseUrl2}BilitAirLines/getFlights`, {
           method: "POST",
@@ -121,13 +92,13 @@ const Flights = (props) => {
             data.length>0 ?
             <>
             {width>826 ?
-              <ShowFlightList type='panel' flightList={data} />
+              <ShowFlightList type='panel' azhansName={azhansName} flightList={data} />
               :
-              <ShowFlightListMobile flightList={data}/>
+              <ShowFlightListMobile type='panel' azhansName={azhansName} flightList={data}/>
             }
             </>
             :
-            data.length==[]?
+            data.length==[] ?
             <MiniClaender setDate={setDate} {...props.credentials} seachData={seachData} />:''
           }
           </div>

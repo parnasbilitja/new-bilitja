@@ -6,7 +6,7 @@ import styles from "../../../styles/FlightList.module.scss";
 import { moneyFormat, getweekday } from "../../Utils/SimpleTasks";
 
 const ShowFlightList = (props) => {
-  console.log("props", props);
+  
   useEffect(() => {
     props?.flightList?.sort((a, b) => {
       if (a.priceView > b.priceView) {
@@ -36,13 +36,21 @@ const ShowFlightList = (props) => {
                 </span>
               </div>
               {props.type == 'panel'?
-                <span>{oneFlight.kndSys}</span>
+              <>
+              {oneFlight.kndSys == 12000?'سیستمی':
+              props.azhansName.map((item)=>(
+                    <span>
+                      {item.kndsys === oneFlight.kndSys && item.azhansNam}
+                    </span>
+                ))}
+              </>
               :
               <div
                 style={{ marginTop: 15 }}
                 className="btn-buy-action"
                 onClick={(e) => {
                   e.preventDefault();
+                  localStorage.setItem('priceChecker',oneFlight?.priceView)
                   props.setReserveBoxData(oneFlight);
                 }}>
                 <svg className={'svg-bg-white'} id="Filled" viewBox="0 0 24 24" width="17" height="17"><path d="M2,7.177V19a5.006,5.006,0,0,0,5,5H17a5.006,5.006,0,0,0,5-5V7.177a3,3,0,0,0-1.543-2.622L12.486.126a1,1,0,0,0-.972,0L3.543,4.555A3,3,0,0,0,2,7.177ZM12,5.5A1.5,1.5,0,1,1,10.5,7,1.5,1.5,0,0,1,12,5.5Z" /></svg>

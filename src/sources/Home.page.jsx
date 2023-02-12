@@ -104,8 +104,8 @@ const Home =(props) => {
             </div>
           <div className="row">
             <div className="col-md-1"></div>
-            <div className="col-md-10">
-              <div className={`${styles["padingSearchBox"]}`}>
+            <div className="col-md-10 px-0">
+              <div className={`${styles["padingSearchBox"]} ps-0`}>
                 <FlightSearchBox dateSelected={state.dateSelected} />
               </div>
             </div>

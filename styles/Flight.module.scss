@@ -53,6 +53,11 @@
     margin-right: 90px !important;
   }
 }
+.flight-filter-box {
+  border: 1px solid #d2d2d2;
+  margin-top: 15px;
+  border-radius: 10px;
+}
 @media only screen and (max-width: 650px) {
   .title-solotion {
     margin-right: unset !important;
@@ -172,7 +177,7 @@
 }
 .filter-list-box {
   padding: 5px 0;
-  margin: 5px 0 0 15px;
+  margin: 5px 0 0 0px;
   position: sticky;
   position: -webkit-sticky;
   text-align: right;
@@ -202,7 +207,7 @@
 
     & > div {
       margin-top: 8px;
-      margin-right: 15px;
+      // margin-right: 15px;
       background-color: rgb(243, 243, 243);
     }
     strong {

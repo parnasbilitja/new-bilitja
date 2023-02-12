@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../../styles/FlightSearchBox.module.scss";
+
+import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PrimaryButton from "../component/PrimaryButton.component";
 import PrimaryTextInputMobile from "../component/PrimaryTextInputMobile";
 import {months} from '../../Utils/data'
@@ -49,10 +52,11 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
     setState && setState({...state, city:search.slug})
   },[search.slug])
     return (
-      <div className={'row justify-content-center px-4'}>
+      <div className={'row justify-content-between'}>
         <Scrolltoprefresh />
-          <div className={`col-12 col-md-5 form-input-border ${styles["form-input-border-private"]} `}>
-            <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
+          <div className={`col-12 custom-col-md-5 form-input-border ${styles["form-input-border-private"]} `}>
+            {/* <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i> */}
+            <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
             <PrimaryTextInputMobile
               value={search.slug==" "?'همه':search.slug}
               name={'slug'}
@@ -77,8 +81,9 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
             />
           
         </div>
-        <div className={`col-12 col-md-5 mx-1 form-input-border ${styles["form-input-border-private"]} `}>
-            <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
+        <div className={`col-12 custom-col-md-5 form-input-border ${styles["form-input-border-private"]} `}>
+            {/* <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i> */}
+            <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
             <PrimaryTextInputMobile
               value={search.value}
               name={'month'}
@@ -99,7 +104,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
             />
           </div>
 
-        <div className="col-12 col-md-1 without-focus px-0">
+        <div className="col-12 col-md-2 without-focus px-0">
           <PrimaryButton className={`px-0`}
             style={{ height: "45px", marginTop: "7px" }}
             value={ "جستجو" }

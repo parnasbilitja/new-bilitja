@@ -30,7 +30,7 @@ const MessageBox = (props) => {
         className={` ${styles["messagebox"]} ${`${props.messageBox.color ?'bg-success':'bg-danger'}`
       }`}
       >
-        <span className={``} >{props.messageBox.message}</span>
+        <span dangerouslySetInnerHTML={{__html:props.messageBox.message}} />
       </div>
       }
       </div>

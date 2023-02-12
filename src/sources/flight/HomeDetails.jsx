@@ -29,8 +29,7 @@ const HomeDetails = ({state}) => {
         ) : null}
 
         <div className="row padding-xs-5-15" style={{justifyContent: 'center'}}>
-          
-              {/* <div className="col-lg-1 hidden-sm hidden-xs"></div> */}
+          <div className="col-md-10 px-0">
               <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
                 <div className={styles["home-value-propsal"]}>
                   <img
@@ -73,7 +72,28 @@ const HomeDetails = ({state}) => {
                   </p>
                 </div>
               </div>
-            
+              <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
+                <div className={styles["home-value-propsal"]}>
+                  <img
+                    width=""
+                    height=""
+                    alt="بلیطجا- لوگو پذیرش میزبانی"
+                    src="../../../Images/service3.webp"
+                  />
+                  <h2 className="font-bold-iransanse font-size-22 font-bold">
+                    <span className="color-primary font-bold-iransanse">
+                      پذیرش میزبانی &nbsp;
+                    </span>
+                    <span>ویلا و اقامتگاه</span>
+                  </h2>
+                  <p className="color-textpill font-size-15">
+                    با عضویت در سامانه بلیطجا شما هم میتوانید ویلا یا اقامتگاه
+                    خود را در معرض بازدید و رزرو گردشگران و سایر آژانس های
+                    گردشگردی قرار دهید.
+                  </p>
+                </div>
+              </div>  
+            </div>
         </div>
         <div className={styles["home-become-host"]}>
           <div>
