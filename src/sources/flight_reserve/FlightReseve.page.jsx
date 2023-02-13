@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import styles from "../../../styles/FlightReserve.module.scss";
 import * as moment from 'jalali-moment';
 import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
@@ -13,6 +14,9 @@ import {
     faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import notification from '../../../public/Images/notification.png';
+const notification = require('../../../public/Images/notification.png');
+
 
 import globals from "../Global";
 
@@ -24,11 +28,12 @@ import {
     isValidIranianNationalCode,
     moneyFormat,
 } from "../../Utils/SimpleTasks";
-import Router, { withRouter } from "next/router";
+import { withRouter } from "next/router";
 import Link from "next/link";
 import PopUp from "../component/PopUp.component";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 import { useRouter } from 'next/router';
+import { CloseOutlined } from "@ant-design/icons";
 
 const FlightReserve = (props) => {
     const [err, setErr] = useState({
@@ -883,17 +888,29 @@ const FlightReserve = (props) => {
             <PopUp opened={closePopUpPrice} closePopUp={setClosePopUpPrice} >
             {/* {localStorage.getItem('priceChecker')==state.priceAll || localStorage.getItem('priceChecker')==state.priceADL && */}
                 <div className="p-2">
-                    <p onClick={() => setClosePopUpPrice(false)} className='cursor-pointer mb-0 text-danger' style={{ fontSize: 20 }}>X</p>
-                    <p>پرواز انتخابی شما با تغییر قیمت مواجه شده
-                    </p>
-                    <span className="color-secondary font-bold-iransanse">
+                    <div className="text-start">
+                        <span
+                        className="exit-form pb-1Important"
+                        onClick={() => {
+                            setClosePopUpPrice(false);
+                        }}
+                        >
+                        <CloseOutlined style={{ color: "red" }} />
+                        </span>
+                    </div>
+                    <div className="text-center">
+                        {/* <Image src={notification} width={300} height={300} /> */}
+                        <p>پرواز انتخابی شما با تغییر قیمت مواجه شده
+                        </p>
+                    </div>
+                    {/* <span className="color-secondary font-bold-iransanse">
                         قیمت جدید:
                         {state.priceAll !== 0 ?
                             moneyFormat(state.priceAll) : moneyFormat(state.priceADL)}
                         &nbsp;
-                    </span>
-                    <span className="font-bold-iransanse">تومان</span>
-                    <div className="font-bold-iransanse">قیمت قبل:{localStorage.getItem('priceChecker')} تومان</div>
+                    </span> */}
+                    {/* <span className="font-bold-iransanse">تومان</span>
+                    <div className="font-bold-iransanse">قیمت قبل:{localStorage.getItem('priceChecker')} تومان</div> */}
                 </div>
             {/* } */}
             </PopUp>

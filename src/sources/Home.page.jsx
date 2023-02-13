@@ -109,7 +109,7 @@ const Home =(props) => {
                 <FlightSearchBox dateSelected={state.dateSelected} />
               </div>
             </div>
-              <HomeDetails state={state} />
+              <HomeDetails state={state} type={props.type} />
             </div>
           
             </>

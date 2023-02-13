@@ -4,11 +4,14 @@ import {flightsData, homeText} from '../../Utils/data';
 import FlightsUrl from "./../component/FlightsUrl";
 import { faPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const HomeDetails = ({state}) => {
+const HomeDetails = ( props) => {
     return (
         <div>
-               {state.width >= 826 ? (
-          <div className={`${styles["hero-big-image"]} container`}>
+
+          <div className="row justify-content-center">
+          <div className="col-md-10 px-0">
+               {props.state.width >= 826 ? (
+          <div className={`${styles["hero-big-image"]}`}>
             <img
               width=""
               height=""
@@ -17,7 +20,7 @@ const HomeDetails = ({state}) => {
             />
           </div>
         ) : null}
-        {state.width < 826 ? (
+        {props.state.width < 826 ? (
           <div className={`${styles["hero-big-image"]} container`}>
             <img
               width=""
@@ -27,9 +30,7 @@ const HomeDetails = ({state}) => {
             />
           </div>
         ) : null}
-
-        <div className="row padding-xs-5-15" style={{justifyContent: 'center'}}>
-          <div className="col-md-10 px-0">
+          <div className="row padding-xs-5-15 justify-content-center">
               <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
                 <div className={styles["home-value-propsal"]}>
                   <img
@@ -95,6 +96,7 @@ const HomeDetails = ({state}) => {
               </div>  
             </div>
         </div>
+        </div>
         <div className={styles["home-become-host"]}>
           <div>
             <h2>ویلا و اقامتگاه خود را در بلیطجا ثبت کنید و میزبان شوید</h2>
@@ -132,20 +134,22 @@ const HomeDetails = ({state}) => {
             </div>
         </div>
         <FlightsUrl flightsData={flightsData} />
-        <div className="row padding-xs-5-25">
-          <div className="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>
-          <div
-            className={`col-lg-10 col-md-10 col-sm-10 col-12 ${styles["home-flight-content"]}`}
-          >
-            <h3>
-              <FontAwesomeIcon icon={faPlane} />
-              خرید بلیط هواپیما
-            </h3>
-            <p className={'description-shop-ticket'}>
-              {homeText}
-            </p>
+        {props.type !== 'index' &&
+          <div className="row padding-xs-5-25">
+            <div className="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>
+            <div
+              className={`col-lg-10 col-md-10 col-sm-10 col-12 ${styles["home-flight-content"]}`}
+            >
+              <h3>
+                <FontAwesomeIcon icon={faPlane} />
+                خرید بلیط هواپیما
+              </h3>
+              <p className={'description-shop-ticket'}>
+                {homeText}
+              </p>
+            </div>
           </div>
-        </div>
+        }
         </div>
     );
 };

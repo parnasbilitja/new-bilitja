@@ -375,7 +375,7 @@ const FlightPassengerForm = (props) => {
                     {props.id != 0 ? (
                         <div
                             className="hidden-xs hidden-sm corner-position"
-                            style={{ position: "absolute", left: "10px", top: "15px" }}
+                            style={{ position: "absolute", left: "0px", top: "0px" }}
                         >
                             <span
                                 className="delete-thumbnail"

@@ -8,7 +8,7 @@ const FlightReserveDesktopHeader = (props) =>
   props.airport1 ? (
     <div className="row hidden-xs mt-5">
       {/* <div className="col-lg-1"></div> */}
-      <div className={`mt-3 ${styles["header-box"]}`}>
+      <div className={`mt-3 mb-2 ${styles["header-box"]}`}>
         <div className="row">
           <div
             className={`col-lg-6 col-md-12 col-sm-12 col-12 ${styles["background-world"]}`}
