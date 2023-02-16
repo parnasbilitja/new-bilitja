@@ -99,13 +99,12 @@ const Home =(props) => {
           <Scrolltoprefresh />
             {type == 1? 
             <>
-            <div style={{marginRight: '10px'}}>
+            <div style={{marginRight: '2px'}}>
                 <PageTabls type={type} setType={setType} />
             </div>
-          <div className="row">
-            <div className="col-md-1"></div>
+          <div className="row justify-content-center">
             <div className="col-md-10 px-0">
-              <div className={`${styles["padingSearchBox"]} ps-0`}>
+              <div className={`px-0`}>
                 <FlightSearchBox dateSelected={state.dateSelected} />
               </div>
             </div>

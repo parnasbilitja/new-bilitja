@@ -155,7 +155,7 @@ const FlightSearchBox = (props) =>{
     // console.log("flightDatePersian");
     // console.log(flightDatePersian);
     return (
-      <div className={styles["home-flight-form"]}>
+      <div className={`${styles["home-flight-form"]}`}>
         <div>
           <Scrolltoprefresh />
           <div

@@ -24,6 +24,7 @@ import router, { withRouter } from "next/router";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 
 const FlightReciept = (props) => {
+  console.log(props);
     const [state, setState] = useState({
       birthDayAll_: [],
       familyAll_: [],
@@ -417,7 +418,7 @@ console.log(state);
           <div className="col-lg-12 col-12 no-padding-xs border-pill-lg pt-10 px-3">
             <div className="row justify-content-between">
               {/* child */}
-              <div className="col-lg-4 text-right">
+              <div className={`col-lg-4 text-right ${styles['border-left']}`}>
                 <div className="row">
                   <div className="col-lg-7 col-6 pe-4">
                     <p className="font-size-13 font-bold-iransanse">
@@ -425,7 +426,7 @@ console.log(state);
                     </p>
                   </div>
                   <div className="col-lg-5 col-6 text-left ps-4">
-                    <p className="font-size-13">
+                    <p className="font-size-13 mb-0">
                       {moneyFormat(state.feeGet)} تومان
                     </p>
                   </div>
@@ -454,42 +455,49 @@ console.log(state);
                 </div>
               </div>
               {/* child */}
-              <div className={`col-lg-4 col-12 payment-container d-flex align-items-center justify-content-end text-right`}>
-                <div className="d-flex justify-content-end">
-                  <div className="ms-2">
+              <div className={`col-lg-3 col-12 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
+                <div className={`d-flex justify-content-end ${styles['select-bunk']} `}>
+                  <input type="radio" checked={true} className="ms-3"/>
+                  <img src={'/images/sep.png'} alt="sep" width={'100px'} height={'50px'}  />
+                </div>
+              </div>
+              <div className={`col-lg-3 col-12 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
+                <div className={`d-flex justify-content-end ${styles['select-bunk']} `}>
+                <div className="row justify-content-center">
+                  <div className="col-lg-7 col-6">
+                    <p className="font-size-13 font-bold-iransanse mb-0">
+                      مبلغ قابل پرداخت :‌
+                    </p>
+                  </div>
+                  <div className="col-lg-5 col-6 text-left ps-5">
+                    <p className="font-size-14 text-danger mb-0">
+                      {moneyFormat(state.feeGet)} 
+                      <span className="text-dark">تومان</span>
+                    </p>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <div className={`col-lg-2 col-12 payment-container d-flex align-items-center justify-content-center text-center`}>
+                <div className="">
+                  <div className="ms-2 col-12">
                     <button
-                      className="btn btn-success-payment py-2 col-12 mb-1"
+                      className="btn btn-success-payment py-2 mb-1"
                       onClick={() => {
-                        // if (!localStorage.getItem('mobile')) {
-                        //   props.messageBoxModify({
-                        //     color:false,
-                        //     state: true,
-                        //     message: "لطفا وارد حساب خود شوید",
-                        //   });
-                        // }else{
                           compeleteReservation();
-                          // if (props.user.logged && localStorage.getItem('token')) { 
                             getBanks();
-                          // }
-                        // }else{
-                        //   props.messageBoxModify({
-                        //     color:false,
-                        //     state: true,
-                        //     message: "لطفا وارد حساب کاربری خود شوید",
-                        //   });
-                        // }
                       }}
                     >
                       پرداخت با کارت شتاب
                     </button>
                   </div>
-                  <div className="me-2">
-                    <button
-                      className="btn-danger-outlined btn col-12 py-2 mb-1"
+                  <div className="me-2 col-12 d-flex justify-content-center mt-2">
+                    <span
+                      className={`py-2 mb-1 cursor-pointer ${styles['cancel-buttom']}`}
                       onClick={() => router.push("/")}
                     >
                       <span>انصراف</span>
-                    </button>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -500,7 +508,7 @@ console.log(state);
           opened={open}
           closePopUp={managePopUpEditForm}
         >
-          <div className={stylesflight["flight-search-box-calendar-container"]}>
+          <div className={stylesflight["flight-search-box-calendar-container"]}  style={{border:" 1px solid",borderRadius: '5px'}}>
             <FlightPassengerEditForm
               {...state.current}
               pathKind={state.pathKind}

@@ -35,6 +35,7 @@ const ShowFlightList = (props) => {
                   تـومان
                 </span>
               </div>
+              {/* panel */}
               {props.type == 'panel'?
               <>
               {oneFlight.kndSys == 12000?'سیستمی':
@@ -45,6 +46,7 @@ const ShowFlightList = (props) => {
                 ))}
               </>
               :
+              // site
               <div
                 style={{ marginTop: 15 }}
                 className="btn-buy-action"

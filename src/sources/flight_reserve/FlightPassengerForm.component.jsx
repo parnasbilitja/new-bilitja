@@ -410,6 +410,7 @@ const FlightPassengerForm = (props) => {
                         type={'BD'}
                         name="birthday"
                         setBirthdayb={(value) => {
+                            console.log(value);
                             props.fillPassengersData("birthday", props.id, value);
                         }}
                         closePopUpCalendar={managePopUpBirthdayCalendar}

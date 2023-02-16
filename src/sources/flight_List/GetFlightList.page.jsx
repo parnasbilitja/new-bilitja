@@ -593,6 +593,7 @@ class GetFlightList extends React.Component {
                   <div>
                     {window.innerWidth < 826 ? (
                       <div className="visible-xs">
+                        {console.log(this.state.flights)}
                         <ShowFlightListMobile
                           setReserveBoxData={this.setReserveBoxData}
                           flightList={this.state.flights}

@@ -78,10 +78,11 @@ const FlightReserve = (props) => {
         setTimeout(function() {
              price = localStorage.getItem('priceChecker');
         }, 50);
-        if (price!==state.priceAll || 
-            price!==state.priceADL) {
-                setClosePopUpPrice(true)
-            }
+        console.log(price,state.priceAll,state.priceADL);
+        // if ((state.priceAll!==0 && price!==state.priceAll )|| 
+        // (state.priceADL!==0 && price!==state.priceADL)) {
+        //         setClosePopUpPrice(true)
+        //     }
                                  
         
         if(localStorage.getItem('reqNo') !==null){
@@ -403,7 +404,7 @@ const FlightReserve = (props) => {
             meliCodeAll: state.passengers.map((x) => x.code).join(","),
             ticketCodeAll: state.passengers.map((x) => x.type).join(","),
             sexAll: state.passengers.map((x) => x.gender).join(","),
-            birthDayAll: state.passengers.map((x) => moment(x.birthday).locale('fa').format('YYYY/MM/DD')).join(","),
+            birthDayAll: state.passengers.map((x) => moment(x.birthday).locale('en').format('YYYY/MM/DD')).join(","),
             // moment("1989/1/24").locale('fa').format('YYYY/M/D');
             meliatAll: state.passengers.map((x) => x.nationality).join(","),
             telNo: state.phoneSubmiter.toString(),
@@ -610,9 +611,9 @@ const FlightReserve = (props) => {
                                     &nbsp;
                                 </span>
                                 <span className="font-bold-iransanse">تومان</span>
-                                {state.priceAll == localStorage.getItem('priceChecker') || state.priceADL == localStorage.getItem('priceChecker') &&
+                                {/* {state.priceAll == localStorage.getItem('priceChecker') || state.priceADL == localStorage.getItem('priceChecker') &&
                                 <span>{localStorage.getItem('priceChecker')}</span> 
-                                }
+                                } */}
                             </p>
                         </div>
 
@@ -886,7 +887,6 @@ const FlightReserve = (props) => {
                 </div>
             </PopUp>
             <PopUp opened={closePopUpPrice} closePopUp={setClosePopUpPrice} >
-            {/* {localStorage.getItem('priceChecker')==state.priceAll || localStorage.getItem('priceChecker')==state.priceADL && */}
                 <div className="p-2">
                     <div className="text-start">
                         <span
@@ -903,14 +903,6 @@ const FlightReserve = (props) => {
                         <p>پرواز انتخابی شما با تغییر قیمت مواجه شده
                         </p>
                     </div>
-                    {/* <span className="color-secondary font-bold-iransanse">
-                        قیمت جدید:
-                        {state.priceAll !== 0 ?
-                            moneyFormat(state.priceAll) : moneyFormat(state.priceADL)}
-                        &nbsp;
-                    </span> */}
-                    {/* <span className="font-bold-iransanse">تومان</span>
-                    <div className="font-bold-iransanse">قیمت قبل:{localStorage.getItem('priceChecker')} تومان</div> */}
                 </div>
             {/* } */}
             </PopUp>

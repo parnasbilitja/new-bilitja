@@ -80,7 +80,7 @@ const tours = () => {
           <PageTabls type={type} setType={setType} />
           <Scrolltoprefresh />
           <div className="row justify-content-center">
-            <div className="col-md-10">
+            <div className={`col-md-10 ${styles["width-mobile"]}`}>
               <SearchBox 
               dateSelected={state.dateSelected2}
               executeScroll={executeScroll} 

@@ -18,9 +18,16 @@ import * as moment from 'jalali-moment';
 
 const FlightPassengerEditForm = (props) => {
   console.log(props);
-  const [calend, setCalend] = useState(false)
+  const [calend, setCalend] = useState(true)
   const [date, setDate] = useState('')
   const [EXT, setEXT] = useState('')
+  useEffect(() => {
+    props.pathKind == 2  && setCalend(false)
+    
+},[])
+useEffect(() => {
+    props.pathKind == 2  && setCalend(false)
+},[props.pathKind])
   const [state, setState] = useState({
     EXTOPEN:false,
     nameErr: "",
@@ -231,7 +238,7 @@ const FlightPassengerEditForm = (props) => {
             value={state.sex}
             name="sex"
             onChange={(e) => handleChange(e)}
-            style={{ height: "30px", position: "relative", bottom: "2px" }}
+            style={{ height: "44px", position: "relative", bottom: "-3px" }}
           >
             <option value="1">مرد</option>
             <option value="2">زن</option>
@@ -242,7 +249,7 @@ const FlightPassengerEditForm = (props) => {
             value={state.meliat}
             name="meliat"
             onChange={(e) => handleChange(e)}
-            style={{ height: "30px", position: "relative", bottom: "2px" }}
+            style={{ height: "44px", position: "relative", bottom: "-3px" }}
           >
             <option value="IR">ایرانی</option>
             <option value="Other">خارجی</option>
@@ -302,7 +309,10 @@ const FlightPassengerEditForm = (props) => {
         closePopUp={managePopUpBirthdayCalendar}
       >
         <div className="p-15">
-          <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
+          {
+              props.pathKind ==1?
+              <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
+          :''}
           <BirthDayParent
             numSh={1301}
             numBase={1300}
