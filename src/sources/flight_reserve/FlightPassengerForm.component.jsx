@@ -397,7 +397,7 @@ const FlightPassengerForm = (props) => {
                 closePopUp={managePopUpBirthdayCalendar}
             >
                 <div style={{ padding: 15 }}>
-                    <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
+                    <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'تقویم میلادی' : 'تقویم شمسی'}</button>
                     <BirthDayParent
                         numSh={1301}
                         numBase={1300}

@@ -528,7 +528,7 @@ class GetFlightList extends React.Component {
         {!this.state.loading &&
           <div className="row text-right">
             {window.innerWidth > 826 ? (
-              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-1">
+              <div className="col-xl-12 mt-2 col-lg-12 col-md-12 col-sm-12 mt-1">
                 <div className="row">
                   <div className="col-xl-9 col-lg-9 col-md-9 col-sm-9 padding-5px">
                     <FlightSearchBox refreshAction={this.getData} len={this.state.flights} />
@@ -636,9 +636,9 @@ class GetFlightList extends React.Component {
                 )}
               </div>
               <div
-                className={`col-lg-3 col-md-3 col-sm-4 ${styles["hidden-xs-flight","flight-filter-box"]}`}
+                className={`col-lg-3 col-md-3 col-sm-4 ${styles["flight-filter-box"]} ${styles["hidden-xs-flight"]}`}
               >
-                <div styles={styles["marginLeftFilter"]}>
+                <div className={styles["marginLeftFilter"]}>
                   { }
                   <Filters
                     getData={this.getData}

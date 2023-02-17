@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "../../../styles/Home.module.scss";
-import {flightsData, homeText} from '../../Utils/data';
+import {flightsData, homeText, flightsDataHotel} from '../../Utils/data';
 import FlightsUrl from "./../component/FlightsUrl";
 import { faPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -133,7 +133,7 @@ const HomeDetails = ( props) => {
               </div>
             </div>
         </div>
-        <FlightsUrl flightsData={flightsData} />
+        <FlightsUrl flightsData={flightsData} flightsDataHotel={flightsDataHotel} />
         {props.type !== 'index' &&
           <div className="row padding-xs-5-25">
             <div className="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>

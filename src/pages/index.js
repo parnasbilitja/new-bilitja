@@ -17,10 +17,8 @@ import { withRouter } from "next/router";
 import NavHandler from "../Components/share/NavHandler";
 import Scrolltoprefresh from "../sources/component/Scrolltoprefresh";
 import HeadSeo from "../sources/component/HeadSeo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlane } from "@fortawesome/free-solid-svg-icons";
-import { homeText } from "../Utils/data";
-import styles from "../../styles/Home.module.scss";
+import TicketDetails from "../sources/component/TicketDetails";
+import Head from "next/head";
 const App = (props) =>  {
     return (
       <div className="bodyVar">
@@ -34,20 +32,7 @@ const App = (props) =>  {
           <CitiesSuggest />
             <Posts/>
           </div>
-          <div className="row padding-xs-5-25">
-          <div className="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>
-          <div
-            className={`col-lg-10 col-md-10 col-sm-10 col-12 ${styles["home-flight-content"]}`}
-          >
-            <h3>
-              <FontAwesomeIcon icon={faPlane} />
-              خرید بلیط هواپیما
-            </h3>
-            <p className={'description-shop-ticket'}>
-              {homeText}
-            </p>
-          </div>
-        </div>
+          <TicketDetails/>
           <MessageBox />
           <Footer />
           <HeadSeo props={props} pathName={props.router.asPath} />
@@ -57,6 +42,9 @@ const App = (props) =>  {
           closePopUp={() => {props.accountBoxModify({state: false,})}}>
           <Account />
         </PopUp>
+        <Head>
+                <title>بلیطجا | خرید بلیط هواپیما و رزرو اقامتگاه</title>
+            </Head>
       </div>
     );
   }

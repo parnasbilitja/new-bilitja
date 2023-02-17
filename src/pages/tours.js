@@ -9,6 +9,7 @@ import SearchBox from '../sources/tour/SearchBox';
 import Scrolltoprefresh from '../sources/component/Scrolltoprefresh';
 import HomePicture from '../sources/component/HomePicture';
 import axios from 'axios';
+import Head from 'next/head';
 const List = dynamic(()=>import( "../sources/tour/List"));
 const HotelsSuggest = dynamic(()=>import( "../sources/tour/HotelsSuggest"));
 const CitiesSuggest = dynamic(()=>import( "../sources/tour/CitiesSuggest"));
@@ -77,10 +78,13 @@ const tours = () => {
         ) : null}
 
 <div className={`${styles["heor-main-container"]}`}>
+            <Head>
+                <title>بلیطجا | لیست تورها</title>
+            </Head>
           <PageTabls type={type} setType={setType} />
           <Scrolltoprefresh />
           <div className="row justify-content-center">
-            <div className={`col-md-10 ${styles["width-mobile"]}`}>
+            <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
               <SearchBox 
               dateSelected={state.dateSelected2}
               executeScroll={executeScroll} 

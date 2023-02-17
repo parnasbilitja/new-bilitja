@@ -8,7 +8,6 @@ import AirportsMobile from "../base/AirportsMobile.component";
 import PopUp from "../component/PopUp.component";
 import PopUpWide from "../component/PopUpWide.component";
 import CalendarComponent from "../calendar/Calendar.component";
-import Filters from "./Filters.component";
 import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

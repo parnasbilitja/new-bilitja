@@ -41,10 +41,10 @@ const FlightReserveDesktopHeader = (props) =>
                 <div className="d-flex flex-column align-items-start justify-content-start">
                   <div>
                     <p className="font-size-20" style={{ marginRight: 60 }}>
-                      تاریخ
+                      تاریخ:
                     </p>
                   </div>
-                  <div className="d-flex justify-content-start align-items-start me-4">
+                  <div className="d-flex justify-content-start align-items-start me-1">
                     <span
                       className="color-secondary font-size-18">
                       {getweekday(String(props.flightDay))} &nbsp;{" "}
@@ -55,7 +55,7 @@ const FlightReserveDesktopHeader = (props) =>
                 </div>
               </div>
               <div style={{ marginTop: -25 }} className="col-lg-4 col-md-4 col-sm-4 col-6">
-                <p className="font-size-20">ساعت</p>
+                <p className="font-size-20">ساعت:</p>
                 <span className="color-secondary font-size-18">
                   {props.flightTime}
                 </span>

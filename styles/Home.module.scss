@@ -111,17 +111,22 @@
     border-radius: 10px;
     margin-top: 1rem !important;
   }
+  .width-mobile-search {
+    width: 90% !important;
+    margin: 0px 10px !important;
+    margin-top: 1rem !important;
+  }
   .mobile-tab1{
-    border-left: 1px solid !important;
-    border-bottom: 1px solid !important;
+    border-left: 1px solid black !important;
+    border-bottom: 1px solid ;
     // border-top-right-radius: 10px;
   }
   .mobile-tab2{
     border-bottom: 1px solid ;
   }
   .mobile-tab4{
-    border-bottom: 1px solid gray;
-    border-left: 1px solid gray!important;
+    // border-bottom: 1px solid gray;
+    // border-left: 1px solid gray!important;
     border-bottom-left-radius: 10px;
   }
   .mobile-tab3{
@@ -339,9 +344,9 @@
   @extend .card-box-shadow;
   text-align: justify;
   margin-top: 48px;
-  padding: 10px 30px;
-  border: 1px solid $pillGray;
-  border-radius: 10px;
+  padding: 10px 10px;
+  // border: 1px solid $pillGray;
+  // border-radius: 10px;
   h3 {
     font-size: 17px;
     font-weight: 700;

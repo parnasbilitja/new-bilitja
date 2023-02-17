@@ -15,7 +15,9 @@ import { Loader } from '../../Utils/Loader';
 const CitiesSuggest = () => {
     const [loading, setLoading] = useState(true)
     const [ data, setData ] = useState([])
+    const [width, setWidth] = useState();
     useEffect(() => {
+        setWidth(window.innerWidth)
         setLoading(true)
         const getData = async () => {
             await axios.post('https://api.hamnavaz.com/api/v1/city/getCities',{hasTour:true})
@@ -43,78 +45,79 @@ const CitiesSuggest = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-12 col-md-2 d-flex justify-content-end'>
-                            <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slidePrev()}>
-                                <FontAwesomeIcon icon={faAngleRight} />
-                            </button>
-                            <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slideNext()}>
-                                <FontAwesomeIcon icon={faAngleLeft} />
-                            </button>
-                        </div>
+                        {width>826&&
+                            <div className='col-12 col-md-2 d-flex justify-content-end'>
+                                <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slidePrev()}>
+                                    <FontAwesomeIcon icon={faAngleRight} />
+                                </button>
+                                <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slideNext()}>
+                                    <FontAwesomeIcon icon={faAngleLeft} />
+                                </button>
+                            </div>
+                        }
                         
-                        </div>
-                        <div className="bottom d-flex align-items-center mt-3 mb-3">
-                            <div className="border-right"></div>
-                            <div className="border-left"></div>
-                        </div>
-                    {
-                        loading?
-                        <Loader/>:
-                        data.length>0?
-                    
-            <Swiper
-                modules={[Navigation]}
-                onBeforeInit={(swiper) => {
-                    swiperRef.current = swiper;
-                  }}
-                slidesPerView={2}
-                spaceBetween={10}
-                slidesPerGroup={1}
-                breakpoints={{
-                    0: {
-                        spaceBetween: 20,
-                        slidesPerView: 2,
-                    },
-                    480: {
-                        slidesPerView: 3,
-                    },
-                    855: {
-                        spaceBetween: 20,
-                        slidesPerView: 4,
-                    },
-                    1210: {
-                        spaceBetween: 50,
-                        slidesPerView: 5,
-                    },
-                
-                }}
-            >
-                
-                {data.map(item=>(
-                    <SwiperSlide>
-                    <div class="swiper-slide" >
-                        <div class="box-sort-tour-city">
-                            <div class="img-sort-tour-city">
-                                <div class="info-img-sort-tour-city animated fadeInDown">
-                                    <img class="img-hover-child" src="https://hamnavaz.com/img/Attachment%201.svg" width="30" alt="جزئیات بیشتر"/>
-                                    <Link class="view-details-more" href={`/cityTour/${item.slug}`}>مشاهده جزئیات بیشتر</Link>
+            </div>
+            <div className="bottom d-flex align-items-center mt-3 mb-3">
+                <div className="border-right"></div>
+                <div className="border-left"></div>
+            </div>
+            {
+                loading?
+                <Loader/>:
+                data.length>0?
+                    <Swiper
+                        modules={[Navigation]}
+                        onBeforeInit={(swiper) => {
+                            swiperRef.current = swiper;
+                        }}
+                        slidesPerView={2}
+                        spaceBetween={10}
+                        slidesPerGroup={1}
+                        breakpoints={{
+                            0: {
+                                spaceBetween: 20,
+                                slidesPerView: 2,
+                            },
+                            480: {
+                                slidesPerView: 3,
+                            },
+                            855: {
+                                spaceBetween: 20,
+                                slidesPerView: 4,
+                            },
+                            1210: {
+                                spaceBetween: 50,
+                                slidesPerView: 5,
+                            },
+                        
+                        }}
+                    >
+                        
+                        {data.map(item=>(
+                            <SwiperSlide>
+                            <div class="swiper-slide" >
+                                <div class="box-sort-tour-city">
+                                    <div class="img-sort-tour-city">
+                                        <div class="info-img-sort-tour-city animated fadeInDown">
+                                            <img class="img-hover-child" src="https://hamnavaz.com/img/Attachment%201.svg" width="30" alt="جزئیات بیشتر"/>
+                                            <Link class="view-details-more" href={`/cityTour/${item.slug}`}>مشاهده جزئیات بیشتر</Link>
+                                        </div>
+                                        <img src={item.image} alt={item.name} />
+                                    </div>
+                                    <div class="text-sort-tour-city">
+                                        <h2>
+                                            <Link class="view-details-more" href={`/cityTour/${item.slug}`}>
+                                                {`تور ${item.name}`}
+                                            </Link>
+                                        </h2>
+                                    </div>
                                 </div>
-                                <img src={item.image} alt={item.name} />
                             </div>
-                            <div class="text-sort-tour-city">
-                                <h2>
-                                    <Link class="view-details-more" href={`/cityTour/${item.slug}`}>
-                                        {`تور ${item.name}`}
-                                    </Link>
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>    
-            :
-            <div className="hotelNotFound">متاسفانه هیج توری موجود نیست</div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>    
+                    :
+                    <div className="hotelNotFound">متاسفانه هیج توری موجود نیست</div>
             }
         </div>
     );

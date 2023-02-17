@@ -48,9 +48,7 @@ const List = (props) => {
       };
     return (
         <div ref={props.myRef}>
-            <Head>
-                <title>بلیطجا | لیست تورها</title>
-            </Head>
+            
             <PopUp
                 opened={props.accountBox.state}
                 closePopUp={() => {

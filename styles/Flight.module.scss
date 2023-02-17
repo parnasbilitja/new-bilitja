@@ -57,7 +57,7 @@
   border: 1px solid #d2d2d2;
   margin-top: 15px;
   border-radius: 10px;
-  height: 440px;
+  height: 520px;
 }
 @media only screen and (max-width: 650px) {
   .title-solotion {
@@ -81,7 +81,7 @@
     margin-right: 90px !important;
   }
   .hidden-xs-flight {
-    display: none;
+    display: none !important;
   }
   .visible-xs-flight-footer {
     display: grid !important;
@@ -276,4 +276,11 @@
   h1 {
     font-size: 18px;
   }
+}
+.btn-filter{
+  background-color: #279692;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }

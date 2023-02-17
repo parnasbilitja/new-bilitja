@@ -311,7 +311,7 @@ useEffect(() => {
         <div className="p-15">
           {
               props.pathKind ==1?
-              <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
+              <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'تقویم میلادی' : 'تقویم شمسی'}</button>
           :''}
           <BirthDayParent
             numSh={1301}
@@ -336,7 +336,7 @@ useEffect(() => {
       opened={state.EXTOPEN}
       closePopUp={managePopUpEXTCalendar}>
       <div className="p-15">
-      <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'میلادی' : 'شمسی'}</button>
+      <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'تقویم میلادی' : 'تقویم شمسی'}</button>
       <BirthDayParent
         numSh={1301}
         numBase={1300}

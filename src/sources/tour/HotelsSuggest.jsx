@@ -20,7 +20,9 @@ const HotelsSuggest = () => {
     const [loading, setLoading] = useState(true)
     const [hotels, setHotels] = useState([]);
     const [city, setCity] = useState('1');
+    const [width, setWidth] = useState();
     useEffect(() => {
+        setWidth(window.innerWidth)
         const getData = async () => {
             await axios.post('https://api.hamnavaz.com/api/v1/city/getCities')
             .then(res => {setCities(res.data.data)})
@@ -64,8 +66,9 @@ const HotelsSuggest = () => {
                                         </g>
                                     </svg>
                                     <div className="text col-12 col-sm-10 d-flex">
-                                        <h5 className="font-bold">هتل های برگزیده شهر</h5>
-                                        <select style={{width: '20%'}} className="selectCity font-bold" value={city} onChange={(val) => setCity(val.target.value)}>
+                                        <h5 className="font-bold" style={{marginTop:`${width>826?'2px':'4px'}`}}>هتل های برگزیده شهر</h5>
+                                        <select style={{width: '20%',marginBottom: '8px',color: '#279692'}}
+                                         className="selectCity font-bold" value={city} onChange={(val) => setCity(val.target.value)}>
                                             {cities.map(item=>(
                                                 <option key={item.id} value={item.id}>{item.name}</option>
                                             ))}
@@ -74,14 +77,16 @@ const HotelsSuggest = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-12 col-md-2 d-flex justify-content-end'>
-                            <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slidePrev()}>
-                                <FontAwesomeIcon icon={faAngleRight} />
-                            </button>
-                            <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slideNext()}>
-                                <FontAwesomeIcon icon={faAngleLeft} />
-                            </button>
-                        </div>
+                        {width>826&&
+                            <div className='col-12 col-md-2 d-flex justify-content-end'>
+                                <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slidePrev()}>
+                                    <FontAwesomeIcon icon={faAngleRight} />
+                                </button>
+                                <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slideNext()}>
+                                    <FontAwesomeIcon icon={faAngleLeft} />
+                                </button>
+                            </div>
+                        }
                     </div>
                     <div className="bottom d-flex align-items-center mt-3 mb-3">
                         <div className="border-right"></div>
@@ -134,7 +139,7 @@ const HotelsSuggest = () => {
                                                     <div class="footer-hotel-info">
                                                         <div class="location-hotel">
                                                             <img src="https://hamnavaz.com/img/Location-white.svg" width="17" alt="آدرس-هتل"/>
-                                                            <span x-text="hotel.city + ' - ' + hotel.location" style={{marginBottom: "0"}}>{item.city}-{item.location}</span>
+                                                            <span x-text="hotel.city + ' - ' + hotel.location" style={{marginBottom: "0"}}>{item.location}</span>
                                                         </div>
                                                         <div className="star d-flex align-items-center pb-1">
                                                             <div className="d-flex align-items-center">

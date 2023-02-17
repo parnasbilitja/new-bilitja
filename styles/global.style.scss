@@ -268,7 +268,7 @@ html {
 }
 
 .font-size-20 {
-  font-size: 20px;
+  font-size: 20px !important;
 }
 
 .font-size-22 {
@@ -3100,4 +3100,11 @@ p img {
 .title-tour, .title-tour .right {
   align-items: center;
   display: flex;
+}
+.see-more{
+  // border: 1px solid #279692;
+  color: #279692 !important;
+  padding: 5px;
+  // border-radius: 5px;
+  font-weight: bolder;
 }
