@@ -102,7 +102,7 @@ const FlightPassengerForm = (props) => {
     return (
         <div className={`${styles["passenger-form"]}`}>
             <div className="row d-flex justify-content-start col-md-12">
-                <div className="col-lg-2 col-md-12 col-sm-12 col-12 no-padding hidden-xs">
+                <div className="px-0 col-lg-2 col-md-12 col-sm-12 col-12 no-padding hidden-xs">
                     <span className="no-margin font-size-14 font-bold-iransanse">
                     &nbsp;&nbsp;&nbsp;{`${props.index + 1}-`}&nbsp;
                         {getTitleByType(props.type)}
@@ -111,7 +111,7 @@ const FlightPassengerForm = (props) => {
                         {getSubtitleByType(props.type)}
                     </span>
                 </div>
-                <div className="hidden-xs col-xl-2 col-lg-2 d-flex justify-content-end mr-4 ms-5 col-md-2 col-sm-2 row-price font-size-12 p-3 me-auto py-2 px-4">
+                <div className="hidden-xs col-xl-2 px-0 col-lg-2 d-flex justify-content-end mr-4 ms-5 col-md-2 col-sm-2 row-price font-size-12 p-3 me-auto py-2 px-4">
                     <span className="font-size-14 color-secondary font-bold-iransanse ">
                         {moneyFormat(props.price)}
                         &nbsp;
@@ -160,9 +160,9 @@ const FlightPassengerForm = (props) => {
                     ) : null}
                 </div>
                 {/* shows up just for mobile ----- end */}
-                <div className={`"col-lg-12 col-md-12 col-sm-12 col-12 m-auto" ${styles["container"]}`}>
+                <div className={`"px-0 col-lg-12 col-md-12 col-sm-12 col-12 m-auto" ${styles["container"]}`}>
                     <div className="row justify-content-between">
-                        <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px">
+                        <div className="col-lg-2 col-md-2 col-sm-4 col-6 px-0 padding-horizental-3px">
                             <div className="pb-1 mt-1">
                                 <PrimaryTextInput
                                     style={{ height: "2em", border: "1px solid #eee", fontSize: 15 }}
@@ -188,7 +188,7 @@ const FlightPassengerForm = (props) => {
                                 {/* {props.nameErr} */}
                             </span>
                         </div>
-                        <div className="col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px">
+                        <div className="col-lg-2 col-md-2 col-sm-4 col-6 px-0 padding-horizental-3px">
                             <div className="pb-1 mt-1">
                                 <PrimaryTextInput
                                     style={{ height: "2em", border: "1px solid #eee", fontSize: 15 }}
@@ -216,7 +216,7 @@ const FlightPassengerForm = (props) => {
                                 {/* {props.familyErr} */}
                             </span>
                         </div>
-                        <div className=" col-lg-1 col-md-1 col-sm-2 col-6 padding-horizental-3px mt-1">
+                        <div className=" col-lg-1 col-md-1 col-sm-2 col-6 px-0 padding-horizental-3px mt-1">
                             <PrimarySelectInput
                                 style={{ padding: "6px 0", height: "2em", paddingBottom: 3, border: "1px solid #eee" }}
                                 name="nationality"
@@ -231,6 +231,16 @@ const FlightPassengerForm = (props) => {
                                     }else if(props.pathKind == 1 && e.target.value=='other'){
                                         setCalend(false)
                                     }
+                                    props.fillPassengersData(
+                                        "pasno",
+                                        props.id,
+                                        ''
+                                    );
+                                    props.fillPassengersData(
+                                        "code",
+                                        props.id,
+                                        ''
+                                    );
                                 }
                             }
                             >
@@ -238,7 +248,7 @@ const FlightPassengerForm = (props) => {
                                 <option value="other">غیر ایرانی</option>
                             </PrimarySelectInput>
                         </div>
-                        <div className=" col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px mt-1">
+                        <div className=" col-lg-1 col-md-1 col-sm-4 col-6 px-0 mt-1">
                             <PrimarySelectInput
                                 style={{ height: "2em", paddingBottom: 3, border: "1px solid #eee", fontSize: 15 }}
                                 name="gender"
@@ -250,13 +260,11 @@ const FlightPassengerForm = (props) => {
                                     );
                                 }}
                             >
-                                <option value="1" selected="selected">
-                                    مرد
-                                </option>
+                                <option value="1" selected="selected">مرد</option>
                                 <option value="2">زن</option>
                             </PrimarySelectInput>
                         </div>
-                        <div className="col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px" style={{width: "80% !important"}}>
+                        <div className="col-lg-2 col-md-1 col-sm-4 col-6 px-0 padding-horizental-3px">
                             <div className="pb-1 mt-1">
                                 <PrimaryTextInput
                                     style={{ height: "2em", border: "1px solid #eee", fontSize: 15 }}
@@ -277,7 +285,7 @@ const FlightPassengerForm = (props) => {
                                 {props.birthday == '' && err.birthdayErr ? props.birthdayErr : ''}
                             </span>
                         </div>
-                        <div className="national-codeData col-lg-1 col-md-2 col-sm-4 col-6 padding-horizental-3px mt-1 me-1">
+                        <div className="national-codeData col-lg-2 col-md-2 col-sm-4 col-6 px-0 padding-horizental-3px mt-1 " style={{width: "110% !important"}}>
                             {props.pathKind == 1 && props.nationality == "IR" ?
                             <>
                                 <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
@@ -327,7 +335,7 @@ const FlightPassengerForm = (props) => {
                             </span>
                         </div>
 
-                        <div className="col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px mt-1">
+                        <div className="col-lg-2 col-md-1 col-sm-4 col-6 px-0 padding-horizental-3px mt-1">
                             <div className={`d-flex align-items-center `} >
                                 <PrimaryTextInput
                                     ext={props.nationality == 'IR' && props.pathKind == 1 ? 'BEFORE' : ''}
@@ -356,18 +364,10 @@ const FlightPassengerForm = (props) => {
                                 {props.futureday === "" ? props.pasenddatErr : ''}
                             </span>
                         </div>
-                        <div className="col-lg-2 mt-12 col-md-2 col-sm-4 col-6 padding-horizental-3px ">
-                            
-                            <span className="color-secondary error-message position-absolute">
-                                {/* {props.pasenddatErr} */}
-                                {/* {console.log(props)} */}
-                            </span>
-                        </div>
-
                     </div>
                 </div>
 
-                <div className="hidden-xs col-lg-1 col-md-2 col-sm-2 row-price font-size-12">
+                <div className="hidden-xs px-0 col-lg-1 col-md-2 col-sm-2 row-price font-size-12">
                     {props.id != 0 ? (
                         <div
                             className="hidden-xs hidden-sm corner-position"
