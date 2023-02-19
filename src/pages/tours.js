@@ -99,8 +99,8 @@ const tours = () => {
           </div>
           </div>
             <NavHandler />
-                <List ref={myRef} tourData={tourData} />
                 <div className="col-md-10 m-auto">
+                <List ref={myRef} tourData={tourData} />
                 <HotelsSuggest />
                 <CitiesSuggest />
                   <Posts/>

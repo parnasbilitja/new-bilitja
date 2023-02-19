@@ -92,7 +92,9 @@ const Flights = (props) => {
             data.length>0 ?
             <>
             {width>826 ?
+            <>
               <ShowFlightList type='panel' azhansName={azhansName} flightList={data} />
+            </>
               :
               <ShowFlightListMobile type='panel' azhansName={azhansName} flightList={data}/>
             }

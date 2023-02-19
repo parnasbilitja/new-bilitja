@@ -16,34 +16,9 @@ const Footer = () => {
         <>
             <div className={styles["footer"]}>
                 <div className="container-fluid">
-                    <div className="row parent-footer-top justify-content-evenly">
-                        <div className={`col-lg-3 col-md-12 col-sm-12 col-12 pe-4 pt-1 pb-4 ${styles["footer-logo"]}`}>
-                            <img
-                                width=""
-                                height=""
-                                alt="بلیطجا-لوگو"
-                                src="../../../Images/bilitja-light-logo.webp"
-                            />
-                            <p>ارزان ترین بلیط های هواپیما</p>
-                            <Link href="/">www. B i l i t j a .com</Link>
-                        </div>
-                        {width>826&&
-                            <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex col-4 justify-content-center px-0" style={{alignContent: 'center',flexWrap: 'wrap'}}>
-                            <a
-                                referrerPolicy="origin"
-                                target="_blank"
-                                href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                            >
-                            <img
-                                referrerPolicy="origin"
-                                src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                alt=""
-                                id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
-                            />
-                            </a>
-                        </div>
-                            }
-                        <div className="footer-detail d-flex flex-wrap align-items-start justify-content-between" style={{ paddingRight: 130 }}>
+                    <div className="row parent-footer-top justify-content-between">
+                        
+                        <div className="footer-detail d-flex flex-wrap align-items-start justify-content-between">
                             <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
                                 <div className="d-flex align-items-center mb-2">
                                     <div className={styles["circle"]}></div>
@@ -270,6 +245,32 @@ const Footer = () => {
                                 </li>
                             </ul>
                         </div>
+                        <div className={`col-lg-3 col-md-12 col-sm-12 col-12 pe-4 pt-1 pb-4 ${styles["footer-logo"]}`}>
+                            <img
+                                width=""
+                                height=""
+                                alt="بلیطجا-لوگو"
+                                src="../../../Images/bilitja-light-logo.webp"
+                            />
+                            <p>ارزان ترین بلیط های هواپیما</p>
+                            <Link href="/">www. B i l i t j a .com</Link>
+                        </div>
+                        {width>826&&
+                            <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex col-4 justify-content-center px-0" style={{alignContent: 'center',flexWrap: 'wrap'}}>
+                            <a
+                                referrerPolicy="origin"
+                                target="_blank"
+                                href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                            >
+                            <img
+                                referrerPolicy="origin"
+                                src="../../../../../Images/enamad.png"
+                                alt=""
+                                id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                            />
+                            </a>
+                        </div>
+                            }
                     </div>
                 </div>
                 <div className={styles["footer-copy"]}>

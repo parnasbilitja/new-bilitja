@@ -20,10 +20,16 @@ const ManagerNav = (props) => {
   const myRouter = useRouter();
   const [isOpend, setOpend] = useState(true);
   const [mobile, setMobile] = useState();
-
+  const [width, setWidth] = useState(0)
   useEffect(() => {
     setMobile(localStorage.getItem("mobile"));
-  }, []);
+    setWidth(window.innerWidth)
+    console.log(width);
+      width>826?
+      setOpend(true)
+      :
+      setOpend(false)
+  }, [width]);
 
   return (
     <div>
@@ -50,6 +56,7 @@ const ManagerNav = (props) => {
             />
           </a>
         </div>
+
         <div className={styles["manager-small-screen-top-bar"]}>
           <FontAwesomeIcon
             icon={faBars}
@@ -61,7 +68,7 @@ const ManagerNav = (props) => {
         <div
           className={
             myRouter.asPath === "/panel/profile"
-              ? `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active mt-2`
+              ? `${styles["active-tab"]} ${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active mt-2`
               : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item mt-2`
           }
           onClick={() => {
@@ -69,7 +76,6 @@ const ManagerNav = (props) => {
           }}
         >
           <div>
-            {/* <FontAwesomeIcon icon={faUser} /> */}
             <svg width="25" height="25" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M39.057 39.7095C38.1832 37.4675 36.2577 35.4864 33.5793 34.0734C30.9008 32.6604 27.619 31.8945 24.2429 31.8945C20.8668 31.8945 17.585 32.6604 14.9065 34.0734C12.2281 35.4864 10.3026 37.4675 9.42884 39.7095" stroke="#013136" strokeWidth={2} strokeLinecap="round" />
               <ellipse cx="24.2425" cy="18.475" rx="7.66833" ry="7.66833" stroke="#013136" strokeWidth={2} strokeLinecap="round" />
@@ -85,8 +91,8 @@ const ManagerNav = (props) => {
         </div>
         <div
           className={
-            myRouter.asPath === "/panel/index"
-              ? `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active`
+            myRouter.asPath === "/panel/dashboard"
+              ? `${styles["active-tab"]} ${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active`
               : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`
           }
           onClick={() => {
@@ -108,8 +114,8 @@ const ManagerNav = (props) => {
         </div>
         <div
           className={
-            myRouter.asPath === "/panel/reports"
-              ? `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active`
+            myRouter.asPath === "/panel/flight-sell-report"
+              ? `${styles["active-tab"]} ${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active`
               : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`
           }
           onClick={() => {
@@ -130,24 +136,12 @@ const ManagerNav = (props) => {
             <p className="no-margin font-size-13 color-textpill">Reports</p>
           </div>
         </div>
-        {/* <div
-          className={`${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
-          onClick={() => {
-            myRouter.push("/panel/flight");
-          }}
-        >
-          
-          <div>
-            <svg width="25" height="25" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.19989 64.9966H68.9634V70.7363H1.19989V64.9966ZM63.2724 9.06397C59.9706 7.8954 56.4605 7.97827 53.3891 9.29714L53.2629 9.35095L44.0725 14.9005L17.2521 1.3534C16.0813 0.755724 14.8019 0.587839 13.5596 0.868867C12.3174 1.14989 11.1622 1.86854 10.2257 2.94294L6.63509 7.03211C6.2563 7.46358 5.95885 7.99788 5.7648 8.59537C5.57076 9.19286 5.4851 9.8382 5.51419 10.4835C5.54328 11.1288 5.68637 11.7575 5.93284 12.3229C6.17931 12.8884 6.52283 13.376 6.93791 13.7497L23.5636 28.7192L17.1863 32.9635L12.1358 27.1006C11.1702 25.9818 9.97077 25.2411 8.68179 24.9675C7.3928 24.6938 6.06904 24.8989 4.86957 25.5581L2.12303 27.071C1.69375 27.3074 1.30765 27.6541 0.989052 28.0894C0.670453 28.5247 0.426261 29.0391 0.27186 29.6002C0.117459 30.1613 0.0561953 30.757 0.0919284 31.3497C0.127661 31.9424 0.259617 32.5192 0.479482 33.0439L10.7599 57.586L66.747 22.5246C70.0993 20.5199 70.508 17.315 69.7708 14.9807C68.9537 12.3928 66.5848 10.2363 63.2724 9.06397V9.06397ZM64.8112 17.3386L64.7902 17.3512L12.6906 49.9778L5.04237 31.7184L6.66587 30.8239C7.0657 30.6041 7.50697 30.5358 7.93665 30.627C8.36632 30.7182 8.76612 30.9651 9.08799 31.3381L16.4765 39.9152L32.1932 29.455L10.704 10.1061L13.2411 7.21686C13.5532 6.85877 13.9383 6.61925 14.3523 6.52557C14.7664 6.4319 15.1929 6.48784 15.5831 6.68702L44.2334 21.1584L54.9556 14.6842C57.1376 13.7858 59.7362 13.7578 62.1077 14.6101C64.0607 15.3122 65.0981 16.332 65.4496 16.8669C65.251 17.0532 65.037 17.2115 64.8115 17.3392L64.8112 17.3386Z" fill="#013136" />
-            </svg>
-          </div>
-          <div>
-            <p className="no-margin font-size-13 font-bold-iransanse">پرواز</p>
-          </div>
-        </div> */}
         <div
-          className={`${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
+          className={
+            myRouter.asPath === "/panel/price-handling"
+              ? `${styles["active-tab"]} ${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active`
+              : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`
+          }
           onClick={() => {
             myRouter.push("/panel/price-handling");
           }}
@@ -165,7 +159,9 @@ const ManagerNav = (props) => {
           </div>
         </div>
         <div
-          className={`${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
+          className={myRouter.asPath === "/panel/villas/search"
+              ? `${styles["active-tab"]} ${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active`
+              : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/panel/villas/search");
           }}
@@ -183,7 +179,9 @@ const ManagerNav = (props) => {
           </div>
         </div>
         <div
-          className={`${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
+          className={myRouter.asPath === "/panel/villas/search"
+              ? `${styles["active-tab"]} ${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active`
+              : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/panel/villas/search");
           }}
@@ -200,7 +198,9 @@ const ManagerNav = (props) => {
           </div>
         </div>
         <div
-          className={`${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
+          className={myRouter.asPath === "/panel/villas/search"
+              ? `${styles["active-tab"]} ${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active`
+              : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/panel/villas/search");
           }}
@@ -217,7 +217,9 @@ const ManagerNav = (props) => {
           </div>
         </div>
         <div
-          className={`${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
+          className={myRouter.asPath === "/panel/city/show"
+              ? `${styles["active-tab"]} ${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active`
+              : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/panel/city/show");
           }}
@@ -234,7 +236,9 @@ const ManagerNav = (props) => {
           </div>
         </div>
         <div
-          className={`${styles["manager-nav-one-row"]} d-flex align-itmes-center flex-row-reverse cursor-pointer panel-menu-item`}
+          className={myRouter.asPath === "/panel/facility/show"
+          ? `${styles["active-tab"]} ${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active`
+          : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/panel/facility/show");
           }}
@@ -253,7 +257,9 @@ const ManagerNav = (props) => {
           </div>
         </div>
         <div
-          className={`${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
+          className={myRouter.asPath === "/panel/rule/show"
+              ? `${styles["active-tab"]} ${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active`
+              : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/panel/rule/show");
           }}
@@ -274,7 +280,9 @@ const ManagerNav = (props) => {
           </div>
         </div>
         <div
-          className={`${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
+          className={myRouter.asPath === "/"
+              ? `${styles["active-tab"]} ${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item-active`
+              : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/");
           }}

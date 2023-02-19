@@ -104,8 +104,8 @@ const flightsData = [
         url: "tehran-to-kish/airfares-thr,ika-kih",
       },
       {
-        name: "اصفهان",
-        url: "tehran-to-isfahan/airfares-thr,ika-ifn",
+        name: "قشم",
+        url: "tehran-to-qeshm/airfares-thr,ika-gsm",
       },
       {
         name: "اهواز",

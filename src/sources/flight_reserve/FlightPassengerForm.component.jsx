@@ -14,6 +14,7 @@ import BirthDayParent from "../calendar/BirthDayParent";
 
 
 const FlightPassengerForm = (props) => {
+    console.log(props);
     const [calend, setCalend] = useState(true)
     const [state, setState] = useState({
         open: false,
@@ -103,7 +104,7 @@ const FlightPassengerForm = (props) => {
             <div className="row d-flex justify-content-start col-md-12">
                 <div className="col-lg-2 col-md-12 col-sm-12 col-12 no-padding hidden-xs">
                     <span className="no-margin font-size-14 font-bold-iransanse">
-                        {`${props.index + 1}-`}&nbsp;
+                    &nbsp;&nbsp;&nbsp;{`${props.index + 1}-`}&nbsp;
                         {getTitleByType(props.type)}
                     </span>
                     <span className="no-margin font-size-10">
@@ -255,7 +256,7 @@ const FlightPassengerForm = (props) => {
                                 <option value="2">زن</option>
                             </PrimarySelectInput>
                         </div>
-                        <div className="col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px">
+                        <div className="col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px" style={{width: "80% !important"}}>
                             <div className="pb-1 mt-1">
                                 <PrimaryTextInput
                                     style={{ height: "2em", border: "1px solid #eee", fontSize: 15 }}
@@ -276,8 +277,9 @@ const FlightPassengerForm = (props) => {
                                 {props.birthday == '' && err.birthdayErr ? props.birthdayErr : ''}
                             </span>
                         </div>
-                        <div className="national-codeData col-lg-2 col-md-2 col-sm-4 col-6 padding-horizental-3px mt-1 me-1">
+                        <div className="national-codeData col-lg-1 col-md-2 col-sm-4 col-6 padding-horizental-3px mt-1 me-1">
                             {props.pathKind == 1 && props.nationality == "IR" ?
+                            <>
                                 <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
                                     <PrimaryTextInput
                                         style={{ height: "2em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
@@ -290,12 +292,17 @@ const FlightPassengerForm = (props) => {
                                                 "code",
                                                 props.id,
                                                 e.target.value
-                                            );
-                                        }
+                                                );
+                                            }
                                         }
                                         defaultValue={props.code}
-                                    />
-                                </div> :
+                                        />
+                                    </div> 
+                                    <span className="color-secondary error-message position-absolute">
+                                        {props.codeErr !== "" && props.codeErr}
+                                    </span>
+                                        </>
+                                :
                                 <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
                                     <PrimaryTextInput
                                         style={{ height: "2em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
@@ -316,11 +323,11 @@ const FlightPassengerForm = (props) => {
                             }
 
                             <span className="color-secondary error-message position-absolute">
-                                {props.nationality == "IR" && props.code === "" ? props.codeErr : ''}
+                                {props.nationality == "IR" && props.codeErr === "" ? props.codeErr : ''}
                             </span>
                         </div>
 
-                        <div className="col-lg-2 col-md-3 col-sm-4 col-6 padding-horizental-3px mt-1">
+                        <div className="col-lg-1 col-md-1 col-sm-4 col-6 padding-horizental-3px mt-1">
                             <div className={`d-flex align-items-center `} >
                                 <PrimaryTextInput
                                     ext={props.nationality == 'IR' && props.pathKind == 1 ? 'BEFORE' : ''}
@@ -350,18 +357,7 @@ const FlightPassengerForm = (props) => {
                             </span>
                         </div>
                         <div className="col-lg-2 mt-12 col-md-2 col-sm-4 col-6 padding-horizental-3px ">
-                            {/* <div  className={`${ props.pathKind !=2 ? styles["makhfi"]:""  }`} >
-                                    <PrimaryTextInput
-                                        style={{height: "3em", fontSize: 12}}
-                                        placeholder=" انقضا پاسپورت"
-                                        value={props.futureday}
-                                        onFocus={() => {
-                                            managePopUpFuturedayCalendar(true);
-                                        }}
-                                        
-                                    />
-                                      
-                                </div> */}
+                            
                             <span className="color-secondary error-message position-absolute">
                                 {/* {props.pasenddatErr} */}
                                 {/* {console.log(props)} */}

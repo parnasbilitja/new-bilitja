@@ -458,7 +458,7 @@ console.log(state);
               <div className={`col-lg-3 col-12 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
                 <div className={`d-flex justify-content-end ${styles['select-bunk']} `}>
                   <input type="radio" checked={true} className="ms-3"/>
-                  <img src={'/images/sep.png'} alt="sep" width={'100px'} height={'50px'}  />
+                  <img src={'../../../images/sep.png'} alt="sep" width={'100px'} height={'50px'}  />
                 </div>
               </div>
               <div className={`col-lg-3 col-12 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>

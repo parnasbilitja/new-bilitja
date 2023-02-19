@@ -1,7 +1,10 @@
+import moment from 'moment-jalaali';
 import React from 'react';
 import styles from "../../../styles/Home.module.scss";
 
 const FlightsUrl = ({flightsData, flightsDataHotel}) => {
+  let date = moment().format('jYYYY/jM/jD')
+  console.log(date);
     return (
       <div className="row justify-content-center">
         <div className="col-md-10" >
@@ -13,7 +16,7 @@ const FlightsUrl = ({flightsData, flightsDataHotel}) => {
                 <div className={`${styles["suggestion-list"]} col-6`}>
                   {flightsData[0].map((item,index)=>(
                     <div className="py-2 mb-2" key={index}>
-                      <a href={`flights/${item.url}`}>
+                      <a href={`flights/${item.url}#${date}`}>
                         <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                         <span
                           style={{ marginRight: 10 }}
@@ -28,7 +31,7 @@ const FlightsUrl = ({flightsData, flightsDataHotel}) => {
                 <div className={`${styles["suggestion-list"]} col-6`}>
                 {flightsData[1].map((item,index)=>(
                     <div className="py-2 mb-2" key={index}>
-                      <a href={`flights/${item.url}`}>
+                      <a href={`flights/${item.url}#${date}`}>
                         <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                         <span
                           style={{ marginRight: 10 }}

@@ -3,6 +3,8 @@ import React from "react";
 import globals from "../Global";
 import styles from "../../../styles/FlightReserve.module.scss";
 import { getweekday } from "../../Utils/SimpleTasks";
+import { faClock, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FlightReserveDesktopHeader = (props) =>
   props.airport1 ? (
@@ -40,10 +42,11 @@ const FlightReserveDesktopHeader = (props) =>
                 <div className="d-flex align-items-start justify-content-start">
                   <div>
                     <strong className="font-size-14" style={{ marginRight: 50 }}>
+                  <FontAwesomeIcon icon={faCalendarAlt} className="mx-2" />
                       تاریخ:
                     </strong>
                   </div>
-                  <div className="d-flex justify-content-start align-items-start ">
+                  <div className="d-flex justify-content-start align-items-start">
                     <span
                       className={`" font-size-16`} style={{color:'red'}}>
                       {getweekday(String(props.flightDay))} &nbsp;{" "}
@@ -54,7 +57,7 @@ const FlightReserveDesktopHeader = (props) =>
                 </div>
               </div>
               <div style={{ marginTop: -25 }} className="col-lg-4 col-md-4 col-sm-4 col-6">
-                <strong className="font-size-14">ساعت:</strong>{' '}
+                <strong className="font-size-14"><FontAwesomeIcon icon={faClock} className="mx-2" />ساعت:</strong>{' '}
                 <span className={`" font-size-16`} style={{color:'red'}}>
                   {props.flightTime}
                 </span>

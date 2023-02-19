@@ -69,6 +69,7 @@ const Auth = (props) => {
   };
 
   const login = () => {
+    console.log(state);
     setState({ ...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/getMobile`, {
       method: "POST",

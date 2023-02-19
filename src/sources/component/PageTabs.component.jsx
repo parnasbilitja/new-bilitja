@@ -20,7 +20,7 @@ const PageTabls = (props) => {
                 <i className="bilitja font-size-24 icon-plane-departure"></i>
               </div>
               <div className="pull-right">
-                <span className="font-size-13"> بلیط هواپیما </span>
+                <span className="font-size-13"> پرواز </span>
               </div>
             </div>
             <div className={`${styles["home-tab"]} ${styles["mobile-tab2"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 3 ? styles["home-tab-active"] : null

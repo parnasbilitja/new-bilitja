@@ -14,7 +14,7 @@ const MessageBox = (props) => {
         props.messageBoxModify({
           color:'',
           state: false,
-          message: "",
+          message: "لطفا اطلاعات را تکمیل کنید.",
         });
       }, 4000);
     }
@@ -26,11 +26,13 @@ const MessageBox = (props) => {
     return (
       <div className="d-flex justify-content-center">
         {props.messageBox.state &&
+        <div className={`${styles["messagebox-parent"]}`}>
         <div
         className={` ${styles["messagebox"]} ${`${props.messageBox.color ?'bg-success':'bg-danger'}`
       }`}
       >
         <span dangerouslySetInnerHTML={{__html:props.messageBox.message}} />
+        </div>
       </div>
       }
       </div>

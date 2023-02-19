@@ -44,14 +44,13 @@ const NavBar = (props) => {
   }, [props.user])
 
   if (state.logged) {
-    var hours = 1; // to clear the localStorage after 1 hour
-    // (if someone want to clear after 8hrs simply change hours=8)
+    var hours = 1;
     var now = new Date().getTime();
     var setupTime = localStorage.getItem('setupTime');
     if (setupTime == null) {
       localStorage.setItem('setupTime', now)
     } else {
-      if (now - setupTime > hours * 60 * 60 * 1000) {
+      if (now - setupTime > hours * 6 * 6 * 1) {
         localStorage.clear()
         localStorage.setItem('setupTime', now);
         localStorage.removeItem("mobile")
@@ -70,9 +69,6 @@ const NavBar = (props) => {
   return (
     <div className="col-xl-12 col-lg-12">
       <nav className={styles.navVar}>
-        {/* <NavHandler/> */}
-        {/* <button onClick={handleLog}>check</button> */}
-        
           <div className="d-flex flex-row-reverse justify-content-between">
             <div className={` ${styles["nav-text-detail"]}`}>
               <div>

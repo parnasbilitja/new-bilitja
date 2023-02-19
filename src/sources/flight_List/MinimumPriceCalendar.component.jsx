@@ -161,10 +161,15 @@ class MinimumPriceCalendar extends React.Component {
           <div className="col-md-10 col-md-10 col-11">
             <div className="row">
               <div className="col-lg-1 col-1">
+                <span 
+                  className={`${StyleCalendarPrice["btn-primary-color"]}`}
+
+                  >
                 <FontAwesomeIcon
                   icon={faAngleRight}
                   onClick={this.decreaseMonth}
-                />
+                  />
+                  </span>
               </div>
 
               <div className="col-lg-10 col-10">
@@ -174,10 +179,15 @@ class MinimumPriceCalendar extends React.Component {
               </div>
 
               <div className="col-lg-1 col-1">
+              <span 
+                  className={`${StyleCalendarPrice["btn-primary-color"]}`}
+
+                  >
                 <FontAwesomeIcon
                   icon={faAngleLeft}
                   onClick={this.increaseMonth}
-                />
+                  />
+                  </span>
               </div>
             </div>
             <div className={` ps-0 ${StyleCalendarPrice["min-price-calendar-container"]}`} style={{paddingRight:'25px'}}>

@@ -26,8 +26,8 @@ const App = (props) =>  {
         <Scrolltoprefresh/>
         <div className={"mt-100"}>
           <Home type={'index'} />
-          <List  />
           <div className="col-md-10 m-auto">
+          <List  />
           <HotelsSuggest />
           <CitiesSuggest />
             <Posts/>
