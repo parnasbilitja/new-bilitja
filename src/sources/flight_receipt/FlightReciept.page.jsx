@@ -496,7 +496,7 @@ console.log(state);
                       className={`py-2 mb-1 cursor-pointer ${styles['cancel-buttom']}`}
                       onClick={() => router.push("/")}
                     >
-                      <span>انصراف</span>
+                      <span>انصراف از خرید</span>
                     </span>
                   </div>
                 </div>
