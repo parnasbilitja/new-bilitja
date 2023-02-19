@@ -1,5 +1,4 @@
 import React from "react";
-import "../../../styles/PageTabs.module.scss";
 import styles from "../../../styles/Home.module.scss";
 
 import { useRouter } from "next/router";

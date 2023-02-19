@@ -14,7 +14,7 @@ const MessageBox = (props) => {
         props.messageBoxModify({
           color:'',
           state: false,
-          message: "لطفا اطلاعات را تکمیل کنید.",
+          message: "",
         });
       }, 4000);
     }

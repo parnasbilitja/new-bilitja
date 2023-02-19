@@ -66,12 +66,12 @@ const FlightReserveMobileHeader = (props) =>
           <div className="col-7" style={{ marginRight: -25 }}>
             <span className="text-right">
               <FontAwesomeIcon icon={faCalendarAlt} className="mx-2" />
-              <span className="text-danger font-size-8">
-                {getweekday(String(props.flightDay))} &nbsp;{" "}
+              <span className="text-danger font-size-12">
+                {getweekday(String(props.flightDay))} 
               </span>
             </span>
-            <span className="mx-2">
-              <span className="text-danger font-size-16 " style={{ marginRight: -15 }}>
+            <span className="mx-2 font-size-12">
+              <span className="text-danger " style={{ marginRight: -15 }}>
                 {String(props.flightDate).replace("-", "/").replace("-", "/")}
                   {/* <br/> */}{' '}
                   {props.flightDay}
@@ -83,7 +83,7 @@ const FlightReserveMobileHeader = (props) =>
           <div className="col-4" style={{ marginRight: 25 }}>
             <p className="text-left ">
               <FontAwesomeIcon icon={faClock} className="mx-2" />
-              <span className="text-danger font-size-16 ">
+              <span className="text-danger font-size-12 ">
                 {props.flightTime}
               </span>
             </p>

@@ -17,7 +17,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import notification from '../../../public/Images/notification.png';
 const notification = require('../../../public/Images/notification.png');
 
-
 import globals from "../Global";
 
 import { connect } from "react-redux";
@@ -705,7 +704,7 @@ const FlightReserve = (props) => {
                                             maxLength={11}
                                         />
                                     </div>
-                                    <span className="color-secondary">
+                                    <span className="color-secondary font-size-14">
                                         {/* { state.mobileSubmiterErr } */}
                                         {
                                             state.mobileSubmiter?.length < 11 && state.mobileSubmiter !='' ? 'شماره همراه باید ۱۱ رقمی باشد' :
@@ -729,7 +728,7 @@ const FlightReserve = (props) => {
                                             onChange={(e) => handleChange(e)}
                                         />
                                     </div>
-                                    <span className="color-secondary">
+                                    <span className="color-secondary  font-size-14">
                                         {state.phoneSubmiter == '' && numbers && state.phoneSubmiterErr}
 
                                         {/* {state.phoneSubmiterErr 
@@ -880,7 +879,16 @@ const FlightReserve = (props) => {
             
             <PopUp opened={closePopUp} closePopUp={setClosePopUp} >
                 <div className="p-2">
-                    <p onClick={() => setClosePopUp(false)} className='cursor-pointer mb-0 text-danger' style={{ fontSize: 20 }}>X</p>
+                <span
+                    className="exit-form position-absolute"
+                    onClick={() => {
+                        props.accountBoxModify({
+                        state: false,
+                        });
+                    }} style={{ left: 10 }}
+                    >
+                    <CloseOutlined style={{ color: "red" }} />
+                    </span>
                     <div onClick={() => setClosePopUp(false)} className="p-5">
                         قوانین و مقررات
                     </div>

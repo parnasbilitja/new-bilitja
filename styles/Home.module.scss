@@ -107,7 +107,7 @@
   .width-mobile {
     width: 90% !important;
     margin: 0px 10px !important;
-    border: 1px solid gray;
+    border: 1px solid #cfd3d8;
     border-radius: 10px;
     margin-top: 1rem !important;
   }
@@ -190,6 +190,7 @@
   @extend .card-box-shadow;
 
   border-bottom: 2px solid red;
+  font-weight: bold;
   color: $secondaryColor !important;
 }
 
