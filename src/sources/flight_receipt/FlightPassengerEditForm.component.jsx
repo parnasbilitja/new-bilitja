@@ -13,7 +13,6 @@ import {
 } from "../../Utils/SimpleTasks";
 import styles from "../../../styles/FlightPassengerEditForm.module.scss";
 import BirthDayParent from "../calendar/BirthDayParent";
-import PopUpWide from "../component/PopUpWide.component";
 import * as moment from 'jalali-moment';
 
 const FlightPassengerEditForm = (props) => {

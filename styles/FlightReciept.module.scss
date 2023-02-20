@@ -57,3 +57,20 @@
   border-bottom: 1px dashed red;
   color: red;
 }
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+.descripcion {
+  /*background-color: green;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.descripcion:after {
+  content: " ........................................................................................................................................................................................................................................................................................."
+}
+.precio {
+  flex-shrink: 0;
+}

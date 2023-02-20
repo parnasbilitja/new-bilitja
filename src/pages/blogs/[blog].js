@@ -10,7 +10,7 @@ const blog = (props) => {
     useEffect(()=>{
         const getData = async () => {
             await axios.get(`https://api.hamnavaz.com/api/v1/post/getPost/${props.Pathname.blog}`)
-            .then(res => {setPost(res.data.data),console.log(res)})
+            .then(res => {setPost(res.data.data)})
         }
         getData()
         

@@ -279,13 +279,13 @@ const FlightReciept = (props) => {
   };
 console.log(state);
     return (
-      <div className="container mt-100">
+      <div className="container">
         <div className={styles["flight-detail"]}>
           <FlightReserveDesktopHeader {...state} />
           <FlightReserveMobileHeder {...state} />
           <Scrolltoprefresh/>
         </div>
-        <div className="row mt-10">
+        <div className="row ">
           {/* <div className="col-lg-1"></div> */}
           <div className="col-lg-12 no-padding-xs border-pill-lg px-4">
             <p
@@ -318,7 +318,7 @@ console.log(state);
                         {getTicketType(state.ticketCodeAll_[index])}
                         ({(state.sexAll_[index] == 1?'مرد':'زن')})
                       </td>
-                      <td>
+                      <td className=" px-0">
                         <div className="hidden-xs">
                           {state.nameAll_[index]}
                         </div>
@@ -362,15 +362,16 @@ console.log(state);
                             {state.birthDayAll_[index]}
                           </span>
                           <p>
-                            <FontAwesomeIcon icon={faDollarSign} />
+                            {/* <FontAwesomeIcon icon={faDollarSign} /> */}
                             <span className="color-secondary">
                               {" "}
                               {moneyFormat(
                                 getTicketPrice(
                                   state.ticketCodeAll_[index]
                                 )
-                              )}
+                              )}{' '}
                             </span>
+                              ریال
                           </p>
                         </div>
                       </td>
@@ -413,45 +414,38 @@ console.log(state);
             </table>
           </div>
         </div>
-        <div className="row mt-10">
+        <div className="row ">
           <div className="col-lg-1 col-0"></div>
           <div className="col-lg-12 col-12 no-padding-xs border-pill-lg pt-10 px-3">
             <div className="row justify-content-between">
               {/* child */}
               <div className={`col-lg-4 text-right ${styles['border-left']}`}>
-                <div className="row">
-                  <div className="col-lg-7 col-6 pe-4">
-                    <p className="font-size-13 font-bold-iransanse">
+                <div className={`${styles["item"]}`}>
+                  <div className={`${styles["descripcion"]}`}>
                       مبلغ کل :
-                    </p>
                   </div>
-                  <div className="col-lg-5 col-6 text-left ps-4">
-                    <p className="font-size-13 mb-0">
-                      {moneyFormat(state.feeGet)} تومان
-                    </p>
-                  </div>
+                    <div className={`${styles["precio"]} font-bold-iransanse`}>
+                      {moneyFormat(state.feeGet)}{' '}
+                      <span>تومان</span>
+                    </div>
                 </div>
-                <div className="row">
-                  <div className="col-lg-7 col-6 pe-4">
-                    <p className="font-size-13 font-bold-iransanse">
+                <div className={`${styles["item"]}`}>
+                  <div className={`${styles["descripcion"]}`}>
                       اعتبار کیف پول شما :‌
-                    </p>
                   </div>
-                  <div className="col-lg-5 col-6 text-left ps-4">
-                    <p className="font-size-13">{moneyFormat(0)} تومان</p>
-                  </div>
+                  <div className={`${styles["precio"]} font-bold-iransanse`}>
+                      {moneyFormat(0)}{' '}
+                      <span>تومان</span>
+                    </div>
                 </div>
-                <div className="row">
-                  <div className="col-lg-7 col-6 pe-4">
-                    <p className="font-size-13 font-bold-iransanse">
+                <div className={`${styles["item"]}`}>
+                  <div className={`${styles["descripcion"]}`}>
                       مبلغ قابل پرداخت :‌
-                    </p>
                   </div>
-                  <div className="col-lg-5 col-6 text-left ps-4">
-                    <p className="font-size-13">
-                      {moneyFormat(state.feeGet)} تومان
-                    </p>
-                  </div>
+                  <div className={`${styles["precio"]} font-bold-iransanse`}>
+                      {moneyFormat(state.feeGet)}{' '}
+                      <span>تومان</span>
+                    </div>
                 </div>
               </div>
               {/* child */}
@@ -464,16 +458,16 @@ console.log(state);
               <div className={`mb-2 col-lg-3 col-12 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
                 <div className={`d-flex justify-content-end ${styles['select-bunk']} `}>
                 <div className="row justify-content-center">
-                  <div className="col-lg-7 col-6">
-                    <p className="font-size-13 font-bold-iransanse mb-0">
+                  <div className="col-lg-7 col-6" style={{width: 'fit-content'}}>
+                    <p className="font-size-13 mb-0">
                       مبلغ قابل پرداخت :‌
                     </p>
                   </div>
-                  <div className="col-lg-5 col-6 text-left ps-5">
-                    <p className="font-size-14 text-danger mb-0">
-                      {moneyFormat(state.feeGet)} 
-                      <span className="text-dark">تومان</span>
-                    </p>
+                  <div className="col-lg-5 col-6 text-left ps-5" style={{width: 'fit-content'}}>
+                    <span className="font-size-14 text-danger mb-0 font-bold-iransanse">
+                      {moneyFormat(state.feeGet)}{' '}
+                    </span>
+                      <span className="">تومان</span>
                   </div>
                 </div>
                 </div>
@@ -505,6 +499,7 @@ console.log(state);
           </div>
         </div>
         <PopUpWide
+          type='editReciept'
           opened={open}
           closePopUp={managePopUpEditForm}
         >

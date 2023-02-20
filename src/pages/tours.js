@@ -37,7 +37,7 @@ const tours = () => {
     const toursHandler = (search) => {
       setState({...state, city:search.slug})
       axios.post('https://api.hamnavaz.com/api/v1/tour/getTours',{city:state.city})
-        .then(res=>{SetTourData(res.data.data),console.log(res.data.data)})
+        .then(res=>{SetTourData(res.data.data)})
     }
 
     const myRef = useRef(null)

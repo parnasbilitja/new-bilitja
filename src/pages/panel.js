@@ -53,7 +53,7 @@ const ManagePanel = () =>{
   }, []);
   function mainRouter(pathName) {
     var path = decodeURI(pathName);
-    console.log(path);
+    // console.log(path);
 
     if (path.indexOf("villas/search/") > 0) {
       //console.log(path.substr(21));

@@ -54,101 +54,7 @@ const NavBarMobile = (props) => {
   console.log(props);
   return (
     <nav className={styles["nav-mobile"]}>
-      {/* <div className={styles['error-mobile']}> hghgshghgsd</div> */}
-      <div className={styles["nav-text-detail-mobile"]}>
-        <div className="pull-right">
-        <div
-                  className={
-                    state.logged === true
-                      ? "user-mobile-content align-center"
-                      : styles["nav-detail-first-line"]
-                  }
-                >
-                  {state.logged == true ? (
-                    <>
-                      <div>
-                        <Link href="/dashboard">
-                          <a>
-                            <i className="bilitja icon-login"></i>
-                            {state.mobile}
-                          </a>
-                        </Link>
-                      </div>
-                      <span className="mx-2">&nbsp;/</span>
-                      <div>
-                        <a
-                          href={'#'}
-                          style={{ fontSize: 12 }}
-                          onClick={(e) => handleLogoutUser(e)}
-                          className="cursor-pointer font-bold-iransanse"
-                        >
-                          خروج
-                        </a>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      {/* <div>
-                          <a
-                            style={{ fontSize: 12 }}
-                            href=""
-                            onClick={(e) => {
-                              e.preventDefault();
-                              props.accountBoxModify({
-                                state: true,
-                                type: "login",
-                              });
-                            }}
-                          >
-                            <i className="bilitja icon-login"></i>
-                            <span>ورود کاربر</span>
-                          </a>
-                        </div> */}
-                      <div className="border-right pb-2">
-                        <a
-                          style={{ fontSize: 12 }}
-                          href=""
-                          onClick={(e) => {
-                            e.preventDefault();
-                            props.accountBoxModify({
-                              state: true,
-                              type: "register",
-                            });
-                          }}
-                        >
-                          {/* <i className="bilitja icon-register"></i> */}
-                          <i className="bilitja icon-login"></i>
-                          <span className="font-bold-iransanse font-size-14">ورود / ثبت نام</span>
-                        </a>
-                      </div>
-                    </>
-                  )}
-                </div>
-        </div>
-        <div className="pull-left">
-          <a href="tel:021-84279999" className="color-black font-bold-iransanse">
-            {/* <span className="text-dark mx-2">مشاوره تلفنی</span> */}
-            <i className="bilitja icon-phone font-size-16"></i>
-            <span className="font-size-17 text-dark font-size-14"> &nbsp;021-84279999</span>
-          </a>
-        </div>
-      </div>
       <div className={styles["nav-logo-container-mobile"]}>
-        <div className="pull-right d-flex mb-0">
-          <FontAwesomeIcon
-            icon={faBars}
-            onClick={() => {
-              setState({
-                slide: true,
-              });
-            }}
-            className="mobile-nav-barsicon"
-          />
-          <h1 className="font-bold-iransanse font-size-11 mb-0 d-flex align-center" style={{alignItems: 'center'}}>
-            {" "}
-            خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه{" "}
-          </h1>
-        </div>
         <Link href="/">
           <img
             width=""
@@ -158,6 +64,11 @@ const NavBarMobile = (props) => {
             className="pull-left"
           />
         </Link>
+      <a href="tel:021-84279999" className="color-black font-bold-iransanse">
+            {/* <span className="text-dark mx-2">مشاوره تلفنی</span> */}
+            <i className="bilitja icon-phone font-size-16"></i>
+            <span className="font-size-17 text-dark font-size-14"> &nbsp;021-84279999</span>
+          </a>
       </div>
 
       <SlideIn

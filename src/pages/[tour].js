@@ -11,7 +11,6 @@ import Footer from '../sources/component/Footer.component';
 import Slider from '../Components/slider/Slider';
 import RequestTour from '../Components/modal/RequestTour';
 import PopUp from '../sources/component/PopUp.component';
-import { moneyFormat } from "../Utils/SimpleTasks";
 import Loading from "../sources/component/SmallLoading.component.jsx";
 import { Loader } from '../Utils/Loader';
 import Head from 'next/head';
@@ -19,9 +18,14 @@ import Scrolltoprefresh from '../sources/component/Scrolltoprefresh';
 
 
 const tour = (props) => {
-    console.log(props);
+    // console.log(props);
     const ref = useRef(null);
-
+    function moneyFormat(input) {
+        return parseFloat(input)
+          .toFixed(1)
+          .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+          .split(".")[0];
+      }
     // mui
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -48,11 +52,12 @@ const tour = (props) => {
     const getData = async () => {
         const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${props.Pathname.tour}`)
         setData(val.data.data)
+        console.log(val.data.data);
     }
 
     useEffect(() => {
         getData();
-        console.log(data);
+        // console.log(data);
     }, [slug])
     const handleClick = () => {
         ref.current?.scrollIntoView({behavior: 'smooth'});
@@ -87,7 +92,7 @@ const tour = (props) => {
                                 </svg>
                                 <div className="text">
                                     <h5 className="font-bold" >{data && data.title}</h5>
-                                    <span className="font-bold">قیمت: {data && moneyFormat(data.minPrice)} تومان</span>
+                                    <span className="">شروع قیمت از: {data && moneyFormat(data.minPrice)} تومان</span>
                                 </div>
                             </div>
                             <div className="d-flex flex-column justify-content-around me-auto mt-2">
@@ -98,7 +103,7 @@ const tour = (props) => {
                                     </div>
                                     <div className="text pe-2">
                                         {data &&
-                                            <span>{data.transfers[0].transfer}</span>
+                                            <span className="text-danger">{data.transfers[0].transfer}</span>
                                         }
                                     </div>
                                 </div>
@@ -109,7 +114,7 @@ const tour = (props) => {
                                     </div>
                                     <div className="text pe-2">
                                         {data &&
-                                            <span>
+                                            <span className="text-danger">
                                                 {data.transfers[1].transfer}
                                             </span>
                                         }
@@ -142,7 +147,7 @@ const tour = (props) => {
                                         <div className="text pe-2">
                                             <div className="m-main-data d-flex align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold">اطلاعات مبدا</span>
+                                                    <span className="font-bold font-size-18">اطلاعات مبدا</span>
                                                 </div>
                                                 <div className="val pe-2">
                                                     <span className="font-size-12">{data && data.stCity.name}</span>
@@ -150,7 +155,7 @@ const tour = (props) => {
                                             </div>
                                             <div className="m-main-data d-flex align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold">تاریخ و ساعت پرواز رفت</span>
+                                                    <span className="font-bold text-danger">تاریخ و ساعت پرواز رفت</span>
                                                 </div>
                                                 <div className="val pe-2">
                                                     <span>{data && data.transfers[0].dateTime}</span>
@@ -158,7 +163,7 @@ const tour = (props) => {
                                             </div>
                                             <div className="m-main-data d-flex align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold">تاریخ ورود به هتل</span>
+                                                    <span className="font-bold" style={{color:'#279692'}}>تاریخ ورود به هتل</span>
                                                 </div>
                                                 <div className="val pe-2">
                                                     <span className="ps-2">{data && data.stDate.split(' ')[0]}</span>
@@ -204,7 +209,7 @@ const tour = (props) => {
                                         <div className="text pe-2 ps-3">
                                             <div className="m-main-data d-flex flex-row-reverse align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold">اطلاعات مقصد</span>
+                                                    <span className="font-bold font-size-18">اطلاعات مقصد</span>
                                                 </div>
                                                 <div className="val pe-2">
                                                     <span className="">{data && data.endCity.name}</span>
@@ -212,7 +217,7 @@ const tour = (props) => {
                                             </div>
                                             <div className="m-main-data d-flex flex-row-reverse align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold">تاریخ و ساعت پرواز برگشت</span>
+                                                    <span className="font-bold text-danger">تاریخ و ساعت پرواز برگشت</span>
                                                 </div>
                                                 <div className="val pe-2">
                                                     <span>{data && data.transfers[1].dateTime}</span>
@@ -220,7 +225,7 @@ const tour = (props) => {
                                             </div>
                                             <div className="m-main-data d-flex flex-row-reverse align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold">تاریخ خروج از هتل</span>
+                                                    <span className="font-bold" style={{color:'#279692'}}>تاریخ خروج از هتل</span>
                                                 </div>
                                                 <div className="val ps-2">
                                                     <span className="">{data && data.stDate.split(' ')[0]}</span>
@@ -390,7 +395,6 @@ const tour = (props) => {
                                                 </div>
                                             }
                                             {data && !data.type &&
-
                                                 <div className="c-detail">
                                                     <div className="info-price position-relative d-flex align-items-start mx-2">
                                                         <div className="text d-flex flex-column align-items-center w-100 py-3">
@@ -414,7 +418,7 @@ const tour = (props) => {
                                                 <span className="font-size-16 font-bold color-gray">{pack.prices.age}</span>
                                             </div>
                                             <div className="c-btn request-data">
-                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() => { setShow(true); setPackData({ tourId: pack.id }); console.log(pack.id); }}>
+                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() => { setShow(true); setPackData({ tourId: pack.id });  }}>
                                                     درخواست رزرو
                                                 </button>
                                             </div>

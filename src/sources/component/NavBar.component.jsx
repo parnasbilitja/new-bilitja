@@ -27,10 +27,10 @@ const NavBar = (props) => {
         mobile: user_mobile,
       });
     }
-    if (state.logged) {
-      props.user.logged = state.logged;
-      props.user.user_info = { mobile: state.mobile }
-    }
+    // if (state.logged) {
+    //   props.user.logged = state.logged;
+    //   props.user.user_info = { mobile: state.mobile }
+    // }
   }, [])
 
   useEffect(() => {
@@ -43,20 +43,20 @@ const NavBar = (props) => {
     }
   }, [props.user])
 
-  if (state.logged) {
-    var hours = 1;
-    var now = new Date().getTime();
-    var setupTime = localStorage.getItem('setupTime');
-    if (setupTime == null) {
-      localStorage.setItem('setupTime', now)
-    } else {
-      if (now - setupTime > hours * 6 * 6 * 1) {
-        localStorage.clear()
-        localStorage.setItem('setupTime', now);
-        localStorage.removeItem("mobile")
-      }
-    }
-  }
+  // if (state.logged) {
+  //   var hours = 1;
+  //   var now = new Date().getTime();
+  //   var setupTime = localStorage.getItem('setupTime');
+  //   if (setupTime == null) {
+  //     localStorage.setItem('setupTime', now)
+  //   } else {
+  //     if (now - setupTime > hours * 6 * 6 * 1) {
+  //       localStorage.clear()
+  //       localStorage.setItem('setupTime', now);
+  //       localStorage.removeItem("mobile")
+  //     }
+  //   }
+  // }
 
 
   const handleLogoutUser = (e) => {

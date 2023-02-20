@@ -14,8 +14,6 @@ import {
     faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import notification from '../../../public/Images/notification.png';
-const notification = require('../../../public/Images/notification.png');
 
 import globals from "../Global";
 
@@ -58,7 +56,7 @@ const FlightReserve = (props) => {
     const [closePopUp, setClosePopUp] = useState(false)
     const [loading, setLoading] = useState(false)
     const [scrollTop, setScrollTop] = useState(0)
-    const [ closePopUpPrice, setClosePopUpPrice ] = useState(false)
+    
     const [state, setState] = useState({
         stateRegister: false,
         passengers: [],
@@ -73,17 +71,6 @@ const FlightReserve = (props) => {
     });
     const router = useRouter();
     useEffect(() => {
-        let price =''
-        setTimeout(function() {
-             price = localStorage.getItem('priceChecker');
-        }, 50);
-        console.log(price,state.priceAll,state.priceADL);
-        // if ((state.priceAll!==0 && price!==state.priceAll )|| 
-        // (state.priceADL!==0 && price!==state.priceADL)) {
-        //         setClosePopUpPrice(true)
-        //     }
-                                 
-        
         if(localStorage.getItem('reqNo') !==null){
             // router.push({pathname: localStorage.getItem('url').split('"')[1].split('info')[0]})
             props.messageBoxModify({
@@ -794,6 +781,7 @@ const FlightReserve = (props) => {
                                     <button 
                                     disabled={loading}
                                         onClick={(e) => {
+                                            console.log(props);
                                             if (!validation()) {
                                                 setLoading(false)
                                                 setScrollTop(true)
@@ -805,8 +793,7 @@ const FlightReserve = (props) => {
                                                 setNumbers(true)
                                                 setNumbers2(true)
                                             }
-                                            else if (state.agreeWithTerm === true && props.user.logged && localStorage.getItem('token')) {
-
+                                            else if (state.agreeWithTerm === true && props.user.logged) {
                                                 setLoading(true)
 
                                                 compeleteReservation();
@@ -821,19 +808,19 @@ const FlightReserve = (props) => {
                                                     message: "لطفا با شرایط و مقررات موافقت کنید",
                                                 });
                                             }
-                                            else if (localStorage.getItem('mobile')?.length == 11 && !localStorage.getItem('token')) {
-                                                setState({ ...state, stateRegister: false });
-                                                login();
-                                                props.messageBoxModify({
-                                                    state: true,
-                                                    color: false,
-                                                    message: "لطفا کد تایید ارسال شده را وارد کنید!",
-                                                });
-                                                props.accountBoxModify({
-                                                    state: true,
-                                                    type: "login",
-                                                });
-                                            }
+                                            // else if (localStorage.getItem('mobile')?.length == 11 && !localStorage.getItem('token')) {
+                                            //     setState({ ...state, stateRegister: false });
+                                            //     login();
+                                            //     props.messageBoxModify({
+                                            //         state: true,
+                                            //         color: false,
+                                            //         message: "لطفا کد تایید ارسال شده را وارد کنید!",
+                                            //     });
+                                            //     props.accountBoxModify({
+                                            //         state: true,
+                                            //         type: "login",
+                                            //     });
+                                            // }
                                             else if (!localStorage.getItem('token')) {
                                                 setState({ ...state, stateRegister: false });
                                                 login();
@@ -849,7 +836,7 @@ const FlightReserve = (props) => {
                                             }
 
                                         }}
-                                        className="py-2 btn-block col-12 end-payment-btn btn"
+                                        className="py-2 btn-block col-12 rounded end-payment-btn"
                                     >
                                         {loading == false
                                             ? "تکمیل خرید"
@@ -864,11 +851,14 @@ const FlightReserve = (props) => {
                                                 props.router.back();
                                             }}
                                         > */}
-                                    <Link href={`/${JSON.parse(localStorage.getItem('url'))}`}>
+                                    <span 
+                                    onClick={() => {
+                                        props.router.back();
+                                    }}>
                                         <span
                                             className="btn col-12 back-payment-btn py-2"
                                         >بازگشت</span>
-                                    </Link>
+                                    </span>
                                     {/* </a> */}
                                 </div>
                             </div>
@@ -894,26 +884,7 @@ const FlightReserve = (props) => {
                     </div>
                 </div>
             </PopUp>
-            <PopUp opened={closePopUpPrice} closePopUp={setClosePopUpPrice} >
-                <div className="p-2">
-                    <div className="text-start">
-                        <span
-                        className="exit-form pb-1Important"
-                        onClick={() => {
-                            setClosePopUpPrice(false);
-                        }}
-                        >
-                        <CloseOutlined style={{ color: "red" }} />
-                        </span>
-                    </div>
-                    <div className="text-center">
-                        {/* <Image src={notification} width={300} height={300} /> */}
-                        <p>پرواز انتخابی شما با تغییر قیمت مواجه شده
-                        </p>
-                    </div>
-                </div>
-            {/* } */}
-            </PopUp>
+            
         </div>
     );
 }
@@ -926,7 +897,7 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch) => ({
     accountBoxModify: (value) => dispatch(accountBoxModify(value)),
     addReservationProperties: async (value) =>
-        dispatch(addReservationProperties(value)),
+    dispatch(addReservationProperties(value)),
     messageBoxModify: (value) => dispatch(messageBoxModify(value)),
 });
 

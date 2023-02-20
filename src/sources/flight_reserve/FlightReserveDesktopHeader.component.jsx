@@ -6,8 +6,9 @@ import { getweekday } from "../../Utils/SimpleTasks";
 import { faClock, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const FlightReserveDesktopHeader = (props) =>
-  props.airport1 ? (
+const FlightReserveDesktopHeader = (props) =>{
+  return(<>
+  {props.airport1 ? 
     <div className="row hidden-xs mt-5">
       {/* <div className="col-lg-1"></div> */}
       <div className={`mt-3 mb-2 ${styles["header-box"]}`}>
@@ -132,6 +133,8 @@ const FlightReserveDesktopHeader = (props) =>
         </div>
       </div>
     </div>
-  ) : null;
+    : null}
+  </>
+  )} ;
 
 export default FlightReserveDesktopHeader;

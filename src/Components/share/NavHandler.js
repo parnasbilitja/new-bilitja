@@ -1,34 +1,42 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
+import NabvarCustom from '../../sources/component/NabvarCustom';
 import NavBar from "../../sources/component/NavBar.component";
 import NavBarMobile from "../../sources/component/NavBarMobile.component"
+import NavBarMobileCustom from '../../sources/component/NavBarMobileCustom';
 
-class NavHandler extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+const NavHandler = (props) => {
+  console.log(props);
+        const [state,setState] = useState({
           width: 1024,
-        };
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-      }
-    componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
-      }
-      componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
-      }
-    
-      updateWindowDimensions() {
-        this.setState({ width: window.innerWidth });
-      }
-    render() {
+        });
+      
+      useEffect(() => { {
+        setState({ ...state,
+          width: window.innerWidth });
+  console.log(props);
+
+      }},[])
         return (
             <>
-                {this.state.width <= 826 ? <NavBarMobile /> : null}
-                {this.state.width >= 826 ? <NavBar /> : null}
+                {state.width <= 826 ? 
+                <>
+                {props.type === 'receipt'?
+                    <NavBarMobileCustom /> 
+                :
+                  <NavBarMobile /> 
+                }
+                </>
+                : 
+                <>
+                {props.type === 'receipt'?
+                <NabvarCustom/>
+                :
+                  <NavBar /> 
+                }
+                </>
+                }
             </>
         );
-    }
 }
 
 export default NavHandler;

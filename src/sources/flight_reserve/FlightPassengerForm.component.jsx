@@ -16,11 +16,20 @@ import BirthDayParent from "../calendar/BirthDayParent";
 const FlightPassengerForm = (props) => {
     console.log(props);
     const [calend, setCalend] = useState(true)
+    const [ closePopUpPrice, setClosePopUpPrice ] = useState(false)
     const [state, setState] = useState({
         open: false,
         extOpen: false,
     });
     useEffect(() => {
+        let price =''
+        setTimeout(function() {
+        }, 50);
+        price = parseInt(localStorage.getItem('priceChecker'));
+        if (price !== props.price){
+                setClosePopUpPrice(true)
+            }
+
         props.pathKind == 2  && setCalend(false)
         
     },[])
@@ -143,7 +152,7 @@ const FlightPassengerForm = (props) => {
                     {props.id != 0 ? (
                             <div
                             className="col-1 no-margin no-padding corner-position"
-                            style={{ position: "absolute", left: "10px", top: "5px" }}
+                            style={{ position: "absolute", left: "-7px", top: "0px" }}
                         >
                             <span
                                 className="delete-thumbnail"
@@ -406,7 +415,6 @@ const FlightPassengerForm = (props) => {
                         type={'BD'}
                         name="birthday"
                         setBirthdayb={(value) => {
-                            console.log(value);
                             props.fillPassengersData("birthday", props.id, value);
                         }}
                         closePopUpCalendar={managePopUpBirthdayCalendar}
@@ -440,6 +448,26 @@ const FlightPassengerForm = (props) => {
                     />
                 </div>
 
+            </PopUp>
+            <PopUp opened={closePopUpPrice} closePopUp={setClosePopUpPrice} >
+                <div className="p-2">
+                    <div className="text-start">
+                        <span
+                        className="exit-form pb-1Important"
+                        onClick={() => {
+                            setClosePopUpPrice(false);
+                        }}
+                        >
+                        <CloseOutlined style={{ color: "red" }} />
+                        </span>
+                    </div>
+                    <div className="text-center">
+                        <img src={'../../Images/notification.png'} width={'150px'} height={'150px'} />
+                        <p>پرواز انتخابی شما با تغییر قیمت مواجه شده
+                        </p>
+                    </div>
+                </div>
+            {/* } */}
             </PopUp>
         </div>
     );

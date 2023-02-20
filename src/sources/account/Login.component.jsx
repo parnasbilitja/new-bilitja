@@ -86,7 +86,6 @@ const Login = (props) => {
       .then((data) => {
         console.log(data);
         if (data.status == "10") {
-          // setState({...state, btn_disabled: false, loading: false });
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
           props.checkUserLogged();
@@ -376,7 +375,7 @@ const Login = (props) => {
           </div>
           {TestForValue.num == true &&
             <div className="col-12 justify-content-center d-flex">
-              <button className={'btn btn-outline-dark p-2 my-1 cursor-pointer'} onClick={() => phoneHandler()}>تغییر شماره</button>
+              <button className={'btn p-2 my-1 cursor-pointer pb-0 rounded-0'} style={{borderBottom: '1px dashed'}} onClick={() => phoneHandler()}>تغییر شماره</button>
             </div>
           }
         </div>
