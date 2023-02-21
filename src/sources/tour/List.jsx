@@ -6,9 +6,6 @@ import Link from 'next/link';
 import Footer from '../component/Footer.component';
 import NavHandler from '../../Components/share/NavHandler';
 import PopUp from '../../sources/component/PopUp.component';
-// format
-import { moneyFormat } from "../../Utils/SimpleTasks";
-
 
 import { connect, useSelector } from "react-redux";
 import { selcetAccountBox } from "../../Redux/UI/ui.reselect";
@@ -22,6 +19,12 @@ import Head from 'next/head';
 const Account = dynamic(() => import("./../../sources/account/Account.component"));
 
 const List = (props) => {
+    function moneyFormat(input) {
+        return parseFloat(input)
+          .toFixed(1)
+          .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+          .split(".")[0];
+      }
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false)
     const getData = async () => {

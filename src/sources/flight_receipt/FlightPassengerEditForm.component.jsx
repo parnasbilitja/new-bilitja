@@ -237,7 +237,7 @@ useEffect(() => {
             value={state.sex}
             name="sex"
             onChange={(e) => handleChange(e)}
-            style={{ height: "44px", position: "relative", bottom: "-3px" }}
+            style={{ height: "44px", position: "relative", bottom: "-3px",width: '95%',marginRight: '4px' }}
           >
             <option value="1">مرد</option>
             <option value="2">زن</option>
@@ -277,7 +277,7 @@ useEffect(() => {
       </div>
       <div className="row mt-10">
         <div className="col-lg-10"></div>
-        <div className="col-lg-1 padding-3px">
+        <div className="col-6 col-lg-1 padding-3px">
           <PrimaryButton
             value="ثبت"
             onClick={() => {
@@ -291,7 +291,7 @@ useEffect(() => {
             style={{ height: "40px" }}
           />
         </div>
-        <div className="col-lg-1 padding-3px">
+        <div className="col-6 col-lg-1 padding-3px">
           <a
             onClick={(e) => {
               e.preventDefault();

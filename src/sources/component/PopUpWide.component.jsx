@@ -17,9 +17,11 @@ const PopUpWide = (props) => {
         className={` ${styles["popup-calendar-main-box"]} ${
           props.opened ? styles["popup-animation"] : ""
         }`}
-        style={{top:props.type =='editReciept' && width < 400 && '-60px'}}
+        
       >
-        <div>{props.children}</div>
+        <div
+        style={{top:props.type =='editReciept' && width < 400 && '-80px',height:'100%'}}
+        >{props.children}</div>
       </div>
     </div>
   );

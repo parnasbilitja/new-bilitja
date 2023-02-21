@@ -8,8 +8,7 @@ import styles from "../../../styles/FlightReserve.module.scss";
 import { getweekday } from "../../Utils/SimpleTasks";
 const FlightReserveMobileHeader = (props) =>
   props.airport1 ? (
-    <div className={`row visible-xs ${styles["reserve-mobile-hero"]} `} style={{height: 'auto'}} >
-      <br />
+    <div className={`row visible-xs ${styles["reserve-mobile-hero"]} `} style={{height: 'auto',marginTop:'-3px !important'}} >
       <div
         className={`col-12 border-pill ${styles["border-pill-private"]}  ${styles["background-world"]}`}
       >

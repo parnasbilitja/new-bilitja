@@ -15,7 +15,7 @@ class ShowFlightListMobile extends React.Component {
     {
     }
     return (
-      <div className={`${styles["container-flight-list-mobile"]}`}>
+      <div className={`${styles["container-flight-list-mobile"]} mt-3`}>
         <Scrolltoprefresh />
         <div>
           <div

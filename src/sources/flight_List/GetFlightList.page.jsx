@@ -612,7 +612,7 @@ class GetFlightList extends React.Component {
                   </div>
                 ) : (
                   <>
-                    <p style={{ marginTop: 30 }} className="text-center mx-3">
+                    <p style={{ marginTop: 60 }} className="text-center mx-3">
                       متاسفانه هیچ پروازی از{" "}
                       <strong className="text-danger">
                         {

@@ -417,7 +417,7 @@ console.log(state);
         <div className="row ">
           <div className="col-lg-1 col-0"></div>
           <div className="col-lg-12 col-12 no-padding-xs border-pill-lg pt-10 px-3">
-            <div className="row justify-content-between">
+            <div className="row justify-content-between px-2">
               {/* child */}
               <div className={`col-lg-4 text-right ${styles['border-left']}`}>
                 <div className={`${styles["item"]}`}>
