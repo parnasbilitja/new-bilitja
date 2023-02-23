@@ -83,9 +83,9 @@ const HomeDetails = ( props) => {
                   />
                   <h2 className="font-bold-iransanse font-size-22 font-bold">
                     <span className="color-primary font-bold-iransanse">
-                      پذیرش میزبانی &nbsp;
+                      رزرو آنلاین &nbsp;
                     </span>
-                    <span>ویلا و اقامتگاه</span>
+                    <span>تور داخلی و خارجی</span>
                   </h2>
                   <p className="color-textpill font-size-15">
                     با عضویت در سامانه بلیطجا شما هم میتوانید ویلا یا اقامتگاه

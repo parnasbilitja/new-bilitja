@@ -1,7 +1,7 @@
 .messagebox-parent {
   position: absolute;
   top: 0;
-  height: 100vh;
+  height: min-content;
 }
 .messagebox {
   justify-content: center;

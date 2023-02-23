@@ -39,7 +39,7 @@ const DashboardNav = (props) => {
           }`}
       >
         <div className="w-100 d-flex justify-content-between rounded-3">
-          <div className={styles["manager-nav-header"]} style={{ width: "100%", display: "flex", flexDirection: 'row-reverse', justifyContent: "space-between" }}>
+          <div className={`curser-pointer ${styles["manager-nav-header"]}`} style={{ width: "100%", display: "flex", flexDirection: 'row-reverse', justifyContent: "space-between" }}>
             <Link href={'/'} passHref>
               <img
                 width=""
@@ -80,7 +80,7 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/profile");
-            props.onClose();
+            props.onClose && props.onClose();
           }}
         >
           <div>
@@ -108,7 +108,7 @@ const DashboardNav = (props) => {
         {/*  }*/}
         {/*  onClick={() => {*/}
         {/*    myRouter.push("/dashboard/index");*/}
-        {/*    props.onClose();*/}
+           {/* props.onClose(); */}
         {/*  }}*/}
         {/*>*/}
         {/*  <div>*/}
@@ -131,7 +131,7 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/orders");
-            props.onClose();
+            props.onClose && props.onClose();
           }}
         >
           <div>
@@ -165,7 +165,7 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/wallet");
-            props.onClose();
+            props.onClose && props.onClose();
           }}
         >
           <div>
@@ -191,7 +191,7 @@ const DashboardNav = (props) => {
         {/*  }*/}
         {/*  onClick={() => {*/}
         {/*    myRouter.push("/dashboard/agency");*/}
-        {/*    props.onClose();*/}
+           {/* props.onClose(); */}
         {/*  }}*/}
         {/*>*/}
         {/*  <div>*/}
@@ -235,7 +235,7 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/profile");
-            props.onClose();
+            props.onClose && props.onClose();
           }}
         >
           <div>
@@ -269,10 +269,10 @@ const DashboardNav = (props) => {
             />
           </Link>
           <div
-            className={`${styles[""]} d-flex align-items-center flex-row-reverse cursor-pointer`}
+            className={`${styles[""]} curser-pointer d-flex align-items-center flex-row-reverse cursor-pointer`}
             onClick={(e) => {handleLogoutUser(e)
               myRouter.push("/");
-              props.onClose();
+              props.onClose && props.onClose();
             }}
           >
             <div>
@@ -300,7 +300,7 @@ const DashboardNav = (props) => {
         }
         onClick={() => {
           myRouter.push("/dashboard/profile");
-          props.onClose();
+          props.onClose && props.onClose();
         }}
       >
         <div>
@@ -328,7 +328,7 @@ const DashboardNav = (props) => {
         }
         onClick={() => {
           myRouter.push("/dashboard/orders");
-          props.onClose();
+          props.onClose && props.onClose();
         }}
       >
         <div>
@@ -357,7 +357,7 @@ const DashboardNav = (props) => {
         }
         onClick={() => {
           myRouter.push("/dashboard/wallet");
-          props.onClose();
+          props.onClose && props.onClose();
         }}
       >
         <div>
@@ -383,7 +383,7 @@ const DashboardNav = (props) => {
         }
         onClick={() => {
           myRouter.push("/dashboard/profile");
-          props.onClose();
+          props.onClose && props.onClose();
         }}
       >
         <div>

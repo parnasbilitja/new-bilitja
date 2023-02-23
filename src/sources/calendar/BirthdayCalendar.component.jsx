@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import moment from 'moment-jalaali'
 import styles from '../../../styles/BirthdayCalendar.module.scss'
 const BirthdayCalendar = (props) => {
@@ -12,6 +12,8 @@ const BirthdayCalendar = (props) => {
         month: '',
     });
 
+    let childAge = moment().add(-2,'jyears').format('jYYYY/jMM/jDD')
+    
     const getYears = () => {
         if (props.typePassenger == "ADL") {
             return new Array(current - 11 - props.type=="BD"?51:props.type=="EXT"?10:85).fill().map((x, index) => {
@@ -52,6 +54,68 @@ const BirthdayCalendar = (props) => {
 
         return revArrayOfDay.reverse()
     }
+    const stageMonth = [
+        {
+            month:'1',
+            stage:3,
+            title:'فروردین',
+        },
+        {
+            month:'2',
+            stage:3,
+            title:'اردیبهشت',
+        },
+        {
+            month:'3',
+            stage:3,
+            title:'خرداد',
+        },
+        {
+            month:'4',
+            stage:3,
+            title:'تیر',
+        },
+        {
+            month:'5',
+            stage:3,
+            title:'مرداد',
+        },
+        {
+            month:'6',
+            stage:3,
+            title:'شهریور',
+        },
+        {
+            month:'7',
+            stage:3,
+            title:'مهر',
+        },
+        {
+            month:'8',
+            stage:3,
+            title:'آبان',
+        },
+        {
+            month:'9',
+            stage:3,
+            title:'آذر',
+        },
+        {
+            month:'10',
+            stage:3,
+            title:'دی',
+        },
+        {
+            month:'11',
+            stage:3,
+            title:'بهمن',
+        },
+        {
+            month:'12',
+            stage:3,
+            title:'اسفند',
+        },
+    ]
     const getMonth = () => {
         const monthes = ["",
         "فروردین",
@@ -103,102 +167,16 @@ const BirthdayCalendar = (props) => {
                                 لطفا ماه تولد خود را وارد کنید
                             </p>
                             <div className={styles['birthday-month-container']}>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "1",
-                                        stage: 3
-                                    })
-                                }}>
-                                    فروردین
+                                {stageMonth.map((item,index)=>(
+                                    <div key={index} className={styles['birthday-item']} onClick={() => {
+                                        setState({...state,
+                                            month: item.month,
+                                            stage: item.stage
+                                        })
+                                    }}>
+                                    {item.title}
                                 </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "2",
-                                        stage: 3
-                                    })
-                                }}>
-                                    اردیبهشت
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "3",
-                                        stage: 3
-                                    })
-                                }}>
-                                    خرداد
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "4",
-                                        stage: 3
-                                    })
-                                }}>
-                                    تیر
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "5",
-                                        stage: 3
-                                    })
-                                }}>
-                                    مرداد
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "6",
-                                        stage: 3
-                                    })
-                                }}>
-                                    شهریور
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "7",
-                                        stage: 3
-                                    })
-                                }}>
-                                    مهر
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "8",
-                                        stage: 3
-                                    })
-                                }}>
-                                    آبان
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "9",
-                                        stage: 3
-                                    })
-                                }}>
-                                    آذر
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "10",
-                                        stage: 3
-                                    })
-                                }}>
-                                    دی
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "11",
-                                        stage: 3
-                                    })
-                                }}>
-                                    بهمن
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "12",
-                                        stage: 3
-                                    })
-                                }}>
-                                    اسفند
-                                </div>
+                                ))}
                             </div>
                         </div>
                         :
