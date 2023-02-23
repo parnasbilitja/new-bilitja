@@ -1364,6 +1364,11 @@ $sizes: 100;
     @include mobile-grid-classes;
 }
 
+.check-r {
+    border: 1px solid #c1c1c1;
+    border-radius: 10px;
+}
+
 .BEFORE {
     background-color: #fff;
     border: 1px solid #c1c1c1;
