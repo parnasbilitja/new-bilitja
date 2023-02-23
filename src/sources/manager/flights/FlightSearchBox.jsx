@@ -190,7 +190,7 @@ const FlightSearchBox = (props) =>{
             ) : null}
           </div>
         </div>
-
+        
         <div
           className={`${
             props.showSwitch ? null : "hidden-xs"
