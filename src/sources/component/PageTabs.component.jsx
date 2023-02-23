@@ -9,7 +9,7 @@ const PageTabls = (props) => {
     <div className={`row justify-content-center mt-3`}>
       <div className={`col-md-10 ${styles["border-bottom"]} ${styles["width-mobile"]} px-0`}>
         <div className={'row justify-content-start me-0 w-100 position-relative'} style={{top:'2px'}}>
-            <div className={`${styles["home-tab"]} ${styles["mobile-tab1"]}  col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 1 ? styles["home-tab-active"] : null}`}
+            <div className={`${styles["home-tab"]} ${styles["mobile-tab1"]}  col-6 col-md-2 col-xl-1 cursor-pointer ms-2 ${props.type == 1 ? styles["home-tab-active"] : null}`}
               onClick={() => {
                 props.setType(1)
                 myRouter.push("/ticket");
@@ -22,7 +22,7 @@ const PageTabls = (props) => {
                 <span className="font-size-13"> پرواز </span>
               </div>
             </div>
-            <div className={`${styles["home-tab"]} ${styles["mobile-tab2"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 3 ? styles["home-tab-active"] : null
+            <div className={`${styles["home-tab"]} ${styles["mobile-tab2"]} col-6 col-md-2 col-xl-1 cursor-pointer ms-2 ${props.type == 3 ? styles["home-tab-active"] : null
                 }`}
               onClick={() => {
                 props.setType(3)
@@ -33,10 +33,10 @@ const PageTabls = (props) => {
                 <i className="bilitja font-size-20 icon-villa"></i>
               </div>
               <div className="pull-right">
-                <span className="font-size-13 "> هتل </span>
+                <span className="font-size-13 ">هتل (به زودی)</span>
               </div>
             </div>
-            <div className={`${styles["home-tab"]} ${styles["mobile-tab3"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 4 ? styles["home-tab-active"] : null
+            <div className={`${styles["home-tab"]} ${styles["mobile-tab3"]} col-6 col-md-2 col-xl-1 cursor-pointer ms-2 ${props.type == 4 ? styles["home-tab-active"] : null
                 }`}
               onClick={() => {
                 props.setType(4)
@@ -47,10 +47,10 @@ const PageTabls = (props) => {
                 <i className="bilitja font-size-20 icon-villa"></i>
               </div>
               <div className="pull-right">
-                <span className="font-size-13 "> اقامتگاه </span>
+                <span className="font-size-13 ">اقامتگاه (به زودی)</span>
               </div>
             </div>
-            <div className={`${styles["home-tab"]} ${styles["mobile-tab4"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 2 ? styles["home-tab-active"] : null
+            <div className={`${styles["home-tab"]} ${styles["mobile-tab4"]} col-6 col-md-2 col-xl-1 cursor-pointer ms-2 ${props.type == 2 ? styles["home-tab-active"] : null
                 }`}
               onClick={() => {
                 props.setType(2)
