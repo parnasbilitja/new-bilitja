@@ -104,7 +104,7 @@ const Home = (props) => {
               <PageTabls type={type} setType={setType} />
             </div>
             <div className="row justify-content-center">
-              <div className="col-md-10 px-0 d-flex justify-content-center position-relative">
+              <div className="col-md-10 px-0 d-flex justify-content-center">
                 <div className={`px-0 ${styles["width-mobile-search"]} w-100`}>
                   <FlightSearchBox dateSelected={state.dateSelected} />
                 </div>
