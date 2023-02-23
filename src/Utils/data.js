@@ -150,53 +150,53 @@ const flightsData = [
     [
       {
         name: "مشهد",
-        url: "tehran-to-mashhad/airfares-thr,ika-mhd",
+        url: "#",
       },
       {
         name: "کیش",
-        url: "tehran-to-kish/airfares-thr,ika-kih",
+        url: "#",
       },
       {
         name: "اصفهان",
-        url: "tehran-to-isfahan/airfares-thr,ika-ifn",
+        url: "#",
       },
       {
         name: "اهواز",
-        url: "tehran-to-ahwaz/airfares-thr,ika-awz",
+        url: "#",
       },
       {
         name: "تبریز",
-        url: "tehran-to-tabriz/airfares-thr,ika-tbz",
+        url: "#",
       },
       {
         name: "شیراز",
-        url: "tehran-to-shiraz/airfares-thr,ika-syz",
+        url: "#",
       }, 
     ]
     ,[
     {
       name: "استانبول",
-      url: "tehran-to-istanbul/airfares-thr,ika-ist",
+      url: "#",
     },
     {
       name: "دبی",
-      url: "tehran-to-dubi/airfares-thr,ika-dxb",
+      url: "#",
     },
     {
       name: "تفلیس",
-      url: "tehran-to-teflis/airfares-thr,ika-tbs",
+      url: "#",
     },
     {
       name: "آنتالیا",
-      url: "tehran-to-antalya-all/airfares-thr,ika-ayt,dnz,ise",
+      url: "#",
     },
     {
       name: "آنکارا",
-      url: "tehran-to-baku/airfares-thr,ika-gyd",
+      url: "#",
     },
     {
       name: "آلانیا",
-      url: "tehran-to-najaf/airfares-thr,ika-njf",
+      url: "#",
     }, 
   ]]
 

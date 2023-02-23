@@ -13,8 +13,6 @@ const NavHandler = (props) => {
       useEffect(() => { {
         setState({ ...state,
           width: window.innerWidth });
-  console.log(props);
-
       }},[])
         return (
             <>

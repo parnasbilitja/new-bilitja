@@ -2,8 +2,10 @@ import React from "react";
 import styles from "../../../styles/Home.module.scss";
 
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const PageTabls = (props) => {
+  
   const myRouter = useRouter();
   return (
     <div className={`row justify-content-center mt-3`}>
@@ -22,6 +24,7 @@ const PageTabls = (props) => {
                 <span className="font-size-13"> پرواز </span>
               </div>
             </div>
+            <Link href='/hotels'>
             <div className={`${styles["home-tab"]} ${styles["mobile-tab2"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 3 ? styles["home-tab-active"] : null
                 }`}
               onClick={() => {
@@ -35,12 +38,12 @@ const PageTabls = (props) => {
               <div className="pull-right">
                 <span className="font-size-13 "> هتل </span>
               </div>
-            </div>
+            </div></Link>
             <div className={`${styles["home-tab"]} ${styles["mobile-tab3"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 4 ? styles["home-tab-active"] : null
                 }`}
               onClick={() => {
                 props.setType(4)
-                // myRouter.push("/tours");
+                myRouter.push("/villa");
               }}
             >
               <div className="pull-right icon-container">

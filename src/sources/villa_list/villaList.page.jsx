@@ -1,53 +1,47 @@
 import React from 'react'
 import styles from '../../../styles/villaList.module.scss'
 import stylesflight from '../../../styles/Flight.module.scss'
-import villaSearchBox from '../villa/villaSearchBox.component'
 
 import { faFilter, faSearch, faMap, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import SlideIn from '../component/SlideIn.component'
-import villaFilters from './villaFilterList.component'
 import PopUp from '../component/PopUp.component'
-
-import villaListDesktop from './villaListDesktop.component'
-import villaListMobile from './villaListMobile.component'
 
 import { selectCredentials } from '../../Redux/Searchvilla/search_villa.reselect'
 import { connect } from 'react-redux'
-import globals from '../Global'
-class villaList extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
+import PageTabls from '../component/PageTabs.component'
+import { useState } from 'react'
+import { useEffect } from 'react'
+const villaList = (props) => {
+        const [state, setState] = useState({
             slide: false,
             open: false,
             villaList: []
-        }
-    }
+        })
+        const [type, setType] = useState(4) 
+    // useEffect(() => {
+    //     const { city, dateStart, dateEnd } = props.selectCredentials
+    //     fetch(`${globals.baseUrl}bj/site/search/${city}/${String(dateStart).replace("/", "").replace("/", "")}/${String(dateEnd).replace("/", "").replace("/", "")}`)
+    //         .then(res => res.json()).then(data => {
+    //             setState({
+    //                 villaList: data.Eghamat
+    //             })
+    //         })
+    // },[])
 
-    componentDidMount() {
-        const { city, dateStart, dateEnd } = this.props.selectCredentials
-        fetch(`${globals.baseUrl}bj/site/search/${city}/${String(dateStart).replace("/", "").replace("/", "")}/${String(dateEnd).replace("/", "").replace("/", "")}`)
-            .then(res => res.json()).then(data => {
-                this.setState({
-                    villaList: data.Eghamat
-                })
-            })
-    }
-
-    managePopUpSearch = (value) => {
-        this.setState({
+    const managePopUpSearch = (value) => {
+        setState({...state,
             open: value
         })
     }
-    render() {
         return (
             <div className={`container-fluid ${stylesflight['flight-container']}`}>
                 <div className={`row text-right  ${stylesflight['hidden-xs-flight']}`}>
                     <div className="col-lg-1 col-md-1 col-sm-1"></div>
                     <div className="col-lg-10 col-md-11 col-sm-11">
-                        <villaSearchBox />
+                    <PageTabls type={type} setType={setType} />
+                        {/* <villaSearchBox /> */}
                     </div>
                 </div>
 
@@ -56,8 +50,8 @@ class villaList extends React.Component {
                     <div className="col-lg-10 col-md-11 col-sm-12 col-12">
                         <div className="row">
                             <div className="col-lg-9 col-md-8 col-sm-8 col-12 padding-10px">
-                                <villaListDesktop villaList={this.state.villaList} />
-                                <villaListMobile villaList={this.state.villaList} />
+                                <villaListDesktop villaList={state.villaList} />
+                                <villaListMobile villaList={state.villaList} />
                             </div>
                             <div className={`col-lg-3 col-md-4 col-sm-4 ${stylesflight['hidden-xs-flight']} padding-5px`}>
                                 <villaFilters />
@@ -67,12 +61,12 @@ class villaList extends React.Component {
 
                 </div>
 
-                <PopUp opened={this.state.open} closePopUp={this.managePopUpSearch}>
+                <PopUp opened={state.open} closePopUp={managePopUpSearch}>
                     <div className="popup-content-container">
                         <div className="popup-heading d-flex align-items-center justify-content-between">
                             <span>جستجو مجدد</span>
                             <span className="exit-form" onClick={() => {
-                                this.managePopUpSearch(false)
+                                managePopUpSearch(false)
                             }}>
                                 <CloseOutlined style={{ color: "red" }} />
                             </span>
@@ -82,8 +76,8 @@ class villaList extends React.Component {
                 </PopUp>
 
 
-                <SlideIn slide={this.state.slide} close={() => {
-                    this.setState({
+                <SlideIn slide={state.slide} close={() => {
+                    setState({
                         slide: false
                     })
                 }}>
@@ -92,7 +86,7 @@ class villaList extends React.Component {
 
                 <div className={styles['visible-xs-villa-footer']}>
                     <div onClick={() => {
-                        this.setState({
+                        setState({
                             slide: true
                         })
                     }}>
@@ -104,7 +98,7 @@ class villaList extends React.Component {
                         <p>موقعیت</p>
                     </div>
                     <div onClick={() => {
-                        this.managePopUpSearch(true)
+                        managePopUpSearch(true)
                     }}>
                         <FontAwesomeIcon icon={faSearch} />
                         <p>جستجو</p>
@@ -112,7 +106,7 @@ class villaList extends React.Component {
                 </div>
             </div>
         )
-    }
+    
 }
 const mapStatesToProps = (state) => ({
     selectCredentials: selectCredentials(state)
