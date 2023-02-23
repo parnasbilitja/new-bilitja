@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
-import {
-  faArchway,
-  faChartLine,
-  faDollarSign,
-  faHandshake,
-  faInfoCircle,
-  faSignOutAlt,
-  faUserAlt,
-} from "@fortawesome/free-solid-svg-icons";
+
 import styles from "../../../styles/ManagerNav.module.scss";
 import Link from "next/link";
 
@@ -23,7 +15,10 @@ const DashboardNav = (props) => {
   }
   const myRouter = useRouter();
   const [mobile, setMobile] = useState();
-  const [size, setSize] = useState(window.innerWidth);
+  const [size, setSize] = useState();
+  useEffect(() => {
+    setSize(window.innerWidth);
+  },[])
   console.log(size);
 
   useEffect(() => {
@@ -52,7 +47,9 @@ const DashboardNav = (props) => {
               className={`${styles[""]} d-flex align-items-center flex-row-reverse cursor-pointer`}
               onClick={(e) => {handleLogoutUser(e)
                 myRouter.push("/");
-                props.onClose && props.onClose();
+                if(size<=826){
+                  props.setOpen(false);
+                }
               }}
             >
               <div>
@@ -80,7 +77,9 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/profile");
-            props.onClose && props.onClose();
+            if(size<=826){
+              props.setOpen(false);
+            }
           }}
         >
           <div>
@@ -100,29 +99,6 @@ const DashboardNav = (props) => {
             </p>
           </div>
         </div>
-        {/*<div*/}
-        {/*  className={*/}
-        {/*    myRouter.asPath === "/dashboard/index"*/}
-        {/*      ? `${styles["manager-nav-one-row"]} dashboard-menu-item-active cursor-pointer`*/}
-        {/*      : `${styles["manager-nav-one-row"]} dashboard-menu-item cursor-pointer`*/}
-        {/*  }*/}
-        {/*  onClick={() => {*/}
-        {/*    myRouter.push("/dashboard/index");*/}
-           {/* props.onClose(); */}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  <div>*/}
-        {/*    <FontAwesomeIcon icon={faChartLine} />*/}
-        {/*  </div>*/}
-        {/*  <div>*/}
-        {/*    <p className="no-margin font-size-13 font-bold-iransanse">*/}
-        {/*      داشبورد*/}
-        {/*    </p>*/}
-        {/*    <p className="no-margin font-size-13 color-textpill iran-sans">*/}
-        {/*      Dashboard*/}
-        {/*    </p>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
         <div
           className={
             myRouter.asPath === "/dashboard/orders"
@@ -131,15 +107,12 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/orders");
-            props.onClose && props.onClose();
+            if(size<=826){
+              props.setOpen(false);
+            }
           }}
         >
           <div>
-            {/* <FontAwesomeIcon icon={faInfoCircle} /> */}
-            {/* <svg width="25" height="25" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M32.6172 17.8203L25.9245 27.8844C25.4988 28.5245 24.5401 28.4649 24.197 27.777L21.9143 23.2003C21.5712 22.5124 20.6125 22.4528 20.1868 23.0929L13.4941 33.157" stroke="#013136" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-              <rect x="5.84766" y="6.31836" width="34.4215" height="34.5075" rx="2" stroke="#013136" strokeWidth={2} />
-            </svg> */}
             <svg width="25" height="25" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M8.31641 10.7246C8.31641 8.83899 8.31641 7.89618 8.90219 7.3104C9.48798 6.72461 10.4308 6.72461 12.3164 6.72461H34.9133C36.7989 6.72461 37.7417 6.72461 38.3275 7.3104C38.9133 7.89618 38.9133 8.83899 38.9133 10.7246V31.2321C38.9133 35.9461 38.9133 38.3032 37.4488 39.7676C35.9844 41.2321 33.6273 41.2321 28.9133 41.2321H18.3164C13.6024 41.2321 11.2453 41.2321 9.78087 39.7676C8.31641 38.3032 8.31641 35.9461 8.31641 31.2321V10.7246Z" stroke="#013136" strokeWidth={2} />
               <path d="M29.6055 35.4805L29.6055 41.2317M18.103 35.4805L18.103 41.2317" stroke="#013136" strokeWidth={1.5} strokeLinecap="round" />
@@ -165,7 +138,9 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/wallet");
-            props.onClose && props.onClose();
+            if(size<=826){
+              props.setOpen(false);
+            }
           }}
         >
           <div>
@@ -183,50 +158,7 @@ const DashboardNav = (props) => {
             </p>
           </div>
         </div>
-        {/*<div*/}
-        {/*  className={*/}
-        {/*    myRouter.asPath === "/dashboard/agency"*/}
-        {/*      ? `${styles["manager-nav-one-row"]} dashboard-menu-item-active cursor-pointer`*/}
-        {/*      : `${styles["manager-nav-one-row"]} dashboard-menu-item cursor-pointer`*/}
-        {/*  }*/}
-        {/*  onClick={() => {*/}
-        {/*    myRouter.push("/dashboard/agency");*/}
-           {/* props.onClose(); */}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  <div>*/}
-        {/*    <FontAwesomeIcon icon={faDollarSign} />*/}
-        {/*  </div>*/}
-        {/*  <div>*/}
-        {/*    <p className="no-margin font-size-13 font-bold-iransanse">agency</p>*/}
-        {/*    <p className="no-margin font-size-13 color-textpill iran-sans">*/}
-        {/*      agency*/}
-        {/*    </p>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
-        {/*<div*/}
-        {/*  className={*/}
-        {/*    myRouter.asPath === "/dashboard/my-villa"*/}
-        {/*      ? `${styles["manager-nav-one-row"]} dashboard-menu-item-active cursor-pointer`*/}
-        {/*      : `${styles["manager-nav-one-row"]} dashboard-menu-item cursor-pointer`*/}
-        {/*  }*/}
-        {/*  onClick={() => {*/}
-        {/*    myRouter.push("/dashboard/my-villa");*/}
-        {/*    props.onClose();*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  <div>*/}
-        {/*    <FontAwesomeIcon icon={faArchway} />*/}
-        {/*  </div>*/}
-        {/*  <div>*/}
-        {/*    <p className="no-margin font-size-13 font-bold-iransanse">*/}
-        {/*      اقامتگاه*/}
-        {/*    </p>*/}
-        {/*    <p className="no-margin font-size-13 color-textpill iran-sans">*/}
-        {/*      Villas*/}
-        {/*    </p>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
+      
         <div
           className={
             myRouter.asPath === "/dashboard/coopration"
@@ -235,7 +167,9 @@ const DashboardNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/dashboard/profile");
-            props.onClose && props.onClose();
+            if(size<=826){
+              props.setOpen(false);
+            }
           }}
         >
           <div>
@@ -272,7 +206,9 @@ const DashboardNav = (props) => {
             className={`${styles[""]} curser-pointer d-flex align-items-center flex-row-reverse cursor-pointer`}
             onClick={(e) => {handleLogoutUser(e)
               myRouter.push("/");
-              props.onClose && props.onClose();
+              if(size<=826){
+                props.setOpen(false);
+              }
             }}
           >
             <div>
@@ -300,7 +236,9 @@ const DashboardNav = (props) => {
         }
         onClick={() => {
           myRouter.push("/dashboard/profile");
-          props.onClose && props.onClose();
+          if(size<=826){
+            props.setOpen(false);
+          }
         }}
       >
         <div>
@@ -328,7 +266,9 @@ const DashboardNav = (props) => {
         }
         onClick={() => {
           myRouter.push("/dashboard/orders");
-          props.onClose && props.onClose();
+          if(size<=826){
+            props.setOpen(false);
+          }
         }}
       >
         <div>
@@ -357,7 +297,9 @@ const DashboardNav = (props) => {
         }
         onClick={() => {
           myRouter.push("/dashboard/wallet");
-          props.onClose && props.onClose();
+          if(size<=826){
+            props.setOpen(false);
+          }
         }}
       >
         <div>
@@ -383,7 +325,9 @@ const DashboardNav = (props) => {
         }
         onClick={() => {
           myRouter.push("/dashboard/profile");
-          props.onClose && props.onClose();
+          if(size<=826){
+            props.setOpen(false);
+          }
         }}
       >
         <div>
