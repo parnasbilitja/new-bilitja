@@ -120,7 +120,6 @@ const FlightReciept = (props) => {
 },[])
 
   const compeleteReservation = () => {
-    console.log(props);
     const reservePassengerObject = {
       reqNo: props.reserveProperties.reqNo,
       reqPnr: props.reserveProperties.reqPnr,
@@ -142,7 +141,6 @@ const FlightReciept = (props) => {
       numINF: state.numINF,
       customerId: "1a157116-a01a-4027-ab10-74098ac63815",
     };
-    console.log(reservePassengerObject);
     fetch(
       `${globals.baseUrlNew}BilitFlightReserve/flightsReserve/ravisReserveSave`,
       {
@@ -153,7 +151,6 @@ const FlightReciept = (props) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.message == "0") {
           alert("success");
         // } else {
@@ -261,7 +258,11 @@ const FlightReciept = (props) => {
 
     setState({...state,
       nameAll_: names,
+      nameAll: names,
+      nameEnAll: [...names.map((item)=>(item.toUpperCase()))],
       familyAll_: families,
+      familyAll: families,
+      familyEnAll:[...families.map((item)=>(item.toUpperCase()))],
       sexAll_: sexes,
       meliatAll_: meliats,
       meliCodeAll_: meliCodes,
@@ -269,6 +270,7 @@ const FlightReciept = (props) => {
       pasEndDateAll_ : pasEndDateAll,
       isUpdated: true,
     });
+    console.log(state);
   };
   const [open, setOpen] = useState(false);
   const managePopUpEditForm = () => {

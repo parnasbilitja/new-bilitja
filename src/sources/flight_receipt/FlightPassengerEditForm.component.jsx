@@ -284,9 +284,7 @@ const FlightPassengerEditForm = (props) => {
             onClick={() => {
               if (validation()) {
                 props.setOpen(false);
-                props.changeProperty(props.index, {
-                  ...state,
-                });
+                props.changeProperty(props.index, state);
               }
             }}
             style={{ height: "40px" }}

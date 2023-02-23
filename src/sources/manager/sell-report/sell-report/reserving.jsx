@@ -85,11 +85,7 @@ const fetchedList = async () => {
   console.log(response);
   return response;
 };
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-}));
+
 const getRows = async () => {
   const list = await fetchedList();
   const array = list.data.map((option) =>

@@ -73,6 +73,9 @@ const ManagerNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/panel/profile");
+            if (width <= 826) {
+              setOpend(false)
+            }
           }}
         >
           <div>
@@ -97,6 +100,9 @@ const ManagerNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/panel/dashboard");
+            if (width <= 826) {
+              setOpend(false)
+            }
           }}
         >
           <div>
@@ -120,6 +126,9 @@ const ManagerNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/panel/flight-sell-report");
+            if (width <= 826) {
+              setOpend(false)
+            }
           }}
         >
           <div>
@@ -144,6 +153,9 @@ const ManagerNav = (props) => {
           }
           onClick={() => {
             myRouter.push("/panel/price-handling");
+            if (width <= 826) {
+              setOpend(false)
+            }
           }}
         >
           
@@ -164,6 +176,9 @@ const ManagerNav = (props) => {
               : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/panel/villas/search");
+            if (width <= 826) {
+              setOpend(false)
+            }
           }}
         >
           <div>
@@ -184,6 +199,9 @@ const ManagerNav = (props) => {
               : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/panel/villas/search");
+            if (width <= 826) {
+              setOpend(false)
+            }
           }}
         >
           <div>
@@ -203,6 +221,9 @@ const ManagerNav = (props) => {
               : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/panel/villas/search");
+            if (width <= 826) {
+              setOpend(false)
+            }
           }}
         >
           <div>
@@ -222,6 +243,9 @@ const ManagerNav = (props) => {
               : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/panel/city/show");
+            if (width <= 826) {
+              setOpend(false)
+            }
           }}
         >
           <div>
@@ -241,6 +265,9 @@ const ManagerNav = (props) => {
           : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/panel/facility/show");
+            if (width <= 826) {
+              setOpend(false)
+            }
           }}
         >
           <div>
@@ -262,6 +289,9 @@ const ManagerNav = (props) => {
               : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/panel/rule/show");
+            if (width <= 826) {
+              setOpend(false)
+            }
           }}
         >
           <div>
@@ -285,6 +315,9 @@ const ManagerNav = (props) => {
               : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse cursor-pointer panel-menu-item`}
           onClick={() => {
             myRouter.push("/");
+            if (width <= 826) {
+              setOpend(false)
+            }
           }}
         >
           <div>
