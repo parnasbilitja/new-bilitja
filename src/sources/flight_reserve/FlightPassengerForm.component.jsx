@@ -43,6 +43,9 @@ const FlightPassengerForm = (props) => {
         extPasaportErr: 'لطفا فیلد انقضا را پر کنید',
         // pasaportErr : "پاسپورت الزامی میباشد",
     })
+    useEffect(()=>{
+        setErr({...err,nationalCodeErr:props.codeErr})
+    },[props.codeErr])
     const errHandler = (e) => {
         if (e.target.name = 'extPasaport' && e.target.value !== '') {
             setErr({ ...err, [e.target.name]: true })
@@ -297,7 +300,7 @@ const FlightPassengerForm = (props) => {
                                             placeholder={`کد ملی`}
                                             inputMode={`numeric`}
                                             onChange={(e) => {
-                                                setErr({ ...err, nationalCode: false })
+                                                setErr({ ...err, nationalCodeErr: '' })
                                                 props.fillPassengersData(
                                                     "code",
                                                     props.id,
@@ -309,7 +312,7 @@ const FlightPassengerForm = (props) => {
                                         />
                                     </div>
                                     <span className="color-secondary error-message position-absolute">
-                                        {props.codeErr !== "" && props.codeErr}
+                                        {err.nationalCodeErr !== "" && err.nationalCodeErr}
                                     </span>
                                 </>
                                 :

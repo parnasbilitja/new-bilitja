@@ -17,6 +17,8 @@ import {
   getUserInfo,
 } from "../../Redux/Account/account.action";
 import { useState } from "react";
+import { MuiOtpInput } from "mui-one-time-password-input";
+import { useEffect } from "react";
 const Auth = (props) => {
   const [state, setState] = useState({
     btn_disabled: false,
@@ -61,9 +63,14 @@ const Auth = (props) => {
       setState({ ...state, mobile: e.target.value, error: false, errText: "" })
     };
   };
-  const handleSetToken = (e) => {
-    setState({ ...state, token: e.target.value, error: false, errText: "" });
+  const handleSetToken = (newvalue) => {
+    setState({ ...state, token: newvalue, error: false, errText: "" });
   };
+  useEffect(() => {
+    if (state.token.length == 4 ) {
+      loginWithToken()
+    }
+  },[state.token]);
   const handleSetPassword = (e) => {
     setState({ ...state, password: e.target.value, error: false, errText: "" });
   };
@@ -371,14 +378,7 @@ const Auth = (props) => {
                 </div>
                 <div className="col-11 padding-horizental-3px">
                   <div>
-                    <input
-                      className="form-input-auth px-2 col-12"
-                      placeholder="کد ارسال شده را وارد نمایید."
-                      name="moaref"
-                      onChange={handleSetToken}
-                      autoFocus
-                      inputMode="numeric"
-                    />
+                  <MuiOtpInput value={state.token} onChange={handleSetToken} />
                   </div>
                 </div>
               </>

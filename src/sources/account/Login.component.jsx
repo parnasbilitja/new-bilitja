@@ -20,6 +20,7 @@ import {
 import { useState } from "react";
 import Timer from "../../Utils/Timer";
 import Router from "next/router";
+import { MuiOtpInput } from "mui-one-time-password-input";
 
 
 const Login = (props) => {
@@ -280,6 +281,14 @@ const Login = (props) => {
     console.log(TestForValue);
   }
 
+  const handleChange = (newValue) => {
+    setUserMobileAndCode({ ...UserMobileAndCode,code:newValue});
+  }
+  useEffect(() => {
+    if (UserMobileAndCode.code.length == 4 ) {
+      loginWithToken()
+    }
+  },[UserMobileAndCode.code]);
   return (
     <div className="popup-content-container">
 
@@ -322,25 +331,9 @@ const Login = (props) => {
                 />
                 :
                 TestForValue.num == true && TestForValue.code == false ?
-                  <input
-                    className="form-input-auth px-2 col-12"
-                    value={UserMobileAndCode.code}
-                    placeholder="کد ارسال شده را وارد نمایید."
-                    name="code"
-                    onChange={e => userMobileHandler(e)}
-                    // autoFocus
-                    inputMode="numeric"
-                  />
+                  <MuiOtpInput value={UserMobileAndCode.code} onChange={handleChange} />
                   :
-                  <input
-                    value={UserMobileAndCode.code}
-                    className="form-input-auth px-2 col-12"
-                    placeholder="کد ارسال شده را وارد نمایید."
-                    name="code"
-                    onChange={e => userMobileHandler(e)}
-                    // autoFocus
-                    inputMode="numeric"
-                  />
+                  <MuiOtpInput value={UserMobileAndCode.code} onChange={handleChange} />
               }
             </div>
           </div>

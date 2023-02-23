@@ -13,6 +13,7 @@ import globals from "../Global";
 
 import Countdown from "react-countdown";
 import { Loader } from "./../../Utils/Loader";
+import { MuiOtpInput } from "mui-one-time-password-input";
 const Register = (props) =>{
   // constructor() {
   //   super(props);
@@ -195,6 +196,10 @@ const Register = (props) =>{
       });
     }
   };
+  const handleChangePassword = (newValue) => {
+    setState({...state,password:newValue})
+  }
+  
 
   const renderer = ({ minutes, seconds, completed }) => {
     if (completed) {
@@ -258,15 +263,7 @@ const Register = (props) =>{
               </div>
               <div className="col-11 padding-horizental-3px">
                 <div>
-                  <input
-                    className="form-input-auth px-2  col-12"
-                    placeholder="کد ارسال شده را وارد نمایید."
-                    name="token"
-                    onChange={handleChange}
-                    disabled={state.moaref_save}
-                    autoFocus
-                    inputMode="numeric"
-                    />
+                <MuiOtpInput value={state.password} onChange={handleChangePassword} />
                 </div>
               </div>
             </div>
