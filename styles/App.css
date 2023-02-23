@@ -9,9 +9,9 @@
 }
 
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
-body {
+/* body {
     font-family: IranSans !important;
-}
+} */
 
 span {
     font-family: BYekan !important;
@@ -109,10 +109,11 @@ span {
     text-align: center !important;
     display: flex !important;
     justify-content: center;
+    align-items: center;
     width: 100%;
-    border-bottom: 1px solid #ccc;
-    margin-top: 8px;
-    padding-bottom: 8px;
+    /* border-bottom: 1px solid #ccc; */
+    /* margin-top: 8px; */
+    /* padding-bottom: 8px; */
 }
 
 input[type="button"]:hover {
@@ -290,14 +291,14 @@ input[type="button"]:hover {
 .prev-next-btn {
     background-color: #fff;
     border: 2px solid #279692;
-    padding: 2px 0;
+    padding: 10px 40px;
     font-size: 14px;
-    height: 27px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    top: 10px;
+    top: 3px;
     color: #279692 !important;
     border-radius: 3px;
 }
@@ -497,6 +498,9 @@ input[type="button"]:hover {
 .h-3em {
     height: 3em;
 }
+.h-2em {
+    height: 2.6em;
+}
 
 .h-35em {
     height: 3.5em;
@@ -524,6 +528,10 @@ input[type="button"]:hover {
 
 .mt-10 {
     margin-top: 10px;
+}
+
+.mt-85 {
+    margin-top: 85px;
 }
 
 .mt-100 {

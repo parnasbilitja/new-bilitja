@@ -8,7 +8,6 @@ import AirportsMobile from "../base/AirportsMobile.component";
 import PopUp from "../component/PopUp.component";
 import PopUpWide from "../component/PopUpWide.component";
 import CalendarComponent from "../calendar/Calendar.component";
-import Filters from "./Filters.component";
 import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -56,8 +55,7 @@ const FlightSearchBox = (props) =>{
       });
     }
   };
-  const [list, setList] = useState({
-  })
+  const [list, setList] = useState({})
   const handleFocusOut = (event) => {
     console.log(list);
     const { name,value } = event.target;
@@ -147,7 +145,6 @@ const FlightSearchBox = (props) =>{
         destinationName,
         sourceNameEn,
         destinationNameEn,
-
         flightDatePersian,
         stDate,
         typeOfCalendar,
@@ -157,16 +154,15 @@ const FlightSearchBox = (props) =>{
     // console.log("flightDatePersian");
     // console.log(flightDatePersian);
     return (
-      <div className={styles["home-flight-form"]}>
+      <div className={`${styles["home-flight-form"]}`}>
         <div>
           <Scrolltoprefresh />
           <div
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
-            <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
+            <i className="bilitja icon-plane-departure form-input-icon rotate-y-180" style={{fontSize: '32px'}}></i>
             <PrimaryTextInputMobile
               value={sourceName}
-              // readonly={state.width <= mobileSize ? "false" : "true"}
               name="sourceName"
               onClick={(e) => {
                 // for mobile
@@ -220,7 +216,6 @@ const FlightSearchBox = (props) =>{
             ></i>
             <PrimaryTextInputMobile
               value={destinationName}
-              // readonly={state.width <= mobileSize ? "false" : "true"}
               name="destinationName"
               onClick={(e) => {
                 // for mobile
@@ -317,9 +312,14 @@ const FlightSearchBox = (props) =>{
                     currentPage: 1,
                   })
                   .then(() => {
-                    props.router.push(
-                      `/flights/${props.credentials.sourceNameEn}-to-${props.credentials.destinationNameEn}/airfares-${props.credentials.source}-${props.credentials.dest}#${props.credentials.flightDatePersian}`
-                    );
+                    console.log('props.type',props.type)
+                    if(props.type=='panel'){
+                      return
+                    }else{
+                      props.router.push(
+                        `/flights/${props.credentials.sourceNameEn}-to-${props.credentials.destinationNameEn}/airfares-${props.credentials.source}-${props.credentials.dest}#${props.credentials.flightDatePersian}`
+                        );
+                      }
                     props.refreshAction();
                   });
               }

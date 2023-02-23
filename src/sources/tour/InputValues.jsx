@@ -1,7 +1,9 @@
 import React from "react";
+import { useState } from "react";
 const InputValues = ({setSearch, search, name, months}) => {
-  console.log({setSearch, search, name});
+  const [hide, setHide] = useState(false)
   const searchHandler = (value='',slug='',cityName) => {
+    setHide(true)
     setSearch({
         ...search,
         [name]:slug==''?value:slug,
@@ -9,9 +11,11 @@ const InputValues = ({setSearch, search, name, months}) => {
     })
   }
   return (
+    <>
+    {/* {!hide && */}
     <div
       style={{
-        maxHeight: 200,
+        maxHeight: 140,
         overflowY: "auto",
         background: "#fff",
         borderRadius: 8,
@@ -21,18 +25,30 @@ const InputValues = ({setSearch, search, name, months}) => {
         border: '1px solid #cfd3d8',
         cursor: "pointer",
       }}
-      className="suggestion-box "
+      className="suggestion-box"
     >
-      {months.map((item) => (
-                  <div key={item.value}
-                        onClick={() => {searchHandler(item.value,item.slug,item.name)}}>
-                    <span className="font-size-14">
-                      {item.name}
-                    </span>
-                  </div>
-                ))
-        }
+      {months
+      // .filter(post => {
+      //   if (!name == 'month') {
+      //     if (search.slug === '') {
+      //         return post;
+      //     } else if (post.name.includes(search.slug)) {
+      //         return post;
+      //     }
+      //   }})
+        .map((item) => (
+        <>
+          <div key={item.value}
+                onClick={() => {searchHandler(item.value,item.slug,item.name)}}>
+            <span className="font-size-14">
+              {item.name}
+            </span>
+          </div>
+        </>
+      ))}
     </div>
+    {/* // } */}
+    </>
   );
 };
 export default InputValues

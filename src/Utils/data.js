@@ -104,6 +104,59 @@ const flightsData = [
         url: "tehran-to-kish/airfares-thr,ika-kih",
       },
       {
+        name: "قشم",
+        url: "tehran-to-qeshm/airfares-thr,ika-gsm",
+      },
+      {
+        name: "اهواز",
+        url: "tehran-to-ahwaz/airfares-thr,ika-awz",
+      },
+      {
+        name: "تبریز",
+        url: "tehran-to-tabriz/airfares-thr,ika-tbz",
+      },
+      {
+        name: "شیراز",
+        url: "tehran-to-shiraz/airfares-thr,ika-syz",
+      }, 
+    ]
+    ,[
+    {
+      name: "استانبول",
+      url: "tehran-to-istanbul/airfares-thr,ika-ist",
+    },
+    {
+      name: "دبی",
+      url: "tehran-to-dubi/airfares-thr,ika-dxb",
+    },
+    {
+      name: "تفلیس",
+      url: "tehran-to-teflis/airfares-thr,ika-tbs",
+    },
+    {
+      name: "آنتالیا",
+      url: "tehran-to-antalya-all/airfares-thr,ika-ayt,dnz,ise",
+    },
+    {
+      name: "باکو",
+      url: "tehran-to-baku/airfares-thr,ika-gyd",
+    },
+    {
+      name: "نجف",
+      url: "tehran-to-najaf/airfares-thr,ika-njf",
+    }, 
+  ]]
+  const flightsDataHotel = [
+    [
+      {
+        name: "مشهد",
+        url: "tehran-to-mashhad/airfares-thr,ika-mhd",
+      },
+      {
+        name: "کیش",
+        url: "tehran-to-kish/airfares-thr,ika-kih",
+      },
+      {
         name: "اصفهان",
         url: "tehran-to-isfahan/airfares-thr,ika-ifn",
       },
@@ -134,15 +187,15 @@ const flightsData = [
       url: "tehran-to-teflis/airfares-thr,ika-tbs",
     },
     {
-      name: "آبادان",
-      url: "tehran-to-abadan/airfares-thr,ika-abd",
+      name: "آنتالیا",
+      url: "tehran-to-antalya-all/airfares-thr,ika-ayt,dnz,ise",
     },
     {
-      name: "باکو",
+      name: "آنکارا",
       url: "tehran-to-baku/airfares-thr,ika-gyd",
     },
     {
-      name: "نجف",
+      name: "آلانیا",
       url: "tehran-to-najaf/airfares-thr,ika-njf",
     }, 
   ]]
@@ -200,4 +253,4 @@ const months =[
   },
 ]
 
-export { footerLinks, footerLinksOut, tableData, flightsData, homeText, months }
+export { footerLinks, footerLinksOut, tableData, flightsData, homeText, months, flightsDataHotel }

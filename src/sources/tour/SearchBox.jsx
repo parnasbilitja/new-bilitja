@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../../styles/FlightSearchBox.module.scss";
+
+import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PrimaryButton from "../component/PrimaryButton.component";
 import PrimaryTextInputMobile from "../component/PrimaryTextInputMobile";
 import {months} from '../../Utils/data'
@@ -8,39 +11,58 @@ import InputValues from "./InputValues";
 import axios from "axios";
 //import BirthdayCalendar from "../calendar/BirthdayCalendar.component"
 
-const SearchBox = ({state}) =>{
+const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
     const [cities,setCities] = useState([])
+    const [search,setSearch] = useState({
+      month:'',
+      value:'',
+      slug:'',
+    })
+  const [list, setList] = useState({})
+
+    const handleFocusOut = (event) => {
+      const { name,value } = event.target;
+      // setSearch({...search,[name]:list[name]});
+      
+    };
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setSearch({...search,[name]:value});
+    };
+    const handleFocus = (event) => {
+      console.log(search);
+      const { name,value } = event.target;
+      setList({...list, [name]:value});
+      setSearch({...search,[name]:''});
+      
+    };
     useEffect(() => {
         const getData =async () => {
             let data = await axios.post('https://api.hamnavaz.com/api/v1/city/getCities',{hasTour:true})
-            .then((response) => {setCities(response.data.data)})
+            .then((response) => {setCities(response.data.data),console.log(response.data)})
             return data 
         }
-        console.log(getData(),cities);
+        getData()
     },[])
   const [width, setWidth]   = useState();
   useEffect(() => {
     setWidth(window.innerWidth)
   },[])
-    
-  const [search,setSearch] = useState({
-    month:'',
-    value:'',
-    slug:''
-  })
-
-  const mobileSize = 628;
-
+  useEffect(() => {
+    setState && setState({...state, city:search.slug})
+  },[search.slug])
     return (
-        <>
-      <div className={styles["home-tour-form"]}>
-        <div>
-          <Scrolltoprefresh />
-          <div className={` form-input-border  ${styles["form-input-border-private"]} `}>
-            <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
+      <div className={'row justify-content-between'}>
+        <Scrolltoprefresh />
+          <div className={`col-12 custom-col-md-5 form-input-border ${styles["form-input-border-private"]} `}>
+            {/* <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i> */}
+            <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
             <PrimaryTextInputMobile
-              value={search.slug}
+              value={search.slug==" "?'همه':search.slug}
               name={'slug'}
+              onFocus={handleFocus}
+              onBlur={handleFocusOut}
+              // onChange={handleChange}
               onClick={(e) => {
                 console.log(e.target.value);
               }}
@@ -51,15 +73,23 @@ const SearchBox = ({state}) =>{
                 name='slug'
                 search={search}
                 setSearch={setSearch}
-                months={cities}
+                months={[{
+                  "name": "همه",
+                  "slug": " ",
+              },...cities]}
+                
             />
-          </div>
+          
         </div>
-        <div className={` form-input-border  ${styles["form-input-border-private"]} `}>
-            <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
+        <div className={`col-12 custom-col-md-5 form-input-border ${styles["form-input-border-private"]} `}>
+            {/* <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i> */}
+            <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
             <PrimaryTextInputMobile
               value={search.value}
               name={'month'}
+              onFocus={handleFocus}
+              onBlur={handleFocusOut}
+              onChange={handleChange}
               onClick={(e) => {
                 console.log(e.target.value);
               }}
@@ -74,19 +104,15 @@ const SearchBox = ({state}) =>{
             />
           </div>
 
-        <div className=" without-focus">
-          <PrimaryButton className={`${styles['w-200']}`}
+        <div className="col-12 col-md-2 without-focus px-0">
+          <PrimaryButton className={`px-0`}
             style={{ height: "45px", marginTop: "7px" }}
-            value={
-            //   state.searchReset == false  ? " جستجو کن!" :
-               "لطفا صبر کنید..."
-            }
-            onClick={() =>console.log(search)}
+            value={ "جستجو" }
+            onClick={() =>{toursHandler(search),executeScroll()}}
           />
         </div>
         
       </div>
-        </>
     );
   }
 export default SearchBox

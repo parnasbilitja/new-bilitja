@@ -15,7 +15,7 @@ class ShowFlightListMobile extends React.Component {
     {
     }
     return (
-      <div className={`${styles["container-flight-list-mobile"]}`}>
+      <div className={`${styles["container-flight-list-mobile"]} mt-3`}>
         <Scrolltoprefresh />
         <div>
           <div
@@ -35,7 +35,7 @@ class ShowFlightListMobile extends React.Component {
                   : ""}
               </span>
             </p>
-            <p>
+            <p className={`${styles["date-style"]}`}>
               {this.props.flightList.length != 0
                 ? getweekday(this.props.flightList[0]?.flightDay)
                 : ""}{" "}

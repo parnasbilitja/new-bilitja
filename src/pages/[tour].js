@@ -11,16 +11,21 @@ import Footer from '../sources/component/Footer.component';
 import Slider from '../Components/slider/Slider';
 import RequestTour from '../Components/modal/RequestTour';
 import PopUp from '../sources/component/PopUp.component';
-import { moneyFormat } from "../Utils/SimpleTasks";
 import Loading from "../sources/component/SmallLoading.component.jsx";
 import { Loader } from '../Utils/Loader';
 import Head from 'next/head';
 import Scrolltoprefresh from '../sources/component/Scrolltoprefresh';
 
 
-const tour = () => {
+const tour = (props) => {
+    // console.log(props);
     const ref = useRef(null);
-
+    function moneyFormat(input) {
+        return parseFloat(input)
+          .toFixed(1)
+          .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+          .split(".")[0];
+      }
     // mui
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -45,13 +50,14 @@ const tour = () => {
         message: ''
     })
     const getData = async () => {
-        const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${slug ? slug : JSON.parse(localStorage.getItem("slug"))}`)
+        const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${props.Pathname.tour}`)
         setData(val.data.data)
+        console.log(val.data.data);
     }
 
     useEffect(() => {
         getData();
-        console.log(data);
+        // console.log(data);
     }, [slug])
     const handleClick = () => {
         ref.current?.scrollIntoView({behavior: 'smooth'});
@@ -63,6 +69,7 @@ const tour = () => {
     }
     return (
         <div>
+          <Scrolltoprefresh />
             <Head>
                 <title>بلیطجا {data && `|  ${data.title}`}</title>
             </Head>
@@ -76,7 +83,7 @@ const tour = () => {
                 <section className="mt-5 pt-5">
                     <div className="container mt-2">
                         <div className="m-main-data detail-title col-xl-12 col-lg-12 col-12 d-flex justify-content-between border-bottom pb-2">
-                            <div className="title d-flex align-items-center">
+                            <div className="title-tour d-flex align-items-center">
                                 <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.643" height="30.68" viewBox="0 0 19.643 19.68">
                                     <g id="Ticket-index" transform="translate(-0.022)">
                                         <path id="Path_1168" data-name="Path 1168" d="M2.235,8.086a3.6,3.6,0,0,1-.584-.018l-.169.786.169-.786a.83.83,0,0,1-.622-.641,3.194,3.194,0,0,1,0-.548,8.679,8.679,0,0,1,.385-2.755A4.211,4.211,0,0,1,3.406,1.7C4.216,1.247,5.483,1,8.058,1h3.571c2.575,0,3.842.247,4.652.7a4.211,4.211,0,0,1,1.993,2.423,8.675,8.675,0,0,1,.385,2.755,3.2,3.2,0,0,1,0,.548l.791.144-.791-.144a.83.83,0,0,1-.622.641,3.6,3.6,0,0,1-.584.018A1.876,1.876,0,0,0,15.7,10.059a1.876,1.876,0,0,0,1.757,1.974,3.5,3.5,0,0,1,.573.018.843.843,0,0,1,.625.655,2.943,2.943,0,0,1-.006.52,7.652,7.652,0,0,1-.369,2.331,4.212,4.212,0,0,1-1.993,2.423c-.811.454-2.077.7-4.652.7H8.058c-2.575,0-3.842-.247-4.652-.7a4.212,4.212,0,0,1-1.993-2.423,7.652,7.652,0,0,1-.369-2.331,2.933,2.933,0,0,1-.006-.52.842.842,0,0,1,.625-.655,3.5,3.5,0,0,1,.573-.018,1.876,1.876,0,0,0,1.757-1.974A1.876,1.876,0,0,0,2.235,8.086Z" fill="none" stroke="#ff0000" strokeWidth={1}></path>
@@ -85,7 +92,7 @@ const tour = () => {
                                 </svg>
                                 <div className="text">
                                     <h5 className="font-bold" >{data && data.title}</h5>
-                                    <span className="font-bold">قیمت: {data && moneyFormat(data.minPrice)} تومان</span>
+                                    <span className="">شروع قیمت از: {data && moneyFormat(data.minPrice)} تومان</span>
                                 </div>
                             </div>
                             <div className="d-flex flex-column justify-content-around me-auto mt-2">
@@ -96,7 +103,7 @@ const tour = () => {
                                     </div>
                                     <div className="text pe-2">
                                         {data &&
-                                            <span>{data.transfers[0].transfer}</span>
+                                            <span className="text-danger">{data.transfers[0].transfer}</span>
                                         }
                                     </div>
                                 </div>
@@ -107,7 +114,7 @@ const tour = () => {
                                     </div>
                                     <div className="text pe-2">
                                         {data &&
-                                            <span>
+                                            <span className="text-danger">
                                                 {data.transfers[1].transfer}
                                             </span>
                                         }
@@ -140,7 +147,7 @@ const tour = () => {
                                         <div className="text pe-2">
                                             <div className="m-main-data d-flex align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold">اطلاعات مبدا</span>
+                                                    <span className="font-bold font-size-18">اطلاعات مبدا</span>
                                                 </div>
                                                 <div className="val pe-2">
                                                     <span className="font-size-12">{data && data.stCity.name}</span>
@@ -148,7 +155,7 @@ const tour = () => {
                                             </div>
                                             <div className="m-main-data d-flex align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold">تاریخ و ساعت پرواز رفت</span>
+                                                    <span className="font-bold text-danger">تاریخ و ساعت پرواز رفت</span>
                                                 </div>
                                                 <div className="val pe-2">
                                                     <span>{data && data.transfers[0].dateTime}</span>
@@ -156,7 +163,7 @@ const tour = () => {
                                             </div>
                                             <div className="m-main-data d-flex align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold">تاریخ ورود به هتل</span>
+                                                    <span className="font-bold" style={{color:'#279692'}}>تاریخ ورود به هتل</span>
                                                 </div>
                                                 <div className="val pe-2">
                                                     <span className="ps-2">{data && data.stDate.split(' ')[0]}</span>
@@ -202,7 +209,7 @@ const tour = () => {
                                         <div className="text pe-2 ps-3">
                                             <div className="m-main-data d-flex flex-row-reverse align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold">اطلاعات مقصد</span>
+                                                    <span className="font-bold font-size-18">اطلاعات مقصد</span>
                                                 </div>
                                                 <div className="val pe-2">
                                                     <span className="">{data && data.endCity.name}</span>
@@ -210,7 +217,7 @@ const tour = () => {
                                             </div>
                                             <div className="m-main-data d-flex flex-row-reverse align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold">تاریخ و ساعت پرواز برگشت</span>
+                                                    <span className="font-bold text-danger">تاریخ و ساعت پرواز برگشت</span>
                                                 </div>
                                                 <div className="val pe-2">
                                                     <span>{data && data.transfers[1].dateTime}</span>
@@ -218,7 +225,7 @@ const tour = () => {
                                             </div>
                                             <div className="m-main-data d-flex flex-row-reverse align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold">تاریخ خروج از هتل</span>
+                                                    <span className="font-bold" style={{color:'#279692'}}>تاریخ خروج از هتل</span>
                                                 </div>
                                                 <div className="val ps-2">
                                                     <span className="">{data && data.stDate.split(' ')[0]}</span>
@@ -248,25 +255,6 @@ const tour = () => {
                                         <h5 className="font-bold mb-0">انـتخاب هــتل</h5>
                                     </div>
                                 </div>
-                                {/* <div className="c-btn">
-                                    <button
-                                        className="ancher f-15 btn-effect bg-custom-color text-dark font-ExtraBold py-2 ps-2 pe-3 f-bold">
-                                        <div className="line-effect bg-dark-light"></div>
-                                        <svg className="ml-30" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 24 24">
-                                            <g id="Right" transform="translate(1 1)">
-                                                <path id="Path_1110" data-name="Path 1110"
-                                                    d="M23,12a27.833,27.833,0,0,1-.462,5.827A6.193,6.193,0,0,1,21,21a6.193,6.193,0,0,1-3.172,1.54A27.838,27.838,0,0,1,12,23a27.838,27.838,0,0,1-5.827-.462A6.193,6.193,0,0,1,3,21a6.193,6.193,0,0,1-1.54-3.172A27.838,27.838,0,0,1,1,12a27.838,27.838,0,0,1,.462-5.827A6.193,6.193,0,0,1,3,3a6.193,6.193,0,0,1,3.172-1.54A27.833,27.833,0,0,1,12,1a27.833,27.833,0,0,1,5.827.462A6.193,6.193,0,0,1,21,3a6.193,6.193,0,0,1,1.54,3.172A27.833,27.833,0,0,1,23,12Z"
-                                                    transform="translate(-1 -1)" fill="none" stroke="#292929"
-                                                    strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}></path>
-                                                <path id="Path_1111" data-name="Path 1111" d="M14,8l-4,4,4,4"
-                                                    transform="translate(-1 -1)" fill="none" stroke="#292929"
-                                                    strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}></path>
-                                            </g>
-                                        </svg>
-                                        دانلود فایل PDF
-                                    </button>
-                                </div> */}
                             </div>
                             <div className="p-info__tour col-xl-12 col-lg-12 col-12 mt-2 border-bottom pb-4 pos-relative">
                                 <div className="p-thead d-flex align-items-center col-xl-12 col-lg-12 col-12 pos-absolute ">
@@ -312,17 +300,22 @@ const tour = () => {
                                                         <div className="star d-flex align-items-center pb-1">
                                                             <div className="d-flex align-items-center">
                                                                 <div className="image d-flex align-items-center">
-                                                                    {Array.from(Array(parseInt(pack.hotel.stars)), (e, i) => {
-                                                                        return (
-                                                                            <svg className="mx-1" key={i} xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                                height="16" viewBox="0 0 21.443 21.387">
-                                                                                <path id="Star"
-                                                                                    d="M10.749,1c.915,0,2.352,4.154,2.871,5.751a.916.916,0,0,0,.84.632c1.666.057,5.983.3,5.983,1.273s-3.077,3.38-4.335,4.328A.915.915,0,0,0,15.789,14c.512,1.585,1.742,5.7.952,6.343s-4.1-1.885-5.447-2.963a.919.919,0,0,0-1.147,0c-1.35,1.078-4.669,3.6-5.392,2.964s.431-4.772.912-6.351a.914.914,0,0,0-.324-1C4.093,12.047,1,9.619,1,8.655S5.326,7.438,6.988,7.382a.916.916,0,0,0,.838-.625C8.357,5.165,9.833,1,10.749,1Z"
-                                                                                    fill="#f7db06" stroke="#f7db06"
-                                                                                    strokeLinecap="round" strokeLinejoin="round"
-                                                                                    strokeWidth={2} />
-                                                                            </svg>)
-                                                                    })}
+                                                                {(() => {
+                                                                    let stars = [];
+                                                                    for (let i = 1; i <= parseInt(pack.hotel.stars); i++) {
+                                                                    stars.push(
+                                                                        <svg className="mx-1" xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                            height="16" viewBox="0 0 21.443 21.387">
+                                                                            <path id="Star"
+                                                                                d="M10.749,1c.915,0,2.352,4.154,2.871,5.751a.916.916,0,0,0,.84.632c1.666.057,5.983.3,5.983,1.273s-3.077,3.38-4.335,4.328A.915.915,0,0,0,15.789,14c.512,1.585,1.742,5.7.952,6.343s-4.1-1.885-5.447-2.963a.919.919,0,0,0-1.147,0c-1.35,1.078-4.669,3.6-5.392,2.964s.431-4.772.912-6.351a.914.914,0,0,0-.324-1C4.093,12.047,1,9.619,1,8.655S5.326,7.438,6.988,7.382a.916.916,0,0,0,.838-.625C8.357,5.165,9.833,1,10.749,1Z"
+                                                                                fill="#f7db06" stroke="#f7db06"
+                                                                                strokeLinecap="round" strokeLinejoin="round"
+                                                                                strokeWidth={2} />
+                                                                        </svg>
+                                                                        );
+                                                                    }
+                                                                    return stars;
+                                                                })()}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -402,7 +395,6 @@ const tour = () => {
                                                 </div>
                                             }
                                             {data && !data.type &&
-
                                                 <div className="c-detail">
                                                     <div className="info-price position-relative d-flex align-items-start mx-2">
                                                         <div className="text d-flex flex-column align-items-center w-100 py-3">
@@ -426,7 +418,7 @@ const tour = () => {
                                                 <span className="font-size-16 font-bold color-gray">{pack.prices.age}</span>
                                             </div>
                                             <div className="c-btn request-data">
-                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() => { setShow(true); setPackData({ tourId: pack.id }); console.log(pack.id); }}>
+                                                <button className="ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2" onClick={() => { setShow(true); setPackData({ tourId: pack.id });  }}>
                                                     درخواست رزرو
                                                 </button>
                                             </div>
@@ -667,5 +659,11 @@ const tour = () => {
         </div>
     );
 };
+
+tour.getInitialProps = ({ query }) => {
+    return {
+      Pathname: query
+    }
+  }
 
 export default tour;

@@ -6,11 +6,8 @@ import Link from 'next/link';
 import Footer from '../component/Footer.component';
 import NavHandler from '../../Components/share/NavHandler';
 import PopUp from '../../sources/component/PopUp.component';
-// format
-import { moneyFormat } from "../../Utils/SimpleTasks";
 
-
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { selcetAccountBox } from "../../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
@@ -21,19 +18,30 @@ import Head from 'next/head';
 
 const Account = dynamic(() => import("./../../sources/account/Account.component"));
 
-
 const List = (props) => {
+    function moneyFormat(input) {
+        return parseFloat(input)
+          .toFixed(1)
+          .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+          .split(".")[0];
+      }
     const [data, setData] = useState(null)
+    const [loading, setLoading] = useState(false)
     const getData = async () => {
+        setLoading(true)
         const val = await axios.post('https://api.hamnavaz.com/api/v1/tour/getTours')
         setData(val.data.data)
+        setLoading(false)
     }
     useEffect(() => {
         getData();
         console.log(data);
     }, [])
+    useEffect(() => {
+        props.tourData !==null && props.tourData !==[] &&
+        setData(props.tourData)
+    },[props.tourData])
     const slugHandler = (slug) => {
-        // setSlug(slug)
         localStorage.setItem("slug", JSON.stringify(slug))
     }
     const [searchBar, setSearchBar] = useState('')
@@ -41,12 +49,9 @@ const List = (props) => {
         e.preventDefault();
         setSearchBar(e.target.value);
       };
-      
     return (
-        <div>
-            <Head>
-                <title>بلیطجا | لیست تورها</title>
-            </Head>
+        <div ref={props.myRef}>
+            
             <PopUp
                 opened={props.accountBox.state}
                 closePopUp={() => {
@@ -57,11 +62,8 @@ const List = (props) => {
             >
                 <Account />
             </PopUp>
-            {/* <div>
-                <Loader />
-            </div> */}
             <div className="mt-5 bodyVar">
-                <div className="container">
+                <div className="">
                     <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
                         <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-4 col-12">
                             <div className="d-flex align-items-center justify-content-between">
@@ -80,7 +82,7 @@ const List = (props) => {
                             </div>
                         </div>
                         <div className="c-input col-xl-3 col-lg-3 col-sm-4 col-12 position-relative pt-2">
-                            <input type="text" value={searchBar} onChange={e=>searchBarHandler(e)} class="w-100 pe-2" style={{height: 43,outline: "none",borderRadius: 8,border:"1px solid #fff",boxShadow: "0 0 3px #cccaca"}}  />
+                            <input type="text" value={searchBar} onChange={e=>searchBarHandler(e)} placeholder='جستجوی تور...' class="w-100 pe-2" style={{height: 43,outline: "none",borderRadius: 8,border:"1px solid #fff",boxShadow: "0 0 4px #b9b0b0"}}  />
                             <div className="ic-search  position-absolute" style={{left: 10,top: 17}}>
                                 <svg width="25" height="25" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <ellipse cx="14.0569" cy="14.6788" rx="8.9241" ry="8.94638" stroke="#CCD2E3" stroke-width="2"></ellipse>
@@ -94,14 +96,17 @@ const List = (props) => {
                         <div className="border-right"></div>
                         <div className="border-left"></div>
                     </div>
-                    {/* <div  classNameName="m-2" > */}
-                    {data != null ? data.filter(post => {
+                    { loading ?
+                    <Loader />:
+                    data != null ? data
+                    .filter(post => {
                         if (searchBar === '') {
                             return post;
                         } else if (post.title.includes(searchBar)) {
                             return post;
                         }
-                    }).map((item) => (
+                    })
+                    .map((item) => (
                         <div onClick={() => slugHandler(item.slug)} key={item.id} className="w-100 col-xl-12 col-lg-12 w-100 d-flex flex-column">
                             <div className="tour-item col-xl-12 col-lg-12 mb-3">
                                 <div className="tour-city">
@@ -162,7 +167,7 @@ const List = (props) => {
                                     <img width="28" src={item.transfers[0].logo} />
                                     <span className="text-dark me-2 font-size-14">{item.transfers[0].transfer}</span>
                                 </div>
-                                <Link href={'/tour'}>
+                                <Link href={`/${item.slug}`}>
                                     <div className="ino-tour-btn">
                                         <span className="text-white isMobile ms-2 font-bold-iransanse" style={{display: "none"}}>جزییات</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="27.414" height="18.453" viewBox="0 0 27.414 18.453">
@@ -174,12 +179,10 @@ const List = (props) => {
                         </div>
                 )
                 )
-                :
-                <Loader />
+                :''
+                // <Loader />
             }
-                    {/* </div> */}
                 </div>
-                {/* footer */}
             </div>
 
         </div >

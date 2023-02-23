@@ -34,6 +34,7 @@ import SalesReport from "../sources/manager/sell-report/sell-report/Sales-report
 import ConsularReport from "../sources/manager/sell-report/sell-report/Consular-report";
 import Reserving from "../sources/manager/sell-report/sell-report/reserving";
 import Transaction from "../sources/manager/sell-report/sell-report/transaction";
+import Flights from "../sources/manager/flights/Flights";
 
 const ManagePanel = () =>{
   const myRouter = useRouter();
@@ -52,7 +53,7 @@ const ManagePanel = () =>{
   }, []);
   function mainRouter(pathName) {
     var path = decodeURI(pathName);
-    console.log(path);
+    // console.log(path);
 
     if (path.indexOf("villas/search/") > 0) {
       //console.log(path.substr(21));
@@ -144,6 +145,8 @@ const ManagePanel = () =>{
         return <FlightSellReport />;
       case "/panel/price-handling":
         return <PriceHandling />;
+      case "/panel/flight":
+        return <Flights />;
       case "/panel/all-flight-sell-report":
         return <AllFlightSellReport />;
       case "/panel/Consular-report":
@@ -162,7 +165,6 @@ const ManagePanel = () =>{
       <ManagerNav />
       <div className="panel-manager-main-container">
         <div className="panel-manager-content-container">
-          {console.log(myRouter.asPath)}
           {mainRouter(myRouter.asPath)}
           <MessageBox />
         </div>
@@ -171,44 +173,5 @@ const ManagePanel = () =>{
   );
 }
 
-/*
-  
-            <Route exact={false} path='/panel' component={() => {
-            return (
-              <>
-                <ManagerNav />
-                <div className="panel-manager-main-container">
-                  <div className="panel-manager-content-container">
-                    <Switch>
-                      <Route exact path='/panel/villas/search' component={Villa} />
-                      <Route exact path='/panel/villas/add' component={AddVila} />
-                      <Route exact path='/panel/villas/search/:id' component={UpdateVila} />
-                      <Route exact path='/panel/villas/detail/:id' component={VilaDetial} />
-                      <Route exact path='/panel/villas/getReservation' component={VilaReservation} />
-                      
 
-
-                      <Route exact path='/panel/city/add' component={AddCity} />
-                      <Route exact path='/panel/city/show' component={ShowallCities} />
-                      <Route exact path='/panel/city/show/:id' component={UpdateCity} />
-
-                      <Route exact path='/panel/rule/add' component={AddRule} />
-                      <Route exact path='/panel/rule/show' component={ShowallRules} />
-                      <Route exact path='/panel/rule/show/:id' component={UpdateRule} />
-
-
-                      <Route exact path='/panel/facility/add' component={AddFacility} />
-                      <Route exact path='/panel/facility/show' component={ShowallFacilities} />
-                      <Route exact path='/panel/facility/show/:id' component={UpdateFacility} />
-
-                    </Switch>
-                    <MessageBox />
-
-                  </div>
-                </div>
-              </>
-            )
-          }} />
-
-  */
-          export default ManagePanel;
+export default ManagePanel;

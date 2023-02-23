@@ -36,6 +36,7 @@
   }
 }
 @media only screen and (max-width: 440px) {
+
   .home-tour-intro {
     max-height: 130px !important;
     .btn-fiiled {
@@ -45,17 +46,8 @@
       height: 20px !important;
     }
   }
-  .tab-container {
-    width: 65%;
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 5px;
-  }
   .home-flight-suggestion {
     & > div {
-      grid-template-columns: 1fr 1fr;
-      grid-row: 1fr;
-      width: 97%;
       margin: 5px auto;
     }
     .suggestion-list {
@@ -68,7 +60,7 @@
     }
   }
   .home-become-host {
-    height: 390px !important;
+    height: 225px !important;
     background-position: center center;
     & > div {
       padding: 35px 50px !important;
@@ -82,95 +74,86 @@
     }
   }
   .heor-main-container {
-    padding: 0 18px 10px 18px !important;
+    padding: 0 !important;
   }
 }
 
 @media only screen and (max-width: 649px) and (min-width: 441px) {
-  .tab-container {
-    width: 50%;
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 5px;
-  }
+  
   .home-flight-suggestion {
     & > div {
-      grid-template-columns: 1fr 1fr;
-      grid-row: 1fr;
-      width: 90%;
-      margin: 5px auto;
-    }
-  }
-}
-
-@media only screen and (max-width: 694px) and (min-width: 650px) {
-  .tab-container {
-    width: 30%;
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 5px;
-  }
-  .home-flight-suggestion {
-    & > div {
-      grid-template-columns: 1fr 1fr;
-      grid-row: 1fr;
-      width: 80%;
       margin: 5px auto;
     }
   }
 }
 
 @media only screen and (max-width: 979px) and (min-width: 695px) {
-  .tab-container {
-    width: 35%;
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 5px;
-  }
+  
   .home-flight-suggestion {
     & > div {
-      grid-template-columns: 1fr 1fr;
-      grid-row: 1fr;
-      width: 80%;
       margin: 5px auto;
     }
   }
 }
 @media only screen and (max-width: 1024px) and (min-width: 980px) {
-  .tab-container {
-    width: 25%;
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 5px;
-  }
+  
   .home-flight-suggestion {
     & > div {
-      grid-template-columns: 1fr 1fr;
-      grid-row: 1fr;
-      width: 45%;
       margin: 5px auto;
     }
   }
 }
+@media only screen and (max-width: 770px) {
+  .width-mobile {
+    width: 90% !important;
+    margin: 0px 10px !important;
+    border: 2px solid #279692;
+    border-radius: 10px;
+    margin-top: 1rem !important;
+  }
+  .width-mobile-search {
+    width: 90% !important;
+    margin: 0px 10px !important;
+    margin-top: 1rem !important;
+  }
+  .mobile-tab1{
+    border-left: 2px solid #279692 !important;
+    border-bottom: 2px solid #279692;
+    // border-top-right-radius: 10px;
+  }
+  .mobile-tab2{
+    border-bottom: 2px solid #279692;
+  }
+  .mobile-tab4{
+    // border-bottom: 1px solid gray;
+    // border-left: 1px solid gray!important;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    left: -1px;
+    top: 52.9px;
+  }
+  .mobile-tab3{
+    border-left: 2px solid #279692;
+    
+  }
+
+}
 @media only screen and (max-width: 2000px) and (min-width: 1025px) {
 
   .tab-container {
-    width: 20%;
-    grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 5px;
+    
   }
   .home-flight-suggestion {
     & > div {
-      grid-template-columns: 1fr 1fr;
-      grid-row: 1fr;
-      width: 45%;
+      // grid-template-columns: 1fr 1fr;
+      // grid-row: 1fr;
+      // width: 45%;
       margin: 5px auto;
     }
   }
 }
 .heor-main-container {
-  padding: 10px 18px;
+  padding: 10px 0px;
 }
 .hero-image-1 {
   width: 150px;
@@ -187,7 +170,7 @@
   height: 175px;
 }
 .tab-container {
-  display: grid;
+  display: flex;
   margin-bottom: -6px;
   margin-top: 20px;
 }
@@ -196,8 +179,6 @@
   padding: 17px 2px 13px 2px;
   text-align: center;
   color: $blackColor;
-
-  width: 120px;
   span {
     margin-right: 8px;
   }
@@ -207,12 +188,13 @@
   }
 }
 .card-box-shadow {
-  box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
+  // box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
 }
 .home-tab-active {
   @extend .card-box-shadow;
 
-  border-bottom: 2px solid $secondaryColor;
+  border-bottom: 2px solid red;
+  font-weight: bold;
   color: $secondaryColor !important;
 }
 
@@ -223,7 +205,7 @@
 .hero-big-image {
   text-align: center;
   img {
-    width: 85%;
+    width: 100%;
     margin: 0 auto;
   }
 }
@@ -249,18 +231,18 @@
 }
 
 .home-become-host {
-  height: 495px;
+  height: 220px;
   background-attachment: fixed;
   background-size: cover;
   background-image: url(../public/Images/flight-parallax.webp);
-  margin-top: 48px;
+  margin-top: 28px;
   text-align: center;
   color: $whiteColor;
   & > div {
     background: rgba(0, 0, 0, 0.52);
     width: 100%;
     height: 100%;
-    padding: 120px;
+    padding: 30px;
     h2 {
       margin-top: 12px;
       margin-bottom: 23px;
@@ -275,11 +257,11 @@
     }
     .btn-secondary-outlined {
       display: inline-block;
-      width: 21%;
+      width: 11%;
       border-radius: 5px;
       border: 3px solid $whiteColor;
-      padding: 15px 6px;
-      margin-top: 70px;
+      padding: 5px 6px;
+      margin-top: 0px;
       color: $whiteColor;
 
       &:hover {
@@ -297,11 +279,13 @@
   background-color: $primaryColor;
   max-height: 78px;
   margin-top: 48px;
+  padding-bottom: 10px;
   text-align: right;
   border-radius: 5px;
   a {
-    margin-top: -10px;
+    margin-top: 20px;
     height: 43px;
+    width: fit-content;
     text-align: center;
     align-items: center;
     display: flex;
@@ -328,12 +312,12 @@
     display: block;
   }
   & > div {
-    display: grid;
+    // display: grid;
   }
   .suggestion-list {
     padding: 5px 8px;
     & > div {
-      border-bottom: 1px solid $pillGray;
+      border-bottom: 1px solid #cfd3d8;
       padding: 8px 0px 0 0;
       span {
         // margin-right: 5px;
@@ -365,9 +349,9 @@
   @extend .card-box-shadow;
   text-align: justify;
   margin-top: 48px;
-  padding: 10px 30px;
-  border: 1px solid $pillGray;
-  border-radius: 10px;
+  padding: 10px 10px;
+  // border: 1px solid $pillGray;
+  // border-radius: 10px;
   h3 {
     font-size: 17px;
     font-weight: 700;
@@ -393,3 +377,19 @@
   }
 }
 
+.padingSearchBox{
+  padding-right: 10px;
+  padding-left: 5px;
+
+}
+
+.tour-intro-button{
+  padding-right: 0;
+  display: flex;
+  align-content: flex-end;
+  flex-wrap: wrap;
+}
+.border-bottom{
+  border-bottom: 2px solid #279692;
+  // padding-bottom: 5.2px;
+}

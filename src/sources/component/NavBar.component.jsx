@@ -27,10 +27,10 @@ const NavBar = (props) => {
         mobile: user_mobile,
       });
     }
-    if (state.logged) {
-      props.user.logged = state.logged;
-      props.user.user_info = { mobile: state.mobile }
-    }
+    // if (state.logged) {
+    //   props.user.logged = state.logged;
+    //   props.user.user_info = { mobile: state.mobile }
+    // }
   }, [])
 
   useEffect(() => {
@@ -43,21 +43,20 @@ const NavBar = (props) => {
     }
   }, [props.user])
 
-  if (state.logged) {
-    var hours = 1; // to clear the localStorage after 1 hour
-    // (if someone want to clear after 8hrs simply change hours=8)
-    var now = new Date().getTime();
-    var setupTime = localStorage.getItem('setupTime');
-    if (setupTime == null) {
-      localStorage.setItem('setupTime', now)
-    } else {
-      if (now - setupTime > hours * 60 * 60 * 1000) {
-        localStorage.clear()
-        localStorage.setItem('setupTime', now);
-        localStorage.removeItem("mobile")
-      }
-    }
-  }
+  // if (state.logged) {
+  //   var hours = 1;
+  //   var now = new Date().getTime();
+  //   var setupTime = localStorage.getItem('setupTime');
+  //   if (setupTime == null) {
+  //     localStorage.setItem('setupTime', now)
+  //   } else {
+  //     if (now - setupTime > hours * 6 * 6 * 1) {
+  //       localStorage.clear()
+  //       localStorage.setItem('setupTime', now);
+  //       localStorage.removeItem("mobile")
+  //     }
+  //   }
+  // }
 
 
   const handleLogoutUser = (e) => {
@@ -70,11 +69,8 @@ const NavBar = (props) => {
   return (
     <div className="col-xl-12 col-lg-12">
       <nav className={styles.navVar}>
-        {/* <NavHandler/> */}
-        {/* <button onClick={handleLog}>check</button> */}
-        <div className="container">
           <div className="d-flex flex-row-reverse justify-content-between">
-            <div className={styles["nav-text-detail"]}>
+            <div className={` ${styles["nav-text-detail"]}`}>
               <div>
                 {/* <a
               href="/villa/intro"
@@ -162,10 +158,10 @@ const NavBar = (props) => {
               </div>
             </div>
             <div className="d-flex flex-row-reverse">
-              <div className={styles["nav-items-container"]}>
+              <div className={"nav-items-container"}>
                 <ul className={styles["navbar-items"]}>
                   <li>
-                    <Link href="/" >
+                    <Link href="/ticket" >
                       <a>
                         <i
                           className={`bilitja icon-plane-departure  ${styles["nav-icon"]} rotate-y-180`}
@@ -203,12 +199,12 @@ const NavBar = (props) => {
                       </a>
                     </Link>
                   </li>
-                  {/* <li>
+                  <li>
               <a href="/blog">
                 <i className={`bilitja icon-blog ${styles["nav-icon"]} `}></i>
                 بلاگ
               </a>
-            </li> */}
+            </li>
                   <li>
                     <Link href="/flights/order" >
                       <a>
@@ -233,14 +229,15 @@ const NavBar = (props) => {
                       style={{ cursor: "pointer" }}
                     />
                   </Link>
-                  <h1 className="font-size-13 font-bold-iransanse pt-1">
+                  <h1 className="font-size-10 font-bold-iransanse pt-1">
                     خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه
                   </h1>
                 </div>
               </div>
             </div>
+            
           </div>
-        </div>
+        
       </nav>
     </div>
   );

@@ -173,14 +173,14 @@ class Filters extends React.Component {
     handledropdown = () => {
     };
 
+
     render() {
         return (
             <div className={styles["filter-list-box"]}>
                 <div className="title-filter">
                     <h3>فیلتر ها</h3>
                 </div>
-                {console.log(this.props)}
-                <Accordion style={{ width: "94%", marginRight: 15, }}>
+                <Accordion>
                     <Accordion.Item className={`${styles["text"]} accordion-item-prs `}>
                         <Accordion.Button className={'acr-btn'} style={{ background: " rgb(243, 243, 243)", paddingRight: 10, paddingLeft: 10 }}>
                             <div className={styles["filter-list-heading"]}>
@@ -399,7 +399,7 @@ class Filters extends React.Component {
                     </Accordion.Item>
                 { this.state.width <= 826 &&
                     <div className="text-center">
-                        <button onClick={this.props.closeSide}>اعمال فیلتر</button>
+                        <button onClick={this.props.closeSide} className={`${styles['btn-filter']}`}>اعمال فیلتر</button>
                     </div>
                 }
                 </Accordion>

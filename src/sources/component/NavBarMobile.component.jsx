@@ -7,137 +7,134 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SlideIn from "./SlideIn.component";
 import Link from "next/link";
 
-import { connect } from "react-redux";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
-import router from "next/router";
+import { withRouter } from "next/router";
+import { connect } from "react-redux";
+
 const NavBarMobile = (props) => {
   const [state, setState] = useState({
     isMenuOpen: false,
     slide: false,
-    mobile: "",
+    mobile: '',
     logged: false,
   });
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    let token = localStorage.getItem("token");
     if (token) {
       const user_mobile = localStorage.getItem("mobile");
-      const current_state = { ...state };
-      current_state.logged = true;
-      current_state.mobile = user_mobile;
-      setState(current_state);
+      setState({
+        ...state,
+        logged: true,
+        mobile: user_mobile,
+      });
     }
+    // if (state.logged) {
+    //   props.user.logged = state.logged;
+    //   props.user.user_info = { mobile: state.mobile }
+    // }
   }, [])
 
-  // componentDidMount() {
-  // }
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setState({
+        ...state,
+        mobile: localStorage.getItem("mobile"),
+        logged: true
+      })
+    }
+  }, [props.user])
 
-  const handleLogoutUser = () => {
-    localStorage.removeItem("mobile");
+  const handleLogoutUser = (e) => {
+    e.preventDefault();
     localStorage.removeItem("token");
+    localStorage.removeItem("mobile");
+    setState({ ...state, logged: false })
   }
   console.log(props);
   return (
-    /*<div className={styles['error-mobile']}> hghgshghgsd</div>*/
     <nav className={styles["nav-mobile"]}>
+      {/* <div className={styles['error-mobile']}> hghgshghgsd</div> */}
       <div className={styles["nav-text-detail-mobile"]}>
-        <div className="pull-right mb-1">
-          {props.user.logged === true ? (
-            <>
-              <Link href="/dashboard">
-                <a
-                  href=""
-                  className="font-size-13 color-black"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    router.push("/dashboard");
-                  }}
+        <div className="pull-right">
+        <div
+                  className={
+                    state.logged === true
+                      ? "user-mobile-content align-center"
+                      : styles["nav-detail-first-line"]
+                  }
                 >
-                  {/* <span className="font-bold-iransanse">
-                    شماره موبایل : {props.user.user_info && props.user.user_info.mobile}{" "}
-                  </span> */}
-                  <div className="image">
-                    <svg width="30" height="30" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <ellipse cx="23.3268" cy="20.0852" rx="5.73692" ry="5.75125" stroke="#333" strokeWidth={2} strokeLinecap="round" />
-                      <ellipse cx="23.3279" cy="23.9198" rx="17.2108" ry="17.2537" stroke="#333" strokeWidth={2} />
-                      <path d="M34.3813 37.0045C34.6235 36.8712 34.738 36.5832 34.6358 36.3263C33.8987 34.4727 32.4778 32.8403 30.5566 31.6507C28.4821 30.3662 25.9403 29.6699 23.3254 29.6699C20.7105 29.6699 18.1687 30.3662 16.0942 31.6507C14.173 32.8403 12.7521 34.4727 12.015 36.3263C11.9128 36.5832 12.0273 36.8712 12.2695 37.0045C19.1532 40.7932 27.4976 40.7932 34.3813 37.0045Z" fill="#333" />
-                    </svg>
-                  </div>
-                </a>
-              </Link>
-              <span className="mx-2 ms-0 font-size-16">/</span>
-
-              <a
-                href="/"
-                className="mx-2 text-danger"
-                onClick={handleLogoutUser}
-              >
-                خروج
-              </a>
-            </>
-          ) : (
-            <>
-              {/* {" "}
-                <a
-                  href=""
-                  className="font-size-13 color-black"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    props.accountBoxModify({
-                      state: true,
-                      type: "login",
-                    });
-                  }}
-                >
-                  {" "}
-                </a> */}
-              <i className="bilitja icon-login font-size-14 text-dark"></i>
-              <a
-                href=""
-                className="color-black font-size-13"
-                onClick={(e) => {
-                  e.preventDefault();
-                  props.accountBoxModify({
-                    state: true,
-                    type: "register",
-                  });
-                }}
-              >
-                {/* <i className="bilitja icon-register font-size-14 text-dark"></i> */}
-                &nbsp;
-                <span className="font-bold-iransanse text-dark">ورود / ثبت نام</span>
-              </a>
-            </>
-          )}
-
-          {/* {props.user.logged === false ? (
-              ""
-            ) : (
-              // <a href="/villa/intro" className="font-size-10 btn-outlined">
-              //   میزبان شوید
-              // </a>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  router.push("/dashboard");
-                }}
-                className="font-size-13 btn-outlined px-2 "
-              >
-                داشبورد
-              </a>
-            )} */}
+                  {state.logged == true ? (
+                    <>
+                      <div>
+                        <Link href="/dashboard">
+                          <a>
+                            <i className="bilitja icon-login"></i>
+                            {state.mobile}
+                          </a>
+                        </Link>
+                      </div>
+                      <span className="mx-2">&nbsp;/</span>
+                      <div>
+                        <a
+                          href={'#'}
+                          style={{ fontSize: 12 }}
+                          onClick={(e) => handleLogoutUser(e)}
+                          className="cursor-pointer font-bold-iransanse"
+                        >
+                          خروج
+                        </a>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* <div>
+                          <a
+                            style={{ fontSize: 12 }}
+                            href=""
+                            onClick={(e) => {
+                              e.preventDefault();
+                              props.accountBoxModify({
+                                state: true,
+                                type: "login",
+                              });
+                            }}
+                          >
+                            <i className="bilitja icon-login"></i>
+                            <span>ورود کاربر</span>
+                          </a>
+                        </div> */}
+                      <div className="border-right pb-2">
+                        <a
+                          style={{ fontSize: 12 }}
+                          href=""
+                          onClick={(e) => {
+                            e.preventDefault();
+                            props.accountBoxModify({
+                              state: true,
+                              type: "register",
+                            });
+                          }}
+                        >
+                          {/* <i className="bilitja icon-register"></i> */}
+                          <i className="bilitja icon-login"></i>
+                          <span className="font-bold-iransanse font-size-14">ورود / ثبت نام</span>
+                        </a>
+                      </div>
+                    </>
+                  )}
+                </div>
         </div>
-        <div className="pull-left mt-1">
+        <div className="pull-left">
           <a href="tel:021-84279999" className="color-black font-bold-iransanse">
             {/* <span className="text-dark mx-2">مشاوره تلفنی</span> */}
             <i className="bilitja icon-phone font-size-16"></i>
-            <span className="font-size-17 text-dark"> &nbsp;021-84279999</span>
+            <span className="font-size-17 text-dark font-size-14"> &nbsp;021-84279999</span>
           </a>
         </div>
       </div>
       <div className={styles["nav-logo-container-mobile"]}>
-        <div className="pull-right">
+        <div className="pull-right d-flex mb-0">
           <FontAwesomeIcon
             icon={faBars}
             onClick={() => {
@@ -147,7 +144,7 @@ const NavBarMobile = (props) => {
             }}
             className="mobile-nav-barsicon"
           />
-          <h1 className="font-bold-iransanse">
+          <h1 className="font-bold-iransanse font-size-11 mb-0 d-flex align-center" style={{alignItems: 'center'}}>
             {" "}
             خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه{" "}
           </h1>
@@ -200,7 +197,7 @@ const NavBarMobile = (props) => {
           <ul className="mt-2">
             <li>
               <div>
-                <a href="/">
+                <a href="/ticket">
                   <i className="bilitja font-size-24 icon-plane-departure pull-right rotate-y-180"></i>
                   <span className="pull-right font-size-14 color-black">
                     بلیط هواپیما
@@ -265,4 +262,5 @@ const mapDispatchesToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   user: state.user,
 });
-export default connect(mapStateToProps, mapDispatchesToProps)(NavBarMobile);
+
+export default withRouter(connect(mapStateToProps, mapDispatchesToProps)(NavBarMobile));

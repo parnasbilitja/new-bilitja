@@ -31,7 +31,6 @@ class Flights extends React.Component {
     mainRouter(pathName) {
         pathName = decodeURI(pathName);
         if (pathName.indexOf("info") > 0) {
-            console.log("flightreserve from home");
             return <FlightReserve />;
         } else if (pathName.indexOf("receipt") > 0) {
             return <FlightReciept />;
@@ -95,14 +94,13 @@ class Flights extends React.Component {
         this.setState({ width: window.innerWidth });
     }
     render() {
+
         return (
-            <div className="bodyVar">
-                <NavHandler />
-                <div className={this.state.width <= 826 ? "mt-90" : "mt-90"}>
+            <div className="bodyVar">&
+                <NavHandler type={this.props.router.asPath.split('/')[2]} />
+                <div className={this.state.width >= 826 ? "mt-90":``} style={{marginTop:this.state.width <= 826 &&'30px'}}>
                     {
                         this.mainRouter(this.props.router.asPath)
-                        //console.log(this.props.router)
-                        //    this.props.router.push("/flights")
                     }
                     <MessageBox />
                     <Footer />

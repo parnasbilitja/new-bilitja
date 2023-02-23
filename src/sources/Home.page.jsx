@@ -96,25 +96,29 @@ const Home =(props) => {
         ) : null}
 
         <div className={`${styles["heor-main-container"]}`}>
-          <PageTabls type={type} setType={setType} />
           <Scrolltoprefresh />
-          <div className="row">
-            <div className="col-md-1"></div>
-            <div className="col-md-10">
             {type == 1? 
             <>
-              <FlightSearchBox dateSelected={state.dateSelected} />
-              <HomeDetails state={state} />
+            <div style={{marginRight: '2px'}}>
+                <PageTabls type={type} setType={setType} />
+            </div>
+          <div className="row justify-content-center">
+            <div className="col-md-10 px-0 d-flex justify-content-center">
+              <div className={`px-0 ${styles["width-mobile-search"]} w-100`}>
+                <FlightSearchBox dateSelected={state.dateSelected} />
+              </div>
+            </div>
+              <HomeDetails state={state} type={props.type} />
+            </div>
+          
             </>
             :
             <>
-              <SearchBox  dateSelected={state.dateSelected2} />
+              <SearchBox dateSelected={state.dateSelected2} />
               <HomePicture state={state} />
               <List/>
             </>
             }
-            </div>
-          </div>
         </div>
      
       </div >

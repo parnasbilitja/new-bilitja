@@ -44,3 +44,33 @@
     margin-left: 7px;
   }
 }
+
+.border-left{
+  border-left: 1px dashed black;
+}
+.select-bunk{
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+.cancel-buttom{
+  border-bottom: 1px dashed red;
+  color: red;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+.descripcion {
+  /*background-color: green;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.descripcion:after {
+  content: " ........................................................................................................................................................................................................................................................................................."
+}
+.precio {
+  flex-shrink: 0;
+}

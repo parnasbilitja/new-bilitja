@@ -30,8 +30,12 @@ const PopupFlightReserve = (props) => {
   });
 
   useEffect(() => {
-    setState({ ...state, loading: false })
-  }, [])
+    setState({ 
+      numADL: 1,
+      numCHD: 0,
+      numINF: 0,
+      loading: false, })
+    },[props])
 
   const handleChange = (event) => {
     const { name, value } = event.target;

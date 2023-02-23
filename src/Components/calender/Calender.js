@@ -6,9 +6,9 @@ import DatePicker from "react-modern-calendar-datepicker";
 const Calender = ({ change, inputPlaceholder }) => {
     const [selectedDay, setSelectedDay] = useState(null);
     const [loca, setLoca] = useState(change)
-    useEffect(() => {
-        console.log(selectedDay)
-    }, [selectedDay])
+    // useEffect(() => {
+    //     console.log(selectedDay)
+    // }, [selectedDay])
     return (
         <div>
             <DatePicker

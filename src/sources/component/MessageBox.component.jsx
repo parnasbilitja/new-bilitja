@@ -26,11 +26,13 @@ const MessageBox = (props) => {
     return (
       <div className="d-flex justify-content-center">
         {props.messageBox.state &&
+        <div className={`${styles["messagebox-parent"]}`}>
         <div
         className={` ${styles["messagebox"]} ${`${props.messageBox.color ?'bg-success':'bg-danger'}`
       }`}
       >
-        <span className={``} >{props.messageBox.message}</span>
+        <span dangerouslySetInnerHTML={{__html:props.messageBox.message}} />
+        </div>
       </div>
       }
       </div>

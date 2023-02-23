@@ -155,16 +155,21 @@ class MinimumPriceCalendar extends React.Component {
   };
   render() {
     return (
-      <div className="row mt-5 mx-2">
-        <div className="col-lg-3 col-md-3 col-sm-1 col-0"></div>
+      <div className="row mt-5 mx-2 justify-content-center">
+        {/* <div className="col-lg-3 col-md-3 col-sm-1 col-0"></div> */}
         {this.state.firstMonth ? (
-          <div className="col-lg-6 col-md-6 col-md-10 col-12">
+          <div className="col-md-10 col-md-10 col-11">
             <div className="row">
               <div className="col-lg-1 col-1">
+                <span 
+                  className={`${StyleCalendarPrice["btn-primary-color"]}`}
+
+                  >
                 <FontAwesomeIcon
                   icon={faAngleRight}
                   onClick={this.decreaseMonth}
-                />
+                  />
+                  </span>
               </div>
 
               <div className="col-lg-10 col-10">
@@ -174,13 +179,18 @@ class MinimumPriceCalendar extends React.Component {
               </div>
 
               <div className="col-lg-1 col-1">
+              <span 
+                  className={`${StyleCalendarPrice["btn-primary-color"]}`}
+
+                  >
                 <FontAwesomeIcon
                   icon={faAngleLeft}
                   onClick={this.increaseMonth}
-                />
+                  />
+                  </span>
               </div>
             </div>
-            <div className={StyleCalendarPrice["min-price-calendar-container"]}>
+            <div className={` ps-0 ${StyleCalendarPrice["min-price-calendar-container"]}`} style={{paddingRight:'25px'}}>
               <div className="font-size-13 color-black">شنبه</div>
               <div className="font-size-13 color-black">1شنبه</div>
               <div className="font-size-13 color-black">2شنبه</div>

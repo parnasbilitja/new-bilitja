@@ -94,7 +94,7 @@ const Dashboard = (props) => {
               icon={faBars}
               onClick={() => {
                 setOpen(!open);
-                console.log(open);
+                // console.log(open);
               }}
             />
           </div>

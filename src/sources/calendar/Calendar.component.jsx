@@ -8,7 +8,9 @@ const CalendarComponent = (props) => {
     const [state,setState] = useState({
             typeOfCalendar: "GAR"
         })
-    useEffect(()=>{
+        const [width, setWidth] = useState();
+        useEffect(() => {
+            setWidth(window.innerWidth)
         setState({...state,
             typeOfCalendar: "JAL"
         });
@@ -19,7 +21,7 @@ const CalendarComponent = (props) => {
         <div onClick={(e) => {
             e.stopPropagation()
         }}
-        style={{height: '330px',
+        style={{height: width>826?'330px':'406',
             overflowY: 'auto'}}
         >
 
@@ -28,7 +30,7 @@ const CalendarComponent = (props) => {
                     setState({...state,
                         typeOfCalendar: state.typeOfCalendar == "JAL" ? "GAR" : "JAL"
                     })
-                }} >&nbsp;  {state.typeOfCalendar == "JAL" ? "میلادی" : " شمسی"}</button>
+                }} >&nbsp;  {state.typeOfCalendar == "JAL" ? "تقویم میلادی" : "تقویم شمسی"}</button>
             </div>
                 
             {state.typeOfCalendar == "JAL" ?

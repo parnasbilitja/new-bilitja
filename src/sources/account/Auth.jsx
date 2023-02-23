@@ -69,6 +69,7 @@ const Auth = (props) => {
   };
 
   const login = () => {
+    console.log(state);
     setState({ ...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/getMobile`, {
       method: "POST",
@@ -155,6 +156,7 @@ const Auth = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        localStorage.setItem("token", data.token);
         if (data.status == "0") {
           setState({
             ...state,
@@ -200,6 +202,8 @@ const Auth = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
+        localStorage.setItem("token", data.token);
         if (data.status == "2" || data.status == "1") {
           setState({ ...state, btn_disabled: false, loading: false });
           localStorage.setItem("mobile", data.mobile);
