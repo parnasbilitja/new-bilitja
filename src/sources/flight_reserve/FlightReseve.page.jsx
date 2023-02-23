@@ -56,7 +56,7 @@ const FlightReserve = (props) => {
     const [closePopUp, setClosePopUp] = useState(false)
     const [loading, setLoading] = useState(false)
     const [scrollTop, setScrollTop] = useState(0)
-    
+
     const [state, setState] = useState({
         stateRegister: false,
         passengers: [],
@@ -71,7 +71,7 @@ const FlightReserve = (props) => {
     });
     const router = useRouter();
     useEffect(() => {
-        if(localStorage.getItem('reqNo') !==null){
+        if (localStorage.getItem('reqNo') !== null) {
             // router.push({pathname: localStorage.getItem('url').split('"')[1].split('info')[0]})
             props.messageBoxModify({
                 color: false,
@@ -81,9 +81,9 @@ const FlightReserve = (props) => {
             setTimeout(() => {
                 router.back()
             }, "3000")
-    }
-        
-        localStorage.setItem('reqNo',props.router.asPath.split("/")[7])
+        }
+
+        localStorage.setItem('reqNo', props.router.asPath.split("/")[7])
         props.addReservationProperties({
             reqNo: props.router.asPath.split("/")[7],
             reqPnr: props.router.asPath.split("/")[8],
@@ -167,7 +167,7 @@ const FlightReserve = (props) => {
         });
     };
 
-    const addNewPassenger = (type, price,pathKind) => {
+    const addNewPassenger = (type, price, pathKind) => {
         let passengers = state.passengers;
         let max_ = -1;
         passengers.map((onePassenger) => {
@@ -182,7 +182,7 @@ const FlightReserve = (props) => {
             family: "",
             nationality: "IR",
             gender: "1",
-            pathKind:pathKind,
+            pathKind: pathKind,
             code: "",
             birthday: "",
             extPasaport: "",
@@ -240,7 +240,7 @@ const FlightReserve = (props) => {
 
     const validation = () => {
         let isValid = true;
-        
+
         if (state.mobileSubmiter == "") {
             setState({
                 ...state,
@@ -321,7 +321,7 @@ const FlightReserve = (props) => {
         }
         setState({ ...state, [name]: value })
         // if (name == 'mobileSubmiter'){
-            // setState({ ...state, mobileSubmiter:value })
+        // setState({ ...state, mobileSubmiter:value })
         //     setMobileNumber({...mobileNumber,mobile: value})
         // }
         console.log(state);
@@ -371,7 +371,7 @@ const FlightReserve = (props) => {
         return valid;
     };
     const compeleteReservation = () => {
-        console.log('state',state);
+        console.log('state', state);
         const numADL = state.passengers.filter((x) => x.type == "ADL").length;
         const numCHD = state.passengers.filter((x) => x.type == "CHD").length;
         const numINF = state.passengers.filter((x) => x.type == "INF").length;
@@ -554,25 +554,25 @@ const FlightReserve = (props) => {
             });
     };
     let loginGoNext = ''
-    loginGoNext = localStorage.getItem('loginGoNext')  && localStorage.getItem('loginGoNext')
-    useEffect(()=>{
+    loginGoNext = localStorage.getItem('loginGoNext') && localStorage.getItem('loginGoNext')
+    useEffect(() => {
         console.log(loginGoNext);
         if (loginGoNext == 1) {
             compeleteReservation()
             setLoading(true)
-            localStorage.setItem('loginGoNext',JSON.stringify(''))
+            localStorage.setItem('loginGoNext', JSON.stringify(''))
             console.log(loginGoNext);
-        }           
-    },[loginGoNext])
-    
-    return ( 
+        }
+    }, [loginGoNext])
+
+    return (
         <div className="container mt-90" style={{ height: '100%' }}>
             <Scrolltoprefresh />
             <div className={`${styles["flight-detail"]}`} ref={Ref}>
                 <FlightReserveDesktopHeader {...state} />
                 <FlightReserveMobileHeader {...state} />
             </div>
-            <div className="row justify-content-center"> 
+            <div className="row justify-content-center">
                 <div className="col-lg-12 no-padding-xs border-pill-lg">
                     {state.passengers ? state.passengers.map((onePassenger, index) => (
                         <FlightPassengerForm
@@ -694,8 +694,8 @@ const FlightReserve = (props) => {
                                     <span className="color-secondary font-size-14">
                                         {/* { state.mobileSubmiterErr } */}
                                         {
-                                            state.mobileSubmiter?.length < 11 && state.mobileSubmiter !='' ? 'شماره همراه باید ۱۱ رقمی باشد' :
-                                            state.mobileSubmiter == '' && numbers2 ? state.mobileSubmiterErr:
+                                            state.mobileSubmiter?.length < 11 && state.mobileSubmiter != '' ? 'شماره همراه باید ۱۱ رقمی باشد' :
+                                                state.mobileSubmiter == '' && numbers2 ? state.mobileSubmiterErr :
                                                     ''}
                                         {/* {
                                             state.mobileSubmiter == null || state.mobileSubmiterErr == '' ? 'لطفا شماره را وارد کنید' :
@@ -765,21 +765,21 @@ const FlightReserve = (props) => {
                                         className="mx-2"
                                     />
                                     <label htmlFor="terms" style={{ fontSize: 15 }}>
-                                        <span onClick={() => setClosePopUp(true)} style={{ borderBottom: '2px dashed red',paddingBottom: 10}}>
-                                        قوانین و مقررات و صحت اطلاعات{' '}
+                                        <span onClick={() => setClosePopUp(true)} style={{ borderBottom: '2px dashed red', paddingBottom: 10 }}>
+                                            قوانین و مقررات و صحت اطلاعات{' '}
                                         </span>
-                                         را قبول دارم.
+                                        را قبول دارم.
                                     </label>
                                 </div>
-                                <div className="text-danger font-size-15 col-12 col-md-5 pt-3">
+                                <div className="text-danger font-size-15 col-12 col-md-5 pt-4">
                                     {state.agreeWithTermerr == true && state.agreeWithTerm == false && 'لطفا قوانین را بپذیرید.'}
                                 </div>
                             </div>
 
                             <div className="row finish-reserve-buttons mb-3 ml-5 mt-4">
                                 <div className="col-lg-8 col-md-8 col-7 padding-3px">
-                                    <button 
-                                    disabled={loading}
+                                    <button
+                                        disabled={loading}
                                         onClick={(e) => {
                                             console.log(props);
                                             if (!validation()) {
@@ -851,10 +851,10 @@ const FlightReserve = (props) => {
                                                 props.router.back();
                                             }}
                                         > */}
-                                    <span 
-                                    onClick={() => {
-                                        props.router.back();
-                                    }}>
+                                    <span
+                                        onClick={() => {
+                                            props.router.back();
+                                        }}>
                                         <span
                                             className="btn col-12 back-payment-btn py-2"
                                         >بازگشت</span>
@@ -866,29 +866,29 @@ const FlightReserve = (props) => {
                     </div>
                 </div>
             </div>
-            
+
             <PopUp opened={closePopUp} closePopUp={setClosePopUp} >
                 <div className="p-2">
-                <span
-                    className="exit-form position-absolute"
-                    onClick={() => {
-                        props.accountBoxModify({
-                        state: false,
-                        });
-                    }} style={{ left: 10 }}
+                    <span
+                        className="exit-form position-absolute"
+                        onClick={() => {
+                            props.accountBoxModify({
+                                state: false,
+                            });
+                        }} style={{ left: 10 }}
                     >
-                    <CloseOutlined style={{ color: "red" }} />
+                        <CloseOutlined style={{ color: "red" }} />
                     </span>
                     <div onClick={() => setClosePopUp(false)} className="p-5">
                         قوانین و مقررات
                     </div>
                 </div>
             </PopUp>
-            
+
         </div>
     );
 }
-const mapStateToProps = (state) =>{
+const mapStateToProps = (state) => {
     return {
         reserveProperties: selectProperties(state),
         user: state.user,
@@ -897,7 +897,7 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch) => ({
     accountBoxModify: (value) => dispatch(accountBoxModify(value)),
     addReservationProperties: async (value) =>
-    dispatch(addReservationProperties(value)),
+        dispatch(addReservationProperties(value)),
     messageBoxModify: (value) => dispatch(messageBoxModify(value)),
 });
 
