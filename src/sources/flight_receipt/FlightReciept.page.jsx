@@ -25,31 +25,31 @@ import Scrolltoprefresh from "../component/Scrolltoprefresh";
 
 const FlightReciept = (props) => {
   console.log(props);
-    const [state, setState] = useState({
-      birthDayAll_: [],
-      familyAll_: [],
-      meliCodeAll_: [],
-      pasNoAll_: [],
-      meliatAll_: [],
-      pasEndDateAll_: [],
-      nameAll_: [],
-      sexAll_: [],
-      ticketCodeAll_: [],
-      open: false,
-      isUpdated: false,
-      current: {
-        name: "",
-        family: "",
-        meliat: "",
-        pasEndDateAll:'',
-        meliCode: "",
-        sex: "",
-        birthday: "",
-        index: 0,
-      },
-    });
-  
-    useEffect(() => {
+  const [state, setState] = useState({
+    birthDayAll_: [],
+    familyAll_: [],
+    meliCodeAll_: [],
+    pasNoAll_: [],
+    meliatAll_: [],
+    pasEndDateAll_: [],
+    nameAll_: [],
+    sexAll_: [],
+    ticketCodeAll_: [],
+    open: false,
+    isUpdated: false,
+    current: {
+      name: "",
+      family: "",
+      meliat: "",
+      pasEndDateAll: '',
+      meliCode: "",
+      sex: "",
+      birthday: "",
+      index: 0,
+    },
+  });
+
+  useEffect(() => {
     props.addReservationProperties({
       reqNo: props.router.asPath.split("/")[3],
       reqPnr: props.router.asPath.split("/")[4],
@@ -92,32 +92,33 @@ const FlightReciept = (props) => {
           const pasNoAll = String(
             data.flightReservePropertyModel.pasNoAll
           ).split(",");
-          
+
           const pathKind = data.flightReservePropertyModel.pathKind;
-            const feeGet = data.flightReservePropertyModel.feeGet;
+          const feeGet = data.flightReservePropertyModel.feeGet;
           setState(
-            {...state,
+            {
+              ...state,
               ...data.flightReservePropertyModel,
               birthDayAll_: birthDayAll,
               familyAll_: familyAll,
               meliCodeAll_: meliCodeAll,
-              pasEndDateAll_:pasEndDateAll,
+              pasEndDateAll_: pasEndDateAll,
               pasNoAll_: pasNoAll,
               meliatAll_: meliatAll,
               nameAll_: nameAll,
               sexAll_: sexAll,
-              pathKind:pathKind,
+              pathKind: pathKind,
               ticketCodeAll_: ticketCodeAll,
-              feeGet:feeGet,
+              feeGet: feeGet,
             },
             console.log(state),
             getAllPrice()
           );
         }
       });
-      
-  // }
-},[])
+
+    // }
+  }, [])
 
   const compeleteReservation = () => {
     const reservePassengerObject = {
@@ -153,15 +154,15 @@ const FlightReciept = (props) => {
       .then((data) => {
         if (data.message == "0") {
           alert("success");
-        // } else {
-        //   props.messageBoxModify({
-        //     color:false,
-        //     state: true,
-        //     message: "لطفا اطلاعات را کامل وارد کنید",
-        //   });
+          // } else {
+          //   props.messageBoxModify({
+          //     color:false,
+          //     state: true,
+          //     message: "لطفا اطلاعات را کامل وارد کنید",
+          //   });
         }
       });
-      
+
   };
   const getBanks = () => {
     fetch(
@@ -235,7 +236,8 @@ const FlightReciept = (props) => {
       sum += getTicketPrice(oneTicket);
       // console.log(oneTicket);
     });
-    setState({...state,
+    setState({
+      ...state,
       priceAll: sum,
     });
   };
@@ -256,18 +258,19 @@ const FlightReciept = (props) => {
     birthdays[index] = value.birthday;
     pasEndDateAll[index] = value.pasEndDateAll;
 
-    setState({...state,
+    setState({
+      ...state,
       nameAll_: names,
       nameAll: names,
-      nameEnAll: [...names.map((item)=>(item.toUpperCase()))],
+      nameEnAll: [...names.map((item) => (item.toUpperCase()))],
       familyAll_: families,
       familyAll: families,
-      familyEnAll:[...families.map((item)=>(item.toUpperCase()))],
+      familyEnAll: [...families.map((item) => (item.toUpperCase()))],
       sexAll_: sexes,
       meliatAll_: meliats,
       meliCodeAll_: meliCodes,
       birthDayAll_: birthdays,
-      pasEndDateAll_ : pasEndDateAll,
+      pasEndDateAll_: pasEndDateAll,
       isUpdated: true,
     });
     console.log(state);
@@ -279,243 +282,245 @@ const FlightReciept = (props) => {
       open: !open,
     });
   };
-console.log(state);
-    return (
-      <div className="container">
-        <div className={styles["flight-detail"]}>
-          <FlightReserveDesktopHeader {...state} />
-          <FlightReserveMobileHeder {...state} />
-          <Scrolltoprefresh/>
-        </div>
-        <div className="row ">
-          {/* <div className="col-lg-1"></div> */}
-          <div className="col-lg-12 no-padding-xs border-pill-lg px-4">
-            <p
-              className={`text-right font-size-14 ${styles["pcolor-textpill"]}  `}
-            >
-              <FontAwesomeIcon icon={faUser} />
-              مشخصات مسافرین
-            </p>
-            <table
-              className={`table text-right ${styles["passenger-list-last-payment"]} `}
-            >
-              <thead>
-                <tr className="font-bold-iransanse font-size-13 hidden-xs">
-                  <th>رده</th>
-                  <th>نام</th>
-                  <th>نام‌خانوادگی</th>
-                  <th>ملیت</th>
-                  <th>کدملی/گذرنامه</th>
-                  {state.pasEndDateAll && <th>انقضای گذرنامه</th>}
-                  <th>تاریخ تولد</th>
-                  <th>قیمت تومان</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {state.birthDayAll_.length > 0
-                  ? state.birthDayAll_.map((oneRow, index) => (
-                    <tr className="font-size-13">
-                      <td className="hidden-xs">
-                        {getTicketType(state.ticketCodeAll_[index])}
-                        ({(state.sexAll_[index] == 1?'مرد':'زن')})
-                      </td>
-                      <td className=" px-0">
-                        <div className="hidden-xs">
-                          {state.nameAll_[index]}
-                        </div>
-                        <div className="visible-xs font-bold-iransanse">
-                          <span>
-                            <FontAwesomeIcon icon={faUser} />
-                            {`${state.nameAll_[index]} ${state.familyAll_[index]
-                              } (${getTicketType(
-                                state.ticketCodeAll_[index]
-                              )})`}
-                          </span>
-                          <p>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            {state.meliCodeAll_[index]?state.meliCodeAll_[index]:state.pasNoAll_[index]}
-                          </p>
-                        </div>
-                      </td>
-                      <td className="hidden-xs">
-                        {state.familyAll_[index]}
-                      </td>
-                      <td className="hidden-xs">
-                        {state.meliatAll_[index] == "IR"
-                          ? "ایرانی"
-                          : "خارجی"}
-                      </td>
-                      <td className="hidden-xs">
-                        {state.meliCodeAll_[index]?state.meliCodeAll_[index]:state.pasNoAll_[index]}
-                      </td>
-                      {state.pasEndDateAll && 
+  console.log(state);
+  return (
+    <div className="container">
+      <div className={styles["flight-detail"]}>
+        <FlightReserveDesktopHeader {...state} />
+        <FlightReserveMobileHeder {...state} />
+        <Scrolltoprefresh />
+      </div>
+      <div className="row ">
+        {/* <div className="col-lg-1"></div> */}
+        <div className="col-lg-12 no-padding-xs border-pill-lg px-4">
+          <p
+            className={`text-right font-size-14 ${styles["pcolor-textpill"]}  `}
+          >
+            <FontAwesomeIcon icon={faUser} />
+            مشخصات مسافرین
+          </p>
+          <table
+            className={`table text-right ${styles["passenger-list-last-payment"]} `}
+          >
+            <thead>
+              <tr className="font-bold-iransanse font-size-13 hidden-xs">
+                <th>#</th>
+                <th>نام</th>
+                <th>نام‌خانوادگی</th>
+                <th>ملیت</th>
+                <th>کدملی/گذرنامه</th>
+                {state.pasEndDateAll && <th>انقضای گذرنامه</th>}
+                <th>تاریخ تولد</th>
+                <th>قیمت تومان</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {state.birthDayAll_.length > 0
+                ? state.birthDayAll_.map((oneRow, index) => (
+                  <tr className="font-size-13">
+                    <td className="hidden-xs">
+                      <span>{index + 1}.&nbsp;</span>
+                      {getTicketType(state.ticketCodeAll_[index])}
+                      ({(state.sexAll_[index] == 1 ? 'مرد' : 'زن')})
+                    </td>
+                    <td className=" px-0">
+                      <div className="hidden-xs">
+                        {state.nameAll_[index]}
+                      </div>
+                      <div className="visible-xs font-bold-iransanse">
+                        <span>
+                          <FontAwesomeIcon icon={faUser} />
+                          {`${state.nameAll_[index]} ${state.familyAll_[index]
+                            } (${getTicketType(
+                              state.ticketCodeAll_[index]
+                            )})`}
+                        </span>
+                        <p>
+                          <FontAwesomeIcon icon={faInfoCircle} />
+                          {state.meliCodeAll_[index] ? state.meliCodeAll_[index] : state.pasNoAll_[index]}
+                        </p>
+                      </div>
+                    </td>
+                    <td className="hidden-xs">
+                      {state.familyAll_[index]}
+                    </td>
+                    <td className="hidden-xs">
+                      {state.meliatAll_[index] == "IR"
+                        ? "ایرانی"
+                        : "خارجی"}
+                    </td>
+                    <td className="hidden-xs">
+                      {state.meliCodeAll_[index] ? state.meliCodeAll_[index] : state.pasNoAll_[index]}
+                    </td>
+                    {state.pasEndDateAll &&
                       <td className="hidden-xs">
                         {state.pasEndDateAll_[index]}
                       </td>
-                      }
-                      <td>
-                        <div className="hidden-xs">
+                    }
+                    <td>
+                      <div className="hidden-xs">
+                        {state.birthDayAll_[index]}
+                      </div>
+                      <div className="visible-xs font-bold-iransanse">
+                        <span>
+                          <FontAwesomeIcon icon={faCalendar} />
                           {state.birthDayAll_[index]}
-                        </div>
-                        <div className="visible-xs font-bold-iransanse">
-                          <span>
-                            <FontAwesomeIcon icon={faCalendar} />
-                            {state.birthDayAll_[index]}
+                        </span>
+                        <p>
+                          {/* <FontAwesomeIcon icon={faDollarSign} /> */}
+                          <span className="color-secondary">
+                            {" "}
+                            {moneyFormat(
+                              getTicketPrice(
+                                state.ticketCodeAll_[index]
+                              )
+                            )}{' '}
                           </span>
-                          <p>
-                            {/* <FontAwesomeIcon icon={faDollarSign} /> */}
-                            <span className="color-secondary">
-                              {" "}
-                              {moneyFormat(
-                                getTicketPrice(
-                                  state.ticketCodeAll_[index]
-                                )
-                              )}{' '}
-                            </span>
-                              ریال
-                          </p>
-                        </div>
-                      </td>
-                      <td className="hidden-xs">
-                        {moneyFormat(
-                          getTicketPrice(
-                            state.ticketCodeAll_[index]
-                          )
-                        )}
-                      </td>
-                      <td>
-                        <div className="font-size-14">
-                          <FontAwesomeIcon style={{cursor: "pointer"}}
-                            icon={faEdit}
-                            onClick={() => {
-                              managePopUpEditForm()
-                              setState({...state,
-                                  current: {
-                                    index: index,
-                                    name: state.nameAll_[index],
-                                    family: state.familyAll_[index],
-                                    meliat: state.meliatAll_[index],
-                                    pasNoAll:state.pasNoAll_[index],
-                                    meliCode: state.meliCodeAll_[index] ,
-                                    pasEndDateAll:state.pasEndDateAll_[index],
-                                    sex: state.sexAll_[index],
-                                    birthday: state.birthDayAll_[index],
-                                  }
-                                }
-                                );
+                          ریال
+                        </p>
+                      </div>
+                    </td>
+                    <td className="hidden-xs">
+                      {moneyFormat(
+                        getTicketPrice(
+                          state.ticketCodeAll_[index]
+                        )
+                      )}
+                    </td>
+                    <td>
+                      <div className="font-size-14">
+                        <FontAwesomeIcon style={{ cursor: "pointer" }}
+                          icon={faEdit}
+                          onClick={() => {
+                            managePopUpEditForm()
+                            setState({
+                              ...state,
+                              current: {
+                                index: index,
+                                name: state.nameAll_[index],
+                                family: state.familyAll_[index],
+                                meliat: state.meliatAll_[index],
+                                pasNoAll: state.pasNoAll_[index],
+                                meliCode: state.meliCodeAll_[index],
+                                pasEndDateAll: state.pasEndDateAll_[index],
+                                sex: state.sexAll_[index],
+                                birthday: state.birthDayAll_[index],
                               }
                             }
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                  ))
-                  : null}
-              </tbody>
-            </table>
-          </div>
+                            );
+                          }
+                          }
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))
+                : null}
+            </tbody>
+          </table>
         </div>
-        <div className="row ">
-          <div className="col-lg-1 col-0"></div>
-          <div className="col-lg-12 col-12 no-padding-xs border-pill-lg pt-10 px-3">
-            <div className="row justify-content-between px-2">
-              {/* child */}
-              <div className={`col-lg-4 text-right ${styles['border-left']}`}>
-                <div className={`${styles["item"]}`}>
-                  <div className={`${styles["descripcion"]}`}>
-                      مبلغ کل :
-                  </div>
-                    <div className={`${styles["precio"]} font-bold-iransanse`}>
-                      {moneyFormat(state.feeGet)}{' '}
-                      <span>تومان</span>
-                    </div>
+      </div>
+      <div className="row ">
+        <div className="col-lg-1 col-0"></div>
+        <div className="col-lg-12 col-12 no-padding-xs border-pill-lg py-2 px-3">
+          <div className="row justify-content-between px-2">
+            {/* child */}
+            <div className={`col-lg-4 text-right ${styles['border-left']}`}>
+              <div className={`${styles["item"]} pb-3`}>
+                <div className={`${styles["descripcion"]}`}>
+                  مبلغ کل :
                 </div>
-                <div className={`${styles["item"]}`}>
-                  <div className={`${styles["descripcion"]}`}>
-                      اعتبار کیف پول شما :‌
-                  </div>
-                  <div className={`${styles["precio"]} font-bold-iransanse`}>
-                      {moneyFormat(0)}{' '}
-                      <span>تومان</span>
-                    </div>
-                </div>
-                <div className={`${styles["item"]}`}>
-                  <div className={`${styles["descripcion"]}`}>
-                      مبلغ قابل پرداخت :‌
-                  </div>
-                  <div className={`${styles["precio"]} font-bold-iransanse`}>
-                      {moneyFormat(state.feeGet)}{' '}
-                      <span>تومان</span>
-                    </div>
+                <div className={`${styles["precio"]} font-bold-iransanse`}>
+                  {moneyFormat(state.feeGet)}{' '}
+                  <span>تومان</span>
                 </div>
               </div>
-              {/* child */}
-              <div className={`mb-2 col-lg-3 col-12 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
-                <div className={`d-flex justify-content-end ${styles['select-bunk']} `}>
-                  <input type="radio" checked={true} className="ms-3"/>
-                  <img src={'../../../Images/sep.png'} alt="sep" width={'100px'} height={'50px'}  />
+              <div className={`${styles["item"]} pb-3`}>
+                <div className={`${styles["descripcion"]}`}>
+                  اعتبار کیف پول شما :‌
+                </div>
+                <div className={`${styles["precio"]} font-bold-iransanse`}>
+                  {moneyFormat(0)}{' '}
+                  <span>تومان</span>
                 </div>
               </div>
-              <div className={`mb-2 col-lg-3 col-12 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
-                <div className={`d-flex justify-content-end ${styles['select-bunk']} `}>
+              <div className={`${styles["item"]} pb-3`}>
+                <div className={`${styles["descripcion"]}`}>
+                  مبلغ قابل پرداخت :‌
+                </div>
+                <div className={`${styles["precio"]} font-bold-iransanse`}>
+                  {moneyFormat(state.feeGet)}{' '}
+                  <span>تومان</span>
+                </div>
+              </div>
+            </div>
+            {/* child */}
+            <div className={`col-lg-3 col-12 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
+              <div className={`d-flex justify-content-end ${styles['select-bunk']} `}>
+                <input type="radio" checked={true} className="ms-3" />
+                <img src={'../../../Images/sep.png'} alt="sep" width={'100px'} height={'50px'} />
+              </div>
+            </div>
+            <div className={`col-lg-3 col-12 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
+              <div className={`d-flex justify-content-end ${styles['select-bunk']} `}>
                 <div className="row justify-content-center">
-                  <div className="col-lg-7 col-6" style={{width: 'fit-content'}}>
+                  <div className="col-lg-7 col-6" style={{ width: 'fit-content' }}>
                     <p className="font-size-13 mb-0">
                       مبلغ قابل پرداخت :‌
                     </p>
                   </div>
-                  <div className="col-lg-5 col-6 text-left ps-5" style={{width: 'fit-content'}}>
+                  <div className="col-lg-5 col-6 text-left ps-5" style={{ width: 'fit-content' }}>
                     <span className="font-size-14 text-danger mb-0 font-bold-iransanse">
                       {moneyFormat(state.feeGet)}{' '}
                     </span>
-                      <span className="">تومان</span>
+                    <span className="">تومان</span>
                   </div>
-                </div>
                 </div>
               </div>
-              <div className={`col-lg-2 col-12 payment-container d-flex align-items-center justify-content-center text-center`}>
-                <div className="">
-                  <div className="ms-2 col-12">
-                    <button
-                      className="btn btn-success-payment py-2 mb-1"
-                      onClick={() => {
-                          compeleteReservation();
-                            getBanks();
-                      }}
-                    >
-                      پرداخت با کارت شتاب
-                    </button>
-                  </div>
-                  <div className="me-2 col-12 d-flex justify-content-center mt-2">
-                    <span
-                      className={`py-2 mb-1 cursor-pointer ${styles['cancel-buttom']}`}
-                      onClick={() => router.push("/")}
-                    >
-                      <span>انصراف از خرید</span>
-                    </span>
-                  </div>
+            </div>
+            <div className={`col-lg-2 col-12 payment-container d-flex align-items-center justify-content-center text-center`}>
+              <div className="">
+                <div className="ms-2 col-12">
+                  <button
+                    className="btn btn-success-payment py-2 mb-1"
+                    onClick={() => {
+                      compeleteReservation();
+                      getBanks();
+                    }}
+                  >
+                    پرداخت با کارت شتاب
+                  </button>
+                </div>
+                <div className="me-2 col-12 d-flex justify-content-center mt-2">
+                  <span
+                    className={`py-2 mb-1 cursor-pointer ${styles['cancel-buttom']}`}
+                    onClick={() => router.push("/")}
+                  >
+                    <span>انصراف از خرید</span>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <PopUpWide
-          type='editReciept'
-          opened={open}
-          closePopUp={managePopUpEditForm}
-        >
-          <div className={stylesflight["flight-search-box-calendar-container"]}  style={{border:" 1px solid",borderRadius: '5px'}}>
-            <FlightPassengerEditForm
-              {...state.current}
-              pathKind={state.pathKind}
-              setOpen={setOpen}
-              changeProperty={updatePassengerData}
-            />
-          </div>
-        </PopUpWide>
       </div>
-    );
+      <PopUpWide
+        type='editReciept'
+        opened={open}
+        closePopUp={managePopUpEditForm}
+      >
+        <div className={stylesflight["flight-search-box-calendar-container"]} style={{ border: " 1px solid", borderRadius: '5px' }}>
+          <FlightPassengerEditForm
+            {...state.current}
+            pathKind={state.pathKind}
+            setOpen={setOpen}
+            changeProperty={updatePassengerData}
+          />
+        </div>
+      </PopUpWide>
+    </div>
+  );
 
 }
 const mapStateToProps = (state) => ({
