@@ -188,7 +188,7 @@ const FlightSearchBox = (props) =>{
             ) : null}
           </div>
         </div>
-        <div className="position-absolute" style={{top: 37,left: 50,zIndex: 2,transform: "rotate(90deg)" }}>
+        <div className="position-absolute isMobile" style={{display:"none",top: 37,left: 50,zIndex: 2,transform: "rotate(90deg)" }}>
               <div className="image d-flex align-items-center bg-white check-r py-2 px-2"
               onClick={() => {
                 props.switchRoute();
