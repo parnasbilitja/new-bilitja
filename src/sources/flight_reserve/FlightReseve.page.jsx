@@ -748,8 +748,8 @@ const FlightReserve = (props) => {
                         </div>
 
                         <div className="col-lg-6 col-md-12 col-12 finish-reserve">
-                            <div className="row" style={{ marginTop: 10 }}>
-                                <div className="col-lg-7 d-flex align-items-center">
+                            <div className="row flex-wrap" style={{ marginTop: 10 }}>
+                                <div className="col-lg-12 d-flex align-items-center">
                                     <input
                                         type="checkbox"
                                         id="terms"
@@ -765,13 +765,13 @@ const FlightReserve = (props) => {
                                         className="mx-2"
                                     />
                                     <label htmlFor="terms" style={{ fontSize: 15 }}>
-                                        <span onClick={() => setClosePopUp(true)} style={{ borderBottom: '2px dashed red'}}>
+                                        <span onClick={() => setClosePopUp(true)} style={{ borderBottom: '2px dashed red',paddingBottom: 10}}>
                                         قوانین و مقررات و صحت اطلاعات{' '}
                                         </span>
                                          را قبول دارم.
                                     </label>
                                 </div>
-                                <div className="text-danger font-size-15 col-12 col-md-5">
+                                <div className="text-danger font-size-15 col-12 col-md-5 pt-3">
                                     {state.agreeWithTermerr == true && state.agreeWithTerm == false && 'لطفا قوانین را بپذیرید.'}
                                 </div>
                             </div>

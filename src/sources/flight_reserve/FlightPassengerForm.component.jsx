@@ -21,13 +21,13 @@ const FlightPassengerForm = (props) => {
         extOpen: false,
     });
     useEffect(() => {
-        
-        props.pathKind == 2  && setCalend(false)
-        
-    },[])
+
+        props.pathKind == 2 && setCalend(false)
+
+    }, [])
     useEffect(() => {
-        props.pathKind == 2  && setCalend(false)
-    },[props.pathKind])
+        props.pathKind == 2 && setCalend(false)
+    }, [props.pathKind])
 
     const [err, setErr] = useState({
         checker: false,
@@ -105,7 +105,7 @@ const FlightPassengerForm = (props) => {
             <div className="row d-flex justify-content-start col-md-12">
                 <div className="px-0 col-lg-2 col-md-12 col-sm-12 col-12 no-padding hidden-xs">
                     <span className="no-margin font-size-14 font-bold-iransanse">
-                    &nbsp;&nbsp;&nbsp;{`${props.index + 1}-`}&nbsp;
+                        &nbsp;&nbsp;&nbsp;{`${props.index + 1}-`}&nbsp;
                         {getTitleByType(props.type)}
                     </span>
                     <span className="no-margin font-size-10">
@@ -142,7 +142,7 @@ const FlightPassengerForm = (props) => {
                         <span className="font-size-12 font-bold-iransanse">تومان</span>
                     </div>
                     {props.id != 0 ? (
-                            <div
+                        <div
                             className="col-1 no-margin no-padding corner-position"
                             style={{ position: "absolute", left: "-7px", top: "0px" }}
                         >
@@ -156,7 +156,7 @@ const FlightPassengerForm = (props) => {
                                     d="m9 12a6 6 0 1 0 -6-6 6.006 6.006 0 0 0 6 6zm0-10a4 4 0 1 1 -4 4 4 4 0 0 1 4-4zm9 17v5h-2v-5a3 3 0 0 0 -3-3h-8a3 3 0 0 0 -3 3v5h-2v-5a5.006 5.006 0 0 1 5-5h8a5.006 5.006 0 0 1 5 5zm3.414-9 2.543 2.543-1.414 1.414-2.543-2.543-2.543 2.543-1.414-1.414 2.543-2.543-2.543-2.543 1.414-1.414 2.543 2.543 2.543-2.543 1.414 1.414z" /></svg>
                             </span>
                             <span className="color-secondary error-message position-absolute top-50">&nbsp;</span>
-                        
+
                         </div>
                     ) : null}
                 </div>
@@ -227,9 +227,9 @@ const FlightPassengerForm = (props) => {
                                         props.id,
                                         e.target.value
                                     );
-                                    if(props.pathKind == 1 && e.target.value=='IR'){
+                                    if (props.pathKind == 1 && e.target.value == 'IR') {
                                         setCalend(true)
-                                    }else if(props.pathKind == 1 && e.target.value=='other'){
+                                    } else if (props.pathKind == 1 && e.target.value == 'other') {
                                         setCalend(false)
                                     }
                                     props.fillPassengersData(
@@ -243,7 +243,7 @@ const FlightPassengerForm = (props) => {
                                         ''
                                     );
                                 }
-                            }
+                                }
                             >
                                 <option value="IR">ایرانی</option>
                                 <option value="other">غیر ایرانی</option>
@@ -286,32 +286,32 @@ const FlightPassengerForm = (props) => {
                                 {props.birthday == '' && err.birthdayErr ? props.birthdayErr : ''}
                             </span>
                         </div>
-                        <div className="national-codeData col-lg-2 col-md-2 col-sm-4 col-6 px-0 padding-horizental-3px mt-1 " style={{width: "110% !important"}}>
+                        <div className="national-codeData col-lg-2 col-md-2 col-sm-4 col-6 px-0 padding-horizental-3px mt-1 " style={{ width: "110% !important" }}>
                             {props.pathKind == 1 && props.nationality == "IR" ?
-                            <>
-                                <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
-                                    <PrimaryTextInput
-                                        style={{ height: "2em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
-                                        name={`nationalCode`}
-                                        maxlength={10}
-                                        placeholder={`کد ملی`}
-                                        inputMode={`numeric`}
-                                        onChange={(e) => {
-                                            setErr({...err,nationalCode:false})
-                                            props.fillPassengersData(
-                                                "code",
-                                                props.id,
-                                                e.target.value
+                                <>
+                                    <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
+                                        <PrimaryTextInput
+                                            style={{ height: "2em", border: "1px solid #eee", marginBottom: 3, fontSize: 15 }}
+                                            name={`nationalCode`}
+                                            maxlength={10}
+                                            placeholder={`کد ملی`}
+                                            inputMode={`numeric`}
+                                            onChange={(e) => {
+                                                setErr({ ...err, nationalCode: false })
+                                                props.fillPassengersData(
+                                                    "code",
+                                                    props.id,
+                                                    e.target.value
                                                 );
                                             }
-                                        }
-                                        defaultValue={props.code}
+                                            }
+                                            defaultValue={props.code}
                                         />
-                                    </div> 
+                                    </div>
                                     <span className="color-secondary error-message position-absolute">
                                         {props.codeErr !== "" && props.codeErr}
                                     </span>
-                                        </>
+                                </>
                                 :
                                 <div className={`d-flex align-items-center ${props.pathKind == 3 ? styles["makhfi"] : ""}`} >
                                     <PrimaryTextInput
@@ -394,7 +394,7 @@ const FlightPassengerForm = (props) => {
                 opened={state.open}
                 closePopUp={managePopUpBirthdayCalendar}
             >
-                <div style={{ padding: 15 }}>
+                <div style={{ padding: 15 }} class="text-center">
                     <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'تقویم میلادی' : 'تقویم شمسی'}</button>
                     <BirthDayParent
                         numSh={1301}
@@ -442,7 +442,7 @@ const FlightPassengerForm = (props) => {
                 </div>
 
             </PopUp>
-            
+
         </div>
     );
 }

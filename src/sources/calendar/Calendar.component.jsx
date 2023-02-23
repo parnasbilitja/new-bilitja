@@ -5,40 +5,44 @@ import JalaliDays from './JalaliDays'
 import GarigorianDays from './GarigorianDays'
 const CalendarComponent = (props) => {
 
-    const [state,setState] = useState({
-            typeOfCalendar: "GAR"
-        })
-        const [width, setWidth] = useState();
-        useEffect(() => {
-            setWidth(window.innerWidth)
-        setState({...state,
+    const [state, setState] = useState({
+        typeOfCalendar: "GAR"
+    })
+    const [width, setWidth] = useState();
+    useEffect(() => {
+        setWidth(window.innerWidth)
+        setState({
+            ...state,
             typeOfCalendar: "JAL"
         });
 
-    },[])
+    }, [])
 
     return (
         <div onClick={(e) => {
             e.stopPropagation()
         }}
-        style={{height: width>826?'330px':'406',
-            overflowY: 'auto'}}
+            style={{
+                height: width > 826 ? '330px' : '406',
+                overflowY: 'auto'
+            }}
         >
 
-            <div className="rtl text-right">
+            <div className="rtl text-center mb-2">
                 <button className="py-2 px-4 no-margin" onClick={() => {
-                    setState({...state,
+                    setState({
+                        ...state,
                         typeOfCalendar: state.typeOfCalendar == "JAL" ? "GAR" : "JAL"
                     })
                 }} >&nbsp;  {state.typeOfCalendar == "JAL" ? "تقویم میلادی" : "تقویم شمسی"}</button>
             </div>
-                
+
             {state.typeOfCalendar == "JAL" ?
-                <JalaliDays setDate={props.setDate} closePopUpCalendar={props.closePopUpCalendar} />:
+                <JalaliDays setDate={props.setDate} closePopUpCalendar={props.closePopUpCalendar} /> :
                 <GarigorianDays setDate={props.setDate} closePopUpCalendar={props.closePopUpCalendar} />
             }
         </div>
-    )        
+    )
 }
 
 

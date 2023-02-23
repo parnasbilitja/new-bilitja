@@ -63,12 +63,12 @@ const EditProfile = (props) => {
               router.push("/dashboard/profile");
               props.messageBoxModify({
                 state: true,
-                color:true,
+                color: true,
                 message: "اطلاعات شما با موفقیت ثبت شد.",
               });
             } else {
               props.messageBoxModify({
-                color:false,
+                color: false,
                 state: true,
                 message: "خطایی رخ داده است لطفا مجداا تلاش کنید.",
               });
@@ -77,14 +77,14 @@ const EditProfile = (props) => {
       } else {
         props.messageBoxModify({
           state: true,
-          color:false,
+          color: false,
           message: "لطفا جنسیت و وضعیت تاهل خود را مشخص کنید.",
         });
       }
     } else {
       props.messageBoxModify({
         state: true,
-        color:false,
+        color: false,
         message: "لطفا نام و نام خانوادگی خود را پر کنید.",
       });
     }
@@ -263,7 +263,7 @@ const EditProfile = (props) => {
         opened={open}
         closePopUp={() => managePopUpBirthdayCalendar(false)}
       >
-        <div className="p-15">
+        <div className="p-15 text-center">
           <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'Christian month' : 'شمسی'}</button>
           <BirthDayParent
             numSh={1301}

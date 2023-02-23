@@ -21,14 +21,14 @@ const FlightPassengerEditForm = (props) => {
   const [date, setDate] = useState('')
   const [EXT, setEXT] = useState('')
   useEffect(() => {
-    props.pathKind == 2  && setCalend(false)
-    
-},[])
-useEffect(() => {
-    props.pathKind == 2  && setCalend(false)
-},[props.pathKind])
+    props.pathKind == 2 && setCalend(false)
+
+  }, [])
+  useEffect(() => {
+    props.pathKind == 2 && setCalend(false)
+  }, [props.pathKind])
   const [state, setState] = useState({
-    EXTOPEN:false,
+    EXTOPEN: false,
     nameErr: "",
     familyErr: "",
     melliCodeErr: "",
@@ -41,7 +41,7 @@ useEffect(() => {
     meliat: props.meliat,
     meliCode: props.pasNoAll,
     pathKind: props.pathKind,
-    pasEndDateAll:props.pasEndDateAll,
+    pasEndDateAll: props.pasEndDateAll,
     sex: props.sex,
     birthday: props.birthday,
     index: props.index,
@@ -53,28 +53,29 @@ useEffect(() => {
       family: props.family,
       meliat: props.meliat,
       meliCode: props.meliCode,
-      pasEndDateAll:props.pasEndDateAll,
+      pasEndDateAll: props.pasEndDateAll,
       pathKind: props.pathKind,
       sex: props.sex,
-      birthday: props.birthday ,
+      birthday: props.birthday,
       index: props.index,
-    })},[]);
-    useEffect(() => {
-      setState({
-        ...state,
-        name: props.name,
-        family: props.family,
-        meliat: props.meliat,
-        pasEndDateAll:props.pasEndDateAll,
-        meliCode: props.pasNoAll || props.meliCode,
-        pathKind: props.pathKind,
-        sex: props.sex,
-        birthday: props.birthday,
-        index: props.index,
-      })
-    },[props])
-  
-  
+    })
+  }, []);
+  useEffect(() => {
+    setState({
+      ...state,
+      name: props.name,
+      family: props.family,
+      meliat: props.meliat,
+      pasEndDateAll: props.pasEndDateAll,
+      meliCode: props.pasNoAll || props.meliCode,
+      pathKind: props.pathKind,
+      sex: props.sex,
+      birthday: props.birthday,
+      index: props.index,
+    })
+  }, [props])
+
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setState({
@@ -137,7 +138,7 @@ useEffect(() => {
       birthdayErr: birthdayErr,
       melliCodeErr: codeErr,
       familyErr: familyErr,
-      pasEndDateAll:pasEndDateAllErr,
+      pasEndDateAll: pasEndDateAllErr,
       nameErr: nameErr,
       pasnoErr: pasnoErr,
       pasenddatErr: pasenddatErr,
@@ -212,32 +213,32 @@ useEffect(() => {
           </span>
         </div>
         {props.pasEndDateAll &&
-        <div className="col-lg-4 col-md-4 col-sm-4 col-12 padding-horizental-3px mb-4"
-          style={{ height: 40 }}>
-          <div
-            className={` form-input-border  ${styles["form-input-border-private"]} `}
-          >
-            <PrimaryTextInput
-              placeholder={`انقضای پاسپورت`}
-              value={state.pasEndDateAll}
-              name="pasEndDateAll"
-              onChange={(e) => handleChange(e)}
-              style={{ height: 40 }}
-              onFocus={() => {
-                managePopUpEXTCalendar(true);
-              }}
-            />
-          </div>
-          <span className="color-secondary error-message">
-            {state.pasEndDateAllErr}
-          </span>
-        </div>}
+          <div className="col-lg-4 col-md-4 col-sm-4 col-12 padding-horizental-3px mb-4"
+            style={{ height: 40 }}>
+            <div
+              className={` form-input-border  ${styles["form-input-border-private"]} `}
+            >
+              <PrimaryTextInput
+                placeholder={`انقضای پاسپورت`}
+                value={state.pasEndDateAll}
+                name="pasEndDateAll"
+                onChange={(e) => handleChange(e)}
+                style={{ height: 40 }}
+                onFocus={() => {
+                  managePopUpEXTCalendar(true);
+                }}
+              />
+            </div>
+            <span className="color-secondary error-message">
+              {state.pasEndDateAllErr}
+            </span>
+          </div>}
         <div className="col-lg-4 col-md-4 col-sm-4 col-12 padding-horizental-3px selectbox-receipt mb-4">
           <PrimarySelectInput
             value={state.sex}
             name="sex"
             onChange={(e) => handleChange(e)}
-            style={{ height: "44px", position: "relative", bottom: "-3px",width: '95%',marginRight: '4px' }}
+            style={{ height: "44px", position: "relative", bottom: "-3px", width: '95%', marginRight: '4px' }}
           >
             <option value="1">مرد</option>
             <option value="2">زن</option>
@@ -307,11 +308,11 @@ useEffect(() => {
         opened={state.open}
         closePopUp={managePopUpBirthdayCalendar}
       >
-        <div className="p-15">
+        <div className="p-15 text-center">
           {
-              props.pathKind ==1?
+            props.pathKind == 1 ?
               <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'تقویم میلادی' : 'تقویم شمسی'}</button>
-          :''}
+              : ''}
           <BirthDayParent
             numSh={1301}
             numBase={1300}
@@ -332,30 +333,30 @@ useEffect(() => {
         </div>
       </PopUp>
       <PopUp
-      opened={state.EXTOPEN}
-      closePopUp={managePopUpEXTCalendar}>
-      <div className="p-15">
-      <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'تقویم میلادی' : 'تقویم شمسی'}</button>
-      <BirthDayParent
-        numSh={1301}
-        numBase={1300}
-        numMi={1920}
-        numMiBase={1300}
-        title="Please enter an expiration date"
-        placeholder="لطفا تاریخ انقضا را وارد کنید"
-        // calend={calend}
-        typePassenger={'ADL'}
-        type={'EXT'}
-        name="pasEndDateAll"
-        setBirthdayb={(value) => {
-          setEXT(value);
-        }}
-        closePopUpCalendar={managePopUpEXTCalendar}
-    />
-      </div>
+        opened={state.EXTOPEN}
+        closePopUp={managePopUpEXTCalendar}>
+        <div className="p-15 text-center">
+          <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'تقویم میلادی' : 'تقویم شمسی'}</button>
+          <BirthDayParent
+            numSh={1301}
+            numBase={1300}
+            numMi={1920}
+            numMiBase={1300}
+            title="Please enter an expiration date"
+            placeholder="لطفا تاریخ انقضا را وارد کنید"
+            // calend={calend}
+            typePassenger={'ADL'}
+            type={'EXT'}
+            name="pasEndDateAll"
+            setBirthdayb={(value) => {
+              setEXT(value);
+            }}
+            closePopUpCalendar={managePopUpEXTCalendar}
+          />
+        </div>
       </PopUp>
 
-      
+
     </div>
   );
 
