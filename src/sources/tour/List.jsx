@@ -164,7 +164,7 @@ const List = (props) => {
                                     </div>
                                 </div>
                                 <div className="type">
-                                    <img width="28" src={item.transfers[0].logo} />
+                                    <img width="45" src={item.transfers[0].logo} />
                                     <span className="text-dark me-2 font-size-14">{item.transfers[0].transfer}</span>
                                 </div>
                                 <Link href={`/${item.slug}`}>

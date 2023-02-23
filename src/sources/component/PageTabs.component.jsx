@@ -36,7 +36,7 @@ const PageTabls = (props) => {
                 <i className="bilitja font-size-20 icon-villa"></i>
               </div>
               <div className="pull-right">
-                <span className="font-size-13 "> هتل </span>
+                <span className="font-size-13 ">هتل</span>
               </div>
             </div></Link>
             <div className={`${styles["home-tab"]} ${styles["mobile-tab3"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 4 ? styles["home-tab-active"] : null
@@ -50,7 +50,7 @@ const PageTabls = (props) => {
                 <i className="bilitja font-size-20 icon-villa"></i>
               </div>
               <div className="pull-right">
-                <span className="font-size-13 "> اقامتگاه </span>
+                <span className="font-size-13 ">اقامتگاه</span>
               </div>
             </div>
             <div className={`${styles["home-tab"]} ${styles["mobile-tab4"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 2 ? styles["home-tab-active"] : null

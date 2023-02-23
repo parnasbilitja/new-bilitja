@@ -79,9 +79,9 @@ const FlightReserveDesktopHeader = (props) =>{
                   alt="بلیطجا - لوگو ایرلاین"
                   style={{ objectFit: 'scale-down' }}
                 />
-                <p className="pt-3 font-size-14">
-                  ایرلاین :
-                  <span className="font-size-16"style={{color:'red'}}> {props.airline}</span>
+                <p className="pt-3">
+                  <strong className="font-size-14">ایرلاین :</strong>
+                  <span className="font-size-14"style={{color:'red'}}> {props.airline}</span>
                 </p>
               </div>
               <div className="col-lg-6 col-md-6 col-sm-6 col-6 second-column">
@@ -95,10 +95,10 @@ const FlightReserveDesktopHeader = (props) =>{
                     src="../../../../../Images/airplane_reserve.png"
                     style={{ transform: 'rotateY(180deg)' }}
                   />
-                  <p className="pt-2 font-size-14">
+                  <p className="pt-2">
                     {" "}
-                    شماره پرواز :
-                    <span className="font-size-16" style={{color:'red'}}>
+                    <strong className="font-size-14">شماره پرواز :</strong>
+                    <span className="font-size-14" style={{color:'red'}}>
                       &nbsp;{props.flightNo}
                     </span>
                   </p>
@@ -106,9 +106,9 @@ const FlightReserveDesktopHeader = (props) =>{
                 <div className="clear"></div>
                 <div className="d-flex align-items-center justify-content-center">
                   <i className="bilitja icon-seat mx-1 font-size-30 me-4"></i>
-                  <p className="font-size-14 mb-0 pe-3">
-                    ظرفیت :
-                    <span className="font-size-16" style={{color:'red'}}>
+                  <p className="mb-0 pe-3">
+                    <strong className="font-size-14">ظرفیت :</strong>
+                    <span className="font-size-14" style={{color:'red'}}>
                       &nbsp;{props.capLast}&nbsp;
                     </span>
                     <span>

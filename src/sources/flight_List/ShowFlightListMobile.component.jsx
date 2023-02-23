@@ -19,9 +19,9 @@ class ShowFlightListMobile extends React.Component {
         <Scrolltoprefresh />
         <div>
           <div
-            className={` ${styles["mobile-flight-list-header"]} font-bold-iransanse `}
+            className={` ${styles["mobile-flight-list-header"]} font-bold-iransanse`}
           >
-            <p className="font-light-iransans">
+            <p className="font-light-iransans pt-3 pb-3">
               خريد بليط هواپيما{" "}
               <span className="color-secondary font-bold-iransanse">
                 {this.props.flightList.length != 0
