@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import NavBar from "./../sources/component/NavBar.component";
 import NavBarMobile from "./../sources/component/NavBarMobile.component";
@@ -17,17 +17,13 @@ import VillaReceipt from "./../sources/villa/villaReceipt.page";
 import BecomeMizban from "./../sources/account/BecomeMizban.page";
 import { withRouter } from "next/router";
 import Vilalistitem from "../sources/villa/Vilalistitem";
+import PageTabls from "../sources/component/PageTabs.component";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      width: 1024,
-    };
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-  }
+const Villa = (props) => {
+    const [state,setState] = useState({width: 1024});
+    const [type, setType] = useState(4) 
 
-  mainRouter(pathName) {
+  const mainRouter = (pathName) => {
     pathName = decodeURI(pathName);
     if (pathName.indexOf("intro") > 0) {
       return <BecomeMizban />;
@@ -45,11 +41,11 @@ class App extends React.Component {
     }
   }
 
-  setTitleMeta(pathName) {
+  const setTitleMeta = (pathName) => {
     var src = "";
     var dest = "";
     pathName = decodeURI(pathName);
-    switch (this.props.mainRoute) {
+    switch (props.mainRoute) {
       case "villa": {
         if (pathName.indexOf("intro") > 0) {
           return "بلیطجا"; //<BecomeMizban />;
@@ -89,42 +85,34 @@ class App extends React.Component {
         ); //<Home></Home>;
     }
   }
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener("resize", this.updateWindowDimensions);
-  }
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth });
-  }
-  render() {
+  useEffect(()=>{
+    setState({ width: window.innerWidth });
+  },[])
     return (
       <div className="bodyVar">
-        {this.state.width <= 826 ? <NavBarMobile /> : null}
-        {this.state.width >= 826 ? <NavBar /> : null}
-        <div className={this.state.width <= 826 ? "mt-100" : "mt-90"}>
+        {state.width <= 826 ? <NavBarMobile /> : null}
+        {state.width >= 826 ? <NavBar /> : null}
+        <div className={state.width <= 826 ? "mt-100" : "mt-100"}>
+        
           {
-            this.mainRouter(this.props.router.asPath)
-            //console.log(this.props.router)
-            //   this.props.router.push("/flights")
+            mainRouter(props.router.asPath)
+            //console.log(props.router)
+            //   props.router.push("/flights")
           }
           <MessageBox />
           <Footer />
           <Head>
             <title>
               {
-                // {`بلیطجا ${decodeURI(this.props.router.asPath).replace('-',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ')}`}
-                this.setTitleMeta(this.props.router.asPath).split("/")[0]
+                // {`بلیطجا ${decodeURI(props.router.asPath).replace('-',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ')}`}
+                setTitleMeta(props.router.asPath).split("/")[0]
               }{" "}
             </title>
             <meta
               name="title"
               property="og:title"
               content={
-                this.setTitleMeta(this.props.router.asPath).split("/")[0]
+                setTitleMeta(props.router.asPath).split("/")[0]
               }
             />
 
@@ -132,22 +120,22 @@ class App extends React.Component {
               name="description"
               property="og:description"
               content={
-                this.setTitleMeta(this.props.router.asPath).split("/")[1]
+                setTitleMeta(props.router.asPath).split("/")[1]
               }
             />
             <meta
               name="keywords"
               property="og:keywords"
               content={
-                this.setTitleMeta(this.props.router.asPath).split("/")[2]
+                setTitleMeta(props.router.asPath).split("/")[2]
               }
             />
           </Head>
         </div>
         <PopUp
-          opened={this.props.accountBox.state}
+          opened={props.accountBox.state}
           closePopUp={() => {
-            this.props.accountBoxModify({
+            props.accountBoxModify({
               state: false,
             });
           }}
@@ -156,7 +144,7 @@ class App extends React.Component {
         </PopUp>
       </div>
     );
-  }
+  
 }
 const mapStatesToProps = (state) => ({
   accountBox: selcetAccountBox(state),
@@ -164,4 +152,4 @@ const mapStatesToProps = (state) => ({
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),
 });
-export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(App));
+export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(Villa));

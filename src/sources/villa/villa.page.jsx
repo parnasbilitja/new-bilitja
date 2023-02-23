@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import VillaSearchBox from "./villaSearchBox.component";
 import PageTabls from "../component/PageTabs.component";
 //import earth from '../../../Images/earth.webp'
@@ -21,76 +20,78 @@ import { addAccountProperties } from "../../Redux/Account/account.action";
 import { addCities } from "../../Redux/City/city.action";
 import { connect } from "react-redux";
 import { compareTwoStringDates } from "../../Utils/SimpleTasks";
-class villa extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+import { useEffect } from "react";
+import { useState } from "react";
+const villa = (props) => {
+    const [state, setState] = useState({
       open: false,
       dateSelected: null,
-    };
-  }
-  componentDidMount() {
-    // window.addEventListener('resize', this.updateWindowDimensions);
-    if (!this.props.cities) {
-      fetch(`${globals.baseUrl}bj/city/view`)
-        .then((res) => res.json())
-        .then((json) => {
-          this.props.setCities(json.City);
-        });
+      width:1024,
+    });
+    const [type, setType] = useState(4) 
+  useEffect(() => {
+    if (!props.cities) {
+      // fetch(`${globals.baseUrl}bj/city/view`)
+      //   .then((res) => res.json())
+      //   .then((json) => {
+      //     props.setCities(json.City);
+      //   });
     }
 
-    if (this.props.account) {
+    if (props.account) {
       if (
         compareTwoStringDates(
-          this.props.account.dateLogin,
+          props.account.dateLogin,
           moment().format("YYYY/MM/DD")
         ) == -1
       ) {
-        this.props.addAccountProperties(null);
+        props.addAccountProperties(null);
       }
-    }
-  }
+    }setState({...state,
+        width: window.innerWidth,
+      });
+  },[])
 
-  render() {
     return (
-      <div>
-        <div className="hidden-xs hidden-sm row">
-          <div className="col-md-4">
-            <img
-              width=""
-              height=""
-              alt="بلیطجا- لوگو"
-              src="../../../Images/map.webp"
-              className={`${styles["hero-image-2"]} pull-right`}
-            />
+      <div className="mt-5 bodyVar">
+        {state.width >= 826 ? (
+          <div className="hidden-xs mt-1 hidden-sm row">
+            <div className="col-md-4">
+              <img
+                width=""
+                height=""
+                alt="بلیطجا- لوگو"
+                src="../../../Images/map.webp"
+                className={`${styles["hero-image-2"]} pull-right`}
+              />
+            </div>
+            <div className="text-center col-md-4 pt-10 mt-5">
+              <img
+                width=""
+                height=""
+                alt="بلیطجا - لوگو"
+                src="../../../Images/bilitja.webp"
+                className={styles["hero-image-center"]}
+              />
+            </div>
+            <div className="col-md-4">
+              <img
+                width=""
+                height=""
+                alt="بلیطجا - قطب نما"
+                src="../../../Images/earth.webp"
+                className={`${styles["hero-image-1"]} pull-left`}
+              />
+            </div>
           </div>
-
-          <div className="text-center col-md-4 pt-10">
-            <img
-              width=""
-              height=""
-              alt="بلیطجا- لوگو"
-              src="../../../Images/bilitja.webp"
-              className={styles["hero-image-center"]}
-            />
-          </div>
-          <div className="col-md-4">
-            <img
-              width=""
-              height=""
-              alt="بلیطجا- لوگو"
-              src="../../../Images/earth.webp"
-              className={`${styles["hero-image-1"]} pull-left`}
-            />
-          </div>
-        </div>
+        ) : null}
 
         <div className={`${styles["heor-main-container"]} container-fuild`}>
-          <PageTabls tabActice={2} />
+        <PageTabls type={type} setType={setType} />
           <div className="row">
             <div className="col-md-1"></div>
             <div className="col-md-10">
-              <VillaSearchBox dateSelected={this.state.dateSelected} />
+              <VillaSearchBox dateSelected={state.dateSelected} />
             </div>
           </div>
         </div>
@@ -328,7 +329,7 @@ class villa extends React.Component {
         </div>
       </div>
     );
-  }
+  
 }
 
 const mapStateToProps = (state) => ({
