@@ -162,7 +162,7 @@ const FlightSearchBox = (props) => {
   // console.log("flightDatePersian");
   // console.log(flightDatePersian);
   return (
-    <div className={`${styles["home-flight-form"]}`}>
+    <div className={`${styles["home-flight-form"]} position-relative`}>
       <div>
         <Scrolltoprefresh />
         <div
@@ -196,7 +196,7 @@ const FlightSearchBox = (props) => {
           ) : null}
         </div>
       </div>
-      <div className="position-absolute isMobile" style={{ display: "none", top: 55, left: 80, zIndex: 2, transform: "rotate(90deg)" }}>
+      <div className="position-absolute isMobile" style={{ display: "none", top: 38, left: 55, zIndex: 2, transform: "rotate(90deg)" }}>
         <div className="image d-flex align-items-center bg-white check-r py-2 px-2"
           onClick={() => {
             props.switchRoute();
