@@ -3336,6 +3336,22 @@ p img {
 }
 
 
+.MuiOtpInput-Box{
+    flex-direction: row-reverse;
+    justify-content: center;
+    margin-top: 10px;
+    .MuiFormControl-root{
+        flex: 0 0 15%;
+        max-width: 15%;
+        .MuiInputBase-root{
+            flex: 0 0 100%;
+            max-width: 100%;
+            input{
+                font-weight: bold;
+            }
+        }
+    }
+}
 
 @media (max-width: 450px){
     .s-sep{
