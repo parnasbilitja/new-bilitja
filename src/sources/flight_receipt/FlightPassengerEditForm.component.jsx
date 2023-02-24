@@ -238,7 +238,7 @@ const FlightPassengerEditForm = (props) => {
             value={state.sex}
             name="sex"
             onChange={(e) => handleChange(e)}
-            style={{ height: "44px", position: "relative", bottom: "-3px", width: '95%', marginRight: '4px' }}
+            style={{ height: "44px", position: "relative", bottom: "-3px" }}
           >
             <option value="1">مرد</option>
             <option value="2">زن</option>

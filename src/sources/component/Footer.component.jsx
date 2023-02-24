@@ -1,8 +1,8 @@
-import React ,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../../styles/Footer.module.scss";
 import { faPhone, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faInstagram, faTwitter, faFacebook} from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { footerLinks, footerLinksOut } from '../../Utils/data'
 import Link from "next/link";
 
@@ -10,14 +10,14 @@ const Footer = () => {
     const [width, setWidth] = useState();
     useEffect(() => {
         setWidth(window.innerWidth)
-    },[])
+    }, [])
     let today = new Date().toLocaleDateString('fa-IR-u-nu-latn');
     return (
         <>
             <div className={styles["footer"]}>
                 <div className="container-fluid">
                     <div className="row parent-footer-top justify-content-between">
-                        
+
                         <div className="footer-detail d-flex flex-wrap align-items-start justify-content-between">
                             <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
                                 <div className="d-flex align-items-center mb-2">
@@ -144,7 +144,7 @@ const Footer = () => {
                                     </li>
                                 </ul>
                             </div>
-                            {width<826&&
+                            {width < 826 &&
                                 <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex flex-wrap col-4 justify-content-center px-0">
                                     {/* child */}
                                     <a
@@ -153,54 +153,12 @@ const Footer = () => {
                                         className="ms-2 mb-2"
                                         href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
                                     >
-                                    <img
-                                        referrerPolicy="origin"
-                                        src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                        alt=""
-                                        id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
-                                    />
-                                    </a>
-                                    {/* child */}
-                                    <a
-                                        referrerPolicy="origin"
-                                        target="_blank"
-                                        className="ms-2 mb-2"
-                                        href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                    >
-                                    <img
-                                        referrerPolicy="origin"
-                                        src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                        alt=""
-                                        id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
-                                    />
-                                    </a>
-                                    {/* child */}
-                                    <a
-                                        referrerPolicy="origin"
-                                        target="_blank"
-                                        className="ms-2 mb-2"
-                                        href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                    >
-                                    <img
-                                        referrerPolicy="origin"
-                                        src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                        alt=""
-                                        id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
-                                    />
-                                    </a>
-                                    {/* child */}
-                                    <a
-                                        referrerPolicy="origin"
-                                        target="_blank"
-                                        className="ms-2 mb-2"
-                                        href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                    >
-                                    <img
-                                        referrerPolicy="origin"
-                                        src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                        alt=""
-                                        id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
-                                    />
+                                        <img
+                                            referrerPolicy="origin"
+                                            src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                                            alt=""
+                                            id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                        />
                                     </a>
                                 </div>
                             }
@@ -299,68 +257,29 @@ const Footer = () => {
                             <p>ارزان ترین بلیط های هواپیما</p>
                             <Link href="/">www. B i l i t j a .com</Link>
                         </div>
-                        {width>826&&
-                            <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex flex-wrap col-4 justify-content-start px-0" style={{alignContent: 'center',flexWrap: 'wrap'}}>
-                            <a
-                                referrerPolicy="origin"
-                                target="_blank"
-                                className="col-xl-4 cl-lg-4 d-flex justify-content-center ms-3 mb-2"
-                                href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                            >
-                            <img
-                                referrerPolicy="origin"
-                                src="../../../../../Images/enamad.png"
-                                alt=""
-                                id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
-                            />
-                            </a>
-                            <a
-                                referrerPolicy="origin"
-                                target="_blank"
-                                className="col-xl-4 cl-lg-4 d-flex justify-content-center ms-3 mb-2"
-                                href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                            >
-                            <img
-                                referrerPolicy="origin"
-                                src="../../../../../Images/enamad.png"
-                                alt=""
-                                id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
-                            />
-                            </a>
-                            <a
-                                referrerPolicy="origin"
-                                target="_blank"
-                                className="col-xl-4 cl-lg-4 d-flex justify-content-center ms-3 mb-2"
-                                href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                            >
-                            <img
-                                referrerPolicy="origin"
-                                src="../../../../../Images/enamad.png"
-                                alt=""
-                                id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
-                            />
-                            </a>
-                            <a
-                                referrerPolicy="origin"
-                                target="_blank"
-                                className="col-xl-4 cl-lg-4 d-flex justify-content-center ms-3 mb-2"
-                                href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                            >
-                            <img
-                                referrerPolicy="origin"
-                                src="../../../../../Images/enamad.png"
-                                alt=""
-                                id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
-                            />
-                            </a>
-                        </div>
-                            }
+                        {width > 826 &&
+                            <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex flex-wrap col-4 justify-content-start px-0" style={{ alignContent: 'center', flexWrap: 'wrap' }}>
+                                <a
+                                    referrerPolicy="origin"
+                                    target="_blank"
+                                    className="col-xl-4 cl-lg-4 d-flex justify-content-center ms-3 mb-2"
+                                    href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                                >
+                                    <img
+                                        referrerPolicy="origin"
+                                        src="../../../../../Images/enamad.png"
+                                        alt=""
+                                        id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                    />
+                                </a>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className={styles["footer-copy"]}>
                     <div className={styles["footer-right"]}>
                         <div>© کپی رایت 1400. Ver 1.1.2</div>{' '}&nbsp;
-                        {width<826 && <br/>}
+                        {width < 826 && <br />}
                         <span>کلیه حقوق این سایت محفوظ و متعلق به بلیط جا می‌باشد. </span>
                     </div>
                     <div className={styles["footer-left"]}>

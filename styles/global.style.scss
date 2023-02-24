@@ -531,7 +531,6 @@ html {
     border-radius: 10px;
     &:focus {
         outline: none;
-        border-bottom: 1px solid red;
         border-radius: 3px;
     }
 }
@@ -3335,3 +3334,29 @@ p img {
     // border-radius: 5px;
     font-weight: bolder;
 }
+
+
+.MuiOtpInput-Box{
+    flex-direction: row-reverse;
+    justify-content: center;
+    margin-top: 10px;
+    .MuiFormControl-root{
+        flex: 0 0 15%;
+        max-width: 15%;
+        .MuiInputBase-root{
+            flex: 0 0 100%;
+            max-width: 100%;
+            input{
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+@media (max-width: 450px){
+    .s-sep{
+        width: 100% !important;
+        padding: 16.7px 0 !important;
+    }
+}
+

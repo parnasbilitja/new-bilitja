@@ -300,7 +300,7 @@ const FlightReciept = (props) => {
             مشخصات مسافرین
           </p>
           <table
-            className={`table text-right ${styles["passenger-list-last-payment"]} `}
+            className={`table my-2 text-right ${styles["passenger-list-last-payment"]} `}
           >
             <thead>
               <tr className="font-bold-iransanse font-size-13 hidden-xs">
@@ -324,11 +324,11 @@ const FlightReciept = (props) => {
                       {getTicketType(state.ticketCodeAll_[index])}
                       ({(state.sexAll_[index] == 1 ? 'مرد' : 'زن')})
                     </td>
-                    <td className=" px-0">
+                    <td className="px-0">
                       <div className="hidden-xs">
                         {state.nameAll_[index]}
                       </div>
-                      <div className="visible-xs font-bold-iransanse">
+                      <div className="visible-xs font-bold-iransanse px-2">
                         <span>
                           <FontAwesomeIcon icon={faUser} />
                           {`${state.nameAll_[index]} ${state.familyAll_[index]
@@ -336,7 +336,7 @@ const FlightReciept = (props) => {
                               state.ticketCodeAll_[index]
                             )})`}
                         </span>
-                        <p>
+                        <p className="pt-2">
                           <FontAwesomeIcon icon={faInfoCircle} />
                           {state.meliCodeAll_[index] ? state.meliCodeAll_[index] : state.pasNoAll_[index]}
                         </p>
@@ -367,7 +367,7 @@ const FlightReciept = (props) => {
                           <FontAwesomeIcon icon={faCalendar} />
                           {state.birthDayAll_[index]}
                         </span>
-                        <p>
+                        <p className="pt-1">
                           {/* <FontAwesomeIcon icon={faDollarSign} /> */}
                           <span className="color-secondary">
                             {" "}
@@ -423,7 +423,7 @@ const FlightReciept = (props) => {
       </div>
       <div className="row ">
         <div className="col-lg-1 col-0"></div>
-        <div className="col-lg-12 col-12 no-padding-xs border-pill-lg py-2 px-3">
+        <div className="col-lg-12 col-12 no-padding-xs border-pill-lg py-2 px-3 mt-2">
           <div className="row justify-content-between px-2">
             {/* child */}
             <div className={`col-lg-4 text-right ${styles['border-left']}`}>
@@ -456,16 +456,16 @@ const FlightReciept = (props) => {
               </div>
             </div>
             {/* child */}
-            <div className={`col-lg-3 col-12 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
-              <div className={`d-flex justify-content-end ${styles['select-bunk']} `}>
+            <div className={`col-lg-3 col-6 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
+              <div className={`s-sep w-50 d-flex justify-content-center ${styles['select-bunk']} `}>
                 <input type="radio" checked={true} className="ms-3" />
-                <img src={'../../../Images/sep.png'} alt="sep" width={'100px'} height={'50px'} />
+                <img src={'../../../Images/sep.png'} alt="sep" width={'50px'} height={'30px'} />
               </div>
             </div>
-            <div className={`col-lg-3 col-12 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
+            <div className={`col-lg-3 col-6 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
               <div className={`d-flex justify-content-end ${styles['select-bunk']} `}>
                 <div className="row justify-content-center">
-                  <div className="col-lg-7 col-6" style={{ width: 'fit-content' }}>
+                  <div className="col-lg-7 col-6 d-flex align-items-center" style={{ width: 'fit-content' }}>
                     <p className="font-size-13 mb-0">
                       مبلغ قابل پرداخت :‌
                     </p>
@@ -479,7 +479,7 @@ const FlightReciept = (props) => {
                 </div>
               </div>
             </div>
-            <div className={`col-lg-2 col-12 payment-container d-flex align-items-center justify-content-center text-center`}>
+            <div className={`col-lg-2 col-12 payment-container d-flex align-items-center justify-content-center text-center mt-2`}>
               <div className="">
                 <div className="ms-2 col-12">
                   <button
