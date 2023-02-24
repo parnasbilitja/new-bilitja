@@ -11,7 +11,7 @@ import { withRouter } from "next/router";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
 
 const NavBar = (props) => {
-
+console.log(props);
   const [state, setState] = useState({
     mobile: '',
     logged: false,
@@ -62,9 +62,10 @@ const NavBar = (props) => {
   const handleLogoutUser = (e) => {
     e.preventDefault();
     // localStorage.removeItem("mobile");
-    localStorage.removeItem("token");
-    localStorage.removeItem("mobile");
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("mobile");
     setState({ ...state, logged: false })
+      props.user.logged = false;
   }
   return (
     <div className="col-xl-12 col-lg-12">
@@ -82,12 +83,12 @@ const NavBar = (props) => {
               <div className="font-size-12 d-flex flex-column justify-content-center">
                 <div
                   className={
-                    state.logged === true
+                    props.user.logged === true
                       ? "user-mobile-content"
                       : styles["nav-detail-first-line"]
                   }
                 >
-                  {state.logged == true ? (
+                  {props.user.logged == true ? (
                     <>
                       <div>
                         <Link href="/dashboard">
@@ -112,22 +113,6 @@ const NavBar = (props) => {
                     </>
                   ) : (
                     <>
-                      {/* <div>
-                          <a
-                            style={{ fontSize: 12 }}
-                            href=""
-                            onClick={(e) => {
-                              e.preventDefault();
-                              props.accountBoxModify({
-                                state: true,
-                                type: "login",
-                              });
-                            }}
-                          >
-                            <i className="bilitja icon-login"></i>
-                            <span>ورود کاربر</span>
-                          </a>
-                        </div> */}
                       <div className="border-right pb-2">
                         <a
                           style={{ fontSize: 12 }}

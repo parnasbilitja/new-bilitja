@@ -5,7 +5,6 @@ import NavBarMobile from "../../sources/component/NavBarMobile.component"
 import NavBarMobileCustom from '../../sources/component/NavBarMobileCustom';
 
 const NavHandler = (props) => {
-  console.log(props);
         const [state,setState] = useState({
           width: 1024,
         });
