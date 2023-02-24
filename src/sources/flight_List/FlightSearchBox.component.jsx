@@ -162,8 +162,8 @@ const FlightSearchBox = (props) => {
   // console.log("flightDatePersian");
   // console.log(flightDatePersian);
   return (
-    <div className={`${styles["home-flight-form"]} position-relative`}>
-      <div>
+    <div className={`${styles["home-flight-form"]}`}>
+      <div className="position-relative">
         <Scrolltoprefresh />
         <div
           className={` form-input-border  ${styles["form-input-border-private"]} `}
@@ -196,7 +196,7 @@ const FlightSearchBox = (props) => {
           ) : null}
         </div>
       </div>
-      <div className="position-absolute isMobile" style={{ display: "none", top: 38, left: 55, zIndex: 2, transform: "rotate(90deg)" }}>
+      {/* <div className="position-absolute isMobile" style={{ display: "none", top: 275, left: 65, zIndex: 2, transform: "rotate(90deg)" }}>
         <div className="image d-flex align-items-center bg-white check-r py-2 px-2"
           onClick={() => {
             props.switchRoute();
@@ -206,19 +206,21 @@ const FlightSearchBox = (props) => {
             className={`${styles["home-swtich-button"]} exchange-icon font-size-17`}
           />
         </div>
-      </div>
-      <div
-        className={`${props.showSwitch ? null : "hidden-xs"
-          } form-input-border text-center ${styles["home-swtich-button-container"]
-          } isDesktop`}
-        onClick={() => {
-          props.switchRoute();
-        }}
-      >
-        <FontAwesomeIcon
-          icon={faExchangeAlt}
-          className={`${styles["home-swtich-button"]} exchange-icon`}
-        />
+      </div> */}
+      <div className="position-relative">
+        <div
+          className={`${props.showSwitch ? null : ""
+            } form-input-border back-fa text-center ${styles["home-swtich-button-container"]
+            }`}
+          onClick={() => {
+            props.switchRoute();
+          }}
+        >
+          <FontAwesomeIcon
+            icon={faExchangeAlt}
+            className={`${styles["home-swtich-button"]} exchange-icon`}
+          />
+        </div>
       </div>
 
       <div>
