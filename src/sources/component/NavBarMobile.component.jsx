@@ -50,6 +50,7 @@ const NavBarMobile = (props) => {
     localStorage.removeItem("token");
     localStorage.removeItem("mobile");
     setState({ ...state, logged: false })
+    props.user.logged = state.logged;
   }
   console.log(props);
   return (

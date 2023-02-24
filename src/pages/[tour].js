@@ -18,7 +18,6 @@ import Scrolltoprefresh from '../sources/component/Scrolltoprefresh';
 
 
 const tour = (props) => {
-    // console.log(props);
     const ref = useRef(null);
     function moneyFormat(input) {
         return parseFloat(input)
@@ -52,12 +51,10 @@ const tour = (props) => {
     const getData = async () => {
         const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${props.Pathname.tour}`)
         setData(val.data.data)
-        console.log(val.data.data);
     }
 
     useEffect(() => {
         getData();
-        // console.log(data);
     }, [slug])
     const handleClick = () => {
         ref.current?.scrollIntoView({behavior: 'smooth'});
@@ -563,7 +560,6 @@ const tour = (props) => {
                                 {/* child data */}
                                 {data && data.tours.map((item, index) => (
                                     <div className="tour-item col-xl-12 col-lg-12 mb-2" key={index} onClick={() => slugHandler(item.slug)}>
-                                        {/* {console.log(item)} */}
                                         <div className="tour-city">
                                             <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="41.265" height="48.155" viewBox="0 0 41.265 48.155">
                                                 <g id="location2" transform="translate(1.549 1.5)">
