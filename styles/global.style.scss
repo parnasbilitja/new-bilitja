@@ -531,7 +531,6 @@ html {
     border-radius: 10px;
     &:focus {
         outline: none;
-        border-bottom: 1px solid red;
         border-radius: 3px;
     }
 }
@@ -3335,3 +3334,13 @@ p img {
     // border-radius: 5px;
     font-weight: bolder;
 }
+
+
+
+@media (max-width: 450px){
+    .s-sep{
+        width: 100% !important;
+        padding: 16.7px 0 !important;
+    }
+}
+
