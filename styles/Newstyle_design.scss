@@ -1,0 +1,514 @@
+//? component Postion with Top and Bottom and Right and Left ...
+$sizesPosition: 60;
+@mixin RiToBoLe {
+    @for $i from 0 through $sizesPosition {
+        $top: $i * 1px;
+        $bottom: $i * 1px;
+        $left: $i * 1px;
+        $right: $i * 1px;
+        .top-#{$i} {
+            top: $top;
+        }
+        .bottom-#{$i} {
+            bottom: $bottom;
+        }
+        .left-#{$i} {
+            left: $left;
+        }
+        .right-#{$i} {
+            right: $right;
+        }
+    }
+}
+
+@include RiToBoLe;
+
+//? Component style fontSize ...
+$sizes: 35;
+@mixin fontSize-classes {
+    @for $i from 7 through $sizes {
+        $fontSize: $i * 1px;
+        /* fontSize #{$fontSize} */
+        .f-#{$i} {
+            font-size: $fontSize;
+        }
+    }
+}
+
+@include fontSize-classes;
+
+//? component style margin and mobile component style ...
+$sizesMargin: 50;
+@mixin margin-classes {
+    @for $i from 0 through $sizesMargin {
+        $margin: $i * 1px;
+        /* margin #{$margin} */
+        .m-#{$i} {
+            margin: $margin;
+        }
+        .ml-#{$i} {
+            margin-left: $margin;
+        }
+        .mr-#{$i} {
+            margin-right: $margin;
+        }
+        .mt-#{$i} {
+            margin-top: $margin;
+        }
+        .mb-#{$i} {
+            margin-bottom: $margin;
+        }
+        .mx-#{$i} {
+            margin-right: $margin;
+            margin-left: $margin;
+        }
+        .my-#{$i} {
+            margin-top: $margin;
+            margin-bottom: $margin;
+        }
+    }
+}
+
+@include margin-classes;
+
+.m-auto {
+    margin: 0 auto !important;
+}
+
+.m-right-auto {
+    margin-right: auto !important;
+}
+
+.m-left-auto {
+    margin-left: auto !important;
+}
+
+//? component style border-radius ...
+$sizes: 30;
+@mixin Radius {
+    @for $i from 0 through $sizes {
+        $radius-size: $i * 1px;
+        /* border-radius #{$radius-size} */
+        .radius-#{$i} {
+            border-radius: $radius-size;
+        }
+    }
+}
+
+@include Radius;
+.radius-50 {
+    border-radius: 50px;
+}
+
+.radius-100 {
+    border-radius: 100px;
+}
+
+//? component style padding ...
+$sizes: 50;
+@mixin padding-classes {
+    @for $i from 0 through $sizes {
+        $padding: $i * 1px;
+        /* padding #{$padding} */
+        .p-#{$i} {
+            padding: $padding;
+        }
+        .pl-#{$i} {
+            padding-left: $padding;
+        }
+        .pr-#{$i} {
+            padding-right: $padding;
+        }
+        .pt-#{$i} {
+            padding-top: $padding;
+        }
+        .pb-#{$i} {
+            padding-bottom: $padding;
+        }
+        .px-#{$i} {
+            padding-right: $padding;
+            padding-left: $padding;
+        }
+        .py-#{$i} {
+            padding-top: $padding;
+            padding-bottom: $padding;
+        }
+    }
+}
+
+@include padding-classes;
+
+
+//? component width ...
+$widthsizes: 100;
+@mixin width {
+    @for $i from 5 through $widthsizes {
+        $width: $i * 1%;
+        .w-#{$i} {
+            width: $width !important;
+        }
+    }
+}
+
+@include width;
+//? component height (Rem and px) ...
+$heightSizes: 8;
+@mixin height {
+    @for $i from 5 through $heightSizes {
+        $heightRm: $i * 1rem;
+        .h-#{$i}rem {
+            height: $heightRm !important;
+        }
+    }
+}
+
+@include height;
+
+
+.h-2rem {
+    height: 2rem !important;
+}
+
+.h-2percent-1rem {
+    height: 2.1rem !important;
+}
+
+.h-2percent-2rem {
+    height: 2.2rem !important;
+}
+
+.h-2percent-3rem {
+    height: 2.3rem !important;
+}
+
+.h-2percent-4rem {
+    height: 2.4rem !important;
+}
+
+.h-2percent-5rem {
+    height: 2.5rem !important;
+}
+
+.h-2percent-6rem {
+    height: 2.6rem !important;
+}
+
+.h-2percent-7rem {
+    height: 2.7rem !important;
+}
+
+
+/* height 3rem */
+
+.h-3rem {
+    height: 3rem !important;
+}
+
+
+/* height 4rem */
+
+.h-4rem {
+    height: 4rem !important;
+}
+
+
+/* height 5rem */
+
+.h-5rem {
+    height: 5rem !important;
+}
+
+
+/* height 6rem */
+
+.h-6rem {
+    height: 6rem !important;
+}
+
+
+/* height 7rem */
+
+.h-7rem {
+    height: 7rem !important;
+}
+
+
+/* height 8rem */
+
+.h-8rem {
+    height: 8rem !important;
+}
+
+
+/* height 9rem */
+
+.h-9rem {
+    height: 9rem !important;
+}
+
+
+//? component flex and max-width => grid
+$sizes: 100;
+@mixin flex-classes {
+    @for $i from 5 through $sizes {
+        $flex: $i * 1%;
+        $maxWidth: $i * 1%;
+        /* flex #{$flex} */
+        .flex-#{$i} {
+            flex: 0 0 $flex;
+            max-width: $maxWidth;
+        }
+    }
+}
+
+@include flex-classes;
+
+//? media ...
+@media (min-width:500px) and (max-width:900px) {
+    $sizesflexTablet: 100;
+    //? md-flex-sizes
+    @mixin tablet-flex-classes {
+        @for $i from 5 through $sizesflexTablet {
+            $flex: $i * 1%;
+            $maxWidth: $i * 1%;
+            /* flex #{$flex} */
+            .md-flex-#{$i} {
+                flex: 0 0 $flex !important;
+                max-width: $maxWidth !important;
+            }
+        }
+    }
+    @include tablet-flex-classes;
+    //? padding for tablet
+    $sizes: 50;
+    @mixin padding-tablet-classes {
+        @for $i from 0 through $sizes {
+            $padding: $i * 1px;
+            /* padding #{$padding} */
+            .md-p-#{$i} {
+                padding: $padding !important;
+            }
+            .md-pl-#{$i} {
+                padding-left: $padding !important;
+            }
+            .md-pr-#{$i} {
+                padding-right: $padding !important;
+            }
+            .md-pt-#{$i} {
+                padding-top: $padding !important;
+            }
+            .md-pb-#{$i} {
+                padding-bottom: $padding !important;
+            }
+            .md-px-#{$i} {
+                padding-right: $padding !important;
+                padding-left: $padding !important;
+            }
+            .md-py-#{$i} {
+                padding-top: $padding !important;
+                padding-bottom: $padding !important;
+            }
+        }
+    }
+    @include padding-tablet-classes;
+    //? component align and justify
+    .md-flex-wrap {
+        flex-wrap: wrap !important;
+    }
+    .md-flex-direction-column {
+        flex-direction: column !important;
+    }
+    .md-flex-direction-column-reverse {
+        flex-direction: column-reverse !important;
+    }
+    .md-align-items-stretch {
+        align-items: stretch !important;
+    }
+    .md-align-items-start {
+        align-items: flex-start !important;
+    }
+    .md-direction-row-reverse {
+        flex-direction: row-reverse !important;
+    }
+    .md-direction-column-reverse {
+        flex-direction: column-reverse !important;
+    }
+    .md-direction-column {
+        flex-direction: column !important;
+    }
+    .md-justify-content-between {
+        justify-content: space-between !important;
+    }
+    .md-justify-content-evenly {
+        justify-content: space-evenly !important;
+    }
+    .md-justify-content-around {
+        justify-content: space-around !important;
+    }
+    .md-justify-content-start {
+        justify-content: flex-start !important;
+    }
+    .md-justify-content-end {
+        justify-content: flex-end !important;
+    }
+    .md-justify-content-center {
+        justify-content: center !important;
+    }
+    //? component margin for tablet
+    $sizesMarginTablet: 50;
+    @mixin margin-tablet-classes {
+        @for $i from 0 through $sizesMarginTablet {
+            $margin: $i * 1px;
+            /* margin #{$margin} */
+            .md-m-#{$i} {
+                margin: $margin !important;
+            }
+            .md-ml-#{$i} {
+                margin-left: $margin !important;
+            }
+            .md-mr-#{$i} {
+                margin-right: $margin !important;
+            }
+            .md-mt-#{$i} {
+                margin-top: $margin !important;
+            }
+            .md-mb-#{$i} {
+                margin-bottom: $margin !important;
+            }
+            .md-mx-#{$i} {
+                margin-right: $margin !important;
+                margin-left: $margin !important;
+            }
+            .md-my-#{$i} {
+                margin-top: $margin !important;
+                margin-bottom: $margin !important;
+            }
+        }
+    }
+    @include margin-tablet-classes;
+}
+
+//? media ...
+@media (min-width: 260px) and (max-width: 500px) {
+    //? padding mobile
+    $sizes: 50;
+    @mixin padding-mobile-classes {
+        @for $i from 0 through $sizes {
+            $padding: $i * 1px;
+            /* padding #{$padding} */
+            .m-p-#{$i} {
+                padding: $padding;
+            }
+            .m-pl-#{$i} {
+                padding-left: $padding;
+            }
+            .m-pr-#{$i} {
+                padding-right: $padding;
+            }
+            .m-pt-#{$i} {
+                padding-top: $padding;
+            }
+            .m-pb-#{$i} {
+                padding-bottom: $padding;
+            }
+            .m-px-#{$i} {
+                padding-right: $padding;
+                padding-left: $padding;
+            }
+            .m-py-#{$i} {
+                padding-top: $padding;
+                padding-bottom: $padding;
+            }
+        }
+    }
+    @include padding-mobile-classes;
+
+    //? margin mobile
+    $sizesMarginMobile: 50;
+    @mixin margin-mobile-classes {
+        @for $i from 0 through $sizesMarginMobile {
+            $margin: $i * 1px;
+            /* margin #{$margin} */
+            .m-m-#{$i} {
+                margin: $margin;
+            }
+            .m-ml-#{$i} {
+                margin-left: $margin;
+            }
+            .m-mr-#{$i} {
+                margin-right: $margin;
+            }
+            .m-mt-#{$i} {
+                margin-top: $margin;
+            }
+            .m-mb-#{$i} {
+                margin-bottom: $margin;
+            }
+            .m-mx-#{$i} {
+                margin-right: $margin;
+                margin-left: $margin;
+            }
+            .m-my-#{$i} {
+                margin-top: $margin;
+                margin-bottom: $margin;
+            }
+        }
+    }
+    @include margin-mobile-classes;
+
+    //?flexes mobile
+    $sizesflexMobile: 100;
+    @mixin mobile-flex-classes {
+        @for $i from 5 through $sizesflexMobile {
+            $flex: $i * 1%;
+            $maxWidth: $i * 1%;
+            /* flex #{$flex} */
+            .m-flex-#{$i} {
+                flex: 0 0 $flex !important;
+                max-width: $maxWidth !important;
+            }
+        }
+    }
+    @include mobile-flex-classes;
+
+     /* controller table */
+    .controller-table {
+        overflow-x: auto;
+    }
+    .m-flex-wrap {
+        flex-wrap: wrap !important;
+    }
+    .m-align-items-stretch {
+        align-items: stretch !important;
+    }
+    .m-align-items-start {
+        align-items: flex-start !important;
+    }
+    .m-direction-row-reverse {
+        flex-direction: row-reverse !important;
+    }
+    .m-direction-column-reverse {
+        flex-direction: column-reverse !important;
+    }
+    .m-direction-column {
+        flex-direction: column !important;
+    }
+    .m-justify-content-between {
+        justify-content: space-between !important;
+    }
+    .m-justify-content-evenly {
+        justify-content: space-evenly !important;
+    }
+    .m-justify-content-around {
+        justify-content: space-around !important;
+    }
+    .m-justify-content-start {
+        justify-content: flex-start !important;
+    }
+    .m-justify-content-end {
+        justify-content: flex-end !important;
+    }
+    .m-justify-content-center {
+        justify-content: center !important;
+    }
+}
