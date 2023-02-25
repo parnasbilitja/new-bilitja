@@ -27,7 +27,7 @@ const App = (props) =>  {
         <Scrolltoprefresh/>
         <div className={"mt-100"}>
           <Home type={'index'} />
-          <BirthDayParentCl/>
+          {/* <BirthDayParentCl/> */}
           <div className="col-md-10 m-auto">
           <List  />
           <HotelsSuggest />
