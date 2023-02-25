@@ -19,6 +19,7 @@ import Scrolltoprefresh from "../sources/component/Scrolltoprefresh";
 import HeadSeo from "../sources/component/HeadSeo";
 import TicketDetails from "../sources/component/TicketDetails";
 import Head from "next/head";
+import BirthDayParentCl from "../sources/calendar/BirthDayParentCl";
 const App = (props) =>  {
     return (
       <div className="bodyVar">
@@ -26,6 +27,7 @@ const App = (props) =>  {
         <Scrolltoprefresh/>
         <div className={"mt-100"}>
           <Home type={'index'} />
+          <BirthDayParentCl/>
           <div className="col-md-10 m-auto">
           <List  />
           <HotelsSuggest />

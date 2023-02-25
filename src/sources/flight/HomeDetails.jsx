@@ -8,94 +8,105 @@ const HomeDetails = ( props) => {
     return (
         <div>
 
-          <div className="row justify-content-center">
-          <div className="col-md-10 px-0">
-               {props.state.width >= 826 ? (
-          <div className={`${styles["hero-big-image"]}`}>
-            <img
-              width=""
-              height=""
-              alt="بلیطجا-اسلایدر"
-              src="../../../Images/flight-index.webp"
-            />
-          </div>
-        ) : null}
-        {props.state.width < 826 ? (
-          <div className={`${styles["hero-big-image"]} container`}>
-            <img
-              width=""
-              height=""
-              alt="بلیطجا-اسلایدر"
-              src="../../../Images/flight-index-mobile.webp"
-            />
-          </div>
-        ) : null}
-          <div className="row padding-xs-5-15 justify-content-center">
-              <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
-                <div className={styles["home-value-propsal"]}>
-                  <img
-                    width=""
-                    height=""
-                    alt="بلیطجا-لوگو خرید بلیط هواپیما"
-                    src="../../../Images/service1.webp"
-                  />
-                  <h2 className="font-bold-iransanse font-size-22 font-bold ">
-                    <span>خرید بلیط هواپیما &nbsp;</span>
-                    <span className="color-primary font-bold-iransanse">
-                      با چند کلیک
-                    </span>
-                  </h2>
-                  <p className="color-textpill font-size-15">
-                    کافیست در صفحه خرید بلیط هواپیما مبدا، مقصد و روز را وارد
-                    کرده و ارزانترین بلیط هواپیما را از میان پروازهای چارتری،
-                    سیستمی و لحظه آخری انتخاب کنید.
-                  </p>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
-                <div className={styles["home-value-propsal"]}>
-                  <img
-                    width=""
-                    height=""
-                    alt="بلیطجا- لوگو پذیرش میزبانی"
-                    src="../../../Images/service3.webp"
-                  />
-                  <h2 className="font-bold-iransanse font-size-22 font-bold">
-                    <span className="color-primary font-bold-iransanse">
-                      پذیرش میزبانی &nbsp;
-                    </span>
-                    <span>ویلا و اقامتگاه</span>
-                  </h2>
-                  <p className="color-textpill font-size-15">
-                    با عضویت در سامانه بلیطجا شما هم میتوانید ویلا یا اقامتگاه
-                    خود را در معرض بازدید و رزرو گردشگران و سایر آژانس های
-                    گردشگردی قرار دهید.
-                  </p>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
-                <div className={styles["home-value-propsal"]}>
-                  <img
-                    width=""
-                    height=""
-                    alt="بلیطجا- لوگو پذیرش میزبانی"
-                    src="../../../Images/service3.webp"
-                  />
-                  <h2 className="font-bold-iransanse font-size-22 font-bold">
-                    <span className="color-primary font-bold-iransanse">
-                      رزرو آنلاین &nbsp;
-                    </span>
-                    <span>تور داخلی و خارجی</span>
-                  </h2>
-                  <p className="color-textpill font-size-15">
-                    با عضویت در سامانه بلیطجا شما هم میتوانید ویلا یا اقامتگاه
-                    خود را در معرض بازدید و رزرو گردشگران و سایر آژانس های
-                    گردشگردی قرار دهید.
-                  </p>
-                </div>
-              </div>  
+          <div className="justify-content-center">
+            <div className="col-md-12 px-0">
+                {props.state.width >= 826 ? (
+            <div className={`${styles["parentbackFight"]}`}>
+              <img
+                className={`${styles["backFight"]}`}
+                width=""
+                height=""
+                alt="بلیطجا-اسلایدر"
+                src="../../../Images/backFight.png"
+              />
+              <img
+              className={`${styles["frontFight"]}`}
+                width=""
+                height=""
+                alt="بلیطجا-اسلایدر"
+                src="../../../Images/frontFight.png"
+              />
             </div>
-        </div>
+          ) : null}
+          {props.state.width < 826 ? (
+            <div className={`${styles["hero-big-image"]} container`}>
+              <img
+                width=""
+                height=""
+                alt="بلیطجا-اسلایدر"
+                src="../../../Images/flight-index-mobile.webp"
+              />
+            </div>
+          ) : null}
+          <div className={'row justify-content-center'}>
+            <div className='col-md-10'>
+            <div className="row padding-xs-5-15 justify-content-center">
+                <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
+                  <div className={styles["home-value-propsal"]}>
+                    <img
+                      width=""
+                      height=""
+                      alt="بلیطجا-لوگو خرید بلیط هواپیما"
+                      src="../../../Images/service1.webp"
+                    />
+                    <h2 className="font-bold-iransanse font-size-22 font-bold ">
+                      <span>خرید بلیط هواپیما &nbsp;</span>
+                      <span className="color-primary font-bold-iransanse">
+                        با چند کلیک
+                      </span>
+                    </h2>
+                    <p className="color-textpill font-size-15">
+                      کافیست در صفحه خرید بلیط هواپیما مبدا، مقصد و روز را وارد
+                      کرده و ارزانترین بلیط هواپیما را از میان پروازهای چارتری،
+                      سیستمی و لحظه آخری انتخاب کنید.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
+                  <div className={styles["home-value-propsal"]}>
+                    <img
+                      width=""
+                      height=""
+                      alt="بلیطجا- لوگو پذیرش میزبانی"
+                      src="../../../Images/service3.webp"
+                    />
+                    <h2 className="font-bold-iransanse font-size-22 font-bold">
+                      <span className="color-primary font-bold-iransanse">
+                        پذیرش میزبانی &nbsp;
+                      </span>
+                      <span>ویلا و اقامتگاه</span>
+                    </h2>
+                    <p className="color-textpill font-size-15">
+                      با عضویت در سامانه بلیطجا شما هم میتوانید ویلا یا اقامتگاه
+                      خود را در معرض بازدید و رزرو گردشگران و سایر آژانس های
+                      گردشگردی قرار دهید.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
+                  <div className={styles["home-value-propsal"]}>
+                    <img
+                      width=""
+                      height=""
+                      alt="بلیطجا- لوگو پذیرش میزبانی"
+                      src="../../../Images/service3.webp"
+                    />
+                    <h2 className="font-bold-iransanse font-size-22 font-bold">
+                      <span className="color-primary font-bold-iransanse">
+                        رزرو آنلاین &nbsp;
+                      </span>
+                      <span>تور داخلی و خارجی</span>
+                    </h2>
+                    <p className="color-textpill font-size-15">
+                      با عضویت در سامانه بلیطجا شما هم میتوانید ویلا یا اقامتگاه
+                      خود را در معرض بازدید و رزرو گردشگران و سایر آژانس های
+                      گردشگردی قرار دهید.
+                    </p>
+                  </div>
+                </div>  
+            </div>
+            </div></div>
+            </div>
         </div>
         <div className={styles["home-become-host"]}>
           <div>
