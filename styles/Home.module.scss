@@ -416,3 +416,26 @@
   0%{transform: translateX(-90%) translateY(90%) scale(0.4)}
   100%{transform: translateX(0) translateY(0) scale(1)}
 }
+.parentbackTour{
+  position: relative;
+  display: flex;
+  justify-content:center;
+  align-items: flex-start;
+  margin-top: 17px;
+  .backFight{
+    z-index: 1;
+    width: 100%;
+  }
+  .frontFight{
+    animation: flight 1.5s linear;
+    z-index: 10;
+    position: absolute;
+    width: 40%;
+    top: 35px;
+    // transform: translateX(0)
+  }
+}
+@keyframes flight {
+  0%{transform: translateX(-90%) translateY(90%) scale(0.4)}
+  100%{transform: translateX(0) translateY(0) scale(1)}
+}

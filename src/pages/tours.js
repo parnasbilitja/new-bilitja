@@ -92,10 +92,10 @@ const tours = () => {
               setState={setState} 
               state={state}  
                />
+            </div>
               <div ref={myRef}>
                   <HomePicture state={state} />
               </div>
-            </div>
           </div>
           </div>
             <NavHandler />
