@@ -7,14 +7,14 @@ const HomePicture = ({state}) => {
         {state.width >= 826 ? (
           <div className={`${styles["parentbackTour"]}`}>
           <img
-            className={`${styles["backFight"]}`}
+            className={`${styles["backTour"]}`}
             width=""
             height=""
             alt="بلیطجا-اسلایدر"
             src="../../../Images/backTour.png"
           />
           <img
-          className={`${styles["frontFight"]}`}
+          className={`${styles["frontTour"]}`}
             width=""
             height=""
             alt="بلیطجا-اسلایدر"
