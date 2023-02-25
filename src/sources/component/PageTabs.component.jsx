@@ -8,7 +8,7 @@ const PageTabls = (props) => {
   
   const myRouter = useRouter();
   return (
-    <div className={`row justify-content-center mt-3`}>
+    <div className={`row justify-content-center `}>
       <div className={`col-md-10 ${styles["border-bottom"]} ${styles["width-mobile"]} px-0`}>
         <div className={'row justify-content-start me-0 w-100 position-relative'} style={{top:'2px'}}>
             <div className={`${styles["home-tab"]} ${styles["mobile-tab1"]}  col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 1 ? styles["home-tab-active"] : null}`}

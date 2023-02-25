@@ -64,7 +64,7 @@ const Home = (props) => {
 
   return (
     <div>
-      {/* {state.width >= 826 ? (
+      {state.width >= 826 ? (
         <div className="hidden-xs hidden-sm row">
           <div className="col-md-4">
             <img
@@ -94,13 +94,13 @@ const Home = (props) => {
             />
           </div>
         </div>
-      ) : null} */}
+      ) : null}
 
       <div className={`${styles["heor-main-container"]}`}>
         <Scrolltoprefresh />
         {type == 1 ?
           <>
-            <div style={{ marginRight: '2px' }}>
+            <div style={{ marginRight: '2px',marginTop: '-1rem' }}>
               <PageTabls type={type} setType={setType} />
             </div>
             <div className="row justify-content-center">

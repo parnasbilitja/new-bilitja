@@ -166,8 +166,9 @@
 }
 
 .hero-image-center {
-  width: 250px;
-  height: 175px;
+  margin-top: -5%;
+  width: 150px;
+  height: auto;
 }
 .tab-container {
   display: flex;
@@ -407,7 +408,7 @@
     animation: flight 1.5s linear;
     z-index: 10;
     position: absolute;
-    width: 40%;
+    width: 35%;
     top: 35px;
     // transform: translateX(0)
   }
@@ -427,24 +428,16 @@
     width: 100%;
   }
   .frontTour{
-    animation: Tour 10s both;
+    animation: Tour 3s both;
     z-index: 10;
     position: absolute;
-    width: 40%;
-    top: 200px;
+    width: 35%;
+    top: 0px;
     // transform: translateX(0)
   }
 }
 @keyframes Tour {
   0%{transform: translateX(190%)}
-  10%{transform: translateY(-15px)}
-  20%{transform: translateY(0)}
-  30%{transform: translateY(-15px)}
-  40%{transform: translateY(0)}
-  50%{transform: translateY(-15px)}
-  60%{transform: translateY(0)}
-  70%{transform: translateY(-15px)}
-  80%{transform: translateY(0)}
-  90%{transform: translateY(-15px)}
+  
   100%{transform: translateX(0)}
 }
