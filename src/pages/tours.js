@@ -45,7 +45,7 @@ const tours = () => {
 
     return (
         <div className='mt-5 pt-5 bodyVar'>
-              {state.width >= 826 ? (
+              {/* {state.width >= 826 ? (
           <div className="hidden-xs mt-1 hidden-sm row">
             <div className="col-md-4">
               <img
@@ -75,7 +75,7 @@ const tours = () => {
               />
             </div>
           </div>
-        ) : null}
+        ) : null} */}
 
 <div className={`${styles["heor-main-container"]}`}>
             <Head>

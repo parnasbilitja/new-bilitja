@@ -64,7 +64,7 @@ const Home = (props) => {
 
   return (
     <div>
-      {state.width >= 826 ? (
+      {/* {state.width >= 826 ? (
         <div className="hidden-xs hidden-sm row">
           <div className="col-md-4">
             <img
@@ -94,7 +94,7 @@ const Home = (props) => {
             />
           </div>
         </div>
-      ) : null}
+      ) : null} */}
 
       <div className={`${styles["heor-main-container"]}`}>
         <Scrolltoprefresh />
