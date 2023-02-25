@@ -13,7 +13,7 @@ const PaymentReciptMobileHeader = (props) => {
   }
   return (
     <div className={`row visible-xs ${stylesRes["reserve-mobile-hero"]}`}>
-      <div className={`col-12 border-pill ${styles["background-world"]} `}>
+      <div className={`col-12 border-pill ${styles["background-world"]}`}>
         <div className="row">
           <div className="col-5 text-center">
             <strong className="color-secondary font-size-25 font-bold-iransanse">
