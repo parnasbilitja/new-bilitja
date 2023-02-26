@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/[tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/[tour].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/Home.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/Home.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +73,7 @@
       <workItem from="1659176897019" duration="15000" />
       <workItem from="1659253213035" duration="608000" />
       <workItem from="1660206653464" duration="3962000" />
-      <workItem from="1677402574669" duration="11269000" />
+      <workItem from="1677402574669" duration="12243000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -179,7 +177,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۱۷" />
       <updated>1658905693512</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL‎۰۰۰۱۸" summary="edit tour &amp; index page &amp; create tour special">
+      <created>1677421321648</created>
+      <option name="number" value="LOCAL‎۰۰۰۱۸" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۱۸" />
+      <updated>1677421321648</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +198,8 @@
     <MESSAGE value="panel manger redesign order&amp;fly&amp;dashboard&amp;villa" />
     <MESSAGE value="new pages panel manger" />
     <MESSAGE value="input placeholder" />
-    <option name="LAST_COMMIT_MESSAGE" value="input placeholder" />
+    <MESSAGE value="edit tour &amp; index page &amp; create tour special" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit tour &amp; index page &amp; create tour special" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
