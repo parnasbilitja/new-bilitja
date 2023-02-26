@@ -45,14 +45,14 @@ const ToursBase = () => {
         <div className={"mt-1"}>
          <PictureBase/>
                 <NavHandler />
-        <div className={`${styles["heor-main-container"]}`} style={{marginTop: '-1rem' }}>
+        <div className={`${styles["heor-main-container"]}`} style={{marginTop: state.width>=826?'-1rem':'5rem' }}>
             <Head>
                 <title>بلیطجا | لیست تورها</title>
             </Head>
           <Scrolltoprefresh />
           <PageTabls type={type} setType={setType} />
           <div className="row justify-content-center">
-            <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
+            <div className={`col-md-10 ${styles["width-mobile-search"]} mt-5`}>
               <SearchBox 
               dateSelected={state.dateSelected2}
               executeScroll={executeScroll} 

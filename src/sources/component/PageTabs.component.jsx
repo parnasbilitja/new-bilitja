@@ -34,13 +34,13 @@ const PageTabls = (props) => {
                 // props.setType(3)
                 // myRouter.push("/tours");
               }}
-              
+              style={{color: 'gray'}}
             >
               <div className="pull-right icon-container">
                 <i className="bilitja font-size-20 icon-villa"></i>
               </div>
               <div className="pull-right">
-                <span className="font-size-13 ">هتل(بزودی)</span>
+                <span className="font-size-13 " >هتل (بزودی)</span>
               </div>
             </div>
             {/* </Link> */}
@@ -50,13 +50,13 @@ const PageTabls = (props) => {
               onClick={() => {
                 // props.setType(4)
               }}
-              
+              style={{color: 'gray'}}
             >
               <div className="pull-right icon-container">
                 <i className="bilitja font-size-20 icon-villa"></i>
               </div>
               <div className="pull-right">
-                <span className="font-size-13 ">اقامتگاه(بزودی)</span>
+                <span className="font-size-13 ">اقامتگاه (بزودی)</span>
               </div>
             </div>
             {/* </Link> */}
