@@ -138,6 +138,7 @@
   }
 
 }
+
 @media only screen and (max-width: 2000px) and (min-width: 1025px) {
 
   .tab-container {
@@ -440,4 +441,7 @@
   0%{transform: translateX(190%)}
   
   100%{transform: translateX(0)}
+}
+.width-full{
+  width:fit-content !important;
 }

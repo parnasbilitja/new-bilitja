@@ -24,7 +24,6 @@ import router, { withRouter } from "next/router";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 
 const FlightReciept = (props) => {
-  console.log(props);
   const [state, setState] = useState({
     birthDayAll_: [],
     familyAll_: [],
@@ -63,7 +62,6 @@ const FlightReciept = (props) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.status == "0") {
           const birthDayAll = String(
             data.flightReservePropertyModel.birthDayAll
@@ -111,7 +109,6 @@ const FlightReciept = (props) => {
               ticketCodeAll_: ticketCodeAll,
               feeGet: feeGet,
             },
-            console.log(state),
             getAllPrice()
           );
         }
@@ -188,7 +185,6 @@ const FlightReciept = (props) => {
         )
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             var form = document.createElement("form");
             form.setAttribute("method", "POST");
             form.setAttribute("action", data.address);
@@ -234,7 +230,6 @@ const FlightReciept = (props) => {
     let sum = 0;
     state.ticketCodeAll_.map((oneTicket) => {
       sum += getTicketPrice(oneTicket);
-      // console.log(oneTicket);
     });
     setState({
       ...state,
@@ -273,16 +268,13 @@ const FlightReciept = (props) => {
       pasEndDateAll_: pasEndDateAll,
       isUpdated: true,
     });
-    console.log(state);
   };
   const [open, setOpen] = useState(false);
   const managePopUpEditForm = () => {
-    console.log('state');
     setOpen({
       open: !open,
     });
   };
-  console.log(state);
   return (
     <div className="container">
       <div className={styles["flight-detail"]}>
@@ -377,7 +369,7 @@ const FlightReciept = (props) => {
                               )
                             )}{' '}
                           </span>
-                          ریال
+                          تومان
                         </p>
                       </div>
                     </td>

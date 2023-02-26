@@ -15,9 +15,9 @@ const BirthdayCalendar = (props) => {
     });
 
     let CHDage = moment().add(-12,'jyears').format('jYYYY/jMM/jDD');
-    console.log(CHDage);
+    
     let INFage = moment().add(-2,'jyears').format('jYYYY/jMM/jDD');
-    // console.log(INFage);
+    // 
     const getYears = () => {
         if (typePassenger == "ADL") {
             return new Array(current - 1311).fill().map((x, index) => {
@@ -45,7 +45,7 @@ const BirthdayCalendar = (props) => {
             arrayOfdays=Array.from({length: 30}, (_, i) => i + 1)
         } else {
             const check_years = [1, 5, 9, 13, 17, 22, 26, 30]
-            console.log(check_years.includes(state.year % 33))
+            
             if (check_years.includes(state.year % 33)) {
                 arrayOfdays=Array.from({length: 30}, (_, i) => i + 1)
             } else {
@@ -66,7 +66,7 @@ const BirthdayCalendar = (props) => {
             ))
             return data
         }else if (typePassenger =='CHD' ) {
-            console.log(month.month);
+            
             revArrayOfDay.reverse().map((item)=>(
                 parseInt(CHDage.split('/')[0]) == parseInt(state.year) &&
                 parseInt(CHDage.split('/')[1]) == parseInt(state.month) && 
@@ -176,10 +176,10 @@ const BirthdayCalendar = (props) => {
     
     const checkMonth = () => {
         let data = []
-        console.log(typePassenger);
+        
         if (typePassenger === 'INF') {
             if (parseInt(INFage.split('/')[0]) == parseInt(state.year)) {
-                console.log(parseInt(INFage.split('/')[0]) == parseInt(state.year)),
+                
                 stageMonth.map((item)=>(
                     parseInt(INFage.split('/')[1]) >= parseInt(item.month) ?
                     data.push(item):null
@@ -189,13 +189,13 @@ const BirthdayCalendar = (props) => {
             }
         }else if (typePassenger === 'CHD') {
             if (parseInt(CHDage.split('/')[0]) == parseInt(state.year)) {
-                console.log(parseInt(CHDage.split('/')[0]) == parseInt(state.year)),
+                
                 stageMonth.map((item)=>(
                     parseInt(CHDage.split('/')[1]) <= parseInt(item.month) ?
                     data.push(item):null
                 ))
             }else if (parseInt(INFage.split('/')[0]) == parseInt(state.year)) {
-                console.log(parseInt(INFage.split('/')[0]) == parseInt(state.year)),
+                
                 stageMonth.map((item)=>(
                     parseInt(INFage.split('/')[1]) <= parseInt(item.month) ?
                     data.push(item):null
@@ -205,7 +205,7 @@ const BirthdayCalendar = (props) => {
             }
         }else if (typePassenger === 'ADL') {
             if (parseInt(CHDage.split('/')[0]) == parseInt(state.year)) {
-                console.log(parseInt(CHDage.split('/')[0]) == parseInt(state.year)),
+                
                 stageMonth.map((item)=>(
                     parseInt(CHDage.split('/')[1]) <= parseInt(item.month) ?
                     data.push(item):null
