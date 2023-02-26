@@ -11,6 +11,7 @@ import { checkCharacter, checkNumber } from "../../Utils/SimpleTasks";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { connect } from "react-redux";
 import BirthDayParent from "../calendar/BirthDayParent";
+import BirthDayParentCl from "../calendar/BirthDayParentCl";
 
 
 const FlightPassengerForm = (props) => {
@@ -399,17 +400,9 @@ const FlightPassengerForm = (props) => {
             >
                 <div style={{ padding: 15 }} class="text-center">
                     <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'تقویم میلادی' : 'تقویم شمسی'}</button>
-                    <BirthDayParent
-                        numSh={1301}
-                        numBase={1300}
-                        numMi={1920}
-                        numMiBase={1300}
-                        title="Please enter date of birth"
-                        placeholder="لطفا تاریخ تولد را وارد کنید"
+                    <BirthDayParentCl
                         calend={calend}
                         typePassenger={props.type}
-                        type={'BD'}
-                        name="birthday"
                         setBirthdayb={(value) => {
                             props.fillPassengersData("birthday", props.id, value);
                         }}

@@ -181,7 +181,7 @@ const BirthdayCalendar = (props) => {
             if (parseInt(INFage.split('/')[0]) == parseInt(state.year)) {
                 console.log(parseInt(INFage.split('/')[0]) == parseInt(state.year)),
                 stageMonth.map((item)=>(
-                    parseInt(INFage.split('/')[1]) <= parseInt(item.month) ?
+                    parseInt(INFage.split('/')[1]) >= parseInt(item.month) ?
                     data.push(item):null
                 ))
             }else {

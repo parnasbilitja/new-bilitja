@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
+import Head from 'next/head';
 import NavHandler from '../Components/share/NavHandler';
 import Footer from '../sources/component/Footer.component';
 import PageTabls from '../sources/component/PageTabs.component';
@@ -8,12 +10,19 @@ import styles from "../../styles/Home.module.scss";
 import SearchBox from '../sources/tour/SearchBox';
 import Scrolltoprefresh from '../sources/component/Scrolltoprefresh';
 import HomePicture from '../sources/component/HomePicture';
-import axios from 'axios';
-import Head from 'next/head';
-const List = dynamic(()=>import( "../sources/tour/List"));
-const HotelsSuggest = dynamic(()=>import( "../sources/tour/HotelsSuggest"));
-const CitiesSuggest = dynamic(()=>import( "../sources/tour/CitiesSuggest"));
-const Posts = dynamic(()=>import( "../sources/tour/Posts"));
+import { Loader } from '../Utils/Loader';
+const List = dynamic(()=>import( "../sources/tour/List"), {
+  loading: () => <Loader/>,
+});
+const HotelsSuggest = dynamic(()=>import( "../sources/tour/HotelsSuggest"), {
+  loading: () => <Loader/>,
+});
+const CitiesSuggest = dynamic(()=>import( "../sources/tour/CitiesSuggest"), {
+  loading: () => <Loader/>,
+});
+const Posts = dynamic(()=>import( "../sources/tour/Posts"), {
+  loading: () => <Loader/>,
+});
 
 
 const tours = () => {
@@ -38,6 +47,7 @@ const tours = () => {
       setState({...state, city:search.slug})
       axios.post('https://api.hamnavaz.com/api/v1/tour/getTours',{city:state.city})
         .then(res=>{SetTourData(res.data.data)})
+        .catch((err)=>SetTourData(err.message))
     }
 
     const myRef = useRef(null)
@@ -77,12 +87,12 @@ const tours = () => {
           </div>
         ) : null}
 
-<div className={`${styles["heor-main-container"]}`}>
+        <div className={`${styles["heor-main-container"]}`}>
             <Head>
                 <title>بلیطجا | لیست تورها</title>
             </Head>
-          <PageTabls type={type} setType={setType} />
           <Scrolltoprefresh />
+          <PageTabls type={type} setType={setType} />
           <div className="row justify-content-center">
             <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
               <SearchBox 

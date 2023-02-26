@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import moment from 'moment-jalaali'
 import styles from '../../../styles/BirthdayCalendar.module.scss'
 const BirthdayCalenderMiladi = (props) => {
+    const {typePassenger} = props
     let current = 2022;
         const today = moment().format('YYYY/MM/DD')
         const date = today.split("/")
         current = parseInt(date[0])
-        console.log(current);
+        
+        const [ month, setMonth ] = useState([])
         const [state, setState] = useState({
             stage: 1,
             year: '',
@@ -17,18 +19,18 @@ const BirthdayCalenderMiladi = (props) => {
     let INFage = moment().add(-2,'years').format('YYYY/MM/DD');
     let month31 = [1,3,5,7,8,10,12]
     let month30 = [4,6,9,11]
-    console.log(CHDage)
+    console.log(INFage)
     const getYears = () => {
-        if (props.typePassenger == "ADL") {
+        if (typePassenger == "ADL") {
             return new Array(current - 1931).fill().map((x, index) => {
                 return current - 12 - index
             })
-        } else if (props.typePassenger == "CHD") {
+        } else if (typePassenger == "CHD") {
             return new Array(11).fill().map((x, index) => {
                 return parseInt(CHDage.split('/')[0]) + index
             }).reverse()
         }
-        else if (props.typePassenger == "INF") {
+        else if (typePassenger == "INF") {
             return new Array(3).fill().map((x, index) => {
                 return parseInt(INFage.split('/')[0]) + index
             }).reverse()
@@ -56,7 +58,41 @@ const BirthdayCalenderMiladi = (props) => {
             revArrayOfDay.push(undefined)
         }
 
-        return revArrayOfDay.reverse()
+        let data = []
+        if (typePassenger =='INF' && parseInt(INFage.split('/')[0]) == parseInt(state.year)) {
+            revArrayOfDay.reverse().map((item)=>(
+                parseInt(INFage.split('/')[1]) == parseInt(state.month) && 
+                parseInt(INFage.split('/')[2]) <= parseInt(item) ?
+                data.push(item):data.push(undefined)
+            ))
+            return data
+        }else if (typePassenger =='CHD' ) {
+            console.log(month.month);
+            revArrayOfDay.reverse().map((item)=>(
+                parseInt(CHDage.split('/')[0]) == parseInt(state.year) &&
+                parseInt(CHDage.split('/')[1]) == parseInt(state.month) && 
+                parseInt(CHDage.split('/')[2]) <= parseInt(item) ?
+                data.push(item):
+
+                parseInt(INFage.split('/')[0]) == parseInt(state.year) && 
+                parseInt(INFage.split('/')[1]) == parseInt(state.month) && 
+                parseInt(INFage.split('/')[2]) >= parseInt(item) ?
+                data.push(item)
+
+                :data.push(undefined)
+            ))
+            return data
+        }else if(typePassenger=='ADL' && parseInt(CHDage.split('/')[0]) == parseInt(state.year)){
+            parseInt(CHDage.split('/')[1]) == parseInt(state.month) ?
+            revArrayOfDay.reverse().map((item)=>(
+                parseInt(CHDage.split('/')[2]) <= parseInt(item) ?
+                data.push(item):data.push(undefined)
+            )):
+            data = revArrayOfDay.reverse()
+            return data
+        }else if(typePassenger){
+            return revArrayOfDay.reverse();
+        }
     }
     const getMonth = () => {
         var monthes = ['',
@@ -140,6 +176,51 @@ const BirthdayCalenderMiladi = (props) => {
             title:'December',
         },
     ]
+    const checkMonth = () => {
+        let data = []
+        if (typePassenger === 'INF') {
+            if (parseInt(INFage.split('/')[0]) === parseInt(state.year)) {
+                stageMonth.map((item)=>(
+                    parseInt(INFage.split('/')[1]) <= parseInt(item.month) ?
+                    data.push(item):null
+                ))
+            }else {
+                data=stageMonth
+            }
+        }else if (typePassenger === 'CHD') {
+            if (parseInt(CHDage.split('/')[0]) == parseInt(state.year)) {
+                console.log(parseInt(CHDage.split('/')[0]) == parseInt(state.year)),
+                stageMonth.map((item)=>(
+                    parseInt(CHDage.split('/')[1]) <= parseInt(item.month) ?
+                    data.push(item):null
+                ))
+            }else if (parseInt(INFage.split('/')[0]) == parseInt(state.year)) {
+                console.log(parseInt(INFage.split('/')[0]) == parseInt(state.year)),
+                stageMonth.map((item)=>(
+                    parseInt(INFage.split('/')[1]) <= parseInt(item.month) ?
+                    data.push(item):null
+                ))
+            }else {
+                data=stageMonth
+            }
+        }else if (typePassenger === 'ADL') {
+            if (parseInt(CHDage.split('/')[0]) == parseInt(state.year)) {
+                console.log(parseInt(CHDage.split('/')[0]) == parseInt(state.year)),
+                stageMonth.map((item)=>(
+                    parseInt(CHDage.split('/')[1]) <= parseInt(item.month) ?
+                    data.push(item):null
+                ))
+            }else {
+                data=stageMonth
+            }
+        }
+        setMonth([...data])
+    }
+    useEffect(() => {
+        setMonth([])
+        checkMonth()
+    },[state])
+
         return (
             <div className={styles['birthday-calendar']}>
                 {
@@ -174,7 +255,7 @@ const BirthdayCalenderMiladi = (props) => {
                                 Please enter your desired month
                             </p>
                             <div className={`font-en ${styles['birthday-month-container']}`}>
-                                {stageMonth.map((item)=>(
+                                {month.map((item)=>(
                                     <div className={styles['birthday-item']} onClick={() => {
                                         setState({...state,
                                             month: item.month,

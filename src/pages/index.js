@@ -1,14 +1,14 @@
 import React from "react";
 import dynamic from "next/dynamic";
-const Home = dynamic(() => import("./../sources/Home.page"));
-const Footer = dynamic(() => import("./../sources/component/Footer.component"));
-const MessageBox = dynamic(() =>import("./../sources/component/MessageBox.component"));
-const PopUp = dynamic(() => import("./../sources/component/PopUp.component"));
-const Account = dynamic(() => import("./../sources/account/Account.component"));
-const List = dynamic(()=>import( "../sources/tour/List"));
-const HotelsSuggest = dynamic(()=>import( "../sources/tour/HotelsSuggest"));
-const CitiesSuggest = dynamic(()=>import( "../sources/tour/CitiesSuggest"));
-const Posts = dynamic(()=>import( "../sources/tour/Posts"));
+const Home = dynamic(() => import("./../sources/Home.page"), { ssr: false });
+const Footer = dynamic(() => import("./../sources/component/Footer.component"), { ssr: false });
+const MessageBox = dynamic(() =>import("./../sources/component/MessageBox.component"), { ssr: false });
+const PopUp = dynamic(() => import("./../sources/component/PopUp.component"), { ssr: false });
+const Account = dynamic(() => import("./../sources/account/Account.component"), { ssr: false });
+const List = dynamic(()=>import( "../sources/tour/List"), { ssr: false });
+const HotelsSuggest = dynamic(()=>import( "../sources/tour/HotelsSuggest"), { ssr: false });
+const CitiesSuggest = dynamic(()=>import( "../sources/tour/CitiesSuggest"), { ssr: false });
+const Posts = dynamic(()=>import( "../sources/tour/Posts"), { ssr: false });
 
 import { connect } from "react-redux";
 import { selcetAccountBox } from "../Redux/UI/ui.reselect";
@@ -27,7 +27,6 @@ const App = (props) =>  {
         <Scrolltoprefresh/>
         <div className={"mt-100"}>
           <Home type={'index'} />
-          <BirthDayParentCl/>
           <div className="col-md-10 m-auto">
           <List  />
           <HotelsSuggest />

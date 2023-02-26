@@ -14,6 +14,7 @@ import {
 import styles from "../../../styles/FlightPassengerEditForm.module.scss";
 import BirthDayParent from "../calendar/BirthDayParent";
 import * as moment from 'jalali-moment';
+import BirthDayParentCl from "../calendar/BirthDayParentCl";
 
 const FlightPassengerEditForm = (props) => {
   console.log(props);
@@ -311,13 +312,7 @@ const FlightPassengerEditForm = (props) => {
             props.pathKind == 1 ?
               <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'تقویم میلادی' : 'تقویم شمسی'}</button>
               : ''}
-          <BirthDayParent
-            numSh={1301}
-            numBase={1300}
-            numMi={1920}
-            numMiBase={1300}
-            title="Please enter date of birth"
-            placeholder="لطفا تاریخ تولد را وارد کنید"
+          <BirthDayParentCl
             calend={calend}
             typePassenger={'ADL'}
             type={'BD'}

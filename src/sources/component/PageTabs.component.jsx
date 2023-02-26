@@ -11,10 +11,11 @@ const PageTabls = (props) => {
     <div className={`row justify-content-center `}>
       <div className={`col-md-10 ${styles["border-bottom"]} ${styles["width-mobile"]} px-0`}>
         <div className={'row justify-content-start me-0 w-100 position-relative'} style={{top:'2px'}}>
-            <div className={`${styles["home-tab"]} ${styles["mobile-tab1"]}  col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 1 ? styles["home-tab-active"] : null}`}
+          <Link href='/ticket'>
+            <div className={`${styles["home-tab"]} ${styles["mobile-tab1"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 1 ? styles["home-tab-active"] : null}`}
               onClick={() => {
                 props.setType(1)
-                myRouter.push("/ticket");
+                // myRouter.push("/ticket");
               }}
             >
               <div className="pull-right">
@@ -23,7 +24,7 @@ const PageTabls = (props) => {
               <div className="pull-right">
                 <span className="font-size-13"> پرواز </span>
               </div>
-            </div>
+            </div></Link>
             <Link href='/hotels'>
             <div className={`${styles["home-tab"]} ${styles["mobile-tab2"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 3 ? styles["home-tab-active"] : null
                 }`}
@@ -39,11 +40,11 @@ const PageTabls = (props) => {
                 <span className="font-size-13 ">هتل</span>
               </div>
             </div></Link>
+            <Link href='/villa'>
             <div className={`${styles["home-tab"]} ${styles["mobile-tab3"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 4 ? styles["home-tab-active"] : null
                 }`}
               onClick={() => {
                 props.setType(4)
-                myRouter.push("/villa");
               }}
             >
               <div className="pull-right icon-container">
@@ -52,7 +53,8 @@ const PageTabls = (props) => {
               <div className="pull-right">
                 <span className="font-size-13 ">اقامتگاه</span>
               </div>
-            </div>
+            </div></Link>
+            <Link href='/tours'>
             <div className={`${styles["home-tab"]} ${styles["mobile-tab4"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 2 ? styles["home-tab-active"] : null
                 }`}
               onClick={() => {
@@ -72,7 +74,7 @@ const PageTabls = (props) => {
               <div className="pull-right">
                 <span className="font-size-13 "> تور </span>
               </div>
-            </div>
+            </div></Link>
         </div>
       </div>
     </div>

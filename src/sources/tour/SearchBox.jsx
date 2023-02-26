@@ -55,7 +55,6 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
       <div className={'row justify-content-between'}>
         <Scrolltoprefresh />
           <div className={`col-12 custom-col-md-5 form-input-border ${styles["form-input-border-private"]} `}>
-            {/* <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i> */}
             <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
             <PrimaryTextInputMobile
               value={search.slug==" "?'همه':search.slug}
