@@ -251,7 +251,8 @@ const BirthdayCalenderMiladi = (props) => {
                 {
                     state.stage == 2 ?
                         <div>
-                            <p onClick={() => {setState({...state,stage:1})}} className="font-size-14 black-color font-bold-iransanse text-center">
+                            <span className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black" onClick={() => {setState({...state, stage:1})}}>{state.year}</span>
+                            <p className="font-size-14 black-color font-bold-iransanse text-center">
                                 Please enter your desired month
                             </p>
                             <div className={`font-en ${styles['birthday-month-container']}`}>
@@ -273,8 +274,10 @@ const BirthdayCalenderMiladi = (props) => {
                 {
                     state.stage == 3 ?
                         <div>
-                            <p onClick={() => {setState({...state,stage:1})}}className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black">
-                                {getMonth()}&nbsp;&nbsp;{state.year}
+                            <p className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black">
+                            <span className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black" onClick={() => {setState({...state, stage:1})}}>{state.year}</span>
+                            &nbsp;&nbsp;
+                            <span className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black" onClick={() => {setState({...state, stage:2})}}>{getMonth()}</span>
                             </p>
                             <div className={styles['birthday-day-container']}>
                                 <div className="font-size-13 color-black">Sat</div>

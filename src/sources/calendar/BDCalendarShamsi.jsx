@@ -249,7 +249,7 @@ const BirthdayCalendar = (props) => {
                     state.stage == 2 ?
                         <div>
                             <p className="font-size-14 black-color font-bold-iransanse text-center">
-                            <div onClick={() => {setState({...state, stage:1})}}>back</div>
+                            <div onClick={() => {setState({...state, stage:1})}}>{state.year}</div>
                                 لطفا ماه تولد خود را وارد کنید
                             </p>
                             <div className={styles['birthday-month-container']}>
@@ -276,8 +276,10 @@ const BirthdayCalendar = (props) => {
                     state.stage == 3 ?
                         <div>
                             <p className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black">
-                            <div onClick={() => {setState({...state, stage:1})}}>back</div>
-                                {getMonth()}&nbsp;&nbsp;{state.year}
+                            <span className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black" onClick={() => {setState({...state, stage:1})}}>{state.year}</span>
+                            &nbsp;&nbsp;
+                            <span className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black" onClick={() => {setState({...state, stage:2})}}>{getMonth()}</span>
+                                
                             </p>
                             <div className={styles['birthday-day-container']}>
                                 <div className="font-size-13 color-black">شنبه</div>
