@@ -1310,7 +1310,7 @@ button {
     align-items: center;
     justify-content: center;
     &::after {
-        content: url('/images/Arrow_left_long.svg') !important;
+        content: url('/Images/Arrow_left_long.svg') !important;
         display: flex;
         align-items: center;
         position: relative;
@@ -1320,7 +1320,7 @@ button {
 
 .swiper-button-prev {
     &::after {
-        content: url('/images/Arrow_right_long.svg') !important;
+        content: url('/Images/Arrow_right_long.svg') !important;
     }
 }
 
