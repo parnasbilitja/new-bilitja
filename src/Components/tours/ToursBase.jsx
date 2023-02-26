@@ -42,10 +42,10 @@ const ToursBase = () => {
     const myRef = useRef(null)
     const executeScroll = () => { myRef.current.scrollIntoView()}
     return (
-        <>
+        <div className={"mt-1"}>
          <PictureBase/>
                 <NavHandler />
-        <div className={`${styles["heor-main-container"]}`}>
+        <div className={`${styles["heor-main-container"]}`} style={{marginTop: '-1rem' }}>
             <Head>
                 <title>بلیطجا | لیست تورها</title>
             </Head>
@@ -73,7 +73,7 @@ const ToursBase = () => {
                   <Posts />
                 </div>
             <Footer />   
-        </>
+        </div>
     );
 };
 
