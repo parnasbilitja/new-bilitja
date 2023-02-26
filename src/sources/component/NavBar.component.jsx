@@ -9,7 +9,9 @@ import { connect } from "react-redux";
 import { selcetAccountBox } from "../../Redux/UI/ui.reselect";
 import { withRouter } from "next/router";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
+import PopUp from "./PopUp.component";
 
+import Account from '../account/Account.component'
 const NavBar = (props) => {
 console.log(props);
   const [state, setState] = useState({
@@ -224,6 +226,16 @@ console.log(props);
           </div>
         
       </nav>
+      <PopUp
+          opened={props.accountBox.state}
+          closePopUp={() => {
+            props.accountBoxModify({
+              state: false,
+            });
+          }}
+        >
+          <Account />
+        </PopUp>
     </div>
   );
 }
@@ -233,6 +245,7 @@ const mapDispatchesToProps = (dispatch) => ({
 });
 const mapStateToProps = (state) => ({
   user: state.user,
+  accountBox: selcetAccountBox(state),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchesToProps)(NavBar));

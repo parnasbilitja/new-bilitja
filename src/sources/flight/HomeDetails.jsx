@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "../../../styles/Home.module.scss";
 import {flightsData, homeText, flightsDataHotel} from '../../Utils/data';
 import FlightsUrl from "./../component/FlightsUrl";
 import { faPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const HomeDetails = ( props) => {
+  const [ width, setWidth ] = useState(0)
+  useEffect(() => {
+    setWidth(window.innerWidth)
+  },[]) 
     return (
         <div>
 
           <div className="justify-content-center">
             <div className="col-md-12 px-0">
-                {props.state.width >= 826 ? (
+                {width >= 826 ? (
             <div className={`${styles["parentbackFight"]}`}>
               <img
                 className={`${styles["backFight"]}`}
@@ -28,7 +32,7 @@ const HomeDetails = ( props) => {
               />
             </div>
           ) : null}
-          {props.state.width < 826 ? (
+          {width < 826 ? (
             <div className={`${styles["hero-big-image"]} container`}>
               <img
                 width=""
