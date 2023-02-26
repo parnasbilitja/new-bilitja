@@ -22,6 +22,7 @@ import { connect } from "react-redux";
 import { compareTwoStringDates } from "../../Utils/SimpleTasks";
 import { useEffect } from "react";
 import { useState } from "react";
+import PictureBase from "../component/PictureBase";
 const villa = (props) => {
     const [state, setState] = useState({
       open: false,
@@ -54,37 +55,7 @@ const villa = (props) => {
 
     return (
       <div className="mt-5 bodyVar">
-        {state.width >= 826 ? (
-          <div className="hidden-xs mt-1 hidden-sm row">
-            <div className="col-md-4">
-              <img
-                width=""
-                height=""
-                alt="بلیطجا- لوگو"
-                src="../../../Images/map.webp"
-                className={`${styles["hero-image-2"]} pull-right`}
-              />
-            </div>
-            <div className="text-center col-md-4 pt-10 mt-5">
-              <img
-                width=""
-                height=""
-                alt="بلیطجا - لوگو"
-                src="../../../Images/bilitja.webp"
-                className={styles["hero-image-center"]}
-              />
-            </div>
-            <div className="col-md-4">
-              <img
-                width=""
-                height=""
-                alt="بلیطجا - قطب نما"
-                src="../../../Images/earth.webp"
-                className={`${styles["hero-image-1"]} pull-left`}
-              />
-            </div>
-          </div>
-        ) : null}
+        <PictureBase/>
 
         <div className={`${styles["heor-main-container"]} container-fuild`}>
         <PageTabls type={type} setType={setType} />

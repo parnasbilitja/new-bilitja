@@ -13,18 +13,14 @@ import { withRouter } from "next/router";
 import NavHandler from "../Components/share/NavHandler";
 import Scrolltoprefresh from "../sources/component/Scrolltoprefresh";
 import HeadSeo from "../sources/component/HeadSeo";
+import Ticket from "../Components/ticket/Ticket";
 
 const ticket = (props) =>  {
     return (
       <div className="bodyVar">
         <NavHandler />
         <Scrolltoprefresh/>
-        <div className={"mt-100"}>
-          <Home />
-          <MessageBox />
-          <Footer />
-          <HeadSeo props={props} pathName={props.router.asPath} />
-        </div>
+        <Ticket {...props} />
         <PopUp
           opened={props.accountBox.state}
           closePopUp={() => {props.accountBoxModify({state: false,})}}>

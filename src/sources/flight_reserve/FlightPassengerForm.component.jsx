@@ -418,7 +418,6 @@ const FlightPassengerForm = (props) => {
                 closePopUp={managePopUpExtPasCalendar}
             >
                 <div style={{ padding: 15 }}>
-                    {/* <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'Christian month' : 'شمسی'}</button> */}
                     <BirthDayParent
                         numSh={1401}
                         numBase={1380}
