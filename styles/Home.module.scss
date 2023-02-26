@@ -103,13 +103,18 @@
     }
   }
 }
+@media only screen and (min-width: 770px) {
+  .width-full{
+    width:fit-content;
+  }
+}
 @media only screen and (max-width: 770px) {
   .width-mobile {
     width: 90% !important;
     margin: 0px 10px !important;
     border: 2px solid #279692;
     border-radius: 10px;
-    margin-top: 1rem !important;
+    margin-top: 2rem !important;
   }
   .width-mobile-search {
     width: 90% !important;
@@ -138,6 +143,7 @@
   }
 
 }
+
 @media only screen and (max-width: 2000px) and (min-width: 1025px) {
 
   .tab-container {

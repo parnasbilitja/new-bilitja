@@ -8,15 +8,17 @@ const PageTabls = (props) => {
   
   const myRouter = useRouter();
   return (
-    <div className={`row justify-content-center `}>
+    <div className={`row justify-content-center`}>
       <div className={`col-md-10 ${styles["border-bottom"]} ${styles["width-mobile"]} px-0`}>
         <div className={'row justify-content-start me-0 w-100 position-relative'} style={{top:'2px'}}>
           <Link href='/ticket'>
-            <div className={`${styles["home-tab"]} ${styles["mobile-tab1"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 1 ? styles["home-tab-active"] : null}`}
+            <div className={`${styles["home-tab"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 1 ? styles["home-tab-active"] : null} ${styles["mobile-tab1"]} ${styles["width-full"]}`}
               onClick={() => {
                 props.setType(1)
                 // myRouter.push("/ticket");
               }}
+              
+
             >
               <div className="pull-right">
                 <i className="bilitja font-size-24 icon-plane-departure"></i>
@@ -25,38 +27,42 @@ const PageTabls = (props) => {
                 <span className="font-size-13"> پرواز </span>
               </div>
             </div></Link>
-            <Link href='/hotels'>
-            <div className={`${styles["home-tab"]} ${styles["mobile-tab2"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 3 ? styles["home-tab-active"] : null
-                }`}
+            {/* <Link href='/hotels'> */}
+            <div className={`col-xl-1 ${styles["home-tab"]} ${styles["mobile-tab2"]} col-6 col-md-3 cursor-pointer ${props.type == 3 ? styles["home-tab-active"] : null
+                } ${styles["width-full"]}`}
               onClick={() => {
-                props.setType(3)
+                // props.setType(3)
                 // myRouter.push("/tours");
               }}
+              style={{color: 'gray'}}
             >
               <div className="pull-right icon-container">
                 <i className="bilitja font-size-20 icon-villa"></i>
               </div>
               <div className="pull-right">
-                <span className="font-size-13 ">هتل</span>
+                <span className="font-size-13 " >هتل (بزودی)</span>
               </div>
-            </div></Link>
-            <Link href='/villa'>
-            <div className={`${styles["home-tab"]} ${styles["mobile-tab3"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 4 ? styles["home-tab-active"] : null
-                }`}
+            </div>
+            {/* </Link> */}
+            {/* <Link href='/villa'> */}
+            <div className={`${styles["home-tab"]} ${styles["mobile-tab3"]} col-6 col-md-3 cursor-pointer ${props.type == 4 ? styles["home-tab-active"] : null
+                } ${styles["width-full"]}`}
               onClick={() => {
-                props.setType(4)
+                // props.setType(4)
               }}
+              style={{color: 'gray'}}
             >
               <div className="pull-right icon-container">
                 <i className="bilitja font-size-20 icon-villa"></i>
               </div>
               <div className="pull-right">
-                <span className="font-size-13 ">اقامتگاه</span>
+                <span className="font-size-13 ">اقامتگاه (بزودی)</span>
               </div>
-            </div></Link>
+            </div>
+            {/* </Link> */}
             <Link href='/tours'>
             <div className={`${styles["home-tab"]} ${styles["mobile-tab4"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 2 ? styles["home-tab-active"] : null
-                }`}
+                } ${styles["width-full"]}`}
               onClick={() => {
                 props.setType(2)
                 myRouter.push("/tours");

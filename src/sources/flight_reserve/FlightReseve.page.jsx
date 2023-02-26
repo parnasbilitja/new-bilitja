@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import styles from "../../../styles/FlightReserve.module.scss";
 import * as moment from 'jalali-moment';
 import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
@@ -97,8 +96,7 @@ const FlightReserve = (props) => {
         )
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
-                console.log(data.flightReservePropertyModel)
+                let sum = 0;
                 if (data.status == "0") {
                     new Array(parseInt(data.flightReservePropertyModel.numADL))
                         .fill()
@@ -107,6 +105,7 @@ const FlightReserve = (props) => {
                                 "ADL",
                                 data.flightReservePropertyModel.priceADL
                             );
+                            sum+=data.flightReservePropertyModel.priceADL
                         });
                     Array(parseInt(data.flightReservePropertyModel.numCHD))
                         .fill()
@@ -115,6 +114,7 @@ const FlightReserve = (props) => {
                                 "CHD",
                                 data.flightReservePropertyModel.priceCHD
                             );
+                            sum+=data.flightReservePropertyModel.priceCHD
                         });
                     Array(parseInt(data.flightReservePropertyModel.numINF))
                         .fill()
@@ -124,10 +124,12 @@ const FlightReserve = (props) => {
                                 data.flightReservePropertyModel.priceINF,
                                 data.flightReservePropertyModel.pathKind,
                             );
+                            sum+=data.flightReservePropertyModel.priceINF
                         });
 
                     setState({
                         ...state,
+                        priceAll:sum,
                         ...data.flightReservePropertyModel,
                     });
                 } else {
@@ -324,7 +326,6 @@ const FlightReserve = (props) => {
         // setState({ ...state, mobileSubmiter:value })
         //     setMobileNumber({...mobileNumber,mobile: value})
         // }
-        console.log(state);
     };
 
     const Ref = useRef(null);
@@ -371,7 +372,6 @@ const FlightReserve = (props) => {
         return valid;
     };
     const compeleteReservation = () => {
-        console.log('state', state);
         const numADL = state.passengers.filter((x) => x.type == "ADL").length;
         const numCHD = state.passengers.filter((x) => x.type == "CHD").length;
         const numINF = state.passengers.filter((x) => x.type == "INF").length;
@@ -450,7 +450,6 @@ const FlightReserve = (props) => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 if (data.status == "0") {
                     setState({
                         ...state,
@@ -561,7 +560,6 @@ const FlightReserve = (props) => {
             compeleteReservation()
             setLoading(true)
             localStorage.setItem('loginGoNext', JSON.stringify(''))
-            console.log(loginGoNext);
         }
     }, [loginGoNext])
 
@@ -667,8 +665,7 @@ const FlightReserve = (props) => {
                                 </span>
                                 <span className="color-secondary font-bold-iransanse">
                                     {/* priceADL */}
-                                    {state.priceAll !== 0 ?
-                                        moneyFormat(state.priceAll) : moneyFormat(state.priceADL)}
+                                    {moneyFormat(state.priceAll)}
                                     &nbsp;
                                 </span>
                                 <span className="font-bold-iransanse">تومان</span>
@@ -781,7 +778,6 @@ const FlightReserve = (props) => {
                                     <button
                                         disabled={loading}
                                         onClick={(e) => {
-                                            console.log(props);
                                             if (!validation()) {
                                                 setLoading(false)
                                                 setScrollTop(true)

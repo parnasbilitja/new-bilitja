@@ -521,9 +521,7 @@ const Home = (props) => {
       <PictureBase/>
       <div className={`${styles["heor-main-container"]}`}>
         <Scrolltoprefresh />
-        {type == 1 ?
-          <>
-            <div style={{ marginRight: '2px',marginTop: '-1rem' }}>
+        <div style={{ marginRight: '2px',marginTop: '-1rem' }}>
               <PageTabls type={type} setType={setType} />
             </div>
             <div className="row justify-content-center">
@@ -534,18 +532,8 @@ const Home = (props) => {
               </div>
               <HomeDetails state={state} type={props.type} />
             </div>
-
-          </>
-          :
-          <>
-            <SearchBox dateSelected={state.dateSelected2} />
-            <HomePicture state={state} />
-            <List />
-          </>
-        }
       </div>
-
-    </div >
+    </div>
   );
 }
 

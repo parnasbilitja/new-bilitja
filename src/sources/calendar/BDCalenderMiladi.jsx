@@ -19,7 +19,7 @@ const BirthdayCalenderMiladi = (props) => {
     let INFage = moment().add(-2,'years').format('YYYY/MM/DD');
     let month31 = [1,3,5,7,8,10,12]
     let month30 = [4,6,9,11]
-    console.log(INFage)
+    
     const getYears = () => {
         if (typePassenger == "ADL") {
             return new Array(current - 1931).fill().map((x, index) => {
@@ -40,7 +40,7 @@ const BirthdayCalenderMiladi = (props) => {
     //calculate days in a month, month and year are defined in previous steps!
     const getDays = () => {
         let arrayOfdays = [];
-        console.log(month31)
+        
         if (month31.filter(x => x == parseInt(state.month)) == true) {
             arrayOfdays = Array.from({ length: 31 }, (_, i) => i + 1)
         } else if (month30.filter(x => x == parseInt(state.month)) == true) {
@@ -67,7 +67,7 @@ const BirthdayCalenderMiladi = (props) => {
             ))
             return data
         }else if (typePassenger =='CHD' ) {
-            console.log(month.month);
+            
             revArrayOfDay.reverse().map((item)=>(
                 parseInt(CHDage.split('/')[0]) == parseInt(state.year) &&
                 parseInt(CHDage.split('/')[1]) == parseInt(state.month) && 
@@ -189,13 +189,13 @@ const BirthdayCalenderMiladi = (props) => {
             }
         }else if (typePassenger === 'CHD') {
             if (parseInt(CHDage.split('/')[0]) == parseInt(state.year)) {
-                console.log(parseInt(CHDage.split('/')[0]) == parseInt(state.year)),
+                
                 stageMonth.map((item)=>(
                     parseInt(CHDage.split('/')[1]) <= parseInt(item.month) ?
                     data.push(item):null
                 ))
             }else if (parseInt(INFage.split('/')[0]) == parseInt(state.year)) {
-                console.log(parseInt(INFage.split('/')[0]) == parseInt(state.year)),
+                
                 stageMonth.map((item)=>(
                     parseInt(INFage.split('/')[1]) <= parseInt(item.month) ?
                     data.push(item):null
@@ -205,7 +205,7 @@ const BirthdayCalenderMiladi = (props) => {
             }
         }else if (typePassenger === 'ADL') {
             if (parseInt(CHDage.split('/')[0]) == parseInt(state.year)) {
-                console.log(parseInt(CHDage.split('/')[0]) == parseInt(state.year)),
+                
                 stageMonth.map((item)=>(
                     parseInt(CHDage.split('/')[1]) <= parseInt(item.month) ?
                     data.push(item):null
@@ -237,7 +237,7 @@ const BirthdayCalenderMiladi = (props) => {
                                             <div key={i} className={styles['birthday-item']} style={{ fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" }} onClick={() => {
                                                 setState({...state, year: x, stage: 2 })
                                             }}>
-                                                {/* {console.log(x)} */}
+                                                
                                                 {x}
                                             </div>
                                         ))
@@ -292,7 +292,7 @@ const BirthdayCalenderMiladi = (props) => {
                                             <div className={styles['birthday-item']} style={{ fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" }} onClick={() => {
                                                 const m = moment(`${state.year + '/' + state.month + '/' + x}`, 'jYYYY/jMM/jDD')
                                                 const date = m.format('jYYYY/jMM/jDD')
-                                                console.log(state);
+                                                
                                                 props.setBirthday(date)
                                                 props.closePopUpCalendar(false)
                                                 setState({...state,
