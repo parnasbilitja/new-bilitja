@@ -13,6 +13,7 @@ import SearchBox from '../../sources/tour/SearchBox';
 import NavHandler from '../share/NavHandler';
 import styles from "../../../styles/Home.module.scss";
 import Posts from '../../sources/tour/Posts';
+import OfferdTours from '../../sources/tour/OfferdTours';
 
 const ToursBase = () => {
     const [state,setState] = useState({
@@ -52,7 +53,7 @@ const ToursBase = () => {
           <Scrolltoprefresh />
           <PageTabls type={type} setType={setType} />
           <div className="row justify-content-center">
-            <div className={`col-md-10 ${styles["width-mobile-search"]} mt-5`}>
+            <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
               <SearchBox 
               dateSelected={state.dateSelected2}
               executeScroll={executeScroll} 
@@ -67,9 +68,10 @@ const ToursBase = () => {
           </div>
           </div>
                 <div className="col-md-10 m-auto">
-                <List ref={myRef} tourData={tourData} />
-                <HotelsSuggest />
-                <CitiesSuggest />
+                  <OfferdTours/>
+                  <List ref={myRef} tourData={tourData} />
+                  <HotelsSuggest />
+                  <CitiesSuggest />
                   <Posts />
                 </div>
             <Footer />   

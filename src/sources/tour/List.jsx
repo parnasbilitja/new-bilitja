@@ -15,6 +15,7 @@ import { withRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { Loader } from '../../Utils/Loader';
 import Head from 'next/head';
+import moment from 'moment-jalaali';
 
 const Account = dynamic(() => import("./../../sources/account/Account.component"));
 
@@ -159,8 +160,8 @@ const List = (props) => {
                                         </g>
                                     </svg>
                                     <div className="d-flex flex-column">
-                                        <span className="from text-dark font-size-14 pt-1">{item.transfers[0].dateTime.split(' ')[0]}</span>
-                                        <span className="to text-dark font-size-14 pt-1">{item.transfers[1].dateTime.split(' ')[0]}</span>
+                                        <span className="from text-dark font-size-14 pt-1">{moment((item.transfers[0].dateTime.split(' ')[0])).locale('en').format('jYYYY/jMM/jDD')}</span>
+                                        <span className="to text-dark font-size-14 pt-1">{moment((item.transfers[1].dateTime.split(' ')[0])).locale('en').format('jYYYY/jMM/jDD')}</span>
                                     </div>
                                 </div>
                                 <div className="type">

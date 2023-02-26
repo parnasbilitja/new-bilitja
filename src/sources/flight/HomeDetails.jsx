@@ -4,6 +4,7 @@ import {flightsData, homeText, flightsDataHotel} from '../../Utils/data';
 import FlightsUrl from "./../component/FlightsUrl";
 import { faPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import OfferdTours from '../tour/OfferdTours';
 const HomeDetails = ( props) => {
   const [ width, setWidth ] = useState(0)
   useEffect(() => {
@@ -44,6 +45,9 @@ const HomeDetails = ( props) => {
           ) : null}
           <div className={'row justify-content-center'}>
             <div className='col-md-10'>
+              {props.type == 'index' &&
+            <OfferdTours/>
+            }
             <div className="row padding-xs-5-15 justify-content-center">
                 <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
                   <div className={styles["home-value-propsal"]}>

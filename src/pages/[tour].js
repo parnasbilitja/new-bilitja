@@ -15,6 +15,7 @@ import Loading from "../sources/component/SmallLoading.component.jsx";
 import { Loader } from '../Utils/Loader';
 import Head from 'next/head';
 import Scrolltoprefresh from '../sources/component/Scrolltoprefresh';
+import moment from 'moment-jalaali';
 
 
 const tour = (props) => {
@@ -53,12 +54,14 @@ const tour = (props) => {
         setData(val.data.data)
     }
 
-    useEffect(() => {
-        getData();
-    }, [slug])
     const handleClick = () => {
+        console.log(props.Pathname.tour);
         ref.current?.scrollIntoView({behavior: 'smooth'});
       };
+    useEffect(() => {
+        getData();
+        handleClick()
+    }, [props.Pathname.tour])
 
     const slugHandler = (slug) => {
         setSlug(slug)
@@ -156,7 +159,7 @@ const tour = (props) => {
                                                     <span className="font-bold font-13-mobi bold-900-mobi bold-900-mobi text-danger">تاریخ و ساعت پرواز رفت</span>
                                                 </div>
                                                 <div className="val pe-2">
-                                                    <span className="font-13-mobi bold-900-mobi">{data && data.transfers[0].dateTime}</span>
+                                                    <span className="font-13-mobi bold-900-mobi">{data && moment((data.transfers[0].dateTime)).locale('en').format('jYYYY/jMM/jDD')} {data.transfers[0].dateTime.split(' ')[1]}</span>
                                                 </div>
                                             </div>
                                             <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1">
@@ -164,7 +167,7 @@ const tour = (props) => {
                                                     <span className="font-bold font-13-mobi bold-900-mobi" style={{color:'#279692'}}>تاریخ ورود به هتل</span>
                                                 </div>
                                                 <div className="val pe-2 p-0-mobi">
-                                                    <span className="ps-2 p-0-mobi font-13-mobi bold-900-mobi">{data && data.stDate.split(' ')[0]}</span>
+                                                    <span className="ps-2 p-0-mobi font-13-mobi bold-900-mobi">{data && moment((data.stDate.split(' ')[0])).locale('en').format('jYYYY/jMM/jDD')}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -218,7 +221,7 @@ const tour = (props) => {
                                                     <span className="font-bold text-danger font-13-mobi bold-900-mobi">تاریخ و ساعت پرواز برگشت</span>
                                                 </div>
                                                 <div className="val pe-2">
-                                                    <span className="font-13-mobi bold-900-mobi">{data && data.transfers[1].dateTime}</span>
+                                                    <span className="font-13-mobi bold-900-mobi"> &nbsp; {data && moment(data.transfers[1].dateTime).locale('en').format('jYYYY/jMM/jDD')} { data.transfers[1].dateTime.split(' ')[1]}</span>
                                                 </div>
                                             </div>
                                             <div className="m-main-data flex-between-mobi d-flex flex-row-reverse align-items-center pb-1">
@@ -226,7 +229,7 @@ const tour = (props) => {
                                                     <span className="font-bold font-13-mobi bold-900-mobi" style={{color:'#279692'}}>تاریخ خروج از هتل</span>
                                                 </div>
                                                 <div className="val ps-2 p-0-mobi">
-                                                    <span className="font-13-mobi p-0-mobi bold-900-mobi">{data && data.stDate.split(' ')[0]}</span>
+                                                    <span className="font-13-mobi p-0-mobi bold-900-mobi">{data && moment(data.stDate).locale('en').format('jYYYY/jMM/jDD')}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -569,7 +572,7 @@ const tour = (props) => {
                                                 </g>
                                             </svg>
                                             <div className="info-tour-city">
-                                                <Link href={'/tour'}>
+                                                <Link href={`/${item.slug}`}>
                                                     <strong>{item.title}</strong>
                                                 </Link>
                                                 <div className="text-price pt-1">
@@ -620,7 +623,7 @@ const tour = (props) => {
                                             <span className="text-dark me-2">{item.transfers[0].transfer}</span>
                                         </div>
                                         <div className="ino-tour-btn" onClick={handleClick}>
-                                            <Link href={'/tour'}>
+                                            <Link href={`/${item.slug}`}>
                                                 {/* <span className="text-mobi-btn">جزییات</span> */}
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="27.414" height="18.453" viewBox="0 0 27.414 18.453">
                                                     <path id="Right_Arrow_2" data-name="Right Arrow 2" d="M18.188,1,26,8.812m0,0H1m25,0-7.812,7.813" transform="translate(27.414 18.039) rotate(180)" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
