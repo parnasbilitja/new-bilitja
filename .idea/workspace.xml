@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/DesktopFlightSellReport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/DesktopFlightSellReport.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/[tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/[tour].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/Home.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/Home.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +75,7 @@
       <workItem from="1659176897019" duration="15000" />
       <workItem from="1659253213035" duration="608000" />
       <workItem from="1660206653464" duration="3962000" />
+      <workItem from="1677402574669" duration="11269000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -210,6 +213,18 @@
           <url>file://$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/transaction.jsx</url>
           <line>317</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/[tour].js</url>
+          <line>146</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/[tour].js</url>
+          <line>161</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

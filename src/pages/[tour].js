@@ -77,9 +77,9 @@ const tour = (props) => {
                 {/* section 1 */}
                 {data ?
                 <>
-                <section className="mt-5 pt-5">
+                <section className="mt-5 mt-2-mobi pt-3-mobi pt-5">
                     <div className="container mt-2">
-                        <div className="m-main-data detail-title col-xl-12 col-lg-12 col-12 d-flex justify-content-between border-bottom pb-2">
+                        <div className="m-main-data flex-column-mobi detail-title col-xl-12 col-lg-12 col-12 d-flex justify-content-between border-bottom pb-2">
                             <div className="title-tour d-flex align-items-center">
                                 <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.643" height="30.68" viewBox="0 0 19.643 19.68">
                                     <g id="Ticket-index" transform="translate(-0.022)">
@@ -87,13 +87,14 @@ const tour = (props) => {
                                         <path id="Path_1169" data-name="Path 1169" d="M14.8,4a.8.8,0,0,1,.8.8V6.411a.8.8,0,0,1-1.607,0V4.8A.8.8,0,0,1,14.8,4Zm0,4.822a.8.8,0,0,1,.8.8v1.607a.8.8,0,0,1-1.607,0V9.625A.8.8,0,0,1,14.8,8.822Zm.8,5.625a.8.8,0,1,0-1.607,0v1.607a.8.8,0,0,0,1.607,0Z" transform="translate(-2.549 -0.589)" fill="#279692" fillRule="evenodd"></path>
                                     </g>
                                 </svg>
-                                <div className="text">
+                                <div className="text title-info-tour">
                                     <h5 className="font-bold" >{data && data.title}</h5>
-                                    <span className="">شروع قیمت از: {data && moneyFormat(data.minPrice)} تومان</span>
+                                    <span className="d-none-mobi">شروع قیمت از: {data && moneyFormat(data.minPrice)} تومان</span>
                                 </div>
                             </div>
+                            <span className="d-none-desktop mt-3 font-14-mobi">شروع قیمت از: {data && moneyFormat(data.minPrice)} تومان</span>
                             <div className="d-flex flex-column justify-content-around me-auto mt-2">
-                                <div className="d-flex">
+                                <div className="d-flex d-none-mobi">
                                     <img src={data.transfers[0].logo} width='30px' height={'30px'} />
                                     <div className="text">
                                         <span className="font-bold">ایرلاین رفت :</span>
@@ -104,7 +105,7 @@ const tour = (props) => {
                                         }
                                     </div>
                                 </div>
-                                <div className="d-flex">
+                                <div className="d-flex d-none-mobi">
                                 <img src={data.transfers[1].logo} width='30px' height={'30px'} />
                                     <div className="text">
                                         <span className="font-bold">ایرلاین برگشت :</span>
@@ -131,8 +132,8 @@ const tour = (props) => {
                             </div>
                             <div className="left position-relative col-xl-6 col-lg-6 col-12">
                                 <div className="vertical-data" style={{ display: "none" }}></div>
-                                <div className="p-info__tour d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3">
-                                    <div className="c-info__tour d-flex align-items-center col-xl-12 col-gl-12">
+                                <div className="p-info__tour mr-0 d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3">
+                                    <div className="c-info__tour w-100-mobi  d-flex align-items-center col-xl-12 col-gl-12">
                                         <div className="bg-white py-3">
                                             <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
                                             {data ?
@@ -141,40 +142,40 @@ const tour = (props) => {
                                                 <Loading />}
                                             </div>
                                         </div>
-                                        <div className="text pe-2">
-                                            <div className="m-main-data d-flex align-items-center pb-1">
-                                                <div className="prop pe-2">
-                                                    <span className="font-bold font-size-18">اطلاعات مبدا</span>
+                                        <div className="text w-90-mobi pe-2">
+                                            <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1">
+                                                <div className="prop  pe-2">
+                                                    <span className="font-bold font-15-mobi bold-900-mobi font-size-18">اطلاعات مبدا</span>
                                                 </div>
                                                 <div className="val pe-2">
                                                     <span className="font-size-12">{data && data.stCity.name}</span>
                                                 </div>
                                             </div>
-                                            <div className="m-main-data d-flex align-items-center pb-1">
+                                            <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold text-danger">تاریخ و ساعت پرواز رفت</span>
+                                                    <span className="font-bold font-13-mobi bold-900-mobi bold-900-mobi text-danger">تاریخ و ساعت پرواز رفت</span>
                                                 </div>
                                                 <div className="val pe-2">
-                                                    <span>{data && data.transfers[0].dateTime}</span>
+                                                    <span className="font-13-mobi bold-900-mobi">{data && data.transfers[0].dateTime}</span>
                                                 </div>
                                             </div>
-                                            <div className="m-main-data d-flex align-items-center pb-1">
+                                            <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold" style={{color:'#279692'}}>تاریخ ورود به هتل</span>
+                                                    <span className="font-bold font-13-mobi bold-900-mobi" style={{color:'#279692'}}>تاریخ ورود به هتل</span>
                                                 </div>
-                                                <div className="val pe-2">
-                                                    <span className="ps-2">{data && data.stDate.split(' ')[0]}</span>
+                                                <div className="val pe-2 p-0-mobi">
+                                                    <span className="ps-2 p-0-mobi font-13-mobi bold-900-mobi">{data && data.stDate.split(' ')[0]}</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="c-info__tour bg-white d-flex align-items-center justify-content-center box-shadow-sm col-xl-12 col-lg-12 col-12 my-4">
                                         <div className="border-box box-right"></div>
-                                        <div className="text d-flex align-items-center justify-content-center px-2">
+                                        <div className="text flex-between-mobi w-100-mobi d-flex align-items-center justify-content-center px-2">
                                             <div className="text">
-                                                <span>مدت اقامت</span>
+                                                <span className="font-13-mobi text-danger bold-900-mobi">مدت اقامت</span>
                                             </div>
-                                            <div className="image d-flex align-items-center mx-3">
+                                            <div className="image w-50-mobi flex-center-mobi  d-flex align-items-center mx-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38"
                                                     viewBox="0 0 43.84 45.663">
                                                     <g id="Moon_2" data-name="Moon 2" transform="translate(0 0)">
@@ -189,8 +190,8 @@ const tour = (props) => {
                                                 </svg>
                                             </div>
                                             <div className="text">
-                                                <span className="ps-1 font-bold">{data && data.nightNum} شب</span>
-                                                <span className="pe-1 font-bold ps-2">{data && data.dayNum} روز</span>
+                                                <span className="ps-1 font-bold font-13-mobi">{data && data.nightNum} شب</span>
+                                                <span className="pe-1 font-bold ps-2 p-0-mobi font-13-mobi">{data && data.dayNum} روز</span>
                                             </div>
                                         </div>
                                         <div className="border-box box-left"></div>
@@ -203,29 +204,29 @@ const tour = (props) => {
                                             :<Loading />}
                                             </div>
                                         </div>
-                                        <div className="text pe-2 ps-3">
-                                            <div className="m-main-data d-flex flex-row-reverse align-items-center pb-1">
+                                        <div className="text w-90-mobi p-0-mobi pe-2 ps-3">
+                                            <div className="m-main-data  flex-between-mobi d-flex flex-row-reverse align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold font-size-18">اطلاعات مقصد</span>
+                                                    <span className="font-bold font-14-mobi bold-900-mobi font-size-18 ">اطلاعات مقصد</span>
                                                 </div>
                                                 <div className="val pe-2">
-                                                    <span className="">{data && data.endCity.name}</span>
+                                                    <span className="font-13-mobi bold-900-mobi">{data && data.endCity.name}</span>
                                                 </div>
                                             </div>
-                                            <div className="m-main-data d-flex flex-row-reverse align-items-center pb-1">
+                                            <div className="m-main-data flex-between-mobi d-flex flex-row-reverse align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold text-danger">تاریخ و ساعت پرواز برگشت</span>
+                                                    <span className="font-bold text-danger font-13-mobi bold-900-mobi">تاریخ و ساعت پرواز برگشت</span>
                                                 </div>
                                                 <div className="val pe-2">
-                                                    <span>{data && data.transfers[1].dateTime}</span>
+                                                    <span className="font-13-mobi bold-900-mobi">{data && data.transfers[1].dateTime}</span>
                                                 </div>
                                             </div>
-                                            <div className="m-main-data d-flex flex-row-reverse align-items-center pb-1">
+                                            <div className="m-main-data flex-between-mobi d-flex flex-row-reverse align-items-center pb-1">
                                                 <div className="prop pe-2">
-                                                    <span className="font-bold" style={{color:'#279692'}}>تاریخ خروج از هتل</span>
+                                                    <span className="font-bold font-13-mobi bold-900-mobi" style={{color:'#279692'}}>تاریخ خروج از هتل</span>
                                                 </div>
-                                                <div className="val ps-2">
-                                                    <span className="">{data && data.stDate.split(' ')[0]}</span>
+                                                <div className="val ps-2 p-0-mobi">
+                                                    <span className="font-13-mobi p-0-mobi bold-900-mobi">{data && data.stDate.split(' ')[0]}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -445,7 +446,7 @@ const tour = (props) => {
                                 <div className="p-descrip">
                                     <div
                                         className="c-descrip bg-white border-base-color d-flex align-items-start pt-3 pb-3 px-3 mb-3">
-                                        <div className="image ps-4">
+                                        <div className="image p-0-mobi ps-4">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85"
                                                 viewBox="0 0 183.266 183.266">
                                                 <g id="Credit_Card" data-name="Credit Card" transform="translate(5 5)"
