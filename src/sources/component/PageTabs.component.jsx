@@ -8,16 +8,16 @@ const PageTabls = (props) => {
   
   const myRouter = useRouter();
   return (
-    <div className={`row justify-content-center `}>
+    <div className={`row justify-content-center`}>
       <div className={`col-md-10 ${styles["border-bottom"]} ${styles["width-mobile"]} px-0`}>
         <div className={'row justify-content-start me-0 w-100 position-relative'} style={{top:'2px'}}>
           <Link href='/ticket'>
-            <div className={`${styles["home-tab"]}  col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 1 ? styles["home-tab-active"] : null} ${styles["mobile-tab1"]} width-full`}
+            <div className={`${styles["home-tab"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 1 ? styles["home-tab-active"] : null} ${styles["mobile-tab1"]} ${styles["width-full"]}`}
               onClick={() => {
                 props.setType(1)
                 // myRouter.push("/ticket");
               }}
-              style={{width:'fit-content'}}
+              
 
             >
               <div className="pull-right">
@@ -29,12 +29,12 @@ const PageTabls = (props) => {
             </div></Link>
             {/* <Link href='/hotels'> */}
             <div className={`col-xl-1 ${styles["home-tab"]} ${styles["mobile-tab2"]} col-6 col-md-3 cursor-pointer ${props.type == 3 ? styles["home-tab-active"] : null
-                } width-full px-0`}
+                } ${styles["width-full"]}`}
               onClick={() => {
                 // props.setType(3)
                 // myRouter.push("/tours");
               }}
-              style={{width:'fit-content'}}
+              
             >
               <div className="pull-right icon-container">
                 <i className="bilitja font-size-20 icon-villa"></i>
@@ -46,11 +46,11 @@ const PageTabls = (props) => {
             {/* </Link> */}
             {/* <Link href='/villa'> */}
             <div className={`${styles["home-tab"]} ${styles["mobile-tab3"]} col-6 col-md-3 cursor-pointer ${props.type == 4 ? styles["home-tab-active"] : null
-                } width-full px-0`}
+                } ${styles["width-full"]}`}
               onClick={() => {
                 // props.setType(4)
               }}
-              style={{width:'fit-content'}}
+              
             >
               <div className="pull-right icon-container">
                 <i className="bilitja font-size-20 icon-villa"></i>
@@ -62,12 +62,11 @@ const PageTabls = (props) => {
             {/* </Link> */}
             <Link href='/tours'>
             <div className={`${styles["home-tab"]} ${styles["mobile-tab4"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 2 ? styles["home-tab-active"] : null
-                }`}
+                } ${styles["width-full"]}`}
               onClick={() => {
                 props.setType(2)
                 myRouter.push("/tours");
               }}
-              style={{width:'fit-content'}}
             >
               <div className="pull-right icon-container">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24.002">
