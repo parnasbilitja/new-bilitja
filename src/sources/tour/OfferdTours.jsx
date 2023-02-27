@@ -74,8 +74,29 @@ const OfferdTours = () => {
             {loading?
             <Loader/> :
           <Swiper
-              slidesPerView={4}
-              spaceBetween={30}
+          spaceBetween={10}
+          slidesPerGroup={1}
+          breakpoints={{
+          0: {
+              slidesPerView: 1.3,
+          },    
+          700: {
+              slidesPerView: 2.3,
+          },
+          850: {
+              slidesPerView: 3.3,
+          },
+          1024: {
+              spaceBetween: 10,
+              slidesPerView: 4.3,
+          },
+          1180: {
+              slidesPerView: 4.3,
+          },
+          1300: {
+              slidesPerView: 5.3,
+          },
+          }}
               pagination={{
                   clickable: false,
               }}
