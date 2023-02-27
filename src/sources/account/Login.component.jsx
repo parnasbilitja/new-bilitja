@@ -21,6 +21,7 @@ import { useState } from "react";
 import Timer from "../../Utils/Timer";
 import Router from "next/router";
 import { MuiOtpInput } from "mui-one-time-password-input";
+import { checkNumberfatoen } from "../../Utils/SimpleTasks";
 
 
 const Login = (props) => {
@@ -213,8 +214,8 @@ const Login = (props) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
 
-        mobile: UserMobileAndCode.mobile,
-        token: UserMobileAndCode.code,
+        mobile: checkNumberfatoen(UserMobileAndCode.mobile),
+        token:  checkNumberfatoen(UserMobileAndCode.code),
 
         hostname: "bilitja.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",

@@ -37,8 +37,8 @@ const OfferdTours = () => {
           .split(".")[0];
       }
     return (
-        <div className="mx-auto pt-4 pb-4">
-            <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
+        <div className="mx-auto pb-4">
+            <div className="d-flex flex-wrap align-items-center justify-content-between mt-2">
                         <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-4 col-12">
                             <div className="d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center">
@@ -108,6 +108,7 @@ const OfferdTours = () => {
           >
             {data.map((item)=>(
               <SwiperSlide>
+                {console.log(item)}
                   <div className="box-special-tour">
                       <div className="img-special-tour">
                       <Link  href={item.slug}>
@@ -119,11 +120,12 @@ const OfferdTours = () => {
                                             d="M15.129,2.531s.8,2.8-1.01,9.564c-2.459,9.176-5.038,11.074-8.9,10.038S.069,18.166,2.528,8.99,10.11.909,11.36,3.074c1.414,2.449-.88,9.082-.88,9.082s-1.5,5.291-3.838,4.666c-3.381-.906.4-9.211.4-9.211"
                                             transform="translate(-0.285 -0.488)" fill="none" stroke="#fff"/>
                                   </svg>
-                                  <Link  href={item.slug} className="view-details-more text-white" rel="noreferrer">مشاهده
-                                      جزئیات بیشتر</Link>
+                                  <Link href={item.slug} className="view-details-more text-white" rel="noreferrer">
+                                        مشاهده جزئیات بیشتر
+                                    </Link>
                               </div>
                               <img
-                                  src={item.endCity.imageSlider}
+                                  src={item.endCity.images[Math.floor(Math.random()*item.endCity.images.length)] }
                                   alt={item.title}/>
                           </a>
                           </Link>
@@ -154,7 +156,9 @@ const OfferdTours = () => {
                       <div className="mid-info-tour-special">
                           <div className="inner-mid-info-tour-special w-75">
                               <Link href={item.slug} rel="noreferrer" className='cursor-pointer'>
-                                  <h2 className="title-tour-special cursor-pointer">{item.title}</h2>
+                                <a>
+                                    <h2 className="title-tour-special cursor-pointer text-truncate" style={{maxWidth: "150px"}}>{item.title}</h2>
+                                </a>
                               </Link>
                               <div className="date-special">
                                 <span 
@@ -191,7 +195,7 @@ const OfferdTours = () => {
                               <div className="d-flex align-items-center">
                                   <strong className="price-tour-special ml-2 mr-2">{moneyFormat(item.minPrice)}</strong>
                                   <strong className="price-tour-special ">
-                                      {item.rate.name} </strong>
+                                      تومان </strong>
                               </div>
 
                           </div>

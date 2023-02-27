@@ -278,6 +278,7 @@ const tour = (props) => {
                                         <span className="font-bold font-size-16">سن کودک</span>
                                     </div>
                                 </div>
+                                {console.log(data.packages)}
                                 {data ? data.packages.map((pack) => (
                                     <div className="p-detail col-xl-12 col-lg-12 mt-2" key={pack.id}>
                                         <div className="d-detail position-relative col-xl-12 col-lg-12 col-12 d-flex flex-wrap align-items-center bg-white py-2 px-2 mb-2">
@@ -409,8 +410,8 @@ const tour = (props) => {
                                             <div className="c-detail">
                                                 <div className="info-price position-relative d-flex align-items-start mx-2">
                                                     <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                                        <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک بدون تخت</span>
-                                                        <span className="font-size-14 font-bold color-gray">{pack.prices.cnb?.includes(',') && pack.prices.cnb.includes(',') == true ?`${pack.prices.cnb}تومان`: `${moneyFormat(`${pack.prices.cnb}0`)}تومان` } </span>
+                                                        <span className="text-show-m mb-2 color-base-color font-bold d-none">کودک بدون تخت</span>{console.log(pack.prices.cnb)}
+                                                        <span className="font-size-14 font-bold color-gray">{undefined == undefined?'--': pack.prices.cnb?.includes(',') == true ?`${pack.prices.cnb} تومان`: `${moneyFormat(`${pack.prices.cnb}0`)}تومان` } </span>
                                                     </div>
                                                 </div>
                                             </div>

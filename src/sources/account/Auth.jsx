@@ -19,7 +19,9 @@ import {
 import { useState } from "react";
 import { MuiOtpInput } from "mui-one-time-password-input";
 import { useEffect } from "react";
+import { checkNumberfatoen } from "../../Utils/SimpleTasks";
 const Auth = (props) => {
+  
   const [state, setState] = useState({
     btn_disabled: false,
     loading: false,
@@ -82,9 +84,9 @@ const Auth = (props) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        mobile: state.mobile,
-        token: state.token,
-        password: state.password,
+        mobile: checkNumberfatoen(state.mobile),
+        token: checkNumberfatoen(state.token),
+        password: checkNumberfatoen(state.password),
         register: 0,
         hostname: "bilitja.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
@@ -151,9 +153,9 @@ const Auth = (props) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        mobile: state.mobile,
-        token: state.token,
-        password: state.password,
+        mobile: checkNumberfatoen(state.mobile),
+        token: checkNumberfatoen(state.token),
+        password: checkNumberfatoen(state.password),
         register: 1,
         hostname: "bilitja.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
@@ -192,15 +194,15 @@ const Auth = (props) => {
         }
       });
   };
-
+  
   const loginWithToken = () => {
     setState({ ...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/checkUser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        mobile: state.mobile,
-        token: state.token,
+        mobile: checkNumberfatoen(state.mobile),
+        token: checkNumberfatoen(state.token),
         hostname: "bilitja.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         agencyName: "بلیطجا",

@@ -3,7 +3,7 @@ import moment from 'moment-jalaali'
 import styles from '../../../styles/BirthdayCalendar.module.scss'
 const BirthdayCalenderMiladi = (props) => {
     let current = 2022;
-        const today = moment().format('jYYYY/jMM/jDD')
+        const today = moment().format('YYYY/MM/DD')
         const date = today.split("/")
         current = parseInt(date[0])
         const [state, setState] = useState({
@@ -17,7 +17,8 @@ const BirthdayCalenderMiladi = (props) => {
     const getYears = () => {
         if (props.typePassenger == "ADL") {
             return new Array(current - 11 - props.numBase).fill().map((x, index) => {
-                return props.num + index
+                
+                return parseInt(today.split('/')[0]) + index
             }).reverse()
         } else if (props.typePassenger == "CHD") {
             return new Array(current - 11 - 1379).fill().map((x, index) => {
@@ -50,14 +51,23 @@ const BirthdayCalenderMiladi = (props) => {
         for (let i = 0; i <= firstDaymonth; i++) {
             revArrayOfDay.push(undefined)
         }
+        let data=[]
+        console.log(today);
+        if (parseInt(state.year) == parseInt(today.split('/')[0]) && parseInt(state.month) == parseInt(today.split('/')[1])) {
+        
+                console.log(today,state)
+            
+            revArrayOfDay.reverse().map((item)=>(
+                parseInt(item) >= parseInt(today.split('/')[2])?
+                data.push(item):data.push(undefined)))
+            return data
+            }else{
 
-        return revArrayOfDay.reverse()
+                
+                return revArrayOfDay.reverse()
+            }
     }
     const getMonth = () => {
-        // const monthes = ["", "خرداد", "اردیبهشت", "فروردین",
-        //     "شهریور", "مرداد", "تیر",
-        //     "آذر", "آبان", "مهر",
-        //     "اسفند", "بهمن", "دی"]
         var monthes = ['',
             'January',
             'February',
@@ -77,6 +87,68 @@ const BirthdayCalenderMiladi = (props) => {
 
         return monthes[parseInt(state.month)]
     }
+    const stageMonth = [
+        {
+            month:'1',
+            stage:3,
+            title:'January',
+        },
+        {
+            month:'2',
+            stage:3,
+            title:'February',
+        },
+        {
+            month:'3',
+            stage:3,
+            title:'March',
+        },
+        {
+            month:'4',
+            stage:3,
+            title:'April',
+        },
+        {
+            month:'5',
+            stage:3,
+            title:'May',
+        },
+        {
+            month:'6',
+            stage:3,
+            title:'June',
+        },
+        {
+            month:'7',
+            stage:3,
+            title:'July',
+        },
+        {
+            month:'8',
+            stage:3,
+            title:'August',
+        },
+        {
+            month:'9',
+            stage:3,
+            title:'September',
+        },
+        {
+            month:'10',
+            stage:3,
+            title:'October',
+        },
+        {
+            month:'11',
+            stage:3,
+            title:'November',
+        },
+        {
+            month:'12',
+            stage:3,
+            title:'December',
+        },
+    ]
         return (
             <div className={styles['birthday-calendar']}>
                 {
@@ -106,106 +178,34 @@ const BirthdayCalenderMiladi = (props) => {
                 {
                     state.stage == 2 ?
                         <div>
-                            <p className="font-size-14 black-color font-bold-iransanse text-center">
+                            <p onClick={() =>setState({...state,stage:1})} className="font-size-14 black-color font-bold-iransanse text-center">
                                 Please enter your desired month
                             </p>
                             <div className={`font-en ${styles['birthday-month-container']}`}>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "1",
-                                        stage: 3
-                                    })
-                                }}>
-                                    January
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "2",
-                                        stage: 3
-                                    })
-                                }}>
-                                    February
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "3",
-                                        stage: 3
-                                    })
-                                }}>
-                                    March
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "4",
-                                        stage: 3
-                                    })
-                                }}>
-                                    April
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "5",
-                                        stage: 3
-                                    })
-                                }}>
-                                    May
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "6",
-                                        stage: 3
-                                    })
-                                }}>
-                                    June
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "7",
-                                        stage: 3
-                                    })
-                                }}>
-                                    July
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "8",
-                                        stage: 3
-                                    })
-                                }}>
-                                    August
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "9",
-                                        stage: 3
-                                    })
-                                }}>
-                                    September
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "10",
-                                        stage: 3
-                                    })
-                                }}>
-                                    October
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "11",
-                                        stage: 3
-                                    })
-                                }}>
-                                    November
-                                </div>
-                                <div className={styles['birthday-item']} onClick={() => {
-                                    setState({...state,
-                                        month: "12",
-                                        stage: 3
-                                    })
-                                }}>
-                                    December
-                                </div>
+                            {stageMonth.map((item)=>(
+        
+                                <>  
+                                    {parseInt(state.year) == parseInt(today.split('/')[0])&&
+                                    parseInt(item.month)>= parseInt(today.split('/')[1])?
+                                        <div className={styles['birthday-item']} onClick={() => {
+                                            setState({...state,
+                                                month: item.month,
+                                                stage: item.stage
+                                            })
+                                        }}>
+                                            {item.title}
+                                        </div>:parseInt(state.year) != parseInt(today.split('/')[0])?
+                                        <div className={styles['birthday-item']} onClick={() => {
+                                            setState({...state,
+                                                month: item.month,
+                                                stage: item.stage
+                                            })
+                                        }}>
+                                            {item.title}
+                                        </div>:null
+                                        }
+                                </>
+                                ))}
                             </div>
                         </div>
                         :
@@ -214,7 +214,7 @@ const BirthdayCalenderMiladi = (props) => {
                 {
                     state.stage == 3 ?
                         <div>
-                            <p className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black">
+                            <p onClick={() =>setState({...state,stage:1})} className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black">
                                 {getMonth()}&nbsp;&nbsp;{state.year}
                             </p>
                             <div className={styles['birthday-day-container']}>

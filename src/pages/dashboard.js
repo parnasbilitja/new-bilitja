@@ -40,7 +40,6 @@ const Dashboard = (props) => {
 
   function mainRouter(pathName) {
     var path = decodeURI(pathName);
-    // console.log("Test Path", path);
     switch (path) {
       case "/dashboard":
         return <Profile />;
@@ -94,7 +93,6 @@ const Dashboard = (props) => {
               icon={faBars}
               onClick={() => {
                 setOpen(!open);
-                // console.log(open);
               }}
             />
           </div>

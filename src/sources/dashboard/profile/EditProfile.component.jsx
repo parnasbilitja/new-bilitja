@@ -9,6 +9,7 @@ import { messageBoxModify } from "./../../../Redux/UI/ui.action";
 import PopUp from "./../../component/PopUp.component";
 import BirthDayParent from "../../calendar/BirthDayParent";
 import ImgPrev from "./Image";
+import BirthDayParentCl from "../../calendar/BirthDayParentCl";
 
 const EditProfile = (props) => {
   const router = useRouter();
@@ -32,7 +33,6 @@ const EditProfile = (props) => {
     image: 'https://profiles.utdallas.edu/img/default.png'
   });
 
-  console.log(state);
 
   const handleSetState = (e) => {
     const { name, value } = e.target;
@@ -48,7 +48,6 @@ const EditProfile = (props) => {
 
   const handleEditProfile = (event) => {
     event.preventDefault();
-    console.log(state);
     if (state.name != "" && state.family != "") {
       if (state.gender != 0 && state.mariedStat != 0) {
         fetch(`${globals.baseUrlNew}auth/ProfileSave`, {
@@ -58,7 +57,6 @@ const EditProfile = (props) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.status === "0") {
               router.push("/dashboard/profile");
               props.messageBoxModify({
@@ -107,10 +105,10 @@ const EditProfile = (props) => {
         <form onSubmit={handleEditProfile}>
           <div className="container-fluid">
             <div className="row my-3">
-              <div className="col-lg-3 text-center">
+              {/* <div className="col-lg-3 text-center">
                 <ImgPrev state={state} setState={setState} />
-              </div>
-              <div className="col-lg-9 d-flex flex-wrap align-items-start justify-content-between">
+              </div> */}
+              <div className="col-lg-12 d-flex flex-wrap align-items-start justify-content-between">
                 <div className="flex-48">
                   <div className="row my-2">
                     <div className="col-lg-4 title-box ">نام</div>
@@ -264,30 +262,16 @@ const EditProfile = (props) => {
         closePopUp={() => managePopUpBirthdayCalendar(false)}
       >
         <div className="p-15 text-center">
-          <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'Christian month' : 'شمسی'}</button>
-          <BirthDayParent
-            numSh={1301}
-            numBase={1300}
-            numMi={1920}
-            numMiBase={1300}
-            title="Please enter date of birth"
-            placeholder="لطفا تاریخ تولد را وارد کنید"
-            calend={calend}
-            type={'BD'}
-            typePassenger={"ADL"}
-            name="birthday"
-            setBirthdayb={(value) => {
-              setState((prevState) => ({ ...prevState, birthDate: value }));
-            }}
-            closePopUpCalendar={managePopUpBirthdayCalendar}
-          />
-          {/* <BirthdayCalendar
-            typePassenger={"ADL"}
-            setBirthday={(value) => {
-              setState((prevState) => ({ ...prevState, birthDate: value }));
-            }}
-            closePopUpCalendar={() => managePopUpBirthdayCalendar(false)}
-          /> */}
+          <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'تقویم میلادی' : 'تقویم شمسی'}</button>
+          
+          <BirthDayParentCl
+                        calend={calend}
+                        typePassenger={"ADL"}
+                        setBirthdayb={(value) => {
+                          setState((prevState) => ({ ...prevState, birthDate: value }));
+                        }}
+                        closePopUpCalendar={managePopUpBirthdayCalendar}
+                    />
         </div>
       </PopUp>
     </section>

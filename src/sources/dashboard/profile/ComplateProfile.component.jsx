@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import PopUp from "./../../component/PopUp.component";
 import BirthdayCalendar from "./../../calendar/BirthdayCalendar.component";
 import BirthDayParent from "../../calendar/BirthDayParent";
+import BirthDayParentCl from "../../calendar/BirthDayParentCl";
 
 const ComplateProfile = (props) => {
   const router = useRouter();
@@ -110,15 +111,7 @@ const ComplateProfile = (props) => {
           <form onSubmit={handleComplateProfile}>
             <div className="container-fluid">
               <div className="row my-3">
-                <div className="col-lg-4 text-center">
-                  <img
-                    width=""
-                    height=""
-                    src={"https://profiles.utdallas.edu/img/default.png"}
-                    alt="بلیطجا - عکس پروفایل کاربر"
-                    className="img-fluid img-responsive rounded-circle border-black profile-img"
-                  />
-                </div>
+                
                 <div className="col-lg-4">
                   <div className="row my-2">
                     <div className="col-lg-4 title-box ">نام</div>
@@ -334,31 +327,14 @@ const ComplateProfile = (props) => {
       >
         <div className="p-15 text-center">
           <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'Christian month' : 'شمسی'}</button>
-          <BirthDayParent
-            numSh={1300}
-            numBase={1350}
-            numMi={1920}
-            numMiBase={1300}
-            placeholder="لطفا تاریخ تولد را وارد کنید"
-            calend={calend}
-            typePassenger={"ADL"}
-            name="birthday"
-            setBirthdayb={(value) => {
-              setState((prevState) => ({ ...prevState, birthDate: value }));
-            }}
-            closePopUpCalendar={managePopUpBirthdayCalendar}
-          />
-          {/* <BirthdayCalendar
-            typePassenger={"ADL"}
-            numBase={1300}
-                num={1300}
-                placeholder={'props.placeholder'}
-                
-            setBirthday={(value) => {
-              setState((prevState) => ({ ...prevState, birthDate: value }));
-            }}
-            closePopUpCalendar={() => managePopUpBirthdayCalendar(false)}
-          /> */}
+          <BirthDayParentCl
+                        calend={calend}
+                        typePassenger={"ADL"}
+                        setBirthdayb={(value) => {
+                          setState((prevState) => ({ ...prevState, birthDate: value }));
+                        }}
+                        closePopUpCalendar={managePopUpBirthdayCalendar}
+                    />
         </div>
       </PopUp>
     </section>

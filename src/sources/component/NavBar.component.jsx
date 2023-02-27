@@ -177,8 +177,8 @@ console.log(props);
                     </Link>
                   </li>
                   <li>
-                    <Link href="/hotels" >
-                      <a>
+                    <Link href="/" >
+                      <a className="" style={{color: 'gray'}}>
                         <i
                           className={`bilitja icon-tours  ${styles["nav-icon"]} rotate-y-180`}
                         ></i>

@@ -137,11 +137,12 @@ const DashboardNav = (props) => {
               : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item cursor-pointer`
           }
           onClick={() => {
-            myRouter.push("/dashboard/wallet");
+            // myRouter.push("/dashboard/wallet");
             if(size<=826){
               props.setOpen(false);
             }
           }}
+          style={{color:'gray'}}
         >
           <div>
             {/* <FontAwesomeIcon icon={faDollarSign} /> */}
@@ -152,7 +153,7 @@ const DashboardNav = (props) => {
             </svg>
           </div>
           <div>
-            <p className="no-margin font-size-13 font-bold-iransanse">مالی</p>
+            <p className="no-margin font-size-13 font-bold-iransanse">مالی (به زودی)</p>
             <p className="no-margin font-size-13 color-textpill iran-sans">
               Wallet
             </p>
@@ -166,11 +167,12 @@ const DashboardNav = (props) => {
               : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item cursor-pointer`
           }
           onClick={() => {
-            myRouter.push("/dashboard/profile");
+            // myRouter.push("/dashboard/profile");
             if(size<=826){
               props.setOpen(false);
             }
           }}
+          style={{color:'gray'}}
         >
           <div>
             {/* <FontAwesomeIcon icon={faHandshake} /> */}
@@ -180,7 +182,7 @@ const DashboardNav = (props) => {
           </div>
           <div>
             <p className="no-margin font-size-13 font-bold-iransanse">
-              همکاری با ما
+              همکاری با ما (به زودی)
             </p>
             <p className="no-margin font-size-13 color-textpill iran-sans">
               Cooperation
@@ -296,11 +298,12 @@ const DashboardNav = (props) => {
             : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item cursor-pointer`
         }
         onClick={() => {
-          myRouter.push("/dashboard/wallet");
+          // myRouter.push("/dashboard/wallet");
           if(size<=826){
             props.setOpen(false);
           }
         }}
+        style={{color:'gray'}}
       >
         <div>
           {/* <FontAwesomeIcon icon={faDollarSign} /> */}
@@ -311,7 +314,7 @@ const DashboardNav = (props) => {
           </svg>
         </div>
         <div>
-          <p className="no-margin font-size-13 font-bold-iransanse">مالی</p>
+          <p className="no-margin font-size-13 font-bold-iransanse">مالی (به زودی)</p>
           <p className="no-margin font-size-13 color-textpill iran-sans">
             Wallet
           </p>
@@ -324,11 +327,12 @@ const DashboardNav = (props) => {
             : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item cursor-pointer`
         }
         onClick={() => {
-          myRouter.push("/dashboard/profile");
+          // myRouter.push("/dashboard/profile");
           if(size<=826){
             props.setOpen(false);
           }
         }}
+        style={{color:'gray'}}
       >
         <div>
           {/* <FontAwesomeIcon icon={faHandshake} /> */}
@@ -338,7 +342,7 @@ const DashboardNav = (props) => {
         </div>
         <div>
           <p className="no-margin font-size-13 font-bold-iransanse">
-            همکاری با ما
+            همکاری با ما (به زودی)
           </p>
           <p className="no-margin font-size-13 color-textpill iran-sans">
             Cooperation

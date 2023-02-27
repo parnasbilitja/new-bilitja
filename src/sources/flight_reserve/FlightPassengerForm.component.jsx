@@ -337,7 +337,7 @@ const FlightPassengerForm = (props) => {
                             }
 
                             <span className="color-secondary error-message position-absolute">
-                                {props.nationality == "IR" && props.codeErr === "" ? props.codeErr : ''}
+                                {err.nationalCodeErr !== "" && err.nationalCodeErr}
                             </span>
                         </div>
 
@@ -422,11 +422,11 @@ const FlightPassengerForm = (props) => {
                         numSh={1401}
                         numBase={1380}
                         numMi={2022}
-                        numMiBase={1380}
+                        numMiBase={2000}
                         title="Please enter an expiration date"
                         placeholder="لطفا تاریخ انقضا را وارد کنید"
                         // calend={calend}
-                        typePassenger={props.type}
+                        typePassenger={'ADL'}
                         type={'EXT'}
                         name="futureday"
                         setBirthdayb={(value) => {

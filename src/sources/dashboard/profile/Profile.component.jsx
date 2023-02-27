@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 import { SetUserInformation } from "../../../Redux/Dashboard/Profile/profile.action";
 
 const Profile = (props) => {
-  console.log(props);
   const router = useRouter();
   useEffect(() => {
     fetch(`${globals.baseUrlNew}auth/profileView`, {
@@ -26,7 +25,6 @@ const Profile = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.status === "0") {
           props.setUserInformationAction(data.profilemodel);
         } else {

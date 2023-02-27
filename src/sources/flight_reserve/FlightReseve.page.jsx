@@ -22,6 +22,7 @@ import { messageBoxModify, accountBoxModify } from "../../Redux/UI/ui.action";
 
 import {
     isValidIranianNationalCode,
+    isValidPassportCode,
     moneyFormat,
 } from "../../Utils/SimpleTasks";
 import { withRouter } from "next/router";
@@ -279,6 +280,10 @@ const FlightReserve = (props) => {
 
             if (tempPassenger.pasno == "" && state.pathKind == 2) {
                 tempPassenger.codeErr = "شماره پاسپورت الزامی میباشد";
+                isValid = false;
+            }
+            if (isValidPassportCode(tempPassenger.pasno) && state.pathKind == 2) {
+                tempPassenger.codeErr = "شماره پاسپورت صحیح نمیباشد";
                 isValid = false;
             }
             if (tempPassenger.futureday == "" && state.pathKind == 2) {
