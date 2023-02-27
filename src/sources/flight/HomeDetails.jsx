@@ -5,6 +5,7 @@ import FlightsUrl from "./../component/FlightsUrl";
 import { faPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import OfferdTours from '../tour/OfferdTours';
+import TicketDetails from '../component/TicketDetails';
 const HomeDetails = ( props) => {
   const [ width, setWidth ] = useState(0)
   useEffect(() => {
@@ -154,20 +155,7 @@ const HomeDetails = ( props) => {
         </div>
         <FlightsUrl flightsData={flightsData} flightsDataHotel={flightsDataHotel} />
         {props.type !== 'index' &&
-          <div className="row padding-xs-5-25">
-            <div className="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>
-            <div
-              className={`col-lg-10 col-md-10 col-sm-10 col-12 ${styles["home-flight-content"]}`}
-            >
-              <h3>
-                <FontAwesomeIcon icon={faPlane} />
-                خرید بلیط هواپیما
-              </h3>
-              <p className={'description-shop-ticket'}>
-                {homeText}
-              </p>
-            </div>
-          </div>
+          <TicketDetails /> 
         }
         </div>
     );

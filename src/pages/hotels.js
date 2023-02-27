@@ -13,9 +13,7 @@ const hotels = () => {
             <PictureBase/>
                 <NavBar />
                 <PageTabls type={type} setType={setType} />
-                {/* hotel structure */}
                 <Hotels/>
-                {/* footer */}
                 <Footer />
             </div>
 

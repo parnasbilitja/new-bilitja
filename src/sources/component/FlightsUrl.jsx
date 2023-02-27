@@ -52,7 +52,7 @@ const FlightsUrl = ({flightsData, flightsDataHotel}) => {
                 <div className={`${styles["suggestion-list"]} col-6`}>
                   {flightsDataHotel[0].map((item,index)=>(
                     <div className="py-2 mb-2" key={index}>
-                      <a href={`flights/${item.url}`}>
+                      <a href={`/${item.url}`}>
                         <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                         <span
                           style={{ marginRight: 10 }}
@@ -67,7 +67,7 @@ const FlightsUrl = ({flightsData, flightsDataHotel}) => {
                 <div className={`${styles["suggestion-list"]} col-6`}>
                 {flightsDataHotel[1].map((item,index)=>(
                     <div className="py-2 mb-2" key={index}>
-                      <a href={`flights/${item.url}`}>
+                      <a href={`/${item.url}`}>
                         <i className="bilitja font-size-24 icon-plane-departure pull-right"></i>
                         <span
                           style={{ marginRight: 10 }}

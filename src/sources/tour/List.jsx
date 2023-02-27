@@ -27,12 +27,13 @@ const List = (props) => {
           .split(".")[0];
       }
     const [data, setData] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const getData = async () => {
-        setLoading(true)
         const val = await axios.post('https://api.hamnavaz.com/api/v1/tour/getTours')
-        setData(val.data.data)
-        setLoading(false)
+        .then((val) =>{setData(val.data.data),setLoading(false)})
+        .catch(error => {
+            setLoading(true)
+         })
     }
     useEffect(() => {
         getData();
