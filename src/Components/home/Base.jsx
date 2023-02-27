@@ -14,7 +14,7 @@ import NavHandler from '../share/NavHandler';
 
 const Base = (props) => {
     return (
-        <div className={"mt-100"}>
+        <div className={"mt-90"}>
           <NavHandler />
         <Scrolltoprefresh/>
         <Head>

@@ -74,17 +74,16 @@ const FlightReserve = (props) => {
     });
     const router = useRouter();
     useEffect(() => {
-        // if (localStorage.getItem('reqNo') !== null) {
-        //     // router.push({pathname: localStorage.getItem('url').split('"')[1].split('info')[0]})
-        //     props.messageBoxModify({
-        //         color: false,
-        //         message: 'به علت تغییر قیمت, جستجو مجدد انجام می شود!<br/> درحال انتقال به صفحه پرواز ...',
-        //         state: true,
-        //     })
-        //     setTimeout(() => {
-        //         router.back()
-        //     }, "3000")
-        // }
+        if (localStorage.getItem('reqNo') !== null) {
+            props.messageBoxModify({
+                color: false,
+                message: 'به علت تغییر قیمت, جستجو مجدد انجام می شود!<br/> درحال انتقال به صفحه پرواز ...',
+                state: true,
+            })
+            setTimeout(() => {
+                router.back()
+            }, "3000")
+        }
 
         localStorage.setItem('reqNo', props.router.asPath.split("/")[7])
         props.addReservationProperties({
@@ -310,7 +309,6 @@ const FlightReserve = (props) => {
             ...state,
             passengers: passengers,
         });
-        // isValid = true;
         return isValid;
     };
 
@@ -330,10 +328,6 @@ const FlightReserve = (props) => {
             localStorage.setItem('mobile', value);
         }
         setState({ ...state, [name]: value })
-        // if (name == 'mobileSubmiter'){
-        // setState({ ...state, mobileSubmiter:value })
-        //     setMobileNumber({...mobileNumber,mobile: value})
-        // }
     };
 
     const Ref = useRef(null);

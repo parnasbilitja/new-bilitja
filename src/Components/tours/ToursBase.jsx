@@ -43,9 +43,9 @@ const ToursBase = () => {
     const myRef = useRef(null)
     const executeScroll = () => { myRef.current.scrollIntoView()}
     return (
-        <div className={"mt-1"}>
+        <div className={""}>
          <PictureBase/>
-                <NavHandler />
+          <NavHandler />
         <div className={`${styles["heor-main-container"]}`} style={{marginTop: state.width>=826?'-1rem':'5rem' }}>
             <Head>
                 <title>بلیطجا | لیست تورها</title>

@@ -10,7 +10,7 @@ const PageTabls = (props) => {
   return (
     <div className={`row justify-content-center`}>
       <div className={`col-md-10 ${styles["border-bottom"]} ${styles["width-mobile"]} px-0`}>
-        <div className={'row justify-content-start me-0 w-100 position-relative'} style={{top:'1.2px'}}>
+        <div className={'row justify-content-start me-0 w-100 position-relative'} style={{top:'2px'}}>
           <Link href='/ticket'>
             <div className={`${styles["home-tab"]} col-6 col-md-2 col-xl-1 cursor-pointer ${props.type == 1 ? styles["home-tab-active"] : null} ${styles["mobile-tab1"]} ${styles["width-full"]}`}
               onClick={() => {

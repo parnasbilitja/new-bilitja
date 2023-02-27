@@ -288,9 +288,6 @@ const FlightPassengerForm = (props) => {
                                         errHandler(e)
                                         managePopUpBirthdayCalendar(true);
                                     }}
-                                // onFocus={(e) => {
-                                // }}
-
                                 />
                             </div>
                             <span className="color-secondary error-message position-absolute">

@@ -6,7 +6,7 @@ import HomePage from '../../sources/Home.page';
 
 const Ticket = (props) => {
     return (
-        <div className={"mt-100"}>
+        <div className={"mt-90"}>
           <HomePage />
           <MessageBox />
           <Footer />

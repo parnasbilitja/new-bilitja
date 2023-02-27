@@ -9,7 +9,7 @@ const hotels = () => {
     const [type, setType] = useState(3)
     return (
         <div>
-            <div className="mt-100 bodyVar">
+            <div className="mt-90 bodyVar">
             <PictureBase/>
                 <NavBar />
                 <PageTabls type={type} setType={setType} />

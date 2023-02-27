@@ -82,7 +82,7 @@ const Villa = (props) => {
         <>
          {width <= 826 ? <NavBarMobileComponent /> : null}
         {width >= 826 ? <NavBarComponent /> : null}
-        <div className={width <= 826 ? "mt-100" : "mt-100"}>
+        <div className={width <= 826 ? "mt-100" : "mt-90"}>
         
           {
             mainRouter(props.router.asPath)
