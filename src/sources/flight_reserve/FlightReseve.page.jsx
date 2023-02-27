@@ -31,6 +31,9 @@ import PopUp from "../component/PopUp.component";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 import { useRouter } from 'next/router';
 import { CloseOutlined } from "@ant-design/icons";
+import AddNewPassenger from "./AddNewPassenger";
+import OtherData from "./OtherData";
+import Submit from "./Submit";
 
 const FlightReserve = (props) => {
     const [err, setErr] = useState({
@@ -71,17 +74,17 @@ const FlightReserve = (props) => {
     });
     const router = useRouter();
     useEffect(() => {
-        if (localStorage.getItem('reqNo') !== null) {
-            // router.push({pathname: localStorage.getItem('url').split('"')[1].split('info')[0]})
-            props.messageBoxModify({
-                color: false,
-                message: 'به علت تغییر قیمت, جستجو مجدد انجام می شود!<br/> درحال انتقال به صفحه پرواز ...',
-                state: true,
-            })
-            setTimeout(() => {
-                router.back()
-            }, "3000")
-        }
+        // if (localStorage.getItem('reqNo') !== null) {
+        //     // router.push({pathname: localStorage.getItem('url').split('"')[1].split('info')[0]})
+        //     props.messageBoxModify({
+        //         color: false,
+        //         message: 'به علت تغییر قیمت, جستجو مجدد انجام می شود!<br/> درحال انتقال به صفحه پرواز ...',
+        //         state: true,
+        //     })
+        //     setTimeout(() => {
+        //         router.back()
+        //     }, "3000")
+        // }
 
         localStorage.setItem('reqNo', props.router.asPath.split("/")[7])
         props.addReservationProperties({
@@ -278,7 +281,7 @@ const FlightReserve = (props) => {
                 isValid = false;
             }
 
-            if (tempPassenger.pasno == "" && state.pathKind == 2) {
+            if ((onePassenger.nationality == "other" || state.pathKind == 2) && tempPassenger.pasno == "") {
                 tempPassenger.codeErr = "شماره پاسپورت الزامی میباشد";
                 isValid = false;
             }
@@ -286,7 +289,7 @@ const FlightReserve = (props) => {
                 tempPassenger.codeErr = "شماره پاسپورت صحیح نمیباشد";
                 isValid = false;
             }
-            if (tempPassenger.futureday == "" && state.pathKind == 2) {
+            if ((onePassenger.nationality == "other" || state.pathKind == 2) && tempPassenger.futureday == "" ) {
                 tempPassenger.pasenddatErr = "انقضای پاسپورت الزامی میباشد";
                 isValid = false;
             }
@@ -588,6 +591,7 @@ const FlightReserve = (props) => {
                             pathKind={state.pathKind}
                         />
                     )) : null}
+                    {/* in mobile shown */}
                     <div className={`row ${styles["add-passanger"]} text-left`}>
                         <div className="visible-xs col-12 ">
                             <p className="font-size-14">
@@ -595,73 +599,20 @@ const FlightReserve = (props) => {
                                     مجموع قیمت: &nbsp;
                                 </span>
                                 <span className="color-secondary font-bold-iransanse">
-                                    {state.priceAll !== 0 ?
-                                        moneyFormat(state.priceAll) : moneyFormat(state.priceADL)}
+                                    {/* priceADL */}
+                                    {moneyFormat(state.priceAll)}
                                     &nbsp;
                                 </span>
                                 <span className="font-bold-iransanse">تومان</span>
-                                {/* {state.priceAll == localStorage.getItem('priceChecker') || state.priceADL == localStorage.getItem('priceChecker') &&
-                                <span>{localStorage.getItem('priceChecker')}</span> 
-                                } */}
                             </p>
                         </div>
 
                         <div className="col-lg-9 col-md-8 col-12">
-                            <div className="row">
-                                <div className="col-lg-2 col-md- col-4 no-padding">
-                                    <a
-                                        href="#"
-                                        className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
-                                        onClick={(e) => {
-                                            if (validationNumberOfPassengers('ADL')) {
-                                                addNewPassenger("ADL", state.priceADL);
-                                            }
-                                            e.preventDefault();
-                                        }}
-                                    >
-                                        <FontAwesomeIcon icon={faPlus} />
-                                        <span className="me-2">بزرگسال</span>
-                                        <FontAwesomeIcon className="pull-left" icon={faMale} />
-                                        <FontAwesomeIcon
-                                            className="pull-left ml-0"
-                                            icon={faFemale}
-                                        />
-                                    </a>
-                                </div>
-
-                                <div className="col-lg-2 col-md- col-4 no-padding">
-                                    <div
-                                        className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
-                                        onClick={(e) => {
-                                            if (validationNumberOfPassengers('CHD')) {
-                                                addNewPassenger("CHD", state.priceCHD);
-                                            }
-                                            e.preventDefault();
-                                        }}
-                                    >
-                                        <FontAwesomeIcon icon={faPlus} />
-                                        <span className="me-2">کودک</span>
-                                        <FontAwesomeIcon className="pull-left" icon={faChild} />
-                                    </div>
-                                </div>
-
-                                <div className="col-lg-2 col-md- col-4 no-padding">
-                                    <a
-                                        href="#"
-                                        className={` ${styles["btn-outlined-private"]}  btn-outlined  font-bold-iransanse`}
-                                        onClick={(e) => {
-                                            if (validationNumberOfPassengers('INF')) {
-                                                addNewPassenger("INF", state.priceINF);
-                                            }
-                                            e.preventDefault();
-                                        }}
-                                    >
-                                        <FontAwesomeIcon icon={faPlus} />
-                                        <span className="me-2">نوزاد</span>
-                                        <FontAwesomeIcon className="pull-left" icon={faBaby} />
-                                    </a>
-                                </div>
-                            </div>
+                            <AddNewPassenger
+                                state={state}
+                                addNewPassenger={addNewPassenger}
+                                validationNumberOfPassengers={validationNumberOfPassengers}
+                            />
                         </div>
                         <div className="col-lg-3 col-md-4 hidden-xs d-flex justify-content-end align-center">
                             <p className="font-size-14 mb-0">
@@ -679,178 +630,28 @@ const FlightReserve = (props) => {
                     </div>
 
                     <div className={`row ${styles["passanger-submiter"]} `}>
-                        <div className="col-lg-6 col-md-12 col-12 px-4">
-                            <div className="row">
-                                <div className="col-lg-6 col-md-6 col-6 padding-3px">
-                                    <div>
-                                        <input
-                                            value={state.mobileSubmiter}
-                                            type="text"
-                                            placeholder="شماره همراه"
-                                            name="mobileSubmiter"
-                                            onChange={(e) => { handleChange(e) }}
-                                            className="col-12 reserve-input px-2 h-2em"
-                                            maxLength={11}
-                                        />
-                                    </div>
-                                    <span className="color-secondary font-size-14">
-                                        {/* { state.mobileSubmiterErr } */}
-                                        {
-                                            state.mobileSubmiter?.length < 11 && state.mobileSubmiter != '' ? 'شماره همراه باید ۱۱ رقمی باشد' :
-                                                state.mobileSubmiter == '' && numbers2 ? state.mobileSubmiterErr :
-                                                    ''}
-                                        {/* {
-                                            state.mobileSubmiter == null || state.mobileSubmiterErr == '' ? 'لطفا شماره را وارد کنید' :
-                                                state.mobileSubmiter?.length <= 10 ? 'شماره همراه باید ۱۱ رقمی باشد' :
-                                                    ''} */}
-                                    </span>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-6 padding-3px">
-                                    <div>
-                                        <input
-                                            maxLength={11}
-                                            value={state.phoneSubmiter}
-                                            className="col-12 reserve-input px-2 h-2em"
-                                            type="text"
-                                            placeholder="شماره ثابت"
-                                            name="phoneSubmiter"
-                                            onChange={(e) => handleChange(e)}
-                                        />
-                                    </div>
-                                    <span className="color-secondary  font-size-14">
-                                        {state.phoneSubmiter == '' && numbers && state.phoneSubmiterErr}
+                        <OtherData
+                            state={state}
+                            numbers2={numbers2}
+                            numbers={numbers}
+                            handleChange={handleChange}
+                        />
 
-                                        {/* {state.phoneSubmiterErr 
-                                            : state.phoneSubmiter.length <= 10 && state.phoneSubmiter.length > 0 ? 'شماره ثابت باید ۱۱ رقمی باشد' 
-                                            :''} */}
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div className="row mb-3">
-                                <div className="col-lg-6 col-md-6 col-12 padding-3px">
-                                    <div>
-                                        <input
-                                            className="col-12 reserve-input px-2 h-2em"
-                                            placeholder="ایمیل (اختیاری)"
-                                            name="email"
-                                            onChange={(e) => handleChange(e)}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-12 padding-3px">
-                                    <div>
-                                        <input
-                                            className="col-12 reserve-input px-2 h-2em"
-                                            placeholder="کد تخفیف (اختیاری)"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-6 col-md-12 col-12 finish-reserve">
-                            <div className="row flex-wrap" style={{ marginTop: 10 }}>
-                                <div className="col-lg-12 d-flex align-items-center">
-                                    <input
-                                        type="checkbox"
-                                        id="terms"
-                                        name='rule'
-                                        onChange={(e) => {
-                                            errHandler(e);
-                                            setState({
-                                                ...state,
-                                                agreeWithTerm: e.target.checked,
-                                                agreeWithTermerr: e.target.checked ? false : true
-                                            });
-                                        }}
-                                        className="mx-2"
-                                    />
-                                    <label htmlFor="terms" style={{ fontSize: 15 }}>
-                                        <span onClick={() => setClosePopUp(true)} style={{ borderBottom: '2px dashed red', paddingBottom: 10 }}>
-                                            قوانین و مقررات و صحت اطلاعات{' '}
-                                        </span>
-                                        را قبول دارم.
-                                    </label>
-                                </div>
-                                <div className="text-danger font-size-15 col-12 col-md-5 pt-4">
-                                    {state.agreeWithTermerr == true && state.agreeWithTerm == false && 'لطفا قوانین را بپذیرید.'}
-                                </div>
-                            </div>
-
-                            <div className="row finish-reserve-buttons mb-3 ml-5 mt-4">
-                                <div className="col-lg-8 col-md-8 col-7 padding-3px">
-                                    <button
-                                        disabled={loading}
-                                        onClick={(e) => {
-                                            if (!validation()) {
-                                                setLoading(false)
-                                                setScrollTop(true)
-                                                props.messageBoxModify({
-                                                    state: true,
-                                                    color: false,
-                                                    message: "لطفا اطلاعات را تکمیل کنید.",
-                                                });
-                                                setNumbers(true)
-                                                setNumbers2(true)
-                                            }
-                                            else if (state.agreeWithTerm === true && props.user.logged) {
-                                                setLoading(true)
-
-                                                compeleteReservation();
-
-                                            }
-                                            else if (state.agreeWithTerm === false) {
-                                                setState({ ...state, agreeWithTermerr: true });
-                                                setLoading(false)
-                                                props.messageBoxModify({
-                                                    state: true,
-                                                    color: false,
-                                                    message: "لطفا با شرایط و مقررات موافقت کنید",
-                                                });
-                                            }
-                                            else if (!props.user.logged) {
-                                                setState({ ...state, stateRegister: false });
-                                                login();
-                                                props.messageBoxModify({
-                                                    state: true,
-                                                    color: false,
-                                                    message: "لطفا کد تایید ارسال شده را وارد کنید!",
-                                                });
-                                                props.accountBoxModify({
-                                                    state: true,
-                                                    type: "login",
-                                                });
-                                            }
-
-                                        }}
-                                        className="py-2 btn-block col-12 rounded end-payment-btn"
-                                    >
-                                        {loading == false
-                                            ? "تکمیل خرید"
-                                            : "لطفا منتظر بمانید..."
-                                        }
-                                    </button>
-                                </div>
-                                <div className="col-lg-4 col-md-4 col-5 padding-3px">
-                                    {/* <a
-                                            className="btn col-12 back-payment-btn py-2"
-                                            onClick={() => {
-                                                props.router.back();
-                                            }}
-                                        > */}
-                                    <span
-                                        onClick={() => {
-                                            props.router.back();
-                                        }}>
-                                        <span
-                                            className="btn col-12 back-payment-btn py-2"
-                                        >بازگشت</span>
-                                    </span>
-                                    {/* </a> */}
-                                </div>
-                            </div>
-                        </div>
+                        <Submit 
+                            {...props}
+                            state={state}
+                            setState={setState}
+                            setScrollTop={setScrollTop}
+                            validation={validation}
+                            loading={loading}
+                            setLoading={setLoading}
+                            errHandler={errHandler}
+                            setClosePopUp={setClosePopUp}
+                            setNumbers={setNumbers}
+                            setNumbers2={setNumbers2}
+                            compeleteReservation={compeleteReservation}
+                            login={login}
+                        />
                     </div>
                 </div>
             </div>

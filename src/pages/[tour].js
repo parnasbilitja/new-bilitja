@@ -648,15 +648,11 @@ const tour = (props) => {
                     <RequestTour setOpen={setOpen} messages={messages} setMessages={setMessages} setShow={setShow} packData={packData} setPackData={setPackData} />
                 </PopUp>
             }
-            {/* {messages.message !=='' &&
-                    <div> */}
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                     {messages.message}
                 </Alert>
             </Snackbar>
-            {/* </div>
-            } */}
         </div>
     );
 };

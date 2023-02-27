@@ -15,7 +15,7 @@ import BirthDayParentCl from "../calendar/BirthDayParentCl";
 
 
 const FlightPassengerForm = (props) => {
-    // console.log(props);
+    console.log(props);
     const [calend, setCalend] = useState(true)
     const [state, setState] = useState({
         open: false,
@@ -45,8 +45,11 @@ const FlightPassengerForm = (props) => {
         // pasaportErr : "پاسپورت الزامی میباشد",
     })
     useEffect(()=>{
-        setErr({...err,nationalCodeErr:props.codeErr})
-    },[props.codeErr])
+        setErr({...err,
+            nationalCodeErr:props.codeErr,
+            extPasaportErr:props.pasenddatErr
+        })
+    },[props.codeErr,props.pasenddatErr])
     const errHandler = (e) => {
         if (e.target.name = 'extPasaport' && e.target.value !== '') {
             setErr({ ...err, [e.target.name]: true })
@@ -236,6 +239,10 @@ const FlightPassengerForm = (props) => {
                                     } else if (props.pathKind == 1 && e.target.value == 'other') {
                                         setCalend(false)
                                     }
+                                    setErr({...err,
+                                        nationalCodeErr:'',
+                                        extPasaportErr:''
+                                    })
                                     props.fillPassengersData(
                                         "pasno",
                                         props.id,
@@ -324,6 +331,7 @@ const FlightPassengerForm = (props) => {
                                         placeholder={`شماره پاسپورت`}
                                         inputMode={`text`}
                                         onChange={(e) => {
+                                            setErr({ ...err, nationalCodeErr: '' })
                                             props.fillPassengersData(
                                                 "pasno",
                                                 props.id,
@@ -367,7 +375,7 @@ const FlightPassengerForm = (props) => {
                                 />
                             </div>
                             <span className="color-secondary error-message position-absolute">
-                                {props.futureday === "" ? props.pasenddatErr : ''}
+                                {err.extPasaportErr !='' ? err.extPasaportErr : ''}
                             </span>
                         </div>
                     </div>
@@ -408,8 +416,6 @@ const FlightPassengerForm = (props) => {
                         }}
                         closePopUpCalendar={managePopUpBirthdayCalendar}
                     />
-                    {/* <BirthdayCalenderMiladi
-                        /> */}
                 </div>
             </PopUp>
 
