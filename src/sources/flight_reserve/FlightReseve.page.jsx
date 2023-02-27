@@ -809,20 +809,7 @@ const FlightReserve = (props) => {
                                                     message: "لطفا با شرایط و مقررات موافقت کنید",
                                                 });
                                             }
-                                            // else if (localStorage.getItem('mobile')?.length == 11 && !localStorage.getItem('token')) {
-                                            //     setState({ ...state, stateRegister: false });
-                                            //     login();
-                                            //     props.messageBoxModify({
-                                            //         state: true,
-                                            //         color: false,
-                                            //         message: "لطفا کد تایید ارسال شده را وارد کنید!",
-                                            //     });
-                                            //     props.accountBoxModify({
-                                            //         state: true,
-                                            //         type: "login",
-                                            //     });
-                                            // }
-                                            else if (!localStorage.getItem('token')) {
+                                            else if (!props.user.logged) {
                                                 setState({ ...state, stateRegister: false });
                                                 login();
                                                 props.messageBoxModify({
