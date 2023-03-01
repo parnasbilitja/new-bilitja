@@ -50,7 +50,7 @@ const FlightPassengerForm = (props) => {
             passCodeErr:props.passportCodeErr,
             extPasaportErr:props.pasenddatErr,
         })
-    },[props.codeErr,props.pasenddatErr])
+    },[props.codeErr,props.pasenddatErr,props.passportCodeErr,props])
     const errHandler = (e) => {
         if (e.target.name = 'extPasaport' && e.target.value !== '') {
             setErr({ ...err, [e.target.name]: true })
@@ -329,13 +329,12 @@ const FlightPassengerForm = (props) => {
                                         placeholder={`شماره پاسپورت`}
                                         inputMode={`text`}
                                         onChange={(e) => {
-                                            setErr({ ...err, passCodeErr: '' })
                                             props.fillPassengersData(
                                                 "pasno",
                                                 props.id,
                                                 e.target.value
-                                            );
-                                        }
+                                                );
+                                            }
                                         }
                                         defaultValue={props.pasno}
                                     />
@@ -343,7 +342,7 @@ const FlightPassengerForm = (props) => {
                             }
 
                             <span className="color-secondary error-message position-absolute">
-                                {err.passCodeErr !== "" && err.passCodeErr}
+                                {props.pasnoErr}
                             </span>
                         </div>
 

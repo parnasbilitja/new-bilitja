@@ -35,6 +35,7 @@ const Submit = (props) => {
                     <button
                         disabled={props.loading}
                         onClick={(e) => {
+                            props.validation()
                             if (!props.validation()) {
                                 props.setLoading(false)
                                 props.setScrollTop(true)

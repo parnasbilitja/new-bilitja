@@ -7,7 +7,6 @@ import FlightReserveDesktopHeader from "./FlightReserveDesktopHeader.component";
 import FlightReserveMobileHeader from "./FlightReserveMobileHeader.component";
 
 import globals from "../Global";
-
 import { connect } from "react-redux";
 import { selectProperties } from "../../Redux/Reserve/reserve.reselect";
 import { messageBoxModify, accountBoxModify } from "../../Redux/UI/ui.action";
@@ -66,17 +65,17 @@ const FlightReserve = (props) => {
     });
     const router = useRouter();
     useEffect(()=>{
-        if (localStorage.getItem('priceChecker') && parseInt(state.priceAll)!=0 && parseInt(state.priceAll)!=0) {
+        if (parseInt(localStorage.getItem('priceChecker'))%10 && parseInt(state.price)!=0 && parseInt(state.price)!=0) {
             
             let price =''
             setTimeout(function() {
             price = parseInt(localStorage.getItem('priceChecker'));
             }, 1000);
-            if (parseInt(localStorage.getItem('priceChecker') ) != parseInt(state.priceAll)){
+            if (parseInt(localStorage.getItem('priceChecker') )%10 != parseInt(state.price)){
                 setClosePopUpPrice(true)
             }
         }
-    },[state.priceAll])
+    },[state.price])
     useEffect(() => {
         
         if (localStorage.getItem('reqNo') !== null) {
@@ -146,9 +145,121 @@ const FlightReserve = (props) => {
         getAllPrice();
         // localStorage.removeItem('reqNo');
     }, []);
+    
+    const validation = () => {
+        let isValid = true;
+
+        if (state.mobileSubmiter == "") {
+            setState({
+                ...state,
+                mobileSubmiterErr: "شماره موبایل باید 11 رقمی باشد"
+            })
+            isValid = false;
+        }
+        if (state.phoneSubmiter == "") {
+            isValid = false;
+            setState({
+                ...state,
+                phoneSubmiterErr: "شماره ثابت را وارد کنید",
+            })
+        }
+        const passengers = state.passengers.map((onePassenger) => {
+            const tempPassenger = onePassenger;
+
+            tempPassenger.nameErr = "";
+            tempPassenger.familyErr = "";
+            tempPassenger.codeErr = "";
+            tempPassenger.birthdayErr = "";
+            tempPassenger.pasnoErr = "";
+            tempPassenger.pasenddatErr = "";
+            tempPassenger.passportCodeErr = "";
+
+            if (tempPassenger.name == "") {
+                tempPassenger.nameErr = "نام الزامی میباشد";
+                isValid = false;
+            }
+
+            if (tempPassenger.family == "") {
+                tempPassenger.familyErr = "نام‌خانوادگی الزامی میباشد";
+                isValid = false;
+            }
+
+            if ((onePassenger.nationality == "other" || state.pathKind == 2) && tempPassenger.pasno == "") {
+                tempPassenger.pasnoErr = "شماره پاسپورت الزامی میباشد";
+                isValid = false;
+            }
+            if (isValidPassportCode(tempPassenger.pasno) && (onePassenger.nationality == "other" || state.pathKind == 2)) {
+                tempPassenger.pasnoErr = "شماره پاسپورت صحیح نمیباشد";
+                isValid = false;
+            }
+            if ((onePassenger.nationality == "other" || state.pathKind == 2) && tempPassenger.futureday == "" ) {
+                tempPassenger.pasenddatErr = "انقضای پاسپورت الزامی میباشد";
+                isValid = false;
+            }
+            if (onePassenger.nationality == "IR" && state.pathKind != 2) {
+                if (!isValidIranianNationalCode(tempPassenger.code)) {
+                    tempPassenger.codeErr = "کدملی نامعتبر میباشد";
+                    isValid = false;
+                }
+            }
+            if (tempPassenger.birthday == "") {
+                tempPassenger.birthdayErr = "تاریخ تولد الزامی میباشد";
+                isValid = false;
+            }
+            return tempPassenger;
+        });
+        setState({
+            ...state,
+            passengers: passengers,
+        });
+        return isValid;
+    };
     const fillPassengersData = (field, passengerNo, value) => {
+        console.log(field,value);
         let passenger = state.passengers.find((x) => x.id == passengerNo);
         passenger[field] = value;
+        // name
+        if (field == "name" && value == "") {
+            passenger.nameErr = "نام الزامی میباشد";
+        }else if(field == "name" ){
+            passenger.nameErr = "";
+        }
+        // family
+        if (field == "family" && value == "") {
+            passenger.familyErr = "نام‌خانوادگی الزامی میباشد";
+        }else if (field == "family"){
+            passenger.familyErr = ""
+        }
+        // birthday
+        if (field == 'birthday' && value == "") {
+            passenger.birthdayErr = "تاریخ تولد الزامی میباشد";
+        }else if (field == 'birthday'){
+            passenger.birthdayErr = "";
+        }
+        // futureday
+        if (field == 'futureday' && value == "" ) {
+            passenger.pasenddatErr = "انقضای پاسپورت الزامی میباشد";
+        }else if (field == 'futureday'){
+            passenger.pasenddatErr = "";
+        }
+        // pasno
+        if (field == 'pasno') {
+            console.log(passenger.pasno);
+            if (isValidPassportCode(passenger.pasno)) {
+                passenger.pasnoErr = "شماره پاسپورت صحیح نمیباشد";
+            }else{
+                passenger.pasnoErr = "";
+            }
+            console.log(passenger.pasnoErr);
+        }
+        // code
+        if ( field ='code') {
+            if (!isValidIranianNationalCode(passenger.code)) {
+                passenger.codeErr = "کدملی نامعتبر میباشد";
+            }else{
+                passenger.codeErr = "";
+            }
+        }
         let passengers_ = state.passengers.map((x) => {
             if (x.id == passengerNo) {
                 return passenger;
@@ -246,76 +357,6 @@ const FlightReserve = (props) => {
                 getAllPrice();
             }
         );
-    };
-
-    const validation = () => {
-        let isValid = true;
-
-        if (state.mobileSubmiter == "") {
-            setState({
-                ...state,
-                mobileSubmiterErr: "شماره موبایل باید 11 رقمی باشد"
-            })
-            isValid = false;
-        }
-        if (state.phoneSubmiter == "") {
-            isValid = false;
-            setState({
-                ...state,
-                phoneSubmiterErr: "شماره ثابت را وارد کنید",
-            })
-        }
-        const passengers = state.passengers.map((onePassenger) => {
-            const tempPassenger = onePassenger;
-
-            tempPassenger.nameErr = "";
-            tempPassenger.familyErr = "";
-            tempPassenger.codeErr = "";
-            tempPassenger.birthdayErr = "";
-            tempPassenger.pasnoErr = "";
-            tempPassenger.pasenddatErr = "";
-            tempPassenger.passportCodeErr = "";
-
-            if (tempPassenger.name == "") {
-                tempPassenger.nameErr = "نام الزامی میباشد";
-                isValid = false;
-            }
-
-            if (tempPassenger.family == "") {
-                tempPassenger.familyErr = "نام‌خانوادگی الزامی میباشد";
-                isValid = false;
-            }
-
-            if ((onePassenger.nationality == "other" || state.pathKind == 2) && tempPassenger.pasno == "") {
-                tempPassenger.passportCodeErr = "شماره پاسپورت الزامی میباشد";
-                isValid = false;
-            }
-            if (isValidPassportCode(tempPassenger.pasno) && (onePassenger.nationality == "other" || state.pathKind == 2)) {
-                tempPassenger.passportCodeErr = "شماره پاسپورت صحیح نمیباشد";
-                isValid = false;
-            }
-            if ((onePassenger.nationality == "other" || state.pathKind == 2) && tempPassenger.futureday == "" ) {
-                tempPassenger.pasenddatErr = "انقضای پاسپورت الزامی میباشد";
-                isValid = false;
-            }
-            if (onePassenger.nationality == "IR" && state.pathKind != 2) {
-                if (!isValidIranianNationalCode(tempPassenger.code)) {
-                    tempPassenger.codeErr = "کدملی نامعتبر میباشد";
-                    isValid = false;
-                }
-            }
-
-            if (tempPassenger.birthday == "") {
-                tempPassenger.birthdayErr = "تاریخ تولد الزامی میباشد";
-                isValid = false;
-            }
-            return tempPassenger;
-        });
-        setState({
-            ...state,
-            passengers: passengers,
-        });
-        return isValid;
     };
 
     const getAllPrice = () => {
