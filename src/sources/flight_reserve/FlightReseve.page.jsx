@@ -5,14 +5,6 @@ import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
 import FlightPassengerForm from "./FlightPassengerForm.component";
 import FlightReserveDesktopHeader from "./FlightReserveDesktopHeader.component";
 import FlightReserveMobileHeader from "./FlightReserveMobileHeader.component";
-import {
-    faMale,
-    faFemale,
-    faChild,
-    faBaby,
-    faPlus,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import globals from "../Global";
 
@@ -59,7 +51,7 @@ const FlightReserve = (props) => {
     const [closePopUp, setClosePopUp] = useState(false)
     const [loading, setLoading] = useState(false)
     const [scrollTop, setScrollTop] = useState(0)
-
+    const [ closePopUpPrice, setClosePopUpPrice ] = useState(false)
     const [state, setState] = useState({
         stateRegister: false,
         passengers: [],
@@ -73,7 +65,20 @@ const FlightReserve = (props) => {
         email: ''
     });
     const router = useRouter();
+    useEffect(()=>{
+        if (localStorage.getItem('priceChecker') && parseInt(state.priceAll)!=0 && parseInt(state.priceAll)!=0) {
+            
+            let price =''
+            setTimeout(function() {
+            price = parseInt(localStorage.getItem('priceChecker'));
+            }, 1000);
+            if (parseInt(localStorage.getItem('priceChecker') ) != parseInt(state.priceAll)){
+                setClosePopUpPrice(true)
+            }
+        }
+    },[state.priceAll])
     useEffect(() => {
+        
         if (localStorage.getItem('reqNo') !== null) {
             props.messageBoxModify({
                 color: false,
@@ -269,6 +274,7 @@ const FlightReserve = (props) => {
             tempPassenger.birthdayErr = "";
             tempPassenger.pasnoErr = "";
             tempPassenger.pasenddatErr = "";
+            tempPassenger.passportCodeErr = "";
 
             if (tempPassenger.name == "") {
                 tempPassenger.nameErr = "نام الزامی میباشد";
@@ -281,11 +287,11 @@ const FlightReserve = (props) => {
             }
 
             if ((onePassenger.nationality == "other" || state.pathKind == 2) && tempPassenger.pasno == "") {
-                tempPassenger.codeErr = "شماره پاسپورت الزامی میباشد";
+                tempPassenger.passportCodeErr = "شماره پاسپورت الزامی میباشد";
                 isValid = false;
             }
-            if (isValidPassportCode(tempPassenger.pasno) && state.pathKind == 2) {
-                tempPassenger.codeErr = "شماره پاسپورت صحیح نمیباشد";
+            if (isValidPassportCode(tempPassenger.pasno) && (onePassenger.nationality == "other" || state.pathKind == 2)) {
+                tempPassenger.passportCodeErr = "شماره پاسپورت صحیح نمیباشد";
                 isValid = false;
             }
             if ((onePassenger.nationality == "other" || state.pathKind == 2) && tempPassenger.futureday == "" ) {
@@ -667,7 +673,27 @@ const FlightReserve = (props) => {
                     </div>
                 </div>
             </PopUp>
-
+            
+            <PopUp opened={closePopUpPrice} closePopUp={setClosePopUpPrice} >
+                <div className="p-2">
+                    <div className="text-start">
+                        <span
+                        className="exit-form pb-1Important"
+                        onClick={() => {
+                            setClosePopUpPrice(false);
+                        }}
+                        >
+                        <CloseOutlined style={{ color: "red" }} />
+                        </span>
+                    </div>
+                    <div className="text-center">
+                        <img src={'../../Images/notification.png'} width={'150px'} height={'150px'} />
+                        <p>پرواز انتخابی شما با تغییر قیمت مواجه شده
+                        </p>
+                    </div>
+                </div>
+            
+            </PopUp>
         </div>
     );
 }

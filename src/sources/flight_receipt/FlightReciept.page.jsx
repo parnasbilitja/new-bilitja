@@ -237,11 +237,15 @@ const FlightReciept = (props) => {
     });
   };
   const updatePassengerData = (index, value) => {
+    console.log(value);
+    console.log(state);
+    
     let names = state.nameAll_;
     let families = state.familyAll_;
     let sexes = state.sexAll_;
     let meliats = state.meliatAll_;
     let meliCodes = state.meliCodeAll_;
+    let pasNoAll = state.pasNoAll_;
     let birthdays = state.birthDayAll_;
     let pasEndDateAll = state.pasEndDateAll_;
 
@@ -249,6 +253,7 @@ const FlightReciept = (props) => {
     families[index] = value.family;
     sexes[index] = value.sex;
     meliats[index] = value.meliat;
+    pasNoAll[index] = value.pasNoAll;
     meliCodes[index] = value.meliCode;
     birthdays[index] = value.birthday;
     pasEndDateAll[index] = value.pasEndDateAll;
@@ -263,6 +268,7 @@ const FlightReciept = (props) => {
       familyEnAll: [...families.map((item) => (item.toUpperCase()))],
       sexAll_: sexes,
       meliatAll_: meliats,
+      pasNoAll_: pasNoAll,
       meliCodeAll_: meliCodes,
       birthDayAll_: birthdays,
       pasEndDateAll_: pasEndDateAll,

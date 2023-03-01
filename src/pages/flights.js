@@ -96,7 +96,7 @@ class Flights extends React.Component {
     render() {
 
         return (
-            <div className="bodyVar">&
+            <div className="bodyVar">
                 <NavHandler type={this.props.router.asPath.split('/')[2]} />
                 <div className={this.state.width >= 826 ? "mt-90":``} style={{marginTop:this.state.width <= 826 &&'30px'}}>
                     {

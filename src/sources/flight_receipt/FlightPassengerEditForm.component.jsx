@@ -17,7 +17,6 @@ import * as moment from 'jalali-moment';
 import BirthDayParentCl from "../calendar/BirthDayParentCl";
 
 const FlightPassengerEditForm = (props) => {
-  console.log(props);
   const [calend, setCalend] = useState(true)
   const [date, setDate] = useState('')
   const [EXT, setEXT] = useState('')
@@ -40,7 +39,8 @@ const FlightPassengerEditForm = (props) => {
     name: props.name,
     family: props.family,
     meliat: props.meliat,
-    meliCode: props.pasNoAll,
+    meliCode: props.meliCode,
+    pasNoAll:props.pasNoAll,
     pathKind: props.pathKind,
     pasEndDateAll: props.pasEndDateAll,
     sex: props.sex,
@@ -54,6 +54,7 @@ const FlightPassengerEditForm = (props) => {
       family: props.family,
       meliat: props.meliat,
       meliCode: props.meliCode,
+      pasNoAll:props.pasNoAll,
       pasEndDateAll: props.pasEndDateAll,
       pathKind: props.pathKind,
       sex: props.sex,
@@ -68,21 +69,29 @@ const FlightPassengerEditForm = (props) => {
       family: props.family,
       meliat: props.meliat,
       pasEndDateAll: props.pasEndDateAll,
-      meliCode: props.pasNoAll || props.meliCode,
+      meliCode: props.meliCode,
+      pasNoAll:props.pasNoAll,
       pathKind: props.pathKind,
       sex: props.sex,
       birthday: props.birthday,
       index: props.index,
     })
   }, [props])
-
+// useEffect(() =>{
+//   console.log(state);
+// },[state])
 
   const handleChange = (event) => {
+    
     const { name, value } = event.target;
-    setState({
-      ...state,
-      [name]: value,
-    });
+    // console.log(name);
+    if (name == 'meliat') {
+      setState({...state,meliCode:'',codeErr:'',pasnoErr:'',[name]: value})
+    }else if (name == 'meliCode') {
+      setState({...state,melliCodeErr:'',[name]: value})
+    }else{
+      setState({...state,[name]: value});
+    }
   };
   const managePopUpBirthdayCalendar = (value) => {
     setState({
@@ -102,8 +111,7 @@ const FlightPassengerEditForm = (props) => {
     let familyErr = "";
     let codeErr = "";
     let birthdayErr = "";
-    let pasnoErr = "";
-    let pasenddatErr = "";
+    let passportCodeErr = "";
     let pasEndDateAllErr = "";
 
     if (state.name == "") {
@@ -114,35 +122,32 @@ const FlightPassengerEditForm = (props) => {
       familyErr = "نام‌خانوادگی الزامی میباشد";
       isValid = false;
     }
-    if (state.pathKind == 1) {
-      if (!isValidIranianNationalCode(state.meliCode)) {
-        codeErr = "کدملی نامعتبر میباشد";
+    // if ((state.meliat == "other" || state.pathKind == 2) && state.pasno == "") {
+    //   state.passportCodeErr = "شماره پاسپورت الزامی میباشد";
+    //   isValid = false;
+    // }
+    if (isValidPassportCode(state.pasNoAll) && (state.meliat !='IR' || state.pathKind !=1)) {
+        passportCodeErr = "شماره پاسپورت صحیح نمیباشد";
         isValid = false;
-      }
-    } else if (state.pathKind == 2) {
-      if (!isValidPassportCode(state.meliCode)) {
-        codeErr = "کد پاسورت نا معتبر میباشد"
-        isValid = false
-      }
     }
-
-    if (state.birthday == "") {
-      birthdayErr = "تاریخ تولد الزامی میباشد";
-      isValid = false;
+    if (state.pasEndDateAll == "" && (state.meliat !='IR' || state.pathKind !=1) ) {
+        pasEndDateAllErr = "انقضای پاسپورت الزامی میباشد";
+        isValid = false;
     }
-    if (state.pasEndDateAll == "") {
-      pasEndDateAllErr = "تاریخ انقضا الزامی میباشد";
-      isValid = false;
+    if (state.meliat == "IR" && state.pathKind != 2) {
+        if (!isValidIranianNationalCode(state.meliCode)) {
+            state.codeErr = "کدملی نامعتبر میباشد";
+            isValid = false;
+        }
     }
     setState({
       ...state,
       birthdayErr: birthdayErr,
       melliCodeErr: codeErr,
       familyErr: familyErr,
-      pasEndDateAll: pasEndDateAllErr,
+      pasEndDateAllErr: pasEndDateAllErr,
       nameErr: nameErr,
-      pasnoErr: pasnoErr,
-      pasenddatErr: pasenddatErr,
+      pasnoErr: passportCodeErr,
     });
 
     return isValid;
@@ -152,7 +157,6 @@ const FlightPassengerEditForm = (props) => {
     setState({ ...state, birthday: res })
   }, [date])
   useEffect(() => {
-    // let res = EXT && calend == true ? EXT : EXT && calend == false ? moment(EXT).locale('fa').format('YYYY/M/D') : ''
     setState({ ...state, pasEndDateAll: EXT })
   }, [EXT])
   return (
@@ -202,18 +206,19 @@ const FlightPassengerEditForm = (props) => {
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
             <PrimaryTextInput
-              placeholder={`${state.pathKind == 1 ? 'کدملی' : 'شماره پاسپورت'}`}
-              value={state.meliCode}
-              name="meliCode"
+              placeholder={`${!state.pathKind == 1 || state.meliat == "IR" ? 'کدملی' : 'شماره پاسپورت'}`}
+              value={!state.pathKind == 1 || state.meliat == "IR" ?state.meliCode:state.pasNoAll}
+              name={!state.pathKind == 1 || state.meliat == "IR" ?"meliCode":'pasNoAll'}
               onChange={(e) => handleChange(e)}
               style={{ height: 40 }}
             />
           </div>
           <span className="color-secondary error-message">
-            {state.melliCodeErr}
+            {state.codeErr}
+            {state.pasnoErr !=''&&state.pasnoErr}
           </span>
         </div>
-        {props.pasEndDateAll &&
+        {state.meliat !='IR' || state.pathKind == 2 ?
           <div className="col-lg-4 col-md-4 col-sm-4 col-12 padding-horizental-3px mb-4"
             style={{ height: 40 }}>
             <div
@@ -233,7 +238,8 @@ const FlightPassengerEditForm = (props) => {
             <span className="color-secondary error-message">
               {state.pasEndDateAllErr}
             </span>
-          </div>}
+          </div>
+        :null}
         <div className="col-lg-4 col-md-4 col-sm-4 col-12 padding-horizental-3px selectbox-receipt mb-4">
           <PrimarySelectInput
             value={state.sex}
@@ -249,7 +255,9 @@ const FlightPassengerEditForm = (props) => {
           <PrimarySelectInput
             value={state.meliat}
             name="meliat"
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => {
+              handleChange(e)
+            }}
             style={{ height: "44px", position: "relative", bottom: "-3px" }}
           >
             <option value="IR">ایرانی</option>
@@ -319,7 +327,7 @@ const FlightPassengerEditForm = (props) => {
             name="birthday"
             setBirthdayb={(value) => {
               setDate(value);
-              console.log(date);
+              // console.log(date);
             }}
             closePopUpCalendar={managePopUpBirthdayCalendar}
           />
@@ -331,10 +339,8 @@ const FlightPassengerEditForm = (props) => {
         <div className="p-15 text-center">
           <button className="py-2 px-4" onClick={() => setCalend(!calend)}>{calend ? 'تقویم میلادی' : 'تقویم شمسی'}</button>
           <BirthDayParent
-            numSh={1301}
-            numBase={1300}
-            numMi={1920}
-            numMiBase={1300}
+            numMi={2022}
+            numMiBase={2000}
             title="Please enter an expiration date"
             placeholder="لطفا تاریخ انقضا را وارد کنید"
             // calend={calend}

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import PrimaryTextInput from "../component/PrimaryTextInput.component";
 import PrimarySelectInput from "../component/PrimarySelectInput.component";
-import { CloseOutlined } from "@ant-design/icons";
 
 import { moneyFormat } from "../../Utils/SimpleTasks";
 import PopUp from "../component/PopUp.component";
@@ -41,13 +40,15 @@ const FlightPassengerForm = (props) => {
         birthday: false,
         birthdayErr: 'لطفا تاریخ تولد را وارد کنید',
         extPasaport: false,
+        passCodeErr:'',
         extPasaportErr: 'لطفا فیلد انقضا را پر کنید',
         // pasaportErr : "پاسپورت الزامی میباشد",
     })
     useEffect(()=>{
         setErr({...err,
             nationalCodeErr:props.codeErr,
-            extPasaportErr:props.pasenddatErr
+            passCodeErr:props.passportCodeErr,
+            extPasaportErr:props.pasenddatErr,
         })
     },[props.codeErr,props.pasenddatErr])
     const errHandler = (e) => {
@@ -328,7 +329,7 @@ const FlightPassengerForm = (props) => {
                                         placeholder={`شماره پاسپورت`}
                                         inputMode={`text`}
                                         onChange={(e) => {
-                                            setErr({ ...err, nationalCodeErr: '' })
+                                            setErr({ ...err, passCodeErr: '' })
                                             props.fillPassengersData(
                                                 "pasno",
                                                 props.id,
@@ -342,7 +343,7 @@ const FlightPassengerForm = (props) => {
                             }
 
                             <span className="color-secondary error-message position-absolute">
-                                {err.nationalCodeErr !== "" && err.nationalCodeErr}
+                                {err.passCodeErr !== "" && err.passCodeErr}
                             </span>
                         </div>
 
@@ -358,6 +359,7 @@ const FlightPassengerForm = (props) => {
                                     readonly="readonly"
                                     onChange={(e) => {
                                         errHandler(e);
+                                        setErr({...err,extPasaportErr:''})
                                         props.fillPassengersData(
                                             "futureday",
                                             props.id,
@@ -422,8 +424,6 @@ const FlightPassengerForm = (props) => {
             >
                 <div style={{ padding: 15 }}>
                     <BirthDayParent
-                        numSh={1401}
-                        numBase={1380}
                         numMi={2022}
                         numMiBase={2000}
                         title="Please enter an expiration date"
@@ -435,7 +435,7 @@ const FlightPassengerForm = (props) => {
                         setBirthdayb={(value) => {
                             props.fillPassengersData("futureday", props.id, value);
                         }}
-                        closePopUpCalendar={managePopUpBirthdayCalendar}
+                        closePopUpCalendar={managePopUpExtPasCalendar}
                     />
                 </div>
 

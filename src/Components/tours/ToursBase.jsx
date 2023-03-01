@@ -14,6 +14,7 @@ import NavHandler from '../share/NavHandler';
 import styles from "../../../styles/Home.module.scss";
 import Posts from '../../sources/tour/Posts';
 import OfferdTours from '../../sources/tour/OfferdTours';
+import axios from 'axios';
 
 const ToursBase = () => {
     const [state,setState] = useState({
@@ -62,13 +63,13 @@ const ToursBase = () => {
               state={state}  
                />
             </div>
-              <div ref={myRef}>
+              <div>
                   <HomePicture state={state} />
               </div>
           </div>
           </div>
                 <div className="col-md-10 m-auto">
-                  <OfferdTours/>
+                  <OfferdTours myRef={myRef} />
                   <List ref={myRef} tourData={tourData} />
                   <HotelsSuggest />
                   <CitiesSuggest />

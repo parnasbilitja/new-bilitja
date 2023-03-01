@@ -65,6 +65,15 @@ const Login = (props) => {
     seconds: '',
     value: false
   });
+  function matchIsNumeric(text) {
+    const isNumber = typeof text === 'number'
+    const isString = typeof text === 'string'
+    return (isNumber || (isString && text !== '')) && !isNaN(Number(text))
+  }
+  
+  const validateChar = (value, index) => {
+    return matchIsNumeric(value)
+  }
 
   const login = () => {
     setState({ ...state, btn_disabled: true, loading: true });
@@ -332,9 +341,9 @@ const Login = (props) => {
                 />
                 :
                 TestForValue.num == true && TestForValue.code == false ?
-                  <MuiOtpInput value={UserMobileAndCode.code} onChange={handleChange} />
+                  <MuiOtpInput value={UserMobileAndCode.code} onChange={handleChange} validateChar={validateChar} />
                   :
-                  <MuiOtpInput value={UserMobileAndCode.code} onChange={handleChange} />
+                  <MuiOtpInput value={UserMobileAndCode.code} onChange={handleChange} validateChar={validateChar} />
               }
             </div>
           </div>

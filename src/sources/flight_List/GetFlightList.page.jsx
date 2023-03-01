@@ -18,6 +18,10 @@ import { selectSearchObject } from "../../Redux/Search/search.reselect";
 import { selectAirports } from "../../Redux/Airports/airport.reselect";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { addFilters, addCredentials } from "../../Redux/Search/search.action";
+import {
+  getUserInfo,
+  checkUserLogged,
+} from "../../Redux/Account/account.action";
 import { loadAirports } from "../../Redux/Airports/airport.action";
 
 import {
@@ -156,6 +160,10 @@ class GetFlightList extends React.Component {
     };
   }
   componentDidMount() {
+    this.props.checkUserLogged();
+    this.props.getUserInfo({
+      mobile: localStorage.getItem("mobile"),
+    })
     localStorage.removeItem('reqNo');
     window.addEventListener("hashchange", this.hashchange, false);
     //  if (this.props.searchobject.source == '') {
@@ -373,6 +381,7 @@ class GetFlightList extends React.Component {
       })
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           if (data.length != 0 && data != undefined) {
             this.props.addCredentials({
               flightDateNext: data[0].flightDateNext,
@@ -780,6 +789,8 @@ const mapDispatchesToProps = (dispatch) => ({
   addFilters: (value) => dispatch(addFilters(value)),
   addCredentials: async (value) => dispatch(addCredentials(value)),
   messageBoxModify: (value) => dispatch(messageBoxModify(value)),
+  getUserInfo: (value) => dispatch(getUserInfo(value)),
+  checkUserLogged: () => dispatch(checkUserLogged()),
 });
 export default withRouter(
   connect(mapStatesToProps, mapDispatchesToProps)(GetFlightList)

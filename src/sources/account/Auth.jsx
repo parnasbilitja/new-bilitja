@@ -76,7 +76,15 @@ const Auth = (props) => {
   const handleSetPassword = (e) => {
     setState({ ...state, password: e.target.value, error: false, errText: "" });
   };
-
+  function matchIsNumeric(text) {
+    const isNumber = typeof text === 'number'
+    const isString = typeof text === 'string'
+    return (isNumber || (isString && text !== '')) && !isNaN(Number(text))
+  }
+  
+  const validateChar = (value, index) => {
+    return matchIsNumeric(value)
+  }
   const login = () => {
     console.log(state);
     setState({ ...state, btn_disabled: true, loading: true });
@@ -380,7 +388,7 @@ const Auth = (props) => {
                 </div>
                 <div className="col-11 padding-horizental-3px">
                   <div>
-                  <MuiOtpInput value={state.token} onChange={handleSetToken} />
+                  <MuiOtpInput value={state.token} onChange={handleSetToken} validateChar={validateChar} />
                   </div>
                 </div>
               </>

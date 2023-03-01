@@ -14,7 +14,7 @@ import axios from 'axios';
 import moment from 'moment-jalaali';
 import Link from 'next/link';
 
-const OfferdTours = () => {
+const OfferdTours = (props) => {
     const [data, setData] = useState(null)
     const [width, setWidth] = useState(0)
     const [loading, setLoading] = useState(true)
@@ -194,7 +194,7 @@ const OfferdTours = () => {
                               </div>
                               <div className="d-flex align-items-center">
                                   <strong className="price-tour-special ml-2 mr-2">{moneyFormat(item.minPrice)}</strong>
-                                  <strong className="price-tour-special ">
+                                  <strong className="price-tour-special " ref={props.myRef}>
                                       تومان </strong>
                               </div>
 
