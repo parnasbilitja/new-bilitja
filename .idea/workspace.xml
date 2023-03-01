@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/Images/fly-bg-new.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/Home.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/Home.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/PrimaryButton.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/PrimaryButton.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight/HomeDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight/HomeDetails.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/FlightSearchBox.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/FlightSearchBox.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/FlightSearchBox.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/FlightSearchBox.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,15 +39,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/Font/en-font" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/Images" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\projects\bilitjassrnew\public\Font\en-font" />
       <recent name="C:\projects\bilitjassrnew\public\Images" />
+      <recent name="C:\projects\bilitjassrnew\public\Font\en-font" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -74,6 +82,11 @@
       <workItem from="1659253213035" duration="608000" />
       <workItem from="1660206653464" duration="3962000" />
       <workItem from="1677402574669" duration="12243000" />
+      <workItem from="1677435837394" duration="574000" />
+      <workItem from="1677490972273" duration="595000" />
+      <workItem from="1677495731576" duration="209000" />
+      <workItem from="1677670543029" duration="59000" />
+      <workItem from="1677670826941" duration="7863000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -183,7 +196,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۱۸" />
       <updated>1677421321648</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL‎۰۰۰۱۹" summary="edit tour &amp; index page &amp; create tour special">
+      <created>1677435847675</created>
+      <option name="number" value="LOCAL‎۰۰۰۱۹" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۱۹" />
+      <updated>1677435847675</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,15 +240,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/[tour].js</url>
-          <line>146</line>
-          <properties lambdaOrdinal="-1" />
+          <line>149</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/[tour].js</url>
-          <line>161</line>
-          <properties lambdaOrdinal="-1" />
+          <line>164</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx</url>
+          <line>10</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx</url>
+          <line>114</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

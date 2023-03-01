@@ -1,4 +1,5 @@
 @import "./values.module.scss";
+
 @media only screen and (max-width: 649px) and (min-width: 441px) {
   .home-flight-form {
     grid-template-columns: 1fr;
@@ -6,14 +7,17 @@
     gap: 8px;
   }
 }
+
 .flight-detail {
   text-align: center;
+
   .background-world {
-      background-image: url(../public/Images/worldmap.webp);
-      background-position: center;
-      background-size: contain;
+    background-image: url(../public/Images/worldmap.webp);
+    background-position: center;
+    background-size: contain;
   }
 }
+
 @media only screen and (max-width: 694px) and (min-width: 650px) {
   .home-flight-form {
     grid-template-columns: 8fr 2.5fr 8fr 8fr 4fr;
@@ -21,6 +25,7 @@
     gap: 8px;
   }
 }
+
 @media only screen and (max-width: 979px) and (min-width: 695px) {
   .home-flight-form {
     grid-template-columns: 8fr 2.5fr 8fr 8fr 4fr;
@@ -28,14 +33,16 @@
     gap: 8px;
   }
 }
+
 @media only screen and (max-width: 2000px) and (min-width: 980px) {
   .home-flight-form {
-    grid-template-columns: 8fr 1.5fr 8fr 8fr 5fr;
+    grid-template-columns: 6fr 0.7fr 6fr 8fr 5fr;
     grid-template-rows: 1fr;
     gap: 8px;
   }
 
 }
+
 // @media only screen and (max-width: 868px) {
 //   .home-tour-form{
 //     // grid-template-columns: 1fr !important;
@@ -49,26 +56,32 @@
 // }
 .home-flight-form {
   display: grid;
+
   .form-input-border-private {
     border: 1px solid #cfd3d8;
     font-size: 14px;
   }
 }
+
 .home-swtich-button-container {
   cursor: pointer;
+
   &:hover {
     background-color: $pillGray;
   }
+
   .home-swtich-button {
     margin: 15px auto 0 auto;
     font-size: 16px;
     color: #000 !important;
   }
 }
+
 .flight-search-box-calendar-container {
   padding: 10px 2px;
 }
-.home-tour-form{
+
+.home-tour-form {
   // grid-template-columns: 2fr 2fr 1fr ;
   // grid-template-rows: 1fr !important; 
   // gap: 60px;
@@ -77,8 +90,42 @@
   //   width: 200px !important;
   // }
   display: flex;
-    justify-content: space-between;
+  justify-content: space-between;
 }
-.suggestion-box{
+
+.suggestion-box {
   border: 1px solid #cfd3d8 !important;
+}
+
+
+.prs-input {
+  background: $whiteColor;
+  border: 1px solid #E0E0E0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 8px;
+  position: relative;
+  height: 55px !important;
+  border-radius: 10px;
+  svg{
+    position: absolute;
+    left: 8px;
+  }
+
+  input {
+    width: 85%;
+    border: none;
+    outline: none;
+    background: unset;
+    font-size: 14px;
+
+    &::placeholder {
+      font-size: 14px;
+      color: #D5D5D5;
+      font-weight: 600;
+    }
+  }
+
 }

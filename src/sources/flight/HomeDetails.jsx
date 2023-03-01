@@ -23,15 +23,15 @@ const HomeDetails = ( props) => {
                 width=""
                 height=""
                 alt="بلیطجا-اسلایدر"
-                src="../../../Images/backFight.png"
+                src="../../../Images/fly-bg-new.png"
               />
-              <img
-              className={`${styles["frontFight"]}`}
-                width=""
-                height=""
-                alt="بلیطجا-اسلایدر"
-                src="../../../Images/frontFight.png"
-              />
+              {/*<img*/}
+              {/*className={`${styles["frontFight"]}`}*/}
+              {/*  width=""*/}
+              {/*  height=""*/}
+              {/*  alt="بلیطجا-اسلایدر"*/}
+              {/*  src="../../../Images/frontFight.png"*/}
+              {/*/>*/}
             </div>
           ) : null}
           {width < 826 ? (

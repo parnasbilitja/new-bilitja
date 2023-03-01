@@ -2,18 +2,21 @@
 //@import "./global.style.scss";
 
 
-@media only screen and (max-width:320px) {
+@media only screen and (max-width: 320px) {
   .suggestion-list {
     padding: 5px 8px;
+
     & > div {
       border-bottom: 1px solid $pillGray;
       padding: 8px 0px 0 0;
+
       span {
         // margin-right: 5px;
         position: relative;
         left: -25%; /* or right 50% */
         text-align: center;
       }
+
       i {
         margin-top: -5px;
         position: relative;
@@ -22,23 +25,28 @@
         height: 35px;
         margin-right: -20px;
       }
+
       a {
         color: $blackColor;
+
         &:hover {
           color: $blackColor;
         }
       }
     }
+
     .h7-airline {
       margin-top: 0 !important;
       margin-right: 10px !important;
     }
   }
 }
+
 @media only screen and (max-width: 440px) {
 
   .home-tour-intro {
     max-height: 130px !important;
+
     .btn-fiiled {
       margin-left: 10px;
       margin-bottom: 10px;
@@ -50,10 +58,12 @@
     & > div {
       margin: 5px auto;
     }
+
     .suggestion-list {
       span {
         left: -10% !important;
       }
+
       i {
         left: -10% !important;
       }
@@ -62,12 +72,15 @@
   .home-become-host {
     height: 225px !important;
     background-position: center center;
+
     & > div {
       padding: 35px 50px !important;
+
       .btn-secondary-outlined {
         width: 40% !important;
         padding: 6px 0 !important;
       }
+
       h2 {
         margin-top: 0px !important;
       }
@@ -79,7 +92,7 @@
 }
 
 @media only screen and (max-width: 649px) and (min-width: 441px) {
-  
+
   .home-flight-suggestion {
     & > div {
       margin: 5px auto;
@@ -88,26 +101,29 @@
 }
 
 @media only screen and (max-width: 979px) and (min-width: 695px) {
-  
+
   .home-flight-suggestion {
     & > div {
       margin: 5px auto;
     }
   }
 }
+
 @media only screen and (max-width: 1024px) and (min-width: 980px) {
-  
+
   .home-flight-suggestion {
     & > div {
       margin: 5px auto;
     }
   }
 }
+
 @media only screen and (min-width: 770px) {
-  .width-full{
-    width:fit-content;
+  .width-full {
+    width: fit-content;
   }
 }
+
 @media only screen and (max-width: 770px) {
   .width-mobile {
     width: 90% !important;
@@ -121,15 +137,15 @@
     margin: 0px 10px !important;
     margin-top: 1rem !important;
   }
-  .mobile-tab1{
+  .mobile-tab1 {
     border-left: 2px solid #279692 !important;
     border-bottom: 2px solid #279692;
     // border-top-right-radius: 10px;
   }
-  .mobile-tab2{
+  .mobile-tab2 {
     border-bottom: 2px solid #279692;
   }
-  .mobile-tab4{
+  .mobile-tab4 {
     // border-bottom: 1px solid gray;
     // border-left: 1px solid gray!important;
     border-bottom-left-radius: 10px;
@@ -137,9 +153,9 @@
     left: -1px;
     top: 50.9px;
   }
-  .mobile-tab3{
+  .mobile-tab3 {
     border-left: 2px solid #279692;
-    
+
   }
 
 }
@@ -147,7 +163,7 @@
 @media only screen and (max-width: 2000px) and (min-width: 1025px) {
 
   .tab-container {
-    
+
   }
   .home-flight-suggestion {
     & > div {
@@ -158,13 +174,16 @@
     }
   }
 }
+
 .heor-main-container {
   padding: 10px 0px;
 }
+
 .hero-image-1 {
   width: 150px;
   height: 191px;
 }
+
 .hero-image-2 {
   width: 200px;
   height: 191px;
@@ -176,27 +195,33 @@
   width: 150px;
   height: auto;
 }
+
 .tab-container {
   display: flex;
   margin-bottom: -6px;
   margin-top: 20px;
 }
+
 .home-tab {
   height: 51px;
   padding: 10px 15px;
   text-align: center;
   color: $blackColor;
+
   span {
     margin-right: 8px;
   }
+
   i {
     line-height: 24px;
     margin-right: 8px;
   }
 }
+
 .card-box-shadow {
   // box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
 }
+
 .home-tab-active {
   @extend .card-box-shadow;
 
@@ -211,11 +236,13 @@
 
 .hero-big-image {
   text-align: center;
+
   img {
     width: 100%;
     margin: 0 auto;
   }
 }
+
 .home-value-propsal {
   border-radius: 3px;
   border: 0.5px solid $pillGray;
@@ -223,14 +250,17 @@
   min-height: 245px;
   width: 100%;
   padding: 5px;
+
   img {
     margin: 7px 0px;
     width: 113px;
     height: 98px;
   }
+
   p {
     margin-top: 7px;
   }
+
   h3 {
     font-weight: bold;
     font-size: 24px;
@@ -245,11 +275,13 @@
   margin-top: 28px;
   text-align: center;
   color: $whiteColor;
+
   & > div {
     background: rgba(0, 0, 0, 0.52);
     width: 100%;
     height: 100%;
     padding: 30px;
+
     h2 {
       margin-top: 12px;
       margin-bottom: 23px;
@@ -259,9 +291,11 @@
       font-family: IranBold;
       text-shadow: 0 3px 19px #000;
     }
+
     p {
       font-size: 15px;
     }
+
     .btn-secondary-outlined {
       display: inline-block;
       width: 11%;
@@ -289,6 +323,7 @@
   padding-bottom: 10px;
   text-align: right;
   border-radius: 5px;
+
   a {
     margin-top: 20px;
     height: 43px;
@@ -298,15 +333,18 @@
     display: flex;
     justify-content: center;
   }
+
   div {
     p {
       display: inline-block;
     }
   }
+
   p {
     margin: 9px 10px 0 0;
     color: $whiteColor;
   }
+
   .btn-fiiled {
     margin-left: 10px;
     margin-bottom: 10px;
@@ -315,23 +353,29 @@
 
 .home-flight-suggestion {
   margin-top: 24px;
+
   h2 {
     display: block;
   }
+
   & > div {
     // display: grid;
   }
+
   .suggestion-list {
     padding: 5px 8px;
+
     & > div {
       border-bottom: 1px solid #cfd3d8;
       padding: 8px 0px 0 0;
+
       span {
         // margin-right: 5px;
         position: relative;
         left: -25%; /* or right 50% */
         text-align: center;
       }
+
       i {
         margin-top: -5px;
         position: relative;
@@ -339,12 +383,15 @@
         text-align: center;
         height: 35px;
       }
+
       a {
         color: $blackColor;
+
         &:hover {
           color: $blackColor;
         }
       }
+
       &.h7-airline {
         margin-right: 100px !important;
       }
@@ -365,52 +412,60 @@
     border-bottom: 1px solid gray;
     padding: 10px 0;
     padding-bottom: 20px;
+
     svg {
       margin-left: 7px;
       color: gray;
     }
   }
+
   p {
     font-size: 14px;
     color: $pillTextGray;
   }
 }
+
 .form {
   margin: 30px auto;
   max-width: 90%;
+
   .filter-title {
     color: #fff;
     font-weight: 600;
   }
 }
 
-.padingSearchBox{
+.padingSearchBox {
   padding-right: 10px;
   padding-left: 5px;
 
 }
 
-.tour-intro-button{
+.tour-intro-button {
   padding-right: 0;
   display: flex;
   align-content: flex-end;
   flex-wrap: wrap;
 }
-.border-bottom{
+
+.border-bottom {
   border-bottom: 2px solid #279692;
   // padding-bottom: 5.2px;
 }
-.parentbackFight{
+
+.parentbackFight {
   position: relative;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: flex-start;
   margin-top: 17px;
-  .backFight{
+
+  .backFight {
     z-index: 1;
     width: 100%;
   }
-  .frontFight{
+
+  .frontFight {
     animation: flight 1.5s linear;
     z-index: 10;
     position: absolute;
@@ -419,21 +474,29 @@
     // transform: translateX(0)
   }
 }
+
 @keyframes flight {
-  0%{transform: translateX(-90%) translateY(90%) scale(0.4)}
-  100%{transform: translateX(0) translateY(0) scale(1)}
+  0% {
+    transform: translateX(-90%) translateY(90%) scale(0.4)
+  }
+  100% {
+    transform: translateX(0) translateY(0) scale(1)
+  }
 }
-.parentbackTour{
+
+.parentbackTour {
   position: relative;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: flex-start;
   margin-top: 17px;
-  .backTour{
+
+  .backTour {
     z-index: 1;
     width: 100%;
   }
-  .frontTour{
+
+  .frontTour {
     animation: Tour 3s both;
     z-index: 10;
     position: absolute;
@@ -442,8 +505,70 @@
     // transform: translateX(0)
   }
 }
+
 @keyframes Tour {
-  0%{transform: translateX(190%)}
-  
-  100%{transform: translateX(0)}
+  0% {
+    transform: translateX(190%)
+  }
+
+  100% {
+    transform: translateX(0)
+  }
 }
+
+.tab-home-main {
+  background: $whiteColor;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 95px;
+  height: 95px;
+  padding: 12px;
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 8px  2rem 8px;
+
+  svg {
+    path{
+      fill: #D5D5D5;
+    }
+  }
+
+  span {
+    color: #279692 !important;
+    font-size: 14px !important;
+    position: relative;
+    top: 4px;
+  }
+}
+
+.home-tab-active {
+  border: 3px solid #279692 !important;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -18px;
+    width: 15px;
+    height: 15px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 16px solid #279692;
+    transform: scale(0.8);
+  }
+
+  svg {
+    path{
+      fill: #279692 !important;
+    }
+  }
+
+  span {
+    color: #279692 !important;
+  }
+}
+
+

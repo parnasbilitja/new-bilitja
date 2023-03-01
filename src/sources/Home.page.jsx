@@ -59,13 +59,19 @@ const Home = (props) => {
   }, [])
 
   return (
-    <div>
+    <div style={{background:'#F7F7F7'}}>
       <PictureBase/>
       <div className={`${styles["heor-main-container"]}`}>
         <Scrolltoprefresh />
         <div style={{ marginRight: '2px',marginTop: '-1rem' }}>
               <PageTabls type={type} setType={setType} />
             </div>
+        <h2 className="font-bold-iransanse font-size-22 font-bold text-center ">
+          <span>خرید بلیط هواپیما &nbsp;</span>
+          <span className="color-primary font-bold-iransanse">
+                        با چند کلیک
+                      </span>
+        </h2>
             <div className="row justify-content-center">
               <div className="col-md-10 px-0 d-flex justify-content-center">
                 <div className={`px-0 ${styles["width-mobile-search"]} w-100`}>
