@@ -63,9 +63,8 @@ console.log(props);
 
   const handleLogoutUser = (e) => {
     e.preventDefault();
-    // localStorage.removeItem("mobile");
-    // localStorage.removeItem("token");
-    // localStorage.removeItem("mobile");
+    localStorage.removeItem("mobile");
+    localStorage.removeItem("token");
     setState({ ...state, logged: false })
       props.user.logged = false;
   }
