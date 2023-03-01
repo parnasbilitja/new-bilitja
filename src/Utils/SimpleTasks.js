@@ -48,7 +48,7 @@ export const compareTwoStringDates = (first, second) => {
   }
 };
 export const checkCharacter = (char) => {
-  let res = /^[a-zA-Z,'$1 $2']+$/.test(char);
+  let res = /^[a-z \s A-Z]+$/.test(char);
   return res;
 };
 export const checkNumber = (char) => {
