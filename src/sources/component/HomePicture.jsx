@@ -7,18 +7,11 @@ const HomePicture = ({state}) => {
         {state.width >= 826 ? (
           <div className={`${styles["parentbackTour"]}`}>
           <img
-            className={`${styles["backTour"]}`}
-            width=""
+            className={`${styles[""]}`}
+            width="60%"
             height=""
             alt="بلیطجا-اسلایدر"
-            src="../../../Images/backTour.png"
-          />
-          <img
-          className={`${styles["frontTour"]}`}
-            width=""
-            height=""
-            alt="بلیطجا-اسلایدر"
-            src="../../../Images/frontTour.png"
+            src="../../../Images/tour-bg-new.png"
           />
         </div>
         ) : null}

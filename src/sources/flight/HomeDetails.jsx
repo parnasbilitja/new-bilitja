@@ -18,13 +18,16 @@ const HomeDetails = ( props) => {
             <div className="col-md-12 px-0">
                 {width >= 826 ? (
             <div className={`${styles["parentbackFight"]}`}>
-              <img
-                className={`${styles["backFight"]}`}
-                width=""
-                height=""
-                alt="بلیطجا-اسلایدر"
-                src="../../../Images/fly-bg-new.png"
-              />
+              <div className="d-flex w-100 align-items-center justify-content-center" style={{background: '#F7F7F7',padding:'16px 0'}}>
+                <img
+                    className={`${styles[""]}`}
+                    width="50%"
+                    height=""
+                    alt="بلیطجا-اسلایدر"
+                    src="../../../Images/fly-bg-new.png"
+                />
+              </div>
+
               {/*<img*/}
               {/*className={`${styles["frontFight"]}`}*/}
               {/*  width=""*/}

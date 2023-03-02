@@ -216,7 +216,7 @@ const FlightSearchBox = (props) => {
       <div className="position-relative d-flex align-items-center justify-content-center">
         <div style={{width:'100%',background:'#fff',height:'55px',borderRadius:'10px'}}
           className={`${props.showSwitch ? null : ""
-            } form-input-border d-flex align-items-center justify-content-center back-fa text-center ${styles["home-swtich-button-container"]
+            } form-input-border d-flex align-items-center justify-content-center back-fa text-center w-auto-mobi ${styles["home-swtich-button-container"]
             }`}
           onClick={() => {
             props.switchRoute();
