@@ -84,8 +84,8 @@ const FlightReserve = (props) => {
                 message: 'به علت تغییر قیمت, جستجو مجدد انجام می شود!<br/> درحال انتقال به صفحه پرواز ...',
                 state: true,
             })
-            setTimeout(() => {
-                router.back()
+            setTimeout(() => { 
+                props.router.push(localStorage.getItem('url').split('"')[1])
             }, "3000")
         }
 
@@ -218,6 +218,17 @@ const FlightReserve = (props) => {
         console.log(field,value);
         let passenger = state.passengers.find((x) => x.id == passengerNo);
         passenger[field] = value;
+        // console.log(field);
+        if (field == 'nationality') {
+            if (value=='IR') {
+                // passenger.pasno = ''
+                passenger.pasnoErr = "";
+            }else{
+                // passenger.code = ''
+                passenger.codeErr = "";
+                passenger.pasnoErr = "شماره پاسپورت صحیح نمیباشد";
+            }
+        }
         // name
         if (field == "name" && value == "") {
             passenger.nameErr = "نام الزامی میباشد";
@@ -244,13 +255,11 @@ const FlightReserve = (props) => {
         }
         // pasno
         if (field == 'pasno') {
-            console.log(passenger.pasno);
             if (isValidPassportCode(passenger.pasno)) {
                 passenger.pasnoErr = "شماره پاسپورت صحیح نمیباشد";
-            }else{
+            }else {
                 passenger.pasnoErr = "";
             }
-            console.log(passenger.pasnoErr);
         }
         // code
         if ( field ='code') {
@@ -260,6 +269,7 @@ const FlightReserve = (props) => {
                 passenger.codeErr = "";
             }
         }
+        
         let passengers_ = state.passengers.map((x) => {
             if (x.id == passengerNo) {
                 return passenger;

@@ -54,7 +54,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
     return (
       <div className={'row justify-content-between'}>
         <Scrolltoprefresh />
-          <div className={`col-12 custom-col-md-5 form-input-border ${styles["form-input-border-private"]} `}>
+          <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:'40%'}}>
             <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
             <PrimaryTextInputMobile
               value={search.slug==" "?'همه':search.slug}
@@ -80,7 +80,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
             />
           
         </div>
-        <div className={`col-12 custom-col-md-5 form-input-border ${styles["form-input-border-private"]} `}>
+        <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:'40%'}}>
             {/* <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i> */}
             <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
             <PrimaryTextInputMobile
@@ -105,7 +105,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
 
         <div className="col-12 col-md-2 without-focus px-0">
           <PrimaryButton className={`px-0`}
-            style={{ height: "45px", marginTop: "7px" }}
+            style={{ height: "55px", marginTop: "7px",fontSize:'14px',fontWeight:'600',textAlign:'center',borderRadius: "10px"}}
             value={ "جستجو" }
             onClick={() =>{toursHandler(search),executeScroll()}}
           />

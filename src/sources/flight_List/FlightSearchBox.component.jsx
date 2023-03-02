@@ -293,7 +293,7 @@ const FlightSearchBox = (props) => {
       <div className=" without-focus">
         {/* {console.log(props)} */}
         <PrimaryButton type={'index'}
-          style={{ height: "45px", marginTop: "7px",fontSize:'14px',fontWeight:'600',textAlign:'center'}}
+          style={{ height: "55px", marginTop: "7px",fontSize:'14px',fontWeight:'600',textAlign:'center',borderRadius: "10px"}}
           value={
             state.searchReset == false ? "جستجو" : "لطفا صبر کنید..."
           }

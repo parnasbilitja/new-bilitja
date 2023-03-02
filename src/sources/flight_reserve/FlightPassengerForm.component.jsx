@@ -108,6 +108,13 @@ const FlightPassengerForm = (props) => {
         }
         return true;
     };
+    useEffect(() => {
+        if (props.nationality=="IR" &&props.pathKind == 1) {
+            setCalend(true)
+        }else{
+            setCalend(false)
+        }
+    },[props.nationality])
     return (
         <div className={`${styles["passenger-form"]}`}>
             <div className="row d-flex justify-content-start col-md-12">
@@ -234,28 +241,7 @@ const FlightPassengerForm = (props) => {
                                         "nationality",
                                         props.id,
                                         e.target.value
-                                    );
-                                    if (props.pathKind == 1 && e.target.value == 'IR') {
-                                        setCalend(true)
-                                    } else if (props.pathKind == 1 && e.target.value == 'other') {
-                                        setCalend(false)
-                                    }
-                                    setErr({...err,
-                                        nationalCodeErr:'',
-                                        extPasaportErr:''
-                                    })
-                                    props.fillPassengersData(
-                                        "pasno",
-                                        props.id,
-                                        ''
-                                    );
-                                    props.fillPassengersData(
-                                        "code",
-                                        props.id,
-                                        ''
-                                    );
-                                }
-                                }
+                                        )}}
                             >
                                 <option value="IR">ایرانی</option>
                                 <option value="other">غیر ایرانی</option>
@@ -306,7 +292,6 @@ const FlightPassengerForm = (props) => {
                                             placeholder={`کد ملی`}
                                             inputMode={`numeric`}
                                             onChange={(e) => {
-                                                setErr({ ...err, nationalCodeErr: '' })
                                                 props.fillPassengersData(
                                                     "code",
                                                     props.id,
@@ -318,7 +303,7 @@ const FlightPassengerForm = (props) => {
                                         />
                                     </div>
                                     <span className="color-secondary error-message position-absolute">
-                                        {err.nationalCodeErr !== "" && err.nationalCodeErr}
+                                        {props.codeErr}
                                     </span>
                                 </>
                                 :
@@ -328,6 +313,7 @@ const FlightPassengerForm = (props) => {
                                         name={`nationalCode`}
                                         placeholder={`شماره پاسپورت`}
                                         inputMode={`text`}
+                                        maxlength={9}
                                         onChange={(e) => {
                                             props.fillPassengersData(
                                                 "pasno",
