@@ -53,6 +53,12 @@ const ToursBase = () => {
             </Head>
           <Scrolltoprefresh />
           <PageTabls type={type} setType={setType} />
+          <h2 style={{margin:'2rem 0'}} className="font-bold-iransanse font-size-22 mt-3-mobi font-bold text-center ">
+                  <span>رزرو تور &nbsp;</span>
+                  <span className="color-primary font-bold-iransanse">
+              با چند کلیک
+            </span>
+          </h2>
           <div className="row justify-content-center">
             <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
               <SearchBox

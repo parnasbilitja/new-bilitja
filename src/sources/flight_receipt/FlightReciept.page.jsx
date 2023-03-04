@@ -47,8 +47,10 @@ const FlightReciept = (props) => {
       index: 0,
     },
   });
+  const [width, setWidth] = useState(0)
 
   useEffect(() => {
+    setWidth(window.innerWidth)
     props.addReservationProperties({
       reqNo: props.router.asPath.split("/")[3],
       reqPnr: props.router.asPath.split("/")[4],
@@ -282,7 +284,7 @@ const FlightReciept = (props) => {
     });
   };
   return (
-    <div className="container">
+    <div className={`container ${width>=826?"mt-90":'mt-110'}`}>
       <div className={styles["flight-detail"]}>
         <FlightReserveDesktopHeader {...state} />
         <FlightReserveMobileHeder {...state} />

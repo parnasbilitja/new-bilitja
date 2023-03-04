@@ -52,7 +52,7 @@ const List = (props) => {
         setSearchBar(e.target.value);
       };
     return (
-        <div ref={props.myRef}>
+        <div ref={props.myRef} className='mx-2'>
             
             <PopUp
                 opened={props.accountBox.state}

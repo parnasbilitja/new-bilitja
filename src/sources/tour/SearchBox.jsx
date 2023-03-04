@@ -52,9 +52,9 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
     setState && setState({...state, city:search.slug})
   },[search.slug])
     return (
-      <div style={{marginTop:'2rem'}} className={'row justify-content-between'}>
+      <div className={'row justify-content-between'}>
         <Scrolltoprefresh />
-          <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:'40%'}}>
+          <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
             <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
             <PrimaryTextInputMobile
               value={search.slug==" "?'همه':search.slug}
@@ -80,7 +80,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
             />
           
         </div>
-        <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:'40%'}}>
+        <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
             {/* <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i> */}
             <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
             <PrimaryTextInputMobile

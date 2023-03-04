@@ -19,7 +19,7 @@ const Posts = () => {
         
     },[])
     return (
-        <div className="px-1">
+        <div className="mx-2">
             <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
                 <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-9 col-12">
                     <div className="d-flex align-items-center justify-content-between">

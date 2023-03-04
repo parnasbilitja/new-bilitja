@@ -37,7 +37,7 @@ const OfferdTours = (props) => {
           .split(".")[0];
       }
     return (
-        <div className="mx-auto pb-4">
+        <div className="pb-4 mx-2">
             <div className="d-flex flex-wrap align-items-center justify-content-between mt-2">
                         <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-4 col-12">
                             <div className="d-flex align-items-center justify-content-between">
@@ -154,10 +154,10 @@ const OfferdTours = (props) => {
                           </div>
                       </div>
                       <div className="mid-info-tour-special">
-                          <div className="inner-mid-info-tour-special w-75">
+                          <div className="inner-mid-info-tour-special w-100">
                               <Link href={item.slug} rel="noreferrer" className='cursor-pointer'>
                                 <a>
-                                    <h2 className="title-tour-special cursor-pointer text-truncate" style={{maxWidth: "150px"}}>{item.title}</h2>
+                                    <h2 className="title-tour-special cursor-pointer " style={{fontSize: '15px'}}>{item.title}</h2>
                                 </a>
                               </Link>
                               <div className="date-special">

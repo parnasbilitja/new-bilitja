@@ -7,14 +7,13 @@ import 'swiper/css';
 
 import { Navigation } from 'swiper';
 
-// import styles from '../../../styles/HotelsSuggest.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Link from 'next/link';
 import { Loader } from '../../Utils/Loader';
 
-const HotelsSuggest = () => {
+const Hotels = () => {
     const swiperRef = useRef();
     const [cities, setCities] = useState([]);
     const [loading, setLoading] = useState(true)
@@ -54,7 +53,7 @@ const HotelsSuggest = () => {
     },[])
 
     return (
-        <div className="mx-2">
+        <div className="">
                     <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
                         <div className="d-flex mt-2 flex-column col-12 col-xl-8 col-lg-8 col-sm-6">
                             <div className="d-flex col-12 align-items-center justify-content-between">
@@ -180,4 +179,4 @@ const HotelsSuggest = () => {
     );
 };
 
-export default HotelsSuggest;
+export default Hotels;

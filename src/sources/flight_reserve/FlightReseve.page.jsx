@@ -50,6 +50,7 @@ const FlightReserve = (props) => {
     const [closePopUp, setClosePopUp] = useState(false)
     const [loading, setLoading] = useState(false)
     const [scrollTop, setScrollTop] = useState(0)
+    const [width, setWidth] = useState(0)
     const [ closePopUpPrice, setClosePopUpPrice ] = useState(false)
     const [state, setState] = useState({
         stateRegister: false,
@@ -77,7 +78,7 @@ const FlightReserve = (props) => {
         }
     },[state.price])
     useEffect(() => {
-        
+        setWidth(window.innerWidth)
         if (localStorage.getItem('reqNo') !== null) {
             props.messageBoxModify({
                 color: false,
@@ -623,7 +624,7 @@ const FlightReserve = (props) => {
     }, [loginGoNext])
 
     return (
-        <div className="container mt-90" style={{ height: '100%' }}>
+        <div className={`container ${width>=826?"mt-90":'mt-110'}`} style={{ height: '100%' }}>
             <Scrolltoprefresh />
             <div className={`${styles["flight-detail"]}`} ref={Ref}>
                 <FlightReserveDesktopHeader {...state} />

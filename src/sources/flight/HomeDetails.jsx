@@ -120,7 +120,12 @@ const HomeDetails = ( props) => {
             </div></div>
             </div>
         </div>
-        <div className={styles["home-become-host"]}>
+        <div className="d-flex justify-content-center rounded">
+            <div className="col-11 col-md-10">
+              <img src='../../Images/banerBestPriceOfFlight.jpg' className="rounded" width='100%' height='auto'/>
+              </div>
+        </div>
+        {/* <div className={styles["home-become-host"]}>
           <div>
             <h2>ویلا و اقامتگاه خود را در بلیطجا ثبت کنید و میزبان شوید</h2>
             <p>
@@ -131,7 +136,7 @@ const HomeDetails = ( props) => {
               میزبان شوید
             </a>
           </div>
-        </div>
+        </div> */}
         <div className="row d-flex justify-content-center">
           <div className={`col-11 col-md-10 ${styles["home-tour-intro"]} mx-4`}>
             <div className="row">

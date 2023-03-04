@@ -19,7 +19,7 @@ const Airports = (props) => {
         cursor: "pointer",
       }}
       className="suggestion-box"
-    >
+    >{console.log(props.airports)}
       {
         //fill airport
         props.airports
@@ -33,15 +33,7 @@ const Airports = (props) => {
                       .includes(props.searchTerm) &&
                     oneAirport.airportName.toLowerCase() !=
                       props.credentials.sourceName.toLowerCase()
-                ).filter(
-                  (oneAirport) =>
-                    oneAirport.airportKey
-                      .toLowerCase()
-                      .includes(props.searchTerm) &&
-                    oneAirport.airportName.toLowerCase() !=
-                      props.credentials.destinationName.toLowerCase()
-                )
-                .map((oneAirport) => (
+                ).map((oneAirport) => (
                   <div
                     key={oneAirport.airportKey}
                     onClick={() => {

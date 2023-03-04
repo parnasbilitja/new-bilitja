@@ -70,9 +70,9 @@ const FlightReserveMobileHeader = (props) =>
               </span>
             </span>
             <span className="mx-2 font-size-12">
-              <span className="text-danger " style={{ marginRight: -15 }}>
+              <span className="text-danger " style={{ marginRight: -12 }}>
+                  {/* <br/> */}{' '}{' '}
                 {String(props.flightDate).replace("-", "/").replace("-", "/")}
-                  {/* <br/> */}{' '}
                   {props.flightDay}
                 {/* <p style={{ fontSize: 15 }} className={styles["flight-day"]}>
                 </p> */}

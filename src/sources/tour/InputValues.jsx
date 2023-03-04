@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 const InputValues = ({setSearch, search, name, months}) => {
   const [hide, setHide] = useState(false)
-  const searchHandler = (value='',slug='',cityName) => {
+  const searchHandler = (value='',slug='',cityName,id) => {
     setHide(true)
     setSearch({
         ...search,
         [name]:slug==''?value:slug,
-        value:slug==''? cityName:search.value
+        value:slug==''? cityName:search.value,
+        id:id
     })
   }
   return (
@@ -39,7 +40,7 @@ const InputValues = ({setSearch, search, name, months}) => {
         .map((item) => (
         <>
           <div key={item.value}
-                onClick={() => {searchHandler(item.value,item.slug,item.name)}}>
+                onClick={() => {searchHandler(item.value,item.slug,item.name,item.id)}}>
             <span className="font-size-14">
               {item.name}
             </span>

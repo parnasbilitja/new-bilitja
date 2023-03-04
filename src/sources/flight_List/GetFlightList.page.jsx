@@ -560,7 +560,7 @@ class GetFlightList extends React.Component {
                           />
                           <span>قبل</span>
                         </a>
-                      </div>
+                      </div>{console.log(this.props)}
                       <div className="col-lg-6 col-6">
                         <a
                           className="btn-outlined col-12 btn-block  prev-next-btn"
