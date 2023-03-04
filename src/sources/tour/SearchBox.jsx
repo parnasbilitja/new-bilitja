@@ -52,7 +52,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
     setState && setState({...state, city:search.slug})
   },[search.slug])
     return (
-      <div className={'row justify-content-between'}>
+      <div style={{marginTop:'2rem'}} className={'row justify-content-between'}>
         <Scrolltoprefresh />
           <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:'40%'}}>
             <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />

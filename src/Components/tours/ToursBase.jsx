@@ -55,7 +55,7 @@ const ToursBase = () => {
           <PageTabls type={type} setType={setType} />
           <div className="row justify-content-center">
             <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
-              <SearchBox 
+              <SearchBox
               dateSelected={state.dateSelected2}
               executeScroll={executeScroll} 
               toursHandler={toursHandler} 

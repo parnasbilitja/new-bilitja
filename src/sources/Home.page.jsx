@@ -68,7 +68,7 @@ const Home = (props) => {
                         <div style={{marginRight: '2px', marginTop: '-1rem'}}>
                             <PageTabls type={type} setType={setType}/>
                         </div>
-                        <h2 className="font-bold-iransanse font-size-22 mt-3-mobi font-bold text-center ">
+                        <h2 style={{margin:'2rem 0'}} className="font-bold-iransanse font-size-22 mt-3-mobi font-bold text-center ">
                             <span>خرید بلیط هواپیما &nbsp;</span>
                             <span className="color-primary font-bold-iransanse">
                         با چند کلیک

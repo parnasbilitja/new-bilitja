@@ -11,7 +11,7 @@ const HomePicture = ({state}) => {
             width="60%"
             height=""
             alt="بلیطجا-اسلایدر"
-            src="../../../Images/tour-bg-new.png"
+            src="../../../../Images/tour-bg-new.png"
           />
         </div>
         ) : null}
@@ -21,7 +21,7 @@ const HomePicture = ({state}) => {
               width=""
               height=""
               alt="بلیطجا-اسلایدر"
-              src="../../../Images/flight-index-mobile.webp"
+              src="../../../../Images/tour-bg-new.png"
             />
           </div>
         ) : null}
