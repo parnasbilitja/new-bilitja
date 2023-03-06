@@ -388,7 +388,7 @@ const Auth = (props) => {
                 </div>
                 <div className="col-11 padding-horizental-3px">
                   <div>
-                  <MuiOtpInput value={state.token} onChange={handleSetToken} validateChar={validateChar} />
+                  <MuiOtpInput value={state.token.length==4?'':state.token} onChange={handleSetToken} validateChar={validateChar} TextFieldsProps={{ type:'number',autoFocus:'true' }} />
                   </div>
                 </div>
               </>

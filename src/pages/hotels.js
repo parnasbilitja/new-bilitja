@@ -8,13 +8,8 @@ const hotels = () => {
     
     return (
         <div>
-            <NavHandler />
-            <div className="mt-90 bodyVar">
-                <PictureBase/>
-                <Hotels/>
-                <Footer />
-            </div>
-        </div >
+            <Hotels/>
+        </div>
     );
 };
 

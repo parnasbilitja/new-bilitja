@@ -55,52 +55,56 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
     console.log(search);
   },[search])
     return (
-      <div className={'row justify-content-between'}>
-        <Scrolltoprefresh />
-          <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%',marginTop: "5px"}}>
-            <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
-            <PrimaryTextInputMobile
-              value={search.slug==" "?'همه':search.slug}
-              name={'slug'}
-              onFocus={handleFocus}
-              onBlur={handleFocusOut}
-              onChange={handleChange}
-              onClick={(e) => {
-                console.log(e.target.value);
-              }}
-              placeholder={"شهر خود را انتخاب کنید"}
-            />
-            <InputValues
-                type="cities"
-                name='slug'
-                search={search}
-                setSearch={setSearch}
-                months={[...cities]}
-                
-            />
-          
-        </div>
-        <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%',marginTop: "5px"}}>
-            <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
-            <PrimaryTextInputMobile
-              value={search.hotel}
-              name={'hotel'}
-              onChange={handleChange}
-              onClick={(e) => {
-                console.log(e.target.value);
-              }}
-              placeholder={"نام هتل را وارد کنید"}
-            />
-          </div>
+      <div className="row justify-content-center">
+        <div className="col-md-10">
+          <div className={'row justify-content-between'}>
+            <Scrolltoprefresh />
+              <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%',marginTop: "5px"}}>
+                <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
+                <PrimaryTextInputMobile
+                  value={search.slug==" "?'همه':search.slug}
+                  name={'slug'}
+                  onFocus={handleFocus}
+                  onBlur={handleFocusOut}
+                  onChange={handleChange}
+                  onClick={(e) => {
+                    console.log(e.target.value);
+                  }}
+                  placeholder={"شهر خود را انتخاب کنید"}
+                />
+                <InputValues
+                    type="cities"
+                    name='slug'
+                    search={search}
+                    setSearch={setSearch}
+                    months={[...cities]}
+                    
+                />
+              
+            </div>
+            <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%',marginTop: "5px"}}>
+                <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
+                <PrimaryTextInputMobile
+                  value={search.hotel}
+                  name={'hotel'}
+                  onChange={handleChange}
+                  onClick={(e) => {
+                    console.log(e.target.value);
+                  }}
+                  placeholder={"نام هتل را وارد کنید"}
+                />
+              </div>
 
-        <div className="col-12 col-md-2 without-focus px-0">
-          <PrimaryButton className={`px-0`}
-            style={{ height: "55px", marginTop: "0px",fontSize:'14px',fontWeight:'600',textAlign:'center',borderRadius: "10px"}}
-            value={ "جستجو" }
-            onClick={() =>{searchHotel()}}
-          />
+            <div className="col-12 col-md-2 without-focus px-0">
+              <PrimaryButton className={`px-0`}
+                style={{ height: "55px", marginTop: "7px",fontSize:'14px',fontWeight:'600',textAlign:'center',borderRadius: "10px"}}
+                value={ "جستجو" }
+                onClick={() =>{searchHotel()}}
+              />
+            </div>
+            
+          </div>
         </div>
-        
       </div>
     );
   }

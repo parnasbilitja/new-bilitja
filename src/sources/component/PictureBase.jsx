@@ -11,7 +11,7 @@ const PictureBase = () => {
         <>
          {width >= 826 ? (
         <div className="hidden-xs hidden-sm row">
-          <div className="col-md-4">
+          <div className="col-md-4 px-0">
             <img
               width=""
               height=""
@@ -20,7 +20,7 @@ const PictureBase = () => {
               className={`${styles["hero-image-2"]} pull-right`}
             />
           </div>
-          <div className="text-center col-md-4 pt-10 mt-5">
+          <div className="text-center col-md-4 pt-10 mt-5 px-0">
             <img
               width=""
               height=""
@@ -29,7 +29,7 @@ const PictureBase = () => {
               className={styles["hero-image-center"]}
             />
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 px-0">
             <img
               width=""
               height=""

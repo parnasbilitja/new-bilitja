@@ -45,34 +45,36 @@ const ToursBase = () => {
     const executeScroll = () => { myRef.current.scrollIntoView()}
     return (
         <div className={""}>
-         <PictureBase/>
-          <NavHandler />
-        <div className={`${styles["heor-main-container"]}`} style={{marginTop: state.width>=826?'-1rem':'5rem' }}>
             <Head>
                 <title>بلیطجا | لیست تورها</title>
             </Head>
+          <NavHandler />
+        <div className={``} style={{marginTop: state.width>=826?'':'5rem' }}>
           <Scrolltoprefresh />
-          <PageTabls type={type} setType={setType} />
-          <h2 style={{margin:'2rem 0'}} className="font-bold-iransanse font-size-22 mt-3-mobi font-bold text-center ">
-                  <span>رزرو تور &nbsp;</span>
-                  <span className="color-primary font-bold-iransanse">
-              با چند کلیک
-            </span>
-          </h2>
-          <div className="row justify-content-center">
-            <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
-              <SearchBox
-              dateSelected={state.dateSelected2}
-              executeScroll={executeScroll} 
-              toursHandler={toursHandler} 
-              setState={setState} 
-              state={state}  
-               />
-            </div>
-              <div>
-                  <HomePicture state={state} />
+          <div style={{background: '#F7F7F7'}}>
+            <PictureBase/>
+            <PageTabls type={type} setType={setType} />
+            <h2 style={{margin:'2rem 0'}} className="font-bold-iransanse font-size-22 mt-3-mobi font-bold text-center ">
+                    <span>رزرو تور &nbsp;</span>
+                    <span className="color-primary font-bold-iransanse">
+                با چند کلیک
+              </span>
+            </h2>
+            <div className="row justify-content-center">
+              <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
+                <SearchBox
+                dateSelected={state.dateSelected2}
+                executeScroll={executeScroll} 
+                toursHandler={toursHandler} 
+                setState={setState} 
+                state={state}  
+                />
               </div>
-          </div>
+                <div>
+                    <HomePicture state={state} />
+                </div>
+            </div>
+            </div>
           </div>
                 <div className="col-md-10 m-auto">
                   <OfferdTours myRef={myRef} />

@@ -43,7 +43,7 @@ const HomeDetails = ( props) => {
                 width=""
                 height=""
                 alt="بلیطجا-اسلایدر"
-                src="../../../Images/flight-index-mobile.webp"
+                src="../../../Images/fly-bg-new.png"
               />
             </div>
           ) : null}

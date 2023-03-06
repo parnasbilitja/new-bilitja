@@ -23,11 +23,11 @@
         grid-template-rows: 1fr;
         grid-template-areas: "logo items detail";
         .nav-text-detail{
-            grid-template-columns: 4fr 10fr;
+            // grid-template-columns: 4fr 10fr;
             grid-template-rows: auto;
             gap: 2px;
             .nav-detail-first-line{
-                grid-template-columns:1fr 1fr;
+                // grid-template-columns:1fr 1fr;
                 grid-template-rows: auto;
                 gap: 5px;
             }

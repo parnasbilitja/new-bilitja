@@ -6,6 +6,8 @@ import PageTabls from '../../sources/component/PageTabs.component';
 import styles from "../../../styles/Home.module.scss";
 import Head from 'next/head';
 import NavHandler from '../share/NavHandler';
+import Footer from '../../sources/component/Footer.component';
+import PictureBase from '../../sources/component/PictureBase';
 const Hotels = () => {
     const swiperRef = useRef();
     const [cities, setCities] = useState([]);
@@ -54,19 +56,21 @@ const Hotels = () => {
     const myRef = useRef(null)
     const executeScroll = () => { myRef.current.scrollIntoView()}
     return (
-        <div className="row justify-content-center mx-2">
-            
+            <div className="mt-90 bodyVar">
             <Head>
             <title>بلیطجا | رزرو هتل</title>
         </Head>
-            <div className="col-md-10">
+            <NavHandler />
+        <div className="row justify-content-center">
+            <div style={{background: '#F7F7F7'}}>
+                    <PictureBase/>
                     <PageTabls type={type} setType={setType} />
-            <h2 style={{margin:'2rem 0'}} className="font-bold-iransanse font-size-22 mt-3-mobi font-bold text-center ">
-                            <span>رزرو هتل&nbsp;</span>
-                            <span className="color-primary font-bold-iransanse"  ref={myRef}>
+                    <h2 style={{margin:'2rem 0'}} className="font-bold-iransanse font-size-22 mt-3-mobi font-bold text-center ">
+                        <span>رزرو هتل&nbsp;</span>
+                        <span className="color-primary font-bold-iransanse"  ref={myRef}>
                         با چند کلیک
                       </span>
-                        </h2>
+                    </h2>
                     <HotelsSearchBox searchHotel={searchHotel} setCity={setCity} search={search} setSearch={setSearch}/>
                     <div className={`${styles["hero-big-image"]} container`}>
                         <img
@@ -76,15 +80,17 @@ const Hotels = () => {
                         src="../../../../Images/hotel-bg-new.png"
                         />
                     </div>
+                </div>
+            <div className="col-md-10 mx-2">
                     {loading ?
                     <Loader/> :
                     hotels.length>0 && !loading?
-                        <div className="row"
+                        <div className="row justify-content-center"
                         >
                             {hotels.map((item)=>(
                                             <Link href={`/hotel/${item.slug}`}>
-                                    <div className="col-12 col-md-3 px-1">
-                                        <div class="box-hotel">
+                                    <div className="col-12 col-md-3 d-flex justify-content-center">
+                                        <div class="box-hotel" style={{width: '95%'}}>
                                             <img  class="img-blog" src={item.thumbnail}/>
                                                 <div class="opacity-bg-parent">
                                                     <div class="info-img"><img src="https://hamnavaz.com/img/Information.svg" width="22" alt="توضیحات-هتل"/>
@@ -133,7 +139,10 @@ const Hotels = () => {
                     {paginate?.links?.map((item)=>(
                         <>
                         {/* <span>{item.label}</span> */}
-                        <span className={`px-3 cursor-pointer border mx-1 rounded py-1 ${paginate.current_page == parseInt(item.label) && 'text-danger font-bold-iransanse' }`} onClick={()=>{setPage(item.label),executeScroll()}} dangerouslySetInnerHTML={{__html:item.label}}/>
+                        <span className={`px-1 cursor-pointer border rounded py-1 ${paginate.current_page == parseInt(item.label) && 'text-danger font-bold-iransanse' }`} 
+                        onClick={()=>{setPage(item.label),executeScroll()}} 
+                        dangerouslySetInnerHTML={{__html:item.label}} 
+                        style={{margin:'auto 2px'}} />
                         
 
                         </>
@@ -141,6 +150,8 @@ const Hotels = () => {
                     </div>
                     </div>
         </div>
+        <Footer />
+            </div>
     );
 };
 
