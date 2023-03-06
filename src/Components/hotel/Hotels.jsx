@@ -55,7 +55,7 @@ const Hotels = () => {
     const executeScroll = () => { myRef.current.scrollIntoView()}
     return (
         <div className="row justify-content-center mx-2">
-            <NavHandler />
+            
             <Head>
             <title>بلیطجا | رزرو هتل</title>
         </Head>
@@ -83,7 +83,7 @@ const Hotels = () => {
                         >
                             {hotels.map((item)=>(
                                             <Link href={`/hotel/${item.slug}`}>
-                                    <div className="col-12 col-md-3 px-0">
+                                    <div className="col-12 col-md-3 px-1">
                                         <div class="box-hotel">
                                             <img  class="img-blog" src={item.thumbnail}/>
                                                 <div class="opacity-bg-parent">
