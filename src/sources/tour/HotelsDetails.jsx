@@ -2,7 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { moneyFormat } from '../../Utils/SimpleTasks';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 const HotelsDetails = ({pack,data,setPackData,setShow}) => {
     const [width, setWidth] = useState(0)
     const [seeMore, setSeeMore] = useState(false);
@@ -18,7 +19,7 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
     return (
         <div>
             {width<=826 &&
-                    <div className="d-flex justify-content-center my-2" style={{color:'#279692'}} onClick={()=>setSeeMore(!seeMore)}>مشاهده جزئیات بیشتر</div>
+                    <div className="d-flex justify-content-center my-2 font-bold-iransanse" style={{color:'#279692',alignItems:"center"}} onClick={()=>setSeeMore(!seeMore)}><span className='font-bold-iransanse'>{' '}مشاهده جزئیات بیشتر{' '}</span><FontAwesomeIcon className="font-bold-iransanse" icon={faAngleDown} /></div>
                 }
                 <div className={`${seeMore?'position-relative d-flex flex-wrap align-items-center bg-white py-2 px-2 mb-2':'d-none' }`}>
                 <div className="c-detail">
