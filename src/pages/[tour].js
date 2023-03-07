@@ -58,7 +58,7 @@ const tour = (props) => {
     }
 
     const handleClick = () => {
-        console.log(props.Pathname.tour);
+        // console.log(props.Pathname.tour);
         ref.current?.scrollIntoView({behavior: 'smooth'});
       };
     useEffect(() => {
