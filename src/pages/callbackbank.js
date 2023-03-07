@@ -2,7 +2,7 @@ import getRawBody from "raw-body";
 import { useRouter } from "next/router";
 import globals from "../sources/Global";
 import React from "react";
-import PaymentReceiptPage from "../sources/payment_receipt/PaymentReceipt.page";
+import PaymentReceiptPage from "../sources/payment_receipt/PaymentReceiptPage1.js";
 function convertUtftoAscii(str) {
   while (str.indexOf("%") > 0) {
     str = String(str).replace("%24", "$");
