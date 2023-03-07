@@ -31,8 +31,8 @@ const Posts = () => {
                                 </g>
                             </svg>
                             <div className="text">
-                                <h5 className="font-bold">وبلاگ گردشگری بلیطجا</h5>
-                                <h6>هتل ها، مکان های دیدنی، پارک های آبی، همه و همه در اینجا</h6>
+                                <h5 className="font-bold title-custom">وبلاگ گردشگری بلیطجا</h5>
+                                <h6 className="subtitle-custom">هتل ها، مکان های دیدنی، پارک های آبی، همه و همه در اینجا</h6>
                             </div>
                         </div>
                     </div>

@@ -77,8 +77,8 @@ const List = (props) => {
                                         </g>
                                     </svg>
                                     <div className="text">
-                                        <h5 className="font-bold">لیست تورها</h5>
-                                        <h6>مشاهده مناسب ترین تور های لحظه آخری</h6>
+                                        <h5 className="font-bold title-custom">لیست تورها</h5>
+                                        <h6 className="subtitle-custom">مشاهده مناسب ترین تور های لحظه آخری</h6>
                                     </div>
                                 </div>
                             </div>
