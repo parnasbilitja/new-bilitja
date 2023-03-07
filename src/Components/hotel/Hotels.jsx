@@ -72,7 +72,7 @@ const Hotels = () => {
                       </span>
                     </h2>
                     <HotelsSearchBox searchHotel={searchHotel} setCity={setCity} search={search} setSearch={setSearch}/>
-                    <div className={`${styles["hero-big-image"]} container`}>
+                    <div style={{marginTop:'2rem'}} className={`${styles["hero-big-image"]} container`}>
                         <img
                         width=""
                         height=""

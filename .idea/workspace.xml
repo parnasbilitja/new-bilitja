@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/CitiesSuggest.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/CitiesSuggest.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/HotelsSuggest.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/HotelsSuggest.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/List.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/OfferdTours.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/OfferdTours.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/Posts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/Posts.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +87,7 @@
       <workItem from="1677910327015" duration="768000" />
       <workItem from="1678017461039" duration="4021000" />
       <workItem from="1678097521867" duration="7000" />
-      <workItem from="1678172086400" duration="2303000" />
+      <workItem from="1678172086400" duration="3916000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -232,7 +227,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۳" />
       <updated>1678020789998</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL‎۰۰۰۲۴" summary="edit front tourBase">
+      <created>1678174459188</created>
+      <option name="number" value="LOCAL‎۰۰۰۲۴" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۲۴" />
+      <updated>1678174459188</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +253,8 @@
     <MESSAGE value="mobile edit index page" />
     <MESSAGE value="edit index page tab &amp; search" />
     <MESSAGE value="tour thumbnail responsive debug" />
-    <option name="LAST_COMMIT_MESSAGE" value="tour thumbnail responsive debug" />
+    <MESSAGE value="edit front tourBase" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit front tourBase" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
