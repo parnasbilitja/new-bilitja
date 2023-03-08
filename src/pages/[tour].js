@@ -38,7 +38,6 @@ const tour = (props) => {
     const [open, setOpen] = useState(false);
     const [seeMore, setSeeMore] = useState(false);
     const [data, setData] = useState(null)
-    const [slug, setSlug] = useAtom(tourSlug)
     const [show, setShow] = useState(false);
     const [tourId, setTourId] = useState(null);
     const [packData, setPackData] = useState({
@@ -65,8 +64,6 @@ const tour = (props) => {
     }, [props.Pathname.tour])
 
     const slugHandler = (slug) => {
-        setSlug(slug)
-        localStorage.setItem("slug", JSON.stringify(slug))
     }
     
     return (
