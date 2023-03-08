@@ -572,8 +572,16 @@
 
 @media only screen and (max-width: 868px){
   .home-tab-active{
-    &:after{
-      display: none !important;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      width: 15px;
+      height: 15px;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 16px solid #279692;
+      transform: scale(0.8);
     }
   }
 }

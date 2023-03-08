@@ -90,7 +90,7 @@ const PageTabls = (props) => {
         <div className={`col-md-10  ${styles["width-mobile"]} px-0`}>
           <div className={'row justify-content-center me-0 w-100 position-relative'} style={{top:'2px'}}>
             <Link href='/ticket'>
-              <div className={`${styles["tab-home-main"]} col-6 col-md-2 col-xl-1 cursor-pointer  ${props.type == 1 ? styles["home-tab-active"] : null} ${styles["mobile-tab1"]} ${styles["width-full"]}`}
+              <div className={`${styles["tab-home-main"]} col-6 col-md-2 col-xl-1 cursor-pointer  ${props.type == 1 ? styles["home-tab-active"] : null} `}
                    onClick={() => {
                      props.setType(1)
                      // myRouter.push("/ticket");

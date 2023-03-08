@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../../styles/FlightSearchBox.module.scss";
 
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarAlt, faCity } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import PrimaryButton from "../../sources/component/PrimaryButton.component";
@@ -55,12 +55,12 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
     console.log(search);
   },[search])
     return (
-      <div className="row justify-content-center">
+      <div className="row justify-content-center pt-0">
         <div className="col-md-10">
           <div className={'row justify-content-between'}>
             <Scrolltoprefresh />
               <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%',marginTop: "5px"}}>
-                <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
+                <FontAwesomeIcon icon={faCity} style={{height:'30px'}} className="mx-2 tour-input-icon" />
                 <PrimaryTextInputMobile
                   value={search.slug==" "?'همه':search.slug}
                   name={'slug'}
@@ -83,7 +83,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
               
             </div>
             <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%',marginTop: "5px"}}>
-                <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
+                <FontAwesomeIcon icon={faCalendarAlt} style={{height:'30px'}} className="mx-2 tour-input-icon" />
                 <PrimaryTextInputMobile
                   value={search.hotel}
                   name={'hotel'}

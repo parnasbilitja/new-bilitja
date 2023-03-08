@@ -71,7 +71,11 @@ const Hotels = () => {
                         با چند کلیک
                       </span>
                     </h2>
-                    <HotelsSearchBox searchHotel={searchHotel} setCity={setCity} search={search} setSearch={setSearch}/>
+                    <div className="row justify-content-center">
+                        <div className="col-10 col-md-12">
+                            <HotelsSearchBox searchHotel={searchHotel} setCity={setCity} search={search} setSearch={setSearch}/>
+                        </div>
+                    </div>
                     <div style={{marginTop:'2rem'}} className={`${styles["hero-big-image"]} container`}>
                         <img
                         width=""
