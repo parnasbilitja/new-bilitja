@@ -1,15 +1,8 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import styles from "../../../styles/Home.module.scss";
 const PictureBase = () => {
-    const [width, setWidth] = useState(0)
-    useEffect(() => {
-        setWidth(window.innerWidth);
-    },[])
     return (
         <>
-         {width >= 826 ? (
         <div className="hidden-xs hidden-sm row">
           <div className="col-md-4 px-0">
             <img
@@ -39,7 +32,6 @@ const PictureBase = () => {
             />
           </div>
         </div>
-      ) : null}   
         </>
     );
 };
