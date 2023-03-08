@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../../styles/FlightSearchBox.module.scss";
 
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarAlt ,faCity } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PrimaryButton from "../component/PrimaryButton.component";
 import PrimaryTextInputMobile from "../component/PrimaryTextInputMobile";
@@ -55,7 +55,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
       <div className={'row justify-content-between'}>
         <Scrolltoprefresh />
           <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
-            <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
+            <FontAwesomeIcon icon={faCity} style={{height:'30px'}} className="mx-2 tour-input-icon" />
             <PrimaryTextInputMobile
               value={search.slug==" "?'همه':search.slug}
               name={'slug'}
@@ -82,7 +82,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
         </div>
         <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
             {/* <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i> */}
-            <FontAwesomeIcon icon={faCalendarAlt} className="mx-2 tour-input-icon" />
+            <FontAwesomeIcon icon={faCalendarAlt} style={{height:'30px'}} className="mx-2 tour-input-icon" />
             <PrimaryTextInputMobile
               value={search.value}
               name={'month'}
