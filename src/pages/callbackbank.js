@@ -4,6 +4,7 @@ import globals from "../sources/Global";
 import React from "react";
 import PaymentReceiptPage from "../sources/payment_receipt/PaymentReceiptPage1.js";
 function convertUtftoAscii(str) {
+  console.log(str);
   while (str.indexOf("%") > 0) {
     str = String(str).replace("%24", "$");
     str = String(str).replace("%26", "&");
@@ -26,10 +27,10 @@ function convertUtftoAscii(str) {
 
 function Page({ data, PaymentInfo }) {
 //const Page({ data, PaymentInfo }) {
-  // console.log("top");
-  // console.log(data);
-  // console.log(PaymentInfo);
-  // console.log("top2");
+  console.log("top");
+  console.log(data);
+  console.log(PaymentInfo);
+  console.log("top2");
 
   return (
     <div>
@@ -72,6 +73,7 @@ function Page({ data, PaymentInfo }) {
 //This gets called on every request
 //export const getServerSideProps = async (req) => {  
 export async function getServerSideProps({ req }) {
+  console.log(req);
   if (req.method == "POST") 
   {
     const body = await getRawBody(req);
@@ -99,7 +101,7 @@ export async function getServerSideProps({ req }) {
       refNum = data.RefNum;
     }
     data.RRN = "";
-    // console.log(data.StateCode);
+    console.log(data.StateCode);
     data.StateCode ="0" ; // موقت برای تست
 
     switch (data.StateCode) {

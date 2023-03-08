@@ -119,7 +119,7 @@ const NavBarMobile = (props) => {
                         >
                           {/* <i className="bilitja icon-register"></i> */}
                           <i className="bilitja icon-login font-size-14 ms-1"></i>
-                          <span className="font-bold-iransanse font-size-14">ورود / ثبت نام</span>
+                          <span className="font-bold-iransanse font-size-13">ورود / ثبت نام</span>
                         </a>
                       </div>
                     </>
@@ -129,8 +129,8 @@ const NavBarMobile = (props) => {
         <div className="pull-left">
           <a href="tel:021-84279999" className="color-black font-bold-iransanse">
             {/* <span className="text-dark mx-2">مشاوره تلفنی</span> */}
+            <span className="text-dark font-size-14" style={{direction:'ltr'}}> &nbsp;021-8427 9999</span>
             <i className="bilitja icon-phone font-size-16"></i>
-            <span className="text-dark font-size-14"> &nbsp;021-8427 9999</span>
           </a>
         </div>
       </div>
