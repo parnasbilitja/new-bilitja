@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/Home.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/Home.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/HomePicture.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/HomePicture.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +84,10 @@
       <workItem from="1677743777324" duration="4843000" />
       <workItem from="1677794272166" duration="1165000" />
       <workItem from="1677909529463" duration="168000" />
-      <workItem from="1677910327015" duration="695000" />
+      <workItem from="1677910327015" duration="768000" />
+      <workItem from="1678017461039" duration="4021000" />
+      <workItem from="1678097521867" duration="7000" />
+      <workItem from="1678172086400" duration="3916000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -216,7 +215,25 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۱" />
       <updated>1677795335004</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL‎۰۰۰۲۲" summary="edit index page tab &amp; search">
+      <created>1677911072536</created>
+      <option name="number" value="LOCAL‎۰۰۰۲۲" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۲۲" />
+      <updated>1677911072536</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۲۳" summary="tour thumbnail responsive debug">
+      <created>1678020789998</created>
+      <option name="number" value="LOCAL‎۰۰۰۲۳" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۲۳" />
+      <updated>1678020789998</updated>
+    </task>
+    <task id="LOCAL‎۰۰۰۲۴" summary="edit front tourBase">
+      <created>1678174459188</created>
+      <option name="number" value="LOCAL‎۰۰۰۲۴" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۲۴" />
+      <updated>1678174459188</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +251,10 @@
     <MESSAGE value="edit tour &amp; index page &amp; create tour special" />
     <MESSAGE value="index page tab edit fly" />
     <MESSAGE value="mobile edit index page" />
-    <option name="LAST_COMMIT_MESSAGE" value="mobile edit index page" />
+    <MESSAGE value="edit index page tab &amp; search" />
+    <MESSAGE value="tour thumbnail responsive debug" />
+    <MESSAGE value="edit front tourBase" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit front tourBase" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -253,16 +273,6 @@
           <url>file://$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/transaction.jsx</url>
           <line>317</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/[tour].js</url>
-          <line>149</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/[tour].js</url>
-          <line>164</line>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx</url>

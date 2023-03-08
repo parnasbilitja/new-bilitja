@@ -39,8 +39,8 @@ const CitiesSuggest = () => {
                                         </g>
                                     </svg>
                                     <div className="text">
-                                        <h5 className="font-bold">نمایش تور بر اساس شهر</h5>
-                                        <h6>مشاهده مناسب ترین تور های لحظه آخری</h6>
+                                        <h5 className="font-bold title-custom">نمایش تور بر اساس شهر</h5>
+                                        <h6 className="subtitle-custom">مشاهده مناسب ترین تور های لحظه آخری</h6>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@ const CitiesSuggest = () => {
                                     <div class="img-sort-tour-city">
                                         <div class="info-img-sort-tour-city animated fadeInDown">
                                             <img class="img-hover-child" src="https://hamnavaz.com/img/Attachment%201.svg" width="30" alt="جزئیات بیشتر"/>
-                                            <Link class="view-details-more" href={`/cityTour/${item.slug}`}>مشاهده جزئیات بیشتر</Link>
+                                            <Link style={{color:"#fff",marginTop:"12px"}} class="view-details-more text-white font-size-14 font-bold" href={`/cityTour/${item.slug}`}>مشاهده جزئیات بیشتر</Link>
                                         </div>
                                         <img src={item.image} alt={item.name} />
                                     </div>

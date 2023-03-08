@@ -66,8 +66,8 @@ const HotelsSuggest = () => {
                                         </g>
                                     </svg>
                                     <div className="text col-12 col-sm-10 d-flex">
-                                        <h5 className="font-bold" style={{marginTop:`${width>826?'2px':'4px'}`}}>هتل های برگزیده شهر</h5>
-                                        <select style={{width: '20%',marginBottom: '8px',color: '#279692'}}
+                                        <h5 className="font-bold title-custom" style={{marginTop:`${width>826?'2px':'4px'}`}}>هتل های برگزیده شهر</h5>
+                                        <select style={{width: '30%',marginBottom: '8px',color: '#279692'}}
                                          className="selectCity font-bold" value={city} onChange={(val) => setCity(val.target.value)}>
                                             {cities.map(item=>(
                                                 <option key={item.id} value={item.id}>{item.name}</option>
@@ -135,15 +135,15 @@ const HotelsSuggest = () => {
                                                 <div class="info-img"><img src="https://hamnavaz.com/img/Information.svg" width="22" alt="توضیحات-هتل"/>
                                                 </div>
                                                 <div class="info-hotel">
-                                                    <span x-text="hotel.name">{item.name}</span>
+                                                    <span className="font-bold" x-text="hotel.name">{item.name}</span>
                                                     <div class="footer-hotel-info">
                                                         <div class="location-hotel">
                                                             <img src="https://hamnavaz.com/img/Location-white.svg" width="17" alt="آدرس-هتل"/>
-                                                            <span x-text="hotel.city + ' - ' + hotel.location" style={{marginBottom: "0"}}>{item.location}</span>
+                                                            <span x-text="hotel.city + ' - ' + hotel.location" style={{marginBottom: "0",fontSize:'13px'}}>{item.location}</span>
                                                         </div>
                                                         <div className="star d-flex align-items-center pb-1">
                                                             <div className="d-flex align-items-center">
-                                                                <div className="image d-flex align-items-center">
+                                                                <div className="image p-star-tour d-flex align-items-center">
                                                                 {(() => {
                                                                     let stars = [];
                                                                     for (let i = 1; i <= parseInt(item.stars); i++) {

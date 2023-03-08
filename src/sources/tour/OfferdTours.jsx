@@ -37,7 +37,7 @@ const OfferdTours = (props) => {
           .split(".")[0];
       }
     return (
-        <div className="pb-4 mx-2">
+        <div className="pb-4 mx-2 mt-5">
             <div className="d-flex flex-wrap align-items-center justify-content-between mt-2">
                         <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-4 col-12">
                             <div className="d-flex align-items-center justify-content-between">
@@ -49,8 +49,8 @@ const OfferdTours = (props) => {
                                         </g>
                                     </svg>
                                     <div className="text">
-                                        <h5 className="font-bold">تور لحظه آخری و آفری و ارزان قیمت</h5>
-                                        <h6>مشاهده مناسب ترین تور های لحظه آخری</h6>
+                                        <h5 className="font-bold title-custom">تور لحظه آخری و آفری و ارزان قیمت</h5>
+                                        <h6 className="subtitle-custom">مشاهده مناسب ترین تور های لحظه آخری</h6>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@ const OfferdTours = (props) => {
             {loading?
             <Loader/> :
           <Swiper
-          spaceBetween={10}
+          spaceBetween={20}
           slidesPerGroup={1}
           breakpoints={{
           0: {
@@ -94,7 +94,7 @@ const OfferdTours = (props) => {
               slidesPerView: 4.3,
           },
           1300: {
-              slidesPerView: 5.3,
+              slidesPerView: 4.7,
           },
           }}
               pagination={{

@@ -2,8 +2,7 @@ import getRawBody from "raw-body";
 import { useRouter } from "next/router";
 import globals from "../sources/Global";
 import React from "react";
-import PaymentReceiptPage from "../sources/payment_receipt/PaymentReceipt.page";
-import Link from "next/link";
+import PaymentReceiptPage from "../sources/payment_receipt/PaymentReceiptPage1.js";
 function convertUtftoAscii(str) {
   while (str.indexOf("%") > 0) {
     str = String(str).replace("%24", "$");
@@ -26,8 +25,7 @@ function convertUtftoAscii(str) {
 }
 
 function Page({ data, PaymentInfo }) {
-  debugger
-  //const Page({ data, PaymentInfo }) {
+//const Page({ data, PaymentInfo }) {
   console.log("top");
   console.log(data);
   console.log(PaymentInfo);
@@ -57,12 +55,12 @@ function Page({ data, PaymentInfo }) {
               </h6>
             </div>
             <div className="mt-5 text-center">
-              <Link
+              <a
                 className="font-bold-iransanse text-center text-danger"
                 href="/"
               >
                 بازگشت به صفحه اصلی
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -74,12 +72,8 @@ function Page({ data, PaymentInfo }) {
 //This gets called on every request
 //export const getServerSideProps = async (req) => {  
 export async function getServerSideProps({ req }) {
-  
-
-  console.log(req);
   if (req.method == "POST") 
   {
-    debugger
     const body = await getRawBody(req);
     //  console.log("start")
     //    console.log(body.toString("utf-8"))
@@ -158,7 +152,6 @@ export async function getServerSideProps({ req }) {
           case "-100":
             data.RRN = "کد دریافتی از طرف بانک معتبر نیست.";
             break;
-          
           case "-101":
             data.RRN = "کد دریافتی از طرف بانک معتبر نیست.";
             break;

@@ -1926,7 +1926,6 @@ $sizes: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #f8f9fa;
 }
 
 .img-sort-tour-city {
@@ -1948,6 +1947,12 @@ $sizes: 100;
   height: 100%;
   display: none;
   background-color: #3e3e3e78;
+  a{
+    color: white !important;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 12px;
+  }
 }
 
 .img-sort-tour-city:hover .info-img-sort-tour-city {
@@ -1982,8 +1987,10 @@ $sizes: 100;
     color: #000000 !important;
 
     h2 {
-      font-size: 14px;
-      font-weight: 500;
+      a{
+        font-size: 14px;
+        font-weight: 600;
+      }
     }
   }
 }
@@ -3622,6 +3629,12 @@ p img {
   background-color: #3e3e3e78;
   display: none;
   transition: var(--btn-animtion);
+  a{
+    color: white !important;
+    font-size: 14px;
+    margin-top: 12px;
+    font-weight: 600;
+  }
 }
 
 .img-special-tour:hover .hover-info-img {
@@ -3685,7 +3698,7 @@ p img {
 
 .title-tour-special {
   font-weight: 500;
-  font-size: 15px;
+  font-size: 15px !important;
   color: #000;
 }
 
@@ -3695,6 +3708,9 @@ p img {
   width: 85%;
   justify-content: space-between;
   margin-top: 5px;
+  span{
+    font-size: 14px;
+  }
 }
 
 .date-special img {
@@ -3778,4 +3794,18 @@ p img {
 
 .w-70 {
   width: 70% !important;
+}
+.title-custom{
+  font-size: 18px;
+  font-weight: 600;
+}
+.subtitle-custom{
+  font-size: 13px;
+  font-weight: 600;
+}
+.p-star-tour{
+  svg{
+    height: 12px !important;
+    width: 12px !important;
+  }
 }
