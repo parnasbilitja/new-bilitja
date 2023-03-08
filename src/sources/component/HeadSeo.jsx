@@ -2,7 +2,7 @@ import React from 'react';
 import Head from "next/head";
 
 const HeadSeo = (props) => {
-    console.log(props);
+    // console.log(props);
     const setTitleMeta = (pathName) => {
         // var src = "";
         // var dest = "";

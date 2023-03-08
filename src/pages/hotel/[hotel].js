@@ -30,7 +30,7 @@ const hotel = (props) => {
         }
         getData()
     },[])
-    console.log(hotel);
+    // console.log(hotel);
     return (
         <>
         <NavHandler />

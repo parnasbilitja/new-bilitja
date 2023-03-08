@@ -85,7 +85,7 @@ const Submit = (props) => {
                 <div className="col-lg-4 col-md-4 col-5 padding-3px">
                     <span
                         onClick={(e) => {
-                            props.router.push(localStorage.getItem('url').split('"')[1]);
+                            props.router.push(props.route);
                         }}>
                         <span
                             className="btn col-12 back-payment-btn py-2"

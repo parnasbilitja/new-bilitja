@@ -38,7 +38,8 @@
   border-bottom: 1px solid $pillGray;
   padding: 3px 5px;
   a {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     margin-right: 5px;
     margin-top: 2px;
   }

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { CloseOutlined } from "@ant-design/icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faUser, faLock } from "@fortawesome/free-solid-svg-icons";
@@ -95,7 +94,7 @@ const Login = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.status == "10") {
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
@@ -198,7 +197,7 @@ const Login = (props) => {
   useEffect(() => {
     if (UserMobileAndCode.mobile.length == 11) {
       localStorage.setItem("mobile", UserMobileAndCode.mobile);
-      console.log(UserMobileAndCode.mobile);
+      // console.log(UserMobileAndCode.mobile);
     }
   }, [UserMobileAndCode.mobile])
   const handleSetToken = (e) => {
@@ -216,7 +215,7 @@ const Login = (props) => {
 
 
   const loginWithToken = () => {
-    console.log(UserMobileAndCode);
+    // console.log(UserMobileAndCode);
     setState({ ...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/checkUser`, {
       method: "POST",
@@ -234,7 +233,7 @@ const Login = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.status == "2" || data.status == "1") {
           localStorage.setItem('loginGoNext',JSON.stringify(1))
           setState({ ...state, btn_disabled: false, loading: false });
@@ -287,8 +286,8 @@ const Login = (props) => {
 
   const userMobileHandler = (e) => {
     setUserMobileAndCode({ ...UserMobileAndCode, [e.target.name]: e.target.value });
-    console.log(UserMobileAndCode);
-    console.log(TestForValue);
+    // console.log(UserMobileAndCode);
+    // console.log(TestForValue);
   }
 
   const handleChange = (newValue) => {
@@ -315,11 +314,11 @@ const Login = (props) => {
             });
           }} style={{ left: 10 }}
         >
-          <CloseOutlined style={{ color: "red" }} />
+          <div style={{ color: "red" }} className="font-bold font-size-15" >x</div>
         </span>
       </div>
       {state.error === true ? (
-        console.log(state.errText),
+        // console.log(state.errText),
         <div className="alert alert-danger">{state.errText !== undefined ? state.errText : 'شماره یا پسورد اشتباه است'}</div>
       ) : null}
       <div className="container">
@@ -353,12 +352,12 @@ const Login = (props) => {
           <div className=" without-focus col-12">
             <button
               onClick={() => {
-                console.log(UserMobileAndCode, UserMobileAndCode.code.length);
+                // console.log(UserMobileAndCode, UserMobileAndCode.code.length);
                 if (UserMobileAndCode.code.length !== 4 && UserMobileAndCode.mobile.length == 11) {
                   setTestForValue({ ...TestForValue, num: true })
                   login()
                 } else if (UserMobileAndCode.code.length == 4) {
-                  console.log(UserMobileAndCode.code);
+                  // console.log(UserMobileAndCode.code);
                   loginWithToken()
                 }
 

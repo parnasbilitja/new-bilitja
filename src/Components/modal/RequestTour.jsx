@@ -18,12 +18,12 @@ const RequestTour = ({ messages, setMessages, setShow, setPackData, packData, se
     }
 
     const dataHandler = async () => {
-        console.log(packData);
+        // console.log(packData);
         await axios.post('https://api.hamnavaz.com/api/v1/reserve/createReserve', data)
             .then(response => {
                 setMessages({ ...messages, isDone: response.data.isDone, message: response.data.message });
-                console.log(response.data);
-                console.log(messages);
+                // console.log(response.data);
+                // console.log(messages);
             })
         setShow(false);
         setOpen(true)

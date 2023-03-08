@@ -26,10 +26,10 @@ function convertUtftoAscii(str) {
 
 function Page({ data, PaymentInfo }) {
 //const Page({ data, PaymentInfo }) {
-  console.log("top");
-  console.log(data);
-  console.log(PaymentInfo);
-  console.log("top2");
+  // console.log("top");
+  // console.log(data);
+  // console.log(PaymentInfo);
+  // console.log("top2");
 
   return (
     <div>
@@ -99,7 +99,7 @@ export async function getServerSideProps({ req }) {
       refNum = data.RefNum;
     }
     data.RRN = "";
-    console.log(data.StateCode);
+    // console.log(data.StateCode);
     data.StateCode ="0" ; // موقت برای تست
 
     switch (data.StateCode) {

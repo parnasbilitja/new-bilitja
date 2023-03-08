@@ -26,10 +26,10 @@ function convertUtftoAscii(str) {
 
 const page = ({ data,PaymentInfo }) => {
 //const Page({ data, PaymentInfo }) {
-  console.log("top");
-  console.log(data);
-  console.log(PaymentInfo);
-  console.log("top2");
+  // console.log("top");
+  // console.log(data);
+  // console.log(PaymentInfo);
+  // console.log("top2");
 
   return (
     <div>
@@ -50,9 +50,9 @@ export const getServerSideProps = async (req) => {
       .split("&")
       .map((x) => (data[x.split("=")[0]] = x.split("=")[1]));
 
-    console.log("bottom");
-    console.log(data);
-    console.log("bottom2");
+    // console.log("bottom");
+    // console.log(data);
+    // console.log("bottom2");
     // console.log("end3")
     var refNum = "";
     var error = "";

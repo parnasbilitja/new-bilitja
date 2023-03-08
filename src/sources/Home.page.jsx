@@ -24,6 +24,7 @@ import HomePicture from "./component/HomePicture";
 import PictureBase from "./component/PictureBase";
 
 const Home = (props) => {
+    const [width, setWidth] = useState(0)
     const [state, setState] = useState({
         open: false,
         dateSelected: null,
@@ -56,6 +57,7 @@ const Home = (props) => {
                 props.addAccountProperties(null);
             }
         }
+        setWidth(window.innerWidth)
     }, [])
 
     return (
@@ -65,10 +67,10 @@ const Home = (props) => {
                 <div className={`${styles["heor-main-container"]}`}>
                     <Scrolltoprefresh/>
                     <div>
-                        <div style={{marginRight: '2px', marginTop: '-0.7rem'}}>
+                        <div style={{marginRight: '2px', marginTop: width>=826? '-0.7rem':''}}>
                             <PageTabls type={type} setType={setType}/>
                         </div>
-                        <h2 style={{margin:'2rem 0'}} className="font-bold-iransanse font-size-22 mt-3-mobi font-bold text-center ">
+                        <h2 style={{margin:'2rem 0'}} className="font-bold-iransanse font-size-22 font-bold text-center ">
                             <span>خرید بلیط هواپیما &nbsp;</span>
                             <span className="color-primary font-bold-iransanse">
                         با چند کلیک

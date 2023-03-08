@@ -645,7 +645,8 @@ html {
   text-align: center;
   height: 30px;
   padding: 0px 8px 0px 8px !important;
-  display: inline-block;
+  display: grid !important;
+  place-items: center;
 }
 
 .pb-1Important {
@@ -1013,9 +1014,6 @@ div.radio {
   }
   .d-none-mobi {
     display: none !important;
-  }
-  .title-info-tour {
-
   }
   .font-15-mobi {
     font-size: 15px !important;
@@ -1765,8 +1763,6 @@ $sizes: 100;
     margin-top: 1rem !important;
     width: 100% !important;
   }
-  .m-main-data {
-  }
   .val {
     span {
       padding-right: 10px;
@@ -2231,9 +2227,7 @@ $sizes: 100;
 }
 
 @media only screen and (max-width: 868px) {
-  .bodyVar {
-    // padding: 0 8px !important;
-  }
+  
   .mt-2-mobi {
     margin-top: 20px !important;
   }
@@ -3807,5 +3801,16 @@ p img {
   svg{
     height: 12px !important;
     width: 12px !important;
+  }
+}
+
+@media not all and (min-resolution: .001dpcm) {
+  @supports (-webkit-appearance:none) {
+    select, input, textarea {
+      font-size: inherit !important;
+      &:focus{
+        font-size: inherit !important;
+      }
+    }
   }
 }

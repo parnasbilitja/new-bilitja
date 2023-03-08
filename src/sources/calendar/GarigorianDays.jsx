@@ -235,7 +235,7 @@ class GarigorianDays extends React.Component {
           <div>
             <div className="calendar-year-container">
               {this.getYears().map((x) => (
-                <div
+                <div key={x}
                   className="calendar-item"
                   onClick={() => {
                     this.setState({ year: x, stage: 2 });
@@ -450,7 +450,7 @@ class GarigorianDays extends React.Component {
                       x
                     );
                     return x != undefined ? (
-                      <div
+                      <div key={x}
                         className={`calendar-item ${compareToToday}`}
                         onClick={() => {
                           if (compareToToday == "BEFORE") {
@@ -503,7 +503,7 @@ class GarigorianDays extends React.Component {
                       this.checkDateIsAfterTodayNextMonth(x);
 
                     return x != undefined ? (
-                      <div
+                      <div key={x}
                         className={`calendar-item ${compareToToday}`}
                         onClick={() => {
                           if (compareToToday == "BEFORE") {

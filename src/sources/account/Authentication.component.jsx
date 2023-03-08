@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { CloseOutlined } from "@ant-design/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faLock } from "@fortawesome/free-solid-svg-icons";
 import PrimaryTextInput from "../component/PrimaryTextInput.component";
@@ -87,7 +86,7 @@ const Authentication = (props) => {
             });
           }} style={{ left: 10 }}
         >
-          <CloseOutlined style={{ color: "red" }} />
+          <div style={{ color: "red" }} className="font-bold font-size-15" >x</div>
         </span>
       </div>
       <div className="row">

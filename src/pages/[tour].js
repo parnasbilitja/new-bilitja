@@ -3,8 +3,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Snackbar } from '@mui/material';
 
 import axios from 'axios';
-import { useAtom } from 'jotai';
-import { tourSlug } from '../jotai/jotai';
 import Link from 'next/link';
 import NavHandler from '../Components/share/NavHandler';
 import Footer from '../sources/component/Footer.component';
@@ -282,7 +280,6 @@ const tour = (props) => {
                                         <span className="font-bold font-size-16">سن کودک</span>
                                     </div>
                                 </div>
-                                {console.log(data.packages)}
                                 {data ? data.packages.map((pack) => (
                                     <div className="p-detail col-xl-12 col-lg-12 mt-2" key={pack.id}>
                                         <div className="d-detail position-relative col-xl-12 col-lg-12 col-12 d-flex flex-wrap align-items-center bg-white py-2 px-2 mb-2">

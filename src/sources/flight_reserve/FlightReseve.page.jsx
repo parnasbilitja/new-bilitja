@@ -21,13 +21,12 @@ import Link from "next/link";
 import PopUp from "../component/PopUp.component";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 import { useRouter } from 'next/router';
-import { CloseOutlined } from "@ant-design/icons";
 import AddNewPassenger from "./AddNewPassenger";
 import OtherData from "./OtherData";
 import Submit from "./Submit";
 
 const FlightReserve = (props) => {
-    console.log(props);
+    
     const [err, setErr] = useState({
         rule: false,
         ruleErr: 'لطفا قوانین را بپذیرید',
@@ -66,6 +65,7 @@ const FlightReserve = (props) => {
         email: ''
     });
     const router = useRouter();
+    let route=''
     useEffect(()=>{
         if (parseInt(localStorage.getItem('priceChecker'))%10 && parseInt(state.price)!=0 && parseInt(state.price)!=0) {
             
@@ -80,6 +80,8 @@ const FlightReserve = (props) => {
     },[state.price])
     useEffect(() => {
         setWidth(window.innerWidth)
+        route = router.asPath.split('info')[0]
+        console.log('router',route);
         if (localStorage.getItem('reqNo') !== null) {
             props.messageBoxModify({
                 color: false,
@@ -87,7 +89,7 @@ const FlightReserve = (props) => {
                 state: true,
             })
             setTimeout(() => { 
-                props.router.push(localStorage.getItem('url').split('"')[1])
+                props.router.push(route)
             }, "3000")
         }
 
@@ -691,6 +693,7 @@ const FlightReserve = (props) => {
                         />
 
                         <Submit 
+                            route={route}
                             {...props}
                             state={state}
                             setState={setState}
@@ -719,7 +722,7 @@ const FlightReserve = (props) => {
                             });
                         }} style={{ left: 10 }}
                     >
-                        <CloseOutlined style={{ color: "red" }} />
+                        <div style={{ color: "red" }} className="font-bold font-size-15" >x</div>
                     </span>
                     <div onClick={() => setClosePopUp(false)} className="p-5">
                         قوانین و مقررات
@@ -736,7 +739,7 @@ const FlightReserve = (props) => {
                             setClosePopUpPrice(false);
                         }}
                         >
-                        <CloseOutlined style={{ color: "red" }} />
+                        <div style={{ color: "red" }} className="font-bold font-size-15" >x</div>
                         </span>
                     </div>
                     <div className="text-center">

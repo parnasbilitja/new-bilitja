@@ -3,7 +3,7 @@ import PrimaryTextInput from "../../../sources/component/PrimaryTextInput.compon
 import PrimarySelectInput from "../../../sources/component/PrimarySelectInput.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUniversity } from "@fortawesome/free-solid-svg-icons";
-import Switch from "react-switch";
+// import Switch from "react-switch";
 import PrimaryButton from "../../../sources/component/PrimaryButton.component";
 import globals from "../../Global";
 import { connect } from "react-redux";
@@ -1246,14 +1246,14 @@ class UpdateVila extends React.Component {
                 </div>
                 <div className="col-lg-6 col-5 margin-top-10px">
                   <div className="font-size-14 font-bold-iransanse">
-                    <Switch
+                    {/* <Switch
                       height={20}
                       onChange={this.handleChange}
                       id={rule.RulesId}
                       checked={this.state.selectedRules.find(
                         (x) => x == rule.RulesId
                       )}
-                    />
+                    /> */}
                   </div>
                 </div>
               </div>

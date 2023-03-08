@@ -36,11 +36,11 @@ const Hotels = () => {
     }
     const searchHotel = ()=>{
         setLoading(true)
-        console.log(city);
-        console.log(hotels);
+        // console.log(city);
+        // console.log(hotels);
+        // console.log(loading);
         getData()
         
-        console.log(loading);
     }
     useEffect(()=>{
         setLoading(true)
@@ -50,7 +50,7 @@ const Hotels = () => {
     useEffect(() => {
         setLoading(true)
         getData()
-        console.log(hotels);
+        // console.log(hotels);
     },[page])
     const [type, setType] = useState(3)
     const myRef = useRef(null)
@@ -65,14 +65,14 @@ const Hotels = () => {
             <div style={{background: '#F7F7F7'}}>
                     <PictureBase/>
                     <PageTabls type={type} setType={setType} />
-                    <h2 style={{margin:'2rem 0'}} className="font-bold-iransanse font-size-22 mt-3-mobi font-bold text-center ">
+                    <h2 style={{margin:'2rem 0'}} className="font-bold-iransanse font-size-22 font-bold text-center ">
                         <span>رزرو هتل&nbsp;</span>
                         <span className="color-primary font-bold-iransanse"  ref={myRef}>
                         با چند کلیک
                       </span>
                     </h2>
                     <div className="row justify-content-center">
-                        <div className="col-10 col-md-12">
+                        <div className={`col-10 col-md-12 ${width<=826&&"mt-3"} px-0`}>
                             <HotelsSearchBox searchHotel={searchHotel} setCity={setCity} search={search} setSearch={setSearch}/>
                         </div>
                     </div>

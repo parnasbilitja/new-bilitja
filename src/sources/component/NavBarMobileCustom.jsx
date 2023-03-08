@@ -51,7 +51,7 @@ const NavBarMobile = (props) => {
     localStorage.removeItem("mobile");
     setState({ ...state, logged: false })
   }
-  console.log(props);
+  // console.log(props);
   return (
     <nav className={styles["nav-mobile"]}>
       <div className={styles["nav-logo-container-mobile"]}>

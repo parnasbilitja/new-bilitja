@@ -233,7 +233,7 @@ const Register = (props) =>{
           </span>
         </div>
         {state.error === true ? (
-          console.log(state.errText),
+          // console.log(state.errText),
           <div className="alert alert-danger">{state.errText !==undefined ? state.errText:'شماره وارد شده باید ۱۱ رقم باشد'}</div>
         ) : null}
         <div className="container">

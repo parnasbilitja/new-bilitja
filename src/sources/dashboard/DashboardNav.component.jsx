@@ -6,7 +6,7 @@ import styles from "../../../styles/ManagerNav.module.scss";
 import Link from "next/link";
 
 const DashboardNav = (props) => {
-  console.log(props);
+  // console.log(props);
   const handleLogoutUser = (e) => {
     e.preventDefault();
     localStorage.removeItem("mobile");
@@ -19,7 +19,7 @@ const DashboardNav = (props) => {
   useEffect(() => {
     setSize(window.innerWidth);
   },[])
-  console.log(size);
+  // console.log(size);
 
   useEffect(() => {
     setMobile(localStorage.getItem("mobile"));

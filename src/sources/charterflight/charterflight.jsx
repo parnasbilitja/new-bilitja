@@ -15,7 +15,7 @@ const Charetrflight = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [width]);
-  console.log("width", width);
+  // console.log("width", width);
 
   return (
     <div className={style["charterlist"]}>

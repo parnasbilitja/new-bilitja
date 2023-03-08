@@ -1,5 +1,4 @@
 import React from "react";
-import { CloseOutlined } from "@ant-design/icons";
 
 import FlightSearchBox from "./FlightSearchBox.component";
 import ShowFlightList from "./ShowFlightList.component";
@@ -678,7 +677,7 @@ class GetFlightList extends React.Component {
                   this.managePopUpSearch(false);
                 }}
               >
-                <CloseOutlined style={{ color: "red" }} />
+                <div style={{ color: "red" }} className="font-bold font-size-15" >x</div>
               </span>
             </div>
             <FlightSearchBox showSwitch={true} refreshAction={this.getData} length={this.state.flights} />
@@ -699,7 +698,7 @@ class GetFlightList extends React.Component {
                     this.managePopUpReserve(false);
                   }}
                 >
-                  <CloseOutlined style={{ color: "red" }} />
+                  <div style={{ color: "red" }} className="font-bold font-size-15" >x</div>
                 </span>
               </div>
               <PopupFlightReserve {...this.state.reserveBoxData} />

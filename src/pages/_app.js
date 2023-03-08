@@ -12,7 +12,6 @@ import * as ga from "../../lib/ga";
 import { Provider } from "react-redux";
 import { store } from "../Redux/store";
 
-import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();

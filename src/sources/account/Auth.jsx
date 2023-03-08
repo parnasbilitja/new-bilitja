@@ -1,6 +1,5 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CloseOutlined } from "@ant-design/icons";
 import { faTimes, faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import PrimaryTextInput from "../../sources/component/PrimaryTextInput.component";
 import styles from "../../../styles/PrimaryButton.module.scss";
@@ -86,7 +85,7 @@ const Auth = (props) => {
     return matchIsNumeric(value)
   }
   const login = () => {
-    console.log(state);
+    // console.log(state);
     setState({ ...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/getMobile`, {
       method: "POST",
@@ -219,7 +218,7 @@ const Auth = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         localStorage.setItem("token", data.token);
         if (data.status == "2" || data.status == "1") {
           setState({ ...state, btn_disabled: false, loading: false });
@@ -295,7 +294,7 @@ const Auth = (props) => {
     <div className="popup-content-container">
       <div className="popup-heading d-flex align-items-center justify-content-center">
         <span>ورود / ثبت نام</span>
-        <span
+        <div
           className="exit-form position-absolute"
           onClick={() => {
             props.accountBoxModify({
@@ -303,8 +302,8 @@ const Auth = (props) => {
             });
           }} style={{ left: 10 }}
         >
-          <CloseOutlined style={{ color: "red" }} />
-        </span>
+          <div style={{ color: "red" }} className="font-bold font-size-15" >x</div>
+        </div>
       </div>
       <div className="row btn-container-header-login rounded-pill m-2">
         <button
@@ -329,7 +328,7 @@ const Auth = (props) => {
         </button>
       </div>
       {state.error === true ? (
-        console.log(state.errText),
+        // console.log(state.errText),
         <div className="alert alert-danger">{state.errText !== undefined ? state.errText : 'شماره وارد شده باید ۱۱ رقم باشد'}</div>
       ) : null}
       <div className="container">
@@ -416,7 +415,7 @@ const Auth = (props) => {
         </div>
         {state.get_mobile_status && 
         <div className="justify-content-center row mt-3">
-            <span className="btn btn-outline-info col-5 btn-block" onClick={()=>{console.log('change');setState({...state,get_mobile_status:false})}}>تغییر شماره</span>
+            <span className="btn btn-outline-info col-5 btn-block" onClick={()=>{setState({...state,get_mobile_status:false})}}>تغییر شماره</span>
         </div>
         }
       </div>

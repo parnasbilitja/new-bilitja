@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import ManagerTopActionBox from "../ManagerTopActionBox.component";
 import globals from "../../Global";
-import Switch from "react-switch";
+// import Switch from "react-switch";
 import styles from "./../../../../styles/Vila.module.scss";
 import stylesManage from "./../../../../styles/manager.module.scss";
 import { withRouter } from "next/router";
@@ -191,7 +191,7 @@ class Villa extends React.Component {
                         </div>
                         <div className="col-lg-3 hidden-xs">
                           <div className="text-left mb-3">
-                            <Switch height={20} />
+                            {/* <Switch height={20} /> */}
                             <span className={styles['text']}>
                               فعال
                             </span>

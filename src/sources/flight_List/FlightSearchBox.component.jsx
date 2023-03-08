@@ -222,8 +222,8 @@ const FlightSearchBox = (props) => {
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 18.828 22.828">
             <g id="Left_Right_1" data-name="Left Right 1" transform="translate(0.414 0.414)">
-              <path id="Path_1003" data-name="Path 1003" d="M12,21l5-5m0,0H1m16,0-5-5" fill="none" stroke="#4b4b4b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-              <path id="Path_1004" data-name="Path 1004" d="M6,11,1,6M1,6H17M1,6,6,1" fill="none" stroke="#4b4b4b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+              <path id="Path_1003" data-name="Path 1003" d="M12,21l5-5m0,0H1m16,0-5-5" fill="none" stroke="#4b4b4b" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
+              <path id="Path_1004" data-name="Path 1004" d="M6,11,1,6M1,6H17M1,6,6,1" fill="none" stroke="#4b4b4b" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
             </g>
           </svg>
 

@@ -22,10 +22,10 @@ const Base = (props) => {
         </Head>
           <Home type={'index'} />
           <div className="col-md-10 m-auto">
-          <List  />
-          <HotelsSuggest />
-          <CitiesSuggest />
-            <Posts/>
+            <List  />
+            <HotelsSuggest />
+            <CitiesSuggest />
+              <Posts/>
           </div>
           <TicketDetails/>
           <MessageBox />

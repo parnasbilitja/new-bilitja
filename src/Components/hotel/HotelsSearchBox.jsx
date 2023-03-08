@@ -21,7 +21,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
     };
     const handleChange = (event) => {
         const { name, value } = event.target;
-        console.log(name, value);
+        // console.log(name, value);
         if (name=='slug') {
             setCity(search.id);
             setSearch({...search,hotel:''})
@@ -32,7 +32,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
         }
     };
     const handleFocus = (event) => {
-      console.log(search);
+      // console.log(search);
       const { name,value } = event.target;
       setList({...list, [name]:value});
       setSearch({...search,[name]:''});
@@ -44,7 +44,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
     setWidth(window.innerWidth)
         const getData =async () => {
             let data = await axios.post('https://api.hamnavaz.com/api/v1/city/getCities')
-            .then((response) => {setCities(response.data.data),console.log(response.data)})
+            .then((response) => {setCities(response.data.data)})
             return data 
         }
         getData()
@@ -52,14 +52,14 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
   useEffect(() => {
     setCity(search.id)
     // setSearch({...search,hotel:''})
-    console.log(search);
+    // console.log(search);
   },[search])
     return (
       <div className="row justify-content-center pt-0">
-        <div className="col-md-10">
+        <div className="col-md-10 px-2">
           <div className={'row justify-content-between'}>
             <Scrolltoprefresh />
-              <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%',marginTop: "5px"}}>
+              <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
                 <FontAwesomeIcon icon={faCity} style={{height:'30px'}} className="mx-2 tour-input-icon" />
                 <PrimaryTextInputMobile
                   value={search.slug==" "?'همه':search.slug}
@@ -68,9 +68,9 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
                   onBlur={handleFocusOut}
                   onChange={handleChange}
                   onClick={(e) => {
-                    console.log(e.target.value);
+                    // console.log(e.target.value);
                   }}
-                  placeholder={"شهر خود را انتخاب کنید"}
+                  placeholder={"مقصد خود را انتخاب کنید"}
                 />
                 <InputValues
                     type="cities"
@@ -82,14 +82,14 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
                 />
               
             </div>
-            <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%',marginTop: "5px"}}>
+            <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
                 <FontAwesomeIcon icon={faCalendarAlt} style={{height:'30px'}} className="mx-2 tour-input-icon" />
                 <PrimaryTextInputMobile
                   value={search.hotel}
                   name={'hotel'}
                   onChange={handleChange}
                   onClick={(e) => {
-                    console.log(e.target.value);
+                    // console.log(e.target.value);
                   }}
                   placeholder={"نام هتل را وارد کنید"}
                 />

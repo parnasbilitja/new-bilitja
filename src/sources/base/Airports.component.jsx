@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { selectCredentials } from "../../Redux/Search/search.reselect";
 import { addCredentials } from "../../Redux/Search/search.action";
 const Airports = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div
       style={{
@@ -19,7 +19,8 @@ const Airports = (props) => {
         cursor: "pointer",
       }}
       className="suggestion-box"
-    >{console.log(props.airports)}
+    >
+      {/* {console.log(props.airports)} */}
       {
         //fill airport
         props.airports

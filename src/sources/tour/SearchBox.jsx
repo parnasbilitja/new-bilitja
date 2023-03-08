@@ -65,7 +65,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
               onClick={(e) => {
                 console.log(e.target.value);
               }}
-              placeholder={"شهر خود را انتخاب کنید"}
+              placeholder={"مقصد خود را انتخاب کنید"}
             />
             <InputValues
                 type="cities"

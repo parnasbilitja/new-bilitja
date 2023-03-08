@@ -4,7 +4,7 @@ import styles from "../../../styles/Home.module.scss";
 
 const FlightsUrl = ({flightsData, flightsDataHotel}) => {
   let date = moment().format('jYYYY/jM/jD')
-  console.log(date);
+  // console.log(date);
     return (
       <div className="row justify-content-center">
         <div className="col-md-10" >

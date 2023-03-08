@@ -2,8 +2,6 @@ import React from "react";
 
 import Router from 'next/router'
 
-import { CloseOutlined } from "@ant-design/icons";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
@@ -76,7 +74,7 @@ const ForgetPassword = (props) => {
   };
 
   const verifyToken = () => {
-    console.log(localStorage.getItem("f-token"));
+    // console.log(localStorage.getItem("f-token"));
     setState({ ...state, btn_text: "در حال پردازش..." });
     fetch(`${globals.baseUrlNew}auth/ForgotPassword`, {
       method: "POST",
@@ -191,7 +189,7 @@ const ForgetPassword = (props) => {
             });
           }} style={{ left: 10 }}
         >
-          <CloseOutlined style={{ color: "red" }} />
+          <div style={{ color: "red" }} className="font-bold font-size-15" >x</div>
         </span>
       </div>
       {state.showSetPassword == false ? (
@@ -208,7 +206,7 @@ const ForgetPassword = (props) => {
                   placeholder="نام‌کاربری(تلفن همراه)"
                   value={state.mobile}
                   onChange={(e) => {
-                    console.log(state);
+                    // console.log(state);
                     setState({
                       ...state,
                       mobile: e.target.value,
@@ -232,7 +230,7 @@ const ForgetPassword = (props) => {
                     placeholder="کد احراز هویت"
                     value={state.token}
                     onChange={(e) => {
-                      console.log(state);
+                      // console.log(state);
                       setState({
                         ...state,
                         token: e.target.value,
