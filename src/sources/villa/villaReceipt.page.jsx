@@ -279,7 +279,7 @@ class villaReceipt extends React.Component {
                       <PrimaryButton
                         style={{ fontSize: 14 }}
                         value={"پرداخت از کیف پول"}
-                      />
+                      >{"پرداخت از کیف پول"}</PrimaryButton>
                     </div>
                   </div>
                   <div className="padding-horizental-10px">

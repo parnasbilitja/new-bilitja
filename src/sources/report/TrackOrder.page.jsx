@@ -47,7 +47,7 @@ const TrackOrder = () =>{
                             </div>
                             <div className="col-lg-5 col-md-5 col-sm-5 col-5">
                                 <div className="form-input-border height-short-input without-focus">
-                                    <PrimaryButton defaultValue={"جستجو"} onClick={() => {checkTheRefrence()}} />
+                                    <PrimaryButton defaultValue={"جستجو"} onClick={() => {checkTheRefrence()}} >{"جستجو"}</PrimaryButton>
                                 </div>
                             </div>
                         </div>

@@ -188,7 +188,7 @@ class VilaDetial extends React.Component {
                                                     selectedDaysArray:[]
                                                 })
                                             })
-                                    }} />
+                                    }} >{"ثبت قیمت"}</PrimaryButton>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-6 col-8 padding-3px">
                                     <a className="btn-outlined-cancle" onClick={() => {

@@ -129,7 +129,7 @@ const UpdateCity = (props) => {
 
                                 })
                         }
-                    }} />
+                    }} >{"ثبت"}</PrimaryButton>
                 </div>
             </div>
         </div>

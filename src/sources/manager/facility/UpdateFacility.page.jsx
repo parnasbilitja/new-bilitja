@@ -90,7 +90,7 @@ const UpdateFacility = (props) => {
 
                                 })
                         }
-                    }} />
+                    }} >{"ثبت"}</PrimaryButton>
                 </div>
             </div>
         </div>

@@ -38,7 +38,7 @@ const BecomeMizban = () => {
                   >
                     <PrimaryTextInput />
                   </div>
-                  <PrimaryButton value="ادامه" />
+                  <PrimaryButton >{"ادامه"}</PrimaryButton>
                 </div>
               </div>
             </div>

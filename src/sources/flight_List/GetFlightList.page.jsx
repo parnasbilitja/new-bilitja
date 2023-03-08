@@ -547,9 +547,11 @@ class GetFlightList extends React.Component {
                       <div className="col-lg-6 col-6">
                         <a
                           className="btn-outlined col-12 btn-block prev-next-btn"
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.preventDefault();
+                            let today = moment().format("jYYYY/jMM/jDD").split('/')[2]
                             const date_ = this.props.searchobject.flightDatePrev;
-                            if (date_ != null) {
+                            if (date_ != null && parseInt(today)<=parseInt(date_.split('-')[2])) {
                               this.changeDate(date_);
                             }
                           }}
@@ -560,7 +562,7 @@ class GetFlightList extends React.Component {
                           />
                           <span>قبل</span>
                         </a>
-                      </div>{console.log(this.props)}
+                      </div>
                       <div className="col-lg-6 col-6">
                         <a
                           className="btn-outlined col-12 btn-block  prev-next-btn"

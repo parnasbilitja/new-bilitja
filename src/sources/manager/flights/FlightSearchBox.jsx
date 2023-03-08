@@ -320,7 +320,9 @@ const FlightSearchBox = (props) =>{
                   });
               }
             }}
-          />
+          >{
+            props.searchReset == false  ? "جستجو" : "لطفا صبر کنید..."
+          }</PrimaryButton>
         </div>
 
         <PopUpWide

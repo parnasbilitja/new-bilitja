@@ -22,11 +22,11 @@ const FlightPassengerForm = (props) => {
     });
     useEffect(() => {
 
-        props.pathKind == 2 && setCalend(false)
+        props.pathKind == 2 ? setCalend(false):setCalend(true)
 
     }, [])
     useEffect(() => {
-        props.pathKind == 2 && setCalend(false)
+        props.pathKind == 2 ? setCalend(false):setCalend(true)
     }, [props.pathKind])
 
     const [err, setErr] = useState({

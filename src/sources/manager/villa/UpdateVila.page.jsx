@@ -1379,7 +1379,7 @@ class UpdateVila extends React.Component {
                       }
                     });
                 }}
-              />
+              >{"ثبت"}</PrimaryButton>
             </div>
             <div className="col-lg-2 padding-3px">
               <a href="#" className="btn-outlined-cancle w-100">

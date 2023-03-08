@@ -154,7 +154,7 @@ const AddCity = (props) => {
                       });
                   }
                 }}
-              />
+              >{"ثبت"}</PrimaryButton>
             </div>
           </div>
         </div>

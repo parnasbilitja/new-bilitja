@@ -20,7 +20,7 @@ const PopUpWide = (props) => {
         
       >
         <div
-        style={{top:props.type =='editReciept' && width < 400 && '-80px',height:'100%'}}
+        style={{top:props.type =='editReciept' && width < 400 && '-80px',height: !props.type =='editReciept' && '100%'}}
         >{props.children}</div>
       </div>
     </div>

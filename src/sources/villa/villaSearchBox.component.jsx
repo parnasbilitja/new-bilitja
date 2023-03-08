@@ -281,7 +281,7 @@ class villaSearchBox extends React.Component {
 
               // })
             }}
-          />
+          >{"جستجو"}</PrimaryButton>
         </div>
         <PopUpWide
           opened={this.state.openGo}

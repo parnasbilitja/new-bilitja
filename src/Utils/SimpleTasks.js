@@ -10,7 +10,7 @@ export function isValidIranianNationalCode(input) {
   return (sum < 2 && check == sum) || (sum >= 2 && check + sum == 11);
 }
 export function isValidPassportCode(input) {
-  if (!/^[A-Z][0-9]{8}$/.test(input)) {
+  if (!/^[A-Za-z][0-9]{8}$/.test(input)) {
     return true;
   } else {
     return false;

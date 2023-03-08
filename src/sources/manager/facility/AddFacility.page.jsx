@@ -118,7 +118,7 @@ const AddFacility = (props) => {
                   });
               }
             }}
-          />
+          >{"ثبت"}</PrimaryButton>
         </div>
       </div>
     </div>

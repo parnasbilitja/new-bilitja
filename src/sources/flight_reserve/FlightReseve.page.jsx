@@ -27,6 +27,7 @@ import OtherData from "./OtherData";
 import Submit from "./Submit";
 
 const FlightReserve = (props) => {
+    console.log(props);
     const [err, setErr] = useState({
         rule: false,
         ruleErr: 'لطفا قوانین را بپذیرید',

@@ -279,9 +279,7 @@ const FlightReciept = (props) => {
   };
   const [open, setOpen] = useState(false);
   const managePopUpEditForm = () => {
-    setOpen({
-      open: !open,
-    });
+    setOpen(!open);
   };
   return (
     <div className={`container ${width>=826?"mt-90":'mt-110'}`}>
@@ -510,14 +508,14 @@ const FlightReciept = (props) => {
         opened={open}
         closePopUp={managePopUpEditForm}
       >
-        <div className={stylesflight["flight-search-box-calendar-container"]} style={{ border: " 1px solid", borderRadius: '5px' }}>
+        {/* <div onClick={()=>setOpen(false)} className={stylesflight["flight-search-box-calendar-container"]} style={{ border: " 1px solid", borderRadius: '5px' }}> */}
           <FlightPassengerEditForm
             {...state.current}
             pathKind={state.pathKind}
             setOpen={setOpen}
             changeProperty={updatePassengerData}
           />
-        </div>
+        {/* </div> */}
       </PopUpWide>
     </div>
   );

@@ -33,17 +33,22 @@
   box-shadow: 2px 0px rgba(0, 0, 0, 0), 0 0 8px rgba(152, 152, 152, 0.12);
 }
 .popup-calendar-main-box {
+  overflow-y: scroll;
+  height: 95%;
   .calendatr {
     z-index: 9999999999;
   }
   position: fixed;
+  // background-color: white;
   // width: fit-content;
   // height: 100%;
+  // top: 10px;
   right: 0;
   left: 0;
   z-index: 10000;
   & > div {
     position: relative;
+    height: auto;
     width: fit-content;
     margin: -10px auto !important;
     background-color: white;

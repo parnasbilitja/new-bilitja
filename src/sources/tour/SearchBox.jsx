@@ -108,7 +108,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
             style={{ height: "55px", marginTop: "7px",fontSize:'14px',fontWeight:'600',textAlign:'center',borderRadius: "10px"}}
             value={ "جستجو" }
             onClick={() =>{toursHandler(search),executeScroll()}}
-          />
+          >{ "جستجو" }</PrimaryButton>
         </div>
         
       </div>

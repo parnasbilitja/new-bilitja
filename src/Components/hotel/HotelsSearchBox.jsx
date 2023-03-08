@@ -100,7 +100,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
                 style={{ height: "55px", marginTop: "7px",fontSize:'14px',fontWeight:'600',textAlign:'center',borderRadius: "10px"}}
                 value={ "جستجو" }
                 onClick={() =>{searchHotel()}}
-              />
+              >{ "جستجو" }</PrimaryButton>
             </div>
             
           </div>

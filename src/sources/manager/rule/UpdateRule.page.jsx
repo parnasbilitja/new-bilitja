@@ -73,7 +73,7 @@ const UpdateRule = (props) => {
 
                                 })
                         }
-                    }} />
+                    }} >{"ثبت"}</PrimaryButton>
                 </div>
             </div>
         </div>

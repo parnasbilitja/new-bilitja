@@ -293,7 +293,9 @@ const PopupFlightReserve = (props) => {
                 });
               }
             }}
-          />
+          >{
+            state.loading == false ? "مرحله بعد" : "درحال پردازش .."
+          }</PrimaryButton>
         </div>
       </div>
     </div>

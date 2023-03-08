@@ -68,7 +68,7 @@ const AddRule = (props) => {
 
                                 })
                         }
-                    }} />
+                    }} >{"ثبت"}</PrimaryButton>
                 </div>
             </div>
         </div>

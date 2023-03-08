@@ -5,7 +5,6 @@ const PrimaryTextInputMobile = (props) => {
   const [width, setWidth] = useState(0);
   useEffect(() => {
     setWidth(window.innerWidth);
-    console.log(width)
     
   }, []);
     return props.readonlyattr ? (

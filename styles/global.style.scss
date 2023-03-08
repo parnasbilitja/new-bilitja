@@ -1155,6 +1155,13 @@ button {
   padding-right: 1rem;
   // border: 2px solid #E0E0E0;
   box-shadow: 0 0 4px #b9b0b0;
+  
+}
+.tour-item:hover {
+  background-color:#ededed;
+  .ino-tour-btn{
+    background-color: #0f3d3b;
+  }
 }
 
 .tourImages {
