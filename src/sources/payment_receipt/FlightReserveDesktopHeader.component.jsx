@@ -78,12 +78,11 @@ const FlightReserveDesktopHeader = (props) =>{
                   style={{ objectFit: 'scale-down' }}
                 /> */}
                 <img
-                    width="85px"
+                    width="135px"
                     height="65px"
                     alt="بلیطجا - لوگو رزرو بلیط هواپیما"
                     className="pe-3"
-                    src="../../../../../Images/airplane_reserve.png"
-                    style={{ transform: 'rotateY(180deg)' }}
+                    src="../../../../../Images/flight.png"
                   />
                 <p className="pt-3">
                   <strong className="font-size-14">ایرلاین:</strong>

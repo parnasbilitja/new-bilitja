@@ -26,7 +26,7 @@ import OtherData from "./OtherData";
 import Submit from "./Submit";
 
 const FlightReserve = (props) => {
-    
+    console.log(props);
     const [err, setErr] = useState({
         rule: false,
         ruleErr: 'لطفا قوانین را بپذیرید',
@@ -64,7 +64,7 @@ const FlightReserve = (props) => {
         agreeWithTermerr: false,
         email: ''
     });
-    const router = useRouter();
+    // const router = useRouter();
     let route=''
     useEffect(()=>{
         if (parseInt(localStorage.getItem('priceChecker'))%10 && parseInt(state.price)!=0 && parseInt(state.price)!=0) {
@@ -80,7 +80,7 @@ const FlightReserve = (props) => {
     },[state.price])
     useEffect(() => {
         setWidth(window.innerWidth)
-        route = router.asPath.split('info')[0]
+        route = props.router.asPath.split('info')[0]
         console.log('router',route);
         if (localStorage.getItem('reqNo') !== null) {
             props.messageBoxModify({
@@ -192,10 +192,10 @@ const FlightReserve = (props) => {
                 tempPassenger.pasnoErr = "شماره پاسپورت الزامی میباشد";
                 isValid = false;
             }
-            if (isValidPassportCode(tempPassenger.pasno) && (onePassenger.nationality == "other" || state.pathKind == 2)) {
-                tempPassenger.pasnoErr = "شماره پاسپورت صحیح نمیباشد";
-                isValid = false;
-            }
+            // if (isValidPassportCode(tempPassenger.pasno) && (onePassenger.nationality == "other" || state.pathKind == 2)) {
+            //     tempPassenger.pasnoErr = "شماره پاسپورت صحیح نمیباشد";
+            //     isValid = false;
+            // }
             if ((onePassenger.nationality == "other" || state.pathKind == 2) && tempPassenger.futureday == "" ) {
                 tempPassenger.pasenddatErr = "انقضای پاسپورت الزامی میباشد";
                 isValid = false;
@@ -230,7 +230,7 @@ const FlightReserve = (props) => {
             }else{
                 // passenger.code = ''
                 passenger.codeErr = "";
-                passenger.pasnoErr = "شماره پاسپورت صحیح نمیباشد";
+                // passenger.pasnoErr = "شماره پاسپورت صحیح نمیباشد";
             }
         }
         // name
@@ -259,8 +259,8 @@ const FlightReserve = (props) => {
         }
         // pasno
         if (field == 'pasno') {
-            if (isValidPassportCode(passenger.pasno)) {
-                passenger.pasnoErr = "شماره پاسپورت صحیح نمیباشد";
+            if (passenger.pasno == '') {
+                passenger.pasnoErr = "شماره پاسپورت الزامی میباشد";
             }else {
                 passenger.pasnoErr = "";
             }
@@ -693,7 +693,7 @@ const FlightReserve = (props) => {
                         />
 
                         <Submit 
-                            route={route}
+                            route={props.router.asPath.split('info')[0]}
                             {...props}
                             state={state}
                             setState={setState}
@@ -766,6 +766,11 @@ const mapDispatchToProps = (dispatch) => ({
     messageBoxModify: (value) => dispatch(messageBoxModify(value)),
 });
 
+FlightReserve.getInitialProps = ({ query }) => {
+    return {
+      Pathname: query
+    }
+  }
 export default withRouter(
     connect(mapStateToProps, mapDispatchToProps)(FlightReserve)
 );

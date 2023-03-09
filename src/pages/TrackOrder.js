@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import PrimaryTextInput from '../../sources/component/PrimaryTextInput.component'
-import PrimaryButton from '../../sources/component/PrimaryButton.component'
-import globals from '../Global'
-import Table from '../component/Table'
+import PrimaryTextInput from '../sources/component/PrimaryTextInput.component'
+import PrimaryButton from '../sources/component/PrimaryButton.component'
+import globals from '../sources/Global'
+import Table from '../sources/component/Table'
+import NavHandler from '../Components/share/NavHandler'
+import Footer from '../sources/component/Footer.component'
 
 const TrackOrder = () =>{
         const [state,setState] = useState({
@@ -28,14 +30,15 @@ const TrackOrder = () =>{
     }
     return (
         <div className="mt-130">
+            <NavHandler/>
             <div className="">
                     <div className="col-12 mt-4 container">
                         <div className="title-order d-flex align-items-center">
                             <FontAwesomeIcon className="color-textpill icon-size" icon={faCalendarCheck} />
                             <h2 className={'title-track-order'}>پیگیری خرید</h2>
                         </div>
-                        <div className="row border-bottom-black-track">
-                            <div className="col-lg-10 col-md-10 col-sm-10 col-10 text-right font-size-14">
+                        <div className="row border-bottom-black-track d-flex align-items-center">
+                            <div className="col-lg-12 col-md-12 col-sm-10 col-10 text-right font-size-14">
                                 <p className="track-order-second-title">جهت پیگیری رزرو، کد 6 رقمی رفرنس را وارد نمایید و بروی دکمه جستجو  کلیک کنید</p>
                             </div>
                             <div className="w-100 row">
@@ -51,17 +54,19 @@ const TrackOrder = () =>{
                             </div>
                         </div>
                     </div>
+                    <div className="container px-0">
                         <div className="col-12">
                             {state.referenceEbank ?
-                            <div className=" justify-content-center row">
+                            <div className="justify-content-center">
                                 <Table state={state} />
                             </div>
                             :<div className="col-12 img me-auto">
                                 <img className="img-fluid-1" src="/Images/Exploring-pana.svg" height="350" width="100%" alt="" />
                             </div>}
                         </div>
+                        </div>
                 </div>
-            
+            <Footer/>
         </div>
     )   
 }

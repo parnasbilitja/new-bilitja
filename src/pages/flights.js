@@ -1,7 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import NavBar from "./../sources/component/NavBar.component";
-import NavBarMobile from "./../sources/component/NavBarMobile.component";
 import Footer from "./../sources/component/Footer.component";
 import MessageBox from "./../sources/component/MessageBox.component";
 import PopUp from "./../sources/component/PopUp.component";

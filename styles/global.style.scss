@@ -1262,14 +1262,38 @@ button {
 .p-detail {
   .p-thead,
   .d-detail {
-    .c-thead,
-    .c-detail {
-      flex: 0 0 11%;
-      max-width: 11%;
+    .c-thead{
+      flex: 0 0 15%;
+      max-width: 12%;
 
       &:first-child {
-        flex: 0 0 25%;
-        max-width: 25%;
+        flex: 0 0 20%;
+        max-width: 20%;
+      }
+    // }
+    // .p-data{
+    // .c-detail {
+    //   flex: 0 0 15%;
+    //   max-width: 15%;
+
+    //   &:first-child {
+    //     flex: 0 0 20%;
+    //     max-width: 25%;
+    //   }
+
+    //   }
+    }
+
+    .c-detail{
+      flex: 0 0 20%;
+      max-width: 20%;
+    }
+
+    .p-data{
+      width: 73% !important;
+      .c-detail{
+        flex: 0 0 16.88888%;
+        max-width: 16.88888%;
       }
     }
 
@@ -1283,12 +1307,23 @@ button {
 
 .p-detail {
   .d-detail {
-    height: 130px;
+    height: 140px;
     box-shadow: 0 0 4px #e0e0e0;
     border-radius: 10px;
-
-    .c-detail {
-      margin-left: 10px;
+    .c-detail:first-child{
+      // .info-detail{
+        border-left: none !important;
+      // }
+    }
+    .p-data{
+      .c-detail {
+        margin-right: 5px;
+        border-left: 1px solid #e0e0e0 !important;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }
@@ -1458,7 +1493,7 @@ $sizes: 100;
 }
 
 @include grid-classes;
-@media only screen and (max-width: 768px) {
+@media (max-width: 826px) {
   .mt-3-mobi {
     margin-top: 15px !important;
   }
@@ -1770,7 +1805,7 @@ $sizes: 100;
   }
   .d-detail {
     height: auto !important;
-    justify-content: space-around;
+    // justify-content: space-around;
 
     .c-detail {
       flex: 0 0 46% !important;
@@ -3813,4 +3848,8 @@ p img {
       }
     }
   }
+}
+.fontEn{
+  font-family: sans-serif!important;
+  font-weight: bold;
 }

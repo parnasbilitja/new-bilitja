@@ -1,9 +1,16 @@
 import React from 'react';
 import { moneyFormat } from "../../Utils/SimpleTasks";
 import {tableData} from "../../Utils/data"
+import { useState } from 'react';
+import { useEffect } from 'react';
 const Table = ({state}) => {
+    console.log(state);
+    const [width, setWidth] = useState(0)
+    useEffect(() => {
+        setWidth(window.innerWidth)
+    },[])
     return (
-        <div className="controller-table mt-3 scroller">
+        <div className={`controller-table mt-3 ${width<=826 && 'scroller'}`}>
             <div className="thead">
                 {tableData.map((item)=>(
                     <div className={`head flex-${item.flex} m-flex-${item.mFlex}`}>
@@ -11,13 +18,13 @@ const Table = ({state}) => {
                     </div>
                 ))}
             </div>
-            <div className="d-detail py-5">
+            <div className="d-detail py-4">
                 {tableData.map((item)=>(
                     <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
                         {item.value != 'amount'?
-                        <span className="font-size-14">{state?.referenceEbank[item.value]}</span>
+                        <span className={`font-size-14 ${item.value == 'reqPnr'&& 'fontEn'}`}>{state?.referenceEbank[item.value]}</span>
                         :
-                        <span className="font-size-14">{moneyFormat(state?.referenceEbank[item.value])}</span>
+                        <span className="font-size-14">{moneyFormat(state?.referenceEbank[item.value])} تومان</span>
                         }
                     </div>
                     ))}

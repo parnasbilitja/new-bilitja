@@ -17,15 +17,17 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
         }, 100);
     },[])
     return (
-        <div className={width<=826 ? 'w-100' : 'w-70'}>
+        <div className={width<=826 ? 'w-100' : 'p-data w-70'}>
             {width<=826 &&
-                    <div className="d-flex justify-content-center my-2 font-bold-iransanse" style={{color:'#279692',alignItems:"center"}} onClick={()=>setSeeMore(!seeMore)}><span className='font-bold-iransanse'>{' '}مشاهده جزئیات بیشتر{' '}</span><FontAwesomeIcon className="font-bold-iransanse" icon={faAngleDown} /></div>
-                }
-                <div className={`${seeMore?'position-relative d-flex flex-wrap align-items-center bg-white py-2 px-2 mb-2':'d-none' }`}>
+            <>
+                    <div className="d-flex justify-content-center my-2 font-bold-iransanse" style={{color:'#279692',alignItems:"center"}} 
+                    onClick={()=>setSeeMore(!seeMore)}><span className='font-bold-iransanse'>{'   '}مشاهده جزئیات بیشتر{'   '}</span>
+                    <FontAwesomeIcon className="font-bold-iransanse mx-2" icon={faAngleDown} /></div>
+                <div className={`${seeMore?'position-relative d-flex flex-wrap align-items-stretch bg-white py-2 px-2 mb-2 justify-content-between':'d-none' }`}>
                 <div className="c-detail">
-                    <div className="info-price position-relative d-flex align-items-start mx-2">
+                    <div className="info-price position-relative d-flex align-items-start">
                         <div className="text d-flex flex-column align-items-center w-100 py-3">
-                            <span className="text-show-m mb-2 color-base-color font-bold">دو تخته (هر نفر)</span>
+                            <span className="text-show-m color-base-color font-bold">دو تخته (هر نفر)</span>
                             {data.defineTour && <span className="font-size-13 font-bold color-gray">{moneyFormatrial(pack.prices.twinRate)} تومان</span>}
                             {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.twin)} {pack.rate.name}</span>}
                             {/* <span className="font-font-size-16 font-bold">تومان</span> */}
@@ -34,18 +36,18 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                 </div>
                 {data && data.type && <>
                     <div className="c-detail">
-                        <div className="info-price position-relative d-flex align-items-start mx-2">
+                        <div className="info-price position-relative d-flex align-items-start">
                             <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                <span className="text-show-m mb-2 color-base-color font-bold">سه تخته (هر نفر)</span>
+                                <span className="text-show-m color-base-color font-bold">سه تخته (هر نفر)</span>
                                 {data.defineTour && <span className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.tripleRate)} تومان</span>}
                                 {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.triple)} {pack.rate.name}</span>}
                             </div>
                         </div>
                     </div>
                     <div className="c-detail">
-                        <div className="info-price position-relative d-flex align-items-start mx-2">
+                        <div className="info-price position-relative d-flex align-items-start">
                             <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                <span className="text-show-m mb-2 color-base-color font-bold">چهار تخته (هر نفر)</span>
+                                <span className="text-show-m color-base-color font-bold">چهار تخته (هر نفر)</span>
                                 {data.defineTour && <span className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.quadRate)} تومان</span>}
                                 {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.quad)} {pack.rate.name}</span>}
                             </div>
@@ -55,10 +57,10 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                 }
                 {data && !data.type &&
                     <div className="c-detail">
-                        <div className="info-price position-relative d-flex align-items-start mx-2">
+                        <div className="info-price position-relative d-flex align-items-start">
                             <div
                                 className="text d-flex flex-column align-items-center w-100 py-3">
-                                <span className="text-show-m mb-2 color-base-color font-bold"> سینگل</span>
+                                <span className="text-show-m color-base-color font-bold"> سینگل</span>
                                 {data.defineTour && <span className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.singleRate)} تومان</span>}
                                 {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.single)} {pack.rate.name}</span>}
                             </div>
@@ -67,9 +69,9 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                 }
                 {data && !data.type &&
                     <div className="c-detail">
-                        <div className="info-price position-relative d-flex align-items-start mx-2">
+                        <div className="info-price position-relative d-flex align-items-start">
                             <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                <span className="text-show-m mb-2 color-base-color font-bold">کودک با تخت</span>
+                                <span className="text-show-m color-base-color font-bold">کودک با تخت</span>
                                 {data.defineTour && <span className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.cwbRate)} تومان</span>}
                                 {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.cwb)} {pack.rate.name}</span>}
                             </div>
@@ -77,15 +79,15 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                     </div>
                 }
                 <div className="c-detail">
-                    <div className="info-price position-relative d-flex align-items-start mx-2">
+                    <div className="info-price position-relative d-flex align-items-start">
                         <div className="text d-flex flex-column align-items-center w-100 py-3">
-                            <span className="text-show-m mb-2 color-base-color font-bold">کودک بدون تخت</span>{console.log(pack.prices.cnb)}
+                            <span className="text-show-m color-base-color font-bold">کودک بدون تخت</span>
                             <span className="font-size-14 font-bold color-gray">{undefined == undefined?'--': pack.prices.cnb?.includes(',') == true ?`${pack.prices.cnb} تومان`: `${moneyFormatrial(`${pack.prices.cnb}0`)}تومان` } </span>
                         </div>
                     </div>
                 </div>
                 <div className="c-detail child-number d-flex flex-column text-center ml-3 py-3">
-                    <span className="text-show-m mb-2 color-base-color font-bold">سن کودک</span>
+                    <span className="text-show-m color-base-color font-bold">سن کودک</span>
                     <span className="font-size-16 font-bold color-gray">{pack.prices.age}</span>
                 </div>
                 <div className="c-btn request-data">
@@ -94,36 +96,55 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                     </button>
                 </div>
                 </div>
+            </>
+                }
 
             {width >= 826 &&
-            <div style={{display:'flex',alignItems:'center',position:'relative', justifyContent:'space-between'}} className={'position-relative d-flex align-items-center bg-white py-2 px-2 mb-2'}>
-                <div style={{maxWidth:'11%'}} className="c-detail">
-                    <div className="info-price position-relative d-flex align-items-start mx-2">
-                        <div className="text d-flex flex-column align-items-center w-100 py-3">
-                            {data.defineTour && <span
-                                className="font-size-13 font-bold color-gray">{moneyFormatrial(pack.prices.twinRate)} تومان</span>}
+            <div style={{display:'flex',alignItems:'center',position:'relative', justifyContent:'space-between'}} className={'position-relative d-flex align-items-center bg-white py-2 px-2'}>
+                <div className="c-detail">
+                    <div className="info-price position-relative d-flex align-items-start ">
+                        <div className="text d-flex align-items-center w-100 py-3">
+                            {data.defineTour && 
+                            <>
+                                <span
+                                    className="font-size-13 font-bold color-gray">{moneyFormatrial(pack.prices.twinRate)} 
+                                </span>
+                                <span className="px-2 font-size-13 text-danger"> تومان </span>
+                            </>
+                                }
                             {!data.defineTour && <span
                                 className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.twin)} {pack.rate.name}</span>}
-                            {/* <span className="font-font-size-16 font-bold">تومان</span> */}
                         </div>
                     </div>
                 </div>
                 {data && data.type && <>
                     <div className="c-detail">
-                        <div className="info-price position-relative d-flex align-items-start mx-2">
-                            <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                {data.defineTour && <span
-                                    className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.tripleRate)} تومان</span>}
+                        <div className="info-price position-relative d-flex align-items-start ">
+                            <div className="text d-flex align-items-center w-100 py-3">
+                                {data.defineTour && 
+                                <>
+                                <span
+                                    className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.tripleRate)}
+                                     </span>
+                                     <span className="px-2 font-size-13 text-danger"> تومان </span>
+                                </>
+                                     }
                                 {!data.defineTour && <span
                                     className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.triple)} {pack.rate.name}</span>}
                             </div>
                         </div>
                     </div>
                     <div className="c-detail">
-                        <div className="info-price position-relative d-flex align-items-start mx-2">
-                            <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                {data.defineTour && <span
-                                    className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.quadRate)} تومان</span>}
+                        <div className="info-price position-relative d-flex align-items-start ">
+                            <div className="text d-flex align-items-center w-100 py-3">
+                                {data.defineTour &&
+                                    <>
+                                <span
+                                    className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.quadRate)}
+                                    </span>
+                                    <span className="px-2 font-size-13 text-danger"> تومان </span>
+                                    </>
+                                    }
                                 {!data.defineTour && <span
                                     className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.quad)} {pack.rate.name}</span>}
                             </div>
@@ -133,11 +154,16 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                 }
                 {data && !data.type &&
                 <div className="c-detail">
-                    <div className="info-price position-relative d-flex align-items-start mx-2">
+                    <div className="info-price position-relative d-flex align-items-start ">
                         <div
-                            className="text d-flex flex-column align-items-center w-100 py-3">
-                            {data.defineTour && <span
-                                className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.singleRate)} تومان</span>}
+                            className="text d-flex align-items-center w-100 py-3">
+                            {data.defineTour && 
+                            <>
+                            <span
+                                className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.singleRate)}</span>
+                                <span className="px-2 font-size-13 text-danger"> تومان </span>
+                                </>
+                                }
                             {!data.defineTour && <span
                                 className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.single)} {pack.rate.name}</span>}
                         </div>
@@ -146,10 +172,15 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                 }
                 {data && !data.type &&
                 <div className="c-detail">
-                    <div className="info-price position-relative d-flex align-items-start mx-2">
-                        <div className="text d-flex flex-column align-items-center w-100 py-3">
-                            {data.defineTour && <span
-                                className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.cwbRate)} تومان</span>}
+                    <div className="info-price position-relative d-flex align-items-start ">
+                        <div className="text d-flex align-items-center w-100 py-3">
+                            {data.defineTour && 
+                            <>
+                            <span
+                                className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.cwbRate)}</span>
+                                <span className="px-2 font-size-13 text-danger"> تومان </span>
+                            </>
+                                }
                             {!data.defineTour && <span
                                 className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.cwb)} {pack.rate.name}</span>}
                         </div>
@@ -157,18 +188,19 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                 </div>
                 }
                 <div className="c-detail">
-                    <div className="info-price position-relative d-flex align-items-start mx-2">
-                        <div className="text d-flex flex-column align-items-center w-100 py-3">
+                    <div className="info-price position-relative d-flex align-items-start ">
+                        <div className="text d-flex align-items-center w-100 py-3">
                             <span
-                                className="font-size-14 font-bold color-gray">{undefined == undefined ? '--' : pack.prices.cnb?.includes(',') == true ? `${pack.prices.cnb} تومان` : `${moneyFormatrial(`${pack.prices.cnb}0`)}تومان`} </span>
+                                className="font-size-14 font-bold color-gray">{pack.prices.cnb == undefined ? '--' : pack.prices.cnb?.includes(',') == true ? `${pack.prices.cnb} ` : `${moneyFormatrial(`${pack.prices.cnb}0`)}`} </span>
+                                {!pack.prices.cnb == undefined && <span className="px-2 font-size-13 text-danger"> تومان </span>}
                         </div>
                     </div>
                 </div>
-                <div className="c-detail child-number d-flex flex-column text-center ml-3 py-3">
+                <div className="c-detail child-number d-flex text-center ml-3 py-3">
                     <span className="font-size-16 font-bold color-gray">{pack.prices.age}</span>
                 </div>
-                <div className="c-btn request-data">
-                    <button className="ancher text-white font-size-13 py-2 px-4 rounded-3 mt-2"
+                <div className="c-btn request-data position-relative " style={{right:'50px'}}>
+                    <button className="ancher text-white font-size-13 py-2 px-3 rounded-3 mt-2 me-2"
                             style={{backgroundColor: '#279692'}} onClick={() => {
                         setShow(true);
                         setPackData({tourId: pack.id});

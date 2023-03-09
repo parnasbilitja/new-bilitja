@@ -190,7 +190,7 @@ const NavBar = (props) => {
               </a>
             </li>
                   <li>
-                    <Link href="/flights/order" >
+                    <Link href="/TrackOrder" >
                       <a>
                         <i
                           className={`bilitja icon-refrence ${styles["nav-icon"]} `}

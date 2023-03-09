@@ -54,7 +54,7 @@ const ToursBase = () => {
           <div style={{background: '#F7F7F7'}}>
             <PictureBase/>
             <PageTabls type={type} setType={setType} />
-            <h2 style={{margin:'2rem 0'}} className="font-bold-iransanse font-size-22 font-bold text-center ">
+            <h2 style={{margin:'2rem 0 0 0'}} className="font-bold-iransanse font-size-22 font-bold text-center ">
                     <span>رزرو تور &nbsp;</span>
                     <span className="color-primary font-bold-iransanse">
                 با چند کلیک

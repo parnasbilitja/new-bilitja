@@ -39,11 +39,14 @@ const PaymentReceiptPage = (props) => {
                   alt="بلیطجا - لوگو پرداخت موفقیت آمیز"
                   src="/Images/check.webp"
                   />
+                  <br/>
+                  <span className="font-bold" style={{color: "#279692"}}>{props.referenceEbank.stat}</span>
               </div>
               <div className="col-12 col-sm-9 col-md-6 col-lg-4 text-center">
                 <h6 className="font-bold-iransanse mt-3">
-                  <span className="font-bold" style={{color: "#279692"}}>{props.referenceEbank.stat}</span> - {props.referenceEbank.bankName} - کد
-                  پیگیری: {props.referenceEbank.reqPnr}
+                  <img src={'../../../Images/sep.png'} alt="sep" width={'50px'} height={'30px'} />{'    '}
+                  {props.referenceEbank.bankName} - کد
+                  پیگیری: <span className="fontEn">{props.referenceEbank.reqPnr}</span>
                 </h6>
                 <div className="row justify-content-center mt-3">
                   <div className="text-center col-6" style={{flexWrap:'wrap',alignContent: 'center'}}>
@@ -123,7 +126,7 @@ const PaymentReceiptPage = (props) => {
                         ? "ایرانی"
                         : "خارجی"}
                     </td>
-                    <td className="hidden-xs">{option.reqPnr}</td>
+                    <td className="hidden-xs fontEn">{option.reqPnr}</td>
                     <td className="hidden-xs">
                       {option.meliCode ? option.meliCode : option.pasNo}
                     </td>

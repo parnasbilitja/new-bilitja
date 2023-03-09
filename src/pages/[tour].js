@@ -62,20 +62,16 @@ const tour = (props) => {
         getData();
         handleClick()
     }, [props.Pathname.tour])
-
-    const slugHandler = (slug) => {
-    }
     
     return (
         <div>
-          <Scrolltoprefresh />
+            <Scrolltoprefresh />
+            <NavHandler/>
             <Head>
                 <title>بلیطجا {data && `|  ${data.title}`}</title>
             </Head>
-            <div className="mt-5 pt-1" ref={ref}></div>
-            <Scrolltoprefresh/>
+            <div ref={ref}></div>
             <div className="mt-5 bodyVar">
-                <NavHandler/>
                 {/* section 1 */}
                 {data ?
                 <>
@@ -277,6 +273,7 @@ const tour = (props) => {
                                         <span className="font-bold font-size-16">سن کودک</span>
                                     </div>
                                 </div>
+                                {data && console.log(data)}
                                 {data ? data.packages.map((pack) => (
                                     <div className="p-detail col-xl-12 col-lg-12 mt-2" key={pack.id}>
                                         <div className="d-detail position-relative col-xl-12 col-lg-12 col-12 d-flex flex-wrap align-items-center bg-white py-2 px-2 mb-2">
@@ -288,7 +285,7 @@ const tour = (props) => {
                                                         </div>
                                                     </div>
                                                 }
-                                                <div className="info-detail pos-relative d-flex align-items-center">
+                                                <div className="info-detail pos-relative d-flex align-items-center w-100">
                                                         <div className="image d-flex align-items-center">
                                                         {data ?
                                                             <img src={pack.hotel.thumbnail} width="100px" height="100px" className="rounded-2" alt="" />
@@ -491,7 +488,7 @@ const tour = (props) => {
                             <div className="w-100 col-xl-12 col-lg-12 w-100 d-flex flex-column">
                                 {/* child data */}
                                 {data && data.tours.map((item, index) => (
-                                    <div className="tour-item col-xl-12 col-lg-12 mb-2" key={index} onClick={() => slugHandler(item.slug)}>
+                                    <div className="tour-item col-xl-12 col-lg-12 mb-2" key={index}>
                                         <div className="tour-city">
                                             <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="41.265" height="48.155" viewBox="0 0 41.265 48.155">
                                                 <g id="location2" transform="translate(1.549 1.5)">
@@ -565,7 +562,8 @@ const tour = (props) => {
                     </div>
                 </section>
                 </>
-                :<Loader/>
+                :
+                <Loader/>
                 }
                 {/* footer */}
                 <Footer />
