@@ -266,10 +266,10 @@ const FlightReserve = (props) => {
             }
         }
         // code
-        if ( field ='code') {
+        if ( field ='code' && value =='') {
             if (!isValidIranianNationalCode(passenger.code)) {
                 passenger.codeErr = "کدملی نامعتبر میباشد";
-            }else{
+            }else if(field ='code' && !value =='') {
                 passenger.codeErr = "";
             }
         }

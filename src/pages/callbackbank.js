@@ -27,10 +27,81 @@ function convertUtftoAscii(str) {
 
 function Page({ data, PaymentInfo }) {
 //const Page({ data, PaymentInfo }) {
+  // data = {
+  //   "State": "OK",
+  //   "StateCode": "0",
+  //   "ResNum": "448",
+  //   "MID": "12744533",
+  //   "RefNum": "GmshtyjwKSvL23GuW46io1Zwg6svwf92r+PpzMuu2+",
+  //   "CID": "375A208E1003F49985E3A945BD477CE2AFFD84FEA3617391FB1878F7E3389FFC",
+  //   "TRACENO": "490537",
+  //   "RRN": "",
+  //   "Amount": "161000",
+  //   "website": "bilitja.com",
+  //   "SecurePan": "621986******8151"
+  // }
+  // PaymentInfo = {
+  //   "referenceEbank": {
+  //       "reqNo": 2943,
+  //       "reqPnr": "y3bhb8",
+  //       "customerId": "1a157116-a01a-4027-ab10-74098ac63815",
+  //       "amount": 161000,
+  //       "stat": "پرداخت موفق",
+  //       "bankName": "بانک سامان",
+  //       "authority": "448",
+  //       "resCode": "OK",
+  //       "saleOrderId": "448",
+  //       "saleReferenceId": "GmshtyjwKSvL23GuW46io1Zwg6svwf92r+PpzMuu2+",
+  //       "dateTimeSabt": "1401-12-17",
+  //       "nameFamily": "AFSARPOUR",
+  //       "mobileNo": "09172545290",
+  //       "dsc": null,
+  //       "knd": 1
+  //   },
+  //   "referenceFlight": [
+  //       {
+  //           "reqNo": 2943,
+  //           "reqPnr": "Y3BHB8",
+  //           "airport1": "تهران",
+  //           "airport2": "قشم",
+  //           "airline": "چابهار",
+  //           "flightDay": "پنج شنبه",
+  //           "flightDate": "1401-12-18",
+  //           "flightTime": "17:50",
+  //           "flightDateTime": "2023-03-09T17:50:00",
+  //           "flightNo": "8774",
+  //           "flightClass": "اکونومی",
+  //           "pathKind": 1,
+  //           "numADL": 1,
+  //           "numCHD": 0,
+  //           "numINF": 0,
+  //           "priceADL": 161000,
+  //           "priceCHD": 161000,
+  //           "priceINF": 51000,
+  //           "feeGet": 161000,
+  //           "name": "hossein",
+  //           "family": "afsarpour",
+  //           "nameEn": "HOSSEIN",
+  //           "familyEn": "AFSARPOUR",
+  //           "meliCode": "4220745191",
+  //           "ticketName": "بزرگسال",
+  //           "ticketNo": "564441",
+  //           "sex": 1,
+  //           "meliat": "IR",
+  //           "ticketPrice": 161000,
+  //           "mobileNo": "09172545290"
+  //       }
+  //   ],
+  //   "referenceHotel": null,
+  //   "referenceBus": null,
+  //   "status": "0",
+  //   "message": "OK"
+  // }
   console.log("top");
   console.log(data);
   console.log(PaymentInfo);
   console.log("top2");
+
 
   return (
     <div>
