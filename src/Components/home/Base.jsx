@@ -28,10 +28,10 @@ const Base = (props) => {
         </Head>
           <Home type={'index'} />
           <div className="col-md-10 m-auto">
-            <List  />
+            <List />
             <HotelsSuggest />
             <CitiesSuggest />
-              <Posts/>
+            <Posts/>
           </div>
           <TicketDetails/>
           <MessageBox />

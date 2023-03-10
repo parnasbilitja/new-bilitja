@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styles from "../../../styles/Home.module.scss";
 import {flightsData, homeText, flightsDataHotel} from '../../Utils/data';
 import FlightsUrl from "./../component/FlightsUrl";
-import { faPlane } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import OfferdTours from '../tour/OfferdTours';
+import dynamic from 'next/dynamic';
+const OfferdTours = dynamic(()=> import ( '../tour/OfferdTours'));
 import TicketDetails from '../component/TicketDetails';
 const HomeDetails = ( props) => {
   const [ width, setWidth ] = useState(0)

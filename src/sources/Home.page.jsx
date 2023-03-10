@@ -17,10 +17,7 @@ import {compareTwoStringDates} from "../Utils/SimpleTasks";
 import Scrolltoprefresh from "./component/Scrolltoprefresh";
 import {useEffect} from "react";
 
-import SearchBox from "./tour/SearchBox";
 import HomeDetails from "./flight/HomeDetails";
-import List from "./tour/List";
-import HomePicture from "./component/HomePicture";
 import PictureBase from "./component/PictureBase";
 
 const Home = (props) => {

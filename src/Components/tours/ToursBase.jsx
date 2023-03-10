@@ -6,14 +6,14 @@ import HomePicture from '../../sources/component/HomePicture';
 import PageTabls from '../../sources/component/PageTabs.component';
 import PictureBase from '../../sources/component/PictureBase';
 import Scrolltoprefresh from '../../sources/component/Scrolltoprefresh';
-import CitiesSuggest from '../../sources/tour/CitiesSuggest';
-import HotelsSuggest from '../../sources/tour/HotelsSuggest';
-import List from '../../sources/tour/List';
+const CitiesSuggest = dynamic(()=> import ('../../sources/tour/CitiesSuggest'));
+const HotelsSuggest = dynamic(()=> import ('../../sources/tour/HotelsSuggest'));
+const List = dynamic(()=> import ( '../../sources/tour/List'));
+const Posts = dynamic(()=> import ( '../../sources/tour/Posts'));
+const OfferdTours = dynamic(()=> import ( '../../sources/tour/OfferdTours'));
 import SearchBox from '../../sources/tour/SearchBox';
 import NavHandler from '../share/NavHandler';
 import styles from "../../../styles/Home.module.scss";
-import Posts from '../../sources/tour/Posts';
-import OfferdTours from '../../sources/tour/OfferdTours';
 import axios from 'axios';
 
 const ToursBase = () => {
