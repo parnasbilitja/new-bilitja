@@ -94,8 +94,8 @@ const CitiesSuggest = () => {
                     >
                         
                         {data.map(item=>(
-                            <SwiperSlide>
-                            <div class="swiper-slide" >
+                            <SwiperSlide key={item.id}>
+                            <div class="swiper-slide" key={item.id}>
                                 <div class="box-sort-tour-city">
                                     <div class="img-sort-tour-city">
                                         <div class="info-img-sort-tour-city animated fadeInDown">

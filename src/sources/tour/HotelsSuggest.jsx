@@ -35,11 +35,7 @@ const HotelsSuggest = () => {
             await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
             .then(res => {setHotels(res.data.data),setLoading(false)})
         }
-        console.log(loading);
-        console.log(hotels);
         getData()
-        
-        console.log(loading);
     },[city])
     useEffect(()=>{
         setLoading(true)
@@ -47,9 +43,7 @@ const HotelsSuggest = () => {
             await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
             .then(res => {setHotels(res.data.data),setLoading(false)})
         }
-        console.log(loading);
         getData()
-        console.log(loading);
         
     },[])
 
@@ -126,8 +120,8 @@ const HotelsSuggest = () => {
                     }}
                     >
                         {hotels.map((item)=>(
-                            <SwiperSlide>
-                                <div>
+                            <SwiperSlide item={item.id}>
+                                <div item={item.id}>
                                     <div class="box-hotel">
                                         <img  class="img-blog" src={item.thumbnail}/>
                                         <Link href={`/hotel/${item.slug}`}>

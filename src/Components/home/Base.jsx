@@ -6,11 +6,17 @@ import MessageBox from '../../sources/component/MessageBox.component';
 import Scrolltoprefresh from '../../sources/component/Scrolltoprefresh';
 import TicketDetails from '../../sources/component/TicketDetails';
 import Home from '../../sources/Home.page';
-import CitiesSuggest from '../../sources/tour/CitiesSuggest';
-import HotelsSuggest from '../../sources/tour/HotelsSuggest';
-import List from '../../sources/tour/List';
-import Posts from '../../sources/tour/Posts';
+import dynamic from 'next/dynamic';
+const CitiesSuggest = dynamic(()=> import ('../../sources/tour/CitiesSuggest'));
+const HotelsSuggest = dynamic(()=> import ('../../sources/tour/HotelsSuggest'));
+const List = dynamic(()=> import ( '../../sources/tour/List'));
+const Posts = dynamic(()=> import ( '../../sources/tour/Posts'));
 import NavHandler from '../share/NavHandler';
+
+import { connect } from "react-redux";
+import { selcetAccountBox } from "../../Redux/UI/ui.reselect";
+import { accountBoxModify } from "../../Redux/UI/ui.action";
+import { withRouter } from "next/router";
 
 const Base = (props) => {
     return (
@@ -35,4 +41,11 @@ const Base = (props) => {
     );
 };
 
-export default Base;
+const mapStatesToProps = (state) => ({
+  accountBox: selcetAccountBox(state),
+});
+const mapDispatchesToProps = (dispatch) => ({
+  accountBoxModify: (value) => dispatch(accountBoxModify(value)),
+});
+
+export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(Base));

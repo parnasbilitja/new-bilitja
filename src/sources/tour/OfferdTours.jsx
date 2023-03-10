@@ -27,7 +27,6 @@ const OfferdTours = (props) => {
     }
     useEffect(() => {
         getData();
-        console.log(data);
         setWidth(window.innerWidth)
     }, [])
     function moneyFormat(input) {
@@ -107,9 +106,8 @@ const OfferdTours = (props) => {
               className="mySwiper"
           >
             {data.map((item)=>(
-              <SwiperSlide>
-                {console.log(item)}
-                  <div className="box-special-tour">
+              <SwiperSlide key={item.id}>
+                  <div className="box-special-tour" key={item.id}>
                       <div className="img-special-tour">
                       <Link  href={item.slug}>
                           <a>
@@ -187,7 +185,7 @@ const OfferdTours = (props) => {
                                                 fill="none" stroke="#212135" stroke-width="2"/>
                                           <path id="Path_1169" data-name="Path 1169"
                                                 d="M15,4a1,1,0,0,1,1,1V7a1,1,0,0,1-2,0V5A1,1,0,0,1,15,4Zm0,6a1,1,0,0,1,1,1v2a1,1,0,0,1-2,0V11A1,1,0,0,1,15,10Zm1,7a1,1,0,0,0-2,0v2a1,1,0,0,0,2,0Z"
-                                                fill="#212135" fill-rule="evenodd"/>
+                                                fill="#212135" fillRule="evenodd"/>
                                       </g>
                                   </svg>
                                   <span>شروع قیمت از :</span>

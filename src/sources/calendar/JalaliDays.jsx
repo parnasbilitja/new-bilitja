@@ -203,7 +203,7 @@ class JalaliDays extends React.Component {
           <div>
             <div className="calendar-year-container">
               {this.getYears().map((x) => (
-                <div
+                <div key={x}
                   className="calendar-item"
                   onClick={() => {
                     this.setState({ year: x, stage: 2 });
@@ -421,7 +421,7 @@ class JalaliDays extends React.Component {
 
                     if (compareToToday == "TODAY") {
                       return x != undefined ? (
-                        <div
+                        <div key={x}
                           className="calendar-item TODAY"
                           onClick={() => {
                             const m = moment(
@@ -509,7 +509,7 @@ class JalaliDays extends React.Component {
 
                     if (compareToToday == "TODAY") {
                       return x != undefined ? (
-                        <div
+                        <div key={x}
                           className="calendar-item TODAY"
                           onClick={() => {
                             const year =
