@@ -9,7 +9,6 @@ import Footer from '../sources/component/Footer.component';
 import Slider from '../Components/slider/Slider';
 import RequestTour from '../Components/modal/RequestTour';
 import PopUp from '../sources/component/PopUp.component';
-import Loading from "../sources/component/SmallLoading.component.jsx";
 import { Loader } from '../Utils/Loader';
 import Head from 'next/head';
 import Scrolltoprefresh from '../sources/component/Scrolltoprefresh';
@@ -127,7 +126,7 @@ const tour = (props) => {
                                     <div className="image">
                                     {data ?
                                         <Slider data={data && data.endCity.images} />
-                                    :<Loading />}
+                                    :<Loader />}
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +139,7 @@ const tour = (props) => {
                                             {data ?
                                                 <img src={data && data.transfers[0].logo} width={"35px"} height={"35px"} alt="company" style={{ objectFit: 'cover' }} />
                                             :
-                                                <Loading />}
+                                                <Loader />}
                                             </div>
                                         </div>
                                         <div className="text w-90-mobi pe-2">
@@ -202,7 +201,7 @@ const tour = (props) => {
                                             <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
                                             {data ?
                                                 <img src={data && data.transfers[1].logo} width={"35px"} height={"35px"} alt="company" style={{ objectFit: 'cover' }} />
-                                            :<Loading />}
+                                            :<Loader />}
                                             </div>
                                         </div>
                                         <div className="text w-90-mobi p-0-mobi pe-2 ps-3">
@@ -292,7 +291,7 @@ const tour = (props) => {
                                                         <div className="image d-flex align-items-center">
                                                         {data ?
                                                             <img src={pack.hotel.thumbnail} width="100px" height="100px" className="rounded-2" alt="" />
-                                                            :<Loading />}
+                                                            :<Loader />}
                                                         </div>
                                                     <div className="text d-flex flex-column justify-content-between mt-1 pe-2 w-100">
                                                         <span className="pb-1 font-size-13 iranBold">{pack.hotel.nameEn}</span>
@@ -357,7 +356,7 @@ const tour = (props) => {
                                 .sort((a, b) => parseInt(a.star)- parseInt(b.star) ).reverse()
                                 .sort((a, b) => a.prices?.twinRate ? parseInt(a.prices.twinRate) : parseInt(a.prices?.twin)- b.prices?.twinRate ? parseInt(b.prices.twinRate) : parseInt(b.prices?.twin) ).reverse()
                                 :
-                                // <Loading />
+                                // <Loader />
                                 ''
                             }
                             </div>

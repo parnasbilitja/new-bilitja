@@ -15,7 +15,7 @@ import {
 } from "../../Utils/SimpleTasks";
 import styles from "../../../styles/FlightPassengerEditForm.module.scss";
 import BirthDayParent from "../calendar/BirthDayParent";
-import * as moment from 'jalali-moment';
+import * as moment from 'moment-jalaali';
 import BirthDayParentCl from "../calendar/BirthDayParentCl";
 
 const FlightPassengerEditForm = (props) => {

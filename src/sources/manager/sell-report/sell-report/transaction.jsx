@@ -467,7 +467,7 @@ const Transaction = () => {
                             className={style["tablerowfont"]}
                             align="center"
                           >
-                            <h6 className={style['normal-size']}>
+                            <h6 className={'fontEn'}>
 
                               {row.reqPnr}</h6>
                           </TableCell>

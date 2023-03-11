@@ -16,7 +16,7 @@ import { addCredentials } from "../../Redux/Searchvilla/search_villa.action";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter, NextRouter } from "next/router";
 
-import moment from "jalali-moment";
+import moment from "moment-jalaali";
 import VillaPage from "./villa.page";
 import Villa from "../../pages/villa";
 

@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
 import StyleCalendarPrice from "../../../../styles/MinimumPriceCalendar.module.scss";
 // import globals from "../Global";
-import moment from "jalali-moment";
+import moment from "moment-jalaali";
 import { connect } from "react-redux";
 import { selectCredentials } from "../../../Redux/Search/search.reselect";
 import { addCredentials } from "../../../Redux/Search/search.action";

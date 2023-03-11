@@ -525,7 +525,7 @@ const FlightSellReport = () => {
                             className={style["tablerowfont"]}
                             align="center"
                           >
-                            <h6 className={style['en-font']}>{row.reqPnr}</h6>
+                            <h6 className={'fontEn'}>{row.reqPnr}</h6>
                           </TableCell>
                           <TableCell
                             className={style["tablerowfont"]}

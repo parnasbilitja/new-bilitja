@@ -33,9 +33,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import moment from "jalali-moment";
-import momentj from "moment-jalaali";
-import Loading from "../component/Loading.component";
+import moment from "moment-jalaali";
 import MinimumPriceCalendar from "./MinimumPriceCalendar.component";
 
 import { getCustomFormat } from "../../Utils/SimpleTasks";
@@ -43,6 +41,7 @@ import { withRouter } from "next/router";
 import Descflightlist from "./Descflitlist";
 import FutureDays from "./FutureDays";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
+import { Loader } from "../../Utils/Loader";
 
 class GetFlightList extends React.Component {
   constructor(props) {
@@ -597,7 +596,7 @@ class GetFlightList extends React.Component {
                 {/* <FutureDays refreshAction={this.getData}  /> */}
                 {this.state.loading ? (
                   <div className="mt-4">
-                    <Loading />
+                    <Loader />
                   </div>
                 ) : this.state.flights != null ? (
                   <div>

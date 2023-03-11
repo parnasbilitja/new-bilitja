@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../../../styles/FlightReserve.module.scss";
-import * as moment from 'jalali-moment';
+import moment from 'moment-jalaali';
 import { addReservationProperties } from "../../Redux/Reserve/reserve.action";
 import FlightPassengerForm from "./FlightPassengerForm.component";
 import FlightReserveDesktopHeader from "./FlightReserveDesktopHeader.component";
@@ -26,7 +26,6 @@ import OtherData from "./OtherData";
 import Submit from "./Submit";
 
 const FlightReserve = (props) => {
-    console.log(props);
     const [err, setErr] = useState({
         rule: false,
         ruleErr: 'لطفا قوانین را بپذیرید',
@@ -67,21 +66,16 @@ const FlightReserve = (props) => {
     // const router = useRouter();
     let route=''
     useEffect(()=>{
-        if (parseInt(localStorage.getItem('priceChecker'))%10 && parseInt(state.price)!=0 && parseInt(state.price)!=0) {
-            
-            let price =''
-            setTimeout(function() {
-            price = parseInt(localStorage.getItem('priceChecker'));
-            }, 1000);
-            if (parseInt(localStorage.getItem('priceChecker') )%10 != parseInt(state.price)){
+        setTimeout(function() {
+            if (parseInt(localStorage.getItem('priceChecker')) != parseInt(state.passengers[0].price)){
+                console.log('state',(state),'|',state.passengers,'|',parseInt(localStorage.getItem('priceChecker'))/10);
                 setClosePopUpPrice(true)
             }
-        }
+    }, 500);
     },[state.price])
     useEffect(() => {
         setWidth(window.innerWidth)
         route = props.router.asPath.split('info')[0]
-        console.log('router',route);
         if (localStorage.getItem('reqNo') !== null) {
             props.messageBoxModify({
                 color: false,
@@ -219,10 +213,8 @@ const FlightReserve = (props) => {
         return isValid;
     };
     const fillPassengersData = (field, passengerNo, value) => {
-        console.log(field,value);
         let passenger = state.passengers.find((x) => x.id == passengerNo);
         passenger[field] = value;
-        // console.log(field);
         if (field == 'nationality') {
             if (value=='IR') {
                 // passenger.pasno = ''
@@ -618,7 +610,6 @@ const FlightReserve = (props) => {
     let loginGoNext = ''
     loginGoNext = localStorage.getItem('loginGoNext') && localStorage.getItem('loginGoNext')
     useEffect(() => {
-        console.log(loginGoNext);
         if (loginGoNext == 1) {
             compeleteReservation()
             setLoading(true)
@@ -732,9 +723,10 @@ const FlightReserve = (props) => {
             
             <PopUp opened={closePopUpPrice} closePopUp={setClosePopUpPrice} >
                 <div className="p-2">
-                    <div className="text-start">
+                    <div className="text-start row justify-content-end">
                         <span
-                        className="exit-form pb-1Important"
+                        className="exit-form pb-1Important ms-3"
+                        style={{width: '30px'}}
                         onClick={() => {
                             setClosePopUpPrice(false);
                         }}

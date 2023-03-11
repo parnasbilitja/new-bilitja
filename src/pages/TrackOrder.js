@@ -7,7 +7,7 @@ import globals from '../sources/Global'
 import Table from '../sources/component/Table'
 import NavHandler from '../Components/share/NavHandler'
 import Footer from '../sources/component/Footer.component'
-
+import Scrolltoprefresh from '../sources/component/Scrolltoprefresh' 
 const TrackOrder = () =>{
         const [state,setState] = useState({
             trackRef:'',
@@ -32,6 +32,7 @@ const TrackOrder = () =>{
         <div className="mt-130">
             <NavHandler/>
             <div className="">
+            <Scrolltoprefresh />
                     <div className="col-12 mt-4 container">
                         <div className="title-order d-flex align-items-center">
                             <FontAwesomeIcon className="color-textpill icon-size" icon={faCalendarCheck} />

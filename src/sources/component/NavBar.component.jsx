@@ -230,7 +230,7 @@ const NavBar = (props) => {
               </div>
               <div className={styles["nav-logo-container"]}>
                 <div>
-                  <Link href="/" >
+                  <a href="/" >
                     <img
                       width=""
                       height=""
@@ -239,7 +239,7 @@ const NavBar = (props) => {
                       alt="بلیطجا - لوگو"
                       style={{ cursor: "pointer" }}
                     />
-                  </Link>
+                  </a>
                   <h1 className="font-size-10 font-bold-iransanse pt-1">
                     خرید اینترنتی بلیط هواپیما و رزرو اقامتگاه
                   </h1>

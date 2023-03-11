@@ -171,14 +171,14 @@ const NavBarMobile = (props) => {
       >
         <div className={styles["nav-items-container-mobile"]}>
           <div className={styles["logo-menu-mobile"]}>
-            <Link href="/">
+            <a href="/">
               <img
                 width=""
                 height=""
                 alt="بلیطجا - لوگو"
                 src="../../../Images/bilitja-light-logo.webp"
               />
-            </Link>
+            </a>
             <p className="no-margin color-white">
               ارزان ترین بلیط های هواپیما
             </p>
