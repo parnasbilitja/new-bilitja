@@ -13,7 +13,6 @@ import globals from "../Global";
 
 import Countdown from "react-countdown";
 import { Loader } from "./../../Utils/Loader";
-import { MuiOtpInput } from "mui-one-time-password-input";
 const Register = (props) =>{
   // constructor() {
   //   super(props);

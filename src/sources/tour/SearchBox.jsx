@@ -49,7 +49,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
     setWidth(window.innerWidth)
   },[])
   useEffect(() => {
-    setState && setState({...state, city:search.slug})
+    setState({...state, city:search.slug})
   },[search.slug])
     return (
       <div className={'row justify-content-between'}>
@@ -59,12 +59,12 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
             <PrimaryTextInputMobile
               value={search.slug==" "?'همه':search.slug}
               name={'slug'}
-              onFocus={handleFocus}
-              onBlur={handleFocusOut}
-              // onChange={handleChange}
-              onClick={(e) => {
-                console.log(e.target.value);
-              }}
+              // onFocus={handleFocus}
+              // onBlur={handleFocusOut}
+              onChange={handleChange}
+              // onClick={(e) => {
+              //   console.log(e.target.value);
+              // }}
               placeholder={"مقصد خود را انتخاب کنید"}
             />
             <InputValues
@@ -86,12 +86,12 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
             <PrimaryTextInputMobile
               value={search.value}
               name={'month'}
-              onFocus={handleFocus}
-              onBlur={handleFocusOut}
+              // onFocus={handleFocus}
+              // onBlur={handleFocusOut}
               onChange={handleChange}
-              onClick={(e) => {
-                console.log(e.target.value);
-              }}
+              // onClick={(e) => {
+              //   console.log(e.target.value);
+              // }}
               placeholder={"چه ماهی میخواید سفر کنید"}
             />
             <InputValues

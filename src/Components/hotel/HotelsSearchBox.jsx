@@ -55,7 +55,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
     // console.log(search);
   },[search])
     return (
-      <div className="row justify-content-center pt-0">
+      <div className="row justify-content-center pt-0 mx-1">
         <div className="col-md-10 px-2">
           <div className={'row justify-content-between'}>
             <Scrolltoprefresh />

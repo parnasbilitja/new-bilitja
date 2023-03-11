@@ -118,20 +118,21 @@ const hotel = (props) => {
                     <h2>درباره {hotel.name} بیشتر بدانید :</h2>
                     <div class="scrollbar" id="style-1"></div>
                     <span class="editor">
-                        <p dir="RTL" style={{marginBottom:"0cm",textAlign:'justify',lineHeight:'normal'}}>
-                        {hotel.city?.description}
-                        </p></span>
+                        <p dir="RTL" style={{marginBottom:"0cm",textAlign:'justify',lineHeight:'normal'}} dangerouslySetInnerHTML={{__html:hotel.city?.description}}/>
+                        {/* {hotel.city?.description} */}
+                        {/* </p> */}
+                        </span>
                 </div>
             </div>
             <div className="">
                 <div class="notes-hotel">
                     <div class="option">
-                        <h2>امکانات هتل ، اتاق ها و خدمات دیگر در یک نگاه</h2>
+                        <h2 className="font-size-15 font-bold">امکانات هتل ، اتاق ها و خدمات دیگر در یک نگاه</h2>
                         <div class="d-flex flex-wrap align-items-center mt-5">
                             {hotel?.services && hotel?.services[0]?.services?.map(service =>(
-                                <div key={service.id} class="col-6 col-sm-4 col-md-3">
+                                <div key={service.id} class="col-6 col-sm-4 col-md-3 ">
                                     <FontAwesomeIcon icon={faAngleLeft} />
-                                    <span className="text-dark">{service.name}</span>
+                                    <span className="">{' '} {service.name}</span>
                                 </div>
                             ))}
                         </div>

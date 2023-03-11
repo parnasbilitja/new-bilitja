@@ -4,7 +4,7 @@ const PrimaryButton = (props) => {
     return (
       <button
         {...props}
-        className={`${styles["primary-button"]} py-2 ${props.type != 'index'&& 'font-bold-iransanse'}`}
+        className={`${styles["primary-button"]} py-2 `}
       />
     );
 }

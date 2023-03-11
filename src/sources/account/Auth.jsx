@@ -16,9 +16,9 @@ import {
   getUserInfo,
 } from "../../Redux/Account/account.action";
 import { useState } from "react";
-import { MuiOtpInput } from "mui-one-time-password-input";
 import { useEffect } from "react";
 import { checkNumberfatoen } from "../../Utils/SimpleTasks";
+import PasswordBox from "../../Components/share/PasswordBox";
 const Auth = (props) => {
   
   const [state, setState] = useState({
@@ -75,15 +75,6 @@ const Auth = (props) => {
   const handleSetPassword = (e) => {
     setState({ ...state, password: e.target.value, error: false, errText: "" });
   };
-  function matchIsNumeric(text) {
-    const isNumber = typeof text === 'number'
-    const isString = typeof text === 'string'
-    return (isNumber || (isString && text !== '')) && !isNaN(Number(text))
-  }
-  
-  const validateChar = (value, index) => {
-    return matchIsNumeric(value)
-  }
   const login = () => {
     // console.log(state);
     setState({ ...state, btn_disabled: true, loading: true });
@@ -379,16 +370,16 @@ const Auth = (props) => {
           </div>
         ) : null}
         {state.get_mobile_status === true ? (
-          <div className="row mb-2">
+          <div className="row mb-2 justify-content-center">
             {type == 1 &&
               <>
-                <div className="col-1 padding-horizental-3px">
+                {/* <div className="col-1 padding-horizental-3px">
                   <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
-                </div>
-                <div className="col-11 padding-horizental-3px">
-                  <div>
-                  <MuiOtpInput value={state.token.length==4?'':state.token} onChange={handleSetToken} validateChar={validateChar} TextFieldsProps={{ type:'number',autoFocus:'true' }} />
-                  </div>
+                </div> */}
+                <div className="col-12 padding-horizental-3px row justify-content-center">
+                  <PasswordBox value={state.token} valueLength={4} onChange={handleSetToken}/>
+                  {/* <MuiOtpInput value={state.token.length==4?'':state.token} onChange={handleSetToken} validateChar={validateChar} TextFieldsProps={{ type:'number',autoFocus:'true' }} /> */}
+                  
                 </div>
               </>
             }

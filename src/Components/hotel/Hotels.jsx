@@ -76,13 +76,26 @@ const Hotels = () => {
                             <HotelsSearchBox searchHotel={searchHotel} setCity={setCity} search={search} setSearch={setSearch}/>
                         </div>
                     </div>
-                    <div style={{marginTop:width>=826?'2rem':''}} className={`${styles["hero-big-image"]} container`}>
-                        <img
-                        width=""
-                        height=""
-                        alt="بلیطجا-اسلایدر"
-                        src="../../../../Images/hotel-bg-new.png"
-                        />
+                    <div className={`${styles["parentbackFight"]}`}>
+                        {width>=826 &&
+                        <div className={`${styles["parentbackFight"]} container w-100`}>
+                            <img
+                            width=""
+                            height=""
+                            alt="بلیطجا-اسلایدر"
+                            src="../../../../Images/hotel-bg-new.png"
+                            />
+                        </div>}
+                        {width < 826 ? (
+                            <div className={`${styles["hero-big-image"]} container`}>
+                            <img
+                                width=""
+                                height=""
+                                alt="بلیطجا-اسلایدر"
+                                src="../../../Images/hotel-bg-new.png"
+                            />
+                            </div>
+                        ) : null}
                     </div>
                 </div>
             <div className="col-md-10 mx-2">

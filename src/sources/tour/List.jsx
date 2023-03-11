@@ -35,7 +35,6 @@ const List = (props) => {
     }
     useEffect(() => {
         getData();
-        console.log(data);
     }, [])
     useEffect(() => {
         props.tourData !==null && props.tourData !==[] &&

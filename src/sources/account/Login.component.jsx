@@ -19,8 +19,8 @@ import {
 import { useState } from "react";
 import Timer from "../../Utils/Timer";
 import Router from "next/router";
-import { MuiOtpInput } from "mui-one-time-password-input";
 import { checkNumberfatoen } from "../../Utils/SimpleTasks";
+import PasswordBox from "../../Components/share/PasswordBox";
 
 
 const Login = (props) => {
@@ -323,10 +323,10 @@ const Login = (props) => {
       ) : null}
       <div className="container">
         <div className="row mb-2">
-          <div className="col-1 padding-horizental-3px">
+          {/* <div className="col-1 padding-horizental-3px">
             <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
-          </div>
-          <div className="col-11 padding-horizental-3px">
+          </div> */}
+          <div className="col-12 padding-horizental-3px">
             <div>
               {TestForValue.num == false ?
                 <input
@@ -339,10 +339,9 @@ const Login = (props) => {
                   inputMode="numeric"
                 />
                 :
-                TestForValue.num == true && TestForValue.code == false ?
-                  <MuiOtpInput value={UserMobileAndCode.code} onChange={handleChange} validateChar={validateChar} />
-                  :
-                  <MuiOtpInput value={UserMobileAndCode.code} onChange={handleChange} validateChar={validateChar} />
+                <div className="row justify-content-center">
+                    <PasswordBox value={UserMobileAndCode.code} valueLength={4} onChange={handleChange}/>
+                </div>
               }
             </div>
           </div>

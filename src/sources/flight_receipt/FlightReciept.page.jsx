@@ -50,6 +50,11 @@ const FlightReciept = (props) => {
   const [width, setWidth] = useState(0)
 
   useEffect(() => {
+    if (localStorage.getItem('reqNo')) {
+      localStorage.removeItem('reqNo')
+    }else{
+      router.push('/')
+    }
     setWidth(window.innerWidth)
     props.addReservationProperties({
       reqNo: props.router.asPath.split("/")[3],

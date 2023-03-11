@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import { Loader } from "../../Utils/Loader";
 const InputValues = ({setSearch, search, name, months}) => {
   const [hide, setHide] = useState(false)
   const searchHandler = (value='',slug='',cityName,id) => {
@@ -11,9 +12,13 @@ const InputValues = ({setSearch, search, name, months}) => {
         id:id
     })
   }
+  useEffect(()=>{
+    console.log(name);
+    setHide(false)
+  },[months,search])
   return (
     <>
-    {/* {!hide && */}
+    {!hide &&
     <div
       style={{
         maxHeight: 140,
@@ -28,16 +33,7 @@ const InputValues = ({setSearch, search, name, months}) => {
       }}
       className="suggestion-box"
     >
-      {months
-      // .filter(post => {
-      //   if (!name == 'month') {
-      //     if (search.slug === '') {
-      //         return post;
-      //     } else if (post.name.includes(search.slug)) {
-      //         return post;
-      //     }
-      //   }})
-        .map((item) => (
+      {months.length > 1 ? months.map((item) => (
         <>
           <div key={item.value}
                 onClick={() => {searchHandler(item.value,item.slug,item.name,item.id)}}>
@@ -46,9 +42,11 @@ const InputValues = ({setSearch, search, name, months}) => {
             </span>
           </div>
         </>
-      ))}
+      ))
+      :<Loader/>
+    }
     </div>
-    {/* // } */}
+    }
     </>
   );
 };

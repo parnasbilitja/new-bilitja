@@ -47,10 +47,10 @@ const NavBarMobile = (props) => {
 
   const handleLogoutUser = (e) => {
     e.preventDefault();
-    localStorage.removeItem("token");
     localStorage.removeItem("mobile");
+    localStorage.removeItem("token");
     setState({ ...state, logged: false })
-    props.user.logged = state.logged;
+      props.user.logged = false;
   }
   // console.log(props);
   return (

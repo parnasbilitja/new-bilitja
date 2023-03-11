@@ -56,16 +56,18 @@ const tour = (props) => {
 
     const handleClick = () => {
         // console.log(props.Pathname.tour);
-        ref.current?.scrollIntoView({behavior: 'smooth'});
+        ref.current?.scrollIntoView({top: 0,behavior: 'smooth'});
       };
     useEffect(() => {
         getData();
         handleClick()
     }, [props.Pathname.tour])
+    // useEffect(() => {
+    //     handleClick()
+    // }, [])
     
     return (
         <div>
-            <Scrolltoprefresh />
             <NavHandler/>
             <Head>
                 <title>بلیطجا {data && `|  ${data.title}`}</title>
@@ -78,6 +80,7 @@ const tour = (props) => {
                 <section className="mt-5 mt-2-mobi pt-3-mobi pt-5">
                     <div className="container mt-2">
                         <div className="m-main-data flex-column-mobi detail-title col-xl-12 col-lg-12 col-12 d-flex justify-content-between border-bottom pb-2">
+                <Scrolltoprefresh />
                             <div className="title-tour d-flex align-items-center">
                                 <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="30.643" height="30.68" viewBox="0 0 19.643 19.68">
                                     <g id="Ticket-index" transform="translate(-0.022)">
@@ -90,7 +93,7 @@ const tour = (props) => {
                                     <span className="d-none-mobi">شروع قیمت از: {data && moneyFormat(data.minPrice)} تومان</span>
                                 </div>
                             </div>
-                            <span className="d-none-desktop mt-3 font-14-mobi">شروع قیمت از: {data && moneyFormat(data.minPrice)} تومان</span>
+                            <span className="d-none-desktop font-14-mobi">شروع قیمت از: {data && moneyFormat(data.minPrice)} تومان</span>
                             <div className="d-flex flex-column justify-content-around me-auto mt-2">
                                 <div className="d-flex d-none-mobi">
                                     <img src={data.transfers[0].logo} width='30px' height={'30px'} />
@@ -317,7 +320,6 @@ const tour = (props) => {
                                                             </div>
                                                         </div>
                                                         <div className="d-flex align-items-center mt-1">
-                                                            {/* {(parseInt(pack.hotel.stars))} */}
                                                             <svg className="ms-1" xmlns="http://www.w3.org/2000/svg" width="20"
                                                                 height="20" viewBox="0 0 23.528 26.039">
                                                                 <g id="Location" transform="translate(0.028)">
@@ -352,6 +354,8 @@ const tour = (props) => {
 
                                     </div>
                                 ))
+                                .sort((a, b) => parseInt(a.star)- parseInt(b.star) ).reverse()
+                                .sort((a, b) => a.prices?.twinRate ? parseInt(a.prices.twinRate) : parseInt(a.prices?.twin)- b.prices?.twinRate ? parseInt(b.prices.twinRate) : parseInt(b.prices?.twin) ).reverse()
                                 :
                                 // <Loading />
                                 ''
