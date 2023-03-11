@@ -185,7 +185,7 @@ const NavBar = (props) => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/" >
+                    <Link href="/hotels" >
                       <a className="" style={{color: 'gray'}}>
                         <div className="mb-2 mt-1">
                         <svg id="_004-hotel" data-name="004-hotel" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 54.937 52.918">
