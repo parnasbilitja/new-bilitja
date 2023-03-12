@@ -149,7 +149,7 @@ const tour = (props) => {
                                                     <span className="font-bold font-15-mobi bold-900-mobi font-size-18">اطلاعات مبدا</span>
                                                 </div>
                                                 <div className="val pe-2 m-pr-15">
-                                                    <span className="font-size-12">{data && data.stCity.name}</span>
+                                                    <span className="font-size-12 bold-900-mobi">{data && data.stCity.name}</span>
                                                 </div>
                                             </div>
                                             <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1 m-pb-7">
