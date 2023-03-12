@@ -133,34 +133,48 @@ const tour = (props) => {
                             <div className="left position-relative col-xl-6 col-lg-6 col-12">
                                 <div className="vertical-data" style={{ display: "none" }}></div>
                                 <div className="p-info__tour mr-0 d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3">
+                                    {/* c info */}
                                     <div className="c-info__tour w-100-mobi  d-flex align-items-center col-xl-12 col-gl-12">
                                         <div className="bg-white py-3">
-                                            <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
+                                            <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3 isDesktop">
                                             {data ?
                                                 <img src={data && data.transfers[0].logo} width={"35px"} height={"35px"} alt="company" style={{ objectFit: 'cover' }} />
                                             :
                                                 <Loader />}
                                             </div>
                                         </div>
-                                        <div className="text w-90-mobi pe-2">
+                                        <div className="text w-90-mobi m-flex-100 pe-2">
                                             <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1">
-                                                <div className="prop  pe-2">
+                                                <div className="prop  ps-2 isDesktop m-pr-10">
                                                     <span className="font-bold font-15-mobi bold-900-mobi font-size-18">اطلاعات مبدا</span>
                                                 </div>
-                                                <div className="val pe-2">
-                                                    <span className="font-size-12">{data && data.stCity.name}</span>
+                                                <div className="val pe-2 m-pr-15">
+                                                    <span className="font-size-12 bold-900-mobi">{data && data.stCity.name}</span>
                                                 </div>
                                             </div>
-                                            <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1">
-                                                <div className="prop pe-2">
+                                            <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1 m-pb-7">
+                                                <div className="prop d-flex align-items-center">
+                                                    <div className="image ms-2 isMobile" style={{display:"none"}}>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18.976" height="18.41" viewBox="0 0 29.976 32.41">
+                                                            <g id="Up-Down-3" transform="translate(2.121 1.5)">
+                                                                <path id="Path_1175" data-name="Path 1175" d="M1,21.219l9.191,9.191V1" transform="translate(-1 -1)" fill="none" stroke="#0d7b0d" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3}/>
+                                                                <path id="Path_1176" data-name="Path 1176" d="M19.191,10.191,10,1V30.41" transform="translate(6.543 -1)" fill="none" stroke="#0d7b0d" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3}/>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
                                                     <span className="font-bold font-13-mobi bold-900-mobi bold-900-mobi text-danger">تاریخ و ساعت پرواز رفت</span>
                                                 </div>
                                                 <div className="val pe-2">
                                                     <span className="font-13-mobi bold-900-mobi">{data && moment((data.transfers[0].dateTime)).locale('en').format('jYYYY/jMM/jDD')} {data.transfers[0].dateTime.split(' ')[1]}</span>
                                                 </div>
                                             </div>
-                                            <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1">
-                                                <div className="prop pe-2">
+                                            <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1 m-pb-15">
+                                                <div className="prop d-flex align-items-center">
+                                                    <div className="image ms-2 isMobile" style={{display:"none"}}>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18.069" height="15.058" viewBox="0 0 18.069 15.058">
+                                                            <path id="Dish" d="M9.787,2.259a.753.753,0,1,1-.753-.753A.753.753,0,0,1,9.787,2.259Zm1.307.928a2.259,2.259,0,1,0-4.119,0A6.258,6.258,0,0,0,3.4,5.042C2.087,6.464,1.506,8.57,1.506,11.293q0,.019,0,.037a1.882,1.882,0,0,0,.376,3.727h14.3a1.882,1.882,0,0,0,.376-3.727q0-.019,0-.037c0-2.723-.581-4.829-1.894-6.251A6.258,6.258,0,0,0,11.094,3.187Zm-2.06,1.33c-2.142,0-3.595.534-4.529,1.546s-1.494,2.683-1.494,5.23H15.058c0-2.547-.548-4.205-1.494-5.23S11.177,4.517,9.035,4.517ZM16.187,12.8a.376.376,0,0,1,0,.753H1.882a.376.376,0,1,1,0-.753Z" fill="#0d7b0d" fillRule="evenodd"/>
+                                                        </svg>
+                                                    </div>
                                                     <span className="font-bold font-13-mobi bold-900-mobi" style={{color:'#279692'}}>تاریخ ورود به هتل</span>
                                                 </div>
                                                 <div className="val pe-2 p-0-mobi">
@@ -169,13 +183,22 @@ const tour = (props) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="c-info__tour bg-white d-flex align-items-center justify-content-center box-shadow-sm col-xl-12 col-lg-12 col-12 my-4">
+                                    {/* border */}
+                                    <div className="border-style-tour isMobile" style={{display:"none"}}></div>
+                                    {/* c info */}
+                                    <div className="c-info__tour bg-white d-flex align-items-center justify-content-center box-shadow-sm col-xl-12 col-lg-12 col-12 my-4 m-my-20">
                                         <div className="border-box box-right"></div>
-                                        <div className="text flex-between-mobi w-100-mobi d-flex align-items-center justify-content-center px-2">
-                                            <div className="text">
+                                        <div className="text flex-between-mobi w-100-mobi d-flex align-items-center justify-content-center m-justify-content-between px-2 m-px-0">
+                                            <div className="text d-flex align-items-center m-pr-6">
+                                                <div className="image ms-2 isMobile" style={{display:"none"}}>
+                                                    <svg id="Moon_2" data-name="Moon 2" xmlns="http://www.w3.org/2000/svg" width="20.292" height="20.759" viewBox="0 0 35.292 36.759">
+                                                        <path id="Path_1046" data-name="Path 1046" d="M33.821,24.779l1.36.559a1.471,1.471,0,0,0-2.018-1.874ZM14.728,1.471l1.187.868a1.471,1.471,0,0,0-1.5-2.3ZM27.05,24.905A14.006,14.006,0,0,1,13.172,10.774H10.231A16.947,16.947,0,0,0,27.05,27.846Zm6.113-1.441a13.611,13.611,0,0,1-6.113,1.441v2.941a16.552,16.552,0,0,0,7.43-1.752Zm-.7.756a15.358,15.358,0,0,1-14.168,9.6v2.941A18.3,18.3,0,0,0,35.181,25.338Zm-14.168,9.6A15.493,15.493,0,0,1,2.941,18.187H0A18.434,18.434,0,0,0,18.293,36.759ZM2.941,18.187a15.574,15.574,0,0,1,12.1-15.28L14.413.034A18.515,18.515,0,0,0,0,18.187Zm10.231-7.413a14.232,14.232,0,0,1,2.742-8.435L13.541.6a17.173,17.173,0,0,0-3.31,10.172Z" transform="translate(0 0)" fill="#646564"/>
+                                                        <path id="Path_1047" data-name="Path 1047" d="M19.238,2.989a1.029,1.029,0,0,1,1.931,0l1.253,3.387a1.029,1.029,0,0,0,.608.608l3.387,1.253a1.029,1.029,0,0,1,0,1.931L23.03,11.422a1.029,1.029,0,0,0-.608.608l-1.253,3.387a1.029,1.029,0,0,1-1.931,0L17.984,12.03a1.029,1.029,0,0,0-.608-.608l-3.387-1.253a1.029,1.029,0,0,1,0-1.931l3.387-1.253a1.029,1.029,0,0,0,.608-.608Z" transform="translate(6.265 1.09)" fill="none" stroke="#137cb6" stroke-linecap="round" stroke-width="2"/>
+                                                    </svg>
+                                                </div>
                                                 <span className="font-13-mobi text-danger bold-900-mobi">مدت اقامت</span>
                                             </div>
-                                            <div className="image w-50-mobi flex-center-mobi  d-flex align-items-center mx-3">
+                                            <div className="image w-50-mobi flex-center-mobi  d-flex align-items-center mx-3 isDesktop">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38"
                                                     viewBox="0 0 43.84 45.663">
                                                     <g id="Moon_2" data-name="Moon 2" transform="translate(0 0)">
@@ -196,25 +219,36 @@ const tour = (props) => {
                                         </div>
                                         <div className="border-box box-left"></div>
                                     </div>
+                                    {/* border */}
+                                    <div className="border-style-tour isMobile" style={{display:"none"}}></div>
+                                    {/* c info */}
                                     <div className="c-info__tour d-flex flex-row-reverse align-items-center col-xl-12 col-lg-12 col-12">
                                         <div className="bg-white py-3">
-                                            <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3">
+                                            <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3 isDesktop">
                                             {data ?
                                                 <img src={data && data.transfers[1].logo} width={"35px"} height={"35px"} alt="company" style={{ objectFit: 'cover' }} />
                                             :<Loader />}
                                             </div>
                                         </div>
-                                        <div className="text w-90-mobi p-0-mobi pe-2 ps-3">
-                                            <div className="m-main-data  flex-between-mobi d-flex flex-row-reverse align-items-center pb-1">
-                                                <div className="prop pe-2">
+                                        <div className="text w-90-mobi m-flex-100 p-0-mobi pe-2 ps-3">
+                                            <div className="m-main-data  flex-between-mobi d-flex flex-row-reverse align-items-center pb-1 m-pt-15">
+                                                <div className="prop pe-2 isDesktop">
                                                     <span className="font-bold font-14-mobi bold-900-mobi font-size-18 ">اطلاعات مقصد</span>
                                                 </div>
-                                                <div className="val pe-2">
+                                                <div className="val pe-2 m-pr-25">
                                                     <span className="font-13-mobi bold-900-mobi">{data && data.endCity.name}</span>
                                                 </div>
                                             </div>
-                                            <div className="m-main-data flex-between-mobi d-flex flex-row-reverse align-items-center pb-1">
-                                                <div className="prop pe-2">
+                                            <div className="m-main-data flex-between-mobi d-flex flex-row-reverse align-items-center pb-1 m-pb-7">
+                                                <div className="prop d-flex align-items-center pe-2">
+                                                    <div className="image ms-2 isMobile" style={{display:"none"}}>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18.976" height="18.41" viewBox="0 0 29.976 32.41">
+                                                            <g id="Up-Down-3" transform="translate(2.121 1.5)">
+                                                                <path id="Path_1175" data-name="Path 1175" d="M1,21.219l9.191,9.191V1" transform="translate(-1 -1)" fill="none" stroke="#ff0000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3}/>
+                                                                <path id="Path_1176" data-name="Path 1176" d="M19.191,10.191,10,1V30.41" transform="translate(6.543 -1)" fill="none" stroke="#ff0000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3}/>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
                                                     <span className="font-bold text-danger font-13-mobi bold-900-mobi">تاریخ و ساعت پرواز برگشت</span>
                                                 </div>
                                                 <div className="val pe-2">
@@ -222,7 +256,12 @@ const tour = (props) => {
                                                 </div>
                                             </div>
                                             <div className="m-main-data flex-between-mobi d-flex flex-row-reverse align-items-center pb-1">
-                                                <div className="prop pe-2">
+                                                <div className="prop d-flex align-items-center pe-2">
+                                                    <div className="image ms-2 isMobile" style={{display:"none"}}>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18.069" height="15.058" viewBox="0 0 18.069 15.058">
+                                                            <path id="Dish" d="M9.787,2.259a.753.753,0,1,1-.753-.753A.753.753,0,0,1,9.787,2.259Zm1.307.928a2.259,2.259,0,1,0-4.119,0A6.258,6.258,0,0,0,3.4,5.042C2.087,6.464,1.506,8.57,1.506,11.293q0,.019,0,.037a1.882,1.882,0,0,0,.376,3.727h14.3a1.882,1.882,0,0,0,.376-3.727q0-.019,0-.037c0-2.723-.581-4.829-1.894-6.251A6.258,6.258,0,0,0,11.094,3.187Zm-2.06,1.33c-2.142,0-3.595.534-4.529,1.546s-1.494,2.683-1.494,5.23H15.058c0-2.547-.548-4.205-1.494-5.23S11.177,4.517,9.035,4.517ZM16.187,12.8a.376.376,0,0,1,0,.753H1.882a.376.376,0,1,1,0-.753Z" fill="#ff0000" fillRule="evenodd"/>
+                                                        </svg>
+                                                    </div>
                                                     <span className="font-bold font-13-mobi bold-900-mobi" style={{color:'#279692'}}>تاریخ خروج از هتل</span>
                                                 </div>
                                                 <div className="val ps-2 p-0-mobi">
