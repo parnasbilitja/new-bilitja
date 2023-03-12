@@ -3875,3 +3875,92 @@ p img {
   font-weight: bold;
   line-height: 1;
 }
+
+
+.border-style-tour{
+    // width: 2px;
+    height: 50px;
+    border-right:2px dashed #137cb6;
+    margin-right: 16px;
+}
+
+
+// .p-info__tour{
+//   .c-info__tour{
+//     &:nth-child(2){
+//       margin: 15px 0;
+//     }
+//   }
+// }
+
+
+@media (max-width: 768px){
+  .m-justify-content-between{
+    justify-content: space-between !important;
+  }
+  //? padding mobile
+    $sizes: 50;
+    @mixin padding-mobile-classes {
+        @for $i from 0 through $sizes {
+            $padding: $i * 1px;
+            /* padding #{$padding} */
+            .m-p-#{$i} {
+                padding: $padding !important;
+            }
+            .m-pl-#{$i} {
+                padding-left: $padding !important;
+            }
+            .m-pr-#{$i} {
+                padding-right: $padding !important;
+            }
+            .m-pt-#{$i} {
+                padding-top: $padding !important;
+            }
+            .m-pb-#{$i} {
+                padding-bottom: $padding !important;
+            }
+            .m-px-#{$i} {
+                padding-right: $padding !important;
+                padding-left: $padding !important;
+            }
+            .m-py-#{$i} {
+                padding-top: $padding !important;
+                padding-bottom: $padding !important;
+            }
+        }
+    }
+    @include padding-mobile-classes;
+
+    //? margin mobile
+    $sizesMarginMobile: 50;
+    @mixin margin-mobile-classes {
+        @for $i from 0 through $sizesMarginMobile {
+            $margin: $i * 1px;
+            /* margin #{$margin} */
+            .m-m-#{$i} {
+                margin: $margin !important;
+            }
+            .m-ml-#{$i} {
+                margin-left: $margin !important;
+            }
+            .m-mr-#{$i} {
+                margin-right: $margin !important;
+            }
+            .m-mt-#{$i} {
+                margin-top: $margin !important;
+            }
+            .m-mb-#{$i} {
+                margin-bottom: $margin !important;
+            }
+            .m-mx-#{$i} {
+                margin-right: $margin !important;
+                margin-left: $margin !important;
+            }
+            .m-my-#{$i} {
+                margin-top: $margin !important;
+                margin-bottom: $margin !important;
+            }
+        }
+    }
+    @include margin-mobile-classes;
+}
