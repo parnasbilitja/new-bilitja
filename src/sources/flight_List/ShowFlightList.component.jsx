@@ -4,6 +4,7 @@ import globals from "../Global";
 import styles from "../../../styles/FlightList.module.scss";
 
 import { moneyFormat, getweekday } from "../../Utils/SimpleTasks";
+import Image from "next/image";
 
 const ShowFlightList = (props) => {
   
@@ -76,8 +77,10 @@ const ShowFlightList = (props) => {
               </div>
             </div>
             <div className={styles["one-row-provider"]}>
-              <img
+              <Image
                 className={styles["img-airplan"]}
+                height={40}
+                width={40}
                 src={
                   globals.website +
                   `Airlines/${oneFlight.airlineIataCode}.png?ver=1`

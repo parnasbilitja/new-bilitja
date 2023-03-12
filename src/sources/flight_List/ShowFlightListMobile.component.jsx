@@ -4,6 +4,7 @@ import styles from "../../../styles/MobileFlightList.module.scss";
 import globals from "../Global";
 import { moneyFormat, getweekday } from "../../Utils/SimpleTasks";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
+import Image from "next/image";
 
 class ShowFlightListMobile extends React.Component {
   constructor(props) {
@@ -75,9 +76,9 @@ class ShowFlightListMobile extends React.Component {
                     style={{ marginBottom: 18 }}
                     className={styles["mobile-one-row-provider"]}
                   >
-                    <img
-                      width=""
-                      height=""
+                    <Image
+                      width={40}
+                      height={40}
                       src={
                         globals.website +
                         `Airlines/${oneFlight.airlineIataCode}.png?ver=1`
