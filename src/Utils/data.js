@@ -109,7 +109,7 @@ const flightsData = [
       },
       {
         name: "اهواز",
-        url: "tehran-to-ahwaz/airfares-thr,ika-awz",
+        url: "tehran-to-ahvaz/airfares-thr,ika-awz",
       },
       {
         name: "تبریز",
