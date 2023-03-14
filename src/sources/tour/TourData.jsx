@@ -54,7 +54,9 @@ const TourData = ({currentCity, search, setSearch}) => {
                     </div>
 
             </div>
-            <Posts/>
+            <div id='blog'>
+                <Posts/>
+            </div>
             <Questions data={data.faq} />
         </>
         }
