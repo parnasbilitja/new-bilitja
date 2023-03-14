@@ -16,13 +16,13 @@ class ShowFlightListMobile extends React.Component {
     {
     }
     return (
-      <div className={`${styles["container-flight-list-mobile"]} mt-3`}>
+      <div className={`${styles["container-flight-list-mobile"]} `}>
         <Scrolltoprefresh />
         <div>
           <div
             className={` ${styles["mobile-flight-list-header"]} font-bold-iransanse`}
           >
-            <p className="font-light-iransans pt-3 pb-3">
+            <p className="font-light-iransans pt-1 pb-3">
               خريد بليط هواپيما{" "}
               <span className="color-secondary font-bold-iransanse">
                 {this.props.flightList.length != 0
@@ -73,8 +73,8 @@ class ShowFlightListMobile extends React.Component {
 
                 <div>
                   <div
-                    style={{ marginBottom: 18 }}
-                    className={styles["mobile-one-row-provider"]}
+                    // style={{ marginBottom: 18 }}
+                    className={`${styles["mobile-one-row-provider"]} d-flex align-items-center justify-content-center`}
                   >
                     <Image
                       width={40}
