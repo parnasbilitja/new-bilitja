@@ -13,6 +13,7 @@ import { Loader } from '../../Utils/Loader';
 import axios from 'axios';
 import moment from 'moment-jalaali';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const OfferdTours = (props) => {
     const [data, setData] = useState(null)
@@ -21,8 +22,9 @@ const OfferdTours = (props) => {
     const swiperRef = useRef();
     const getData = async () => {
         setLoading(true)
-        const val = await axios.post('https://api.hamnavaz.com/api/v1/tour/getTours',{offered :1})
-        setData(val.data.data)
+        const vale = await fetch('/api/allSite/OfferdTours')
+        const data = await vale.json()
+        setData(data?.data?.data)
         setLoading(false)
     }
     useEffect(() => {
@@ -54,8 +56,7 @@ const OfferdTours = (props) => {
                                 </div>
                             </div>
                         </div>
-                        {width>=826 &&
-                            <div className='col-12 col-md-2 d-flex justify-content-end'>
+                            <div className='col-12 col-md-2 d-flex justify-content-end hidden-desktop'>
                                 <button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slidePrev()}>
                                     <FontAwesomeIcon icon={faAngleRight} />
                                 </button>
@@ -63,7 +64,7 @@ const OfferdTours = (props) => {
                                     <FontAwesomeIcon icon={faAngleLeft} />
                                 </button>
                             </div>
-                        }
+                        
             </div>
                         
             <div className="bottom d-flex align-items-center mt-3 mb-3">
@@ -105,7 +106,9 @@ const OfferdTours = (props) => {
               navigation={false} modules={[Navigation]}
               className="mySwiper"
           >
-            {data.map((item)=>(
+            {data==null?
+            <Loader/>
+            :data.map((item)=>(
               <SwiperSlide key={item.id}>
                   <div className="box-special-tour" key={item.id}>
                       <div className="img-special-tour">
@@ -122,9 +125,11 @@ const OfferdTours = (props) => {
                                         مشاهده جزئیات بیشتر
                                     </Link>
                               </div>
-                              <img
-                                  src={item.endCity.images[Math.floor(Math.random()*item.endCity.images.length)] }
-                                  alt={item.title}/>
+                              <Image
+                                width={400}
+                                height={600}
+                                src={item.endCity.images[Math.floor(Math.random()*item.endCity.images.length)] }
+                                alt={item.title}/>
                           </a>
                           </Link>
                       </div>

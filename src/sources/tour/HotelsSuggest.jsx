@@ -13,6 +13,7 @@ import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Link from 'next/link';
 import { Loader } from '../../Utils/Loader';
+import Image from 'next/image';
 
 const HotelsSuggest = () => {
     const swiperRef = useRef();
@@ -24,25 +25,29 @@ const HotelsSuggest = () => {
     useEffect(() => {
         setWidth(window.innerWidth)
         const getData = async () => {
-            await axios.post('https://api.hamnavaz.com/api/v1/city/getCities')
-            .then(res => {setCities(res.data.data)})
+            const vale = await fetch('/api/allSite/Cites')
+            const data = await vale.json()
+            setCities(data?.data?.data)
         }
         getData()
     },[])
+    const getData = async () => {
+        await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
+        .then(res => {setHotels(res.data.data),setLoading(false)})
+        const res = fetch('/api/allSite/GetHotels',{
+            method:'POST',
+            body:JSON.stringify({isAdmin:0,city:city}),
+            headers:{"Content-Type":'application/json'}
+        })
+        const data = await (await res).json()
+    }
     useEffect(()=>{
         setLoading(true)
-        const getData = async () => {
-            await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
-            .then(res => {setHotels(res.data.data),setLoading(false)})
-        }
         getData()
     },[city])
+
     useEffect(()=>{
         setLoading(true)
-        const getData = async () => {
-            await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
-            .then(res => {setHotels(res.data.data),setLoading(false)})
-        }
         getData()
         
     },[])
@@ -63,7 +68,7 @@ const HotelsSuggest = () => {
                                         <h5 className="font-bold title-custom" style={{marginTop:`${width>826?'2px':'4px'}`}}>هتل های برگزیده شهر</h5>
                                         <select style={{width: '30%',marginBottom: '8px',color: '#279692'}}
                                          className="selectCity font-bold" value={city} onChange={(val) => setCity(val.target.value)}>
-                                            {cities.map(item=>(
+                                            {cities?.map(item=>(
                                                 <option key={item.id} value={item.id}>{item.name}</option>
                                             ))}
                                         </select>
@@ -123,16 +128,26 @@ const HotelsSuggest = () => {
                             <SwiperSlide item={item.id}>
                                 <div item={item.id}>
                                     <div class="box-hotel">
-                                        <img  class="img-blog" src={item.thumbnail}/>
+                                        <Image width={100} height={100}
+                                         className="img-blog" src={item.thumbnail}/>
                                         <Link href={`/hotel/${item.slug}`}>
                                             <div class="opacity-bg-parent">
-                                                <div class="info-img"><img src="https://hamnavaz.com/img/Information.svg" width="22" alt="توضیحات-هتل"/>
+                                                <div class="info-img">
+                                                <svg xmlns="http://www.w3.org/2000/svg" id="Information" width="26.17" height="26.17" viewBox="0 0 26.17 26.17">
+                                                    <path id="Path_991" data-name="Path 991" d="M1,13.085a30.578,30.578,0,0,0,.507,6.4A6.8,6.8,0,0,0,3.2,22.971a6.8,6.8,0,0,0,3.484,1.692,30.584,30.584,0,0,0,6.4.507,30.584,30.584,0,0,0,6.4-.507,6.8,6.8,0,0,0,3.484-1.692,6.8,6.8,0,0,0,1.692-3.484,30.584,30.584,0,0,0,.507-6.4,30.584,30.584,0,0,0-.507-6.4A6.8,6.8,0,0,0,22.971,3.2a6.8,6.8,0,0,0-3.484-1.692A30.578,30.578,0,0,0,13.085,1a30.579,30.579,0,0,0-6.4.507A6.8,6.8,0,0,0,3.2,3.2,6.8,6.8,0,0,0,1.507,6.683,30.579,30.579,0,0,0,1,13.085Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                    <path id="Path_992" data-name="Path 992" d="M13.2,17.986a1.1,1.1,0,0,1-2.2,0V11.395a1.1,1.1,0,0,1,2.2,0ZM12.1,9.2a1.1,1.1,0,1,1,1.1-1.1A1.1,1.1,0,0,1,12.1,9.2Z" transform="translate(0.986 0.592)" fill="#fff" fill-rule="evenodd"/>
+                                                    </svg>
                                                 </div>
                                                 <div class="info-hotel">
                                                     <span className="font-bold" x-text="hotel.name">{item.name}</span>
                                                     <div class="footer-hotel-info">
                                                         <div class="location-hotel">
-                                                            <img src="https://hamnavaz.com/img/Location-white.svg" width="17" alt="آدرس-هتل"/>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="17.292" height="20.05" viewBox="0 0 17.292 20.05">
+                                                            <g id="Location-white" transform="translate(1.02 1)">
+                                                                <path id="Path_1011" data-name="Path 1011" d="M1.108,9.99a11.15,11.15,0,0,0,2.935,5.664,18.408,18.408,0,0,0,3.886,3.17,1.3,1.3,0,0,0,1.393,0,18.409,18.409,0,0,0,3.886-3.17A11.15,11.15,0,0,0,16.143,9.99a8.515,8.515,0,0,0-1.177-5.877A7.115,7.115,0,0,0,8.626,1,7.115,7.115,0,0,0,2.285,4.113,8.515,8.515,0,0,0,1.108,9.99Z" transform="translate(-1 -1)" fill="none" stroke="#c6ecff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                                <circle id="Ellipse_49" data-name="Ellipse 49" cx="2.08" cy="2.08" r="2.08" transform="translate(9.706 9.469) rotate(180)" fill="none" stroke="#c6ecff" stroke-width="2"/>
+                                                            </g>
+                                                            </svg>
                                                             <span x-text="hotel.city + ' - ' + hotel.location" style={{marginBottom: "0",fontSize:'13px'}}>{item.location}</span>
                                                         </div>
                                                         <div className="star d-flex align-items-center pb-1">
