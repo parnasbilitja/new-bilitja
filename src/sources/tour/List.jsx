@@ -14,7 +14,6 @@ import dynamic from "next/dynamic";
 import { Loader } from '../../Utils/Loader';
 import Head from 'next/head';
 import moment from 'moment-jalaali';
-import Image from 'next/image';
 
 const Account = dynamic(() => import("./../../sources/account/Account.component"));
 
@@ -28,11 +27,11 @@ const List = (props) => {
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
     const getData = async () => {
-        const vale = await fetch('/api/allSite/TourList')
-        const data = await vale.json()
-        setData(data?.data?.data)
-        console.log(data);
-        setLoading(false)
+        const val = await axios.post('https://api.hamnavaz.com/api/v1/tour/getTours')
+        .then((val) =>{setData(val.data.data),setLoading(false)})
+        .catch(error => {
+            setLoading(true)
+         })
     }
     useEffect(() => {
         getData();
@@ -51,6 +50,7 @@ const List = (props) => {
       };
     return (
         <div ref={props.myRef} className='mx-2'>
+            
             <PopUp
                 opened={props.accountBox.state}
                 closePopUp={() => {
@@ -163,7 +163,7 @@ const List = (props) => {
                                     </div>
                                 </div>
                                 <div className="type">
-                                    <Image width={50} height={50} src={item.transfers[0].logo} />
+                                    <img width="45" src={item.transfers[0].logo} />
                                     <span className="text-dark me-2 font-size-14">{item.transfers[0].transfer}</span>
                                 </div>
                                 <Link href={`/${item.slug}`}>
