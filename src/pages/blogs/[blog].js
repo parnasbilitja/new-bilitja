@@ -23,7 +23,7 @@ const blog = (props) => {
 
   
     return (
-        <div className="marginTop120">
+        <div className="mt-100">
         <NavHandler/>
             <div class="col-md-10 flex-column-mobi m-auto blog-info-parent">
                     <div class="col-md-9">

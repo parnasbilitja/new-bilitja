@@ -17,7 +17,7 @@ const ChangePassword = (props) => {
     confirm_password: "",
     UserId: "",
   });
-  console.log(state);
+  // console.log(state);
   useEffect(() => {
     setState((prevState) => ({
       ...prevState,
@@ -70,7 +70,7 @@ const ChangePassword = (props) => {
 
   const verifyToken = (e) => {
     setState({...state, password: e.target.valueAsNumber || e.target.value });
-    console.log(state.password);
+    // console.log(state.password);
     if (state.password.length > 3 && state.password.length < 5) {
     fetch(`${globals.baseUrlNew}auth/ForgotPassword`, {
       method: "POST",
@@ -113,7 +113,7 @@ const ChangePassword = (props) => {
   useEffect(() => {
     const verifyToken = () => {
       // setState({...state, password: e.target.valueAsNumber || e.target.value });
-      console.log(state.password);
+      // console.log(state.password);
       if (state.password.length > 3 && state.password.length < 5) {
       fetch(`${globals.baseUrlNew}auth/ForgotPassword`, {
         method: "POST",
@@ -181,7 +181,7 @@ const ChangePassword = (props) => {
                 // {state.password.length > 2 &&
                 verifyToken(e)
               // }
-                console.log(e.target.valueAsNumber || e.target.value);
+                // console.log(e.target.valueAsNumber || e.target.value);
               }
               }
               type="text"

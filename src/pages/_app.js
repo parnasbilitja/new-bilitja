@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import * as ga from "../../lib/ga";
 import { Provider } from "react-redux";
 import { store } from "../Redux/store";
+import { motion } from 'framer-motion';
 
 
 function MyApp({ Component, pageProps }) {
@@ -36,7 +37,17 @@ function MyApp({ Component, pageProps }) {
       <title>
         خریداینترنتی بلیط ارزان هواپیما | بلیط استانبول | بلیط جا | 021842799999
       </title>
-      <Component {...pageProps} />
+      <motion.div key={router.route} initial="pageInitial" animate="pageAnimate" variants={{
+        pageInitial: {
+          opacity: 0.4
+        },
+        pageAnimate: {
+          opacity: 1
+        },
+      }}>
+
+        <Component {...pageProps} />
+      </motion.div>
     </Provider>
   );
 }

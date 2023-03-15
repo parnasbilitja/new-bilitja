@@ -32,7 +32,7 @@ const Hotels = () => {
     },[])
     const getData = async () => {
         await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city, search:search.hotel, page:page,paginate:true,perPage:12})
-        .then(res => {setHotels(res.data.data),setLoading(false),console.log(res),setPaginate(res.data.meta)})
+        .then(res => {setHotels(res.data.data),setLoading(false),setPaginate(res.data.meta)})
     }
     const searchHotel = ()=>{
         setLoading(true)
@@ -45,7 +45,6 @@ const Hotels = () => {
     useEffect(()=>{
         setLoading(true)
         getData()
-        
     },[])
     useEffect(() => {
         setLoading(true)
@@ -56,12 +55,12 @@ const Hotels = () => {
     const myRef = useRef(null)
     const executeScroll = () => { myRef.current.scrollIntoView()}
     return (
-            <div className="mt-90 bodyVar">
+            <div className="mt-90 bodyVar" >
             <Head>
             <title>بلیطجا | رزرو هتل</title>
         </Head>
             <NavHandler />
-        <div className="row justify-content-center">
+        <div className="row justify-content-center" style={{marginTop: width>=826? '0rem':'-0.7rem' }}>
             <div style={{background: '#F7F7F7'}}>
                     <PictureBase/>
                     <PageTabls type={type} setType={setType} />

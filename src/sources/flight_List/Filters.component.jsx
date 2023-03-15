@@ -25,7 +25,7 @@ const Filters = (props) => {
 
         useEffect(()=>{
             const scroll = (event) => {
-              console.log(window.scrollY)
+            //   console.log(window.scrollY)
             }
             window.addEventListener("scroll", scroll, false);
             return  () => window.removeEventListener("scroll", scroll, false);
@@ -96,7 +96,7 @@ const Filters = (props) => {
     const handleFindByPrice = (lowMood, e) => {
         const { checked } = e.target;
         if (checked === true) {
-            console.log("checkeds :", checked);
+            // console.log("checkeds :", checked);
 
             if (lowMood === true) {
                 setState({...state,
@@ -135,7 +135,7 @@ const Filters = (props) => {
                 checked: false,
                 lowPrice: null,
             });
-            console.log("checkeds :", checked);
+            // console.log("checkeds :", checked);
             props.setFilter(props.realData);
         }
     };

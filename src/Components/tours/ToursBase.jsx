@@ -49,7 +49,7 @@ const ToursBase = () => {
                 <title>بلیطجا | لیست تورها</title>
             </Head>
           <NavHandler />
-        <div className={``} style={{marginTop: state.width>=826?'':'5rem' }}>
+        <div className={``} style={{marginTop: state.width>=826?'':'-0.8rem' }}>
           <Scrolltoprefresh />
           <div style={{background: '#F7F7F7'}}>
             <PictureBase/>

@@ -2,7 +2,7 @@ import React from 'react';
 import Row from './Row';
 
 const Table = ({ props }) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="controller-table mt-3 scroller">
       {/* head */}
@@ -37,7 +37,7 @@ const Table = ({ props }) => {
         </div>
       </div>
       <div className="data-detail">
-        {console.log(props)}
+        {/* {console.log(props)} */}
         {props && props.map((item) => (
           <Row props={item} />
         ))}

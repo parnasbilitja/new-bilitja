@@ -4,7 +4,7 @@ import {tableData} from "../../Utils/data"
 import { useState } from 'react';
 import { useEffect } from 'react';
 const Table = ({state}) => {
-    console.log(state);
+    // console.log(state);
     const [width, setWidth] = useState(0)
     useEffect(() => {
         setWidth(window.innerWidth)

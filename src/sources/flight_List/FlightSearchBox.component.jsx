@@ -59,7 +59,7 @@ const FlightSearchBox = (props) => {
   };
   const [list, setList] = useState({})
   const handleFocusOut = (event) => {
-    console.log(list);
+    // console.log(list);
     const { name, value } = event.target;
     setList({ ...list, [name]: value });
     props.addCredentials({
@@ -67,7 +67,7 @@ const FlightSearchBox = (props) => {
     });
   };
   const handleFocus = (event) => {
-    console.log(list);
+    // console.log(list);
     const { name, value } = event.target;
     setList({ ...list, [name]: value });
     props.addCredentials({
@@ -346,7 +346,7 @@ const FlightSearchBox = (props) => {
                   currentPage: 1,
                 })
                 .then(() => {
-                  console.log('props.type', props.type)
+                  // console.log('props.type', props.type)
                   if (props.type == 'panel') {
                     return
                   } else {
