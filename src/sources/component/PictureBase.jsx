@@ -1,8 +1,17 @@
 import React from 'react';
 import styles from "../../../styles/Home.module.scss";
+import { motion } from 'framer-motion';
 const PictureBase = () => {
     return (
-        <>
+      <motion.div  
+      initial="pageInitial" animate="pageAnimate" variants={{
+          pageInitial: {
+            opacity: 0
+          },
+          pageAnimate: {
+            opacity: 1,
+          },}}
+  >
         <div className="hidden-xs hidden-sm row">
           <div className="col-md-4 px-0">
             <img
@@ -32,7 +41,7 @@ const PictureBase = () => {
             />
           </div>
         </div>
-        </>
+        </motion.div>
     );
 };
 

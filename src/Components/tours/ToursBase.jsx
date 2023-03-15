@@ -15,6 +15,7 @@ import SearchBox from '../../sources/tour/SearchBox';
 import NavHandler from '../share/NavHandler';
 import styles from "../../../styles/Home.module.scss";
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const ToursBase = () => {
     const [state,setState] = useState({
@@ -71,7 +72,17 @@ const ToursBase = () => {
                 />
               </div>
                 <div>
+                <motion.div  
+                    initial="pageInitial" animate="pageAnimate" variants={{
+                        pageInitial: {
+                          opacity: 0
+                        },
+                        pageAnimate: {
+                          opacity: 1,
+                        },}}
+                >
                     <HomePicture state={state} />
+                    </motion.div>
                 </div>
             </div>
             </div>

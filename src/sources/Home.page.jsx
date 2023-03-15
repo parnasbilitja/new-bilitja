@@ -18,7 +18,7 @@ import Scrolltoprefresh from "./component/Scrolltoprefresh";
 
 import HomeDetails from "./flight/HomeDetails";
 import PictureBase from "./component/PictureBase";
-
+import { motion } from 'framer-motion';
 
 
 const Home = (props) => {
@@ -81,25 +81,36 @@ const Home = (props) => {
                         </div>
                     </div>
                 </div>
-            <div className={`${styles["parentbackFight"]} hidden-desktop`}>
-              <div className="d-flex w-100 align-items-center justify-content-center" style={{background: '#F7F7F7',padding:'16px 0'}}>
-                <img
-                    className={`${styles[""]}`}
-                    width="50%"
-                    height=""
-                    alt="بلیطجا-اسلایدر"
-                    src="../../../Images/fly-bg-new.png"
-                />
-              </div>
-            </div>
-                  <div className={`${styles["hero-big-image"]} container hidden-mobile-head`}>
+                <motion.div  
+                    initial="pageInitial" animate="pageAnimate" variants={{
+                        pageInitial: {
+                          opacity: 0
+                        },
+                        pageAnimate: {
+                          opacity: 1,
+                        },}}
+                >
+                    <div className={`${styles["parentbackFight"]} hidden-desktop`}>
+                    <div className="d-flex w-100 align-items-center justify-content-center" style={{padding:'16px 0'}}>
+                        <img
+                            className={`${styles[""]}`}
+                            width="50%"
+                            height=""
+                            alt="بلیطجا-اسلایدر"
+                            src="../../../Images/fly-bg-new.png"
+                        />
+                    </div>
+                    </div>
+                    <div className={`${styles["hero-big-image"]} container hidden-mobile-head`}>
                     <img
-                      width=""
-                      height=""
-                      alt="بلیطجا-اسلایدر"
-                      src="../../../Images/fly-bg-new.png"
+                        width=""
+                        height=""
+                        alt="بلیطجا-اسلایدر"
+                        src="../../../Images/fly-bg-new.png"
                     />
-                  </div>
+                    </div>
+                </motion.div>
+
             </div>
             <HomeDetails type={props.type}/>
         </div>
