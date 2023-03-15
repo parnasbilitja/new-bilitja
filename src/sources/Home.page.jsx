@@ -81,8 +81,7 @@ const Home = (props) => {
                         </div>
                     </div>
                 </div>
-                {width >= 826 ? (
-            <div className={`${styles["parentbackFight"]}`}>
+            <div className={`${styles["parentbackFight"]} hidden-desktop`}>
               <div className="d-flex w-100 align-items-center justify-content-center" style={{background: '#F7F7F7',padding:'16px 0'}}>
                 <img
                     className={`${styles[""]}`}
@@ -93,9 +92,7 @@ const Home = (props) => {
                 />
               </div>
             </div>
-                ) : null}
-                {width < 826 ? (
-                  <div className={`${styles["hero-big-image"]} container`}>
+                  <div className={`${styles["hero-big-image"]} container hidden-mobile-head`}>
                     <img
                       width=""
                       height=""
@@ -103,7 +100,6 @@ const Home = (props) => {
                       src="../../../Images/fly-bg-new.png"
                     />
                   </div>
-                ) : null}
             </div>
             <HomeDetails type={props.type}/>
         </div>
