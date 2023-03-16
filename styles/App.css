@@ -535,11 +535,11 @@ input[type="button"]:hover {
 }
 
 .mt-100 {
-    margin-top: 100px;
+    margin-top: 100px !important;
 }
 
 .mt-110 {
-    margin-top: 110px;
+    margin-top: 110px !important;
 }
 
 .mt-130 {
@@ -551,7 +551,7 @@ input[type="button"]:hover {
 }
 
 .mt-90 {
-    margin-top: 90px;
+    margin-top: 90px !important;
 }
 
 .pt-10 {

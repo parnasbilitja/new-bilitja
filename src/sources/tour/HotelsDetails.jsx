@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { moneyFormatrial } from '../../Utils/SimpleTasks';
+import { moneyFormat, moneyFormatrial } from '../../Utils/SimpleTasks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 const HotelsDetails = ({pack,data,setPackData,setShow}) => {
@@ -18,8 +18,8 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
     },[])
     return (
         <div className={width<=826 ? 'w-100' : 'p-data w-70'}>
-            {width<=826 &&
-            <>
+            
+            <div className='hidden-mobile-head'>
                     <div className="d-flex justify-content-center my-2 font-bold-iransanse" style={{color:'#279692',alignItems:"center"}} 
                     onClick={()=>setSeeMore(!seeMore)}><span className='font-bold-iransanse'>{'   '}مشاهده جزئیات بیشتر{'   '}</span>
                     <FontAwesomeIcon className="font-bold-iransanse mx-2" icon={faAngleDown} /></div>
@@ -82,7 +82,7 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                     <div className="info-price position-relative d-flex align-items-start">
                         <div className="text d-flex flex-column align-items-center w-100 py-3">
                             <span className="text-show-m color-base-color font-bold">کودک بدون تخت</span>
-                            <span className="font-size-14 font-bold color-gray">{undefined == undefined?'--': pack.prices.cnb?.includes(',') == true ?`${pack.prices.cnb} تومان`: `${moneyFormatrial(`${pack.prices.cnb}0`)}تومان` } </span>
+                            <span className="font-size-14 font-bold color-gray">{undefined == undefined?'--': pack.prices.cnb?.includes(',') == true ?`${pack.prices.cnb} تومان`: `${moneyFormat(`${pack.prices.cnb}`)}تومان` } </span>
                         </div>
                     </div>
                 </div>
@@ -96,11 +96,11 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                     </button>
                 </div>
                 </div>
-            </>
-                }
+            </div>
+                
 
-            {width >= 826 &&
-            <div style={{display:'flex',alignItems:'center',position:'relative', justifyContent:'space-between'}} className={'position-relative d-flex align-items-center bg-white py-2 px-2'}>
+            <div style={{display:'flex',alignItems:'center',position:'relative', justifyContent:'space-between'}} 
+            className={'position-relative d-flex align-items-center bg-white py-2 px-2 hidden-desktop'}>
                 <div className="c-detail">
                     <div className="info-price position-relative d-flex align-items-start ">
                         <div className="text d-flex align-items-center w-100 py-3">
@@ -176,8 +176,8 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                         <div className="text d-flex align-items-center w-100 py-3">
                             {data.defineTour && 
                             <>
-                            <spanfont-bold 
-                                className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.cwbRate)}</spanfont-bold>
+                            <span
+                                className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.cwbRate)}</span>
                                 <span className="px-2 font-size-13 text-danger"> تومان </span>
                             </>
                                 }
@@ -191,7 +191,7 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                     <div className="info-price position-relative d-flex align-items-start ">
                         <div className="text d-flex align-items-center w-100 py-3">
                             <span
-                                className="font-size-14 font-bold color-gray">{pack.prices.cnb == undefined ? '--' : pack.prices.cnb?.includes(',') == true ? `${pack.prices.cnb} ` : `${moneyFormatrial(`${pack.prices.cnb}0`)}`} </span>
+                                className="font-size-14 font-bold color-gray">{pack.prices.cnb == undefined ? '--' : pack.prices.cnb?.includes(',') == true ? `${pack.prices.cnb} تومان` : `${moneyFormat(`${pack.prices.cnb}0`)} تومان`} </span>
                                 {!pack.prices.cnb == undefined && <span className="px-2 font-size-13 text-danger"> تومان </span>}
                         </div>
                     </div>
@@ -209,7 +209,7 @@ const HotelsDetails = ({pack,data,setPackData,setShow}) => {
                     </button>
                 </div>
             </div>
-            }
+            
         </div>
     );
 };

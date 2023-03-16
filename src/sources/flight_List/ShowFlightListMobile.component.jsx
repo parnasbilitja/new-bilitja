@@ -4,6 +4,7 @@ import styles from "../../../styles/MobileFlightList.module.scss";
 import globals from "../Global";
 import { moneyFormat, getweekday } from "../../Utils/SimpleTasks";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
+import Image from "next/image";
 
 class ShowFlightListMobile extends React.Component {
   constructor(props) {
@@ -15,13 +16,13 @@ class ShowFlightListMobile extends React.Component {
     {
     }
     return (
-      <div className={`${styles["container-flight-list-mobile"]} mt-3`}>
+      <div className={`${styles["container-flight-list-mobile"]} `}>
         <Scrolltoprefresh />
         <div>
           <div
             className={` ${styles["mobile-flight-list-header"]} font-bold-iransanse`}
           >
-            <p className="font-light-iransans pt-3 pb-3">
+            <p className="font-light-iransans pt-1 pb-3">
               خريد بليط هواپيما{" "}
               <span className="color-secondary font-bold-iransanse">
                 {this.props.flightList.length != 0
@@ -72,12 +73,12 @@ class ShowFlightListMobile extends React.Component {
 
                 <div>
                   <div
-                    style={{ marginBottom: 18 }}
-                    className={styles["mobile-one-row-provider"]}
+                    // style={{ marginBottom: 18 }}
+                    className={`${styles["mobile-one-row-provider"]} d-flex align-items-center justify-content-center`}
                   >
-                    <img
-                      width=""
-                      height=""
+                    <Image
+                      width={40}
+                      height={40}
                       src={
                         globals.website +
                         `Airlines/${oneFlight.airlineIataCode}.png?ver=1`

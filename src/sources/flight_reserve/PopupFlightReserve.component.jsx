@@ -20,6 +20,7 @@ import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
 import { getweekday } from "../../Utils/SimpleTasks";
 import Loader from "../../Utils/Loader";
+import Image from "next/image";
 const PopupFlightReserve = (props) => {
 
   const [state, setState] = useState({
@@ -179,8 +180,9 @@ const PopupFlightReserve = (props) => {
 
         <div>
           <div>
-            <img
-              style={{ width: 35 }}
+            <Image
+              width={35}
+              height={35}
               src={globals.website + `Airlines/${airlineIataCode}.png?ver=1`}
               alt="بلیطجا - لوگو ایرلاین"
             />

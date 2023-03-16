@@ -35,6 +35,7 @@ body {
   }
 }
 
+
 @media only screen and (max-width: 450px) {
   .hidden-xs {
     display: none !important;
@@ -817,7 +818,7 @@ div.radio {
 }
 
 .accordion-item-prs {
-  overflow: hidden;
+  // overflow: hidden;
   // margin-left: 0;
   border: 2px solid #dbdbdb !important;
 }
@@ -827,10 +828,13 @@ div.radio {
   padding: 8px;
   border-radius: 2px;
   margin-right: 0 !important;
+  display: flex;
+  align-items: center;
 
   label {
     margin-right: 10px !important;
     font-weight: 600;
+    margin-bottom: 0% !important;
   }
 }
 
@@ -2539,6 +2543,7 @@ $sizes: 100;
   margin-top: 120px !important
 }
 
+
 .box-blog-parent {
   align-items: flex-start;
   display: flex;
@@ -2592,10 +2597,10 @@ $sizes: 100;
 }
 
 .img-blog {
-  height: 100%;
+  height: 100% !important;
   -o-object-fit: cover;
   object-fit: cover;
-  width: 100%;
+  width: 100% !important;
 }
 
 .info-blog h6 {
@@ -2779,9 +2784,9 @@ $sizes: 100;
   display: flex;
 }
 
-.search {
-  justify-content: flex-end;
-}
+// .search {
+//   justify-content: flex-end;
+// }
 
 .box-search {
   align-items: center;
@@ -2791,7 +2796,7 @@ $sizes: 100;
 }
 
 .box-search {
-  width: 100%;
+  width: 20%;
   justify-content: center !important;
 }
 
@@ -3963,4 +3968,14 @@ p img {
         }
     }
     @include margin-mobile-classes;
+}
+@media only screen and (min-width: 826px) {
+  .hidden-mobile-head {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 826px) {
+  .hidden-desktop {
+    display: none !important;
+  }
 }

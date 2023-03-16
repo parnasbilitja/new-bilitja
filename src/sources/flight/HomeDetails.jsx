@@ -15,37 +15,7 @@ const HomeDetails = ( props) => {
 
           <div className="justify-content-center">
             <div className="col-md-12 px-0">
-                {width >= 826 ? (
-            <div className={`${styles["parentbackFight"]}`}>
-              <div className="d-flex w-100 align-items-center justify-content-center" style={{background: '#F7F7F7',padding:'16px 0'}}>
-                <img
-                    className={`${styles[""]}`}
-                    width="50%"
-                    height=""
-                    alt="بلیطجا-اسلایدر"
-                    src="../../../Images/fly-bg-new.png"
-                />
-              </div>
-
-              {/*<img*/}
-              {/*className={`${styles["frontFight"]}`}*/}
-              {/*  width=""*/}
-              {/*  height=""*/}
-              {/*  alt="بلیطجا-اسلایدر"*/}
-              {/*  src="../../../Images/frontFight.png"*/}
-              {/*/>*/}
-            </div>
-          ) : null}
-          {width < 826 ? (
-            <div className={`${styles["hero-big-image"]} container`}>
-              <img
-                width=""
-                height=""
-                alt="بلیطجا-اسلایدر"
-                src="../../../Images/fly-bg-new.png"
-              />
-            </div>
-          ) : null}
+                
           <div className={'row justify-content-center'}>
             <div className='col-md-10'>
               {props.type == 'index' &&

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Accordion from "react-bootstrap/Accordion";
 import globals from "../Global";
@@ -10,99 +10,99 @@ import {
     removeAirlineFromSearchObject,
 } from "../../Redux/Search/search.action";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
+import Image from "next/image";
 
-class Filters extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+const Filters = (props) => {
+        const [state,setState] = useState({
             width: 1024,
             airlines: [],
             lowPrice: true,
             endtime: "",
             checked: false,
-        };
-        this.handleClick = this.handleClick.bind(this);
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-    }
-  componentDidMount() {
-        // const prevTickets = [...this.props.realData];
-        // const filtring = prevTickets.sort((a, b) => a.priceView - b.priceView);
-        // console.log(filtring);
-        // this.props.setFilter(filtring);
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
-    }
-    componentWillUnmount() {
-      window.removeEventListener("resize", this.updateWindowDimensions);
-    }
-  
-    updateWindowDimensions() {
-      this.setState({ width: window.innerWidth });
-    }
-
-    handleClick() {
-        this.setState({
-            checked: this.state.checked,
         });
-    }
     
+        const [scrollY, setScrollY] = useState(0);
 
-    handleFindByFlightNo = (e) => {
+        useEffect(()=>{
+            const scroll = (event) => {
+            //   console.log(window.scrollY)
+            }
+            window.addEventListener("scroll", scroll, false);
+            return  () => window.removeEventListener("scroll", scroll, false);
+          },[])
+//   componentDidMount() {
+//         // const prevTickets = [...props.realData];
+//         // const filtring = prevTickets.sort((a, b) => a.priceView - b.priceView);
+//         // console.log(filtring);
+//         // props.setFilter(filtring);
+//         updateWindowDimensions();
+//         window.addEventListener("resize", updateWindowDimensions);
+//     }
+//     componentWillUnmount() {
+//       window.removeEventListener("resize", updateWindowDimensions);
+//     }
+  
+//     updateWindowDimensions() {
+//       setState({ width: window.innerWidth });
+//     }
+
+
+    const handleFindByFlightNo = (e) => {
         if (e.target.value != "") {
-            const searched = this.props.realData.filter((res) =>
+            const searched = props.realData.filter((res) =>
                 res.flightNo.toLowerCase().includes(e.target.value.toLowerCase())
             );
-            this.props.setFilter(searched);
+            props.setFilter(searched);
         } else {
-            this.props.setFilter(this.props.realData);
+            props.setFilter(props.realData);
         }
     };
 
-    handleSelectAirline = async (airline, event) => {
+    const handleSelectAirline = async (airline, event) => {
         const { checked } = event.target;
-        const prevTickets = [...this.props.realData];
+        const prevTickets = [...props.realData];
 
         if (checked == true) {
-            const newSelected = [...this.state.airlines, airline];
+            const newSelected = [...state.airlines, airline];
             const finedTicket = prevTickets.filter((ticket) =>
                 newSelected.includes(ticket.airlineIataCode)
             );
-            this.props.setFilter(finedTicket);
-            this.setState({
+            props.setFilter(finedTicket);
+            setState({...state,
                 airlines: newSelected,
             });
         } else {
-            const prevSelect = [...this.state.airlines];
+            const prevSelect = [...state.airlines];
             const findedIndex = prevSelect.indexOf(airline);
             prevSelect.splice(findedIndex, 1);
 
             if (prevSelect.length != 0) {
-                this.setState({
+                setState({...state,
                     airlines: prevSelect,
                 });
                 const finedTicket = prevTickets.filter((ticket) =>
                     prevSelect.includes(ticket.airlineIataCode)
                 );
-                this.props.setFilter(finedTicket);
+                props.setFilter(finedTicket);
             } else {
-                this.props.setFilter(prevTickets);
-                this.setState({
+                props.setFilter(prevTickets);
+                setState({...state,
                     airlines: [],
                 });
             }
         }
     };
 
-    handleFindByPrice = (lowMood, e) => {
+    const handleFindByPrice = (lowMood, e) => {
         const { checked } = e.target;
         if (checked === true) {
-            console.log("checkeds :", checked);
+            // console.log("checkeds :", checked);
 
             if (lowMood === true) {
-                this.setState({
+                setState({...state,
                     lowPrice: true,
                 });
-                let prevTickets = [...this.props.realData];
+                let prevTickets = [...props.realData];
                 let filtring = prevTickets.sort((a, b) => {
                         if (a.priceView > b.priceView) {
                             return 1;
@@ -112,12 +112,12 @@ class Filters extends React.Component {
                         }
                         return 0;
                         });
-                this.props.setFilter(filtring);
+                props.setFilter(filtring);
             } else {
-                this.setState({
+                setState({...state,
                     lowPrice: false,
                 });
-                let prevTickets = [...this.props.realData];
+                let prevTickets = [...props.realData];
                 let filtring = prevTickets.sort((a, b) => {
                         if (a.priceView > b.priceView) {
                             return 1;
@@ -128,56 +128,53 @@ class Filters extends React.Component {
                         return 0;
                         });
                 let reversed = filtring.reverse();
-                this.props.setFilter(reversed);
+                props.setFilter(reversed);
             }
         } else {
-            this.setState({
+            setState({...state,
                 checked: false,
                 lowPrice: null,
             });
-            console.log("checkeds :", checked);
-            this.props.setFilter(this.props.realData);
+            // console.log("checkeds :", checked);
+            props.setFilter(props.realData);
         }
     };
 
-    handleFilterByTime = (st, en, e) => {
+    const handleFilterByTime = (st, en, e) => {
         const { checked } = e.target;
         if (checked == true) {
-            this.setState({
+            setState({...state,
                 endtime: en,
             });
-            const prevTickets = [...this.props.realData];
+            const prevTickets = [...props.realData];
             const filtring = prevTickets.filter(
                 (res) => res.flightTime > st && res.flightTime < en
             );
             if (filtring.length != 0) {
-                this.props.setFilter(filtring);
+                props.setFilter(filtring);
             } else {
-                this.props.messageBoxModify({
+                props.messageBoxModify({
                     state: true,
                     color: false,
                     message: "متاسفانه در این ساعت پروازی وجود ندارد.",
                 });
 
-                this.setState({
+                setState({...state,
                     endtime: "",
                 });
             }
         } else {
-            this.setState({
+            setState({...state,
                 endtime: "",
             });
-            this.props.setFilter(this.props.realData);
+            props.setFilter(props.realData);
         }
     };
-    handledropdown = () => {
-    };
 
 
-    render() {
         return (
             <div className={styles["filter-list-box"]}>
-                <div className="title-filter">
+                <div className="title-filter" >
                     <h3>فیلتر ها</h3>
                 </div>
                 <Accordion>
@@ -202,7 +199,7 @@ class Filters extends React.Component {
                                 type="text"
                                 placeholder="جستجوی شماره پرواز"
                                 className={`${styles["filter-list-input"]} input-filter-search input-search mt-3 flight-filter-input`}
-                                onChange={this.handleFindByFlightNo}
+                                onChange={handleFindByFlightNo}
                             />
                         </Accordion.Body>
                     </Accordion.Item>
@@ -229,10 +226,10 @@ class Filters extends React.Component {
                                                 value="1"
                                                 className="checkbox"
                                                 id="cheapest"
-                                                onChange={(e) => this.handleFindByPrice(true, e)}
+                                                onChange={(e) => handleFindByPrice(true, e)}
                                                 checked={
-                                                    this.state.lowPrice != null &&
-                                                        this.state.lowPrice == true
+                                                    state.lowPrice != null &&
+                                                        state.lowPrice == true
                                                         ? true
                                                         : false
                                                 }
@@ -250,10 +247,10 @@ class Filters extends React.Component {
                                                 value="2"
                                                 className="checkbox"
                                                 id="earlieast"
-                                                onChange={(e) => this.handleFindByPrice(false, e)}
+                                                onChange={(e) => handleFindByPrice(false, e)}
                                                 checked={
-                                                    this.state.lowPrice !== null &&
-                                                        this.state.lowPrice != true
+                                                    state.lowPrice !== null &&
+                                                        state.lowPrice != true
                                                         ? true
                                                         : false
                                                 }
@@ -286,9 +283,9 @@ class Filters extends React.Component {
                                         className="radio"
                                         id="exampleCheck1"
                                         onChange={(e) =>
-                                            this.handleFilterByTime("00:00", "04:59", e)
+                                            handleFilterByTime("00:00", "04:59", e)
                                         }
-                                        checked={this.state.endtime == "04:59" ? true : false}
+                                        checked={state.endtime == "04:59" ? true : false}
                                     />
                                 </div>
 
@@ -301,9 +298,9 @@ class Filters extends React.Component {
                                     <input
                                         type="checkbox"
                                         onChange={(e) =>
-                                            this.handleFilterByTime("05:00", "11:59", e)
+                                            handleFilterByTime("05:00", "11:59", e)
                                         }
-                                        checked={this.state.endtime == "11:59" ? true : false}
+                                        checked={state.endtime == "11:59" ? true : false}
                                         className="radio"
                                         name="morning"
                                         id="morning"
@@ -318,9 +315,9 @@ class Filters extends React.Component {
                                         <input
                                             type="checkbox"
                                             onChange={(e) =>
-                                                this.handleFilterByTime("12:00", "17:59", e)
+                                                handleFilterByTime("12:00", "17:59", e)
                                             }
-                                            checked={this.state.endtime == "17:59" ? true : false}
+                                            checked={state.endtime == "17:59" ? true : false}
                                             className="radio"
                                             name="afternoon"
                                             id="afternoon"
@@ -335,9 +332,9 @@ class Filters extends React.Component {
                                         <input
                                             type="checkbox"
                                             onChange={(e) =>
-                                                this.handleFilterByTime("18:00", "23:59", e)
+                                                handleFilterByTime("18:00", "23:59", e)
                                             }
-                                            checked={this.state.endtime == "23:59" ? true : false}
+                                            checked={state.endtime == "23:59" ? true : false}
                                             className="radio"
                                             name="evening"
                                             id="evening"
@@ -351,7 +348,7 @@ class Filters extends React.Component {
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item className={`${styles["text"]} accordion-item-prs `} eventKey="2">
-                        <Accordion.Button style={{ background: " rgb(243, 243, 243)", paddingRight: 10, paddingLeft: 10 }}>
+                        <Accordion.Button style={{ background: " rgb(243, 243, 243)", paddingRight: 10, paddingLeft: 10 }} >
                             <strong className={styles["filter-list-sort-3"]}>
                                 <svg id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="22" height="22">
                                     <path
@@ -362,13 +359,13 @@ class Filters extends React.Component {
                         </Accordion.Button>
                         <Accordion.Body style={{ background: "#fff", paddingRight: 10, paddingLeft: 10, marginRight: 0 }}>
                             <div className={styles["filter-list-airlines"]}>
-                                {this.props.Airlines != undefined && this.props.Airlines != null
-                                    ? this.props.Airlines.map((oneAirline) => (
+                                {props.Airlines != undefined && props.Airlines != null
+                                    ? props.Airlines.map((oneAirline) => (
                                         <div className={'parent-type-airline'} key={oneAirline.airlineIataCode}>
                                             <div className="radio">
                                                 <input
                                                     onChange={(e) =>
-                                                        this.handleSelectAirline(
+                                                        handleSelectAirline(
                                                             oneAirline.airlineIataCode,
                                                             e
                                                         )
@@ -379,9 +376,9 @@ class Filters extends React.Component {
                                                     id={oneAirline.airline}
                                                 />
                                             </div>
-                                            <img
-                                                width=""
-                                                height=""
+                                            <Image
+                                                width={20}
+                                                height={20}
                                                 src={
                                                     globals.website +
                                                     `Airlines/${oneAirline.airlineIataCode}.png?ver=1`
@@ -397,15 +394,15 @@ class Filters extends React.Component {
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>
-                { this.state.width <= 826 &&
+                { state.width <= 826 &&
                     <div className="text-center">
-                        <button onClick={this.props.closeSide} className={`${styles['btn-filter']}`}>اعمال فیلتر</button>
+                        <button onClick={props.closeSide} className={`${styles['btn-filter']}`}>اعمال فیلتر</button>
                     </div>
                 }
                 </Accordion>
             </div>
         );
-    }
+    
 }
 
 const mapDispatchesToProps = (dispatch) => ({

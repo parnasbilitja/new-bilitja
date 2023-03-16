@@ -2,7 +2,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { Loader } from '../../Utils/Loader';
-import { moneyFormat } from '../../Utils/SimpleTasks';
+import { moneyFormat, moneyFormatrial } from '../../Utils/SimpleTasks';
 
 const TourList = (props) => {
     const [data, setData] = useState([])
@@ -60,7 +60,7 @@ const TourList = (props) => {
                                             <div className="text-price pt-1">
                                                 <small className="title-price">شروع قیمت از :</small>
                                                 <strong className="price-tour color-base-color me-2">
-                                                    {moneyFormat(item.minPrice)}
+                                                    {moneyFormatrial(item.minPrice)}
                                                     <small className="pe-1">تومان </small>
                                                 </strong>
                                             </div>

@@ -57,7 +57,7 @@
   border: 1px solid #d2d2d2;
   margin-top: 15px;
   border-radius: 10px;
-  height: 520px;
+  height: fit-content;
 }
 @media only screen and (max-width: 650px) {
   .title-solotion {
@@ -172,17 +172,16 @@
   text-align: right;
 }
 .filter-list-boxPosition {
-  position: fixed;
+  // position: fixed;
   left: 100px;
   width: 299px;
 }
 .filter-list-box {
   padding: 5px 0;
   margin: 5px 0 0 0px;
-  position: sticky;
-  position: -webkit-sticky;
+  // position: sticky;
+  // position: -webkit-sticky;
   text-align: right;
-  height: 50px;
   .filter-list-heading {
     width: 100%;
     text-align: right;

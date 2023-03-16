@@ -20,7 +20,6 @@ const TrackOrder = () =>{
         fetch(`${globals.baseUrlNew}OnlinePay/api/onlinePay/reference/${state.trackRef}/1a157116-a01a-4027-ab10-74098ac63815`).then(res => res.json())
             .then(data => {
                 setState({ ...state,...data })
-                console.log(state)
             }):setState({...state,errSate:true})
     }
     const handleChange = (e) => {

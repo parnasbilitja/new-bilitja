@@ -65,14 +65,14 @@ const FlightReserve = (props) => {
     });
     // const router = useRouter();
     let route=''
-    useEffect(()=>{
-        setTimeout(function() {
-            if (parseInt(localStorage.getItem('priceChecker')) != parseInt(state.passengers[0].price)){
-                console.log('state',(state),'|',state.passengers,'|',parseInt(localStorage.getItem('priceChecker'))/10);
-                setClosePopUpPrice(true)
-            }
-    }, 500);
-    },[state.price])
+    // useEffect(()=>{
+    //     setTimeout(function() {
+    //         if (parseInt(localStorage.getItem('priceChecker')) != parseInt(state.passengers[0].price)){
+    //             console.log('state',(state),'|',state.passengers,'|',parseInt(localStorage.getItem('priceChecker'))/10);
+    //             setClosePopUpPrice(true)
+    //         }
+    // }, 500);
+    // },[state.price])
     useEffect(() => {
         setWidth(window.innerWidth)
         route = props.router.asPath.split('info')[0]

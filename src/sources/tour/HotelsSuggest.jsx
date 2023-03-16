@@ -24,25 +24,22 @@ const HotelsSuggest = () => {
     useEffect(() => {
         setWidth(window.innerWidth)
         const getData = async () => {
-            await axios.post('https://api.hamnavaz.com/api/v1/city/getCities')
-            .then(res => {setCities(res.data.data)})
+            const vale = await fetch('/api/allSite/Cites')
+            const data = await vale.json()
+            setCities(data?.data?.data)
         }
         getData()
     },[])
+    const getData = async () => {
+        await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
+        .then(res => {setHotels(res.data.data),setLoading(false)})
+    }
     useEffect(()=>{
         setLoading(true)
-        const getData = async () => {
-            await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
-            .then(res => {setHotels(res.data.data),setLoading(false)})
-        }
         getData()
     },[city])
     useEffect(()=>{
         setLoading(true)
-        const getData = async () => {
-            await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
-            .then(res => {setHotels(res.data.data),setLoading(false)})
-        }
         getData()
         
     },[])

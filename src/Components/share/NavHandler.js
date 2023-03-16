@@ -14,25 +14,22 @@ const NavHandler = (props) => {
           width: window.innerWidth });
       }},[])
         return (
-            <>
-                {state.width <= 826 ? 
-                <>
+            <div>
+                <div>
                 {props.type === 'receipt'?
                     <NavBarMobileCustom /> 
                 :
                   <NavBarMobile /> 
                 }
-                </>
-                : 
-                <>
+                </div>
+                <div>
                 {props.type === 'receipt'?
                 <NabvarCustom/>
                 :
                   <NavBar /> 
                 }
-                </>
-                }
-            </>
+                </div>
+            </div>
         );
 }
 

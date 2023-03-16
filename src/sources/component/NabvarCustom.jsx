@@ -67,7 +67,7 @@ const NavBar = (props) => {
     setState({ ...state, logged: false })
   }
   return (
-    <div className="col-xl-12 col-lg-12">
+    <div className="col-xl-12 col-lg-12 hidden-xs">
       <nav className={styles.navVar}>
           <div className="d-flex flex-row-reverse justify-content-center">
             <div className="d-flex flex-row-reverse">

@@ -27,7 +27,7 @@ const CityTour = (props) => {
         <>
           <Scrolltoprefresh />
             <NavHandler/>
-            <div className="marginTop120 col-md-10 m-auto parent-info-city">
+            <div className="mt-90 col-md-10 m-auto parent-info-city">
                 <div class="search search-city-info w-100">
                     <ul class="tab-ul-list">
                         <li class="li-city"><a href="#about-tour" class="about-tab">تور ها</a></li>
@@ -50,8 +50,10 @@ const CityTour = (props) => {
                         </Link>
                     </div>
                 </div>
-                <TourList name={props.Pathname.CityTour} />
-                <TourData currentCity={currentCity} search={search} setSearch={setSearch} />
+                <div className='mx-3'>
+                    <TourList name={props.Pathname.CityTour} />
+                    <TourData currentCity={currentCity} search={search} setSearch={setSearch} />
+                </div>
             </div>
             <Footer/>
         </>

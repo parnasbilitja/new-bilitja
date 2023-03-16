@@ -24,6 +24,7 @@ const OfferdTours = (props) => {
         const val = await axios.post('https://api.hamnavaz.com/api/v1/tour/getTours',{offered :1})
         setData(val.data.data)
         setLoading(false)
+        
     }
     useEffect(() => {
         getData();

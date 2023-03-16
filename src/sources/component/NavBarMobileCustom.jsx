@@ -53,7 +53,7 @@ const NavBarMobile = (props) => {
   }
   // console.log(props);
   return (
-    <nav className={styles["nav-mobile"]}>
+    <nav className={`${styles["nav-mobile"]} hidden-mobile-head`}>
       <div className={styles["nav-logo-container-mobile"]}>
         <Link href="/">
           <img

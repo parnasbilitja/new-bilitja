@@ -69,7 +69,7 @@ const NavBar = (props) => {
       props.user.logged = false;
   }
   return (
-    <div className="col-xl-12 col-lg-12">
+    <div className="col-xl-12 col-lg-12 hidden-desktop">
       <nav className={styles.navVar}>
           <div className="d-flex flex-row-reverse justify-content-between">
             <div className={` ${styles["nav-text-detail"]}`}>
@@ -126,7 +126,6 @@ const NavBar = (props) => {
                             });
                           }}
                         >
-                          {/* <i className="bilitja icon-register"></i> */}
                           <i className="bilitja icon-login"></i>
                           <span className="font-bold-iransanse font-size-14">ورود / ثبت نام</span>
                         </a>
@@ -135,11 +134,11 @@ const NavBar = (props) => {
                   )}
                 </div>
                 <div className={styles["nav-detail-second-line"]}>
-                  <a href="#" style={{ fontSize: 12 }}>
+                  <div href="#" style={{ fontSize: 12 }}>
                     <span className="font-bold-iransanse">مشاوره تلفنی : </span>
                     <i className="bilitja icon-phone"></i>
                     <a href="tel:02184279999">021-8427 9999</a>
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
