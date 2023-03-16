@@ -145,7 +145,7 @@ const Footer = () => {
                                 </ul>
                             </div>
                             {width < 826 &&
-                                <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex flex-wrap col-4 justify-content-center px-0">
+                                <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex flex-wrap col-4 justify-content-start px-0">
                                     {/* child */}
                                     <a
                                         referrerPolicy="origin"
@@ -155,7 +155,34 @@ const Footer = () => {
                                     >
                                         <img
                                             referrerPolicy="origin"
-                                            src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                                            // src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                                            alt=""
+                                            src='/Images/enamad.png'
+                                            id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                        />
+                                    </a>
+                                    <a
+                                        referrerPolicy="origin"
+                                        target="_blank"
+                                        className="ms-2 mb-2"
+                                        href=""
+                                    >
+                                        <img
+                                            referrerPolicy="origin"
+                                            src="/images/samandehi.png"
+                                            alt=""
+                                            id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                        />
+                                    </a>
+                                    <a
+                                        referrerPolicy="origin"
+                                        target="_blank"
+                                        className="ms-2 mb-2"
+                                        href=""
+                                    >
+                                        <img
+                                            referrerPolicy="origin"
+                                            src="/images/ecunion-8.png"
                                             alt=""
                                             id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
                                         />
@@ -259,19 +286,47 @@ const Footer = () => {
                         </div>
                         {width > 826 &&
                             <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex flex-wrap col-4 justify-content-start px-0" style={{ alignContent: 'center', flexWrap: 'wrap' }}>
-                                <a
-                                    referrerPolicy="origin"
-                                    target="_blank"
-                                    className="col-xl-4 cl-lg-4 d-flex justify-content-center ms-3 mb-2"
-                                    href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                >
-                                    <img
+                                 {/* child */}
+                                 <a
                                         referrerPolicy="origin"
-                                        src="../../../../../Images/enamad.png"
-                                        alt=""
-                                        id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
-                                    />
-                                </a>
+                                        target="_blank"
+                                        className="ms-2 mb-2"
+                                        href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                                    >
+                                        <img
+                                            referrerPolicy="origin"
+                                            // src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                                            alt=""
+                                            src='/Images/enamad.png'
+                                            id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                        />
+                                    </a>
+                                    <a
+                                        referrerPolicy="origin"
+                                        target="_blank"
+                                        className="ms-2 mb-2"
+                                        href=""
+                                    >
+                                        <img
+                                            referrerPolicy="origin"
+                                            src="/images/samandehi.png"
+                                            alt=""
+                                            id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                        />
+                                    </a>
+                                    <a
+                                        referrerPolicy="origin"
+                                        target="_blank"
+                                        className="ms-2 mb-2"
+                                        href=""
+                                    >
+                                        <img
+                                            referrerPolicy="origin"
+                                            src="/images/ecunion-8.png"
+                                            alt=""
+                                            id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                        />
+                                    </a>
                             </div>
                         }
                     </div>
