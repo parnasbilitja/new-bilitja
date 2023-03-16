@@ -27,7 +27,7 @@ const List = (props) => {
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
     const getData = async () => {
-        const val = await axios.post('https://api.hamnavaz.com/api/v1/tour/getTours')
+        const val = await axios.post('https://api.hamnavaz.com/api/v1/tour/getTours',{limit:10})
         .then((val) =>{setData(val.data.data),setLoading(false)})
         .catch(error => {
             setLoading(true)

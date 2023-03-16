@@ -1,8 +1,5 @@
 export const FilterFields = [
     {
-        name: "customerName"
-    },
-    {
         name: "reqNo"
     },
     {
@@ -12,8 +9,11 @@ export const FilterFields = [
         name: "dateTimeSabt"
     },
     {
-        name: "nameFamilyEn"
+        name: "customerName"
     },
+    // {
+    //     name: "nameFamilyEn"
+    // },
     {
         name: "numFr"
     },
@@ -47,9 +47,9 @@ export const FilterFields = [
     {
         name: "stock"
     },
-    {
-        name: "userFr"
-    },
+    // {
+    //     name: "userFr"
+    // },
     {
         name: "serviceName"
     },
