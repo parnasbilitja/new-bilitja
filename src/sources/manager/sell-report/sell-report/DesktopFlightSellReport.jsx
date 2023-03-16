@@ -185,12 +185,12 @@ const headCells = [
     disablePadding: true,
     label: "تاریخ پرواز",
   },
-  {
-    id: "name",
-    numeric: false,
-    disablePadding: true,
-    label: "فروشنده",
-  },
+  // {
+  //   id: "name",
+  //   numeric: false,
+  //   disablePadding: true,
+  //   label: "فروشنده",
+  // },
   {
     id: "mobile",
     numeric: true,
@@ -245,12 +245,12 @@ const headCells = [
     disablePadding: true,
     label: "سود",
   },
-  {
-    id: "flightDate",
-    numeric: false,
-    disablePadding: true,
-    label: "کاربر",
-  },
+  // {
+  //   id: "flightDate",
+  //   numeric: false,
+  //   disablePadding: true,
+  //   label: "کاربر",
+  // },
   {
     id: "flightDate",
     numeric: false,
@@ -513,8 +513,10 @@ const FlightSellReport = () => {
                             className={style["tablerowfont"]}
                             align="center"
                           >
-                            <h6 className={style['normal-size']}>
-                              {row.message}</h6>
+                            <h6 className={'fontEn'}>
+                              {/* {row.message} */}
+                              {row.reqPnr}
+                              </h6>
                           </TableCell>
                           <TableCell
                             className={style["tablerowfont"]}
@@ -528,11 +530,18 @@ const FlightSellReport = () => {
                             className={style["tablerowfont"]}
                             align="center"
                           >
-                            <h6 className={'fontEn'}>{row.reqPnr}</h6>
+                            {/* <h6 className={'fontEn'}>{row.reqPnr}</h6> */}
+                            <h6 className={style['en-font']}>{row.nameFamilyEn}</h6>
                           </TableCell>
                           <TableCell
                             className={style["tablerowfont"]}
                             align="center"
+                          >
+                            <h6 className={style['normal-size']}>{row.numFr}</h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
                           >
                             <h6 className={style['date']}>
                               <svg id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20"><path d="M19,2h-1V1c0-.552-.447-1-1-1s-1,.448-1,1v1H8V1c0-.552-.447-1-1-1s-1,.448-1,1v1h-1C2.243,2,0,4.243,0,7v12c0,2.757,2.243,5,5,5h14c2.757,0,5-2.243,5-5V7c0-2.757-2.243-5-5-5ZM5,4h14c1.654,0,3,1.346,3,3v1H2v-1c0-1.654,1.346-3,3-3Zm14,18H5c-1.654,0-3-1.346-3-3V10H22v9c0,1.654-1.346,3-3,3Zm0-8c0,.552-.447,1-1,1H6c-.553,0-1-.448-1-1s.447-1,1-1h12c.553,0,1,.448,1,1Zm-7,4c0,.552-.447,1-1,1H6c-.553,0-1-.448-1-1s.447-1,1-1h5c.553,0,1,.448,1,1Z" /></svg>
@@ -542,19 +551,20 @@ const FlightSellReport = () => {
                             align="center"
                             className={style["tablerowfont"]}
                           >
-                            <h6 className={style['en-font']}>{row.nameFamilyEn}</h6>
+                            <h6 className={style['normal-size']}>{row.flightDate}</h6>
                           </TableCell>
-                          <TableCell
+                          {/* <TableCell
                             align="center"
                             className={style["tablerowfont"]}
                           >
-                            <h6 className={style['normal-size']}>{row.numFr}</h6>
-                          </TableCell>
+                            
+                          </TableCell> */}
                           <TableCell
                             align="center"
                             className={style["tablerowfont"]}
                           >
                             <h6 className={style['normal-size']}>{row.mobileNo}</h6>
+                            
                           </TableCell>
                           <TableCell
                             align="center"
@@ -568,12 +578,7 @@ const FlightSellReport = () => {
                           >
                             <h6 className={style['normal-size']}>
                               {row.flightNo}</h6>
-                          </TableCell>
-                          <TableCell
-                            align="center"
-                            className={style["tablerowfont"]}
-                          >
-                            <h6 className={style['normal-size']}>{row.flightDate}</h6>
+                            
                           </TableCell>
                           <TableCell
                             align="center"
@@ -603,7 +608,7 @@ const FlightSellReport = () => {
                             className={style["tablerowfont"]}
                           >
                             <h6 className={style['normal-size']}>
-                              {moneyFormat(row.feeGetKh)}
+                            {moneyFormat(row.feeGet)}
                             </h6>
                           </TableCell>
                           <TableCell
@@ -611,7 +616,8 @@ const FlightSellReport = () => {
                             className={style["tablerowfont"]}
                           >
                             <h6 className={style['normal-size']}>
-                              {moneyFormat(row.feeGet)}
+                              
+                              {moneyFormat(row.feeGetKh)}
                             </h6>
                           </TableCell>
                           <TableCell
@@ -622,12 +628,12 @@ const FlightSellReport = () => {
                               {moneyFormat(row.stock)}
                             </h6>
                           </TableCell>
-                          <TableCell
+                          {/* <TableCell
                             align="center"
                             className={style["tablerowfont"]}
                           >
                             <h6 className={style['normal-size']}>{row.userFr}</h6>
-                          </TableCell>
+                          </TableCell> */}
                           <TableCell
                             align="center"
                             className={style["tablerowfont"]}
@@ -689,9 +695,9 @@ const FlightSellReport = () => {
                     <TableCell align="center">
                       <h6 className="font-size-14"></h6>
                     </TableCell>
-                    <TableCell align="center">
+                    {/* <TableCell align="center">
                       <h6 className="font-size-14"></h6>
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell className={style["tablerowfont"]} align="center">
                       <h6 className={style['normal-size']}>
                         {moneyFormat(prices.kharidAll)} ریال
