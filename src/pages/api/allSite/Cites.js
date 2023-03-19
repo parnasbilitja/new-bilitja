@@ -2,7 +2,7 @@ const Cites = async (req, res) => {
   
     try {
       const fetched = await fetch(
-        'https://api.hamnavaz.com/api/v1/city/getCities',
+        'https://hamnavaz-api.iran.liara.run/api/v1/city/getCities',
         {
           method: "POST",
           body: JSON.stringify({
