@@ -24,7 +24,7 @@ const HotelsSuggest = () => {
     useEffect(() => {
         setWidth(window.innerWidth)
         const getData = async () => {
-            await axios.post('https://hamnavaz-api.iran.liara.run/api/v1/city/getCities',{offered :1})
+            await axios.post('https://api.hamnavaz.com/api/v1/city/getCities',{offered :1})
             .then(res=>setCities(res.data?.data))
             
         }
