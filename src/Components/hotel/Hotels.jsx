@@ -14,6 +14,7 @@ import { fetchCitySearch } from '../../Redux/citiesSearch/Action';
 const Hotels = () => {
     
     let hotels = useSelector(state => state.AllHotelReducer)
+    console.log(hotels);
     const dispatch = useDispatch()
     const [city, setCity] = useState(null);
     const [width, setWidth] = useState();
@@ -108,13 +109,13 @@ const Hotels = () => {
                 <div className="border-right"></div>
                 <div className="border-left"></div>
             </div>
-                    {hotels.loading ?
+                    {hotels.data?.loading ?
                     <Loader/> :
-                    hotels.data.length>0 && !hotels.loading?
+                    hotels.data?.data?.length>0 && !hotels.data?.loading?
                         <div className="row justify-content-center"
                         >
-                            {hotels.data.map((item)=>(
-                                            <Link href={`/hotel/${item.slug}`}>
+                            {hotels.data?.data?.map((item)=>(
+                                <Link href={`/hotel/${item.slug}`}>
                                     <div className="col-12 col-md-3 d-flex justify-content-center">
                                         <div class="box-hotel" style={{width: '95%'}}>
                                             <img  class="img-blog" src={item.thumbnail}/>
@@ -155,22 +156,18 @@ const Hotels = () => {
                                                 </div>
                                         </div>
                                     </div>
-                                
-                                            </Link>
+                                </Link>
                             ))}
                         </div>
-                    : hotels.length == 0 ?
+                    : hotels.data?.length == 0 ?
                     <div className="hotelNotFound">متاسفانه هتلی موجود نیست</div>:<Loader/>}
                     <div className="d-flex mt-5 justify-content-center">
-                    {paginate?.links?.map((item)=>(
+                    {hotels.data?.meta?.links?.map((item)=>(
                         <>
-                        {/* <span>{item.label}</span> */}
-                        <span className={`px-1 cursor-pointer border rounded py-1 ${paginate.current_page == parseInt(item.label) && 'text-danger font-bold-iransanse' }`} 
-                        onClick={()=>{setPage(item.label),executeScroll()}} 
-                        dangerouslySetInnerHTML={{__html:item.label}} 
-                        style={{margin:'auto 2px'}} />
-                        
-
+                            <span className={`px-1 cursor-pointer border rounded py-1 ${page == parseInt(item.label) && 'text-danger font-bold-iransanse' }`} 
+                            onClick={()=>{setPage(item.label),executeScroll()}} 
+                            dangerouslySetInnerHTML={{__html:item.label}} 
+                            style={{margin:'auto 2px'}} />
                         </>
                     ))}
                     </div>

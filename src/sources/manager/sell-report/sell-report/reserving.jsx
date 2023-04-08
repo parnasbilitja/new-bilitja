@@ -600,14 +600,6 @@ const FlightSellReport = () => {
                             className={style["tablerowfont"]}
                           >
                             <h6 className={style['normal-size']}>
-                              {moneyFormat(row.feeGetKh)}
-                            </h6>
-                          </TableCell>
-                          <TableCell
-                            align="center"
-                            className={style["tablerowfont"]}
-                          >
-                            <h6 className={style['normal-size']}>
                               {moneyFormat(row.feeGet)}
                             </h6>
                           </TableCell>
@@ -616,7 +608,16 @@ const FlightSellReport = () => {
                             className={style["tablerowfont"]}
                           >
                             <h6 className={style['normal-size']}>
-                              {moneyFormat(row.stock)}
+                            {moneyFormat(row.feeGetKh)}
+                            </h6>
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            className={style["tablerowfont"]}
+                          >
+                            <h6 className={style['normal-size']}>
+                            {moneyFormat(row.feeGet-row.feeGetKh)}
+
                             </h6>
                           </TableCell>
                           <TableCell
@@ -701,7 +702,7 @@ const FlightSellReport = () => {
                     </TableCell>
                     <TableCell className={style["tablerowfont"]} align="center">
                       <h6 className={style['normal-size']}>
-                        {moneyFormat(prices.soodAll)} ریال
+                      {moneyFormat(prices.kharidAll - prices.foroshAll)} ریال
                       </h6>
                     </TableCell>
                     <TableCell align="center">

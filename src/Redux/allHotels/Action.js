@@ -14,7 +14,7 @@ export const fetchAllHotels = (city,hotel,page) =>{
     return (dispatch) =>{
         axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city, search:hotel, page:page,paginate:true,perPage:12})
         .then(response =>{
-            const tours = response.data.data
+            const tours = response.data
             dispatch(fetchAllHotelsSuccess(tours))
         })
         .catch(error=>{

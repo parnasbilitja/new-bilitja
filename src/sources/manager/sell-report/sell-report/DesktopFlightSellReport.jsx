@@ -257,12 +257,12 @@ const headCells = [
     disablePadding: true,
     label: "سرویس",
   },
-  {
-    id: "flightDate",
-    numeric: false,
-    disablePadding: true,
-    label: "PNR سرویس",
-  },
+  // {
+  //   id: "flightDate",
+  //   numeric: false,
+  //   disablePadding: true,
+  //   label: "PNR سرویس",
+  // },
   {
     id: "flightDate",
     numeric: false,
@@ -295,6 +295,8 @@ const EnhancedTableHead = (props) => {
           <TableCell
             align="center"
             style={{ background: "#279692", color: "#fff", fontWeight: 600 }}
+            sx={{ width: 10 }}
+            padding="0.5"
           >
             <p className={style["title-table"]}>ردیف</p>
           </TableCell>
@@ -304,8 +306,9 @@ const EnhancedTableHead = (props) => {
               key={headCell.id}
               align="center"
               padding="none"
+              sx={{ width: 100 }}
             >
-              <p className={style["title-table"]}>{headCell.label}</p>
+              <p className={style["title-table"]} >{headCell.label}</p>
             </TableCell>
           ))}
         </TableRow>
@@ -318,6 +321,7 @@ const EnhancedTableHead = (props) => {
               key={index}
               align="center"
               padding="none"
+              sx={{ width: 25 }}
               className="pt-1 pb-1 me-1"
             >
               <div className="me-1">
@@ -463,9 +467,9 @@ const FlightSellReport = () => {
           <Paper>
             <TableContainer>
               <Table
-                sx={{ minWidth: 750 }}
                 aria-labelledby="tableTitle"
                 size="small"
+                sx={{ width: 480 ,display:'grid'}}
               >
                 <EnhancedTableHead
                   numSelected={selected.length}
@@ -640,12 +644,12 @@ const FlightSellReport = () => {
                           >
                             <h6 className={style['normal-size']}>{row.serviceName}</h6>
                           </TableCell>
-                          <TableCell
+                          {/* <TableCell
                             align="center"
                             className={style["tablerowfont"]}
                           >
                             <h6 className={style['en-font']}>{row.servicePnr}</h6>
-                          </TableCell>
+                          </TableCell> */}
                           <TableCell
                             align="center"
                             className={style["tablerowfont"]}

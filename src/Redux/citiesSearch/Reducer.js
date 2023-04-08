@@ -5,18 +5,18 @@ const initialState = {
 }
 const CitySearchReducer = (state = initialState, action) =>{
     switch (action.type){
-        case 'getCityRequest':
+        case 'getCitySearchRequest':
             return{
                 ...state,
                 loading:true,
             }
-        case 'getCitySucces':
+        case 'getCitySearchSucces':
             return{
                 ...state,
                 data: action.payload,
                 loading:false,
             }
-            case 'getCityFailures':
+            case 'getCitySearchFailures':
                 return{
                     ...state,
                     data: [],

@@ -1,13 +1,13 @@
 import axios from "axios";
 
 export const fetchCityRequest = () =>{
-    return {type:'getCityRequest'};
+    return {type:'getCitySearchRequest'};
 }
 export const fetchCitySucces = (data) =>{
-    return {type:'getCitySucces',payload:data};
+    return {type:'getCitySearchSucces',payload:data};
 }
 export const fetchCityFailures = (error) =>{ 
-    return {type:'getCityFailures',payload:error};
+    return {type:'getCitySearchFailures',payload:error};
 }
 
 export const fetchCitySearch = () =>{

@@ -4,27 +4,35 @@ import React, { useEffect, useState } from 'react';
 import NavHandler from '../../Components/share/NavHandler';
 import Footer from '../../sources/component/Footer.component';
 import Scrolltoprefresh from '../../sources/component/Scrolltoprefresh';
-import Posts from '../../sources/tour/Posts';
-import Questions from '../../sources/tour/Questions';
 import TourData from '../../sources/tour/TourData';
 import TourList from '../../sources/tour/TourList';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCity } from '../../Redux/citiesSuggest/Action';
+import Head from 'next/head';
 
 const CityTour = (props) => {
-    const [ city, setCity ] = useState([])
+    console.log(props);
+    let city = useSelector(state => state.CityReducer)
+    const dispatch = useDispatch()
+
     const [currentCity, setCurrentCity] = useState(props.Pathname.CityTour)
     const [search, setSearch] = useState(false)
     const refreshData = (val) => {
         setCurrentCity(val.target.value)
     }
     useEffect(() => {
-        const getData = async () => {
-            await axios.post('https://api.hamnavaz.com/api/v1/city/getCities',{hasTour:true})
-            .then(res => setCity(res.data.data))
+        console.log(city);
+        if (city?.data?.length<1) {
+            dispatch(fetchCity())
         }
-        getData()
-    },[])
+
+    }, [])
+    
     return (
         <>
+        <Head>
+            <title>بلیطجا | تور لحظه آخری {props.Pathname.CityTour}</title>
+        </Head>
           <Scrolltoprefresh />
             <NavHandler/>
             <div className="mt-90 col-md-10 m-auto parent-info-city">
@@ -40,7 +48,7 @@ const CityTour = (props) => {
                     <div class="box-search justify-content-end">
                         <div class="inp-form">
                             <select name="" id="" onChange={(val)=>refreshData(val)} value={currentCity}>
-                                {city.map((item) => (
+                                {city.data.map((item) => (
                                     <option key={item.name} value={item.name}>{item.name}</option>
                                 ))}
                         </select>

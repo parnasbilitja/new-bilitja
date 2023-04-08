@@ -1,21 +1,22 @@
 export const FilterFields = [
     {
-        name: "reqNo"
-    },
-    {
         name: "reqPnr"
     },
     {
-        name: "dateTimeSabt"
+        name: "reqNo"
     },
     {
-        name: "customerName"
+        name: "nameFamilyEn"
     },
+    
     // {
     //     name: "nameFamilyEn"
     // },
     {
         name: "numFr"
+    },
+    {
+        name: "dateTimeSabt"
     },
     {
         name: "mobileNo"
@@ -53,9 +54,9 @@ export const FilterFields = [
     {
         name: "serviceName"
     },
-    {
-        name: "servicePnr"
-    },
+    // {
+    //     name: "servicePnr"
+    // },
     {
         name: "pathKind"
     }
