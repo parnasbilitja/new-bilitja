@@ -8,11 +8,13 @@ import Head from 'next/head';
 import NavHandler from '../share/NavHandler';
 import Footer from '../../sources/component/Footer.component';
 import PictureBase from '../../sources/component/PictureBase';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllHotels } from '../../Redux/allHotels/Action';
+import { fetchCitySearch } from '../../Redux/citiesSearch/Action';
 const Hotels = () => {
-    const swiperRef = useRef();
-    const [cities, setCities] = useState([]);
-    const [loading, setLoading] = useState(true)
-    const [hotels, setHotels] = useState([]);
+    
+    let hotels = useSelector(state => state.AllHotelReducer)
+    const dispatch = useDispatch()
     const [city, setCity] = useState(null);
     const [width, setWidth] = useState();
     const [search,setSearch] = useState({
@@ -23,34 +25,20 @@ const Hotels = () => {
       const [paginate,setPaginate] = useState({activePage:1});
       const [page,setPage] = useState(1);
     useEffect(() => {
+        dispatch(fetchCitySearch())
         setWidth(window.innerWidth)
-        const getData = async () => {
-            await axios.post('https://api.hamnavaz.com/api/v1/city/getCities')
-            .then(res => {setCities(res.data.data)})
-        }
-        getData()
     },[])
-    const getData = async () => {
-        await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city, search:search.hotel, page:page,paginate:true,perPage:12})
-        .then(res => {setHotels(res.data.data),setLoading(false),setPaginate(res.data.meta)})
-    }
     const searchHotel = ()=>{
-        setLoading(true)
-        // console.log(city);
-        // console.log(hotels);
-        // console.log(loading);
-        getData()
-        
+        dispatch(fetchAllHotels(city,search.hotel,page))   
+        console.log(city,search.hotel,page);
     }
     useEffect(()=>{
-        setLoading(true)
-        getData()
+        dispatch(fetchAllHotels(city,search.hotel,page))
     },[])
     useEffect(() => {
-        setLoading(true)
-        getData()
-        // console.log(hotels);
+        dispatch(fetchAllHotels(city,search.hotel,page))
     },[page])
+
     const [type, setType] = useState(3)
     const myRef = useRef(null)
     const executeScroll = () => { myRef.current.scrollIntoView()}
@@ -120,12 +108,12 @@ const Hotels = () => {
                 <div className="border-right"></div>
                 <div className="border-left"></div>
             </div>
-                    {loading ?
+                    {hotels.loading ?
                     <Loader/> :
-                    hotels.length>0 && !loading?
+                    hotels.data.length>0 && !hotels.loading?
                         <div className="row justify-content-center"
                         >
-                            {hotels.map((item)=>(
+                            {hotels.data.map((item)=>(
                                             <Link href={`/hotel/${item.slug}`}>
                                     <div className="col-12 col-md-3 d-flex justify-content-center">
                                         <div class="box-hotel" style={{width: '95%'}}>

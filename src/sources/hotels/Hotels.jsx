@@ -27,6 +27,8 @@ const Hotels = () => {
             .then(res => {setCities(res.data.data)})
         }
         getData()
+        console.log('check');
+
     },[])
     useEffect(()=>{
         setLoading(true)
@@ -37,6 +39,7 @@ const Hotels = () => {
         console.log(loading);
         console.log(hotels);
         getData()
+        console.log('check');
         
         console.log(loading);
     },[city])
@@ -48,6 +51,7 @@ const Hotels = () => {
         }
         console.log(loading);
         getData()
+        console.log('check');
         console.log(loading);
         
     },[])

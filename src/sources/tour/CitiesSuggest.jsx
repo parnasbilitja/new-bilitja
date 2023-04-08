@@ -6,25 +6,34 @@ import { Navigation } from 'swiper';
 
 // Import Swiper styles
 import 'swiper/css';
-import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { Loader } from '../../Utils/Loader';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCity } from '../../Redux/citiesSuggest/Action';
 
 const CitiesSuggest = () => {
-    const [loading, setLoading] = useState(true)
+    let getData = useSelector(state => state.CityReducer)
+    const dispatch = useDispatch()
+    
     const [ data, setData ] = useState([])
     const [width, setWidth] = useState();
     useEffect(() => {
         setWidth(window.innerWidth)
-        setLoading(true)
-        const getData = async () => {
-            await axios.post('https://api.hamnavaz.com/api/v1/city/getCities',{hasTour:true})
-            .then(res => {setData(res.data.data),setLoading(false)})
+        if (getData?.data?.length<1) {
+            dispatch(fetchCity())
         }
-        getData()
-    },[])
+        setData(getData.data)
+
+    }, [])
+    
+    useEffect(() => {
+
+        if (data?.length<1) {
+            setData(getData.data)
+        }
+    },[getData])
     const swiperRef = useRef();
     return (
         <div className="mx-2">
@@ -62,7 +71,7 @@ const CitiesSuggest = () => {
                 <div className="border-left"></div>
             </div>
             {
-                loading?
+                getData.loading?
                 <Loader/>:
                 data.length>0?
                     <Swiper
@@ -93,7 +102,7 @@ const CitiesSuggest = () => {
                         }}
                     >
                         
-                        {data.map(item=>(
+                        {getData.data?.map(item=>(
                             <SwiperSlide key={item.id}>
                             <div class="swiper-slide" key={item.id}>
                                 <div class="box-sort-tour-city">

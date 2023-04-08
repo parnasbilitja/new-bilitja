@@ -13,36 +13,36 @@ import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Link from 'next/link';
 import { Loader } from '../../Utils/Loader';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchHotels } from '../../Redux/hotels/Action';
+import { fetchCitySearch } from '../../Redux/citiesSearch/Action';
 
 const HotelsSuggest = () => {
+    let getData = useSelector(state => state.HotelReducer)
+    let CitySearch = useSelector(state => state.CitySearchReducer)
+    const dispatch = useDispatch()
+
     const swiperRef = useRef();
-    const [cities, setCities] = useState([]);
-    const [loading, setLoading] = useState(true)
     const [hotels, setHotels] = useState([]);
     const [city, setCity] = useState('1');
     const [width, setWidth] = useState();
     useEffect(() => {
         setWidth(window.innerWidth)
-        const getData = async () => {
-            await axios.post('https://api.hamnavaz.com/api/v1/city/getCities',{offered :1})
-            .then(res=>setCities(res.data?.data))
-            
+        dispatch(fetchCitySearch())
+    },[])
+    useEffect(() => {
+        setWidth(window.innerWidth)
+        dispatch(fetchHotels(city))
+        setHotels(getData.data)
+        console.log(getData);
+
+    }, [city])
+    
+    useEffect(() => {
+        if (hotels?.length<1) {
+            setHotels(getData.data)
         }
-        getData()
-    },[])
-    const getData = async () => {
-        await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
-        .then(res => {setHotels(res.data.data),setLoading(false)})
-    }
-    useEffect(()=>{
-        setLoading(true)
-        getData()
-    },[city])
-    useEffect(()=>{
-        setLoading(true)
-        getData()
-        
-    },[])
+    },[getData,city])
 
     return (
         <div className="mx-2">
@@ -60,7 +60,7 @@ const HotelsSuggest = () => {
                                         <h5 className="font-bold title-custom" style={{marginTop:`${width>826?'2px':'4px'}`}}>هتل های برگزیده شهر</h5>
                                         <select style={{width: '30%',marginBottom: '8px',color: '#279692'}}
                                          className="selectCity font-bold" value={city} onChange={(val) => setCity(val.target.value)}>
-                                            {cities.map(item=>(
+                                            {CitySearch.data.map(item=>(
                                                 <option key={item.id} value={item.id}>{item.name}</option>
                                             ))}
                                         </select>
@@ -83,9 +83,9 @@ const HotelsSuggest = () => {
                         <div className="border-right"></div>
                         <div className="border-left"></div>
                     </div>
-                    {loading ?
+                    {getData.loading ?
                     <Loader/> :
-                    hotels.length>0 && !loading?
+                    getData.data.length>0 && !getData.loading?
                     <Swiper
                     slidesPerView={'auto'}
                     modules={[Navigation]}
@@ -116,7 +116,7 @@ const HotelsSuggest = () => {
                     },
                     }}
                     >
-                        {hotels.map((item)=>(
+                        {getData.data.map((item)=>(
                             <SwiperSlide item={item.id}>
                                 <div item={item.id}>
                                     <div class="box-hotel">

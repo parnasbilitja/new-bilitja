@@ -3,21 +3,29 @@ import Link from 'next/link';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Loader } from '../../Utils/Loader';
-
+import { useDispatch, useSelector } from 'react-redux';
+import {fetchPosts} from '../../Redux/posts/Action';
 const Posts = () => {
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
     const [width, setWidth] = useState();
+    let getData = useSelector(state => state.PostDataReducer)
+    const dispatch = useDispatch()
     useEffect(() => {
-        setWidth(window.innerWidth)
-        setLoading(true)
-        const getData = async () => {
-            await axios.post('https://api.hamnavaz.com/api/v1/post/getPosts',{isAdmin:0,paginate:1})
-            .then(res => {setPosts(res.data.data),setLoading(false)})
+        if (getData?.data?.length<1) {
+            dispatch(fetchPosts())
         }
-        getData()
-        
-    },[])
+        setPosts(getData.data)
+        setWidth(window.innerWidth)
+
+    }, [])
+    
+    useEffect(() => {
+
+        if (posts?.length<1) {
+            setPosts(getData.data)
+        }
+    },[getData])
     return (
         <div className="mx-2">
             <div className="d-flex flex-wrap align-items-center justify-content-between mt-5">
@@ -51,56 +59,56 @@ const Posts = () => {
                 <div className="border-right"></div>
                 <div className="border-left"></div>
             </div>
-            {loading?
+            {getData.loading?
             <Loader />:    
             <div class="box-blog-parent" >
                 <div class="right-blog" >
                         <div class="info-blog">
                             <h6>
-                                <a href={`/blogs/${posts[0]?.slug}`} class="link-light font-size-15 font-bold-iransanse" >{posts[0]?.title}</a>
+                                <a href={`/blogs/${getData.data[0]?.slug}`} class="link-light font-size-15 font-bold-iransanse" >{getData.data[0]?.title}</a>
                             </h6>
                             <div class="date-info">
                                 <img src="https://hamnavaz.com/img/Watch.svg" width="20" alt="تاریخ-انتشار"/>
-                                <small>انتشار شده در {posts[0]?.createdAt.split('T')[0]}</small>
+                                <small>انتشار شده در {getData.data[0]?.createdAt.split('T')[0]}</small>
                             </div>
                         </div>
-                        <img src={posts[0]?.thumbnail} class="img-blog" alt={posts[0]?.title} />
+                        <img src={getData.data[0]?.thumbnail} class="img-blog" alt={getData.data[0]?.title} />
                     </div>
                         <div class="left-blog">
                             <div class="top">
                                 <div class="info-blog" >
                                     <h6>
-                                    <a href={`/blogs/${posts[1]?.slug}`} class="link-light font-size-15 font-bold-iransanse" >{posts[1]?.title}</a>
+                                    <a href={`/blogs/${getData.data[1]?.slug}`} class="link-light font-size-15 font-bold-iransanse" >{getData.data[1]?.title}</a>
                                     </h6>
                                     <div class="date-info">
                                         <img src="https://hamnavaz.com/img/Watch.svg" width="20" alt="تاریخ-انتشار"/>
-                                        <small>انتشار شده در {posts[1]?.createdAt.split('T')[0]}</small>
+                                        <small>انتشار شده در {getData.data[1]?.createdAt.split('T')[0]}</small>
                                     </div>
                                 </div>
-                                <img src={posts[1]?.thumbnail} class="img-blog" alt={posts[1]?.title} />
+                                <img src={getData.data[1]?.thumbnail} class="img-blog" alt={getData.data[1]?.title} />
                             </div>
                         <div class="bottom" >
                             <div class="bottom-left-blog">
                                 <div class="info-blog">
                                     <h6>
-                                        <a href={`/blogs/${posts[2]?.slug}`} class="link-light font-size-15 font-bold-iransanse" >{posts[2]?.title}</a>
+                                        <a href={`/blogs/${getData.data[2]?.slug}`} class="link-light font-size-15 font-bold-iransanse" >{getData.data[2]?.title}</a>
                                     </h6>
                                     <div class="date-info">
                                         <img src="https://hamnavaz.com/img/Watch.svg" width="20" alt="تاریخ-انتشار"/>
-                                        <small>انتشار شده در {posts[2]?.createdAt.split('T')[0]}</small>
+                                        <small>انتشار شده در {getData.data[2]?.createdAt.split('T')[0]}</small>
                                     </div>
                             </div>
-                                <img src={posts[2]?.thumbnail} class="img-blog" alt={posts[2]?.title} />
+                                <img src={getData.data[2]?.thumbnail} class="img-blog" alt={getData.data[2]?.title} />
                             </div>
                             <div class="bottom-right-blog" >
                                 <div class="info-blog">
-                                    <h6><a href={`/blogs/${posts[3]?.slug}`} class="link-light font-size-15 font-bold-iransanse" >{posts[3]?.title}</a></h6>
+                                    <h6><a href={`/blogs/${getData.data[3]?.slug}`} class="link-light font-size-15 font-bold-iransanse" >{getData.data[3]?.title}</a></h6>
                                     <div class="date-info">
                                         <img src="https://hamnavaz.com/img/Watch.svg" width="20" alt="تاریخ-انتشار"/>
-                                        <small>انتشار شده در {posts[3]?.createdAt.split('T')[0]}</small>
+                                        <small>انتشار شده در {getData.data[3]?.createdAt.split('T')[0]}</small>
                                     </div>
                                 </div>
-                                <img src={posts[3]?.thumbnail} class="img-blog" alt={posts[3]?.title} />
+                                <img src={getData.data[3]?.thumbnail} class="img-blog" alt={getData.data[3]?.title} />
                             </div>
                     </div>
                 </div>

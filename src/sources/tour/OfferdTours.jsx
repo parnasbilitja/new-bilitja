@@ -10,26 +10,34 @@ import "swiper/css/navigation";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Loader } from '../../Utils/Loader';
-import axios from 'axios';
 import moment from 'moment-jalaali';
 import Link from 'next/link';
+import { useSelector ,useDispatch } from 'react-redux';
+import { fetchOfferdTour } from '../../Redux/OfferdTours/Action';
 
 const OfferdTours = (props) => {
-    const [data, setData] = useState(null)
+    let getData = useSelector(state => state.DataReducer)
+    const dispatch = useDispatch()
+
     const [width, setWidth] = useState(0)
-    const [loading, setLoading] = useState(true)
     const swiperRef = useRef();
-    const getData = async () => {
-        setLoading(true)
-        const val = await axios.post('https://api.hamnavaz.com/api/v1/tour/getTours',{offered :1})
-        setData(val.data.data)
-        setLoading(false)
-        
-    }
+    const [data, setData] = useState([])
+    
     useEffect(() => {
-        getData();
+        if (getData?.data?.length<1) {
+            dispatch(fetchOfferdTour())
+        }
+        // callData();
+        setData(getData)
+        
         setWidth(window.innerWidth)
     }, [])
+    useEffect(() => {
+        if (data.length<1) {
+            setData(getData.data)
+        }
+    },[getData])
+    
     function moneyFormat(input) {
         return parseFloat(input)
           .toFixed(1)
@@ -71,7 +79,7 @@ const OfferdTours = (props) => {
                 <div className="border-right"></div>
                 <div className="border-left"></div>
             </div>
-            {loading?
+            {getData.loading ?
             <Loader/> :
           <Swiper
           spaceBetween={20}
@@ -106,7 +114,7 @@ const OfferdTours = (props) => {
               navigation={false} modules={[Navigation]}
               className="mySwiper"
           >
-            {data.map((item)=>(
+            {data?.map((item)=>(
               <SwiperSlide key={item.id}>
                   <div className="box-special-tour" key={item.id}>
                       <div className="img-special-tour">

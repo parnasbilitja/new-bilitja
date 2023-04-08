@@ -8,9 +8,12 @@ import PrimaryButton from "../../sources/component/PrimaryButton.component";
 import PrimaryTextInputMobile from "../../sources/component/PrimaryTextInputMobile";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 import InputValues from "../../sources/tour/InputValues";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCitySearch } from "../../Redux/citiesSearch/Action";
 
 const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
-    const [cities,setCities] = useState([])
+  let cities = useSelector(state => state.CityReducer)
+  const dispatch = useDispatch()
     const [list, setList] = useState({})
 
     const handleFocusOut = (event) => {
@@ -32,7 +35,6 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
         }
     };
     const handleFocus = (event) => {
-      // console.log(search);
       const { name,value } = event.target;
       setList({...list, [name]:value});
       setSearch({...search,[name]:''});
@@ -41,18 +43,11 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
     };
     const [width, setWidth]   = useState();
   useEffect(() => {
+    dispatch(fetchCitySearch())
     setWidth(window.innerWidth)
-        const getData =async () => {
-            let data = await axios.post('https://api.hamnavaz.com/api/v1/city/getCities')
-            .then((response) => {setCities(response.data.data)})
-            return data 
-        }
-        getData()
     },[])
   useEffect(() => {
     setCity(search.id)
-    // setSearch({...search,hotel:''})
-    // console.log(search);
   },[search])
     return (
       <div className="row justify-content-center pt-0 mx-1">
@@ -77,7 +72,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
                     name='slug'
                     search={search}
                     setSearch={setSearch}
-                    months={[...cities]}
+                    months={[...cities.data]}
                     
                 />
               

@@ -1,41 +1,45 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Link from 'next/link';
-import Footer from '../component/Footer.component';
-import NavHandler from '../../Components/share/NavHandler';
 import PopUp from '../../sources/component/PopUp.component';
 
-import { connect, useSelector } from "react-redux";
+import { connect, useSelector ,useDispatch } from "react-redux";
 import { selcetAccountBox } from "../../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
-import { withRouter } from "next/router";
 
 import dynamic from "next/dynamic";
 import { Loader } from '../../Utils/Loader';
-import Head from 'next/head';
 import moment from 'moment-jalaali';
+import { fetchListTour } from '../../Redux/ListTours/Action';
 
 const Account = dynamic(() => import("./../../sources/account/Account.component"));
 
 const List = (props) => {
+    let getData = useSelector(state => state.ListDataReducer)
+    const dispatch = useDispatch()
+
     function moneyFormat(input) {
         return parseFloat(input)
           .toFixed(1)
           .replace(/\d(?=(\d{3})+\.)/g, "$&,")
           .split(".")[0];
       }
-    const [data, setData] = useState(null)
-    const [loading, setLoading] = useState(true)
-    const getData = async () => {
-        const val = await axios.post('https://api.hamnavaz.com/api/v1/tour/getTours',{limit:10})
-        .then((val) =>{setData(val.data.data),setLoading(false)})
-        .catch(error => {
-            setLoading(true)
-         })
-    }
+    const [data, setData] = useState([])
+
     useEffect(() => {
-        getData();
+        if (getData?.data?.length<1) {
+            dispatch(fetchListTour())
+        }
+        setData(getData.data)
+
     }, [])
+    
+    useEffect(() => {
+
+        if (data?.length<1) {
+            setData(getData.data)
+        }
+    },[getData])
+
     useEffect(() => {
         props.tourData !==null && props.tourData !==[] &&
         setData(props.tourData)
@@ -95,9 +99,9 @@ const List = (props) => {
                         <div className="border-right"></div>
                         <div className="border-left"></div>
                     </div>
-                    { loading ?
+                    {getData.loading ?
                     <Loader />:
-                    data != null ? data
+                    getData.data != null ? getData.data
                     .filter(post => {
                         if (searchBar === '') {
                             return post;
