@@ -169,7 +169,7 @@ const Footer = () => {
                                     >
                                         <img
                                             referrerPolicy="origin"
-                                            src="/images/samandehi.png"
+                                            src="/Images/samandehi.png"
                                             alt=""
                                             id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
                                         />
@@ -182,7 +182,7 @@ const Footer = () => {
                                     >
                                         <img
                                             referrerPolicy="origin"
-                                            src="/images/ecunion-8.png"
+                                            src="/Images/ecunion-8.png"
                                             alt=""
                                             id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
                                         />
@@ -309,7 +309,7 @@ const Footer = () => {
                                     >
                                         <img
                                             referrerPolicy="origin"
-                                            src="/images/samandehi.png"
+                                            src="/Images/samandehi.png"
                                             alt=""
                                             id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
                                         />
@@ -322,7 +322,7 @@ const Footer = () => {
                                     >
                                         <img
                                             referrerPolicy="origin"
-                                            src="/images/ecunion-8.png"
+                                            src="/Images/ecunion-8.png"
                                             alt=""
                                             id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
                                         />

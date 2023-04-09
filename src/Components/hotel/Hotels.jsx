@@ -158,8 +158,9 @@ const Hotels = () => {
                                     </div>
                                 </Link>
                             ))}
-                        </div>
-                    : hotels.data?.length == 0 ?
+                            {console.log(hotels)}
+                            </div>
+                    : hotels.data.data?.length == 0 ?
                     <div className="hotelNotFound">متاسفانه هتلی موجود نیست</div>:<Loader/>}
                     <div className="d-flex mt-5 justify-content-center">
                     {hotels.data?.meta?.links?.map((item)=>(
