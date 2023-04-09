@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCitySearch } from "../../Redux/citiesSearch/Action";
 
 const HotelsSearchBox = ({searchHotel,setCity,search,setSearch}) =>{
-  let cities = useSelector(state => state.CityReducer)
+  let cities = useSelector(state => state.CitySearchReducer)
   const dispatch = useDispatch()
     const [list, setList] = useState({})
 
