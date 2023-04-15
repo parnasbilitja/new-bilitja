@@ -13,6 +13,7 @@ import { Provider } from "react-redux";
 import { store } from "../Redux/store";
 import { motion } from 'framer-motion';
 
+export const config = { amp: true }
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -35,7 +36,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <title>
-        خریداینترنتی بلیط ارزان هواپیما | بلیط استانبول | بلیط جا | 021842799999
+        خریداینترنتی بلیط ارزان هواپیما |بلیطجا| 021842799999
       </title>
       <link rel="canonical" href="https://bilitja.com/"/>
       <motion.div key={router.route} initial="pageInitial" animate="pageAnimate" variants={{
