@@ -103,7 +103,7 @@ const ChangePassword = (props) => {
           props.messageBoxModify({
             color:false,
             state: true,
-            message: "کد احراز هویت شما صحیح نمی باشد.",
+            message: "کد احراز هویت شما صحیح نیست.",
           });
         }
       }); 
@@ -146,7 +146,7 @@ const ChangePassword = (props) => {
             props.messageBoxModify({
               color:false,
               state: true,
-              message: "کد احراز هویت شما صحیح نمی باشد.",
+              message: "کد احراز هویت شما صحیح نیست.",
             });
           }
         }); 

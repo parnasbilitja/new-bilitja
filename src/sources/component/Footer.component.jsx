@@ -335,7 +335,7 @@ const Footer = () => {
                     <div className={styles["footer-right"]}>
                         <div>© کپی رایت 1400. Ver 1.1.2</div>{' '}&nbsp;
                         {width < 826 && <br />}
-                        <span>کلیه حقوق این سایت محفوظ و متعلق به بلیط جا می‌باشد. </span>
+                        <span>کلیه حقوق این سایت محفوظ و متعلق به بلیط جا است. </span>
                     </div>
                     <div className={styles["footer-left"]}>
                         <strong style={{ maxWidth: 500, paddingLeft: 20 }}> طراحی و توسعه سایت : </strong>

@@ -132,7 +132,7 @@ const Auth = (props) => {
               btn_disabled: false,
               loading: false,
               error: true,
-              errText: "شماره موبایل یا رمز ثابت نادرست می باشد.",
+              errText: "شماره موبایل یا رمز ثابت نادرست است.",
             });
           } else {
             setState({
@@ -246,7 +246,7 @@ const Auth = (props) => {
             btn_disabled: false,
             loading: false,
             error: true,
-            errText: "کد وارد شده نادرست می باشد.",
+            errText: "کد وارد شده نادرست است.",
           });
         } else if (data.status == "-104") {
           setState({
