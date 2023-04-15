@@ -32,16 +32,21 @@ span {
 } */
 
 .form-input-auth {
-    height: 45px !important;
-    border: 1px solid #ccc !important;
+    height: 35px !important;
+    border: none !important;
     border-radius: 5px;
 }
 
 .form-input-auth:focus {
     outline: none !important;
-    border-bottom: 1px solid red !important;
+    border: none !important;
 }
-
+.form-input-auth:-webkit-autofill,
+.form-input-auth:-webkit-autofill:hover, 
+.form-input-auth:-webkit-autofill:focus, 
+.form-input-auth:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
 .iran-sans-font {
     font-family: IranSans !important;
 }
@@ -411,6 +416,8 @@ input[type="button"]:hover {
 
 .btn-container-header-login {
     border: 2px solid #279692;
+    width: 80%;
+    height: 33px;
 }
 
 .btn-header-login:focus {
@@ -428,6 +435,8 @@ input[type="button"]:hover {
     background-color: #279692 !important;
     border: none !important;
     color: #fff;
+    height: 30px; 
+    padding-top: 3px;
 }
 
 .register-btn {
@@ -576,7 +585,7 @@ input[type="button"]:hover {
 }
 
 .font-size-13 {
-    font-size: 13px;
+    font-size: 13px !important;
 }
 
 .font-size-14 {

@@ -244,7 +244,7 @@ html {
 }
 
 .font-size-10 {
-  font-size: 10px;
+  font-size: 10px !important;
 }
 
 .font-size-11 {
@@ -256,7 +256,7 @@ html {
 }
 
 .font-size-13 {
-  font-size: 13px;
+  font-size: 13px !important;
 }
 
 .font-size-14 {
@@ -3830,6 +3830,9 @@ p img {
 .w-70 {
   width: 70% !important;
 }
+.w-80 {
+  width: 80% !important;
+}
 .title-custom{
   font-size: 18px;
   font-weight: 600;
@@ -3977,5 +3980,11 @@ p img {
 @media only screen and (max-width: 826px) {
   .hidden-desktop {
     display: none !important;
+  }
+}
+.forget-pass{
+  color: gray;
+  &:hover{
+    color: red
   }
 }

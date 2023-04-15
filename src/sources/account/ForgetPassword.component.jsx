@@ -19,6 +19,7 @@ import { connect } from "react-redux";
 import { accountBoxModify, messageBoxModify } from "../../Redux/UI/ui.action";
 import { useState } from "react";
 import Countdown from "react-countdown";
+import { Loader } from "../../Utils/Loader";
 
 const ForgetPassword = (props) => {
 
@@ -27,9 +28,10 @@ const ForgetPassword = (props) => {
     token: "",
     get_code: false,
     password: "",
+    loading:false,
     passwordnew: "",
     showSetPassword: false,
-    btn_text: "دریافت کد احراز هویت",
+    btn_text: "دریافت کد",
   });
 
 
@@ -150,6 +152,10 @@ const ForgetPassword = (props) => {
             //   type: "login",
             // });
             Router.push("/")
+            props.accountBoxModify({
+              state: false,
+              type: "authentication",
+            });
           } else if (data.status == -100) {
             props.messageBoxModify({
               color: false,
@@ -194,7 +200,26 @@ const ForgetPassword = (props) => {
       </div>
       {state.showSetPassword == false ? (
         <>
-          <div className="row">
+        <div className="row mb-2 d-flex align-center d-flex justify-content-center border rounded mx-4">
+            <div className="col-1 padding-horizental-3px">
+              <FontAwesomeIcon icon={faUser} className="margin-top-10px" />
+            </div>
+                <input
+                  className="form-input-auth px-2 col-10 padding-horizental-3px"
+                  placeholder="شماره همراه"
+                  name="mobile"
+                  value={state.mobile}
+                  onChange={(e) => {
+                    setState({
+                      ...state,
+                      mobile: e.target.value,
+                    })}}
+                    disabled={state.get_code}
+                  inputMode="numeric"
+                />
+          </div>
+
+          {/* <div className="row">
             <div className="col-1 padding-horizental-3px">
               <FontAwesomeIcon icon={faUser} className="margin-top-20px" />
             </div>
@@ -203,7 +228,7 @@ const ForgetPassword = (props) => {
                 className={` form-input-border  ${styles["form-input-border-private"]} `}
               >
                 <PrimaryTextInput
-                  placeholder="نام‌کاربری(تلفن همراه)"
+                  placeholder="تلفن همراه"
                   value={state.mobile}
                   onChange={(e) => {
                     // console.log(state);
@@ -216,21 +241,17 @@ const ForgetPassword = (props) => {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
           {state.get_code == true ? (<>
-            <div className="row">
+            <div className="row mb-2 d-flex align-center d-flex justify-content-center border rounded mx-4">
               <div className="col-1 padding-horizental-3px">
-                <FontAwesomeIcon icon={faKey} className="margin-top-20px" />
+                <FontAwesomeIcon icon={faKey} className="margin-top-10px" />
               </div>
-              <div className="col-11 padding-horizental-3px">
-                <div
-                  className={` form-input-border  ${styles["form-input-border-private"]} `}
-                >
-                  <PrimaryTextInput
+                  <input
+                  className="form-input-auth px-2 col-10 padding-horizental-3px"
                     placeholder="کد احراز هویت"
                     value={state.token}
                     onChange={(e) => {
-                      // console.log(state);
                       setState({
                         ...state,
                         token: e.target.value,
@@ -238,82 +259,97 @@ const ForgetPassword = (props) => {
                       });
                     }}
                   />
-                </div>
-              </div>
-            </div>
-            <div className="row mt-3 text-center">
-              <div className="col-12">
-                <Countdown renderer={renderer} date={Date.now() + 60000} />
-              </div>
             </div>
           </>
           ) : null}
         </>
       ) : (
-        <>
-          <div className="row">
-            <div className="col-1 padding-horizental-3px">
-              <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
-            </div>
-            <div className="col-11 padding-horizental-3px">
-              <div
-                className={` form-input-border  ${styles["form-input-border-private"]} `}
-              >
-                <PrimaryTextInput
-                  placeholder="گذرواژه"
-                  value={state.passwordnew}
-                  type="password"
-                  onChange={(e) => {
-                    setState({
-                      ...state,
-                      passwordnew: e.target.value,
-                    });
-                  }}
-                />
+        <div className="row mb-2 d-flex align-center d-flex justify-content-center border rounded mx-2">
+
+                <div className="col-1 padding-horizental-3px">
+                  <FontAwesomeIcon icon={faLock} className="margin-top-10px" />
+                </div>
+                {/* <div className="col-11 padding-horizental-3px"> */}
+                  {/* <div> */}
+                    <input
+                      className="form-input-auth px-2 col-10"
+                      // placeholder="رمز عبور"
+                      name="password"
+                      placeholder={"گذرواژه جدید"}
+                      // onClick={(e) => {
+                      //   setNewPassword();
+                      // }}
+                      value={state.passwordnew}
+                      onChange={(e) => {
+                        setState({
+                          ...state,
+                          passwordnew: e.target.value,
+                        });
+                      }}
+                      inputMode="numeric"
+                      type="password"
+                    />
+                  {/* </div> */}
+                {/* </div> */}
               </div>
-            </div>
-          </div>
-        </>
       )}
 
       {state.showSetPassword == false ? (
-        <div className="row">
-          <div className="form-input-border without-focus col-12">
-            <PrimaryButton
-              defaultValue={state.btn_text}
-              onClick={(e) => {
-                state.get_code == false
-                  ? forgetPassword()
-                  : verifyToken();
-              }}
-            />
-          </div>
+        <div className="d-flex justify-content-center">
+          <button
+            value={state.btn_text}
+            onClick={(e) => {
+              state.get_code == false && state.mobile.length==11
+                ? forgetPassword()
+                :state.mobile.length==11? verifyToken():''
+                ;
+            }}
+            className={`w-80  ${
+              props.disabled === false
+                ? "btn btn-info py-3 mb-3 col-12 btn-block"
+                : `${styles["primary-button"]} col-12 py-1`}`
+            }
+            disabled={state.btn_disabled}
+          >
+            {state.loading === false ? state.btn_text : <Loader />}
+          </button>
         </div>
       ) : (<>
-        <div className="row">
-          <div className="form-input-border without-focus col-12">
-            <PrimaryButton
-              defaultValue={"ثبت گذرواژه جدید"}
+        <div className="d-flex justify-content-center">
+          {/* <div className=" without-focus col-12"> */}
+            <button
+              className={`w-80  ${
+                props.disabled === false
+                  ? "btn btn-info py-3 mb-3 col-12 btn-block"
+                  : `${styles["primary-button"]} col-12 py-1`}`
+              }
+              disabled={state.btn_disabled}
               onClick={(e) => {
                 setNewPassword();
+                
               }}
-            />
+            >{state.loading === false ? "ثبت گذرواژه جدید" : <Loader />}</button>
           </div>
-        </div>
+        {/* </div> */}
 
       </>
       )}
+      {state.get_code == true &&<div className="row mt-3 text-center">
+              <div className="col-12">
+                <Countdown renderer={renderer} date={Date.now() + 60000} />
+              </div>
+            </div>}
       <div className="row">
         <div className="col-12 no-padding-horizental">
-          <br />
+          {/* <br /> */}
           <p
             className="text-center font-size-13 no-margin cursor-pointer"
-          // onClick={() => {
-          //   props.accountBoxModify({
-          //     state: true,
-          //     type: "login",
-          //   });
-          // }}
+          onClick={() => {
+            props.accountBoxModify({
+              state: true,
+              type: "register",
+            });
+          }}
           >
             بازگشت
           </p>

@@ -26,7 +26,7 @@ const Auth = (props) => {
     loading: false,
     login_with_code: true,
     get_mobile_status: false,
-    btn_text: "دریافت کد احراز هویت",
+    btn_text: "دریافت کد",
     mobile: "",
     password: "",
     token: "",
@@ -43,7 +43,7 @@ const Auth = (props) => {
       ...state,
       login_with_code: true,
       password: "",
-      btn_text: "دریافت کد احراز هویت",
+      btn_text: "دریافت کد",
     });
   };
   const handleLoginWithPassword = () => {
@@ -59,10 +59,10 @@ const Auth = (props) => {
   };
 
   const handleSetMobile = (e) => {
-
-    if (e.target.name == 'mobile' && String(e.target.value).length == 11) {
+    
+    // if (e.target.name == 'mobile' && String(e.target.value).length == 11) {
       setState({ ...state, mobile: e.target.value, error: false, errText: "" })
-    };
+    // };
   };
   const handleSetToken = (newvalue) => {
     setState({ ...state, token: newvalue, error: false, errText: "" });
@@ -77,72 +77,76 @@ const Auth = (props) => {
   };
   const login = () => {
     // console.log(state);
-    setState({ ...state, btn_disabled: true, loading: true });
-    fetch(`${globals.baseUrlNew}auth/getMobile`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        mobile: checkNumberfatoen(state.mobile),
-        token: checkNumberfatoen(state.token),
-        password: checkNumberfatoen(state.password),
-        register: 0,
-        hostname: "bilitja.com",
-        customerId: "1a157116-a01a-4027-ab10-74098ac63815",
-        agencyName: "بلیطجا",
-        telNumber: "02157874",
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status == "0") {
-          setState({
-            ...state,
-            btn_disabled: false,
-            loading: false,
-            get_mobile_status: true,
-            btn_text: "تایید کد احراز هویت",
-          });
-        } else if (data.status == "10") {
-          setState({ ...state, btn_disabled: false, loading: false });
-          localStorage.setItem("mobile", data.mobile);
-          localStorage.setItem("token", data.token);
-          props.checkUserLogged();
-          props.getUserInfo({
-            mobile: data.mobile,
-          });
-          props.accountBoxModify({
-            state: false,
-            type: "authentication",
-          });
-          props.messageBoxModify({
-            color: true,
-            state: true,
-            message: "ورود شما موفقیت آمیز بود.",
-          });
-          props.accountBoxModify({
-            state: false,
-            type: "authentication",
-          });
-        } else if (data.status === "-111") {
-          register();
-        } else if (data.status === "-200") {
-          setState({
-            ...state,
-            btn_disabled: false,
-            loading: false,
-            error: true,
-            errText: "شماره موبایل یا رمز ثابت نادرست می باشد.",
-          });
-        } else {
-          setState({
-            ...state,
-            btn_disabled: false,
-            loading: false,
-            error: true,
-            errText: data.message,
-          });
-        }
-      });
+    if (state.mobile.length ==11) {
+      setState({ ...state, btn_disabled: true, loading: true });
+      fetch(`${globals.baseUrlNew}auth/getMobile`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          mobile: checkNumberfatoen(state.mobile),
+          token: checkNumberfatoen(state.token),
+          password: checkNumberfatoen(state.password),
+          register: 0,
+          hostname: "bilitja.com",
+          customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+          agencyName: "بلیطجا",
+          telNumber: "02157874",
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status == "0") {
+            setState({
+              ...state,
+              btn_disabled: false,
+              loading: false,
+              get_mobile_status: true,
+              btn_text: "تایید کد",
+            });
+          } else if (data.status == "10") {
+            setState({ ...state, btn_disabled: false, loading: false });
+            localStorage.setItem("mobile", data.mobile);
+            localStorage.setItem("token", data.token);
+            props.checkUserLogged();
+            props.getUserInfo({
+              mobile: data.mobile,
+            });
+            props.accountBoxModify({
+              state: false,
+              type: "authentication",
+            });
+            props.messageBoxModify({
+              color: true,
+              state: true,
+              message: "ورود شما موفقیت آمیز بود.",
+            });
+            props.accountBoxModify({
+              state: false,
+              type: "authentication",
+            });
+          } else if (data.status === "-111") {
+            register();
+          } else if (data.status === "-200") {
+            setState({
+              ...state,
+              btn_disabled: false,
+              loading: false,
+              error: true,
+              errText: "شماره موبایل یا رمز ثابت نادرست می باشد.",
+            });
+          } else {
+            setState({
+              ...state,
+              btn_disabled: false,
+              loading: false,
+              error: true,
+              errText: data.message,
+            });
+          }
+        });
+    }else{
+      setState({...state, errText:'شماره وارد شده صحیح نیست',error:true});
+    }
   };
 
   const register = () => {
@@ -171,7 +175,7 @@ const Auth = (props) => {
             loading: false,
             register_status: true,
             resend_code: true,
-            btn_text: "تایید کد احراز هویت",
+            btn_text: "تایید کد",
           });
         } else if (data.status === "-110") {
           //   setState({...state,
@@ -242,7 +246,7 @@ const Auth = (props) => {
             btn_disabled: false,
             loading: false,
             error: true,
-            errText: "کد احراز هویت وارد شده نادرست می باشد.",
+            errText: "کد وارد شده نادرست می باشد.",
           });
         } else if (data.status == "-104") {
           setState({
@@ -270,7 +274,7 @@ const Auth = (props) => {
       setState({
         ...state,
         get_mobile_status: false,
-        btn_text: "  دریافت مجدد کد احراز هویت",
+        btn_text: "دریافت مجدد کد",
       });
       return null;
     } else {
@@ -284,87 +288,95 @@ const Auth = (props) => {
   return (
     <div className="popup-content-container">
       <div className="popup-heading d-flex align-items-center justify-content-center">
-        <span>ورود / ثبت نام</span>
+        <img src={'Images/bilitja-logo.webp'} alt="site-logo" width={70} height={50} />
         <div
           className="exit-form position-absolute"
           onClick={() => {
             props.accountBoxModify({
               state: false,
             });
-          }} style={{ left: 10 }}
+          }} style={{ left: 10,top:10 }}
         >
           <div style={{ color: "red" }} className="font-bold font-size-15" >x</div>
         </div>
       </div>
-      <div className="row btn-container-header-login rounded-pill m-2">
-        <button
-          className={
-            state.login_with_code === true
-              ? "btn btn-header-login-active col-6 rounded-pill"
-              : "btn btn-header-login col-6 rounded-pill"
-          }
-          onClick={handleLoginWithCode}
-        >
-          ورود با رمز یکبار مصرف
-        </button>
-        <button
-          className={
-            state.login_with_code === false
-              ? "btn btn-header-login-active col-6 rounded-pill"
-              : "btn btn-header-login col-6 rounded-pill"
-          }
-          onClick={handleLoginWithPassword}
-        >
-          ورود با رمز ثابت
-        </button>
+      <div className="d-flex justify-content-center">
+        <div className="row btn-container-header-login rounded-pill m-2">
+          <button
+            className={
+              state.login_with_code === true
+                ? "btn btn-header-login-active col-6 rounded-pill pt-1"
+                : "btn btn-header-login col-6 rounded-pill pt-1"
+            }
+            onClick={handleLoginWithCode}
+          >
+            ورود با پیامک
+          </button>
+          <button
+            className={
+              state.login_with_code === false
+                ? "btn btn-header-login-active col-6 rounded-pill pt-1"
+                : "btn btn-header-login col-6 rounded-pill pt-1"
+            }
+            onClick={handleLoginWithPassword}
+          >
+            ورود با رمز ثابت
+          </button>
+        </div>
       </div>
       {state.error === true ? (
         // console.log(state.errText),
-        <div className="alert alert-danger">{state.errText !== undefined ? state.errText : 'شماره وارد شده باید ۱۱ رقم باشد'}</div>
+        <div className="d-flex justify-content-center">
+          <div className="alert alert-danger w-80 d-flex align-items-center" style={{height:'35px'}}>
+            {state.errText !== undefined ? state.errText : 'شماره وارد شده باید ۱۱ رقم باشد'}</div>
+        </div>
       ) : null}
       <div className="container">
-        <div className="row mb-2">
-          <div className="col-1 padding-horizental-3px">
-            <FontAwesomeIcon icon={faUser} className="margin-top-20px" />
-          </div>
-          <div className="col-11 padding-horizental-3px">
-            <div>
-              <input
-                className="form-input-auth px-2 col-12"
-                placeholder=".ورود / ثبت نام ( شماره همراه )"
-                name="mobile"
-                onChange={handleSetMobile}
-                disabled={
-                  state.login_with_code === true
-                    ? state.get_mobile_status === true
-                      ? true
-                      : false
-                    : null
-                }
-                inputMode="numeric"
-              />
+        {/* <div className=""> */}
+          <div className="row mb-2 d-flex align-center d-flex justify-content-center border rounded mx-4">
+            <div className="col-1 padding-horizental-3px">
+              <FontAwesomeIcon icon={faUser} className="margin-top-10px" />
             </div>
+            {/* <div className="col-11 padding-horizental-3px"> */}
+              {/* <div> */}
+                <input
+                  className="form-input-auth px-2 col-10 padding-horizental-3px"
+                  placeholder="شماره همراه"
+                  name="mobile"
+                  onChange={handleSetMobile}
+                  value={state.mobile}
+                  disabled={
+                    state.login_with_code === true
+                      ? state.get_mobile_status === true
+                        ? true
+                        : false
+                      : null
+                  }
+                  inputMode="numeric"
+                />
           </div>
-        </div>
+              {/* </div> */}
+            {/* </div> */}
+        {/* </div */}
         {state.login_with_code === false ? (
-          <div className="row mb-2">
+          <div className="row mb-2 d-flex align-center d-flex justify-content-center border rounded mx-4">
             {type == 2 &&
               <>
                 <div className="col-1 padding-horizental-3px">
-                  <FontAwesomeIcon icon={faLock} className="margin-top-20px" />
+                  <FontAwesomeIcon icon={faLock} className="margin-top-10px" />
                 </div>
-                <div className="col-11 padding-horizental-3px">
-                  <div>
+                {/* <div className="col-11 padding-horizental-3px"> */}
+                  {/* <div> */}
                     <input
-                      className="form-input-auth px-2 col-12"
+                      className="form-input-auth px-2 col-10"
                       placeholder="رمز عبور"
                       name="password"
                       onChange={handleSetPassword}
                       inputMode="numeric"
                       type="password"
                     />
-                  </div>
-                </div>
+                  {/* </div> */}
+                {/* </div> */}
               </>
             }
           </div>
@@ -387,17 +399,15 @@ const Auth = (props) => {
         ) : null}
       </div>
       <div className="row mt-3">
-        <div className=" without-focus col-12">
+        <div className=" without-focus col-12 d-flex justify-content-center">
           <button
             onClick={(e) => {
-              state.get_mobile_status == false ? login() :
-                state.get_mobile_status == true ? loginWithToken() :
-                  ''
+                state.get_mobile_status == true ? loginWithToken():login()
             }}
-            className={
+            className={`w-80  ${
               props.disabled === false
                 ? "btn btn-info py-3 mb-3 col-12 btn-block"
-                : `${styles["primary-button"]} py-2`
+                : `${styles["primary-button"]} py-1`}`
             }
             disabled={state.btn_disabled}
           >
@@ -418,26 +428,23 @@ const Auth = (props) => {
         </div>
       ) : null}
 
-      <div className="row">
+      <div className="d-flex justify-content-center">
         <div
-          style={{ marginTop: -20 }}
-          className="col-12 no-padding-horizental"
+          // style={{ marginTop: -20 }}
+          className="col-4 no-padding-horizental"
         >
-          <br />
-          <p className="text-center font-size-13 no-margin font-bold-iransanse">
-            گذرواژه خود را فراموش کرده اید؟{" "}
-            <a
+          {/* <br /> */}
+          <p className="text-center no-margin font-bold-iransanse font-size-10">
+            {/* گذرواژه خود را فراموش کرده اید؟{" "} */}
+            <div
               onClick={() => {
                 props.accountBoxModify({
                   state: true,
                   type: "forget",
                 });
               }}
-              className="cursor-pointer"
-            >
-              {" "}
-              (بازیابی گذرواژه )
-            </a>
+              className="cursor-pointer font-size-5 forget-pass"
+            > بازیابی گذرواژه </div>
           </p>
         </div>
       </div>
