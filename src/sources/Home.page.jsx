@@ -102,12 +102,12 @@ const Home = (props) => {
                     </div>
                     </div>
                     <div className={`${styles["hero-big-image"]} container hidden-mobile-head`}>
-                    <img
-                        width=""
-                        height=""
-                        alt="بلیطجا-اسلایدر"
-                        src="../../../Images/fly-bg-new.png"
-                    />
+                        <img
+                            width=""
+                            height=""
+                            alt="بلیطجا-اسلایدر2"
+                            src="../../../Images/fly-bg-new.png"
+                        />
                     </div>
                 </motion.div>
 

@@ -49,7 +49,7 @@ const CitiesSuggest = () => {
                                     </svg>
                                     <div className="text">
                                         <h5 className="font-bold title-custom">نمایش تور بر اساس شهر</h5>
-                                        <h6 className="subtitle-custom">مشاهده مناسب ترین تور های لحظه آخری</h6>
+                                        <p className="subtitle-custom font-size-13">مشاهده مناسب ترین تور های لحظه آخری</p>
                                     </div>
                                 </div>
                             </div>

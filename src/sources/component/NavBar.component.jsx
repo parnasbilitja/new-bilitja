@@ -235,7 +235,7 @@ const NavBar = (props) => {
                       height=""
                       className={styles["logo"]}
                       src="../../../Images/logo512.webp"
-                      alt="بلیطجا - لوگو"
+                      alt="بلیطجا - لوگو - دسکتاپ"
                       style={{ cursor: "pointer" }}
                     />
                   </a>

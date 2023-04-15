@@ -37,6 +37,7 @@ function MyApp({ Component, pageProps }) {
       <title>
         خریداینترنتی بلیط ارزان هواپیما | بلیط استانبول | بلیط جا | 021842799999
       </title>
+      <link rel="canonical" href="https://bilitja.com/"/>
       <motion.div key={router.route} initial="pageInitial" animate="pageAnimate" variants={{
         pageInitial: {
           opacity: 0

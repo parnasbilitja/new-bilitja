@@ -27,10 +27,10 @@ const Footer = () => {
                                 <ul className={styles["ul-lists"]}>
                                     {footerLinks.map((item, i) => (
                                         <li key={i} >
-                                            <h6>
+                                            <p className="font-size-8 mb-0">
                                                 {" "}
                                                 <Link href={`${item.href}${today}`}>{item.name}</Link>
-                                            </h6>
+                                            </p>
                                         </li>
                                     ))}
                                 </ul>
@@ -43,10 +43,10 @@ const Footer = () => {
                                 <ul className={styles["ul-lists"]}>
                                     {footerLinksOut.map((item, i) => (
                                         <li key={i}>
-                                            <h6>
+                                            <p className="font-size-8 mb-0">
                                                 {" "}
                                                 <Link href={`${item.href}${today}`}>{item.name}</Link>
-                                            </h6>
+                                            </p>
                                         </li>
                                     ))}
 
@@ -150,13 +150,13 @@ const Footer = () => {
                                     <a
                                         referrerPolicy="origin"
                                         target="_blank"
-                                        className="ms-2 mb-2"
+                                        className="ms-1 mb-2"
                                         href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
                                     >
                                         <img
                                             referrerPolicy="origin"
                                             // src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                            alt=""
+                                            alt="enamad"
                                             src='/Images/enamad.png'
                                             id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
                                         />
@@ -164,27 +164,27 @@ const Footer = () => {
                                     <a
                                         referrerPolicy="origin"
                                         target="_blank"
-                                        className="ms-2 mb-2"
+                                        className="ms-1 mb-2"
                                         href=""
                                     >
                                         <img
                                             referrerPolicy="origin"
                                             src="/Images/samandehi.png"
-                                            alt=""
-                                            id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                            alt="samandehi"
+                                            width={'70px'} height={'70px'}
                                         />
                                     </a>
                                     <a
                                         referrerPolicy="origin"
                                         target="_blank"
-                                        className="ms-2 mb-2"
+                                        className="ms-1 mb-2"
                                         href=""
                                     >
                                         <img
                                             referrerPolicy="origin"
                                             src="/Images/ecunion-8.png"
-                                            alt=""
-                                            id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                            alt="ecunion"
+                                            width={'70px'} height={'70px'}
                                         />
                                     </a>
                                 </div>
@@ -278,7 +278,7 @@ const Footer = () => {
                             <img
                                 width=""
                                 height=""
-                                alt="بلیطجا-لوگو"
+                                alt="بلیطجا-لوگو bilitja-light-logo"
                                 src="../../../Images/bilitja-light-logo.webp"
                             />
                             <p>ارزان ترین بلیط های هواپیما</p>
@@ -296,7 +296,7 @@ const Footer = () => {
                                         <img
                                             referrerPolicy="origin"
                                             // src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                            alt=""
+                                            alt="enamad"
                                             src='/Images/enamad.png'
                                             id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
                                         />
@@ -310,8 +310,8 @@ const Footer = () => {
                                         <img
                                             referrerPolicy="origin"
                                             src="/Images/samandehi.png"
-                                            alt=""
-                                            id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                            alt="samandehi"
+                                            width={'70px'} height={'70px'}
                                         />
                                     </a>
                                     <a
@@ -323,8 +323,8 @@ const Footer = () => {
                                         <img
                                             referrerPolicy="origin"
                                             src="/Images/ecunion-8.png"
-                                            alt=""
-                                            id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
+                                            alt="ecunion"
+                                            width={'70px'} height={'70px'}
                                         />
                                     </a>
                             </div>

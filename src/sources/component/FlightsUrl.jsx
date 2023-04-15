@@ -10,8 +10,8 @@ const FlightsUrl = ({flightsData, flightsDataHotel}) => {
         <div className="col-md-10" >
           <div className="row justify-content-center">
             <div className={`col-12 col-lg-6 ${styles["home-flight-suggestion"]} text-center container`}>
-              <h2 className="font-bold-iransanse font-size-20">بلیط هواپیمـا</h2>
-              <h4 className="mb-3 font-size-18">قیمت های لحظه آخری بلیطـجا</h4>
+              <p className="font-bold-iransanse font-size-20">بلیط هواپیمـا</p>
+              <p className="mb-3 font-size-18">قیمت های لحظه آخری بلیطـجا</p>
               <div className="col-sm-12 d-flex row flex-wrap align-items-center justify-content-between">
                 <div className={`${styles["suggestion-list"]} col-6`}>
                   {flightsData[0].map((item,index)=>(
@@ -57,7 +57,7 @@ const FlightsUrl = ({flightsData, flightsDataHotel}) => {
                   <ellipse id="Ellipse_223" data-name="Ellipse 223" cx="1.113" cy="1.113" rx="1.113" ry="1.113" transform="translate(33.925 27.086)"/>
                   <ellipse id="Ellipse_224" data-name="Ellipse 224" cx="1.113" cy="1.113" rx="1.113" ry="1.113" transform="translate(38.377 27.086)"/>
                   <ellipse id="Ellipse_225" data-name="Ellipse 225" cx="1.113" cy="1.113" rx="1.113" ry="1.113" transform="translate(10.557 32.293) rotate(-16.858)"/>
-                </svg>
+                        </svg>
                       </a>
                       <div className="clear"></div>
                     </div>
@@ -66,8 +66,8 @@ const FlightsUrl = ({flightsData, flightsDataHotel}) => {
               </div>
             </div>
             <div className={`col-12 col-lg-6 ${styles["home-flight-suggestion"]} text-center container`}>
-              <h2 className="font-bold-iransanse font-size-20">رزرو هتل</h2>
-              <h4 className="mb-3 font-size-18">قیمت های لحظه آخری هتل ها</h4>
+              <p className="font-bold-iransanse font-size-20">رزرو هتل</p>
+              <p className="mb-3 font-size-18">قیمت های لحظه آخری هتل ها</p>
               <div className="col-sm-12 d-flex flex-wrap align-items-center justify-content-between">
                 <div className={`${styles["suggestion-list"]} col-6`}>
                   {flightsDataHotel[0].map((item,index)=>(
@@ -125,7 +125,7 @@ const FlightsUrl = ({flightsData, flightsDataHotel}) => {
                 <path id="Path_1633" data-name="Path 1633" d="M146.7,323.721h-4.934a1.088,1.088,0,0,0-1.088,1.088v4.934a1.088,1.088,0,0,0,1.088,1.089H146.7a1.088,1.088,0,0,0,1.088-1.089v-4.934A1.088,1.088,0,0,0,146.7,323.721Zm-1.088,4.934h-2.757V325.9h2.757Z" transform="translate(-125.364 -289.494)"/>
                 <path id="Path_1634" data-name="Path 1634" d="M231.362,323.721h-4.934a1.088,1.088,0,0,0-1.089,1.088v4.934a1.088,1.088,0,0,0,1.089,1.089h4.934a1.089,1.089,0,0,0,1.088-1.089v-4.934A1.089,1.089,0,0,0,231.362,323.721Zm-1.088,4.934h-2.757V325.9h2.757Z" transform="translate(-200.811 -289.494)"/>
                 <circle id="Ellipse_197" data-name="Ellipse 197" cx="1.088" cy="1.088" r="1.088" transform="translate(35.489 26.377)" fill="black"/>
-              </svg>
+                      </svg>
                       </a>
                       <div className="clear"></div>
                     </div>

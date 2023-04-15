@@ -17,7 +17,7 @@ const PictureBase = () => {
             <img
               width=""
               height=""
-              alt="بلیطجا- لوگو"
+              alt="بلیطجا- لوگو - بیس"
               src="../../../Images/map.webp"
               className={`${styles["hero-image-2"]} pull-right`}
             />
@@ -26,7 +26,7 @@ const PictureBase = () => {
             <img
               width=""
               height=""
-              alt="بلیطجا - لوگو"
+              alt="بلیطجا - لوگو- بیس۲"
               src="../../../Images/bilitja.webp"
               className={styles["hero-image-center"]}
             />

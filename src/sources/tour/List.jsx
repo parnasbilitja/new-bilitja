@@ -79,7 +79,7 @@ const List = (props) => {
                                     </svg>
                                     <div className="text">
                                         <h5 className="font-bold title-custom">لیست تورها</h5>
-                                        <h6 className="subtitle-custom">مشاهده مناسب ترین تور های لحظه آخری</h6>
+                                        <p className="subtitle-custom font-size-13">مشاهده مناسب ترین تور های لحظه آخری</p>
                                     </div>
                                 </div>
                             </div>
@@ -167,7 +167,7 @@ const List = (props) => {
                                     </div>
                                 </div>
                                 <div className="type">
-                                    <img width="45" src={item.transfers[0].logo} />
+                                    <img width="45" src={item.transfers[0].logo} alt={item.title} />
                                     <span className="text-dark me-2 font-size-14">{item.transfers[0].transfer}</span>
                                 </div>
                                 <Link href={`/${item.slug}`}>

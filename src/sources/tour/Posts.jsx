@@ -81,7 +81,7 @@ const Posts = () => {
                                     <a href={`/blogs/${getData.data[1]?.slug}`} class="link-light font-size-15 font-bold-iransanse" >{getData.data[1]?.title}</a>
                                     </h6>
                                     <div class="date-info">
-                                        <img src="https://hamnavaz.com/img/Watch.svg" width="20" alt="تاریخ-انتشار"/>
+                                        <img src="https://hamnavaz.com/img/Watch.svg" width="20" alt="2تاریخ-انتشار"/>
                                         <small>انتشار شده در {getData.data[1]?.createdAt.split('T')[0]}</small>
                                     </div>
                                 </div>
@@ -94,7 +94,7 @@ const Posts = () => {
                                         <a href={`/blogs/${getData.data[2]?.slug}`} class="link-light font-size-15 font-bold-iransanse" >{getData.data[2]?.title}</a>
                                     </h6>
                                     <div class="date-info">
-                                        <img src="https://hamnavaz.com/img/Watch.svg" width="20" alt="تاریخ-انتشار"/>
+                                        <img src="https://hamnavaz.com/img/Watch.svg" width="20" alt="3تاریخ-انتشار"/>
                                         <small>انتشار شده در {getData.data[2]?.createdAt.split('T')[0]}</small>
                                     </div>
                             </div>
@@ -104,7 +104,7 @@ const Posts = () => {
                                 <div class="info-blog">
                                     <h6><a href={`/blogs/${getData.data[3]?.slug}`} class="link-light font-size-15 font-bold-iransanse" >{getData.data[3]?.title}</a></h6>
                                     <div class="date-info">
-                                        <img src="https://hamnavaz.com/img/Watch.svg" width="20" alt="تاریخ-انتشار"/>
+                                        <img src="https://hamnavaz.com/img/Watch.svg" width="20" alt="تاریخ-انتشار4"/>
                                         <small>انتشار شده در {getData.data[3]?.createdAt.split('T')[0]}</small>
                                     </div>
                                 </div>

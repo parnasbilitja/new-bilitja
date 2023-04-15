@@ -58,7 +58,7 @@ const OfferdTours = (props) => {
                                     </svg>
                                     <div className="text">
                                         <h5 className="font-bold title-custom">تور لحظه آخری و آفری و ارزان قیمت</h5>
-                                        <h6 className="subtitle-custom">مشاهده مناسب ترین تور های لحظه آخری</h6>
+                                        <p className="subtitle-custom font-size-13">مشاهده مناسب ترین تور های لحظه آخری</p>
                                     </div>
                                 </div>
                             </div>

@@ -175,7 +175,7 @@ const NavBarMobile = (props) => {
               <img
                 width=""
                 height=""
-                alt="بلیطجا - لوگو"
+                alt="بلیطجا - لوگو - موبایل"
                 src="../../../Images/bilitja-light-logo.webp"
               />
             </a>

@@ -120,7 +120,7 @@ const HotelsSuggest = () => {
                             <SwiperSlide item={item.id}>
                                 <div item={item.id}>
                                     <div class="box-hotel">
-                                        <img  class="img-blog" src={item.thumbnail}/>
+                                        <img  class="img-blog" src={item.thumbnail} alt={item.id}/>
                                         <Link href={`/hotel/${item.slug}`}>
                                             <div class="opacity-bg-parent">
                                                 <div class="info-img"><img src="https://hamnavaz.com/img/Information.svg" width="22" alt="توضیحات-هتل"/>

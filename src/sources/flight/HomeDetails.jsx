@@ -69,7 +69,7 @@ const HomeDetails = ( props) => {
                     <img
                       width=""
                       height=""
-                      alt="بلیطجا- لوگو پذیرش میزبانی"
+                      alt="۲بلیطجا- لوگو پذیرش میزبانی"
                       src="../../../Images/service3.webp"
                     />
                     <h2 className="font-bold-iransanse font-size-22 font-bold">
@@ -91,7 +91,7 @@ const HomeDetails = ( props) => {
         </div>
         <div className="d-flex justify-content-center rounded">
             <div className="col-11 col-md-10">
-              <img src='../../Images/banerBestPriceOfFlight.jpg' className="rounded" width='100%' height='auto'/>
+              <img src='../../Images/banerBestPriceOfFlight.jpg' alt='بهترین قیمت' className="rounded" width='100%' height='auto'/>
               </div>
         </div>
         {/* <div className={styles["home-become-host"]}>

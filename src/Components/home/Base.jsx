@@ -21,7 +21,7 @@ import { withRouter } from "next/router";
 const Base = (props) => {
     return (
         <div className={"mt-90"}>
-          <NavHandler />
+        <NavHandler />
         <Scrolltoprefresh/>
         <Head>
                 <title>بلیطجا | خرید بلیط هواپیما و رزرو اقامتگاه</title>

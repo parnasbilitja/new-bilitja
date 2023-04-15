@@ -43,6 +43,13 @@ const HeadSeo = (props) => {
             />
 
             <meta
+              name="image"
+              property="og:image"
+              content={'../../../Images/bilitja.webp'
+              }
+            />
+
+            <meta
               name="description"
               property="og:description"
               content={
