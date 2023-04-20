@@ -9,13 +9,15 @@
     "export": "npm run build && next export "
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.19",
     "@hassanmojab/react-modern-calendar-datepicker": "^3.1.7",
-    "@mui/material": "^5.5.0",
+    "@mui/material": "^5.12.1",
     "axios": "^0.25.0",
     "bootstrap": "^5.0.0-beta3",
     "framer-motion": "^10.3.2",

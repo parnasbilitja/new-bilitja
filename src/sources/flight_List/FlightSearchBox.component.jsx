@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react";
 import styles from "../../../styles/FlightSearchBox.module.scss";
 import PrimaryButton from "../component/PrimaryButton.component";
 import PrimaryTextInputMobile from "../component/PrimaryTextInputMobile";
-import PrimaryTextInput from "../component/PrimarySelectInput.component";
 import Airports from "../base/Airports.component";
 import AirportsMobile from "../base/AirportsMobile.component";
 import PopUp from "../component/PopUp.component";
 import PopUpWide from "../component/PopUpWide.component";
 import CalendarComponent from "../calendar/Calendar.component";
-import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { connect } from "react-redux";
 import { selectCredentials } from "../../Redux/Search/search.reselect";

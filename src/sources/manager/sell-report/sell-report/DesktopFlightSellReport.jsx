@@ -16,6 +16,7 @@ import { FilterFields } from "./Filter.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import DesktopInfoSell from "./DesktopInfoSell";
 import TopFilter from "./TopFilter";
+import TableCustom from "../../TableAndSearch/Table";
 import { moneyFormat } from "../../../../Utils/SimpleTasks";
 import {
   _filterSellReport,
@@ -23,6 +24,8 @@ import {
 } from "../../../../Redux/Reports/reports.action";
 import router from "next/router";
 import Link from "next/link";
+import { Loader } from "../../../../Utils/Loader";
+import Tabs from "../../TableAndSearch/Tabs";
 
 function createData({
   customerName,
@@ -81,7 +84,9 @@ const fetchedList = async () => {
     },
   });
   const response = await fetched.json();
+  console.log(response);
   return response;
+
 };
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
@@ -430,6 +435,127 @@ const FlightSellReport = () => {
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
+  let foroshAll = 0;
+  const [list,setList] = React.useState([])
+  React.useEffect(()=>{
+    const getList = async()=>{
+      const list = await fetchedList();
+      setList(list)
+    }
+    getList()
+    console.log(list);
+  },[])
+  const header = [
+    {
+      title: 'ردیف',
+      name:'num',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'رفرنس',
+      name:'reqPnr',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'درخواست',
+      name:'reqNo',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'نام سرپرست',
+      name:'nameFamilyEn',
+      flex: 12,
+      mFlex:25,
+    },
+    {
+      title: 'تعداد',
+      name:'count',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'تاریخ فروش',
+      name:'dateTimeSabt',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'تاریخ پرواز',
+      name:'flightDate',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'موبایل',
+      name:'mobileNo',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'مسیر',
+      name:'route',
+      flex: 15,
+      mFlex:25,
+    },
+    {
+      title: 'شماره پرواز',
+      name:'flightNo',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'ایرلاین',
+      name:'airline',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'کلاس',
+      name:'className',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'خرید از',
+      name:'kndSysName',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'فروش',
+      name:'feeGet',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'خرید',
+      name:'feeGetKh',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'سود',
+      name:'Profit',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'سرویس',
+      name:'serviceName',
+      flex: 7,
+      mFlex:25,
+    },
+    {
+      title: 'نوع مسیر',
+      name:'pathKind',
+      flex: 7,
+      mFlex:25,
+    },
+    
+  ]
   return (
     <section>
       <div>
@@ -442,28 +568,19 @@ const FlightSellReport = () => {
             <div class="aside-through"></div>
           </div>
         </div>
-        <div className="d-flex justify-content-end mt-3 align-items-center w-100 mb-4">
-          <div className={style['parent-buttons']}>
-            <Link href="/panel/flight-sell-report">
-              <button>همه </button>
-            </Link>
-            <Link href="/panel/Sales-report">
-              <button>گزارش فروش</button>
-            </Link>
-            <Link href="/panel/Consular-report">
-              <button>گزارش کنسلی</button>
-            </Link>
-            <Link href="/panel/reserving">
-              <button>در حال رزرو </button>
-            </Link>
-            <Link href="/panel/transaction">
-              <button>تراکنش ها</button>
-            </Link>
-          </div>
-        </div>
-
+        <Tabs active='Sell' />
+        {list.status=='success'?
+      <>
+        <TableCustom list2={list.data} 
+        setReqPnr={setReqPnr}
+        setReqNo={setReqNo}
+        setOpenInfo={setOpenInfo}
+        header={header}
+         />
+      </>
+      :<Loader/>}
         {/*<TopFilter />*/}
-        <Box>
+        {/* <Box>
           <Paper>
             <TableContainer>
               <Table
@@ -518,7 +635,6 @@ const FlightSellReport = () => {
                             align="center"
                           >
                             <h6 className={'fontEn'}>
-                              {/* {row.message} */}
                               {row.reqPnr}
                               </h6>
                           </TableCell>
@@ -534,7 +650,6 @@ const FlightSellReport = () => {
                             className={style["tablerowfont"]}
                             align="center"
                           >
-                            {/* <h6 className={'fontEn'}>{row.reqPnr}</h6> */}
                             <h6 className={style['en-font']}>{row.nameFamilyEn}</h6>
                           </TableCell>
                           <TableCell
@@ -557,12 +672,6 @@ const FlightSellReport = () => {
                           >
                             <h6 className={style['normal-size']}>{row.flightDate}</h6>
                           </TableCell>
-                          {/* <TableCell
-                            align="center"
-                            className={style["tablerowfont"]}
-                          >
-                            
-                          </TableCell> */}
                           <TableCell
                             align="center"
                             className={style["tablerowfont"]}
@@ -632,24 +741,12 @@ const FlightSellReport = () => {
                               {moneyFormat(row.stock)}
                             </h6>
                           </TableCell>
-                          {/* <TableCell
-                            align="center"
-                            className={style["tablerowfont"]}
-                          >
-                            <h6 className={style['normal-size']}>{row.userFr}</h6>
-                          </TableCell> */}
                           <TableCell
                             align="center"
                             className={style["tablerowfont"]}
                           >
                             <h6 className={style['normal-size']}>{row.serviceName}</h6>
                           </TableCell>
-                          {/* <TableCell
-                            align="center"
-                            className={style["tablerowfont"]}
-                          >
-                            <h6 className={style['en-font']}>{row.servicePnr}</h6>
-                          </TableCell> */}
                           <TableCell
                             align="center"
                             className={style["tablerowfont"]}
@@ -699,9 +796,6 @@ const FlightSellReport = () => {
                     <TableCell align="center">
                       <h6 className="font-size-14"></h6>
                     </TableCell>
-                    {/* <TableCell align="center">
-                      <h6 className="font-size-14"></h6>
-                    </TableCell> */}
                     <TableCell className={style["tablerowfont"]} align="center">
                       <h6 className={style['normal-size']}>
                         {moneyFormat(prices.kharidAll)} ریال
@@ -751,8 +845,7 @@ const FlightSellReport = () => {
                 labelRowsPerPage="آیتم نمایشی هر صفحه"
               />
             </div>
-          </Paper>
-        </Box>
+          </Paper>rLoader        </Box> */}
 
         {openInfo ? (
           <DesktopInfoSell

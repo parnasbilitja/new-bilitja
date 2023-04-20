@@ -1,21 +1,6 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import Box from "@mui/material/Box";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import { styled } from "@mui/material/styles";
-import style from "./Descktop.module.scss";
-import Paper from "@mui/material/Paper";
-import salesReport from "./Sales-report"
-import { FilterFields } from "./Filter.jsx";
-import { useSelector, useDispatch } from "react-redux";
+
 import DesktopInfoSell from "./DesktopInfoSell";
-import TopFilter from "./TopFilter";
 import { moneyFormat } from "../../../../Utils/SimpleTasks";
 import {
   _filterSellReport,
@@ -23,42 +8,11 @@ import {
 } from "../../../../Redux/Reports/reports.action";
 import router from "next/router";
 import Link from "next/link";
-
-
-function createData({
-  reqNo,
-  reqPnr,
-  nameFamily,
-  stat,
-  mobileNo,
-  bankName,
-  authority,
-  resCode,
-  saleOrderId,
-  saleReferenceId,
-  dateTimeSabt,
-  dsc,
-  knd,
-  amount,
-
-}) {
-  return {
-    reqNo,
-    reqPnr,
-    nameFamily,
-    stat,
-    mobileNo,
-    bankName,
-    authority,
-    resCode,
-    saleOrderId,
-    saleReferenceId,
-    dateTimeSabt,
-    dsc,
-    knd,
-    amount,
-  };
-}
+import { Loader } from "../../../../Utils/Loader";
+import { useState } from "react";
+import { useEffect } from "react";
+import TableCustom from "../../TableAndSearch/Table";
+import Tabs from "../../TableAndSearch/Tabs";
 
 const fetchedList = async () => {
   const fetched = await fetch("/api/report/getReportBank", {
@@ -75,301 +29,84 @@ const fetchedList = async () => {
   console.log(response);
   return response;
 };
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-}));
-const getRows = async () => {
-  const list = await fetchedList();
-  const array = list.data.map((option) =>
-    createData({
-      reqNo: option.reqNo,
-      reqPnr: option.reqPnr,
-      nameFamily: option.nameFamily,
-      stat: option.stat,
-      amount: option.amount,
-      mobileNo: option.mobileNo,
-      bankName: option.bankName,
-      dateTimeSabt: option.dateTimeSabt,
-      dsc: option.dsc,
-      knd: option.knd,
-
-      authority: option.authority,
-      resCode: option.resCode,
-      saleOrderId: option.saleOrderId,
-      saleReferenceId: option.saleReferenceId,
-
-    })
-  );
-  return array;
-};
-
-function descendingComparator(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
-  }
-  return 0;
-}
-
-function getComparator(order, orderBy) {
-  return order === "desc"
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
-}
-
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
-function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) {
-      return order;
-    }
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map((el) => el[0]);
-}
-
-const headCells = [
-
-  {
-    id: "reqno",
-    numeric: true,
-    disablePadding: true,
-    label: "درخواست",
-  },
-  {
-    id: "fat",
-    numeric: false,
-    disablePadding: true,
-    label: "رفرنس",
-  },
-  {
-    id: "protein",
-    numeric: false,
-    disablePadding: true,
-    label: "نام سرپرست",
-  },
-  {
-    id: "count",
-    numeric: true,
-    disablePadding: true,
-    label: "وضعیت",
-  },
-  {
-    id: "path",
-    numeric: false,
-    disablePadding: true,
-    label: "مبلغ",
-  },
-  {
-    id: "flightDate",
-    numeric: false,
-    disablePadding: true,
-    label: "بانک",
-  },
-  {
-    id: "mobile",
-    numeric: true,
-    disablePadding: true,
-    label: "موبایل",
-  },
-  {
-    id: "carbs",
-    numeric: false,
-    disablePadding: true,
-    label: "تاریخ ثبت",
-  },
-
-  {
-    id: "airline",
-    numeric: false,
-    disablePadding: true,
-    label: "شرح",
-  },
-  {
-    id: "flightDate",
-    numeric: false,
-    disablePadding: true,
-    label: "نوع",
-  },
-  {
-    id: "flightDate",
-    numeric: false,
-    disablePadding: true,
-    label: "authority",
-  },
-  {
-    id: "flightDate",
-    numeric: false,
-    disablePadding: true,
-    label: "resCode",
-  },
-  {
-    id: "flightDate",
-    numeric: true,
-    disablePadding: true,
-    label: "saleOrderId",
-  },
-  {
-    id: "flightDate",
-    numeric: true,
-    disablePadding: true,
-    label: "saleReferenceId",
-  },
-
-];
-
-const EnhancedTableHead = (props) => {
-  const { all_sell_report } = useSelector((state) => state.reports);
-
-  const dispatch = useDispatch();
-
-  const handleChnage = (e) => {
-    const { name, value } = e.target;
-    const allData = all_sell_report != null ? [...all_sell_report] : [];
-    const finded = allData.filter((res) =>
-      res[name]
-        .toString()
-        .toLowerCase()
-        .includes(value.toString().toLowerCase())
-    );
-    dispatch(_filterSellReport(finded));
-  };
-
-  return (
-    <>
-      <TableHead>
-        <TableRow>
-          <TableCell
-            align="center"
-            style={{ background: "green", color: "#fff", fontWeight: 600 }}
-          >
-            <p className={style["title-table"]}>ردیف</p>
-          </TableCell>
-          {headCells.map((headCell) => (
-            <TableCell
-              style={{ background: "green", color: "#fff", fontWeight: 600 }}
-              key={headCell.id}
-              align="center"
-              padding="none"
-            >
-              <p className={style["title-table"]}>{headCell.label}</p>
-            </TableCell>
-          ))}
-        </TableRow>
-      </TableHead>
-      <TableHead>
-        <TableRow>
-          <TableCell align="center"></TableCell>
-          {FilterFields.map((option, index) => (
-            <TableCell
-              key={index}
-              align="center"
-              padding="none"
-              className="pt-1 pb-1 me-1"
-            >
-              <div className="me-1">
-                <input
-                  className={style["input"]}
-                  name={option.name}
-                  placeholder="جستجو..."
-                  defaultValue=""
-                  onChange={handleChnage}
-                />
-              </div>
-            </TableCell>
-          ))}
-        </TableRow>
-      </TableHead>
-    </>
-  );
-};
-
-EnhancedTableHead.propTypes = {
-  numSelected: PropTypes.number.isRequired,
-  onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(["asc", "desc"]).isRequired,
-  orderBy: PropTypes.string.isRequired,
-  rowCount: PropTypes.number.isRequired,
-};
-
 const Transaction = () => {
-  let i = 1;
-  const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("calories");
-  const [selected, setSelected] = React.useState([]);
-  const [page, setPage] = React.useState(0);
   const [openInfo, setOpenInfo] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [reqNo, setReqNo] = React.useState("");
   const [reqPnr, setReqPnr] = React.useState("");
-  const [prices, setPrices] = React.useState({
-    amount: 0,
-  });
-
-  const dispatch = useDispatch();
-
-  const flights = useSelector((state) => state.reports);
-
-  const managePrice = () => {
-    const allData =
-      flights.filter_sell_report != null ? [...flights.filter_sell_report] : [];
-    const prices = allData
-      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-      .map((option) => {
-        return {
-          amount: option.amount,
-        };
-      });
-    let amount = 0;
-
-    for (let i = 0; i < prices.length; i++) {
-      amount += prices[i].amount;
+  
+  
+  const [list,setList] = useState([])
+  useEffect(()=>{
+    const getList = async()=>{
+      const list = await fetchedList();
+      setList(list)
     }
-    return {
-      amount,
-    };
-  };
-
-  const fethed = async () => {
-    const response = await getRows();
-    await dispatch(_getSellReport(response));
-    await dispatch(_filterSellReport(response));
-  };
-
-  React.useEffect(() => {
-    fethed();
-  }, []);
-
-  React.useEffect(() => {
-    const pricesSum = managePrice();
-    setPrices(pricesSum);
-  }, [rowsPerPage, flights.all_sell_report, flights.filter_sell_report]);
-
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
-    setOrderBy(property);
-  };
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  const isSelected = (name) => selected.indexOf(name) !== -1;
-
+    getList()
+    console.log(list);
+  },[])
+  const header = [
+    {
+      title: 'ردیف',
+      name:'num',
+      flex: 12,
+      mFlex:25,
+    },
+    {
+      title: 'رفرنس',
+      name:'reqPnr',
+      flex: 12,
+      mFlex:25,
+    },
+    {
+      title: 'درخواست',
+      name:'reqNo',
+      flex: 12,
+      mFlex:25,
+    },
+    {
+      title: 'نام سرپرست',
+      name:'nameFamily',
+      flex: 12,
+      mFlex:25,
+    },
+    {
+      title: 'تعداد',
+      name:'count',
+      flex: 12,
+      mFlex:25,
+    },
+    {
+      title: 'تاریخ فروش',
+      name:'dateTimeSabt',
+      flex: 12,
+      mFlex:25,
+    },
+    {
+      title: 'موبایل',
+      name:'mobileNo',
+      flex: 12,
+      mFlex:25,
+    },
+    {
+      title: 'مبلغ',
+      name:'amount',
+      flex: 12,
+      mFlex:25,
+    },
+    {
+      title: 'درگاه',
+      name:'bankName',
+      flex: 12,
+      mFlex:25,
+    },
+    {
+      title: 'وضعیت',
+      name:'stat',
+      flex: 12,
+      mFlex:25,
+    },
+    
+  ]
   return (
     <section>
       <div>
@@ -382,28 +119,20 @@ const Transaction = () => {
             <div class="aside-through"></div>
           </div>
         </div>
-        <div className="d-flex justify-content-end mt-3 align-items-center w-100 mb-4">
-          <div className={style['parent-buttons']}>
-            <Link href="/panel/flight-sell-report">
-              <button>همه </button>
-            </Link>
-            <Link href="/panel/Sales-report">
-              <button>گزارش فروش</button>
-            </Link>
-            <Link href="/panel/Consular-report">
-              <button>گزارش کنسلی</button>
-            </Link>
-            <Link href="/panel/reserving">
-              <button>در حال رزرو </button>
-            </Link>
-            <Link href="/panel/transaction">
-              <button>تراکنش ها</button>
-            </Link>
-          </div>
-        </div>
-
+        <Tabs active='Transaction' />
+        {list.status=='success'?
+      <>
+        <TableCustom list2={list.data} 
+        setOpenInfo={setOpenInfo}
+        setReqPnr={setReqPnr}
+        setReqNo={setReqNo}
+        Transaction={true}
+        header={header}
+         />
+      </>
+      :<Loader/>}
         {/*<TopFilter />*/}
-        <Box>
+        {/* <Box>
           <Paper>
             <TableContainer>
               <Table
@@ -632,7 +361,7 @@ const Transaction = () => {
               />
             </div>
           </Paper>
-        </Box>
+        </Box> */}
 
         {openInfo ? (
           <DesktopInfoSell

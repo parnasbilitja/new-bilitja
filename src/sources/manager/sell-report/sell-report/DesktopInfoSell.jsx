@@ -169,6 +169,7 @@ const EnhancedTableHead = (props) => {
 };
 
 const DesktopInfoSell = ({ open, close, reqNo, reqPnr }) => {
+  console.log(reqNo, reqPnr);
   let i = 1;
   const [data, setData] = React.useState([]);
 
@@ -177,6 +178,7 @@ const DesktopInfoSell = ({ open, close, reqNo, reqPnr }) => {
       `/api/report/getReportInfo?reqNo=${reqNo}&reqPnr=${reqPnr}`
     );
     const response = await fetched.json();
+    console.log(response.data);
     const array = response.data.map((option) =>
       createData({
         reqNo: option.reqNo,
