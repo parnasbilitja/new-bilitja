@@ -13,7 +13,7 @@ import { Provider } from "react-redux";
 import { store } from "../Redux/store";
 import { motion } from 'framer-motion';
 
-export const config = { amp: true }
+// export const config = { amp: true }
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
