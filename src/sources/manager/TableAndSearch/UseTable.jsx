@@ -79,10 +79,12 @@ const useTable = (data, page, rowsPerPage,searchBar) => {
     buyAll2+= parseFloat(item.feeGetKh)
     Profit2+= parseFloat(item.feeGet-item.feeGetKh)
   })
-  console.log(foroshAll2)
+  
   useEffect(() => {
+
     const range = calculateRange(len, rowsPerPage);
     setTableRange([...range]);
+
     const slice = sliceData(SearchData, page, rowsPerPage);
     setSlice([...slice]);
   }, [page,searchBar]);
