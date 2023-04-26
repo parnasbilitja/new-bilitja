@@ -59,7 +59,7 @@ const Auth = (props) => {
   };
 
   const handleSetMobile = (e) => {
-    
+    // handleKeypress(e)
     // if (e.target.name == 'mobile' && String(e.target.value).length == 11) {
       setState({ ...state, mobile: e.target.value, error: false, errText: "" })
     // };
@@ -267,6 +267,13 @@ const Auth = (props) => {
         }
       });
   };
+  const handleKeypress = e => {
+    //it triggers by pressing the enter key
+    
+  if (e.keyCode === 13) {
+    state.get_mobile_status == true ? loginWithToken():login()
+  }
+};
 
   // Renderer callback with condition
   const renderer = ({ minutes, seconds, completed }) => {
@@ -344,6 +351,7 @@ const Auth = (props) => {
                   placeholder="شماره همراه"
                   name="mobile"
                   onChange={handleSetMobile}
+                  onKeyDown={handleKeypress}
                   value={state.mobile}
                   disabled={
                     state.login_with_code === true
@@ -416,7 +424,7 @@ const Auth = (props) => {
         </div>
         {state.get_mobile_status && 
         <div className="justify-content-center row mt-3">
-            <span className="btn btn-outline-info col-5 btn-block" onClick={()=>{setState({...state,get_mobile_status:false})}}>تغییر شماره</span>
+            <span className="btn btn-outline-danger col-5 btn-block" style={{border: "1px dashed"}} onClick={()=>{setState({...state,get_mobile_status:false})}}>تغییر شماره</span>
         </div>
         }
       </div>

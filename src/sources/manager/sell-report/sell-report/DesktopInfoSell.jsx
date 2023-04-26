@@ -10,6 +10,7 @@ import style from "./Descktop.module.scss";
 
 import TableRow from "@mui/material/TableRow";
 import { moneyFormat } from "../../../../Utils/SimpleTasks";
+import Row from "../../TableAndSearch/Row";
 
 const headCells = [
   {
@@ -238,6 +239,35 @@ const DesktopInfoSell = ({ open, close, reqNo, reqPnr }) => {
           </div>
         </div>
         <div className="col-12">
+
+        {/* <div className="controller-table mt-3 scroller">
+      
+      <div className="thead d-flex align-items-center">
+        {headCells.map((item, i) =>(
+          <div className={`head flex-${item.flex} m-flex-${item.mFlex}`}>
+            <span className="font-size-14 font-bold-iransanse">{item.title}</span>
+          </div>
+          ))}
+      </div>
+      <div className="data-detail">
+        {data? 
+            <>
+          {data.map((item,index) => (
+            <div>
+              <Row header={header} item={item}
+              setOpenInfo={setOpenInfo}
+              index={index}
+               />
+            </div>
+          ))}
+          
+              </>
+        :
+        <Loader/>
+      }
+      </div>
+    </div> */}
+          
           <TableContainer>
             <Table
               aria-labelledby="tableTitle"

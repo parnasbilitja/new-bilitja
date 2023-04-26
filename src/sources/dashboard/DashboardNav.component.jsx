@@ -189,7 +189,41 @@ const DashboardNav = (props) => {
             </p>
           </div>
         </div>
-      </div>:props.open?
+        <div
+          className={
+            myRouter.asPath === ""
+              ? `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item-active cursor-pointer`
+              : `${styles["manager-nav-one-row"]} d-flex align-items-center flex-row-reverse dashboard-menu-item cursor-pointer`
+          }
+          onClick={() => {
+            myRouter.push("/");
+            if(size<=826){
+              props.setOpen(false);
+            }
+          }}
+        >
+            <Link href={'/'} passHref>
+          <div>
+            {/* <FontAwesomeIcon icon={faHandshake} /> */}
+              <img
+                width="70px"
+                height="50px"
+                alt="بلیطجا - لوگو"
+                src="../../../Images/bilitja-logo.webp"
+              />
+          </div>
+            </Link>
+          <div>
+            <p className="no-margin font-size-13 font-bold-iransanse">
+              مشاهده سایت
+            </p>
+            <p className="no-margin font-size-13 color-textpill iran-sans">
+              view site
+            </p>
+          </div>
+        </div>
+      </div>
+      :props.open?
       <div
       className={`${styles["manager-nav-main-container"]} ${props.open === true ? styles["slidein-manager"] : ""
         }`}

@@ -203,7 +203,7 @@ const OfferdTours = (props) => {
                               </div>
                               <div className="d-flex align-items-center">
                                   <strong className="price-tour-special ml-2 mr-2">{moneyFormat(item.minPrice)}</strong>
-                                  <strong className="price-tour-special " ref={props.myRef}>
+                                  <strong className="price-tour-special">
                                       تومان </strong>
                               </div>
 

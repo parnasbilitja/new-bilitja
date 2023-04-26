@@ -39,17 +39,17 @@ function MyApp({ Component, pageProps }) {
         خریداینترنتی بلیط ارزان هواپیما |بلیطجا| 021842799999
       </title>
       <link rel="canonical" href="https://bilitja.com/"/>
-      <motion.div key={router.route} initial="pageInitial" animate="pageAnimate" variants={{
+      {/* <motion.div key={router.route} initial="pageInitial" animate="pageAnimate" variants={{
         pageInitial: {
           opacity: 0
         },
         pageAnimate: {
           opacity: 1
         },
-      }}>
+      }}> */}
 
         <Component {...pageProps} />
-      </motion.div>
+      {/* </motion.div> */}
     </Provider>
   );
 }

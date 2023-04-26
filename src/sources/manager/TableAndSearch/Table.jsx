@@ -9,6 +9,7 @@ import PricesRow from './PricesRow';
 const Table = ({ list2, setOpenInfo,setReqPnr, setReqNo ,header,Transaction }) => {
 
   const [searchBar, setSearchBar] = useState('')
+  const [perPage, setPerPage] = useState(5)
   const data = list2.length>1&&
   {
     ...list2.filter((item) =>
@@ -17,16 +18,16 @@ const Table = ({ list2, setOpenInfo,setReqPnr, setReqNo ,header,Transaction }) =
   };
   const [page, setPage] = useState(1);
   let len = data.length
-  const { slice, range, foroshAll, buyAll, Profit, foroshAll2, buyAll2, Profit2 } = useTable(list2, page, 12,searchBar);
+  const { slice, range, foroshAll, buyAll, Profit, foroshAll2, buyAll2, Profit2 } = useTable(list2, page, perPage,searchBar);
   return (
     <>
-    <div className="d-flex justify-content-center align-items-center">
-      <div className="col-3">
+    <div className="row d-flex justify-content-center align-items-center">
+      <div className="col-12 col-md-3">
         <Search searchBar={searchBar} setSearchBar={setSearchBar} />
       </div>
-      <div className="col-9">
-      <div className="d-flex justify-content-end">
-      <div className="col-3 mx-2 text-white p-2 rounded"
+      <div className="col-12 col-md-9">
+      <div className="row justify-content-md-end justify-content-center">
+      <div className="col-10 my-1 col-md-3 mx-2 text-white p-2 rounded"
       style={{
         backgroundColor:'#090026'
       }}
@@ -35,7 +36,7 @@ const Table = ({ list2, setOpenInfo,setReqPnr, setReqNo ,header,Transaction }) =
         </div>
         {console.log(isNaN(buyAll2))}
         {isNaN(buyAll2) == false &&
-        <div className="col-3 mx-2 text-white p-2 rounded"
+        <div className="col-10 my-1 col-md-3 mx-2 text-white p-2 rounded"
         style={{
           backgroundColor:'#090026'
         }}
@@ -44,7 +45,7 @@ const Table = ({ list2, setOpenInfo,setReqPnr, setReqNo ,header,Transaction }) =
         </div>
         }
         {isNaN(Profit2) == false  &&
-        <div className="col-3 mx-2 text-white p-2 rounded"
+        <div className="col-10 my-1 col-md-3 mx-2 text-white p-2 rounded"
         style={{
           backgroundColor:'#090026'
         }}
@@ -94,7 +95,23 @@ const Table = ({ list2, setOpenInfo,setReqPnr, setReqNo ,header,Transaction }) =
       </div>
     </div>
       <div className='d-flex justify-content-center'>
-        <TableFooter range={range} slice={slice} setPage={setPage} page={page} />
+        <div className='col-12 col-md-2'>
+          تعداد ایتم نمایشی:
+          <select className='border rounded mx-2' onChange={(e) =>setPerPage(e.target.value)}>
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={20}>20</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+            <option value={75}>75</option>
+            <option value={100}>100</option>
+            <option value={200}>200</option>
+          </select>
+        </div>
+        <div className='col-12 col-md-10'>
+          <TableFooter range={range} slice={slice} setPage={setPage} page={page} />
+        </div>
       </div>
     </>
   );

@@ -18,28 +18,22 @@ const Table = ({ props }) => {
           <span className="font-size-14 font-bold-iransanse">موبایل</span>
         </div>
         <div className="head flex-14 m-flex-60">
-          <span className="font-size-14 font-bold-iransanse">تاریخ</span>
+          <span className="font-size-14 font-bold-iransanse">تاریخ خرید</span>
         </div>
         <div className="head flex-14 m-flex-60">
           <span className="font-size-14 font-bold-iransanse">قیمت خرید</span>
         </div>
         <div className="head flex-14 m-flex-60">
-          <span className="font-size-14 font-bold-iransanse">وضعیت</span>
-        </div>
-        <div className="head flex-14 m-flex-60">
           <span className="font-size-14 font-bold-iransanse">رفرنس</span>
         </div>
         <div className="head flex-14 m-flex-60">
-          <span className="font-size-14 font-bold-iransanse">چاپ بلیط</span>
-        </div>
-        <div className="head flex-14 m-flex-60">
-          <span className="font-size-14 font-bold-iransanse">گزارش تراکنش</span>
+          <span className="font-size-14 font-bold-iransanse">وضعیت</span>
         </div>
       </div>
       <div className="data-detail">
         {/* {console.log(props)} */}
-        {props && props.map((item) => (
-          <Row props={item} />
+        {props && props.map((item,index) => (
+          <Row props={item} index={index} />
         ))}
       </div>
     </div>

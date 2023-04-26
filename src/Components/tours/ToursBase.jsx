@@ -43,7 +43,14 @@ const ToursBase = () => {
     }
 
     const myRef = useRef(null)
-    const executeScroll = () => { myRef.current.scrollIntoView()}
+    const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const handleClickScroll = () => {
+      const element = document.getElementById('list');
+      if (element) {
+        // 👇 Will scroll smoothly to the top of the next section
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
     return (
         <div className={""}>
             <Head>
@@ -65,7 +72,7 @@ const ToursBase = () => {
               <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
                 <SearchBox
                 dateSelected={state.dateSelected2}
-                executeScroll={executeScroll} 
+                executeScroll={handleClickScroll} 
                 toursHandler={toursHandler} 
                 setState={setState} 
                 state={state}  
@@ -88,8 +95,10 @@ const ToursBase = () => {
             </div>
           </div>
                 <div className="col-md-10 m-auto">
-                  <OfferdTours myRef={myRef} />
-                  <List ref={myRef} tourData={tourData} />
+                  <OfferdTours />
+                  <div id='list'>
+                    <List ref={myRef} tourData={tourData} city={state.city} />
+                  </div>
                   <HotelsSuggest />
                   <CitiesSuggest />
                   <Posts />

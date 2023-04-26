@@ -18,24 +18,12 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
       value:'',
       slug:'',
     })
-  const [list, setList] = useState({})
 
-    const handleFocusOut = (event) => {
-      const { name,value } = event.target;
-      // setSearch({...search,[name]:list[name]});
-      
-    };
     const handleChange = (event) => {
       const { name, value } = event.target;
       setSearch({...search,[name]:value});
     };
-    const handleFocus = (event) => {
-      console.log(search);
-      const { name,value } = event.target;
-      setList({...list, [name]:value});
-      setSearch({...search,[name]:''});
-      
-    };
+
     useEffect(() => {
         const getData =async () => {
             let data = await axios.post('https://api.hamnavaz.com/api/v1/city/getCities',{hasTour:true})
@@ -47,7 +35,8 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
   const [width, setWidth]   = useState();
   useEffect(() => {
     setWidth(window.innerWidth)
-  },[])
+    console.log(search);
+  },[search])
   useEffect(() => {
     setState({...state, city:search.slug})
   },[search.slug])
@@ -107,7 +96,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
           <PrimaryButton className={`px-0`}
             style={{ height: "55px", marginTop: "7px",fontSize:'14px',fontWeight:'600',textAlign:'center',borderRadius: "10px"}}
             value={ "جستجو" }
-            onClick={() =>{toursHandler(search),executeScroll()}}
+            onClick={() =>{toursHandler(search);executeScroll()}}
           >{ "جستجو" }</PrimaryButton>
         </div>
         

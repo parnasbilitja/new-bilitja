@@ -74,6 +74,7 @@ const useTable = (data, page, rowsPerPage,searchBar) => {
   let foroshAll2 = 0;
   let buyAll2 = 0;
   let Profit2 = 0;
+  console.log(SearchData);
   SearchData.map((item) => {
     foroshAll2+= !item.amount ? parseFloat(item.feeGet):parseFloat(item.amount)
     buyAll2+= parseFloat(item.feeGetKh)
@@ -87,7 +88,7 @@ const useTable = (data, page, rowsPerPage,searchBar) => {
 
     const slice = sliceData(SearchData, page, rowsPerPage);
     setSlice([...slice]);
-  }, [page,searchBar]);
+  }, [page,searchBar,rowsPerPage]);
 
   return { slice, range: tableRange, foroshAll, buyAll, Profit, foroshAll2, buyAll2, Profit2 };
 };

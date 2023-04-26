@@ -18,17 +18,18 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import List from '../../sources/tour/List';
 
 const hotel = (props) => {
     const [hotel, setHotel] = useState({})
     const [show, setShow] = useState(false)
-    const router = useRouter()
     useEffect(()=>{
         const getData = async () => {
             await axios.post(`https://api.hamnavaz.com/api/v1/hotel/getHotel/${props.Pathname.hotel}`,{isAdmin:0})
-            .then(res => {setHotel(res.data.data)})
+            .then(res => {setHotel(res.data.data),console.log(res)})
         }
         getData()
+        console.log(hotel);
     },[])
     // console.log(hotel);
     return (
@@ -118,7 +119,7 @@ const hotel = (props) => {
                     <h2>درباره {hotel.name} بیشتر بدانید :</h2>
                     <div class="scrollbar" id="style-1"></div>
                     <span class="editor">
-                        <p dir="RTL" style={{marginBottom:"0cm",textAlign:'justify',lineHeight:'normal'}} dangerouslySetInnerHTML={{__html:hotel.city?.description}}/>
+                        <p dir="RTL" style={{marginBottom:"0cm",textAlign:'justify',lineHeight:'normal'}} dangerouslySetInnerHTML={{__html:hotel.body}}/>
                         {/* {hotel.city?.description} */}
                         {/* </p> */}
                         </span>
@@ -140,6 +141,13 @@ const hotel = (props) => {
                 </div>
             </div>
         </div>
+        {hotel.tours?.length > 0 &&
+        <div class="row justify-content-center">
+            <div className='col-10'>
+                <List name='hotel' tourData={hotel.tours}/>
+            </div>
+        </div>
+        }
             <Footer />
             <PopUp opened={show} closePopUp={setShow}>
                 <Swiper
