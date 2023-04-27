@@ -23,7 +23,7 @@ const TableFooter = ({ range, setPage, page, slice }) => {
             setScope([1,2,3,4,5,'...',...scope2.last])
           }
         }
-      }, [range.length,scope2]);  
+      }, [range]);  
   useEffect(() => {
     if (slice.length < 1 && page !== 1) {
       setPage(page - 1);

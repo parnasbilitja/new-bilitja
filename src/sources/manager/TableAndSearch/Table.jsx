@@ -57,7 +57,6 @@ const Table = ({ list2, setOpenInfo,setReqPnr, setReqNo ,header,Transaction }) =
       </div>
     </div>
     <div className="controller-table mt-3 scroller">
-      {/* head */}
       <div className="thead d-flex align-items-center">
         {header.map((item, i) =>(
           <div className={`head flex-${item.flex} m-flex-${item.mFlex}`}>

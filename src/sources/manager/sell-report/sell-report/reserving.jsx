@@ -69,6 +69,12 @@ const FlightSellReport = () => {
       mFlex:25,
     },
     {
+      title: 'پیام',
+      name:'message',
+      flex: 25,
+      mFlex:25,
+    },
+    {
       title: 'رفرنس',
       name:'reqPnr',
       flex: 7,
@@ -172,6 +178,7 @@ const FlightSellReport = () => {
     },
     
   ]
+  
   return (
     <section>
       <div>
