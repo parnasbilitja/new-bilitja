@@ -179,7 +179,7 @@ const DesktopInfoSell = ({ open, close, reqNo, reqPnr }) => {
       `/api/report/getReportInfo?reqNo=${reqNo}&reqPnr=${reqPnr}`
     );
     const response = await fetched.json();
-    console.log(response.data);
+    console.log(response);
     const array = response.data.map((option) =>
       createData({
         reqNo: option.reqNo,
@@ -226,7 +226,7 @@ const DesktopInfoSell = ({ open, close, reqNo, reqPnr }) => {
   }, [open]);
 
   return (
-    <Dialog open={open} maxWidth="lg">
+    <Dialog open={open} maxWidth="lg" onClick={close}>
       <DialogContent>
         <div className="d-flex mb-3 align-items-center">
           <div className="col-11">
@@ -240,34 +240,6 @@ const DesktopInfoSell = ({ open, close, reqNo, reqPnr }) => {
         </div>
         <div className="col-12">
 
-        {/* <div className="controller-table mt-3 scroller">
-      
-      <div className="thead d-flex align-items-center">
-        {headCells.map((item, i) =>(
-          <div className={`head flex-${item.flex} m-flex-${item.mFlex}`}>
-            <span className="font-size-14 font-bold-iransanse">{item.title}</span>
-          </div>
-          ))}
-      </div>
-      <div className="data-detail">
-        {data? 
-            <>
-          {data.map((item,index) => (
-            <div>
-              <Row header={header} item={item}
-              setOpenInfo={setOpenInfo}
-              index={index}
-               />
-            </div>
-          ))}
-          
-              </>
-        :
-        <Loader/>
-      }
-      </div>
-    </div> */}
-          
           <TableContainer>
             <Table
               aria-labelledby="tableTitle"

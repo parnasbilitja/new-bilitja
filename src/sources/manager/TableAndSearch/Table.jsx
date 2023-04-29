@@ -34,7 +34,6 @@ const Table = ({ list2, setOpenInfo,setReqPnr, setReqNo ,header,Transaction }) =
       >
         کل فروش :{moneyFormatrial(foroshAll2)}
         </div>
-        {console.log(isNaN(buyAll2))}
         {isNaN(buyAll2) == false &&
         <div className="col-10 my-1 col-md-3 mx-2 text-white p-2 rounded"
         style={{

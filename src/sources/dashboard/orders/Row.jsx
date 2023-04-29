@@ -1,5 +1,5 @@
 import React from 'react';
-import { moneyFormatrial } from '../../../Utils/SimpleTasks';
+import { moneyFormat, moneyFormatrial } from '../../../Utils/SimpleTasks';
 
 const Row = ({ props, index }) => {
   return (
@@ -18,7 +18,7 @@ const Row = ({ props, index }) => {
         <span className="font-size-14">{props.dateTimeSabt}</span>
       </div>
       <div className="detail flex-14 m-flex-60">
-        <span className="font-size-14">{moneyFormatrial(props.amount)} تومان</span>
+        <span className="font-size-14">{moneyFormat(props.amount)} تومان</span>
       </div>
       <div className="detail flex-14 m-flex-60">
         <span className="font-size-14">{props.reqPnr}</span>

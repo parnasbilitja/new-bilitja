@@ -41,8 +41,8 @@ const fetchedList = async () => {
     },
   });
   const response = await fetched.json();
-  console.log("hello");
-  console.log(response);
+    // console.log("hello");
+    // console.log(response);
   return response;
 };
 
@@ -204,14 +204,14 @@ const FlightSellReport = () => {
       :<Loader/>}
 
 
-        {/* {openInfo ? (
+        {openInfo ? (
           <DesktopInfoSell
             open={openInfo}
             close={() => setOpenInfo(false)}
             reqNo={reqNo}
             reqPnr={reqPnr}
           />
-        ) : null} */}
+        ) : null}
       </div>
     </section>
   );

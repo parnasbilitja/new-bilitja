@@ -22,7 +22,7 @@ const fetchedList = async () => {
     },
   });
   const response = await fetched.json();
-  console.log(response);
+  // console.log(response);
   return response;
 
 };
@@ -168,7 +168,6 @@ const FlightSellReport = () => {
         <Tabs active='Sell' />
         {list.status=='success'?
       <>
-      {console.log(list.data)}
         <TableCustom list2={list.data} 
         setReqPnr={setReqPnr}
         setReqNo={setReqNo}

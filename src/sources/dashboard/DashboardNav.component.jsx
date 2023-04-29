@@ -204,13 +204,12 @@ const DashboardNav = (props) => {
         >
             <Link href={'/'} passHref>
           <div>
-            {/* <FontAwesomeIcon icon={faHandshake} /> */}
-              <img
+              {/* <img
                 width="70px"
                 height="50px"
                 alt="بلیطجا - لوگو"
                 src="../../../Images/bilitja-logo.webp"
-              />
+              /> */}
           </div>
             </Link>
           <div>
