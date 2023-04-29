@@ -1,5 +1,5 @@
 import React from 'react';
-import {moneyFormatrial} from '../../../Utils/SimpleTasks'
+import {moneyFormat} from '../../../Utils/SimpleTasks'
 import style from "../sell-report/sell-report/Descktop.module.scss";
 
 const Row = (props) => {
@@ -27,15 +27,27 @@ const Row = (props) => {
           </div>
           :item.name=='Profit'?
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
-            <span className="font-size-14">{moneyFormatrial(props.item.feeGet-props.item.feeGetKh)}</span>
+            <span className="font-size-14">{moneyFormat(props.item.feeGet-props.item.feeGetKh)}</span>
           </div>
           :item.name=='feeGetKh'?
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
-            <span className="font-size-14">{moneyFormatrial(props.item.feeGetKh)}</span>
+            <span className="font-size-14">{moneyFormat(props.item.feeGetKh)}</span>
           </div>
           :item.name=='feeGet'?
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
-            <span className="font-size-14">{moneyFormatrial(props.item.feeGet)}</span>
+            <span className="font-size-14">{moneyFormat(props.item.feeGet)}</span>
+          </div>
+          :item.name=='amount'?
+          <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
+            <span className="font-size-14">{moneyFormat(props.item.amount)}</span>
+          </div>
+          :item.name=='stat'?
+          <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
+            <span className={`font-size-14 ${props.item.stat=='پرداخت موفق'?'text-success':'text-danger'}`}>{props.item.stat}</span>
+          </div>
+          :item.name=='nameFamilyEn'?
+          <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
+            <span className={`font-size-14 `}>{props.item.nameFamilyEn?.split(',').map(item=>(<div>{item}</div>))}</span>
           </div>
         :
         

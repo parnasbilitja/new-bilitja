@@ -1601,7 +1601,9 @@ $sizes: 100;
 
       .detail {
         height: 55px;
-
+        display: block;
+        overflow: auto;
+        text-align: center !important;
         .actioncall {
           border-radius: 8px;
         }

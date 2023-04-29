@@ -6,7 +6,7 @@ import TableFooter from './TableFooter';
 import Search from './Search';
 import { moneyFormatrial } from '../../../Utils/SimpleTasks';
 import PricesRow from './PricesRow';
-const Table = ({ list2, setOpenInfo,setReqPnr, setReqNo ,header,Transaction }) => {
+const Table = ({ list2, setOpenInfo,setReqPnr, setReqNo ,header,Transaction,reserving }) => {
 
   const [searchBar, setSearchBar] = useState('')
   const [perPage, setPerPage] = useState(5)
@@ -71,15 +71,18 @@ const Table = ({ list2, setOpenInfo,setReqPnr, setReqNo ,header,Transaction }) =
               setReqNo(item.reqNo)
               setReqPnr(item.reqPnr)
             }}>
-              <Row header={header} item={item}
+              <Row
+              header={header} 
+              item={item}
               setOpenInfo={setOpenInfo}
               setReqNo={setReqNo}
               setReqPnr={setReqPnr}
               index={index}
-               />
+              />
             </div>
           ))}
           <PricesRow
+          reserving={reserving}
           Transaction={Transaction}
           foroshAll={foroshAll}
           buyAll={buyAll}
@@ -92,7 +95,7 @@ const Table = ({ list2, setOpenInfo,setReqPnr, setReqNo ,header,Transaction }) =
       }
       </div>
     </div>
-      <div className='d-flex justify-content-center'>
+      <div className='d-flex row justify-content-center'>
         <div className='col-12 col-md-2'>
           تعداد ایتم نمایشی:
           <select className='border rounded mx-2' onChange={(e) =>setPerPage(e.target.value)}>
@@ -107,7 +110,7 @@ const Table = ({ list2, setOpenInfo,setReqPnr, setReqNo ,header,Transaction }) =
             <option value={200}>200</option>
           </select>
         </div>
-        <div className='col-12 col-md-10'>
+        <div className='col-12 col-md-10 px-4'>
           <TableFooter range={range} slice={slice} setPage={setPage} page={page} />
         </div>
       </div>
