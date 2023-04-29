@@ -62,6 +62,9 @@ const useTable = (data, page, rowsPerPage,searchBar) => {
     ),
 
   ];
+  SearchData.sort(function(o1,o2){
+    return o1.dateTimeSabt>o2.dateTimeSabt ? -1 : o1.dateTimeSabt<o2.dateTimeSabt ? 1 : 0;
+  });
   let len = SearchData.length
   let foroshAll = 0;
   let buyAll = 0;

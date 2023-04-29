@@ -10,7 +10,7 @@ const Row = (props) => {
         <>
           {item.name=='count'?
             <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
-              <span className="font-size-14">{props.item.numInf+props.item.numChd+props.item.numAdl}</span>
+              <span className="font-size-14">{props.item.numAdl?props.item.numInf+props.item.numChd+props.item.numAdl:'عدم دریافت'}</span>
             </div>
           :item.name=='num'?
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
