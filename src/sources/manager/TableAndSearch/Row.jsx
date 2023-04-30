@@ -6,7 +6,7 @@ const Row = (props) => {
   // console.log(props.item);
   return (
     <div className="d-detail d-flex align-items-center" >
-      {props.header.map((item,index)=>(
+      {props.header.map((item)=>(
         <>
           {item.name=='count'?
             <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
@@ -48,6 +48,10 @@ const Row = (props) => {
           :item.name=='nameFamilyEn'?
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
             <span className={`font-size-14 `}>{props.item.nameFamilyEn?.split(',').map(item=>(<div>{item}</div>))}</span>
+          </div>
+          :item.name=='reqPnr'?
+          <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
+            <span className={`font-size-14 fontEn`}>{props.item.reqPnr}</span>
           </div>
         :
         
