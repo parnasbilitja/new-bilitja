@@ -24,6 +24,12 @@ const Table = ({tableData,state}) => {
                         item.value === 'stat'?
                         <span className={`font-size-14 ${state.stat == 'پرداخت موفق'? 'text-success':'text-danger'}`}>{state[item.value]}</span>
                         :
+                        item.value === 'numADL'?
+                        <span className={`font-size-14`}>{state.numADL+state.numCHD+state.numINF}</span>
+                        :
+                        item.value === 'pathKind'?
+                        <span className={`font-size-14`}>{state[item.value]==2?'داخلی':'خارجی'}</span>
+                        :
                         item.value != 'amount'?
                         <span className={`font-size-14 ${item.value == 'reqPnr'&& 'fontEn'}`}>{state[item.value]}</span>
                         :
