@@ -21,7 +21,16 @@
     margin-right: 4px;
     margin-left: 4px;
   }
-  
+  @media (max-width: 768px) {
+    .button {
+      border: none;
+      padding: 2px 4px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-right: 2px;
+      margin-left: 2px;
+    }
+  }
   .activeButton {
     color: white;
     background: #185adb;

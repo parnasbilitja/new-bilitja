@@ -2,10 +2,8 @@ import React from 'react';
 import style from "../sell-report/sell-report/Descktop.module.scss";
 import Link from 'next/link';
 const Tabs = ({active}) => {
-    console.log(active);
     return (
         <div className="d-flex justify-content-end mt-3 align-items-center w-100 mb-4 flex-wrap">
-          {/* <div className={style['parent-buttons']}> */}
             <div  className={'col-6 col-md-1 my-1'}>
             <Link href="/panel/flight-sell-report">
               <button className={`${active == 'Sell'? style['active']:style['button']}`}>گزارش فروش</button>

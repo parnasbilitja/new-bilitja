@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
 
 const calculateRange = (len, rowsPerPage) => {
-    let range = [];
-    let num = Math.ceil(parseFloat(len / rowsPerPage));
-    for (let i = 1; i <= num; i++) {
-      range.push(i);
-    }
-    return range;
-  };
+  let range = [];
+  let num = Math.ceil(parseFloat(len / rowsPerPage));
+  for (let i = 1; i <= num; i++) {
+    range.push(i);
+  }
+  return range;
+};
   
-  const sliceData = (SearchData, page, rowsPerPage) => {
-      return SearchData.slice((page - 1) * rowsPerPage, page * rowsPerPage);
-    
-  };
+const sliceData = (SearchData, page, rowsPerPage) => {
+    return SearchData.slice((page - 1) * rowsPerPage, page * rowsPerPage);  
+};
   
 const useTable = (data, page, rowsPerPage,searchBar) => {
   const [tableRange, setTableRange] = useState([]);
@@ -65,15 +64,18 @@ const useTable = (data, page, rowsPerPage,searchBar) => {
   SearchData.sort(function(o1,o2){
     return o1.dateTimeSabt>o2.dateTimeSabt ? -1 : o1.dateTimeSabt<o2.dateTimeSabt ? 1 : 0;
   });
+
   let len = SearchData.length
   let foroshAll = 0;
   let buyAll = 0;
   let Profit = 0;
+
   slice.map((item) => {
     foroshAll+= !item.amount ? parseFloat(item.feeGet):parseFloat(item.amount)
     buyAll+= parseFloat(item.feeGetKh)
     Profit+= parseFloat(item.feeGet-item.feeGetKh)
   })
+
   let foroshAll2 = 0;
   let buyAll2 = 0;
   let Profit2 = 0;
