@@ -8,6 +8,7 @@ import Table from '../sources/component/Table'
 import NavHandler from '../Components/share/NavHandler'
 import Footer from '../sources/component/Footer.component'
 import Scrolltoprefresh from '../sources/component/Scrolltoprefresh' 
+import { tableData, tableData2 } from '../Utils/data'
 const TrackOrder = () =>{
         const [state,setState] = useState({
             trackRef:'',
@@ -27,7 +28,7 @@ const TrackOrder = () =>{
         state.trackRef == '' && setState({...state,errSate:true})
         setState({...state,errSate:false,[name]: value})
     }
-    // console.log(state)
+    console.log(state)
     return (
         <div className="mt-130">
             <NavHandler/>
@@ -59,7 +60,10 @@ const TrackOrder = () =>{
                         <div className="col-12">
                             {state.referenceEbank ?
                             <div className="justify-content-center">
-                                <Table state={state} />                                
+                                <Table tableData={tableData} state={state.referenceEbank} />
+                                {state.referenceFlight.length >0 &&
+                                    <Table tableData={tableData2} state={state.referenceFlight[0]} />
+                                }
                             </div>
                             :<div className="col-12 img me-auto">
                                 <img className="img-fluid-1" src="/Images/Exploring-pana.svg" height="350" width="100%" alt="" />

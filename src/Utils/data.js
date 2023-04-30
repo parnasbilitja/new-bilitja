@@ -253,4 +253,128 @@ const months =[
   },
 ]
 
-export { footerLinks, footerLinksOut, tableData, flightsData, homeText, months, flightsDataHotel }
+const tableData2 = [
+{
+    name: 'درخواست',
+    flex:8,
+    mFlex:17,
+    value:'reqNo',
+},
+{
+  name: 'رفرنس',
+  flex:8,
+  mFlex:17,
+  value:'reqPnr',
+},
+{
+  name: 'مبدا',
+  flex:22,
+  mFlex:17,
+  value:'airport1',
+},
+{
+  name: 'مقصد',
+  flex:22,
+  mFlex:17,
+  value:'airport2',
+},
+{
+  name: 'ایرلاین',
+  flex:8,
+  mFlex:17,
+  value:'airline',
+},
+{
+  name: 'روز پرواز',
+  flex:8,
+  mFlex:17,
+  value:'flightDay',
+},
+{
+  name: 'تاریخ پرواز',
+  flex:8,
+  mFlex:17,
+  value:'flightDate',
+},
+{
+  name: 'ساعت پرواز',
+  flex:8,
+  mFlex:17,
+  value:'flightTime',
+},
+{
+  name: 'نام',
+  flex:8,
+  mFlex:17,
+  value:'nameEn',
+},
+{
+  name: 'نام خانوادگی',
+  flex:8,
+  mFlex:17,
+  value:'familyEn',
+},
+{
+  name: 'تلفن',
+  flex:8,
+  mFlex:17,
+  value:'mobileNo',
+},
+{
+  name: 'مبلغ',
+  flex:8,
+  mFlex:17,
+  value:'ticketPrice',
+},
+{
+  name: 'ملیت',
+  flex:8,
+  mFlex:17,
+  value:'meliat',
+},
+{
+  name: 'جنسیت',
+  flex:8,
+  mFlex:17,
+  value:'sex',
+},
+{
+  name: 'شماره بلیط',
+  flex:8,
+  mFlex:17,
+  value:'ticketNo',
+},
+{
+  name: 'شماره پرواز',
+  flex:8,
+  mFlex:17,
+  value:'flightNo',
+},
+{
+  name: 'کدملی',
+  flex:8,
+  mFlex:17,
+  value:'meliCode',
+},
+{
+  name: 'تعداد',
+  flex:8,
+  mFlex:17,
+  value:'numADL',
+},
+{
+  name: 'کلاس',
+  flex:8,
+  mFlex:17,
+  value:'flightClass',
+},
+{
+  name: 'مسیر',
+  flex:8,
+  mFlex:17,
+  value:'pathKind',
+},
+
+]
+
+export { footerLinks, footerLinksOut, tableData, flightsData, homeText, months, flightsDataHotel, tableData2 }
