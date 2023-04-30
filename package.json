@@ -35,8 +35,7 @@
     "redux-thunk": "^2.4.2",
     "reselect": "^4.0.0",
     "sass": "^1.32.12",
-    "swiper": "^8.4.6",
-    "web-vitals": "^1.1.2"
+    "swiper": "^8.4.6"
   },
   "devDependencies": {
     "@types/gtag.js": "0.0.5",
