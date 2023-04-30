@@ -27,6 +27,7 @@ const TrackOrder = () =>{
         state.trackRef == '' && setState({...state,errSate:true})
         setState({...state,errSate:false,[name]: value})
     }
+    // console.log(state)
     return (
         <div className="mt-130">
             <NavHandler/>
@@ -58,7 +59,7 @@ const TrackOrder = () =>{
                         <div className="col-12">
                             {state.referenceEbank ?
                             <div className="justify-content-center">
-                                <Table state={state} />
+                                <Table state={state} />                                
                             </div>
                             :<div className="col-12 img me-auto">
                                 <img className="img-fluid-1" src="/Images/Exploring-pana.svg" height="350" width="100%" alt="" />
