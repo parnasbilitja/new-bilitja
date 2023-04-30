@@ -3,7 +3,6 @@ import { moneyFormat, moneyFormatrial } from "../../Utils/SimpleTasks";
 import { useState } from 'react';
 import { useEffect } from 'react';
 const Table = ({tableData,state}) => {
-    console.log(tableData,state);
     const [width, setWidth] = useState(0)
     useEffect(() => {
         setWidth(window.innerWidth)
@@ -29,6 +28,12 @@ const Table = ({tableData,state}) => {
                         :
                         item.value === 'pathKind'?
                         <span className={`font-size-14`}>{state[item.value]==2?'داخلی':'خارجی'}</span>
+                        :
+                        item.value === 'sex'?
+                        <span className={`font-size-14`}>{state.sex==2?'خانم':'آقا'}</span>
+                        :
+                        item.value === 'meliat'?
+                        <span className={`font-size-14`}>{state.meliat=="IR"?'ایرانی':'غیر ایرانی'}</span>
                         :
                         item.value != 'amount'?
                         <span className={`font-size-14 ${item.value == 'reqPnr'&& 'fontEn'}`}>{state[item.value]}</span>

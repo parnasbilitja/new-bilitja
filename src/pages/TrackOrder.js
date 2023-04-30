@@ -44,11 +44,11 @@ const TrackOrder = () =>{
                                 <p className="track-order-second-title">جهت پیگیری رزرو، کد 6 رقمی رفرنس را وارد نمایید و بروی دکمه جستجو  کلیک کنید</p>
                             </div>
                             <div className="w-100 row">
-                                <div className="col-8 form-input-border height-short-input">
+                                <div className="col-8 col-md-3 form-input-border height-short-input">
                                     <PrimaryTextInput placeholder="رفرنس پیگیری" name="trackRef" onChange={(e)=>handleChange(e)} />
                                     <span className='text-danger font-bold'>{state.errSate? state.err:state.message== 'OK' ?'' :state.message}</span>
                                 </div>
-                                <div className="col-4">
+                                <div className="col-4 col-md-2">
                                 <div className="form-input-border height-short-input without-focus">
                                     <PrimaryButton defaultValue={"جستجو"} onClick={() => {checkTheRefrence()}} >{"جستجو"}</PrimaryButton>
                                 </div>
