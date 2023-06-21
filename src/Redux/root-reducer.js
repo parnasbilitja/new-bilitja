@@ -21,6 +21,7 @@ import CityReducer from "./citiesSuggest/Reducer";
 import HotelReducer from "./hotels/Reducer";
 import CitySearchReducer from "./citiesSearch/Reducer";
 import AllHotelReducer from "./allHotels/Reducer";
+import NewTourReducer from "./newTours/newToursReducer";
 
 const persistConfig = {
   key: "root",
@@ -29,13 +30,13 @@ const persistConfig = {
 };
 const rootReducer = combineReducers({
   airports: airportReducer,
-  CitySearchReducer:CitySearchReducer,
-  AllHotelReducer:AllHotelReducer,
-  HotelReducer:HotelReducer,
-  DataReducer:DataReducer,
-  ListDataReducer:ListDataReducer,
-  PostDataReducer:PostDataReducer,
-  CityReducer:CityReducer,
+  CitySearchReducer: CitySearchReducer,
+  AllHotelReducer: AllHotelReducer,
+  HotelReducer: HotelReducer,
+  DataReducer: DataReducer,
+  ListDataReducer: ListDataReducer,
+  PostDataReducer: PostDataReducer,
+  CityReducer: CityReducer,
   cities: cityReducer,
   search: searchReducer,
   searchvilla: searchvillaReducer,
@@ -48,5 +49,6 @@ const rootReducer = combineReducers({
   searchboxReducer: searchboxReducer,
   AzhanslistReducer: AzhanslistReducer,
   reports: ReportReducer,
+  destandoriginCitiesTour: NewTourReducer,
 });
 export default persistReducer(persistConfig, rootReducer);

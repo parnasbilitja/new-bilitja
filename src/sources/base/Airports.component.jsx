@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { selectAirports } from "../../Redux/Airports/airport.reselect";
 import { connect } from "react-redux";
 import { selectCredentials } from "../../Redux/Search/search.reselect";
 import { addCredentials } from "../../Redux/Search/search.action";
+import { fetchOriginLoc } from "../../Redux/newTours/Action";
 const Airports = (props) => {
-  // console.log(props);
+  console.log("hi", props);
+
+
   return (
     <div
       style={{
@@ -24,7 +27,8 @@ const Airports = (props) => {
       {
         //fill airport
         props.airports
-          ? props.credenrialType != "source" || props.credenrialType != "destination"
+          ? props.credenrialType != "source" ||
+            props.credenrialType != "destination"
             ? //to remove source airport from destination airport list
               props.airports
                 .filter(
@@ -34,7 +38,8 @@ const Airports = (props) => {
                       .includes(props.searchTerm) &&
                     oneAirport.airportName.toLowerCase() !=
                       props.credentials.sourceName.toLowerCase()
-                ).map((oneAirport) => (
+                )
+                .map((oneAirport) => (
                   <div
                     key={oneAirport.airportKey}
                     onClick={() => {
@@ -118,5 +123,6 @@ const mapStatesToProps = (state) => ({
 });
 const mapDispatchesToProps = (dispatch) => ({
   setCredentials: (value) => dispatch(addCredentials(value)),
+  orgCities: () => dispatch(fetchOriginLoc()),
 });
 export default connect(mapStatesToProps, mapDispatchesToProps)(Airports);

@@ -17,6 +17,8 @@ import styles from "../../../styles/Home.module.scss";
 import axios from 'axios';
 import { motion } from 'framer-motion';
 
+
+
 const ToursBase = () => {
     const [state,setState] = useState({
         open: false,

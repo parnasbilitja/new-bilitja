@@ -26,11 +26,9 @@ const Dashboard = (props) => {
   const myRouter = useRouter();
   const [width, setWidth] = useState(0);
   const [open, setOpen] = useState(false);
-
   const handleResize = () => {
     setWidth(window.innerWidth);
   };
-  
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => {

@@ -36,6 +36,8 @@ import Reserving from "../sources/manager/sell-report/sell-report/reserving";
 import Transaction from "../sources/manager/sell-report/sell-report/transaction";
 import Flights from "../sources/manager/flights/Flights";
 
+
+
 const ManagePanel = () =>{
   const myRouter = useRouter();
   const [width, setWidth] = useState(0);

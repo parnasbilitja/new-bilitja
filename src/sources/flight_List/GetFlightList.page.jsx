@@ -78,13 +78,13 @@ class GetFlightList extends React.Component {
     const airlines =
       this.state.flights != null
         ? this.state.flights.map(
-          ({ airlineIataCode, priceView, airline, kndSys }) => ({
-            airline,
-            airlineIataCode,
-            priceView,
-            kndSys,
-          })
-        )
+            ({ airlineIataCode, priceView, airline, kndSys }) => ({
+              airline,
+              airlineIataCode,
+              priceView,
+              kndSys,
+            })
+          )
         : [];
 
     this.setState({
@@ -97,6 +97,8 @@ class GetFlightList extends React.Component {
   }
   componentDidUpdate() {
     const pathquery = this.props.router.asPath;
+    console.log("props all", this.props);
+    console.log("searchonj", this.props.searchobject);
     const path = pathquery.split("#")[0];
     const src = decodeURI(path.split("/")[2]).split("-to-")[0];
     const srccod = decodeURI(path.split("/")[3]).split("-")[1];
@@ -126,7 +128,6 @@ class GetFlightList extends React.Component {
             destinationName: destinationn.airportName,
             sourceNameEn: src, //source.airportNameEn,
             destinationNameEn: dest, //destinationn.airportNameEn,
-
             source: srccod, //source.airportCode,
             dest: destcod, //destinationn.airportCode,
             withFilters: false,
@@ -144,7 +145,6 @@ class GetFlightList extends React.Component {
             destinationName: destinationn.airportName,
             sourceNameEn: src, //source.airportNameEn,
             destinationNameEn: dest, //destinationn.airportNameEn,
-
             source: srcco, //source.airportCode,
             dest: destcod, //destinationn.airportCode,
             withFilters: false,
@@ -161,8 +161,8 @@ class GetFlightList extends React.Component {
     this.props.checkUserLogged();
     this.props.getUserInfo({
       mobile: localStorage.getItem("mobile"),
-    })
-    localStorage.removeItem('reqNo');
+    });
+    localStorage.removeItem("reqNo");
     window.addEventListener("hashchange", this.hashchange, false);
     //  if (this.props.searchobject.source == '') {
     const pathquery = this.props.router.asPath;
@@ -201,7 +201,6 @@ class GetFlightList extends React.Component {
     //////////////////////////
 
     if (this.props.searchobject.source == "") {
-
       if (!this.props.airports) {
         this.props.setAirports(null);
       } else {
@@ -227,7 +226,6 @@ class GetFlightList extends React.Component {
             destinationName: destinationn.airportName,
             sourceNameEn: src, //source.airportNameEn,
             destinationNameEn: dest, //destinationn.airportNameEn,
-
             source: srccod, //source.airportCode,
             dest: destcod, //destinationn.airportCode,
             stDate: flightdatemiladi,
@@ -257,7 +255,9 @@ class GetFlightList extends React.Component {
                   this.setState(
                     {
                       flights: data,
-                      Allflights: data.sort((a, b) => a.priceView - b.priceView),
+                      Allflights: data.sort(
+                        (a, b) => a.priceView - b.priceView
+                      ),
                       loading: false,
                     },
                     () => this.getingAirlines()
@@ -426,7 +426,6 @@ class GetFlightList extends React.Component {
   };
 
   getData = () => {
-
     //////////////////////////
     //
     //  استخراج لیست پروازها
@@ -532,13 +531,16 @@ class GetFlightList extends React.Component {
     return (
       <div className="container">
         <Scrolltoprefresh />
-        {!this.state.loading &&
+        {!this.state.loading && (
           <div className="row text-right">
             {window.innerWidth > 826 ? (
               <div className="col-xl-12 mt-2 col-lg-12 col-md-12 col-sm-12 mt-1">
                 <div className="row">
                   <div className="col-xl-9 col-lg-9 col-md-9 col-sm-9 padding-5px">
-                    <FlightSearchBox refreshAction={this.getData} len={this.state.flights} />
+                    <FlightSearchBox
+                      refreshAction={this.getData}
+                      len={this.state.flights}
+                    />
                   </div>
                   <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 padding-5px m-auto">
                     <div className="row">
@@ -547,9 +549,15 @@ class GetFlightList extends React.Component {
                           className="btn-outlined col-12 btn-block prev-next-btn"
                           onClick={(e) => {
                             e.preventDefault();
-                            let today = moment().format("jYYYY/jMM/jDD").split('/')[2]
-                            const date_ = this.props.searchobject.flightDatePrev;
-                            if (date_ != null && parseInt(today)<=parseInt(date_.split('-')[2])) {
+                            let today = moment()
+                              .format("jYYYY/jMM/jDD")
+                              .split("/")[2];
+                            const date_ =
+                              this.props.searchobject.flightDatePrev;
+                            if (
+                              date_ != null &&
+                              parseInt(today) <= parseInt(date_.split("-")[2])
+                            ) {
                               this.changeDate(date_);
                             }
                           }}
@@ -565,7 +573,8 @@ class GetFlightList extends React.Component {
                         <a
                           className="btn-outlined col-12 btn-block  prev-next-btn"
                           onClick={() => {
-                            const date_ = this.props.searchobject.flightDateNext;
+                            const date_ =
+                              this.props.searchobject.flightDateNext;
                             if (date_ != null) {
                               this.changeDate(date_);
                               // window.Filters.reload();
@@ -586,7 +595,8 @@ class GetFlightList extends React.Component {
                 </div>
               </div>
             ) : null}
-          </div>}
+          </div>
+        )}
 
         <div className="row">
           {/* <div className="col-lg-1 col-md-1 col-sm-1"></div> */}
@@ -648,7 +658,7 @@ class GetFlightList extends React.Component {
                 className={`col-lg-3 col-md-3 col-sm-4 ${styles["flight-filter-box"]} ${styles["hidden-xs-flight"]}`}
               >
                 <div className={styles["marginLeftFilter"]}>
-                  { }
+                  {}
                   <Filters
                     getData={this.getData}
                     closeSide={() => {
@@ -676,10 +686,19 @@ class GetFlightList extends React.Component {
                   this.managePopUpSearch(false);
                 }}
               >
-                <div style={{ color: "red" }} className="font-bold font-size-15" >x</div>
+                <div
+                  style={{ color: "red" }}
+                  className="font-bold font-size-15"
+                >
+                  x
+                </div>
               </span>
             </div>
-            <FlightSearchBox showSwitch={true} refreshAction={this.getData} length={this.state.flights} />
+            <FlightSearchBox
+              showSwitch={true}
+              refreshAction={this.getData}
+              length={this.state.flights}
+            />
           </div>
         </PopUp>
 
@@ -697,7 +716,12 @@ class GetFlightList extends React.Component {
                     this.managePopUpReserve(false);
                   }}
                 >
-                  <div style={{ color: "red" }} className="font-bold font-size-15" >x</div>
+                  <div
+                    style={{ color: "red" }}
+                    className="font-bold font-size-15"
+                  >
+                    x
+                  </div>
                 </span>
               </div>
               <PopupFlightReserve {...this.state.reserveBoxData} />

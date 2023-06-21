@@ -11,7 +11,8 @@ import { useRouter } from "next/router";
 import * as ga from "../../lib/ga";
 import { Provider } from "react-redux";
 import { store } from "../Redux/store";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import ManagerNav from "./panelnew/compo/ManagerNav.component";
 
 // export const config = { amp: true }
 
@@ -35,10 +36,8 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-      <title>
-        خریداینترنتی بلیط ارزان هواپیما |بلیطجا| 021842799999
-      </title>
-      <link rel="canonical" href="https://bilitja.com/"/>
+      <title>خریداینترنتی بلیط ارزان هواپیما |بلیطجا| 021842799999</title>
+      <link rel="canonical" href="https://bilitja.com/" />
       {/* <motion.div key={router.route} initial="pageInitial" animate="pageAnimate" variants={{
         pageInitial: {
           opacity: 0
@@ -48,7 +47,14 @@ function MyApp({ Component, pageProps }) {
         },
       }}> */}
 
+      {Component.PageLayout ? (
+        <Component.PageLayout>
+          <ManagerNav />
+          <Component {...pageProps} />
+        </Component.PageLayout>
+      ) : (
         <Component {...pageProps} />
+      )}
       {/* </motion.div> */}
     </Provider>
   );

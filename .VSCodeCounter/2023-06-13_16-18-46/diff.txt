@@ -1,0 +1,117 @@
+Date : 2023-06-13 16:18:46
+Directory : c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\compo
+Total : 70 files,  -11095 codes, -304 comments, -512 blanks, all -11911 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| CSS        |          1 |        -40 |          0 |         -2 |        -42 |
+| SCSS       |          6 |     -1,274 |         -7 |        -73 |     -1,354 |
+| JavaScript |         63 |     -9,781 |       -297 |       -437 |    -10,515 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                         | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                            |         70 |    -11,095 |       -304 |       -512 |    -11,911 |
+| . (Files)                                                                                                                    |          1 |        522 |          1 |          4 |        527 |
+| ..                                                                                                                           |         69 |    -11,617 |       -305 |       -516 |    -12,438 |
+| ..\manager                                                                                                                   |         69 |    -11,617 |       -305 |       -516 |    -12,438 |
+| ..\manager (Files)                                                                                                           |          2 |       -361 |        -30 |         -7 |       -398 |
+| ..\manager\TableAndSearch                                                                                                    |          8 |       -483 |         -1 |        -35 |       -519 |
+| ..\manager\charter-list                                                                                                      |          3 |       -121 |          0 |        -14 |       -135 |
+| ..\manager\city                                                                                                              |          3 |       -559 |          0 |        -23 |       -582 |
+| ..\manager\dashboard                                                                                                         |          2 |       -677 |         -1 |        -23 |       -701 |
+| ..\manager\facility                                                                                                          |          3 |       -331 |          0 |        -16 |       -347 |
+| ..\manager\flightlist                                                                                                        |          2 |       -395 |          0 |        -12 |       -407 |
+| ..\manager\flights                                                                                                           |          4 |       -703 |        -31 |        -37 |       -771 |
+| ..\manager\index                                                                                                             |          7 |       -442 |          0 |        -20 |       -462 |
+| ..\manager\price-handling                                                                                                    |          4 |       -496 |          0 |        -41 |       -537 |
+| ..\manager\profile                                                                                                           |          5 |       -460 |         -5 |        -16 |       -481 |
+| ..\manager\reports                                                                                                           |          2 |       -272 |         -6 |        -11 |       -289 |
+| ..\manager\rule                                                                                                              |          3 |       -257 |          0 |        -16 |       -273 |
+| ..\manager\sell-report                                                                                                       |         14 |     -2,638 |        -26 |       -140 |     -2,804 |
+| ..\manager\sell-report\all-sell-report                                                                                       |          5 |       -959 |         -3 |        -40 |     -1,002 |
+| ..\manager\sell-report\sell-report                                                                                           |          9 |     -1,679 |        -23 |       -100 |     -1,802 |
+| ..\manager\tours                                                                                                             |          1 |         -9 |          0 |         -2 |        -11 |
+| ..\manager\villa                                                                                                             |          6 |     -3,413 |       -205 |       -103 |     -3,721 |
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                     | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\compo\ManagerNav.component.jsx                                  | JavaScript |        522 |          1 |          4 |        527 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\ManagerNav.component.jsx                                | JavaScript |       -335 |         -1 |         -5 |       -341 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\ManagerTopActionBox.component.jsx                       | JavaScript |        -26 |        -29 |         -2 |        -57 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\TableAndSearch\PricesRow.jsx                            | JavaScript |        -76 |          0 |         -5 |        -81 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\TableAndSearch\Row.jsx                                  | JavaScript |        -62 |         -1 |         -4 |        -67 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\TableAndSearch\Search.jsx                               | JavaScript |        -20 |          0 |         -2 |        -22 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\TableAndSearch\Table.jsx                                | JavaScript |       -118 |          0 |         -3 |       -121 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\TableAndSearch\TableFooter.jsx                          | JavaScript |        -53 |          0 |         -4 |        -57 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\TableAndSearch\TableFooter.module.css                   | CSS        |        -40 |          0 |         -2 |        -42 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\TableAndSearch\Tabs.jsx                                 | JavaScript |        -27 |          0 |         -1 |        -28 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\TableAndSearch\UseTable.jsx                             | JavaScript |        -87 |          0 |        -14 |       -101 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\charter-list\Charetr.module.scss                        | SCSS       |        -48 |          0 |         -6 |        -54 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\charter-list\CharterList.jsx                            | JavaScript |        -54 |          0 |         -5 |        -59 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\charter-list\Row.jsx                                    | JavaScript |        -19 |          0 |         -3 |        -22 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\city\AddCity.page.jsx                                   | JavaScript |       -163 |          0 |         -6 |       -169 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\city\ShowAllCities.page.jsx                             | JavaScript |       -267 |          0 |         -5 |       -272 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\city\UpdateCity.page.jsx                                | JavaScript |       -129 |          0 |        -12 |       -141 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\dashboard\Dashboard.jsx                                 | JavaScript |       -264 |         -1 |        -13 |       -278 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\dashboard\Dashboard.module.scss                         | SCSS       |       -413 |          0 |        -10 |       -423 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\facility\AddFacility.page.jsx                           | JavaScript |       -127 |          0 |         -4 |       -131 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\facility\ShowAllFacilities.page.jsx                     | JavaScript |       -109 |          0 |         -5 |       -114 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\facility\UpdateFacility.page.jsx                        | JavaScript |        -95 |          0 |         -7 |       -102 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\flightlist\Flightlist.jsx                               | JavaScript |       -274 |          0 |        -10 |       -284 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\flightlist\Flightlist.module.scss                       | SCSS       |       -121 |          0 |         -2 |       -123 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\flights\Calender.jsx                                    | JavaScript |       -208 |         -8 |        -14 |       -230 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\flights\FlightSearchBox.jsx                             | JavaScript |       -356 |        -23 |        -16 |       -395 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\flights\Flights.jsx                                     | JavaScript |       -118 |          0 |         -5 |       -123 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\flights\MiniClaender.jsx                                | JavaScript |        -21 |          0 |         -2 |        -23 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\index\Cash.component.jsx                                | JavaScript |        -44 |          0 |         -2 |        -46 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\index\FlightLate.component.jsx                          | JavaScript |        -44 |          0 |         -2 |        -46 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\index\LastReserve.component.jsx                         | JavaScript |        -44 |          0 |         -2 |        -46 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\index\OnlineUser.component.jsx                          | JavaScript |        -36 |          0 |         -2 |        -38 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\index\Panel.jsx                                         | JavaScript |        -34 |          0 |         -2 |        -36 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\index\Request.component.jsx                             | JavaScript |        -44 |          0 |         -2 |        -46 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\index\TopHeaderBox.component.jsx                        | JavaScript |       -196 |          0 |         -8 |       -204 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\price-handling\Filter.jsx                               | JavaScript |        -90 |          0 |         -8 |        -98 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\price-handling\Filter.module.scss                       | SCSS       |       -164 |          0 |        -15 |       -179 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\price-handling\PriceHandling.jsx                        | JavaScript |       -157 |          0 |        -12 |       -169 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\price-handling\Row.jsx                                  | JavaScript |        -85 |          0 |         -6 |        -91 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\profile\ChangePassword.components.jsx                   | JavaScript |        -45 |          0 |         -3 |        -48 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\profile\ComplateProfile.component.jsx                   | JavaScript |       -111 |          0 |         -3 |       -114 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\profile\EditProfile.component.jsx                       | JavaScript |       -153 |          0 |         -4 |       -157 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\profile\Profile.component.jsx                           | JavaScript |        -86 |         -5 |         -3 |        -94 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\profile\RouteButtons.components.jsx                     | JavaScript |        -65 |          0 |         -3 |        -68 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\reports\Reports.jsx                                     | JavaScript |       -183 |         -6 |         -8 |       -197 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\reports\Reports.module.scss                             | SCSS       |        -89 |          0 |         -3 |        -92 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\rule\AddRule.page.jsx                                   | JavaScript |        -76 |          0 |         -4 |        -80 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\rule\ShowAllRules.page.jsx                              | JavaScript |       -103 |          0 |         -5 |       -108 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\rule\UpdateRule.page.jsx                                | JavaScript |        -78 |          0 |         -7 |        -85 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\all-sell-report\DesktopFlightSellReport.jsx | JavaScript |       -388 |         -3 |        -24 |       -415 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\all-sell-report\EndRow.jsx                  | JavaScript |       -116 |          0 |         -2 |       -118 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\all-sell-report\Filter.jsx                  | JavaScript |        -98 |          0 |         -1 |        -99 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\all-sell-report\TopFilter.jsx               | JavaScript |       -115 |          0 |         -9 |       -124 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\all-sell-report\data.js                     | JavaScript |       -242 |          0 |         -4 |       -246 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\sell-report\Consular-report.jsx             | JavaScript |       -110 |          0 |         -4 |       -114 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\sell-report\Descktop.module.scss            | SCSS       |       -439 |         -7 |        -37 |       -483 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\sell-report\DesktopFlightSellReport.jsx     | JavaScript |       -180 |         -1 |        -13 |       -194 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\sell-report\DesktopInfoSell.jsx             | JavaScript |       -400 |          0 |        -12 |       -412 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\sell-report\Filter.jsx                      | JavaScript |        -53 |         -9 |         -1 |        -63 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\sell-report\Sales-report.jsx                | JavaScript |        -92 |          0 |         -5 |        -97 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\sell-report\TopFilter.jsx                   | JavaScript |        -59 |         -1 |         -8 |        -68 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\sell-report\reserving.jsx                   | JavaScript |       -208 |         -2 |        -12 |       -222 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\sell-report\sell-report\transaction.jsx                 | JavaScript |       -138 |         -3 |         -8 |       -149 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\tours\Tours.js                                          | JavaScript |         -9 |          0 |         -2 |        -11 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\villa\AddVilla.page.jsx                                 | JavaScript |     -1,396 |        -38 |        -29 |     -1,463 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\villa\ManagementVilaSetPriceCalendar.component.jsx      | JavaScript |       -224 |         -3 |        -21 |       -248 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\villa\UpdateVila.page.jsx                               | JavaScript |     -1,318 |        -49 |        -32 |     -1,399 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\villa\VilaDetail.page.jsx                               | JavaScript |       -203 |         -1 |        -12 |       -216 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\villa\VilaReservation.page.jsx                          | JavaScript |        -40 |          0 |         -3 |        -43 |
+| c:\Users\PouyA\Desktop\Prog\bilitjassrnew\src\pages\panelnew\manager\villa\Villa.page.jsx                                    | JavaScript |       -232 |       -114 |         -6 |       -352 |
+| Total                                                                                                                        |            |    -11,095 |       -304 |       -512 |    -11,911 |
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
