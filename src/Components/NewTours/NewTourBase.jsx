@@ -4,6 +4,9 @@ import NavHandler from "../share/NavHandler";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 import PictureBase from "../../sources/component/PictureBase";
 import PageTabls from "../../sources/component/PageTabs.component";
+import PageTabls from "../../../styles/newTourBase.module.scss";
+
+
 import TourSearchBox from "./Components/TourSearchBox";
 import { useSelector } from "react-redux";
 

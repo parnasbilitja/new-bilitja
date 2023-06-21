@@ -82,7 +82,7 @@ const availableHotels = () => {
         <TourSearchBox />
       </div>
 
-      <div className={styles.container}>
+      <div className={styles['p-available']}>
         <div className={styles.sidebar}></div>
 
         <div className={styles.content}>
@@ -101,9 +101,12 @@ const availableHotels = () => {
                     />
                   </div>
                   <div className={styles.hotelNameDetail}>
-                    <p className={styles.enName}>{hotel.titleEn}</p>
-                    <p>{hotel.title}</p>
-                    <div className={styles.stars}>{hotel.stars}stars</div>
+                  <h2 className={styles.faName}>{hotel.title}</h2>
+                    <h2 className={styles.enName}>{hotel.titleEn}</h2>
+                    <div className={styles.pStar}>
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="17" height="17"><path fill="#edb143" d="M1.327,12.4,4.887,15,3.535,19.187A3.178,3.178,0,0,0,4.719,22.8a3.177,3.177,0,0,0,3.8-.019L12,20.219l3.482,2.559a3.227,3.227,0,0,0,4.983-3.591L19.113,15l3.56-2.6a3.227,3.227,0,0,0-1.9-5.832H16.4L15.073,2.432a3.227,3.227,0,0,0-6.146,0L7.6,6.568H3.231a3.227,3.227,0,0,0-1.9,5.832Z"/></svg>
+                    </div>
+                    {/* <div className={styles.stars}>{hotel.stars}stars</div> */}
                     <div className={styles.services}>
                       <label htmlFor="">خدمات :</label>
                       <p>ثبت نشده</p>
@@ -112,8 +115,11 @@ const availableHotels = () => {
                 </div>
 
                 <div className={styles.priceandbtnContainer}>
-                  <p>قیمت یرای هر نفر 6 شب از :</p>
-                  <p className={styles.price}>{hotel.totalRoomPrice}</p>
+                  <p className={styles.priceTitle}>قیمت برای هر نفر 6 شب از :</p>
+                 <div className={styles.priceParent}>
+                 <strong className={styles.price}>{hotel.totalRoomPrice}</strong>
+                 <span>تومان</span>
+                 </div>
                   <div className={styles.btnContainer}>
                     <button> انتخاب هتل و رزرو</button>
                   </div>
