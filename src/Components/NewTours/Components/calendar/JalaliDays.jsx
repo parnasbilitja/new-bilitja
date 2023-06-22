@@ -508,6 +508,11 @@ class JalaliDays extends React.Component {
                               typeOfCalendar: "JAL",
                             });
                             this.props.closePopUpCalendar(false);
+                            const dateDashFormat = m.format("YYYY-MM-DD");
+                            this.props.setFlightDate({
+                              persianDate: persianDate,
+                              miladiDate: dateDashFormat,
+                            });
                           }}
                         >
                           {x}

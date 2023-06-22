@@ -19,6 +19,60 @@ background-color: #f8f8f9;
     background: #fff;
     border-radius: 10px;
     margin-top: 14px;
+    padding: 1rem;
+   
+    p{
+        color: black;
+    }
+    .hotelSearchInput{
+        margin-bottom: 1rem;
+        input{
+            border: 1px solid #999;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            position: relative;
+            height: 45px;
+            box-sizing: border-box;
+            position: relative;
+            font-size: 14px;
+            width: 100%;
+            outline: none;
+            &:focus{
+                 border: 2px solid black;
+            }
+        }
+    }
+
+    .hotelSearchStars{
+        margin-bottom: 1rem;
+        select{
+
+            border: 1px solid #cfd3d8;
+               border-radius: 0.25rem;
+               position: relative;
+               height: 45px;
+               box-sizing: border-box;
+               padding: 0 !important;
+               position: relative;
+               font-size: 14px;
+               width: 100%;
+               outline: none;
+        }
+    }
+    .hotelSearchOrder{
+        div{
+            display: flex;
+
+            input{
+                margin-left: 1rem;
+                width: 20px;
+                height: 20px;
+            }
+            p{
+                font-size: 1rem;
+            }
+        }
+    }
 }
 .pStar{
     display: flex;
@@ -163,10 +217,10 @@ background-color: #f8f8f9;
  font-size: 15px;
     }
     span{
-font-size: 13px !important;
-margin-right: 4px;
-color: #279692 !important;
-font-family: IranBold !important;
+        font-size: 13px !important;
+        margin-right: 4px;
+        color: #279692 !important;
+        font-family: IranBold !important;
 
 
     }

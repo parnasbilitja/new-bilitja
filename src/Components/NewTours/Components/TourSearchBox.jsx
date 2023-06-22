@@ -31,6 +31,7 @@ import {
   setNightNumber,
 } from "../../../Redux/newTours/Action";
 import DropdownComponent from "./subComponents/Dropdown.component";
+import { isEmpty } from "../../../Utils/newTour";
 
 const TourSearchBox = (props) => {
   const getDestandOrgCities = () => {
@@ -80,24 +81,26 @@ const TourSearchBox = (props) => {
 
   useEffect(() => {
     setWidth(window.innerWidth);
-    //get origin cities & destination cities
-    console.log("from tour", props);
     getDestandOrgCities();
-    ///////////////////////
-  }, []);
 
-  function isEmpty(obj) {
-    for (const prop in obj) {
-      if (Object.hasOwn(obj, prop)) {
-        return false;
-      }
+    if (props.selectedSrc && props.selectedDest) {
+      console.log("from tour", props);
     }
 
-    return true;
-  }
+    ///////////////////////
+  }, [props.selectedSrc, props.selectedDest]);
+
+  // function isEmpty(obj) {
+  //   for (const prop in obj) {
+  //     if (Object.hasOwn(obj, prop)) {
+  //       return false;
+  //     }
+  //   }
+
+  //   return true;
+  // }
 
   useEffect(() => {
-
     /////get avalaible dates and night number based on Org & Dset
     if (
       !isEmpty(props.destandorgcities.destination) &&
@@ -340,7 +343,7 @@ const TourSearchBox = (props) => {
         <PrimaryTextInputMobile
           placeholder={" تاریخ پرواز رفت"}
           readOnly="true"
-          value={typeOfCalendar == "GAR" ? stDate : flightDatePersian}
+          value={props.destandorgcities.date.persianDate}
           onFocus={(e) => {
             e.preventDefault();
             managePopUpCalendar(true);
@@ -421,7 +424,7 @@ const TourSearchBox = (props) => {
             // }
           }}
         >
-          {props.searchReset == false ? "جستجو" : "لطفا صبر کنید..."}
+          {"جستجو"}
         </PrimaryButton>
       </div>
 

@@ -4,23 +4,8 @@ import { useDispatch } from "react-redux";
 
 const DropdownComponent = (props) => {
   console.log("fcgdx", props);
-  const dispatch = useDispatch();
-  // const [individualNight, setIndividualNight] = useState(null);
-  // console.log("from drop", nights);
-  // const removeDup = (arr) => {
-  //   const nightarr = [];
-  //   arr.map((i) => {
-  //     nightarr.push(i.night);
-  //   });
 
-  //   const fi = [...new Set(nightarr)];
-
-  //   return fi;
-  // };
-
-  // useEffect(() => {
-  //   setIndividualNight(removeDup(nights));
-  // }, [nights]);
+ 
   return (
     <div className={styles.dropdowncontainer}>
       <select className="select-custom"
