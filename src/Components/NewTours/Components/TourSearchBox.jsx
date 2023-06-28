@@ -31,7 +31,7 @@ import {
   setNightNumber,
 } from "../../../Redux/newTours/Action";
 import DropdownComponent from "./subComponents/Dropdown.component";
-import { isEmpty } from "../../../Utils/newTour";
+import { isEmpty, jalaliDateReformater } from "../../../Utils/newTour";
 
 const TourSearchBox = (props) => {
   const getDestandOrgCities = () => {
@@ -198,6 +198,7 @@ const TourSearchBox = (props) => {
       searchTermDestination: "",
     });
   };
+
   const validation = () => {
     const {
       // credentials: {
@@ -371,9 +372,8 @@ const TourSearchBox = (props) => {
               console.log("vali", validation());
             } else {
               e.preventDefault();
-              const stDate = props.destandorgcities.date.persianDate.replace(
-                /\//g,
-                "%2F"
+              const stDate = jalaliDateReformater(
+                props.destandorgcities.date.persianDate
               );
 
               router.push(
@@ -381,47 +381,7 @@ const TourSearchBox = (props) => {
               );
               console.log("vali", validation());
             }
-            // props.setSearchReset(true);
-            // props.seachData();
-            // const pathquery = props.router.asPath;
-            // const path = pathquery.split("#")[0];
-            // const src = decodeURI(path.split("/")[2]).split("-to-")[0];
-            // const srccod = decodeURI(path.split("/")[3]).split("-")[1];
-            // const dest = decodeURI(path.split("/")[2]).split("-to-")[1];
-            // const destcod = decodeURI(path.split("/")[3]).split("-")[2];
-            // if (
-            //   src != props.credentials.sourceNameEn ||
-            //   dest != props.credentials.destinationNameEn
-            // ) {
-            //   if (props.refreshAction) {
-            //     setState({ ...state, searchReset: true });
-            //     props
-            //       .addCredentials({
-            //         withFilters: false,
-            //         currentPage: 1,
-            //       })
-            //       .then(() => {
-            //         //   props.router.push(
-            //         //     `/flights/${props.credentials.sourceNameEn}-to-${props.credentials.destinationNameEn}/airfares-${props.credentials.source}-${props.credentials.dest}#${props.credentials.flightDatePersian}`
-            //         //   );
-            //         //   props.refreshAction();
-            //       });
-            //   } else {
-            //     //   props.router.push(
-            //     //     `/flights/${props.credentials.sourceNameEn}-to-${props.credentials.destinationNameEn}/airfares-${props.credentials.source}-${props.credentials.dest}#${props.credentials.flightDatePersian}`
-            //     //   );
-            //   }
-            // } else {
-            //   setState({ ...state, searchReset: false });
-            //   props
-            //     .addCredentials({
-            //       withFilters: false,
-            //       currentPage: 1,
-            //     })
-            //     .then(() => {
-            //       // props.refreshAction();
-            //     });
-            // }
+           
           }}
         >
           {"جستجو"}

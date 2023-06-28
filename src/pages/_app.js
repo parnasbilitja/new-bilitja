@@ -12,7 +12,7 @@ import * as ga from "../../lib/ga";
 import { Provider } from "react-redux";
 import { store } from "../Redux/store";
 import { motion } from "framer-motion";
-import ManagerNav from "./panelnew/compo/ManagerNav.component";
+// import ManagerNav from "./panelnew/compo/ManagerNav.component";
 
 // export const config = { amp: true }
 
@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }) {
 
       {Component.PageLayout ? (
         <Component.PageLayout>
-          <ManagerNav />
+          {/* <ManagerNav /> */}
           <Component {...pageProps} />
         </Component.PageLayout>
       ) : (

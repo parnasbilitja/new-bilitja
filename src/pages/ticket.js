@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 const Home = dynamic(() => import("./../sources/Home.page"));
 const Footer = dynamic(() => import("./../sources/component/Footer.component"));
-const MessageBox = dynamic(() =>import("./../sources/component/MessageBox.component"));
+const MessageBox = dynamic(() =>
+  import("./../sources/component/MessageBox.component")
+);
 const PopUp = dynamic(() => import("./../sources/component/PopUp.component"));
 const Account = dynamic(() => import("./../sources/account/Account.component"));
 
@@ -14,21 +16,28 @@ import NavHandler from "../Components/share/NavHandler";
 import Scrolltoprefresh from "../sources/component/Scrolltoprefresh";
 import HeadSeo from "../sources/component/HeadSeo";
 import Ticket from "../Components/ticket/Ticket";
+import moment from "moment-jalaali";
 
-const ticket = (props) =>  {
-    return (
-      <div className="bodyVar">
-        <NavHandler />
-        <Scrolltoprefresh/>
-        <Ticket {...props} />
-        <PopUp
-          opened={props.accountBox.state}
-          closePopUp={() => {props.accountBoxModify({state: false,})}}>
-          <Account />
-        </PopUp>
-      </div>
-    );
-  }
+const ticket = (props) => {
+  useEffect(() => {
+    console.log("adadsa", moment().jYear());
+  }, []);
+  return (
+    <div className="bodyVar">
+      <NavHandler />
+      <Scrolltoprefresh />
+      <Ticket {...props} />
+      <PopUp
+        opened={props.accountBox.state}
+        closePopUp={() => {
+          props.accountBoxModify({ state: false });
+        }}
+      >
+        <Account />
+      </PopUp>
+    </div>
+  );
+};
 
 const mapStatesToProps = (state) => ({
   accountBox: selcetAccountBox(state),
@@ -36,4 +45,6 @@ const mapStatesToProps = (state) => ({
 const mapDispatchesToProps = (dispatch) => ({
   accountBoxModify: (value) => dispatch(accountBoxModify(value)),
 });
-export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(ticket));
+export default withRouter(
+  connect(mapStatesToProps, mapDispatchesToProps)(ticket)
+);
