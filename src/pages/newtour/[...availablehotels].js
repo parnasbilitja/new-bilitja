@@ -18,7 +18,7 @@ import {
   numberWithCommas,
   startBuilder,
 } from "../../Utils/newTour";
-import FilterComponent from "../../Components/NewTours/Components/filterComponent";
+
 const AvFlight = dynamic(() =>
   import("../../Components/NewTours/AvailableFlightBasedonSelectedTour")
 );

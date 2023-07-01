@@ -30,10 +30,11 @@ $containerColor:#ebebeb;
 
                 &-names{
                    align-self: center;
-                        &_start{
+                        &_star{
+                            margin-bottom: .5rem;
                             width: 100%;
                             display: flex;
-                            justify-content: space-between;
+                           column-gap: .5rem;
                         }
                     &_faName{
                         font-size: 1.125rem;
@@ -78,6 +79,7 @@ $containerColor:#ebebeb;
     }
 
 .ticket_container{
+    margin-bottom: 1rem;
 
 
     .ticket{
@@ -295,7 +297,7 @@ $containerColor:#ebebeb;
                                 }
                                 span{
                                     font-weight: bolder;
-                                    font-size: 1.125rem;
+                                    font-size: .9rem;
                                   color: $secondary;
                                     margin-left: .5rem;
                                 }
@@ -357,11 +359,11 @@ $containerColor:#ebebeb;
     }
 
     .roomcountDet_container{
-        padding: 1rem 8rem 1rem 8rem;
+        padding: 1rem 10rem 1rem 10rem;
         .roomcountDet{
             border: 1px solid $borderColor;
             border-radius: 20px;
-            padding: 2rem 2.5rem 2rem 2.5rem;
+            padding: 1rem 1rem 1rem 1rem;
             display: flex;
             justify-content: space-between;
 

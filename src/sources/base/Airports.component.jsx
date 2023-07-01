@@ -3,10 +3,9 @@ import { selectAirports } from "../../Redux/Airports/airport.reselect";
 import { connect } from "react-redux";
 import { selectCredentials } from "../../Redux/Search/search.reselect";
 import { addCredentials } from "../../Redux/Search/search.action";
-import { fetchOriginLoc } from "../../Redux/newTours/Action";
-const Airports = (props) => {
-  console.log("hi", props);
 
+const Airports = (props) => {
+ 
 
   return (
     <div
@@ -123,6 +122,5 @@ const mapStatesToProps = (state) => ({
 });
 const mapDispatchesToProps = (dispatch) => ({
   setCredentials: (value) => dispatch(addCredentials(value)),
-  orgCities: () => dispatch(fetchOriginLoc()),
 });
 export default connect(mapStatesToProps, mapDispatchesToProps)(Airports);

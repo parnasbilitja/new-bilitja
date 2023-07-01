@@ -10,7 +10,6 @@ import {
   numberWithCommas,
   startBuilder,
 } from "../../Utils/newTour";
-
 import Image from "next/image";
 
 const AvailableFlightBasedonSelectedTour = () => {
@@ -27,7 +26,7 @@ const AvailableFlightBasedonSelectedTour = () => {
     return rooms.length;
   };
 
-  ///add room => :دوتخته , سه تخته , ...........
+  ///increase room => :دوتخته , سه تخته , ...........
   const IncRoom = (flightId, room_type_id, room_type, Adl_capacity) => {
     setIsOpen(flightId);
     setSelectedRoom([
@@ -43,7 +42,7 @@ const AvailableFlightBasedonSelectedTour = () => {
       },
     ]);
   };
-  ///remove room => :دو تخته , سه تخته , ...........
+  ///decrease room => :دو تخته , سه تخته , ...........
   const decRoom = (roomTypeId) => {
     if (roomCounter(roomTypeId) === 0) {
       return null;
@@ -106,13 +105,6 @@ const AvailableFlightBasedonSelectedTour = () => {
       setSelectedRoom(findRoom);
     }
     console.log(selectedRoom);
-  };
-
-  ////remove room
-  const removeRoom = (id) => {
-    const newSelectedRoom = selectedRoom.filter((room) => room.id !== id);
-
-    setSelectedRoom(newSelectedRoom);
   };
 
   ////dec chd, inf,ext number
@@ -178,6 +170,11 @@ const AvailableFlightBasedonSelectedTour = () => {
     // console.log(selectedRoom);
   };
 
+  ////remove room
+  const removeRoom = (id) => {
+    const newSelectedRoom = selectedRoom.filter((room) => room.id !== id);
+    setSelectedRoom(newSelectedRoom);
+  };
   useEffect(() => {
     const hotelFnName = router?.query?.availablehotels;
     const hotelName =
