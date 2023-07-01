@@ -37,7 +37,7 @@ const availableHotels = () => {
   const [jalaliDate, setJalaliDate] = useState();
   /////////////////////////////
 
-  //state for getting av hotel from api 
+  //state for getting av hotel from api
   const [hotels, setHotels] = useState([]);
 
   const search = (e) => {
@@ -264,7 +264,7 @@ const availableHotels = () => {
                               jalaliDateReformater(jalaliDate);
 
                             router.push(
-                              `http://localhost:3008/newtour/${origin}-${destination}/flight/${hotel?.slug}?origin=${origin}&dest=${destination}&stDate=${jalalurlReformat}&night=${night}`
+                              `/newtour/${origin}-${destination}/flight/${hotel?.slug}?origin=${origin}&dest=${destination}&stDate=${jalalurlReformat}&night=${night}`
                             );
                           }}
                         >
