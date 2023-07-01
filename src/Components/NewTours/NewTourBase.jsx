@@ -6,9 +6,7 @@ import PictureBase from "../../sources/component/PictureBase";
 import PageTabls from "../../sources/component/PageTabs.component";
 import TourSearchBox from "./Components/TourSearchBox";
 
-
-const newTourBase = () => {
-
+const NewTourBase = () => {
   const [state, setState] = useState({
     open: false,
     searchReset: false,
@@ -73,4 +71,4 @@ const newTourBase = () => {
   );
 };
 
-export default newTourBase;
+export default NewTourBase;
