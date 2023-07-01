@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import NewTourBase from "../../Components/NewTours/newTourBase";
 import MessageBoxComponent from "../../sources/component/MessageBox.component";
 // import { useDispatch, useSelector } from "react-redux";
 // import { fetchDestLoc } from "../../Redux/newTours/Action";
@@ -14,7 +13,7 @@ const index = () => {
   return (
     <div className="mt-90 bodyVar">
       <MessageBoxComponent />
-      <NewTourBase />
+      {/* <NewTourBase /> */}
     </div>
   );
 };

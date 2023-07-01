@@ -4,15 +4,11 @@ import NavHandler from "../share/NavHandler";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 import PictureBase from "../../sources/component/PictureBase";
 import PageTabls from "../../sources/component/PageTabs.component";
-
 import TourSearchBox from "./Components/TourSearchBox";
-import { useSelector } from "react-redux";
+
 
 const newTourBase = () => {
-  // const loc = useSelector((state) => state.destandoriginCitiesTour);
-  // useEffect(() => {
-  //   console.log("from hi", loc);
-  // }, []);
+
   const [state, setState] = useState({
     open: false,
     searchReset: false,
