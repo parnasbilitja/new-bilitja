@@ -37,7 +37,7 @@ const availableHotels = () => {
   const [jalaliDate, setJalaliDate] = useState();
   /////////////////////////////
 
-  //state for getting av hotel from api
+  //state for getting av hotel from api backend
   const [hotels, setHotels] = useState([]);
 
   const search = (e) => {
