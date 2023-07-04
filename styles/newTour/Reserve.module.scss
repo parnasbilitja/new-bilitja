@@ -1,0 +1,854 @@
+$time-color:#646464;
+$black:#00001f;
+
+.p-body{
+    
+.prs-responsive{
+    max-width: 1366px;
+    margin: 0 auto;
+
+
+.main-reserve{
+   
+      margin: 0 auto;
+      padding-bottom: 2rem;
+      width: 91.6%;
+
+      .tourDet-container{
+        // "d-flex  align-items-center justify-content-between title-complete"
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        .tourDet{
+            // d-flex align-items-center mt-4
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+            .title-tour {
+                color:black;
+                font-weight: 600;
+                font-size: 18px;
+            }
+        
+        }
+        .selected-hotel{
+            // d-flex align-items-center
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            h2{
+
+                font-weight: 500;
+                font-size: 16px;
+            }
+            h2:last-child{
+                margin-right: 1rem;
+                color:orange;
+            }
+
+          
+        }
+      }
+
+
+
+      .box-top-box-reserve {
+            border: 1px solid #C6C6C6;
+            padding: 1rem;
+            width: 100%;
+            border-radius: 8px;
+                .reserver-info{
+                    // "title-tour d-flex flex-column align-items-start text-danger mt-3"
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start; 
+                    color: red;
+                    margin-top: 2rem;
+                    font-size: 15px;
+                    span{
+                        font-size: 13px;
+                    }
+                }
+            .flight-title-container{
+                // d-flex align-items-center title-top justify-content-between
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+                    
+                    h3{
+                        width:40% ;
+                        font-size: 15px;
+                        display: flex;
+                        justify-content: center;
+                        font-weight: 600;
+                        margin-bottom: 5px;
+                    }
+            }
+
+
+
+                .set-request-tour {
+                        background-color: white;
+                        border-radius: 8px;
+                        border: 1px solid #E0E0E0;
+                        display: flex;
+                        margin: 12px 0;
+
+                        .info-from {
+                      
+                        width: 40%;
+                        padding: 12px;
+
+                        .orgdest-cities{
+                            display: flex;
+                            justify-content: space-between;
+                        .city-name {
+                                    font-weight: 800;
+                                font-size: 16px;
+                                color: black;
+                                }
+
+                        }
+                        .p-airline-top{
+                                width: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 14px 0;
+                                margin-top: 8px;
+                                span{
+                                    font-size: 13px;
+                                }
+                            }
+
+                            
+                                // w-100 end-box d-flex align-items-center justify-content-between
+                                .end-box{
+                                width: 100%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                        .date , .time{
+                                            display: flex;
+                                            align-items: center;
+                                            span{
+                                                color: green;
+                                                font-size: 14px;
+                                            }
+                                            strong{
+                                                margin-right: 4px;
+                                                color: #999;
+                                                font-size: 16px;
+                                            }
+                                        }
+                                }
+                                .center{
+                                    justify-content: center;
+                                    small{
+                                        color: green;
+                                    
+                                    }
+                                
+                                }
+                        
+
+                        .item {
+                            margin-top: 14px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            .title {
+                            color: green;
+                            font-size: 14px;
+                            }
+
+                            .text {
+                            font-size: 14px;
+                            color:orange;
+                            }
+                        }
+                        }
+
+                        .info-time {
+                            border-left: 2px dashed #c6c6c6;
+                            border-right: 2px dashed #c6c6c6;
+                            width: 20%;
+                            padding: 12px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+
+                                .title {
+                                    font-weight: 600;
+                                    color: red;
+                                }
+
+                                .text {
+                                    margin-top: 6px;
+                                    font-weight: 600;
+                                    color:black;
+                                }
+                                .nightlogo{
+                                    margin-bottom: 1rem;
+                                }
+                        }
+
+                        .info-to {
+                        width: 40%;
+                        padding: 12px;
+
+                        .city-name {
+                            font-weight: 800;
+                            font-size: 14px;
+                            color: black;
+                        }
+
+                        .item {
+                            margin-top: 14px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            .title {
+                            color: green;
+                            font-size: 14px;
+                            }
+
+                            .text {
+                            font-size: 14px;
+                            color:orange;
+                            }
+                        }
+                        }
+
+
+                    }
+
+
+
+           .set-info-supervisor {
+                background: white;
+                border-radius: 8px;
+                border: 1px solid #C6C6C6;
+                margin: 12px 0;
+                padding: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                margin-bottom: 2.125rem;
+
+                        .item-form {
+                                width: 24%;
+
+                                .inp-form {
+                                  
+                                        width: 100%;
+                                        background-color:white;
+                                        border-radius: 10px;
+                                        border: 1px solid #e2e8f0;
+                                        height: 58px;
+                                        padding: 0 8px;
+                                        position: relative;
+                                        display: flex;
+                                        align-items: center;
+
+                                        svg {
+                                            position: absolute;
+                                            left: 10px;
+                                        }
+
+                                        img {
+                                            top: 30px !important;
+                                        }
+
+                                        &:after {
+                                            content: '';
+                                            position: absolute;
+                                            width: 99%;
+                                            bottom: 0.5px;
+                                            border-radius: 20px;
+                                            right: 0;
+                                            border-top: 2px dashed #081d3c;
+                                        }
+
+
+                                        select {
+                                            font-weight: 600;
+                                            font-size: 15px;
+                                            color: #676767;
+                                            border: none;
+                                            outline: none;
+                                            width: 100%;
+                                            background:white;
+                                        }
+
+                                        input {
+                                            font-weight: 600;
+                                            font-size: 14px !important;
+                                            color: #4d4b4b;
+                                            border: none;
+                                            outline: none;
+                                            width: 100%;
+
+                                            &::placeholder {
+                                            font-weight: 600;
+                                            }
+                                        }
+                             }
+                               
+                        }
+                     }
+
+                    
+                        .rules {
+                                display: flex;
+                                align-items: center;
+                                width: 100%;
+                                justify-content: flex-start;
+                                margin-top: 3rem;
+
+                                input {
+                                width: 15px;
+                                height: 15px;
+                                position: relative;
+                                top: -5px;
+                                }
+
+                                p {
+                                text-align: justify;
+                                font-size: 14px;
+                                color:black;
+                                margin-right: 8px;
+                                }
+                                a{
+                                    color: red;
+                                    margin:0 .5rem ;
+                                }
+                            }
+                    
+     }
+
+}
+
+}
+
+
+
+
+//   .title-tour {
+//     color:black;
+//     font-weight: 500;
+//     font-size: 18px;
+//   }
+
+  
+
+//   .set-request-hotel {
+//     background: white;
+//     border-radius: 8px;
+//     border: 1px solid #C6C6C6;
+//     margin: 12px 0;
+//     display: grid;
+//     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+//     column-gap: 12px;
+//     padding: 12px;
+//     position: relative;
+
+//     .item-hotel {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+
+//       small {
+//         font-size: 13px !important;
+//         color: black;
+//         margin-top: 8px;
+//         font-weight: 500;
+//       }
+
+//       h5 {
+//         padding: 10px 0;
+//         background: #F4F4F4;
+//         display: grid;
+//         place-items: center;
+//         color:orange;
+//         font-size: 15px;
+//         font-weight: 500;
+//         border-radius: 8px;
+//         width: 100%;
+//       }
+
+//       .price {
+//         display: flex;
+//         align-items: center;
+
+//         strong {
+//           font-size: 16px;
+//           color:orange;
+//         }
+
+//         small {
+//           font-size: 14px;
+//           color:orange;
+//           margin-right: 4px;
+//         }
+//       }
+
+//     }
+//   }
+
+  
+
+//   .set-info-passengers {
+//     background: white;
+//     border-radius: 8px;
+//     border: 1px solid #C6C6C6;
+//     margin: 12px 0;
+//     padding: 12px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     flex-wrap: wrap;
+
+//     .item-form {
+//       width: 24%;
+//       margin-top: 14px;
+//     }
+//   }
+
+  
+
+  
+
+//   @media only screen and (max-width: 868px) {
+//     .set-request-tour{
+//       padding: 8px;
+//       .info-from , .info-to {
+//         width: 100% !important;
+//         border: 1px solid #eee !important;
+//         border-radius: 5px;
+//         .p-airline-top{
+//           padding: 0 !important;
+//         }
+//         .date , .time{
+//           strong{
+//             font-size: 12px !important;
+//           }
+//         }
+//         .city-name{
+//           font-size: 15px !important;
+//         }
+//       }
+//     }
+
+//      .p-item-count-room{
+//        width: 100% !important;
+//       h4{
+//         width: 90%;
+//       }
+//       .inp-item{
+//         width: 48% !important;
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+//         padding: 8px;
+//         height: auto;
+//         border-radius: 10px;
+//         border: 1px solid #eee !important;
+//         cursor: pointer;
+//         position: relative;
+//       }
+//     }
+//     .p-detail-reservation{
+//         width: 91.6%;
+//         margin: 0 auto;
+//       flex-wrap: wrap;
+//       padding:12px;
+//       height: auto !important;
+//       span{
+//         font-size: 12px !important;
+//       }
+//       strong{
+//         font-size: 16px !important;
+//       }
+//       .btn-base{
+//         margin: 1rem auto 0 auto;
+//       }
+//     }
+//     .box-fix-user-reservation{
+//       height: auto !important;
+//     }
+//     .title-top {
+//       flex-direction: column;
+//       h2{
+//         font-size: 15px;
+//         margin: 6px 0 !important;
+//       }
+//     }
+//     .set-request-hotel {
+//       display: flex !important;
+//       flex-wrap: nowrap !important;
+//       white-space: nowrap !important;
+//     }
+//     .set-request-tour {
+//       flex-direction: column !important;
+
+//       .info-from {
+//         width: 100% !important;
+//       }
+
+//       .info-time {
+//         width: 95%;
+//         margin: 12px auto !important;
+//         border-left: none !important;
+//         background: #f2f2f2;
+//         padding: 12px 0;
+//         border-radius: 10px;
+//       }
+
+//       .info-to {
+//         width: 100%;
+//       }
+//     }
+//     .set-request-hotel {
+//       overflow-x: scroll;
+
+//       .item-hotel {
+//         margin: 0 1rem;
+//         width: 200px !important;
+
+//         h5 {
+//           font-size: 14px !important;
+//           font-weight: 600 !important;
+//           padding: 10px 20px !important;
+//         }
+//       }
+//     }
+//   }
+
+//   @media only screen and (max-width: 500px) {
+//     .inp-form {
+//       height: 45px !important;
+//       .mat-mdc-form-field{
+//         position: relative !important;
+//         top: 12px !important;
+//       }
+//       input{
+//         font-size: 12px !important;
+//       }
+//     }
+//     .set-info-supervisor{
+//       .item-form:not(:first-child){
+//         width: 48% !important;
+//       }
+//     }
+
+//     .tour-items-room {
+//       grid-template-columns: 1fr !important;
+//       display: grid !important;
+//       gap: 10px;
+//       span{
+//         font-size: 13px !important;
+//       }
+//     }
+
+//     .w-98-mobi{
+//       width: 98% !important;
+//     }
+//     .w-95-mobi{
+//       width: 95% !important;
+//     }
+//     .px-mobi{
+//       padding:12px !important;
+//     }
+//    .set-info-supervisor .cdk-overlay-pane {
+//       max-width: 83% !important;
+//       left: 7px !important;
+//     }
+
+//     .p-errorr {
+//       display: grid !important;
+//       flex-direction: row !important;
+//       width: 100%;
+//       grid-template-columns: 1fr;
+//       gap: 15px;
+//       margin-top: 15px;
+//       place-items: center;
+
+//       span {
+//         font-size: 13px;
+//       }
+//     }
+//     .rules {
+//       align-items: flex-start;
+
+//       p {
+//         width: 87% !important;
+//       }
+
+//       input {
+//         top: 3px !important;
+//       }
+
+//       .set-request-hotel .item-hotel h5 {
+//         font-size: 12px !important;
+//       }
+
+//       .title-tour {
+//         font-size: 15px !important;
+//       }
+//     }
+
+
+    
+//     .set-info-supervisor {
+//       .item-form {
+//         width: 100% !important;
+//       }
+//     }
+//     .set-info-passengers {
+//       .item-form {
+//         width: 100% !important;
+//       }
+//     }
+//     .promo-code {
+//       .item-form {
+//         width: 100% !important;
+//       }
+//     }
+//   }
+
+//   .rule-box {
+//     display: flex;
+//     flex-direction: column;
+//     padding: 1rem;
+//     border: 1px solid #c6c6c6;
+//     p {
+//       text-align: justify;
+//       font-size: 14px !important;
+//       line-height: 1.8;
+//     }
+//   }
+//   .title-passenger{
+//     font-size: 15px;
+//     color: black;
+//     font-weight: 600;
+//     margin: 14px 0 12px 0;
+//     position: relative;
+//     &:after{
+//       content: '';
+//       position: absolute;
+//       right: 0;
+//       bottom: -6px;
+//       width: 120px;
+//       border-bottom: 2px solid black;
+//     }
+//   }
+//   .label-type{
+//     background: white;
+//     border: 2px solid red;
+//     left: 12px;
+//     top: 12px;
+//     width: 100px !important;
+//     padding: 8px 3px;
+//     color: red;
+//     display: grid;
+//     place-items: center;
+//     border-radius: 5px;
+//     font-size: 11px !important;
+//     font-weight: 600;
+//   }
+//   .tour-items-room{
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     margin-top: 12px;
+//     border: 1px solid #ebebeb;
+//     border-radius: 5px;
+//     padding: 12px 8px;
+
+//     .text{
+//       margin-right: 4px;
+//     }
+//     span{
+//       font-size: 13px !important;
+//     }
+//   }
+
+
+  @media only screen and (min-width: 501px) and (max-width: 868px) {
+    .s-dashboard .p-info-trip .tour-items {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    .set-info-supervisor {
+      .item-form {
+        width: 49% !important;
+      }
+    }
+    .set-info-passengers {
+      .item-form {
+        width: 49% !important;
+      }
+    }
+    .promo-code {
+      .item-form {
+        width: 70% !important;
+      }
+    }
+  }
+
+  .btn-collapse {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: red;
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    border: none;
+    outline: none;
+
+    i {
+      color: white;
+      font-size: 12px;
+    }
+  }
+
+  .box-empty {
+    padding: 1rem;
+    border: 1px solid #c6c6c6;
+    width: 100%;
+    height: auto;
+    display: grid;
+    place-items: center;
+    margin: 1.5rem 0;
+  }
+
+  .p-errorr {
+    display: grid !important;
+    flex-direction: row !important;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+    place-items: center;
+
+    span {
+      font-size: 13px;
+    }
+  }
+
+
+  .box-fix-user-reservation {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    z-index: 100;
+    border-top: 2px solid white;
+
+    .detail-box-fix-user-reservation {
+      max-width: 1366px;
+      margin: 0 auto;
+
+      .p-detail-reservation {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100px;
+
+        .p-price {
+            display: flex;
+            align-items: center;
+          span {
+            font-weight: 600;
+          }
+        }
+
+        .price {
+          display: flex;
+          align-items: center;
+          margin-right: 6px;
+
+          strong {
+            color:orange;
+            font-size: 20px;
+            font-weight: 600;
+          }
+
+          small {
+            font-size: 14px;
+            margin-right: 3px;
+            color:orange;
+          }
+        }
+
+        .count-p {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          .total {
+            span {
+              font-weight: 500;
+              color:orange;
+            }
+          }
+
+          .room {
+            margin-top: 1rem;
+
+            span {
+              font-weight: 500;
+              color:orange;
+            }
+          }
+        }
+
+        .btn-box-fix {
+          width: 150px;
+        }
+      }
+    }
+  }
+  .text-error {
+    font-size: 12px;
+    position: relative;
+    top: 6px;
+    animation: anim-error 1s infinite;
+    font-weight: 600;
+
+  }
+
+  @keyframes anim-error {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0.8;
+    }
+  }
+.title-fly-mobi{
+  width: 100% !important;
+  border-bottom: 2px dashed greenyellow;
+  padding-bottom: 8px;
+}
+
+}
+
+@mixin title-tour {
+                color:orange;
+                font-weight: 500;
+                font-size: 18px;
+            }

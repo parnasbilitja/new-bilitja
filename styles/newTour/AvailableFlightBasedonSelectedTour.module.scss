@@ -36,14 +36,18 @@ $containerColor:#ebebeb;
                             display: flex;
                            column-gap: .5rem;
                         }
-                    &_faName{
-                        font-size: 1.125rem;
-                        font-weight: 800;
-                    }
-                    &_enName{
-                        font-size: .9rem;
-                        font-weight: 600;
-                    }
+
+                      
+                            &_faName{
+                                
+                                font-size: 1.125rem;
+                                font-weight:900;
+                            }
+                            &_enName{
+                                font-size: .9rem;
+                                font-weight: 600;
+                            }
+                     
                     &_services{
                         width: 115px;
                         display: flex;
@@ -283,6 +287,17 @@ $containerColor:#ebebeb;
                                         justify-content: center;
                                         cursor: pointer;
                                     }
+
+                                    .dec-none{
+                                        font-size: 1rem;
+                                         width: 25px;
+                                         border: 1px solid $borderColor;
+                                         border-radius: 5px;
+                                        color: $borderColor;
+                                        display: flex;
+                                        justify-content: center;
+                                        cursor: default;
+                                    }
                                    } 
                             }
                             &_price{
@@ -342,13 +357,16 @@ $containerColor:#ebebeb;
                 }
 
                 &_btn{
-                     background-color:$primary;
-                    color:white;
-                    width: 200px;
-                    height: 40px;
-                    border-radius: 4px;
-                    font-size: 14px;
-                    font-weight: 800;
+                   
+
+                        background-color:$primary;
+                       color:white;
+                       width: 200px;
+                       height: 40px;
+                       border-radius: 4px;
+                       font-size: 14px;
+                       font-weight: 800;
+                   
                 }
 
             }

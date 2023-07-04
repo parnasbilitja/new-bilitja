@@ -4,6 +4,7 @@ import { addCredentials } from "../../../../Redux/Search/search.action";
 import JalaliDays from "./JalaliDays";
 import GarigorianDays from "./GarigorianDays";
 
+
 const CalendarComponent = (props) => {
   const [state, setState] = useState({
     typeOfCalendar: "GAR",

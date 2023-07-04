@@ -1,10 +1,11 @@
 import React from "react";
 import moment from "moment-jalaali";
-//import '../../../styles/Calendar.module.scss'
+
 import { connect } from "react-redux";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import globals from "../../../../sources/Global";
+
+import styles from "../../../../../styles/newTour/components/subComponent/Calendar.module.scss";
 class JalaliDays extends React.Component {
   currentYear = 1405;
   constructor(props) {
@@ -232,7 +233,7 @@ class JalaliDays extends React.Component {
     let currentAndNextDate = this.getDateTitle();
 
     return (
-      <div className="calendar">
+      <div className={"calendar"}>
         {this.state.stage == 1 ? (
           <div>
             <div className="calendar-year-container">
@@ -493,7 +494,7 @@ class JalaliDays extends React.Component {
                     if (compareToToday == "AFTER") {
                       return x != undefined && this.evDateByDestAndOrg(x) ? (
                         <div
-                          className="calendar-item AFTER"
+                          className={`${styles["calendar-item"]} ${styles["AFTER"]}`}
                           onClick={() => {
                             const m = moment(
                               `${this.state.year}/${this.state.month}/${x}`,
@@ -598,7 +599,7 @@ class JalaliDays extends React.Component {
                       return x != undefined &&
                         this.evDateByDestAndOrgNext(x) ? (
                         <div
-                          className="calendar-item AFTER"
+                          className={`${styles["calendar-item"]} ${styles["AFTER"]}`}
                           onClick={() => {
                             const year =
                               parseInt(this.state.month) + 1 > 12

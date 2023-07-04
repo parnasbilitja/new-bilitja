@@ -72,3 +72,25 @@ export const startBuilder = (star) => {
 export const jalaliDateReformater = (date) => {
   return date.replace(/\//g, "%2F");
 };
+
+///room price Generator
+export const currencyExchanger = (currency_code, currency) => {
+  if (currency_code === null || currency === null) {
+    return 1;
+  } else {
+    switch (currency_code) {
+      case "euro":
+        return currency[currency_code];
+        break;
+      case "dollar":
+        return currency[currency_code];
+        break;
+      case "derham":
+        return currency[currency_code];
+
+      default:
+        return currency["toman"]; //toman
+        break;
+    }
+  }
+};

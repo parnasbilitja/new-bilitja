@@ -18,6 +18,7 @@ import {
   numberWithCommas,
   startBuilder,
 } from "../../Utils/newTour";
+import NavHandler from "../../Components/share/NavHandler";
 
 const AvFlight = dynamic(() =>
   import("../../Components/NewTours/AvailableFlightBasedonSelectedTour")
@@ -155,7 +156,8 @@ const availableHotels = () => {
   };
 
   return (
-    <>
+    <div className={styles["main-section"]}>
+      <NavHandler />
       {router.query.availablehotels?.length === 1 ? (
         <div className={styles.hotels}>
           <div className={styles.searchContainer}>
@@ -222,7 +224,6 @@ const availableHotels = () => {
                   <div className={styles.hotelContainer}>
                     <div className={styles.hotelDetail}>
                       {/* <Image src="" width={162} height={170}></Image> */}
-
                       <div className={styles.imageContainer}>
                         <Image
                           src={hotel.gallery[0].url}
@@ -282,7 +283,7 @@ const availableHotels = () => {
       ) : (
         <AvFlight />
       )}
-    </>
+    </div>
   );
 };
 
