@@ -2,15 +2,17 @@
     padding-top: 7rem;
             .hotels{
             background-color: #f8f8f9;
+            .searchContainer{
+                    margin-bottom: 2rem;
+                    padding: 0 3rem 0 3rem;
+                }
             .p-available{
                 width: 94%;
                 margin: 0 auto;
                 display: flex; 
                 margin-top: 1rem;
                 border-radius: 5px;
-                .searchContainer{
-                    margin-bottom: 2rem;
-                }
+                
 
             .sidebar{
                 width: 20%;

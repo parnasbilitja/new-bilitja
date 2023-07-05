@@ -26,8 +26,6 @@ import {
 } from "../../../Redux/newTours/Action";
 import DropdownComponent from "./subComponents/Dropdown.component";
 import { isEmpty, jalaliDateReformater } from "../../../Utils/newTour";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
 
 const TourSearchBox = (props) => {
   const getDestandOrgCities = () => {
@@ -276,22 +274,6 @@ const TourSearchBox = (props) => {
         </div>
       </div>
 
-      {/* <div
-        className={`${
-          props.showSwitch ? null : "hidden-xs"
-        } form-input-border text-center ${
-          styles["home-swtich-button-container"]
-        }`}
-        onClick={() => {
-          props.switchRoute();
-        }}
-      >
-        <FontAwesomeIcon
-          icon={faExchangeAlt}
-          className={`${styles["home-swtich-button"]} exchange-icon`}
-        />
-      </div> */}
-
       <div>
         <div
           className={` form-input-border  ${styles["form-input-border-private"]} `}
@@ -353,7 +335,7 @@ const TourSearchBox = (props) => {
       </div>
       <div className="without-focus">
         <PrimaryButton
-          style={{ height: "45px", marginTop: "7px" }}
+          style={{ height: "45px", marginTop: "7px", borderRadius: "5px" }}
           value={props.searchReset == false ? "جستجو" : "لطفا صبر کنید..."}
           onClick={(e) => {
             if (!validation()) {
@@ -371,7 +353,7 @@ const TourSearchBox = (props) => {
               );
 
               router.push(
-                `/newtour/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities.night}`
+                `/tours/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities.night}`
               );
               console.log("vali", validation());
             }

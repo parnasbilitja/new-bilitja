@@ -135,8 +135,8 @@
     margin: 0px 10px !important;
     margin-top: 1rem !important;
   }
-  
-  
+
+
   .mobile-tab4 {
     // border-bottom: 1px solid gray;
     // border-left: 1px solid gray!important;
@@ -145,13 +145,13 @@
     left: -1px;
     top: 50.9px;
   }
-  
+
 
 }
 
 @media only screen and (max-width: 2000px) and (min-width: 1025px) {
 
-  
+
   .home-flight-suggestion {
     & > div {
       // grid-template-columns: 1fr 1fr;
@@ -342,7 +342,7 @@
     display: block;
   }
 
-  
+
 
   .suggestion-list {
     padding: 5px 8px;
@@ -566,5 +566,63 @@
       border-top: 16px solid #279692;
       transform: scale(0.8);
     }
+  }
+}
+
+
+
+/////new pouya
+
+.width-mobile-search{
+  .checkboxs_container{
+    margin-bottom: .725rem;
+    margin-top: .5rem;
+    width: 15%;
+  
+
+
+
+
+
+   .check{
+          display: flex;
+          p{
+            font-size: .9rem;
+            font-weight: bolder;
+            margin-right: 6px;
+          }
+          input{
+            margin-left: .4rem !important;
+          }
+                    input[type="checkbox"] {
+                          appearance: none;
+                            background-color: #fff;
+                            margin: 0;
+                            font: inherit;
+                            color: currentColor;
+                            width: 1.45rem;
+                            height: 1.45rem;
+                            border: 0.15em solid #279692;
+                            border-radius: 0.15em;
+                            transform: translateY(-0.095em);
+                          display: grid;
+                          place-content: center;
+                }
+
+                input[type="checkbox"]::before {
+                  content: "";
+                  width: .85em;
+                  height: .85em;
+                  transform: scale(0);
+                  border-radius: 2px;
+                  transition: 120ms transform ease-in-out;
+                  box-shadow: inset 1em 1em #e20000;
+                }
+
+                input[type="checkbox"]:checked::before {
+                  transform: scale(1);
+                }
+   }
+   
   }
 }

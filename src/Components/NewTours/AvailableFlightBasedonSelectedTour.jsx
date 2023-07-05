@@ -573,7 +573,7 @@ const AvailableFlightBasedonSelectedTour = () => {
                           rooms: [...roomsGen(selectedRoom)],
                         };
                         router.push(
-                          `/newtour/reserve/${hotel.id}/${flight.id}?checkin=${
+                          `/tours/reserve/${hotel.id}/${flight.id}?checkin=${
                             finalDet.checkin
                           }&stayCount=${
                             finalDet.stayCount
