@@ -1,45 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "../../../styles/newTour/Reserve.module.scss";
 import Image from "next/image";
 import InfoPasserngers from "./Components/InfoPasserngers";
-import { useRouter } from "next/router";
-import axios from "axios";
 import {
   MiladiToJalaliConvertor,
   MiladiToJalaliConvertorDec,
   MiladiToJalaliConvertorInc,
 } from "../../Utils/newTour";
-const Reservation = () => {
-  const router = useRouter();
-  const [hotelDet, setHoteldet] = useState([]);
-
-  useEffect(() => {
-    console.log(router);
-    if (router.query.rooms && router.query.reservedHotel) {
-      const rooms = JSON.parse(router.query.rooms);
-      const checkin = router.query.checkin;
-      const flight_id = +router.query.reservedHotel[1];
-      const hotel_id = +router.query.reservedHotel[0];
-      const stayCount = router.query.stayCount;
-
-      console.log(rooms, checkin, flight_id, hotel_id, stayCount);
-      axios
-        .post(
-          "https://hotelobilit-api.iran.liara.run/api/v1/reserves/checking",
-          {
-            checkin,
-            hotel_id,
-            flight_id,
-            rooms,
-            stayCount,
-          }
-        )
-        .then((res) => {
-          setHoteldet(res.data.data);
-          console.log(res.data.data);
-        });
-    }
-  }, [router]);
+const Reservation = ({ hotelDet }) => {
   return (
     <div className={styles["p-body"]}>
       <div className={styles["prs-responsive"]}>
@@ -104,7 +72,6 @@ const Reservation = () => {
                   </strong>
                 </div>
                 <div className={styles["p-airline-top"]}>
-                  {/* <img src="" width="40" alt="" /> */}
                   <div
                     style={{
                       width: "40px",
@@ -113,11 +80,13 @@ const Reservation = () => {
                       borderRadius: "50%",
                     }}
                   >
-                    <Image
+                    <img
                       src={hotelDet?.flight?.airline_thumb?.url}
-                      width={40}
-                      height={40}
-                      style={{ objectFit: "cover" }}
+                      style={{
+                        objectFit: "cover",
+                        width: "100%",
+                        height: "100%",
+                      }}
                     />
                   </div>
                   <span>{hotelDet?.flight?.flight.airline_name}</span>
@@ -148,16 +117,12 @@ const Reservation = () => {
 
               <div className={styles["info-time"]}>
                 <div className={styles["nightlogo"]}>
-                  <Image
-                    src="https://hotelobilit.com/assets/img/moon.png"
-                    width={30}
-                    height={30}
-                    alt=""
-                  />
+                  <img src="https://hotelobilit.com/assets/img/moon.png" />
                 </div>
                 <span className={styles["title"]}>مدت اقامت:</span>
                 <span className={styles["text"]}>۵ شب و ۶ روز</span>
               </div>
+
               <div className={styles["info-from"]}>
                 <div className={styles["orgdest-cities"]}>
                   <span className={styles["city-name"]}>
@@ -179,11 +144,13 @@ const Reservation = () => {
                       borderRadius: "50%",
                     }}
                   >
-                    <Image
+                    <img
                       src={hotelDet?.flight?.flight.airline_thumb?.url}
-                      width={40}
-                      height={40}
-                      style={{ objectFit: "cover" }}
+                      style={{
+                        objectFit: "cover",
+                        width: "100%",
+                        height: "100%",
+                      }}
                     />
                   </div>
                   <span>{hotelDet?.flight?.flight.airline_name}</span>
@@ -225,6 +192,7 @@ const Reservation = () => {
                 (این مشخصات به عنوان طرف قرارداد درنظر گرفته می شود)
               </span>
             </h2>
+
             <div className={styles["set-info-supervisor"]}>
               <div className={styles["item-form"]}>
                 <div className={styles["inp-form"]}>
