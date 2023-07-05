@@ -18,7 +18,14 @@ const index = () => {
     width: 826,
   };
   return (
-    <div style={{ marginTop: "6rem", paddingBottom: "2rem" }}>
+    <div
+      style={{
+        marginTop: "6rem",
+        paddingBottom: "2rem",
+        background: "#F7F7F7",
+        height: "100%",
+      }}
+    >
       <MessageBoxComponent />
       <NewTourBase />
       <HomePicture state={state} />

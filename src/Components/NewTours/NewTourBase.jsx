@@ -49,7 +49,7 @@ const NewTourBase = () => {
           style={{ marginTop: state.width >= 826 ? "" : "-0.8rem" }}
         >
           <Scrolltoprefresh />
-          <div style={{ background: "#F7F7F7" }}>
+          <div style={{ background: "#F7F7F7", height: "100%" }}>
             <PictureBase />
             <PageTabls type={type} setType={setType} />
             <h2
