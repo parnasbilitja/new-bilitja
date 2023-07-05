@@ -13,9 +13,85 @@ $black:#00001f;
       margin: 0 auto;
       padding-bottom: 2rem;
       width: 91.6%;
+      .box-fix-user-reservation {
+              
+              position: fixed;
+              bottom: 0;
+              right: 0;
+              width: 100%;
+              height: 100px;
+              background: white;
+              z-index: 100;
+              border-top: 2px solid white;
+              margin-top: 2rem;
 
+              .detail-box-fix-user-reservation {
+                max-width: 1366px;
+                margin: 0 auto;
+
+                .p-detail-reservation {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  height: 100px;
+
+                  .p-price {
+                      display: flex;
+                      align-items: center;
+                    span {
+                      font-weight: 600;
+                    }
+                  }
+
+                  .price {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 6px;
+
+                    strong {
+                      color:orange;
+                      font-size: 20px;
+                      font-weight: 600;
+                    }
+
+                    small {
+                      font-size: 14px;
+                      margin-right: 3px;
+                      color:orange;
+                    }
+                  }
+
+                  .count-p {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    .total {
+                      span {
+                        font-weight: 500;
+                        color:orange;
+                      }
+                    }
+
+                    .room {
+                      margin-top: 1rem;
+
+                      span {
+                        font-weight: 500;
+                        color:orange;
+                      }
+                    }
+                  }
+
+                  .btn-box-fix {
+                    width: 150px;
+                  }
+                }
+              }
+  }
       .tourDet-container{
         // "d-flex  align-items-center justify-content-between title-complete"
+       
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -38,13 +114,21 @@ $black:#00001f;
             align-items: center;
             justify-content: center;
             h2{
-
                 font-weight: 500;
                 font-size: 16px;
             }
-            h2:last-child{
-                margin-right: 1rem;
-                color:orange;
+            &-names{
+              margin-right: 1rem;
+              h2{
+                  text-align: center;
+                  font-weight: 600;
+              }
+              p{
+                font-size: .9rem;
+                text-align: center;
+                font-weight: 400;
+              }
+
             }
 
           
@@ -747,80 +831,7 @@ $black:#00001f;
   }
 
 
-  .box-fix-user-reservation {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100px;
-    background: white;
-    z-index: 100;
-    border-top: 2px solid white;
-
-    .detail-box-fix-user-reservation {
-      max-width: 1366px;
-      margin: 0 auto;
-
-      .p-detail-reservation {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 100px;
-
-        .p-price {
-            display: flex;
-            align-items: center;
-          span {
-            font-weight: 600;
-          }
-        }
-
-        .price {
-          display: flex;
-          align-items: center;
-          margin-right: 6px;
-
-          strong {
-            color:orange;
-            font-size: 20px;
-            font-weight: 600;
-          }
-
-          small {
-            font-size: 14px;
-            margin-right: 3px;
-            color:orange;
-          }
-        }
-
-        .count-p {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-
-          .total {
-            span {
-              font-weight: 500;
-              color:orange;
-            }
-          }
-
-          .room {
-            margin-top: 1rem;
-
-            span {
-              font-weight: 500;
-              color:orange;
-            }
-          }
-        }
-
-        .btn-box-fix {
-          width: 150px;
-        }
-      }
-    }
-  }
+  
   .text-error {
     font-size: 12px;
     position: relative;

@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import NewTourBase from "../../Components/NewTours/NewTourBase";
 import MessageBoxComponent from "../../sources/component/MessageBox.component";
+import TourBg from "../../../public/Images/tour-bg-new.png";
+import Image from "next/image";
+import HomePicture from "../../sources/component/HomePicture";
 // import { useDispatch, useSelector } from "react-redux";
 // import { fetchDestLoc } from "../../Redux/newTours/Action";
 const index = () => {
@@ -11,10 +14,15 @@ const index = () => {
 
   //   console.log("from pouy", cityOrg);
   // }, []);
+  const state = {
+    width: 826,
+  };
   return (
-    <div className="mt-90 bodyVar">
+    <div style={{ marginTop: "6rem", paddingBottom: "2rem" }}>
       <MessageBoxComponent />
       <NewTourBase />
+
+      <HomePicture state={state} />
     </div>
   );
 };

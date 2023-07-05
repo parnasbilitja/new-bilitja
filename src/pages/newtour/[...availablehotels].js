@@ -19,6 +19,7 @@ import {
   startBuilder,
 } from "../../Utils/newTour";
 import NavHandler from "../../Components/share/NavHandler";
+import { Loader } from "../../Utils/Loader";
 
 const AvFlight = dynamic(() =>
   import("../../Components/NewTours/AvailableFlightBasedonSelectedTour")
@@ -219,64 +220,78 @@ const availableHotels = () => {
             </div>
 
             <div className={styles.content}>
-              {hotels?.map((hotel) => {
-                return (
-                  <div className={styles.hotelContainer}>
-                    <div className={styles.hotelDetail}>
-                      {/* <Image src="" width={162} height={170}></Image> */}
-                      <div className={styles.imageContainer}>
-                        <Image
-                          src={hotel.gallery[0].url}
-                          width={500}
-                          height={500}
-                          alt="Picture of the hotel"
-                        />
-                      </div>
-                      <div className={styles.hotelNameDetail}>
-                        <h2 className={styles.faName}>{hotel.title}</h2>
-                        <h2 className={styles.enName}>{hotel.titleEn}</h2>
-                        <div className={styles.pStar}>
-                          {startBuilder(+hotel.stars)?.map((x) => {
-                            return x;
-                          })}
+              {hotels.length === 0 ? (
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Loader />
+                </div>
+              ) : (
+                hotels?.map((hotel) => {
+                  return (
+                    <div className={styles.hotelContainer}>
+                      <div className={styles.hotelDetail}>
+                        {/* <Image src="" width={162} height={170}></Image> */}
+                        <div className={styles.imageContainer}>
+                          <Image
+                            src={hotel.gallery[0].url}
+                            width={500}
+                            height={500}
+                            alt="Picture of the hotel"
+                          />
                         </div>
-                        {/* <div className={styles.stars}>{hotel.stars}stars</div> */}
-                        <div className={styles.services}>
-                          <label htmlFor="">خدمات :</label>
-                          <p>ثبت نشده</p>
+                        <div className={styles.hotelNameDetail}>
+                          <h2 className={styles.faName}>{hotel.title}</h2>
+                          <h2 className={styles.enName}>{hotel.titleEn}</h2>
+                          <div className={styles.pStar}>
+                            {startBuilder(+hotel.stars)?.map((x) => {
+                              return x;
+                            })}
+                          </div>
+                          {/* <div className={styles.stars}>{hotel.stars}stars</div> */}
+                          <div className={styles.services}>
+                            <label htmlFor="">خدمات :</label>
+                            <p>ثبت نشده</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className={styles.priceandbtnContainer}>
+                        <p className={styles.priceTitle}>
+                          قیمت برای هر نفر 6 شب از :
+                        </p>
+                        <div className={styles.priceParent}>
+                          <strong className={styles.price}>
+                            {numberWithCommas(hotel.totalRoomPrice)}
+                          </strong>
+                          <span>تومان</span>
+                        </div>
+                        <div className={styles.btnContainer}>
+                          <button
+                            onClick={() => {
+                              const jalalurlReformat =
+                                jalaliDateReformater(jalaliDate);
+
+                              router.push(
+                                `/newtour/${origin}-${destination}/flight/${hotel?.slug}?origin=${origin}&dest=${destination}&stDate=${jalalurlReformat}&night=${night}`
+                              );
+                            }}
+                          >
+                            {" "}
+                            انتخاب هتل و رزرو
+                          </button>
                         </div>
                       </div>
                     </div>
-
-                    <div className={styles.priceandbtnContainer}>
-                      <p className={styles.priceTitle}>
-                        قیمت برای هر نفر 6 شب از :
-                      </p>
-                      <div className={styles.priceParent}>
-                        <strong className={styles.price}>
-                          {numberWithCommas(hotel.totalRoomPrice)}
-                        </strong>
-                        <span>تومان</span>
-                      </div>
-                      <div className={styles.btnContainer}>
-                        <button
-                          onClick={() => {
-                            const jalalurlReformat =
-                              jalaliDateReformater(jalaliDate);
-
-                            router.push(
-                              `/newtour/${origin}-${destination}/flight/${hotel?.slug}?origin=${origin}&dest=${destination}&stDate=${jalalurlReformat}&night=${night}`
-                            );
-                          }}
-                        >
-                          {" "}
-                          انتخاب هتل و رزرو
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })
+              )}
             </div>
           </div>
         </div>

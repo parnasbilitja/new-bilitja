@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { selectCredentials } from "../../../../Redux/Search/search.reselect";
 import { addCredentials } from "../../../../Redux/Search/search.action";
 import { setDestLoc, setOrgLoc } from "../../../../Redux/newTours/Action";
+import { Loader } from "../../../../Utils/Loader";
 const Cities = (props) => {
   // console.log("hi", props);
 
@@ -25,62 +26,24 @@ const Cities = (props) => {
       {/* {console.log(props.airports)} */}
       {/* //fill airport */}
 
-      {props.cities?.map((city) => (
-        <div
-          // key={oneAirport.airportKey}
-          // onClick={() => {
-          //   // check if this component sets airport for source or destination
-          //   let credentialObject;
-          //   if (props.credenrialType == "source") {
-          //     credentialObject = {
-          //       sourceName: oneAirport.airportName,
-          //       sourceNameEn: oneAirport.airportNameEn,
-          //       source: oneAirport.airportCode,
-          //     };
-          //   } else {
-          //     credentialObject = {
-          //       destinationName: oneAirport.airportName,
-          //       destinationNameEn: oneAirport.airportNameEn,
-          //       dest: oneAirport.airportCode,
-          //     };
-          //   }
+      {!props.cities ? (
+        <Loader />
+      ) : (
+        props.cities?.map((city) => (
+          <div
+            onClick={() => {
+              props.setCities({ name: city.name, code: city.code });
+            }}
+          >
+            <span className="font-size-14">{city.name} </span>
+            <span className="pull-left font-size-13 color-textpill">
+              {city.code}
+            </span>
+          </div>
+        ))
+      )}
 
-          //   props.setCredentials(credentialObject);
-          //   props.closeSuggest(false);
-          // }}
-          onClick={() => {
-            props.setCities({ name: city.name, code: city.code });
-          }}
-        >
-          <span className="font-size-14">{city.name} </span>
-          <span className="pull-left font-size-13 color-textpill">
-            {city.code}
-          </span>
-        </div>
-      ))}
-
-      <div
-      // key={oneAirport.airportKey}
-      // onClick={() => {
-      //   let credentialObject;
-      //   if (props.credenrialType == "source") {
-      //     credentialObject = {
-      //       sourceName: oneAirport.airportName,
-      //       sourceNameEn: oneAirport.airportNameEn,
-      //       source: oneAirport.airportCode,
-      //     };
-      //   } else {
-      //     credentialObject = {
-      //       destinationName: oneAirport.airportName,
-      //       destinationNameEn: oneAirport.airportNameEn,
-      //       dest: oneAirport.airportCode,
-      //     };
-      //   }
-
-      //   props.setCredentials(credentialObject);
-      //   props.closeSuggest(false);
-      // }}
-      >
+      <div>
         <span className="font-size-14"></span>
         <span className="pull-left font-size-13 color-textpill"></span>
       </div>

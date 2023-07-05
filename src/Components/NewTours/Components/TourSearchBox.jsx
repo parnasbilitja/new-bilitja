@@ -4,14 +4,8 @@ import PrimaryButton from "../../../sources/component/PrimaryButton.component";
 import PrimaryTextInputMobile from "../../../sources/component/PrimaryTextInputMobile";
 import PrimaryTextInput from "../../../sources/component/PrimaryTextInput.component";
 import Cities from "./subComponents/Cities.component";
-import AirportsMobile from "./subComponents/AirportsMobile.component";
-import PopUp from "./subComponents/PopUp.component";
 import PopUpWide from "./subComponents/PopUpWide.component";
 import CalendarComponent from "./calendar/Calendar.component";
-
-import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { connect, useDispatch, useSelector } from "react-redux";
 import { selectCredentials } from "../../../Redux/Search/search.reselect";
 import {
@@ -32,6 +26,8 @@ import {
 } from "../../../Redux/newTours/Action";
 import DropdownComponent from "./subComponents/Dropdown.component";
 import { isEmpty, jalaliDateReformater } from "../../../Utils/newTour";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
 
 const TourSearchBox = (props) => {
   const getDestandOrgCities = () => {
@@ -251,7 +247,6 @@ const TourSearchBox = (props) => {
           <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
           <PrimaryTextInputMobile
             value={props.destandorgcities.origin.name}
-            // readonly={state.width <= mobileSize ? "false" : "true"}
             name="sourceName"
             onClick={(e) => {
               // for mobile
@@ -281,7 +276,7 @@ const TourSearchBox = (props) => {
         </div>
       </div>
 
-      <div
+      {/* <div
         className={`${
           props.showSwitch ? null : "hidden-xs"
         } form-input-border text-center ${
@@ -295,7 +290,7 @@ const TourSearchBox = (props) => {
           icon={faExchangeAlt}
           className={`${styles["home-swtich-button"]} exchange-icon`}
         />
-      </div>
+      </div> */}
 
       <div>
         <div
@@ -308,7 +303,6 @@ const TourSearchBox = (props) => {
           ></i>
           <PrimaryTextInputMobile
             value={props.destandorgcities.destination.name}
-            // readonly={state.width <= mobileSize ? "false" : "true"}
             name="destinationName"
             onClick={(e) => {
               // for mobile
@@ -351,7 +345,7 @@ const TourSearchBox = (props) => {
           }}
         />
       </div>
-      <div style={{ paddingTop: ".5rem" }}>
+      <div style={{ padding: ".5rem 0" }}>
         <DropdownComponent
           nights={nights}
           setNight={(value) => props.setNightNumber(value)}
@@ -381,7 +375,6 @@ const TourSearchBox = (props) => {
               );
               console.log("vali", validation());
             }
-           
           }}
         >
           {"جستجو"}

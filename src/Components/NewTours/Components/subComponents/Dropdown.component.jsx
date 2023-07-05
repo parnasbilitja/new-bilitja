@@ -5,10 +5,10 @@ import { useDispatch } from "react-redux";
 const DropdownComponent = (props) => {
   console.log("fcgdx", props);
 
- 
   return (
     <div className={styles.dropdowncontainer}>
-      <select className="select-custom"
+      <select
+        className="select-custom"
         name="تعداد شب"
         id=""
         onClick={(e) => props.setNight(e.target.value)}

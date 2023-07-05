@@ -64,7 +64,14 @@ const NewTourBase = () => {
           </div>
         </div>
       </div>
-      <div className="px-6">
+      <div
+        style={{
+          width: "100%",
+          padding: "0 2rem",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <TourSearchBox />
       </div>
     </div>

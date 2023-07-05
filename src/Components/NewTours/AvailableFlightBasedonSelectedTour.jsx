@@ -34,7 +34,8 @@ const AvailableFlightBasedonSelectedTour = () => {
     room_type_id,
     room_type,
     Adl_capacity,
-    rates
+    rates,
+    room_id
     // chd_capacity
   ) => {
     let minAvRoom = Math.min(
@@ -49,12 +50,12 @@ const AvailableFlightBasedonSelectedTour = () => {
         {
           id: Math.random() * 1000,
           room_type_id,
+          room_id,
           room_type,
           Adl_capacity,
           extra_bed_count: 0,
           inf_count: 0,
           chd_count: 0,
-          // chd_capacity,
         },
       ]);
     } else {
@@ -83,7 +84,7 @@ const AvailableFlightBasedonSelectedTour = () => {
   };
 
   ////inc chd, inf,ext number
-  
+
   const incDet = (id, type) => {
     if (type === "ext_count") {
       const findRoom = selectedRoom.map((x) => {
@@ -198,46 +199,46 @@ const AvailableFlightBasedonSelectedTour = () => {
   };
 
   //
-  const PrcController = (room, flight, isExtra, isCheckIn) => {
-    const firstRate =
-      (isExtra ? room.rates[0].extra_price : room.rates[0].price) *
-      currencyExchanger(room.rates[0].currency_code, room.currencies);
-    const lastRate =
-      (isExtra
-        ? room.rates[room.rates.length - 1].extra_price
-        : room.rates[room.rates.length - 1].price) *
-      currencyExchanger(
-        room.rates[room.rates.length - 1].currency_code,
-        room.currencies
-      );
+  // const PrcController = (room, flight, isExtra, isCheckIn) => {
+  //   const firstRate =
+  //     (isExtra ? room.rates[0].extra_price : room.rates[0].price) *
+  //     currencyExchanger(room.rates[0].currency_code, room.currencies);
+  //   const lastRate =
+  //     (isExtra
+  //       ? room.rates[room.rates.length - 1].extra_price
+  //       : room.rates[room.rates.length - 1].price) *
+  //     currencyExchanger(
+  //       room.rates[room.rates.length - 1].currency_code,
+  //       room.currencies
+  //     );
 
-    if (isCheckIn) {
-      if (flight.checkin_tomorrow && flight.checkout_yesterday) {
-        const offerPrice = room.rates[0].offer_price * 2;
-        return (
-          offerPrice *
-          currencyExchanger(room.rates[0].currency_code, room.currencies)
-        );
-      } else if (flight.checkin_tomorrow || flight.checkout_yesterday) {
-        return (
-          room.rates[0].offer_price *
-          currencyExchanger(room.rates[0].currency_code, room.currencies)
-        );
-      } else {
-        return 0;
-      }
-    } else {
-      if (flight.checkin_tomorrow && flight.checkout_yesterday) {
-        return firstRate + lastRate;
-      } else if (flight.checkin_tomorrow && !flight.checkout_yesterday) {
-        return firstRate;
-      } else if (flight.checkout_yesterday && !flight.checkin_tomorrow) {
-        return lastRate;
-      } else {
-        return 0;
-      }
-    }
-  };
+  //   if (isCheckIn) {
+  //     if (flight.checkin_tomorrow && flight.checkout_yesterday) {
+  //       const offerPrice = room.rates[0].offer_price * 2;
+  //       return (
+  //         offerPrice *
+  //         currencyExchanger(room.rates[0].currency_code, room.currencies)
+  //       );
+  //     } else if (flight.checkin_tomorrow || flight.checkout_yesterday) {
+  //       return (
+  //         room.rates[0].offer_price *
+  //         currencyExchanger(room.rates[0].currency_code, room.currencies)
+  //       );
+  //     } else {
+  //       return 0;
+  //     }
+  //   } else {
+  //     if (flight.checkin_tomorrow && flight.checkout_yesterday) {
+  //       return firstRate + lastRate;
+  //     } else if (flight.checkin_tomorrow && !flight.checkout_yesterday) {
+  //       return firstRate;
+  //     } else if (flight.checkout_yesterday && !flight.checkin_tomorrow) {
+  //       return lastRate;
+  //     } else {
+  //       return 0;
+  //     }
+  //   }
+  // };
 
   const roomPrcGen = (room, flight) => {
     let price = 0;
@@ -254,7 +255,7 @@ const AvailableFlightBasedonSelectedTour = () => {
       });
     }
 
-    price = price - PrcController(room, flight, false, isCheckIn);
+    // price = price - PrcController(room, flight, false, isCheckIn);
     price += flight.adl_price; //flights=>adl_price
     room.services.map((service) => {
       if (service.airport_id === flight.destination_id) {
@@ -278,7 +279,7 @@ const AvailableFlightBasedonSelectedTour = () => {
             currencyExchanger(rate.currency_code, room.currencies));
         });
 
-        price = price - PrcController(room, flight, true);
+        // price = price - PrcController(room, flight, true);
         price += flight.adl_price; //flights=>adl_price
         room.services.map((service) => {
           if (service.airport_id === flight.destination_id) {
@@ -306,7 +307,7 @@ const AvailableFlightBasedonSelectedTour = () => {
             currencyExchanger(rate.currency_code, room.currencies));
         });
 
-        price -= PrcController(room, flight);
+        // price -= PrcController(room, flight);
         price += flight.chd_price; //flights=>adl_price
         room.services.map((service) => {
           if (service.airport_id === flight.destination_id) {
@@ -356,10 +357,20 @@ const AvailableFlightBasedonSelectedTour = () => {
     return fiPrice;
   };
 
-  const rooms = (arr) => {
-    return arr.map((p) => {
-      return p;
+  const roomsGen = (selectedRoom) => {
+    const rooms = [];
+    selectedRoom.map((room) => {
+      rooms.push({
+        adl_count: room.Adl_capacity,
+        chd_count: room.chd_count,
+        inf_count: room.inf_count,
+        room_id: room.room_id,
+        extra_count: room.extra_bed_count,
+        count: 1,
+      });
     });
+
+    return rooms;
   };
   return (
     <>
@@ -502,8 +513,8 @@ const AvailableFlightBasedonSelectedTour = () => {
                                     room.room_type_id,
                                     room.room_type,
                                     room.Adl_capacity,
-                                    room.rates
-                                    // room.chd_capacity
+                                    room.rates,
+                                    room.id
                                   )
                                 }
                               >
@@ -555,10 +566,11 @@ const AvailableFlightBasedonSelectedTour = () => {
                     onClick={() => {
                       if (selectedRoom.length > 0) {
                         const routerParam = router.query;
+
                         const finalDet = {
                           checkin: jalaliToMiladiConvertor(routerParam.stDate),
                           stayCount: routerParam.night,
-                          rooms: [...selectedRoom],
+                          rooms: [...roomsGen(selectedRoom)],
                         };
                         router.push(
                           `/newtour/reserve/${hotel.id}/${flight.id}?checkin=${
