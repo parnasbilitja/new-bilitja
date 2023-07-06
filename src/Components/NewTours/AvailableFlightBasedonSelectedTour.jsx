@@ -6,9 +6,12 @@ import {
   MiladiToJalaliConvertor,
   MiladiToJalaliConvertorDec,
   MiladiToJalaliConvertorInc,
+  chdPrcGen,
   currencyExchanger,
+  extBedPrcGen,
   jalaliToMiladiConvertor,
   numberWithCommas,
+  roomPrcGen,
   startBuilder,
 } from "../../Utils/newTour";
 import Image from "next/image";
@@ -198,132 +201,6 @@ const AvailableFlightBasedonSelectedTour = () => {
     setSelectedRoom(newSelectedRoom);
   };
 
-  //
-  // const PrcController = (room, flight, isExtra, isCheckIn) => {
-  //   const firstRate =
-  //     (isExtra ? room.rates[0].extra_price : room.rates[0].price) *
-  //     currencyExchanger(room.rates[0].currency_code, room.currencies);
-  //   const lastRate =
-  //     (isExtra
-  //       ? room.rates[room.rates.length - 1].extra_price
-  //       : room.rates[room.rates.length - 1].price) *
-  //     currencyExchanger(
-  //       room.rates[room.rates.length - 1].currency_code,
-  //       room.currencies
-  //     );
-
-  //   if (isCheckIn) {
-  //     if (flight.checkin_tomorrow && flight.checkout_yesterday) {
-  //       const offerPrice = room.rates[0].offer_price * 2;
-  //       return (
-  //         offerPrice *
-  //         currencyExchanger(room.rates[0].currency_code, room.currencies)
-  //       );
-  //     } else if (flight.checkin_tomorrow || flight.checkout_yesterday) {
-  //       return (
-  //         room.rates[0].offer_price *
-  //         currencyExchanger(room.rates[0].currency_code, room.currencies)
-  //       );
-  //     } else {
-  //       return 0;
-  //     }
-  //   } else {
-  //     if (flight.checkin_tomorrow && flight.checkout_yesterday) {
-  //       return firstRate + lastRate;
-  //     } else if (flight.checkin_tomorrow && !flight.checkout_yesterday) {
-  //       return firstRate;
-  //     } else if (flight.checkout_yesterday && !flight.checkin_tomorrow) {
-  //       return lastRate;
-  //     } else {
-  //       return 0;
-  //     }
-  //   }
-  // };
-
-  const roomPrcGen = (room, flight) => {
-    let price = 0;
-    let isCheckIn = room.rates[0].checkin_base;
-    if (isCheckIn) {
-      price +=
-        room.rates[0].offer_price *
-        currencyExchanger(room.rates[0].currency_code, room.currencies) *
-        room.rates.length;
-    } else {
-      room.rates.map((rate) => {
-        return (price +=
-          rate.price * currencyExchanger(rate.currency_code, room.currencies));
-      });
-    }
-
-    // price = price - PrcController(room, flight, false, isCheckIn);
-    price += flight.adl_price; //flights=>adl_price
-    room.services.map((service) => {
-      if (service.airport_id === flight.destination_id) {
-        price +=
-          service.rate * currencyExchanger(service.rate_type, room.currencies);
-        return price;
-      }
-    });
-
-    return price;
-  };
-
-  ///extbed =تخت اضافه
-  const extBedPrcGen = (rooms, flight, roomTypeId) => {
-    let price = 0;
-    rooms.map((room) => {
-      if (roomTypeId === room.room_type_id) {
-        room.rates.map((rate) => {
-          return (price +=
-            rate.extra_price *
-            currencyExchanger(rate.currency_code, room.currencies));
-        });
-
-        // price = price - PrcController(room, flight, true);
-        price += flight.adl_price; //flights=>adl_price
-        room.services.map((service) => {
-          if (service.airport_id === flight.destination_id) {
-            price +=
-              service.rate *
-              currencyExchanger(service.rate_type, room.currencies);
-            return price;
-          }
-        });
-      }
-      return price;
-    });
-
-    return price;
-  };
-
-  ///chd =کودک
-  const chdPrcGen = (rooms, flight, roomTypeId) => {
-    let price = 0;
-    rooms.map((room) => {
-      if (roomTypeId === room.room_type_id) {
-        room.rates.map((rate) => {
-          return (price +=
-            rate.price *
-            currencyExchanger(rate.currency_code, room.currencies));
-        });
-
-        // price -= PrcController(room, flight);
-        price += flight.chd_price; //flights=>adl_price
-        room.services.map((service) => {
-          if (service.airport_id === flight.destination_id) {
-            price +=
-              service.rate *
-              currencyExchanger(service.rate_type, room.currencies);
-            return price;
-          }
-        });
-      }
-      return price;
-    });
-
-    return price;
-  };
-
   useEffect(() => {
     console.log(router);
     const hotelFnName = router?.query?.availablehotels;
@@ -377,32 +254,67 @@ const AvailableFlightBasedonSelectedTour = () => {
       <div className={styles["container"]}>
         <div className={styles["hotelDet_container"]}>
           <div className={styles["hotelDet"]}>
-            <div className={styles["hotelDet-image"]}>
-              {hotel?.gallery && (
-                <Image src={hotel.gallery[0].url} height={200} width={300} />
-              )}
-            </div>
-            <div className={styles["hotelDet-names"]}>
-              <div className={styles["hotelDet-names_star"]}>
-                {startBuilder(+hotel.stars).map((x) => {
-                  return x;
-                })}
+            <div className={styles["right"]}>
+              <div className={styles["hotelDet-image"]}>
+                {hotel?.gallery && (
+                  <Image src={hotel.gallery[0].url} height={200} width={300} />
+                )}
               </div>
+              <div className={styles["hotelDet-names"]}>
+                <div className={styles["hotelDet-names_star"]}>
+                  {startBuilder(+hotel.stars).map((x) => {
+                    return x;
+                  })}
+                </div>
 
-              <p className={styles["hotelDet-names_faName"]}>
-                {hotel.is_domestic ? hotel.title : hotel.titleEn}
-              </p>
-              <p className={styles["hotelDet-names_enName"]}>
-                {hotel.is_domestic ? hotel.titleEn : hotel.title}
-              </p>
-              <div className={styles["hotelDet-names_services"]}>
-                <label htmlFor="">خدمات:</label>
-                <p>ثبت نشده</p>
+                <p className={styles["hotelDet-names_faName"]}>
+                  {hotel.is_domestic ? hotel.title : hotel.titleEn}
+                </p>
+                <p className={styles["hotelDet-names_enName"]}>
+                  {hotel.is_domestic ? hotel.titleEn : hotel.title}
+                </p>
+                <div className={styles["hotelDet-names_services"]}>
+                  <label htmlFor="">خدمات:</label>
+                  <p>ثبت نشده</p>
+                </div>
+                <div className={styles["hotelDet-names_zone"]}>
+                  <label htmlFor="">منطقه:</label>
+                  <p>ثبت نشده</p>
+                </div>
               </div>
-              <div className={styles["hotelDet-names_zone"]}>
-                <label htmlFor="">منطقه:</label>
-                <p>ثبت نشده</p>
-              </div>
+            </div>
+            <div className={styles["left"]}>
+              {hotel?.gallery && (
+                <div className={styles["image_container"]}>
+                  {/* {hotel?.gallery?.map((img) => {
+                  return <Image src={img.url} height={100} width={100} />;
+                })} */}
+
+                  <div className={styles["images"]}>
+                    <Image
+                      src={hotel?.gallery[2]?.url}
+                      height={100}
+                      width={100}
+                    />
+                    <Image
+                      src={hotel?.gallery[3].url}
+                      height={100}
+                      width={100}
+                    />
+                    <Image
+                      src={hotel?.gallery[4].url}
+                      height={100}
+                      width={100}
+                    />
+                    <Image
+                      src={hotel?.gallery[5].url}
+                      height={100}
+                      width={100}
+                    />
+                  </div>
+                  <Image src={hotel?.gallery[1].url} height={100} width={100} />
+                </div>
+              )}
             </div>
           </div>
         </div>

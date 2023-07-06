@@ -238,6 +238,7 @@ const availableHotels = () => {
                     <div className={styles.hotelContainer}>
                       <div className={styles.hotelDetail}>
                         {/* <Image src="" width={162} height={170}></Image> */}
+
                         <div className={styles.imageContainer}>
                           <Image
                             src={hotel.gallery[0].url}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../../../styles/newTour/Reserve.module.scss";
 import Image from "next/image";
 import InfoPasserngers from "./Components/InfoPasserngers";
@@ -6,8 +6,33 @@ import {
   MiladiToJalaliConvertor,
   MiladiToJalaliConvertorDec,
   MiladiToJalaliConvertorInc,
+  chdPrcGen,
 } from "../../Utils/newTour";
 const Reservation = ({ hotelDet }) => {
+  console.log(hotelDet.rooms_selected);
+  const roomNameChecker = (room_id) => {
+    const roomName = hotelDet?.rooms?.filter((room) => room.id === room_id);
+    return roomName[0]?.room_type;
+  };
+
+  useEffect(() => {
+    const prc = 0;
+
+    hotelDet?.rooms_selected?.map((room) => {
+      for (let i = 0; i < room.chd_count; i++) {
+        return (prc += chdPrcGen(
+          hotelDet?.rooms,
+          hotelDet?.flight,
+          room?.room_id
+        ));
+      }
+
+      return prc;
+    });
+
+    console.log(prc);
+  }, []);
+
   return (
     <div className={styles["p-body"]}>
       <div className={styles["prs-responsive"]}>
@@ -212,8 +237,14 @@ const Reservation = ({ hotelDet }) => {
             </div>
 
             <h2 style={{ fontSize: "1.5rem" }}>اطلاعات مسافران</h2>
+            {hotelDet?.rooms_selected?.map((room) => (
+              <InfoPasserngers
+                room={room}
+                // roomDets={hotelDet?.rooms_selected}
+                roomName={roomNameChecker(room.room_id)}
+              />
+            ))}
 
-            <InfoPasserngers />
             <div className={styles["rules"]}>
               <p>
                 ثبت درخواست به منزله پذیرش تمام

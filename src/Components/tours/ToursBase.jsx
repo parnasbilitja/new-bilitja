@@ -96,7 +96,7 @@ const ToursBase = () => {
                     onClick={() => setTourSwitch("package-tour")}
                     checked={tourSwitch === "package-tour" ? true : false}
                   />
-                  <p htmlFor="">تور پکیج</p>
+                  <p htmlFor="">پکیج تور </p>
                 </div>
                 <div className={styles["check"]}>
                   <input
