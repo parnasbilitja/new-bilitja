@@ -80,7 +80,7 @@ $containerColor:#ebebeb;
                    .image_container{
                     border-radius: 20px;
                     padding: 0;
-                    overflow: hidden;
+                    // overflow: hidden;
                     width: 100%;
                     gap: .5rem;
                        display: grid;
@@ -88,11 +88,14 @@ $containerColor:#ebebeb;
                       
                        img{
                         object-fit: cover;
+                        cursor: pointer;
+                        border-radius: 20px;
                        }
                        .images{
                         display: grid;
                         grid-template-columns: 1fr 1fr ;
                          gap: .5rem;
+                         
                        }
                    }
                 }

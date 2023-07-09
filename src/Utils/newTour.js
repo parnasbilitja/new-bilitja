@@ -95,32 +95,6 @@ export const currencyExchanger = (currency_code, currency) => {
   }
 };
 
-export const chdPrcGen = (rooms, flight, roomTypeId) => {
-  let price = 0;
-  rooms.map((room) => {
-    if (roomTypeId === room.room_type_id) {
-      room.rates.map((rate) => {
-        return (price +=
-          rate.price * currencyExchanger(rate.currency_code, room.currencies));
-      });
-
-      price -= PrcController(room, flight);
-      price += flight.chd_price; //flights=>adl_price
-      room.services.map((service) => {
-        if (service.airport_id === flight.destination_id) {
-          price +=
-            service.rate *
-            currencyExchanger(service.rate_type, room.currencies);
-          return price;
-        }
-      });
-    }
-    return price;
-  });
-
-  return price;
-};
-
 export const PrcController = (room, flight, isExtra, isCheckIn) => {
   const firstRate =
     (isExtra ? room.rates[0].extra_price : room.rates[0].price) *
@@ -205,7 +179,7 @@ export const roomPrcGen = (room, flight) => {
     });
   }
 
-  price = price - PrcController(room, flight, false, isCheckIn);
+  // price = price - PrcController(room, flight, false, isCheckIn);
   price += flight.adl_price; //flights=>adl_price
   room.services.map((service) => {
     if (service.airport_id === flight.destination_id) {
@@ -213,6 +187,31 @@ export const roomPrcGen = (room, flight) => {
         service.rate * currencyExchanger(service.rate_type, room.currencies);
       return price;
     }
+  });
+
+  return price;
+};
+export const chdPrcGen = (rooms, flight, roomTypeId) => {
+  let price = 0;
+  rooms.map((room) => {
+    if (roomTypeId === room.room_type_id) {
+      room.rates.map((rate) => {
+        return (price +=
+          rate.price * currencyExchanger(rate.currency_code, room.currencies));
+      });
+
+      price -= PrcController(room, flight, false, false);
+      price += flight.chd_price; //flights=>adl_price
+      room.services.map((service) => {
+        if (service.airport_id === flight.destination_id) {
+          price +=
+            service.rate *
+            currencyExchanger(service.rate_type, room.currencies);
+          return price;
+        }
+      });
+    }
+    return price;
   });
 
   return price;

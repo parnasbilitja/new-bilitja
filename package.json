@@ -28,6 +28,7 @@
     "react-countdown": "^2.3.2",
     "react-devtools": "^4.26.0",
     "react-dom": "^18.0.0",
+    "react-hook-form": "^7.45.1",
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
     "redux-logger": "^3.0.6",

@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import styles from "../../../styles/newTour/AvailableFlightBasedonSelectedTour.module.scss";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { motion } from "framer-motion";
 import {
   MiladiToJalaliConvertor,
   MiladiToJalaliConvertorDec,
   MiladiToJalaliConvertorInc,
   chdPrcGen,
-  currencyExchanger,
+ 
   extBedPrcGen,
   jalaliToMiladiConvertor,
   numberWithCommas,
@@ -16,13 +17,14 @@ import {
 } from "../../Utils/newTour";
 import Image from "next/image";
 import Link from "next/link";
+import PictureModal from "./Components/subComponents/PictureModal";
 
 const AvailableFlightBasedonSelectedTour = () => {
   const router = useRouter();
   const [hotel, setHotel] = useState([]);
   const [selectedRoom, setSelectedRoom] = useState([]);
   const [isOpen, setIsOpen] = useState("");
-
+  const [ismodal, setIsModal] = useState(null);
   ///count every selected room based on their type =>:دوتخته , سه تخته , ...........
   const roomCounter = (roomTypeId) => {
     const rooms = selectedRoom.filter(
@@ -221,6 +223,8 @@ const AvailableFlightBasedonSelectedTour = () => {
           setHotel(res.data?.data);
         });
     }
+
+    console.log(hotel);
   }, [router]);
 
   const twoBedPrcPicker = (rooms, flight) => {
@@ -251,6 +255,10 @@ const AvailableFlightBasedonSelectedTour = () => {
   };
   return (
     <>
+      {ismodal && (
+        <PictureModal url={ismodal} setIsModal={() => setIsModal()} />
+      )}
+
       <div className={styles["container"]}>
         <div className={styles["hotelDet_container"]}>
           <div className={styles["hotelDet"]}>
@@ -286,30 +294,46 @@ const AvailableFlightBasedonSelectedTour = () => {
             <div className={styles["left"]}>
               {hotel?.gallery && (
                 <div className={styles["image_container"]}>
-                  {/* {hotel?.gallery?.map((img) => {
-                  return <Image src={img.url} height={100} width={100} />;
-                })} */}
-
                   <div className={styles["images"]}>
-                    <Image
+                    <motion.img
                       src={hotel?.gallery[2]?.url}
                       height={100}
                       width={100}
+                      whileHover={{ translateY: "-15px" }}
+                      onClick={() => {
+                        setIsModal(hotel?.gallery[2]?.url);
+                      }}
+                      layoutId={hotel?.gallery[2]?.url}
                     />
-                    <Image
+                    <motion.img
                       src={hotel?.gallery[3].url}
                       height={100}
                       width={100}
+                      whileHover={{ translateY: "-15px" }}
+                      onClick={() => {
+                        setIsModal(hotel?.gallery[3]?.url);
+                      }}
+                      layoutId={hotel?.gallery[3]?.url}
                     />
-                    <Image
+                    <motion.img
                       src={hotel?.gallery[4].url}
                       height={100}
                       width={100}
+                      whileHover={{ translateY: "-15px" }}
+                      onClick={() => {
+                        setIsModal(hotel?.gallery[4]?.url);
+                      }}
+                      layoutId={hotel?.gallery[4]?.url}
                     />
-                    <Image
+                    <motion.img
                       src={hotel?.gallery[5].url}
                       height={100}
                       width={100}
+                      whileHover={{ translateY: "-15px" }}
+                      onClick={() => {
+                        setIsModal(hotel?.gallery[5]?.url);
+                      }}
+                      layoutId={hotel?.gallery[5]?.url}
                     />
                   </div>
                   <Image src={hotel?.gallery[1].url} height={100} width={100} />

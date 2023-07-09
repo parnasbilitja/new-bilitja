@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../../styles/newTour/Reserve.module.scss";
 import Image from "next/image";
 import InfoPasserngers from "./Components/InfoPasserngers";
@@ -15,23 +15,26 @@ const Reservation = ({ hotelDet }) => {
     return roomName[0]?.room_type;
   };
 
+  const [reformSelectedRooms, setReformSelectedRooms] = useState([]);
   useEffect(() => {
-    const prc = 0;
+    
+    if (hotelDet?.rooms_selected && hotelDet?.rooms) {
+      const newSelectedRooms = [];
+      hotelDet?.rooms_selected?.map((roomselected) => {
+        hotelDet?.rooms?.map((room) => {
+          if (room.id === roomselected.room_id) {
+            newSelectedRooms.push({
+              ...roomselected,
+              room_type_id: room.room_type_id,
+            });
+          }
+        });
+      });
 
-    hotelDet?.rooms_selected?.map((room) => {
-      for (let i = 0; i < room.chd_count; i++) {
-        return (prc += chdPrcGen(
-          hotelDet?.rooms,
-          hotelDet?.flight,
-          room?.room_id
-        ));
-      }
-
-      return prc;
-    });
-
-    console.log(prc);
-  }, []);
+      setReformSelectedRooms(newSelectedRooms);
+    }
+  
+  }, [hotelDet?.rooms_selected]);
 
   return (
     <div className={styles["p-body"]}>
@@ -40,22 +43,42 @@ const Reservation = ({ hotelDet }) => {
           <div className={styles["box-fix-user-reservation"]}>
             <div className={styles["detail-box-fix-user-reservation"]}>
               <div className={styles["p-detail-reservation"]}>
-                <div className={styles["p-price"]}>
-                  <span>مبلغ قابل پرداخت:</span>
-                  <div className={styles["price"]}>
-                    <strong>2,000,000</strong>
-                    <small>تومان</small>
+                <div className={styles["priceDet"]}>
+                  <p>
+                    مبلغ کل: ...........................<span>2000</span> تومان
+                  </p>
+                  <p>
+                    {" "}
+                    اعتبار کیف پول شما: ...........................
+                    <span>1000</span> تومان
+                  </p>
+                  <p>
+                    مبلغ قابل پرداخت: ...........................
+                    <span>1000</span> تومان
+                  </p>
+                </div>
+                <div className={styles["paymentoption"]}>
+                  <div className={styles["payment_container"]}>
+                    <div className={styles["payment"]}>
+                      <input type="checkbox" />
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/L_O_G_O-new_color-01.jpg" />
+                    </div>
                   </div>
                 </div>
-                <div className={styles["count-p"]}>
-                  <div className={styles["total"]}>
-                    <span>تعداد کل(نفرات) : 2</span>
-                  </div>
-                  <div className={styles["room"]}>
-                    <span>تعداد اتاق انتخابی : 3</span>
+                <div className={styles["finalprice"]}>
+                  <div className={styles["totalprice_container"]}>
+                    <p>مبلغ قابل پرداخت:</p>
+
+                    <p>
+                      <span>1200000</span>
+                      تومان
+                    </p>
                   </div>
                 </div>
-                <button className="btn-base btn-box-fix">پرداخت آنلاین</button>
+                <div className={styles["paymentbtn"]}>
+                  <button>پرداخت با کارت شتاب</button>
+                  <p>انصراف از خرید</p>
+                </div>
               </div>
             </div>
           </div>
@@ -237,13 +260,18 @@ const Reservation = ({ hotelDet }) => {
             </div>
 
             <h2 style={{ fontSize: "1.5rem" }}>اطلاعات مسافران</h2>
-            {hotelDet?.rooms_selected?.map((room) => (
+            <form>
+            {reformSelectedRooms?.map((room) => (
               <InfoPasserngers
                 room={room}
-                // roomDets={hotelDet?.rooms_selected}
+                hotelDets={hotelDet}
                 roomName={roomNameChecker(room.room_id)}
+                room_type_id={room.room_type_id}
+                newSelectedRooms={reformSelectedRooms}
               />
             ))}
+
+            </form>
 
             <div className={styles["rules"]}>
               <p>

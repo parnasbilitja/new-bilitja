@@ -19,10 +19,10 @@ $black:#00001f;
               bottom: 0;
               right: 0;
               width: 100%;
-              height: 100px;
+              height: 150px;
               background: white;
               z-index: 100;
-              border-top: 2px solid white;
+              
               margin-top: 2rem;
 
               .detail-box-fix-user-reservation {
@@ -30,62 +30,153 @@ $black:#00001f;
                 margin: 0 auto;
 
                 .p-detail-reservation {
-                  display: flex;
-                  align-items: center;
-                  justify-content: space-between;
-                  height: 100px;
+                  display: grid;
+                  grid-template-columns: 1fr 1fr 1fr 1fr;
+                 
+                  background-color: white;
+                  height: 100%;
+                  padding: .5rem 1rem .5rem 1rem;
+                  .priceDet{
+                    padding: .5rem;
+                    border-left: 1px dashed black;
+                    p{
+                     font-size: .9rem;
 
-                  .p-price {
-                      display: flex;
-                      align-items: center;
-                    span {
-                      font-weight: 600;
+                      span{
+                        font-weight: 900;
+                        font-size: 1.125rem;
+                      }
                     }
                   }
+                  .paymentoption{
+                     padding: 1rem;
+                     border-left: 1px dashed black;
+                     
+                   height: 150px;
 
-                  .price {
+                     .payment_container{
+                      height: 100%;
+                      display: flex;
+                     justify-content: center;
+                     align-items: center;
+                       .payment{
+                          border: 1px solid #e7e7e7;
+                          border-radius: 5px;
+                          padding: 1rem;
+                         width: 120px;
+                         height: 60px;
+                         display: flex;
+                         img{
+                           width: 100%;
+                           height: 100%;
+                           object-fit: cover;
+                         }
+                       }
+                     }
+                  }
+
+                  .finalprice{
                     display: flex;
                     align-items: center;
-                    margin-right: 6px;
+                    justify-content: center;
+                     border-left: 1px dashed black;
+                    .totalprice_container{
+                      width: 80%;
+                      padding: .5rem;
+                         border: 1px solid #e7e7e7;
+                         display: flex;
+                         flex-direction: column;
+                         justify-content: center;
+                         align-items: center;
+                         p{
+                          font-size: .8rem;
+                          margin: 0;
+                          span{
+                            font-weight: bolder;
+                            color: #e20000;
+                            font-size: 1rem;
+                            margin-left: .2rem;
+                          }
+                         }
 
-                    strong {
-                      color:orange;
-                      font-size: 20px;
-                      font-weight: 600;
-                    }
+                       }
 
-                    small {
-                      font-size: 14px;
-                      margin-right: 3px;
-                      color:orange;
-                    }
                   }
 
-                  .count-p {
+                  .paymentbtn{
                     display: flex;
                     flex-direction: column;
-                    align-items: flex-start;
-
-                    .total {
-                      span {
-                        font-weight: 500;
-                        color:orange;
-                      }
+                    justify-content: center;
+                    align-items: center;
+                    button{
+                      padding: .5rem;
+                      margin-bottom: .2rem;
+                      width: 150px;
+                      height: 75px;
+                      border-radius: 10px;
+                      background-color: #069e2c;
+                      font-size: .9rem;
+                      font-weight: 900;
+                      color: white;
                     }
-
-                    .room {
-                      margin-top: 1rem;
-
-                      span {
-                        font-weight: 500;
-                        color:orange;
-                      }
+                    p{
+                       color: #e20000;
+                       border-bottom: 1px dashed #e20000;
+                       cursor: pointer;
                     }
                   }
 
-                  .btn-box-fix {
-                    width: 150px;
-                  }
+                  // .p-price {
+                  //     display: flex;
+                  //     align-items: center;
+                  //   span {
+                  //     font-weight: 600;
+                  //   }
+                  // }
+
+                  // .price {
+                  //   display: flex;
+                  //   align-items: center;
+                  //   margin-right: 6px;
+
+                  //   strong {
+                  //     color:orange;
+                  //     font-size: 20px;
+                  //     font-weight: 600;
+                  //   }
+
+                  //   small {
+                  //     font-size: 14px;
+                  //     margin-right: 3px;
+                  //     color:orange;
+                  //   }
+                  // }
+
+                  // .count-p {
+                  //   display: flex;
+                  //   flex-direction: column;
+                  //   align-items: flex-start;
+
+                  //   .total {
+                  //     span {
+                  //       font-weight: 500;
+                  //       color:orange;
+                  //     }
+                  //   }
+
+                  //   .room {
+                  //     margin-top: 1rem;
+
+                  //     span {
+                  //       font-weight: 500;
+                  //       color:orange;
+                  //     }
+                  //   }
+                  // }
+
+                  // .btn-box-fix {
+                  //   width: 150px;
+                  // }
                 }
               }
   }

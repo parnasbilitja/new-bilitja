@@ -1,0 +1,28 @@
+.modal{
+    // display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100000;
+   background: rgba(61, 61, 61, 0.678);
+   cursor: not-allowed;
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_imgContainer{
+        background-color: aquamarine;
+        height: 500px;
+        width: 800px;
+        border-radius: 20px;
+        overflow: hidden;
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+    }
+}
