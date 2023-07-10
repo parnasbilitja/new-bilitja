@@ -95,46 +95,48 @@ export const currencyExchanger = (currency_code, currency) => {
   }
 };
 
-export const PrcController = (room, flight, isExtra, isCheckIn) => {
-  const firstRate =
-    (isExtra ? room.rates[0].extra_price : room.rates[0].price) *
-    currencyExchanger(room.rates[0].currency_code, room.currencies);
-  const lastRate =
-    (isExtra
-      ? room.rates[room.rates.length - 1].extra_price
-      : room.rates[room.rates.length - 1].price) *
-    currencyExchanger(
-      room.rates[room.rates.length - 1].currency_code,
-      room.currencies
-    );
 
-  if (isCheckIn) {
-    if (flight.checkin_tomorrow && flight.checkout_yesterday) {
-      const offerPrice = room.rates[0].offer_price * 2;
-      return (
-        offerPrice *
-        currencyExchanger(room.rates[0].currency_code, room.currencies)
-      );
-    } else if (flight.checkin_tomorrow || flight.checkout_yesterday) {
-      return (
-        room.rates[0].offer_price *
-        currencyExchanger(room.rates[0].currency_code, room.currencies)
-      );
-    } else {
-      return 0;
-    }
-  } else {
-    if (flight.checkin_tomorrow && flight.checkout_yesterday) {
-      return firstRate + lastRate;
-    } else if (flight.checkin_tomorrow && !flight.checkout_yesterday) {
-      return firstRate;
-    } else if (flight.checkout_yesterday && !flight.checkin_tomorrow) {
-      return lastRate;
-    } else {
-      return 0;
-    }
-  }
-};
+
+// export const PrcController = (room, flight, isExtra, isCheckIn) => {
+//   const firstRate =
+//     (isExtra ? room.rates[0].extra_price : room.rates[0].price) *
+//     currencyExchanger(room.rates[0].currency_code, room.currencies);
+//   const lastRate =
+//     (isExtra
+//       ? room.rates[room.rates.length - 1].extra_price
+//       : room.rates[room.rates.length - 1].price) *
+//     currencyExchanger(
+//       room.rates[room.rates.length - 1].currency_code,
+//       room.currencies
+//     );
+
+//   if (isCheckIn) {
+//     if (flight.checkin_tomorrow && flight.checkout_yesterday) {
+//       const offerPrice = room.rates[0].offer_price * 2;
+//       return (
+//         offerPrice *
+//         currencyExchanger(room.rates[0].currency_code, room.currencies)
+//       );
+//     } else if (flight.checkin_tomorrow || flight.checkout_yesterday) {
+//       return (
+//         room.rates[0].offer_price *
+//         currencyExchanger(room.rates[0].currency_code, room.currencies)
+//       );
+//     } else {
+//       return 0;
+//     }
+//   } else {
+//     if (flight.checkin_tomorrow && flight.checkout_yesterday) {
+//       return firstRate + lastRate;
+//     } else if (flight.checkin_tomorrow && !flight.checkout_yesterday) {
+//       return firstRate;
+//     } else if (flight.checkout_yesterday && !flight.checkin_tomorrow) {
+//       return lastRate;
+//     } else {
+//       return 0;
+//     }
+//   }
+// };
 
 ///extbed =تخت اضافه
 export const extBedPrcGen = (rooms, flight, roomTypeId) => {
@@ -147,7 +149,7 @@ export const extBedPrcGen = (rooms, flight, roomTypeId) => {
           currencyExchanger(rate.currency_code, room.currencies));
       });
 
-      price = price - PrcController(room, flight, true);
+      // price = price - PrcController(room, flight, true);
       price += flight.adl_price; //flights=>adl_price
       room.services.map((service) => {
         if (service.airport_id === flight.destination_id) {
@@ -200,7 +202,7 @@ export const chdPrcGen = (rooms, flight, roomTypeId) => {
           rate.price * currencyExchanger(rate.currency_code, room.currencies));
       });
 
-      price -= PrcController(room, flight, false, false);
+      // price -= PrcController(room, flight, false, false);
       price += flight.chd_price; //flights=>adl_price
       room.services.map((service) => {
         if (service.airport_id === flight.destination_id) {
@@ -216,3 +218,7 @@ export const chdPrcGen = (rooms, flight, roomTypeId) => {
 
   return price;
 };
+
+
+
+

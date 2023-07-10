@@ -14,10 +14,19 @@ const Reservation = ({ hotelDet }) => {
     const roomName = hotelDet?.rooms?.filter((room) => room.id === room_id);
     return roomName[0]?.room_type;
   };
+  const [dataq, setDataq] = useState([
+    {
+      passengers: [],
+      room_id: null,
+    },
+  ]);
+
+  useEffect(() => {
+    console.log("dsjfgsjk", dataq);
+  }, [dataq]);
 
   const [reformSelectedRooms, setReformSelectedRooms] = useState([]);
   useEffect(() => {
-    
     if (hotelDet?.rooms_selected && hotelDet?.rooms) {
       const newSelectedRooms = [];
       hotelDet?.rooms_selected?.map((roomselected) => {
@@ -26,6 +35,7 @@ const Reservation = ({ hotelDet }) => {
             newSelectedRooms.push({
               ...roomselected,
               room_type_id: room.room_type_id,
+              id: Math.random() * 100,
             });
           }
         });
@@ -33,7 +43,6 @@ const Reservation = ({ hotelDet }) => {
 
       setReformSelectedRooms(newSelectedRooms);
     }
-  
   }, [hotelDet?.rooms_selected]);
 
   return (
@@ -261,16 +270,17 @@ const Reservation = ({ hotelDet }) => {
 
             <h2 style={{ fontSize: "1.5rem" }}>اطلاعات مسافران</h2>
             <form>
-            {reformSelectedRooms?.map((room) => (
-              <InfoPasserngers
-                room={room}
-                hotelDets={hotelDet}
-                roomName={roomNameChecker(room.room_id)}
-                room_type_id={room.room_type_id}
-                newSelectedRooms={reformSelectedRooms}
-              />
-            ))}
-
+              {reformSelectedRooms?.map((room) => (
+                <InfoPasserngers
+                  room={room}
+                  hotelDets={hotelDet}
+                  roomName={roomNameChecker(room.room_id)}
+                  room_type_id={room.room_type_id}
+                  newSelectedRooms={reformSelectedRooms}
+                  dataq={dataq}
+                  setDataq={setDataq}
+                />
+              ))}
             </form>
 
             <div className={styles["rules"]}>

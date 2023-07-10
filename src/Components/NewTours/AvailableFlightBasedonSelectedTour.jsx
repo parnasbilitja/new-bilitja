@@ -8,7 +8,6 @@ import {
   MiladiToJalaliConvertorDec,
   MiladiToJalaliConvertorInc,
   chdPrcGen,
- 
   extBedPrcGen,
   jalaliToMiladiConvertor,
   numberWithCommas,
@@ -16,7 +15,6 @@ import {
   startBuilder,
 } from "../../Utils/newTour";
 import Image from "next/image";
-import Link from "next/link";
 import PictureModal from "./Components/subComponents/PictureModal";
 
 const AvailableFlightBasedonSelectedTour = () => {
@@ -253,6 +251,43 @@ const AvailableFlightBasedonSelectedTour = () => {
 
     return rooms;
   };
+
+  const picGen = (picsNum) => {
+    const gallary = [];
+    if (picsNum <= 4) {
+      for (let i = 1; i <= picsNum; i++) {
+        gallary.push(
+          <motion.img
+            src={hotel?.gallery[i]?.url}
+            height={100}
+            width={100}
+            whileHover={{ translateY: "-15px" }}
+            onClick={() => {
+              setIsModal(hotel?.gallery[i]?.url);
+            }}
+            layoutId={hotel?.gallery[i]?.url}
+          />
+        );
+      }
+      return gallary;
+    } else {
+      for (let i = 1; i <= 4; i++) {
+        gallary.push(
+          <motion.img
+            src={hotel?.gallery[i]?.url}
+            height={100}
+            width={100}
+            whileHover={{ translateY: "-15px" }}
+            onClick={() => {
+              setIsModal(hotel?.gallery[i]?.url);
+            }}
+            layoutId={hotel?.gallery[i]?.url}
+          />
+        );
+      }
+      return gallary;
+    }
+  };
   return (
     <>
       {ismodal && (
@@ -295,48 +330,11 @@ const AvailableFlightBasedonSelectedTour = () => {
               {hotel?.gallery && (
                 <div className={styles["image_container"]}>
                   <div className={styles["images"]}>
-                    <motion.img
-                      src={hotel?.gallery[2]?.url}
-                      height={100}
-                      width={100}
-                      whileHover={{ translateY: "-15px" }}
-                      onClick={() => {
-                        setIsModal(hotel?.gallery[2]?.url);
-                      }}
-                      layoutId={hotel?.gallery[2]?.url}
-                    />
-                    <motion.img
-                      src={hotel?.gallery[3].url}
-                      height={100}
-                      width={100}
-                      whileHover={{ translateY: "-15px" }}
-                      onClick={() => {
-                        setIsModal(hotel?.gallery[3]?.url);
-                      }}
-                      layoutId={hotel?.gallery[3]?.url}
-                    />
-                    <motion.img
-                      src={hotel?.gallery[4].url}
-                      height={100}
-                      width={100}
-                      whileHover={{ translateY: "-15px" }}
-                      onClick={() => {
-                        setIsModal(hotel?.gallery[4]?.url);
-                      }}
-                      layoutId={hotel?.gallery[4]?.url}
-                    />
-                    <motion.img
-                      src={hotel?.gallery[5].url}
-                      height={100}
-                      width={100}
-                      whileHover={{ translateY: "-15px" }}
-                      onClick={() => {
-                        setIsModal(hotel?.gallery[5]?.url);
-                      }}
-                      layoutId={hotel?.gallery[5]?.url}
-                    />
+                    {picGen(hotel?.gallery.length).map((pic) => {
+                      return pic;
+                    })}
                   </div>
-                  <Image src={hotel?.gallery[1].url} height={100} width={100} />
+                  <Image src={hotel?.gallery[0].url} height={100} width={100} />
                 </div>
               )}
             </div>
