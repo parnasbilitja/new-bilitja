@@ -14,48 +14,59 @@ $black:#00001f;
       padding-bottom: 2rem;
       width: 91.6%;
       .box-fix-user-reservation {
-              
               position: fixed;
-              bottom: 0;
+              bottom: 22px;
               right: 0;
               width: 100%;
-              height: 150px;
-              background: white;
+              height: 120px;
+              background: rgba(255, 255, 255, 0);
               z-index: 100;
-              
-              margin-top: 2rem;
+             
+              display: flex;
+              justify-content: center;
+              align-items: center;
 
               .detail-box-fix-user-reservation {
-                max-width: 1366px;
-                margin: 0 auto;
-
+               width: 91.6%;
                 .p-detail-reservation {
                   display: grid;
+                  border-radius: 20px;
                   grid-template-columns: 1fr 1fr 1fr 1fr;
-                 
                   background-color: white;
-                  height: 100%;
+                 box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+                  border: 1px solid #e0e0e0;
+                  
                   padding: .5rem 1rem .5rem 1rem;
-                  .priceDet{
+                  .priceDet_container{
                     padding: .5rem;
                     border-left: 1px dashed black;
-                    p{
-                     font-size: .9rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .priceDet{
 
-                      span{
-                        font-weight: 900;
-                        font-size: 1.125rem;
+                      p{
+                       font-size: 12px;
+                       margin-bottom: 0;
+  
+                        span{
+                          font-weight: 900;
+                          font-size: 14px;
+                        }
                       }
                     }
                   }
                   .paymentoption{
-                     padding: 1rem;
+                     padding: .5rem;
                      border-left: 1px dashed black;
+                     display: flex;
+                     justify-content: center;
+                     align-items: center;
                      
-                   height: 150px;
+                   height: 100%;
 
                      .payment_container{
-                      height: 100%;
+                      
                       display: flex;
                      justify-content: center;
                      align-items: center;
@@ -82,7 +93,7 @@ $black:#00001f;
                      border-left: 1px dashed black;
                     .totalprice_container{
                       width: 80%;
-                      padding: .5rem;
+                      padding: .4rem;
                          border: 1px solid #e7e7e7;
                          display: flex;
                          flex-direction: column;
@@ -105,22 +116,24 @@ $black:#00001f;
 
                   .paymentbtn{
                     display: flex;
+                    padding-top: .5rem;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
                     button{
                       padding: .5rem;
-                      margin-bottom: .2rem;
+                      margin-bottom: .5rem;
                       width: 150px;
-                      height: 75px;
+                      height: 50px;
                       border-radius: 10px;
                       background-color: #069e2c;
-                      font-size: .9rem;
+                      font-size: .8rem;
                       font-weight: 900;
                       color: white;
                     }
                     p{
                        color: #e20000;
+                       font-size: .8rem;
                        border-bottom: 1px dashed #e20000;
                        cursor: pointer;
                     }

@@ -61,6 +61,7 @@ column-gap: .5rem;
         position: relative;
         display: flex;
         align-items: center;
+       
   
     svg {
       position: absolute;
@@ -105,6 +106,10 @@ column-gap: .5rem;
       }
     }
   }
+   small{
+          color: red;
+          font-size: 0.7rem;
+        }
     }
   }
 }

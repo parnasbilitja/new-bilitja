@@ -1,31 +1,27 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../../styles/newTour/Reserve.module.scss";
-import Image from "next/image";
 import InfoPasserngers from "./Components/InfoPasserngers";
 import {
   MiladiToJalaliConvertor,
   MiladiToJalaliConvertorDec,
   MiladiToJalaliConvertorInc,
-  chdPrcGen,
 } from "../../Utils/newTour";
+import { useForm } from "react-hook-form";
 const Reservation = ({ hotelDet }) => {
-  console.log(hotelDet.rooms_selected);
+  const [dataq, setDataq] = useState([]);
+  const { register, handleSubmit } = useForm();
+  const [reserverData, setReserverData] = useState([]);
+
   const roomNameChecker = (room_id) => {
     const roomName = hotelDet?.rooms?.filter((room) => room.id === room_id);
     return roomName[0]?.room_type;
   };
-  const [dataq, setDataq] = useState([
-    {
-      passengers: [],
-      room_id: null,
-    },
-  ]);
 
   useEffect(() => {
-    console.log("dsjfgsjk", dataq);
-  }, [dataq]);
-
+    console.log("reser", reserverData);
+  }, [reserverData]);
   const [reformSelectedRooms, setReformSelectedRooms] = useState([]);
+
   useEffect(() => {
     if (hotelDet?.rooms_selected && hotelDet?.rooms) {
       const newSelectedRooms = [];
@@ -45,6 +41,9 @@ const Reservation = ({ hotelDet }) => {
     }
   }, [hotelDet?.rooms_selected]);
 
+  const errorHandle = (errorform) => {
+    console.log(errorform);
+  };
   return (
     <div className={styles["p-body"]}>
       <div className={styles["prs-responsive"]}>
@@ -52,19 +51,22 @@ const Reservation = ({ hotelDet }) => {
           <div className={styles["box-fix-user-reservation"]}>
             <div className={styles["detail-box-fix-user-reservation"]}>
               <div className={styles["p-detail-reservation"]}>
-                <div className={styles["priceDet"]}>
-                  <p>
-                    مبلغ کل: ...........................<span>2000</span> تومان
-                  </p>
-                  <p>
-                    {" "}
-                    اعتبار کیف پول شما: ...........................
-                    <span>1000</span> تومان
-                  </p>
-                  <p>
-                    مبلغ قابل پرداخت: ...........................
-                    <span>1000</span> تومان
-                  </p>
+                <div className={styles["priceDet_container"]}>
+                  <div className={styles["priceDet"]}>
+                    <p>
+                      مبلغ کل: ...........................<span>2000</span>{" "}
+                      تومان
+                    </p>
+                    <p>
+                      {" "}
+                      اعتبار کیف پول شما: ...........................
+                      <span>1000</span> تومان
+                    </p>
+                    <p>
+                      مبلغ قابل پرداخت: ...........................
+                      <span>1000</span> تومان
+                    </p>
+                  </div>
                 </div>
                 <div className={styles["paymentoption"]}>
                   <div className={styles["payment_container"]}>
@@ -85,7 +87,14 @@ const Reservation = ({ hotelDet }) => {
                   </div>
                 </div>
                 <div className={styles["paymentbtn"]}>
-                  <button>پرداخت با کارت شتاب</button>
+                  <button
+                    onClick={() => {
+                      let flightId = hotelDet.flight.flight.id;
+                      let hotelId = hotelDet.hotel.id;
+                    }}
+                  >
+                    پرداخت با کارت شتاب
+                  </button>
                   <p>انصراف از خرید</p>
                 </div>
               </div>
@@ -250,23 +259,44 @@ const Reservation = ({ hotelDet }) => {
               </span>
             </h2>
 
-            <div className={styles["set-info-supervisor"]}>
+            <form
+              className={styles["set-info-supervisor"]}
+              onChange={handleSubmit((data) => {
+                setReserverData(data);
+              })}
+            >
               <div className={styles["item-form"]}>
                 <div className={styles["inp-form"]}>
-                  <input type="text" placeholder="نام و نام خانوادگی" />
+                  <input
+                    type="text"
+                    placeholder="نام و نام خانوادگی"
+                    {...register("reserver_full_name",
+                    {
+                      required:'family is req'
+                    }
+                    )}
+                  />
                 </div>
               </div>
               <div className={styles["item-form"]}>
                 <div className={styles["inp-form"]}>
-                  <input type="text" placeholder="کد ملی" />
+                  <input
+                    type="text"
+                    placeholder="کد ملی"
+                    {...register("reserver_id_code")}
+                  />
                 </div>
               </div>
               <div className={styles["item-form"]}>
                 <div className={styles["inp-form"]}>
-                  <input type="text" placeholder="شماره همراه" />
+                  <input
+                    type="text"
+                    placeholder="شماره همراه"
+                    {...register("reserver_phone")}
+                  />
                 </div>
               </div>
-            </div>
+            </form>
 
             <h2 style={{ fontSize: "1.5rem" }}>اطلاعات مسافران</h2>
             <form>
@@ -279,6 +309,7 @@ const Reservation = ({ hotelDet }) => {
                   newSelectedRooms={reformSelectedRooms}
                   dataq={dataq}
                   setDataq={setDataq}
+                  errorHandle={errorHandle}
                 />
               ))}
             </form>

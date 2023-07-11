@@ -6,6 +6,11 @@ import {
   numberWithCommas,
 } from "../../../Utils/newTour";
 import { useForm } from "react-hook-form";
+import PopUp from "../../../sources/component/PopUp.component";
+import BirthDayParentCl from "../../../sources/calendar/BirthDayParentCl";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 const InfoPasserngers = ({
   room,
   roomName,
@@ -14,34 +19,48 @@ const InfoPasserngers = ({
   dataq,
   setDataq,
 }) => {
+  const formDataPicker = (data, id, type, roomid, roomTypeid) => {
+    const findroom = dataq.filter((data) => data.id === roomid);
+    let newrooms = [];
+    if (findroom.length > 0) {
+      const filteredrooms = dataq.filter((data) => data.id !== roomid);
+      const findpassenger = findroom[0].passengers.filter(
+        (passenger) => passenger.id === `${id}${type}`
+      );
+      let newpassengerArr = [];
+      if (findpassenger) {
+        const filteredpassengers = findroom[0].passengers.filter(
+          (passenger) => passenger.id !== `${id}${type}`
+        );
+        newpassengerArr.push(...filteredpassengers, {
+          bed_type: type === "ext" ? "extra" : "normal",
+          type,
+          id: `${id}${type}`,
+          ...data,
+        });
+      } else {
+        newpassengerArr.push(...findroom.passengers, {
+          bed_type: type === "ext" ? "extra" : "normal",
+          type,
+          id: `${id}${type}`,
+          ...data,
+        });
+      }
 
-  const formDataPicker = (data, id, type, roomid) => {
-    
-    const find = dataq.passengers.filter((data) => data.id === `${id}${type}`);
-    if (find) {
-      setDataq(dataq.passengers.filter((data) => data.id !== `${id}${type}`));
-      setDataq((prev) => [
-        ...prev,
-        {
-          passengers: [
-            ...prev.passengers,
-            {
-              bed_type: type === "ext" ? "extra" : "normal",
-              type,
-              id: `${id}${type}`,
-              ...data,
-            },
-          ],
-          room_id: room.room_id,
-          id: room.id,
-        },
-      ]);
+      newrooms.push(...filteredrooms, {
+        id: roomid,
+        room_id: roomTypeid,
+        passengers: [...newpassengerArr],
+      });
+
+      setDataq(newrooms);
     } else {
       setDataq((prev) => [
         ...prev,
         {
+          id: roomid,
+          room_id: roomTypeid,
           passengers: [
-            ...prev.passengers,
             {
               bed_type: type === "ext" ? "extra" : "normal",
               type,
@@ -49,8 +68,6 @@ const InfoPasserngers = ({
               ...data,
             },
           ],
-          room_id: room.room_id,
-          id: room.id,
         },
       ]);
     }
@@ -68,7 +85,7 @@ const InfoPasserngers = ({
           key={index}
           className={styles["form-container"]}
           onChange={form.handleSubmit((data) => {
-            formDataPicker(data, index, type, room.id);
+            formDataPicker(data, index, type, room.id, room.room_id);
           })}
         >
           <div className={styles["item-form"]}>
@@ -84,21 +101,35 @@ const InfoPasserngers = ({
           <div className={styles["item-form"]}>
             <div className={styles["inp-form"]}>
               <input
-                {...form.register("name")}
+                {...form.register("name", {
+                  onBlur: (e) => console.log(e),
+                })}
                 type="text"
                 placeholder="نام (لاتین)"
+                name="latin-name"
               />
             </div>
+            {form.formState.errors.name?.message && (
+              <small>{form.formState.errors.name.message}</small>
+            )}
           </div>
 
           <div className={styles["item-form"]}>
             <div className={styles["inp-form"]}>
               <input
-                {...form.register("family")}
+                {...form.register(
+                  "family"
+                  // {
+                  //   required: ".لطفا نام خانوادگی را به لاتین وارد کنید",
+                  // }
+                )}
                 type="text"
                 placeholder="نام خانوادگی (لاتین)"
               />
             </div>
+            {form.formState.errors.family?.message && (
+              <small>{form.formState.errors.family.message}</small>
+            )}
           </div>
 
           <div className={styles["item-form"]}>
@@ -115,17 +146,30 @@ const InfoPasserngers = ({
           <div className={styles["item-form"]}>
             <div className={styles["inp-form"]}>
               <input
-                {...form.register("id_code")}
+                {...form.register(
+                  "id_code"
+                  // {
+                  //   required: "لطفا کدملی را وارد کنید",
+                  // }
+                )}
                 type="text"
                 placeholder="کدملی"
               />
             </div>
+            {form.formState.errors.id_code?.message && (
+              <small>{form.formState.errors.id_code.message}</small>
+            )}
           </div>
           {/* "item-form w-15" */}
           <div className={styles["item-form"]}>
             <div className={styles["inp-form"]}>
               <input
-                {...form.register("birth_day")}
+                {...form.register(
+                  "birth_day"
+                  //  {
+                  //   required: "لطفا تاریخ تولد وارد کنید",
+                  // }
+                )}
                 type="text"
                 placeholder="تاریخ تولد"
               />
@@ -135,7 +179,12 @@ const InfoPasserngers = ({
           <div className={styles["item-form"]}>
             <div className={styles["inp-form"]}>
               <input
-                {...form.register("passport")}
+                {...form.register(
+                  "passport"
+                  // {
+                  //   required: "لطفا شماره پاسپورت را وارد کنید",
+                  // }
+                )}
                 type="text"
                 placeholder="شماره پاسپورت"
               />
@@ -146,11 +195,32 @@ const InfoPasserngers = ({
             <div className={styles["inp-form"]}>
               <input
                 type="text"
-                {...form.register("expired_passport")}
+                {...form.register(
+                  "expired_passport"
+                  //  {
+                  //   required: "لطفا تاریخ انقضا پاسپورت را وارد کنید",
+                  // }
+                )}
                 placeholder="تاریخ انقضا پاسپورت"
               />
             </div>
           </div>
+
+          {/* <PopUp opened={state.open} closePopUp={managePopUpBirthdayCalendar}>
+            <div style={{ padding: 15 }} class="text-center">
+              <button className="py-2 px-4" onClick={() => setCalend(!calend)}>
+                {calend ? "تقویم میلادی" : "تقویم شمسی"}
+              </button>
+              <BirthDayParentCl
+                calend={calend}
+                typePassenger={props.type}
+                setBirthdayb={(value) => {
+                  props.fillPassengersData("birthday", props.id, value);
+                }}
+                closePopUpCalendar={managePopUpBirthdayCalendar}
+              />
+            </div>
+          </PopUp> */}
         </form>
       );
     });

@@ -255,7 +255,7 @@ const AvailableFlightBasedonSelectedTour = () => {
   const picGen = (picsNum) => {
     const gallary = [];
     if (picsNum <= 4) {
-      for (let i = 1; i <= picsNum; i++) {
+      for (let i = 2; i <= picsNum; i++) {
         gallary.push(
           <motion.img
             src={hotel?.gallery[i]?.url}
@@ -271,7 +271,7 @@ const AvailableFlightBasedonSelectedTour = () => {
       }
       return gallary;
     } else {
-      for (let i = 1; i <= 4; i++) {
+      for (let i = 2; i <= 5; i++) {
         gallary.push(
           <motion.img
             src={hotel?.gallery[i]?.url}
@@ -334,7 +334,7 @@ const AvailableFlightBasedonSelectedTour = () => {
                       return pic;
                     })}
                   </div>
-                  <Image src={hotel?.gallery[0].url} height={100} width={100} />
+                  <Image src={hotel?.gallery[1].url} height={100} width={100} />
                 </div>
               )}
             </div>
@@ -562,6 +562,7 @@ const AvailableFlightBasedonSelectedTour = () => {
                           <p>تعداد بزرگسال</p>
                           <p>{room.Adl_capacity}</p>
                         </div>
+
                         <div className={styles["roomcountDet_bedcount"]}>
                           <p>تعداد تخت اضافه</p>
                           <p>
@@ -574,6 +575,7 @@ const AvailableFlightBasedonSelectedTour = () => {
                             )}
                             تومان
                           </p>
+
                           <div
                             className={styles["roomcountDet_bedcount_count"]}
                           >
