@@ -4,12 +4,11 @@ import {
   chdPrcGen,
   extBedPrcGen,
   numberWithCommas,
+  roomPrcGen,
 } from "../../../Utils/newTour";
 import { useForm } from "react-hook-form";
 import PopUp from "../../../sources/component/PopUp.component";
 import BirthDayParentCl from "../../../sources/calendar/BirthDayParentCl";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 
 const InfoPasserngers = ({
   room,
@@ -19,6 +18,51 @@ const InfoPasserngers = ({
   dataq,
   setDataq,
 }) => {
+  const [chdPrc, setChdPrc] = useState("");
+  const [adlPrc, setAdlPrc] = useState("");
+  const [infPrc, setinfPrc] = useState("");
+  const [extPrc, setextPrc] = useState("");
+
+  useEffect(() => {
+    setChdPrc(chdPrcGen(hotelDets?.rooms, hotelDets?.flight, room_type_id));
+    setextPrc(extBedPrcGen(hotelDets?.rooms, hotelDets?.flight, room_type_id));
+    setinfPrc(hotelDets.flight.inf_price);
+    setAdlPrc(roomprcFinder(hotelDets.rooms, room));
+
+    
+  }, [hotelDets, room_type_id]);
+
+  const [err, setErr] = useState({
+    name: "",
+    family: "",
+    id_code: "",
+    birth_day: "",
+    passport: "",
+    expired_passport: "",
+  });
+
+  const prcTypeBase = (type) => {
+    switch (type) {
+      case "adl":
+        return adlPrc;
+
+      case "chd":
+        return chdPrc;
+      case "inf":
+        return infPrc;
+      case "ext":
+        return extPrc;
+
+      default:
+        0;
+        break;
+    }
+  };
+  const roomprcFinder = (rooms, selectedroom) => {
+    const foundRoom = rooms.filter((room) => room.id === selectedroom.room_id);
+    return roomPrcGen(...foundRoom, hotelDets.flight);
+  };
+
   const formDataPicker = (data, id, type, roomid, roomTypeid) => {
     const findroom = dataq.filter((data) => data.id === roomid);
     let newrooms = [];
@@ -37,6 +81,7 @@ const InfoPasserngers = ({
           type,
           id: `${id}${type}`,
           ...data,
+          price: prcTypeBase(type),
         });
       } else {
         newpassengerArr.push(...findroom.passengers, {
@@ -44,6 +89,7 @@ const InfoPasserngers = ({
           type,
           id: `${id}${type}`,
           ...data,
+          price: prcTypeBase(type),
         });
       }
 
@@ -66,6 +112,7 @@ const InfoPasserngers = ({
               type,
               id: `${id}${type}`,
               ...data,
+              price: prcTypeBase(type),
             },
           ],
         },
@@ -78,6 +125,116 @@ const InfoPasserngers = ({
     return forms;
   };
 
+  const errHandler = (e, type, id) => {
+    if (e.target.name === "name" + type + id && e.target.value === "") {
+      setErr((prev) => ({
+        ...prev,
+        name: {
+          nameerr: "لطفا نام",
+          id: e.target.name,
+        },
+      }));
+    } else if (e.target.value !== "") {
+      setErr((prev) => ({
+        ...prev,
+        name: {
+          nameerr: null,
+          id: null,
+        },
+      }));
+    }
+    if (e.target.name === "family" + type + id && e.target.value === "") {
+      setErr((prev) => ({
+        ...prev,
+        family: {
+          familyerr: "خانوادگی لطفا نام",
+          id: e.target.name,
+        },
+      }));
+    } else if (e.target.value !== "") {
+      setErr((prev) => ({
+        ...prev,
+        family: {
+          familyerr: null,
+          id: null,
+        },
+      }));
+    }
+
+    if (e.target.name === "id_code" + type + id && e.target.value === "") {
+      setErr((prev) => ({
+        ...prev,
+        id_code: {
+          id_codeerr: " لطفا کدملی",
+          id: e.target.name,
+        },
+      }));
+    } else if (e.target.value !== "") {
+      setErr((prev) => ({
+        ...prev,
+        id_code: {
+          id_codeerr: null,
+          id: null,
+        },
+      }));
+    }
+    if (e.target.name === "birth_day" + type + id && e.target.value === "") {
+      setErr((prev) => ({
+        ...prev,
+        birth_day: {
+          birth_dayerr: " لطفا تاریخ تولد",
+          id: e.target.name,
+        },
+      }));
+    } else if (e.target.value !== "") {
+      setErr((prev) => ({
+        ...prev,
+        birth_day: {
+          birth_dayerr: null,
+          id: null,
+        },
+      }));
+    }
+    if (e.target.name === "passport" + type + id && e.target.value === "") {
+      setErr((prev) => ({
+        ...prev,
+        passport: {
+          passporterr: " لطفا شماره پاسپورت",
+          id: e.target.name,
+        },
+      }));
+    } else if (e.target.value !== "") {
+      setErr((prev) => ({
+        ...prev,
+        passport: {
+          passporterr: null,
+          id: null,
+        },
+      }));
+    }
+
+    if (
+      e.target.name === "expired_passport" + type + id &&
+      e.target.value === ""
+    ) {
+      setErr((prev) => ({
+        ...prev,
+        expired_passport: {
+          expired_passporterr: " لطفا شماره پاسپورت",
+          id: e.target.name,
+        },
+      }));
+    } else if (e.target.value !== "") {
+      setErr((prev) => ({
+        ...prev,
+        expired_passport: {
+          expired_passporterr: null,
+          id: null,
+        },
+      }));
+    }
+  };
+
   const formBuilder = (count, type) => {
     return useformGen(count).map((form, index) => {
       return (
@@ -86,6 +243,7 @@ const InfoPasserngers = ({
           className={styles["form-container"]}
           onChange={form.handleSubmit((data) => {
             formDataPicker(data, index, type, room.id, room.room_id);
+            // console.log(data);
           })}
         >
           <div className={styles["item-form"]}>
@@ -101,35 +259,42 @@ const InfoPasserngers = ({
           <div className={styles["item-form"]}>
             <div className={styles["inp-form"]}>
               <input
-                {...form.register("name", {
-                  onBlur: (e) => console.log(e),
-                })}
+                {...form.register("name")}
                 type="text"
                 placeholder="نام (لاتین)"
-                name="latin-name"
+                // name={`name${type}${index}`}
+                // onChange={(e) => {
+                //   errHandler(e, type, index);
+                // }}
+                // onFocus={(e) => {
+                //   errHandler(e, type, index);
+                // }}
               />
             </div>
-            {form.formState.errors.name?.message && (
-              <small>{form.formState.errors.name.message}</small>
-            )}
+            {err.name.id === `name${type}${index}` && err.name.nameerr ? (
+              <small>{err.name.nameerr}</small>
+            ) : null}
           </div>
 
           <div className={styles["item-form"]}>
             <div className={styles["inp-form"]}>
               <input
-                {...form.register(
-                  "family"
-                  // {
-                  //   required: ".لطفا نام خانوادگی را به لاتین وارد کنید",
-                  // }
-                )}
+                {...form.register("family")}
                 type="text"
                 placeholder="نام خانوادگی (لاتین)"
+                // name={`family${type}${index}`}
+                // onChange={(e) => {
+                //   errHandler(e, type, index);
+                // }}
+                // onFocus={(e) => {
+                //   errHandler(e, type, index);
+                // }}
               />
             </div>
-            {form.formState.errors.family?.message && (
-              <small>{form.formState.errors.family.message}</small>
-            )}
+            {err.family.id === `family${type}${index}` &&
+            err.family.familyerr ? (
+              <small>{err.family.familyerr}</small>
+            ) : null}
           </div>
 
           <div className={styles["item-form"]}>
@@ -146,64 +311,85 @@ const InfoPasserngers = ({
           <div className={styles["item-form"]}>
             <div className={styles["inp-form"]}>
               <input
-                {...form.register(
-                  "id_code"
-                  // {
-                  //   required: "لطفا کدملی را وارد کنید",
-                  // }
-                )}
+                {...form.register("id_code")}
                 type="text"
                 placeholder="کدملی"
+                // name={`id_code${type}${index}`}
+                // onChange={(e) => {
+                //   errHandler(e, type, index);
+                // }}
+                // onFocus={(e) => {
+                //   errHandler(e, type, index);
+                // }}
               />
             </div>
-            {form.formState.errors.id_code?.message && (
-              <small>{form.formState.errors.id_code.message}</small>
-            )}
+            {err.id_code.id === `id_code${type}${index}` &&
+            err.id_code.id_codeerr ? (
+              <small>{err.id_code.id_codeerr}</small>
+            ) : null}
           </div>
           {/* "item-form w-15" */}
           <div className={styles["item-form"]}>
             <div className={styles["inp-form"]}>
               <input
-                {...form.register(
-                  "birth_day"
-                  //  {
-                  //   required: "لطفا تاریخ تولد وارد کنید",
-                  // }
-                )}
+                {...form.register("birth_day")}
+                // name={`birth_day${type}${index}`}
+                // onChange={(e) => {
+                //   errHandler(e, type, index);
+                // }}
+                // onFocus={(e) => {
+                //   errHandler(e, type, index);
+                // }}
                 type="text"
                 placeholder="تاریخ تولد"
               />
             </div>
+            {err.birth_day.id === `birth_day${type}${index}` &&
+            err.birth_day.birth_dayerr ? (
+              <small>{err.birth_day.birth_dayerr}</small>
+            ) : null}
           </div>
           {/* "item-form w-10" */}
           <div className={styles["item-form"]}>
             <div className={styles["inp-form"]}>
               <input
-                {...form.register(
-                  "passport"
-                  // {
-                  //   required: "لطفا شماره پاسپورت را وارد کنید",
-                  // }
-                )}
+                {...form.register("passport")}
+                // name={`passport${type}${index}`}
+                // onChange={(e) => {
+                //   errHandler(e, type, index);
+                // }}
+                // onFocus={(e) => {
+                //   errHandler(e, type, index);
+                // }}
                 type="text"
                 placeholder="شماره پاسپورت"
               />
             </div>
+            {err.passport.id === `passport${type}${index}` &&
+            err.passport.passporterr ? (
+              <small>{err.passport.passporterr}</small>
+            ) : null}
           </div>
           {/* "item-form w-15" */}
           <div className={styles["item-form"]}>
             <div className={styles["inp-form"]}>
               <input
                 type="text"
-                {...form.register(
-                  "expired_passport"
-                  //  {
-                  //   required: "لطفا تاریخ انقضا پاسپورت را وارد کنید",
-                  // }
-                )}
+                {...form.register("expired_passport")}
                 placeholder="تاریخ انقضا پاسپورت"
+                // name={`expired_passport${type}${index}`}
+                // onChange={(e) => {
+                //   errHandler(e, type, index);
+                // }}
+                // onFocus={(e) => {
+                //   errHandler(e, type, index);
+                // }}
               />
             </div>
+            {err.expired_passport.id === `expired_passport${type}${index}` &&
+            err.expired_passport.expired_passporterr ? (
+              <small>{err.expired_passport.expired_passporterr}</small>
+            ) : null}
           </div>
 
           {/* <PopUp opened={state.open} closePopUp={managePopUpBirthdayCalendar}>
@@ -250,7 +436,7 @@ const InfoPasserngers = ({
                   <div className={styles["personDet"]}>
                     <label className={styles["label-fix-gray"]}>بزرگسال</label>
                     <div className={styles["price-fix"]}>
-                      <strong>۲۰۰۰</strong>
+                      <strong>{numberWithCommas(adlPrc)}</strong>
                       <small>تومان</small>
                     </div>
                   </div>
@@ -263,15 +449,7 @@ const InfoPasserngers = ({
                   <div className={styles["personDet"]}>
                     <label className={styles["label-fix-gray"]}>کودک</label>
                     <div className={styles["price-fix"]}>
-                      <strong>
-                        {numberWithCommas(
-                          chdPrcGen(
-                            hotelDets?.rooms,
-                            hotelDets?.flight,
-                            room_type_id
-                          )
-                        )}
-                      </strong>
+                      <strong>{numberWithCommas(chdPrc)}</strong>
                       <small>تومان</small>
                     </div>
                   </div>
@@ -284,9 +462,7 @@ const InfoPasserngers = ({
                   <div className={styles["personDet"]}>
                     <label className={styles["label-fix-gray"]}>نوزاد</label>
                     <div className={styles["price-fix"]}>
-                      <strong>
-                        {numberWithCommas(hotelDets.flight.inf_price)}
-                      </strong>
+                      <strong>{numberWithCommas(infPrc)}</strong>
                       <small>تومان</small>
                     </div>
                   </div>
@@ -301,15 +477,7 @@ const InfoPasserngers = ({
                       تخت اضافه
                     </label>
                     <div className={styles["price-fix"]}>
-                      <strong>
-                        {numberWithCommas(
-                          extBedPrcGen(
-                            hotelDets?.rooms,
-                            hotelDets?.flight,
-                            room_type_id
-                          )
-                        )}
-                      </strong>
+                      <strong>{numberWithCommas(extPrc)}</strong>
                       <small>تومان</small>
                     </div>
                   </div>

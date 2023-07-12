@@ -95,8 +95,6 @@ export const currencyExchanger = (currency_code, currency) => {
   }
 };
 
-
-
 // export const PrcController = (room, flight, isExtra, isCheckIn) => {
 //   const firstRate =
 //     (isExtra ? room.rates[0].extra_price : room.rates[0].price) *
@@ -168,7 +166,7 @@ export const extBedPrcGen = (rooms, flight, roomTypeId) => {
 
 export const roomPrcGen = (room, flight) => {
   let price = 0;
-  let isCheckIn = room.rates[0].checkin_base;
+  let isCheckIn = room.rates[0]?.checkin_base;
   if (isCheckIn) {
     price +=
       room.rates[0].offer_price *
@@ -218,7 +216,5 @@ export const chdPrcGen = (rooms, flight, roomTypeId) => {
 
   return price;
 };
-
-
 
 

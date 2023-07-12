@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm, useFieldArray } from "react-hook-form";
-
+import styles from "../../styles/newTour/Reserve.module.scss";
 function Pouya() {
   const { register, control, handleSubmit } = useForm();
   const { fields, append } = useFieldArray({
@@ -8,24 +8,6 @@ function Pouya() {
     name: "test",
   });
 
-  return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
-      <ul>
-        {fields.map((item, index) => (
-          <li key={item.id}>
-            <input {...register(`test.${index}.firstName`)} />
-            <input {...register(`test.${index}.lastName`)} />
-          </li>
-        ))}
-      </ul>
-      <button
-        type="button"
-        onClick={() => append({ firstName: "bill", lastName: "luo" })}
-      >
-        append
-      </button>
-      <input type="submit" />
-    </form>
-  );
+  return <div className={styles["shimmer"]}>sd</div>;
 }
 export default Pouya;

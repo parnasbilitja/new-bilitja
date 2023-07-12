@@ -6,6 +6,7 @@ import axios from "axios";
 const ReservedHotel = () => {
   const router = useRouter();
   const [hotelDet, setHoteldet] = useState([]);
+  const [stayCount, setStayCount] = useState();
   useEffect(() => {
     console.log(router.query);
     if (router.query.rooms && router.query.reservedHotel) {
@@ -14,7 +15,7 @@ const ReservedHotel = () => {
       const flight_id = +router.query.reservedHotel[1];
       const hotel_id = +router.query.reservedHotel[0];
       const stayCount = router.query.stayCount;
-
+      setStayCount(stayCount);
       axios
         .post(
           "https://hotelobilit-api.iran.liara.run/api/v1/reserves/checking",
@@ -36,7 +37,7 @@ const ReservedHotel = () => {
     <>
       <NavHandler />
       <div style={{ paddingTop: "7rem" }}>
-        <Reservation hotelDet={hotelDet} />
+        <Reservation hotelDet={hotelDet} stayCount={stayCount} />
       </div>
     </>
   );

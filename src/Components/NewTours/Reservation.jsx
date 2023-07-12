@@ -7,7 +7,9 @@ import {
   MiladiToJalaliConvertorInc,
 } from "../../Utils/newTour";
 import { useForm } from "react-hook-form";
-const Reservation = ({ hotelDet }) => {
+import axios from "axios";
+
+const Reservation = ({ hotelDet, stayCount }) => {
   const [dataq, setDataq] = useState([]);
   const { register, handleSubmit } = useForm();
   const [reserverData, setReserverData] = useState([]);
@@ -17,13 +19,20 @@ const Reservation = ({ hotelDet }) => {
     return roomName[0]?.room_type;
   };
 
-  useEffect(() => {
-    console.log("reser", reserverData);
-  }, [reserverData]);
-  const [reformSelectedRooms, setReformSelectedRooms] = useState([]);
+  // const ghjds=()=>{
+  //   hotelDet.rooms_selected.map(selectedroom =>{
+  //     hotelDet.rooms.map(room){
 
+  //     };
+  //   }); 
+  // }
+
+  useEffect(() => {}, []);
+  const [reformSelectedRooms, setReformSelectedRooms] = useState([]);
+  
   useEffect(() => {
     if (hotelDet?.rooms_selected && hotelDet?.rooms) {
+      console.log("saa", hotelDet?.rooms_selected);
       const newSelectedRooms = [];
       hotelDet?.rooms_selected?.map((roomselected) => {
         hotelDet?.rooms?.map((room) => {
@@ -41,9 +50,10 @@ const Reservation = ({ hotelDet }) => {
     }
   }, [hotelDet?.rooms_selected]);
 
-  const errorHandle = (errorform) => {
-    console.log(errorform);
-  };
+  useEffect(() => {
+    console.log("sdasdsa", hotelDet);
+  }, []);
+
   return (
     <div className={styles["p-body"]}>
       <div className={styles["prs-responsive"]}>
@@ -89,8 +99,25 @@ const Reservation = ({ hotelDet }) => {
                 <div className={styles["paymentbtn"]}>
                   <button
                     onClick={() => {
-                      let flightId = hotelDet.flight.flight.id;
-                      let hotelId = hotelDet.hotel.id;
+                      let flight_id = hotelDet.flight.flight.id;
+                      let hotel_id = hotelDet.hotel.id;
+                      let checkin = hotelDet.flight.date;
+                      let reserver_full_name = reserverData.reserver_full_name;
+                      let reserver_id_code = reserverData.reserver_id_code;
+                      let reserver_phone = reserverData.reserver_phone;
+                      axios.post(
+                        "https://hotelobilit-api.iran.liara.run/api/v1/reserves",
+                        {
+                          checkin,
+                          flight_id,
+                          hotel_id,
+                          reserver_full_name,
+                          reserver_id_code,
+                          reserver_phone,
+                          rooms: [...dataq],
+                          stayCount,
+                        }
+                      );
                     }}
                   >
                     پرداخت با کارت شتاب
@@ -270,11 +297,7 @@ const Reservation = ({ hotelDet }) => {
                   <input
                     type="text"
                     placeholder="نام و نام خانوادگی"
-                    {...register("reserver_full_name",
-                    {
-                      required:'family is req'
-                    }
-                    )}
+                    {...register("reserver_full_name")}
                   />
                 </div>
               </div>
@@ -299,20 +322,18 @@ const Reservation = ({ hotelDet }) => {
             </form>
 
             <h2 style={{ fontSize: "1.5rem" }}>اطلاعات مسافران</h2>
-            <form>
-              {reformSelectedRooms?.map((room) => (
-                <InfoPasserngers
-                  room={room}
-                  hotelDets={hotelDet}
-                  roomName={roomNameChecker(room.room_id)}
-                  room_type_id={room.room_type_id}
-                  newSelectedRooms={reformSelectedRooms}
-                  dataq={dataq}
-                  setDataq={setDataq}
-                  errorHandle={errorHandle}
-                />
-              ))}
-            </form>
+
+            {reformSelectedRooms?.map((room) => (
+              <InfoPasserngers
+                room={room}
+                hotelDets={hotelDet}
+                roomName={roomNameChecker(room.room_id)}
+                room_type_id={room.room_type_id}
+                newSelectedRooms={reformSelectedRooms}
+                dataq={dataq}
+                setDataq={setDataq}
+              />
+            ))}
 
             <div className={styles["rules"]}>
               <p>
