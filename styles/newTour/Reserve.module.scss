@@ -142,57 +142,6 @@ $black:#00001f;
                     }
                   }
 
-                  // .p-price {
-                  //     display: flex;
-                  //     align-items: center;
-                  //   span {
-                  //     font-weight: 600;
-                  //   }
-                  // }
-
-                  // .price {
-                  //   display: flex;
-                  //   align-items: center;
-                  //   margin-right: 6px;
-
-                  //   strong {
-                  //     color:orange;
-                  //     font-size: 20px;
-                  //     font-weight: 600;
-                  //   }
-
-                  //   small {
-                  //     font-size: 14px;
-                  //     margin-right: 3px;
-                  //     color:orange;
-                  //   }
-                  // }
-
-                  // .count-p {
-                  //   display: flex;
-                  //   flex-direction: column;
-                  //   align-items: flex-start;
-
-                  //   .total {
-                  //     span {
-                  //       font-weight: 500;
-                  //       color:orange;
-                  //     }
-                  //   }
-
-                  //   .room {
-                  //     margin-top: 1rem;
-
-                  //     span {
-                  //       font-weight: 500;
-                  //       color:orange;
-                  //     }
-                  //   }
-                  // }
-
-                  // .btn-box-fix {
-                  //   width: 150px;
-                  // }
                 }
               }
   }
@@ -326,7 +275,7 @@ $black:#00001f;
                                             display: flex;
                                             align-items: center;
                                             span{
-                                                color: green;
+                                                color: black;
                                                 font-size: 14px;
                                             }
                                             strong{
@@ -339,7 +288,7 @@ $black:#00001f;
                                 .center{
                                     justify-content: center;
                                     small{
-                                        color: green;
+                                        color: black;
                                     
                                     }
                                 
@@ -353,7 +302,7 @@ $black:#00001f;
                             justify-content: space-between;
 
                             .title {
-                            color: green;
+                            color: black;
                             font-size: 14px;
                             }
 
@@ -436,19 +385,22 @@ $black:#00001f;
 
                         .item-form {
                                 width: 24%;
-
+                                
                                 .inp-form {
                                   
                                         width: 100%;
                                         background-color:white;
-                                        border-radius: 10px;
-                                        border: 1px solid #e2e8f0;
                                         height: 58px;
                                         padding: 0 8px;
-                                        position: relative;
                                         display: flex;
                                         align-items: center;
-
+                                        border: 1px solid #cfd3d8;
+                                        border-radius: 0.25rem;
+                                        position: relative;
+                                        height: 45px;
+                                        box-sizing: border-box;
+                                        font-size: 14px;
+                                        outline: none;
                                         svg {
                                             position: absolute;
                                             left: 10px;
@@ -458,15 +410,15 @@ $black:#00001f;
                                             top: 30px !important;
                                         }
 
-                                        &:after {
-                                            content: '';
-                                            position: absolute;
-                                            width: 99%;
-                                            bottom: 0.5px;
-                                            border-radius: 20px;
-                                            right: 0;
-                                            border-top: 2px dashed #081d3c;
-                                        }
+                                        // &:after {
+                                        //     content: '';
+                                        //     position: absolute;
+                                        //     width: 99%;
+                                        //     bottom: 0.5px;
+                                        //     border-radius: 20px;
+                                        //     right: 0;
+                                        //     border-top: 2px dashed #081d3c;
+                                        // }
 
 
                                         select {
@@ -872,7 +824,15 @@ $black:#00001f;
 //     }
 //   }
 
-
+.box-top-box-reserve2 {
+                        background-color: rgb(185, 185, 185);
+                        border-radius: 8px;
+                        border: 1px solid #E0E0E0;
+                        display: flex;
+                        margin: 12px 0;
+                        height: 192.5px;
+                        width: 100%;
+                      }
   @media only screen and (min-width: 501px) and (max-width: 868px) {
     .s-dashboard .p-info-trip .tour-items {
       grid-template-columns: 1fr 1fr !important;

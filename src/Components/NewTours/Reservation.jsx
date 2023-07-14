@@ -8,6 +8,7 @@ import {
 } from "../../Utils/newTour";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 const Reservation = ({ hotelDet, stayCount }) => {
   const [dataq, setDataq] = useState([]);
@@ -19,17 +20,9 @@ const Reservation = ({ hotelDet, stayCount }) => {
     return roomName[0]?.room_type;
   };
 
-  // const ghjds=()=>{
-  //   hotelDet.rooms_selected.map(selectedroom =>{
-  //     hotelDet.rooms.map(room){
-
-  //     };
-  //   }); 
-  // }
-
   useEffect(() => {}, []);
   const [reformSelectedRooms, setReformSelectedRooms] = useState([]);
-  
+
   useEffect(() => {
     if (hotelDet?.rooms_selected && hotelDet?.rooms) {
       console.log("saa", hotelDet?.rooms_selected);
@@ -51,8 +44,8 @@ const Reservation = ({ hotelDet, stayCount }) => {
   }, [hotelDet?.rooms_selected]);
 
   useEffect(() => {
-    console.log("sdasdsa", hotelDet);
-  }, []);
+    console.log("sdasdsa", dataq);
+  }, [dataq]);
 
   return (
     <div className={styles["p-body"]}>
@@ -148,135 +141,150 @@ const Reservation = ({ hotelDet, stayCount }) => {
               </div>
             </div>
           </div>
+
+          {/* {hotelDet?.flight ?} */}
           <div className={styles["box-top-box-reserve"]}>
             <div className={styles["flight-title-container"]}>
               <h3>پرواز رفت</h3>
               <h3>پرواز برگشت</h3>
             </div>
-            <div className={styles["set-request-tour"]}>
-              <div className={styles["info-from"]}>
-                <div className={styles["orgdest-cities"]}>
-                  <span className={styles["city-name"]}>
-                    {hotelDet?.flight?.origin_name}
-                  </span>
-                  <strong>به</strong>
-                  <strong className={styles["city-name"]}>
-                    {hotelDet?.flight?.destination_name}
-                  </strong>
-                </div>
-                <div className={styles["p-airline-top"]}>
-                  <div
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      overflow: "hidden",
-                      borderRadius: "50%",
-                    }}
-                  >
-                    <img
-                      src={hotelDet?.flight?.airline_thumb?.url}
+            {hotelDet?.flight ? (
+              <div className={styles["set-request-tour"]}>
+                <div className={styles["info-from"]}>
+                  <div className={styles["orgdest-cities"]}>
+                    <span className={styles["city-name"]}>
+                      {hotelDet?.flight?.origin_name}
+                    </span>
+                    <strong>به</strong>
+                    <strong className={styles["city-name"]}>
+                      {hotelDet?.flight?.destination_name}
+                    </strong>
+                  </div>
+                  <div className={styles["p-airline-top"]}>
+                    <div
                       style={{
-                        objectFit: "cover",
-                        width: "100%",
-                        height: "100%",
+                        width: "40px",
+                        height: "40px",
+                        overflow: "hidden",
+                        borderRadius: "50%",
                       }}
-                    />
+                    >
+                      <img
+                        src={hotelDet?.flight?.airline_thumb?.url}
+                        style={{
+                          objectFit: "cover",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                      />
+                    </div>
+                    <span>{hotelDet?.flight?.flight.airline_name}</span>
                   </div>
-                  <span>{hotelDet?.flight?.flight.airline_name}</span>
+                  <div className={styles["end-box"]}>
+                    <div className={styles["date"]}>
+                      <span>تاریخ :</span>
+                      <strong>
+                        {MiladiToJalaliConvertor(hotelDet?.flight?.date)}
+                      </strong>
+                    </div>
+                    <div className={styles["time"]}>
+                      <span>ساعت :</span>
+                      <strong>{hotelDet?.flight?.time}</strong>
+                    </div>
+                  </div>
+                  <div className={`${styles["end-box"]} ${styles["center"]}`}>
+                    <div className={styles["date"]}>
+                      <small>تاریخ ورود به هتل :</small>
+                      <strong>
+                        {hotelDet?.flight?.checkin_tomorrow
+                          ? MiladiToJalaliConvertorInc(hotelDet?.flight?.date)
+                          : MiladiToJalaliConvertor(hotelDet?.flight?.date)}
+                      </strong>
+                    </div>
+                  </div>
                 </div>
-                <div className={styles["end-box"]}>
-                  <div className={styles["date"]}>
-                    <span>تاریخ :</span>
-                    <strong>
-                      {MiladiToJalaliConvertor(hotelDet?.flight?.date)}
-                    </strong>
-                  </div>
-                  <div className={styles["time"]}>
-                    <span>ساعت :</span>
-                    <strong>{hotelDet?.flight?.time}</strong>
-                  </div>
-                </div>
-                <div className={`${styles["end-box"]} ${styles["center"]}`}>
-                  <div className={styles["date"]}>
-                    <small>تاریخ ورود به هتل :</small>
-                    <strong>
-                      {hotelDet?.flight?.checkin_tomorrow
-                        ? MiladiToJalaliConvertorInc(hotelDet?.flight?.date)
-                        : MiladiToJalaliConvertor(hotelDet?.flight?.date)}
-                    </strong>
-                  </div>
-                </div>
-              </div>
 
-              <div className={styles["info-time"]}>
-                <div className={styles["nightlogo"]}>
-                  <img src="https://hotelobilit.com/assets/img/moon.png" />
+                <div className={styles["info-time"]}>
+                  <div className={styles["nightlogo"]}>
+                    <img src="https://hotelobilit.com/assets/img/moon.png" />
+                  </div>
+                  <span className={styles["title"]}>مدت اقامت:</span>
+                  <span className={styles["text"]}>۵ شب و ۶ روز</span>
                 </div>
-                <span className={styles["title"]}>مدت اقامت:</span>
-                <span className={styles["text"]}>۵ شب و ۶ روز</span>
-              </div>
 
-              <div className={styles["info-from"]}>
-                <div className={styles["orgdest-cities"]}>
-                  <span className={styles["city-name"]}>
-                    {" "}
-                    {hotelDet?.flight?.destination_name}
-                  </span>
-                  <strong>به</strong>
-                  <strong className={styles["city-name"]}>
-                    {" "}
-                    {hotelDet?.flight?.origin_name}
-                  </strong>
-                </div>
-                <div className={styles["p-airline-top"]}>
-                  <div
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      overflow: "hidden",
-                      borderRadius: "50%",
-                    }}
-                  >
-                    <img
-                      src={hotelDet?.flight?.flight.airline_thumb?.url}
-                      style={{
-                        objectFit: "cover",
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    />
-                  </div>
-                  <span>{hotelDet?.flight?.flight.airline_name}</span>
-                </div>
-                <div className={styles["end-box"]}>
-                  <div className={styles["date"]}>
-                    <span>تاریخ :</span>
-                    <strong>
-                      {MiladiToJalaliConvertor(hotelDet?.flight?.flight.date)}
-                    </strong>
-                  </div>
-                  <div className={styles["time"]}>
-                    <span>ساعت :</span>
-                    <strong>{hotelDet?.flight?.flight.time}</strong>
-                  </div>
-                </div>
-                <div className={`${styles["end-box"]} ${styles["center"]}`}>
-                  <div className={styles["date"]}>
-                    <small>تاریخ خروج از هتل :</small>
-                    <strong>
+                <div className={styles["info-from"]}>
+                  <div className={styles["orgdest-cities"]}>
+                    <span className={styles["city-name"]}>
                       {" "}
-                      {hotelDet?.flight?.flight.checkout_yesterday
-                        ? MiladiToJalaliConvertorDec(
-                            hotelDet?.flight?.flight.date
-                          )
-                        : MiladiToJalaliConvertor(
-                            hotelDet?.flight?.flight.date
-                          )}
+                      {hotelDet?.flight?.destination_name}
+                    </span>
+                    <strong>به</strong>
+                    <strong className={styles["city-name"]}>
+                      {" "}
+                      {hotelDet?.flight?.origin_name}
                     </strong>
+                  </div>
+                  <div className={styles["p-airline-top"]}>
+                    <div
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        overflow: "hidden",
+                        borderRadius: "50%",
+                      }}
+                    >
+                      <img
+                        src={hotelDet?.flight?.flight.airline_thumb?.url}
+                        style={{
+                          objectFit: "cover",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                      />
+                    </div>
+                    <span>{hotelDet?.flight?.flight.airline_name}</span>
+                  </div>
+                  <div className={styles["end-box"]}>
+                    <div className={styles["date"]}>
+                      <span>تاریخ :</span>
+                      <strong>
+                        {MiladiToJalaliConvertor(hotelDet?.flight?.flight.date)}
+                      </strong>
+                    </div>
+                    <div className={styles["time"]}>
+                      <span>ساعت :</span>
+                      <strong>{hotelDet?.flight?.flight.time}</strong>
+                    </div>
+                  </div>
+                  <div className={`${styles["end-box"]} ${styles["center"]}`}>
+                    <div className={styles["date"]}>
+                      <small>تاریخ خروج از هتل :</small>
+                      <strong>
+                        {" "}
+                        {hotelDet?.flight?.flight.checkout_yesterday
+                          ? MiladiToJalaliConvertorDec(
+                              hotelDet?.flight?.flight.date
+                            )
+                          : MiladiToJalaliConvertor(
+                              hotelDet?.flight?.flight.date
+                            )}
+                      </strong>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+                className={styles["box-top-box-reserve2"]}
+              ></motion.div>
+            )}
 
             <h2 className={styles["reserver-info"]}>
               <strong>اطلاعات رزروگیرنده</strong>
