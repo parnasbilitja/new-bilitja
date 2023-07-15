@@ -16,18 +16,31 @@ const InfoPasserngers = ({
   hotelDets,
   dataq,
   setDataq,
+  setEvRoomsPrc,
 }) => {
   const [chdPrc, setChdPrc] = useState("");
   const [adlPrc, setAdlPrc] = useState("");
   const [infPrc, setinfPrc] = useState("");
   const [extPrc, setextPrc] = useState("");
 
+  const totalPrice = (adlPrc, chdPrc, infPrc, extPrc) => {
+    let totAdlPrc = adlPrc * room.adl_count;
+    let totChdPrc = chdPrc * room.chd_count;
+    let totInfPrc = infPrc * room.inf_count;
+    let totExtPrc = extPrc * room.extra_count;
+    return totAdlPrc + totChdPrc + totInfPrc + totExtPrc;
+  };
   useEffect(() => {
     setChdPrc(chdPrcGen(hotelDets?.rooms, hotelDets?.flight, room_type_id));
     setextPrc(extBedPrcGen(hotelDets?.rooms, hotelDets?.flight, room_type_id));
     setinfPrc(hotelDets.flight.inf_price);
     setAdlPrc(roomprcFinder(hotelDets.rooms, room));
-  }, [hotelDets, room_type_id]);
+
+    setEvRoomsPrc((prev) => [
+      ...prev,
+      totalPrice(adlPrc, chdPrc, infPrc, extPrc),
+    ]);
+  }, [hotelDets, room_type_id, chdPrc, adlPrc, infPrc, extPrc]);
 
   const prcTypeBase = (type) => {
     switch (type) {
@@ -55,11 +68,6 @@ const InfoPasserngers = ({
   useEffect(() => {
     console.log("das", dataq);
   }, [dataq]);
-
-  const [date, setDate] = useState(null);
-  const dateMaker = (birthdate) => {
-    setDate(birthdate);
-  };
 
   return (
     <>

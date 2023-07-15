@@ -1,0 +1,69 @@
+.box-room {
+  //  mt-3
+  margin-top: 2rem;
+  border: 1px solid #C6C6C6;
+  padding: 1.5rem;
+  border-radius: 8px;
+  .passengers_container{
+padding-right: 4rem;
+        padding-left: 4rem;
+      .titles{
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        
+        p{
+            font-size: .9rem;
+        }
+      }
+  }
+  &-Det{
+    // w-100 d-flex flex-column-mobi justify-content-between align-items-center posi-relative
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    
+      &-name{
+        // "d-flex align-items-center"
+        display: flex;
+        align-items: center;
+        .circle{
+          // "icon-circle text-base font-size-9"
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background-color: #e20000;
+        }
+        h2{
+           color: #404040;
+            font-weight: 900;
+            font-size: 17px;
+            margin-bottom: 0;
+            margin-right: 18px;
+        }
+      }
+  }
+  table{
+    width: 100%;
+    margin-top: 2rem;
+    td,th{
+        text-align: center;
+        
+    }
+    td{
+        padding: 1rem;
+        font-size: 14px;
+     
+        
+    }
+    tr{
+        padding: 1rem;
+    }
+    tr{
+        margin-bottom: 10px;
+    }
+  }
+
+}

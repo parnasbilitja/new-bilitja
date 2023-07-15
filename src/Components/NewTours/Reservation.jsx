@@ -1,27 +1,20 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../../styles/newTour/Reserve.module.scss";
 import InfoPasserngers from "./Components/InfoPasserngers";
-import {
-  MiladiToJalaliConvertor,
-  MiladiToJalaliConvertorDec,
-  MiladiToJalaliConvertorInc,
-} from "../../Utils/newTour";
+import { numberWithCommas, roomNameChecker } from "../../Utils/newTour";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { motion } from "framer-motion";
-
+import TourDetailLabel from "./Components/subComponents/TourDetailLabel.component";
+import { useRouter } from "next/router";
 const Reservation = ({ hotelDet, stayCount }) => {
+  console.log("from reservation", hotelDet);
   const [dataq, setDataq] = useState([]);
   const { register, handleSubmit } = useForm();
   const [reserverData, setReserverData] = useState([]);
-
-  const roomNameChecker = (room_id) => {
-    const roomName = hotelDet?.rooms?.filter((room) => room.id === room_id);
-    return roomName[0]?.room_type;
-  };
-
-  useEffect(() => {}, []);
   const [reformSelectedRooms, setReformSelectedRooms] = useState([]);
+  const [evRoomsPrc, setEvRoomsPrc] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     if (hotelDet?.rooms_selected && hotelDet?.rooms) {
@@ -43,9 +36,28 @@ const Reservation = ({ hotelDet, stayCount }) => {
     }
   }, [hotelDet?.rooms_selected]);
 
+  const TotalPrcGen = (prcArr) => {
+    let total = prcArr.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue;
+    }, 0);
+
+    return total;
+  };
   useEffect(() => {
-    console.log("sdasdsa", dataq);
-  }, [dataq]);
+    console.log("arr", [reformSelectedRooms]);
+  }, [reformSelectedRooms]);
+
+  const personCounter = (arr) => {
+    let people = 0;
+    arr.map((pers) => {
+      people += pers.adl_count;
+      people += pers.chd_count;
+      people += pers.inf_count;
+      people += pers.extra_count;
+    });
+
+    return people;
+  };
 
   return (
     <div className={styles["p-body"]}>
@@ -56,66 +68,76 @@ const Reservation = ({ hotelDet, stayCount }) => {
               <div className={styles["p-detail-reservation"]}>
                 <div className={styles["priceDet_container"]}>
                   <div className={styles["priceDet"]}>
-                    <p>
-                      مبلغ کل: ...........................<span>2000</span>{" "}
-                      تومان
-                    </p>
-                    <p>
+                    {/* <p>
                       {" "}
                       اعتبار کیف پول شما: ...........................
                       <span>1000</span> تومان
-                    </p>
-                    <p>
-                      مبلغ قابل پرداخت: ...........................
-                      <span>1000</span> تومان
-                    </p>
-                  </div>
-                </div>
-                <div className={styles["paymentoption"]}>
-                  <div className={styles["payment_container"]}>
-                    <div className={styles["payment"]}>
-                      <input type="checkbox" />
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/L_O_G_O-new_color-01.jpg" />
+                    </p> */}
+                    <div className={styles["price-title"]}>
+                      <p>مبلغ قابل پرداخت:</p>
                     </div>
+                    <div className={styles["price"]}>
+                      <p>{numberWithCommas(TotalPrcGen(evRoomsPrc))}تومان</p>
+                    </div>{" "}
                   </div>
                 </div>
+
                 <div className={styles["finalprice"]}>
                   <div className={styles["totalprice_container"]}>
-                    <p>مبلغ قابل پرداخت:</p>
+                    <div>
+                      <p>
+                        تعداد کل نفرات:
+                        <span>{personCounter(reformSelectedRooms)}</span>
+                      </p>
+                    </div>
+                    <div>
+                      <p>
+                        تعداد کل اتاق: <span>{reformSelectedRooms.length}</span>
+                      </p>
+                    </div>
 
-                    <p>
-                      <span>1200000</span>
-                      تومان
-                    </p>
+                    <p></p>
                   </div>
                 </div>
                 <div className={styles["paymentbtn"]}>
                   <button
                     onClick={() => {
+                      // let flight_id = hotelDet.flight.flight.id;
+                      // let hotel_id = hotelDet.hotel.id;
+                      // let checkin = hotelDet.flight.date;
+                      // let reserver_full_name = reserverData.reserver_full_name;
+                      // let reserver_id_code = reserverData.reserver_id_code;
+                      // let reserver_phone = reserverData.reserver_phone;
+                      // axios.post(
+                      //   "https://hotelobilit-api.iran.liara.run/api/v1/reserves",
+                      //   {
+                      //     checkin,
+                      //     flight_id,
+                      //     hotel_id,
+                      //     reserver_full_name,
+                      //     reserver_id_code,
+                      //     reserver_phone,
+                      //     rooms: [...dataq],
+                      //     stayCount,
+                      //   }
+                      // );
+                      let rooms = [...dataq];
                       let flight_id = hotelDet.flight.flight.id;
                       let hotel_id = hotelDet.hotel.id;
-                      let checkin = hotelDet.flight.date;
-                      let reserver_full_name = reserverData.reserver_full_name;
-                      let reserver_id_code = reserverData.reserver_id_code;
-                      let reserver_phone = reserverData.reserver_phone;
-                      axios.post(
-                        "https://hotelobilit-api.iran.liara.run/api/v1/reserves",
-                        {
-                          checkin,
-                          flight_id,
-                          hotel_id,
-                          reserver_full_name,
-                          reserver_id_code,
-                          reserver_phone,
-                          rooms: [...dataq],
-                          stayCount,
-                        }
+
+                      let reserverdata = [reserverData];
+
+                      router.push(
+                        `/tours/reserve/reserveconfirmation/${hotel_id}/${flight_id}?reserverData=${JSON.stringify(
+                          reserverdata
+                        )}&hotel=${JSON.stringify(
+                          hotelDet
+                        )}&rooms=${JSON.stringify(rooms)}`
                       );
                     }}
                   >
-                    پرداخت با کارت شتاب
+                    تاییدیه اولیه
                   </button>
-                  <p>انصراف از خرید</p>
                 </div>
               </div>
             </div>
@@ -149,141 +171,23 @@ const Reservation = ({ hotelDet, stayCount }) => {
               <h3>پرواز برگشت</h3>
             </div>
             {hotelDet?.flight ? (
-              <div className={styles["set-request-tour"]}>
-                <div className={styles["info-from"]}>
-                  <div className={styles["orgdest-cities"]}>
-                    <span className={styles["city-name"]}>
-                      {hotelDet?.flight?.origin_name}
-                    </span>
-                    <strong>به</strong>
-                    <strong className={styles["city-name"]}>
-                      {hotelDet?.flight?.destination_name}
-                    </strong>
-                  </div>
-                  <div className={styles["p-airline-top"]}>
-                    <div
-                      style={{
-                        width: "40px",
-                        height: "40px",
-                        overflow: "hidden",
-                        borderRadius: "50%",
-                      }}
-                    >
-                      <img
-                        src={hotelDet?.flight?.airline_thumb?.url}
-                        style={{
-                          objectFit: "cover",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      />
-                    </div>
-                    <span>{hotelDet?.flight?.flight.airline_name}</span>
-                  </div>
-                  <div className={styles["end-box"]}>
-                    <div className={styles["date"]}>
-                      <span>تاریخ :</span>
-                      <strong>
-                        {MiladiToJalaliConvertor(hotelDet?.flight?.date)}
-                      </strong>
-                    </div>
-                    <div className={styles["time"]}>
-                      <span>ساعت :</span>
-                      <strong>{hotelDet?.flight?.time}</strong>
-                    </div>
-                  </div>
-                  <div className={`${styles["end-box"]} ${styles["center"]}`}>
-                    <div className={styles["date"]}>
-                      <small>تاریخ ورود به هتل :</small>
-                      <strong>
-                        {hotelDet?.flight?.checkin_tomorrow
-                          ? MiladiToJalaliConvertorInc(hotelDet?.flight?.date)
-                          : MiladiToJalaliConvertor(hotelDet?.flight?.date)}
-                      </strong>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles["info-time"]}>
-                  <div className={styles["nightlogo"]}>
-                    <img src="https://hotelobilit.com/assets/img/moon.png" />
-                  </div>
-                  <span className={styles["title"]}>مدت اقامت:</span>
-                  <span className={styles["text"]}>۵ شب و ۶ روز</span>
-                </div>
-
-                <div className={styles["info-from"]}>
-                  <div className={styles["orgdest-cities"]}>
-                    <span className={styles["city-name"]}>
-                      {" "}
-                      {hotelDet?.flight?.destination_name}
-                    </span>
-                    <strong>به</strong>
-                    <strong className={styles["city-name"]}>
-                      {" "}
-                      {hotelDet?.flight?.origin_name}
-                    </strong>
-                  </div>
-                  <div className={styles["p-airline-top"]}>
-                    <div
-                      style={{
-                        width: "40px",
-                        height: "40px",
-                        overflow: "hidden",
-                        borderRadius: "50%",
-                      }}
-                    >
-                      <img
-                        src={hotelDet?.flight?.flight.airline_thumb?.url}
-                        style={{
-                          objectFit: "cover",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      />
-                    </div>
-                    <span>{hotelDet?.flight?.flight.airline_name}</span>
-                  </div>
-                  <div className={styles["end-box"]}>
-                    <div className={styles["date"]}>
-                      <span>تاریخ :</span>
-                      <strong>
-                        {MiladiToJalaliConvertor(hotelDet?.flight?.flight.date)}
-                      </strong>
-                    </div>
-                    <div className={styles["time"]}>
-                      <span>ساعت :</span>
-                      <strong>{hotelDet?.flight?.flight.time}</strong>
-                    </div>
-                  </div>
-                  <div className={`${styles["end-box"]} ${styles["center"]}`}>
-                    <div className={styles["date"]}>
-                      <small>تاریخ خروج از هتل :</small>
-                      <strong>
-                        {" "}
-                        {hotelDet?.flight?.flight.checkout_yesterday
-                          ? MiladiToJalaliConvertorDec(
-                              hotelDet?.flight?.flight.date
-                            )
-                          : MiladiToJalaliConvertor(
-                              hotelDet?.flight?.flight.date
-                            )}
-                      </strong>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <TourDetailLabel
+                flightDet={hotelDet?.flight}
+                stayCount={stayCount}
+              />
             ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{
-                  duration: 1,
+                  duration: 0.9,
                   repeat: Infinity,
                   repeatType: "reverse",
                 }}
                 className={styles["box-top-box-reserve2"]}
-              ></motion.div>
+              >
+                {/* <div className={styles["skew"]}></div> */}
+              </motion.div>
             )}
 
             <h2 className={styles["reserver-info"]}>
@@ -335,11 +239,12 @@ const Reservation = ({ hotelDet, stayCount }) => {
               <InfoPasserngers
                 room={room}
                 hotelDets={hotelDet}
-                roomName={roomNameChecker(room.room_id)}
+                roomName={roomNameChecker(hotelDet?.rooms, room.room_id)}
                 room_type_id={room.room_type_id}
                 newSelectedRooms={reformSelectedRooms}
                 dataq={dataq}
                 setDataq={setDataq}
+                setEvRoomsPrc={setEvRoomsPrc}
               />
             ))}
 

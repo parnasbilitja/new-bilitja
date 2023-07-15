@@ -18,11 +18,12 @@ $black:#00001f;
       width: 91.6%;
       .box-fix-user-reservation {
               position: fixed;
-              bottom: 22px;
+              bottom: 0;
               right: 0;
               width: 100%;
-              height: 120px;
-              background: rgba(255, 255, 255, 0);
+              height: 100px;
+              background: rgb(255, 255, 255);
+              box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
               z-index: 100;
              
               display: flex;
@@ -30,38 +31,53 @@ $black:#00001f;
               align-items: center;
 
               .detail-box-fix-user-reservation {
-               width: 91.6%;
+               width: 100%;
                 .p-detail-reservation {
                   display: grid;
                   border-radius: 20px;
-                  grid-template-columns: 1fr 1fr 1fr 1fr;
-                  background-color: white;
-                 box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-                  border: 1px solid #e0e0e0;
+                  grid-template-columns: 1fr 1fr 1fr;
                   
-                  padding: .5rem 1rem .5rem 1rem;
+                  
+                  
                   .priceDet_container{
-                    padding: .5rem;
-                    border-left: 1px dashed black;
+                    
+                 
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     .priceDet{
+                        display: flex;
+                        justify-content: space-between;
+                        column-gap: .4rem;
+                        align-items: center;
 
-                      p{
-                       font-size: 12px;
-                       margin-bottom: 0;
-  
-                        span{
-                          font-weight: 900;
-                          font-size: 14px;
+                        div{
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
                         }
-                      }
+
+                        .price-title{
+                          p{
+
+                            font-size: 12px;
+                            font-weight: 600;
+                            margin: 0;
+                          }
+                        }
+                   .price{
+                    P{
+                        margin: 0;
+                      font-size: 18px;
+                      font-weight: 900;
+                    }
+                   }
+                     
                     }
                   }
                   .paymentoption{
                      padding: .5rem;
-                     border-left: 1px dashed black;
+                   
                      display: flex;
                      justify-content: center;
                      align-items: center;
@@ -93,11 +109,11 @@ $black:#00001f;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                     border-left: 1px dashed black;
+                    
+                   
                     .totalprice_container{
                       width: 80%;
-                      padding: .4rem;
-                         border: 1px solid #e7e7e7;
+                        
                          display: flex;
                          flex-direction: column;
                          justify-content: center;
@@ -127,10 +143,10 @@ $black:#00001f;
                       padding: .5rem;
                       margin-bottom: .5rem;
                       width: 150px;
-                      height: 50px;
+                      height: 60px;
                       border-radius: 10px;
-                      background-color: #069e2c;
-                      font-size: .8rem;
+                      background-color: #279692;
+                      font-size: 14px;
                       font-weight: 900;
                       color: white;
                     }
@@ -229,145 +245,7 @@ $black:#00001f;
 
 
 
-                .set-request-tour {
-                        background-color: white;
-                        border-radius: 8px;
-                        border: 1px solid #E0E0E0;
-                        display: flex;
-                        margin: 12px 0;
-
-                        .info-from {
-                      
-                        width: 40%;
-                        padding: 12px;
-
-                        .orgdest-cities{
-                            display: flex;
-                            justify-content: space-between;
-                        .city-name {
-                                    font-weight: 800;
-                                font-size: 16px;
-                                color: black;
-                                }
-
-                        }
-                        .p-airline-top{
-                                width: 100%;
-                                display: flex;
-                                flex-direction: column;
-                                align-items: center;
-                                justify-content: center;
-                                padding: 14px 0;
-                                margin-top: 8px;
-                                span{
-                                    font-size: 13px;
-                                }
-                            }
-
-                            
-                                // w-100 end-box d-flex align-items-center justify-content-between
-                                .end-box{
-                                width: 100%;
-                                display: flex;
-                                align-items: center;
-                                justify-content: space-between;
-                                        .date , .time{
-                                            display: flex;
-                                            align-items: center;
-                                            span{
-                                                color: black;
-                                                font-size: 14px;
-                                            }
-                                            strong{
-                                                margin-right: 4px;
-                                                color: #999;
-                                                font-size: 16px;
-                                            }
-                                        }
-                                }
-                                .center{
-                                    justify-content: center;
-                                    small{
-                                        color: black;
-                                    
-                                    }
-                                
-                                }
-                        
-
-                        .item {
-                            margin-top: 14px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-
-                            .title {
-                            color: black;
-                            font-size: 14px;
-                            }
-
-                            .text {
-                            font-size: 14px;
-                            color:orange;
-                            }
-                        }
-                        }
-
-                        .info-time {
-                            border-left: 2px dashed #c6c6c6;
-                            border-right: 2px dashed #c6c6c6;
-                            width: 20%;
-                            padding: 12px;
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            justify-content: center;
-
-                                .title {
-                                    font-weight: 600;
-                                    color: red;
-                                }
-
-                                .text {
-                                    margin-top: 6px;
-                                    font-weight: 600;
-                                    color:black;
-                                }
-                                .nightlogo{
-                                    margin-bottom: 1rem;
-                                }
-                        }
-
-                        .info-to {
-                        width: 40%;
-                        padding: 12px;
-
-                        .city-name {
-                            font-weight: 800;
-                            font-size: 14px;
-                            color: black;
-                        }
-
-                        .item {
-                            margin-top: 14px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-
-                            .title {
-                            color: green;
-                            font-size: 14px;
-                            }
-
-                            .text {
-                            font-size: 14px;
-                            color:orange;
-                            }
-                        }
-                        }
-
-
-                    }
+        
 
 
 
@@ -832,6 +710,16 @@ $black:#00001f;
                         margin: 12px 0;
                         height: 192.5px;
                         width: 100%;
+                        display: flex;
+                        justify-content: flex-end;
+                        overflow: hidden;
+
+                        // .skew{
+                        //   height: 100%;
+                        //   width: 25%;
+                        //   background-color: #069e2c;
+                        //   transform: skew(20deg,10deg);
+                        // }
                       }
   @media only screen and (min-width: 501px) and (max-width: 868px) {
     .s-dashboard .p-info-trip .tour-items {

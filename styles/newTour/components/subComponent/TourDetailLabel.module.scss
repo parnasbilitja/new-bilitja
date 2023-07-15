@@ -1,0 +1,139 @@
+.set-request-tour {
+                        background-color: white;
+                        border-radius: 8px;
+                        border: 1px solid #E0E0E0;
+                        display: flex;
+                        margin: 12px 0;
+
+                        .info-from {
+                      
+                        width: 40%;
+                        padding: 12px;
+
+                        .orgdest-cities{
+                            display: flex;
+                            justify-content: space-between;
+                        .city-name {
+                                    font-weight: 800;
+                                font-size: 16px;
+                                color: black;
+                                }
+
+                        }
+                        .p-airline-top{
+                                width: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 14px 0;
+                                margin-top: 8px;
+                                span{
+                                    font-size: 13px;
+                                }
+                            }
+
+                            
+                                // w-100 end-box d-flex align-items-center justify-content-between
+                                .end-box{
+                                width: 100%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                        .date , .time{
+                                            display: flex;
+                                            align-items: center;
+                                            span{
+                                                color: black;
+                                                font-size: 14px;
+                                            }
+                                            strong{
+                                                margin-right: 4px;
+                                                color: #999;
+                                                font-size: 16px;
+                                            }
+                                        }
+                                }
+                                .center{
+                                    justify-content: center;
+                                    small{
+                                        color: black;
+                                    
+                                    }
+                                
+                                }
+                        
+
+                        .item {
+                            margin-top: 14px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            .title {
+                            color: black;
+                            font-size: 14px;
+                            }
+
+                            .text {
+                            font-size: 14px;
+                            color:orange;
+                            }
+                        }
+                        }
+
+                        .info-time {
+                            border-left: 2px dashed #c6c6c6;
+                            border-right: 2px dashed #c6c6c6;
+                            width: 20%;
+                            padding: 12px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+
+                                .title {
+                                    font-weight: 600;
+                                    color: red;
+                                }
+
+                                .text {
+                                    margin-top: 6px;
+                                    font-weight: 600;
+                                    color:black;
+                                }
+                                .nightlogo{
+                                    margin-bottom: 1rem;
+                                }
+                        }
+
+                        .info-to {
+                        width: 40%;
+                        padding: 12px;
+
+                        .city-name {
+                            font-weight: 800;
+                            font-size: 14px;
+                            color: black;
+                        }
+
+                        .item {
+                            margin-top: 14px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            .title {
+                            color: green;
+                            font-size: 14px;
+                            }
+
+                            .text {
+                            font-size: 14px;
+                            color:orange;
+                            }
+                        }
+                        }
+
+
+                    }

@@ -203,7 +203,11 @@ const PassengerForm = (props) => {
                       props.roomTypeId
                     )
                   }
+                  defaultChecked="1"
                 >
+                  <option value="" disabled selected>
+                    جنسیت
+                  </option>
                   <option value="1">اقا</option>
                   <option value="0">خانم</option>
                 </select>
@@ -266,6 +270,9 @@ const PassengerForm = (props) => {
                   }
                   name="nationality"
                 >
+                  <option value="" disabled selected>
+                    ملیت
+                  </option>
                   <option value="1">ایرانی</option>
                   <option value="0">غیر ایرانی</option>
                 </select>
@@ -313,6 +320,7 @@ const PassengerForm = (props) => {
                     "birth_day"
                   )?.replace(/-/g, "/")}
                   name="birth_day"
+                  readOnly
                 />
               </div>
             </div>
@@ -362,6 +370,7 @@ const PassengerForm = (props) => {
                     props.roomId,
                     "expired_passport"
                   )?.replace(/-/g, "/")}
+                  readOnly
                 />
               </div>
             </div>
@@ -377,7 +386,7 @@ const PassengerForm = (props) => {
                 <BirthDayParentCl
                   calend={calend}
                   typePassenger={
-                    props.type === "ext" ? "Adl" : props.type.toUpperCase()
+                    props.type === "ext" ? "ADL" : props.type.toUpperCase()
                   }
                   closePopUpCalendar={managePopUpBirthdayCalendar}
                   roomInfo={{

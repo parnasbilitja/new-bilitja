@@ -217,4 +217,7 @@ export const chdPrcGen = (rooms, flight, roomTypeId) => {
   return price;
 };
 
-
+export const roomNameChecker = (roomsarr, room_id) => {
+  const roomName = roomsarr?.filter((room) => room.id === room_id);
+  return roomName[0]?.room_type;
+};
