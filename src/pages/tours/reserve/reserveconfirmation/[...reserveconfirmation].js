@@ -37,14 +37,14 @@ const ReservationConfirmation = () => {
       height: "auto",
       transition: {
         type: "spring",
-        stiffness: 200,
+        stiffness: 100,
         duration: 0.5,
       },
     },
     exit: {
       height: 0,
       transition: {
-        type: "spring",
+        type: "tween",
         duration: 0.5,
       },
     },
@@ -58,7 +58,12 @@ const ReservationConfirmation = () => {
         <div className={styles["rooms"]}>
           {reservedRooms?.map((reservedroom) => {
             return (
-              <div className={styles["box-room"]}>
+              <div
+                className={styles["box-room"]}
+                onClick={() => {
+                  setRoomId(reservedroom.id);
+                }}
+              >
                 <div
                   className={`${styles["box-room-Det"]} ${styles["flex-column-mobi"]}`}
                 >
@@ -84,18 +89,19 @@ const ReservationConfirmation = () => {
                     </svg>
                   </div>
                 </div>
-                {reservedroom.id === roomId ? (
-                  <AnimatePresence>
+                <AnimatePresence>
+                  {reservedroom.id === roomId ? (
                     <motion.div
                       variants={variants}
                       initial="initial"
                       animate="animate"
                       exit="exit"
+                      style={{ overflow: "hidden" }}
                     >
                       <RoomsInfo reservedRooms={reservedroom} />
                     </motion.div>
-                  </AnimatePresence>
-                ) : null}
+                  ) : null}
+                </AnimatePresence>
               </div>
             );
           })}
