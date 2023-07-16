@@ -5,6 +5,7 @@ $containerColor:#ebebeb;
 .container{
     padding: 2rem;
     .hotelDet_container{
+       
         margin-bottom: 2rem;
       border-radius: 20px;
       padding: 1rem 1.5rem;
@@ -110,24 +111,44 @@ $containerColor:#ebebeb;
 
 .ticket_container{
     margin-bottom: 1rem;
-
+.container{
+    padding: 0; 
+     position: relative;
+      overflow: hidden;
+      transition: .5s ease-in-out;
+      border-radius: 20px;
+     .blur{
+       height: 100%;
+       width: 100%;
+       position: absolute;
+       z-index: 1000;
+      background: rgba( 255, 255, 255, 0.15 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 4px );
+        -webkit-backdrop-filter: blur( 4px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+      }
+       
+    //   &:hover{
+    //     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    //     transition: .5s ease-in-out;
+    //     }
 
     .ticket{
         display: flex;
         justify-content: space-between;
-        border-radius: 20px;
+        
       padding: .9rem 1.125rem;
       border: 1px solid $containerColor;
       background: #fff;
-      transition: .5s ease-in-out;
       
+    
+     
       
-      &:hover{
-        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-        transition: .5s ease-in-out;
-        }
-
-
+     
+    
+    
        
             &_titles{
                 display: flex;
@@ -141,8 +162,8 @@ $containerColor:#ebebeb;
                 }
                
             }
-
-
+    
+    
             .ticket_flight{
                 width: 100%;
                 padding: 0 1rem;
@@ -191,9 +212,9 @@ $containerColor:#ebebeb;
                             margin-left: .725rem;
                         }
                     }
-
+    
                     &_hotelEnt{
-
+    
                           margin-bottom: .5rem;
                         display: flex;
                       justify-content: center;
@@ -206,7 +227,7 @@ $containerColor:#ebebeb;
                         
                             font-size: .8rem;
                         }
-
+    
                     }
                 }
                 
@@ -222,7 +243,7 @@ $containerColor:#ebebeb;
                         flex-direction: column;
                         row-gap:6px;
                         transform: translateY(18px);
-
+    
                         .image_container{
                             padding: 0;
                             margin: 0;
@@ -257,8 +278,8 @@ $containerColor:#ebebeb;
                     }
                 }
             }
-
-
+    
+    
                 .roomDet_container{
                     margin-top: 1rem;
                     display: grid;
@@ -297,11 +318,9 @@ $containerColor:#ebebeb;
                                         justify-content: center;
                                         align-items: center;
                                         cursor: pointer;
-                                       
                                     }
                                     span{
                                         font-size: 1rem;
-                                      
                                     }
                                     .dec{
                                         font-size: 1rem;
@@ -313,7 +332,7 @@ $containerColor:#ebebeb;
                                         justify-content: center;
                                         cursor: pointer;
                                     }
-
+    
                                     .dec-none{
                                         font-size: 1rem;
                                          width: 25px;
@@ -346,8 +365,8 @@ $containerColor:#ebebeb;
                     }
                 }
             }
-
-
+    
+    
            
            
                
@@ -381,10 +400,10 @@ $containerColor:#ebebeb;
                         }
                     }
                 }
-
+    
                 &_btn{
                    
-
+    
                         background-color:$primary;
                        color:white;
                        width: 200px;
@@ -394,20 +413,25 @@ $containerColor:#ebebeb;
                        font-weight: 800;
                    
                 }
-
+    
             }
-
-
+    
+    
             
        
     }
+}
+
+ .roomcountdet_roomnum{
+box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset;
 
     .roomcountDet_container{
-        padding: 1rem 10rem 1rem 10rem;
+        
+        padding: 2rem 10rem 2rem 10rem;
         .roomcountDet{
             border: 1px solid $borderColor;
             border-radius: 20px;
-            padding:.5rem 1rem .5rem 1rem;
+            padding:1rem 2rem;
             
             display: flex;
             justify-content: space-between;
@@ -478,14 +502,7 @@ $containerColor:#ebebeb;
             }
         }
     }
+     }
 
 }
-}
-.open{
-    display: block;
-    padding: 1rem 3rem 1rem 3rem;
-}
-
-.close{
-     display: none;
 }

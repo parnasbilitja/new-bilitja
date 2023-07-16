@@ -4,48 +4,109 @@ import TourDetailLabel from "../../../../Components/NewTours/Components/subCompo
 import NavHandler from "../../../../Components/share/NavHandler";
 import styles from "../../../../../styles/newTour/ReservationConfirmation.module.scss";
 import RoomsInfo from "../../../../Components/NewTours/Components/RoomsInfo.component";
-import { roomNameChecker } from "../../../../Utils/newTour";
+import { numberWithCommas, roomNameChecker } from "../../../../Utils/newTour";
+import NabvarCustom from "../../../../sources/component/NabvarCustom";
+import { motion, AnimatePresence } from "framer-motion";
 const ReservationConfirmation = () => {
   const [hotelDet, setHotelDet] = useState();
   const [reservedRooms, setReservedRooms] = useState();
+  const [fiPrc, setFiPrc] = useState("");
+  const [fromRouter, setFromRouter] = useState();
 
   const router = useRouter();
-
+  const [roomId, setRoomId] = useState();
   useEffect(() => {
     if (router.query.hotel) {
       setHotelDet(JSON.parse(router?.query?.hotel));
-
+      setFromRouter(router.query);
       setReservedRooms(JSON.parse(router?.query?.rooms));
+      setFiPrc(router?.query?.fiPrc);
     }
   }, [router]);
 
   useEffect(() => {
     console.log(reservedRooms);
+    // setRoomId(reservedRooms[0]?.id);
   }, [reservedRooms]);
+
+  const variants = {
+    initial: {
+      height: 0,
+    },
+    animate: {
+      height: "auto",
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        duration: 0.5,
+      },
+    },
+    exit: {
+      height: 0,
+      transition: {
+        type: "spring",
+        duration: 0.5,
+      },
+    },
+  };
   return (
     <>
-      <NavHandler />
+      <NabvarCustom />
       <div className={styles["reserveinfo_container"]}>
         <TourDetailLabel flightDet={hotelDet?.flight} />
 
-        {reservedRooms?.map((reservedroom) => {
-          return (
-            <RoomsInfo
-              roomName={roomNameChecker(hotelDet.rooms, reservedroom.room_id)}
-              reservedRooms={reservedroom}
-            />
-          );
-        })}
+        <div className={styles["rooms"]}>
+          {reservedRooms?.map((reservedroom) => {
+            return (
+              <div className={styles["box-room"]}>
+                <div
+                  className={`${styles["box-room-Det"]} ${styles["flex-column-mobi"]}`}
+                >
+                  <div className={styles["box-room-Det-name"]}>
+                    <div className={styles["circle"]}></div>
+                    <h2>
+                      {roomNameChecker(hotelDet.rooms, reservedroom.room_id)}
+                    </h2>
+                  </div>
+                  <div
+                    onClick={() => {
+                      setRoomId(reservedroom.id);
+                    }}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <svg
+                      viewBox="0 0 96 96"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12px"
+                    >
+                      <title />
+                      <path d="M81.8457,25.3876a6.0239,6.0239,0,0,0-8.45.7676L48,56.6257l-25.396-30.47a5.999,5.999,0,1,0-9.2114,7.6879L43.3943,69.8452a5.9969,5.9969,0,0,0,9.2114,0L82.6074,33.8431A6.0076,6.0076,0,0,0,81.8457,25.3876Z" />
+                    </svg>
+                  </div>
+                </div>
+                {reservedroom.id === roomId ? (
+                  <AnimatePresence>
+                    <motion.div
+                      variants={variants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                    >
+                      <RoomsInfo reservedRooms={reservedroom} />
+                    </motion.div>
+                  </AnimatePresence>
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
         <div className={styles["detail-box-fix-user-reservation"]}>
           <div className={styles["p-detail-reservation"]}>
             <div className={styles["priceDet_container"]}>
               <div className={styles["priceDet"]}>
                 <p>
                   مبلغ کل: ...........................
-                  <span>
-                    {/* {numberWithCommas(TotalPrcGen(evRoomsPrc))} */}
-                  </span>{" "}
-                  تومان
+                  <span>{numberWithCommas(fiPrc)}</span> تومان
                 </p>
                 {/* <p>
                       {" "}
@@ -54,10 +115,7 @@ const ReservationConfirmation = () => {
                     </p> */}
                 <p>
                   مبلغ قابل پرداخت: ...........................
-                  <span>
-                    {/* {numberWithCommas(TotalPrcGen(evRoomsPrc))} */}
-                  </span>{" "}
-                  تومان
+                  <span>{numberWithCommas(fiPrc)}</span> تومان
                 </p>
               </div>
             </div>
@@ -74,9 +132,7 @@ const ReservationConfirmation = () => {
                 <p>مبلغ قابل پرداخت:</p>
 
                 <p>
-                  <span>
-                    {/* {numberWithCommas(TotalPrcGen(evRoomsPrc))} */}
-                  </span>
+                  <span>{numberWithCommas(fiPrc)}</span>
                   تومان
                 </p>
               </div>
@@ -84,37 +140,24 @@ const ReservationConfirmation = () => {
             <div className={styles["paymentbtn"]}>
               <button
                 onClick={() => {
-                  // let flight_id = hotelDet.flight.flight.id;
-                  // let hotel_id = hotelDet.hotel.id;
-                  // let checkin = hotelDet.flight.date;
-                  // let reserver_full_name = reserverData.reserver_full_name;
-                  // let reserver_id_code = reserverData.reserver_id_code;
-                  // let reserver_phone = reserverData.reserver_phone;
-                  // axios.post(
-                  //   "https://hotelobilit-api.iran.liara.run/api/v1/reserves",
-                  //   {
-                  //     checkin,
-                  //     flight_id,
-                  //     hotel_id,
-                  //     reserver_full_name,
-                  //     reserver_id_code,
-                  //     reserver_phone,
-                  //     rooms: [...dataq],
-                  //     stayCount,
-                  //   }
-                  // );
-                  let rooms = [...dataq];
-                  let flight_id = hotelDet.flight.flight.id;
-                  let hotel_id = hotelDet.hotel.id;
-
-                  let reserverdata = [reserverData];
-
-                  router.push(
-                    `/tours/reserve/reserveconfirmation/${hotel_id}/${flight_id}?reserverData=${JSON.stringify(
-                      reserverdata
-                    )}&hotel=${JSON.stringify(hotelDet)}&rooms=${JSON.stringify(
-                      rooms
-                    )}`
+                  let flight_id = fromRouter.reservationconfirmation[1];
+                  let hotel_id = fromRouter.reservationconfirmation[0];
+                  let checkin = hotelDet.flight.date;
+                  let reserver_full_name = reserverData.reserver_full_name;
+                  let reserver_id_code = reserverData.reserver_id_code;
+                  let reserver_phone = reserverData.reserver_phone;
+                  axios.post(
+                    "https://hotelobilit-api.iran.liara.run/api/v1/reserves",
+                    {
+                      checkin,
+                      flight_id,
+                      hotel_id,
+                      reserver_full_name,
+                      reserver_id_code,
+                      reserver_phone,
+                      rooms: [...dataq],
+                      stayCount,
+                    }
                   );
                 }}
               >

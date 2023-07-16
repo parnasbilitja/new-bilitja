@@ -175,17 +175,14 @@ const PassengerForm = (props) => {
           <form
             key={index}
             className={
-              //   props.hotelDets.hotel.is_domestic
-              //     ? styles["form-container2"]
-              //     : styles["form-container"]
+              // props.hotelDets.hotel.is_domestic
+              //   ? styles["form-container2"]
+              //   : styles["form-container"]
               styles["form-container"]
             }
             onClick={() => {
               console.log(index);
             }}
-            // onChange={form.handleSubmit((data) => {
-            //   formDataPicker(data, index, type, room.id, room.room_id);
-            // })}
           >
             <div className={styles["item-form"]}>
               {/* "inp-form mt-2" */}
@@ -219,6 +216,7 @@ const PassengerForm = (props) => {
                 <input
                   type="text"
                   placeholder="نام (لاتین)"
+                  required
                   onChange={(e) =>
                     formDataPicker2(
                       e,
@@ -301,6 +299,8 @@ const PassengerForm = (props) => {
                 />
               </div>
             </div>
+            {/* ) : null} */}
+
             {/* ) : null} */}
 
             {/* "item-form w-15" */}

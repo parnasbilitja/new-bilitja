@@ -132,7 +132,9 @@ const Reservation = ({ hotelDet, stayCount }) => {
                           reserverdata
                         )}&hotel=${JSON.stringify(
                           hotelDet
-                        )}&rooms=${JSON.stringify(rooms)}`
+                        )}&rooms=${JSON.stringify(rooms)}&fiPrc=${TotalPrcGen(
+                          evRoomsPrc
+                        )}`
                       );
                     }}
                   >

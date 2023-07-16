@@ -1,9 +1,12 @@
 .reserveinfo_container{
-    padding: 7rem 3rem 3rem 3rem;
+    padding: 7rem 8rem 12rem 8rem;
 
+    
 .detail-box-fix-user-reservation {
-               width: 91.6%;
+               width:80.6%;
                position: fixed;
+               bottom: 12px;
+               left: 9.9%;
                 .p-detail-reservation {
                   display: grid;
                   border-radius: 20px;
@@ -11,7 +14,6 @@
                   background-color: white;
                  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
                   border: 1px solid #e0e0e0;
-                  
                   padding: .5rem 1rem .5rem 1rem;
                   .priceDet_container{
                     padding: .5rem;
@@ -20,7 +22,6 @@
                     align-items: center;
                     justify-content: center;
                     .priceDet{
-
                       p{
                        font-size: 12px;
                        margin-bottom: 0;
@@ -117,4 +118,66 @@
 
                 }
             }
+
+
+
+
+            .rooms{
+              .box-room {
+  //  mt-3
+  margin-top: 2rem;
+  border: 1px solid #dee2e6;
+  padding: 1.5rem;
+  border-radius: 8px;
+  .passengers_container{
+        padding-right: 4rem;
+        padding-left: 4rem;
+      .titles{
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        
+        p{
+            font-size: .9rem;
         }
+      }
+  }
+  &-Det{
+    // w-100 d-flex flex-column-mobi justify-content-between align-items-center posi-relative
+    border-bottom: 2px solid #000;
+    padding-bottom: .3rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    
+      &-name{
+        // "d-flex align-items-center"
+        display: flex;
+        align-items: center;
+        .circle{
+          // "icon-circle text-base font-size-9"
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background-color: #e20000;
+          margin-left: 12px;
+        }
+        h2{
+           color: #404040;
+            font-weight: 600;
+            font-size: 15px;
+            align-self: center;
+            margin: 0;
+          
+            
+        }
+      }
+  }
+}
+            }
+        }
+
+
+  

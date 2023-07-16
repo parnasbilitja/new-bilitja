@@ -79,7 +79,7 @@ const NavBar = (props) => {
                       width=""
                       height=""
                       className={styles["logo"]}
-                      src="../../../Images/logo512.webp"
+                      src="../../../../Images/logo512.webp"
                       alt="بلیطجا - لوگو"
                       style={{ cursor: "pointer" }}
                     />
