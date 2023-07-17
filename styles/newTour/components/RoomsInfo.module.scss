@@ -1,5 +1,6 @@
 
  .passengers_container{
+    border-radius: 20px;
     width: 100%;
     margin-top: 1rem;
     td,th{
@@ -7,18 +8,17 @@
         
     }
     th{
+        padding-top: 1rem;
         font-size: 13px;
         font-weight: 900;
         border-bottom: 1px solid #edeff1;
         padding-bottom: .5rem;
+        background-color: #f8f9fd;
     }
-    td:not(:last-child){
-        border-bottom: 1px solid #edeff1;
-     
-        
-    }
+   
     td{
-         padding: .2rem;
+         border-bottom: 1px solid #edeff1;
+         padding: 1rem;
         font-size: 12px;
     }
     tr{

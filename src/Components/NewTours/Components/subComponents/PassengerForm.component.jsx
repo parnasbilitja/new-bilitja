@@ -3,6 +3,7 @@ import styles from "../../../../../styles/newTour/components/subComponent/Passen
 import PopUp from "./PopUp.component";
 import BirthDayParentCl from "../calendar/BirthDayParentCl";
 import BirthDayParent from "../../../../sources/calendar/BirthDayParent";
+import { errValidation } from "../../../../Utils/newTour";
 const PassengerForm = (props) => {
   console.log("hotel", props.hotelDets);
   const [state, setState] = useState({
@@ -48,6 +49,16 @@ const PassengerForm = (props) => {
   const [calend, setCalend] = useState(true);
 
   const formDataPicker2 = (e, index, type, roomid, roomTypeid) => {
+    const objModel = {
+      name: "",
+      family: "",
+      birth_day: "",
+      nationality: "",
+      gender: "",
+      passport: "",
+      expired_passport: "",
+      id_code: "",
+    };
     const findroom = props.dataq.filter((data) => data.id === roomid);
     let newrooms = [];
 
@@ -66,15 +77,18 @@ const PassengerForm = (props) => {
           type,
           id: `${index}${type}`,
           price: props.prcTypeBase(type),
+          // ...objModel,
           ...findpassenger[0],
           [e.target.name]: e.target.value,
         });
       } else {
+        debugger;
         newpassengerArr.push(...findroom.passengers, {
           bed_type: type === "ext" ? "extra" : "normal",
           type,
           id: `${index}${type}`,
           price: props.prcTypeBase(type),
+          // ...objModel,
           [e.target.name]: e.target.value,
         });
       }
@@ -98,6 +112,7 @@ const PassengerForm = (props) => {
               type,
               id: `${index}${type}`,
               [e.target.name]: e.target.value,
+              // ...objModel,
               price: props.prcTypeBase(type),
             },
           ],
@@ -167,6 +182,10 @@ const PassengerForm = (props) => {
     }
   };
 
+  const errStruct = (roomId, passenId, inputName) => {
+    return `rooms.${roomId}.passengers.${passenId}.${inputName}`;
+  };
+
   const [currentindex, setCurrentIndex] = useState(null);
   return (
     <>
@@ -209,6 +228,19 @@ const PassengerForm = (props) => {
                   <option value="0">خانم</option>
                 </select>
               </div>
+              {props.Errs.errors &&
+              errValidation(
+                props.Errs.errors,
+                errStruct(props.roomIndex, index, "gender")
+              ) ? (
+                <small>
+                  {
+                    props.Errs.errors[
+                      errStruct(props.roomIndex, index, "gender")
+                    ]
+                  }
+                </small>
+              ) : null}
             </div>
             {/* align-items-center w-18 */}
             <div className={styles["item-form"]}>
@@ -217,6 +249,8 @@ const PassengerForm = (props) => {
                   type="text"
                   placeholder="نام (لاتین)"
                   required
+                  defaultValue=""
+                  maxLength="50"
                   onChange={(e) =>
                     formDataPicker2(
                       e,
@@ -229,6 +263,15 @@ const PassengerForm = (props) => {
                   name="name"
                 />
               </div>
+              {props.Errs.errors &&
+              errValidation(
+                props.Errs.errors,
+                errStruct(props.roomIndex, index, "name")
+              ) ? (
+                <small>
+                  {props.Errs.errors[errStruct(props.roomIndex, index, "name")]}
+                </small>
+              ) : null}
             </div>
 
             <div className={styles["item-form"]}>
@@ -246,8 +289,22 @@ const PassengerForm = (props) => {
                     )
                   }
                   name="family"
+                  maxLength="50"
                 />
               </div>
+              {props.Errs.errors &&
+              errValidation(
+                props.Errs.errors,
+                errStruct(props.roomIndex, index, "family")
+              ) ? (
+                <small>
+                  {
+                    props.Errs.errors[
+                      errStruct(props.roomIndex, index, "family")
+                    ]
+                  }
+                </small>
+              ) : null}
             </div>
 
             <div className={styles["item-form"]}>
@@ -275,6 +332,18 @@ const PassengerForm = (props) => {
                   <option value="0">غیر ایرانی</option>
                 </select>
               </div>
+              {errValidation(
+                props.Errs.errors,
+                errStruct(props.roomIndex, index, "nationality")
+              ) ? (
+                <small>
+                  {
+                    props.Errs.errors[
+                      errStruct(props.roomIndex, index, "nationality")
+                    ]
+                  }
+                </small>
+              ) : null}
             </div>
 
             {/* "item-form w-15" */}
@@ -286,6 +355,7 @@ const PassengerForm = (props) => {
                   // {...form.register("id_code")}
                   type="text"
                   placeholder="کدملی"
+                  maxLength="10"
                   onChange={(e) =>
                     formDataPicker2(
                       e,
@@ -298,6 +368,18 @@ const PassengerForm = (props) => {
                   name="id_code"
                 />
               </div>
+              {errValidation(
+                props.Errs.errors,
+                errStruct(props.roomIndex, index, "id_code")
+              ) ? (
+                <small>
+                  {
+                    props.Errs.errors[
+                      errStruct(props.roomIndex, index, "id_code")
+                    ]
+                  }
+                </small>
+              ) : null}
             </div>
             {/* ) : null} */}
 
@@ -323,6 +405,18 @@ const PassengerForm = (props) => {
                   readOnly
                 />
               </div>
+              {errValidation(
+                props.Errs.errors,
+                errStruct(props.roomIndex, index, "birth_day")
+              ) ? (
+                <small>
+                  {
+                    props.Errs.errors[
+                      errStruct(props.roomIndex, index, "birth_day")
+                    ]
+                  }
+                </small>
+              ) : null}
             </div>
             {/* "item-form w-10" */}
             <div className={styles["item-form"]}>
@@ -330,6 +424,7 @@ const PassengerForm = (props) => {
                 <input
                   type="text"
                   placeholder="شماره پاسپورت"
+                  maxLength="9"
                   onChange={(e) =>
                     formDataPicker2(
                       e,
@@ -342,6 +437,18 @@ const PassengerForm = (props) => {
                   name="passport"
                 />
               </div>
+              {errValidation(
+                props.Errs.errors,
+                errStruct(props.roomIndex, index, "passport")
+              ) ? (
+                <small>
+                  {
+                    props.Errs.errors[
+                      errStruct(props.roomIndex, index, "passport")
+                    ]
+                  }
+                </small>
+              ) : null}
             </div>
             {/* "item-form w-15" */}
             <div className={styles["item-form"]}>
@@ -373,6 +480,18 @@ const PassengerForm = (props) => {
                   readOnly
                 />
               </div>
+              {errValidation(
+                props.Errs.errors,
+                errStruct(props.roomIndex, index, "expired_passport")
+              ) ? (
+                <small>
+                  {
+                    props.Errs.errors[
+                      errStruct(props.roomIndex, index, "expired_passport")
+                    ]
+                  }
+                </small>
+              ) : null}
             </div>
 
             <PopUp opened={state.open} closePopUp={managePopUpBirthdayCalendar}>

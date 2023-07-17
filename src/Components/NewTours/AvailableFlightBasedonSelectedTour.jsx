@@ -590,7 +590,6 @@ const AvailableFlightBasedonSelectedTour = () => {
                             className={styles["roomcountDet_remove"]}
                             onClick={() => {
                               removeRoom(room.id);
-                              setIsOpen(0);
                             }}
                           >
                             <svg

@@ -221,3 +221,7 @@ export const roomNameChecker = (roomsarr, room_id) => {
   const roomName = roomsarr?.filter((room) => room.id === room_id);
   return roomName[0]?.room_type;
 };
+
+export const errValidation = (ErrObj, errtype) => {
+  return ErrObj?.hasOwnProperty(errtype);
+};

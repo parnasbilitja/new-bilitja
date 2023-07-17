@@ -17,7 +17,10 @@ const InfoPasserngers = ({
   dataq,
   setDataq,
   setEvRoomsPrc,
+  roomIndex,
+  Errs,
 }) => {
+  
   const [chdPrc, setChdPrc] = useState("");
   const [adlPrc, setAdlPrc] = useState("");
   const [infPrc, setinfPrc] = useState("");
@@ -109,6 +112,8 @@ const InfoPasserngers = ({
                       setDataq={setDataq}
                       prcTypeBase={(type) => prcTypeBase(type)}
                       hotelDets={hotelDets}
+                      roomIndex={roomIndex}
+                      Errs={Errs}
                     />
                   </>
                 )}

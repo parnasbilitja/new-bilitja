@@ -25,8 +25,10 @@ const ReservationConfirmation = () => {
   }, [router]);
 
   useEffect(() => {
-    console.log(reservedRooms);
-    // setRoomId(reservedRooms[0]?.id);
+    console.log("jkghj", reservedRooms);
+    if (reservedRooms) {
+      setRoomId(reservedRooms[0]?.id);
+    }
   }, [reservedRooms]);
 
   const variants = {

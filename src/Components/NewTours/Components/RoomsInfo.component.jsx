@@ -4,7 +4,7 @@ import PassengerInfo from "./subComponents/PassengerInfo.component";
 import { numberWithCommas } from "../../../Utils/newTour";
 const RoomsInfo = (props) => {
   console.log("from rooms info", props);
-  const [Isaccordion, setIsAccordion] = useState(false);
+ 
   const humanType = (type) => {
     switch (type) {
       case "adl":

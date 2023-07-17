@@ -7,6 +7,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import TourDetailLabel from "./Components/subComponents/TourDetailLabel.component";
 import { useRouter } from "next/router";
+import { Err, NotifAlert } from "./Components/NotifAlert.component";
 const Reservation = ({ hotelDet, stayCount }) => {
   console.log("from reservation", hotelDet);
   const [dataq, setDataq] = useState([]);
@@ -14,11 +15,11 @@ const Reservation = ({ hotelDet, stayCount }) => {
   const [reserverData, setReserverData] = useState([]);
   const [reformSelectedRooms, setReformSelectedRooms] = useState([]);
   const [evRoomsPrc, setEvRoomsPrc] = useState([]);
+  const [err, setErr] = useState({});
   const router = useRouter();
 
   useEffect(() => {
     if (hotelDet?.rooms_selected && hotelDet?.rooms) {
-      console.log("saa", hotelDet?.rooms_selected);
       const newSelectedRooms = [];
       hotelDet?.rooms_selected?.map((roomselected) => {
         hotelDet?.rooms?.map((room) => {
@@ -44,8 +45,8 @@ const Reservation = ({ hotelDet, stayCount }) => {
     return total;
   };
   useEffect(() => {
-    console.log("arr", [reformSelectedRooms]);
-  }, [reformSelectedRooms]);
+    console.log("arr", err);
+  }, [err]);
 
   const personCounter = (arr) => {
     let people = 0;
@@ -59,8 +60,39 @@ const Reservation = ({ hotelDet, stayCount }) => {
     return people;
   };
 
+  // const formValidation = (arr) => {
+  //   let errMsg;
+  //   if (hotelDet?.rooms_selected?.length === arr?.length) {
+  //     const valid = arr.every((el) => {
+  //       let Pass = el.passengers.every((passenger) => {
+  //         return passenger.hasOwnProperty(
+  //           "birth_day" &&
+  //             "expired_passport" &&
+  //             "family" &&
+  //             "name" &&
+  //             "gender" &&
+  //             "nationality" &&
+  //             "passport"
+  //         );
+  //       });
+  //       if (Pass) {
+  //         return true;
+  //       } else {
+  //         errMsg = Err(`اطلاعات وارد شده ناقص می باشد.`);
+  //       }
+  //     });
+  //     if (valid === true) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   } else {
+  //     false;
+  //   }
+  // };
   return (
     <div className={styles["p-body"]}>
+      <NotifAlert />
       <div className={styles["prs-responsive"]}>
         <div className={styles["main-reserve"]}>
           <div className={styles["box-fix-user-reservation"]}>
@@ -102,40 +134,49 @@ const Reservation = ({ hotelDet, stayCount }) => {
                 <div className={styles["paymentbtn"]}>
                   <button
                     onClick={() => {
-                      // let flight_id = hotelDet.flight.flight.id;
-                      // let hotel_id = hotelDet.hotel.id;
-                      // let checkin = hotelDet.flight.date;
-                      // let reserver_full_name = reserverData.reserver_full_name;
-                      // let reserver_id_code = reserverData.reserver_id_code;
-                      // let reserver_phone = reserverData.reserver_phone;
-                      // axios.post(
-                      //   "https://hotelobilit-api.iran.liara.run/api/v1/reserves",
-                      //   {
-                      //     checkin,
-                      //     flight_id,
-                      //     hotel_id,
-                      //     reserver_full_name,
-                      //     reserver_id_code,
-                      //     reserver_phone,
-                      //     rooms: [...dataq],
-                      //     stayCount,
-                      //   }
-                      // );
-                      let rooms = [...dataq];
                       let flight_id = hotelDet.flight.flight.id;
                       let hotel_id = hotelDet.hotel.id;
+                      let checkin = hotelDet.flight.date;
+                      let reserver_full_name = reserverData.reserver_full_name;
+                      let reserver_id_code = reserverData.reserver_id_code;
+                      let reserver_phone = reserverData.reserver_phone;
+                      axios
+                        .post(
+                          "https://hotelobilit-api.iran.liara.run/api/v1/reserves",
+                          {
+                            checkin,
+                            flight_id,
+                            hotel_id,
+                            reserver_full_name,
+                            reserver_id_code,
+                            reserver_phone,
+                            rooms: [...dataq],
+                            stayCount,
+                          }
+                        )
+                        .then((res) => {
+                          let rooms = [...dataq];
+                          let reserverdata = [reserverData];
+                          router.push(
+                            `/tours/reserve/reserveconfirmation/${hotel_id}/${flight_id}?reserverData=${JSON.stringify(
+                              reserverdata
+                            )}&hotel=${JSON.stringify(
+                              hotelDet
+                            )}&rooms=${JSON.stringify(
+                              rooms
+                            )}&fiPrc=${TotalPrcGen(evRoomsPrc)}`
+                          );
+                        })
+                        .catch((err) => {
+                          setErr(err.response.data);
+                        });
 
-                      let reserverdata = [reserverData];
-
-                      router.push(
-                        `/tours/reserve/reserveconfirmation/${hotel_id}/${flight_id}?reserverData=${JSON.stringify(
-                          reserverdata
-                        )}&hotel=${JSON.stringify(
-                          hotelDet
-                        )}&rooms=${JSON.stringify(rooms)}&fiPrc=${TotalPrcGen(
-                          evRoomsPrc
-                        )}`
-                      );
+                      if (!err.isDone && err.errors?.length > 0) {
+                        Err("لطفا اطلاعات مسافرین را تکمیل نمایید!");
+                      } else if (!err.isDone && err.errors?.length === 0) {
+                        Err("این پرواز موجودی ندارد!");
+                        router.push("/tours");
+                      }
                     }}
                   >
                     تاییدیه اولیه
@@ -237,7 +278,7 @@ const Reservation = ({ hotelDet, stayCount }) => {
 
             <h2 style={{ fontSize: "1.5rem" }}>اطلاعات مسافران</h2>
 
-            {reformSelectedRooms?.map((room) => (
+            {reformSelectedRooms?.map((room, roomIndex) => (
               <InfoPasserngers
                 room={room}
                 hotelDets={hotelDet}
@@ -247,6 +288,8 @@ const Reservation = ({ hotelDet, stayCount }) => {
                 dataq={dataq}
                 setDataq={setDataq}
                 setEvRoomsPrc={setEvRoomsPrc}
+                roomIndex={roomIndex}
+                Errs={err}
               />
             ))}
 
