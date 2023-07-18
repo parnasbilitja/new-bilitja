@@ -167,10 +167,13 @@ const Reservation = ({ hotelDet, stayCount }) => {
                           setErr(err.response.data);
                         });
 
-                      if (!dataq) {
+                      if (dataq.length === 0) {
                         Err("هنوز اطلاعاتی وارد نشده!");
                       } else if (!err.isDone && err.errors?.length > 0) {
                         Err("لطفا اطلاعات مسافرین را تکمیل نمایید!");
+                      } else if (!err.isDone && err.errors?.length === 0) {
+                        Err("این پرواز موجودی ندارد!");
+                        router.push("/tours");
                       }
                     }}
                   >
