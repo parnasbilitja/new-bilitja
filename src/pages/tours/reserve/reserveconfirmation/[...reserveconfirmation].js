@@ -136,7 +136,7 @@ const ReservationConfirmation = () => {
             <div className={styles["paymentoption"]}>
               <div className={styles["payment_container"]}>
                 <div className={styles["payment"]}>
-                  <input type="checkbox" />
+                  <input type="checkbox" checked />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/L_O_G_O-new_color-01.jpg" />
                 </div>
               </div>
