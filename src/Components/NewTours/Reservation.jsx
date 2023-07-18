@@ -130,7 +130,7 @@ const Reservation = ({ hotelDet, stayCount }) => {
                 <div className={styles["paymentbtn"]}>
                   <button
                     onClick={() => {
-                      let flight_id = hotelDet.flight.flight.id;
+                      let flight_id = hotelDet.flight.id;
                       let hotel_id = hotelDet.hotel.id;
                       let checkin = hotelDet.flight.date;
                       let reserver_full_name = reserverData.reserver_full_name;
@@ -167,11 +167,10 @@ const Reservation = ({ hotelDet, stayCount }) => {
                           setErr(err.response.data);
                         });
 
-                      if (!err.isDone && err.errors?.length > 0) {
+                      if (!dataq) {
+                        Err("هنوز اطلاعاتی وارد نشده!");
+                      } else if (!err.isDone && err.errors?.length > 0) {
                         Err("لطفا اطلاعات مسافرین را تکمیل نمایید!");
-                      } else if (!err.isDone && err.errors?.length === 0) {
-                        Err("این پرواز موجودی ندارد!");
-                        router.push("/tours");
                       }
                     }}
                   >
@@ -256,6 +255,10 @@ const Reservation = ({ hotelDet, stayCount }) => {
                     value={reserverData.reserver_full_name}
                   />
                 </div>
+                <small>
+                  {err.errors?.reserver_full_name &&
+                    err.errors?.reserver_full_name}
+                </small>
               </div>
               <div className={styles["item-form"]}>
                 <div className={styles["inp-form"]}>
@@ -271,6 +274,9 @@ const Reservation = ({ hotelDet, stayCount }) => {
                     maxLength={10}
                   />
                 </div>
+                <small>
+                  {err.errors?.reserver_id_code && err.errors?.reserver_id_code}
+                </small>
               </div>
               <div className={styles["item-form"]}>
                 <div className={styles["inp-form"]}>
@@ -289,6 +295,9 @@ const Reservation = ({ hotelDet, stayCount }) => {
                     maxLength="11"
                   />
                 </div>
+                <small>
+                  {err.errors?.reserver_phone && err.errors?.reserver_phone}
+                </small>
               </div>
             </form>
 

@@ -8,7 +8,7 @@ const ReservedHotel = () => {
   const [hotelDet, setHoteldet] = useState([]);
   const [stayCount, setStayCount] = useState();
   useEffect(() => {
-    console.log(router.query);
+    console.log("dasda", router.query);
     if (router.query.rooms && router.query.reservedHotel) {
       const rooms = JSON.parse(router.query.rooms);
       const checkin = router.query.checkin;
