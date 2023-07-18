@@ -11,8 +11,12 @@ import { Err, NotifAlert } from "./Components/NotifAlert.component";
 const Reservation = ({ hotelDet, stayCount }) => {
   console.log("from reservation", hotelDet);
   const [dataq, setDataq] = useState([]);
-  const { register, handleSubmit } = useForm();
-  const [reserverData, setReserverData] = useState([]);
+
+  const [reserverData, setReserverData] = useState({
+    reserver_phone: "",
+    reserver_id_code: "",
+    reserver_full_name: "",
+  });
   const [reformSelectedRooms, setReformSelectedRooms] = useState([]);
   const [evRoomsPrc, setEvRoomsPrc] = useState([]);
   const [err, setErr] = useState({});
@@ -45,8 +49,8 @@ const Reservation = ({ hotelDet, stayCount }) => {
     return total;
   };
   useEffect(() => {
-    console.log("arr", err);
-  }, [err]);
+    console.log("arr", reserverData);
+  }, [reserverData]);
 
   const personCounter = (arr) => {
     let people = 0;
@@ -60,36 +64,28 @@ const Reservation = ({ hotelDet, stayCount }) => {
     return people;
   };
 
-  // const formValidation = (arr) => {
-  //   let errMsg;
-  //   if (hotelDet?.rooms_selected?.length === arr?.length) {
-  //     const valid = arr.every((el) => {
-  //       let Pass = el.passengers.every((passenger) => {
-  //         return passenger.hasOwnProperty(
-  //           "birth_day" &&
-  //             "expired_passport" &&
-  //             "family" &&
-  //             "name" &&
-  //             "gender" &&
-  //             "nationality" &&
-  //             "passport"
-  //         );
-  //       });
-  //       if (Pass) {
-  //         return true;
-  //       } else {
-  //         errMsg = Err(`اطلاعات وارد شده ناقص می باشد.`);
-  //       }
-  //     });
-  //     if (valid === true) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   } else {
-  //     false;
-  //   }
-  // };
+  const reserverformData = (e) => {
+    const { name, value } = e.target;
+    const regEx = /^\d+$/;
+    if (name === "reserver_phone" || name === "reserver_id_code") {
+      if (regEx.test(value)) {
+        setReserverData({
+          ...reserverData,
+          [name]: value,
+        });
+      } else {
+        setReserverData({
+          ...reserverData,
+          [name]: "",
+        });
+      }
+    } else {
+      setReserverData({
+        ...reserverData,
+        [name]: value,
+      });
+    }
+  };
   return (
     <div className={styles["p-body"]}>
       <NotifAlert />
@@ -243,16 +239,21 @@ const Reservation = ({ hotelDet, stayCount }) => {
 
             <form
               className={styles["set-info-supervisor"]}
-              onChange={handleSubmit((data) => {
-                setReserverData(data);
-              })}
+              // onChange={handleSubmit((data) => {
+              //   setReserverData(data);
+              // })}
             >
               <div className={styles["item-form"]}>
                 <div className={styles["inp-form"]}>
                   <input
                     type="text"
                     placeholder="نام و نام خانوادگی"
-                    {...register("reserver_full_name")}
+                    // {...register("reserver_full_name")}
+                    name="reserver_full_name"
+                    onChange={(e) => {
+                      reserverformData(e);
+                    }}
+                    value={reserverData.reserver_full_name}
                   />
                 </div>
               </div>
@@ -261,7 +262,13 @@ const Reservation = ({ hotelDet, stayCount }) => {
                   <input
                     type="text"
                     placeholder="کد ملی"
-                    {...register("reserver_id_code")}
+                    name="reserver_id_code"
+                    // {...register("reserver_id_code")}
+                    onChange={(e) => {
+                      reserverformData(e);
+                    }}
+                    value={reserverData.reserver_id_code}
+                    maxLength={10}
                   />
                 </div>
               </div>
@@ -270,7 +277,16 @@ const Reservation = ({ hotelDet, stayCount }) => {
                   <input
                     type="text"
                     placeholder="شماره همراه"
-                    {...register("reserver_phone")}
+                    // {...register("reserver_phone", {
+                    //   required: true,
+                    //   pattern: /^\d{11}$/,
+                    // })}
+                    onChange={(e) => {
+                      reserverformData(e);
+                    }}
+                    value={reserverData.reserver_phone}
+                    name="reserver_phone"
+                    maxLength="11"
                   />
                 </div>
               </div>

@@ -7,7 +7,7 @@ import {
 
 import styles from "../../../../../styles/newTour/components/subComponent/TourDetailLabel.module.scss";
 const TourDetailLabel = ({ flightDet, stayCount }) => {
-  console.log("asdas", flightDet);
+  // console.log("asdas", flightDet);
   return (
     <div className={styles["set-request-tour"]}>
       <div className={styles["info-from"]}>

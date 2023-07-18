@@ -17,7 +17,7 @@ const Cities = (props) => {
         background: "#fff",
         borderRadius: 8,
         width: "100%",
-        marginTop: 5,
+        marginTop: "14px",
         padding: "0 12px",
         cursor: "pointer",
       }}

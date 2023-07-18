@@ -8,10 +8,7 @@
    
   }
 }
- .home-flight-form {
-  
-   
-  }
+ 
 .flight-detail {
   text-align: center;
 
@@ -63,7 +60,9 @@
 
   .form-input-border-private {
     border: 1px solid #cfd3d8;
+    border-radius: 10px;
     font-size: 14px;
+    height: 55px;
   }
 }
 
@@ -80,6 +79,7 @@
     color: #000 !important;
   }
 }
+
 
 .flight-search-box-calendar-container {
   padding: 10px 2px;

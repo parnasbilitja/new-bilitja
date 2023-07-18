@@ -73,6 +73,7 @@ const AvailableFlightBasedonSelectedTour = () => {
       ]);
     } else {
       console.log("noooooooooooooo!");
+      setIsOpen(0);
       Err("تعداد اتاق انتخابی بیش از حد مجاز است");
     }
   };
@@ -289,32 +290,30 @@ const AvailableFlightBasedonSelectedTour = () => {
     if (picsNum <= 4) {
       for (let i = 2; i <= picsNum; i++) {
         gallary.push(
-          <motion.img
-            src={hotel?.gallery[i]?.url}
-            height={100}
-            width={100}
+          <motion.div
             whileHover={{ translateY: "-15px" }}
             onClick={() => {
               setIsModal(hotel?.gallery[i]?.url);
             }}
             layoutId={hotel?.gallery[i]?.url}
-          />
+          >
+            <motion.img src={hotel?.gallery[i]?.url} height={100} width={100} />
+          </motion.div>
         );
       }
       return gallary;
     } else {
       for (let i = 2; i <= 5; i++) {
         gallary.push(
-          <motion.img
-            src={hotel?.gallery[i]?.url}
-            height={100}
-            width={100}
+          <motion.div
             whileHover={{ translateY: "-15px" }}
             onClick={() => {
               setIsModal(hotel?.gallery[i]?.url);
             }}
             layoutId={hotel?.gallery[i]?.url}
-          />
+          >
+            <motion.img src={hotel?.gallery[i]?.url} height={100} width={100} />
+          </motion.div>
         );
       }
       return gallary;
@@ -496,7 +495,6 @@ const AvailableFlightBasedonSelectedTour = () => {
                                       room.id,
                                       room.chd_capacity
                                     );
-                                    setIsOpen(flight.id);
                                   }}
                                 >
                                   +

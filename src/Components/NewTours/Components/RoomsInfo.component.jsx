@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styles from "../../../../styles/newTour/components/RoomsInfo.module.scss";
-import PassengerInfo from "./subComponents/PassengerInfo.component";
+
 import { numberWithCommas } from "../../../Utils/newTour";
 const RoomsInfo = (props) => {
   console.log("from rooms info", props);
- 
+
   const humanType = (type) => {
     switch (type) {
       case "adl":
@@ -27,7 +27,7 @@ const RoomsInfo = (props) => {
           <th>نام</th>
           <th>نام خانوادگی</th>
           <th>ملیت</th>
-          <th>کدملی</th>
+          {props.is_domestic ? <th>کدملی</th> : null}
           <th>تاریخ تولد</th>
           <th>شماره پاسپورت</th>
           <th>تاریخ انقضای پاسپورت</th>
@@ -44,7 +44,7 @@ const RoomsInfo = (props) => {
               <td>{passenger.name}</td>
               <td>{passenger.family}</td>
               <td>{passenger.nationality === "1" ? "ایرانی" : "غیرایرانی"}</td>
-              <td>{passenger.id_code}</td>
+              {props.is_domestic ? <td>{passenger.id_code}</td> : null}
               <td>{passenger.birth_day?.replace(/-/g, "/")}</td>
               <td>{passenger.passport}</td>
               <td>{passenger.expired_passport?.replace(/-/g, "/")}</td>

@@ -12,7 +12,6 @@ const ReservationConfirmation = () => {
   const [reservedRooms, setReservedRooms] = useState();
   const [fiPrc, setFiPrc] = useState("");
   const [fromRouter, setFromRouter] = useState();
-
   const router = useRouter();
   const [roomId, setRoomId] = useState();
   useEffect(() => {
@@ -25,11 +24,15 @@ const ReservationConfirmation = () => {
   }, [router]);
 
   useEffect(() => {
-    console.log("jkghj", reservedRooms);
+    // console.log("jkghj", reservedRooms);
     if (reservedRooms) {
       setRoomId(reservedRooms[0]?.id);
     }
   }, [reservedRooms]);
+
+  useEffect(() => {
+    console.log(hotelDet);
+  }, [hotelDet]);
 
   const variants = {
     initial: {
@@ -100,7 +103,10 @@ const ReservationConfirmation = () => {
                       exit="exit"
                       style={{ overflow: "hidden" }}
                     >
-                      <RoomsInfo reservedRooms={reservedroom} />
+                      <RoomsInfo
+                        reservedRooms={reservedroom}
+                        is_domestic={hotelDet.hotel.is_domestic}
+                      />
                     </motion.div>
                   ) : null}
                 </AnimatePresence>

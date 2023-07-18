@@ -19,13 +19,12 @@ import axios from "axios";
 import {
   setOrgLoc,
   setDestLoc,
-  setDate,
   setFlightDate,
-  setNight,
   setNightNumber,
 } from "../../../Redux/newTours/Action";
 import DropdownComponent from "./subComponents/Dropdown.component";
 import { isEmpty, jalaliDateReformater } from "../../../Utils/newTour";
+import { Err, NotifAlert } from "./NotifAlert.component";
 
 const TourSearchBox = (props) => {
   const getDestandOrgCities = () => {
@@ -57,7 +56,6 @@ const TourSearchBox = (props) => {
       });
   };
 
-  // console.log(props);
   const [width, setWidth] = useState();
   const [citiesData, setCitiesData] = useState({
     origin: {},
@@ -83,8 +81,6 @@ const TourSearchBox = (props) => {
 
     ///////////////////////
   }, [props.selectedSrc, props.selectedDest]);
-
-
 
   useEffect(() => {
     /////get avalaible dates and night number based on Org & Dset
@@ -210,6 +206,9 @@ const TourSearchBox = (props) => {
     if (date === {}) {
       return false;
     }
+    if (!night) {
+      return false;
+    }
     return true;
   };
   const mobileSize = 626;
@@ -225,152 +224,167 @@ const TourSearchBox = (props) => {
     },
     history,
   } = props;
- 
+
   return (
-    <div className={styles["home-flight-form"]}>
-      <div>
-        <Scrolltoprefresh />
-        <div
-          className={` form-input-border  ${styles["form-input-border-private"]} `}
-        >
-          <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i>
-          <PrimaryTextInputMobile
-            value={props.destandorgcities.origin.name}
-            name="sourceName"
-            onClick={(e) => {
-              // for mobile
-              if (width <= mobileSize) {
-                e.preventDefault();
-                managePopUpSource(true);
-              } else {
-                manageSuggestSource(true);
-              }
-            }}
-            onChange={handleChangeCre}
-            onFocus={handleFocus}
-            onBlur={handleFocusOut}
-            placeholder={"مبدا خود را وارد کنید"}
-          />
-
-          {state.suggestSource ? (
-            <Cities
-              credenrialType="source"
-              closeSuggest={manageSuggestSource}
-              searchTerm={state.searchTermSource}
-              cities={orgCities}
-              setCities={(value) => props.setOrgLoc(value)}
-              setcitiesData={(val) => setCitiesData(val)}
+    <>
+      <NotifAlert />
+      <div className={styles["home-flight-form"]}>
+        <div>
+          <Scrolltoprefresh />
+          <div
+            className={` form-input-border  ${styles["form-input-border-private"]} `}
+          >
+            <i
+              className="bilitja icon-plane-departure form-input-icon rotate-y-180"
+              style={{ marginTop: "3px" }}
+            ></i>
+            <PrimaryTextInput
+              value={props.destandorgcities.origin.name}
+              name="sourceName"
+              onClick={(e) => {
+                // for mobile
+                if (width <= mobileSize) {
+                  e.preventDefault();
+                  managePopUpSource(true);
+                } else {
+                  manageSuggestSource(true);
+                }
+              }}
+              onChange={handleChangeCre}
+              onFocus={handleFocus}
+              onBlur={handleFocusOut}
+              placeholder={"مبدا خود را وارد کنید"}
             />
-          ) : null}
-        </div>
-      </div>
 
-      <div>
+            {state.suggestSource ? (
+              <Cities
+                credenrialType="source"
+                closeSuggest={manageSuggestSource}
+                searchTerm={state.searchTermSource}
+                cities={orgCities}
+                setCities={(value) => props.setOrgLoc(value)}
+                setcitiesData={(val) => setCitiesData(val)}
+              />
+            ) : null}
+          </div>
+        </div>
+
+        <div>
+          <div
+            className={` form-input-border  ${styles["form-input-border-private"]} `}
+          >
+            {" "}
+            <i
+              style={{
+                color: "black",
+                fontSize: 32,
+                fontWeight: 500,
+                marginTop: "3px",
+              }}
+              className="bilitja  icon-plane-departure form-input-icon rotate-upsidedown-reverse "
+            ></i>
+            <PrimaryTextInput
+              value={props.destandorgcities.destination.name}
+              name="destinationName"
+              onClick={(e) => {
+                // for mobile
+                if (width <= mobileSize) {
+                  e.preventDefault();
+                  managePopUpDestination(true);
+                } else {
+                  manageSuggestDestination(true);
+                }
+              }}
+              onChange={handleChangeCre}
+              onFocus={handleFocus}
+              onBlur={handleFocusOut}
+              placeholder={"مقصد خود را وارد کنید"}
+            />
+            {width > mobileSize && state.suggestDestination ? (
+              <Cities
+                credenrialType="destination"
+                closeSuggest={manageSuggestDestination}
+                searchTerm={state.searchTermDestination}
+                cities={destCities}
+                setCities={(value) => props.setDestLoc(value)}
+              />
+            ) : null}
+          </div>
+        </div>
+
         <div
           className={` form-input-border  ${styles["form-input-border-private"]} `}
         >
-          {" "}
           <i
-            style={{ color: "black", fontSize: 32, fontWeight: 500 }}
-            className="bilitja  icon-plane-departure form-input-icon rotate-upsidedown-reverse "
+            className="bilitja icon-calendar form-input-icon-larger "
+            style={{ marginTop: "5px" }}
           ></i>
-          <PrimaryTextInputMobile
-            value={props.destandorgcities.destination.name}
-            name="destinationName"
+
+          <PrimaryTextInput
+            placeholder={" تاریخ پرواز رفت"}
+            readOnly="true"
+            value={props.destandorgcities.date.persianDate}
+            onFocus={(e) => {
+              e.preventDefault();
+              managePopUpCalendar(true);
+            }}
+          />
+        </div>
+        <div style={{ padding: ".5rem 0" }}>
+          <DropdownComponent
+            nights={nights}
+            setNight={(value) => props.setNightNumber(value)}
+          />
+        </div>
+        <div className="without-focus">
+          <PrimaryButton
+            style={{ height: "52px", marginTop: "9px", borderRadius: "5px" }}
+            value={props.searchReset == false ? "جستجو" : "لطفا صبر کنید..."}
             onClick={(e) => {
-              // for mobile
-              if (width <= mobileSize) {
-                e.preventDefault();
-                managePopUpDestination(true);
+              if (validation() === false) {
+                // props.setSearchReset(false);
+                // props.messageBoxModify({
+                //   state: true,
+                //   color: false,
+                //   message: "لطفا اطلاعات را کامل وارد کنید",
+                // });
+                Err("لطفا اطلاعات را کامل وارد کنید");
+                console.log("valis", validation());
               } else {
-                manageSuggestDestination(true);
+                e.preventDefault();
+                const stDate = jalaliDateReformater(
+                  props.destandorgcities.date.persianDate
+                );
+
+                router.push(
+                  `/tours/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities.night}`
+                );
+                console.log("vali", validation());
               }
             }}
-            onChange={handleChangeCre}
-            onFocus={handleFocus}
-            onBlur={handleFocusOut}
-            placeholder={"مقصد خود را وارد کنید"}
-          />
-          {width > mobileSize && state.suggestDestination ? (
-            <Cities
-              credenrialType="destination"
-              closeSuggest={manageSuggestDestination}
-              searchTerm={state.searchTermDestination}
-              cities={destCities}
-              setCities={(value) => props.setDestLoc(value)}
+          >
+            {"جستجو"}
+          </PrimaryButton>
+        </div>
+
+        <PopUpWide opened={state.open} closePopUp={managePopUpCalendar}>
+          <div className={styles["flight-search-box-calendar-container"]}>
+            <CalendarComponent
+              setDate={(value) => {
+                props.addCredentials({
+                  stDate: value.garigorian,
+                  flightDatePersian: value.jalali,
+                  typeOfCalendar: value.typeOfCalendar,
+                });
+              }}
+              closePopUpCalendar={managePopUpCalendar}
+              dateandnight={dateAndNight}
+              setFlightDate={(value) => props.setFlightDate(value)}
             />
-          ) : null}
-        </div>
+          </div>
+        </PopUpWide>
       </div>
-
-      <div
-        className={` form-input-border  ${styles["form-input-border-private"]} `}
-      >
-        <i className="bilitja icon-calendar form-input-icon-larger "></i>
-
-        <PrimaryTextInputMobile
-          placeholder={" تاریخ پرواز رفت"}
-          readOnly="true"
-          value={props.destandorgcities.date.persianDate}
-          onFocus={(e) => {
-            e.preventDefault();
-            managePopUpCalendar(true);
-          }}
-        />
-      </div>
-      <div style={{ padding: ".5rem 0" }}>
-        <DropdownComponent
-          nights={nights}
-          setNight={(value) => props.setNightNumber(value)}
-        />
-      </div>
-      <div className="without-focus">
-        <PrimaryButton
-          style={{ height: "45px", marginTop: "7px", borderRadius: "5px" }}
-          value={props.searchReset == false ? "جستجو" : "لطفا صبر کنید..."}
-          onClick={(e) => {
-            if (!validation()) {
-              // props.setSearchReset(false);
-              props.messageBoxModify({
-                state: true,
-                color: false,
-                message: "لطفا اطلاعات را کامل وارد کنید",
-              });
-              console.log("vali", validation());
-            } else {
-              e.preventDefault();
-              const stDate = jalaliDateReformater(
-                props.destandorgcities.date.persianDate
-              );
-
-              router.push(
-                `/tours/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities.night}`
-              );
-              console.log("vali", validation());
-            }
-          }}
-        >
-          {"جستجو"}
-        </PrimaryButton>
-      </div>
-
-      <PopUpWide opened={state.open} closePopUp={managePopUpCalendar}>
-        <div className={styles["flight-search-box-calendar-container"]}>
-          <CalendarComponent
-            setDate={(value) => {
-              props.addCredentials({
-                stDate: value.garigorian,
-                flightDatePersian: value.jalali,
-                typeOfCalendar: value.typeOfCalendar,
-              });
-            }}
-            closePopUpCalendar={managePopUpCalendar}
-            dateandnight={dateAndNight}
-            setFlightDate={(value) => props.setFlightDate(value)}
-          />
-        </div>
-      </PopUpWide>
-    </div>
+    </>
   );
 };
 

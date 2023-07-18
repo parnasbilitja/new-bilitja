@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import moment from "moment-jalaali";
 import styles from "../../../../../styles/BirthdayCalendar.module.scss";
 const BirthdayCalendar = (props) => {
-  console.log("fromsadsadsa", props);
+  // console.log("fromsadsadsa", props);
   const { typePassenger } = props;
   let current = 1401;
   const today = moment().format("jYYYY/jMM/jDD");

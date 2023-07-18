@@ -86,18 +86,18 @@ $containerColor:#ebebeb;
                        display: grid;
                        grid-template-columns: 1fr 1fr ;
                       
-                       img{
-                        object-fit: cover;
-                        cursor: pointer;
-                        border-radius: 20px;
-                       }
                        .images{
-                        display: grid;
-                        grid-template-columns: 1fr 1fr ;
-                         gap: .5rem;
-                         
-                       }
-                   }
+                           display: grid;
+                           grid-template-columns: 1fr 1fr ;
+                           gap: .5rem;
+                           
+                        }
+                    }
+                    img{
+                     object-fit: cover;
+                     cursor: pointer;
+                     border-radius: 20px;
+                    }
                 }
         }
 

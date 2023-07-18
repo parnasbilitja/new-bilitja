@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "../../../../../styles/newTour/components/subComponent/PassengerForm.module.scss";
 import PopUp from "./PopUp.component";
 import BirthDayParentCl from "../calendar/BirthDayParentCl";
 import BirthDayParent from "../../../../sources/calendar/BirthDayParent";
 import { errValidation } from "../../../../Utils/newTour";
 const PassengerForm = (props) => {
-  console.log("hotel", props.hotelDets);
+  console.log("hotel", props);
   const [state, setState] = useState({
     open: false,
     extOpen: false,
@@ -77,7 +77,7 @@ const PassengerForm = (props) => {
           type,
           id: `${index}${type}`,
           price: props.prcTypeBase(type),
-          // ...objModel,
+          ...objModel,
           ...findpassenger[0],
           [e.target.name]: e.target.value,
         });
@@ -88,7 +88,7 @@ const PassengerForm = (props) => {
           type,
           id: `${index}${type}`,
           price: props.prcTypeBase(type),
-          // ...objModel,
+          ...objModel,
           [e.target.name]: e.target.value,
         });
       }
@@ -194,10 +194,9 @@ const PassengerForm = (props) => {
           <form
             key={index}
             className={
-              // props.hotelDets.hotel.is_domestic
-              //   ? styles["form-container2"]
-              //   : styles["form-container"]
-              styles["form-container"]
+              props.hotelDets.hotel.is_domestic
+                ? styles["form-container"]
+                : styles["form-container2"]
             }
             onClick={() => {
               console.log(index);
@@ -348,40 +347,40 @@ const PassengerForm = (props) => {
 
             {/* "item-form w-15" */}
 
-            {/* {props.hotelDets.hotel.is_domestic ? ( */}
-            <div className={styles["item-form"]}>
-              <div className={styles["inp-form"]}>
-                <input
-                  // {...form.register("id_code")}
-                  type="text"
-                  placeholder="کدملی"
-                  maxLength="10"
-                  onChange={(e) =>
-                    formDataPicker2(
-                      e,
-                      index,
-                      props.type,
-                      props.roomId,
-                      props.roomTypeId
-                    )
-                  }
-                  name="id_code"
-                />
+            {props.hotelDets.hotel.is_domestic ? (
+              <div className={styles["item-form"]}>
+                <div className={styles["inp-form"]}>
+                  <input
+                    // {...form.register("id_code")}
+                    type="text"
+                    placeholder="کدملی"
+                    maxLength="10"
+                    onChange={(e) =>
+                      formDataPicker2(
+                        e,
+                        index,
+                        props.type,
+                        props.roomId,
+                        props.roomTypeId
+                      )
+                    }
+                    name="id_code"
+                  />
+                </div>
+                {errValidation(
+                  props.Errs.errors,
+                  errStruct(props.roomIndex, index, "id_code")
+                ) ? (
+                  <small>
+                    {
+                      props.Errs.errors[
+                        errStruct(props.roomIndex, index, "id_code")
+                      ]
+                    }
+                  </small>
+                ) : null}
               </div>
-              {errValidation(
-                props.Errs.errors,
-                errStruct(props.roomIndex, index, "id_code")
-              ) ? (
-                <small>
-                  {
-                    props.Errs.errors[
-                      errStruct(props.roomIndex, index, "id_code")
-                    ]
-                  }
-                </small>
-              ) : null}
-            </div>
-            {/* ) : null} */}
+            ) : null}
 
             {/* ) : null} */}
 
