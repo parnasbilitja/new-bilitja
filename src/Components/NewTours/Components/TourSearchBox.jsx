@@ -84,15 +84,7 @@ const TourSearchBox = (props) => {
     ///////////////////////
   }, [props.selectedSrc, props.selectedDest]);
 
-  // function isEmpty(obj) {
-  //   for (const prop in obj) {
-  //     if (Object.hasOwn(obj, prop)) {
-  //       return false;
-  //     }
-  //   }
 
-  //   return true;
-  // }
 
   useEffect(() => {
     /////get avalaible dates and night number based on Org & Dset
@@ -233,8 +225,7 @@ const TourSearchBox = (props) => {
     },
     history,
   } = props;
-  // console.log("flightDatePersian");
-  // console.log(flightDatePersian);
+ 
   return (
     <div className={styles["home-flight-form"]}>
       <div>
