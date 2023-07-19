@@ -67,6 +67,7 @@ const availableHotels = () => {
   const [selectedDest, setSelectedDest] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [check, setCheck] = useState("");
+  console.log(router);
   useEffect(() => {
     setRouterDet(router.query?.availablehotels?.length > 1);
     ///get date from url
@@ -156,6 +157,9 @@ const availableHotels = () => {
     setCheck(checkValue);
   };
 
+  useEffect(() => {
+    console.log("hotelllll", hotels);
+  }, [hotels]);
   return (
     <div className={styles["main-section"]}>
       <NavHandler />
@@ -247,8 +251,18 @@ const availableHotels = () => {
                           />
                         </div>
                         <div className={styles.hotelNameDetail}>
-                          <h2 className={styles.faName}>{hotel.title}</h2>
-                          <h2 className={styles.enName}>{hotel.titleEn}</h2>
+                          {hotel.is_domestic ? (
+                            <div>
+                              <h2 className={styles.faName}>{hotel.title}</h2>
+                              <h2 className={styles.enName}>{hotel.titleEn}</h2>
+                            </div>
+                          ) : (
+                            <div>
+                              <h2 className={styles.faName}>{hotel.titleEn}</h2>
+                              <h2 className={styles.enName}>{hotel.title}</h2>
+                            </div>
+                          )}
+
                           <div className={styles.pStar}>
                             {startBuilder(+hotel.stars)?.map((x) => {
                               return x;

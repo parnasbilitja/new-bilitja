@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../../../../styles/newTour/components/subComponent/PassengerForm.module.scss";
 import PopUp from "./PopUp.component";
 import BirthDayParentCl from "../calendar/BirthDayParentCl";
@@ -202,10 +202,24 @@ const PassengerForm = (props) => {
         return "تخت اضافه";
     }
   };
+  const objModelBuilder = () => {
+    console.log("hellooo", {
+      name: "",
+      family: "",
+      birth_day: "",
+      nationality: "",
+      gender: "",
+      passport: "",
+      expired_passport: "",
+      id_code: "",
+      id: `${props.type}${props.count}`,
+    });
+  };
+
+  useEffect(() => {}, []);
   return (
     <>
       {[...Array(props.count)].map((p, index) => {
-        
         return (
           <div className={styles["container"]}>
             <div className={styles["personDet"]}>
