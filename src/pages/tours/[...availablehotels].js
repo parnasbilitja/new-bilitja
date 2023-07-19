@@ -37,11 +37,18 @@ const availableHotels = () => {
   const [origin, setOrigin] = useState();
   const [night, setNight] = useState();
   const [jalaliDate, setJalaliDate] = useState();
+  const [stars, setStars] = useState();
   /////////////////////////////
 
   //state for getting av hotel from api
   const [hotels, setHotels] = useState([]);
 
+  const hotelstarPicker = (hotelsArr) => {
+    debugger;
+    const stars = [];
+    hotelsArr.map((hotel) => stars.push(hotel.stars));
+    return stars;
+  };
   const search = (e) => {
     if (e.key === "Enter") {
       axios
@@ -67,7 +74,7 @@ const availableHotels = () => {
   const [selectedDest, setSelectedDest] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [check, setCheck] = useState("");
-  console.log(router);
+  // console.log(router);
   useEffect(() => {
     setRouterDet(router.query?.availablehotels?.length > 1);
     ///get date from url
@@ -93,6 +100,7 @@ const availableHotels = () => {
         })
         .then((res) => {
           setHotels(res?.data?.data);
+          setStars(hotelstarPicker(res?.data?.data));
         })
         .catch((err) => {
           console.log(err);
@@ -137,15 +145,15 @@ const availableHotels = () => {
     );
   }, [router, date, destination, origin, night]);
 
-  const checkedClick = (checkValue, num) => {
+  const checkedClick = (checkValue, num, searchtype) => {
     axios
       .post("https://hotelobilit-api.iran.liara.run/api/v1/hotels/search", {
         date: date,
         destination: destination,
         keywords: searchInput,
-        orderBy: num,
+        orderBy: searchtype === "order" ? num : null,
         origin: origin,
-        stars: null,
+        stars: searchtype === "star" ? num : null,
         stayCount: night,
       })
       .then((res) => {
@@ -157,9 +165,11 @@ const availableHotels = () => {
     setCheck(checkValue);
   };
 
-  useEffect(() => {
-    console.log("hotelllll", hotels);
-  }, [hotels]);
+  // useEffect(() => {
+  //   if (hotels) {
+  //     setStars(hotelstarPicker(hotels));
+  //   }
+  // }, []);
   return (
     <div className={styles["main-section"]}>
       <NavHandler />
@@ -187,15 +197,19 @@ const availableHotels = () => {
               </div>
               <div className={styles.hotelSearchStars}>
                 <p>ستاره های هتل</p>
-                <select name="" id="">
-                  <option value="1" selected>
+                <select
+                  name=""
+                  id=""
+                  onClick={(e) => {
+                    checkedClick(null, e.target.value, "star");
+                  }}
+                >
+                  <option selected disabled>
                     همه
                   </option>
-                  <option value="1">1 ستاره</option>
-                  <option value="2">2 ستاره</option>
-                  <option value="3">3 ستاره</option>
-                  <option value="4">4 ستاره</option>
-                  <option value="0">5 ستاره</option>
+                  {stars?.map((star) => {
+                    return <option value={star}> ستاره {star}</option>;
+                  })}
                 </select>
               </div>
               <div className={styles.hotelSearchOrder}>
@@ -205,7 +219,7 @@ const availableHotels = () => {
                     type="checkbox"
                     name="ارزان ترین"
                     id=""
-                    onClick={() => checkedClick("cheap", 1)}
+                    onClick={() => checkedClick("cheap", 1, "order")}
                     checked={check === "cheap" ? true : false}
                   />
                   <p htmlFor="">ارزان ترین</p>
@@ -216,7 +230,7 @@ const availableHotels = () => {
                     name="گران ترین"
                     id=""
                     checked={check === "expensive" ? true : false}
-                    onClick={() => checkedClick("expensive", 2)}
+                    onClick={() => checkedClick("expensive", 2, "order")}
                   />
                   <p htmlFor="">گران ترین</p>
                 </div>

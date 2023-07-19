@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../../../../styles/Dropdown.module.scss";
-import { useDispatch } from "react-redux";
 import { withRouter } from "next/router";
 import { connect } from "react-redux";
 
 const DropdownComponent = (props) => {
-  console.log("fcgdx", props);
+  // console.log("fcgdx", props);
 
   return (
     <div className={styles.dropdowncontainer}>

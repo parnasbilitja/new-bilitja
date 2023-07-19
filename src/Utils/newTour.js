@@ -47,7 +47,7 @@ export function numberWithCommas(number) {
 }
 
 ////star builder
-export const startBuilder = (star) => {
+export const startBuilder = (star, setvalue) => {
   const startarr = [];
   for (let i = 0; i < star; i++) {
     startarr.push(
@@ -94,8 +94,6 @@ export const currencyExchanger = (currency_code, currency) => {
     }
   }
 };
-
-
 
 ///extbed =تخت اضافه
 export const extBedPrcGen = (rooms, flight, roomTypeId) => {

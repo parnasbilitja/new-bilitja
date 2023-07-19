@@ -216,7 +216,7 @@ const PassengerForm = (props) => {
     });
   };
 
-  useEffect(() => {}, []);
+ 
   return (
     <>
       {[...Array(props.count)].map((p, index) => {

@@ -2,16 +2,14 @@ import React, { useEffect, useState } from "react";
 import styles from "../../../styles/newTour/Reserve.module.scss";
 import InfoPasserngers from "./Components/InfoPasserngers";
 import { numberWithCommas, roomNameChecker } from "../../Utils/newTour";
-import { useForm } from "react-hook-form";
 import axios from "axios";
 import { motion } from "framer-motion";
 import TourDetailLabel from "./Components/subComponents/TourDetailLabel.component";
 import { useRouter } from "next/router";
 import { Err, NotifAlert } from "./Components/NotifAlert.component";
 const Reservation = ({ hotelDet, stayCount }) => {
-  console.log("from reservation", hotelDet);
+  // console.log("from reservation", hotelDet);
   const [dataq, setDataq] = useState([]);
-
   const [reserverData, setReserverData] = useState({
     reserver_phone: "",
     reserver_id_code: "",
@@ -48,9 +46,9 @@ const Reservation = ({ hotelDet, stayCount }) => {
 
     return total;
   };
-  useEffect(() => {
-    console.log("arr", reserverData);
-  }, [reserverData]);
+  // useEffect(() => {
+  //   console.log("arr", reserverData);
+  // }, [reserverData]);
 
   const personCounter = (arr) => {
     let people = 0;
