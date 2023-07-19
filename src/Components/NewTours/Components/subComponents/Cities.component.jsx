@@ -18,7 +18,7 @@ const Cities = (props) => {
         borderRadius: 8,
         width: "100%",
         marginTop: "14px",
-        padding: "0 12px",
+        padding: "5px 12px",
         cursor: "pointer",
       }}
       className="suggestion-box"
@@ -34,6 +34,7 @@ const Cities = (props) => {
             onClick={() => {
               props.setCities({ name: city.name, code: city.code });
             }}
+            style={{ padding: "5px" }}
           >
             <span className="font-size-14">{city.name} </span>
             <span className="pull-left font-size-13 color-textpill">
@@ -42,11 +43,6 @@ const Cities = (props) => {
           </div>
         ))
       )}
-
-      <div>
-        <span className="font-size-14"></span>
-        <span className="pull-left font-size-13 color-textpill"></span>
-      </div>
     </div>
   );
 };

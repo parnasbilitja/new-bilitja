@@ -177,7 +177,13 @@ const ReservationConfirmation = () => {
               >
                 پرداخت با کارت شتاب
               </button>
-              <p>انصراف از خرید</p>
+              <p
+                onClick={() => {
+                  router.push("/tours");
+                }}
+              >
+                انصراف از خرید
+              </p>
             </div>
           </div>
         </div>

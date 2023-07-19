@@ -164,6 +164,7 @@ const Reservation = ({ hotelDet, stayCount }) => {
                           );
                         })
                         .catch((err) => {
+                          Err("لطفا فیلد های زیر را تکمیل کنید");
                           setErr(err.response.data);
                         });
 

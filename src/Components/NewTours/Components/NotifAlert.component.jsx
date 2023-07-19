@@ -35,3 +35,15 @@ export const Err = (msg) => {
     theme: "colored",
   });
 };
+export const ErrSuccess = (msg) => {
+  toast.success(msg, {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+};

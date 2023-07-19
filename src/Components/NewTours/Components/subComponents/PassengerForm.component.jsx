@@ -227,14 +227,14 @@ const PassengerForm = (props) => {
                   <option value="0">خانم</option>
                 </select>
               </div>
-              {props.Errs.errors &&
+              {props.Errs?.errors &&
               errValidation(
-                props.Errs.errors,
+                props.Errs?.errors,
                 errStruct(props.roomIndex, index, "gender")
               ) ? (
                 <small>
                   {
-                    props.Errs.errors[
+                    props.Errs?.errors[
                       errStruct(props.roomIndex, index, "gender")
                     ]
                   }
@@ -262,13 +262,13 @@ const PassengerForm = (props) => {
                   name="name"
                 />
               </div>
-              {props.Errs.errors &&
+              {props.Errs?.errors &&
               errValidation(
-                props.Errs.errors,
+                props.Errs?.errors,
                 errStruct(props.roomIndex, index, "name")
               ) ? (
                 <small>
-                  {props.Errs.errors[errStruct(props.roomIndex, index, "name")]}
+                  {props.Errs?.errors[errStruct(props.roomIndex, index, "name")]}
                 </small>
               ) : null}
             </div>
@@ -291,14 +291,14 @@ const PassengerForm = (props) => {
                   maxLength="50"
                 />
               </div>
-              {props.Errs.errors &&
+              {props.Errs?.errors &&
               errValidation(
-                props.Errs.errors,
+                props.Errs?.errors,
                 errStruct(props.roomIndex, index, "family")
               ) ? (
                 <small>
                   {
-                    props.Errs.errors[
+                    props.Errs?.errors[
                       errStruct(props.roomIndex, index, "family")
                     ]
                   }
@@ -332,12 +332,12 @@ const PassengerForm = (props) => {
                 </select>
               </div>
               {errValidation(
-                props.Errs.errors,
+                props.Errs?.errors,
                 errStruct(props.roomIndex, index, "nationality")
               ) ? (
                 <small>
                   {
-                    props.Errs.errors[
+                    props.Errs?.errors[
                       errStruct(props.roomIndex, index, "nationality")
                     ]
                   }
@@ -368,12 +368,12 @@ const PassengerForm = (props) => {
                   />
                 </div>
                 {errValidation(
-                  props.Errs.errors,
+                  props.Errs?.errors,
                   errStruct(props.roomIndex, index, "id_code")
                 ) ? (
                   <small>
                     {
-                      props.Errs.errors[
+                      props.Errs?.errors[
                         errStruct(props.roomIndex, index, "id_code")
                       ]
                     }
@@ -405,12 +405,12 @@ const PassengerForm = (props) => {
                 />
               </div>
               {errValidation(
-                props.Errs.errors,
+                props.Errs?.errors,
                 errStruct(props.roomIndex, index, "birth_day")
               ) ? (
                 <small>
                   {
-                    props.Errs.errors[
+                    props.Errs?.errors[
                       errStruct(props.roomIndex, index, "birth_day")
                     ]
                   }
@@ -437,12 +437,12 @@ const PassengerForm = (props) => {
                 />
               </div>
               {errValidation(
-                props.Errs.errors,
+                props.Errs?.errors,
                 errStruct(props.roomIndex, index, "passport")
               ) ? (
                 <small>
                   {
-                    props.Errs.errors[
+                    props.Errs?.errors[
                       errStruct(props.roomIndex, index, "passport")
                     ]
                   }
@@ -480,12 +480,12 @@ const PassengerForm = (props) => {
                 />
               </div>
               {errValidation(
-                props.Errs.errors,
+                props.Errs?.errors,
                 errStruct(props.roomIndex, index, "expired_passport")
               ) ? (
                 <small>
                   {
-                    props.Errs.errors[
+                    props.Errs?.errors[
                       errStruct(props.roomIndex, index, "expired_passport")
                     ]
                   }

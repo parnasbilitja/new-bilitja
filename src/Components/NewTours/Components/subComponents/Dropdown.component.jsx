@@ -13,9 +13,9 @@ const DropdownComponent = (props) => {
         className="select-custom"
         name="تعداد شب"
         id=""
-        onChange={() => {
+        onChange={(e) => {
           if (props.nights) {
-            props.setNight(props.nights[0].night);
+            props.setNight(e.target.value);
           }
         }}
         onClick={(e) => props.setNight(e.target.value)}

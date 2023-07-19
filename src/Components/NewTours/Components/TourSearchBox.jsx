@@ -24,7 +24,7 @@ import {
 } from "../../../Redux/newTours/Action";
 import DropdownComponent from "./subComponents/Dropdown.component";
 import { isEmpty, jalaliDateReformater } from "../../../Utils/newTour";
-import { Err, NotifAlert } from "./NotifAlert.component";
+import { Err, ErrSuccess, NotifAlert } from "./NotifAlert.component";
 
 const TourSearchBox = (props) => {
   const getDestandOrgCities = () => {
@@ -75,9 +75,9 @@ const TourSearchBox = (props) => {
     setWidth(window.innerWidth);
     getDestandOrgCities();
 
-    if (props.selectedSrc && props.selectedDest) {
-      console.log("from tour", props);
-    }
+    // if (props.selectedSrc && props.selectedDest) {
+    //   // console.log("from tour", props);
+    // }
 
     ///////////////////////
   }, [props.selectedSrc, props.selectedDest]);
@@ -183,17 +183,6 @@ const TourSearchBox = (props) => {
 
   const validation = () => {
     const {
-      // credentials: {
-      //   // sourceName,
-      //   // destinationName,
-      //   // sourceNameEn,
-      //   // destinationNameEn,
-      //   // flightDatePersian,
-      //   // source,
-      //   // dest,
-      //   // stDate,
-      //   // typeOfCalendar,
-      // },
       destandorgcities: { origin, destination, date, night },
     } = props;
     if (!origin.code) {
@@ -351,6 +340,7 @@ const TourSearchBox = (props) => {
                 Err("لطفا اطلاعات را کامل وارد کنید");
                 console.log("valis", validation());
               } else {
+                // ErrSuccess("به صفحه بعد منتقل می‌شوید");
                 e.preventDefault();
                 const stDate = jalaliDateReformater(
                   props.destandorgcities.date.persianDate

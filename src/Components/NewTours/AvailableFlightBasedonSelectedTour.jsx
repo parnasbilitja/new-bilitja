@@ -18,7 +18,7 @@ import {
 import Image from "next/image";
 import PictureModal from "./Components/subComponents/PictureModal";
 
-import { Err, NotifAlert } from "./Components/NotifAlert.component";
+import { Err, ErrSuccess, NotifAlert } from "./Components/NotifAlert.component";
 
 const AvailableFlightBasedonSelectedTour = () => {
   const router = useRouter();
@@ -73,7 +73,7 @@ const AvailableFlightBasedonSelectedTour = () => {
       ]);
     } else {
       console.log("noooooooooooooo!");
-      setIsOpen(0);
+      // setIsOpen(0);
       Err("تعداد اتاق انتخابی بیش از حد مجاز است");
     }
   };
@@ -546,8 +546,10 @@ const AvailableFlightBasedonSelectedTour = () => {
                     <button
                       onClick={() => {
                         if (selectedRoom.length > 0) {
+                          ErrSuccess(
+                            "به صفحه تکمیل اطلاعات و رزرو منتقل می‌شوید"
+                          );
                           const routerParam = router.query;
-
                           const finalDet = {
                             checkin: jalaliToMiladiConvertor(
                               routerParam.stDate
@@ -563,7 +565,7 @@ const AvailableFlightBasedonSelectedTour = () => {
                             }&rooms=${JSON.stringify(finalDet.rooms)}`
                           );
                         } else {
-                          console.log("not enough");
+                          Err("لطفا پرواز و اتاق مورد نظر خود راانتخاب کنید");
                         }
                       }}
                       className={styles["ticket_reserve_btn"]}
@@ -592,10 +594,10 @@ const AvailableFlightBasedonSelectedTour = () => {
                           >
                             <svg
                               data-name="Layer 1"
-                              height="200"
+                              height="150"
                               id="Layer_1"
                               viewBox="0 0 200 200"
-                              width="200"
+                              width="150"
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <title />
@@ -618,8 +620,8 @@ const AvailableFlightBasedonSelectedTour = () => {
                           </div>
 
                           <div className={styles["roomcountDet_bedcount"]}>
-                            <p>تعداد تخت اضافه</p>
-                            <p>
+                            <p className={styles["bedtype"]}>تعداد تخت اضافه</p>
+                            <p className={styles["bedtypeprc"]}>
                               {numberWithCommas(
                                 extBedPrcGen(
                                   hotel.rooms,
@@ -649,8 +651,10 @@ const AvailableFlightBasedonSelectedTour = () => {
                             </div>
                           </div>
                           <div className={styles["roomcountDet_bedcount"]}>
-                            <p>تعداد نوزاد</p>
-                            <p>{numberWithCommas(flight.inf_price)} تومان</p>
+                            <p className={styles["bedtype"]}>تعداد نوزاد</p>
+                            <p className={styles["bedtypeprc"]}>
+                              {numberWithCommas(flight.inf_price)} تومان
+                            </p>
                             <div
                               className={styles["roomcountDet_bedcount_count"]}
                             >
@@ -670,8 +674,8 @@ const AvailableFlightBasedonSelectedTour = () => {
                             </div>
                           </div>
                           <div className={styles["roomcountDet_bedcount"]}>
-                            <p>تعداد کودک</p>
-                            <p>
+                            <p className={styles["bedtype"]}>تعداد کودک</p>
+                            <p className={styles["bedtypeprc"]}>
                               {numberWithCommas(
                                 chdPrcGen(
                                   hotel.rooms,
