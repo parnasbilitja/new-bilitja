@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { selectAirports } from "../../../../Redux/Airports/airport.reselect";
 import { connect } from "react-redux";
 import { selectCredentials } from "../../../../Redux/Search/search.reselect";
@@ -23,7 +23,7 @@ const Cities = (props) => {
       }}
       className="suggestion-box"
     >
-      {/* {console.log(props.airports)} */}
+      
       {/* //fill airport */}
 
       {!props.cities ? (

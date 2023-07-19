@@ -20,7 +20,6 @@ const InfoPasserngers = ({
   roomIndex,
   Errs,
 }) => {
-  
   const [chdPrc, setChdPrc] = useState("");
   const [adlPrc, setAdlPrc] = useState("");
   const [infPrc, setinfPrc] = useState("");
@@ -83,26 +82,15 @@ const InfoPasserngers = ({
             <h2>{roomName}</h2>
           </div>
         </div>
-        {/* style="position: relative;" */}
         <div>
           <div>
             <div
               className={`${styles["set-info-passengers"]} ${styles["posi-relative"]}`}
             >
               {/* <label className={styles["label-fix"]}>سرپرست</label> */}
-
-              <div style={{ marginBottom: "1.5rem" }}>
+              <div>
                 {room.adl_count === 0 ? null : (
                   <>
-                    <div className={styles["personDet"]}>
-                      <label className={styles["label-fix-gray"]}>
-                        بزرگسال
-                      </label>
-                      <div className={styles["price-fix"]}>
-                        <strong>{numberWithCommas(adlPrc)}</strong>
-                        <small>تومان</small>
-                      </div>
-                    </div>
                     <PassengerForm
                       count={room.adl_count}
                       type="adl"
@@ -114,22 +102,14 @@ const InfoPasserngers = ({
                       hotelDets={hotelDets}
                       roomIndex={roomIndex}
                       Errs={Errs}
+                      prc={numberWithCommas(adlPrc)}
                     />
                   </>
                 )}
-
-                {/* {formBuilder(room.adl_count, "adl")} */}
               </div>
               <div style={{ marginBottom: "1rem" }}>
                 {room.chd_count === 0 ? null : (
                   <>
-                    <div className={styles["personDet"]}>
-                      <label className={styles["label-fix-gray"]}>کودک</label>
-                      <div className={styles["price-fix"]}>
-                        <strong>{numberWithCommas(chdPrc)}</strong>
-                        <small>تومان</small>
-                      </div>
-                    </div>
                     <PassengerForm
                       count={room.chd_count}
                       type="chd"
@@ -139,22 +119,14 @@ const InfoPasserngers = ({
                       setDataq={setDataq}
                       prcTypeBase={(type) => prcTypeBase(type)}
                       hotelDets={hotelDets}
+                      prc={numberWithCommas(chdPrc)}
                     />
                   </>
                 )}
-
-                {/* {formBuilder(room.chd_count, "chd")} */}
               </div>
               <div style={{ marginBottom: "1rem" }}>
                 {room.inf_count === 0 ? null : (
                   <>
-                    <div className={styles["personDet"]}>
-                      <label className={styles["label-fix-gray"]}>نوزاد</label>
-                      <div className={styles["price-fix"]}>
-                        <strong>{numberWithCommas(infPrc)}</strong>
-                        <small>تومان</small>
-                      </div>
-                    </div>
                     <PassengerForm
                       count={room.inf_count}
                       type="inf"
@@ -164,24 +136,14 @@ const InfoPasserngers = ({
                       setDataq={setDataq}
                       prcTypeBase={(type) => prcTypeBase(type)}
                       hotelDets={hotelDets}
+                      prc={numberWithCommas(infPrc)}
                     />
                   </>
                 )}
-
-                {/* {formBuilder(room.inf_count, "inf")} */}
               </div>
               <div style={{ marginBottom: "1rem" }}>
                 {room.extra_count === 0 ? null : (
                   <>
-                    <div className={styles["personDet"]}>
-                      <label className={styles["label-fix-gray"]}>
-                        تخت اضافه
-                      </label>
-                      <div className={styles["price-fix"]}>
-                        <strong>{numberWithCommas(extPrc)}</strong>
-                        <small>تومان</small>
-                      </div>
-                    </div>
                     <PassengerForm
                       count={room.extra_count}
                       type="ext"
@@ -191,11 +153,10 @@ const InfoPasserngers = ({
                       setDataq={setDataq}
                       prcTypeBase={(type) => prcTypeBase(type)}
                       hotelDets={hotelDets}
+                      prc={numberWithCommas(extPrc)}
                     />
                   </>
                 )}
-
-                {/* {formBuilder(room.extra_count, "ext")} */}
               </div>
             </div>
           </div>
