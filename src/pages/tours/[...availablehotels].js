@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import axios from "axios";
-import moment from "moment-jalaali";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +19,7 @@ import {
 } from "../../Utils/newTour";
 import NavHandler from "../../Components/share/NavHandler";
 import { Loader } from "../../Utils/Loader";
+import HotelsSideBarSearch from "../../Components/NewTours/Components/subComponents/HotelsSideBarSearch.component";
 
 const AvFlight = dynamic(() =>
   import("../../Components/NewTours/AvailableFlightBasedonSelectedTour")
@@ -44,36 +44,14 @@ const availableHotels = () => {
   const [hotels, setHotels] = useState([]);
 
   const hotelstarPicker = (hotelsArr) => {
-    debugger;
     const stars = [];
     hotelsArr.map((hotel) => stars.push(hotel.stars));
     return stars;
   };
-  const search = (e) => {
-    if (e.key === "Enter") {
-      axios
-        .post("https://hotelobilit-api.iran.liara.run/api/v1/hotels/search", {
-          date: date,
-          destination: destination,
-          keywords: searchInput,
-          orderBy: 1,
-          origin: origin,
-          stars: null,
-          stayCount: night,
-        })
-        .then((res) => {
-          setHotels(res?.data?.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
 
   const [selectedSrc, setSelectedSrc] = useState([]);
   const [selectedDest, setSelectedDest] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
-  const [check, setCheck] = useState("");
+
   // console.log(router);
   useEffect(() => {
     setRouterDet(router.query?.availablehotels?.length > 1);
@@ -145,31 +123,6 @@ const availableHotels = () => {
     );
   }, [router, date, destination, origin, night]);
 
-  const checkedClick = (checkValue, num, searchtype) => {
-    axios
-      .post("https://hotelobilit-api.iran.liara.run/api/v1/hotels/search", {
-        date: date,
-        destination: destination,
-        keywords: searchInput,
-        orderBy: searchtype === "order" ? num : null,
-        origin: origin,
-        stars: searchtype === "star" ? num : null,
-        stayCount: night,
-      })
-      .then((res) => {
-        setHotels(res?.data?.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    setCheck(checkValue);
-  };
-
-  // useEffect(() => {
-  //   if (hotels) {
-  //     setStars(hotelstarPicker(hotels));
-  //   }
-  // }, []);
   return (
     <div className={styles["main-section"]}>
       <NavHandler />
@@ -183,62 +136,18 @@ const availableHotels = () => {
           </div>
 
           <div className={styles["p-available"]}>
-            <div className={styles.sidebar}>
-              <div className={styles.hotelSearchInput}>
-                <p>جستجوی نام هتل یا اقامتگاه</p>
-
-                <input
-                  type="text"
-                  placeholder="نام هتل را وارد کنید"
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                  onKeyDown={(e) => search(e)}
-                />
-              </div>
-              <div className={styles.hotelSearchStars}>
-                <p>ستاره های هتل</p>
-                <select
-                  name=""
-                  id=""
-                  onClick={(e) => {
-                    checkedClick(null, e.target.value, "star");
-                  }}
-                >
-                  <option selected disabled>
-                    همه
-                  </option>
-                  {stars?.map((star) => {
-                    return <option value={star}> ستاره {star}</option>;
-                  })}
-                </select>
-              </div>
-              <div className={styles.hotelSearchOrder}>
-                <p>مرتب سازی براساس</p>
-                <div>
-                  <input
-                    type="checkbox"
-                    name="ارزان ترین"
-                    id=""
-                    onClick={() => checkedClick("cheap", 1, "order")}
-                    checked={check === "cheap" ? true : false}
-                  />
-                  <p htmlFor="">ارزان ترین</p>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    name="گران ترین"
-                    id=""
-                    checked={check === "expensive" ? true : false}
-                    onClick={() => checkedClick("expensive", 2, "order")}
-                  />
-                  <p htmlFor="">گران ترین</p>
-                </div>
-              </div>
-            </div>
+            <HotelsSideBarSearch
+              date={date}
+              destination={destination}
+              origin={origin}
+              night={night}
+              setHotels={(value) => setHotels(value)}
+              stars={stars}
+              hotels={hotels}
+            />
 
             <div className={styles.content}>
-              {hotels.length === 0 ? (
+              {hotels?.length === 0 ? (
                 <div
                   style={{
                     width: "100%",

@@ -323,7 +323,11 @@ const AvailableFlightBasedonSelectedTour = () => {
     <>
       <NotifAlert />
       {ismodal && (
-        <PictureModal url={ismodal} setIsModal={() => setIsModal()} />
+        <PictureModal
+          url={ismodal}
+          gallery={hotel?.gallery}
+          setIsModal={() => setIsModal()}
+        />
       )}
 
       <div className={styles["container"]}>

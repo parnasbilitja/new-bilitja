@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../../../../styles/newTour/components/RoomsInfo.module.scss";
 
 import { numberWithCommas } from "../../../Utils/newTour";
