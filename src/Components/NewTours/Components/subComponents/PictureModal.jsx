@@ -44,6 +44,9 @@ const PictureModal = ({ url, setIsModal, gallery }) => {
                   top: "10",
                   right: "10",
                   cursor: "pointer",
+                  backgroundColor: "white",
+                  borderRadius: "50px",
+                  padding: "0",
                 }}
                 onClick={() => setIsModal(0)}
               >
@@ -74,6 +77,9 @@ const PictureModal = ({ url, setIsModal, gallery }) => {
                       top: "10",
                       right: "10",
                       cursor: "pointer",
+                      backgroundColor: "white",
+                      borderRadius: "50px",
+                      padding: "0",
                     }}
                     onClick={() => setIsModal(0)}
                   >
