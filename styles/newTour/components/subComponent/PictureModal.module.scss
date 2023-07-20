@@ -24,3 +24,9 @@
 
     }
 }
+.swiper-button-next:after{
+    content: "next" !important;
+}
+.swiper-button-prev:after{
+    content: "prev" !important;
+}
