@@ -4,7 +4,7 @@ import { MiladiToJalaliConvertor } from "../../../../Utils/newTour";
 import styles from "../../../../../styles/newTour/components/subComponent/TourDetailLabel.module.scss";
 const TourDetailLabel = ({ flightDet, stayCount }) => {
   const dateReform = (date) => {
-    return date.slice(0, 5);
+    return date?.slice(0, 5);
   };
   // console.log("asdas", flightDet);
   return (
