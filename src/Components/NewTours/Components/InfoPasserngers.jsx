@@ -78,8 +78,8 @@ const InfoPasserngers = ({
           className={`${styles["box-room-Det"]} ${styles["flex-column-mobi"]}`}
         >
           <div className={styles["box-room-Det-name"]}>
-            <div className={styles["circle"]}></div>
-            <h2>{roomName}</h2>
+            {/* <div className={styles["circle"]}></div> */}
+            <p>{roomName}</p>
           </div>
         </div>
         <div>
@@ -107,7 +107,7 @@ const InfoPasserngers = ({
                   </>
                 )}
               </div>
-              <div style={{ marginBottom: "1rem" }}>
+              <div>
                 {room.chd_count === 0 ? null : (
                   <>
                     <PassengerForm
@@ -124,7 +124,7 @@ const InfoPasserngers = ({
                   </>
                 )}
               </div>
-              <div style={{ marginBottom: "1rem" }}>
+              <div>
                 {room.inf_count === 0 ? null : (
                   <>
                     <PassengerForm
@@ -141,7 +141,7 @@ const InfoPasserngers = ({
                   </>
                 )}
               </div>
-              <div style={{ marginBottom: "1rem" }}>
+              <div>
                 {room.extra_count === 0 ? null : (
                   <>
                     <PassengerForm

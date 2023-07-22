@@ -202,21 +202,20 @@ const PassengerForm = (props) => {
         return "تخت اضافه";
     }
   };
-  const objModelBuilder = () => {
-    console.log("hellooo", {
-      name: "",
-      family: "",
-      birth_day: "",
-      nationality: "",
-      gender: "",
-      passport: "",
-      expired_passport: "",
-      id_code: "",
-      id: `${props.type}${props.count}`,
-    });
-  };
+  // const objModelBuilder = () => {
+  //   console.log("hellooo", {
+  //     name: "",
+  //     family: "",
+  //     birth_day: "",
+  //     nationality: "",
+  //     gender: "",
+  //     passport: "",
+  //     expired_passport: "",
+  //     id_code: "",
+  //     id: `${props.type}${props.count}`,
+  //   });
+  // };
 
- 
   return (
     <>
       {[...Array(props.count)].map((p, index) => {
@@ -225,9 +224,19 @@ const PassengerForm = (props) => {
             <div className={styles["personDet"]}>
               <label className={styles["label-fix-gray"]}>
                 {humantype(props.type)}
+                <small>
+                  {" "}
+                  {humantype(props.type) === "بزرگسال"
+                    ? "(12 سال به بالا)"
+                    : humantype(props.type) === "کودک"
+                    ? "(2 تا 12 سال)"
+                    : humantype(props.type) === "نوزاد"
+                    ? "(زیر 2 سال)"
+                    : "(12 سال به بالا)"}
+                </small>
               </label>
               <div className={styles["price-fix"]}>
-                <strong>{props.prc}</strong>
+                <p>{props.prc}</p>
                 <small>تومان</small>
               </div>
             </div>

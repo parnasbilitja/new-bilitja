@@ -10,7 +10,7 @@ const TourDetailLabel = ({ flightDet, stayCount }) => {
   return (
     <div className={styles["set-request-tour"]}>
       <div className={styles["info-from"]}>
-        <div className={styles["airline_info"]}>
+        <div className={`${styles["airline_info"]} ${styles["col-right"]}`}>
           <p>پرواز رفت</p>
           <div className={styles["p-airline-top"]}>
             <div
@@ -71,31 +71,6 @@ const TourDetailLabel = ({ flightDet, stayCount }) => {
       </div>
 
       <div className={styles["info-from"]}>
-        <div className={styles["airline_info"]}>
-          <p>پرواز برگشت</p>
-
-          <div className={styles["p-airline-top"]}>
-            <div
-              style={{
-                width: "45px",
-                height: "45px",
-                overflow: "hidden",
-                borderRadius: "50%",
-                marginBottom: "4px",
-              }}
-            >
-              <img
-                src={flightDet?.airline_thumb?.url}
-                style={{
-                  objectFit: "contain",
-                  width: "100%",
-                  height: "100%",
-                }}
-              />
-            </div>
-            <span>{flightDet?.flight.airline_name}</span>
-          </div>
-        </div>
         <div className={styles["flight_info_container"]}>
           <div className={styles["flight_info"]}>
             <div className={styles["orgdest-cities"]}>
@@ -120,6 +95,31 @@ const TourDetailLabel = ({ flightDet, stayCount }) => {
                 <strong>{dateReform(flightDet?.flight.time)}</strong>
               </div>
             </div>
+          </div>
+        </div>
+        <div className={`${styles["airline_info"]} ${styles["col-left"]}`}>
+          <p>پرواز برگشت</p>
+
+          <div className={styles["p-airline-top"]}>
+            <div
+              style={{
+                width: "45px",
+                height: "45px",
+                overflow: "hidden",
+                borderRadius: "50%",
+                marginBottom: "4px",
+              }}
+            >
+              <img
+                src={flightDet?.airline_thumb?.url}
+                style={{
+                  objectFit: "contain",
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            </div>
+            <span>{flightDet?.flight.airline_name}</span>
           </div>
         </div>
       </div>
