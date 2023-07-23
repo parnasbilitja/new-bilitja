@@ -40,31 +40,34 @@ const FlightReciept = (props) => {
       name: "",
       family: "",
       meliat: "",
-      pasEndDateAll: '',
+      pasEndDateAll: "",
       meliCode: "",
       sex: "",
       birthday: "",
       index: 0,
     },
   });
-  const [width, setWidth] = useState(0)
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    if (localStorage.getItem('reqNo')) {
-      localStorage.removeItem('reqNo')
-    }else{
-      router.push('/')
+    if (localStorage.getItem("reqNo")) {
+      localStorage.removeItem("reqNo");
+    } else {
+      router.push("/");
     }
-    setWidth(window.innerWidth)
+    setWidth(window.innerWidth);
     props.addReservationProperties({
       reqNo: props.router.asPath.split("/")[3],
       reqPnr: props.router.asPath.split("/")[4],
       priceMessage: "",
     });
     fetch(
-      `${globals.baseUrlNew
-      }BilitFlightReserve/flightsReserve/ravisReserveProperty/${props.router.asPath.split("/")[3]
-      }-${props.router.asPath.split("/")[4]
+      `${
+        globals.baseUrlNew
+      }BilitFlightReserve/flightsReserve/ravisReserveProperty/${
+        props.router.asPath.split("/")[3]
+      }-${
+        props.router.asPath.split("/")[4]
       }/1a157116-a01a-4027-ab10-74098ac63815`
     )
       .then((res) => res.json())
@@ -122,7 +125,7 @@ const FlightReciept = (props) => {
       });
 
     // }
-  }, [])
+  }, []);
 
   const compeleteReservation = () => {
     const reservePassengerObject = {
@@ -166,7 +169,6 @@ const FlightReciept = (props) => {
           //   });
         }
       });
-
   };
   const getBanks = () => {
     fetch(
@@ -246,7 +248,7 @@ const FlightReciept = (props) => {
   const updatePassengerData = (index, value) => {
     console.log(value);
     console.log(state);
-    
+
     let names = state.nameAll_;
     let families = state.familyAll_;
     let sexes = state.sexAll_;
@@ -269,10 +271,10 @@ const FlightReciept = (props) => {
       ...state,
       nameAll_: names,
       nameAll: names,
-      nameEnAll: [...names.map((item) => (item.toUpperCase()))],
+      nameEnAll: [...names.map((item) => item.toUpperCase())],
       familyAll_: families,
       familyAll: families,
-      familyEnAll: [...families.map((item) => (item.toUpperCase()))],
+      familyEnAll: [...families.map((item) => item.toUpperCase())],
       sexAll_: sexes,
       meliatAll_: meliats,
       pasNoAll_: pasNoAll,
@@ -287,7 +289,7 @@ const FlightReciept = (props) => {
     setOpen(!open);
   };
   return (
-    <div className={`container ${width>=826?"mt-90":'mt-110'}`}>
+    <div className={`container ${width >= 826 ? "mt-90" : "mt-110"}`}>
       <div className={styles["flight-detail"]}>
         <FlightReserveDesktopHeader {...state} />
         <FlightReserveMobileHeder {...state} />
@@ -321,122 +323,110 @@ const FlightReciept = (props) => {
             <tbody>
               {state.birthDayAll_.length > 0
                 ? state.birthDayAll_.map((oneRow, index) => (
-                  <tr className="font-size-13">
-                    <td className="hidden-xs">
-                      <span>{index + 1}.&nbsp;</span>
-                      {getTicketType(state.ticketCodeAll_[index])}
-                      ({(state.sexAll_[index] == 1 ? 'مرد' : 'زن')})
-                    </td>
-                    <td className="px-0">
-                      <div className="hidden-xs">
-                        {state.nameAll_[index]}
-                      </div>
-                      <div className="visible-xs font-bold-iransanse px-2">
-                        <span>
-                          <FontAwesomeIcon icon={faUser} />
-                          {`${state.nameAll_[index]} ${state.familyAll_[index]
-                            } (${getTicketType(
-                              state.ticketCodeAll_[index]
-                            )})`}
-                        </span>
-                        <p className="pt-2">
-                          <FontAwesomeIcon icon={faInfoCircle} />
-                          {state.meliCodeAll_[index] ? state.meliCodeAll_[index] : state.pasNoAll_[index]}
-                        </p>
-                      </div>
-                    </td>
-                    <td className="hidden-xs">
-                      {state.familyAll_[index]}
-                    </td>
-                    <td className="hidden-xs">
-                      {state.meliatAll_[index] == "IR"
-                        ? "ایرانی"
-                        : "خارجی"}
-                    </td>
-                    <td className="hidden-xs">
-                      {state.meliCodeAll_[index] ? state.meliCodeAll_[index] : state.pasNoAll_[index]}
-                    </td>
-                    {state.pasEndDateAll &&
+                    <tr className="font-size-13">
                       <td className="hidden-xs">
-                        {state.pasEndDateAll_[index]}
+                        <span>{index + 1}.&nbsp;</span>
+                        {getTicketType(state.ticketCodeAll_[index])}(
+                        {state.sexAll_[index] == 1 ? "مرد" : "زن"})
                       </td>
-                    }
-                    <td>
-                      <div className="hidden-xs">
-                        {state.birthDayAll_[index]}
-                      </div>
-                      <div className="visible-xs font-bold-iransanse">
-                        <span>
-                          <FontAwesomeIcon icon={faCalendar} />
-                          {state.birthDayAll_[index]}
-                        </span>
-                        <p className="pt-1">
-                          {/* <FontAwesomeIcon icon={faDollarSign} /> */}
-                          <span className="color-secondary">
-                            {" "}
-                            {moneyFormat(
-                              getTicketPrice(
-                                state.ticketCodeAll_[index]
-                              )
-                            )}{' '}
+                      <td className="px-0">
+                        <div className="hidden-xs">{state.nameAll_[index]}</div>
+                        <div className="visible-xs font-bold-iransanse px-2">
+                          <span>
+                            <FontAwesomeIcon icon={faUser} />
+                            {`${state.nameAll_[index]} ${
+                              state.familyAll_[index]
+                            } (${getTicketType(state.ticketCodeAll_[index])})`}
                           </span>
-                          تومان
-                        </p>
-                      </div>
-                    </td>
-                    <td className="hidden-xs">
-                      {moneyFormat(
-                        getTicketPrice(
-                          state.ticketCodeAll_[index]
-                        )
+                          <p className="pt-2">
+                            <FontAwesomeIcon icon={faInfoCircle} />
+                            {state.meliCodeAll_[index]
+                              ? state.meliCodeAll_[index]
+                              : state.pasNoAll_[index]}
+                          </p>
+                        </div>
+                      </td>
+                      <td className="hidden-xs">{state.familyAll_[index]}</td>
+                      <td className="hidden-xs">
+                        {state.meliatAll_[index] == "IR" ? "ایرانی" : "خارجی"}
+                      </td>
+                      <td className="hidden-xs">
+                        {state.meliCodeAll_[index]
+                          ? state.meliCodeAll_[index]
+                          : state.pasNoAll_[index]}
+                      </td>
+                      {state.pasEndDateAll && (
+                        <td className="hidden-xs">
+                          {state.pasEndDateAll_[index]}
+                        </td>
                       )}
-                    </td>
-                    <td>
-                      <div className="font-size-14">
-                        <FontAwesomeIcon style={{ cursor: "pointer" }}
-                          icon={faEdit}
-                          onClick={() => {
-                            managePopUpEditForm()
-                            setState({
-                              ...state,
-                              current: {
-                                index: index,
-                                name: state.nameAll_[index],
-                                family: state.familyAll_[index],
-                                meliat: state.meliatAll_[index],
-                                pasNoAll: state.pasNoAll_[index],
-                                meliCode: state.meliCodeAll_[index],
-                                pasEndDateAll: state.pasEndDateAll_[index],
-                                sex: state.sexAll_[index],
-                                birthday: state.birthDayAll_[index],
-                              }
-                            }
-                            );
-                          }
-                          }
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                ))
+                      <td>
+                        <div className="hidden-xs">
+                          {state.birthDayAll_[index]}
+                        </div>
+                        <div className="visible-xs font-bold-iransanse">
+                          <span>
+                            <FontAwesomeIcon icon={faCalendar} />
+                            {state.birthDayAll_[index]}
+                          </span>
+                          <p className="pt-1">
+                            {/* <FontAwesomeIcon icon={faDollarSign} /> */}
+                            <span className="color-secondary">
+                              {" "}
+                              {moneyFormat(
+                                getTicketPrice(state.ticketCodeAll_[index])
+                              )}{" "}
+                            </span>
+                            تومان
+                          </p>
+                        </div>
+                      </td>
+                      <td className="hidden-xs">
+                        {moneyFormat(
+                          getTicketPrice(state.ticketCodeAll_[index])
+                        )}
+                      </td>
+                      <td>
+                        <div className="font-size-14">
+                          <FontAwesomeIcon
+                            style={{ cursor: "pointer" }}
+                            icon={faEdit}
+                            onClick={() => {
+                              managePopUpEditForm();
+                              setState({
+                                ...state,
+                                current: {
+                                  index: index,
+                                  name: state.nameAll_[index],
+                                  family: state.familyAll_[index],
+                                  meliat: state.meliatAll_[index],
+                                  pasNoAll: state.pasNoAll_[index],
+                                  meliCode: state.meliCodeAll_[index],
+                                  pasEndDateAll: state.pasEndDateAll_[index],
+                                  sex: state.sexAll_[index],
+                                  birthday: state.birthDayAll_[index],
+                                },
+                              });
+                            }}
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  ))
                 : null}
             </tbody>
           </table>
         </div>
       </div>
-      <div className="row ">
-        <div className="col-lg-1 col-0"></div>
-        <div className="col-lg-12 col-12 no-padding-xs border-pill-lg py-2 px-3 mt-2">
+
+      {/* <div className="col-lg-1 col-0"></div> */}
+      {/* <div className="col-lg-12 col-12 no-padding-xs border-pill-lg py-2 px-3 mt-2">
           <div className="row justify-content-between px-2">
-            {/* child */}
-            <div className={`col-lg-4 text-right ${styles['border-left']}`}>
+            <div className={`col-lg-4 text-right ${styles["border-left"]}`}>
               <div className={`${styles["item"]} pb-3`}>
-                <div className={`${styles["descripcion"]}`}>
-                  مبلغ کل :
-                </div>
+                <div className={`${styles["descripcion"]}`}>مبلغ کل :</div>
                 <div className={`${styles["precio"]} font-bold-iransanse`}>
-                  {moneyFormat(state.feeGet)}{' '}
-                  <span>تومان</span>
+                  {moneyFormat(state.feeGet)} <span>تومان</span>
                 </div>
               </div>
               <div className={`${styles["item"]} pb-3`}>
@@ -444,8 +434,7 @@ const FlightReciept = (props) => {
                   اعتبار کیف پول شما :‌
                 </div>
                 <div className={`${styles["precio"]} font-bold-iransanse`}>
-                  {moneyFormat(0)}{' '}
-                  <span>تومان</span>
+                  {moneyFormat(0)} <span>تومان</span>
                 </div>
               </div>
               <div className={`${styles["item"]} pb-3`}>
@@ -453,36 +442,54 @@ const FlightReciept = (props) => {
                   مبلغ قابل پرداخت :‌
                 </div>
                 <div className={`${styles["precio"]} font-bold-iransanse`}>
-                  {moneyFormat(state.feeGet)}{' '}
-                  <span>تومان</span>
+                  {moneyFormat(state.feeGet)} <span>تومان</span>
                 </div>
               </div>
             </div>
-            {/* child */}
-            <div className={`col-lg-3 col-6 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
-              <div className={`s-sep w-50 d-flex justify-content-center ${styles['select-bunk']} `}>
+
+            <div
+              className={`col-lg-3 col-6 payment-container d-flex align-items-center justify-content-center text-center ${styles["border-left"]}`}
+            >
+              <div
+                className={`s-sep w-50 d-flex justify-content-center ${styles["select-bunk"]} `}
+              >
                 <input type="radio" checked={true} className="ms-3" />
-                <img src={'../../../Images/sep.png'} alt="sep" width={'50px'} height={'30px'} />
+                <img
+                  src={"../../../Images/sep.png"}
+                  alt="sep"
+                  width={"50px"}
+                  height={"30px"}
+                />
               </div>
             </div>
-            <div className={`col-lg-3 col-6 payment-container d-flex align-items-center justify-content-center text-center ${styles['border-left']}`}>
-              <div className={`d-flex justify-content-end ${styles['select-bunk']} `}>
+            <div
+              className={`col-lg-3 col-6 payment-container d-flex align-items-center justify-content-center text-center ${styles["border-left"]}`}
+            >
+              <div
+                className={`d-flex justify-content-end ${styles["select-bunk"]} `}
+              >
                 <div className="row justify-content-center">
-                  <div className="col-lg-7 col-6 d-flex align-items-center" style={{ width: 'fit-content' }}>
-                    <p className="font-size-13 mb-0">
-                      مبلغ قابل پرداخت :‌
-                    </p>
+                  <div
+                    className="col-lg-7 col-6 d-flex align-items-center"
+                    style={{ width: "fit-content" }}
+                  >
+                    <p className="font-size-13 mb-0">مبلغ قابل پرداخت :‌</p>
                   </div>
-                  <div className="col-lg-5 col-6 text-left ps-5" style={{ width: 'fit-content' }}>
+                  <div
+                    className="col-lg-5 col-6 text-left ps-5"
+                    style={{ width: "fit-content" }}
+                  >
                     <span className="font-size-14 text-danger mb-0 font-bold-iransanse">
-                      {moneyFormat(state.feeGet)}{' '}
+                      {moneyFormat(state.feeGet)}{" "}
                     </span>
                     <span className="">تومان</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div className={`col-lg-2 col-12 payment-container d-flex align-items-center justify-content-center text-center mt-2`}>
+            <div
+              className={`col-lg-2 col-12 payment-container d-flex align-items-center justify-content-center text-center mt-2`}
+            >
               <div className="">
                 <div className="ms-2 col-12">
                   <button
@@ -497,7 +504,7 @@ const FlightReciept = (props) => {
                 </div>
                 <div className="me-2 col-12 d-flex justify-content-center mt-2">
                   <span
-                    className={`py-2 mb-1 cursor-pointer ${styles['cancel-buttom']}`}
+                    className={`py-2 mb-1 cursor-pointer ${styles["cancel-buttom"]}`}
                     onClick={() => router.push("/")}
                   >
                     <span>انصراف از خرید</span>
@@ -506,26 +513,85 @@ const FlightReciept = (props) => {
               </div>
             </div>
           </div>
+        </div> */}
+      <div className={styles["detail-box-fix-user-reservation"]}>
+        <div className={styles["p-detail-reservation"]}>
+          <div className={styles["priceDet_container"]}>
+            <div className={styles["priceDet"]}>
+              <p style={{ fontSize: "14px" }}>
+                مبلغ کل: ...........................
+                {moneyFormat(state.feeGet)} <span>تومان</span>
+              </p>
+              <p style={{ fontSize: "14px" }}>
+                {" "}
+                اعتبار کیف پول شما: ...........................
+                <span style={{ fontSize: "14px" }}>{moneyFormat(0)}</span> تومان
+              </p>
+              {/* <p>
+                مبلغ قابل پرداخت: ...........................
+                {moneyFormat(state.feeGet)} <span>تومان</span>
+              </p> */}
+            </div>
+          </div>
+          <div className={styles["paymentoption"]}>
+            <div className={styles["payment_container"]}>
+              <div className={styles["payment"]}>
+                <input type="checkbox" checked />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/L_O_G_O-new_color-01.jpg" />
+              </div>
+            </div>
+          </div>
+          <div className={styles["finalprice"]}>
+            <div className={styles["totalprice_container"]}>
+              <p>مبلغ قابل پرداخت:</p>
+
+              <div
+                className="col-lg-5 col-6 text-left text-center d-flex align-items-center justify-content-center"
+                style={{ width: "fit-content" }}
+              >
+                <span className="font-size-14 text-danger mb-0 font-bold-iransanse">
+                  {moneyFormat(state.feeGet)}{" "}
+                </span>
+                <span style={{ marginRight: "8px" }}>تومان</span>
+              </div>
+            </div>
+          </div>
+          <div className={styles["paymentbtn"]}>
+            <button
+              onClick={() => {
+                compeleteReservation();
+                getBanks();
+              }}
+            >
+              پرداخت با کارت شتاب
+            </button>
+            <p
+              onClick={() => {
+                router.push("/tours");
+              }}
+            >
+              انصراف از خرید
+            </p>
+          </div>
         </div>
       </div>
       <PopUpWide
-        type='editReciept'
+        type="editReciept"
         opened={open}
         closePopUp={managePopUpEditForm}
       >
         {/* <div onClick={()=>setOpen(false)} className={stylesflight["flight-search-box-calendar-container"]} style={{ border: " 1px solid", borderRadius: '5px' }}> */}
-          <FlightPassengerEditForm
-            {...state.current}
-            pathKind={state.pathKind}
-            setOpen={setOpen}
-            changeProperty={updatePassengerData}
-          />
+        <FlightPassengerEditForm
+          {...state.current}
+          pathKind={state.pathKind}
+          setOpen={setOpen}
+          changeProperty={updatePassengerData}
+        />
         {/* </div> */}
       </PopUpWide>
     </div>
   );
-
-}
+};
 const mapStateToProps = (state) => ({
   reserveProperties: selectProperties(state),
 });

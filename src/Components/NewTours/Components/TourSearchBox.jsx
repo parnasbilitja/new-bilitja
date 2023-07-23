@@ -96,12 +96,18 @@ const TourSearchBox = (props) => {
           setDateAndNight(res.data.data);
         });
     }
+    // else {
+    //   return false;
+    // }
     if (props.destandorgcities.date.miladiDate) {
       const nightsNumber = dateAndNight.filter(
         (datenight) => datenight.date === props.destandorgcities.date.miladiDate
       );
       setNights(nightsNumber);
     }
+    // else {
+    //   return false;
+    // }
   }, [
     props.destandorgcities.destination,
     props.destandorgcities.origin,
@@ -192,7 +198,7 @@ const TourSearchBox = (props) => {
     if (!destination.code) {
       return false;
     }
-    if (date === {}) {
+    if (date === {} || (!date.miladiDate && !date.persianDate)) {
       return false;
     }
     if (!night) {
@@ -218,7 +224,7 @@ const TourSearchBox = (props) => {
     <>
       <NotifAlert />
       <div className={styles["home-flight-form"]}>
-        <div>
+        <div style={{ position: "relative" }}>
           <Scrolltoprefresh />
           <div
             className={` form-input-border  ${styles["form-input-border-private"]} `}
@@ -244,21 +250,22 @@ const TourSearchBox = (props) => {
               onBlur={handleFocusOut}
               placeholder={"مبدا خود را وارد کنید"}
             />
-
-            {state.suggestSource ? (
-              <Cities
-                credenrialType="source"
-                closeSuggest={manageSuggestSource}
-                searchTerm={state.searchTermSource}
-                cities={orgCities}
-                setCities={(value) => props.setOrgLoc(value)}
-                setcitiesData={(val) => setCitiesData(val)}
-              />
-            ) : null}
           </div>
+          {state.suggestSource ? (
+            <Cities
+              credenrialType="source"
+              closeSuggest={manageSuggestSource}
+              searchTerm={state.searchTermSource}
+              cities={orgCities}
+              setCities={(value) => props.setOrgLoc(value)}
+              setcitiesData={(val) => setCitiesData(val)}
+              setFlightDate={(value) => props.setFlightDate(value)}
+              setNight={(value) => props.setNightNumber(value)}
+            />
+          ) : null}
         </div>
 
-        <div>
+        <div style={{ position: "relative" }}>
           <div
             className={` form-input-border  ${styles["form-input-border-private"]} `}
           >
@@ -289,16 +296,18 @@ const TourSearchBox = (props) => {
               onBlur={handleFocusOut}
               placeholder={"مقصد خود را وارد کنید"}
             />
-            {width > mobileSize && state.suggestDestination ? (
-              <Cities
-                credenrialType="destination"
-                closeSuggest={manageSuggestDestination}
-                searchTerm={state.searchTermDestination}
-                cities={destCities}
-                setCities={(value) => props.setDestLoc(value)}
-              />
-            ) : null}
           </div>
+          {width > mobileSize && state.suggestDestination ? (
+            <Cities
+              credenrialType="destination"
+              closeSuggest={manageSuggestDestination}
+              searchTerm={state.searchTermDestination}
+              cities={destCities}
+              setCities={(value) => props.setDestLoc(value)}
+              setFlightDate={(value) => props.setFlightDate(value)}
+              setNight={(value) => props.setNightNumber(value)}
+            />
+          ) : null}
         </div>
 
         <div
@@ -308,7 +317,6 @@ const TourSearchBox = (props) => {
             className="bilitja icon-calendar form-input-icon-larger "
             style={{ marginTop: "5px" }}
           ></i>
-
           <PrimaryTextInput
             placeholder={" تاریخ پرواز رفت"}
             readOnly="true"

@@ -3,12 +3,12 @@
 @media only screen and (max-width: 649px) and (min-width: 441px) {
   .home-flight-form {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr  1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     gap: 8px;
-   
+
   }
 }
- 
+
 .flight-detail {
   text-align: center;
 
@@ -37,7 +37,7 @@
 
 @media only screen and (max-width: 2000px) and (min-width: 980px) {
   .home-flight-form {
-    grid-template-columns: 1fr  1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     gap: 8px;
   }
@@ -63,6 +63,7 @@
     border-radius: 10px;
     font-size: 14px;
     height: 55px;
+    overflow: hidden;
   }
 }
 
@@ -107,8 +108,9 @@
   position: relative;
   height: 55px !important;
   border-radius: 10px;
-  
-  svg{
+  overflow: hidden;
+
+  svg {
     position: absolute;
     left: 8px;
   }
@@ -118,6 +120,7 @@
     border: none;
     outline: none;
     background: unset;
+    border-radius: 10px;
     font-size: 14px;
     height: 100%;
 

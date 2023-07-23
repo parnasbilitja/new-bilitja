@@ -54,9 +54,7 @@ const Reservation = ({ hotelDet, stayCount }) => {
 
     return total;
   };
-  // useEffect(() => {
-  //   console.log("arr", reserverData);
-  // }, [reserverData]);
+  
 
   const personCounter = (arr) => {
     let people = 0;
@@ -113,7 +111,7 @@ const Reservation = ({ hotelDet, stayCount }) => {
                         <p>مبلغ قابل پرداخت:</p>
                       </div>
                       <div className={styles["price"]}>
-                        <p>{numberWithCommas(TotalPrcGen(evRoomsPrc))}تومان</p>
+                        <p>{numberWithCommas(TotalPrcGen(evRoomsPrc))} تومان</p>
                       </div>{" "}
                     </div>
                   </div>
@@ -128,8 +126,6 @@ const Reservation = ({ hotelDet, stayCount }) => {
                         <p> تعداد کل اتاق : </p>
                         <span>{reformSelectedRooms.length}</span>
                       </div>
-
-                      <p></p>
                     </div>
                   </div>
                   <div className={styles["paymentbtn"]}>
@@ -166,7 +162,9 @@ const Reservation = ({ hotelDet, stayCount }) => {
                                 hotelDet
                               )}&rooms=${JSON.stringify(
                                 rooms
-                              )}&fiPrc=${TotalPrcGen(evRoomsPrc)}`
+                              )}&fiPrc=${TotalPrcGen(
+                                evRoomsPrc
+                              )}&stayCount=${stayCount}`
                             );
                           })
                           .catch((err) => {
@@ -211,14 +209,21 @@ const Reservation = ({ hotelDet, stayCount }) => {
                 <div
                   style={{
                     display: "flex",
-                    justifyContent: "space-between",
                     marginBottom: ".1rem",
-                    paddingRight: "1.5rem",
+                    paddingRight: "1rem",
                   }}
                 >
                   {startBuilder(+hotelDet?.hotel?.stars).map((x) => {
                     return (
-                      <div style={{ width: "30px", height: "30px" }}>{x}</div>
+                      <div
+                        style={{
+                          width: "20px",
+                          height: "30px",
+                          marginLeft: ".5rem",
+                        }}
+                      >
+                        {x}
+                      </div>
                     );
                   })}
                 </div>
@@ -305,7 +310,10 @@ const Reservation = ({ hotelDet, stayCount }) => {
                       />
                     </div>
                     <small>
-                      {err.errors?.reserver_name && err.errors?.reserver_name}
+                      {err.errors?.reserver_full_name &&
+                      reserverData.reserver_name.length === 0
+                        ? "لطفا فیلد نام را وارد کنید"
+                        : null}
                     </small>
                   </div>
                   <div className={styles["item-form"]}>
@@ -322,8 +330,10 @@ const Reservation = ({ hotelDet, stayCount }) => {
                       />
                     </div>
                     <small>
-                      {err.errors?.reserver_lastname &&
-                        err.errors?.reserver_lastname}
+                      {err.errors?.reserver_full_name &&
+                      reserverData.reserver_lastname.length === 0
+                        ? "لطفا فیلد نام و نام خانوادگی را وارد کنید"
+                        : null}
                     </small>
                   </div>
 
@@ -343,7 +353,9 @@ const Reservation = ({ hotelDet, stayCount }) => {
                     </div>
                     <small>
                       {err.errors?.reserver_id_code &&
-                        err.errors?.reserver_id_code}
+                      reserverData.reserver_id_code.length === 0
+                        ? err.errors?.reserver_id_code
+                        : null}
                     </small>
                   </div>
                   <div className={styles["item-form"]}>
@@ -364,7 +376,10 @@ const Reservation = ({ hotelDet, stayCount }) => {
                       />
                     </div>
                     <small>
-                      {err.errors?.reserver_phone && err.errors?.reserver_phone}
+                      {err.errors?.reserver_phone &&
+                      reserverData.reserver_phone.length === 0
+                        ? err.errors?.reserver_phone
+                        : null}
                     </small>
                   </div>
                 </form>

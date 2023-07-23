@@ -6,7 +6,7 @@ const TourDetailLabel = ({ flightDet, stayCount }) => {
   const dateReform = (date) => {
     return date?.slice(0, 5);
   };
-  // console.log("asdas", flightDet);
+
   return (
     <div className={styles["set-request-tour"]}>
       <div className={styles["info-from"]}>

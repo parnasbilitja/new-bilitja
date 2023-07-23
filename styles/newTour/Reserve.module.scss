@@ -130,12 +130,13 @@ $black: #00001f;
                 .peopleroomnum {
                   display: flex;
                   justify-content: center;
+                  align-items: center;
                   width: 100%;
 
                   p {
                     font-size: .8rem;
                     margin: 0;
-                    margin-left: .8rem;
+                    margin-left: .5rem;
 
                   }
 
@@ -143,7 +144,7 @@ $black: #00001f;
                     font-weight: bolder;
                     color: #e20000;
                     font-size: 1rem;
-                    margin-left: .2rem;
+                    margin-left: 5px;
                   }
                 }
 
@@ -255,9 +256,9 @@ $black: #00001f;
               margin-right: 1rem;
 
               h2 {
-                font-size: 13px;
+                font-size: 15px;
 
-                font-weight: bolder;
+                font-weight: 900;
                 margin: 0;
               }
 

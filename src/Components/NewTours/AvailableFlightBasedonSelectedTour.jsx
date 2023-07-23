@@ -331,49 +331,72 @@ const AvailableFlightBasedonSelectedTour = () => {
 
       <div className={styles["container"]}>
         <div className={styles["hotelDet_container"]}>
-          <div className={styles["hotelDet"]}>
-            <div className={styles["right"]}>
-              <div className={styles["hotelDet-image"]}>
-                {hotel?.gallery && (
-                  <Image src={hotel.gallery[0].url} height={200} width={300} />
-                )}
-              </div>
-              <div className={styles["hotelDet-names"]}>
-                <div className={styles["hotelDet-names_star"]}>
-                  {startBuilder(+hotel.stars).map((x) => {
-                    return x;
-                  })}
+          {hotel?.gallery ? (
+            <div className={styles["hotelDet"]}>
+              <div className={styles["right"]}>
+                <div className={styles["hotelDet-image"]}>
+                  {hotel?.gallery && (
+                    <Image
+                      src={hotel.gallery[0].url}
+                      height={200}
+                      width={300}
+                    />
+                  )}
                 </div>
-
-                <p className={styles["hotelDet-names_faName"]}>
-                  {hotel.is_domestic ? hotel.title : hotel.titleEn}
-                </p>
-                <p className={styles["hotelDet-names_enName"]}>
-                  {hotel.is_domestic ? hotel.titleEn : hotel.title}
-                </p>
-                <div className={styles["hotelDet-names_services"]}>
-                  <label htmlFor="">خدمات:</label>
-                  <p>ثبت نشده</p>
-                </div>
-                <div className={styles["hotelDet-names_zone"]}>
-                  <label htmlFor="">منطقه:</label>
-                  <p>ثبت نشده</p>
-                </div>
-              </div>
-            </div>
-            <div className={styles["left"]}>
-              {hotel?.gallery && (
-                <div className={styles["image_container"]}>
-                  <div className={styles["images"]}>
-                    {picGen(hotel?.gallery.length).map((pic) => {
-                      return pic;
+                <div className={styles["hotelDet-names"]}>
+                  <div className={styles["hotelDet-names_star"]}>
+                    {startBuilder(+hotel.stars).map((x) => {
+                      return x;
                     })}
                   </div>
-                  <Image src={hotel?.gallery[1].url} height={100} width={100} />
+
+                  <p className={styles["hotelDet-names_faName"]}>
+                    {hotel.is_domestic ? hotel.title : hotel.titleEn}
+                  </p>
+                  <p className={styles["hotelDet-names_enName"]}>
+                    {hotel.is_domestic ? hotel.titleEn : hotel.title}
+                  </p>
+                  <div className={styles["hotelDet-names_services"]}>
+                    <label htmlFor="">خدمات:</label>
+                    <p>ثبت نشده</p>
+                  </div>
+                  <div className={styles["hotelDet-names_zone"]}>
+                    <label htmlFor="">منطقه:</label>
+                    <p>ثبت نشده</p>
+                  </div>
                 </div>
-              )}
+              </div>
+              <div className={styles["left"]}>
+                {hotel?.gallery && (
+                  <div className={styles["image_container"]}>
+                    <div className={styles["images"]}>
+                      {picGen(hotel?.gallery.length).map((pic) => {
+                        return pic;
+                      })}
+                    </div>
+                    <Image
+                      src={hotel?.gallery[1].url}
+                      height={100}
+                      width={100}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 0.9,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+              className={styles["box-top-box-reserve2"]}
+            >
+              {/* <div className={styles["skew"]}></div> */}
+            </motion.div>
+          )}
         </div>
         <div className={styles["subscription"]}>
           <p>با بررسی زمان پرواز و قیمت اتاق ها تور خود را انتخاب کنید</p>
@@ -631,7 +654,7 @@ const AvailableFlightBasedonSelectedTour = () => {
                                   flight,
                                   room.room_type_id
                                 )
-                              )}
+                              )}{" "}
                               تومان
                             </p>
 

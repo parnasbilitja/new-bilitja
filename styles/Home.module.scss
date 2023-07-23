@@ -6,21 +6,23 @@
   .suggestion-list {
     padding: 5px 8px;
 
-    & > div {
+    &>div {
       border-bottom: 1px solid $pillGray;
       padding: 8px 0px 0 0;
 
       span {
         // margin-right: 5px;
         position: relative;
-        left: -25%; /* or right 50% */
+        left: -25%;
+        /* or right 50% */
         text-align: center;
       }
 
       i {
         margin-top: -5px;
         position: relative;
-        left: -25%; /* or right 50% */
+        left: -25%;
+        /* or right 50% */
         text-align: center;
         height: 35px;
         margin-right: -20px;
@@ -54,8 +56,9 @@
       height: 20px !important;
     }
   }
+
   .home-flight-suggestion {
-    & > div {
+    &>div {
       margin: 5px auto;
     }
 
@@ -69,11 +72,12 @@
       }
     }
   }
+
   .home-become-host {
     height: 225px !important;
     background-position: center center;
 
-    & > div {
+    &>div {
       padding: 35px 50px !important;
 
       .btn-secondary-outlined {
@@ -86,6 +90,7 @@
       }
     }
   }
+
   .heor-main-container {
     padding: 0 !important;
   }
@@ -94,7 +99,7 @@
 @media only screen and (max-width: 649px) and (min-width: 441px) {
 
   .home-flight-suggestion {
-    & > div {
+    &>div {
       margin: 5px auto;
     }
   }
@@ -103,7 +108,7 @@
 @media only screen and (max-width: 979px) and (min-width: 695px) {
 
   .home-flight-suggestion {
-    & > div {
+    &>div {
       margin: 5px auto;
     }
   }
@@ -112,7 +117,7 @@
 @media only screen and (max-width: 1024px) and (min-width: 980px) {
 
   .home-flight-suggestion {
-    & > div {
+    &>div {
       margin: 5px auto;
     }
   }
@@ -130,6 +135,7 @@
     margin: 0px 10px !important;
     // margin-top: 3rem !important;
   }
+
   .width-mobile-search {
     width: 90% !important;
     margin: 0px 10px !important;
@@ -153,7 +159,7 @@
 
 
   .home-flight-suggestion {
-    & > div {
+    &>div {
       // grid-template-columns: 1fr 1fr;
       // grid-row: 1fr;
       // width: 45%;
@@ -260,7 +266,7 @@
   text-align: center;
   color: $whiteColor;
 
-  & > div {
+  &>div {
     background: rgba(0, 0, 0, 0.52);
     width: 100%;
     height: 100%;
@@ -347,21 +353,23 @@
   .suggestion-list {
     padding: 5px 8px;
 
-    & > div {
+    &>div {
       border-bottom: 1px solid #cfd3d8;
       padding: 8px 0px 0 0;
 
       span {
         // margin-right: 5px;
         position: relative;
-        left: -2%; /* or right 50% */
+        left: -2%;
+        /* or right 50% */
         text-align: center;
       }
 
       i {
         margin-top: -5px;
         position: relative;
-        left: -25%; /* or right 50% */
+        left: -25%;
+        /* or right 50% */
         text-align: center;
         height: 35px;
       }
@@ -385,6 +393,7 @@
   text-align: justify;
   margin-top: 48px;
   padding: 10px 10px;
+
   // border: 1px solid $pillGray;
   // border-radius: 10px;
   h3 {
@@ -459,6 +468,7 @@
   0% {
     transform: translateX(-90%) translateY(90%) scale(0.4)
   }
+
   100% {
     transform: translateX(0) translateY(0) scale(1)
   }
@@ -553,8 +563,8 @@
 }
 
 
-@media only screen and (max-width: 868px){
-  .home-tab-active{
+@media only screen and (max-width: 868px) {
+  .home-tab-active {
     &:after {
       content: '';
       position: absolute;
@@ -573,57 +583,64 @@
 
 /////new pouya
 
-.width-mobile-search{
-  .checkboxs_container{
-    margin-bottom: .725rem;
+.width-mobile-search {
+  .checkboxs_container {
+    margin-bottom: .5rem;
     margin-top: .5rem;
     width: 15%;
-  
+    // display: flex;
+    // align-items: center;
 
 
 
 
 
-   .check{
-          display: flex;
-          p{
-            font-size: .9rem;
-            font-weight: bolder;
-            margin-right: 6px;
-          }
-          input{
-            margin-left: .4rem !important;
-            cursor: pointer;
-          }
-                    input[type="checkbox"] {
-                          appearance: none;
-                            background-color: #fff;
-                            margin: 0;
-                            font: inherit;
-                            color: currentColor;
-                            width: 1.45rem;
-                            height: 1.45rem;
-                            border: 0.15em solid #279692;
-                            border-radius: 0.15em;
-                            transform: translateY(-0.095em);
-                          display: grid;
-                          place-content: center;
-                }
 
-                input[type="checkbox"]::before {
-                  content: "";
-                  width: .85em;
-                  height: .85em;
-                  transform: scale(0);
-                  border-radius: 2px;
-                  transition: 120ms transform ease-in-out;
-                  box-shadow: inset 1em 1em #279692;
-                }
+    .check {
+      display: flex;
+      align-items: center;
 
-                input[type="checkbox"]:checked::before {
-                  transform: scale(1);
-                }
-   }
-   
+      p {
+        font-size: .9rem;
+        font-weight: bolder;
+        margin: 0;
+        margin-right: 6px;
+      }
+
+      input {
+        margin-left: .4rem !important;
+        cursor: pointer;
+      }
+
+      input[type="checkbox"] {
+        appearance: none;
+        background-color: #fff;
+        margin: 0;
+        font: inherit;
+        color: currentColor;
+        width: 1.45rem;
+        height: 1.45rem;
+        border: 0.15em solid #279692;
+        border-radius: 0.15em;
+        transform: translateY(-0.095em);
+        display: grid;
+        place-content: center;
+      }
+
+      input[type="checkbox"]::before {
+        content: "";
+        width: .85em;
+        height: .85em;
+        transform: scale(0);
+        border-radius: 2px;
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em #279692;
+      }
+
+      input[type="checkbox"]:checked::before {
+        transform: scale(1);
+      }
+    }
+
   }
 }

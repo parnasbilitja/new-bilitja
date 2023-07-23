@@ -16,11 +16,19 @@ import styles from "../../../styles/Home.module.scss";
 import axios from "axios";
 import { motion } from "framer-motion";
 import SearchBox from "../../sources/tour/SearchBox";
+import { withRouter } from "next/router";
+import { connect } from "react-redux";
+import {
+  setDestLoc,
+  setFlightDate,
+  setNightNumber,
+  setOrgLoc,
+} from "../../Redux/newTours/Action";
 const TourSearchBox = dynamic(() =>
   import("../NewTours/Components/TourSearchBox")
 );
 
-const ToursBase = () => {
+const ToursBase = (props) => {
   const [state, setState] = useState({
     open: false,
     searchReset: false,
@@ -59,6 +67,15 @@ const ToursBase = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  // useEffect(() => {
+  //   props.setOrgLoc({ name: "", code: "" });
+  //   props.setDestLoc({ name: "", code: "" });
+  //   props.setFlightDate({
+  //     persianDate: "",
+  //     miladiDate: "",
+  //   });
+  //   props.setNightNumber("");
+  // }, []);
   return (
     <div className={""}>
       <Head>
@@ -155,4 +172,10 @@ const ToursBase = () => {
   );
 };
 
-export default ToursBase;
+const mapDispatchesToProps = (dispatch) => ({
+  setOrgLoc: async (value) => dispatch(setOrgLoc(value)),
+  setDestLoc: async (value) => dispatch(setDestLoc(value)),
+  setFlightDate: async (value) => dispatch(setFlightDate(value)),
+  setNightNumber: async (value) => dispatch(setNightNumber(value)),
+});
+export default withRouter(connect(null, mapDispatchesToProps)(ToursBase));

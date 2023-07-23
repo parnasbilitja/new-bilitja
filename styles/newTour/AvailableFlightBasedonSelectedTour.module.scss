@@ -2,6 +2,7 @@ $primary: #e20000;
 $secondary: #279692;
 $borderColor: #999;
 $containerColor: #ebebeb;
+$containerColor2: #bbbbbbe7;
 
 .container {
     padding: 2rem;
@@ -10,7 +11,27 @@ $containerColor: #ebebeb;
         margin-bottom: 2rem;
         border-radius: 20px;
         padding: 1rem 1.5rem;
-        border: 1px solid $containerColor;
+        border: 1px solid $containerColor2;
+
+        .box-top-box-reserve2 {
+            background-color: rgb(185, 185, 185);
+            border-radius: 8px;
+            border: 1px solid #E0E0E0;
+            display: flex;
+            margin: 12px 0;
+            height: 192.5px;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            overflow: hidden;
+
+            // .skew{
+            //   height: 100%;
+            //   width: 25%;
+            //   background-color: #069e2c;
+            //   transform: skew(20deg,10deg);
+            // }
+        }
 
         .hotelDet {
             display: flex;
@@ -123,6 +144,7 @@ $containerColor: #ebebeb;
     }
 
     .ticket_container {
+        overflow: hidden;
         margin-bottom: 1rem;
 
         .container {
@@ -131,6 +153,7 @@ $containerColor: #ebebeb;
             overflow: hidden;
             transition: .5s ease-in-out;
             border-radius: 20px;
+            border: 1px solid $containerColor2;
 
             .blur {
                 height: 100%;
@@ -154,9 +177,10 @@ $containerColor: #ebebeb;
                 display: flex;
                 justify-content: space-between;
 
+
                 padding: .9rem 1.125rem;
-                border: 1px solid $containerColor;
-                background: #fff;
+
+
 
                 &_titles {
                     display: flex;
@@ -237,6 +261,7 @@ $containerColor: #ebebeb;
 
                                     font-size: .8rem;
                                     margin-left: .725rem;
+                                    font-weight: 900;
                                 }
 
                                 p {

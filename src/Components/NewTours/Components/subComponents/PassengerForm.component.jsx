@@ -61,6 +61,7 @@ const PassengerForm = (props) => {
     };
     const findroom = props.dataq.filter((data) => data.id === roomid);
     let newrooms = [];
+    const enRegEx = /[^A-Za-z0-9]/g;
 
     if (findroom.length > 0) {
       const filteredrooms = props.dataq.filter((data) => data.id !== roomid);
@@ -79,7 +80,7 @@ const PassengerForm = (props) => {
           price: props.prcTypeBase(type),
           ...objModel,
           ...findpassenger[0],
-          [e.target.name]: e.target.value,
+          [e.target.name]: enRegEx.test(e.target.value) ? "" : e.target.value,
         });
       } else {
         debugger;
@@ -89,7 +90,7 @@ const PassengerForm = (props) => {
           id: `${index}${type}`,
           price: props.prcTypeBase(type),
           ...objModel,
-          [e.target.name]: e.target.value,
+          [e.target.name]: enRegEx.test(e.target.value) ? "" : e.target.value,
         });
       }
 
@@ -111,7 +112,9 @@ const PassengerForm = (props) => {
               bed_type: type === "ext" ? "extra" : "normal",
               type,
               id: `${index}${type}`,
-              [e.target.name]: e.target.value,
+              [e.target.name]: enRegEx.test(e.target.value)
+                ? ""
+                : e.target.value,
               ...objModel,
               price: props.prcTypeBase(type),
             },
@@ -179,6 +182,37 @@ const PassengerForm = (props) => {
           ],
         },
       ]);
+    }
+  };
+
+  const inputValueFinder = (e, type, index, roomId) => {
+    // debugger;
+    const { name, value } = e.target;
+    const findroom = props.dataq.filter((data) => data.id === roomId);
+    if (findroom.length > 0) {
+      const findPassInput = findroom[0].passengers.filter(
+        (passenger) => passenger.id == `${index}${type}`
+      );
+      return findPassInput?.[name];
+    } else {
+      return "";
+    }
+  };
+
+  const validation = (type, index, roomId, inputname) => {
+    const findroom = props.dataq.filter((data) => data.id === roomId);
+    if (findroom.length > 0) {
+      const findPassInput = findroom[0].passengers.filter(
+        (passenger) => passenger.id == `${index}${type}`
+      );
+
+      if (findPassInput[0]?.[inputname].length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
     }
   };
 
@@ -280,7 +314,8 @@ const PassengerForm = (props) => {
                 errValidation(
                   props.Errs?.errors,
                   errStruct(props.roomIndex, index, "gender")
-                ) ? (
+                ) &&
+                !validation(props.type, index, props.roomId, "gender") ? (
                   <small>
                     {
                       props.Errs?.errors[
@@ -296,6 +331,9 @@ const PassengerForm = (props) => {
                   <input
                     type="text"
                     placeholder="نام (لاتین)"
+                    // value={(e) =>
+                    //   inputValueFinder(e, props.type, index, props.roomId)
+                    // }
                     required
                     defaultValue=""
                     maxLength="50"
@@ -315,7 +353,8 @@ const PassengerForm = (props) => {
                 errValidation(
                   props.Errs?.errors,
                   errStruct(props.roomIndex, index, "name")
-                ) ? (
+                ) &&
+                !validation(props.type, index, props.roomId, "name") ? (
                   <small>
                     {
                       props.Errs?.errors[
@@ -348,7 +387,8 @@ const PassengerForm = (props) => {
                 errValidation(
                   props.Errs?.errors,
                   errStruct(props.roomIndex, index, "family")
-                ) ? (
+                ) &&
+                !validation(props.type, index, props.roomId, "family") ? (
                   <small>
                     {
                       props.Errs?.errors[
@@ -387,7 +427,8 @@ const PassengerForm = (props) => {
                 {errValidation(
                   props.Errs?.errors,
                   errStruct(props.roomIndex, index, "nationality")
-                ) ? (
+                ) &&
+                !validation(props.type, index, props.roomId, "nationality") ? (
                   <small>
                     {
                       props.Errs?.errors[
@@ -423,7 +464,8 @@ const PassengerForm = (props) => {
                   {errValidation(
                     props.Errs?.errors,
                     errStruct(props.roomIndex, index, "id_code")
-                  ) ? (
+                  ) &&
+                  !validation(props.type, index, props.roomId, "id_code") ? (
                     <small>
                       {
                         props.Errs?.errors[
@@ -460,7 +502,8 @@ const PassengerForm = (props) => {
                 {errValidation(
                   props.Errs?.errors,
                   errStruct(props.roomIndex, index, "birth_day")
-                ) ? (
+                ) &&
+                !validation(props.type, index, props.roomId, "birth_day") ? (
                   <small>
                     {
                       props.Errs?.errors[
@@ -492,7 +535,8 @@ const PassengerForm = (props) => {
                 {errValidation(
                   props.Errs?.errors,
                   errStruct(props.roomIndex, index, "passport")
-                ) ? (
+                ) &&
+                !validation(props.type, index, props.roomId, "passport") ? (
                   <small>
                     {
                       props.Errs?.errors[
@@ -535,6 +579,12 @@ const PassengerForm = (props) => {
                 {errValidation(
                   props.Errs?.errors,
                   errStruct(props.roomIndex, index, "expired_passport")
+                ) &&
+                !validation(
+                  props.type,
+                  index,
+                  props.roomId,
+                  "expired_passport"
                 ) ? (
                   <small>
                     {

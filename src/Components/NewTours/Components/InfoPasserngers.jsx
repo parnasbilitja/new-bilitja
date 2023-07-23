@@ -71,6 +71,8 @@ const InfoPasserngers = ({
     console.log("das", dataq);
   }, [dataq]);
 
+
+
   return (
     <>
       <div className={styles["box-room"]}>

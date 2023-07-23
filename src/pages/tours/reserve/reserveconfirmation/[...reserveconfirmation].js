@@ -14,13 +14,16 @@ const ReservationConfirmation = () => {
   const [fromRouter, setFromRouter] = useState();
   const router = useRouter();
   const [roomId, setRoomId] = useState();
+  const [stayCount, setStayCount] = useState("");
   useEffect(() => {
     if (router.query.hotel) {
       setHotelDet(JSON.parse(router?.query?.hotel));
       setFromRouter(router.query);
       setReservedRooms(JSON.parse(router?.query?.rooms));
       setFiPrc(router?.query?.fiPrc);
+      setStayCount(router?.query?.stayCount);
     }
+    // console.log("fsdfsasa", router);
   }, [router]);
 
   useEffect(() => {
@@ -58,7 +61,7 @@ const ReservationConfirmation = () => {
     <>
       <NabvarCustom />
       <div className={styles["reserveinfo_container"]}>
-        <TourDetailLabel flightDet={hotelDet?.flight} />
+        <TourDetailLabel flightDet={hotelDet?.flight} stayCount={stayCount} />
 
         <div className={styles["rooms"]}>
           {reservedRooms?.map((reservedroom) => {
@@ -153,27 +156,27 @@ const ReservationConfirmation = () => {
             </div>
             <div className={styles["paymentbtn"]}>
               <button
-                onClick={() => {
-                  let flight_id = fromRouter.reservationconfirmation[1];
-                  let hotel_id = fromRouter.reservationconfirmation[0];
-                  let checkin = hotelDet.flight.date;
-                  let reserver_full_name = reserverData.reserver_full_name;
-                  let reserver_id_code = reserverData.reserver_id_code;
-                  let reserver_phone = reserverData.reserver_phone;
-                  axios.post(
-                    "https://hotelobilit-api.iran.liara.run/api/v1/reserves",
-                    {
-                      checkin,
-                      flight_id,
-                      hotel_id,
-                      reserver_full_name,
-                      reserver_id_code,
-                      reserver_phone,
-                      rooms: [...dataq],
-                      stayCount,
-                    }
-                  );
-                }}
+              // onClick={() => {
+              //   let flight_id = fromRouter.reservationconfirmation[1];
+              //   let hotel_id = fromRouter.reservationconfirmation[0];
+              //   let checkin = hotelDet.flight.date;
+              //   let reserver_full_name = reserverData.reserver_full_name;
+              //   let reserver_id_code = reserverData.reserver_id_code;
+              //   let reserver_phone = reserverData.reserver_phone;
+              //   axios.post(
+              //     "https://hotelobilit-api.iran.liara.run/api/v1/reserves",
+              //     {
+              //       checkin,
+              //       flight_id,
+              //       hotel_id,
+              //       reserver_full_name,
+              //       reserver_id_code,
+              //       reserver_phone,
+              //       rooms: [...dataq],
+              //       stayCount,
+              //     }
+              //   );
+              // }}
               >
                 پرداخت با کارت شتاب
               </button>
