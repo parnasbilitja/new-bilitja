@@ -67,15 +67,15 @@ const ToursBase = (props) => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-  // useEffect(() => {
-  //   props.setOrgLoc({ name: "", code: "" });
-  //   props.setDestLoc({ name: "", code: "" });
-  //   props.setFlightDate({
-  //     persianDate: "",
-  //     miladiDate: "",
-  //   });
-  //   props.setNightNumber("");
-  // }, []);
+  useEffect(() => {
+    props.setOrgLoc({ name: "", code: "" });
+    props.setDestLoc({ name: "", code: "" });
+    props.setFlightDate({
+      persianDate: "",
+      miladiDate: "",
+    });
+    props.setNightNumber("");
+  }, []);
   return (
     <div className={""}>
       <Head>
