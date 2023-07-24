@@ -4,8 +4,15 @@ import { withRouter } from "next/router";
 import { connect } from "react-redux";
 
 const DropdownComponent = (props) => {
-  // console.log("fcgdx", props);
+  useEffect(() => {
+    if (props.destandorgcities.date.miladiDate && props.nights) {
+      props.setNight(props.nights[0]?.night);
+    }
+  }, [props.destandorgcities.date.miladiDate, props.nights]);
 
+  useEffect(() => {
+    console.log("fcgdx1", props.night);
+  }, []);
   return (
     <div className={styles.dropdowncontainer}>
       <select
@@ -22,8 +29,12 @@ const DropdownComponent = (props) => {
         value={props.destandorgcities.night}
       >
         {/* {props.nights ? } */}
-        <option value="" disabled selected>
-          تعداد شب
+        <option value={props.destandorgcities.night} disabled selected>
+          {props.destandorgcities?.date?.miladiDate && props.nights.length > 0
+            ? `${props.nights[0]?.night} شب`
+            : props?.night?.length > 0 && props?.nights?.length === 0
+            ? `${props?.night} شب`
+            : "تعداد شب"}
         </option>
         {props.nights?.map((nightItem) => {
           return <option value={nightItem.night}>{nightItem.night} شب</option>;

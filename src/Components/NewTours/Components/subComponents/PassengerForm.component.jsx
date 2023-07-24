@@ -206,7 +206,7 @@ const PassengerForm = (props) => {
         (passenger) => passenger.id == `${index}${type}`
       );
 
-      if (findPassInput[0]?.[inputname].length > 0) {
+      if (findPassInput[0]?.[inputname]?.length > 0) {
         return true;
       } else {
         return false;
@@ -586,13 +586,7 @@ const PassengerForm = (props) => {
                   props.roomId,
                   "expired_passport"
                 ) ? (
-                  <small>
-                    {
-                      props.Errs?.errors[
-                        errStruct(props.roomIndex, index, "expired_passport")
-                      ]
-                    }
-                  </small>
+                  <small>فیلد تاریخ انقضا پاسپورت الزامی است</small>
                 ) : null}
               </div>
 

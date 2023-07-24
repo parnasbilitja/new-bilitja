@@ -253,10 +253,10 @@ const AvailableFlightBasedonSelectedTour = () => {
           console.log(res.data?.data);
         });
     }
-
-    console.log("from me", hotel);
   }, [router]);
-
+  useEffect(() => {
+    console.log("from me", hotel);
+  }, [hotel]);
   const twoBedPrcPicker = (rooms, flight) => {
     let fiPrice;
     rooms.map((room) => {
@@ -356,13 +356,13 @@ const AvailableFlightBasedonSelectedTour = () => {
                   <p className={styles["hotelDet-names_enName"]}>
                     {hotel.is_domestic ? hotel.titleEn : hotel.title}
                   </p>
-                  <div className={styles["hotelDet-names_services"]}>
+                  <div className={styles["hotelDet-names_zoneservice"]}>
                     <label htmlFor="">خدمات:</label>
                     <p>ثبت نشده</p>
                   </div>
-                  <div className={styles["hotelDet-names_zone"]}>
+                  <div className={styles["hotelDet-names_zoneservice"]}>
                     <label htmlFor="">منطقه:</label>
-                    <p>ثبت نشده</p>
+                    <p>{hotel?.location ? hotel?.location : "ثبت نشده"}</p>
                   </div>
                 </div>
               </div>

@@ -48,7 +48,6 @@ const TourSearchBox = (props) => {
       })
       .then((res) => {
         const orgLoc = res.data.data;
-
         setOrgCities(orgLoc);
       })
       .catch((err) => {
@@ -74,10 +73,6 @@ const TourSearchBox = (props) => {
   useEffect(() => {
     setWidth(window.innerWidth);
     getDestandOrgCities();
-
-    // if (props.selectedSrc && props.selectedDest) {
-    //   // console.log("from tour", props);
-    // }
 
     ///////////////////////
   }, [props.selectedSrc, props.selectedDest]);
@@ -331,6 +326,7 @@ const TourSearchBox = (props) => {
           <DropdownComponent
             nights={nights}
             setNight={(value) => props.setNightNumber(value)}
+            night={props?.night}
           />
         </div>
         <div className="without-focus">
@@ -339,12 +335,6 @@ const TourSearchBox = (props) => {
             value={props.searchReset == false ? "جستجو" : "لطفا صبر کنید..."}
             onClick={(e) => {
               if (validation() === false) {
-                // props.setSearchReset(false);
-                // props.messageBoxModify({
-                //   state: true,
-                //   color: false,
-                //   message: "لطفا اطلاعات را کامل وارد کنید",
-                // });
                 Err("لطفا اطلاعات را کامل وارد کنید");
                 console.log("valis", validation());
               } else {

@@ -121,8 +121,11 @@ const availableHotels = () => {
         miladiDate: finalDate,
       })
     );
-  }, [router, date, destination, origin, night]);
+  }, [router, destination, origin, date, night]);
 
+  useEffect(() => {
+    console.log("popsd", hotels);
+  }, [hotels]);
   return (
     <div className={styles["main-section"]}>
       <NavHandler />
@@ -132,9 +135,9 @@ const availableHotels = () => {
             <TourSearchBox
               selectedDest={selectedDest}
               selectedSrc={selectedSrc}
+              night={night}
             />
           </div>
-
           <div className={styles["p-available"]}>
             <HotelsSideBarSearch
               date={date}
@@ -193,8 +196,10 @@ const availableHotels = () => {
                           </div>
                           {/* <div className={styles.stars}>{hotel.stars}stars</div> */}
                           <div className={styles.services}>
-                            <label htmlFor="">خدمات :</label>
-                            <p>ثبت نشده</p>
+                            <label htmlFor="">منطقه :</label>
+                            <p>
+                              {hotel.location ? hotel.location : "ثبت نشده"}
+                            </p>
                           </div>
                         </div>
                       </div>

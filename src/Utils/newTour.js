@@ -182,5 +182,6 @@ export const roomNameChecker = (roomsarr, room_id) => {
 };
 
 export const errValidation = (ErrObj, errtype) => {
+  // debugger;
   return ErrObj?.hasOwnProperty(errtype);
 };

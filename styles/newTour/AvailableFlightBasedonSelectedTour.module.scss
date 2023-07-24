@@ -78,33 +78,22 @@ $containerColor2: #bbbbbbe7;
                         font-weight: 600;
                     }
 
-                    &_services {
+
+
+                    &_zoneservice {
                         width: 115px;
                         display: flex;
-                        justify-content: space-between;
+                        // justify-content: space-between;
 
                         label {
                             font-weight: 800;
                             font-size: .9rem;
+                            margin-left: 10px;
                         }
 
                         p {
                             font-size: .8rem;
-                        }
-                    }
 
-                    &_zone {
-                        width: 115px;
-                        display: flex;
-                        justify-content: space-between;
-
-                        label {
-                            font-weight: 800;
-                            font-size: .9rem;
-                        }
-
-                        p {
-                            font-size: .8rem;
                         }
                     }
                 }
@@ -483,15 +472,15 @@ $containerColor2: #bbbbbbe7;
         .roomcountdet_roomnum {
             box-shadow: 0 20px 10px -20px rgba(0, 0, 0, 0.45) inset, 0 -20px 10px -20px rgba(0, 0, 0, 0.45) inset;
 
-            .roomcountDet_container {
 
-                padding: 2rem 10rem 2rem 10rem;
+            .roomcountDet_container {
+                padding: 1.125rem 10rem 1.125rem 10rem;
 
                 .roomcountDet {
                     // border: 1px solid $borderColor;
-                    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+                    border: 1px solid $containerColor2;
                     border-radius: 20px;
-                    padding: 1rem 2rem;
+                    padding: .725rem 2rem;
                     display: flex;
                     justify-content: space-between;
 
@@ -542,7 +531,8 @@ $containerColor2: #bbbbbbe7;
                         height: 90px;
                         width: 160px;
                         // border: 1px solid #999;
-                        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+                        // box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+                        border: 1px solid $containerColor2;
                         padding: .3rem .1rem .3rem .1rem;
 
                         border-radius: 20px;
