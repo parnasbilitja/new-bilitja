@@ -20,6 +20,10 @@ const PassengerForm = (props) => {
       extOpen: value,
     });
   };
+  const [latinCheck, setLatinCheck] = useState({
+    name: false,
+    family: false,
+  });
 
   const findDate = (passId, id, datetype) => {
     // debugger;
@@ -65,14 +69,33 @@ const PassengerForm = (props) => {
         const filteredpassengers = findroom[0].passengers.filter(
           (passenger) => passenger.id !== passId
         );
-        newpassengerArr.push(...filteredpassengers, {
-          ...findpassenger[0],
-          bed_type: type === "ext" ? "extra" : "normal",
-          type,
-          id: passId,
-          price: props.prcTypeBase(type),
-          [e.target.name]: enRegEx.test(e.target.value) ? "" : e.target.value,
-        });
+        if (enRegEx.test(e.target.value)) {
+          newpassengerArr.push(...filteredpassengers, {
+            ...findpassenger[0],
+            bed_type: type === "ext" ? "extra" : "normal",
+            type,
+            id: passId,
+            price: props.prcTypeBase(type),
+            [e.target.name]: "",
+          });
+          setLatinCheck({
+            ...latinCheck,
+            [e.target.name]: true,
+          });
+        } else {
+          newpassengerArr.push(...filteredpassengers, {
+            ...findpassenger[0],
+            bed_type: type === "ext" ? "extra" : "normal",
+            type,
+            id: passId,
+            price: props.prcTypeBase(type),
+            [e.target.name]: e.target.value,
+          });
+          setLatinCheck({
+            ...latinCheck,
+            [e.target.name]: false,
+          });
+        }
       }
 
       newrooms.push(...filteredrooms, {
@@ -179,20 +202,21 @@ const PassengerForm = (props) => {
         return "تخت اضافه";
     }
   };
-  const indexidfinder = (e, passId, roomId) => {
-    const { name, value } = e.target;
-    const findroom = props.roomsData.filter((data) => data.id === roomId);
+  const indexidfinder = (passId, roomId, name) => {
+    // const { name, value } = e.target;
+
+    const findroom = props.dataq.filter((data) => data.id === roomId);
     if (findroom.length > 0) {
       const findPassInput = findroom[0].passengers.filter(
         (passenger) => passenger.id == passId
       );
-
       return findPassInput[0]?.[name];
     }
   };
   useEffect(() => {
     console.log("passindex", props.passIndex);
   }, []);
+
   return (
     <>
       {
@@ -274,7 +298,7 @@ const PassengerForm = (props) => {
                 <input
                   type="text"
                   placeholder="نام (لاتین)"
-                  // value={(e) => indexidfinder(e, props.passId, props.id)}
+                  value={indexidfinder(props.passId, props.id, "name")}
                   required
                   defaultValue=""
                   maxLength="50"
@@ -291,20 +315,29 @@ const PassengerForm = (props) => {
                   name="name"
                 />
               </div>
-              {props.Errs?.errors &&
-              errValidation(
-                props.Errs?.errors,
-                errStruct(props.roomIndex, props.passIndex, "name")
-              ) &&
-              !validation(props.passId, props.id, "name") ? (
-                <small>
-                  {
-                    props.Errs?.errors[
-                      errStruct(props.roomIndex, props.passIndex, "name")
-                    ]
-                  }
-                </small>
-              ) : null}
+
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {props.Errs?.errors &&
+                errValidation(
+                  props.Errs?.errors,
+                  errStruct(props.roomIndex, props.passIndex, "name")
+                ) &&
+                !validation(props.passId, props.id, "name") ? (
+                  <small style={{ marginTop: "5px" }}>
+                    {
+                      props.Errs?.errors[
+                        errStruct(props.roomIndex, props.passIndex, "name")
+                      ]
+                    }
+                  </small>
+                ) : null}
+
+                {latinCheck.name === true ? (
+                  <small style={{ marginTop: "5px" }}>
+                    لطفا نام را به لاتین وارد کنید
+                  </small>
+                ) : null}
+              </div>
             </div>
 
             <div className={styles["item-form"]}>
@@ -312,6 +345,7 @@ const PassengerForm = (props) => {
                 <input
                   type="text"
                   placeholder="نام خانوادگی (لاتین)"
+                  value={indexidfinder(props.passId, props.id, "family")}
                   onChange={(e) =>
                     formDataPicker21(
                       e,
@@ -326,20 +360,29 @@ const PassengerForm = (props) => {
                   maxLength="50"
                 />
               </div>
-              {props.Errs?.errors &&
-              errValidation(
-                props.Errs?.errors,
-                errStruct(props.roomIndex, props.passIndex, "family")
-              ) &&
-              !validation(props.passId, props.id, "family") ? (
-                <small>
-                  {
-                    props.Errs?.errors[
-                      errStruct(props.roomIndex, props.passIndex, "family")
-                    ]
-                  }
-                </small>
-              ) : null}
+
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {props.Errs?.errors &&
+                errValidation(
+                  props.Errs?.errors,
+                  errStruct(props.roomIndex, props.passIndex, "family")
+                ) &&
+                !validation(props.passId, props.id, "family") ? (
+                  <small style={{ marginTop: "5px" }}>
+                    {
+                      props.Errs?.errors[
+                        errStruct(props.roomIndex, props.passIndex, "family")
+                      ]
+                    }
+                  </small>
+                ) : null}
+
+                {latinCheck.family === true ? (
+                  <small style={{ marginTop: "5px" }}>
+                    لطفا نام خانوادگی را به لاتین وارد کنید
+                  </small>
+                ) : null}
+              </div>
             </div>
 
             <div className={styles["item-form"]}>
