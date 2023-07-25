@@ -14,22 +14,40 @@ const InfoPasserngers = ({
   roomName,
   room_type_id,
   hotelDets,
+  setEvRoomsPrc,
+  Errs,
+  roomsData,
+  setRoomsData,
   dataq,
   setDataq,
-  setEvRoomsPrc,
   roomIndex,
-  Errs,
 }) => {
+  useEffect(() => {
+    console.log("from info passs", roomName);
+  }, []);
+
   const [chdPrc, setChdPrc] = useState("");
   const [adlPrc, setAdlPrc] = useState("");
   const [infPrc, setinfPrc] = useState("");
   const [extPrc, setextPrc] = useState("");
 
   const totalPrice = (adlPrc, chdPrc, infPrc, extPrc) => {
-    let totAdlPrc = adlPrc * room.adl_count;
-    let totChdPrc = chdPrc * room.chd_count;
-    let totInfPrc = infPrc * room.inf_count;
-    let totExtPrc = extPrc * room.extra_count;
+    const adlCount = room.passengers.filter(
+      (pass) => pass.type === "adl"
+    ).length;
+    const chdCount = room.passengers.filter(
+      (pass) => pass.type === "chd"
+    ).length;
+    const infCount = room.passengers.filter(
+      (pass) => pass.type === "inf"
+    ).length;
+    const extCount = room.passengers.filter(
+      (pass) => pass.type === "ext"
+    ).length;
+    let totAdlPrc = adlPrc * (typeof adlCount === "number" ? adlCount : 0);
+    let totChdPrc = chdPrc * (typeof chdCount === "number" ? chdCount : 0);
+    let totInfPrc = infPrc * (typeof infCount === "number" ? infCount : 0);
+    let totExtPrc = extPrc * (typeof extCount === "number" ? extCount : 0);
     return totAdlPrc + totChdPrc + totInfPrc + totExtPrc;
   };
   useEffect(() => {
@@ -63,15 +81,15 @@ const InfoPasserngers = ({
   };
 
   const roomprcFinder = (rooms, selectedroom) => {
-    const foundRoom = rooms.filter((room) => room.id === selectedroom.room_id);
+    const foundRoom = rooms.filter(
+      (room) => room.room_type_id === selectedroom.room_type_id
+    );
     return roomPrcGen(...foundRoom, hotelDets.flight);
   };
 
   useEffect(() => {
-    console.log("das", dataq);
-  }, [dataq]);
-
-
+    console.log("das", hotelDets.rooms);
+  }, [hotelDets.rooms]);
 
   return (
     <>
@@ -80,7 +98,6 @@ const InfoPasserngers = ({
           className={`${styles["box-room-Det"]} ${styles["flex-column-mobi"]}`}
         >
           <div className={styles["box-room-Det-name"]}>
-            {/* <div className={styles["circle"]}></div> */}
             <p>{roomName}</p>
           </div>
         </div>
@@ -91,74 +108,27 @@ const InfoPasserngers = ({
             >
               {/* <label className={styles["label-fix"]}>سرپرست</label> */}
               <div>
-                {room.adl_count === 0 ? null : (
-                  <>
+                {room.passengers.map((passenger, passindex) => {
+                  return (
                     <PassengerForm
-                      count={room.adl_count}
-                      type="adl"
-                      roomId={room.id}
-                      roomTypeId={room.room_id}
                       dataq={dataq}
                       setDataq={setDataq}
+                      type={passenger.type}
                       prcTypeBase={(type) => prcTypeBase(type)}
                       hotelDets={hotelDets}
-                      roomIndex={roomIndex}
                       Errs={Errs}
-                      prc={numberWithCommas(adlPrc)}
+                      prc={numberWithCommas(prcTypeBase(passenger.type))}
+                      roomsData={roomsData}
+                      setRoomsData={setRoomsData}
+                      passId={passenger.id}
+                      roomid={room.room_id}
+                      room_type_id={room.room_type_id}
+                      id={room.id}
+                      passIndex={passindex}
+                      roomIndex={roomIndex}
                     />
-                  </>
-                )}
-              </div>
-              <div>
-                {room.chd_count === 0 ? null : (
-                  <>
-                    <PassengerForm
-                      count={room.chd_count}
-                      type="chd"
-                      roomId={room.id}
-                      roomTypeId={room.room_id}
-                      dataq={dataq}
-                      setDataq={setDataq}
-                      prcTypeBase={(type) => prcTypeBase(type)}
-                      hotelDets={hotelDets}
-                      prc={numberWithCommas(chdPrc)}
-                    />
-                  </>
-                )}
-              </div>
-              <div>
-                {room.inf_count === 0 ? null : (
-                  <>
-                    <PassengerForm
-                      count={room.inf_count}
-                      type="inf"
-                      roomId={room.id}
-                      roomTypeId={room.room_id}
-                      dataq={dataq}
-                      setDataq={setDataq}
-                      prcTypeBase={(type) => prcTypeBase(type)}
-                      hotelDets={hotelDets}
-                      prc={numberWithCommas(infPrc)}
-                    />
-                  </>
-                )}
-              </div>
-              <div>
-                {room.extra_count === 0 ? null : (
-                  <>
-                    <PassengerForm
-                      count={room.extra_count}
-                      type="ext"
-                      roomId={room.id}
-                      roomTypeId={room.room_id}
-                      dataq={dataq}
-                      setDataq={setDataq}
-                      prcTypeBase={(type) => prcTypeBase(type)}
-                      hotelDets={hotelDets}
-                      prc={numberWithCommas(extPrc)}
-                    />
-                  </>
-                )}
+                  );
+                })}
               </div>
             </div>
           </div>

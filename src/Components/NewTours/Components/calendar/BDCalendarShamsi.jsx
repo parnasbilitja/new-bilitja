@@ -370,11 +370,12 @@ const BirthdayCalendar = (props) => {
 
                     props.Birthdate(
                       dasheddateformat,
-                      props.roomInfo.index,
+                      props.roomInfo.passId,
                       props.roomInfo.type,
                       props.roomInfo.roomId,
                       props.roomInfo.roomTypeId,
-                      "birth_day"
+                      "birth_day",
+                      props.roomInfo.id
                     );
                     console.log(props.roomInfo.index);
                   }}

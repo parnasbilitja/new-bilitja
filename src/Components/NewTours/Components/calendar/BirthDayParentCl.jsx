@@ -16,8 +16,16 @@ const BirthDayParentCl = (props) => {
             props.dateMaker(fdate);
           }}
           roomInfo={props.roomInfo}
-          Birthdate={(date, index, type, roomid, roomTypeid,datetype) =>
-            props.Birthdate(date, index, type, roomid, roomTypeid,datetype)
+          Birthdate={(date, passId, type, roomid, roomTypeid, datetype, id) =>
+            props.Birthdate(
+              date,
+              passId,
+              type,
+              roomid,
+              roomTypeid,
+              datetype,
+              id
+            )
           }
         />
       ) : (

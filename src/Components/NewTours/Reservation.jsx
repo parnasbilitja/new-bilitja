@@ -15,8 +15,9 @@ import { useRouter } from "next/router";
 import { Err, NotifAlert } from "./Components/NotifAlert.component";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 const Reservation = ({ hotelDet, stayCount }) => {
-  console.log("from reservation", hotelDet);
+  // console.log("from reservation", hotelDet);
   const [dataq, setDataq] = useState([]);
+  const [roomsData, setRoomsData] = useState([]);
   const [reserverData, setReserverData] = useState({
     reserver_phone: "",
     reserver_id_code: "",
@@ -27,7 +28,7 @@ const Reservation = ({ hotelDet, stayCount }) => {
   const [evRoomsPrc, setEvRoomsPrc] = useState([]);
   const [err, setErr] = useState({});
   const router = useRouter();
-
+  const [indexid, setIndexid] = useState(0);
   useEffect(() => {
     if (hotelDet?.rooms_selected && hotelDet?.rooms) {
       const newSelectedRooms = [];
@@ -49,12 +50,11 @@ const Reservation = ({ hotelDet, stayCount }) => {
 
   const TotalPrcGen = (prcArr) => {
     let total = prcArr.reduce((accumulator, currentValue) => {
-      return accumulator + currentValue;
+      return accumulator + +currentValue;
     }, 0);
 
     return total;
   };
-  
 
   const personCounter = (arr) => {
     let people = 0;
@@ -90,6 +90,62 @@ const Reservation = ({ hotelDet, stayCount }) => {
       });
     }
   };
+
+  const passengerObjModel = (personCount, type) => {
+    let personarr = [];
+    if (personCount > 0) {
+      [...Array(personCount)].map((p, index) => {
+        personarr.push({
+          name: "",
+          family: "",
+          birth_day: "",
+          nationality: "",
+          gender: "",
+          passport: "",
+          expired_passport: "",
+          id_code: "",
+          bed_type: type === "ext" ? "extra" : "normal",
+          type,
+          id: `${index}${type}`,
+          price: "",
+        });
+      });
+    }
+    return personarr;
+  };
+
+  useEffect(() => {
+    if (reformSelectedRooms.length > 0) {
+      reformSelectedRooms?.map((selectedroom) => {
+        let passarr = [];
+        const adlCount = selectedroom?.adl_count;
+        const chdCount = selectedroom?.chd_count;
+        const infCount = selectedroom?.inf_count;
+        const extCount = selectedroom?.ext_count;
+        passarr.push(...passengerObjModel(adlCount, "adl"));
+        passarr.push(...passengerObjModel(chdCount, "chd"));
+        passarr.push(...passengerObjModel(infCount, "inf"));
+        passarr.push(...passengerObjModel(extCount, "ext"));
+        setRoomsData((prev) => [
+          ...prev,
+          {
+            id: selectedroom.id,
+            room_type_id: selectedroom.room_type_id,
+            room_id: selectedroom.room_id,
+            passengers: [...passarr],
+          },
+        ]);
+      });
+    }
+  }, [reformSelectedRooms]);
+
+  useEffect(() => {
+    // console.log("dada", roomsData);
+    setDataq(roomsData);
+  }, [roomsData]);
+  useEffect(() => {
+    console.log(dataq);
+  }, [dataq]);
   return (
     <>
       <Scrolltoprefresh />
@@ -290,18 +346,12 @@ const Reservation = ({ hotelDet, stayCount }) => {
                   </span>
                 </h2>
 
-                <form
-                  className={styles["set-info-supervisor"]}
-                  // onChange={handleSubmit((data) => {
-                  //   setReserverData(data);
-                  // })}
-                >
+                <form className={styles["set-info-supervisor"]}>
                   <div className={styles["item-form"]}>
                     <div className={styles["inp-form"]}>
                       <input
                         type="text"
                         placeholder="نام "
-                        // {...register("reserver_full_name")}
                         name="reserver_name"
                         onChange={(e) => {
                           reserverformData(e);
@@ -321,7 +371,6 @@ const Reservation = ({ hotelDet, stayCount }) => {
                       <input
                         type="text"
                         placeholder="نام و نام خانوادگی"
-                        // {...register("reserver_full_name")}
                         name="reserver_lastname"
                         onChange={(e) => {
                           reserverformData(e);
@@ -343,7 +392,6 @@ const Reservation = ({ hotelDet, stayCount }) => {
                         type="text"
                         placeholder="کد ملی"
                         name="reserver_id_code"
-                        // {...register("reserver_id_code")}
                         onChange={(e) => {
                           reserverformData(e);
                         }}
@@ -363,10 +411,6 @@ const Reservation = ({ hotelDet, stayCount }) => {
                       <input
                         type="text"
                         placeholder="شماره همراه"
-                        // {...register("reserver_phone", {
-                        //   required: true,
-                        //   pattern: /^\d{11}$/,
-                        // })}
                         onChange={(e) => {
                           reserverformData(e);
                         }}
@@ -387,18 +431,20 @@ const Reservation = ({ hotelDet, stayCount }) => {
 
               <h2 style={{ fontSize: "1.5rem" }}>اطلاعات مسافران</h2>
 
-              {reformSelectedRooms?.map((room, roomIndex) => (
+              {roomsData?.map((room, roomIndex) => (
                 <InfoPasserngers
                   room={room}
                   hotelDets={hotelDet}
                   roomName={roomNameChecker(hotelDet?.rooms, room.room_id)}
                   room_type_id={room.room_type_id}
-                  newSelectedRooms={reformSelectedRooms}
+                  // newSelectedRooms={reformSelectedRooms}
                   dataq={dataq}
                   setDataq={setDataq}
                   setEvRoomsPrc={setEvRoomsPrc}
-                  roomIndex={roomIndex}
                   Errs={err}
+                  roomsData={roomsData}
+                  setRoomsData={setRoomsData}
+                  roomIndex={roomIndex}
                 />
               ))}
 

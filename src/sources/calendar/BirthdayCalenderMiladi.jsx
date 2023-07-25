@@ -284,11 +284,12 @@ const BirthdayCalenderMiladi = (props) => {
 
                       props.Birthdate(
                         dasheddateformat,
-                        props.roomInfo.index,
+                        props.roomInfo.passId,
                         props.roomInfo.type,
                         props.roomInfo.roomId,
                         props.roomInfo.roomTypeId,
-                        "expired_passport"
+                        "expired_passport",
+                        props.roomInfo.id
                       );
                     }}
                   >
