@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 export const NotifAlert = () => {
   return (
     <ToastContainer
+      limit={3}
       position="top-right"
       autoClose={5000}
       hideProgressBar={false}

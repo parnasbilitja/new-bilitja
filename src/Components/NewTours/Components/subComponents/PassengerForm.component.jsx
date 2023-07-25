@@ -4,6 +4,7 @@ import PopUp from "./PopUp.component";
 import BirthDayParentCl from "../calendar/BirthDayParentCl";
 import BirthDayParent from "../../../../sources/calendar/BirthDayParent";
 import { errValidation } from "../../../../Utils/newTour";
+import { Err } from "../NotifAlert.component";
 const PassengerForm = (props) => {
   console.log("hotel", props);
   const [state, setState] = useState({
@@ -78,10 +79,15 @@ const PassengerForm = (props) => {
             price: props.prcTypeBase(type),
             [e.target.name]: "",
           });
-          setLatinCheck({
-            ...latinCheck,
-            [e.target.name]: true,
-          });
+          if (e.target.name === "name") {
+            Err("لطفا نام  را به لاتین وارد کنید");
+          } else if (e.target.name === "family") {
+            Err("لطفا نام خانوادگی را به لاتین وارد کنید");
+          }
+          // setLatinCheck({
+          //   ...latinCheck,
+          //   [e.target.name]: true,
+          // });
         } else {
           newpassengerArr.push(...filteredpassengers, {
             ...findpassenger[0],
@@ -316,28 +322,26 @@ const PassengerForm = (props) => {
                 />
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                {props.Errs?.errors &&
-                errValidation(
-                  props.Errs?.errors,
-                  errStruct(props.roomIndex, props.passIndex, "name")
-                ) &&
-                !validation(props.passId, props.id, "name") ? (
-                  <small style={{ marginTop: "5px" }}>
-                    {
-                      props.Errs?.errors[
-                        errStruct(props.roomIndex, props.passIndex, "name")
-                      ]
-                    }
-                  </small>
-                ) : null}
+              {props.Errs?.errors &&
+              errValidation(
+                props.Errs?.errors,
+                errStruct(props.roomIndex, props.passIndex, "name")
+              ) &&
+              !validation(props.passId, props.id, "name") ? (
+                <small style={{ marginTop: "5px" }}>
+                  {
+                    props.Errs?.errors[
+                      errStruct(props.roomIndex, props.passIndex, "name")
+                    ]
+                  }
+                </small>
+              ) : null}
 
-                {latinCheck.name === true ? (
+              {/* {latinCheck.name === true ? (
                   <small style={{ marginTop: "5px" }}>
                     لطفا نام را به لاتین وارد کنید
                   </small>
-                ) : null}
-              </div>
+                ) : null} */}
             </div>
 
             <div className={styles["item-form"]}>
@@ -361,28 +365,26 @@ const PassengerForm = (props) => {
                 />
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                {props.Errs?.errors &&
-                errValidation(
-                  props.Errs?.errors,
-                  errStruct(props.roomIndex, props.passIndex, "family")
-                ) &&
-                !validation(props.passId, props.id, "family") ? (
-                  <small style={{ marginTop: "5px" }}>
-                    {
-                      props.Errs?.errors[
-                        errStruct(props.roomIndex, props.passIndex, "family")
-                      ]
-                    }
-                  </small>
-                ) : null}
+              {props.Errs?.errors &&
+              errValidation(
+                props.Errs?.errors,
+                errStruct(props.roomIndex, props.passIndex, "family")
+              ) &&
+              !validation(props.passId, props.id, "family") ? (
+                <small style={{ marginTop: "5px" }}>
+                  {
+                    props.Errs?.errors[
+                      errStruct(props.roomIndex, props.passIndex, "family")
+                    ]
+                  }
+                </small>
+              ) : null}
 
-                {latinCheck.family === true ? (
+              {/* {latinCheck.family === true ? (
                   <small style={{ marginTop: "5px" }}>
                     لطفا نام خانوادگی را به لاتین وارد کنید
                   </small>
-                ) : null}
-              </div>
+                ) : null} */}
             </div>
 
             <div className={styles["item-form"]}>
