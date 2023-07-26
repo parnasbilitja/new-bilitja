@@ -239,12 +239,12 @@ const TourSearchBox = (props) => {
               name="sourceName"
               onClick={(e) => {
                 // for mobile
-                if (width <= mobileSize) {
-                  e.preventDefault();
-                  managePopUpSource(true);
-                } else {
-                  manageSuggestSource(true);
-                }
+                // if (width <= mobileSize) {
+                //   e.preventDefault();
+                //   managePopUpSource(true);
+                // } else {
+                manageSuggestSource(true);
+                // }
               }}
               onChange={handleChangeCre}
               onFocus={handleFocus}
@@ -285,12 +285,12 @@ const TourSearchBox = (props) => {
               name="destinationName"
               onClick={(e) => {
                 // for mobile
-                if (width <= mobileSize) {
-                  e.preventDefault();
-                  managePopUpDestination(true);
-                } else {
-                  manageSuggestDestination(true);
-                }
+                // if (width <= mobileSize) {
+                //   e.preventDefault();
+                //   managePopUpDestination(true);
+                // } else {
+                manageSuggestDestination(true);
+                // }
               }}
               onChange={handleChangeCre}
               onFocus={handleFocus}
