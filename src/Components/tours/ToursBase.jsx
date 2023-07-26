@@ -103,7 +103,7 @@ const ToursBase = (props) => {
             <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
               {/* switch between tours type */}
               <div
-                className={`d-flex justify-content-between ${styles["checkboxs_container"]}`}
+                className={`d-flex justify-content-between ${styles["checkboxs_container"]} ${styles["w-100-mobi"]}`}
               >
                 <div className={styles["check"]}>
                   <input

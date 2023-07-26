@@ -126,6 +126,27 @@ const availableHotels = () => {
   useEffect(() => {
     console.log("popsd", hotels);
   }, [hotels]);
+
+
+  //////////////////width
+
+  const [widthMobi, setWidthMobi] = useState(typeof window !== "undefined"&&getWindowSize());
+  function getWindowSize(){
+    const {innerWidth}=window
+    return innerWidth
+  }
+  useEffect(()=>{
+    function handleWindowResize(){
+      setWidthMobi(getWindowSize())
+    }
+    window.addEventListener('resize',handleWindowResize)
+
+  },[])
+
+  useEffect(()=>{
+    console.log(widthMobi)
+  },[widthMobi])
+
   return (
     <div className={styles["main-section"]}>
       <NavHandler />
@@ -136,6 +157,7 @@ const availableHotels = () => {
               selectedDest={selectedDest}
               selectedSrc={selectedSrc}
               night={night}
+
             />
           </div>
           <div className={styles["p-available"]}>
@@ -147,6 +169,7 @@ const availableHotels = () => {
               setHotels={(value) => setHotels(value)}
               stars={stars}
               hotels={hotels}
+              widthMobi={widthMobi}
             />
 
             <div className={styles.content}>
@@ -243,5 +266,7 @@ const availableHotels = () => {
     </div>
   );
 };
+
+
 
 export default availableHotels;
