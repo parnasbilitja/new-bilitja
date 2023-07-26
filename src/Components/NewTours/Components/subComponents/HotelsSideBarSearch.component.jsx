@@ -2,7 +2,9 @@ import React, {useEffect, useState} from "react";
 import styles from "../../../../../styles/newTour/components/subComponent/HotelSidebarSearch.module.scss";
 import axios from "axios";
 import {motion,AnimatePresence} from 'framer-motion'
-
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 const HotelsSideBarSearch = (props) => {
     const [searchInput, setSearchInput] = useState("");
 
@@ -160,7 +162,7 @@ useEffect(()=>{  console.log('width',props.widthMobi)},[props.widthMobi])
                 </div>
                 <div className={styles.hotelSearchOrder}>
                     <p>مرتب سازی براساس</p>
-                    <div>
+                    <div className={styles['p-checkbox']}>
                         <input
                             type="checkbox"
                             name="ارزان ترین"
@@ -170,7 +172,7 @@ useEffect(()=>{  console.log('width',props.widthMobi)},[props.widthMobi])
                         />
                         <p htmlFor="">ارزان ترین</p>
                     </div>
-                    <div>
+                    <div className={styles['p-checkbox']}>
                         <input
                             type="checkbox"
                             name="گران ترین"
@@ -180,6 +182,9 @@ useEffect(()=>{  console.log('width',props.widthMobi)},[props.widthMobi])
                         />
                         <p htmlFor="">گران ترین</p>
                     </div>
+                    {/*<FormGroup>*/}
+                    {/*    <FormControlLabel required control={<Checkbox />} label="Required" />*/}
+                    {/*</FormGroup>*/}
                 </div>
             </div>}
 

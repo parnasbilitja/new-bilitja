@@ -7,6 +7,13 @@
   margin-top: 14px;
   padding: 1rem;
 
+  .p-checkbox {
+    p {
+      font-size: 13px !important;
+      font-weight: 600;
+    }
+  }
+
   p {
     color: black;
     font-size: 14px;
@@ -212,7 +219,7 @@
   .sidebar {
     width: 100% !important;
   }
-  .p-sidebar{
+  .p-sidebar {
     width: 100% !important;
   }
 }
@@ -230,6 +237,6 @@
   background: #279692;
 }
 
-.p-sidebar{
+.p-sidebar {
   width: 20%;
 }

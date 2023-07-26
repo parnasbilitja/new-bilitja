@@ -261,7 +261,7 @@ const availableHotels = () => {
           </div>
         </div>
       ) : (
-        <AvFlight />
+        <AvFlight widthmobi={widthMobi}/>
       )}
     </div>
   );
