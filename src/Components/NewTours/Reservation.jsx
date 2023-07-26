@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import { Err, NotifAlert } from "./Components/NotifAlert.component";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 const Reservation = ({ hotelDet, stayCount }) => {
-  // console.log("from reservation", hotelDet);
+  console.log("from reservation", hotelDet);
   const [dataq, setDataq] = useState([]);
   const [roomsData, setRoomsData] = useState([]);
   const [reserverData, setReserverData] = useState({
@@ -189,7 +189,8 @@ const Reservation = ({ hotelDet, stayCount }) => {
                       onClick={() => {
                         let flight_id = hotelDet.flight.id;
                         let hotel_id = hotelDet.hotel.id;
-                        let checkin = hotelDet.flight.date;
+                        let checkin = hotelDet.checkin;
+                        let checkout = hotelDet.checkout;
                         let reserver_name = reserverData.reserver_name;
                         let reserver_lastname = reserverData.reserver_lastname;
                         let reserver_id_code = reserverData.reserver_id_code;
@@ -198,6 +199,7 @@ const Reservation = ({ hotelDet, stayCount }) => {
                           .post(
                             "https://hotelobilit-api.iran.liara.run/api/v1/reserves",
                             {
+                              checkout,
                               checkin,
                               flight_id,
                               hotel_id,
