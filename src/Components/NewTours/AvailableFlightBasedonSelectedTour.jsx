@@ -456,7 +456,7 @@ const AvailableFlightBasedonSelectedTour = () => {
                       <div className={styles["flight_company"]}>
                         <div className={styles["flight_company_logo"]}>
                           <div className={styles["image_container"]}>
-                            <img src={flight.airline_thumb.url} alt="" />
+                            <img src={flight?.airline_thumb?.url} alt="" />
                           </div>
                           <p>{flight.airline_name}</p>
                         </div>
@@ -465,9 +465,12 @@ const AvailableFlightBasedonSelectedTour = () => {
                         </div>
                         <div className={styles["flight_company_logo"]}>
                           <div className={styles["image_container"]}>
-                            <img src={flight.flight.airline_thumb.url} alt="" />
+                            <img
+                              src={flight?.flight?.airline_thumb?.url}
+                              alt=""
+                            />
                           </div>
-                          <p>{flight.flight.airline_name}</p>
+                          <p>{flight?.flight?.airline_name}</p>
                         </div>
                       </div>
 
@@ -477,15 +480,15 @@ const AvailableFlightBasedonSelectedTour = () => {
                         </div>
                         <div className={styles["flightDet_loc"]}>
                           <p>
-                            {flight.flight.origin_name} به{" "}
-                            {flight.flight.destination_name}
+                            {flight?.flight?.origin_name} به{" "}
+                            {flight?.flight?.destination_name}
                           </p>
                         </div>
                         <div className={styles["flightDet_timedate"]}>
-                          <span>{flight.flight.time}</span>
+                          <span>{flight?.flight?.time}</span>
                           <span>و</span>
                           <span>
-                            {MiladiToJalaliConvertor(flight.flight.date)}
+                            {MiladiToJalaliConvertor(flight?.flight?.date)}
                           </span>
                         </div>
                         <div className={styles["flightDet_hotelEnt"]}>
@@ -493,8 +496,8 @@ const AvailableFlightBasedonSelectedTour = () => {
                           <p>
                             {" "}
                             {flight.checkout_yesterday === true
-                              ? MiladiToJalaliConvertorDec(flight.flight.date)
-                              : MiladiToJalaliConvertor(flight.flight.date)}
+                              ? MiladiToJalaliConvertorDec(flight?.flight?.date)
+                              : MiladiToJalaliConvertor(flight?.flight?.date)}
                           </p>
                         </div>
                       </div>
@@ -577,17 +580,20 @@ const AvailableFlightBasedonSelectedTour = () => {
                           );
                           const routerParam = router.query;
                           const finalDet = {
-                            checkin: jalaliToMiladiConvertor(
-                              routerParam.stDate
-                            ),
+                            checkin: flight.checkin_tomorrow
+                              ? MiladiToJalaliConvertorInc(flight.date)
+                              : MiladiToJalaliConvertor(flight.date),
+                            checkout: flight.checkout_yesterday
+                              ? MiladiToJalaliConvertorDec(flight?.flight?.date)
+                              : MiladiToJalaliConvertor(flight?.flight?.date),
                             stayCount: routerParam.night,
                             rooms: [...roomsGen(selectedRoom)],
                           };
                           router.push(
                             `/tours/reserve/${hotel.id}/${flight.id}?checkin=${
                               finalDet.checkin
-                            }&stayCount=${
-                              finalDet.stayCount
+                            }&checkout=${
+                              finalDet.checkout
                             }&rooms=${JSON.stringify(finalDet.rooms)}`
                           );
                         } else {

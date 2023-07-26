@@ -36,6 +36,7 @@ export const Err = (msg) => {
     theme: "colored",
   });
 };
+
 export const ErrSuccess = (msg) => {
   toast.success(msg, {
     position: "top-right",

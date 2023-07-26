@@ -1,6 +1,6 @@
 const initialState = {
-  origin: {} ,
-  destination: {} ,
+  origin: {},
+  destination: {},
   date: {},
   night: "",
 };

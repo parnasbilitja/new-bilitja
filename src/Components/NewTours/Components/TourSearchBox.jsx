@@ -202,6 +202,7 @@ const TourSearchBox = (props) => {
     return true;
   };
   const mobileSize = 626;
+  const tabletSize = 900;
   const {
     credentials: {
       sourceName,
@@ -215,6 +216,11 @@ const TourSearchBox = (props) => {
     history,
   } = props;
 
+  useEffect(() => {
+    if (props) {
+      console.log("oewirpow", props);
+    }
+  }, [props]);
   return (
     <>
       <NotifAlert />
@@ -292,7 +298,7 @@ const TourSearchBox = (props) => {
               placeholder={"مقصد خود را وارد کنید"}
             />
           </div>
-          {width > mobileSize && state.suggestDestination ? (
+          {state.suggestDestination ? (
             <Cities
               credenrialType="destination"
               closeSuggest={manageSuggestDestination}
@@ -338,15 +344,48 @@ const TourSearchBox = (props) => {
                 Err("لطفا اطلاعات را کامل وارد کنید");
                 console.log("valis", validation());
               } else {
-                // ErrSuccess("به صفحه بعد منتقل می‌شوید");
                 e.preventDefault();
                 const stDate = jalaliDateReformater(
                   props.destandorgcities.date.persianDate
                 );
+                // let checkin =
+                //   props.destandorgcities?.night[0]?.checkin_tomorrow;
+                // let checkout =
+                //   props.destandorgcities?.night[0]?.checkout_yesterday;
+                // let finalDate = jalaliDateReformater(
+                //   props.destandorgcities.date.persianDate
+                // );
+                // let finalnight = props.destandorgcities?.night[0]?.night;
+                // if (!checkin && !checkout) {
+                //   finalDate = jalaliDateReformater(
+                //     MiladiToJalaliConvertor(
+                //       moment(props.destandorgcities.date.miladiDate)
+                //         .add(1, "days")
+                //         .format("YYYY-MM-DD")
+                //     )
+                //   );
+                // } else if (!checkin && checkout) {
+                //   finalnight = props.destandorgcities?.night[0]?.night - 1;
+                // } else {
+                //   finalnight = props.destandorgcities?.night[0]?.night - 1;
+                //   finalDate = jalaliDateReformater(
+                //     MiladiToJalaliConvertor(
+                //       moment(props.destandorgcities.date.miladiDate)
+                //         .add(1, "days")
+                //         .format("YYYY-MM-DD")
+                //     )
+                //   );
+                // }
+                debugger;
+                console.log(props?.destandorgcities?.night[0]);
 
                 router.push(
-                  `/tours/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities.night}`
+                  `/tours/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities?.night}`
                 );
+                // console.log("vali", validation());
+                // router.push(
+                //   `/tours/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities?.night[0]?.night}`
+                // );
                 console.log("vali", validation());
               }
             }}

@@ -11,7 +11,7 @@ const DropdownComponent = (props) => {
   }, [props.destandorgcities.date.miladiDate, props.nights]);
 
   useEffect(() => {
-    console.log("fcgdx1", props.night);
+    console.log("fcgdx1", props);
   }, []);
   return (
     <div className={styles.dropdowncontainer}>

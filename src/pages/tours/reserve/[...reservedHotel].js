@@ -3,28 +3,30 @@ import React, { useEffect, useState } from "react";
 import Reservation from "../../../Components/NewTours/Reservation";
 import NavHandler from "../../../Components/share/NavHandler";
 import axios from "axios";
+import { jalaliToMiladiConvertor } from "../../../Utils/newTour";
 const ReservedHotel = () => {
   const router = useRouter();
   const [hotelDet, setHoteldet] = useState([]);
   const [stayCount, setStayCount] = useState();
   useEffect(() => {
-    console.log("dasda", router.query);
+    console.log("dasda", jalaliToMiladiConvertor(router.query.checkin));
     if (router.query.rooms && router.query.reservedHotel) {
       const rooms = JSON.parse(router.query.rooms);
-      const checkin = router.query.checkin;
+      const checkin = jalaliToMiladiConvertor(router.query.checkin);
+      const checkout = jalaliToMiladiConvertor(router.query.checkout);
       const flight_id = +router.query.reservedHotel[1];
       const hotel_id = +router.query.reservedHotel[0];
-      const stayCount = router.query.stayCount;
+      // const stayCount = router.query.stayCount;
       setStayCount(stayCount);
       axios
         .post(
           "https://hotelobilit-api.iran.liara.run/api/v1/reserves/checking",
           {
             checkin,
+            checkout,
             hotel_id,
             flight_id,
             rooms,
-            stayCount,
           }
         )
         .then((res) => {
