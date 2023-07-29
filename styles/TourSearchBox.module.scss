@@ -59,11 +59,20 @@
   display: grid;
 
   .form-input-border-private {
+    // padding: .5rem;
     border: 1px solid #cfd3d8;
     border-radius: 10px;
     font-size: 14px;
     height: 55px;
-    overflow: hidden;
+    background-color: white;
+
+    // margin-bottom: 1rem;
+    // overflow: hidden;
+    input {
+      width: 85%;
+      transform: translateX(-2%);
+      // object-fit: cover;
+    }
   }
 }
 

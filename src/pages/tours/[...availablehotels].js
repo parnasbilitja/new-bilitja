@@ -127,25 +127,21 @@ const availableHotels = () => {
     console.log("popsd", hotels);
   }, [hotels]);
 
-
   //////////////////width
 
-  const [widthMobi, setWidthMobi] = useState(typeof window !== "undefined"&&getWindowSize());
-  function getWindowSize(){
-    const {innerWidth}=window
-    return innerWidth
+  const [widthMobi, setWidthMobi] = useState(
+    typeof window !== "undefined" && getWindowSize()
+  );
+  function getWindowSize() {
+    const { innerWidth } = window;
+    return innerWidth;
   }
-  useEffect(()=>{
-    function handleWindowResize(){
-      setWidthMobi(getWindowSize())
+  useEffect(() => {
+    function handleWindowResize() {
+      setWidthMobi(getWindowSize());
     }
-    window.addEventListener('resize',handleWindowResize)
-
-  },[])
-
-  useEffect(()=>{
-    console.log(widthMobi)
-  },[widthMobi])
+    window.addEventListener("resize", handleWindowResize);
+  }, []);
 
   return (
     <div className={styles["main-section"]}>
@@ -157,7 +153,6 @@ const availableHotels = () => {
               selectedDest={selectedDest}
               selectedSrc={selectedSrc}
               night={night}
-
             />
           </div>
           <div className={styles["p-available"]}>
@@ -261,12 +256,10 @@ const availableHotels = () => {
           </div>
         </div>
       ) : (
-        <AvFlight widthmobi={widthMobi}/>
+        <AvFlight widthmobi={widthMobi} />
       )}
     </div>
   );
 };
-
-
 
 export default availableHotels;

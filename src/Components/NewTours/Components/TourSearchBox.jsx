@@ -232,7 +232,7 @@ const TourSearchBox = (props) => {
           >
             <i
               className="bilitja icon-plane-departure form-input-icon rotate-y-180"
-              style={{ marginTop: "3px" }}
+              style={{ marginTop: "3px", zIndex: "100" }}
             ></i>
             <PrimaryTextInput
               value={props.destandorgcities.origin.name}
@@ -251,19 +251,19 @@ const TourSearchBox = (props) => {
               onBlur={handleFocusOut}
               placeholder={"مبدا خود را وارد کنید"}
             />
+            {state.suggestSource ? (
+              <Cities
+                credenrialType="source"
+                closeSuggest={manageSuggestSource}
+                searchTerm={state.searchTermSource}
+                cities={orgCities}
+                setCities={(value) => props.setOrgLoc(value)}
+                setcitiesData={(val) => setCitiesData(val)}
+                setFlightDate={(value) => props.setFlightDate(value)}
+                setNight={(value) => props.setNightNumber(value)}
+              />
+            ) : null}
           </div>
-          {state.suggestSource ? (
-            <Cities
-              credenrialType="source"
-              closeSuggest={manageSuggestSource}
-              searchTerm={state.searchTermSource}
-              cities={orgCities}
-              setCities={(value) => props.setOrgLoc(value)}
-              setcitiesData={(val) => setCitiesData(val)}
-              setFlightDate={(value) => props.setFlightDate(value)}
-              setNight={(value) => props.setNightNumber(value)}
-            />
-          ) : null}
         </div>
 
         <div style={{ position: "relative" }}>
@@ -277,6 +277,7 @@ const TourSearchBox = (props) => {
                 fontSize: 32,
                 fontWeight: 500,
                 marginTop: "3px",
+                zIndex: "100",
               }}
               className="bilitja  icon-plane-departure form-input-icon rotate-upsidedown-reverse "
             ></i>
@@ -297,18 +298,18 @@ const TourSearchBox = (props) => {
               onBlur={handleFocusOut}
               placeholder={"مقصد خود را وارد کنید"}
             />
+            {state.suggestDestination ? (
+              <Cities
+                credenrialType="destination"
+                closeSuggest={manageSuggestDestination}
+                searchTerm={state.searchTermDestination}
+                cities={destCities}
+                setCities={(value) => props.setDestLoc(value)}
+                setFlightDate={(value) => props.setFlightDate(value)}
+                setNight={(value) => props.setNightNumber(value)}
+              />
+            ) : null}
           </div>
-          {state.suggestDestination ? (
-            <Cities
-              credenrialType="destination"
-              closeSuggest={manageSuggestDestination}
-              searchTerm={state.searchTermDestination}
-              cities={destCities}
-              setCities={(value) => props.setDestLoc(value)}
-              setFlightDate={(value) => props.setFlightDate(value)}
-              setNight={(value) => props.setNightNumber(value)}
-            />
-          ) : null}
         </div>
 
         <div
@@ -316,7 +317,7 @@ const TourSearchBox = (props) => {
         >
           <i
             className="bilitja icon-calendar form-input-icon-larger "
-            style={{ marginTop: "5px" }}
+            style={{ marginTop: "5px", zIndex: "100" }}
           ></i>
           <PrimaryTextInput
             placeholder={" تاریخ پرواز رفت"}
@@ -376,7 +377,7 @@ const TourSearchBox = (props) => {
                 //     )
                 //   );
                 // }
-                debugger;
+                // debugger;
                 console.log(props?.destandorgcities?.night[0]);
 
                 router.push(

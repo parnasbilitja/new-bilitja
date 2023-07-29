@@ -11,7 +11,7 @@ import FlightReserveMobileHeader from "../flight_reserve/FlightReserveMobileHead
 
 
 const PaymentReceiptPage = (props) => {
-  debugger
+  // debugger
   const [btn_disabel, setBtnDisabel] = React.useState(false);
   let i = 1;
 

@@ -85,7 +85,7 @@ const Vilalist = () => {
   };
 
   const increment = () => {
-    debugger;
+    // debugger;
     if (amount === 3) {
       return null;
     } else {

@@ -41,9 +41,16 @@ export const MiladiToJalaliConvertorDec = (miladiDate) => {
 
 ////sperate price with (,)
 export function numberWithCommas(number) {
-  var parts = number.toString().split(".");
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  return parts.join(".");
+  // debugger;
+  var parts = number?.toString().split(".");
+  parts[0] = parts[0]?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  /////////////this condition is temporaily
+  if (parts.length > 0) {
+    return parts?.join(".");
+  } else {
+    return "";
+  }
 }
 
 ////star builder

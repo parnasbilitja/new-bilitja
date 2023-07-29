@@ -21,7 +21,7 @@ const Cities = (props) => {
         borderRadius: 8,
         width: "100%",
         height: "80px",
-        marginTop: "7px",
+        marginTop: "12px",
         padding: "5px 12px",
         cursor: "pointer",
         position: "absolute",
