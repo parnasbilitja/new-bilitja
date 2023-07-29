@@ -17,7 +17,7 @@ const ReservedHotel = () => {
       const flight_id = +router.query.reservedHotel[1];
       const hotel_id = +router.query.reservedHotel[0];
       // const stayCount = router.query.stayCount;
-      // console.log("dasda", moment(checkout).diff(checkin, "days"));
+      // console.log("dasda",typeof moment(checkout).diff(checkin, "days"));
       setStayCount(moment(checkout).diff(checkin, "days"));
       axios
         .post(

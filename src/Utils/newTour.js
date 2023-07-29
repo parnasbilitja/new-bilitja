@@ -107,7 +107,14 @@ export const extBedPrcGen = (rooms, flight, roomTypeId) => {
   let price = 0;
   rooms.map((room) => {
     if (roomTypeId === room.room_type_id) {
-      room.rates.map((rate) => {
+      let rates = room.rates.filter(
+        (rate) =>
+          moment(rate.date).isSameOrBefore(
+            flightDateChecker(flight).checkout
+          ) &&
+          moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
+      );
+      rates.map((rate) => {
         return (price +=
           rate.extra_price *
           currencyExchanger(rate.currency_code, room.currencies));
@@ -133,13 +140,19 @@ export const extBedPrcGen = (rooms, flight, roomTypeId) => {
 export const roomPrcGen = (room, flight) => {
   let price = 0;
   let isCheckIn = room.rates[0]?.checkin_base;
+  let rates = room.rates.filter(
+    (rate) =>
+      moment(rate.date).isSameOrBefore(flightDateChecker(flight).checkout) &&
+      moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
+  );
+
   if (isCheckIn) {
     price +=
-      room.rates[0].offer_price *
+      rates[0].offer_price *
       currencyExchanger(room.rates[0].currency_code, room.currencies) *
-      room.rates.length;
+      rates.length;
   } else {
-    room.rates.map((rate) => {
+    rates.map((rate) => {
       return (price +=
         rate.price * currencyExchanger(rate.currency_code, room.currencies));
     });
@@ -161,7 +174,14 @@ export const chdPrcGen = (rooms, flight, roomTypeId) => {
   let price = 0;
   rooms.map((room) => {
     if (roomTypeId === room.room_type_id) {
-      room.rates.map((rate) => {
+      let rates = room.rates.filter(
+        (rate) =>
+          moment(rate.date).isSameOrBefore(
+            flightDateChecker(flight).checkout
+          ) &&
+          moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
+      );
+      rates.map((rate) => {
         return (price +=
           rate.price * currencyExchanger(rate.currency_code, room.currencies));
       });
@@ -192,3 +212,38 @@ export const errValidation = (ErrObj, errtype) => {
   // debugger;
   return ErrObj?.hasOwnProperty(errtype);
 };
+
+export const dateDiffChecker = (stDate, enDate, stayCount) => {
+  // debugger;
+  // let diff = moment(enDate).diff(stDate, "days") + 1;
+  if (moment(enDate).diff(stDate, "days") + 1 === +stayCount) {
+    return true;
+  } else {
+    return false;
+  }
+};
+export const flightDateChecker = (flight) => {
+  // debugger;
+  let checkin;
+  let checkout;
+  if (flight.checkin_tomorrow && flight.checkout_yesterday) {
+    checkin = moment(flight.date).add(1, "days");
+    checkout = moment(flight.flight.date).subtract(2, "d").format("YYYY-MM-DD");
+
+    return { checkin, checkout };
+  } else if (flight.checkin_tomorrow && !flight.checkout_yesterday) {
+    checkin = moment(flight.date).add(1, "d").format("YYYY-MM-DD");
+    checkout = flight.flight.date;
+    return { checkin, checkout };
+  } else if (!flight.checkin_tomorrow && flight.checkout_yesterday) {
+    checkin = flight.date;
+    checkout = moment(flight.flight.date).subtract(2, "d").format("YYYY-MM-DD");
+    return { checkin, checkout };
+  } else {
+    checkout = moment(flight.flight.date).subtract(1, "d").format("YYYY-MM-DD");
+    checkin = flight.date;
+    return { checkin, checkout };
+  }
+};
+
+const ratesRoomGen = (room, flight) => {};

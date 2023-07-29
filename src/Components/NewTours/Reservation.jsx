@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import { Err, NotifAlert } from "./Components/NotifAlert.component";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 const Reservation = ({ hotelDet, stayCount }) => {
-  console.log("from reservation", hotelDet);
+  // console.log("from reservation", hotelDet);
   const [dataq, setDataq] = useState([]);
   const [roomsData, setRoomsData] = useState([]);
   const [reserverData, setReserverData] = useState({
@@ -361,12 +361,11 @@ const Reservation = ({ hotelDet, stayCount }) => {
                         value={reserverData.reserver_name}
                       />
                     </div>
-                    <small>
-                      {err.errors?.reserver_full_name &&
-                      reserverData.reserver_name.length === 0
-                        ? "لطفا فیلد نام را وارد کنید"
-                        : null}
-                    </small>
+
+                    {err.errors?.reserver_full_name &&
+                    reserverData.reserver_name.length === 0 ? (
+                      <small>لطفا فیلد نام را وارد کنید</small>
+                    ) : null}
                   </div>
                   <div className={styles["item-form"]}>
                     <div className={styles["inp-form"]}>
@@ -401,12 +400,11 @@ const Reservation = ({ hotelDet, stayCount }) => {
                         maxLength={10}
                       />
                     </div>
-                    <small>
-                      {err.errors?.reserver_id_code &&
-                      reserverData.reserver_id_code.length === 0
-                        ? err.errors?.reserver_id_code
-                        : null}
-                    </small>
+
+                    {err.errors?.reserver_id_code &&
+                    reserverData.reserver_id_code.length === 0 ? (
+                      <small>{err.errors?.reserver_id_code}</small>
+                    ) : null}
                   </div>
                   <div className={styles["item-form"]}>
                     <div className={styles["inp-form"]}>
@@ -421,12 +419,10 @@ const Reservation = ({ hotelDet, stayCount }) => {
                         maxLength="11"
                       />
                     </div>
-                    <small>
-                      {err.errors?.reserver_phone &&
-                      reserverData.reserver_phone.length === 0
-                        ? err.errors?.reserver_phone
-                        : null}
-                    </small>
+                    {err.errors?.reserver_phone &&
+                    reserverData.reserver_phone.length === 0 ? (
+                      <small>{err.errors?.reserver_phone}</small>
+                    ) : null}
                   </div>
                 </form>
               </div>
