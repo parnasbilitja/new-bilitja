@@ -267,7 +267,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
     console.log("from me", hotel);
   }, [hotel]);
 
-  const twoBedPrcPicker = (rooms, flight) => {
+  const reservePrc = (rooms, flight) => {
     let fiPrice;
     // debugger;
     rooms.map((room) => {
@@ -275,7 +275,17 @@ const AvailableFlightBasedonSelectedTour = (props) => {
         fiPrice = roomPrcGen(room, flight);
       }
     });
-    return fiPrice;
+
+    if (fiPrice) {
+      return fiPrice;
+    } else {
+      fiPrice = Math.min(
+        rooms.map((room) => {
+          return roomPrcGen(room, flight);
+        })
+      );
+      return fiPrice;
+    }
   };
 
   const roomsGen = (selectedRoom) => {
@@ -593,15 +603,11 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                           <label htmlFor="">قیمت:</label>
                           <p>
                             <span>
-                              {twoBedPrcPicker(hotel?.rooms, flight)
-                                ? numberWithCommas(
-                                    twoBedPrcPicker(hotel?.rooms, flight)
-                                  )
-                                : "ثبت نشده"}
+                              {numberWithCommas(
+                                reservePrc(hotel?.rooms, flight)
+                              )}
                             </span>
-                            {twoBedPrcPicker(hotel?.rooms, flight)
-                              ? "تومان"
-                              : null}
+                            تومان
                           </p>
                         </div>
                       </div>
@@ -954,9 +960,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                         <label htmlFor="">قیمت:</label>
                         <p>
                           <span>
-                            {numberWithCommas(
-                              twoBedPrcPicker(hotel.rooms, flight)
-                            )}
+                            {numberWithCommas(reservePrc(hotel.rooms, flight))}
                           </span>
                           تومان
                         </p>

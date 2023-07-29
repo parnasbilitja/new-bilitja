@@ -1,0 +1,455 @@
+ $primary: #e20000;
+ $secondary: #279692;
+ $borderColor: #d4d4d4;
+ $containerColor: #ebebeb;
+ $containerColor2: #bbbbbbe7;
+
+ .ticket_container {
+     overflow: hidden;
+     margin-bottom: 1rem;
+
+     .container {
+         padding: 0;
+         position: relative;
+         overflow: hidden;
+         transition: .5s ease-in-out;
+         border-radius: 20px;
+         border: 1px solid $containerColor;
+
+         .blur {
+             height: 100%;
+             width: 100%;
+             position: absolute;
+             z-index: 1000;
+             background: rgba(255, 255, 255, 0.15);
+             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+             backdrop-filter: blur(4px);
+             -webkit-backdrop-filter: blur(4px);
+             border-radius: 10px;
+             border: 1px solid rgba(255, 255, 255, 0.18);
+         }
+
+         //   &:hover{
+         //     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+         //     transition: .5s ease-in-out;
+         //     }
+
+         .ticket {
+             display: flex;
+             justify-content: space-between;
+
+
+             padding: .9rem 1.125rem;
+
+
+             &_titles {
+                 display: flex;
+                 flex-direction: column;
+                 justify-content: space-between;
+                 border-left: 2px dashed $borderColor;
+                 margin-left: 1rem;
+                 width: 11%;
+                 padding: 1rem 0;
+
+                 &_info {
+                     text-align: center;
+                     font-weight: 600;
+                     font-size: 15px;
+                 }
+
+             }
+
+
+             .ticket_flight {
+                 width: 100%;
+                 padding: 0 1rem;
+
+
+                 .flightDet_container {
+                     border-bottom: 2px dashed $borderColor;
+                     width: 100%;
+                     display: flex;
+                     justify-content: space-between;
+
+                     .flightDet {
+                         flex-grow: 2;
+
+                         &_title {
+                             margin-bottom: .5rem;
+
+                             p {
+                                 margin: 0;
+                                 padding: 0;
+                                 font-size: .9rem;
+                                 font-weight: 800;
+                                 text-align: center;
+                             }
+                         }
+
+                         &_loc {
+                             margin-bottom: .5rem;
+                             padding: .5rem;
+                             border-radius: 10px;
+                             background-color: $containerColor;
+
+                             p {
+                                 margin: 0;
+                                 padding: 0;
+                                 font-size: .8rem;
+                                 text-align: center;
+                             }
+                         }
+
+                         &_timedate {
+                             margin-bottom: .5rem;
+                             display: flex;
+                             justify-content: center;
+
+                             span {
+                                 font-size: .8rem;
+                             }
+
+                             span:not(:last-child) {
+                                 margin-left: .725rem;
+                             }
+                         }
+
+                         &_hotelEnt {
+
+                             margin-bottom: .5rem;
+                             display: flex;
+                             justify-content: center;
+
+                             label {
+
+                                 font-size: .8rem;
+                                 margin-left: .725rem;
+                                 font-weight: 900;
+                             }
+
+                             p {
+
+                                 font-size: .8rem;
+                             }
+
+                         }
+                     }
+
+                     .flight_company {
+                         flex-grow: 8;
+                         display: flex;
+                         justify-content: space-between;
+                         padding: .5rem 1rem 0 1rem;
+
+                         &_logo {
+                             flex-grow: 1;
+                             display: flex;
+                             flex-direction: column;
+                             row-gap: 6px;
+                             transform: translateY(18px);
+
+                             .image_container {
+                                 padding: 0;
+                                 margin: 0;
+                                 height: 40px;
+                                 width: 40px;
+                                 border-radius: 50%;
+
+                                 overflow: hidden;
+                                 align-self: center;
+
+                                 img {
+                                     width: 100%;
+                                     height: 100%;
+                                     object-fit: cover;
+                                 }
+
+                             }
+
+                             p {
+                                 font-size: .9rem;
+                                 text-align: center;
+                             }
+                         }
+
+                         &_remaintour {
+                             padding-top: 2.5rem;
+                             flex-grow: 8;
+
+                             p {
+                                 border-bottom: 1px dashed $borderColor;
+                                 text-align: center;
+                                 font-size: .9rem;
+                             }
+
+                         }
+                     }
+                 }
+
+
+                 .roomDet_container {
+                     margin-top: 1rem;
+                     display: grid;
+                     grid-template-columns: 1fr 1fr 1fr 1fr;
+                     justify-content: space-between;
+                     gap: 1rem;
+
+                     .roomDetcard {
+                         padding: .5rem .5rem 0 .5rem;
+
+                         border: 1px solid $borderColor;
+                         border-radius: 10px;
+
+                         &_roomnum {
+
+                             display: flex;
+                             justify-content: space-between;
+                             border-bottom: 2px dashed $borderColor;
+                             padding-bottom: .5rem;
+                             margin-bottom: .5rem;
+
+                             label {
+                                 font-size: .9rem;
+                                 font-weight: 800;
+
+                             }
+
+                             &_indec {
+                                 width: 40%;
+                                 display: flex;
+                                 justify-content: space-between;
+
+                                 .in {
+                                     font-size: 1rem;
+                                     width: 25px;
+                                     border: 1px solid $primary;
+                                     border-radius: 5px;
+                                     color: $primary;
+                                     display: flex;
+                                     justify-content: center;
+                                     align-items: center;
+                                     cursor: pointer;
+                                 }
+
+                                 span {
+                                     font-size: 1rem;
+                                 }
+
+                                 .dec {
+                                     font-size: 1rem;
+                                     width: 25px;
+                                     border: 1px solid $primary;
+                                     border-radius: 5px;
+                                     color: $primary;
+                                     display: flex;
+                                     justify-content: center;
+                                     cursor: pointer;
+                                 }
+
+                                 .dec-none {
+                                     font-size: 1rem;
+                                     width: 25px;
+                                     border: 1px solid $borderColor;
+                                     border-radius: 5px;
+                                     color: $borderColor;
+                                     display: flex;
+                                     justify-content: center;
+                                     cursor: default;
+                                 }
+                             }
+                         }
+
+                         &_price {
+                             display: flex;
+                             padding-bottom: 6px;
+
+                             justify-content: center;
+
+                             p {
+                                 align-self: center;
+                                 margin: 0;
+                                 padding: 0;
+                                 color: $secondary;
+                                 font-size: 13px;
+                                 font-weight: 600;
+                             }
+
+                             span {
+                                 font-size: .9rem;
+                                 color: $secondary;
+                                 margin-left: .5rem;
+                                 font-weight: 600;
+                             }
+                         }
+                     }
+                 }
+             }
+
+
+             &_reserve {
+                 align-self: flex-start;
+                 border-radius: 20px;
+                 background-color: $containerColor;
+                 padding: 1rem;
+                 height: auto;
+                 display: flex;
+                 flex-direction: column;
+                 justify-content: space-between;
+
+                 .priceTitle {
+                     font-size: .9rem;
+                     font-weight: 800;
+                     text-align: center;
+                 }
+
+                 &_price {
+                     display: flex;
+                     justify-content: center;
+
+                     label {
+                         font-weight: 800;
+                         margin-left: 1rem;
+                         font-size: .9rem;
+                     }
+
+                     p {
+                         font-weight: 400;
+                         font-size: .8rem;
+
+                         span {
+                             color: $secondary;
+                             font-weight: 800;
+                             font-size: 1rem;
+                             margin-left: .5rem;
+                         }
+                     }
+                 }
+
+                 &_btn {
+
+
+                     background-color: $primary;
+                     color: white;
+                     width: 200px;
+                     height: 40px;
+                     border-radius: 4px;
+                     font-size: 14px;
+                     font-weight: 800;
+
+                 }
+
+             }
+
+
+         }
+     }
+
+     .roomcountdet_roomnum {
+
+         .roomcountDet_container {
+             padding: 1.125rem 10rem 1.125rem 10rem;
+
+             .roomcountDet {
+                 // border: 1px solid $borderColor;
+                 border: 1px solid $containerColor2;
+                 border-radius: 20px;
+                 padding: .725rem 2rem;
+                 display: flex;
+                 justify-content: space-between;
+
+                 &_remove {
+                     width: 30px;
+                     height: 30px;
+                     align-self: center;
+                     cursor: pointer;
+
+                     svg {
+
+                         width: 90%;
+                         height: 90%;
+                     }
+                 }
+
+                 p {
+                     text-align: center;
+                     font-size: 15px;
+                     margin: .4rem;
+                 }
+
+                 &_name {
+                     display: flex;
+                     align-items: center;
+                     font-weight: 800;
+
+                     P {
+                         margin: 0;
+                     }
+
+                 }
+
+                 &_AdlCount {
+                     display: flex;
+                     flex-direction: column;
+                     justify-content: center;
+                     font-size: .9rem;
+
+
+                     p:first-child {
+                         font-weight: 800;
+                         margin-bottom: .5rem;
+                     }
+                 }
+
+                 &_bedcount {
+                     height: 90px;
+                     width: 160px;
+                     // border: 1px solid #999;
+                     // box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+                     border: 1px solid $containerColor2;
+                     padding: .3rem .1rem .3rem .1rem;
+
+                     border-radius: 20px;
+
+                     p {
+
+                         margin-bottom: 0;
+                         margin-top: .3rem;
+                     }
+
+                     .bedtype {
+                         font-weight: 900;
+                         font-size: 12.5px;
+                     }
+
+                     .bedtypeprc {
+                         font-weight: 500;
+                         font-size: 12px;
+                     }
+
+
+                     &_count {
+                         display: flex;
+                         justify-content: space-between;
+                         padding: 0 2.425rem 0 2.425rem;
+                         margin-top: .4rem;
+
+                         .decin {
+                             font-size: 1rem;
+                             width: 23px;
+                             height: 23px;
+                             border: 1px solid $primary;
+                             border-radius: 5px;
+                             color: $primary;
+                             display: flex;
+                             justify-content: center;
+                             align-items: center;
+                             cursor: pointer;
+
+                         }
+                     }
+                 }
+             }
+         }
+     }
+
+ }

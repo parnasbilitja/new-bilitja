@@ -222,6 +222,7 @@ export const dateDiffChecker = (stDate, enDate, stayCount) => {
     return false;
   }
 };
+
 export const flightDateChecker = (flight) => {
   // debugger;
   let checkin;
@@ -246,4 +247,25 @@ export const flightDateChecker = (flight) => {
   }
 };
 
-const ratesRoomGen = (room, flight) => {};
+
+
+export const reservePrc = (rooms, flight) => {
+    let fiPrice;
+    // debugger;
+    rooms.map((room) => {
+      if (room.room_type_id === 148) {
+        fiPrice = roomPrcGen(room, flight);
+      }
+    });
+
+    if (fiPrice) {
+      return fiPrice;
+    } else {
+      fiPrice = Math.min(
+        rooms.map((room) => {
+          return roomPrcGen(room, flight);
+        })
+      );
+      return fiPrice;
+    }
+  };
