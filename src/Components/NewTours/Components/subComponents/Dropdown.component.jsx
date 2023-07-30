@@ -4,15 +4,29 @@ import { withRouter } from "next/router";
 import { connect } from "react-redux";
 
 const DropdownComponent = (props) => {
+  const [filteredNights, setFilteredNights] = useState([]);
   useEffect(() => {
-    if (props.destandorgcities.date.miladiDate && props.nights) {
-      props.setNight(props.nights[0]?.night);
+    if (props.nights) {
+      const uniqueData = props.nights.filter(
+        (value, index, self) =>
+          self.findIndex((item) => item.night === value.night) === index
+      );
+      setFilteredNights(uniqueData);
     }
-  }, [props.destandorgcities.date.miladiDate, props.nights]);
-
+  }, [props.nights]);
   useEffect(() => {
-    console.log("fcgdx1", props);
-  }, []);
+    if (props.destandorgcities.date.miladiDate && filteredNights) {
+      props.setNight(filteredNights[0]?.night);
+    } else if (props.night) {
+      props.setNight(props?.night);
+    } else if (props.destandorgcities.date.miladiDate === "") {
+      props.setNight(null);
+    }
+  }, [props.destandorgcities.date.miladiDate, filteredNights]);
+
+  // useEffect(() => {
+  //   console.log("dasdasdqw2", filteredNights);
+  // }, [filteredNights]);
   return (
     <div className={styles.dropdowncontainer}>
       <select
@@ -29,14 +43,14 @@ const DropdownComponent = (props) => {
         value={props.destandorgcities.night}
       >
         {/* {props.nights ? } */}
-        <option value={props.destandorgcities.night} disabled selected>
-          {props.destandorgcities?.date?.miladiDate && props.nights.length > 0
-            ? `${props.nights[0]?.night} شب`
-            : props?.night?.length > 0 && props?.nights?.length === 0
-            ? `${props?.night} شب`
-            : "تعداد شب"}
-        </option>
-        {props.nights?.map((nightItem) => {
+
+        {filteredNights.length === 0 && (
+          <option disabled selected>
+            تعداد شب
+          </option>
+        )}
+
+        {filteredNights?.map((nightItem) => {
           return <option value={nightItem.night}>{nightItem.night} شب</option>;
         })}
       </select>

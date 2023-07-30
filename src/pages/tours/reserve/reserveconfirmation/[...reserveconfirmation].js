@@ -28,7 +28,7 @@ const ReservationConfirmation = () => {
   }, [router]);
 
   useEffect(() => {
-    // console.log("jkghj", reservedRooms);
+    console.log("jkghj", reservedRooms);
     if (reservedRooms) {
       setRoomId(reservedRooms[0]?.id);
     }
@@ -126,10 +126,14 @@ const ReservationConfirmation = () => {
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
                   <p>مبلغ کل : ...............................</p>
-                  <strong style={{ fontSize: "14px" }}>
-                    {numberWithCommas(fiPrc)}
-                  </strong>
-                  <span style={{ fontSize: "12px" }}>تومان</span>
+                  <div style={{ display: "flex" }}>
+                    <strong style={{ fontSize: "14px", marginRight: "4px" }}>
+                      {numberWithCommas(fiPrc)}
+                    </strong>
+                    <span style={{ fontSize: "12px", marginRight: "4px" }}>
+                      تومان
+                    </span>
+                  </div>
                 </div>
                 {/* <p>
                       {" "}
@@ -141,10 +145,14 @@ const ReservationConfirmation = () => {
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
                   <p>مبلغ قابل پرداخت : ..................</p>
-                  <strong style={{ fontSize: "14px" }}>
-                    {numberWithCommas(fiPrc)}
-                  </strong>
-                  <span style={{ fontSize: "12px" }}>تومان</span>
+                  <div style={{ display: "flex" }}>
+                    <strong style={{ fontSize: "14px", marginRight: "4px" }}>
+                      {numberWithCommas(fiPrc)}
+                    </strong>
+                    <span style={{ fontSize: "12px", marginRight: "4px" }}>
+                      تومان
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -159,11 +167,20 @@ const ReservationConfirmation = () => {
             <div className={styles["finalprice"]}>
               <div className={styles["totalprice_container"]}>
                 <p>مبلغ قابل پرداخت:</p>
-
-                <p>
-                  <span>{numberWithCommas(fiPrc)}</span>
-                  تومان
-                </p>
+                <div style={{ display: "flex" }}>
+                  <strong
+                    style={{
+                      fontSize: "14px",
+                      marginRight: "4px",
+                      color: "#e52121",
+                    }}
+                  >
+                    {numberWithCommas(fiPrc)}
+                  </strong>
+                  <span style={{ fontSize: "12px", marginRight: "4px" }}>
+                    تومان
+                  </span>
+                </div>
               </div>
             </div>
             <div className={styles["paymentbtn"]}>
@@ -194,7 +211,7 @@ const ReservationConfirmation = () => {
               </button>
               <p
                 onClick={() => {
-                  router.replace("/tours");
+                  router.push("/tours");
                   Err("به صفحه نخست منتقل می شوید");
                 }}
               >

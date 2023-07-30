@@ -260,7 +260,7 @@ const TourSearchBox = (props) => {
                 setCities={(value) => props.setOrgLoc(value)}
                 setcitiesData={(val) => setCitiesData(val)}
                 setFlightDate={(value) => props.setFlightDate(value)}
-                setNight={(value) => props.setNightNumber(value)}
+                setNights={(value) => setNights(value)}
               />
             ) : null}
           </div>
@@ -306,7 +306,7 @@ const TourSearchBox = (props) => {
                 cities={destCities}
                 setCities={(value) => props.setDestLoc(value)}
                 setFlightDate={(value) => props.setFlightDate(value)}
-                setNight={(value) => props.setNightNumber(value)}
+                setNights={(value) => setNights(value)}
               />
             ) : null}
           </div>

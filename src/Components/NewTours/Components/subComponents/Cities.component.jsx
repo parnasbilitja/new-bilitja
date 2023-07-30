@@ -14,7 +14,8 @@ const Cities = (props) => {
   return (
     <div
       style={{
-        maxHeight: 800,
+        minHeight: "100px",
+        maxHeight: "800px",
         overflowY: "auto",
         // position: "absolute",
         background: "#fff",
@@ -43,7 +44,7 @@ const Cities = (props) => {
                 persianDate: "",
                 miladiDate: "",
               });
-              props.setNight("");
+              props.setNights([]);
             }}
             style={{ padding: "5px" }}
           >

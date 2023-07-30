@@ -667,7 +667,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                 {flight.id === isOpen ? (
                   <motion.div
                     initial={{ height: 0 }}
-                    animate={{ height: "auto" }}
+                    animate={{ height: "auto" }} 
                     transition={{
                       type: "spring",
                       stiffness: 100,
