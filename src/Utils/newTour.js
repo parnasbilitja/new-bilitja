@@ -230,7 +230,6 @@ export const flightDateChecker = (flight) => {
   if (flight.checkin_tomorrow && flight.checkout_yesterday) {
     checkin = moment(flight.date).add(1, "days");
     checkout = moment(flight.flight.date).subtract(2, "d").format("YYYY-MM-DD");
-
     return { checkin, checkout };
   } else if (flight.checkin_tomorrow && !flight.checkout_yesterday) {
     checkin = moment(flight.date).add(1, "d").format("YYYY-MM-DD");

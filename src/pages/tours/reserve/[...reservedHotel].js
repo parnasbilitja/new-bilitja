@@ -16,8 +16,6 @@ const ReservedHotel = () => {
       const checkout = jalaliToMiladiConvertor(router.query.checkout);
       const flight_id = +router.query.reservedHotel[1];
       const hotel_id = +router.query.reservedHotel[0];
-      // const stayCount = router.query.stayCount;
-      // console.log("dasda",typeof moment(checkout).diff(checkin, "days"));
       setStayCount(moment(checkout).diff(checkin, "days"));
       axios
         .post(

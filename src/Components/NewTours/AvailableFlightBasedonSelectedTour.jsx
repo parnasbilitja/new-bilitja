@@ -18,7 +18,6 @@ import {
 } from "../../Utils/newTour";
 import Image from "next/image";
 import PictureModal from "./Components/subComponents/PictureModal";
-
 import { Err, ErrSuccess, NotifAlert } from "./Components/NotifAlert.component";
 import moment from "moment-jalaali";
 
@@ -83,9 +82,6 @@ const AvailableFlightBasedonSelectedTour = (props) => {
       Err("تعداد اتاق انتخابی بیش از حد مجاز است");
     }
   };
-  useEffect(() => {
-    console.log("sada", moment("2011-10-21").isSameOrBefore("2010-10-21"));
-  }, []);
 
   ///decrease room => :دو تخته , سه تخته , ...........
   const decRoom = (roomTypeId) => {
@@ -263,9 +259,6 @@ const AvailableFlightBasedonSelectedTour = (props) => {
         });
     }
   }, [router]);
-  useEffect(() => {
-    console.log("from me", hotel);
-  }, [hotel]);
 
   const reservePrc = (rooms, flight) => {
     let fiPrice;
@@ -307,7 +300,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
   const picGen = (picsNum) => {
     const gallary = [];
     if (picsNum <= 4) {
-      for (let i = 2; i <= picsNum; i++) {
+      for (let i = 2; i <= 4; i++) {
         gallary.push(
           <motion.div
             whileHover={{ translateY: "-15px" }}
@@ -322,7 +315,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
       }
       return gallary;
     } else {
-      for (let i = 2; i <= 5; i++) {
+      for (let i = 2; i <= 4; i++) {
         gallary.push(
           <motion.div
             whileHover={{ translateY: "-15px" }}
@@ -394,6 +387,24 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                       {picGen(hotel?.gallery.length).map((pic) => {
                         return pic;
                       })}
+                      <motion.div
+                        className={styles["morePic"]}
+                        onClick={() => {
+                          setIsModal(hotel?.gallery[1]?.url);
+                        }}
+                        layoutId={hotel?.gallery[1]?.url}
+                      >
+                        <div className={styles["dots"]}>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                        </div>
+                        <Image
+                          src={hotel?.gallery[hotel?.gallery.length - 1].url}
+                          height={100}
+                          width={100}
+                        />
+                      </motion.div>
                     </div>
                     <Image
                       className={styles["img-big"]}

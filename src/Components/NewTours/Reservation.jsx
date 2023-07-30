@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import { Err, NotifAlert } from "./Components/NotifAlert.component";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 const Reservation = ({ hotelDet, stayCount }) => {
-  // console.log("from reservation", hotelDet);
+
   const [dataq, setDataq] = useState([]);
   const [roomsData, setRoomsData] = useState([]);
   const [reserverData, setReserverData] = useState({
@@ -28,7 +28,7 @@ const Reservation = ({ hotelDet, stayCount }) => {
   const [evRoomsPrc, setEvRoomsPrc] = useState([]);
   const [err, setErr] = useState({});
   const router = useRouter();
-  const [indexid, setIndexid] = useState(0);
+
   useEffect(() => {
     if (hotelDet?.rooms_selected && hotelDet?.rooms) {
       const newSelectedRooms = [];
@@ -64,7 +64,6 @@ const Reservation = ({ hotelDet, stayCount }) => {
       people += pers.inf_count;
       people += pers.extra_count;
     });
-
     return people;
   };
 
@@ -143,9 +142,9 @@ const Reservation = ({ hotelDet, stayCount }) => {
     // console.log("dada", roomsData);
     setDataq(roomsData);
   }, [roomsData]);
-  useEffect(() => {
-    console.log(dataq);
-  }, [dataq]);
+  // useEffect(() => {
+  //   console.log(dataq);
+  // }, [dataq]);
   return (
     <>
       <Scrolltoprefresh />
