@@ -17,7 +17,7 @@ const DropdownComponent = (props) => {
   useEffect(() => {
     if (props.destandorgcities.date.miladiDate && filteredNights) {
       props.setNight(filteredNights[0]?.night);
-    } else if (props.night) {
+    } else if (props.destandorgcities.date.miladiDate && props.night) {
       props.setNight(props?.night);
     } else if (props.destandorgcities.date.miladiDate === "") {
       props.setNight(null);
