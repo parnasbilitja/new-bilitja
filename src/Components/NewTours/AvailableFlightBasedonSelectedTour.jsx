@@ -682,11 +682,12 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                             <div
                               className={styles["roomcountDet_remove"]}
                               onClick={() => {
-                                if (setSelectedRoom.length === 1) {
+                                if (selectedRoom.length === 1) {
                                   removeRoom(room.id);
                                   setIsOpen(0);
                                 } else {
                                   removeRoom(room.id);
+                                  setIsOpen(flight.id);
                                 }
                               }}
                             >
@@ -1033,18 +1034,19 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                     }}
                     className={styles["roomcountdet_roomnum"]}
                   >
-                    {selectedRoom.map((room) => {
+                    {selectedRoom?.map((room) => {
                       return (
                         <div className={styles["roomcountDet_container"]}>
                           <div className={styles["roomcountDet"]}>
                             <div
                               className={styles["roomcountDet_remove"]}
                               onClick={() => {
-                                if (setSelectedRoom.length === 1) {
+                                if (selectedRoom.length === 1) {
                                   removeRoom(room.id);
                                   setIsOpen(0);
                                 } else {
                                   removeRoom(room.id);
+                                  setIsOpen(flight.id);
                                 }
                               }}
                             >
