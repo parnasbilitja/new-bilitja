@@ -60,7 +60,7 @@ const TourDetailLabel = ({ flightDet, stayCount }) => {
         </div>
       </div>
 
-      <div className={styles["info-time"]}>
+      <div className={styles["info-time-two"]}>
         <div className={styles["nightlogo"]}>
           <img src="https://hotelobilit.com/assets/img/moon.png" />
         </div>
@@ -70,7 +70,7 @@ const TourDetailLabel = ({ flightDet, stayCount }) => {
         </span>
       </div>
 
-      <div className={styles["info-from"]}>
+      <div className={styles["info-from-end"]}>
         <div className={styles["flight_info_container"]}>
           <div className={styles["flight_info"]}>
             <div className={styles["orgdest-cities"]}>

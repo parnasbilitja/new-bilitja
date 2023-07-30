@@ -104,7 +104,7 @@ const ReservationConfirmation = () => {
                       initial="initial"
                       animate="animate"
                       exit="exit"
-                      style={{ overflow: "hidden" }}
+                      style={{ overflowX: "auto" }}
                     >
                       <RoomsInfo
                         reservedRooms={reservedroom}

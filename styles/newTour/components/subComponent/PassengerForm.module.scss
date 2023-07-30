@@ -49,7 +49,7 @@
       color: black;
       padding: 4px 10px;
       border-radius: 4px;
-      font-size: 15px !important;
+      font-size: 15px;
       // margin-left: 2rem;
 
       small {
@@ -206,4 +206,39 @@
     }
   }
 
+}
+
+
+@media only screen and (max-width: 900px){
+  .form-container2{
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px;
+    .item-form{
+      width: 100%;
+      margin: 0 !important;
+    }
+  }
+  .box-room-Det-name p{
+    font-size: 14px;
+    margin-bottom: 0;
+    position: relative;
+    top: 5px;
+  }
+  .box-room{
+    padding: 12px 0 !important;
+  }
+  .label-fix-gray{
+    font-size: 12px !important;
+  }
+  .price-fix{
+    padding: 0 !important;
+  }
+}
+
+
+
+@media only screen and (min-width: 901px){
+  .label-fix-gray{
+    font-size: 15px !important;
+  }
 }

@@ -6,11 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/RoomsInfo.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/RoomsInfo.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/reserve/reserveconfirmation/[...reserveconfirmation].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/reserve/reserveconfirmation/[...reserveconfirmation].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/ReservationConfirmation.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/ReservationConfirmation.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/components/InfoPassengers.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/InfoPassengers.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/components/RoomsInfo.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/RoomsInfo.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/PassengerForm.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/PassengerForm.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/TourDetailLabel.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/TourDetailLabel.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +104,8 @@
       <workItem from="1687348038655" duration="21000" />
       <workItem from="1687348187547" duration="1484000" />
       <workItem from="1687349711092" duration="251000" />
+      <workItem from="1690379886093" duration="28000" />
+      <workItem from="1690696702794" duration="5670000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -263,7 +269,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۷" />
       <updated>1690366145226</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL‎۰۰۰۲۸" summary="edit pages front ui">
+      <created>1690379765347</created>
+      <option name="number" value="LOCAL‎۰۰۰۲۸" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
+      <updated>1690379765347</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,7 +310,8 @@
     <MESSAGE value="edit front tourBase" />
     <MESSAGE value="edit tour format number" />
     <MESSAGE value="tour list edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="tour list edit" />
+    <MESSAGE value="edit pages front ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit pages front ui" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -330,19 +343,16 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx</url>
           <line>164</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx</url>
-          <line>411</line>
-          <properties lambdaOrdinal="-1" />
+          <line>521</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>

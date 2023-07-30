@@ -21,34 +21,34 @@ const RoomsInfo = (props) => {
     <>
       <table className={styles["passengers_container"]}>
         <tr>
-          <th>ردیف</th>
-          <th>نوع</th>
-          <th>جنسیت</th>
-          <th>نام</th>
-          <th>نام خانوادگی</th>
-          <th>ملیت</th>
-          {props.is_domestic ? <th>کدملی</th> : null}
-          <th>تاریخ تولد</th>
-          <th>شماره پاسپورت</th>
-          <th>تاریخ انقضای پاسپورت</th>
-          <th>قیمت</th>
+          <th className={styles["th"]}>ردیف</th>
+          <th className={styles["th"]}>نوع</th>
+          <th className={styles["th"]}>جنسیت</th>
+          <th className={styles["th"]}>نام</th>
+          <th className={styles["th"]}>نام خانوادگی</th>
+          <th className={styles["th"]}>ملیت</th>
+          {props.is_domestic ? <th className={styles["th"]}>کدملی</th> : null}
+          <th className={styles["th"]}>تاریخ تولد</th>
+          <th className={styles["th"]}>شماره پاسپورت</th>
+          <th className={styles["th"]}>تاریخ انقضای پاسپورت</th>
+          <th className={styles["th"]}>قیمت</th>
         </tr>
         {props.reservedRooms?.passengers?.map((passenger, index) => {
           return (
             <tr>
-              <td>
+              <td className={styles["td"]}>
                 <p style={{ fontWeight: "900", margin: 0 }}>{index + 1}</p>
               </td>
-              <td>{humanType(passenger.type)}</td>
-              <td>{passenger.gender === "1" ? "آقا" : "خانم"}</td>
-              <td>{passenger.name}</td>
-              <td>{passenger.family}</td>
-              <td>{passenger.nationality === "1" ? "ایرانی" : "غیرایرانی"}</td>
-              {props.is_domestic ? <td>{passenger.id_code}</td> : null}
-              <td>{passenger.birth_day?.replace(/-/g, "/")}</td>
-              <td>{passenger.passport}</td>
-              <td>{passenger.expired_passport?.replace(/-/g, "/")}</td>
-              <td> {numberWithCommas(passenger.price)} تومان</td>
+              <td className={styles["td"]}>{humanType(passenger.type)}</td>
+              <td className={styles["td"]}>{passenger.gender === "1" ? "آقا" : "خانم"}</td>
+              <td className={styles["td"]}>{passenger.name}</td>
+              <td className={styles["td"]}>{passenger.family}</td>
+              <td className={styles["td"]}>{passenger.nationality === "1" ? "ایرانی" : "غیرایرانی"}</td>
+              {props.is_domestic ? <td className={styles["td"]}>{passenger.id_code}</td> : null}
+              <td className={styles["td"]}>{passenger.birth_day?.replace(/-/g, "/")}</td>
+              <td className={styles["td"]}>{passenger.passport}</td>
+              <td className={styles["td"]}>{passenger.expired_passport?.replace(/-/g, "/")}</td>
+              <td className={styles["td"]}> {numberWithCommas(passenger.price)} تومان</td>
             </tr>
           );
         })}

@@ -2,8 +2,6 @@ $time-color: #646464;
 $black: #00001f;
 
 
-
-
 .p-body {
   // padding: 0 .5rem 0 .5rem;
 
@@ -39,7 +37,6 @@ $black: #00001f;
             display: grid;
             border-radius: 20px;
             grid-template-columns: 1fr 1fr 1fr;
-
 
 
             .priceDet_container {
@@ -277,7 +274,6 @@ $black: #00001f;
       }
 
 
-
       .box-top-box-reserve {
 
         padding: 1rem;
@@ -300,9 +296,6 @@ $black: #00001f;
             margin-bottom: 5px;
           }
         }
-
-
-
 
 
         .reserverform_container {
@@ -330,7 +323,6 @@ $black: #00001f;
 
 
           .set-info-supervisor {
-
 
 
             margin: 12px 0;
@@ -393,7 +385,7 @@ $black: #00001f;
 
                 input {
                   font-weight: 600;
-                  font-size: 14px !important;
+                  font-size: 14px;
                   color: #4d4b4b;
                   border: none;
                   outline: none;
@@ -453,14 +445,11 @@ $black: #00001f;
   }
 
 
-
-
   //   .title-tour {
   //     color:black;
   //     font-weight: 500;
   //     font-size: 18px;
   //   }
-
 
 
   //   .set-request-hotel {
@@ -518,7 +507,6 @@ $black: #00001f;
   //   }
 
 
-
   //   .set-info-passengers {
   //     background: white;
   //     border-radius: 8px;
@@ -535,9 +523,6 @@ $black: #00001f;
   //       margin-top: 14px;
   //     }
   //   }
-
-
-
 
 
   //   @media only screen and (max-width: 868px) {
@@ -720,7 +705,6 @@ $black: #00001f;
   //     }
 
 
-
   //     .set-info-supervisor {
   //       .item-form {
   //         width: 100% !important;
@@ -883,7 +867,6 @@ $black: #00001f;
   }
 
 
-
   .text-error {
     font-size: 12px;
     position: relative;
@@ -915,4 +898,102 @@ $black: #00001f;
   color: orange;
   font-weight: 500;
   font-size: 18px;
+}
+
+
+@media only screen and (max-width: 868px) {
+  .tourDet-container {
+    flex-direction: column !important;
+    padding-left: 0 !important;
+
+    .selected-hotel_conatiner {
+      width: 100% !important;
+      display: flex;
+      justify-content: space-between;
+
+      h2 {
+        font-size: 14px !important;
+      }
+    }
+
+    .ent-ext_container {
+      width: 100% !important;
+      margin-top: 1rem;
+
+      .entext {
+        width: 50% !important;
+        margin: 0 !important;
+
+        .entexttitle {
+          font-size: 12px !important;
+          color: #151515 !important;
+        }
+
+        p {
+          font-size: 11px;
+          color: #999;
+        }
+      }
+    }
+  }
+  .set-info-supervisor {
+    padding: 0 !important;
+
+    .item-form {
+      width: 49% !important;
+      margin-top: 6px;
+
+      input {
+        font-size: 12px !important;
+      }
+    }
+  }
+  .reserver-info {
+    span {
+      font-size: 12px !important;
+      margin-top: 8px;
+    }
+
+    strong {
+      font-size: 14px;
+    }
+  }
+  .box-fix-user-reservation {
+    height: auto !important;
+    padding: 12px !important;
+
+    .p-detail-reservation {
+      grid-template-columns: 1fr !important;
+
+      .priceDet_container {
+        width: 100% !important;
+
+        .priceDet {
+          width: 100% !important;
+          justify-content: space-between !important;
+
+          .price {
+            p {
+              font-size: 15px !important;
+            }
+          }
+        }
+      }
+    }
+    .totalprice_container{
+      flex-direction: row !important;
+      width: 100% !important;
+      justify-content: space-between !important;
+      margin-top: 8px;
+      .peopleroomnum{
+        width: auto !important;
+        p{
+          font-size: 12px !important;
+        }
+        span{
+          font-size: 12px !important;
+        }
+      }
+    }
+  }
 }
