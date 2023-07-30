@@ -238,7 +238,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
   };
 
   useEffect(() => {
-    // console.log("from me", router);
+    console.log("from me", router);
     const hotelFnName = router?.query?.availablehotels;
     const hotelName =
       hotelFnName && hotelFnName.length > 2 ? hotelFnName[2] : null;
@@ -390,9 +390,13 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                       <motion.div
                         className={styles["morePic"]}
                         onClick={() => {
-                          setIsModal(hotel?.gallery[1]?.url);
+                          setIsModal(
+                            hotel?.gallery[hotel?.gallery.length - 1]?.url
+                          );
                         }}
-                        layoutId={hotel?.gallery[1]?.url}
+                        layoutId={
+                          hotel?.gallery[hotel?.gallery.length - 1]?.url
+                        }
                       >
                         <div className={styles["dots"]}>
                           <div></div>
@@ -437,7 +441,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
           </p>
         </div>
 
-        {hotel.flights?.map((flight) => {
+        {hotel?.flights?.map((flight) => {
           return props.widthmobi > 868 ? (
             dateDiffChecker(
               flightDateChecker(flight).checkin,
@@ -549,7 +553,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                       </div>
 
                       <div className={styles["roomDet_container"]}>
-                        {hotel.rooms?.map((room) => {
+                        {hotel?.rooms?.map((room) => {
                           return (
                             <div className={styles["roomDetcard"]}>
                               <div className={styles["roomDetcard_roomnum"]}>
@@ -678,7 +682,12 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                             <div
                               className={styles["roomcountDet_remove"]}
                               onClick={() => {
-                                removeRoom(room.id);
+                                if (setSelectedRoom.length === 1) {
+                                  removeRoom(room.id);
+                                  setIsOpen(0);
+                                } else {
+                                  removeRoom(room.id);
+                                }
                               }}
                             >
                               <svg
@@ -907,7 +916,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                       </div>
 
                       <div className={styles["roomDet_container"]}>
-                        {hotel.rooms?.map((room) => {
+                        {hotel?.rooms?.map((room) => {
                           return (
                             <div className={styles["roomDetcard"]}>
                               <div className={styles["roomDetcard_roomnum"]}>
@@ -1031,7 +1040,12 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                             <div
                               className={styles["roomcountDet_remove"]}
                               onClick={() => {
-                                removeRoom(room.id);
+                                if (setSelectedRoom.length === 1) {
+                                  removeRoom(room.id);
+                                  setIsOpen(0);
+                                } else {
+                                  removeRoom(room.id);
+                                }
                               }}
                             >
                               <svg

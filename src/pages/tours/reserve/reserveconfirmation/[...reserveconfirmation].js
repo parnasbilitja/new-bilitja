@@ -7,6 +7,7 @@ import RoomsInfo from "../../../../Components/NewTours/Components/RoomsInfo.comp
 import { numberWithCommas, roomNameChecker } from "../../../../Utils/newTour";
 import NabvarCustom from "../../../../sources/component/NabvarCustom";
 import { motion, AnimatePresence } from "framer-motion";
+import { Err } from "../../../../Components/NewTours/Components/NotifAlert.component";
 const ReservationConfirmation = () => {
   const [hotelDet, setHotelDet] = useState();
   const [reservedRooms, setReservedRooms] = useState();
@@ -121,19 +122,30 @@ const ReservationConfirmation = () => {
           <div className={styles["p-detail-reservation"]}>
             <div className={styles["priceDet_container"]}>
               <div className={styles["priceDet"]}>
-                <p>
-                  مبلغ کل: ...........................
-                  <span>{numberWithCommas(fiPrc)}</span> تومان
-                </p>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <p>مبلغ کل : ...............................</p>
+                  <strong style={{ fontSize: "14px" }}>
+                    {numberWithCommas(fiPrc)}
+                  </strong>
+                  <span style={{ fontSize: "12px" }}>تومان</span>
+                </div>
                 {/* <p>
                       {" "}
                       اعتبار کیف پول شما: ...........................
                       <span>1000</span> تومان
                     </p> */}
-                <p>
-                  مبلغ قابل پرداخت: ...........................
-                  <span>{numberWithCommas(fiPrc)}</span> تومان
-                </p>
+
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <p>مبلغ قابل پرداخت : ..................</p>
+                  <strong style={{ fontSize: "14px" }}>
+                    {numberWithCommas(fiPrc)}
+                  </strong>
+                  <span style={{ fontSize: "12px" }}>تومان</span>
+                </div>
               </div>
             </div>
             <div className={styles["paymentoption"]}>
@@ -182,7 +194,8 @@ const ReservationConfirmation = () => {
               </button>
               <p
                 onClick={() => {
-                  router.push("/tours");
+                  router.replace("/tours");
+                  Err("به صفحه نخست منتقل می شوید");
                 }}
               >
                 انصراف از خرید
