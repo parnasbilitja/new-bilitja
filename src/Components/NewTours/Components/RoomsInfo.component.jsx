@@ -51,7 +51,17 @@ const RoomsInfo = (props) => {
               </td>
               <td className={styles["td"]}>
                 {" "}
-                {numberWithCommas(passenger.price)} تومان
+                <strong
+                  style={{
+                    fontWeight: "900",
+                    marginLeft: "3px",
+                    fontSize: "13px",
+                  }}
+                >
+                  {" "}
+                  {numberWithCommas(passenger.price)}
+                </strong>
+                <span>تومان</span>
               </td>
             </tr>
           );
