@@ -382,7 +382,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                           <div></div>
                         </div>
                         <Image
-                          src={hotel?.gallery[hotel?.gallery.length - 1].url}
+                          src={hotel?.gallery[0].url}
                           height={100}
                           width={100}
                         />

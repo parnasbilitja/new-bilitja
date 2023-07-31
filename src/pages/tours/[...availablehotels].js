@@ -28,8 +28,7 @@ const AvFlight = dynamic(() =>
 const availableHotels = () => {
   //router page
   const router = useRouter();
-  //////
-  const [routerDet, setRouterDet] = useState([]);
+
   const dispatch = useDispatch();
   /////////set date from url to state
   const [date, setDate] = useState();
@@ -58,7 +57,6 @@ const availableHotels = () => {
 
   // console.log(router);
   useEffect(() => {
-    setRouterDet(router.query?.availablehotels?.length > 1);
     ///get date from url
     const newDate = router.query.stDate?.slice(0, 10);
     setJalaliDate(newDate);
@@ -201,13 +199,13 @@ const availableHotels = () => {
                         <div className={styles.hotelNameDetail}>
                           {hotel.is_domestic ? (
                             <div>
-                              <h2 className={styles.faName}>{hotel.title}</h2>
-                              <h2 className={styles.enName}>{hotel.titleEn}</h2>
+                              <h2 className={styles.faName}>{hotel?.title}</h2>
+                              <h2 className={styles.enName}>{hotel?.titleEn}</h2>
                             </div>
                           ) : (
                             <div>
-                              <h2 className={styles.faName}>{hotel.titleEn}</h2>
-                              <h2 className={styles.enName}>{hotel.title}</h2>
+                              <h2 className={styles.faName}>{hotel?.titleEn}</h2>
+                              <h2 className={styles.enName}>{hotel?.title}</h2>
                             </div>
                           )}
 
@@ -220,7 +218,7 @@ const availableHotels = () => {
                           <div className={styles.services}>
                             <label htmlFor="">منطقه :</label>
                             <p>
-                              {hotel.location ? hotel.location : "ثبت نشده"}
+                              {hotel?.location ? hotel?.location : "ثبت نشده"}
                             </p>
                           </div>
                         </div>
@@ -232,7 +230,7 @@ const availableHotels = () => {
                         </p>
                         <div className={styles.priceParent}>
                           <strong className={styles.price}>
-                            {numberWithCommas(hotel.totalRoomPrice)}
+                            {numberWithCommas(hotel?.totalRoomPrice)}
                           </strong>
                           <span>تومان</span>
                         </div>

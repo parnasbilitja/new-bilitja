@@ -73,7 +73,6 @@ const TourSearchBox = (props) => {
   useEffect(() => {
     setWidth(window.innerWidth);
     getDestandOrgCities();
-
     ///////////////////////
   }, [props.selectedSrc, props.selectedDest]);
 
@@ -206,26 +205,7 @@ const TourSearchBox = (props) => {
     }
     return true;
   };
-  const mobileSize = 626;
-  const tabletSize = 900;
-  const {
-    credentials: {
-      sourceName,
-      destinationName,
-      sourceNameEn,
-      destinationNameEn,
-      flightDatePersian,
-      stDate,
-      typeOfCalendar,
-    },
-    history,
-  } = props;
-
-  // useEffect(() => {
-  //   if (props) {
-  //     console.log("oewirpow", props);
-  //   }
-  // }, [props]);
+ 
   return (
     <>
       <NotifAlert />
@@ -289,14 +269,8 @@ const TourSearchBox = (props) => {
             <PrimaryTextInput
               value={props.destandorgcities.destination.name}
               name="destinationName"
-              onClick={(e) => {
-                // for mobile
-                // if (width <= mobileSize) {
-                //   e.preventDefault();
-                //   managePopUpDestination(true);
-                // } else {
+              onClick={(e) => {           
                 manageSuggestDestination(true);
-                // }
               }}
               onChange={handleChangeCre}
               onFocus={handleFocus}

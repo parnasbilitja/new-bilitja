@@ -130,7 +130,7 @@ const ReservationConfirmation = () => {
                   }}
                 >
                   <p>مبلغ کل :</p>
-                  <span>............................</span>
+                  <span>..........................</span>
                   <div style={{ display: "flex" }}>
                     <strong style={{ fontSize: "14px", marginRight: "4px" }}>
                       {numberWithCommas(fiPrc)}
@@ -150,7 +150,7 @@ const ReservationConfirmation = () => {
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
                   <p>مبلغ قابل پرداخت : </p>
-                  <span>............................</span>
+                  <span>...........</span>
                   <div style={{ display: "flex" }}>
                     <strong style={{ fontSize: "14px", marginRight: "4px" }}>
                       {numberWithCommas(fiPrc)}
