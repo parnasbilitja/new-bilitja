@@ -89,6 +89,11 @@ const TourSearchBox = (props) => {
         )
         .then((res) => {
           setDateAndNight(res.data.data);
+          const nightsNumber = res.data.data.filter(
+            (datenight) =>
+              datenight.date === props.destandorgcities.date.miladiDate
+          );
+          setNights(nightsNumber);
         });
     }
     // else {

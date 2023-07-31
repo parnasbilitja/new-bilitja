@@ -299,37 +299,21 @@ const AvailableFlightBasedonSelectedTour = (props) => {
 
   const picGen = (picsNum) => {
     const gallary = [];
-    if (picsNum <= 4) {
-      for (let i = 2; i <= 4; i++) {
-        gallary.push(
-          <motion.div
-            whileHover={{ translateY: "-15px" }}
-            onClick={() => {
-              setIsModal(hotel?.gallery[i]?.url);
-            }}
-            layoutId={hotel?.gallery[i]?.url}
-          >
-            <motion.img src={hotel?.gallery[i]?.url} height={100} width={100} />
-          </motion.div>
-        );
-      }
-      return gallary;
-    } else {
-      for (let i = 2; i <= 4; i++) {
-        gallary.push(
-          <motion.div
-            whileHover={{ translateY: "-15px" }}
-            onClick={() => {
-              setIsModal(hotel?.gallery[i]?.url);
-            }}
-            layoutId={hotel?.gallery[i]?.url}
-          >
-            <motion.img src={hotel?.gallery[i]?.url} height={100} width={100} />
-          </motion.div>
-        );
-      }
-      return gallary;
+    let number = picsNum > 4 ? 4 : picsNum;
+    for (let i = 2; i <= number; i++) {
+      gallary.push(
+        <motion.div
+          whileHover={{ translateY: "-15px" }}
+          onClick={() => {
+            setIsModal(hotel?.gallery[i]?.url);
+          }}
+          layoutId={hotel?.gallery[i]?.url}
+        >
+          <motion.img src={hotel?.gallery[i]?.url} height={100} width={100} />
+        </motion.div>
+      );
     }
+    return gallary;
   };
 
   return (
@@ -410,12 +394,15 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                         />
                       </motion.div>
                     </div>
-                    <Image
-                      className={styles["img-big"]}
-                      src={hotel?.gallery[1].url}
-                      height={100}
-                      width={100}
-                    />
+                    <div className={styles["imgbig_container"]}>
+                      <Image
+                        className={styles["img-big"]}
+                        src={hotel?.gallery[1].url}
+                        layout="responsive"
+                        height={205}
+                        width={200}
+                      />
+                    </div>
                   </div>
                 )}
               </div>
@@ -667,7 +654,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                 {flight.id === isOpen ? (
                   <motion.div
                     initial={{ height: 0 }}
-                    animate={{ height: "auto" }} 
+                    animate={{ height: "auto" }}
                     transition={{
                       type: "spring",
                       stiffness: 100,

@@ -15,7 +15,6 @@ import { useRouter } from "next/router";
 import { Err, NotifAlert } from "./Components/NotifAlert.component";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 const Reservation = ({ hotelDet, stayCount }) => {
-
   const [dataq, setDataq] = useState([]);
   const [roomsData, setRoomsData] = useState([]);
   const [reserverData, setReserverData] = useState({
@@ -286,33 +285,53 @@ const Reservation = ({ hotelDet, stayCount }) => {
                 </div>
               </div>
               <div className={styles["ent-ext_container"]}>
-                <div className={styles["entext"]}>
-                  <p
-                    className={styles["entexttitle"]}
-                    style={{ marginBottom: "5px" }}
-                  >
-                    تاریخ ورود به هتل
-                  </p>
-                  <p style={{ fontWeight: "500", fontSize: "12px" }}>
-                    {hotelDet.flight?.checkin_tomorrow
-                      ? MiladiToJalaliConvertorInc(hotelDet.flight?.date)
-                      : MiladiToJalaliConvertor(hotelDet.flight?.date)}
-                  </p>
-                </div>
-                <div className={styles["entext"]}>
-                  <p
-                    className={styles["entexttitle"]}
-                    style={{ marginBottom: "5px" }}
-                  >
-                    تاریخ خروج از هتل
-                  </p>
-                  <p style={{ fontWeight: "500", fontSize: "12px" }}>
-                    {" "}
-                    {hotelDet.flight?.checkin_tomorrow
-                      ? MiladiToJalaliConvertorInc(hotelDet.flight?.flight.date)
-                      : MiladiToJalaliConvertor(hotelDet.flight?.flight.date)}
-                  </p>
-                </div>
+                {hotelDet.flight ? (
+                  <>
+                    <div className={styles["entext"]}>
+                      <p
+                        className={styles["entexttitle"]}
+                        style={{ marginBottom: "5px" }}
+                      >
+                        تاریخ ورود به هتل
+                      </p>
+                      <p style={{ fontWeight: "500", fontSize: "12px" }}>
+                        {hotelDet.flight?.checkin_tomorrow
+                          ? MiladiToJalaliConvertorInc(hotelDet.flight?.date)
+                          : MiladiToJalaliConvertor(hotelDet.flight?.date)}
+                      </p>
+                    </div>
+                    <div className={styles["entext"]}>
+                      <p
+                        className={styles["entexttitle"]}
+                        style={{ marginBottom: "5px" }}
+                      >
+                        تاریخ خروج از هتل
+                      </p>
+                      <p style={{ fontWeight: "500", fontSize: "12px" }}>
+                        {" "}
+                        {hotelDet.flight?.checkin_tomorrow
+                          ? MiladiToJalaliConvertorInc(
+                              hotelDet.flight?.flight.date
+                            )
+                          : MiladiToJalaliConvertor(
+                              hotelDet.flight?.flight.date
+                            )}
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      duration: 0.9,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                    }}
+                    className={styles["box-top-box-reserve2"]}
+                    style={{ height: "50px", width: "220px" }}
+                  ></motion.div>
+                )}
               </div>
             </div>
 

@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../../../../styles/newTour/components/subComponent/PictureModal.module.scss";
-// import { AnimatePresence } from "framer-motion";
 import { AnimatePresence, motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -13,6 +12,12 @@ import "swiper/css/scrollbar";
 import "swiper/css";
 import { A11y, Navigation, Pagination, Scrollbar } from "swiper";
 const PictureModal = ({ url, setIsModal, gallery }) => {
+  const [fillteredGallary, setFilteredGall] = useState([]);
+  useEffect(() => {
+    const fillteredPic = gallery.filter((pic) => pic.url !== url);
+    setFilteredGall(fillteredPic);
+  }, []);
+
   return (
     <AnimatePresence>
       <motion.div
@@ -60,13 +65,41 @@ const PictureModal = ({ url, setIsModal, gallery }) => {
                 d="M128.5,74a9.67,9.67,0,0,0-14,0L100,88.5l-14-14a9.9,9.9,0,0,0-14,14l14,14-14,14a9.9,9.9,0,0,0,14,14l14-14,14,14a9.9,9.9,0,0,0,14-14l-14-14,14-14A10.77,10.77,0,0,0,128.5,74Z"
               />
             </svg>
-            <SwiperSlide>
-              <img src={url} alt="" />
+            <SwiperSlide
+              style={{
+                height: "auto",
+                borderRadius: "20px",
+                overflow: "hidden",
+              }}
+            >
+              <img
+                src={url}
+                alt=""
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  objectFit: "cover",
+                }}
+              />
             </SwiperSlide>
-            {gallery.map((pic) => {
+            {fillteredGallary?.map((pic) => {
               return (
-                <SwiperSlide>
-                  <img src={pic.url} alt="" />
+                <SwiperSlide
+                  style={{
+                    height: "auto",
+                    borderRadius: "20px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <img
+                    src={pic.url}
+                    alt=""
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
                 </SwiperSlide>
               );
             })}

@@ -24,9 +24,7 @@ const DropdownComponent = (props) => {
     }
   }, [props.destandorgcities.date.miladiDate, filteredNights]);
 
-  // useEffect(() => {
-  //   console.log("dasdasdqw2", filteredNights);
-  // }, [filteredNights]);
+
   return (
     <div className={styles.dropdowncontainer}>
       <select
@@ -51,7 +49,7 @@ const DropdownComponent = (props) => {
         )}
 
         {filteredNights?.map((nightItem) => {
-          return <option value={nightItem.night}>{nightItem.night} شب</option>;
+          return <option value={nightItem.night}>{nightItem.night}شب</option>;
         })}
       </select>
     </div>

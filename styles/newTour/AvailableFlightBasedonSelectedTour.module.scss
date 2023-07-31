@@ -115,15 +115,16 @@ $containerColor2: #bbbbbbe7;
           padding: 0;
           // overflow: hidden;
           gap: .5rem;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
+          display: flex;
+          // grid-template-columns: 1fr 1fr;
+          justify-content: flex-start;
 
           .images {
 
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: .5rem;
-            direction: ltr;
+            direction: ltr !important;
 
 
 
@@ -165,6 +166,17 @@ $containerColor2: #bbbbbbe7;
 
 
 
+          }
+
+          .imgbig_container {
+            width: 200px;
+            height: 205px;
+            border-radius: 20px;
+            img {
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+            }
           }
         }
 

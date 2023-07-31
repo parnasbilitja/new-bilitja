@@ -188,12 +188,12 @@ $black: #00001f;
         align-items: center;
         justify-content: space-between;
 
-        padding-left: 1.5rem;
+
         padding-bottom: 0;
 
         .ent-ext_container {
           display: flex;
-          justify-content: space-between;
+          // justify-content: space-between;
           width: 20%;
           padding-bottom: .5rem;
 
@@ -216,7 +216,7 @@ $black: #00001f;
 
           .entext:not(:last-child) {
             border-left: 1px solid #C6C6C6;
-            margin-left: .5rem;
+            margin-left: .8rem;
           }
         }
 
@@ -936,6 +936,7 @@ $black: #00001f;
       }
     }
   }
+
   .set-info-supervisor {
     padding: 0 !important;
 
@@ -948,6 +949,7 @@ $black: #00001f;
       }
     }
   }
+
   .reserver-info {
     span {
       font-size: 12px !important;
@@ -958,6 +960,7 @@ $black: #00001f;
       font-size: 14px;
     }
   }
+
   .box-fix-user-reservation {
     height: auto !important;
     padding: 12px !important;
@@ -980,17 +983,21 @@ $black: #00001f;
         }
       }
     }
-    .totalprice_container{
+
+    .totalprice_container {
       flex-direction: row !important;
       width: 100% !important;
       justify-content: space-between !important;
       margin-top: 8px;
-      .peopleroomnum{
+
+      .peopleroomnum {
         width: auto !important;
-        p{
+
+        p {
           font-size: 12px !important;
         }
-        span{
+
+        span {
           font-size: 12px !important;
         }
       }
