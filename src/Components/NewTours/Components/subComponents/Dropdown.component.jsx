@@ -15,15 +15,14 @@ const DropdownComponent = (props) => {
     }
   }, [props.nights]);
   useEffect(() => {
-    if (props.destandorgcities.date.miladiDate && filteredNights) {
-      props.setNight(filteredNights[0]?.night);
-    } else if (props.destandorgcities.date.miladiDate && props.night) {
+    if (props.destandorgcities.date.miladiDate && props.night) {
       props.setNight(props?.night);
     } else if (props.destandorgcities.date.miladiDate === "") {
       props.setNight(null);
+    } else {
+      props.setNight(filteredNights[0]?.night);
     }
   }, [props.destandorgcities.date.miladiDate, filteredNights]);
-
 
   return (
     <div className={styles.dropdowncontainer}>

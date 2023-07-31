@@ -1,22 +1,10 @@
 import React from "react";
 import styles from "../../../../styles/newTour/components/RoomsInfo.module.scss";
 
-import { numberWithCommas } from "../../../Utils/newTour";
+import { humanType, numberWithCommas } from "../../../Utils/newTour";
 const RoomsInfo = (props) => {
   console.log("from rooms info", props);
 
-  const humanType = (type) => {
-    switch (type) {
-      case "adl":
-        return "بزرگسال";
-      case "inf":
-        return "نوزاد";
-      case "chd":
-        return "کودک";
-      case "ext":
-        return "تخت اضافه";
-    }
-  };
   return (
     <>
       <table className={styles["passengers_container"]}>

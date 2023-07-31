@@ -24,7 +24,7 @@ import {
 } from "../../../Redux/newTours/Action";
 import DropdownComponent from "./subComponents/Dropdown.component";
 import { isEmpty, jalaliDateReformater } from "../../../Utils/newTour";
-import { Err, ErrSuccess, NotifAlert } from "./NotifAlert.component";
+import { Err, NotifAlert } from "./NotifAlert.component";
 
 const TourSearchBox = (props) => {
   const getDestandOrgCities = () => {
@@ -221,11 +221,11 @@ const TourSearchBox = (props) => {
     history,
   } = props;
 
-  useEffect(() => {
-    if (props) {
-      console.log("oewirpow", props);
-    }
-  }, [props]);
+  // useEffect(() => {
+  //   if (props) {
+  //     console.log("oewirpow", props);
+  //   }
+  // }, [props]);
   return (
     <>
       <NotifAlert />

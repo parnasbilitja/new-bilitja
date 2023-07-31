@@ -127,7 +127,6 @@ const availableHotels = () => {
     );
   }, [router, destination, origin, date, night]);
 
-  useEffect(() => {}, []);
   useEffect(() => {
     console.log("popsd", hotels);
   }, [hotels]);
@@ -229,7 +228,7 @@ const availableHotels = () => {
 
                       <div className={styles.priceandbtnContainer}>
                         <p className={styles.priceTitle}>
-                          قیمت برای هر نفر 6 شب از :
+                          {`قیمت برای هر نفر ${night} شب از :`}
                         </p>
                         <div className={styles.priceParent}>
                           <strong className={styles.price}>

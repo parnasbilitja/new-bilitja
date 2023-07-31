@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../../styles/newTour/AvailableFlightBasedonSelectedTour.module.scss";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   MiladiToJalaliConvertor,
   MiladiToJalaliConvertorDec,
@@ -19,7 +19,6 @@ import {
 import Image from "next/image";
 import PictureModal from "./Components/subComponents/PictureModal";
 import { Err, ErrSuccess, NotifAlert } from "./Components/NotifAlert.component";
-import moment from "moment-jalaali";
 
 const AvailableFlightBasedonSelectedTour = (props) => {
   const router = useRouter();
@@ -27,10 +26,6 @@ const AvailableFlightBasedonSelectedTour = (props) => {
   const [selectedRoom, setSelectedRoom] = useState([]);
   const [isOpen, setIsOpen] = useState(0);
   const [ismodal, setIsModal] = useState(null);
-  console.log(
-    "night",
-    moment("2023-08-04").subtract(1, "d").format("YYYY-MM-DD")
-  );
   ///count every selected room based on their type =>:دوتخته , سه تخته , ...........
   const roomCounter = (roomTypeId) => {
     const rooms = selectedRoom.filter(
@@ -38,7 +33,6 @@ const AvailableFlightBasedonSelectedTour = (props) => {
     );
     return rooms.length;
   };
-
   ///increase room => :دوتخته , سه تخته , ...........
   const IncRoom = (
     flightId,
@@ -652,156 +646,158 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                   </div>
                 </div>
                 {flight.id === isOpen ? (
-                  <motion.div
-                    initial={{ height: 0 }}
-                    animate={{ height: "auto" }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 100,
-                      duration: 0.5,
-                    }}
-                    className={styles["roomcountdet_roomnum"]}
-                  >
-                    {selectedRoom.map((room) => {
-                      return (
-                        <div className={styles["roomcountDet_container"]}>
-                          <div className={styles["roomcountDet"]}>
-                            <div
-                              className={styles["roomcountDet_remove"]}
-                              onClick={() => {
-                                if (selectedRoom.length === 1) {
-                                  removeRoom(room.id);
-                                  setIsOpen(0);
-                                } else {
-                                  removeRoom(room.id);
-                                  setIsOpen(flight.id);
-                                }
-                              }}
-                            >
-                              <svg
-                                data-name="Layer 1"
-                                height="150"
-                                id="Layer_1"
-                                viewBox="0 0 200 200"
-                                width="150"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <title />
-                                <path
-                                  fill="#e20000"
-                                  d="M100,15a85,85,0,1,0,85,85A84.93,84.93,0,0,0,100,15Zm0,150a65,65,0,1,1,65-65A64.87,64.87,0,0,1,100,165Z"
-                                />
-                                <path
-                                  fill="#e20000"
-                                  d="M128.5,74a9.67,9.67,0,0,0-14,0L100,88.5l-14-14a9.9,9.9,0,0,0-14,14l14,14-14,14a9.9,9.9,0,0,0,14,14l14-14,14,14a9.9,9.9,0,0,0,14-14l-14-14,14-14A10.77,10.77,0,0,0,128.5,74Z"
-                                />
-                              </svg>
-                            </div>
-                            <div className={styles["roomcountDet_name"]}>
-                              <p>{room.room_type}</p>
-                            </div>
-                            <div className={styles["roomcountDet_AdlCount"]}>
-                              <p>تعداد بزرگسال</p>
-                              <p>{room.Adl_capacity}</p>
-                            </div>
-
-                            <div className={styles["roomcountDet_bedcount"]}>
-                              <p className={styles["bedtype"]}>
-                                تعداد تخت اضافه
-                              </p>
-                              <p className={styles["bedtypeprc"]}>
-                                {numberWithCommas(
-                                  extBedPrcGen(
-                                    hotel.rooms,
-                                    flight,
-                                    room.room_type_id
-                                  )
-                                )}{" "}
-                                تومان
-                              </p>
-
+                  <AnimatePresence>
+                    <motion.div
+                      initial={{ height: 0 }}
+                      animate={{ height: "auto" }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 100,
+                        duration: 0.5,
+                      }}
+                      className={styles["roomcountdet_roomnum"]}
+                    >
+                      {selectedRoom.map((room) => {
+                        return (
+                          <div className={styles["roomcountDet_container"]}>
+                            <div className={styles["roomcountDet"]}>
                               <div
-                                className={
-                                  styles["roomcountDet_bedcount_count"]
-                                }
+                                className={styles["roomcountDet_remove"]}
+                                onClick={() => {
+                                  if (selectedRoom.length === 1) {
+                                    removeRoom(room.id);
+                                    setIsOpen(0);
+                                  } else {
+                                    removeRoom(room.id);
+                                    setIsOpen(flight.id);
+                                  }
+                                }}
                               >
-                                <div
-                                  className={styles["decin"]}
-                                  onClick={() => incDet(room, "ext_count")}
+                                <svg
+                                  data-name="Layer 1"
+                                  height="150"
+                                  id="Layer_1"
+                                  viewBox="0 0 200 200"
+                                  width="150"
+                                  xmlns="http://www.w3.org/2000/svg"
                                 >
-                                  +
-                                </div>
-                                <span>{room.extra_bed_count}</span>
+                                  <title />
+                                  <path
+                                    fill="#e20000"
+                                    d="M100,15a85,85,0,1,0,85,85A84.93,84.93,0,0,0,100,15Zm0,150a65,65,0,1,1,65-65A64.87,64.87,0,0,1,100,165Z"
+                                  />
+                                  <path
+                                    fill="#e20000"
+                                    d="M128.5,74a9.67,9.67,0,0,0-14,0L100,88.5l-14-14a9.9,9.9,0,0,0-14,14l14,14-14,14a9.9,9.9,0,0,0,14,14l14-14,14,14a9.9,9.9,0,0,0,14-14l-14-14,14-14A10.77,10.77,0,0,0,128.5,74Z"
+                                  />
+                                </svg>
+                              </div>
+                              <div className={styles["roomcountDet_name"]}>
+                                <p>{room.room_type}</p>
+                              </div>
+                              <div className={styles["roomcountDet_AdlCount"]}>
+                                <p>تعداد بزرگسال</p>
+                                <p>{room.Adl_capacity}</p>
+                              </div>
+
+                              <div className={styles["roomcountDet_bedcount"]}>
+                                <p className={styles["bedtype"]}>
+                                  تعداد تخت اضافه
+                                </p>
+                                <p className={styles["bedtypeprc"]}>
+                                  {numberWithCommas(
+                                    extBedPrcGen(
+                                      hotel.rooms,
+                                      flight,
+                                      room.room_type_id
+                                    )
+                                  )}{" "}
+                                  تومان
+                                </p>
+
                                 <div
-                                  className={styles["decin"]}
-                                  onClick={() => decDet(room.id, "ext_count")}
+                                  className={
+                                    styles["roomcountDet_bedcount_count"]
+                                  }
                                 >
-                                  -
+                                  <div
+                                    className={styles["decin"]}
+                                    onClick={() => incDet(room, "ext_count")}
+                                  >
+                                    +
+                                  </div>
+                                  <span>{room.extra_bed_count}</span>
+                                  <div
+                                    className={styles["decin"]}
+                                    onClick={() => decDet(room.id, "ext_count")}
+                                  >
+                                    -
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            <div className={styles["roomcountDet_bedcount"]}>
-                              <p className={styles["bedtype"]}>تعداد نوزاد</p>
-                              <p className={styles["bedtypeprc"]}>
-                                {numberWithCommas(flight.inf_price)} تومان
-                              </p>
-                              <div
-                                className={
-                                  styles["roomcountDet_bedcount_count"]
-                                }
-                              >
+                              <div className={styles["roomcountDet_bedcount"]}>
+                                <p className={styles["bedtype"]}>تعداد نوزاد</p>
+                                <p className={styles["bedtypeprc"]}>
+                                  {numberWithCommas(flight.inf_price)} تومان
+                                </p>
                                 <div
-                                  className={styles["decin"]}
-                                  onClick={() => incDet(room, "inf_count")}
+                                  className={
+                                    styles["roomcountDet_bedcount_count"]
+                                  }
                                 >
-                                  +
-                                </div>
-                                <span>{room.inf_count}</span>
-                                <div
-                                  className={styles["decin"]}
-                                  onClick={() => decDet(room.id, "inf_count")}
-                                >
-                                  -
+                                  <div
+                                    className={styles["decin"]}
+                                    onClick={() => incDet(room, "inf_count")}
+                                  >
+                                    +
+                                  </div>
+                                  <span>{room.inf_count}</span>
+                                  <div
+                                    className={styles["decin"]}
+                                    onClick={() => decDet(room.id, "inf_count")}
+                                  >
+                                    -
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            <div className={styles["roomcountDet_bedcount"]}>
-                              <p className={styles["bedtype"]}>تعداد کودک</p>
-                              <p className={styles["bedtypeprc"]}>
-                                {numberWithCommas(
-                                  chdPrcGen(
-                                    hotel.rooms,
-                                    flight,
-                                    room.room_type_id
-                                  )
-                                )}{" "}
-                                تومان
-                              </p>
-                              <div
-                                className={
-                                  styles["roomcountDet_bedcount_count"]
-                                }
-                              >
+                              <div className={styles["roomcountDet_bedcount"]}>
+                                <p className={styles["bedtype"]}>تعداد کودک</p>
+                                <p className={styles["bedtypeprc"]}>
+                                  {numberWithCommas(
+                                    chdPrcGen(
+                                      hotel.rooms,
+                                      flight,
+                                      room.room_type_id
+                                    )
+                                  )}{" "}
+                                  تومان
+                                </p>
                                 <div
-                                  className={styles["decin"]}
-                                  onClick={() => incDet(room, "chd_count")}
+                                  className={
+                                    styles["roomcountDet_bedcount_count"]
+                                  }
                                 >
-                                  +
-                                </div>
-                                <span>{room.chd_count}</span>
-                                <div
-                                  className={styles["decin"]}
-                                  onClick={() => decDet(room.id, "chd_count")}
-                                >
-                                  -
+                                  <div
+                                    className={styles["decin"]}
+                                    onClick={() => incDet(room, "chd_count")}
+                                  >
+                                    +
+                                  </div>
+                                  <span>{room.chd_count}</span>
+                                  <div
+                                    className={styles["decin"]}
+                                    onClick={() => decDet(room.id, "chd_count")}
+                                  >
+                                    -
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      );
-                    })}
-                  </motion.div>
+                        );
+                      })}
+                    </motion.div>
+                  </AnimatePresence>
                 ) : null}
               </div>
             ) : null

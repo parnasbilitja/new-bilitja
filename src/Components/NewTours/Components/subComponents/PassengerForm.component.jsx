@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "../../../../../styles/newTour/components/subComponent/PassengerForm.module.scss";
 import PopUp from "./PopUp.component";
 import BirthDayParentCl from "../calendar/BirthDayParentCl";
 import BirthDayParent from "../../../../sources/calendar/BirthDayParent";
-import { errValidation } from "../../../../Utils/newTour";
+import { errStruct, errValidation } from "../../../../Utils/newTour";
 import { Err } from "../NotifAlert.component";
 const PassengerForm = (props) => {
-  console.log("hotel", props);
   const [state, setState] = useState({
     open: false,
     extOpen: false,
@@ -34,7 +33,6 @@ const PassengerForm = (props) => {
         const findPassenger = findroom[0]?.passengers.filter(
           (passenger) => passenger.id === passId
         );
-
         if (findPassenger && findPassenger[0]?.hasOwnProperty(datetype)) {
           if (datetype === "birth_day") {
             return findPassenger[0].birth_day;
@@ -54,7 +52,7 @@ const PassengerForm = (props) => {
 
   const [calend, setCalend] = useState(true);
 
-  const formDataPicker21 = (e, passId, type, roomid, roomTypeid, id) => {
+  const FormDataPicker = (e, passId, type, roomid, roomTypeid, id) => {
     // debugger;
     const findroom = props.dataq.filter((data) => data.id === id);
     let newrooms = [];
@@ -84,10 +82,6 @@ const PassengerForm = (props) => {
           } else if (e.target.name === "family") {
             Err("لطفا نام خانوادگی را به لاتین وارد کنید");
           }
-          // setLatinCheck({
-          //   ...latinCheck,
-          //   [e.target.name]: true,
-          // });
         } else {
           newpassengerArr.push(...filteredpassengers, {
             ...findpassenger[0],
@@ -192,10 +186,6 @@ const PassengerForm = (props) => {
     }
   };
 
-  const errStruct = (roomId, passenId, inputName) => {
-    return `rooms.${roomId}.passengers.${passenId}.${inputName}`;
-  };
-
   const humantype = (type) => {
     switch (type) {
       case "adl":
@@ -209,8 +199,6 @@ const PassengerForm = (props) => {
     }
   };
   const indexidfinder = (passId, roomId, name) => {
-    // const { name, value } = e.target;
-
     const findroom = props.dataq.filter((data) => data.id === roomId);
     if (findroom.length > 0) {
       const findPassInput = findroom[0].passengers.filter(
@@ -219,9 +207,6 @@ const PassengerForm = (props) => {
       return findPassInput[0]?.[name];
     }
   };
-  useEffect(() => {
-    console.log("passindex", props.passIndex);
-  }, []);
 
   return (
     <>
@@ -265,7 +250,7 @@ const PassengerForm = (props) => {
                   // {...form.register("gender")}
                   name="gender"
                   onChange={(e) =>
-                    formDataPicker21(
+                    FormDataPicker(
                       e,
                       props.passId,
                       props.type,
@@ -309,7 +294,7 @@ const PassengerForm = (props) => {
                   defaultValue=""
                   maxLength="50"
                   onChange={(e) =>
-                    formDataPicker21(
+                    FormDataPicker(
                       e,
                       props.passId,
                       props.type,
@@ -351,7 +336,7 @@ const PassengerForm = (props) => {
                   placeholder="نام خانوادگی (لاتین)"
                   value={indexidfinder(props.passId, props.id, "family")}
                   onChange={(e) =>
-                    formDataPicker21(
+                    FormDataPicker(
                       e,
                       props.passId,
                       props.type,
@@ -395,7 +380,7 @@ const PassengerForm = (props) => {
 
                   id=""
                   onChange={(e) =>
-                    formDataPicker21(
+                    FormDataPicker(
                       e,
                       props.passId,
                       props.type,
@@ -440,7 +425,7 @@ const PassengerForm = (props) => {
                     placeholder="کدملی"
                     maxLength="10"
                     onChange={(e) =>
-                      formDataPicker21(
+                      FormDataPicker(
                         e,
                         props.passId,
                         props.type,
@@ -512,7 +497,7 @@ const PassengerForm = (props) => {
                   placeholder="شماره پاسپورت"
                   maxLength="9"
                   onChange={(e) =>
-                    formDataPicker21(
+                    FormDataPicker(
                       e,
                       props.passId,
                       props.type,
@@ -547,7 +532,7 @@ const PassengerForm = (props) => {
                   // {...form.register("expired_passport")}
                   placeholder="تاریخ انقضا پاسپورت"
                   onChange={(e) =>
-                    formDataPicker21(
+                    FormDataPicker(
                       e,
                       props.passId,
                       props.type,

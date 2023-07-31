@@ -4,7 +4,9 @@ import InfoPasserngers from "./Components/InfoPasserngers";
 import {
   MiladiToJalaliConvertor,
   MiladiToJalaliConvertorInc,
+  TotalPrcGen,
   numberWithCommas,
+  passengerObjModelGen,
   roomNameChecker,
   startBuilder,
 } from "../../Utils/newTour";
@@ -47,14 +49,6 @@ const Reservation = ({ hotelDet, stayCount }) => {
     }
   }, [hotelDet?.rooms_selected]);
 
-  const TotalPrcGen = (prcArr) => {
-    let total = prcArr.reduce((accumulator, currentValue) => {
-      return accumulator + +currentValue;
-    }, 0);
-
-    return total;
-  };
-
   const personCounter = (arr) => {
     let people = 0;
     arr.map((pers) => {
@@ -89,29 +83,6 @@ const Reservation = ({ hotelDet, stayCount }) => {
     }
   };
 
-  const passengerObjModel = (personCount, type) => {
-    let personarr = [];
-    if (personCount > 0) {
-      [...Array(personCount)].map((p, index) => {
-        personarr.push({
-          name: "",
-          family: "",
-          birth_day: "",
-          nationality: "",
-          gender: "",
-          passport: "",
-          expired_passport: "",
-          id_code: "",
-          bed_type: type === "ext" ? "extra" : "normal",
-          type,
-          id: `${index}${type}`,
-          price: "",
-        });
-      });
-    }
-    return personarr;
-  };
-
   useEffect(() => {
     if (reformSelectedRooms.length > 0) {
       reformSelectedRooms?.map((selectedroom) => {
@@ -120,10 +91,10 @@ const Reservation = ({ hotelDet, stayCount }) => {
         const chdCount = selectedroom?.chd_count;
         const infCount = selectedroom?.inf_count;
         const extCount = selectedroom?.ext_count;
-        passarr.push(...passengerObjModel(adlCount, "adl"));
-        passarr.push(...passengerObjModel(chdCount, "chd"));
-        passarr.push(...passengerObjModel(infCount, "inf"));
-        passarr.push(...passengerObjModel(extCount, "ext"));
+        passarr.push(...passengerObjModelGen(adlCount, "adl"));
+        passarr.push(...passengerObjModelGen(chdCount, "chd"));
+        passarr.push(...passengerObjModelGen(infCount, "inf"));
+        passarr.push(...passengerObjModelGen(extCount, "ext"));
         setRoomsData((prev) => [
           ...prev,
           {
@@ -138,12 +109,9 @@ const Reservation = ({ hotelDet, stayCount }) => {
   }, [reformSelectedRooms]);
 
   useEffect(() => {
-    // console.log("dada", roomsData);
     setDataq(roomsData);
   }, [roomsData]);
-  // useEffect(() => {
-  //   console.log(dataq);
-  // }, [dataq]);
+
   return (
     <>
       <Scrolltoprefresh />
@@ -352,9 +320,7 @@ const Reservation = ({ hotelDet, stayCount }) => {
                     repeatType: "reverse",
                   }}
                   className={styles["box-top-box-reserve2"]}
-                >
-                  {/* <div className={styles["skew"]}></div> */}
-                </motion.div>
+                ></motion.div>
               )}
 
               <div className={styles["reserverform_container"]}>
@@ -453,7 +419,6 @@ const Reservation = ({ hotelDet, stayCount }) => {
                   hotelDets={hotelDet}
                   roomName={roomNameChecker(hotelDet?.rooms, room.room_id)}
                   room_type_id={room.room_type_id}
-                  // newSelectedRooms={reformSelectedRooms}
                   dataq={dataq}
                   setDataq={setDataq}
                   setEvRoomsPrc={setEvRoomsPrc}

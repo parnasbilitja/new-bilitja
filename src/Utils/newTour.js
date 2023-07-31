@@ -246,25 +246,71 @@ export const flightDateChecker = (flight) => {
   }
 };
 
-
-
 export const reservePrc = (rooms, flight) => {
-    let fiPrice;
-    // debugger;
-    rooms.map((room) => {
-      if (room.room_type_id === 148) {
-        fiPrice = roomPrcGen(room, flight);
-      }
-    });
-
-    if (fiPrice) {
-      return fiPrice;
-    } else {
-      fiPrice = Math.min(
-        rooms.map((room) => {
-          return roomPrcGen(room, flight);
-        })
-      );
-      return fiPrice;
+  let fiPrice;
+  // debugger;
+  rooms.map((room) => {
+    if (room.room_type_id === 148) {
+      fiPrice = roomPrcGen(room, flight);
     }
-  };
+  });
+
+  if (fiPrice) {
+    return fiPrice;
+  } else {
+    fiPrice = Math.min(
+      rooms.map((room) => {
+        return roomPrcGen(room, flight);
+      })
+    );
+    return fiPrice;
+  }
+};
+
+export const errStruct = (roomId, passenId, inputName) => {
+  return `rooms.${roomId}.passengers.${passenId}.${inputName}`;
+};
+
+ export const passengerObjModelGen = (personCount, type) => {
+   let personarr = [];
+   if (personCount > 0) {
+     [...Array(personCount)].map((p, index) => {
+       personarr.push({
+         name: "",
+         family: "",
+         birth_day: "",
+         nationality: "",
+         gender: "",
+         passport: "",
+         expired_passport: "",
+         id_code: "",
+         bed_type: type === "ext" ? "extra" : "normal",
+         type,
+         id: `${index}${type}`,
+         price: "",
+       });
+     });
+   }
+   return personarr;
+ };
+
+ export const TotalPrcGen = (prcArr) => {
+   let total = prcArr.reduce((accumulator, currentValue) => {
+     return accumulator + +currentValue;
+   }, 0);
+
+   return total;
+ };
+
+ export const humanType = (type) => {
+   switch (type) {
+     case "adl":
+       return "بزرگسال";
+     case "inf":
+       return "نوزاد";
+     case "chd":
+       return "کودک";
+     case "ext":
+       return "تخت اضافه";
+   }
+ };
