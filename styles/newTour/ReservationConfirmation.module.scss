@@ -207,6 +207,8 @@
     border: none !important;
   }
 
+
+
   .reserveinfo_container {
     padding: 1rem !important;
     padding-top: 7rem !important;
@@ -216,6 +218,16 @@
     display: flex !important;
     flex-direction: column !important;
     border: none !important;
+
+    .priceDet_container {
+      .priceDet {
+        width: 100%;
+
+        span {
+          display: none;
+        }
+      }
+    }
   }
 
   .totalprice_container {

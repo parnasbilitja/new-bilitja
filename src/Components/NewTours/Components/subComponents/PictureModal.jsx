@@ -16,14 +16,11 @@ const PictureModal = ({ url, setIsModal, gallery }) => {
   useEffect(() => {
     const fillteredPic = gallery.filter((pic) => pic.url !== url);
     setFilteredGall(fillteredPic);
-  }, []);
+  }, [gallery]);
 
   return (
     <AnimatePresence>
-      <motion.div
-        className={styles["modal"]}
-        // onClick={() => setIsModal(null)}
-      >
+      <motion.div className={styles["modal"]}>
         <motion.div layoutId={url} className={styles["modal_imgContainer"]}>
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}

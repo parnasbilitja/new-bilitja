@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import TourDetailLabel from "../../../../Components/NewTours/Components/subComponents/TourDetailLabel.component";
-import NavHandler from "../../../../Components/share/NavHandler";
+
 import styles from "../../../../../styles/newTour/ReservationConfirmation.module.scss";
 import RoomsInfo from "../../../../Components/NewTours/Components/RoomsInfo.component";
 import { numberWithCommas, roomNameChecker } from "../../../../Utils/newTour";
@@ -123,9 +123,14 @@ const ReservationConfirmation = () => {
             <div className={styles["priceDet_container"]}>
               <div className={styles["priceDet"]}>
                 <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "8px",
+                  }}
                 >
-                  <p>مبلغ کل : ............................</p>
+                  <p>مبلغ کل :</p>
+                  <span>............................</span>
                   <div style={{ display: "flex" }}>
                     <strong style={{ fontSize: "14px", marginRight: "4px" }}>
                       {numberWithCommas(fiPrc)}
@@ -144,7 +149,8 @@ const ReservationConfirmation = () => {
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <p>مبلغ قابل پرداخت : ................</p>
+                  <p>مبلغ قابل پرداخت : </p>
+                  <span>............................</span>
                   <div style={{ display: "flex" }}>
                     <strong style={{ fontSize: "14px", marginRight: "4px" }}>
                       {numberWithCommas(fiPrc)}

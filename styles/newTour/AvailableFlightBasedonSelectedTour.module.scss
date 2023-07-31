@@ -172,6 +172,7 @@ $containerColor2: #bbbbbbe7;
             width: 200px;
             height: 205px;
             border-radius: 20px;
+
             img {
               height: 100%;
               width: 100%;
@@ -700,7 +701,7 @@ $containerColor2: #bbbbbbe7;
       margin-top: 14px;
 
       .image_container {
-        grid-template-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr 1fr !important;
       }
     }
   }
@@ -755,9 +756,9 @@ $containerColor2: #bbbbbbe7;
     }
   }
 
-  .img-big {
-    display: none !important;
-  }
+  // .img-big {
+  //   display: none !important;
+  // }
 
   .p-title-page {
     font-size: 14px !important;
