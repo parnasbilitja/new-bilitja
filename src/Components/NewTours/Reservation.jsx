@@ -14,7 +14,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import TourDetailLabel from "./Components/subComponents/TourDetailLabel.component";
 import { useRouter } from "next/router";
-import { Err, NotifAlert } from "./Components/NotifAlert.component";
+import { Err, ErrSuccess, NotifAlert } from "./Components/NotifAlert.component";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 const Reservation = ({ hotelDet, stayCount }) => {
   const [dataq, setDataq] = useState([]);
@@ -189,6 +189,9 @@ const Reservation = ({ hotelDet, stayCount }) => {
                               )}&fiPrc=${TotalPrcGen(
                                 evRoomsPrc
                               )}&stayCount=${stayCount}`
+                            );
+                            ErrSuccess(
+                              "به صفحه تایید اطلاعات رزرو و پرداخت نهایی منتقل می شوید"
                             );
                           })
                           .catch((err) => {
