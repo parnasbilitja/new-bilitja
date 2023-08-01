@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +104,7 @@
       <workItem from="1690696702794" duration="5670000" />
       <workItem from="1690886000732" duration="475000" />
       <workItem from="1690886508510" duration="24000" />
-      <workItem from="1690886698583" duration="3748000" />
+      <workItem from="1690886698583" duration="3883000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -315,7 +314,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690889364009</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="eNamad has visual problem">
+      <option name="closed" value="true" />
+      <created>1690890554249</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1690890554249</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,7 +360,8 @@
     <MESSAGE value="flightPassengerform-expired-passport has been fixed.&#10;enamad logo has been rechanged." />
     <MESSAGE value="enamad logo has been rechanged." />
     <MESSAGE value="some changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes" />
+    <MESSAGE value="eNamad has visual problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="eNamad has visual problem" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -333,7 +333,7 @@ const Footer = () => {
                 </div>
                 <div className={styles["footer-copy"]}>
                     <div className={styles["footer-right"]}>
-                        <div>© کپی رایت 1400. Ver 1.1.3</div>{' '}&nbsp;
+                        <div>© کپی رایت21400. Ver 1.2.3</div>{' '}&nbsp;
                         {width < 826 && <br />}
                         <span>کلیه حقوق این سایت محفوظ و متعلق به بلیط جا است. </span>
                     </div>
