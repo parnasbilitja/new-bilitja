@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="edit pages front ui">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthDayParent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthDayParent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalendar.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalendar.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalenderMiladi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalenderMiladi.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/calendar/BirthDayParent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/calendar/BirthDayParent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/calendar/BirthdayCalenderMiladi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/calendar/BirthdayCalenderMiladi.jsx" afterDir="false" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +104,7 @@
       <workItem from="1690696702794" duration="5670000" />
       <workItem from="1690886000732" duration="475000" />
       <workItem from="1690886508510" duration="24000" />
-      <workItem from="1690886698583" duration="2171000" />
+      <workItem from="1690886698583" duration="2380000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -289,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690886306162</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="flightPassengerform-expired-passport has been fixed.&#10;enamad logo has been rechanged.">
+      <option name="closed" value="true" />
+      <created>1690889001268</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1690889001268</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,7 +326,8 @@
     <MESSAGE value="tour list edit" />
     <MESSAGE value="edit pages front ui" />
     <MESSAGE value="some changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes" />
+    <MESSAGE value="flightPassengerform-expired-passport has been fixed.&#10;enamad logo has been rechanged." />
+    <option name="LAST_COMMIT_MESSAGE" value="flightPassengerform-expired-passport has been fixed.&#10;enamad logo has been rechanged." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
