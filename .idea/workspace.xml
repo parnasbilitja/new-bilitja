@@ -104,7 +104,7 @@
       <workItem from="1690696702794" duration="5670000" />
       <workItem from="1690886000732" duration="475000" />
       <workItem from="1690886508510" duration="24000" />
-      <workItem from="1690886698583" duration="2380000" />
+      <workItem from="1690886698583" duration="2566000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -290,7 +290,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690889001268</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="enamad logo has been rechanged.">
+      <option name="closed" value="true" />
+      <created>1690889154101</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1690889154101</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +335,8 @@
     <MESSAGE value="edit pages front ui" />
     <MESSAGE value="some changes" />
     <MESSAGE value="flightPassengerform-expired-passport has been fixed.&#10;enamad logo has been rechanged." />
-    <option name="LAST_COMMIT_MESSAGE" value="flightPassengerform-expired-passport has been fixed.&#10;enamad logo has been rechanged." />
+    <MESSAGE value="enamad logo has been rechanged." />
+    <option name="LAST_COMMIT_MESSAGE" value="enamad logo has been rechanged." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
