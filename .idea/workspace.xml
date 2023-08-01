@@ -104,7 +104,7 @@
       <workItem from="1690696702794" duration="5670000" />
       <workItem from="1690886000732" duration="475000" />
       <workItem from="1690886508510" duration="24000" />
-      <workItem from="1690886698583" duration="3883000" />
+      <workItem from="1690886698583" duration="3984000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -322,7 +322,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690890554249</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="eNamad has visual problem">
+      <option name="closed" value="true" />
+      <created>1690890664106</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1690890664106</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
