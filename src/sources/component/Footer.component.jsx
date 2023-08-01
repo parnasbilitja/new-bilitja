@@ -147,11 +147,20 @@ const Footer = () => {
                             {width < 826 &&
                                 <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex flex-wrap col-4 justify-content-start px-0">
                                     {/* child */}
-                                    <a target="_blank"
-                                       href="https://trustseal.enamad.ir/?id=22234&amp;Code=HOlroFa2HgPi7nU9N9rN"><img
+                                    <a
                                         referrerPolicy="origin"
-                                        src="https://Trustseal.eNamad.ir/logo.aspx?id=22234&amp;Code=HOlroFa2HgPi7nU9N9rN"
-                                        alt="" style="cursor:pointer" id="HOlroFa2HgPi7nU9N9rN"/></a>
+                                        target="_blank"
+                                        className="ms-1 mb-2"
+                                        href="https://trustseal.enamad.ir/?id=22234&amp;Code=HOlroFa2HgPi7nU9N9rN"
+                                    >
+                                        <img
+                                            referrerPolicy="origin"
+                                            // src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
+                                            alt="enamad"
+                                            src="https://Trustseal.eNamad.ir/logo.aspx?id=22234&amp;Code=HOlroFa2HgPi7nU9N9rN"
+                                            id="HOlroFa2HgPi7nU9N9rN" width={'70px'} height={'70px'}
+                                        />
+                                    </a>
                                     <a
                                         referrerPolicy="origin"
                                         target="_blank"
@@ -324,7 +333,7 @@ const Footer = () => {
                 </div>
                 <div className={styles["footer-copy"]}>
                     <div className={styles["footer-right"]}>
-                        <div>© کپی رایت 1402. Ver 1.2.3</div>{' '}&nbsp;
+                        <div>© کپی رایت 1400. Ver 1.1.3</div>{' '}&nbsp;
                         {width < 826 && <br />}
                         <span>کلیه حقوق این سایت محفوظ و متعلق به بلیط جا است. </span>
                     </div>
