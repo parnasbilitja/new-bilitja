@@ -194,6 +194,8 @@ $black: #00001f;
         .ent-ext_container {
           display: flex;
           // justify-content: space-between;
+          transform: translateX(-30px);
+
           width: 20%;
           padding-bottom: .5rem;
 
@@ -483,6 +485,7 @@ $black: #00001f;
     .ent-ext_container {
       width: 100% !important;
       margin-top: 1rem;
+      transform: translateX(0px);
 
       .entext {
         width: 50% !important;

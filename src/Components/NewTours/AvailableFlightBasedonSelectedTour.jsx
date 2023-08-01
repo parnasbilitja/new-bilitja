@@ -33,6 +33,13 @@ const AvailableFlightBasedonSelectedTour = (props) => {
     );
     return rooms.length;
   };
+
+  const minAvRoom = (rates) =>
+    Math.min(
+      ...rates.map((a) => {
+        return a.extra_bed_count;
+      })
+    );
   ///increase room => :دوتخته , سه تخته , ...........
   const IncRoom = (
     flightId,
@@ -721,14 +728,28 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                   }
                                 >
                                   <div
-                                    className={styles["decin"]}
-                                    onClick={() => incDet(room, "ext_count")}
+                                    className={
+                                      styles[
+                                        room.extra_bed_capacity === 0
+                                          ? "dis_decin"
+                                          : "decin"
+                                      ]
+                                    }
+                                    onClick={() => {
+                                      incDet(room, "ext_count");
+                                    }}
                                   >
                                     +
                                   </div>
                                   <span>{room.extra_bed_count}</span>
                                   <div
-                                    className={styles["decin"]}
+                                    className={
+                                      styles[
+                                        room.extra_bed_count === 0
+                                          ? "dis_decin"
+                                          : "decin"
+                                      ]
+                                    }
                                     onClick={() => decDet(room.id, "ext_count")}
                                   >
                                     -
@@ -746,14 +767,26 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                   }
                                 >
                                   <div
-                                    className={styles["decin"]}
+                                    className={
+                                      styles[
+                                        room.inf_count >= room.Adl_capacity
+                                          ? "dis_decin"
+                                          : "decin"
+                                      ]
+                                    }
                                     onClick={() => incDet(room, "inf_count")}
                                   >
                                     +
                                   </div>
                                   <span>{room.inf_count}</span>
                                   <div
-                                    className={styles["decin"]}
+                                    className={
+                                      styles[
+                                        room.inf_count === 0
+                                          ? "dis_decin"
+                                          : "decin"
+                                      ]
+                                    }
                                     onClick={() => decDet(room.id, "inf_count")}
                                   >
                                     -
@@ -778,14 +811,26 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                   }
                                 >
                                   <div
-                                    className={styles["decin"]}
+                                    className={
+                                      styles[
+                                        room.chd_capacity === 0
+                                          ? "dis_decin"
+                                          : "decin"
+                                      ]
+                                    }
                                     onClick={() => incDet(room, "chd_count")}
                                   >
                                     +
                                   </div>
                                   <span>{room.chd_count}</span>
                                   <div
-                                    className={styles["decin"]}
+                                    className={
+                                      styles[
+                                        room.chd_count === 0
+                                          ? "dis_decin"
+                                          : "decin"
+                                      ]
+                                    }
                                     onClick={() => decDet(room.id, "chd_count")}
                                   >
                                     -
@@ -1017,7 +1062,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                     }}
                     className={styles["roomcountdet_roomnum"]}
                   >
-                    {selectedRoom?.map((room) => {
+                    {selectedRoom.map((room) => {
                       return (
                         <div className={styles["roomcountDet_container"]}>
                           <div className={styles["roomcountDet"]}>
@@ -1081,14 +1126,28 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                 }
                               >
                                 <div
-                                  className={styles["decin"]}
-                                  onClick={() => incDet(room, "ext_count")}
+                                  className={
+                                    styles[
+                                      room.extra_bed_capacity === 0
+                                        ? "dis_decin"
+                                        : "decin"
+                                    ]
+                                  }
+                                  onClick={() => {
+                                    incDet(room, "ext_count");
+                                  }}
                                 >
                                   +
                                 </div>
                                 <span>{room.extra_bed_count}</span>
                                 <div
-                                  className={styles["decin"]}
+                                  className={
+                                    styles[
+                                      room.extra_bed_count === 0
+                                        ? "dis_decin"
+                                        : "decin"
+                                    ]
+                                  }
                                   onClick={() => decDet(room.id, "ext_count")}
                                 >
                                   -
@@ -1106,14 +1165,26 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                 }
                               >
                                 <div
-                                  className={styles["decin"]}
+                                  className={
+                                    styles[
+                                      room.inf_count >= room.Adl_capacity
+                                        ? "dis_decin"
+                                        : "decin"
+                                    ]
+                                  }
                                   onClick={() => incDet(room, "inf_count")}
                                 >
                                   +
                                 </div>
                                 <span>{room.inf_count}</span>
                                 <div
-                                  className={styles["decin"]}
+                                  className={
+                                    styles[
+                                      room.inf_count === 0
+                                        ? "dis_decin"
+                                        : "decin"
+                                    ]
+                                  }
                                   onClick={() => decDet(room.id, "inf_count")}
                                 >
                                   -
@@ -1138,14 +1209,26 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                 }
                               >
                                 <div
-                                  className={styles["decin"]}
+                                  className={
+                                    styles[
+                                      room.chd_capacity === 0
+                                        ? "dis_decin"
+                                        : "decin"
+                                    ]
+                                  }
                                   onClick={() => incDet(room, "chd_count")}
                                 >
                                   +
                                 </div>
                                 <span>{room.chd_count}</span>
                                 <div
-                                  className={styles["decin"]}
+                                  className={
+                                    styles[
+                                      room.chd_count === 0
+                                        ? "dis_decin"
+                                        : "decin"
+                                    ]
+                                  }
                                   onClick={() => decDet(room.id, "chd_count")}
                                 >
                                   -

@@ -638,6 +638,19 @@ $containerColor2: #bbbbbbe7;
                 cursor: pointer;
 
               }
+
+              .dis_decin {
+                font-size: 1rem;
+                width: 23px;
+                height: 23px;
+                border: 1px solid $containerColor2;
+                border-radius: 5px;
+                color: $containerColor2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: context-menu;
+              }
             }
           }
         }
