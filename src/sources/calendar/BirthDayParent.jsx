@@ -28,18 +28,18 @@ const BirthDayParent = (props) => {
             props.setBirthdayb(value);
           }}
           closePopUpCalendar={props.closePopUpCalendar}
-          roomInfo={props.roomInfo}
-          Birthdate={(date, passId, type, roomid, roomTypeid, datetype, id) =>
-            props.Birthdate(
-              date,
-              passId,
-              type,
-              roomid,
-              roomTypeid,
-              datetype,
-              id
-            )
-          }
+          // roomInfo={props.roomInfo}
+          // Birthdate={(date, passId, type, roomid, roomTypeid, datetype, id) =>
+          //   props.Birthdate(
+          //     date,
+          //     passId,
+          //     type,
+          //     roomid,
+          //     roomTypeid,
+          //     datetype,
+          //     id
+          //   )
+          // }
         />
       )}
     </div>

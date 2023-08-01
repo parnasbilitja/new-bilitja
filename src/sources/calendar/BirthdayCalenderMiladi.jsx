@@ -282,15 +282,15 @@ const BirthdayCalenderMiladi = (props) => {
                       setState({ ...state, stage: 1 });
                       
                       const dasheddateformat = m.format("jYYYY-jMM-jDD");
-                      props.Birthdate(
-                        dasheddateformat,
-                        props.roomInfo.passId,
-                        props.roomInfo.type,
-                        props.roomInfo.roomId,
-                        props.roomInfo.roomTypeId,
-                        "expired_passport",
-                        props.roomInfo.id
-                      );
+                      // props.Birthdate(
+                      //   dasheddateformat,
+                      //   props.roomInfo.passId,
+                      //   props.roomInfo.type,
+                      //   props.roomInfo.roomId,
+                      //   props.roomInfo.roomTypeId,
+                      //   "expired_passport",
+                      //   props.roomInfo.id
+                      // );
                     }}
                   >
                     {x}

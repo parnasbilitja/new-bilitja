@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment-jalaali'
-import styles from '../../../styles/BirthdayCalendar.module.scss'
+import styles from '../../../../../styles/BirthdayCalendar.module.scss'
 const BirthdayCalendar = (props) => {
     let current = 1402
     const today = moment().format('jYYYY/jMM/jDD')

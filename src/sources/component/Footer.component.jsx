@@ -147,20 +147,11 @@ const Footer = () => {
                             {width < 826 &&
                                 <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex flex-wrap col-4 justify-content-start px-0">
                                     {/* child */}
-                                    <a
+                                    <a target="_blank"
+                                       href="https://trustseal.enamad.ir/?id=22234&amp;Code=HOlroFa2HgPi7nU9N9rN"><img
                                         referrerPolicy="origin"
-                                        target="_blank"
-                                        className="ms-1 mb-2"
-                                        href="https://trustseal.enamad.ir/?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                    >
-                                        <img
-                                            referrerPolicy="origin"
-                                            // src="https://Trustseal.eNamad.ir/logo.aspx?id=57980&Code=wC1opUKBlpiUx3sEWOGR"
-                                            alt="enamad"
-                                            src='/Images/enamad.png'
-                                            id="wC1opUKBlpiUx3sEWOGR" width={'70px'} height={'70px'}
-                                        />
-                                    </a>
+                                        src="https://Trustseal.eNamad.ir/logo.aspx?id=22234&amp;Code=HOlroFa2HgPi7nU9N9rN"
+                                        alt="" style="cursor:pointer" id="HOlroFa2HgPi7nU9N9rN"/></a>
                                     <a
                                         referrerPolicy="origin"
                                         target="_blank"

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "../../../../../styles/newTour/components/subComponent/PassengerForm.module.scss";
 import PopUp from "./PopUp.component";
 import BirthDayParentCl from "../calendar/BirthDayParentCl";
-import BirthDayParent from "../../../../sources/calendar/BirthDayParent";
+import BirthDayParent from "../calendar/BirthDayParent";
 import { errStruct, errValidation } from "../../../../Utils/newTour";
 import { Err } from "../NotifAlert.component";
 const PassengerForm = (props) => {
