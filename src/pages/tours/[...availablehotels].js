@@ -198,6 +198,8 @@ const availableHotels = () => {
                           stars={stars}
                           hotels={hotels}
                           widthMobi={widthMobi}
+                          setShowFilter={(value)=>setShowFilter(value)}
+                          showFilter={showFilter}
                       />
 
                     : widthMobi>868?
@@ -210,6 +212,8 @@ const availableHotels = () => {
                             stars={stars}
                             hotels={hotels}
                             widthMobi={widthMobi}
+                            setShowFilter={(value)=>setShowFilter(value)}
+                            showFilter={showFilter}
                         />:null
                 }
 

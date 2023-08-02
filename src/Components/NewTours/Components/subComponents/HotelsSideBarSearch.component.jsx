@@ -59,18 +59,20 @@ const HotelsSideBarSearch = (props) => {
            },
         animate:{
             right:0
-            ,transition:{duration:.725}},
-        exit:{right:'-400px',transition:{duration:.725}}
+            ,transition:{duration:.5}},
+        exit:{right:'-400px',transition:{duration:.5}}
     }
 useEffect(()=>{  console.log('width',props.widthMobi)},[props.widthMobi])
 
-
     return (
-        <div className={styles['p-sidebar']}>
+<>
             {props.widthMobi < 868 &&
                         <AnimatePresence>
-                            <motion.div variants={variants} initial='initial' animate='animate' exit='exit' className={styles.sidebarcontainer} >
-                                <div className={styles.sidebar}>
+                            <div className={styles['p-sidebar']} onClick={()=>{
+                                props.setShowFilter(!props.showFilter)
+                            }}>
+                            <div  className={styles.sidebarcontainer} >
+                                <motion.div variants={variants} initial='initial' animate='animate' exit='exit' className={styles.sidebar}>
                                     <div className={styles.hotelSearchInput}>
                                         <p>جستجوی نام هتل یا اقامتگاه</p>
                                         <input
@@ -121,12 +123,15 @@ useEffect(()=>{  console.log('width',props.widthMobi)},[props.widthMobi])
                                             <p htmlFor="">گران ترین</p>
                                         </div>
                                     </div>
-                                </div>
-                            </motion.div>
+                                </motion.div>
+                            </div>
+                            </div>
                         </AnimatePresence>
 
             }
-            {props.widthMobi > 869&& <div className={styles.sidebar}>
+            {props.widthMobi > 869&&
+            <div className={styles['p-sidebar']}>
+            <div className={styles.sidebar}>
                 <div className={styles.hotelSearchInput}>
                     <p>جستجوی نام هتل یا اقامتگاه</p>
 
@@ -181,9 +186,12 @@ useEffect(()=>{  console.log('width',props.widthMobi)},[props.widthMobi])
                     {/*    <FormControlLabel required control={<Checkbox />} label="Required" />*/}
                     {/*</FormGroup>*/}
                 </div>
-            </div>}
+            </div>
+                </div>
+            }
+</>
 
-        </div>
+
     );
 };
 
