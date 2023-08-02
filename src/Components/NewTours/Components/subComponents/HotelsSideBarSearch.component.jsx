@@ -54,24 +54,22 @@ const HotelsSideBarSearch = (props) => {
     };
 
     const variants={
-        initial:{height:0},
-        animate:{height: 'auto',transition:{duration:.725}},
-        exit:{height: 0,transition:{duration:.725}}
-
-
+        initial:{
+            right:'-400px',
+           },
+        animate:{
+            right:0
+            ,transition:{duration:.725}},
+        exit:{right:'-400px',transition:{duration:.725}}
     }
 useEffect(()=>{  console.log('width',props.widthMobi)},[props.widthMobi])
 
 
     return (
         <div className={styles['p-sidebar']}>
-            {props.widthMobi < 868 && <div>
-                <button className={styles.btnFilter} onClick={()=>{
-                    setShowFilter(!showFilter)
-                }}>فیلتر</button>
-                <AnimatePresence>
-                    {showFilter?
-                            <motion.div className={styles.sidebarcontainer} variants={variants} initial='initial' animate='animate' exit='exit' transition={{duration:1}}>
+            {props.widthMobi < 868 &&
+                        <AnimatePresence>
+                            <motion.div variants={variants} initial='initial' animate='animate' exit='exit' className={styles.sidebarcontainer} >
                                 <div className={styles.sidebar}>
                                     <div className={styles.hotelSearchInput}>
                                         <p>جستجوی نام هتل یا اقامتگاه</p>
@@ -125,12 +123,9 @@ useEffect(()=>{  console.log('width',props.widthMobi)},[props.widthMobi])
                                     </div>
                                 </div>
                             </motion.div>
+                        </AnimatePresence>
 
-
-                        :null}
-                </AnimatePresence>
-
-            </div>}
+            }
             {props.widthMobi > 869&& <div className={styles.sidebar}>
                 <div className={styles.hotelSearchInput}>
                     <p>جستجوی نام هتل یا اقامتگاه</p>

@@ -8,6 +8,7 @@ import { numberWithCommas, roomNameChecker } from "../../../../Utils/newTour";
 import NabvarCustom from "../../../../sources/component/NabvarCustom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Err } from "../../../../Components/NewTours/Components/NotifAlert.component";
+import Footer from "../../../../sources/component/Footer.component";
 const ReservationConfirmation = () => {
   const [hotelDet, setHotelDet] = useState();
   const [reservedRooms, setReservedRooms] = useState();
@@ -227,6 +228,7 @@ const ReservationConfirmation = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

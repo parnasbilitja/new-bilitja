@@ -1,28 +1,21 @@
 import dynamic from "next/dynamic";
 import axios from "axios";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {useRouter} from "next/router";
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import TourSearchBox from "../../Components/NewTours/Components/TourSearchBox";
 import styles from "../../../styles/AvailableHotels.module.scss";
 import Image from "next/image";
-import {
-  setDestLoc,
-  setFlightDate,
-  setOrgLoc,
-} from "../../Redux/newTours/Action";
-import {
-  jalaliDateReformater,
-  jalaliToMiladiConvertor,
-  numberWithCommas,
-  startBuilder,
-} from "../../Utils/newTour";
+import {setDestLoc, setFlightDate, setOrgLoc,} from "../../Redux/newTours/Action";
+import {jalaliDateReformater, jalaliToMiladiConvertor, numberWithCommas, startBuilder,} from "../../Utils/newTour";
 import NavHandler from "../../Components/share/NavHandler";
-import { Loader } from "../../Utils/Loader";
+import {Loader} from "../../Utils/Loader";
 import HotelsSideBarSearch from "../../Components/NewTours/Components/subComponents/HotelsSideBarSearch.component";
+import {motion} from 'framer-motion'
+import Footer from "../../sources/component/Footer.component";
 
 const AvFlight = dynamic(() =>
-  import("../../Components/NewTours/AvailableFlightBasedonSelectedTour")
+    import("../../Components/NewTours/AvailableFlightBasedonSelectedTour")
 );
 
 const availableHotels = () => {
@@ -69,59 +62,59 @@ const availableHotels = () => {
 
     if (date && destination && origin && night) {
       axios
-        .post("https://hotelobilit-api.iran.liara.run/api/v1/hotels/search", {
-          date: date,
-          destination: destination,
-          keywords: null,
-          orderBy: 1,
-          origin: origin,
-          stars: null,
-          stayCount: night,
-        })
-        .then((res) => {
-          setHotels(res?.data?.data);
-          setStars(hotelstarPicker(res?.data?.data));
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+          .post("https://hotelobilit-api.iran.liara.run/api/v1/hotels/search", {
+            date: date,
+            destination: destination,
+            keywords: null,
+            orderBy: 1,
+            origin: origin,
+            stars: null,
+            stayCount: night,
+          })
+          .then((res) => {
+            setHotels(res?.data?.data);
+            setStars(hotelstarPicker(res?.data?.data));
+          })
+          .catch((err) => {
+            console.log(err);
+          });
     }
 
     if (destination && origin) {
       axios
-        .post("https://hotelobilit-api.iran.liara.run/api/v1/cities", {
-          hasHotel: 1,
-          hasFlight: 0,
-        })
-        .then((res) => {
-          const destLoc = res.data.data;
-          const finddest = destLoc.find((o) => o.code === destination);
-          dispatch(setDestLoc(finddest));
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+          .post("https://hotelobilit-api.iran.liara.run/api/v1/cities", {
+            hasHotel: 1,
+            hasFlight: 0,
+          })
+          .then((res) => {
+            const destLoc = res.data.data;
+            const finddest = destLoc.find((o) => o.code === destination);
+            dispatch(setDestLoc(finddest));
+          })
+          .catch((err) => {
+            console.log(err);
+          });
 
       axios
-        .post("https://hotelobilit-api.iran.liara.run/api/v1/cities", {
-          hasHotel: 0,
-          hasFlight: 1,
-        })
-        .then((res) => {
-          const orgLoc = res.data.data;
-          const findsrc = orgLoc.find((o) => o.code === origin);
-          dispatch(setOrgLoc(findsrc));
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+          .post("https://hotelobilit-api.iran.liara.run/api/v1/cities", {
+            hasHotel: 0,
+            hasFlight: 1,
+          })
+          .then((res) => {
+            const orgLoc = res.data.data;
+            const findsrc = orgLoc.find((o) => o.code === origin);
+            dispatch(setOrgLoc(findsrc));
+          })
+          .catch((err) => {
+            console.log(err);
+          });
     }
 
     dispatch(
-      setFlightDate({
-        persianDate: newDate,
-        miladiDate: finalDate,
-      })
+        setFlightDate({
+          persianDate: newDate,
+          miladiDate: finalDate,
+        })
     );
   }, [router, destination, origin, date, night]);
 
@@ -132,7 +125,7 @@ const availableHotels = () => {
   //////////////////width
 
   const [widthMobi, setWidthMobi] = useState(
-    typeof window !== "undefined" && getWindowSize()
+      typeof window !== "undefined" && getWindowSize()
   );
   function getWindowSize() {
     const { innerWidth } = window;
@@ -145,122 +138,176 @@ const availableHotels = () => {
     window.addEventListener("resize", handleWindowResize);
   }, []);
 
+
+  const [showFilter, setShowFilter] = useState(false);
+  const [showSearchBox, setShowSearchBox] = useState(false);
+
   return (
-    <div className={styles["main-section"]}>
-      <NavHandler />
-      {router.query.availablehotels?.length === 1 ? (
-        <div className={styles.hotels}>
-          <div className={styles.searchContainer}>
-            <TourSearchBox
-              selectedDest={selectedDest}
-              selectedSrc={selectedSrc}
-              night={night}
-            />
-          </div>
-          <div className={styles["p-available"]}>
-            <HotelsSideBarSearch
-              date={date}
-              destination={destination}
-              origin={origin}
-              night={night}
-              setHotels={(value) => setHotels(value)}
-              stars={stars}
-              hotels={hotels}
-              widthMobi={widthMobi}
-            />
+      <div className={styles["main-section"]}>
 
-            <div className={styles.content}>
-              {hotels?.length === 0 ? (
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Loader />
+        <NavHandler />
+        {router.query.availablehotels?.length === 1 ? (
+            <div className={styles.hotels}>
+              {widthMobi<868&&<div style={{width:'100%',height:'50px',backgroundColor:'white',position:'fixed',zIndex:'1000',bottom:'0',right:'0',padding:'1rem'}}>
+                <div style={{width:'100%',display:'flex',justifyContent:"space-between"}}>
+                  <p onClick={()=> {
+                    setShowSearchBox(!showSearchBox)
+                    console.log(showFilter)
+                  }}>جستجو</p>
+                  <p onClick={()=> {
+                    setShowFilter(!showFilter)
+                    console.log(showFilter)
+                  }}>فیلتر</p>
                 </div>
-              ) : (
-                hotels?.map((hotel) => {
-                  return (
-                    <div className={styles.hotelContainer}>
-                      <div className={styles.hotelDetail}>
-                        {/* <Image src="" width={162} height={170}></Image> */}
-                        <div className={styles.imageContainer}>
-                          <Image
-                            src={hotel.gallery[0].url}
-                            width={500}
-                            height={500}
-                            alt="Picture of the hotel"
-                          />
-                        </div>
-                        <div className={styles.hotelNameDetail}>
-                          {hotel.is_domestic ? (
-                            <div>
-                              <h2 className={styles.faName}>{hotel?.title}</h2>
-                              <h2 className={styles.enName}>{hotel?.titleEn}</h2>
-                            </div>
-                          ) : (
-                            <div>
-                              <h2 className={styles.faName}>{hotel?.titleEn}</h2>
-                              <h2 className={styles.enName}>{hotel?.title}</h2>
-                            </div>
-                          )}
+              </div>}
 
-                          <div className={styles.pStar}>
-                            {startBuilder(+hotel.stars)?.map((x) => {
-                              return x;
-                            })}
-                          </div>
-                          {/* <div className={styles.stars}>{hotel.stars}stars</div> */}
-                          <div className={styles.services}>
-                            <label htmlFor="">منطقه :</label>
-                            <p>
-                              {hotel?.location ? hotel?.location : "ثبت نشده"}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+              {widthMobi< 868 && showSearchBox?
+                  <div className={styles['searchboxContainer']}>
+                    <div className={styles.searchContainer}>
+                        <div>
 
-                      <div className={styles.priceandbtnContainer}>
-                        <p className={styles.priceTitle}>
-                          {`قیمت برای هر نفر ${night} شب از :`}
-                        </p>
-                        <div className={styles.priceParent}>
-                          <strong className={styles.price}>
-                            {numberWithCommas(hotel?.totalRoomPrice)}
-                          </strong>
-                          <span>تومان</span>
+                      <div className={styles['closeBtn']}>close</div>
+                      <TourSearchBox
+                          selectedDest={selectedDest}
+                          selectedSrc={selectedSrc}
+                          night={night}
+                      />
                         </div>
-                        <div className={styles.btnContainer}>
-                          <button
-                            onClick={() => {
-                              const jalalurlReformat =
-                                jalaliDateReformater(jalaliDate);
-
-                              router.push(
-                                `/tours/${origin}-${destination}/flight/${hotel?.slug}?origin=${origin}&dest=${destination}&stDate=${jalalurlReformat}&night=${night}`
-                              );
-                            }}
-                          >
-                            {" "}
-                            انتخاب هتل و رزرو
-                          </button>
-                        </div>
-                      </div>
                     </div>
-                  );
-                })
-              )}
+                  </div>
+                  : widthMobi>868?
+                      <div className={styles.searchContainer}>
+                        <TourSearchBox
+                            selectedDest={selectedDest}
+                            selectedSrc={selectedSrc}
+                            night={night}
+                        />
+                      </div>:null}
+
+
+              <div className={styles["p-available"]}>
+
+                {showFilter && widthMobi<868?
+
+                      <HotelsSideBarSearch
+                          date={date}
+                          destination={destination}
+                          origin={origin}
+                          night={night}
+                          setHotels={(value) => setHotels(value)}
+                          stars={stars}
+                          hotels={hotels}
+                          widthMobi={widthMobi}
+                      />
+
+                    : widthMobi>868?
+                        <HotelsSideBarSearch
+                            date={date}
+                            destination={destination}
+                            origin={origin}
+                            night={night}
+                            setHotels={(value) => setHotels(value)}
+                            stars={stars}
+                            hotels={hotels}
+                            widthMobi={widthMobi}
+                        />:null
+                }
+
+                <div className={styles.content}>
+                  {hotels?.length === 0 ? (
+                      <div
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                      >
+                        <Loader />
+                      </div>
+                  ) : (
+                      hotels?.map((hotel) => {
+                        return (
+                            <div className={styles.hotelContainer}>
+
+                              <div className={styles.hotelDetail}>
+                                {/* <Image src="" width={162} height={170}></Image> */}
+                                <div className={styles.imageContainer}>
+                                  <Image
+                                      src={hotel.gallery[0].url}
+                                      width={500}
+                                      height={500}
+                                      alt="Picture of the hotel"
+                                  />
+                                </div>
+                                <div className={styles.hotelNameDetail}>
+                                  {hotel.is_domestic ? (
+                                      <div>
+                                        <h2 className={styles.faName}>{hotel?.title}</h2>
+                                        <h2 className={styles.enName}>{hotel?.titleEn}</h2>
+                                      </div>
+                                  ) : (
+                                      <div>
+                                        <h2 className={styles.faName}>{hotel?.titleEn}</h2>
+                                        <h2 className={styles.enName}>{hotel?.title}</h2>
+                                      </div>
+                                  )}
+
+                                  <div className={styles.pStar}>
+                                    {startBuilder(+hotel.stars)?.map((x) => {
+                                      return x;
+                                    })}
+                                  </div>
+                                  {/* <div className={styles.stars}>{hotel.stars}stars</div> */}
+                                  <div className={styles.services}>
+                                    <label htmlFor="">منطقه :</label>
+                                    <p>
+                                      {hotel?.location ? hotel?.location : "ثبت نشده"}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className={styles.priceandbtnContainer}>
+                                <p className={styles.priceTitle}>
+                                  {`قیمت برای هر نفر ${night} شب از :`}
+                                </p>
+                                <div className={styles.priceParent}>
+                                  <strong className={styles.price}>
+                                    {numberWithCommas(hotel?.totalRoomPrice)}
+                                  </strong>
+                                  <span>تومان</span>
+                                </div>
+                                <div className={styles.btnContainer}>
+                                  <button
+                                      onClick={() => {
+                                        const jalalurlReformat =
+                                            jalaliDateReformater(jalaliDate);
+
+                                        router.push(
+                                            `/tours/${origin}-${destination}/flight/${hotel?.slug}?origin=${origin}&dest=${destination}&stDate=${jalalurlReformat}&night=${night}`
+                                        );
+                                      }}
+                                  >
+                                    {" "}
+                                    انتخاب هتل و رزرو
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                        );
+                      })
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      ) : (
-        <AvFlight widthmobi={widthMobi} night={night} />
-      )}
-    </div>
+        ) : (
+            <AvFlight widthmobi={widthMobi} night={night} />
+        )}
+
+          <Footer/>
+      </div>
   );
 };
 

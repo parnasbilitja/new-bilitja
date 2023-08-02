@@ -5,6 +5,7 @@ import NavHandler from "../../../Components/share/NavHandler";
 import axios from "axios";
 import { jalaliToMiladiConvertor } from "../../../Utils/newTour";
 import moment from "moment-jalaali";
+import Footer from "../../../sources/component/Footer.component";
 const ReservedHotel = () => {
   const router = useRouter();
   const [hotelDet, setHoteldet] = useState([]);
@@ -40,6 +41,7 @@ const ReservedHotel = () => {
       <div style={{ paddingTop: "7rem" }}>
         <Reservation hotelDet={hotelDet} stayCount={stayCount} />
       </div>
+        <Footer/>
     </>
   );
 };

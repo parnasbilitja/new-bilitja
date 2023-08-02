@@ -852,6 +852,11 @@ const AvailableFlightBasedonSelectedTour = (props) => {
               props?.night
             ) ? (
             <div>
+              {/*<div>*/}
+              {/*  ghdsajjjaskldjl*/}
+              {/*</div>*/}
+
+
               <div className={styles["ticket_container"]}>
                 <div className={styles["container"]}>
                   {isOpen === 0 ? null : isOpen === flight.id ? null : (
