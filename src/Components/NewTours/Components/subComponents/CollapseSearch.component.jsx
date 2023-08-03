@@ -23,7 +23,6 @@ const CollapseSearchComponent = (props) => {
             <AnimatePresence>
         {props.searchTab===props.inputType&&
                         <motion.div variants={collapseVariants} initial='initial' animate='animate' exit='exit' className={styles['inputContainer']}>
-
                             <div style={{padding:'.5rem', display:'flex' ,justifyContent:'center' ,alignItems:'center'}}>
                             {props.children}
                             </div>

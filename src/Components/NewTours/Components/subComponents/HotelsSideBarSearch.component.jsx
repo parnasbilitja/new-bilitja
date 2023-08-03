@@ -28,6 +28,7 @@ const HotelsSideBarSearch = (props) => {
                 })
                 .then((res) => {
                     props.setHotels(res?.data?.data);
+
                 })
                 .catch((err) => {
                     console.log(err);
@@ -49,12 +50,13 @@ const HotelsSideBarSearch = (props) => {
             })
             .then((res) => {
                 props.setHotels(res?.data?.data);
+                props.setShowFilter(!props.showFilter)
             })
             .catch((err) => {
                 console.log(err);
             });
         setCheck(checkValue);
-                props.setShowFilter(!props.showFilter)
+
     };
 
     const variants={
@@ -74,7 +76,6 @@ useEffect(()=>{  console.log('width',props.widthMobi)},[props.widthMobi])
                                 {props.widthMobi < 868 &&
                         <AnimatePresence>
                                                 <div className={styles['p-sidebar']}
-
                                                 >
                                                 <div  className={styles.sidebarcontainer} >
                                                     <motion.div variants={variants} initial='initial' animate='animate' exit='exit' className={styles.sidebar}>
@@ -92,7 +93,9 @@ useEffect(()=>{  console.log('width',props.widthMobi)},[props.widthMobi])
                                                                 placeholder="نام هتل را وارد کنید"
                                                                 value={searchInput}
                                                                 onChange={(e) => setSearchInput(e.target.value)}
-                                                                onKeyDown={(e) => search(e)}
+                                                                onKeyDown={(e) => {
+                                                                    search(e)
+                                                                }}
                                                             />
                                                         </CollapseSearchComponent>
 
@@ -104,6 +107,7 @@ useEffect(()=>{  console.log('width',props.widthMobi)},[props.widthMobi])
                                                                 name=""
                                                                 id=""
                                                                 onClick={(e) => {
+                                                                    e.stopPropagation()
                                                                     checkedClick(null, e.target.value, "star");
                                                                 }}
                                                             >
@@ -128,7 +132,10 @@ useEffect(()=>{  console.log('width',props.widthMobi)},[props.widthMobi])
                                                                     type="checkbox"
                                                                     name="ارزان ترین"
                                                                     id=""
-                                                                    onClick={() => checkedClick("cheap", 1, "order")}
+                                                                    onClick={() => {
+                                                                        checkedClick("cheap", 1, "order")
+                                                                        props.setShowFilter(!props.showFilter)
+                                                                    }}
                                                                     checked={check === "cheap" ? true : false}
                                                                 />
                                                                 <p >ارزان ترین</p>
