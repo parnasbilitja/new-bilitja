@@ -78,6 +78,35 @@
     background-color: #f8f8f9;
     height: 100%;
 
+    .menubarcontainer{
+
+        width:100%;
+        height:60px;
+        background-color:white;
+        position:fixed;
+        z-index:1000;
+        bottom:0;
+        right:0;
+        padding:1rem 2rem;
+        .menubar{
+            width:100%;
+            display:flex;
+            justify-content:space-between;
+            .menubarItem{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                p{
+                    font-size: 12px;
+
+                }
+
+            }
+
+        }
+    }
+
+
     .hotels {
         background-color: #f8f8f9;
         min-height: 100vh;
@@ -348,19 +377,26 @@
         height: 100%;
         padding-top: 7rem;
     .searchContainer {
-        padding: 1.50rem .5rem !important;
+        position: relative;
+        padding: 2.725rem .725rem !important;
         border-radius: 20px;
         display: flex;
         justify-content: center;
         align-content: center;
         background-color: white;
-
         width: 300px;
         height: fit-content;
         .closeBtn{
-            width: 20px;
-            height: 20px;
-            border: 1px solid red;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            width: 25px;
+            height: 25px;
+            border: 1px solid #e20000;
+            position: absolute;
+            border-radius: 5px;
+            top: 15px;
+            right: 15px;
         }
 
     }

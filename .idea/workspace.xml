@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some changes">
+      <change afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/CollapseSearch.component.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/CollapseSearch.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/newTour.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/newTour.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,32 +45,33 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2ATIDXnZ1QNhk7yFfXBGBF793sA" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/PouyA/Desktop/bilitjassrnew&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/PouyA/Desktop/bilitjassrnew",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\projects\bilitjassrnew\public\Images" />
@@ -127,7 +134,10 @@
       <workItem from="1690886698583" duration="12423000" />
       <workItem from="1690964601757" duration="1934000" />
       <workItem from="1690966599059" duration="8971000" />
-      <workItem from="1691002548214" duration="470000" />
+      <workItem from="1691002548214" duration="4461000" />
+      <workItem from="1691008428746" duration="19000" />
+      <workItem from="1691008457400" duration="3233000" />
+      <workItem from="1691037976412" duration="7155000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -377,7 +387,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690993925746</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="some changes">
+      <option name="closed" value="true" />
+      <created>1691003275113</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1691003275114</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,10 +432,10 @@
     <MESSAGE value="edit pages front ui" />
     <MESSAGE value="flightPassengerform-expired-passport has been fixed.&#10;enamad logo has been rechanged." />
     <MESSAGE value="enamad logo has been rechanged." />
-    <MESSAGE value="some changes" />
     <MESSAGE value="eNamad has visual problem" />
     <MESSAGE value="hotel filter, hotel searchbox css-mobile have been rechanged" />
-    <option name="LAST_COMMIT_MESSAGE" value="hotel filter, hotel searchbox css-mobile have been rechanged" />
+    <MESSAGE value="some changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -446,11 +464,6 @@
           <url>file://$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx</url>
           <line>103</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx</url>
-          <line>165</line>
-          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

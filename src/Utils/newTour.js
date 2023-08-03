@@ -314,3 +314,26 @@ export const errStruct = (roomId, passenId, inputName) => {
        return "تخت اضافه";
    }
  };
+
+
+
+
+ ////////////////////////motion animate VAriant
+export const collapseVariants={
+  initial:{
+    height:'0',
+  },
+  animate:{
+    height:'auto'
+    ,transition:{duration:.5}},
+  exit:{height:'0',transition:{duration:.5}}
+}
+export const rotateVariants={
+  initial:{
+    rotate:0,
+  },
+  animate:{
+    rotate:90
+    ,transition:{duration:.2}},
+  exit:{rotate:0,transition:{duration:.5}}
+}

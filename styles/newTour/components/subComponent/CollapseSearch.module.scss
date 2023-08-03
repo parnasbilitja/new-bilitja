@@ -1,0 +1,75 @@
+.hotelSearchInput {
+  margin-bottom: 1rem;
+  width: 100% !important;
+
+
+  //padding: 1rem;
+  .filter_type{
+    display: flex;
+    justify-content: space-between;
+    p{
+      margin: 0;
+      font-size: 12px;
+    }
+
+    align-items: center;
+
+    padding:1rem;
+    background-color:#f3f3f3;
+    svg{
+      margin-left: 10px;
+    }
+    .collapse_btn{
+      //transform: rotate(90deg);
+      width:25px;
+      height:25px ;
+      background-color:red;
+      display:flex;
+      align-items:center;
+      border-radius: 5px;
+      justify-content:center;
+      svg{
+        fill: white !important;
+        margin: 0;
+
+      }
+    }
+
+  }
+
+
+
+  select {
+    border: 1px solid #cfd3d8;
+    border-radius: 0.25rem;
+    //position: relative;
+    height: 45px;
+    box-sizing: border-box;
+    padding: 0 !important;
+    //position: relative;
+    font-size: 14px;
+    width: 100%;
+    outline: none;
+  }
+  .inputContainer{
+    overflow-y: hidden;
+    width: 100%;
+    //padding-top: .5rem;
+    input {
+      border: 1px solid #999;
+      padding: 1rem;
+      border-radius: 0.25rem;
+      height: 45px;
+      font-size: 14px;
+      width: 100%;
+      outline: none;
+      margin: 0;
+
+      &:focus {
+        border: 2px solid black;
+      }
+    }
+  }
+
+
+}
