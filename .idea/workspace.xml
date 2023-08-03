@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some visual changes on filter menubar search (mobile)">
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some visual changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +132,7 @@
       <workItem from="1691002548214" duration="4461000" />
       <workItem from="1691008428746" duration="19000" />
       <workItem from="1691008457400" duration="3233000" />
-      <workItem from="1691037976412" duration="7496000" />
+      <workItem from="1691037976412" duration="8320000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -397,7 +398,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691051094543</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="some visual changes">
+      <option name="closed" value="true" />
+      <created>1691051331495</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1691051331495</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,7 +447,8 @@
     <MESSAGE value="hotel filter, hotel searchbox css-mobile have been rechanged" />
     <MESSAGE value="some changes" />
     <MESSAGE value="some visual changes on filter menubar search (mobile)" />
-    <option name="LAST_COMMIT_MESSAGE" value="some visual changes on filter menubar search (mobile)" />
+    <MESSAGE value="some visual changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="some visual changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

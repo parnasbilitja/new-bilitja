@@ -32,6 +32,7 @@ const HotelsSideBarSearch = (props) => {
                 .catch((err) => {
                     console.log(err);
                 });
+                    props.setShowFilter(!props.showFilter)
         }
     };
     ////////based on (cheapest or most expensive) or hotels name that went to search
@@ -53,6 +54,7 @@ const HotelsSideBarSearch = (props) => {
                 console.log(err);
             });
         setCheck(checkValue);
+                props.setShowFilter(!props.showFilter)
     };
 
     const variants={
