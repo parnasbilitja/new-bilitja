@@ -8,7 +8,7 @@ const CollapseSearchComponent = (props) => {
         <>
             <div className={styles.hotelSearchInput}>
         <div  className={styles['filter_type']} >
-            <div>
+            <div style={{display:'flex'}}>
                 {props.svg}
                 <p>{props.title}</p>
             </div>
