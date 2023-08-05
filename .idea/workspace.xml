@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/CollapseSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/CollapseSearch.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/CollapseSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/CollapseSearch.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +138,7 @@
       <workItem from="1691091764736" duration="696000" />
       <workItem from="1691133306102" duration="875000" />
       <workItem from="1691138692153" duration="5000" />
-      <workItem from="1691214146169" duration="1805000" />
+      <workItem from="1691214146169" duration="2548000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -438,7 +436,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691136663821</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="some visual changes HotelSidebarSearch">
+      <option name="closed" value="true" />
+      <created>1691216037898</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1691216037898</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -482,7 +488,8 @@
     <MESSAGE value="some visual changes" />
     <MESSAGE value="some logic changes" />
     <MESSAGE value="some visual changes----collapsesearch" />
-    <option name="LAST_COMMIT_MESSAGE" value="some visual changes----collapsesearch" />
+    <MESSAGE value="some visual changes HotelSidebarSearch" />
+    <option name="LAST_COMMIT_MESSAGE" value="some visual changes HotelSidebarSearch" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

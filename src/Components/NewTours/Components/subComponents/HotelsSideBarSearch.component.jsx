@@ -180,6 +180,7 @@ const HotelsSideBarSearch = (props) => {
                                                          inputType='checkbox'
                                 >
 
+                                    <div>
 
                                     <div className={styles.checkboxcontainer}>
                                         <input
@@ -206,6 +207,8 @@ const HotelsSideBarSearch = (props) => {
                                         />
                                         <p>گران ترین</p>
                                     </div>
+                                    </div>
+
 
                                 </CollapseSearchComponent>
                             </motion.div>

@@ -29,10 +29,9 @@ const CollapseSearchComponent = (props) => {
                         <motion.div variants={collapseVariants} initial='initial' animate='animate' exit='exit'
                                     className={styles['inputContainer']}>
                             <div style={{
-                                padding: '.5rem',
+                                padding: '.725rem',
                                 display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center'
+
                             }}>
                                 {props.children}
                             </div>
