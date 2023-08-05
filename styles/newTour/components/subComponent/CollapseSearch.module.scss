@@ -69,6 +69,19 @@
         border: 2px solid black;
       }
     }
+    .checkboxcontainer {
+      width: 100%;
+      display: flex;
+      .checkbox {
+        margin-left: 1rem;
+        width: 20px;
+        height: 20px;
+      }
+
+      p {
+        font-size: 12px;
+      }
+    }
   }
 
 
