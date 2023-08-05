@@ -13,6 +13,7 @@ const HotelsSideBarSearch = (props) => {
 
     const [check, setCheck] = useState("");
     const [searchTab, setSearchTab] = useState('input');
+    const [stars,setStars]=useState(null)
 
 
     const search = (e) => {
@@ -70,10 +71,12 @@ const HotelsSideBarSearch = (props) => {
         },
         exit: {right: '-400px', transition: {duration: .5}}
     }
-
     useEffect(() => {
         console.log('width', props.widthMobi)
     }, [props.widthMobi])
+
+
+
 
     return (
         <>
@@ -145,7 +148,7 @@ const HotelsSideBarSearch = (props) => {
                                         <option selected disabled>
                                             همه
                                         </option>
-                                        {props.stars?.map((star) => {
+                                        {[...new Set(props.stars)]?.map((star) => {
                                             return <option value={star}>{star} ستاره </option>;
                                         })}
                                     </select>
