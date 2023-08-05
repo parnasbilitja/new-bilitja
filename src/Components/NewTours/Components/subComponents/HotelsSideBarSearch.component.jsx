@@ -86,7 +86,7 @@ const HotelsSideBarSearch = (props) => {
                         <div className={styles.sidebarcontainer}>
                             <motion.div variants={variants} initial='initial' animate='animate' exit='exit'
                                         className={styles.sidebar}>
-                                <div style={{marginBottom: '20px'}}>
+                                <div style={{marginBottom: '15px', borderBottom:'2px solid #dee2e6' ,padding:'5px 0 8px 0'}}>
                                     <strong>
                                         فیلتر ها
                                     </strong>

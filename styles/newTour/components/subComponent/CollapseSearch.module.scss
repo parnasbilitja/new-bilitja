@@ -1,6 +1,7 @@
 .hotelSearchInput {
   margin-bottom: 1rem;
   width: 100% !important;
+  border: 2px solid #dee2e6;
 
 
   //padding: 1rem;
@@ -13,16 +14,15 @@
     }
 
     align-items: center;
-
     padding:1rem;
     background-color:#f3f3f3;
     svg{
-      margin-left: 10px;
+      margin-left: 5px;
     }
     .collapse_btn{
-      //transform: rotate(90deg);
-      width:25px;
-      height:25px ;
+
+      width:22px;
+      height:22px ;
       background-color:red;
       display:flex;
       align-items:center;
@@ -31,7 +31,6 @@
       svg{
         fill: white !important;
         margin: 0;
-
       }
     }
 

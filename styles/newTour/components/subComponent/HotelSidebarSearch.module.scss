@@ -1,13 +1,16 @@
 
 .p-sidebar {
-
+  height: fit-content;
+border: 1px solid  #dee2e6;
+  border-radius: 10px;
+  overflow: hidden;
   .sidebarcontainer {
 
 
     .sidebar {
 
+      height: 100%;
       padding: 1rem;
-
       background-color: white;
       .hotelSearchInput {
         margin-bottom: 1rem;
