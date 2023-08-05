@@ -96,8 +96,8 @@ const HotelsSideBarSearch = (props) => {
                                                          setSearchTab={(value) => setSearchTab(value)}
                                                          title='جستجوی نام هتل یااقامتگاه'
                                                          svg={<svg viewBox="0 0 512 512"
-                                                                   xmlns="http://www.w3.org/2000/svg" width='20px'
-                                                                   height='20px'><title/>
+                                                                   xmlns="http://www.w3.org/2000/svg" width='18px'
+                                                                   height='18px'><title/>
                                                              <g id="Hotel">
                                                                  <path
                                                                      d="M461.8812,29.9019h-228A17.0965,17.0965,0,0,0,216.783,47V465a17.0965,17.0965,0,0,0,17.0982,17.0981h76.0046V351h76V482.0981h75.9954A17.0965,17.0965,0,0,0,478.9793,465V47A17.0965,17.0965,0,0,0,461.8812,29.9019ZM304.1826,299.2255a28.5,28.5,0,1,1,28.5-28.5A28.4992,28.4992,0,0,1,304.1826,299.2255Zm0-80.2746a28.5,28.5,0,1,1,28.5-28.5A28.5007,28.5007,0,0,1,304.1826,218.9509Zm0-80.2745a28.5,28.5,0,1,1,28.5-28.5A28.4992,28.4992,0,0,1,304.1826,138.6764Zm87.3983,160.5491a28.5,28.5,0,1,1,28.5-28.5A28.4993,28.4993,0,0,1,391.5809,299.2255Zm0-80.2746a28.5,28.5,0,1,1,28.5-28.5A28.5007,28.5007,0,0,1,391.5809,218.9509Zm0-80.2745a28.5,28.5,0,1,1,28.5-28.5A28.4993,28.4993,0,0,1,391.5809,138.6764Z"/>
@@ -126,8 +126,8 @@ const HotelsSideBarSearch = (props) => {
                                 <CollapseSearchComponent searchTab={searchTab}
                                                          setSearchTab={(value) => setSearchTab(value)}
                                                          title='جستجوی براساس ستاره'
-                                                         svg={<svg version="1.1" viewBox="0 0 24 24" width="20px"
-                                                                   height='20px'>
+                                                         svg={<svg version="1.1" viewBox="0 0 24 24" width="18px"
+                                                                   height='18px'>
                                                              <g id="info"/>
                                                              <g id="icons">
                                                                  <path

@@ -206,35 +206,7 @@ const availableHotels = () => {
 
               <div className={styles["p-available"]}>
 
-                {showFilter && widthMobi<868?
 
-                      <HotelsSideBarSearch
-                          date={date}
-                          destination={destination}
-                          origin={origin}
-                          night={night}
-                          setHotels={(value) => setHotels(value)}
-                          stars={stars}
-                          hotels={hotels}
-                          widthMobi={widthMobi}
-                          setShowFilter={(value)=>setShowFilter(value)}
-                          showFilter={showFilter}
-                      />
-
-                    : widthMobi>868?
-                        <HotelsSideBarSearch
-                            date={date}
-                            destination={destination}
-                            origin={origin}
-                            night={night}
-                            setHotels={(value) => setHotels(value)}
-                            stars={stars}
-                            hotels={hotels}
-                            widthMobi={widthMobi}
-                            setShowFilter={(value)=>setShowFilter(value)}
-                            showFilter={showFilter}
-                        />:null
-                }
 
                 <div className={styles.content}>
                   {hotels?.length === 0 ? (
@@ -323,6 +295,35 @@ const availableHotels = () => {
                       })
                   )}
                 </div>
+                  {showFilter && widthMobi<868?
+
+                      <HotelsSideBarSearch
+                          date={date}
+                          destination={destination}
+                          origin={origin}
+                          night={night}
+                          setHotels={(value) => setHotels(value)}
+                          stars={stars}
+                          hotels={hotels}
+                          widthMobi={widthMobi}
+                          setShowFilter={(value)=>setShowFilter(value)}
+                          showFilter={showFilter}
+                      />
+
+                      : widthMobi>868?
+                          <HotelsSideBarSearch
+                              date={date}
+                              destination={destination}
+                              origin={origin}
+                              night={night}
+                              setHotels={(value) => setHotels(value)}
+                              stars={stars}
+                              hotels={hotels}
+                              widthMobi={widthMobi}
+                              setShowFilter={(value)=>setShowFilter(value)}
+                              showFilter={showFilter}
+                          />:null
+                  }
               </div>
             </div>
         ) : (
