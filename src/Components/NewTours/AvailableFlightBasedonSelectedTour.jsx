@@ -527,7 +527,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                             </span>
                           </div>
                           <div className={styles["flightDet_hotelEnt"]}>
-                            <label htmlFor="">خروج از هتل :</label>
+                            <label htmlFor="">خروج از هتل:</label>
                             <p>
                               {" "}
                               {flight.checkout_yesterday === true
