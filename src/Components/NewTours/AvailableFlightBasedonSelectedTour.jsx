@@ -472,7 +472,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                             </p>
                           </div>
                           <div className={styles["flightDet_timedate"]}>
-                            <span>{flight.time}</span>
+                            <span>{flight.time.slice(0,5)}</span>
                             <span>و</span>
                             <span>{MiladiToJalaliConvertor(flight.date)}</span>
                           </div>
@@ -520,7 +520,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                             </p>
                           </div>
                           <div className={styles["flightDet_timedate"]}>
-                            <span>{flight?.flight?.time}</span>
+                            <span>{flight?.flight?.time.slice(0,5)}</span>
                             <span>و</span>
                             <span>
                               {MiladiToJalaliConvertor(flight?.flight?.date)}
