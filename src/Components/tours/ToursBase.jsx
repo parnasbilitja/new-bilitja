@@ -24,9 +24,10 @@ import {
   setNightNumber,
   setOrgLoc,
 } from "../../Redux/newTours/Action";
-const TourSearchBox = dynamic(() =>
-  import("../NewTours/Components/TourSearchBox")
-);
+import TourSearchBox from "../NewTours/Components/TourSearchBox";
+// const TourSearchBox = dynamic(() =>
+//   import("../NewTours/Components/TourSearchBox")
+// );
 
 const ToursBase = (props) => {
   const [state, setState] = useState({

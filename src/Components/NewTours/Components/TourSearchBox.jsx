@@ -131,9 +131,7 @@ const TourSearchBox = (props) => {
 
     const handleChangeCre = (event) => {
         const {name, value} = event.target;
-        props.addCredentials({
-            [name]: value,
-        });
+
         if (name == "sourceName") {
             setState({...state, searchTermSource: value});
         } else {
