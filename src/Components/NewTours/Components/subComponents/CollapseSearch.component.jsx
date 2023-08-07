@@ -12,7 +12,7 @@ const CollapseSearchComponent = (props) => {
             }}>
                 <div style={{display: 'flex', alignItems: 'center'}}>
                     {props.svg}
-                    <p>{props.title}</p>
+                    <p style={{fontWeight:'800'}}>{props.title}</p>
                 </div>
                 <motion.div variants={rotateVariants} initial='initial'
                             animate={props.searchTab === props.inputType ? 'animate' : 0} exit='exit'
