@@ -300,7 +300,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
 
   const picGen = (picsNum) => {
     const gallary = [];
-    let number = picsNum > 3 ? 3 : picsNum;
+    let number = picsNum >= 3 ? 3 : picsNum;
     for (let i = 1; i <= number; i++) {
       gallary.push(
         <motion.div
@@ -336,7 +336,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                 <div className={styles["hotelDet-image"]}>
                   {hotel?.gallery && (
                     <Image
-                      src={hotel.gallery[0].url}
+                      src={hotel?.gallery[0].url}
                       height={200}
                       width={300}
                     />
@@ -344,7 +344,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                 </div>
                 <div className={styles["hotelDet-names"]}>
                   <div className={styles["hotelDet-names_star"]}>
-                    {startBuilder(+hotel.stars).map((x) => {
+                    {startBuilder(+hotel?.stars).map((x) => {
                       return x;
                     })}
                   </div>
@@ -813,7 +813,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                   <div
                                     className={
                                       styles[
-                                        room.chd_capacity === 0
+                                       room.chd_count >= room.chd_capacity
                                           ? "dis_decin"
                                           : "decin"
                                       ]
@@ -1216,7 +1216,11 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                 <div
                                   className={
                                     styles[
-                                      room.chd_capacity === 0
+                                        styles[
+                                            room.chd_count >= room.chd_capacity
+                                                ? "dis_decin"
+                                                : "decin"
+                                            ]
                                         ? "dis_decin"
                                         : "decin"
                                     ]
