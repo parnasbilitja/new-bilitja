@@ -80,7 +80,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
         } else {
             console.log("noooooooooooooo!");
             // setIsOpen(0);
-            Err("تعداد اتاق انتخابی بیش از ظرفیت موجود است");
+            Err("تعداد اتاق انتخابی بیش از گنجایش موجود نیست");
         }
     };
 
