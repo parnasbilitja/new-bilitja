@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import { selectAirports } from "../../../../Redux/Airports/airport.reselect";
 import { connect } from "react-redux";
 import { selectCredentials } from "../../../../Redux/Search/search.reselect";
@@ -7,10 +7,28 @@ import { setDestLoc, setOrgLoc } from "../../../../Redux/newTours/Action";
 import { Loader } from "../../../../Utils/Loader";
 import zIndex from "@mui/material/styles/zIndex";
 const Cities = (props) => {
+    const[Cities,setCities]=useState([])
   useEffect(() => {
     console.log("hi", props);
-  }, []);
+  }, [props.searchInputval]);
 
+  useEffect(()=>{
+      setCities(props.cities)
+  },[props.cities])
+
+    useEffect(()=>{
+        if(props.searchInputval){
+        let findCities=props.cities?.filter(city=>city?.name.includes(props.searchInputval))
+            if (findCities){
+            setCities(findCities)
+            }else{
+                setCities(props.cities)
+            }
+
+        }else {
+            setCities(props.cities)
+        }
+    },[props.searchInputval])
   return (
     <div
       style={{
@@ -32,13 +50,14 @@ const Cities = (props) => {
     >
       {/* //fill airport */}
 
-      {!props.cities ? (
+      {!Cities ? (
         <Loader />
       ) : (
-        props.cities?.map((city) => (
+        Cities?.map((city) => (
           <div
             onClick={() => {
               props.setCities({ name: city.name, code: city.code });
+              props.setSearchInput(city.name)
               props.closeSuggest(false);
               props.setFlightDate({
                 persianDate: "",

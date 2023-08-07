@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +141,7 @@
       <workItem from="1691214146169" duration="6881000" />
       <workItem from="1691309748134" duration="641000" />
       <workItem from="1691321932486" duration="1544000" />
-      <workItem from="1691387234547" duration="11304000" />
+      <workItem from="1691387234547" duration="18668000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -311,14 +311,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00038" summary="hotel filter, hotel searchbox css-mobile have been rechanged">
-      <option name="closed" value="true" />
-      <created>1690993925746</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1690993925746</updated>
-    </task>
     <task id="LOCAL-00039" summary="some changes">
       <option name="closed" value="true" />
       <created>1691003275113</created>
@@ -479,7 +471,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691403953675</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="toursearchbox loading has been change">
+      <option name="closed" value="true" />
+      <created>1691409907777</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1691409907777</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,7 +499,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="mobile edit index page" />
     <MESSAGE value="edit index page tab &amp; search" />
     <MESSAGE value="tour thumbnail responsive debug" />
     <MESSAGE value="edit front tourBase" />
@@ -524,7 +523,8 @@
     <MESSAGE value="checkbox style has been rechanged in HotelSidebarSearch.module.scss" />
     <MESSAGE value="some visual changes" />
     <MESSAGE value="some tiny changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="some tiny changes" />
+    <MESSAGE value="toursearchbox loading has been change" />
+    <option name="LAST_COMMIT_MESSAGE" value="toursearchbox loading has been change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

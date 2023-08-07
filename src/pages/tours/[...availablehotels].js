@@ -89,6 +89,7 @@ const availableHotels = () => {
           .then((res) => {
             const destLoc = res.data.data;
             const finddest = destLoc.find((o) => o.code === destination);
+
             dispatch(setDestLoc(finddest));
           })
           .catch((err) => {

@@ -36,6 +36,7 @@ const TourSearchBox = (props) => {
             .then((res) => {
                 const destLoc = res.data.data;
                 setDestCities(destLoc);
+
             })
             .catch((err) => {
                 console.log(err);
@@ -67,6 +68,8 @@ const TourSearchBox = (props) => {
     //to get available date & night
     const [dateAndNight, setDateAndNight] = useState([]);
     const [nights, setNights] = useState([]);
+    const [inputSearchDest,setInputSearchDest]=useState('')
+    const [inputSearchOrg,setInputSearchOrg]=useState('')
 
     const router = useRouter();
 
@@ -82,6 +85,7 @@ const TourSearchBox = (props) => {
             !isEmpty(props.destandorgcities.destination) &&
             !isEmpty(props.destandorgcities.origin)
         ) {
+
             axios
                 .get(
                     `https://hotelobilit-api.iran.liara.run/api/v1/cities/getDates/${props.destandorgcities.origin.code}/${props.destandorgcities.destination.code}`
@@ -160,17 +164,9 @@ const TourSearchBox = (props) => {
         setState({...state, open: value});
     };
     // for mobile
-    const managePopUpSource = (value) => {
-        setState({...state, openSource: value, mobileSearchTerm: ""});
-    };
+
     // for mobile
-    const managePopUpDestination = (value) => {
-        setState({...state, openDestination: value, mobileSearchTerm: ""});
-    };
-    // for mobile
-    const mobileHandleSearchTerm = (value) => {
-        setState({...state, mobileSearchTerm: value});
-    };
+
     // for desktop
     const manageSuggestSource = (value) => {
         setState({...state, suggestSource: value, searchTermSource: ""});
@@ -183,6 +179,8 @@ const TourSearchBox = (props) => {
             searchTermDestination: "",
         });
     };
+
+
 
     const validation = () => {
         const {
@@ -218,18 +216,13 @@ const TourSearchBox = (props) => {
                             style={{marginTop: "3px", zIndex: "100"}}
                         ></i>
                         <PrimaryTextInput
-                            value={props.destandorgcities.origin.name}
+                            value={inputSearchOrg}
                             name="sourceName"
                             onClick={(e) => {
-                                // for mobile
-                                // if (width <= mobileSize) {
-                                //   e.preventDefault();
-                                //   managePopUpSource(true);
-                                // } else {
                                 manageSuggestSource(true);
-                                // }
                             }}
-                            onChange={handleChangeCre}
+                            onChange={(e)=> setInputSearchOrg(e.target.value)}
+                            // onChange={handleChangeCre}
                             onFocus={handleFocus}
                             onBlur={handleFocusOut}
                             placeholder={"مبدا خود را وارد کنید"}
@@ -244,6 +237,8 @@ const TourSearchBox = (props) => {
                                 setcitiesData={(val) => setCitiesData(val)}
                                 setFlightDate={(value) => props.setFlightDate(value)}
                                 setNights={(value) => setNights(value)}
+                                searchInputval={inputSearchOrg}
+                                setSearchInput={(val)=>setInputSearchOrg(val)}
                             />
                         ) : null}
                     </div>
@@ -265,12 +260,13 @@ const TourSearchBox = (props) => {
                             className="bilitja  icon-plane-departure form-input-icon rotate-upsidedown-reverse "
                         ></i>
                         <PrimaryTextInput
-                            value={props.destandorgcities.destination.name}
+                            value={inputSearchDest}
                             name="destinationName"
                             onClick={(e) => {
                                 manageSuggestDestination(true);
                             }}
-                            onChange={handleChangeCre}
+                            // onChange={handleChangeCre}
+                            onChange={(e)=> setInputSearchDest(e.target.value)}
                             onFocus={handleFocus}
                             onBlur={handleFocusOut}
                             placeholder={"مقصد خود را وارد کنید"}
@@ -284,6 +280,8 @@ const TourSearchBox = (props) => {
                                 setCities={(value) => props.setDestLoc(value)}
                                 setFlightDate={(value) => props.setFlightDate(value)}
                                 setNights={(value) => setNights(value)}
+                                searchInputval={inputSearchDest}
+                                setSearchInput={(val)=>setInputSearchDest(val)}
                             />
                         ) : null}
                     </div>
