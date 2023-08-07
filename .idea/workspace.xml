@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,7 +141,7 @@
       <workItem from="1691214146169" duration="6881000" />
       <workItem from="1691309748134" duration="641000" />
       <workItem from="1691321932486" duration="1544000" />
-      <workItem from="1691387234547" duration="4732000" />
+      <workItem from="1691387234547" duration="7360000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -306,14 +311,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00034" summary="eNamad has visual problem">
-      <option name="closed" value="true" />
-      <created>1690890554249</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1690890554249</updated>
-    </task>
     <task id="LOCAL-00035" summary="eNamad has visual problem">
       <option name="closed" value="true" />
       <created>1690890664106</created>
@@ -474,7 +471,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691392322112</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="err text hasbeen rechanged">
+      <option name="closed" value="true" />
+      <created>1691393026825</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1691393026825</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -494,7 +499,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="input placeholder" />
     <MESSAGE value="edit tour &amp; index page &amp; create tour special" />
     <MESSAGE value="index page tab edit fly" />
     <MESSAGE value="mobile edit index page" />
@@ -519,7 +523,8 @@
     <MESSAGE value="date fromat has been fixed (Availabelfightbasedonselectedtour)" />
     <MESSAGE value="some visual fix" />
     <MESSAGE value="some visual changes on roomcounter button based on available room" />
-    <option name="LAST_COMMIT_MESSAGE" value="some visual changes on roomcounter button based on available room" />
+    <MESSAGE value="err text hasbeen rechanged" />
+    <option name="LAST_COMMIT_MESSAGE" value="err text hasbeen rechanged" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

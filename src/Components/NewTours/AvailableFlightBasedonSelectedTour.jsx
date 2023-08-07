@@ -495,7 +495,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                     </div>
                                                     <div className={styles["flight_company_remaintour"]}>
                                                         <p className={styles["p-middle"]}>
-                                                            تعداد موجودی پرواز :{flight.capacity}
+                                                             تعداد موجودی پرواز : {flight.capacity}
                                                         </p>
                                                     </div>
                                                     <div className={styles["flight_company_logo"]}>

@@ -159,8 +159,8 @@ const HotelsSideBarSearch = (props) => {
                                                          setSearchTab={(value) => setSearchTab(value)}
                                                          title='مرتب سازی براساس'
                                                          svg={<svg id="Layer_1" viewBox="0 0 100 100"
-                                                                   xmlns="http://www.w3.org/2000/svg" height="35px"
-                                                                   width="35px">
+                                                                   xmlns="http://www.w3.org/2000/svg" height="32px"
+                                                                   width="32px">
                                                              <g>
                                                                  <rect fill="none" height="5.9" width="20px" x="32.4"
                                                                        y="42.7"/>
