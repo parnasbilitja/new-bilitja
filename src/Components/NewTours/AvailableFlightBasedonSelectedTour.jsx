@@ -300,8 +300,8 @@ const AvailableFlightBasedonSelectedTour = (props) => {
 
   const picGen = (picsNum) => {
     const gallary = [];
-    let number = picsNum > 4 ? 4 : picsNum;
-    for (let i = 2; i <= number; i++) {
+    let number = picsNum > 3 ? 3 : picsNum;
+    for (let i = 1; i <= number; i++) {
       gallary.push(
         <motion.div
           whileHover={{ translateY: "-15px" }}
