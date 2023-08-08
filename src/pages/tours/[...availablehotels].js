@@ -33,9 +33,7 @@ const availableHotels = () => {
   /////////////////////////////
   const searchData = useSelector((state) => state.destandoriginCitiesTour);
 
-  useEffect(() => {
-    console.log("f", searchData);
-  }, [searchData]);
+
   //state for getting av hotel from api
   const [hotels, setHotels] = useState([]);
 
@@ -120,9 +118,9 @@ const availableHotels = () => {
     );
   }, [router, destination, origin, date, night]);
 
-  useEffect(() => {
-    console.log("popsd", hotels);
-  }, [hotels]);
+  // useEffect(() => {
+  //   console.log("popsd", hotels);
+  // }, [hotels]);
 
   //////////////////width
 
