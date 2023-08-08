@@ -19,24 +19,8 @@ const NewTourBase = () => {
   useEffect(() => {
     setState({ ...state, width: window.innerWidth });
   }, []);
-  const toursHandler = (search) => {
-    setState({ ...state, city: search.slug });
-    axios
-      .post("https://api.hamnavaz.com/api/v1/tour/getTours", {
-        city: state.city,
-      })
-      .then((res) => {
-        SetTourData(res.data.data);
-      })
-      .catch((err) => SetTourData(err.message));
-  };
-  const handleClickScroll = () => {
-    const element = document.getElementById("list");
-    if (element) {
-      // 👇 Will scroll smoothly to the top of the next section
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+
+
   return (
     <div>
       <div style={{ marginBottom: "2rem" }}>

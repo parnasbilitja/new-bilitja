@@ -20,13 +20,30 @@ import {
     setOrgLoc,
     setDestLoc,
     setFlightDate,
-    setNightNumber,
+    setNightNumber, setLoader,
 } from "../../../Redux/newTours/Action";
 import DropdownComponent from "./subComponents/Dropdown.component";
 import {isEmpty, jalaliDateReformater} from "../../../Utils/newTour";
 import {Err, NotifAlert} from "./NotifAlert.component";
 
 const TourSearchBox = (props) => {
+
+    const router = useRouter();
+    const [width, setWidth] = useState();
+    const [citiesData, setCitiesData] = useState({
+        origin: {},
+        destination: {},
+        date: {},
+        night: "",
+    });
+    const [destCities, setDestCities] = useState([]);
+    const [orgCities, setOrgCities] = useState([]);
+    //to get available date & night
+    const [dateAndNight, setDateAndNight] = useState([]);
+    const [nights, setNights] = useState([]);
+    const [inputSearchDest,setInputSearchDest]=useState('')
+    const [inputSearchOrg,setInputSearchOrg]=useState('')
+
     const getDestandOrgCities = () => {
         axios
             .post("https://hotelobilit-api.iran.liara.run/api/v1/cities", {
@@ -55,23 +72,6 @@ const TourSearchBox = (props) => {
                 console.log(err);
             });
     };
-
-    const [width, setWidth] = useState();
-    const [citiesData, setCitiesData] = useState({
-        origin: {},
-        destination: {},
-        date: {},
-        night: "",
-    });
-    const [destCities, setDestCities] = useState([]);
-    const [orgCities, setOrgCities] = useState([]);
-    //to get available date & night
-    const [dateAndNight, setDateAndNight] = useState([]);
-    const [nights, setNights] = useState([]);
-    const [inputSearchDest,setInputSearchDest]=useState('')
-    const [inputSearchOrg,setInputSearchOrg]=useState('')
-
-    const router = useRouter();
 
     useEffect(() => {
         setWidth(window.innerWidth);
@@ -231,8 +231,9 @@ const TourSearchBox = (props) => {
                             }}
                             onChange={(e)=> setInputSearchOrg(e.target.value)}
                             // onChange={handleChangeCre}
-                            onFocus={handleFocus}
+                            // onFocus={handleFocus}
                             onBlur={handleFocusOut}
+                            // onFocus={()=>setInputSearchOrg('')}
                             placeholder={"مبدا خود را وارد کنید"}
                         />
                         {state.suggestSource ? (
@@ -275,7 +276,8 @@ const TourSearchBox = (props) => {
                             }}
                             // onChange={handleChangeCre}
                             onChange={(e)=> setInputSearchDest(e.target.value)}
-                            onFocus={handleFocus}
+                            // onFocus={handleFocus}
+                            onFocus={()=>setInputSearchDest('')}
                             onBlur={handleFocusOut}
                             placeholder={"مقصد خود را وارد کنید"}
                         />
@@ -332,45 +334,12 @@ const TourSearchBox = (props) => {
                                 const stDate = jalaliDateReformater(
                                     props.destandorgcities.date.persianDate
                                 );
-                                // let checkin =
-                                //   props.destandorgcities?.night[0]?.checkin_tomorrow;
-                                // let checkout =
-                                //   props.destandorgcities?.night[0]?.checkout_yesterday;
-                                // let finalDate = jalaliDateReformater(
-                                //   props.destandorgcities.date.persianDate
-                                // );
-                                // let finalnight = props.destandorgcities?.night[0]?.night;
-                                // if (!checkin && !checkout) {
-                                //   finalDate = jalaliDateReformater(
-                                //     MiladiToJalaliConvertor(
-                                //       moment(props.destandorgcities.date.miladiDate)
-                                //         .add(1, "days")
-                                //         .format("YYYY-MM-DD")
-                                //     )
-                                //   );
-                                // } else if (!checkin && checkout) {
-                                //   finalnight = props.destandorgcities?.night[0]?.night - 1;
-                                // } else {
-                                //   finalnight = props.destandorgcities?.night[0]?.night - 1;
-                                //   finalDate = jalaliDateReformater(
-                                //     MiladiToJalaliConvertor(
-                                //       moment(props.destandorgcities.date.miladiDate)
-                                //         .add(1, "days")
-                                //         .format("YYYY-MM-DD")
-                                //     )
-                                //   );
-                                // }
                                 // debugger;
                                 console.log(props?.destandorgcities?.night[0]);
-
                                 router.push(
                                     `/tours/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities?.night}`
                                 );
-                                // console.log("vali", validation());
-                                // router.push(
-                                //   `/tours/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities?.night[0]?.night}`
-                                // );
-                                console.log("vali", validation());
+                                props.setLoader(true)
                             }
                         }}
                     >
@@ -412,6 +381,7 @@ const mapDispatchesToProps = (dispatch) => ({
     setDestLoc: async (value) => dispatch(setDestLoc(value)),
     setFlightDate: async (value) => dispatch(setFlightDate(value)),
     setNightNumber: async (value) => dispatch(setNightNumber(value)),
+    setLoader:async(value)=>dispatch(setLoader(value))
 });
 export default withRouter(
     connect(mapStatesToProps, mapDispatchesToProps)(TourSearchBox)

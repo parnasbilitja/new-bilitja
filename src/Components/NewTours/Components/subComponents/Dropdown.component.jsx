@@ -49,9 +49,7 @@ const DropdownComponent = (props) => {
 
         {filteredNights?.map((nightItem) => {
           return <option value={nightItem.night}>
-
             {nightItem.night} شب
-
             </option>;
         })}
       </select>

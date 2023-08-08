@@ -1,8 +1,12 @@
+import {loader} from "next/dist/build/webpack/config/helpers";
+
 const initialState = {
   origin: {name:'',code:''},
   destination: {name:'',code:''},
   date: {},
   night: "",
+
+  loader:false
 };
 
 const NewTourReducer = (state = initialState, action) => {
@@ -22,12 +26,17 @@ const NewTourReducer = (state = initialState, action) => {
         ...state,
         date: action.payload,
       };
+
     case "SET_NIGHT_NUMBER":
       return {
         ...state,
         night: action.payload,
       };
-
+      case "SET_LOADER":
+      return {
+        ...state,
+        loader:action.payload,
+      };
     default:
       return state;
   }

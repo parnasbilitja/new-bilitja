@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import TourSearchBox from "../../Components/NewTours/Components/TourSearchBox";
 import styles from "../../../styles/AvailableHotels.module.scss";
 import Image from "next/image";
-import {setDestLoc, setFlightDate, setOrgLoc,} from "../../Redux/newTours/Action";
+import {setDestLoc, setFlightDate, setLoader, setOrgLoc,} from "../../Redux/newTours/Action";
 import {jalaliDateReformater, jalaliToMiladiConvertor, numberWithCommas, startBuilder,} from "../../Utils/newTour";
 import NavHandler from "../../Components/share/NavHandler";
 import {Loader} from "../../Utils/Loader";
@@ -72,6 +72,7 @@ const availableHotels = () => {
           .then((res) => {
             setHotels(res?.data?.data);
             setStars(hotelstarPicker(res?.data?.data));
+            dispatch(setLoader(false))
           })
           .catch((err) => {
             console.log(err);
@@ -109,7 +110,6 @@ const availableHotels = () => {
             console.log(err);
           });
     }
-
     dispatch(
         setFlightDate({
           persianDate: newDate,
@@ -118,9 +118,9 @@ const availableHotels = () => {
     );
   }, [router, destination, origin, date, night]);
 
-  // useEffect(() => {
-  //   console.log("popsd", hotels);
-  // }, [hotels]);
+  useEffect(() => {
+    console.log("popsd", searchData);
+  }, [searchData]);
 
   //////////////////width
 
@@ -141,7 +141,6 @@ const availableHotels = () => {
 
   const [showFilter, setShowFilter] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(false);
-
   return (
       <div className={styles["main-section"]}>
         <NavHandler />
@@ -207,7 +206,7 @@ const availableHotels = () => {
 
 
                 <div className={styles.content}>
-                  {hotels?.length === 0 ? (
+                  { searchData?.loader===true ? (
                       <div
                           style={{
                             width: "100%",

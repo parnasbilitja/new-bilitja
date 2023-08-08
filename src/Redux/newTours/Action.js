@@ -25,3 +25,9 @@ export const setNightNumber = (night) => {
     payload: night,
   };
 };
+export const setLoader = (loader) => {
+  return {
+    type: "SET_LOADER",
+    payload: loader,
+  };
+};
