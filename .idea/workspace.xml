@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some visual changes in toursearchbox">
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Dropdown.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Dropdown.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/NewTourBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/NewTourBase.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/newTours/Action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/newTours/Action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/newTours/newToursReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/newTours/newToursReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +140,7 @@
       <workItem from="1691214146169" duration="6881000" />
       <workItem from="1691309748134" duration="641000" />
       <workItem from="1691321932486" duration="1544000" />
-      <workItem from="1691387234547" duration="28518000" />
+      <workItem from="1691387234547" duration="29314000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -314,14 +310,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00042" summary="some logic changes">
-      <option name="closed" value="true" />
-      <created>1691052502368</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1691052502368</updated>
-    </task>
     <task id="LOCAL-00043" summary="some logic changes">
       <option name="closed" value="true" />
       <created>1691087984649</created>
@@ -482,7 +470,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691476324156</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="loader logic ([...availableHotel])  has been change for waiting until loading data">
+      <option name="closed" value="true" />
+      <created>1691483941384</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1691483941384</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -502,7 +498,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="edit tour format number" />
     <MESSAGE value="tour list edit" />
     <MESSAGE value="edit pages front ui" />
     <MESSAGE value="flightPassengerform-expired-passport has been fixed.&#10;enamad logo has been rechanged." />
@@ -527,7 +522,8 @@
     <MESSAGE value="toursearchbox input search has been created" />
     <MESSAGE value="some bugs were fixed" />
     <MESSAGE value="some visual changes in toursearchbox" />
-    <option name="LAST_COMMIT_MESSAGE" value="some visual changes in toursearchbox" />
+    <MESSAGE value="loader logic ([...availableHotel])  has been change for waiting until loading data" />
+    <option name="LAST_COMMIT_MESSAGE" value="loader logic ([...availableHotel])  has been change for waiting until loading data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

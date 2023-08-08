@@ -116,6 +116,7 @@ const HotelsSideBarSearch = (props) => {
                                 <input
                                     type="text"
                                     placeholder="نام هتل را وارد کنید"
+
                                     value={searchInput}
                                     onChange={(e) => setSearchInput(e.target.value)}
                                     onKeyDown={(e) => {

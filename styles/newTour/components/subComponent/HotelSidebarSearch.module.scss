@@ -72,7 +72,7 @@ border: 1px solid  #dee2e6;
           overflow-y: hidden;
           width: 100%;
           input {
-            border: 1px solid #999;
+            border: 1px solid red;
             padding: 1rem;
             border-radius: 0.25rem;
             height: 45px;
@@ -92,6 +92,13 @@ border: 1px solid  #dee2e6;
 
     }
 
+  input[type="text"]{
+    border: 1px solid #cfd3d8;
+  }
+    select{
+    border: 1px solid #cfd3d8;
+  }
+
     .checkboxcontainer {
       margin-bottom: 10px;
       width: 100%;
@@ -104,6 +111,8 @@ border: 1px solid  #dee2e6;
         margin: 0;
         margin-right: 6px;
       }
+
+
 
       input {
         margin-left: .4rem !important;
