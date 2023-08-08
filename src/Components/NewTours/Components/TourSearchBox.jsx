@@ -202,6 +202,14 @@ const TourSearchBox = (props) => {
         return true;
     };
 
+    useEffect(()=>{
+        if(props.selectedSrc&&props.selectedDest){
+            setInputSearchOrg(props.selectedSrc.name)
+            setInputSearchDest(props.selectedDest.name)
+            console.log(props.selectedDest)
+        }
+
+    },[props.selectedSrc,props.selectedDest])
     return (
         <>
             <NotifAlert/>
