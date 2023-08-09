@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from "react";
 import styles from "../../../../styles/TourSearchBox.module.scss";
 import PrimaryButton from "../../../sources/component/PrimaryButton.component";
-import PrimaryTextInputMobile from "../../../sources/component/PrimaryTextInputMobile";
 import PrimaryTextInput from "../../../sources/component/PrimaryTextInput.component";
 import Cities from "./subComponents/Cities.component";
 import PopUpWide from "./subComponents/PopUpWide.component";
 import CalendarComponent from "./calendar/Calendar.component";
-import {connect, useDispatch, useSelector} from "react-redux";
+import {connect} from "react-redux";
 import {selectCredentials} from "../../../Redux/Search/search.reselect";
 import {
     addCredentials,
@@ -85,7 +84,6 @@ const [prevDest,setPrevDest]=useState({})
             !isEmpty(props.destandorgcities.destination) &&
             !isEmpty(props.destandorgcities.origin)
         ) {
-
             axios
                 .get(
                     `https://hotelobilit-api.iran.liara.run/api/v1/cities/getDates/${props.destandorgcities.origin.code}/${props.destandorgcities.destination.code}`
@@ -316,11 +314,9 @@ const [prevDest,setPrevDest]=useState({})
                             e.preventDefault();
                             if(dateAndNight.length===0) {
                                 Err('در حال حاضر پروازی برای مبدا و مقصد انتخاب شده، موجود نیست')
-                                console.log(dateAndNight)
                             }else {
                                 managePopUpCalendar(true);
                             }
-
                         }}
 
                     />
@@ -339,7 +335,7 @@ const [prevDest,setPrevDest]=useState({})
                         onClick={(e) => {
                             if (validation() === false) {
                                 Err("لطفا اطلاعات را کامل وارد کنید");
-                                console.log("valis", validation());
+
                             } else {
                                 e.preventDefault();
                                 const stDate = jalaliDateReformater(

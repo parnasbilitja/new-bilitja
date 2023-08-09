@@ -5,7 +5,7 @@ import { selectCredentials } from "../../../../Redux/Search/search.reselect";
 import { addCredentials } from "../../../../Redux/Search/search.action";
 import { setDestLoc, setOrgLoc } from "../../../../Redux/newTours/Action";
 import { Loader } from "../../../../Utils/Loader";
-import zIndex from "@mui/material/styles/zIndex";
+
 const Cities = (props) => {
     const[Cities,setCities]=useState([])
   useEffect(() => {
@@ -32,14 +32,13 @@ const Cities = (props) => {
   return (
     <div
       style={{
-        minHeight: "100px",
-        maxHeight: "800px",
+        height: "auto",
+        maxHeight: "300px",
         overflowY: "auto",
         // position: "absolute",
         background: "#fff",
         borderRadius: 8,
         width: "100%",
-        height: "80px",
         marginTop: "12px",
         padding: "5px 12px",
         cursor: "pointer",
@@ -83,7 +82,5 @@ const mapStatesToProps = (state) => ({
   credentials: selectCredentials(state),
   dest: state.destandoriginCitiesTour,
 });
-const mapDispatchesToProps = (dispatch) => ({
-  setCredentials: (value) => dispatch(addCredentials(value)),
-});
-export default connect(mapStatesToProps, mapDispatchesToProps)(Cities);
+
+export default connect(mapStatesToProps, null)(Cities);

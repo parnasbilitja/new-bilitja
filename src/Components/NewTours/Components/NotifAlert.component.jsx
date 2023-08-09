@@ -18,7 +18,7 @@ export const NotifAlert = () => {
       theme="colored"
       style={{
         fontSize: "12px",
-        textAlign: "center",
+        textAlign: "right",
       }}
     />
   );
