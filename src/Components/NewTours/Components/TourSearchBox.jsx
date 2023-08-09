@@ -312,10 +312,17 @@ const [prevDest,setPrevDest]=useState({})
                         placeholder={" تاریخ پرواز رفت"}
                         readOnly="true"
                         value={props.destandorgcities.date.persianDate}
-                        onFocus={(e) => {
+                        onClick={(e) => {
                             e.preventDefault();
-                            managePopUpCalendar(true);
+                            if(dateAndNight.length===0) {
+                                Err('تاریخ پروازی برای شهرهای مبدا و مقصد انتخاب شده، موجود نیست')
+                                console.log(dateAndNight)
+                            }else {
+                                managePopUpCalendar(true);
+                            }
+
                         }}
+
                     />
                 </div>
                 <div style={{padding: ".5rem 0"}}>
