@@ -315,7 +315,7 @@ const [prevDest,setPrevDest]=useState({})
                         onClick={(e) => {
                             e.preventDefault();
                             if(dateAndNight.length===0) {
-                                Err('تاریخ پروازی برای شهرهای مبدا و مقصد انتخاب شده، موجود نیست')
+                                Err('پروازی برای شهرهای مبدا و مقصد انتخاب شده، موجود نیست')
                                 console.log(dateAndNight)
                             }else {
                                 managePopUpCalendar(true);
