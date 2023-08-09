@@ -43,7 +43,7 @@ const TourSearchBox = (props) => {
     const [nights, setNights] = useState([]);
     const [inputSearchDest,setInputSearchDest]=useState('')
     const [inputSearchOrg,setInputSearchOrg]=useState('')
-
+const [prevDest,setPrevDest]=useState({})
     const getDestandOrgCities = () => {
         axios
             .post("https://hotelobilit-api.iran.liara.run/api/v1/cities", {
@@ -108,6 +108,8 @@ const TourSearchBox = (props) => {
             );
             setNights(nightsNumber);
         }
+        setInputSearchDest(props.destandorgcities.destination.name)
+        setInputSearchOrg(props.destandorgcities.origin.name)
         // else {
         //   return false;
         // }
@@ -231,7 +233,7 @@ const TourSearchBox = (props) => {
                             }}
                             onChange={(e)=> setInputSearchOrg(e.target.value)}
                             // onChange={handleChangeCre}
-                            // onFocus={handleFocus}
+                            onFocus={()=> props.setOrgLoc({name:'',code:''})}
                             onBlur={handleFocusOut}
                             // onFocus={()=>setInputSearchOrg('')}
                             placeholder={"مبدا خود را وارد کنید"}
@@ -277,8 +279,10 @@ const TourSearchBox = (props) => {
                             // onChange={handleChangeCre}
                             onChange={(e)=> setInputSearchDest(e.target.value)}
                             // onFocus={handleFocus}
-                            onFocus={()=>setInputSearchDest('')}
-                            onBlur={handleFocusOut}
+                            onFocus={()=> {
+                                props.setDestLoc({name:'',code:''})
+                            }}
+                            // onBlur={()=>setInputSearchDest(props.destandorgcities.destination.name)}
                             placeholder={"مقصد خود را وارد کنید"}
                         />
                         {state.suggestDestination ? (
@@ -291,7 +295,7 @@ const TourSearchBox = (props) => {
                                 setFlightDate={(value) => props.setFlightDate(value)}
                                 setNights={(value) => setNights(value)}
                                 searchInputval={inputSearchDest}
-                                setSearchInput={(val)=>setInputSearchDest(val)}
+                                // setSearchInput={(val)=>setInputSearchDest(val)}
                             />
                         ) : null}
                     </div>

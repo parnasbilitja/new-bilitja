@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +140,8 @@
       <workItem from="1691214146169" duration="6881000" />
       <workItem from="1691309748134" duration="641000" />
       <workItem from="1691321932486" duration="1544000" />
-      <workItem from="1691387234547" duration="29314000" />
+      <workItem from="1691387234547" duration="33778000" />
+      <workItem from="1691558932095" duration="4076000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -310,14 +311,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00043" summary="some logic changes">
-      <option name="closed" value="true" />
-      <created>1691087984649</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1691087984649</updated>
-    </task>
     <task id="LOCAL-00044" summary="some visual changes----collapsesearch">
       <option name="closed" value="true" />
       <created>1691136663821</created>
@@ -478,7 +471,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691483941384</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="some visual changes in HotelSidebarSearch.module.scss">
+      <option name="closed" value="true" />
+      <created>1691484611965</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1691484611965</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -498,7 +499,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="tour list edit" />
     <MESSAGE value="edit pages front ui" />
     <MESSAGE value="flightPassengerform-expired-passport has been fixed.&#10;enamad logo has been rechanged." />
     <MESSAGE value="enamad logo has been rechanged." />
@@ -523,7 +523,8 @@
     <MESSAGE value="some bugs were fixed" />
     <MESSAGE value="some visual changes in toursearchbox" />
     <MESSAGE value="loader logic ([...availableHotel])  has been change for waiting until loading data" />
-    <option name="LAST_COMMIT_MESSAGE" value="loader logic ([...availableHotel])  has been change for waiting until loading data" />
+    <MESSAGE value="some visual changes in HotelSidebarSearch.module.scss" />
+    <option name="LAST_COMMIT_MESSAGE" value="some visual changes in HotelSidebarSearch.module.scss" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
