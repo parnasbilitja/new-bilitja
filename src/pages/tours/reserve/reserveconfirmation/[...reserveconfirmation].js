@@ -199,6 +199,7 @@ const ReservationConfirmation = () => {
                       <span>1000</span> تومان
                     </p> */}
 
+
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
