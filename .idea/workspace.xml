@@ -154,7 +154,7 @@
       <workItem from="1692167173395" duration="121000" />
       <workItem from="1692168520944" duration="4269000" />
       <workItem from="1692188250534" duration="631000" />
-      <workItem from="1692265605768" duration="5231000" />
+      <workItem from="1692265605768" duration="5987000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -324,22 +324,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00050" summary="date fromat has been fixed (Availabelfightbasedonselectedtour)">
-      <option name="closed" value="true" />
-      <created>1691322720587</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1691322720587</updated>
-    </task>
-    <task id="LOCAL-00051" summary="date fromat has been fixed (Availabelfightbasedonselectedtour)">
-      <option name="closed" value="true" />
-      <created>1691322875282</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1691322875282</updated>
-    </task>
     <task id="LOCAL-00052" summary="some visual fix">
       <option name="closed" value="true" />
       <created>1691390140878</created>
@@ -492,7 +476,23 @@
       <option name="project" value="LOCAL" />
       <updated>1692270565734</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied">
+      <option name="closed" value="true" />
+      <created>1692270898787</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1692270898787</updated>
+    </task>
+    <task id="LOCAL-00072" summary="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied">
+      <option name="closed" value="true" />
+      <created>1692270909815</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1692270909816</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
