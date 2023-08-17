@@ -158,6 +158,7 @@ const ReservationConfirmation = () => {
                     //   exit="exit"
                     //   style={{ overflowX: "auto" }}
                     // >
+
                       <RoomsInfo
                         reservedRooms={reservedroom}
                         is_domestic={hotelDet.hotel.is_domestic}
