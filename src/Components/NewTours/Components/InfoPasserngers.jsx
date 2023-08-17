@@ -66,7 +66,6 @@ const InfoPasserngers = ({
     switch (type) {
       case "adl":
         return adlPrc;
-
       case "chd":
         return chdPrc;
       case "inf":

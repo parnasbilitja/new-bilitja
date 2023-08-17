@@ -1,4 +1,3 @@
-import {loader} from "next/dist/build/webpack/config/helpers";
 
 const initialState = {
   origin: {name:'',code:''},

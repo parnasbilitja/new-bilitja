@@ -23,6 +23,7 @@ import CitySearchReducer from "./citiesSearch/Reducer";
 import AllHotelReducer from "./allHotels/Reducer";
 import NewTourReducer from "./newTours/newToursReducer";
 
+
 const persistConfig = {
   key: "root",
   storage,
@@ -50,5 +51,6 @@ const rootReducer = combineReducers({
   AzhanslistReducer: AzhanslistReducer,
   reports: ReportReducer,
   destandoriginCitiesTour: NewTourReducer,
+
 });
 export default persistReducer(persistConfig, rootReducer);

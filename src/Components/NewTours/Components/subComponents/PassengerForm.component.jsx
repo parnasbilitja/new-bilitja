@@ -89,7 +89,7 @@ const PassengerForm = (props) => {
             type,
             id: passId,
             price: props.prcTypeBase(type),
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.name==='passport'? e.target.value.toUpperCase(): e.target.value,
           });
           setLatinCheck({
             ...latinCheck,
@@ -495,6 +495,7 @@ const PassengerForm = (props) => {
                 <input
                   type="text"
                   placeholder="شماره پاسپورت"
+                  value={indexidfinder(props.passId, props.id, "passport")}
                   maxLength="9"
                   onChange={(e) =>
                     FormDataPicker(

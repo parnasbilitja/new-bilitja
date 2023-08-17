@@ -55,7 +55,7 @@ const Cities = (props) => {
         Cities?.map((city) => (
           <div
             onClick={() => {
-                // props.setCities({name:'',code:''})
+                props.setCities({name:'',code:''})
               props.setCities({ name: city.name, code: city.code });
               // props.setSearchInput(city.name)
               props.closeSuggest(false);

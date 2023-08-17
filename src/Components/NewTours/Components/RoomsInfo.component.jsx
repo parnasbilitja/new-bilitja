@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../../../../styles/newTour/components/RoomsInfo.module.scss";
 
 import { humanType, numberWithCommas } from "../../../Utils/newTour";
+import {fontSize} from "@mui/system";
 const RoomsInfo = (props) => {
   console.log("from rooms info", props);
 
@@ -34,19 +35,19 @@ const RoomsInfo = (props) => {
               <td className={styles["td"]}>
                 {passenger.gender === "1" ? "آقا" : "خانم"}
               </td>
-              <td className={styles["td"]}>{passenger.name}</td>
-              <td className={styles["td"]}>{passenger.family}</td>
+              <td className={styles["td"]} style={{fontSize: '13px',fontWeight:600}}>{passenger.name}</td>
+              <td className={styles["td"]} style={{fontSize: '13px',fontWeight:600}}>{passenger.family}</td>
               <td className={styles["td"]}>
                 {passenger.nationality === "1" ? "ایرانی" : "غیرایرانی"}
               </td>
               {props.is_domestic ? (
-                <td className={styles["td"]}>{passenger.id_code}</td>
+                <td className={styles["td"]} >{passenger.id_code}</td>
               ) : null}
-              <td className={styles["td"]}>
+              <td className={styles["td"]} style={{fontSize: '13px'}}>
                 {passenger.birth_day?.replace(/-/g, "/")}
               </td>
-              <td className={styles["td"]}>{passenger.passport}</td>
-              <td className={styles["td"]}>
+              <td className={styles["td"]} style={{fontSize: '13px',fontWeight:600}}>{passenger.passport}</td>
+              <td className={styles["td"]} style={{fontSize: '13px',fontWeight:600}}>
                 {passenger.expired_passport?.replace(/-/g, "/")}
               </td>
               <td className={styles["td"]}>
@@ -56,6 +57,8 @@ const RoomsInfo = (props) => {
                     fontWeight: "900",
                     marginLeft: "3px",
                     fontSize: "13px",
+                    color:'#e20000',
+
                   }}
                 >
                   {" "}

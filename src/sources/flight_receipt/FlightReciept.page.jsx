@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../../styles/FlightReciept.module.scss";
-import stylesflight from "../../../styles/FlightSearchBox.module.scss";
 import FlightReserveDesktopHeader from "../flight_reserve/FlightReserveDesktopHeader.component";
 import FlightReserveMobileHeder from "../flight_reserve/FlightReserveMobileHeader.component";
 import {
@@ -171,6 +170,7 @@ const FlightReciept = (props) => {
       });
   };
   const getBanks = () => {
+    debugger
     fetch(
       `${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/getBanks/${props.reserveProperties.reqNo}/${props.reserveProperties.reqPnr}?customerId=1a157116-a01a-4027-ab10-74098ac63815`
     )

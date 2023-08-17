@@ -108,24 +108,27 @@ const ToursBase = (props) => {
               >
                 <div className={styles["check"]}>
                   <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      onClick={() => setTourSwitch("tour")}
+                      checked={tourSwitch === "tour" ? true : false}
+
+                  />
+                  <p htmlFor="">تور </p>
+                </div>
+                <div className={styles["check"]}>
+                  <input
                     type="checkbox"
                     name="ارزان ترین"
                     id=""
                     onClick={() => setTourSwitch("package-tour")}
                     checked={tourSwitch === "package-tour" ? true : false}
+
                   />
                   <p htmlFor="">پکیج تور </p>
                 </div>
-                <div className={styles["check"]}>
-                  <input
-                    type="checkbox"
-                    name=""
-                    id=""
-                    onClick={() => setTourSwitch("tour")}
-                    checked={tourSwitch === "tour" ? true : false}
-                  />
-                  <p htmlFor="">تور </p>
-                </div>
+
               </div>
               {/* ////////////// */}
               {tourSwitch === "package-tour" ? (

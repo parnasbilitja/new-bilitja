@@ -9,6 +9,8 @@ import NabvarCustom from "../../../../sources/component/NabvarCustom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Err } from "../../../../Components/NewTours/Components/NotifAlert.component";
 import Footer from "../../../../sources/component/Footer.component";
+import globals from "../../../../sources/Global";
+import Scrolltoprefresh from "../../../../sources/component/Scrolltoprefresh";
 const ReservationConfirmation = () => {
   const [hotelDet, setHotelDet] = useState();
   const [reservedRooms, setReservedRooms] = useState();
@@ -29,7 +31,6 @@ const ReservationConfirmation = () => {
   }, [router]);
 
   useEffect(() => {
-    console.log("jkghj", reservedRooms);
     if (reservedRooms) {
       setRoomId(reservedRooms[0]?.id);
     }
@@ -59,13 +60,62 @@ const ReservationConfirmation = () => {
       },
     },
   };
+
+  const getBanks = () => {
+
+    fetch(
+        `${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/getBanks/${props.reserveProperties.reqNo}/${props.reserveProperties.reqPnr}?customerId=1a157116-a01a-4027-ab10-74098ac63815`
+    )
+        .then((res) => res.json())
+        .then((data) => {
+          fetch(
+              `${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/saveEbank`,
+              {
+                headers: { "Content-Type": "application/json" },
+                method: "POST",
+                body: JSON.stringify({
+                  reqNo: props.reserveProperties.reqNo,
+                  reqPnr: props.reserveProperties.reqPnr,
+                  bankId: data.bankId,
+                  kndRequest: 1,
+                  customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+                  callBackUrl: "https://bilitja.com/callbackbank",
+                  userId: localStorage.getItem("token"),
+                }),
+              }
+          )
+              .then((res) => res.json())
+              .then((data) => {
+                var form = document.createElement("form");
+                form.setAttribute("method", "POST");
+                form.setAttribute("action", data.address);
+                form.setAttribute("target", "_self");
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("name", "token");
+                hiddenField.setAttribute("value", data.authority);
+                form.appendChild(hiddenField);
+                var hiddenField2 = document.createElement("input");
+                hiddenField2.setAttribute("name", "RedirectURL");
+                hiddenField2.setAttribute(
+                    "value",
+                    `${window.location.origin}/callbackbank`
+                );
+                form.appendChild(hiddenField2);
+                document.body.appendChild(form);
+                form.submit();
+                document.body.removeChild(form);
+              });
+        });
+  };
+
   return (
     <>
+
       <NabvarCustom />
       <div className={styles["reserveinfo_container"]}>
         <TourDetailLabel flightDet={hotelDet?.flight} stayCount={stayCount} />
-
         <div className={styles["rooms"]}>
+          <Scrolltoprefresh/>
           {reservedRooms?.map((reservedroom) => {
             return (
               <div
@@ -101,18 +151,18 @@ const ReservationConfirmation = () => {
                 </div>
                 <AnimatePresence>
                   {reservedroom.id === roomId ? (
-                    <motion.div
-                      variants={variants}
-                      initial="initial"
-                      animate="animate"
-                      exit="exit"
-                      style={{ overflowX: "auto" }}
-                    >
+                    // <motion.div
+                    //   variants={variants}
+                    //   initial="initial"
+                    //   animate="animate"
+                    //   exit="exit"
+                    //   style={{ overflowX: "auto" }}
+                    // >
                       <RoomsInfo
                         reservedRooms={reservedroom}
                         is_domestic={hotelDet.hotel.is_domestic}
                       />
-                    </motion.div>
+                    // </motion.div>
                   ) : null}
                 </AnimatePresence>
               </div>

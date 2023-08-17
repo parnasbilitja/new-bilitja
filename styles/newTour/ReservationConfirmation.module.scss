@@ -1,13 +1,13 @@
 .reserveinfo_container {
-  padding: 7rem 8rem 12rem 8rem;
+  padding: 7rem 8rem 2rem 8rem;
 
 
   .detail-box-fix-user-reservation {
-    width: 80.6%;
-    position: fixed;
+    width: 100%;
+    position: static;
     bottom: 12px;
     left: 9.9%;
-
+    margin-top: 35px;
     .p-detail-reservation {
       display: grid;
       border-radius: 20px;

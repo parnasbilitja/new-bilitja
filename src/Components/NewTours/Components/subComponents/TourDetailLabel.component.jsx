@@ -15,8 +15,8 @@ const TourDetailLabel = ({ flightDet, stayCount }) => {
           <div className={styles["p-airline-top"]}>
             <div
               style={{
-                width: "45px",
-                height: "45px",
+                width: "50px",
+                height: "50px",
                 overflow: "hidden",
                 borderRadius: "50%",
                 marginBottom: "4px",
@@ -103,8 +103,8 @@ const TourDetailLabel = ({ flightDet, stayCount }) => {
           <div className={styles["p-airline-top"]}>
             <div
               style={{
-                width: "45px",
-                height: "45px",
+                width: "50px",
+                height: "50px",
                 overflow: "hidden",
                 borderRadius: "50%",
                 marginBottom: "4px",

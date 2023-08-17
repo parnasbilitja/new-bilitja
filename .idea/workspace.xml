@@ -6,10 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/NotifAlert.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/NotifAlert.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/InfoPasserngers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/InfoPasserngers.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/RoomsInfo.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/RoomsInfo.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PictureModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PictureModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/newTours/newToursReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/newTours/newToursReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/root-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/root-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/newTour.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/newTour.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/reserve/reserveconfirmation/[...reserveconfirmation].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/reserve/reserveconfirmation/[...reserveconfirmation].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_receipt/FlightReciept.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_receipt/FlightReciept.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/ReservationConfirmation.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/ReservationConfirmation.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +34,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -143,7 +158,21 @@
       <workItem from="1691309748134" duration="641000" />
       <workItem from="1691321932486" duration="1544000" />
       <workItem from="1691387234547" duration="33778000" />
-      <workItem from="1691558932095" duration="7898000" />
+      <workItem from="1691558932095" duration="8520000" />
+      <workItem from="1691580163806" duration="174000" />
+      <workItem from="1691652844510" duration="5045000" />
+      <workItem from="1691764862375" duration="781000" />
+      <workItem from="1691828237499" duration="451000" />
+      <workItem from="1691922298377" duration="306000" />
+      <workItem from="1691995258957" duration="1358000" />
+      <workItem from="1692081257878" duration="28000" />
+      <workItem from="1692081851547" duration="1538000" />
+      <workItem from="1692099578308" duration="1253000" />
+      <workItem from="1692101389060" duration="4706000" />
+      <workItem from="1692167173395" duration="121000" />
+      <workItem from="1692168520944" duration="4269000" />
+      <workItem from="1692188250534" duration="631000" />
+      <workItem from="1692265605768" duration="4701000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -313,14 +342,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00048" summary="some visual changes">
-      <option name="closed" value="true" />
-      <created>1691219342512</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1691219342512</updated>
-    </task>
     <task id="LOCAL-00049" summary="some visual changes on [...AvailableHotel]">
       <option name="closed" value="true" />
       <created>1691220485949</created>
@@ -481,7 +502,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691567667600</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="some visual changes in TourSearchBox.jsx(Cities),....">
+      <option name="closed" value="true" />
+      <created>1691576573204</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1691576573204</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,7 +530,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="eNamad has visual problem" />
     <MESSAGE value="hotel filter, hotel searchbox css-mobile have been rechanged" />
     <MESSAGE value="some changes" />
     <MESSAGE value="some visual changes on filter menubar search (mobile)" />
@@ -526,7 +554,8 @@
     <MESSAGE value="some bugs have been fixed" />
     <MESSAGE value="some changes has been added in calendar (tourSearchBox)" />
     <MESSAGE value="some changes have been added in calendar (tourSearchBox)" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes have been added in calendar (tourSearchBox)" />
+    <MESSAGE value="some visual changes in TourSearchBox.jsx(Cities),...." />
+    <option name="LAST_COMMIT_MESSAGE" value="some visual changes in TourSearchBox.jsx(Cities),...." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -555,6 +584,16 @@
           <url>file://$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx</url>
           <line>103</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx</url>
+          <line>174</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx</url>
+          <line>170</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

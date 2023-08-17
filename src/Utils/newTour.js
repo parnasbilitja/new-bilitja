@@ -138,6 +138,7 @@ export const extBedPrcGen = (rooms, flight, roomTypeId) => {
 };
 
 export const roomPrcGen = (room, flight) => {
+  let services
   let price = 0;
   let isCheckIn = room.rates[0]?.checkin_base;
   let rates = room.rates.filter(
@@ -160,12 +161,14 @@ export const roomPrcGen = (room, flight) => {
 
   // price = price - PrcController(room, flight, false, isCheckIn);
   price += flight.adl_price; //flights=>adl_price
-  room.services.map((service) => {
-    if (service.airport_id === flight.destination_id) {
+
+
+ services= room.services.filter(service=>service.airport_id===flight.destination_id || service.airport_id===0)
+
+  services.map((service) => {
       price +=
         service.rate * currencyExchanger(service.rate_type, room.currencies);
       return price;
-    }
   });
 
   return price;

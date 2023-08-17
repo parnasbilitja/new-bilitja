@@ -202,14 +202,14 @@ const [prevDest,setPrevDest]=useState({})
         return true;
     };
 
-    useEffect(()=>{
-        if(props.selectedSrc&&props.selectedDest){
-            setInputSearchOrg(props.selectedSrc.name)
-            setInputSearchDest(props.selectedDest.name)
-            console.log(props.selectedDest)
-        }
-
-    },[props.selectedSrc,props.selectedDest])
+    // useEffect(()=>{
+    //
+    //         setInputSearchOrg(props.selectedSrc.name)
+    //         setInputSearchDest(props.selectedDest.name)
+    //         console.log(props.selectedDest)
+    //
+    //
+    // },[props.selectedSrc,props.selectedDest])
     return (
         <>
             <NotifAlert/>
@@ -235,6 +235,7 @@ const [prevDest,setPrevDest]=useState({})
                             onBlur={handleFocusOut}
                             // onFocus={()=>setInputSearchOrg('')}
                             placeholder={"مبدا خود را وارد کنید"}
+                            autoComplete='off'
                         />
                         {state.suggestSource ? (
                             <Cities
@@ -282,6 +283,7 @@ const [prevDest,setPrevDest]=useState({})
                             }}
                             // onBlur={()=>setInputSearchDest(props.destandorgcities.destination.name)}
                             placeholder={"مقصد خود را وارد کنید"}
+                            autoComplete='off'
                         />
                         {state.suggestDestination ? (
                             <Cities
