@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -154,7 +157,7 @@
       <workItem from="1692188250534" duration="631000" />
       <workItem from="1692265605768" duration="6149000" />
       <workItem from="1692278093534" duration="2842000" />
-      <workItem from="1692336241495" duration="328000" />
+      <workItem from="1692336241495" duration="1099000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -324,14 +327,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00058" summary="some tiny changes">
-      <option name="closed" value="true" />
-      <created>1691403953675</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1691403953675</updated>
-    </task>
     <task id="LOCAL-00059" summary="toursearchbox loading has been change">
       <option name="closed" value="true" />
       <created>1691409907777</created>
@@ -492,7 +487,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692336297367</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="some changes have been applied">
+      <option name="closed" value="true" />
+      <created>1692336601175</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1692336601175</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -512,7 +515,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some changes" />
     <MESSAGE value="some visual changes on filter menubar search (mobile)" />
     <MESSAGE value="some logic changes" />
     <MESSAGE value="some visual changes----collapsesearch" />
@@ -537,7 +539,8 @@
     <MESSAGE value="some changes have been added in calendar (tourSearchBox)" />
     <MESSAGE value="some visual changes in TourSearchBox.jsx(Cities),...." />
     <MESSAGE value="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied" />
+    <MESSAGE value="some changes have been applied" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes have been applied" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
