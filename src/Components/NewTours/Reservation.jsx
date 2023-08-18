@@ -23,6 +23,7 @@ const Reservation = ({hotelDet, stayCount}) => {
     const [reserverData, setReserverData] = useState({
         reserver_phone: "", reserver_id_code: "", reserver_name: "", reserver_lastname: "",
     });
+
     const [reformSelectedRooms, setReformSelectedRooms] = useState([]);
     const [evRoomsPrc, setEvRoomsPrc] = useState([]);
     const [err, setErr] = useState({});
