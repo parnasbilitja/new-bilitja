@@ -89,7 +89,7 @@ const PassengerForm = (props) => {
             type,
             id: passId,
             price: props.prcTypeBase(type),
-            [e.target.name]:  e.target.value,
+            [e.target.name]: e.target.name==='passport'? e.target.value.toUpperCase(): e.target.value,
           });
           setLatinCheck({
             ...latinCheck,

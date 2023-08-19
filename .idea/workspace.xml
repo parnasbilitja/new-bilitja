@@ -157,7 +157,8 @@
       <workItem from="1692188250534" duration="631000" />
       <workItem from="1692265605768" duration="6149000" />
       <workItem from="1692278093534" duration="2842000" />
-      <workItem from="1692336241495" duration="1099000" />
+      <workItem from="1692336241495" duration="1168000" />
+      <workItem from="1692423139842" duration="11000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -327,14 +328,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00059" summary="toursearchbox loading has been change">
-      <option name="closed" value="true" />
-      <created>1691409907777</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1691409907777</updated>
-    </task>
     <task id="LOCAL-00060" summary="toursearchbox input search has been created">
       <option name="closed" value="true" />
       <created>1691417466624</created>
@@ -495,7 +488,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692336601175</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="some changes have been applied">
+      <option name="closed" value="true" />
+      <created>1692337363130</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1692337363130</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
