@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/InfoPasserngers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/InfoPasserngers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BDCalendarShamsi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BDCalendarShamsi.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthDayParent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthDayParent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthDayParentCl.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthDayParentCl.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalenderMiladi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalenderMiladi.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/newTour.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/newTour.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/reserve/[...reservedHotel].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/reserve/reserveconfirmation/[...reserveconfirmation].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/reserve/reserveconfirmation/[...reserveconfirmation].js" afterDir="false" />
-    </list>
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,7 +161,7 @@
       <workItem from="1692450435314" duration="338000" />
       <workItem from="1692525661347" duration="69000" />
       <workItem from="1692525797185" duration="44663000" />
-      <workItem from="1692682200119" duration="856000" />
+      <workItem from="1692682200119" duration="1373000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -345,14 +331,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00062" summary="some visual changes in toursearchbox">
-      <option name="closed" value="true" />
-      <created>1691476324156</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1691476324156</updated>
-    </task>
     <task id="LOCAL-00063" summary="loader logic ([...availableHotel])  has been change for waiting until loading data">
       <option name="closed" value="true" />
       <created>1691483941384</created>
@@ -513,7 +491,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692450717365</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="some changes have been applied">
+      <option name="closed" value="true" />
+      <created>1692683138557</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1692683138557</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
