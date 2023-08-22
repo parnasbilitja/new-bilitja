@@ -138,15 +138,16 @@ export const extBedPrcGen = (rooms, flight, roomTypeId) => {
 };
 
 export const roomPrcGen = (room, flight) => {
+
   let services
   let price = 0;
   let isCheckIn = room.rates[0]?.checkin_base;
+// debugger
   let rates = room.rates.filter(
     (rate) =>
       moment(rate.date).isSameOrBefore(flightDateChecker(flight).checkout) &&
       moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
   );
-
   if (isCheckIn) {
     price +=
       rates[0].offer_price *
@@ -174,6 +175,7 @@ export const roomPrcGen = (room, flight) => {
   return price;
 };
 export const chdPrcGen = (rooms, flight, roomTypeId) => {
+  // debugger
   let price = 0;
   rooms.map((room) => {
     if (roomTypeId === room.room_type_id) {
@@ -207,6 +209,7 @@ export const chdPrcGen = (rooms, flight, roomTypeId) => {
 };
 
 export const roomNameChecker = (roomsarr, room_id) => {
+  // debugger
   const roomName = roomsarr?.filter((room) => room.id === room_id);
   return roomName[0]?.room_type;
 };
@@ -227,6 +230,7 @@ export const dateDiffChecker = (stDate, enDate, stayCount) => {
 };
 
 export const flightDateChecker = (flight) => {
+
   // debugger;
   let checkin;
   let checkout;
@@ -271,7 +275,7 @@ export const reservePrc = (rooms, flight) => {
 };
 
 export const errStruct = (roomId, passenId, inputName) => {
-  return `rooms.${roomId}.passengers.${passenId}.${inputName}`;
+  return `reserves.${roomId}.passengers.${passenId}.${inputName}`;
 };
 
  export const passengerObjModelGen = (personCount, type) => {
@@ -340,3 +344,32 @@ export const rotateVariants={
     ,transition:{duration:.2}},
   exit:{rotate:0,transition:{duration:.5}}
 }
+
+export     const removeDuplicateObj=(data,prop)=>{
+  // debugger
+  const seenIds = {}; // Helper object to keep track of seen IDs
+
+  const filteredData = data.filter(obj => {
+    if (!seenIds[obj.reserve_id
+        ]) {
+      seenIds[obj.reserve_id
+          ] = true; // Mark the ID as seen
+      return true; // Keep the object in the filtered data
+    }
+    return false; // Ignore the object as duplicate
+  });
+  return filteredData
+}
+
+export const humantype = (type) => {
+  switch (type) {
+    case "adl":
+      return "بزرگسال";
+    case "inf":
+      return "نوزاد";
+    case "chd":
+      return "کودک";
+    default:
+      return "تخت اضافه";
+  }
+};

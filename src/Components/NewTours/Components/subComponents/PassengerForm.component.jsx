@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import styles from "../../../../../styles/newTour/components/subComponent/PassengerForm.module.scss";
 import PopUp from "./PopUp.component";
 import BirthDayParentCl from "../calendar/BirthDayParentCl";
 import BirthDayParent from "../calendar/BirthDayParent";
-import { errStruct, errValidation } from "../../../../Utils/newTour";
+import {errStruct, errValidation, humantype} from "../../../../Utils/newTour";
 import { Err } from "../NotifAlert.component";
+import {useRouter} from "next/router";
 const PassengerForm = (props) => {
+  useEffect(()=>{
+    console.log(props.Errs?.errors)
+  },[props.Errs?.errors])
+  const router=useRouter()
   const [state, setState] = useState({
     open: false,
     extOpen: false,
@@ -24,6 +29,7 @@ const PassengerForm = (props) => {
     name: false,
     family: false,
   });
+
 
   const findDate = (passId, id, datetype) => {
     // debugger;
@@ -52,7 +58,7 @@ const PassengerForm = (props) => {
 
   const [calend, setCalend] = useState(true);
 
-  const FormDataPicker = (e, passId, type, roomid, roomTypeid, id) => {
+  const FormDataPicker = (e, passId, type, roomid, roomTypeid, id,reserve_id) => {
     // debugger;
     const findroom = props.dataq.filter((data) => data.id === id);
     let newrooms = [];
@@ -102,12 +108,13 @@ const PassengerForm = (props) => {
         id: id,
         room_id: roomid,
         room_type_id: roomTypeid,
+        reserve_id:reserve_id,
         passengers: [...newpassengerArr],
       });
       props.setDataq(newrooms);
     }
   };
-  const Birthdate = (date, passId, type, roomid, roomTypeid, datetype, id) => {
+  const Birthdate = (date, passId, type, roomid, roomTypeid, datetype, id,reserve_id) => {
     const findroom = props.dataq.filter((data) => data.id === id);
     let newrooms = [];
 
@@ -143,6 +150,7 @@ const PassengerForm = (props) => {
       newrooms.push(...filteredrooms, {
         id: id,
         room_id: roomid,
+        reserve_id:reserve_id,
         room_type_id: roomTypeid,
         passengers: [...newpassengerArr],
       });
@@ -155,6 +163,7 @@ const PassengerForm = (props) => {
           id: id,
           room_id: roomid,
           room_type_id: roomTypeid,
+          reserve_id:reserve_id,
           passengers: [
             {
               bed_type: type === "ext" ? "extra" : "normal",
@@ -186,18 +195,7 @@ const PassengerForm = (props) => {
     }
   };
 
-  const humantype = (type) => {
-    switch (type) {
-      case "adl":
-        return "بزرگسال";
-      case "inf":
-        return "نوزاد";
-      case "chd":
-        return "کودک";
-      default:
-        return "تخت اضافه";
-    }
-  };
+
   const indexidfinder = (passId, roomId, name) => {
     const findroom = props.dataq.filter((data) => data.id === roomId);
     if (findroom.length > 0) {
@@ -234,7 +232,7 @@ const PassengerForm = (props) => {
           <form
             // key={index}
             className={
-              props.hotelDets.hotel.is_domestic
+              props.hotelDets?.hotel?.is_domestic
                 ? styles["form-container"]
                 : styles["form-container2"]
             }
@@ -256,7 +254,8 @@ const PassengerForm = (props) => {
                       props.type,
                       props.roomid,
                       props.room_type_id,
-                      props.id
+                      props.id,
+                        props.reserve_id
                     )
                   }
                   defaultChecked="1"
@@ -300,7 +299,8 @@ const PassengerForm = (props) => {
                       props.type,
                       props.roomid,
                       props.room_type_id,
-                      props.id
+                      props.id,
+                        props.reserve_id
                     )
                   }
                   name="name"
@@ -342,7 +342,8 @@ const PassengerForm = (props) => {
                       props.type,
                       props.roomid,
                       props.room_type_id,
-                      props.id
+                      props.id,
+                        props.reserve_id
                     )
                   }
                   name="family"
@@ -386,7 +387,8 @@ const PassengerForm = (props) => {
                       props.type,
                       props.roomid,
                       props.room_type_id,
-                      props.id
+                      props.id,
+                        props.reserve_id
                     )
                   }
                   name="nationality"
@@ -416,7 +418,7 @@ const PassengerForm = (props) => {
 
             {/* "item-form w-15" */}
 
-            {props.hotelDets.hotel.is_domestic ? (
+            {props.hotelDets?.hotel?.is_domestic ? (
               <div className={styles["item-form"]}>
                 <div className={styles["inp-form"]}>
                   <input
@@ -431,7 +433,8 @@ const PassengerForm = (props) => {
                         props.type,
                         props.roomid,
                         props.room_type_id,
-                        props.id
+                        props.id,
+                          props.reserve_id
                       )
                     }
                     name="id_code"
@@ -504,7 +507,8 @@ const PassengerForm = (props) => {
                       props.type,
                       props.roomId,
                       props.roomTypeId,
-                      props.id
+                      props.id,
+                        props.reserve_id
                     )
                   }
                   name="passport"
@@ -539,7 +543,8 @@ const PassengerForm = (props) => {
                       props.type,
                       props.roomId,
                       props.roomTypeId,
-                      props.id
+                      props.id,
+                        props.reserve_id
                     )
                   }
                   name="expired_passport"
@@ -585,6 +590,7 @@ const PassengerForm = (props) => {
                     type: props.type,
                     passId: props.passId,
                     id: props.id,
+                    reserve_id:props.reserve_id
                     // index: currentindex,
                   }}
                   Birthdate={(
@@ -594,7 +600,8 @@ const PassengerForm = (props) => {
                     roomid,
                     roomTypeid,
                     datetype,
-                    id
+                    id,
+                    reserve_id
                   ) =>
                     Birthdate(
                       date,
@@ -603,7 +610,8 @@ const PassengerForm = (props) => {
                       roomid,
                       roomTypeid,
                       datetype,
-                      id
+                      id,
+                        reserve_id
                     )
                   }
                 />
@@ -634,6 +642,7 @@ const PassengerForm = (props) => {
                     type: props.type,
                     passId: props.passId,
                     id: props.id,
+                    reserve_id:props.reserve_id
                   }}
                   Birthdate={(
                     date,
@@ -642,7 +651,8 @@ const PassengerForm = (props) => {
                     roomid,
                     roomTypeid,
                     datetype,
-                    id
+                    id,
+                    reserve_id
                   ) =>
                     Birthdate(
                       date,
@@ -651,7 +661,8 @@ const PassengerForm = (props) => {
                       roomid,
                       roomTypeid,
                       datetype,
-                      id
+                      id,
+                        reserve_id
                     )
                   }
                 />

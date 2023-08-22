@@ -13,6 +13,8 @@ import globals from "../../../../sources/Global";
 import Scrolltoprefresh from "../../../../sources/component/Scrolltoprefresh";
 const ReservationConfirmation = () => {
   const [hotelDet, setHotelDet] = useState();
+  const [flightDet, setFlightDet] = useState();
+  const [roomBaseDet, setRoomBaseDet] = useState();
   const [reservedRooms, setReservedRooms] = useState();
   const [fiPrc, setFiPrc] = useState("");
   const [fromRouter, setFromRouter] = useState();
@@ -20,15 +22,18 @@ const ReservationConfirmation = () => {
   const [roomId, setRoomId] = useState();
   const [stayCount, setStayCount] = useState("");
   useEffect(() => {
-    if (router.query.hotel) {
+    if (router?.query?.flightDet) {
       setHotelDet(JSON.parse(router?.query?.hotel));
+      setFlightDet(JSON.parse(router?.query?.flightDet));
+      setRoomBaseDet(JSON.parse(router?.query?.roombase))
       setFromRouter(router.query);
       setReservedRooms(JSON.parse(router?.query?.rooms));
       setFiPrc(router?.query?.fiPrc);
       setStayCount(router?.query?.stayCount);
+      setStayCount(router?.query?.stayCount);
     }
     // console.log("fsdfsasa", router);
-  }, [router]);
+  }, [router?.query]);
 
   useEffect(() => {
     if (reservedRooms) {
@@ -36,9 +41,12 @@ const ReservationConfirmation = () => {
     }
   }, [reservedRooms]);
 
-  useEffect(() => {
-    console.log(hotelDet);
-  }, [hotelDet]);
+  // useEffect(() => {
+  //     if(router?.query){
+  //
+  //       console.log('sdsadw342',JSON.parse(router?.query?.roombase));
+  //     }
+  // }, [router]);
 
   const variants = {
     initial: {
@@ -61,6 +69,9 @@ const ReservationConfirmation = () => {
     },
   };
 
+  useEffect(()=>{
+      console.log(roomBaseDet)
+  },[roomBaseDet])
   const getBanks = () => {
 
     fetch(
@@ -113,7 +124,7 @@ const ReservationConfirmation = () => {
 
       <NabvarCustom />
       <div className={styles["reserveinfo_container"]}>
-        <TourDetailLabel flightDet={hotelDet?.flight} stayCount={stayCount} />
+        <TourDetailLabel flightDet={flightDet} stayCount={stayCount} />
         <div className={styles["rooms"]}>
           <Scrolltoprefresh/>
           {reservedRooms?.map((reservedroom) => {
@@ -130,7 +141,7 @@ const ReservationConfirmation = () => {
                   <div className={styles["box-room-Det-name"]}>
                     <div className={styles["circle"]}></div>
                     <h2>
-                      {roomNameChecker(hotelDet.rooms, reservedroom.room_id)}
+                      {roomNameChecker(roomBaseDet, reservedroom.room_id)}
                     </h2>
                   </div>
                   <div
@@ -162,7 +173,7 @@ const ReservationConfirmation = () => {
 
                       <RoomsInfo
                         reservedRooms={reservedroom}
-                        is_domestic={hotelDet.hotel.is_domestic}
+                        is_domestic={hotelDet.data.hotel.is_domestic}
                       />
                     // </motion.div>
                   ) : null}

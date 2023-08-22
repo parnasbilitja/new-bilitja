@@ -289,7 +289,8 @@ const BirthdayCalenderMiladi = (props) => {
                                                 props.roomInfo.roomId,
                                                 props.roomInfo.roomTypeId,
                                                 "expired_passport",
-                                                props.roomInfo.id
+                                                props.roomInfo.id,
+                                               props.roomInfo.reserve_id
                                             );
                                         }}
                                     >

@@ -71,8 +71,9 @@ const availableHotels = () => {
             stayCount: night,
           })
           .then((res) => {
-            setHotels(res?.data?.data);
-            setStars(hotelstarPicker(res?.data?.data));
+
+            setHotels(res?.data?.data?.data);
+            setStars(hotelstarPicker(res?.data?.data?.data));
             dispatch(setLoader(false))
           })
           .catch((err) => {
@@ -136,6 +137,10 @@ const availableHotels = () => {
   }, []);
   const [showFilter, setShowFilter] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(false);
+
+  useEffect(()=>{
+      console.log(hotels)
+  },[hotels])
   return (
       <div className={styles["main-section"]}>
         <NavHandler />

@@ -12,7 +12,8 @@ import PassengerForm from "./subComponents/PassengerForm.component";
 const InfoPasserngers = ({
   room,
   roomName,
-  room_type_id,
+  room_type_id, generalRoomDet,
+    flightDet,
   hotelDets,
   setEvRoomsPrc,
   Errs,
@@ -22,14 +23,15 @@ const InfoPasserngers = ({
   setDataq,
   roomIndex,
 }) => {
-  useEffect(() => {
-    console.log("from info passs", roomName);
-  }, []);
+  // useEffect(() => {
+  //   console.log("from info passs", roomName);
+  // }, []);
 
   const [chdPrc, setChdPrc] = useState("");
   const [adlPrc, setAdlPrc] = useState("");
   const [infPrc, setinfPrc] = useState("");
   const [extPrc, setextPrc] = useState("");
+  const [rooms, setRooms] = useState("");
 
   const totalPrice = (adlPrc, chdPrc, infPrc, extPrc) => {
     const adlCount = room.passengers.filter(
@@ -50,12 +52,22 @@ const InfoPasserngers = ({
     let totExtPrc = extPrc * (typeof extCount === "number" ? extCount : 0);
     return totAdlPrc + totChdPrc + totInfPrc + totExtPrc;
   };
-  useEffect(() => {
-    setChdPrc(chdPrcGen(hotelDets?.rooms, hotelDets?.flight, room_type_id));
-    setextPrc(extBedPrcGen(hotelDets?.rooms, hotelDets?.flight, room_type_id));
-    setinfPrc(hotelDets.flight.inf_price);
-    setAdlPrc(roomprcFinder(hotelDets.rooms, room));
 
+
+  useEffect(() => {
+    const baseRoomDet = generalRoomDet.filter(
+        (obj, index) =>
+            generalRoomDet.findIndex((item) => item.id === obj.id && item.room_type_id
+                ===obj.room_type_id
+            ) === index
+    );
+    // let filterbasedonreserveId=generalRoomDet.filter(det=>)
+
+    // debugger
+    setChdPrc(chdPrcGen(baseRoomDet, flightDet[0].flight, room_type_id));
+    setextPrc(extBedPrcGen(baseRoomDet, flightDet[0].flight, room_type_id));
+    setinfPrc(flightDet[0].flight.inf_price);
+    setAdlPrc(roomprcFinder(baseRoomDet, room));
     setEvRoomsPrc((prev) => [
       ...prev,
       totalPrice(adlPrc, chdPrc, infPrc, extPrc),
@@ -83,7 +95,7 @@ const InfoPasserngers = ({
     const foundRoom = rooms.filter(
       (room) => room.room_type_id === selectedroom.room_type_id
     );
-    return roomPrcGen(...foundRoom, hotelDets.flight);
+    return roomPrcGen(...foundRoom, flightDet[0].flight);
   };
 
   useEffect(() => {
@@ -122,6 +134,7 @@ const InfoPasserngers = ({
                       passId={passenger.id}
                       roomid={room.room_id}
                       room_type_id={room.room_type_id}
+                      reserve_id={room.reserve_id}
                       id={room.id}
                       passIndex={passindex}
                       roomIndex={roomIndex}

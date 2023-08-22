@@ -375,9 +375,11 @@ const BirthdayCalendar = (props) => {
                       props.roomInfo.roomId,
                       props.roomInfo.roomTypeId,
                       "birth_day",
-                      props.roomInfo.id
+                      props.roomInfo.id,
+                      props.roomInfo.reserve_id,
+
                     );
-                    console.log(props.roomInfo.index);
+                    // console.log(props.roomInfo.index);
                   }}
                 >
                   {x}

@@ -32,6 +32,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
         return rooms.length;
     };
 
+
     const minAvRoom = (rates) => Math.min(...rates.map((a) => {
         return a.available_room_count;
     }));
@@ -61,10 +62,10 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                 total_extra_count
             },]);
 
-            console.log(selectedRoom)
+            // console.log(selectedRoom)
 
         } else {
-            console.log("noooooooooooooo!");
+            // console.log("noooooooooooooo!");
             // setIsOpen(0);
             Err("تعداد اتاق انتخابی بیش از ظرفیت موجود نیست");
         }
@@ -157,7 +158,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
 
             setSelectedRoom(findRoom);
         }
-        console.log(selectedRoom);
+        // console.log(selectedRoom);
     };
 
     ////dec chd, inf,ext number
@@ -224,10 +225,13 @@ const AvailableFlightBasedonSelectedTour = (props) => {
     };
 
     useEffect(() => {
-        console.log("from me", router);
+        // debugger
+        // console.log("from me", router);
+
         const hotelFnName = router?.query?.availablehotels;
         const hotelName = hotelFnName && hotelFnName.length > 2 ? hotelFnName[2] : null;
         if (hotelName) {
+            // debugger
             axios
                 .post(`https://hotelobilit-api.iran.liara.run/api/v1/hotels/search/${hotelName}`, {
                     origin: router.query.origin,
@@ -237,7 +241,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                 })
                 .then((res) => {
                     setHotel(res.data?.data);
-                    console.log(res.data?.data);
+                    // console.log(res.data?.data);
                 });
         }
     }, [router]);
@@ -276,6 +280,8 @@ const AvailableFlightBasedonSelectedTour = (props) => {
 
         return rooms;
     };
+
+
 
     const picGen = (picsNum) => {
         const gallary = [];
@@ -546,19 +552,28 @@ const AvailableFlightBasedonSelectedTour = (props) => {
 
                                     <button
                                         onClick={() => {
+                                                let routerParam = router.query;
+                                                let checkin= flight?.checkin_tomorrow ? MiladiToJalaliConvertorInc(flight?.date) : MiladiToJalaliConvertor(flight?.date)
+                                                let checkout= flight?.checkout_yesterday ? MiladiToJalaliConvertorDec(flight?.flight?.date) : MiladiToJalaliConvertor(flight?.flight?.date)
+                                                let stayCount= routerParam.night
+                                                let rooms= [...roomsGen(selectedRoom)]
+
                                             if (selectedRoom.length > 0) {
-                                                ErrSuccess("به صفحه تکمیل اطلاعات و رزرو منتقل می‌شوید");
-                                                const routerParam = router.query;
-                                                const finalDet = {
-                                                    checkin: flight.checkin_tomorrow ? MiladiToJalaliConvertorInc(flight.date) : MiladiToJalaliConvertor(flight.date),
-                                                    checkout: flight.checkout_yesterday ? MiladiToJalaliConvertorDec(flight?.flight?.date) : MiladiToJalaliConvertor(flight?.flight?.date),
-                                                    stayCount: routerParam.night,
-                                                    rooms: [...roomsGen(selectedRoom)],
-                                                };
-                                                router.push(`/tours/reserve/${hotel.id}/${flight.id}?checkin=${finalDet.checkin}&checkout=${finalDet.checkout}&rooms=${JSON.stringify(finalDet.rooms)}`);
+                                            axios.post("https://hotelobilit-api.iran.liara.run/api/v2/reserves/checking",{
+                                                checkin:jalaliToMiladiConvertor(checkin),
+                                                checkout:jalaliToMiladiConvertor(checkout),
+                                                hotel_id:hotel.id,
+                                                flight_id:flight.id,
+                                                rooms,
+                                            }).then(res=>{
+                                                // console.log(res.data)
+                                                    ErrSuccess("به صفحه تکمیل اطلاعات و رزرو منتقل می‌شوید");
+                                                    router.push(`/tours/reserve/${hotel.id}/${flight.id}?checkin=${checkin}&checkout=${checkout}&rooms=${JSON.stringify(rooms)}&ref_code=${res.data.data.ref_code}`);
+                                            })
                                             } else {
                                                 Err("لطفا پرواز و اتاق مورد نظر خود راانتخاب کنید");
                                             }
+
                                         }}
                                         className={styles["ticket_reserve_btn"]}
                                     >

@@ -11,30 +11,22 @@ const ReservedHotel = () => {
   const [hotelDet, setHoteldet] = useState([]);
   const [stayCount, setStayCount] = useState();
   useEffect(() => {
-    if (router.query.rooms && router.query.reservedHotel) {
-      const rooms = JSON.parse(router.query.rooms);
-      const checkin = jalaliToMiladiConvertor(router.query.checkin);
-      const checkout = jalaliToMiladiConvertor(router.query.checkout);
-      const flight_id = +router.query.reservedHotel[1];
-      const hotel_id = +router.query.reservedHotel[0];
-      setStayCount(moment(checkout).diff(checkin, "days"));
-      axios
-        .post(
-          "https://hotelobilit-api.iran.liara.run/api/v1/reserves/checking",
-          {
-            checkin,
-            checkout,
-            hotel_id,
-            flight_id,
-            rooms,
-          }
-        )
-        .then((res) => {
-          setHoteldet(res?.data.data);
-          console.log(res.data.data);
-        });
+    if (router?.query?.ref_code) {
+        console.log('dsa',router.query)
+      setStayCount(moment(router.query.checkout).diff(router.query.checkin, "days"));
+            axios.get(
+               ` https://hotelobilit-api.iran.liara.run/api/v2/reserves/${router?.query?.ref_code
+               }`).then(res=>{
+
+                console.log(res?.data)
+                setHoteldet(res?.data);
+            })
     }
   }, [router]);
+
+  // useEffect(()=>{
+  //     console.log('sadas',hotelDet)
+  // },[hotelDet])
   return (
     <>
       <NavHandler />
