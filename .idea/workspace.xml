@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/CountDownTimer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/newTour/components/CountDownTimer.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/CountDownTimer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/CountDownTimer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/reserve/[...reservedHotel].js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +168,7 @@
       <workItem from="1692450435314" duration="338000" />
       <workItem from="1692525661347" duration="69000" />
       <workItem from="1692525797185" duration="44663000" />
-      <workItem from="1692682200119" duration="5657000" />
+      <workItem from="1692682200119" duration="7022000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -339,14 +338,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00066" summary="some changes has been added in calendar (tourSearchBox)">
-      <option name="closed" value="true" />
-      <created>1691567272171</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1691567272171</updated>
-    </task>
     <task id="LOCAL-00067" summary="some changes has been added in calendar (tourSearchBox)">
       <option name="closed" value="true" />
       <created>1691567312329</created>
@@ -507,7 +498,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692684015211</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="CountDownTimer has been added to reservation page due to bound time for reserver inorder to set passengers data">
+      <option name="closed" value="true" />
+      <created>1692688096889</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1692688096889</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,7 +526,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some logic changes" />
     <MESSAGE value="some visual changes----collapsesearch" />
     <MESSAGE value="some visual changes HotelSidebarSearch" />
     <MESSAGE value="HotelSidebarSearch=&gt;repeatitive stars(for filtering hotel) have been removed" />
@@ -552,7 +550,8 @@
     <MESSAGE value="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied" />
     <MESSAGE value="some changes have been applied" />
     <MESSAGE value="new api(v2) for tour was connected to project" />
-    <option name="LAST_COMMIT_MESSAGE" value="new api(v2) for tour was connected to project" />
+    <MESSAGE value="CountDownTimer has been added to reservation page due to bound time for reserver inorder to set passengers data" />
+    <option name="LAST_COMMIT_MESSAGE" value="CountDownTimer has been added to reservation page due to bound time for reserver inorder to set passengers data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

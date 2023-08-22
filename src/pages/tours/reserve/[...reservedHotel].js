@@ -17,16 +17,13 @@ const ReservedHotel = () => {
             axios.get(
                ` https://hotelobilit-api.iran.liara.run/api/v2/reserves/${router?.query?.ref_code
                }`).then(res=>{
-
                 console.log(res?.data)
                 setHoteldet(res?.data);
             })
     }
   }, [router]);
 
-  // useEffect(()=>{
-  //     console.log('sadas',hotelDet)
-  // },[hotelDet])
+
   return (
     <>
       <NavHandler />

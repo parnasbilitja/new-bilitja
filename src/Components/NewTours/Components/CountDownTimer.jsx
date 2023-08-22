@@ -8,6 +8,9 @@ const CountDownTimer = ({minute}) => {
     const [seconds, setSeconds] = useState(0)
     const [minutes, setMinutes] = useState(minute);
 
+    useEffect(()=>{
+        console.log(minutes)
+    },[minutes])
 
     useEffect(() => {
         const interval = setInterval(() => {
