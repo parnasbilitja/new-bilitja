@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,7 +163,7 @@
       <workItem from="1692450435314" duration="338000" />
       <workItem from="1692525661347" duration="69000" />
       <workItem from="1692525797185" duration="44663000" />
-      <workItem from="1692682200119" duration="1373000" />
+      <workItem from="1692682200119" duration="1647000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -331,22 +333,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00063" summary="loader logic ([...availableHotel])  has been change for waiting until loading data">
-      <option name="closed" value="true" />
-      <created>1691483941384</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1691483941384</updated>
-    </task>
-    <task id="LOCAL-00064" summary="some visual changes in HotelSidebarSearch.module.scss">
-      <option name="closed" value="true" />
-      <created>1691484611965</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1691484611965</updated>
-    </task>
     <task id="LOCAL-00065" summary="some bugs have been fixed">
       <option name="closed" value="true" />
       <created>1691563097444</created>
@@ -499,7 +485,23 @@
       <option name="project" value="LOCAL" />
       <updated>1692683138557</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="new api(v2) for tour was connected to project">
+      <option name="closed" value="true" />
+      <created>1692683637056</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1692683637056</updated>
+    </task>
+    <task id="LOCAL-00085" summary="new api(v2) for tour was connected to project">
+      <option name="closed" value="true" />
+      <created>1692683720911</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1692683720911</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,7 +521,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some visual changes on filter menubar search (mobile)" />
     <MESSAGE value="some logic changes" />
     <MESSAGE value="some visual changes----collapsesearch" />
     <MESSAGE value="some visual changes HotelSidebarSearch" />
@@ -544,7 +545,8 @@
     <MESSAGE value="some visual changes in TourSearchBox.jsx(Cities),...." />
     <MESSAGE value="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied" />
     <MESSAGE value="some changes have been applied" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes have been applied" />
+    <MESSAGE value="new api(v2) for tour was connected to project" />
+    <option name="LAST_COMMIT_MESSAGE" value="new api(v2) for tour was connected to project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
