@@ -17,6 +17,7 @@ import {useRouter} from "next/router";
 import {Err, ErrSuccess, NotifAlert} from "./Components/NotifAlert.component";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 import base from "../home/Base";
+import CountDownTimer from "./Components/CountDownTimer";
 
 const Reservation = ({hotelDet, stayCount}) => {
     const [generalRoomsData,setGeneralRoomsData]=useState([])
@@ -49,8 +50,6 @@ useEffect(()=>{
 
 
     useEffect(() => {
-
-
         // console.log('sada',hotelDet?.data?.details?.request)
         if (hotelDet?.data?.details?.request){
             let flight=hotelDet.data?.reserves?.filter(reserve=> reserve?.reserve_type=== 'flight')
@@ -78,9 +77,9 @@ useEffect(()=>{
         }
     }, [hotelDet]);
 
-
-
-
+useEffect(()=>{
+    console.log('DSAA',hotelDet)
+},[hotelDet])
 
 
     const personCounter = (arr) => {
@@ -305,7 +304,7 @@ useEffect(()=>{
                                     }}
                                     className={styles["box-top-box-reserve2"]}
                                 ></motion.div>)}
-
+                            <CountDownTimer minute={+hotelDet?.data?.expired_in_minutes}/>
                             <div className={styles["reserverform_container"]}>
                                 <h2 className={styles["reserver-info"]}>
                                     <strong>اطلاعات رزروگیرنده</strong>
