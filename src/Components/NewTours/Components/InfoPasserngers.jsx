@@ -9,23 +9,10 @@ import {
 
 import PassengerForm from "./subComponents/PassengerForm.component";
 
-const InfoPasserngers = ({
-  room,
-  roomName,
-  room_type_id, generalRoomDet,
-    flightDet,
-  hotelDets,
-  setEvRoomsPrc,
-  Errs,
-  roomsData,
-  setRoomsData,
-  dataq,
-  setDataq,
-  roomIndex,
-}) => {
-  // useEffect(() => {
-  //   console.log("from info passs", roomName);
-  // }, []);
+const InfoPasserngers = (props) => {
+  useEffect(() => {
+    console.log("from info passs", props.flightDet);
+  }, [props.flightDet]);
 
   const [chdPrc, setChdPrc] = useState("");
   const [adlPrc, setAdlPrc] = useState("");
@@ -34,16 +21,16 @@ const InfoPasserngers = ({
   const [rooms, setRooms] = useState("");
 
   const totalPrice = (adlPrc, chdPrc, infPrc, extPrc) => {
-    const adlCount = room.passengers.filter(
+    const adlCount = props.room?.passengers.filter(
       (pass) => pass.type === "adl"
     ).length;
-    const chdCount = room.passengers.filter(
+    const chdCount = props.room?.passengers.filter(
       (pass) => pass.type === "chd"
     ).length;
-    const infCount = room.passengers.filter(
+    const infCount = props.room?.passengers.filter(
       (pass) => pass.type === "inf"
     ).length;
-    const extCount = room.passengers.filter(
+    const extCount = props.room?.passengers.filter(
       (pass) => pass.type === "ext"
     ).length;
     let totAdlPrc = adlPrc * (typeof adlCount === "number" ? adlCount : 0);
@@ -55,24 +42,30 @@ const InfoPasserngers = ({
 
 
   useEffect(() => {
-    const baseRoomDet = generalRoomDet.filter(
+    const baseRoomDet = props.generalRoomDet?.filter(
         (obj, index) =>
-            generalRoomDet.findIndex((item) => item.id === obj.id && item.room_type_id
+            props.generalRoomDet?.findIndex((item) => item.id === obj.id && item.room_type_id
                 ===obj.room_type_id
             ) === index
     );
     // let filterbasedonreserveId=generalRoomDet.filter(det=>)
 
-    // debugger
-    setChdPrc(chdPrcGen(baseRoomDet, flightDet[0].flight, room_type_id));
-    setextPrc(extBedPrcGen(baseRoomDet, flightDet[0].flight, room_type_id));
-    setinfPrc(flightDet[0].flight.inf_price);
-    setAdlPrc(roomprcFinder(baseRoomDet, room));
-    setEvRoomsPrc((prev) => [
-      ...prev,
-      totalPrice(adlPrc, chdPrc, infPrc, extPrc),
-    ]);
-  }, [hotelDets, room_type_id, chdPrc, adlPrc, infPrc, extPrc]);
+    // debugger????
+    setChdPrc(chdPrcGen(baseRoomDet, props.flightDet, props?.room_type_id));
+    setextPrc(extBedPrcGen(baseRoomDet, props.flightDet, props?.room_type_id));
+    setinfPrc(props.flightDet.inf_price);
+    setAdlPrc(roomprcFinder(baseRoomDet, props?.room));
+    if(props.isEdit?.length>0){
+      return ()=>null
+
+    }else {
+      props?.setEvRoomsPrc((prev) => [
+        ...prev,
+        totalPrice(adlPrc, chdPrc, infPrc, extPrc),
+      ]);
+
+    }
+  }, [props?.hotelDets, props?.room_type_id, chdPrc, adlPrc, infPrc, extPrc]);
 
   const prcTypeBase = (type) => {
     switch (type) {
@@ -92,15 +85,17 @@ const InfoPasserngers = ({
   };
 
   const roomprcFinder = (rooms, selectedroom) => {
+    // debugger
     const foundRoom = rooms.filter(
       (room) => room.room_type_id === selectedroom.room_type_id
     );
-    return roomPrcGen(...foundRoom, flightDet[0].flight);
+    return roomPrcGen(...foundRoom, props.flightDet);
   };
 
-  useEffect(() => {
-    console.log("das", hotelDets.rooms);
-  }, [hotelDets.rooms]);
+  // useEffect(() => {
+  //   debugger
+  //   console.log("das", props.flightDet);
+  // }, [props.flightDet]);
 
   return (
     <>
@@ -109,7 +104,7 @@ const InfoPasserngers = ({
           className={`${styles["box-room-Det"]} ${styles["flex-column-mobi"]}`}
         >
           <div className={styles["box-room-Det-name"]}>
-            <p>{roomName}</p>
+            <p>{props?.roomName}</p>
           </div>
         </div>
         <div>
@@ -119,25 +114,25 @@ const InfoPasserngers = ({
             >
               {/* <label className={styles["label-fix"]}>سرپرست</label> */}
               <div>
-                {room.passengers.map((passenger, passindex) => {
+                {props.room.passengers?.map((passenger, passindex) => {
                   return (
                     <PassengerForm
-                      dataq={dataq}
-                      setDataq={setDataq}
+                      dataq={props?.dataq}
+                      setDataq={props?.setDataq}
                       type={passenger.type}
                       prcTypeBase={(type) => prcTypeBase(type)}
-                      hotelDets={hotelDets}
-                      Errs={Errs}
+                      hotelDets={props?.hotelDets}
+                      Errs={props?.Errs}
                       prc={numberWithCommas(prcTypeBase(passenger.type))}
-                      roomsData={roomsData}
-                      setRoomsData={setRoomsData}
+                      roomsData={props?.roomsData}
+                      setRoomsData={props?.setRoomsData}
                       passId={passenger.id}
-                      roomid={room.room_id}
-                      room_type_id={room.room_type_id}
-                      reserve_id={room.reserve_id}
-                      id={room.id}
+                      roomid={props.room?.room_id}
+                      room_type_id={props.room.room_type_id}
+                      reserve_id={props?.room.reserve_id}
+                      id={props?.room.id}
                       passIndex={passindex}
-                      roomIndex={roomIndex}
+                      roomIndex={props?.roomIndex}
                     />
                   );
                 })}

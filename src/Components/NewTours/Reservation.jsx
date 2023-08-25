@@ -19,7 +19,7 @@ import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 import base from "../home/Base";
 import CountDownTimer from "./Components/CountDownTimer";
 
-const Reservation = ({hotelDet, stayCount}) => {
+const Reservation = ({hotelDet, stayCount,ref_code}) => {
     const [generalRoomsData, setGeneralRoomsData] = useState([])
     const [roomBaseDet, setRoomBaseDet] = useState([])
     const [flightDet, setFlightDet] = useState([])
@@ -46,10 +46,10 @@ const Reservation = ({hotelDet, stayCount}) => {
 
 
     useEffect(() => {
-        // console.log('sada',hotelDet?.data?.details?.request)
+        console.log('sada',ref_code)
         if (hotelDet?.data?.details?.request) {
             let flight = hotelDet.data?.reserves?.filter(reserve => reserve?.reserve_type === 'flight')
-            setFlightDet(flight)
+            setFlightDet(flight[0].flight)
             let filterdRooms = []
             let rooms = hotelDet.data?.reserves?.filter(reserve => reserve?.reserve_type !== 'flight')
             rooms.map(room => filterdRooms.push(room.room))
@@ -74,8 +74,8 @@ const Reservation = ({hotelDet, stayCount}) => {
     }, [hotelDet]);
 
     useEffect(() => {
-        console.log('DSAA', hotelDet)
-    }, [hotelDet])
+        console.log('DSAA', flightDet)
+    }, [flightDet])
 
 
     const personCounter = (arr) => {
@@ -185,7 +185,7 @@ const Reservation = ({hotelDet, stayCount}) => {
                                     <button
                                         onClick={() => {
                                             // debugger
-                                            let flight_id = flightDet[0].flight.id;
+                                            let flight_id = flightDet.id;
                                             let hotel_id = hotelDet.data.hotel.id;
                                             axios
                                                 .post(`https://hotelobilit-api.iran.liara.run/api/v2/reserves/${router.query.ref_code}`, {
@@ -197,7 +197,7 @@ const Reservation = ({hotelDet, stayCount}) => {
                                                 .then((res) => {
                                                     let rooms = [...dataq];
                                                     let reserverdata = [reserverData];
-                                                    router.push(`/tours/reserve/reserveconfirmation/${hotel_id}/${flight_id}?reserverData=${JSON.stringify(reserverdata)}&hotel=${JSON.stringify(hotelDet)}&rooms=${JSON.stringify(rooms)}&fiPrc=${TotalPrcGen(evRoomsPrc)}&stayCount=${stayCount}&flightDet=${JSON.stringify(flightDet[0].flight)}&roombase=${JSON.stringify(roomBaseDet)}`);
+                                                    router.push(`/tours/reserve/reserveconfirmation/${hotel_id}/${flight_id}?reserverData=${JSON.stringify(reserverdata)}&hotel=${JSON.stringify(hotelDet)}&rooms=${JSON.stringify(rooms)}&fiPrc=${TotalPrcGen(evRoomsPrc)}&stayCount=${stayCount}&flightDet=${JSON.stringify(flightDet)}&roombase=${JSON.stringify(roomBaseDet)}&ref_code=${router.query.ref_code}`);
                                                     ErrSuccess("به صفحه تایید اطلاعات رزرو و پرداخت نهایی منتقل می شوید");
                                                 })
                                                 .catch((err) => {
@@ -251,7 +251,7 @@ const Reservation = ({hotelDet, stayCount}) => {
                             </div>
                         </div>
                         <div className={styles["ent-ext_container"]}>
-                            {flightDet[0]?.flight ? (<>
+                            {flightDet? (<>
                                 <div className={styles["entext"]}>
                                     <p
                                         className={styles["entexttitle"]}
@@ -260,7 +260,7 @@ const Reservation = ({hotelDet, stayCount}) => {
                                         تاریخ ورود به هتل
                                     </p>
                                     <p style={{fontWeight: "500", fontSize: "12px"}}>
-                                        {flightDet[0].flight?.checkin_tomorrow ? MiladiToJalaliConvertorInc(flightDet[0].flight?.date) : MiladiToJalaliConvertor(flightDet[0].flight?.date)}
+                                        {flightDet?.checkin_tomorrow ? MiladiToJalaliConvertorInc(flightDet?.date) : MiladiToJalaliConvertor(flightDet?.date)}
                                     </p>
                                 </div>
                                 <div className={styles["entext"]}>
@@ -272,7 +272,7 @@ const Reservation = ({hotelDet, stayCount}) => {
                                     </p>
                                     <p style={{fontWeight: "500", fontSize: "12px"}}>
                                         {" "}
-                                        {flightDet[0].flight?.checkin_tomorrow ? MiladiToJalaliConvertorInc(flightDet[0].flight?.flight.date) : MiladiToJalaliConvertor(flightDet[0].flight?.flight.date)}
+                                        {flightDet?.checkin_tomorrow ? MiladiToJalaliConvertorInc(flightDet?.flight?.date) : MiladiToJalaliConvertor(flightDet?.flight?.date)}
                                     </p>
                                 </div>
                             </>) : (<motion.div
@@ -391,7 +391,6 @@ const Reservation = ({hotelDet, stayCount}) => {
                             generalRoomDet={generalRoomsData && generalRoomsData}
                             flightDet={flightDet}
                             roomName={roomNameChecker(generalRoomsData, room?.room_id)}
-                            room_type_id={room.room_type_id}
                             dataq={dataq}
                             setDataq={setDataq}
                             setEvRoomsPrc={setEvRoomsPrc}

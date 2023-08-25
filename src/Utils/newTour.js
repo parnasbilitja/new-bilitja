@@ -19,6 +19,7 @@ export const jalaliToMiladiConvertor = (jalaliDate) => {
 };
 //miladi convert to jalali
 export const MiladiToJalaliConvertor = (miladiDate) => {
+
   const miladi = moment(miladiDate, "YYYY/MM/DD");
   const jalaliToMiladi = miladi.format("jYYYY/jMM/jDD");
   const reformattedMiladiDate = jalaliToMiladi?.replace(/\//g, "/");
@@ -105,7 +106,7 @@ export const currencyExchanger = (currency_code, currency) => {
 ///extbed =تخت اضافه
 export const extBedPrcGen = (rooms, flight, roomTypeId) => {
   let price = 0;
-  rooms.map((room) => {
+  rooms?.map((room) => {
     if (roomTypeId === room.room_type_id) {
       let rates = room.rates.filter(
         (rate) =>
@@ -138,7 +139,7 @@ export const extBedPrcGen = (rooms, flight, roomTypeId) => {
 };
 
 export const roomPrcGen = (room, flight) => {
-
+// debugger
   let services
   let price = 0;
   let isCheckIn = room.rates[0]?.checkin_base;
@@ -177,7 +178,7 @@ export const roomPrcGen = (room, flight) => {
 export const chdPrcGen = (rooms, flight, roomTypeId) => {
   // debugger
   let price = 0;
-  rooms.map((room) => {
+  rooms?.map((room) => {
     if (roomTypeId === room.room_type_id) {
       let rates = room.rates.filter(
         (rate) =>
@@ -230,7 +231,7 @@ export const dateDiffChecker = (stDate, enDate, stayCount) => {
 };
 
 export const flightDateChecker = (flight) => {
-
+  //
   // debugger;
   let checkin;
   let checkout;

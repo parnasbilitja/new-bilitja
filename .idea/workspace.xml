@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/CountDownTimer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/CountDownTimer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/InfoPasserngers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/InfoPasserngers.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/RoomsInfo.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/RoomsInfo.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/newTour.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/newTour.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/tours/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/reserve/[...reservedHotel].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/reserve/reserveconfirmation/[...reserveconfirmation].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/reserve/reserveconfirmation/[...reserveconfirmation].js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
-        <option value="JavaScript File" />
         <option value="SCSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -52,25 +56,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/PouyA/Desktop/bilitjassrnew",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PouyA/Desktop/bilitjassrnew&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\projects\bilitjassrnew\public\Images" />
@@ -168,7 +172,11 @@
       <workItem from="1692450435314" duration="338000" />
       <workItem from="1692525661347" duration="69000" />
       <workItem from="1692525797185" duration="44663000" />
-      <workItem from="1692682200119" duration="7022000" />
+      <workItem from="1692682200119" duration="7708000" />
+      <workItem from="1692767893895" duration="1996000" />
+      <workItem from="1692771265365" duration="3003000" />
+      <workItem from="1692790224614" duration="3863000" />
+      <workItem from="1692944098470" duration="23260000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -338,14 +346,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00067" summary="some changes has been added in calendar (tourSearchBox)">
-      <option name="closed" value="true" />
-      <created>1691567312329</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1691567312329</updated>
-    </task>
     <task id="LOCAL-00068" summary="some changes have been added in calendar (tourSearchBox)">
       <option name="closed" value="true" />
       <created>1691567667600</created>
@@ -506,7 +506,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692688096889</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="some countDownTimer bugs have been fixed">
+      <option name="closed" value="true" />
+      <created>1692689361002</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1692689361002</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +534,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some visual changes----collapsesearch" />
     <MESSAGE value="some visual changes HotelSidebarSearch" />
     <MESSAGE value="HotelSidebarSearch=&gt;repeatitive stars(for filtering hotel) have been removed" />
     <MESSAGE value="some visual changes on [...AvailableHotel]" />
@@ -551,7 +558,8 @@
     <MESSAGE value="some changes have been applied" />
     <MESSAGE value="new api(v2) for tour was connected to project" />
     <MESSAGE value="CountDownTimer has been added to reservation page due to bound time for reserver inorder to set passengers data" />
-    <option name="LAST_COMMIT_MESSAGE" value="CountDownTimer has been added to reservation page due to bound time for reserver inorder to set passengers data" />
+    <MESSAGE value="some countDownTimer bugs have been fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="some countDownTimer bugs have been fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
