@@ -46,7 +46,6 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
 
 
     useEffect(() => {
-        console.log('sada',ref_code)
         if (hotelDet?.data?.details?.request) {
             let flight = hotelDet.data?.reserves?.filter(reserve => reserve?.reserve_type === 'flight')
             setFlightDet(flight[0].flight)
@@ -144,8 +143,8 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
 
 
     return (<>
-        <Scrolltoprefresh/>
         <div className={styles["p-body"]}>
+        <Scrolltoprefresh/>
             <NotifAlert/>
             <div className={styles["prs-responsive"]}>
                 <div className={styles["main-reserve"]}>

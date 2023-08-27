@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/NotifAlert.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/NotifAlert.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/reserve/reserveconfirmation/[...reserveconfirmation].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/reserve/reserveconfirmation/[...reserveconfirmation].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +173,8 @@
       <workItem from="1692790224614" duration="3863000" />
       <workItem from="1692944098470" duration="36736000" />
       <workItem from="1693045507081" duration="10405000" />
-      <workItem from="1693119798637" duration="6282000" />
+      <workItem from="1693119798637" duration="6959000" />
+      <workItem from="1693144336177" duration="900000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -344,14 +344,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00071" summary="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied">
-      <option name="closed" value="true" />
-      <created>1692270898787</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1692270898787</updated>
-    </task>
     <task id="LOCAL-00072" summary="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied">
       <option name="closed" value="true" />
       <created>1692270909815</created>
@@ -512,7 +504,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693123825997</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="some validations have been applied to UpdatePassenger.jsx form in reservationComfirmation">
+      <option name="closed" value="true" />
+      <created>1693126256586</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1693126256586</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,7 +532,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="date fromat has been fixed (Availabelfightbasedonselectedtour)" />
     <MESSAGE value="some visual fix" />
     <MESSAGE value="some visual changes on roomcounter button based on available room" />
     <MESSAGE value="err text hasbeen rechanged" />
@@ -557,7 +556,8 @@
     <MESSAGE value="update section has been settled in reservationComfirmation (but it's not completed)" />
     <MESSAGE value="some tiny bugs for chdPrc calculation has been fixed in reservation&gt;&gt;info Passenger" />
     <MESSAGE value="reservedData update has been added to reservationComfirmation for changing passengers data based on room" />
-    <option name="LAST_COMMIT_MESSAGE" value="reservedData update has been added to reservationComfirmation for changing passengers data based on room" />
+    <MESSAGE value="some validations have been applied to UpdatePassenger.jsx form in reservationComfirmation" />
+    <option name="LAST_COMMIT_MESSAGE" value="some validations have been applied to UpdatePassenger.jsx form in reservationComfirmation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
