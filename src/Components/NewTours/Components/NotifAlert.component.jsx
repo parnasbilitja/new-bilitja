@@ -19,6 +19,7 @@ export const NotifAlert = () => {
       style={{
         fontSize: "12px",
         textAlign: "right",
+        zIndex:'10000'
       }}
     />
   );

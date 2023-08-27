@@ -7,7 +7,7 @@ import RoomsInfo from "../../../../Components/NewTours/Components/RoomsInfo.comp
 import {numberWithCommas, roomNameChecker} from "../../../../Utils/newTour";
 import NabvarCustom from "../../../../sources/component/NabvarCustom";
 import {motion, AnimatePresence} from "framer-motion";
-import {Err} from "../../../../Components/NewTours/Components/NotifAlert.component";
+import {Err, ErrSuccess, NotifAlert} from "../../../../Components/NewTours/Components/NotifAlert.component";
 import Footer from "../../../../sources/component/Footer.component";
 import globals from "../../../../sources/Global";
 import Scrolltoprefresh from "../../../../sources/component/Scrolltoprefresh";
@@ -30,6 +30,7 @@ const ReservationConfirmation = () => {
     const [reservedRoom, setReservedRoom] = useState([])
     const [tourData, setTourData] = useState([])
     const [targetedReservedId, setTargetedReservedId] = useState('')
+    const [err, setErr] = useState({});
 
     useEffect(() => {
         if (router?.query?.flightDet) {
@@ -127,13 +128,19 @@ const ReservationConfirmation = () => {
         }).then((res) => {
             getReservedData()
             setIsEdit(false)
-        })
+        })  .catch((err) => {
+
+            setErr(err?.response?.data);
+        });
 
     }
 
 
+
+
     return (
         <>
+            <NotifAlert/>
             {
                 isEdit &&
                 <div style={{
@@ -157,7 +164,14 @@ const ReservationConfirmation = () => {
                         backgroundColor: 'white'
                     }}>
                         {/*{debugger}*/}
-                        <div onClick={() => setIsEdit(false)} style={{border:'2px solid red',  width:'20px' ,height:'25px',display:'flex',justifyContent:'center', alignItems:'center'}}>
+                        <div onClick={() => setIsEdit(false)} style={{
+                            border: '2px solid red',
+                            width: '20px',
+                            height: '25px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="17" height="17"
                                  viewBox="0 0 48 48">
                                 <path fill="#F44336" d="M21.5 4.5H26.501V43.5H21.5z"
@@ -175,12 +189,9 @@ const ReservationConfirmation = () => {
                             flexDirection: 'column'
                         }}>
                             <UpdatePassenger targetedRoom={targetedRoom[0]} setIsEdit={() => setIsEdit(false)}
-                                             EditClickHandler={(passengersArr) => EditClickHandler(passengersArr)}/>
+                                             EditClickHandler={(passengersArr) => EditClickHandler(passengersArr)} Errs={err}/>
                         </div>
-
-
                     </div>
-
                 </div>
             }
             <NabvarCustom/>
@@ -332,27 +343,12 @@ const ReservationConfirmation = () => {
                         </div>
                         <div className={styles["paymentbtn"]}>
                             <button
-                                // onClick={() => {
-                                //   let flight_id = fromRouter.reservationconfirmation[1];
-                                //   let hotel_id = fromRouter.reservationconfirmation[0];
-                                //   let checkin = hotelDet.flight.date;
-                                //   let reserver_full_name = reserverData.reserver_full_name;
-                                //   let reserver_id_code = reserverData.reserver_id_code;
-                                //   let reserver_phone = reserverData.reserver_phone;
-                                //   axios.post(
-                                //     "https://hotelobilit-api.iran.liara.run/api/v1/reserves",
-                                //     {
-                                //       checkin,
-                                //       flight_id,
-                                //       hotel_id,
-                                //       reserver_full_name,
-                                //       reserver_id_code,
-                                //       reserver_phone,
-                                //       rooms: [...dataq],
-                                //       stayCount,
-                                //     }
-                                //   );
-                                // }}
+                           onClick={()=>{
+                                   ErrSuccess('رزرو شما با موفقیت انجام شد.به صفحه نخست منتقل می شوید. ')
+                               setTimeout(()=>{
+                                   router.push('/')
+                               },3000)
+                           }}
                             >
                                 پرداخت با کارت شتاب
                             </button>

@@ -127,6 +127,20 @@ const UpdatePassenger = (props) => {
             setFormData(newpassengerArr);
 
     };
+
+    const validation = (passId, inputname) => {
+
+        const findPassInput = formdata.filter(
+            (passenger) => passenger.id == passId
+        );
+
+        if (findPassInput[0]?.[inputname]?.length > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    };
     return (
         <>
 
@@ -145,7 +159,7 @@ const UpdatePassenger = (props) => {
                         >
                             {/* <label className={styles["label-fix"]}>سرپرست</label> */}
                             <div>
-                                {props.targetedRoom.details.passengers.map(pass => {
+                                {props.targetedRoom.details.passengers.map((pass ,passIndex) => {
                                     return (
                                         <div className={styles['container']}>
                                             <div className={styles["personDet"]}>
@@ -200,20 +214,20 @@ const UpdatePassenger = (props) => {
                                                             <option value="0">خانم</option>
                                                         </select>
                                                     </div>
-                                                    {/*{props.Errs?.errors &&*/}
-                                                    {/*errValidation(*/}
-                                                    {/*    props.Errs?.errors,*/}
-                                                    {/*    errStruct(props.roomIndex, props.passIndex, "gender")*/}
-                                                    {/*) &&*/}
-                                                    {/*!validation(props.passId, props.id, "gender") ? (*/}
-                                                    {/*    <small>*/}
-                                                    {/*        {*/}
-                                                    {/*            props.Errs?.errors[*/}
-                                                    {/*                errStruct(props.roomIndex, props.passIndex, "gender")*/}
-                                                    {/*                ]*/}
-                                                    {/*        }*/}
-                                                    {/*    </small>*/}
-                                                    {/*) : null}*/}
+                                                    {props.Errs?.errors &&
+                                                    errValidation(
+                                                        props.Errs?.errors,
+                                                        errStruct(0, passIndex, "gender")
+                                                    ) &&
+                                                    !validation( pass.id , "gender") ? (
+                                                        <small>
+                                                            {
+                                                                props.Errs?.errors[
+                                                                    errStruct(0, passIndex, "gender")
+                                                                    ]
+                                                            }
+                                                        </small>
+                                                    ) : null}
                                                 </div>
                                                 {/* align-items-center w-18 */}
                                                 <div className={styles["item-form"]}>
@@ -235,20 +249,20 @@ const UpdatePassenger = (props) => {
                                                         />
                                                     </div>
 
-                                                    {/*{props.Errs?.errors &&*/}
-                                                    {/*errValidation(*/}
-                                                    {/*    props.Errs?.errors,*/}
-                                                    {/*    errStruct(props.roomIndex, props.passIndex, "name")*/}
-                                                    {/*) &&*/}
-                                                    {/*!validation(props.passId, props.id, "name") ? (*/}
-                                                    {/*    <small style={{marginTop: "5px"}}>*/}
-                                                    {/*        {*/}
-                                                    {/*            props.Errs?.errors[*/}
-                                                    {/*                errStruct(props.roomIndex, props.passIndex, "name")*/}
-                                                    {/*                ]*/}
-                                                    {/*        }*/}
-                                                    {/*    </small>*/}
-                                                    {/*) : null}*/}
+                                                    {props.Errs?.errors &&
+                                                    errValidation(
+                                                        props.Errs?.errors,
+                                                        errStruct(0, passIndex, "name")
+                                                    ) &&
+                                                    !validation( pass.id , "name") ? (
+                                                        <small>
+                                                            {
+                                                                props.Errs?.errors[
+                                                                    errStruct(0, passIndex, "name")
+                                                                    ]
+                                                            }
+                                                        </small>
+                                                    ) : null}
 
                                                     {/* {latinCheck.name === true ? (
                   <small style={{ marginTop: "5px" }}>
@@ -275,20 +289,20 @@ const UpdatePassenger = (props) => {
                                                         />
                                                     </div>
 
-                                                    {/*{props.Errs?.errors &&*/}
-                                                    {/*errValidation(*/}
-                                                    {/*    props.Errs?.errors,*/}
-                                                    {/*    errStruct(props.roomIndex, props.passIndex, "family")*/}
-                                                    {/*) &&*/}
-                                                    {/*!validation(props.passId, props.id, "family") ? (*/}
-                                                    {/*    <small style={{marginTop: "5px"}}>*/}
-                                                    {/*        {*/}
-                                                    {/*            props.Errs?.errors[*/}
-                                                    {/*                errStruct(props.roomIndex, props.passIndex, "family")*/}
-                                                    {/*                ]*/}
-                                                    {/*        }*/}
-                                                    {/*    </small>*/}
-                                                    {/*) : null}*/}
+                                                    {props.Errs?.errors &&
+                                                    errValidation(
+                                                        props.Errs?.errors,
+                                                        errStruct(0, passIndex, "family")
+                                                    ) &&
+                                                    !validation( pass.id , "family") ? (
+                                                        <small>
+                                                            {
+                                                                props.Errs?.errors[
+                                                                    errStruct(0, passIndex, "family")
+                                                                    ]
+                                                            }
+                                                        </small>
+                                                    ) : null}
 
                                                     {/* {latinCheck.family === true ? (
                   <small style={{ marginTop: "5px" }}>
@@ -320,20 +334,20 @@ const UpdatePassenger = (props) => {
                                                             <option value="0">غیر ایرانی</option>
                                                         </select>
                                                     </div>
-                                                    {/*{props.Errs?.errors &&*/}
-                                                    {/*errValidation(*/}
-                                                    {/*    props.Errs?.errors,*/}
-                                                    {/*    errStruct(props.roomIndex, props.passIndex, "nationality")*/}
-                                                    {/*) &&*/}
-                                                    {/*!validation(props.passId, props.id, "nationality") ? (*/}
-                                                    {/*    <small>*/}
-                                                    {/*        {*/}
-                                                    {/*            props.Errs?.errors[*/}
-                                                    {/*                errStruct(props.roomIndex, props.passIndex, "nationality")*/}
-                                                    {/*                ]*/}
-                                                    {/*        }*/}
-                                                    {/*    </small>*/}
-                                                    {/*) : null}*/}
+                                                    {props.Errs?.errors &&
+                                                    errValidation(
+                                                        props.Errs?.errors,
+                                                        errStruct(0, passIndex, "nationality")
+                                                    ) &&
+                                                    !validation( pass.id , "nationality") ? (
+                                                        <small>
+                                                            {
+                                                                props.Errs?.errors[
+                                                                    errStruct(0, passIndex, "nationality")
+                                                                    ]
+                                                            }
+                                                        </small>
+                                                    ) : null}
                                                 </div>
 
                                                 {/* "item-form w-15" */}
@@ -399,20 +413,20 @@ const UpdatePassenger = (props) => {
                                                             readOnly
                                                         />
                                                     </div>
-                                                    {/*{props.Errs?.errors &&*/}
-                                                    {/*errValidation(*/}
-                                                    {/*    props.Errs?.errors,*/}
-                                                    {/*    errStruct(props.roomIndex, props.passIndex, "birth_day")*/}
-                                                    {/*) &&*/}
-                                                    {/*!validation(props.passId, props.id, "birth_day") ? (*/}
-                                                    {/*    <small>*/}
-                                                    {/*        {*/}
-                                                    {/*            props.Errs?.errors[*/}
-                                                    {/*                errStruct(props.roomIndex, props.passIndex, "birth_day")*/}
-                                                    {/*                ]*/}
-                                                    {/*        }*/}
-                                                    {/*    </small>*/}
-                                                    {/*) : null}*/}
+                                                    {props.Errs?.errors &&
+                                                    errValidation(
+                                                        props.Errs?.errors,
+                                                        errStruct(0, passIndex, "birth_day")
+                                                    ) &&
+                                                    !validation( pass.id , "birth_day") ? (
+                                                        <small>
+                                                            {
+                                                                props.Errs?.errors[
+                                                                    errStruct(0, passIndex, "birth_day")
+                                                                    ]
+                                                            }
+                                                        </small>
+                                                    ) : null}
                                                 </div>
                                                 {/* "item-form w-10" */}
                                                 <div className={styles["item-form"]}>
@@ -431,20 +445,20 @@ const UpdatePassenger = (props) => {
                                                             name="passport"
                                                         />
                                                     </div>
-                                                    {/*{props.Errs?.errors &&*/}
-                                                    {/*errValidation(*/}
-                                                    {/*    props.Errs?.errors,*/}
-                                                    {/*    errStruct(props.roomIndex, props.passIndex, "passport")*/}
-                                                    {/*) &&*/}
-                                                    {/*!validation(props.passId, props.id, "passport") ? (*/}
-                                                    {/*    <small>*/}
-                                                    {/*        {*/}
-                                                    {/*            props.Errs?.errors[*/}
-                                                    {/*                errStruct(props.roomIndex, props.passIndex, "passport")*/}
-                                                    {/*                ]*/}
-                                                    {/*        }*/}
-                                                    {/*    </small>*/}
-                                                    {/*) : null}*/}
+                                                    {props.Errs?.errors &&
+                                                    errValidation(
+                                                        props.Errs?.errors,
+                                                        errStruct(0, passIndex, "passport")
+                                                    ) &&
+                                                    !validation( pass.id , "passport") ? (
+                                                        <small>
+                                                            {
+                                                                props.Errs?.errors[
+                                                                    errStruct(0, passIndex, "passport")
+                                                                    ]
+                                                            }
+                                                        </small>
+                                                    ) : null}
                                                 </div>
                                                 {/* "item-form w-15" */}
                                                 <div className={styles["item-form"]}>
@@ -459,22 +473,7 @@ const UpdatePassenger = (props) => {
                                                                 setCrrentPassId(pass.id)
                                                                 // setCurrentIndex(index);
                                                             }}
-                                                            // onChange={(e) =>
-                                                            //     FormDataPicker(
-                                                            //         e,
-                                                            //         props.passId,
-                                                            //         props.type,
-                                                            //         props.roomId,
-                                                            //         props.roomTypeId,
-                                                            //         props.id,
-                                                            //         props.reserve_id
-                                                            //     )
-                                                            // }
                                                             name="expired_passport"
-                                                            // onClick={() => {
-                                                            //     managePopUpExtPasCalendar(true);
-                                                            //     // setCurrentIndex(index);
-                                                            // }}
                                                             value={findDate(
                                                                 pass.id,
                                                                 "expired_passport"
@@ -482,14 +481,15 @@ const UpdatePassenger = (props) => {
                                                             readOnly
                                                         />
                                                     </div>
-                                                    {/*{props.Errs?.errors &&*/}
-                                                    {/*errValidation(*/}
-                                                    {/*    props.Errs?.errors,*/}
-                                                    {/*    errStruct(props.roomIndex, props.passIndex, "expired_passport")*/}
-                                                    {/*) &&*/}
-                                                    {/*!validation(props.passId, props.id, "expired_passport") ? (*/}
-                                                    {/*    <small>فیلد تاریخ انقضا پاسپورت الزامی است</small>*/}
-                                                    {/*) : null}*/}
+                                                    {props.Errs?.errors &&
+                                                    errValidation(
+                                                        props.Errs?.errors,
+                                                        errStruct(0, passIndex, "expired_passport")
+                                                    ) &&
+                                                    !validation( pass.id , "expired_passport") ? (
+                                                        <small>فیلد تاریخ انقضا پاسپورت الزامی است</small>
+                                                    ) : null}
+
                                                 </div>
 
                                                 <PopUp opened={state.open} closePopUp={managePopUpBirthdayCalendar}>
