@@ -13,6 +13,7 @@ import globals from "../../../../sources/Global";
 import Scrolltoprefresh from "../../../../sources/component/Scrolltoprefresh";
 import axios from "axios";
 import InfoPasserngers from "../../../../Components/NewTours/Components/InfoPasserngers";
+import UpdatePassenger from "../../../../Components/NewTours/Components/UpdatePassenger";
 
 const ReservationConfirmation = () => {
     const [hotelDet, setHotelDet] = useState();
@@ -25,7 +26,10 @@ const ReservationConfirmation = () => {
     // const [stayCount, setStayCount] = useState("");
     const [isEdit, setIsEdit] = useState(false)
     const [targetedRoom, setTargetedRoom] = useState([])
-    const[dataq,setDataq]=useState([])
+    const [dataq, setDataq] = useState([])
+    const [reservedRoom, setReservedRoom] = useState([])
+    const [tourData, setTourData] = useState([])
+    const [targetedReservedId, setTargetedReservedId] = useState('')
 
     useEffect(() => {
         if (router?.query?.flightDet) {
@@ -43,16 +47,16 @@ const ReservationConfirmation = () => {
 
     useEffect(() => {
         if (reservedRooms) {
-            setRoomId(reservedRooms[0]?.id);
+            setRoomId(reservedRoom[0]?.id);
         }
-    }, [reservedRooms]);
+    }, [reservedRoom]);
 
-    // useEffect(() => {
-    //
-    //
-    //       console.log('sdsadw342',flightDet);
-    //
-    // }, [flightDet]);
+    useEffect(() => {
+
+
+        console.log('sdsadw342', hotelDet);
+
+    }, [hotelDet]);
 
     const variants = {
         initial: {
@@ -75,22 +79,56 @@ const ReservationConfirmation = () => {
         },
     };
 
+    const getReservedData = () => {
+        let reservedRoomData
+        axios.get(`https://hotelobilit-api.iran.liara.run/api/v2/reserves/${router.query.ref_code}`).then((res) => {
+            console.log('reserves', res.data)
+            setTourData(res.data.data)
+            reservedRoomData = res.data.data.reserves.filter(room => room.reserve_type === 'room')
+            setReservedRoom(reservedRoomData)
+
+        })
+    }
+
     useEffect(() => {
-       // axios.post(`https://hotelobilit-api.iran.liara.run/api/v2/reserves/confirm/${router.query.ref_code}`).then((res)=>{
-       //     console.log(res.data)
-       // })
-        console.log('sada',flightDet)
-    }, [flightDet])
+        getReservedData()
+
+    }, [router])
+
+    useEffect(() => {
+        console.log('ryeutie', tourData)
+    }, [tourData])
 
 
+    const OpenEdit = (reserveId) => {
 
-    const OpenEdit=(reserveId)=>{
         setIsEdit(!isEdit)
-        // console.log(reserveId)
-
-        let selectRoom=reservedRooms.filter(reserveRoom=>reserveRoom.reserve_id===reserveId)
+        setTargetedReservedId(reserveId)
+        console.log(reserveId)
+        let selectRoom = reservedRoom.filter(reserveRoom => reserveRoom.id === reserveId)
         setTargetedRoom(selectRoom)
-        // console.log(selectRoom)
+    }
+
+    useEffect(() => {
+        console.log('e', targetedRoom)
+    }, [targetedRoom])
+
+
+    const EditClickHandler = (passengersArr) => {
+        axios.patch(`https://hotelobilit-api.iran.liara.run/api/v2/reserves/${router.query.ref_code}`, {
+            reserves: [{
+                reserve_id: targetedReservedId,
+                passengers: [...passengersArr]
+            }],
+            reserver_full_name: tourData.reserver_full_name,
+            reserver_phone: tourData.reserver_phone,
+            reserver_id_code: tourData.reserver_id_code
+
+        }).then((res) => {
+            getReservedData()
+            setIsEdit(false)
+        })
+
     }
 
 
@@ -109,13 +147,40 @@ const ReservationConfirmation = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center'
-                }} onClick={() => setIsEdit(false)}>
-                    <div style={{padding:'1rem', borderRadius:'20px',marginTop:'3rem', width: '800px', height: '500px', backgroundColor: 'white'}}>
+                }}>
+                    <div style={{
+                        padding: '1.5rem',
+                        borderRadius: '20px',
+                        marginTop: '3rem',
+                        width: '900px',
+                        height: 'auto',
+                        backgroundColor: 'white'
+                    }}>
                         {/*{debugger}*/}
-                        <InfoPasserngers room={targetedRoom[0]} flightDet={flightDet} generalRoomDet={roomBaseDet} dataq={dataq}
-                        setDataq={(val)=>setDataq(val)} isEdit={'hi'}
-                        />
+                        <div onClick={() => setIsEdit(false)} style={{border:'2px solid red',  width:'20px' ,height:'25px',display:'flex',justifyContent:'center', alignItems:'center'}}>
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="17" height="17"
+                                 viewBox="0 0 48 48">
+                                <path fill="#F44336" d="M21.5 4.5H26.501V43.5H21.5z"
+                                      transform="rotate(45.001 24 24)"></path>
+                                <path fill="#F44336" d="M21.5 4.5H26.5V43.501H21.5z"
+                                      transform="rotate(135.008 24 24)"></path>
+                            </svg>
+                        </div>
+
+                        <div style={{
+                            height: 'auto',
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: "center",
+                            flexDirection: 'column'
+                        }}>
+                            <UpdatePassenger targetedRoom={targetedRoom[0]} setIsEdit={() => setIsEdit(false)}
+                                             EditClickHandler={(passengersArr) => EditClickHandler(passengersArr)}/>
+                        </div>
+
+
                     </div>
+
                 </div>
             }
             <NabvarCustom/>
@@ -123,7 +188,7 @@ const ReservationConfirmation = () => {
                 <TourDetailLabel flightDet={hotelDet?.data?.reserves[0]?.flight} stayCount={router?.query?.stayCount}/>
                 <div className={styles["rooms"]}>
                     <Scrolltoprefresh/>
-                    {reservedRooms?.map((reservedroom) => {
+                    {reservedRoom?.map((reservedroom) => {
                         return (
                             <div
                                 className={styles["box-room"]}
@@ -137,29 +202,39 @@ const ReservationConfirmation = () => {
                                     <div className={styles["box-room-Det-name"]}>
                                         <div className={styles["circle"]}></div>
                                         <h2>
-                                            {roomNameChecker(roomBaseDet, reservedroom.room_id)}
+                                            {reservedroom.room.room_type}
                                         </h2>
                                     </div>
-                                    <div style={{color: 'red', cursor: "pointer"}}
-                                         onClick={() => OpenEdit(reservedroom.reserve_id)}>edit
-                                    </div>
-                                    <div
-                                        onClick={() => {
-                                            setRoomId(reservedroom.id);
-                                        }}
-                                        style={{cursor: "pointer"}}
-                                    >
 
-                                        <svg
-                                            viewBox="0 0 96 96"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="12px"
+
+                                    <div style={{display: 'flex'}}>
+                                        <div style={{color: 'red', cursor: "pointer"}}
+                                             onClick={() => OpenEdit(reservedroom.id)}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15"
+                                                 height="15" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M 18 2 L 15.585938 4.4140625 L 19.585938 8.4140625 L 22 6 L 18 2 z M 14.076172 5.9238281 L 3 17 L 3 21 L 7 21 L 18.076172 9.9238281 L 14.076172 5.9238281 z"></path>
+                                            </svg>
+                                        </div>
+                                        <div
+                                            onClick={() => {
+                                                setRoomId(reservedroom.id);
+                                            }}
+                                            style={{cursor: "pointer"}}
                                         >
-                                            <title/>
-                                            <path
-                                                d="M81.8457,25.3876a6.0239,6.0239,0,0,0-8.45.7676L48,56.6257l-25.396-30.47a5.999,5.999,0,1,0-9.2114,7.6879L43.3943,69.8452a5.9969,5.9969,0,0,0,9.2114,0L82.6074,33.8431A6.0076,6.0076,0,0,0,81.8457,25.3876Z"/>
-                                        </svg>
+
+                                            <svg
+                                                viewBox="0 0 96 96"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="12px"
+                                            >
+                                                <title/>
+                                                <path
+                                                    d="M81.8457,25.3876a6.0239,6.0239,0,0,0-8.45.7676L48,56.6257l-25.396-30.47a5.999,5.999,0,1,0-9.2114,7.6879L43.3943,69.8452a5.9969,5.9969,0,0,0,9.2114,0L82.6074,33.8431A6.0076,6.0076,0,0,0,81.8457,25.3876Z"/>
+                                            </svg>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <AnimatePresence>
                                     {reservedroom.id === roomId ? (

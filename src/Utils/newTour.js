@@ -363,6 +363,7 @@ export     const removeDuplicateObj=(data,prop)=>{
 }
 
 export const humantype = (type) => {
+  // debugger
   switch (type) {
     case "adl":
       return "بزرگسال";

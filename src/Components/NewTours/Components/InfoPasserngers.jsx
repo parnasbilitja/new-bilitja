@@ -50,7 +50,7 @@ const InfoPasserngers = (props) => {
     );
     // let filterbasedonreserveId=generalRoomDet.filter(det=>)
 
-    debugger
+    // debugger
     setChdPrc(chdPrcGen(baseRoomDet, props.flightDet, props.room?.room_type_id));
     setextPrc(extBedPrcGen(baseRoomDet, props.flightDet, props?.room_type_id));
     setinfPrc(props.flightDet.inf_price);

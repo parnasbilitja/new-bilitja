@@ -24,7 +24,7 @@ const RoomsInfo = (props) => {
                     <th className={styles["th"]}>قیمت</th>
                     <th className={styles["th"]}></th>
                 </tr>
-                {props.reservedRooms?.passengers?.map((passenger, index) => {
+                {props.reservedRooms?.details.passengers?.map((passenger, index) => {
                     return (
                         <tr>
                             <td
