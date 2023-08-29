@@ -137,9 +137,6 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
         setDataq(roomsData);
     }, [roomsData]);
 
-    useEffect(() => {
-        console.log('asdas', dataq)
-    }, [dataq])
 
 
     return (<>

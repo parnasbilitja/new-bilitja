@@ -286,7 +286,9 @@ const AvailableFlightBasedonSelectedTour = (props) => {
     const picGen = (picsNum) => {
         const gallary = [];
         let number = picsNum >= 3 ? 3 : picsNum;
-        for (let i = 1; i <= number; i++) {
+        let fiNum=props.widthmobi<= 868 ? 2:number
+
+        for (let i = 1; i <=  fiNum; i++) {
             gallary.push(<motion.div
                 whileHover={{translateY: "-15px"}}
                 onClick={() => {
@@ -367,15 +369,20 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                     />
                                 </motion.div>
                             </div>
-                            <div className={styles["imgbig_container"]}>
-                                <Image
-                                    className={styles["img-big"]}
-                                    src={hotel?.gallery[1].url}
-                                    layout="responsive"
-                                    height={205}
-                                    width={200}
-                                />
-                            </div>
+
+                            {
+                                props.widthmobi> 868 &&
+                                <div className={styles["imgbig_container"]}>
+                                    <Image
+                                        className={styles["img-big"]}
+                                        src={hotel?.gallery[1].url}
+                                        layout="responsive"
+                                        height={205}
+                                        width={200}
+                                    />
+                                </div>
+                            }
+
                         </div>)}
                     </div>
                 </div>) : (<motion.div
