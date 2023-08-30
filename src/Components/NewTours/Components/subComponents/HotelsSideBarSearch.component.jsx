@@ -61,6 +61,7 @@ const HotelsSideBarSearch = (props) => {
                 props?.setHotels([])
                 props?.setHotels(res?.data?.data?.data);
                 dispatch(setLoader(false))
+                setSearchInput('')
             })
             .catch((err) => {
                 console.log(err);
