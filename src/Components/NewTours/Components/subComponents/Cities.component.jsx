@@ -5,6 +5,7 @@ import { selectCredentials } from "../../../../Redux/Search/search.reselect";
 import { addCredentials } from "../../../../Redux/Search/search.action";
 import { setDestLoc, setOrgLoc } from "../../../../Redux/newTours/Action";
 import { Loader } from "../../../../Utils/Loader";
+import NewLoader from "./NewLoader";
 
 const Cities = (props) => {
     const[Cities,setCities]=useState([])
@@ -49,8 +50,8 @@ const Cities = (props) => {
     >
       {/* //fill airport */}
 
-      {!Cities ? (
-        <Loader />
+      {Cities.length===0 ? (
+          <NewLoader/>
       ) : (
         Cities?.map((city) => (
           <div

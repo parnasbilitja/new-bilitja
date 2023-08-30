@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import moment from "moment-jalaali";
 import styles from "../../../../../styles/BirthdayCalendar.module.scss";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAngleLeft} from "@fortawesome/free-solid-svg-icons";
 const BirthdayCalenderMiladi = (props) => {
     let current = 2022;
     const today = moment().format("YYYY/MM/DD");
@@ -202,12 +204,22 @@ const BirthdayCalenderMiladi = (props) => {
             ) : null}
             {state.stage == 2 ? (
                 <div>
+                    <div style={{display:'flex' ,justifyContent:'space-between',padding:'0 3.5rem 0 .5rem' }}>
+                        <div></div>
                     <p
                         onClick={() => setState({ ...state, stage: 1 })}
                         className="font-size-14 black-color font-bold-iransanse text-center"
+                        style={{paddingTop:'25px'}}
                     >
                         Please enter your desired month
                     </p>
+
+                        <button className="prevNextbtnSwiper2" onClick={() => {
+                            setState({ ...state, stage: 1 });
+                        }}>
+                            <FontAwesomeIcon icon={faAngleLeft} />
+                        </button>
+                    </div>
                     <div className={`font-en ${styles["birthday-month-container"]}`}>
                         {stageMonth.map((item) => (
                             <>
@@ -246,12 +258,21 @@ const BirthdayCalenderMiladi = (props) => {
             ) : null}
             {state.stage == 3 ? (
                 <div>
+                    <div style={{display:'flex' ,justifyContent:'space-between',padding:'0 4rem 0 .5rem',borderBottom:'1px solid black'}}>
+                        <div></div>
                     <p
                         onClick={() => setState({ ...state, stage: 1 })}
-                        className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black"
+                        className="font-size-14 black-color font-bold-iransanse text-center"
+                        style={{marginTop:'25px'}}
                     >
                         {getMonth()}&nbsp;&nbsp;{state.year}
                     </p>
+                    <button className="prevNextbtnSwiper2" onClick={() => {
+                        setState({ ...state, stage: 2 });
+                    }}>
+                        <FontAwesomeIcon icon={faAngleLeft} />
+                    </button>
+                    </div>
                     <div className={styles["birthday-day-container"]}>
                         <div className="font-size-13 color-black">Sat</div>
                         <div className="font-size-13 color-black">Sun</div>

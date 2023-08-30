@@ -24,6 +24,7 @@ import {
 import DropdownComponent from "./subComponents/Dropdown.component";
 import {isEmpty, jalaliDateReformater} from "../../../Utils/newTour";
 import {Err, NotifAlert} from "./NotifAlert.component";
+import NewLoader from "./subComponents/NewLoader";
 
 const TourSearchBox = (props) => {
 
@@ -354,6 +355,7 @@ const [prevDest,setPrevDest]=useState({})
                     >
                         {"جستجو"}
                     </PrimaryButton>
+
                 </div>
 
                 <PopUpWide opened={state.open} closePopUp={managePopUpCalendar}>

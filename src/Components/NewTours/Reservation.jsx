@@ -398,13 +398,9 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
 
                         <div className={styles["rules"]}>
                             <div style={{display: 'flex', alignItems: 'center'}}>
-                                <p style={{fontSize: '14px', margin: '0'}}>ثبت درخواست به منزله پذیرش تمام</p>
-                                <a style={{fontSize: '14px'}}>قوانین و مقررات</a>
-                                <p style={{fontSize: '14px', margin: '0'}}>
-                                    قوانین و مقررات مرتبط با سایت هتل و بلیط و پکیجهای این تور می
-                                    باشد
-                                </p>
 
+                                <p> ثبت درخواست به منزله پذیرش تمام <span>قوانین و مقررات</span>   مرتبط با سایت هتل و بلیط و پکیجهای این تور می
+                                    باشد</p>
                             </div>
                         </div>
                     </div>

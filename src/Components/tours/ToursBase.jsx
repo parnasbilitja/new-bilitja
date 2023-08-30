@@ -44,7 +44,7 @@ const ToursBase = (props) => {
   }, []);
   const [tourData, SetTourData] = useState([]);
 
-  const [tourSwitch, setTourSwitch] = useState("package-tour");
+  const [tourSwitch, setTourSwitch] = useState("tour");
 
   const toursHandler = (search) => {
     setState({ ...state, city: search.slug });

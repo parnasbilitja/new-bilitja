@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment-jalaali";
 import styles from "../../../../../styles/BirthdayCalendar.module.scss";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
 const BirthdayCalendar = (props) => {
   // console.log("fromsadsadsa", props);
   const { typePassenger } = props;
@@ -270,6 +272,7 @@ const BirthdayCalendar = (props) => {
     <div className={styles["birthday-calendar"]}>
       {state.stage == 1 ? (
         <div>
+
           <p className="font-size-14 black-color font-bold-iransanse text-center">
             {props.placeholder}
           </p>
@@ -290,16 +293,27 @@ const BirthdayCalendar = (props) => {
       ) : null}
       {state.stage == 2 ? (
         <div>
-          <p className="font-size-14 black-color font-bold-iransanse text-center">
-            <div
-              onClick={() => {
-                setState({ ...state, stage: 1 });
-              }}
-            >
-              {state.year}
-            </div>
-            لطفا ماه تولد خود را وارد کنید
-          </p>
+
+          <div style={{display:'flex' ,justifyContent:'space-between',padding:'0 4.5rem 0 1rem'}}>
+
+            <div></div>
+            <p className="font-size-14 black-color font-bold-iransanse text-center">
+              <div
+                  onClick={() => {
+                    setState({ ...state, stage: 1 });
+                  }}
+              >
+                {state.year}
+              </div>
+              لطفا ماه تولد خود را وارد کنید
+            </p>
+            <button className="prevNextbtnSwiper2" onClick={() => {
+              setState({ ...state, stage: 1 });
+            }}>
+              <FontAwesomeIcon icon={faAngleLeft} />
+            </button>
+          </div>
+
           <div className={styles["birthday-month-container"]}>
             {month.map((item, index) => (
               <>
@@ -323,18 +337,22 @@ const BirthdayCalendar = (props) => {
       ) : null}
       {state.stage == 3 ? (
         <div>
-          <p className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black">
+          <div style={{display:'flex' ,justifyContent:'space-between',padding:'0 4.5rem 0 .5rem',borderBottom:'1px solid black'}}>
+            <div></div>
+          <p className="font-size-14 black-color font-bold-iransanse text-center"
+             style={{marginTop:'25px'}}
+          >
             <span
-              className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black"
+              className="font-size-14 black-color font-bold-iransanse text-center "
               onClick={() => {
                 setState({ ...state, stage: 1 });
               }}
             >
               {state.year}
             </span>
-            &nbsp;&nbsp;
+
             <span
-              className="font-size-14 black-color font-bold-iransanse text-center border-bottom-black"
+              className="font-size-14 black-color font-bold-iransanse text-center padding-r-5"
               onClick={() => {
                 setState({ ...state, stage: 2 });
               }}
@@ -342,6 +360,12 @@ const BirthdayCalendar = (props) => {
               {getMonth()}
             </span>
           </p>
+            <button className="prevNextbtnSwiper2" onClick={() => {
+              setState({ ...state, stage: 2 });
+            }}>
+              <FontAwesomeIcon icon={faAngleLeft} />
+            </button>
+          </div>
           <div className={styles["birthday-day-container"]}>
             <div className="font-size-13 color-black">شنبه</div>
             <div className="font-size-13 color-black">1شنبه</div>
