@@ -13,6 +13,8 @@ import {Loader} from "../../Utils/Loader";
 import HotelsSideBarSearch from "../../Components/NewTours/Components/subComponents/HotelsSideBarSearch.component";
 import {motion} from 'framer-motion'
 import Footer from "../../sources/component/Footer.component";
+import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
+import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 
 const AvFlight = dynamic(() =>
     import("../../Components/NewTours/AvailableFlightBasedonSelectedTour")
@@ -146,9 +148,8 @@ const availableHotels = () => {
         <NavHandler />
         {router.query.availablehotels?.length === 1 ? (
             <div className={styles.hotels}>
-              {widthMobi<868&&
 
-                  <div  className={styles.menubarcontainer} >
+              {widthMobi<868&& <div  className={styles.menubarcontainer} >
                 <div style={{}} className={styles.menubar}>
                  <div className={styles.menubarItem}  onClick={()=> {
                      setShowSearchBox(!showSearchBox)
@@ -211,11 +212,11 @@ const availableHotels = () => {
                             alignItems: "center",
                           }}
                       >
-                        <Loader />
+                        <NewLoader />
                       </div>
                   ) : (
-                      hotels.length===0&& searchData.loader===false? (<p>یافت نشد</p>):
-                      hotels?.map((hotel) => {
+                      hotels?.length===0&& searchData.loader===false? (<p>یافت نشد</p>):
+                       hotels && hotels?.map((hotel) => {
                         return (
                             <div className={styles.hotelContainer}>
                               <div className={styles.hotelDetail}>

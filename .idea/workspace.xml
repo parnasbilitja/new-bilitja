@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/NewLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/NewLoader.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BDCalendarShamsi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BDCalendarShamsi.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalenderMiladi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalenderMiladi.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/BirthdayCalendar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/BirthdayCalendar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/components/CountDownTimer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/CountDownTimer.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/CollapseSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/CollapseSearch.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +177,7 @@
       <workItem from="1693045507081" duration="10405000" />
       <workItem from="1693119798637" duration="6959000" />
       <workItem from="1693144336177" duration="900000" />
-      <workItem from="1693376791223" duration="6379000" />
+      <workItem from="1693376791223" duration="10694000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -355,14 +347,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00073" summary="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied">
-      <option name="closed" value="true" />
-      <created>1692277769964</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1692277769964</updated>
-    </task>
     <task id="LOCAL-00074" summary="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied">
       <option name="closed" value="true" />
       <created>1692278195266</created>
@@ -523,7 +507,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693309526035</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="level back button has been deployed on expiredPass/birth_day =&gt; Reservation.jsx + rules style has been changed on Reservation.jsx">
+      <option name="closed" value="true" />
+      <created>1693383414333</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1693383414333</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,7 +535,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some visual changes on roomcounter button based on available room" />
     <MESSAGE value="err text hasbeen rechanged" />
     <MESSAGE value="checkbox style has been rechanged in HotelSidebarSearch.module.scss" />
     <MESSAGE value="some visual changes" />
@@ -568,7 +559,8 @@
     <MESSAGE value="reservedData update has been added to reservationComfirmation for changing passengers data based on room" />
     <MESSAGE value="some validations have been applied to UpdatePassenger.jsx form in reservationComfirmation" />
     <MESSAGE value="some style has been applied" />
-    <option name="LAST_COMMIT_MESSAGE" value="some style has been applied" />
+    <MESSAGE value="level back button has been deployed on expiredPass/birth_day =&gt; Reservation.jsx + rules style has been changed on Reservation.jsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="level back button has been deployed on expiredPass/birth_day =&gt; Reservation.jsx + rules style has been changed on Reservation.jsx" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -612,6 +604,18 @@
           <url>file://$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx</url>
           <line>159</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/tours/[...availablehotels].js</url>
+          <line>146</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx</url>
+          <line>108</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

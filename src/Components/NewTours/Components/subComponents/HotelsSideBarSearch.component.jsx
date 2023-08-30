@@ -7,8 +7,12 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import {collapseVariants} from "../../../../Utils/newTour";
 import CollapseSearchComponent from "./CollapseSearch.component";
+import {setLoader} from "../../../../Redux/newTours/Action";
+import {useDispatch} from "react-redux";
 
 const HotelsSideBarSearch = (props) => {
+    const dispatch=useDispatch()
+
     const [searchInput, setSearchInput] = useState("");
 
     const [check, setCheck] = useState("");
@@ -18,6 +22,7 @@ const HotelsSideBarSearch = (props) => {
 
     const search = (e) => {
         if (e.key === "Enter") {
+        dispatch(setLoader(true))
             axios
                 .post("https://hotelobilit-api.iran.liara.run/api/v1/hotels/search", {
                     date: props.date,
@@ -29,8 +34,9 @@ const HotelsSideBarSearch = (props) => {
                     stayCount: props.night,
                 })
                 .then((res) => {
-                    props.setHotels(res?.data?.data);
-
+                    props?.setHotels([])
+                    props?.setHotels(res?.data?.data?.data);
+                    dispatch(setLoader(false))
                 })
                 .catch((err) => {
                     console.log(err);
@@ -38,8 +44,33 @@ const HotelsSideBarSearch = (props) => {
             props.setShowFilter(!props.showFilter)
         }
     };
+
+    const reset=()=>{
+        dispatch(setLoader(true))
+        axios
+            .post("https://hotelobilit-api.iran.liara.run/api/v1/hotels/search", {
+                date: props.date,
+                destination: props.destination,
+                keywords: '',
+                orderBy: 1,
+                origin: props.origin,
+                stars: null,
+                stayCount: props.night,
+            })
+            .then((res) => {
+                props?.setHotels([])
+                props?.setHotels(res?.data?.data?.data);
+                dispatch(setLoader(false))
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        props.setShowFilter(!props.showFilter)
+
+    }
     ////////based on (cheapest or most expensive) or hotels name that went to search
     const checkedClick = (checkValue, num, searchtype) => {
+        dispatch(setLoader(true))
         axios
             .post("https://hotelobilit-api.iran.liara.run/api/v1/hotels/search", {
                 date: props.date,
@@ -51,8 +82,9 @@ const HotelsSideBarSearch = (props) => {
                 stayCount: props.night,
             })
             .then((res) => {
-                props.setHotels(res?.data?.data);
+                props.setHotels(res?.data?.data?.data);
                 props.setShowFilter(!props.showFilter)
+                dispatch(setLoader(false))
             })
             .catch((err) => {
                 console.log(err);
@@ -60,7 +92,6 @@ const HotelsSideBarSearch = (props) => {
         setCheck(checkValue);
 
     };
-
     const variants = {
         initial: {
             right: '-400px',
@@ -71,11 +102,6 @@ const HotelsSideBarSearch = (props) => {
         },
         exit: {right: '-400px', transition: {duration: .5}}
     }
-    useEffect(() => {
-        console.log('width', props.widthMobi)
-    }, [props.widthMobi])
-
-
     return (
         <>
             <AnimatePresence>
@@ -87,11 +113,19 @@ const HotelsSideBarSearch = (props) => {
                             <div style={{
                                 marginBottom: '15px',
                                 borderBottom: '2px solid #dee2e6',
-                                padding: '5px 0 8px 0'
+                                padding: '5px 0 8px 0',
+                                display:'flex',
+                                justifyContent:'space-between'
                             }}>
-                                <strong>
+                                <strong style={{margin:'0',padding:'0' ,display:'flex',alignItems:'center'}}>
                                     فیلتر ها
                                 </strong>
+                                <div className={styles['btn-container']}>
+
+                                    <button onClick={()=>{reset()}}>
+                                        همه
+                                    </button>
+                                </div>
                             </div>
 
                             <CollapseSearchComponent searchTab={searchTab}
@@ -143,7 +177,7 @@ const HotelsSideBarSearch = (props) => {
                                 <select
                                     name=""
                                     id=""
-                                    onClick={(e) => {
+                                    onChange={(e) => {
                                         e.stopPropagation()
                                         checkedClick(null, e.target.value, "star");
                                     }}
@@ -210,71 +244,13 @@ const HotelsSideBarSearch = (props) => {
                             </CollapseSearchComponent>
                         </motion.div>
                     </div>
-                </div>
 
+
+                </div>
             </AnimatePresence>
 
 
-            {/*{props.widthMobi > 869 &&*/}
-            {/*    <div className={styles['p-sidebar']}>*/}
-            {/*        <div className={styles.sidebar}>*/}
-            {/*            <div className={styles.hotelSearchInput}>*/}
-            {/*                <p>جستجوی نام هتل یا اقامتگاه</p>*/}
 
-            {/*                <input*/}
-            {/*                    type="text"*/}
-            {/*                    placeholder="نام هتل را وارد کنید"*/}
-            {/*                    value={searchInput}*/}
-            {/*                    onChange={(e) => setSearchInput(e.target.value)}*/}
-            {/*                    onKeyDown={(e) => search(e)}*/}
-            {/*                />*/}
-            {/*            </div>*/}
-            {/*            <div className={styles.hotelSearchStars}>*/}
-            {/*                <p>ستاره های هتل</p>*/}
-            {/*                <select*/}
-            {/*                    name=""*/}
-            {/*                    id=""*/}
-            {/*                    onClick={(e) => {*/}
-            {/*                        checkedClick(null, e.target.value, "star");*/}
-            {/*                    }}*/}
-            {/*                >*/}
-            {/*                    <option selected disabled>*/}
-            {/*                        همه*/}
-            {/*                    </option>*/}
-            {/*                    {props.stars?.map((star) => {*/}
-            {/*                        return <option value={star}>{star} ستاره </option>;*/}
-            {/*                    })}*/}
-            {/*                </select>*/}
-            {/*            </div>*/}
-            {/*            <div className={styles.hotelSearchOrder}>*/}
-            {/*                <p>مرتب سازی براساس</p>*/}
-            {/*                <div className={styles['p-checkbox']}>*/}
-            {/*                    <input*/}
-            {/*                        type="checkbox"*/}
-            {/*                        name="ارزان ترین"*/}
-            {/*                        id=""*/}
-            {/*                        onClick={() => checkedClick("cheap", 1, "order")}*/}
-            {/*                        checked={check === "cheap" ? true : false}*/}
-            {/*                    />*/}
-            {/*                    <p htmlFor="">ارزان ترین</p>*/}
-            {/*                </div>*/}
-            {/*                <div className={styles['p-checkbox']}>*/}
-            {/*                    <input*/}
-            {/*                        type="checkbox"*/}
-            {/*                        name="گران ترین"*/}
-            {/*                        id=""*/}
-            {/*                        checked={check === "expensive" ? true : false}*/}
-            {/*                        onClick={() => checkedClick("expensive", 2, "order")}*/}
-            {/*                    />*/}
-            {/*                    <p htmlFor="">گران ترین</p>*/}
-            {/*                </div>*/}
-            {/*                /!*<FormGroup>*!/*/}
-            {/*                /!*    <FormControlLabel required control={<Checkbox />} label="Required" />*!/*/}
-            {/*                /!*</FormGroup>*!/*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*}*/}
         </>
 
 
