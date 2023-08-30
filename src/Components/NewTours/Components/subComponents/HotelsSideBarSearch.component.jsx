@@ -123,7 +123,7 @@ const HotelsSideBarSearch = (props) => {
                                 <div className={styles['btn-container']}>
 
                                     <button onClick={()=>{reset()}}>
-                                        همه
+                                        حذف فیلتر
                                     </button>
                                 </div>
                             </div>
