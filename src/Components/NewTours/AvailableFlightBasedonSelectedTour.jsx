@@ -19,6 +19,7 @@ import {
 import Image from "next/image";
 import PictureModal from "./Components/subComponents/PictureModal";
 import {Err, ErrSuccess, NotifAlert} from "./Components/NotifAlert.component";
+import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 
 const AvailableFlightBasedonSelectedTour = (props) => {
     const router = useRouter();
@@ -311,6 +312,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
         />)}
 
         <div className={styles["container"]}>
+            <Scrolltoprefresh/>
             <div className={styles["hotelDet_container"]}>
                 {hotel?.gallery ? (<div className={styles["hotelDet"]}>
                     <div className={styles["right"]}>
@@ -405,6 +407,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
             {hotel?.flights?.map((flight) => {
                 return props.widthmobi > 868 ? (dateDiffChecker(flightDateChecker(flight).checkin, flightDateChecker(flight).checkout, props?.night) ? (
                     <div className={styles["ticket_container"]}>
+
                         <div className={styles["container"]}>
                             {isOpen === 0 ? null : isOpen === flight.id ? null : (<motion.div
                                 className={styles["blur"]}

@@ -144,11 +144,12 @@ const availableHotels = () => {
       console.log(hotels)
   },[hotels])
   return (
+
       <div className={styles["main-section"]}>
         <NavHandler />
+
         {router.query.availablehotels?.length === 1 ? (
             <div className={styles.hotels}>
-
               {widthMobi<868&& <div  className={styles.menubarcontainer} >
                 <div style={{}} className={styles.menubar}>
                  <div className={styles.menubarItem}  onClick={()=> {
@@ -175,7 +176,6 @@ const availableHotels = () => {
                     </div>
                 </div>
               </div>}
-
               {widthMobi< 868 && showSearchBox?
                   <div className={styles['searchboxContainer']}>
                     <div className={styles.searchContainer}>
