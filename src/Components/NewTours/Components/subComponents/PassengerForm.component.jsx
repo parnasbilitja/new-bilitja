@@ -62,7 +62,7 @@ const PassengerForm = (props) => {
     // debugger;
     const findroom = props.dataq.filter((data) => data.id === id);
     let newrooms = [];
-    const enRegEx = /[^A-Za-z0-9]/g;
+    const enRegEx = /[^A-Za-z0-9\s]/g;
 
     if (findroom.length > 0) {
       const filteredrooms = props.dataq.filter((data) => data.id !== id);

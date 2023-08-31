@@ -407,7 +407,6 @@ const AvailableFlightBasedonSelectedTour = (props) => {
             {hotel?.flights?.map((flight) => {
                 return props.widthmobi > 868 ? (dateDiffChecker(flightDateChecker(flight).checkin, flightDateChecker(flight).checkout, props?.night) ? (
                     <div className={styles["ticket_container"]}>
-
                         <div className={styles["container"]}>
                             {isOpen === 0 ? null : isOpen === flight.id ? null : (<motion.div
                                 className={styles["blur"]}
