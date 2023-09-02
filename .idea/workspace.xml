@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Shimmers.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/Shimmers.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/NewLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/NewLoader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PictureModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PictureModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +180,8 @@
       <workItem from="1693376791223" duration="14478000" />
       <workItem from="1693459123644" duration="3035000" />
       <workItem from="1693595542146" duration="747000" />
-      <workItem from="1693633232662" duration="743000" />
+      <workItem from="1693633232662" duration="1134000" />
+      <workItem from="1693655203030" duration="1234000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -351,14 +351,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00079" summary="some changes have been applied">
-      <option name="closed" value="true" />
-      <created>1692336601175</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1692336601175</updated>
-    </task>
     <task id="LOCAL-00080" summary="some changes have been applied">
       <option name="closed" value="true" />
       <created>1692337363130</created>
@@ -519,7 +511,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693459537365</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="image Gallary bugs have been fixed on avFilght">
+      <option name="closed" value="true" />
+      <created>1693634081259</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1693634081260</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +539,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some tiny changes" />
     <MESSAGE value="toursearchbox loading has been change" />
     <MESSAGE value="toursearchbox input search has been created" />
     <MESSAGE value="some bugs were fixed" />
@@ -564,7 +563,8 @@
     <MESSAGE value="some logic and stylish changes in filter available hotel page" />
     <MESSAGE value="some styles changes" />
     <MESSAGE value="tiny logical changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="tiny logical changes" />
+    <MESSAGE value="image Gallary bugs have been fixed on avFilght" />
+    <option name="LAST_COMMIT_MESSAGE" value="image Gallary bugs have been fixed on avFilght" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -616,13 +616,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx</url>
-          <line>726</line>
+          <line>719</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx</url>
-          <line>348</line>
-          <properties lambdaOrdinal="-1" />
+          <line>349</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>

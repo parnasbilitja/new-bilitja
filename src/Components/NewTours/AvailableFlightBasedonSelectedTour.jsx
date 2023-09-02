@@ -20,6 +20,7 @@ import Image from "next/image";
 import PictureModal from "./Components/subComponents/PictureModal";
 import {Err, ErrSuccess, NotifAlert} from "./Components/NotifAlert.component";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
+import Shimmers from "./Components/subComponents/Shimmers";
 
 const AvailableFlightBasedonSelectedTour = (props) => {
     const router = useRouter();
@@ -387,16 +388,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
 
                         </div>)}
                     </div>
-                </div>) : (<motion.div
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    transition={{
-                        duration: 0.9, repeat: Infinity, repeatType: "reverse",
-                    }}
-                    className={styles["box-top-box-reserve2"]}
-                >
-                    {/* <div className={styles["skew"]}></div> */}
-                </motion.div>)}
+                </div>) : (<Shimmers/>)}
             </div>
             <div className={styles["subscription"]}>
                 <p className={styles["p-title-page"]}>
@@ -404,7 +396,8 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                 </p>
             </div>
 
-            {hotel?.flights?.map((flight) => {
+            {hotel?.flights ?
+                hotel?.flights?.map((flight) => {
                 return props.widthmobi > 868 ? (dateDiffChecker(flightDateChecker(flight).checkin, flightDateChecker(flight).checkout, props?.night) ? (
                     <div className={styles["ticket_container"]}>
                         <div className={styles["container"]}>
@@ -1027,7 +1020,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                             </motion.div>) : null}
                         </div>
                     </div>) : null;
-            })}
+            }):(<Shimmers/>)}
         </div>
     </>);
 };
