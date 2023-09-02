@@ -50,7 +50,7 @@ const PictureModal = ({ url, setIsModal, gallery }) => {
                 borderRadius: "50px",
                 padding: "0",
               }}
-              onClick={() => setIsModal(0)}
+              onClick={() => setIsModal(null)}
             >
               <title />
               <path

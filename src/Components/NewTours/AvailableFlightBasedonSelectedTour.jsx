@@ -349,15 +349,15 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                     <div className={styles["left"]}>
                         {hotel?.gallery && (<div className={styles["image_container"]}>
                             <div className={styles["images"]}>
-                                {picGen(hotel?.gallery.length).map((pic) => {
+                                {picGen(hotel?.gallery.length-1).map((pic) => {
                                     return pic;
                                 })}
                                 <motion.div
                                     className={styles["morePic"]}
                                     onClick={() => {
-                                        setIsModal(hotel?.gallery[hotel?.gallery.length - 1]?.url);
+                                        setIsModal(hotel?.gallery[0]?.url);
                                     }}
-                                    layoutId={hotel?.gallery[hotel?.gallery.length - 1]?.url}
+                                    layoutId={hotel?.gallery[0]?.url}
                                 >
                                     <div className={styles["dots"]}>
                                         <div></div>

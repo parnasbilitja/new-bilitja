@@ -51,10 +51,7 @@ const UpdatePassenger = (props) => {
 
     const FormDataPicker = (e, passId) => {
         // debugger;
-
-
         const enRegEx = /[^A-Za-z0-9\s]/g;
-
         const findpassenger = formdata.filter(
             (passenger) => passenger.id === passId
         );

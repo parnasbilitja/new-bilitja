@@ -147,6 +147,7 @@ const availableHotels = () => {
 
       <div className={styles["main-section"]}>
         <NavHandler />
+          <Scrolltoprefresh/>
 
         {router.query.availablehotels?.length === 1 ? (
             <div className={styles.hotels}>
@@ -203,17 +204,19 @@ const availableHotels = () => {
               <div className={styles["p-available"]}>
                 <div className={styles.content}>
                   { searchData?.loader===true ? (
-                      <div
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                      >
-                        <NewLoader />
-                      </div>
+
+                          <div
+                              style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  display: "flex",
+                                  flexDirection:'column',
+                                  justifyContent: "center",
+                                  alignItems: "center",
+                              }}
+                          >
+                              <NewLoader title='بلیطجا در حال یافتن بهترین نتیجه طبق درخواست شماست....' />
+                          </div>
                   ) : (
                       hotels?.length===0&& searchData.loader===false? (<p>یافت نشد</p>):
                        hotels && hotels?.map((hotel) => {
