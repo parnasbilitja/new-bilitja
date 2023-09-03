@@ -197,6 +197,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                                     ErrSuccess("به صفحه تایید اطلاعات رزرو و پرداخت نهایی منتقل می شوید");
                                                 })
                                                 .catch((err) => {
+
                                                     Err("لطفا فیلد های زیر را تکمیل کنید");
                                                     setErr(err?.response?.data);
                                                 });
@@ -357,8 +358,15 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                         />
                                     </div>
 
-                                    {err.errors?.reserver_id_code && reserverData.reserver_id_code.length === 0 ? (
-                                        <small>{err.errors?.reserver_id_code}</small>) : null}
+                                    {
+                                        err.errors &&  <div style={{display:"flex",justifyContent:"space-between",marginTop:'9px'}}>
+                                            {err.errors?.reserver_id_code && reserverData.reserver_id_code.length === 0 ? (
+                                                <p style={{marginLeft:'10px'}}>{err.errors?.reserver_id_code}</p>) : null}
+                                            {err.errors && reserverData.reserver_id_code.length < 10 ? (
+                                                <p>کد ملی نباید کمتر از 10 رقم باشد.</p>) : null}
+                                        </div>
+                                    }
+
                                 </div>
                                 <div className={styles["item-form"]}>
                                     <div className={styles["inp-form"]}>
