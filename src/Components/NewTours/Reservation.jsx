@@ -359,7 +359,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                     </div>
 
                                     {
-                                        err.errors &&  <div style={{display:"flex",justifyContent:"space-between",marginTop:'9px'}}>
+                                        err.errors &&  <div style={{display:"flex",justifyContent:"space-between",marginTop:'7px'}}>
                                             {err.errors?.reserver_id_code && reserverData.reserver_id_code.length === 0 ? (
                                                 <p style={{marginLeft:'10px'}}>{err.errors?.reserver_id_code}</p>) : null}
                                             {err.errors && reserverData.reserver_id_code.length < 10 ? (

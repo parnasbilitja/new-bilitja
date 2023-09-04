@@ -571,6 +571,8 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                 // console.log(res.data)
                                                     ErrSuccess("به صفحه تکمیل اطلاعات و رزرو منتقل می‌شوید");
                                                     router.push(`/tours/reserve/${hotel.id}/${flight.id}?checkin=${checkin}&checkout=${checkout}&rooms=${JSON.stringify(rooms)}&ref_code=${res.data.data.ref_code}`);
+                                            }).catch(err=>{
+                                                Err('این پرواز با این تعداد اتاق انتخابی موجودی ندارد')
                                             })
                                             } else {
                                                 Err("لطفا پرواز و اتاق مورد نظر خود راانتخاب کنید");

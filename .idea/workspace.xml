@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,8 +185,9 @@
       <workItem from="1693633232662" duration="1134000" />
       <workItem from="1693655203030" duration="2579000" />
       <workItem from="1693736186441" duration="1185000" />
-      <workItem from="1693745061689" duration="2057000" />
+      <workItem from="1693745061689" duration="4469000" />
       <workItem from="1693795856412" duration="442000" />
+      <workItem from="1693830098017" duration="1593000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -355,14 +357,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00081" summary="some changes have been applied">
-      <option name="closed" value="true" />
-      <created>1692438871332</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1692438871333</updated>
-    </task>
     <task id="LOCAL-00082" summary="some changes have been applied">
       <option name="closed" value="true" />
       <created>1692450717365</created>
@@ -523,7 +517,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693656786056</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="some verfication logic has been changed">
+      <option name="closed" value="true" />
+      <created>1693747294934</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1693747294934</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,7 +545,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="toursearchbox input search has been created" />
     <MESSAGE value="some bugs were fixed" />
     <MESSAGE value="some visual changes in toursearchbox" />
     <MESSAGE value="loader logic ([...availableHotel])  has been change for waiting until loading data" />
@@ -568,7 +569,8 @@
     <MESSAGE value="tiny logical changes" />
     <MESSAGE value="image Gallary bugs have been fixed on avFilght" />
     <MESSAGE value="Shimmers has been added to AvailableFlightBasedonSelectedTour" />
-    <option name="LAST_COMMIT_MESSAGE" value="Shimmers has been added to AvailableFlightBasedonSelectedTour" />
+    <MESSAGE value="some verfication logic has been changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="some verfication logic has been changed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -620,7 +622,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx</url>
-          <line>719</line>
+          <line>721</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
