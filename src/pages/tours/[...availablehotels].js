@@ -146,11 +146,12 @@ const availableHotels = () => {
   return (
 
       <div className={styles["main-section"]}>
-        <NavHandler />
-          <Scrolltoprefresh/>
+          {/*<Scrolltoprefresh/>*/}
+            <NavHandler />
 
         {router.query.availablehotels?.length === 1 ? (
             <div className={styles.hotels}>
+
               {widthMobi<868&& <div  className={styles.menubarcontainer} >
                 <div style={{}} className={styles.menubar}>
                  <div className={styles.menubarItem}  onClick={()=> {
@@ -181,7 +182,6 @@ const availableHotels = () => {
                   <div className={styles['searchboxContainer']}>
                     <div className={styles.searchContainer}>
                         <div>
-
                       <div className={styles['closeBtn']} onClick={()=>setShowSearchBox(!showSearchBox)}><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 30 30" fill="#e20000">
                           <path d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"></path>
                       </svg></div>
@@ -195,6 +195,7 @@ const availableHotels = () => {
                   </div>
                   : widthMobi>868?
                       <div className={styles.searchContainer}>
+
                         <TourSearchBox
                             // selectedDest={selectedDest}
                             // selectedSrc={selectedSrc}
@@ -202,6 +203,7 @@ const availableHotels = () => {
                         />
                       </div>:null}
               <div className={styles["p-available"]}>
+
                 <div className={styles.content}>
                   { searchData?.loader===true ? (
 
@@ -219,76 +221,82 @@ const availableHotels = () => {
                           </div>
                   ) : (
                       hotels?.length===0&& searchData.loader===false? (<p>یافت نشد</p>):
-                       hotels && hotels?.map((hotel) => {
-                        return (
-                            <div className={styles.hotelContainer}>
-                              <div className={styles.hotelDetail}>
-                                {/* <Image src="" width={162} height={170}></Image> */}
-                                <div className={styles.imageContainer}>
-                                  <Image
-                                      src={hotel.gallery[0].url}
-                                      width={500}
-                                      height={500}
-                                      alt="Picture of the hotel"
-                                  />
-                                </div>
-                                <div className={styles.hotelNameDetail}>
-                                  {hotel.is_domestic ? (
-                                      <div>
-                                        <h2 className={styles.faName}>{hotel?.title}</h2>
-                                        <h2 className={styles.enName}>{hotel?.titleEn}</h2>
+
+                          <div>
+                              <Scrolltoprefresh/>
+                              {  hotels && hotels?.map((hotel) => {
+                                  return (
+                                      <div className={styles.hotelContainer}>
+
+                                          <div className={styles.hotelDetail}>
+                                              {/* <Image src="" width={162} height={170}></Image> */}
+                                              <div className={styles.imageContainer}>
+                                                  <Image
+                                                      src={hotel.gallery[0].url}
+                                                      width={500}
+                                                      height={500}
+                                                      alt="Picture of the hotel"
+                                                  />
+                                              </div>
+                                              <div className={styles.hotelNameDetail}>
+                                                  {hotel.is_domestic ? (
+                                                      <div>
+                                                          <h2 className={styles.faName}>{hotel?.title}</h2>
+                                                          <h2 className={styles.enName}>{hotel?.titleEn}</h2>
+                                                      </div>
+                                                  ) : (
+                                                      <div>
+                                                          <h2 className={styles.faName}>{hotel?.titleEn}</h2>
+                                                          <h2 className={styles.enName}>{hotel?.title}</h2>
+                                                      </div>
+                                                  )}
+
+                                                  <div className={styles.pStar}>
+                                                      {startBuilder(+hotel.stars)?.map((x) => {
+                                                          return x;
+                                                      })}
+                                                  </div>
+                                                  {/* <div className={styles.stars}>{hotel.stars}stars</div> */}
+                                                  <div className={styles.services}>
+                                                      <label htmlFor="">منطقه :</label>
+                                                      <p>
+                                                          {hotel?.location ? hotel?.location : "ثبت نشده"}
+                                                      </p>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div className={styles.priceandbtnContainer}>
+                                              <p className={styles.priceTitle}>
+                                                  {`قیمت برای هر نفر ${night} شب از :`}
+                                              </p>
+                                              <div className={styles.priceParent}>
+                                                  <strong className={styles.price}>
+                                                      {numberWithCommas(hotel?.totalRoomPrice)}
+                                                  </strong>
+                                                  <span>تومان</span>
+                                              </div>
+                                              <div className={styles.btnContainer}>
+                                                  <button
+                                                      onClick={() => {
+                                                          const jalalurlReformat =
+                                                              jalaliDateReformater(jalaliDate);
+
+                                                          router.push(
+                                                              `/tours/${origin}-${destination}/flight/${hotel?.slug}?origin=${origin}&dest=${destination}&stDate=${jalalurlReformat}&night=${night}`
+                                                          );
+                                                      }}
+                                                  >
+                                                      {" "}
+                                                      انتخاب هتل و رزرو
+                                                  </button>
+                                              </div>
+                                          </div>
                                       </div>
-                                  ) : (
-                                      <div>
-                                        <h2 className={styles.faName}>{hotel?.titleEn}</h2>
-                                        <h2 className={styles.enName}>{hotel?.title}</h2>
-                                      </div>
-                                  )}
+                                  );
+                              })}
+                          </div>
 
-                                  <div className={styles.pStar}>
-                                    {startBuilder(+hotel.stars)?.map((x) => {
-                                      return x;
-                                    })}
-                                  </div>
-                                  {/* <div className={styles.stars}>{hotel.stars}stars</div> */}
-                                  <div className={styles.services}>
-                                    <label htmlFor="">منطقه :</label>
-                                    <p>
-                                      {hotel?.location ? hotel?.location : "ثبت نشده"}
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className={styles.priceandbtnContainer}>
-                                <p className={styles.priceTitle}>
-                                  {`قیمت برای هر نفر ${night} شب از :`}
-                                </p>
-                                <div className={styles.priceParent}>
-                                  <strong className={styles.price}>
-                                    {numberWithCommas(hotel?.totalRoomPrice)}
-                                  </strong>
-                                  <span>تومان</span>
-                                </div>
-                                <div className={styles.btnContainer}>
-                                  <button
-                                      onClick={() => {
-                                        const jalalurlReformat =
-                                            jalaliDateReformater(jalaliDate);
-
-                                        router.push(
-                                            `/tours/${origin}-${destination}/flight/${hotel?.slug}?origin=${origin}&dest=${destination}&stDate=${jalalurlReformat}&night=${night}`
-                                        );
-                                      }}
-                                  >
-                                    {" "}
-                                    انتخاب هتل و رزرو
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                        );
-                      })
                   )}
                 </div>
                   {showFilter && widthMobi<868?
