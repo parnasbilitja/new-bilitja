@@ -9,7 +9,7 @@ const TourList = (props) => {
     const [loading, setLoading] = useState(true)
     const getData = async () => {
         setLoading(true)
-        await axios.post('https://api.hamnavaz.com/api/v1/tour/getTours',{city:props.name})
+        await axios.post('https://api.hamnavaz.com/api/v1/tour/getTours',{city:props.name.slice(4,props.name.length)})
         .then(res =>{setData(res.data.data),setLoading(false)})
     }
     useEffect(() => {

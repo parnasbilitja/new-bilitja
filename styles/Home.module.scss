@@ -652,3 +652,16 @@
     width: 100% !important;
   }
 }
+
+@media only screen and (min-width: 868px){
+  .checkboxs_container {
+    transform: translateY(-30px);
+    width: 15% !important;
+
+  }
+  .flight-container{
+    position: relative;
+    top: -35px;
+  }
+
+}

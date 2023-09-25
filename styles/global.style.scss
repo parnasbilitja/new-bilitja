@@ -2205,7 +2205,7 @@ $sizes: 100;
 .parent-item-option {
   display: flex;
   justify-content: 'center';
-  width: 95%,
+  width: 95%
 }
 
 // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -2255,6 +2255,8 @@ $sizes: 100;
 
 .info-about-hotel h2 {
   color: #279692;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .about-hotel .info-about-hotel {
@@ -2314,7 +2316,7 @@ $sizes: 100;
 }
 
 .right-gallery img {
-  height: 205px;
+  height: 213.5px;
   margin-top: 18px;
   -o-object-fit: cover;
   object-fit: cover;
@@ -2327,7 +2329,7 @@ $sizes: 100;
   border-radius: 25px 0 0 25px;
   display: flex;
   flex-wrap: wrap;
-  height: 429px;
+  height: 447px;
   margin-top: 18px;
   overflow: hidden;
   position: relative;
@@ -2675,7 +2677,7 @@ $sizes: 100;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 10px;
-  height: 420px;
+  height: 400px;
   overflow: hidden;
   position: relative;
   width: 49%;
@@ -2684,7 +2686,7 @@ $sizes: 100;
 .box-blog-parent .left-blog {
   display: flex;
   flex-direction: column;
-  height: 420px;
+  height: 400px;
   justify-content: space-between;
   position: relative;
   width: 49%;
@@ -4124,6 +4126,9 @@ p img {
   @include margin-mobile-classes;
 }
 
+
+
+
 @media only screen and (min-width: 826px) {
   .hidden-mobile-head {
     display: none !important;
@@ -4164,3 +4169,43 @@ p img {
   grid-template-columns: 1fr 0.2 1fr 1fr 1fr 1fr !important;
 }
 
+
+.padd{
+  padding: 0px 4rem !important;
+}
+.padd2{
+  padding: 0px .5rem !important;
+}
+
+@media only screen and (max-width: 868px) {
+  .padd{
+    padding: 0 0 !important;
+  }
+  .padd2{
+    padding: 0 0 !important;
+  }
+}
+
+.pdfbtn{
+  padding: 12px;
+  align-items: center;
+  background:#cb1639;
+  border: 2px solid #cb1639;
+  border-radius: 15px 15px 1px 15px;
+  color: white;
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+  outline: none;
+  width: 150px;
+  font-size: 14px;
+  font-weight: 600;
+  &:hover{
+    color: #cb1639;
+    background:white;
+    svg{
+      fill: #808080 !important;
+    }
+  }
+
+}

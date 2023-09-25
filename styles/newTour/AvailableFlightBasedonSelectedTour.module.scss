@@ -3,9 +3,10 @@ $secondary: #279692;
 $borderColor: #d4d4d4;
 $containerColor: #ebebeb;
 $containerColor2: #bbbbbbe7;
+$costColor: #e20000;
 
 .container {
-  padding: 2rem;
+  padding: 0rem 4.5rem 2rem 4.5rem;
 
   .p-middle {
     font-size: 12px;
@@ -195,8 +196,10 @@ $containerColor2: #bbbbbbe7;
     margin-bottom: 1rem;
 
     .container {
-      padding: 0;
-      position: relative;
+      .scale{
+        transform: scale(.6);
+      }
+      padding: 0 ;
       overflow: hidden;
       transition: .5s ease-in-out;
       border-radius: 20px;
@@ -219,28 +222,29 @@ $containerColor2: #bbbbbbe7;
       //     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
       //     transition: .5s ease-in-out;
       //     }
-
       .ticket {
+
         display: flex;
         justify-content: space-between;
-
-
         padding: .9rem 1.125rem;
 
 
         &_titles {
+
+
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           border-left: 2px dashed $borderColor;
           margin-left: 1rem;
           width: 11%;
-          padding: 1rem 0;
+          padding: 1rem 10px;
 
           &_info {
+
             text-align: center;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
           }
 
         }
@@ -415,6 +419,7 @@ $containerColor2: #bbbbbbe7;
                     justify-content: center;
                     align-items: center;
                     cursor: pointer;
+                    align-self: flex-start !important;
                   }
 
                   span {
@@ -422,6 +427,7 @@ $containerColor2: #bbbbbbe7;
                   }
 
                   .dec {
+                    align-self: flex-start !important;
                     font-size: 1rem;
                     width: 25px;
                     border: 1px solid $primary;
@@ -430,6 +436,7 @@ $containerColor2: #bbbbbbe7;
                     display: flex;
                     justify-content: center;
                     cursor: pointer;
+
                   }
 
                   .dec-none {
@@ -441,6 +448,7 @@ $containerColor2: #bbbbbbe7;
                     display: flex;
                     justify-content: center;
                     cursor: default;
+                    align-self: flex-start !important;
                   }
                 }
               }
@@ -449,20 +457,23 @@ $containerColor2: #bbbbbbe7;
                 display: flex;
                 padding-bottom: 6px;
 
-                justify-content: center;
+                justify-content: space-between;
 
                 p {
                   align-self: center;
                   margin: 0;
                   padding: 0;
-                  color: $secondary;
+                  color: $costColor;
                   font-size: 13px;
                   font-weight: 600;
+                }
+                .cost{
+                  color: $costColor !important;
                 }
 
                 span {
                   font-size: .9rem;
-                  color: $secondary;
+                  color: $primary;
                   margin-left: .5rem;
                   font-weight: 600;
                 }
@@ -501,9 +512,10 @@ $containerColor2: #bbbbbbe7;
             p {
               font-weight: 400;
               font-size: .8rem;
+              color: $costColor;
 
               span {
-                color: $secondary;
+                color: $costColor;
                 font-weight: 800;
                 font-size: 1rem;
                 margin-left: .5rem;
@@ -512,15 +524,37 @@ $containerColor2: #bbbbbbe7;
           }
 
           &_btn {
-
-
             background-color: $primary;
+            opacity: .2;
             color: white;
             width: 200px;
             height: 40px;
             border-radius: 4px;
             font-size: 14px;
             font-weight: 800;
+            cursor: default;
+          }
+          small{
+            font-size: 10px;
+            color: $primary;
+          }
+          .btn-container{
+            width:100%;
+            display:flex ;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+          }
+          &_btn_active{
+            background-color: $primary;
+            opacity: 1;
+            color: white;
+            width: 200px;
+            height: 40px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
 
           }
 
@@ -531,13 +565,14 @@ $containerColor2: #bbbbbbe7;
     }
 
     .roomcountdet_roomnum {
+      //scale: 1.2;
 
       .roomcountDet_container {
         padding: 1.125rem 10rem 1.125rem 10rem;
-
+        //transform: scale(1.2);
         .roomcountDet {
           // border: 1px solid $borderColor;
-          border: 1px solid $containerColor2;
+          border: 1px solid $primary;
           border-radius: 20px;
           padding: .725rem 2rem;
           display: flex;
@@ -591,7 +626,7 @@ $containerColor2: #bbbbbbe7;
             width: 160px;
             // border: 1px solid #999;
             // box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
-            border: 1px solid $containerColor2;
+            border: 1px solid $primary;
             padding: .3rem .1rem .3rem .1rem;
 
             border-radius: 20px;
@@ -608,6 +643,7 @@ $containerColor2: #bbbbbbe7;
             }
 
             .bedtypeprc {
+              color: #e20000;
               font-weight: 500;
               font-size: 12px;
             }
@@ -630,6 +666,7 @@ $containerColor2: #bbbbbbe7;
                 justify-content: center;
                 align-items: center;
                 cursor: pointer;
+                align-self: start;
 
               }
 
@@ -661,6 +698,11 @@ $containerColor2: #bbbbbbe7;
 
 
 @media only screen and (max-width: 900px) {
+
+
+  .ticket_container{
+
+  }
   .hotelDet_container {
     padding: 12px !important;
   }
@@ -683,7 +725,7 @@ $containerColor2: #bbbbbbe7;
   }
 
   .roomDet_container {
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: 1fr !important;
   }
 
   .hotelDet {
@@ -792,6 +834,7 @@ $containerColor2: #bbbbbbe7;
   }
 
   .roomDetcard_roomnum_indec {
+
     width: auto !important;
 
     span {
@@ -891,7 +934,7 @@ $containerColor2: #bbbbbbe7;
 
     &_price {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
 
       label {
         font-weight: 800;
@@ -913,15 +956,37 @@ $containerColor2: #bbbbbbe7;
     }
 
     &_btn {
-
-
       background-color: $primary;
+      opacity: .2;
       color: white;
       width: 200px;
       height: 40px;
       border-radius: 4px;
       font-size: 14px;
       font-weight: 800;
+      cursor: default;
+    }
+    small{
+      font-size: 10px;
+      color: $primary;
+    }
+    .btn-container{
+      width:100%;
+      display:flex ;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+    }
+    &_btn_active{
+      background-color: $primary;
+      opacity: 1;
+      color: white;
+      width: 200px;
+      height: 40px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
 
     }
 
@@ -946,7 +1011,8 @@ $containerColor2: #bbbbbbe7;
       justify-content: center;
       .images {
         grid-template-columns: 1fr 1fr 1fr !important;
-       }
+      }
     }
   }
 }
+

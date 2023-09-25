@@ -349,7 +349,7 @@ const UpdatePassenger = (props) => {
 
                                                 {/* "item-form w-15" */}
 
-                                                {/*{props.hotelDets?.hotel?.is_domestic ? (*/}
+                                                {/*{props.hotelDets?.hotels?.is_domestic ? (*/}
                                                 {/*    <div className={styles["item-form"]}>*/}
                                                 {/*        <div className={styles["inp-form"]}>*/}
                                                 {/*            <input*/}

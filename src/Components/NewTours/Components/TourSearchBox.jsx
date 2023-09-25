@@ -214,8 +214,8 @@ const [prevDest,setPrevDest]=useState({})
     return (
         <>
             <NotifAlert/>
-            <div className={styles["home-flight-form"]}>
-                <div style={{position: "relative"}}>
+            <div className={styles["home-flight-form"]} >
+                <div style={{position: "relative"}} className={styles['flight-container']}>
                     <Scrolltoprefresh/>
                     <div
                         className={` form-input-border  ${styles["form-input-border-private"]} `}
@@ -257,7 +257,7 @@ const [prevDest,setPrevDest]=useState({})
 
                 <div style={{position: "relative"}}>
                     <div
-                        className={` form-input-border  ${styles["form-input-border-private"]} `}
+                        className={` form-input-border  ${styles["form-input-border-private"]} ${styles['flight-container']} `}
                     >
                         {" "}
                         <i
@@ -303,7 +303,7 @@ const [prevDest,setPrevDest]=useState({})
                 </div>
 
                 <div
-                    className={` form-input-border  ${styles["form-input-border-private"]} `}
+                    className={` form-input-border  ${styles["form-input-border-private"]} ${styles['flight-container']} `}
                 >
                     <i
                         className="bilitja icon-calendar form-input-icon-larger "
@@ -324,14 +324,14 @@ const [prevDest,setPrevDest]=useState({})
 
                     />
                 </div>
-                <div style={{padding: ".5rem 0"}}>
+                <div style={{padding: ".5rem 0"}} className={styles['flight-container']}>
                     <DropdownComponent
                         nights={nights}
                         setNight={(value) => props.setNightNumber(value)}
                         night={props?.night}
                     />
                 </div>
-                <div className="without-focus">
+                <div className={`without-focus ${styles['flight-container']}`}>
                     <PrimaryButton
                         style={{height: "52px", marginTop: "9px", borderRadius: "5px"}}
                         value={props.searchReset == false ? "جستجو" : "لطفا صبر کنید..."}
@@ -347,7 +347,7 @@ const [prevDest,setPrevDest]=useState({})
                                 // debugger;
                                 console.log(props?.destandorgcities?.night[0]);
                                 router.push(
-                                    `/tours/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities?.night}`
+                                    `/tour/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities?.night}`
                                 );
                                 props.setLoader(true)
                             }

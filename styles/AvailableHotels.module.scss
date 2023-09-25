@@ -11,6 +11,7 @@
             margin: 0 0 1rem 0 !important;
 
             .hotelContainer {
+                box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
                 flex-direction: column;
                 margin-top: 12px !important;
 
@@ -87,7 +88,7 @@
         z-index:1000;
         bottom:0;
         right:0;
-        padding:1rem 2rem;
+        padding:1rem 4rem;
         .menubar{
             width:100%;
             display:flex;
@@ -110,18 +111,22 @@
     .hotels {
         background-color: white;
         min-height: 100vh;
+        max-width: 1366px;
+        margin: 0 auto;
+
 
         .searchContainer {
-            margin-bottom: 2rem;
-            padding: 0 3rem 0 3rem;
+            padding: 0 4rem 0 4rem;
         }
 
         .p-available {
-            width: 94%;
+            width: 90%;
             margin: 0 auto;
             display: flex;
             margin-top: 1rem;
             border-radius: 5px;
+            transform: translateY(-45px);
+
 
 
 
@@ -204,10 +209,10 @@
             }
 
             .faName {
-                font-weight: 800;
+                font-weight: 600 !important;
                 font-size: 17px;
                 color: #151515;
-                font-family: IranBold;
+                //font-family: IranBold;
 
             }
 
@@ -223,14 +228,46 @@
                 width: 78%;
                 margin-left: 1rem;
                 border-radius: 8px;
-                margin-top: 14px;
 
-                .hotelContainer:not(:first-child) {
-                    margin-top: 1rem;
+                .loader-container{
+
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction:column;
+                    justify-content: center;
+                    align-items: center;
+
+                }
+                .err{
+                    padding-top: 2rem;
+                    width:100%;
+                    height:100%;
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                    flex-direction:column ;
+                    border:2px solid #f0f0f0;
+                    border-radius: 10px;
+                    p{
+                        font-weight:600;
+                        margin-top:1rem;
+                    }
+                    .image-container{
+                        width: 250px;
+                        height: 250px;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+                .hotelContainer:not(:last-child) {
+                    margin-bottom: 1rem !important;
                 }
 
-                .hotelContainer {
 
+                .hotelContainer {
                     display: flex;
                     justify-content: space-between;
                     padding: 1rem 1.2rem;
@@ -244,8 +281,10 @@
                         transition: .5s ease-in-out;
 
                         .imageContainer {
-                            border-radius: 0 !important;
+
+                            border-radius: 50% !important;
                             transition: 0.5s all;
+
                         }
                     }
 
@@ -262,7 +301,7 @@
                             width: 150px;
                             height: 150px;
                             overflow: hidden;
-                            border-radius: 50%;
+                            //border-radius: 50%;
                             transition: 0.5s all;
 
                             Image {
@@ -307,8 +346,8 @@
 
                         .price {
                             font-size: 1.125rem;
-                            font-weight: 700;
-                            color: #f0b51d;
+                            font-weight: 600 !important;
+                            //color: #f0b51d;
                         }
 
                         .btnContainer {
@@ -349,21 +388,24 @@
     margin: 12px 0;
 
     strong {
-        font-family: IranBold !important;
-        color: #279692 !important;
+        //font-family: IranBold !important;
+        color:  #279692 !important;
         font-size: 15px;
     }
 
     span {
         font-size: 13px !important;
         margin-right: 4px;
+        font-weight: 600 !important;
         color: #279692 !important;
-        font-family: IranBold !important;
+        //font-family: IranBold !important;
 
 
     }
 }
 @media only screen and (max-width: 868px) {
+
+
     .searchboxContainer{
         position: fixed;
         top:0;
@@ -376,30 +418,37 @@
         width: 100%;
         height: 100%;
         padding-top: 7rem;
-    .searchContainer {
-        position: relative;
-        padding: 2.725rem .725rem !important;
-        border-radius: 20px;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        background-color: white;
-        width: 300px;
-        height: fit-content;
-        .closeBtn{
-            justify-content: center;
+        .searchContainer {
+            position: relative;
+            padding: 2.725rem .725rem !important;
+            border-radius: 20px;
             display: flex;
-            align-items: center;
-            width: 25px;
-            height: 25px;
-            border: 1px solid #e20000;
-            position: absolute;
-            border-radius: 5px;
-            top: 15px;
-            right: 15px;
-        }
+            justify-content: center;
+            align-content: center;
+            background-color: white;
+            width: 300px;
+            height: fit-content;
+            .closeBtn{
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                width: 25px;
+                height: 25px;
+                border: 1px solid #137cb6;
+                position: absolute;
+                border-radius: 5px;
+                top: 15px;
+                right: 15px;
+            }
 
+        }
     }
+
+}
+
+@media only screen and (min-width: 868px){
+    .main-section{
+        padding: 9rem 3rem 0 3rem;
     }
 
 }

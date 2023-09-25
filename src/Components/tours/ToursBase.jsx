@@ -16,7 +16,7 @@ import styles from "../../../styles/Home.module.scss";
 import axios from "axios";
 import { motion } from "framer-motion";
 import SearchBox from "../../sources/tour/SearchBox";
-import { withRouter } from "next/router";
+import router, { withRouter } from "next/router";
 import { connect } from "react-redux";
 import {
   setDestLoc,
@@ -111,8 +111,11 @@ const ToursBase = (props) => {
                       type="checkbox"
                       name=""
                       id=""
-                      onClick={() => setTourSwitch("tour")}
-                      checked={tourSwitch === "tour" ? true : false}
+                      onClick={() => {
+                        props.setTourSwitch("tour")
+                        router.push('/tour')
+                      }}
+                      checked={props.tourSwitch === "tour" ? true : false}
 
                   />
                   <p htmlFor="">تور </p>
@@ -122,8 +125,11 @@ const ToursBase = (props) => {
                     type="checkbox"
                     name="ارزان ترین"
                     id=""
-                    onClick={() => setTourSwitch("package-tour")}
-                    checked={tourSwitch === "package-tour" ? true : false}
+                    onClick={() => {
+                      props.setTourSwitch("package-tour")
+                      router.push('/tours')
+                    }}
+                    checked={props.tourSwitch === "package-tour" ? true : false}
 
                   />
                   <p htmlFor="">پکیج تور </p>
@@ -131,14 +137,16 @@ const ToursBase = (props) => {
 
               </div>
               {/* ////////////// */}
-              {tourSwitch === "package-tour" ? (
-                <SearchBox
-                  dateSelected={state.dateSelected2}
-                  executeScroll={handleClickScroll}
-                  toursHandler={toursHandler}
-                  setState={setState}
-                  state={state}
-                />
+              {props.tourSwitch === "package-tour" ? (
+                  <div className={styles['flight-container']}>
+                    <SearchBox
+                        dateSelected={state.dateSelected2}
+                        executeScroll={handleClickScroll}
+                        toursHandler={toursHandler}
+                        setState={setState}
+                        state={state}
+                    />
+                  </div>
               ) : (
                 <TourSearchBox />
               )}

@@ -92,28 +92,28 @@ const HotelsSuggest = () => {
                     onBeforeInit={(swiper) => {
                         swiperRef.current = swiper;
                     }}
-                    spaceBetween={10}
+                    spaceBetween={28}
                     slidesPerGroup={1}
                     breakpoints={{
-                    0: {
-                        slidesPerView: 1.3,
-                    },    
-                    700: {
-                        slidesPerView: 2.3,
-                    },
-                    850: {
-                        slidesPerView: 3.3,
-                    },
-                    1024: {
-                        spaceBetween: 10,
-                        slidesPerView: 4.3,
-                    },
-                    1180: {
-                        slidesPerView: 4.3,
-                    },
-                    1300: {
-                        slidesPerView: 5.3,
-                    },
+                        0: {
+                            slidesPerView: 1.3,
+                        },
+                        700: {
+                            slidesPerView: 2.3,
+                        },
+                        850: {
+                            slidesPerView: 3,
+                        },
+                        1024: {
+                            spaceBetween: 10,
+                            slidesPerView: 3,
+                        },
+                        1180: {
+                            slidesPerView: 3,
+                        },
+                        1300: {
+                            slidesPerView:4,
+                        },
                     }}
                     >
                         {getData.data.map((item)=>(
@@ -121,15 +121,19 @@ const HotelsSuggest = () => {
                                 <div item={item.id}>
                                     <div class="box-hotel">
                                         <img  class="img-blog" src={item.thumbnail} alt={item.id}/>
-                                        <Link href={`/hotel/${item.slug}`}>
+                                        <Link href={`/hotels/${item.slug}`}>
                                             <div class="opacity-bg-parent">
-                                                <div class="info-img"><img src="https://hamnavaz.com/img/Information.svg" width="22" alt="توضیحات-هتل"/>
+                                                <div class="info-img">
+                                                    <svg id="Information" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 26.17 26.17">
+                                                        <path id="Path_991" data-name="Path 991" d="M1,13.085a30.578,30.578,0,0,0,.507,6.4A6.8,6.8,0,0,0,3.2,22.971a6.8,6.8,0,0,0,3.484,1.692,30.584,30.584,0,0,0,6.4.507,30.584,30.584,0,0,0,6.4-.507,6.8,6.8,0,0,0,3.484-1.692,6.8,6.8,0,0,0,1.692-3.484,30.584,30.584,0,0,0,.507-6.4,30.584,30.584,0,0,0-.507-6.4A6.8,6.8,0,0,0,22.971,3.2a6.8,6.8,0,0,0-3.484-1.692A30.578,30.578,0,0,0,13.085,1a30.579,30.579,0,0,0-6.4.507A6.8,6.8,0,0,0,3.2,3.2,6.8,6.8,0,0,0,1.507,6.683,30.579,30.579,0,0,0,1,13.085Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                        <path id="Path_992" data-name="Path 992" d="M13.2,17.986a1.1,1.1,0,0,1-2.2,0V11.395a1.1,1.1,0,0,1,2.2,0ZM12.1,9.2a1.1,1.1,0,1,1,1.1-1.1A1.1,1.1,0,0,1,12.1,9.2Z" transform="translate(0.986 0.592)" fill="#fff" fill-rule="evenodd"/>
+                                                    </svg>
                                                 </div>
                                                 <div class="info-hotel">
                                                     <span className="font-bold" x-text="hotel.name">{item.name}</span>
                                                     <div class="footer-hotel-info">
                                                         <div class="location-hotel">
-                                                            <img src="https://hamnavaz.com/img/Location-white.svg" width="17" alt="آدرس-هتل"/>
+                                                            <img src="../../../Images/Location-white.svg" width="17" alt="آدرس-هتل"/>
                                                             <span x-text="hotel.city + ' - ' + hotel.location" style={{marginBottom: "0",fontSize:'13px'}}>{item.location}</span>
                                                         </div>
                                                         <div className="star d-flex align-items-center pb-1">

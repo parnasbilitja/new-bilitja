@@ -108,14 +108,14 @@ const CitiesSuggest = () => {
                                 <div class="box-sort-tour-city">
                                     <div class="img-sort-tour-city">
                                         <div class="info-img-sort-tour-city animated fadeInDown">
-                                            <img class="img-hover-child" src="https://hamnavaz.com/img/Attachment%201.svg" width="30" alt="جزئیات بیشتر"/>
+                                            <img class="img-hover-child" src="../../../Images/Attachment1.svg" width="30" alt="جزئیات بیشتر"/>
                                             <Link style={{color:"#fff",marginTop:"12px"}} class="view-details-more text-white font-size-14 font-bold" href={`/cityTour/${item.slug}`}>مشاهده جزئیات بیشتر</Link>
                                         </div>
                                         <img src={item.image} alt={item.name} />
                                     </div>
                                     <div class="text-sort-tour-city">
                                         <h2>
-                                            <Link class="view-details-more" href={`/cityTour/${item.slug}`}>
+                                            <Link class="view-details-more" href={`تور-${item.slug}/`}>
                                                 {`تور ${item.name}`}
                                             </Link>
                                         </h2>

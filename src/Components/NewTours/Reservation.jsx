@@ -22,7 +22,7 @@ import CountDownTimer from "./Components/CountDownTimer";
 const Reservation = ({hotelDet, stayCount,ref_code}) => {
     const [generalRoomsData, setGeneralRoomsData] = useState([])
     const [roomBaseDet, setRoomBaseDet] = useState([])
-    const [flightDet, setFlightDet] = useState([])
+    const [flightDet, setFlightDet] = useState(null)
     const [dataq, setDataq] = useState([]);
     const [roomsData, setRoomsData] = useState([]);
     const [reserverData, setReserverData] = useState({
@@ -108,6 +108,14 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
         }
     };
 
+    const roundToFourDigits=(number)=>{
+        if(number.length<=5){
+            return number
+        }else{
+            return number-(number%10000)
+        }
+    }
+
     useEffect(() => {
         // debugger
         if (reformSelectedRooms.length > 0) {
@@ -141,7 +149,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
 
     return (<>
         <div className={styles["p-body"]}>
-        <Scrolltoprefresh/>
+            <Scrolltoprefresh/>
             <NotifAlert/>
             <div className={styles["prs-responsive"]}>
                 <div className={styles["main-reserve"]}>
@@ -159,24 +167,24 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                             <p>مبلغ قابل پرداخت:</p>
                                         </div>
                                         <div className={styles["price"]}>
-                                            <p>{numberWithCommas(TotalPrcGen(evRoomsPrc))} تومان</p>
+                                            <p>{numberWithCommas(roundToFourDigits(TotalPrcGen(evRoomsPrc)) )} تومان</p>
                                         </div>
                                         {" "}
                                     </div>
                                 </div>
 
-                                <div className={styles["finalprice"]}>
-                                    <div className={styles["totalprice_container"]}>
-                                        <div className={styles["peopleroomnum"]}>
-                                            <p>تعداد کل نفرات :</p>
-                                            <span>{personCounter(reformSelectedRooms)}</span>
-                                        </div>
-                                        <div className={styles["peopleroomnum"]}>
-                                            <p> تعداد کل اتاق : </p>
-                                            <span>{reformSelectedRooms.length}</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                {/*<div className={styles["finalprice"]}>*/}
+                                {/*    <div className={styles["totalprice_container"]}>*/}
+                                {/*        <div className={styles["peopleroomnum"]}>*/}
+                                {/*            <p>تعداد کل نفرات :</p>*/}
+                                {/*            <span>{personCounter(reformSelectedRooms)}</span>*/}
+                                {/*        </div>*/}
+                                {/*        <div className={styles["peopleroomnum"]}>*/}
+                                {/*            <p> تعداد کل اتاق : </p>*/}
+                                {/*            <span>{reformSelectedRooms.length}</span>*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
                                 <div className={styles["paymentbtn"]}>
                                     <button
                                         onClick={() => {
@@ -193,7 +201,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                                 .then((res) => {
                                                     let rooms = [...dataq];
                                                     let reserverdata = [reserverData];
-                                                    router.push(`/tours/reserve/reserveconfirmation/${hotel_id}/${flight_id}?reserverData=${JSON.stringify(reserverdata)}&hotel=${JSON.stringify(hotelDet)}&rooms=${JSON.stringify(rooms)}&fiPrc=${TotalPrcGen(evRoomsPrc)}&stayCount=${stayCount}&flightDet=${JSON.stringify(flightDet)}&roombase=${JSON.stringify(roomBaseDet)}&ref_code=${router.query.ref_code}`);
+                                                    router.push(`/tour/reserve/reserveconfirmation/${hotel_id}/${flight_id}?reserverData=${JSON.stringify(reserverdata)}&hotel=${JSON.stringify(hotelDet)}&rooms=${JSON.stringify(rooms)}&fiPrc=${TotalPrcGen(evRoomsPrc)}&stayCount=${stayCount}&flightDet=${JSON.stringify(flightDet)}&roombase=${JSON.stringify(roomBaseDet)}&ref_code=${router.query.ref_code}`);
                                                     ErrSuccess("به صفحه تایید اطلاعات رزرو و پرداخت نهایی منتقل می شوید");
                                                 })
                                                 .catch((err) => {
@@ -207,7 +215,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                                 Err("لطفا اطلاعات مسافرین را تکمیل نمایید!");
                                             } else if (!err.isDone && err.errors?.length === 0) {
                                                 Err("این پرواز موجودی ندارد!");
-                                                router.push("/tours");
+                                                router.push("/tour");
                                             }
                                         }}
                                     >
@@ -248,7 +256,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                             </div>
                         </div>
                         <div className={styles["ent-ext_container"]}>
-                            {flightDet? (<>
+                            {flightDet ? (<>
                                 <div className={styles["entext"]}>
                                     <p
                                         className={styles["entexttitle"]}
@@ -289,6 +297,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                         {hotelDet?.data?.reserves[0]?.flight ? (<TourDetailLabel
                             flightDet={hotelDet?.data?.reserves[0]?.flight}
                             stayCount={stayCount}
+                            gallary={hotelDet?.data?.hotel.gallery}
                         />) : (<motion.div
                             initial={{opacity: 0}}
                             animate={{opacity: 1}}
@@ -307,6 +316,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
 
                                 <span className="font-size-13">
                     (این مشخصات به عنوان طرف قرارداد درنظر گرفته می شود)
+
                   </span>
                             </h2>
 
@@ -405,7 +415,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                         />))}
 
                         <div className={styles["rules"]}>
-                            <div style={{display: 'flex', alignItems: 'center'}}>
+                            <div style={{display: 'flex', alignItems: 'center',marginBottom:'4rem'}}>
 
                                 <p> ثبت درخواست به منزله پذیرش تمام <span>قوانین و مقررات</span>   مرتبط با سایت هتل و بلیط و پکیجهای این تور می
                                     باشد</p>

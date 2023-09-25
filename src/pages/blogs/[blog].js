@@ -108,7 +108,7 @@ const blog = (props) => {
                                     </div>
                                     <div class="box-category">
                                         <div class="title-category">
-                                            <img class="img-search" src="https://hamnavaz.com/img/search.png" width="20" alt="جستجو"/>
+                                            <img class="img-search" src="../../../Images/search.png" width="20" alt="جستجو"/>
                                             <strong>جستجو</strong>
                                         </div>
                                         <p style={{fontSize:'14px',paddingTop:'12px'}}>کلمه‌ی کلیدی مورد نظر خود را بنویسید و بر روی دکمه جستجو کلیک کنید.</p>
@@ -119,7 +119,7 @@ const blog = (props) => {
                                     </div>
                                     <div class="box-category">
                                         <div class="title-category">
-                                            <img src="https://hamnavaz.com/img/archive.png" width="20" alt="آرشیو"/>
+                                            <img src="../../../Images/archive.png" width="20" alt="آرشیو"/>
                                             <strong>آرشیو</strong>
                                         </div>
                                         <ul class="under-category">
@@ -133,7 +133,7 @@ const blog = (props) => {
                                     </div>
                                     <div class="box-category">
                                         <div class="title-category">
-                                            <img src="https://hamnavaz.com/img/tag.png" width="20" alt="برچسب ها"/>
+                                            <img src="../../../Images/tag(1).png" width="20" alt="برچسب ها"/>
                                             <strong>برچسب ها</strong>
                                         </div>
                                         <div class="label-item">

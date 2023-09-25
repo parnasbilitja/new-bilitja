@@ -31,7 +31,6 @@ const List = (props) => {
     
     useEffect(() => {
         if (props.name !== 'hotel') {
-            
             if (!getData.loading) {   
                 setData(getData.data)
                 console.log('data',data,props);
@@ -80,8 +79,6 @@ const List = (props) => {
                             </div>
                         </div>
                         <div className="c-input col-xl-3 col-lg-3 col-sm-4 col-12 position-relative pt-2">
-                            
-                             
                             <>
                                 <input type="text" value={searchBar} onChange={e=>searchBarHandler(e)} placeholder='جستجوی تور...' class="w-100 pe-2" style={{height: 43,outline: "none",borderRadius: 8,border:"1px solid #fff",boxShadow: "0 0 4px #b9b0b0"}}  />
                                 <div className="ic-search  position-absolute" style={{left: 10,top: 17}}>
@@ -121,7 +118,7 @@ const List = (props) => {
                                     </svg>
                                     <div className="info-tour-city">
                                         <Link href={'/tour'}>
-                                            <strong>{item.title}</strong>
+                                            <strong style={{fontSize:'14px'}}>{item.title}</strong>
                                         </Link>
                                         <div className="text-price pt-1">
                                             <small className="title-price">شروع قیمت از :</small>
@@ -170,7 +167,7 @@ const List = (props) => {
                                     <img width="45" src={item.transfers[0].logo} alt={item.title} />
                                     <span className="text-dark me-2 font-size-14">{item.transfers[0].transfer}</span>
                                 </div>
-                                <Link href={`/${item.slug}`}>
+                                <Link href={`/tours/${item.endCity.nameEn}/${item.slug}`}>
                                     <div className="ino-tour-btn">
                                         <span className="text-white isMobile ms-2 font-bold-iransanse" style={{display: "none"}}>جزییات</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="27.414" height="18.453" viewBox="0 0 27.414 18.453">
