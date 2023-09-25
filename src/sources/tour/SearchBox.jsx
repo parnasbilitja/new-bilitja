@@ -35,7 +35,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
   const [width, setWidth]   = useState();
   useEffect(() => {
     setWidth(window.innerWidth)
-    console.log(search);
+
   },[search])
   useEffect(() => {
     setState({...state, city:search.slug})

@@ -18,20 +18,21 @@ const List = (props) => {
     let getData = useSelector(state => state.ListDataReducer)
     const dispatch = useDispatch()
 
-    
+
     const [data, setData] = useState(getData.data)
 
     useEffect(() => {
+
         if (getData?.data?.length<1) {
             dispatch(fetchListTour())
         }
         setData(getData.data)
         console.log('data',data);
     }, [])
-    
+
     useEffect(() => {
         if (props.name !== 'hotel') {
-            if (!getData.loading) {   
+            if (!getData.loading) {
                 setData(getData.data)
                 console.log('data',data,props);
             }
@@ -89,7 +90,7 @@ const List = (props) => {
                                     </svg>
                                 </div>
                             </>
-            
+
                         </div>
                     </div>
                     <div className="bottom d-flex align-items-center mt-3 mb-3">
@@ -112,8 +113,8 @@ const List = (props) => {
                                 <div className="tour-city">
                                     <svg className="ms-3" xmlns="http://www.w3.org/2000/svg" width="41.265" height="48.155" viewBox="0 0 41.265 48.155">
                                         <g id="location2" transform="translate(1.549 1.5)">
-                                            <path id="Path_1011" data-name="Path 1011" d="M1.271,23.5A27.9,27.9,0,0,0,8.614,37.67,46.066,46.066,0,0,0,18.34,45.6a3.243,3.243,0,0,0,3.487,0,46.066,46.066,0,0,0,9.725-7.932A27.9,27.9,0,0,0,38.895,23.5,21.308,21.308,0,0,0,35.951,8.79C33.1,4.425,28.083,1,20.083,1S7.067,4.425,4.215,8.79A21.308,21.308,0,0,0,1.271,23.5Z" transform="translate(-1 -1)" fill="none" stroke="#e0e0e0" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                            <circle id="Ellipse_49" data-name="Ellipse 49" cx="5.204" cy="5.204" r="5.204" transform="translate(24.288 23.697) rotate(180)" fill="none" stroke="#e0e0e0" strokeWidth={2} />
+                                            <path id="Path_1011" data-name="Path 1011" d="M1.271,23.5A27.9,27.9,0,0,0,8.614,37.67,46.066,46.066,0,0,0,18.34,45.6a3.243,3.243,0,0,0,3.487,0,46.066,46.066,0,0,0,9.725-7.932A27.9,27.9,0,0,0,38.895,23.5,21.308,21.308,0,0,0,35.951,8.79C33.1,4.425,28.083,1,20.083,1S7.067,4.425,4.215,8.79A21.308,21.308,0,0,0,1.271,23.5Z" transform="translate(-1 -1)" fill="none" stroke="#e20000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+                                            <circle id="Ellipse_49" data-name="Ellipse 49" cx="5.204" cy="5.204" r="5.204" transform="translate(24.288 23.697) rotate(180)" fill="none" stroke="#e20000" strokeWidth={2} />
                                         </g>
                                     </svg>
                                     <div className="info-tour-city">
@@ -179,7 +180,7 @@ const List = (props) => {
                         </div>
                 )
                 )
-                
+
             :''
                 // <Loader />
             }

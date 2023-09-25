@@ -47,7 +47,8 @@ const ToursBase = (props) => {
   const [tourSwitch, setTourSwitch] = useState("tour");
 
   const toursHandler = (search) => {
-    setState({ ...state, city: search.slug });
+
+    setState({ ...state, city: search?.slug ? search?.slug : null });
     axios
       .post("https://api.hamnavaz.com/api/v1/tour/getTours", {
         city: state.city,
@@ -69,6 +70,7 @@ const ToursBase = (props) => {
     }
   };
   useEffect(() => {
+    toursHandler()
     props.setOrgLoc({ name: "", code: "" });
     props.setDestLoc({ name: "", code: "" });
     props.setFlightDate({
@@ -142,7 +144,7 @@ const ToursBase = (props) => {
                     <SearchBox
                         dateSelected={state.dateSelected2}
                         executeScroll={handleClickScroll}
-                        toursHandler={toursHandler}
+                        toursHandler={(val)=>toursHandler(val)}
                         setState={setState}
                         state={state}
                     />

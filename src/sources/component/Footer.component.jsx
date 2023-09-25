@@ -19,7 +19,7 @@ const Footer = () => {
                     <div className="row parent-footer-top justify-content-between">
 
                         <div className="footer-detail d-flex flex-wrap align-items-start justify-content-between">
-                            <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
+                            <div className="col-lg-2 col-md-3 item-footer col-sm-12 col-6 mb-2">
                                 <div className="d-flex align-items-center mb-2">
                                     <div className={styles["circle"]}></div>
                                     <b className="mb-0"> مقاصد داخلی </b>
@@ -35,7 +35,7 @@ const Footer = () => {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="col-lg-2 col-md-3 item-footer col-sm-6 col-6 mb-2">
+                            <div className="col-lg-2 col-md-3 item-footer col-sm-12 col-6 mb-2">
                                 <div className="d-flex align-items-center mb-2">
                                     <div className={styles["circle"]}></div>
                                     <b className="mb-0"> مقاصد خارجی </b>
@@ -52,7 +52,7 @@ const Footer = () => {
 
                                 </ul>
                             </div>
-                            <div className="col-lg-2 col-md-5 item-footer col-6 mb-2">
+                            <div className="col-lg-2 col-md-5 item-footer col-12 mb-2">
                                 <div className="d-flex align-items-center mb-2">
                                     <div className={styles["circle"]}></div>
                                     <b className="mb-0">مطالب خواندنی</b>
@@ -81,7 +81,7 @@ const Footer = () => {
                                     </li>
                                 </ul>
                             </div>
-                            <div className="col-lg-2 col-md-3 item-footer col-6 mb-2">
+                            <div className="col-lg-2 col-md-3 item-footer col-12 mb-2">
                                 {" "}
                                 <div className={styles["footer-virtual-mobile"]}>
                                     <div style={{ marginBottom: 8 }}>
@@ -120,7 +120,7 @@ const Footer = () => {
                                 </div>
 
                             </div>
-                            <div className={`"col-lg-2 col-md-3 item-footer col-6 mb-3 "${styles["footer-contact"]}`}>
+                            <div className={`"col-lg-2 col-md-3 item-footer col-12 mb-3 "${styles["footer-contact"]}`}>
                                 <div className="d-flex align-items-center mb-2">
                                     <div className={styles["circle"]}></div>
                                     <b className="mb-0">تماس با ما</b>
@@ -145,7 +145,7 @@ const Footer = () => {
                                 </ul>
                             </div>
                             {width < 826 &&
-                                <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex flex-wrap col-4 justify-content-start px-0">
+                                <div className="col-lg-2 col-md-3 item-footer col-6 mb-4 d-flex flex-wrap col-12 justify-content-start px-0">
                                     {/* child */}
                                     <a
                                         referrerPolicy="origin"
@@ -228,7 +228,7 @@ const Footer = () => {
                         </div>
                         <div
                             style={{ display: "none" }}
-                            className={`col-lg-2 col-md-3 col-6${styles["contact-desktop"]}`}
+                            className={`col-lg-2 col-md-3 col-12${styles["contact-desktop"]}`}
                         >
                             <div className="d-flex align-items-center mb-2">
                                 <div className={styles["circle"]}></div>

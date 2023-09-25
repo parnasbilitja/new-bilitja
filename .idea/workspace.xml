@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/List.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +200,7 @@
       <workItem from="1695449094577" duration="8051000" />
       <workItem from="1695471739801" duration="4460000" />
       <workItem from="1695569335779" duration="3465000" />
-      <workItem from="1695620326342" duration="1796000" />
+      <workItem from="1695620326342" duration="6793000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -364,14 +370,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00085" summary="new api(v2) for tour was connected to project">
-      <option name="closed" value="true" />
-      <created>1692683720911</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1692683720911</updated>
-    </task>
     <task id="LOCAL-00086" summary="new api(v2) for tour was connected to project">
       <option name="closed" value="true" />
       <created>1692684015210</created>
@@ -532,7 +530,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695621402505</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="some changes due to hamnavaz project's changes reconciling">
+      <option name="closed" value="true" />
+      <created>1695622640522</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1695622640522</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
