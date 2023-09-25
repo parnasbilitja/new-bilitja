@@ -67,7 +67,7 @@ const tour = (props) => {
     }, [props.Pathname.tour])
 
     const downloadHandler=()=>{
-        axios.get(`http://api.hamnavaz.com/api/v1/tour/export/${data && data.slug}`).then(res=>{
+        axios.get(`https://api.hamnavaz.com/api/v1/tour/export/${data && data.slug}`).then(res=>{
             let popupWin;
             popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
             popupWin.document.open();

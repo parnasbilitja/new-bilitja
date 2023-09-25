@@ -5,68 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/Images/001-mail inbox app.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/002-speech bubble.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/003-telephone.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/008-maps.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/Add Menu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/Bookmark.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/Display.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/Document Align Center 1.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/Document-align-2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/FAQ.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/Headphone.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/Information.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/Location-white.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/Location.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/Tag1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/Unlock.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/Watch.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/download.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/enamad1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/hamnavaz-logo-bg-tr.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/hamnavaz-logo-bg-tr1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/hamnavaz-logo.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/location2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/logo.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/neshansabte.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/newsletterbackground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/no-hotel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/pdfDownload.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Images/ticket-service.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Paginate.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/[CityTour].js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/Paginate.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Images/enamad.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/enamad.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/[tour].js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/blogs/[blog].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/blogs/[blog].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/hotel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/hotel/[hotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...availablehotels].js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/reserve/[...reservedHotel].js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/reserve/reserveconfirmation/[...reserveconfirmation].js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/CitiesSuggest.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/CitiesSuggest.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/HotelsSuggest.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/HotelsSuggest.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/List.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/Posts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/Posts.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/TourData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/TourData.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/TourList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/TourList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/TourSearchBox.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/TourSearchBox.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +194,7 @@
       <workItem from="1695449094577" duration="8051000" />
       <workItem from="1695471739801" duration="4460000" />
       <workItem from="1695569335779" duration="3465000" />
-      <workItem from="1695620326342" duration="775000" />
+      <workItem from="1695620326342" duration="1796000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -425,22 +364,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00083" summary="some changes have been applied">
-      <option name="closed" value="true" />
-      <created>1692683138557</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1692683138557</updated>
-    </task>
-    <task id="LOCAL-00084" summary="new api(v2) for tour was connected to project">
-      <option name="closed" value="true" />
-      <created>1692683637056</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1692683637056</updated>
-    </task>
     <task id="LOCAL-00085" summary="new api(v2) for tour was connected to project">
       <option name="closed" value="true" />
       <created>1692683720911</created>
@@ -593,7 +516,23 @@
       <option name="project" value="LOCAL" />
       <updated>1693831841943</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="some changes due to hamnavaz project's changes reconciling">
+      <option name="closed" value="true" />
+      <created>1695621221841</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1695621221842</updated>
+    </task>
+    <task id="LOCAL-00105" summary="some changes due to hamnavaz project's changes reconciling">
+      <option name="closed" value="true" />
+      <created>1695621402505</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1695621402505</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +552,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some bugs were fixed" />
     <MESSAGE value="some visual changes in toursearchbox" />
     <MESSAGE value="loader logic ([...availableHotel])  has been change for waiting until loading data" />
     <MESSAGE value="some visual changes in HotelSidebarSearch.module.scss" />
@@ -638,7 +576,8 @@
     <MESSAGE value="image Gallary bugs have been fixed on avFilght" />
     <MESSAGE value="Shimmers has been added to AvailableFlightBasedonSelectedTour" />
     <MESSAGE value="some verfication logic has been changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="some verfication logic has been changed" />
+    <MESSAGE value="some changes due to hamnavaz project's changes reconciling" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes due to hamnavaz project's changes reconciling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
