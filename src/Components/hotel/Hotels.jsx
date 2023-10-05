@@ -48,7 +48,7 @@ const Hotels = () => {
     return (
         <div className="mt-90 bodyVar" >
             <Head>
-                <title> لیست هتل ها | همنواز</title>
+                <title> لیست هتل ها | بلیطجا</title>
             </Head>
             <NavHandler />
             <div className="row justify-content-center" style={{marginTop: width>=826? '0rem':'-0.7rem' }}>
@@ -72,7 +72,7 @@ const Hotels = () => {
                                 <img
                                     width=""
                                     height=""
-                                    alt="همنواز-اسلایدر"
+                                    alt="بلیطجا-اسلایدر"
                                     src="../../../../Images/hotel-bg-new.png"
                                 />
                             </div>}
@@ -81,7 +81,7 @@ const Hotels = () => {
                                 <img
                                     width=""
                                     height=""
-                                    alt="همنواز-اسلایدر"
+                                    alt="بلیطجا-اسلایدر"
                                     src="../../../Images/hotel-bg-new.png"
                                 />
                             </div>

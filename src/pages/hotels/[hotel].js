@@ -43,7 +43,7 @@ const hotel = (props) => {
                     <Head>
 
                         {
-                            isEmpty(hotel) ? <title> لیست هتل ها | بلیطجا</title> :<title> {`${hotel?.name} | ${hotel.nameEn} in ${hotel.location}`} | همنواز</title>
+                            isEmpty(hotel) ? <title> لیست هتل ها | بلیطجا</title> :<title> {`${hotel?.name} | ${hotel.nameEn} in ${hotel.location}`} | بلیطجا</title>
                         }
 
                     </Head>

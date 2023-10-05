@@ -42,6 +42,7 @@ import Descflightlist from "./Descflitlist";
 import FutureDays from "./FutureDays";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 import { Loader } from "../../Utils/Loader";
+import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
 
 class GetFlightList extends React.Component {
   constructor(props) {
@@ -606,7 +607,7 @@ class GetFlightList extends React.Component {
                 {/* <FutureDays refreshAction={this.getData}  /> */}
                 {this.state.loading ? (
                   <div className="mt-4">
-                    <Loader />
+                    <NewLoader />
                   </div>
                 ) : this.state.flights != null ? (
                   <div>

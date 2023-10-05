@@ -27,7 +27,7 @@ const ReservedHotel = () => {
   return (
     <>
       <NavHandler />
-      <div style={{ paddingTop: "7rem" }}>
+      <div style={{ paddingTop: "7rem"  }}>
         <Reservation hotelDet={hotelDet} stayCount={stayCount} ref_code={router?.query?.ref_code}/>
       </div>
         <Footer/>

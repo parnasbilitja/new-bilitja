@@ -7,33 +7,15 @@
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/InfoPasserngers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/InfoPasserngers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/RoomsInfo.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/RoomsInfo.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/hotel/HotelsSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hotel/HotelsSearchBox.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/newTour.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/newTour.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/[CityTour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/[CityTour].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/blogs/[blog].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/blogs/[blog].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/tour/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/[...availablehotels].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tour/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/reserveconfirmation/[...reserveconfirmation].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/reserveconfirmation/[...reserveconfirmation].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/blog/Blog.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/blog/Blog.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/List.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/TourData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/TourData.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/TourList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/TourList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_reserve/PopupFlightReserve.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_reserve/PopupFlightReserve.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/values.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/values.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +205,7 @@
       <workItem from="1695471739801" duration="4460000" />
       <workItem from="1695569335779" duration="3465000" />
       <workItem from="1695620326342" duration="7473000" />
-      <workItem from="1696420302864" duration="11888000" />
+      <workItem from="1696420302864" duration="15070000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -393,22 +375,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00087" summary="CountDownTimer has been added to reservation page due to bound time for reserver inorder to set passengers data">
-      <option name="closed" value="true" />
-      <created>1692688096889</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1692688096889</updated>
-    </task>
-    <task id="LOCAL-00088" summary="some countDownTimer bugs have been fixed">
-      <option name="closed" value="true" />
-      <created>1692689361002</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1692689361002</updated>
-    </task>
     <task id="LOCAL-00089" summary="update section has been settled in reservationComfirmation (but it's not completed)">
       <option name="closed" value="true" />
       <created>1692990360017</created>
@@ -561,7 +527,23 @@
       <option name="project" value="LOCAL" />
       <updated>1695627791147</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="some changes were applied due to hamnavaz reconciling">
+      <option name="closed" value="true" />
+      <created>1696486913462</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1696486913462</updated>
+    </task>
+    <task id="LOCAL-00109" summary="some changes were applied due to hamnavaz reconciling">
+      <option name="closed" value="true" />
+      <created>1696487021315</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1696487021315</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +563,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="loader logic ([...availableHotel])  has been change for waiting until loading data" />
     <MESSAGE value="some visual changes in HotelSidebarSearch.module.scss" />
     <MESSAGE value="some bugs have been fixed" />
     <MESSAGE value="some changes has been added in calendar (tourSearchBox)" />
@@ -606,7 +587,8 @@
     <MESSAGE value="some verfication logic has been changed" />
     <MESSAGE value="some changes due to hamnavaz project's changes reconciling" />
     <MESSAGE value="some tiny logic bugs have been fixed for loading tour list" />
-    <option name="LAST_COMMIT_MESSAGE" value="some tiny logic bugs have been fixed for loading tour list" />
+    <MESSAGE value="some changes were applied due to hamnavaz reconciling" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes were applied due to hamnavaz reconciling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

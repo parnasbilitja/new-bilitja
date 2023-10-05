@@ -352,7 +352,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
         <div className={styles["container"]}>
             <Head>
                 {
-                    hotel.length === 0 ? <title>همنواز | تور</title> : <title> همنواز {`|  ${hotel?.title}`}</title>
+                    hotel.length === 0 ? <title>بلیطجا | تور</title> : <title> بلیطجا {`|  ${hotel?.title}`}</title>
                 }
             </Head>
             <Scrolltoprefresh/>

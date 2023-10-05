@@ -174,7 +174,7 @@ const availableHotels = () => {
 
             <div className={styles["main-section"]}>
                 <Head>
-                    <title>همنواز | تور</title>
+                    <title>بلیطجا | تور</title>
                 </Head>
                 {router.query.availablehotels?.length === 1 ? (
                     <div className={styles.hotels}>
@@ -240,7 +240,7 @@ const availableHotels = () => {
                                     <div
                                         className={styles['loader-container']}
                                     >
-                                        <NewLoader title='همنواز در حال یافتن بهترین نتیجه طبق درخواست شماست....' />
+                                        <NewLoader title='بلیطجا در حال یافتن بهترین نتیجه طبق درخواست شماست....' />
                                     </div>
                                 ) : (
                                     hotels?.length===0&& searchData.loader===false? (

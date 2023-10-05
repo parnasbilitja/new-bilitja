@@ -24,7 +24,7 @@ $black: #00001f;
         height: 100px;
         background: rgb(255, 255, 255);
         box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
-        z-index: 100;
+        z-index: 10000;
 
         display: flex;
         justify-content: center;
@@ -36,7 +36,7 @@ $black: #00001f;
           .p-detail-reservation {
             display: grid;
             border-radius: 20px;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
 
 
             .priceDet_container {
@@ -49,7 +49,7 @@ $black: #00001f;
               .priceDet {
                 display: flex;
                 justify-content: space-between;
-                column-gap: .4rem;
+                column-gap: .6rem;
                 align-items: center;
 
                 div {
@@ -60,17 +60,17 @@ $black: #00001f;
 
                 .price-title {
                   p {
-
-                    font-size: 12px;
+                    font-size: 15px;
                     font-weight: 600;
                     margin: 0;
                   }
                 }
 
                 .price {
+                  color: #e20000;
                   P {
                     margin: 0;
-                    font-size: 18px;
+                    font-size: 14px;
                     font-weight: 900;
                   }
                 }
@@ -117,7 +117,7 @@ $black: #00001f;
 
 
               .totalprice_container {
-                width: 80%;
+                width: 90%;
 
                 display: flex;
                 flex-direction: column;
@@ -160,10 +160,10 @@ $black: #00001f;
                 cursor: pointer;
                 padding: .5rem;
                 margin-bottom: .5rem;
-                width: 150px;
-                height: 60px;
+                width: 135px;
+                height: 50px;
                 border-radius: 10px;
-                background-color: #279692;
+                background-color:#e20000;
                 font-size: 14px;
                 font-weight: 900;
                 color: white;
@@ -278,7 +278,7 @@ $black: #00001f;
 
       .box-top-box-reserve {
 
-        padding: 1rem;
+        padding: 1rem 4rem;
         width: 100%;
         border-radius: 8px;
 
