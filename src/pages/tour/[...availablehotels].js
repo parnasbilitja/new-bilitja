@@ -257,6 +257,7 @@ const availableHotels = () => {
                                             <Scrolltoprefresh/>
                                             {  hotels && hotels?.map((hotel) => {
                                                 return (
+
                                                     <div className={styles.hotelContainer}>
                                                         <div className={styles.hotelDetail}>
                                                             {/* <Image src="" width={162} height={170}></Image> */}
