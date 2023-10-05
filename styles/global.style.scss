@@ -4258,16 +4258,37 @@ p img {
   .swiper-rtl .swiper-button-next {
 
 
-    top: 75px !important;
+    top: 80px !important;
     //background-color: red;
     //background: url("nextbtn.svg");
 
   }
 
   .swiper-button-prev{
-    top: 75px !important;
+    top: 80px !important;
     right: 10px !important;
 
+  }
+
+  .swiper-button-prev{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 25px !important;
+    height: 25px !important;
+    &:after{
+      transform: scale(.035);
+    }
+  }
+  .swiper-button-next{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 25px !important;
+    height: 25px !important;
+    &:after{
+      transform: scale(.035) rotate(180deg);
+    }
   }
 
 }
@@ -4280,6 +4301,13 @@ p img {
   }
 
   .imageContainer{
+    .swiper-button-prev,.swiper-button-next{
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      width: 20px !important;
+      height: 20px !important;
+    }
     .swiper-rtl .swiper-button-next {
 
 
