@@ -518,19 +518,43 @@ const FlightReciept = (props) => {
         <div className={styles["p-detail-reservation"]}>
           <div className={styles["priceDet_container"]}>
             <div className={styles["priceDet"]}>
-              <p style={{ fontSize: "14px" }}>
-                مبلغ کل: ...........................
-                {moneyFormat(state.feeGet)} <span>تومان</span>
-              </p>
-              <p style={{ fontSize: "14px" }}>
-                {" "}
-                اعتبار کیف پول شما: ...........................
-                <span style={{ fontSize: "14px" }}>{moneyFormat(0)}</span> تومان
-              </p>
+              <div
+                  style={{
+                    display: "flex", justifyContent: "space-between", marginBottom: "8px",
+                  }}
+              >
+                <p>مبلغ کل :</p>
+                <span>..........................</span>
+                <div style={{display: "flex"}}>
+                  <strong style={{fontSize: "14px", marginRight: "4px"}}>
+                    {moneyFormat(state.feeGet)}
+                  </strong>
+                  <span style={{fontSize: "12px", marginRight: "4px"}}>
+                      تومان
+                    </span>
+                </div>
+              </div>
               {/* <p>
-                مبلغ قابل پرداخت: ...........................
-                {moneyFormat(state.feeGet)} <span>تومان</span>
-              </p> */}
+                      {" "}
+                      اعتبار کیف پول شما: ...........................
+                      <span>{moneyFormat(0)}</span> تومان
+                    </p> */}
+
+
+              <div
+                  style={{display: "flex", justifyContent: "space-between"}}
+              >
+                <p>مبلغ قابل پرداخت : </p>
+                <span>...........</span>
+                <div style={{display: "flex"}}>
+                  <strong style={{fontSize: "14px", marginRight: "4px"}}>
+                    {moneyFormat(state.feeGet)}
+                  </strong>
+                  <span style={{fontSize: "12px", marginRight: "4px"}}>
+                      تومان
+                    </span>
+                </div>
+              </div>
             </div>
           </div>
           <div className={styles["paymentoption"]}>
@@ -546,8 +570,8 @@ const FlightReciept = (props) => {
               <p>مبلغ قابل پرداخت:</p>
 
               <div
-                className="col-lg-5 col-6 text-left text-center d-flex align-items-center justify-content-center"
-                style={{ width: "fit-content" }}
+                  className="col-lg-5 col-6 text-left text-center d-flex align-items-center justify-content-center"
+                  style={{ width: "fit-content" }}
               >
                 <span className="font-size-14 text-danger mb-0 font-bold-iransanse">
                   {moneyFormat(state.feeGet)}{" "}
@@ -558,17 +582,17 @@ const FlightReciept = (props) => {
           </div>
           <div className={styles["paymentbtn"]}>
             <button
-              onClick={() => {
-                compeleteReservation();
-                getBanks();
-              }}
+                onClick={() => {
+                  compeleteReservation();
+                  getBanks();
+                }}
             >
               پرداخت با کارت شتاب
             </button>
             <p
-              onClick={() => {
-                router.push("/tours");
-              }}
+                onClick={() => {
+                  router.push("/tours");
+                }}
             >
               انصراف از خرید
             </p>
