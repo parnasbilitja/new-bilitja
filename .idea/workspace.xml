@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -193,7 +195,7 @@
       <workItem from="1695471739801" duration="4460000" />
       <workItem from="1695569335779" duration="3465000" />
       <workItem from="1695620326342" duration="7473000" />
-      <workItem from="1696420302864" duration="16820000" />
+      <workItem from="1696420302864" duration="17733000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -363,14 +365,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00092" summary="some validations have been applied to UpdatePassenger.jsx form in reservationComfirmation">
-      <option name="closed" value="true" />
-      <created>1693126256586</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1693126256586</updated>
-    </task>
     <task id="LOCAL-00093" summary="some style has been applied">
       <option name="closed" value="true" />
       <created>1693309526035</created>
@@ -531,7 +525,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696491339120</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="some changes were applied due to hamnavaz reconciling">
+      <option name="closed" value="true" />
+      <created>1696492355542</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1696492355542</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
