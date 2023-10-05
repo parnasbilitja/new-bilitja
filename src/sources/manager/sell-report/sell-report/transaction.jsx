@@ -13,6 +13,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import TableCustom from "../../TableAndSearch/Table";
 import Tabs from "../../TableAndSearch/Tabs";
+import NewLoader from "../../../../Components/NewTours/Components/subComponents/NewLoader";
 
 const fetchedList = async () => {
   const fetched = await fetch("/api/report/getReportBank", {
@@ -130,7 +131,7 @@ const Transaction = () => {
         header={header}
          />
       </>
-      :<Loader/>}
+      :<NewLoader/>}
        
         {openInfo ? (
           <DesktopInfoSell

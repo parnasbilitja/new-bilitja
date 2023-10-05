@@ -16,6 +16,7 @@ import { Loader } from '../../Utils/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchHotels } from '../../Redux/hotels/Action';
 import { fetchCitySearch } from '../../Redux/citiesSearch/Action';
+import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
 
 const HotelsSuggest = () => {
     let getData = useSelector(state => state.HotelReducer)
@@ -84,7 +85,7 @@ const HotelsSuggest = () => {
                         <div className="border-left"></div>
                     </div>
                     {getData.loading ?
-                    <Loader/> :
+                    <NewLoader/> :
                     getData.data.length>0 && !getData.loading?
                     <Swiper
                     slidesPerView={'auto'}
@@ -168,8 +169,8 @@ const HotelsSuggest = () => {
                         ))}
                     
                     </Swiper>
-                    : hotels.length == 0 ?
-                    <div className="hotelNotFound">متاسفانه هتلی موجود نیست</div>:<Loader/>
+                    : hotels?.length === 0 ?
+                    <div className="hotelNotFound">متاسفانه هتلی موجود نیست</div>:<NewLoader/>
 }
         </div>
     );

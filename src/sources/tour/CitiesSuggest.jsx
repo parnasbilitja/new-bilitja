@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { Loader } from '../../Utils/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCity } from '../../Redux/citiesSuggest/Action';
+import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
 
 const CitiesSuggest = () => {
     let getData = useSelector(state => state.CityReducer)
@@ -72,7 +73,7 @@ const CitiesSuggest = () => {
             </div>
             {
                 getData.loading?
-                <Loader/>:
+                <NewLoader/>:
                 data.length>0?
                     <Swiper
                         modules={[Navigation]}

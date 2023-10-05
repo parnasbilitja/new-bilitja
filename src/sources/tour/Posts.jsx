@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Loader } from '../../Utils/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchPosts} from '../../Redux/posts/Action';
+import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
 const Posts = () => {
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
@@ -60,7 +61,7 @@ const Posts = () => {
                 <div className="border-left"></div>
             </div>
             {getData.loading?
-            <Loader />:    
+            <NewLoader />:
             <div class="box-blog-parent" >
                 <div class="right-blog" >
                         <div class="info-blog">

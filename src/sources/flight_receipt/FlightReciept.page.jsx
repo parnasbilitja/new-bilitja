@@ -297,7 +297,7 @@ const FlightReciept = (props) => {
       </div>
       <div className="row ">
         {/* <div className="col-lg-1"></div> */}
-        <div className="col-lg-12 no-padding-xs border-pill-lg px-4">
+        <div className="col-lg-12 no-padding-xs border-pill-lg px-4" style={{padding:'0 3rem'}}>
           <p
             className={`text-right font-size-14 ${styles["pcolor-textpill"]}  `}
           >
