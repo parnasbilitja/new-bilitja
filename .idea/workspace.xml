@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +195,7 @@
       <workItem from="1695471739801" duration="4460000" />
       <workItem from="1695569335779" duration="3465000" />
       <workItem from="1695620326342" duration="7473000" />
-      <workItem from="1696420302864" duration="15876000" />
+      <workItem from="1696420302864" duration="16199000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -367,14 +365,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00090" summary="some tiny bugs for chdPrc calculation has been fixed in reservation&gt;&gt;info Passenger">
-      <option name="closed" value="true" />
-      <created>1692990912211</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1692990912211</updated>
-    </task>
     <task id="LOCAL-00091" summary="reservedData update has been added to reservationComfirmation for changing passengers data based on room">
       <option name="closed" value="true" />
       <created>1693123825997</created>
@@ -535,7 +525,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696490403214</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="some changes were applied due to hamnavaz reconciling">
+      <option name="closed" value="true" />
+      <created>1696491028053</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1696491028053</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
