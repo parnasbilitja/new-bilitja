@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styles from "../../../../styles/newTour/components/RoomsInfo.module.scss";
 
-import {humanType, numberWithCommas} from "../../../Utils/newTour";
+import {humanType, humanType1, numberWithCommas} from "../../../Utils/newTour";
 import {fontSize} from "@mui/system";
 
 const RoomsInfo = (props) => {
@@ -33,7 +33,7 @@ const RoomsInfo = (props) => {
                             >
                                 <p style={{fontWeight: "900", margin: 0}}>{index + 1}</p>
                             </td>
-                            <td className={styles["td"]}>{humanType(passenger.type)}</td>
+                            <td className={styles["td"]}>{humanType1(passenger.id)}</td>
                             <td className={styles["td"]}>
                                 {passenger.gender === "1" ? "آقا" : "خانم"}
                             </td>
@@ -62,7 +62,8 @@ const RoomsInfo = (props) => {
                                         fontWeight: "900",
                                         marginLeft: "3px",
                                         fontSize: "13px",
-                                        color: '#e20000',
+                                        color: 'red' +
+                                            '',
                                     }}
                                 >
                                     {" "}

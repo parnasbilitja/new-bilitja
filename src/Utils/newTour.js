@@ -36,8 +36,8 @@ export const MiladiToJalaliConvertorInc = (miladiDate) => {
 export const MiladiToJalaliConvertorDec = (miladiDate) => {
   const jalali = moment(miladiDate, "YYYY/MM/DD").subtract(1, "days");
   const miladiToJalali = jalali.format("jYYYY/jMM/jDD");
-  const reformattedMiladiDate = miladiToJalali?.replace(/\//g, "/");
-  return reformattedMiladiDate;
+  const reformattedMilatdiDate = miladiToJalali?.replace(/\//g, "/");
+  return reformattedMilatdiDate;
 };
 
 ////sperate price with (,)
@@ -59,18 +59,18 @@ export const startBuilder = (star, setvalue) => {
   const startarr = [];
   for (let i = 0; i < star; i++) {
     startarr.push(
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        id="Filled"
-        viewBox="0 0 24 24"
-        width="17"
-        height="17"
-      >
-        <path
-          fill="#edb143"
-          d="M1.327,12.4,4.887,15,3.535,19.187A3.178,3.178,0,0,0,4.719,22.8a3.177,3.177,0,0,0,3.8-.019L12,20.219l3.482,2.559a3.227,3.227,0,0,0,4.983-3.591L19.113,15l3.56-2.6a3.227,3.227,0,0,0-1.9-5.832H16.4L15.073,2.432a3.227,3.227,0,0,0-6.146,0L7.6,6.568H3.231a3.227,3.227,0,0,0-1.9,5.832Z"
-        />
-      </svg>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="Filled"
+            viewBox="0 0 24 24"
+            width="17"
+            height="17"
+        >
+          <path
+              fill="#edb143"
+              d="M1.327,12.4,4.887,15,3.535,19.187A3.178,3.178,0,0,0,4.719,22.8a3.177,3.177,0,0,0,3.8-.019L12,20.219l3.482,2.559a3.227,3.227,0,0,0,4.983-3.591L19.113,15l3.56-2.6a3.227,3.227,0,0,0-1.9-5.832H16.4L15.073,2.432a3.227,3.227,0,0,0-6.146,0L7.6,6.568H3.231a3.227,3.227,0,0,0-1.9,5.832Z"
+          />
+        </svg>
     );
   }
   return startarr;
@@ -106,30 +106,30 @@ export const currencyExchanger = (currency_code, currency) => {
 ///extbed =تخت اضافه
 export const extBedPrcGen = (rooms, flight, roomTypeId) => {
   let price = 0;
+  let services
   rooms?.map((room) => {
     if (roomTypeId === room.room_type_id) {
       let rates = room.rates.filter(
-        (rate) =>
-          moment(rate.date).isSameOrBefore(
-            flightDateChecker(flight).checkout
-          ) &&
-          moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
+          (rate) =>
+              moment(rate.date).isSameOrBefore(
+                  flightDateChecker(flight).checkout
+              ) &&
+              moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
       );
       rates.map((rate) => {
         return (price +=
-          rate.extra_price *
-          currencyExchanger(rate.currency_code, room.currencies));
+            rate.extra_price *
+            currencyExchanger(rate.currency_code, room.currencies));
       });
 
       // price = price - PrcController(room, flight, true);
       price += flight.adl_price; //flights=>adl_price
-      room.services.map((service) => {
-        if (service.airport_id === flight.destination_id) {
-          price +=
-            service.rate *
-            currencyExchanger(service.rate_type, room.currencies);
-          return price;
-        }
+      services= room.services.filter(service=>service.airport_id===flight.destination_id || service.airport_id===0)
+
+      services.map((service) => {
+        price +=
+            service.rate * currencyExchanger(service.rate_type, room.currencies);
+        return price;
       });
     }
     return price;
@@ -145,19 +145,19 @@ export const roomPrcGen = (room, flight) => {
   let isCheckIn = room.rates[0]?.checkin_base;
 // debugger
   let rates = room.rates.filter(
-    (rate) =>
-      moment(rate.date).isSameOrBefore(flightDateChecker(flight).checkout) &&
-      moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
+      (rate) =>
+          moment(rate.date).isSameOrBefore(flightDateChecker(flight).checkout) &&
+          moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
   );
   if (isCheckIn) {
     price +=
-      rates[0].offer_price *
-      currencyExchanger(room.rates[0].currency_code, room.currencies) *
-      rates.length;
+        rates[0].offer_price *
+        currencyExchanger(room.rates[0].currency_code, room.currencies) *
+        rates.length;
   } else {
     rates.map((rate) => {
       return (price +=
-        rate.price * currencyExchanger(rate.currency_code, room.currencies));
+          rate.price * currencyExchanger(rate.currency_code, room.currencies));
     });
   }
 
@@ -165,12 +165,12 @@ export const roomPrcGen = (room, flight) => {
   price += flight.adl_price; //flights=>adl_price
 
 
- services= room.services.filter(service=>service.airport_id===flight.destination_id || service.airport_id===0)
+  services= room.services.filter(service=>service.airport_id===flight.destination_id || service.airport_id===0)
 
   services.map((service) => {
-      price +=
+    price +=
         service.rate * currencyExchanger(service.rate_type, room.currencies);
-      return price;
+    return price;
   });
 
   return price;
@@ -178,29 +178,37 @@ export const roomPrcGen = (room, flight) => {
 export const chdPrcGen = (rooms, flight, roomTypeId) => {
   // debugger
   let price = 0;
+  let services
   rooms?.map((room) => {
     if (roomTypeId === room.room_type_id) {
+      let isCheckIn = room.rates[0]?.checkin_base;
       let rates = room.rates.filter(
-        (rate) =>
-          moment(rate.date).isSameOrBefore(
-            flightDateChecker(flight).checkout
-          ) &&
-          moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
+          (rate) =>
+              moment(rate.date).isSameOrBefore(
+                  flightDateChecker(flight).checkout
+              ) &&
+              moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
       );
-      rates.map((rate) => {
-        return (price +=
-          rate.price * currencyExchanger(rate.currency_code, room.currencies));
-      });
+      if (isCheckIn) {
+        price +=
+            rates[0].offer_price *
+            currencyExchanger(room.rates[0].currency_code, room.currencies) *
+            rates.length;
+      } else {
+        rates.map((rate) => {
+          return (price +=
+              rate.price * currencyExchanger(rate.currency_code, room.currencies));
+        });
+      }
 
       // price -= PrcController(room, flight, false, false);
       price += flight.chd_price; //flights=>adl_price
-      room.services.map((service) => {
-        if (service.airport_id === flight.destination_id) {
-          price +=
-            service.rate *
-            currencyExchanger(service.rate_type, room.currencies);
-          return price;
-        }
+      services= room.services.filter(service=>service.airport_id===flight.destination_id || service.airport_id===0)
+
+      services.map((service) => {
+        price +=
+            service.rate * currencyExchanger(service.rate_type, room.currencies);
+        return price;
       });
     }
     return price;
@@ -208,7 +216,6 @@ export const chdPrcGen = (rooms, flight, roomTypeId) => {
 
   return price;
 };
-
 export const roomNameChecker = (roomsarr, room_id) => {
   // debugger
   const roomName = roomsarr?.filter((room) => room.id === room_id);
@@ -267,9 +274,9 @@ export const reservePrc = (rooms, flight) => {
     return fiPrice;
   } else {
     fiPrice = Math.min(
-      rooms.map((room) => {
-        return roomPrcGen(room, flight);
-      })
+        rooms.map((room) => {
+          return roomPrcGen(room, flight);
+        })
     );
     return fiPrice;
   }
@@ -279,54 +286,76 @@ export const errStruct = (roomId, passenId, inputName) => {
   return `reserves.${roomId}.passengers.${passenId}.${inputName}`;
 };
 
- export const passengerObjModelGen = (personCount, type) => {
-   let personarr = [];
-   if (personCount > 0) {
-     [...Array(personCount)].map((p, index) => {
-       personarr.push({
-         name: "",
-         family: "",
-         birth_day: "",
-         nationality: "",
-         gender: "",
-         passport: "",
-         expired_passport: "",
-         id_code: "",
-         bed_type: type === "ext" ? "extra" : "normal",
-         type,
-         id: `${index}${type}`,
-         price: "",
-       });
-     });
-   }
-   return personarr;
- };
+export const passengerObjModelGen = (personCount, type) => {
+  let personarr = [];
+  if (personCount > 0) {
+    [...Array(personCount)].map((p, index) => {
+      personarr.push({
+        name: "",
+        family: "",
+        birth_day: "",
+        nationality: "",
+        gender: "",
+        passport: "",
+        expired_passport: "",
+        id_code: "",
+        bed_type: type === "ext" ? "extra" : "normal",
+        type,
+        id: `${index}${type}`,
+        price: "",
+      });
+    });
+  }
+  return personarr;
+};
 
- export const TotalPrcGen = (prcArr) => {
-   let total = prcArr.reduce((accumulator, currentValue) => {
-     return accumulator + +currentValue;
-   }, 0);
+export const TotalPrcGen = (prcArr) => {
+  let total = prcArr.reduce((accumulator, currentValue) => {
+    return accumulator + +currentValue;
+  }, 0);
 
-   return total;
- };
+  return total;
+};
 
- export const humanType = (type) => {
-   switch (type) {
-     case "adl":
-       return "بزرگسال";
-     case "inf":
-       return "نوزاد";
-     case "chd":
-       return "کودک";
-     case "ext":
-       return "تخت اضافه";
-   }
- };
+export const humanType = (type) => {
+  switch (type) {
+    case "adl":
+      return "بزرگسال";
+    case "inf":
+      return "نوزاد";
+    case "chd":
+      return "کودک";
+    case "ext":
+      return "تخت اضافه";
+  }
+};
+
+export const humanType1 = (id) => {
+  // switch (type) {
+  //   case "adl":
+  //     return "بزرگسال";
+  //   case "inf":
+  //     return "نوزاد";
+  //   case "chd":
+  //     return "کودک";
+  //   case "ext":
+  //     return "تخت اضافه";
+  // }
+  if(id.includes('adl')){
+    return 'بزرگسال'
+  } else if(id.includes('chd')){
+    return 'کودک'
+  }else if(id.includes('chd')){
+    return 'نوزاد'
+  }else{
+    return 'تخت اضافه'
+  }
+};
 
 
 
 
- ////////////////////////motion animate VAriant
+////////////////////////motion animate VAriant
 export const collapseVariants={
   initial:{
     height:'0',

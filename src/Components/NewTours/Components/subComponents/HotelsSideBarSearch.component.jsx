@@ -108,7 +108,7 @@ const HotelsSideBarSearch = (props) => {
             <AnimatePresence>
                 <div className={styles['p-sidebar']}
                 >
-                    <div className={styles.sidebarcontainer}>
+
                         <motion.div variants={variants} initial='initial' animate='animate' exit='exit'
                                     className={styles.sidebar}>
                             <div style={{
@@ -223,7 +223,7 @@ const HotelsSideBarSearch = (props) => {
 
                             </CollapseSearchComponent>
                         </motion.div>
-                    </div>
+
 
 
                 </div>

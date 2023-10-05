@@ -124,7 +124,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                 const adlCount = selectedroom?.adl_count;
                 const chdCount = selectedroom?.chd_count;
                 const infCount = selectedroom?.inf_count;
-                const extCount = selectedroom?.ext_count;
+                const extCount = selectedroom?.extra_count;
                 passarr.push(...passengerObjModelGen(adlCount, "adl"));
                 passarr.push(...passengerObjModelGen(chdCount, "chd"));
                 passarr.push(...passengerObjModelGen(infCount, "inf"));
@@ -141,7 +141,6 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
     }, [reformSelectedRooms]);
 
     useEffect(() => {
-
         setDataq(roomsData);
     }, [roomsData]);
 

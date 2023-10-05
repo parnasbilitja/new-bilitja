@@ -17,6 +17,12 @@ import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoa
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 import Paginate from "../../Components/NewTours/Components/subComponents/Paginate";
 import Head from "next/head";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {A11y, Navigation, Pagination, Scrollbar} from "swiper";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const AvFlight = dynamic(() =>
     import("../../Components/NewTours/AvailableFlightBasedonSelectedTour")
@@ -153,6 +159,14 @@ const availableHotels = () => {
     useEffect(()=>{
         console.log(hotels)
     },[hotels])
+
+    useEffect(()=>{
+        if(showFilter && widthMobi<500){
+            document.body.style.overflowY='hidden'
+        }else{
+            document.body.style.overflowY='visible'
+        }
+    },[showFilter])
     return (
         <>
 
@@ -246,13 +260,41 @@ const availableHotels = () => {
                                                     <div className={styles.hotelContainer}>
                                                         <div className={styles.hotelDetail}>
                                                             {/* <Image src="" width={162} height={170}></Image> */}
-                                                            <div className={styles.imageContainer}>
-                                                                <Image
-                                                                    src={hotel.gallery[0].url}
-                                                                    width={500}
-                                                                    height={500}
-                                                                    alt="Picture of the hotel"
-                                                                />
+                                                            <div className={`imageContainer ${styles['imageContainer']}`}>
+                                                                <Swiper  modules={[Navigation, Scrollbar, A11y]}
+                                                                         spaceBetween={50}
+                                                                         slidesPerView={1}
+                                                                         navigation
+                                                                         pagination={{ clickable: true }}
+                                                                         scrollbar={{ draggable: false }}
+                                                                         onSwiper={(swiper) => console.log(swiper)}
+                                                                    // onSlideChange={() => console.log("slide change")}
+                                                                         loop={true}>
+
+                                                                    {hotel.gallery.map(img=>{
+
+                                                                        return(
+                                                                            <SwiperSlide
+                                                                                style={{
+                                                                                    height: "auto",
+                                                                                    // borderRadius: "20px",
+                                                                                    // overflow: "hidden",
+                                                                                    display:'flex',
+                                                                                    justifyContent:'center',
+
+                                                                                }}
+                                                                            >
+                                                                                <img
+                                                                                    src={img.url}
+
+                                                                                    alt="Picture of the hotel"
+                                                                                />
+                                                                            </SwiperSlide>
+                                                                        )
+                                                                    })}
+
+
+                                                                </Swiper>
                                                             </div>
                                                             <div className={styles.hotelNameDetail}>
                                                                 {hotel.is_domestic ? (

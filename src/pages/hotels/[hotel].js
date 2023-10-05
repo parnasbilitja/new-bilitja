@@ -138,12 +138,12 @@ const hotel = (props) => {
                     <div className="">
                         <div className="notes-hotel">
                             <div className="option">
-                                <h2 className="font-size-15 font-bold">امکانات هتل ، اتاق ها و خدمات دیگر در یک نگاه</h2>
-                                <div className="d-flex flex-wrap align-items-center mt-4">
+                                <h2 className="font-size-15 font-bold mb-4">امکانات هتل ، اتاق ها و خدمات دیگر در یک نگاه</h2>
+                                <div className="d-flex flex-wrap align-items-center" style={{rowGap:'10px'}}>
                                     {hotel?.services && hotel?.services[0]?.services?.map(service =>(
-                                        <div key={service.id} className="col-6 col-sm-4 col-md-3 ">
-                                            {/*<FontAwesomeIcon icon={faAngleLeft} />*/}
-                                            <p className="text-center font-size-14 font-bold m-0 p-2" >{' '} {service.name}</p>
+                                        <div key={service.id} className="col-6 col-sm-4 col-md-3 d-flex">
+                                            <FontAwesomeIcon icon={faAngleLeft} className='p-0 m-0' />
+                                            <p className="text-center font-size-14 font-bold m-0 p-0 px-2" >{' '} {service.name}</p>
                                         </div>
                                     ))}
                                 </div>

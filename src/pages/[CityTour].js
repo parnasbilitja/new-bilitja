@@ -9,9 +9,11 @@ import TourList from '../sources/tour/TourList';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCity } from '../Redux/citiesSuggest/Action';
 import Head from 'next/head';
+import {tourName} from "../Utils/data";
+import router from "next/router";
 
 const CityTour = (props) => {
-    console.log(props);
+    // console.log(props.Pathname.CityTour.slice(4,props.Pathname.CityTour.length));
     let city = useSelector(state => state.CityReducer)
     const dispatch = useDispatch()
 
@@ -21,48 +23,66 @@ const CityTour = (props) => {
         setCurrentCity(val.target.value)
     }
     useEffect(() => {
-        console.log(city);
+        // console.log(city);
         if (city?.data?.length<1) {
             dispatch(fetchCity())
         }
-
     }, [])
-    
+
+    useEffect(()=>{
+        setCurrentCity(props.Pathname.CityTour.slice(4,props.Pathname.CityTour.length))
+    },[props.Pathname])
+
+    useEffect(()=>{
+
+        console.log(currentCity)
+    },[currentCity])
+
     return (
         <>
             <Head>
-                <title> تور {props.Pathname.CityTour.slice(4,props.Pathname.CityTour.length)} | همنواز </title>
+                <title> تور {props.Pathname.CityTour.slice(4,props.Pathname.CityTour.length)} | بلیطجا </title>
             </Head>
-          <Scrolltoprefresh />
             <NavHandler/>
-            <div className="mt-90 col-md-10 m-auto parent-info-city">
-                <div class="search search-city-info w-100">
-                    <ul class="tab-ul-list">
-                        <li class="li-city"><a href="#about-tour" class="about-tab">تور ها</a></li>
-                        <li class="li-city"><a href="#blog" class="news-tab">اخبار گردشگری </a></li>
-                        <li class="li-city"><a href="#questions" class="question-tab">سوالات متداول</a></li>
-                        <li class="b-none"><a href="#tours" class="tour-tab">توضیحات
-                                تور</a></li>
-                        <li class="border-floating"></li>
-                    </ul>
-                    <div class="box-search justify-content-end">
-                        <div class="inp-form">
-                            <select name="" id="" onChange={(val)=>refreshData(val)} value={currentCity}>
-                                {city.data.map((item) => (
-                                    <option key={item.name} value={item.name}>{item.name}</option>
-                                ))}
-                        </select>
+            <div>
+                <Scrolltoprefresh />
+                <div className='padd'>
+                    <div className="mt-90 col-md-10 m-auto parent-info-city">
+                        <div className="search search-city-info w-100">
+                            <ul className="tab-ul-list">
+                                <li className="li-city"><a href="#about-tour" className="about-tab">تور ها</a></li>
+                                <li className="li-city"><a href="#blog" className="news-tab">اخبار گردشگری </a></li>
+                                <li className="li-city"><a href="#questions" className="question-tab">سوالات متداول</a></li>
+                                <li className="b-none"><a href="#tours" className="tour-tab">توضیحات
+                                    تور</a></li>
+                                <li className="border-floating"></li>
+                            </ul>
+                            <div className="box-search justify-content-end px-sm-2 " >
+                                <div className="inp-form">
+                                    <select name="" id="" onChange={(val)=> {
+                                        refreshData(val)
+                                    }} value={currentCity}>
+                                        {!search && <option value="" selected> شهر خود را انتخاب کنید</option>}
+
+                                        {city.data.map((item) => (
+                                            <option key={item.name} value={item.name}>{item.name}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <Link href={`تور-${currentCity}/`}>
+                                    <button className="btn-search btn-search-city" onClick={()=>setSearch(true)}>جستجو</button>
+                                </Link>
+                            </div>
                         </div>
-                        <Link href={`/cityTour/${currentCity}`}>
-                            <button class="btn-search btn-search-city" onClick={()=>setSearch(true)}>جستجو</button>
-                        </Link>
+                        <div className='mx-3'>
+                            <TourList name={props.Pathname.CityTour} />
+                            <TourData currentCity={currentCity} search={search} setSearch={setSearch} route={props.Pathname.CityTour.slice(4,props.Pathname.CityTour.length)} />
+                        </div>
                     </div>
                 </div>
-                <div className='mx-3'>
-                    <TourList name={props.Pathname.CityTour} />
-                    <TourData currentCity={currentCity} search={search} setSearch={setSearch} />
-                </div>
             </div>
+
+
             <Footer/>
         </>
     );
@@ -70,8 +90,8 @@ const CityTour = (props) => {
 
 CityTour.getInitialProps = ({ query }) => {
     return {
-      Pathname: query
+        Pathname: query
     }
-  }
+}
 
 export default CityTour;

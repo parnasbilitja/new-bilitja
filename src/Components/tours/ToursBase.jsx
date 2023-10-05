@@ -8,7 +8,8 @@ import PictureBase from "../../sources/component/PictureBase";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 const CitiesSuggest = dynamic(() => import("../../sources/tour/CitiesSuggest"));
 const HotelsSuggest = dynamic(() => import("../../sources/tour/HotelsSuggest"));
-const List = dynamic(() => import("../../sources/tour/List"));
+// const List = dynamic(() => import("../../sources/tour/List"));
+import List from "../../sources/tour/List"
 const Posts = dynamic(() => import("../../sources/tour/Posts"));
 const OfferdTours = dynamic(() => import("../../sources/tour/OfferdTours"));
 import NavHandler from "../share/NavHandler";
@@ -44,24 +45,24 @@ const ToursBase = (props) => {
   }, []);
   const [tourData, SetTourData] = useState([]);
 
-  const [tourSwitch, setTourSwitch] = useState("tour");
+  // const [tourSwitch, setTourSwitch] = useState("package-tour");
 
   const toursHandler = (search) => {
 
-    setState({ ...state, city: search?.slug ? search?.slug : null });
+    setState({ ...state, city: search?.slug ?search?.slug:null  });
     axios
-      .post("https://api.hamnavaz.com/api/v1/tour/getTours", {
-        city: state.city,
-      })
-      .then((res) => {
-        SetTourData(res.data.data);
-      })
-      .catch((err) => SetTourData(err.message));
+        .post("https://api.hamnavaz.com/api/v1/tour/getTours", {
+          city: state.city,
+        })
+        .then((res) => {
+          SetTourData(res.data.data);
+        })
+        .catch((err) => SetTourData(err.message));
   };
 
   const myRef = useRef(null);
   const executeScroll = () =>
-    myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
   const handleClickScroll = () => {
     const element = document.getElementById("list");
     if (element) {
@@ -70,7 +71,6 @@ const ToursBase = (props) => {
     }
   };
   useEffect(() => {
-    toursHandler()
     props.setOrgLoc({ name: "", code: "" });
     props.setDestLoc({ name: "", code: "" });
     props.setFlightDate({
@@ -78,111 +78,121 @@ const ToursBase = (props) => {
       miladiDate: "",
     });
     props.setNightNumber("");
+
+
+    toursHandler()
   }, []);
   return (
-    <div className={""}>
-      <Head>
-        <title>بلیطجا | لیست تورها</title>
-      </Head>
-      <NavHandler />
-      <div
-        className={``}
-        style={{ marginTop: state.width >= 826 ? "" : "-0.8rem" }}
-      >
-        <Scrolltoprefresh />
-        <div style={{ background: "#F7F7F7" }}>
-          <PictureBase />
-          <PageTabls type={type} setType={setType} />
-          <h2
-            style={{ margin: "2rem 0 0 0" }}
-            className="font-bold-iransanse font-size-22 font-bold text-center "
-          >
-            <span>رزرو تور &nbsp;</span>
-            <span className="color-primary font-bold-iransanse">
+      <div className={""}>
+        <Head>
+          <title>همنواز | لیست تورها</title>
+        </Head>
+        <NavHandler />
+        <div
+            className={``}
+            style={{ marginTop: state.width >= 826 ? "" : "-0.8rem" }}
+        >
+          <Scrolltoprefresh />
+          <div style={{ background: "#F7F7F7" }}>
+            <div style={{transform:'translateY(14px)'}}>
+              <PictureBase />
+
+            </div>
+            <PageTabls type={type} setType={setType} />
+            <h2
+                style={{ margin: "2rem 0 0 0" }}
+                className="font-bold-iransanse font-size-22 font-bold text-center "
+            >
+              <span>رزرو تور &nbsp;</span>
+              <span className="color-primary font-bold-iransanse">
               با چند کلیک
             </span>
-          </h2>
-          <div className="row justify-content-center">
-            <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
-              {/* switch between tours type */}
-              <div
-                className={`d-flex justify-content-between ${styles["checkboxs_container"]} ${styles["w-100-mobi"]}`}
-              >
-                <div className={styles["check"]}>
-                  <input
-                      type="checkbox"
-                      name=""
-                      id=""
-                      onClick={() => {
-                        props.setTourSwitch("tour")
-                        router.push('/tour')
-                      }}
-                      checked={props.tourSwitch === "tour" ? true : false}
-
-                  />
-                  <p htmlFor="">تور </p>
-                </div>
-                <div className={styles["check"]}>
-                  <input
-                    type="checkbox"
-                    name="ارزان ترین"
-                    id=""
-                    onClick={() => {
-                      props.setTourSwitch("package-tour")
-                      router.push('/tours')
-                    }}
-                    checked={props.tourSwitch === "package-tour" ? true : false}
-
-                  />
-                  <p htmlFor="">پکیج تور </p>
-                </div>
-
-              </div>
-              {/* ////////////// */}
-              {props.tourSwitch === "package-tour" ? (
-                  <div className={styles['flight-container']}>
-                    <SearchBox
-                        dateSelected={state.dateSelected2}
-                        executeScroll={handleClickScroll}
-                        toursHandler={(val)=>toursHandler(val)}
-                        setState={setState}
-                        state={state}
+            </h2>
+            <div className="row justify-content-center">
+              <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
+                {/* switch between tours type */}
+                <div
+                    className={`d-flex justify-content-between ${styles["checkboxs_container"]} ${styles["w-100-mobi"]}`}
+                >
+                  <div className={styles["check"]}>
+                    <input
+                        type="checkbox"
+                        name=""
+                        id=""
+                        onClick={() => {
+                          props.setTourType("tour",'/tour')
+                          // props.setTourSwitch("tour")
+                          // router.push('/tour')
+                        }}
+                        checked={props.tourSwitch === "tour" ? true : false}
                     />
+                    <p htmlFor="">تور </p>
                   </div>
-              ) : (
-                <TourSearchBox />
-              )}
-            </div>
-            <div>
-              <motion.div
-                initial="pageInitial"
-                animate="pageAnimate"
-                variants={{
-                  pageInitial: {
-                    opacity: 0,
-                  },
-                  pageAnimate: {
-                    opacity: 1,
-                  },
-                }}
-              >
-                <HomePicture state={state} />
-              </motion.div>
+                  <div className={styles["check"]}>
+                    <input
+                        type="checkbox"
+                        name="ارزان ترین"
+                        id=""
+                        onClick={() => {
+                          props.setTourType("package-tour",'/tours')
+                          // props.setTourSwitch("package-tour")
+                          // router.push('/tours')
+                        }
+
+                        }
+                        checked={props.tourSwitch === "package-tour" ? true : false}
+
+                    />
+                    <p htmlFor="">پکیج تور </p>
+                  </div>
+
+                </div>
+                {/* ////////////// */}
+                {props.tourSwitch === "package-tour" ? (
+                    <div className={styles['flight-container']}>
+                      <SearchBox
+                          dateSelected={state.dateSelected2}
+                          executeScroll={handleClickScroll}
+                          toursHandler={toursHandler}
+                          setState={setState}
+                          state={state}
+                      />
+                    </div>
+                ) : (
+
+                    <TourSearchBox />
+                )}
+              </div>
+              <div>
+                <motion.div
+                    initial="pageInitial"
+                    animate="pageAnimate"
+                    variants={{
+                      pageInitial: {
+                        opacity: 0,
+                      },
+                      pageAnimate: {
+                        opacity: 1,
+                      },
+                    }}
+                >
+                  <HomePicture state={state} />
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="col-md-10 m-auto">
-        <OfferdTours />
-        <div id="list">
-          <List ref={myRef} tourData={tourData} city={state.city} />
+        <div className="col-md-10 m-auto px-3 padd">
+          <OfferdTours />
+          <div id="list">
+            <List ref={myRef} tourData={tourData} city={state.city} />
+          </div>
+          <HotelsSuggest />
+          <CitiesSuggest />
+          <Posts />
         </div>
-        <HotelsSuggest />
-        <CitiesSuggest />
-        <Posts />
+        <Footer />
       </div>
-      <Footer />
-    </div>
   );
 };
 

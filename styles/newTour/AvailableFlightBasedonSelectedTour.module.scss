@@ -571,8 +571,8 @@ $costColor: #e20000;
         padding: 1.125rem 10rem 1.125rem 10rem;
         //transform: scale(1.2);
         .roomcountDet {
-          // border: 1px solid $borderColor;
-          border: 1px solid $primary;
+           border: 1px solid $borderColor;
+          //border: 1px solid $primary;
           border-radius: 20px;
           padding: .725rem 2rem;
           display: flex;
@@ -621,12 +621,21 @@ $costColor: #e20000;
             }
           }
 
+          .borderActive{
+            border: 1px solid $primary;
+
+          }
+          .bordernoneActive{
+            border: 1px solid $containerColor2;
+
+          }
+
           &_bedcount {
             height: 90px;
             width: 160px;
-            // border: 1px solid #999;
+             border: 1px solid #999;
             // box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
-            border: 1px solid $primary;
+            //border: 1px solid $primary;
             padding: .3rem .1rem .3rem .1rem;
 
             border-radius: 20px;
@@ -983,6 +992,8 @@ $costColor: #e20000;
       color: white;
       width: 200px;
       height: 40px;
+
+
       border-radius: 4px;
       font-size: 14px;
       font-weight: 800;

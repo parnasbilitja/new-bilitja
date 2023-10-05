@@ -42,7 +42,9 @@ const Hotels = () => {
 
     const [type, setType] = useState(3)
     const myRef = useRef(null)
-    const executeScroll = () => { myRef.current.scrollIntoView()}
+    const myRef1 = useRef(null)
+    const executeScroll = () => { myRef.current.scrollIntoView({ behavior: 'smooth' })}
+    const executeScroll1 = () => { myRef1.current.scrollIntoView({ behavior: 'smooth' })}
     return (
         <div className="mt-90 bodyVar" >
             <Head>
@@ -61,7 +63,7 @@ const Hotels = () => {
                     </h2>
                     <div className="row justify-content-center">
                         <div className={`col-10 col-md-12 ${width<=826&&"mt-3"} px-0`}>
-                            <HotelsSearchBox searchHotel={searchHotel} setCity={setCity} search={search} setSearch={setSearch}/>
+                            <HotelsSearchBox searchHotel={searchHotel} setCity={setCity} search={search} setSearch={setSearch} scroll={()=>executeScroll1()}/>
                         </div>
                     </div>
                     <div className={`${styles["parentbackFight"]}`}>
@@ -97,7 +99,7 @@ const Hotels = () => {
                                             <path id="Path_836" data-name="Path 836" d="M12,5a1.727,1.727,0,0,1,1.541.51c.514.512.514,2.227.514,2.911" transform="translate(-4.468 -2.262)" fill="none" stroke="#053742" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
                                         </g>
                                     </svg>
-                                    <div className="text mx-2">
+                                    <div className="text mx-2" ref={myRef1}>
                                         <p className="font-bold title-custom p-0 my-0 d-flex align-items-center" style={{marginTop:`${width>826?'2px':'4px'}`,fontSize:'18px',padding:'0',fontWeight:'bolder !important'}}>هتل های آفری و ارزان قیمت</p>
                                         <h6 className="subtitle-custom m-0">مشاهده مناسب ترین هتل ها</h6>
                                     </div>
@@ -105,20 +107,20 @@ const Hotels = () => {
                             </div>
                         </div>
 
-                        <div className="bottom d-flex align-items-center mt-3 mb-3">
+                        <div className="bottom d-flex align-items-center mt-3 mb-3" >
                             <div className="border-right"></div>
                             <div className="border-left"></div>
                         </div>
                         {hotels.data?.loading ?
                             <NewLoader/> :
                             hotels.data?.data?.length>0 && !hotels.data?.loading?
-                                <div className="row justify-content-center"
-                                >
+                                <div className="row justify-content-center">
                                     {hotels.data?.data?.map((item)=>(
                                         <Link href={`/hotels/${item.slug}`}>
                                             <div className="col-12 col-md-3 d-flex justify-content-center">
                                                 <div class="box-hotel" style={{width: '95%'}}>
-                                                    <img  class="img-blog" src={item?.thumbnail}/>
+                                                    {!item.thumbnail? <img className="img-blog" src='../../../Images/noPicture.png' alt='no-picture'/>:
+                                                        <img className="img-blog" src={item.thumbnail} alt={item.id}/> }
                                                     <div class="opacity-bg-parent">
                                                         <div class="info-img">
                                                             <svg id="Information" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 26.17 26.17">
