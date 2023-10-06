@@ -1,0 +1,91 @@
+.citymodalcontainer{
+
+  position: fixed !important;
+  background-color: rgba(128, 128, 128, 0.33);
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  //align-items: center;
+  padding-top: 60px;
+.cities-container{
+
+
+    background-color: white;
+    border-radius: 8px;
+
+    text-align: right;
+    //padding: 10px;
+    width: 92%;
+    height: 560px;
+    overflow-y: hidden;
+
+  .cities{
+    padding: 2rem;
+    padding-top: 1.5rem !important;
+    .title{
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding:0rem .5rem;
+      .closebtn{
+        border: 2px solid #137cb6;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+      }
+      p{
+        font-size: 16px;
+        font-weight: 500;
+        padding: 0;
+        margin: 0;
+      }
+
+    }
+
+    .inputcon{
+      display: flex;
+      justify-content: start;
+      width: 98%;
+      margin-bottom: 15px;
+        height: 48px;
+      padding-left: .125rem;
+        border: 2px solid #edeff1;
+        border-radius: 7px;
+
+
+
+      input{
+        width: 90%;
+        height: 100%;
+        outline: none !important;
+        border: none
+      ;
+        &::placeholder{
+          font-size: 14px;
+        }
+      }
+      //border-bottom: 1px solid grey;
+    }
+
+    .citiesItem{
+      height: 100%;
+      padding: 0 .725rem;
+      overflow-y: scroll !important;
+
+    }
+
+  }
+}
+
+
+}
