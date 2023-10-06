@@ -103,10 +103,15 @@ const HotelsSideBarSearch = (props) => {
         },
         exit: {right: '-400px', transition: {duration: .5}}
     }
+    const closeModal=(e)=>{
+        props.setShowFilter()
+
+    }
     return (
         <>
             <AnimatePresence>
                 <div className={styles['p-sidebar']}
+                     onClick={(e)=>closeModal(e)}
                 >
 
                         <motion.div variants={variants} initial='initial' animate='animate' exit='exit'
@@ -158,9 +163,12 @@ const HotelsSideBarSearch = (props) => {
                                     name=""
                                     id=""
                                     onChange={(e) => {
-                                        e.stopPropagation()
+
                                         checkedClick(null, e.target.value, "star");
+                                        props.setShowFilter()
                                     }}
+
+                                    onClick={(e)=>  e.stopPropagation()}
                                 >
                                     <option selected disabled>
                                         همه

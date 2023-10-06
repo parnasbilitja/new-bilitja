@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/Cities.module.scss" afterDir="false" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="toursearchbox modal cities">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/[...availablehotels].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/NavBarMobile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/NavBarMobile.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +78,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Niusha\WebstormProjects\bilitjassrnew\styles\newTour\components\subComponent" />
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\pages" />
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\public" />
       <recent name="C:\projects\bilitjassrnew\public\Images" />
@@ -367,14 +371,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00094" summary="level back button has been deployed on expiredPass/birth_day =&gt; Reservation.jsx + rules style has been changed on Reservation.jsx">
-      <option name="closed" value="true" />
-      <created>1693383414333</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1693383414333</updated>
-    </task>
     <task id="LOCAL-00095" summary="some logic and stylish changes in filter available hotel page">
       <option name="closed" value="true" />
       <created>1693388190363</created>
@@ -535,7 +531,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696493664586</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="toursearchbox modal cities">
+      <option name="closed" value="true" />
+      <created>1696570477852</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1696570477852</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -555,7 +559,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some visual changes in HotelSidebarSearch.module.scss" />
     <MESSAGE value="some bugs have been fixed" />
     <MESSAGE value="some changes has been added in calendar (tourSearchBox)" />
     <MESSAGE value="some changes have been added in calendar (tourSearchBox)" />
@@ -580,7 +583,8 @@
     <MESSAGE value="some changes due to hamnavaz project's changes reconciling" />
     <MESSAGE value="some tiny logic bugs have been fixed for loading tour list" />
     <MESSAGE value="some changes were applied due to hamnavaz reconciling" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes were applied due to hamnavaz reconciling" />
+    <MESSAGE value="toursearchbox modal cities" />
+    <option name="LAST_COMMIT_MESSAGE" value="toursearchbox modal cities" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -617,7 +621,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx</url>
-          <line>109</line>
+          <line>114</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>

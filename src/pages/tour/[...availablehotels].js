@@ -163,6 +163,7 @@ const availableHotels = () => {
     useEffect(()=>{
         if(showFilter && widthMobi<500){
             document.body.style.overflowY='hidden'
+
         }else{
             document.body.style.overflowY='visible'
         }
