@@ -75,7 +75,13 @@
 .main-section {
     padding-top: 7rem;
     background-color: white;
-    height: 100%;
+
+    min-height: 100vh;
+    max-width: 1366px;
+    margin: 0 auto;
+    //.searchContainer {
+    //    padding: 0 2.5rem 0 4rem;
+    //}
 
     .menubarcontainer{
 
@@ -109,13 +115,12 @@
     .hotels {
         background-color: white;
         min-height: 100vh;
-        max-width: 1366px;
-        margin: 0 auto;
+        //max-width: 1366px;
+        //margin: 0 auto;
+        display: flex;
+        //padding: 0 2rem;
 
 
-        .searchContainer {
-            padding: 0 4rem 0 4rem;
-        }
 
         .p-available {
             width: 90%;
@@ -123,7 +128,7 @@
             display: flex;
             margin-top: 1rem;
             border-radius: 5px;
-            transform: translateY(-45px);
+            transform: translateY(-40px);
 
 
 
@@ -224,7 +229,7 @@
             }
 
             .content {
-                width: 78%;
+                width: 100%;
                 margin-left: 1rem;
                 border-radius: 8px;
 
@@ -414,7 +419,7 @@
         position: fixed;
         top:0;
         left: 0;
-        z-index: 100;
+        z-index: 10000;
         display: flex;
         justify-content: center;
         align-content: center;

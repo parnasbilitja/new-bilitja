@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="toursearchbox modal cities">
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="sidebar hotel tour">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/tour/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/[...availablehotels].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/NavBarMobile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/NavBarMobile.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,25 +55,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Niusha/WebstormProjects/bilitjassrnew/styles/newTour/components/subComponent",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Niusha/WebstormProjects/bilitjassrnew/styles/newTour/components/subComponent&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Niusha\WebstormProjects\bilitjassrnew\styles\newTour\components\subComponent" />
@@ -202,6 +200,7 @@
       <workItem from="1695569335779" duration="3465000" />
       <workItem from="1695620326342" duration="7473000" />
       <workItem from="1696420302864" duration="21169000" />
+      <workItem from="1696581323456" duration="4101000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -371,22 +370,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00095" summary="some logic and stylish changes in filter available hotel page">
-      <option name="closed" value="true" />
-      <created>1693388190363</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1693388190363</updated>
-    </task>
-    <task id="LOCAL-00096" summary="some styles changes">
-      <option name="closed" value="true" />
-      <created>1693389216944</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1693389216944</updated>
-    </task>
     <task id="LOCAL-00097" summary="some styles changes">
       <option name="closed" value="true" />
       <created>1693391934425</created>
@@ -539,7 +522,23 @@
       <option name="project" value="LOCAL" />
       <updated>1696570477852</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="toursearchbox modal cities">
+      <option name="closed" value="true" />
+      <created>1696577220237</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1696577220237</updated>
+    </task>
+    <task id="LOCAL-00117" summary="sidebar hotel tour">
+      <option name="closed" value="true" />
+      <created>1696577244403</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1696577244403</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -559,7 +558,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some bugs have been fixed" />
     <MESSAGE value="some changes has been added in calendar (tourSearchBox)" />
     <MESSAGE value="some changes have been added in calendar (tourSearchBox)" />
     <MESSAGE value="some visual changes in TourSearchBox.jsx(Cities),...." />
@@ -584,7 +582,8 @@
     <MESSAGE value="some tiny logic bugs have been fixed for loading tour list" />
     <MESSAGE value="some changes were applied due to hamnavaz reconciling" />
     <MESSAGE value="toursearchbox modal cities" />
-    <option name="LAST_COMMIT_MESSAGE" value="toursearchbox modal cities" />
+    <MESSAGE value="sidebar hotel tour" />
+    <option name="LAST_COMMIT_MESSAGE" value="sidebar hotel tour" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

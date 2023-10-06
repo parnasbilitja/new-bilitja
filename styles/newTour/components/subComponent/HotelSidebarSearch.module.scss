@@ -180,11 +180,12 @@
     position: fixed !important;
     height: 100vh !important;
     width: 100vw !important;
-    z-index: 10000 !important;
+    z-index: 1000 !important;
     top: 0;
-    right: -20px;
+    right: 0;
     background-color: rgba(65, 65, 65, 0.57) !important;
     border: none !important;
+    border-radius: initial;
 
 
     .sidebar {

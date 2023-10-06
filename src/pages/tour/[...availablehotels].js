@@ -177,65 +177,64 @@ const availableHotels = () => {
                 <Head>
                     <title>بلیطجا | تور</title>
                 </Head>
+                {widthMobi< 868 && showSearchBox?
+                    <div className={styles['searchboxContainer']}>
+                        <div className={styles.searchContainer}>
+                            <div>
+                                <div style={{display:'flex',justifyContent:'space-between',width:'100%'}}>
+
+                                    <div className={styles['closeBtn']} onClick={()=>setShowSearchBox(!showSearchBox)}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 30 30" fill="#137cb6">
+                                            <path d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"></path>
+                                        </svg>
+                                    </div>
+                                    <p>جستجو مجدد</p>
+                                </div>
+                                <TourSearchBox
+                                    // selectedDest={selectedDest}
+                                    // selectedSrc={selectedSrc}
+                                    night={night}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    : widthMobi>868?
+                        <div className={styles.searchContainer}>
+                            <TourSearchBox
+                                // selectedDest={selectedDest}
+                                // selectedSrc={selectedSrc}
+                                night={night}
+                            />
+                        </div>:null}
+                {widthMobi<868&& <div  className={styles.menubarcontainer} >
+                    <div style={{}} className={styles.menubar}>
+                        <div className={styles.menubarItem}  onClick={()=> {
+                            setShowSearchBox(!showSearchBox)
+
+                        }}>
+                            <svg  id="Glyph" version="1.1" viewBox="0 0 32 32" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" ><path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z" id="XMLID_223_"/></svg>
+                            <p>جستجو</p>
+                        </div>
+                        <div className={styles.menubarItem} onClick={()=> {
+                            router.push('/tour')
+                        }}>
+                            <svg baseProfile="tiny" height="20px" id="Layer_1" version="1.2" viewBox="0 0 24 24" width="20px"  xmlns="http://www.w3.org/2000/svg" ><path d="M12,3c0,0-6.186,5.34-9.643,8.232C2.154,11.416,2,11.684,2,12c0,0.553,0.447,1,1,1h2v7c0,0.553,0.447,1,1,1h3  c0.553,0,1-0.448,1-1v-4h4v4c0,0.552,0.447,1,1,1h3c0.553,0,1-0.447,1-1v-7h2c0.553,0,1-0.447,1-1c0-0.316-0.154-0.584-0.383-0.768  C18.184,8.34,12,3,12,3z"/></svg>
+                            <p >خانه</p>
+                        </div>
+
+                        <div className={styles.menubarItem} onClick={()=> {
+                            setShowFilter(!showFilter)
+                            console.log(showFilter)
+                        }}>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path d="M0 0h24v24H0z" fill="none" width="16px" height="16px"/><path d="M10 14L4 5V3h16v2l-6 9v6l-4 2z"/></g></svg>
+                            <p >فیلتر</p>
+                        </div>
+                    </div>
+                </div>}
                 {router.query.availablehotels?.length === 1 ? (
                     <div className={styles.hotels}>
 
-                        {widthMobi<868&& <div  className={styles.menubarcontainer} >
-                            <div style={{}} className={styles.menubar}>
-                                <div className={styles.menubarItem}  onClick={()=> {
-                                    setShowSearchBox(!showSearchBox)
-
-                                }}>
-                                    <svg  id="Glyph" version="1.1" viewBox="0 0 32 32" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" ><path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z" id="XMLID_223_"/></svg>
-                                    <p>جستجو</p>
-                                </div>
-                                <div className={styles.menubarItem} onClick={()=> {
-                                    router.push('/tour')
-                                }}>
-                                    <svg baseProfile="tiny" height="20px" id="Layer_1" version="1.2" viewBox="0 0 24 24" width="20px"  xmlns="http://www.w3.org/2000/svg" ><path d="M12,3c0,0-6.186,5.34-9.643,8.232C2.154,11.416,2,11.684,2,12c0,0.553,0.447,1,1,1h2v7c0,0.553,0.447,1,1,1h3  c0.553,0,1-0.448,1-1v-4h4v4c0,0.552,0.447,1,1,1h3c0.553,0,1-0.447,1-1v-7h2c0.553,0,1-0.447,1-1c0-0.316-0.154-0.584-0.383-0.768  C18.184,8.34,12,3,12,3z"/></svg>
-                                    <p >خانه</p>
-                                </div>
-
-                                <div className={styles.menubarItem} onClick={()=> {
-                                    setShowFilter(!showFilter)
-                                    console.log(showFilter)
-                                }}>
-                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path d="M0 0h24v24H0z" fill="none" width="16px" height="16px"/><path d="M10 14L4 5V3h16v2l-6 9v6l-4 2z"/></g></svg>
-                                    <p >فیلتر</p>
-                                </div>
-                            </div>
-                        </div>}
-                        {widthMobi< 868 && showSearchBox?
-                            <div className={styles['searchboxContainer']}>
-                                <div className={styles.searchContainer}>
-                                    <div>
-                                        <div style={{display:'flex',justifyContent:'space-between',width:'100%'}}>
-
-                                            <div className={styles['closeBtn']} onClick={()=>setShowSearchBox(!showSearchBox)}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 30 30" fill="#137cb6">
-                                                    <path d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"></path>
-                                                </svg>
-                                            </div>
-                                            <p>جستجو مجدد</p>
-                                        </div>
-                                        <TourSearchBox
-                                            // selectedDest={selectedDest}
-                                            // selectedSrc={selectedSrc}
-                                            night={night}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            : widthMobi>868?
-                                <div className={styles.searchContainer}>
-                                    <TourSearchBox
-                                        // selectedDest={selectedDest}
-                                        // selectedSrc={selectedSrc}
-                                        night={night}
-                                    />
-                                </div>:null}
                         <div className={styles["p-available"]}>
-
                             <div className={styles.content}>
                                 { searchData?.loader===true ? (
                                     <div
@@ -254,7 +253,7 @@ const availableHotels = () => {
 
                                         ):
 
-                                        <div>
+                                        <div style={{width:'100%'}}>
                                             <Scrolltoprefresh/>
                                             {  hotels && hotels?.map((hotel) => {
                                                 return (
@@ -358,40 +357,39 @@ const availableHotels = () => {
                                         </div>
                                 )}
                             </div>
-                            {showFilter && widthMobi<868?
-
-                                <HotelsSideBarSearch
-                                    date={date}
-                                    destination={destination}
-                                    origin={origin}
-                                    night={night}
-                                    setHotels={(value) => setHotels(value)}
-                                    stars={stars}
-                                    hotels={hotels}
-                                    widthMobi={widthMobi}
-                                    setShowFilter={(value)=>setShowFilter(value)}
-                                    showFilter={showFilter}
-                                />
-
-                                : widthMobi>868?
-                                    <div style={{width:'300px'}}>
-                                        <HotelsSideBarSearch
-                                            date={date}
-                                            destination={destination}
-                                            origin={origin}
-                                            night={night}
-                                            setHotels={(value) => setHotels(value)}
-                                            stars={stars}
-                                            hotels={hotels}
-                                            widthMobi={widthMobi}
-                                            setShowFilter={(value)=>setShowFilter(value)}
-                                            showFilter={showFilter}
-                                        />
-                                    </div>
-                                    :null
-                            }
                         </div>
+                        {showFilter && widthMobi<868?
 
+                            <HotelsSideBarSearch
+                                date={date}
+                                destination={destination}
+                                origin={origin}
+                                night={night}
+                                setHotels={(value) => setHotels(value)}
+                                stars={stars}
+                                hotels={hotels}
+                                widthMobi={widthMobi}
+                                setShowFilter={(value)=>setShowFilter(value)}
+                                showFilter={showFilter}
+                            />
+
+                            : widthMobi>868?
+                                <div style={{width:'25%',transform:'translateY(-22px)'}}>
+                                    <HotelsSideBarSearch
+                                        date={date}
+                                        destination={destination}
+                                        origin={origin}
+                                        night={night}
+                                        setHotels={(value) => setHotels(value)}
+                                        stars={stars}
+                                        hotels={hotels}
+                                        widthMobi={widthMobi}
+                                        setShowFilter={(value)=>setShowFilter(value)}
+                                        showFilter={showFilter}
+                                    />
+                                </div>
+                                :null
+                        }
 
                         {/*<Paginate to={totalPage}/>*/}
                     </div>
