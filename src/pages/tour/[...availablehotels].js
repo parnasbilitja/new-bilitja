@@ -374,7 +374,7 @@ const availableHotels = () => {
                             />
 
                             : widthMobi>868?
-                                <div style={{width:'25%',transform:'translateY(-22px)'}}>
+                                <div style={{width:'30%',transform:'translateY(-22px)'}}>
                                     <HotelsSideBarSearch
                                         date={date}
                                         destination={destination}
