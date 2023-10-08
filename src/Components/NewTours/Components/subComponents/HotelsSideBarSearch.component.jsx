@@ -113,8 +113,6 @@ const HotelsSideBarSearch = (props) => {
                 <div className={styles['p-sidebar']}
                      onClick={(e)=>closeModal(e)}
                 >
-
-
                         <motion.div variants={variants} initial='initial' animate='animate' exit='exit'
                                     className={styles.sidebar}>
                             <div style={{

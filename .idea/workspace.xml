@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/components/CountDownTimer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/CountDownTimer.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -368,22 +368,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00099" summary="tiny logical changes">
-      <option name="closed" value="true" />
-      <created>1693459537365</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1693459537365</updated>
-    </task>
-    <task id="LOCAL-00100" summary="image Gallary bugs have been fixed on avFilght">
-      <option name="closed" value="true" />
-      <created>1693634081259</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1693634081260</updated>
-    </task>
     <task id="LOCAL-00101" summary="Shimmers has been added to AvailableFlightBasedonSelectedTour">
       <option name="closed" value="true" />
       <created>1693656786055</created>
@@ -536,7 +520,23 @@
       <option name="project" value="LOCAL" />
       <updated>1696747093990</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="sidebar hotel tour">
+      <option name="closed" value="true" />
+      <created>1696747620819</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1696747620819</updated>
+    </task>
+    <task id="LOCAL-00121" summary="sidebar hotel tour">
+      <option name="closed" value="true" />
+      <created>1696747737919</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1696747737919</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,11 +615,6 @@
           <url>file://$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx</url>
           <line>156</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx</url>
-          <line>114</line>
-          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
