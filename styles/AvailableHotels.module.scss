@@ -75,13 +75,12 @@
 .main-section {
     padding-top: 7rem;
     background-color: white;
-
     min-height: 100vh;
     max-width: 1366px;
     margin: 0 auto;
-    //.searchContainer {
-    //    padding: 0 2.5rem 0 4rem;
-    //}
+    .searchContainer {
+        padding: 0 5.2rem;
+    }
 
     .menubarcontainer{
 
@@ -115,6 +114,7 @@
     .hotels {
         background-color: white;
         min-height: 100vh;
+        padding: 0 5rem;
         //max-width: 1366px;
         //margin: 0 auto;
         display: flex;
@@ -123,7 +123,7 @@
 
 
         .p-available {
-            width: 90%;
+            width: 80%;
             margin: 0 auto;
             display: flex;
             margin-top: 1rem;
@@ -354,7 +354,7 @@
                         }
 
                         .price {
-                            font-size: 1.125rem;
+                            font-size: 15px;
                             font-weight: 600 !important;
                             //color: #f0b51d;
                         }
@@ -367,10 +367,10 @@
                             button {
                                 background-color: #e20000;
                                 color: white;
-                                width: 225px;
-                                height: 50px;
+                                width: 185px;
+                                height: 45px;
                                 border-radius: 4px;
-                                font-size: 14px;
+                                font-size: 13px;
                             }
                         }
                     }
@@ -385,7 +385,7 @@
 
 .priceTitle {
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 13px;
     font-family: IranBold !important;
     margin-top: 16px;
 }
@@ -398,7 +398,7 @@
 
     strong {
         //font-family: IranBold !important;
-        color:  #279692 !important;
+        color:  #e20000 !important;
         font-size: 15px;
     }
 
@@ -406,14 +406,19 @@
         font-size: 13px !important;
         margin-right: 4px;
         font-weight: 600 !important;
-        color: #279692 !important;
+        color: #e20000 !important;
         //font-family: IranBold !important;
 
 
     }
 }
 @media only screen and (max-width: 868px) {
-
+    .hotels{
+        padding: 0 !important;
+    }
+    .p-available{
+        width: 90% !important;
+    }
 
     .searchboxContainer{
         position: fixed;
@@ -443,7 +448,7 @@
                 align-items: center;
                 width: 25px;
                 height: 25px;
-                border: 1px solid #137cb6;
+                border: 1px solid #e20000;
                 position: absolute;
                 border-radius: 5px;
                 top: 15px;
