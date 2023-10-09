@@ -1,0 +1,106 @@
+
+
+
+.citiescontainer{
+  max-height: 140px;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 8;
+  width: 100%;
+  margin-top: 10px;
+  padding: 0 12px;
+  border: 1px solid #cfd3d8;
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 868px){
+  .con{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(195, 192, 192, 0.56);
+    top: 0;
+    right: 0;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .citycon{
+      width: 92%;
+      height: 560px;
+overflow-y: hidden;
+      background-color: white;
+      border-radius: 8px;
+
+
+      .cities{
+        padding: 2rem;
+        padding-top: 1.5rem !important;
+
+        .title{
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 14px;
+          padding:0rem .5rem;
+          .closebtn{
+            position: relative;
+            border: 2px solid #e20000;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+          }
+          p{
+            font-size: 16px;
+            font-weight: 500;
+            padding: 0;
+            margin: 0;
+          }
+
+        }
+
+        .inputcon{
+          display: flex;
+          justify-content: start;
+          width: 98%;
+          margin-bottom: 15px;
+          height: 48px;
+          padding-left: .125rem;
+          border: 2px solid #edeff1;
+          border-radius: 7px;
+
+
+
+          input{
+            width: 90%;
+            height: 100%;
+            outline: none !important;
+            border: none
+          ;
+            &::placeholder{
+              font-size: 14px;
+            }
+          }
+          //border-bottom: 1px solid grey;
+        }
+
+        .citiesItem{
+          height: 400px;
+          padding: 0 .725rem !important;
+          overflow-y: scroll !important;
+
+
+        }
+
+      }
+    }
+
+  }
+}

@@ -7,7 +7,13 @@ import TourSearchBox from "../../Components/NewTours/Components/TourSearchBox";
 import styles from "../../../styles/AvailableHotels.module.scss";
 import Image from "next/image";
 import {setDestLoc, setFlightDate, setLoader, setOrgLoc,} from "../../Redux/newTours/Action";
-import {jalaliDateReformater, jalaliToMiladiConvertor, numberWithCommas, startBuilder,} from "../../Utils/newTour";
+import {
+    jalaliDateReformater,
+    jalaliToMiladiConvertor,
+    numberRounder,
+    numberWithCommas,
+    startBuilder,
+} from "../../Utils/newTour";
 import NavHandler from "../../Components/share/NavHandler";
 import {Loader} from "../../Utils/Loader";
 import HotelsSideBarSearch from "../../Components/NewTours/Components/subComponents/HotelsSideBarSearch.component";
@@ -331,7 +337,7 @@ const availableHotels = () => {
                                                             </p>
                                                             <div className={styles.priceParent}>
                                                                 <strong className={styles.price}>
-                                                                    {numberWithCommas(hotel?.totalRoomPrice)}
+                                                                    {numberWithCommas(numberRounder(+hotel?.totalRoomPrice))}
                                                                 </strong>
                                                                 <span>تومان</span>
                                                             </div>

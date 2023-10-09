@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/styles/InputValues.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/InfoPasserngers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/InfoPasserngers.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/hotel/HotelsSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hotel/HotelsSearchBox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/newTour.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/newTour.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/[...availablehotels].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +68,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Niusha/WebstormProjects/bilitjassrnew/styles/newTour/components/subComponent&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PouyA/Desktop/bilitjassrnew/styles&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -74,11 +81,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\styles" />
       <recent name="C:\Users\Niusha\WebstormProjects\bilitjassrnew\styles\newTour\components\subComponent" />
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\pages" />
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\public" />
       <recent name="C:\projects\bilitjassrnew\public\Images" />
-      <recent name="C:\projects\bilitjassrnew\public\Font\en-font" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -199,6 +206,7 @@
       <workItem from="1695620326342" duration="7473000" />
       <workItem from="1696420302864" duration="21169000" />
       <workItem from="1696581323456" duration="4101000" />
+      <workItem from="1696850824749" duration="1768000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -368,14 +376,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00101" summary="Shimmers has been added to AvailableFlightBasedonSelectedTour">
-      <option name="closed" value="true" />
-      <created>1693656786055</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1693656786056</updated>
-    </task>
     <task id="LOCAL-00102" summary="some verfication logic has been changed">
       <option name="closed" value="true" />
       <created>1693747294934</created>
@@ -536,7 +536,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696747737919</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="contactus+aboutus pages have been deployed">
+      <option name="closed" value="true" />
+      <created>1696761544127</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1696761544127</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -556,7 +564,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some changes has been added in calendar (tourSearchBox)" />
     <MESSAGE value="some changes have been added in calendar (tourSearchBox)" />
     <MESSAGE value="some visual changes in TourSearchBox.jsx(Cities),...." />
     <MESSAGE value="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied" />
@@ -581,7 +588,8 @@
     <MESSAGE value="some changes were applied due to hamnavaz reconciling" />
     <MESSAGE value="toursearchbox modal cities" />
     <MESSAGE value="sidebar hotel tour" />
-    <option name="LAST_COMMIT_MESSAGE" value="sidebar hotel tour" />
+    <MESSAGE value="contactus+aboutus pages have been deployed" />
+    <option name="LAST_COMMIT_MESSAGE" value="contactus+aboutus pages have been deployed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

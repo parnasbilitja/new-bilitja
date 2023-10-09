@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../../../styles/newTour/components/InfoPassengers.module.scss";
 import {
   chdPrcGen,
-  extBedPrcGen,
+  extBedPrcGen, numberRounder,
   numberWithCommas,
   roomPrcGen,
 } from "../../../Utils/newTour";
@@ -49,12 +49,11 @@ const InfoPasserngers = (props) => {
             ) === index
     );
     // let filterbasedonreserveId=generalRoomDet.filter(det=>)
-
     // debugger
-    setChdPrc(chdPrcGen(baseRoomDet, props.flightDet, props.room?.room_type_id));
-    setextPrc(extBedPrcGen(baseRoomDet, props.flightDet, props.room?.room_type_id));
-    setinfPrc(props.flightDet.inf_price);
-    setAdlPrc(roomprcFinder(baseRoomDet, props?.room));
+    setChdPrc(numberRounder(chdPrcGen(baseRoomDet, props.flightDet, props.room?.room_type_id)) );
+    setextPrc(numberRounder(extBedPrcGen(baseRoomDet, props.flightDet, props.room?.room_type_id)));
+    setinfPrc(numberRounder(props.flightDet.inf_price));
+    setAdlPrc(numberRounder(roomprcFinder(baseRoomDet, props?.room)));
     if(props.isEdit?.length>0){
       return ()=>null
 
@@ -123,7 +122,7 @@ const InfoPasserngers = (props) => {
                             prcTypeBase={(type) => prcTypeBase(type)}
                             hotelDets={props?.hotelDets}
                             Errs={props?.Errs}
-                            prc={numberWithCommas(prcTypeBase(passenger.type))}
+                            prc={numberWithCommas(numberRounder(prcTypeBase(passenger.type)))}
                             roomsData={props?.roomsData}
                             setRoomsData={props?.setRoomsData}
                             passId={passenger.id}

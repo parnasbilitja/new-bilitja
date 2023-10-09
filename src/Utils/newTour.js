@@ -404,3 +404,7 @@ export const humantype = (type) => {
       return "تخت اضافه";
   }
 };
+
+export const numberRounder=(num)=>{
+  return num-(num%100000)
+}

@@ -194,7 +194,8 @@ $costColor: #e20000;
   .ticket_container {
     overflow: hidden;
     margin-bottom: 1rem;
-
+    border: 1px solid $containerColor;
+    border-radius: 20px;
     .container {
       .scale{
         transform: scale(.6);
@@ -202,8 +203,8 @@ $costColor: #e20000;
       padding: 0 ;
       overflow: hidden;
       transition: .5s ease-in-out;
-      border-radius: 20px;
-      border: 1px solid $containerColor;
+      //border-radius: 20px;
+      //border: 1px solid $containerColor;
 
       .blur {
         height: 100%;
@@ -710,6 +711,7 @@ $costColor: #e20000;
 
 
   .ticket_container{
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
   }
   .hotelDet_container {

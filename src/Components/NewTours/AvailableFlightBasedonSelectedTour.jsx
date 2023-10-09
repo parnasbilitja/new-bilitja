@@ -14,7 +14,7 @@ import {
     jalaliToMiladiConvertor,
     numberWithCommas,
     roomPrcGen,
-    startBuilder,
+    startBuilder, numberRounder,
 } from "../../Utils/newTour";
 import Image from "next/image";
 import PictureModal from "./Components/subComponents/PictureModal";
@@ -569,7 +569,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                          style={{justifyContent: 'center'}}>
                                                         <p>
                                                       <span style={{color: ' #e20000'}}>
-                                                        {numberWithCommas(roomPrcGen(room, flight))}
+                                                           {numberWithCommas(numberRounder(roomPrcGen(room, flight)))}
                                                       </span>
                                                             تومان
                                                         </p>
@@ -588,7 +588,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
 
                                                 <p>
                                                 <span>
-                                                  {numberWithCommas(reservePrc(hotel?.rooms, flight))}
+                                              {numberWithCommas(numberRounder(reservePrc(hotel?.rooms, flight)) )}
                                                 </span>
                                                     تومان
                                                 </p>
@@ -672,7 +672,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                             تعداد تخت اضافه
                                                         </p>
                                                         <p className={styles["bedtypeprc"]}>
-                                                            {numberWithCommas(extBedPrcGen(hotel?.rooms, flight, room?.room_type_id))}{" "}
+                                                            {numberWithCommas( numberRounder(extBedPrcGen(hotel?.rooms, flight, room?.room_type_id)))}{" "}
                                                             تومان
                                                         </p>
 
@@ -700,7 +700,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                         className={`${styles["roomcountDet_bedcount"]} ${styles[room?.inf_count > 0 ? 'borderActive' : 'bordernoneActive']}`}>
                                                         <p className={styles["bedtype"]}>تعداد نوزاد</p>
                                                         <p className={styles["bedtypeprc"]}>
-                                                            {numberWithCommas(flight.inf_price)} تومان
+                                                            {numberWithCommas(numberRounder(flight.inf_price))} تومان
                                                         </p>
                                                         <div
                                                             className={styles["roomcountDet_bedcount_count"]}
@@ -724,7 +724,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                         className={`${styles["roomcountDet_bedcount"]} ${styles[room?.chd_count > 0 ? 'borderActive' : 'bordernoneActive']}`}>
                                                         <p className={styles["bedtype"]}>تعداد کودک</p>
                                                         <p className={styles["bedtypeprc"]}>
-                                                            {numberWithCommas(chdPrcGen(hotel?.rooms, flight, room?.room_type_id))}{" "}
+                                                            {numberWithCommas(numberRounder(chdPrcGen(hotel?.rooms, flight, room?.room_type_id)))}{" "}
                                                             تومان
                                                         </p>
                                                         <div
@@ -849,7 +849,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                         <p style={{color: 'black'}}>قیمت :</p>
                                                                         <p>
                                                               <span className={styles['cost']}>
-                                                                {numberWithCommas(roomPrcGen(room, flight))}
+                                                                 {numberWithCommas(numberRounder(roomPrcGen(room, flight)) )}
                                                               </span>
                                                                             تومان
                                                                         </p>
@@ -939,7 +939,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                         تعداد تخت اضافه
                                                                                     </p>
                                                                                     <p className={styles["bedtypeprc"]}>
-                                                                                        {numberWithCommas(extBedPrcGen(hotel?.rooms, flight, room?.room_type_id))}{" "}
+                                                                                        {numberWithCommas(numberRounder(extBedPrcGen(hotel?.rooms, flight, room?.room_type_id)))}{" "}
                                                                                         تومان
                                                                                     </p>
 
@@ -970,7 +970,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     <p className={styles["bedtype"]}>تعداد
                                                                                         نوزاد</p>
                                                                                     <p className={styles["bedtypeprc"]}>
-                                                                                        {numberWithCommas(flight?.inf_price)} تومان
+                                                                                        {numberWithCommas(numberRounder(flight?.inf_price))} تومان
                                                                                     </p>
                                                                                     <div
                                                                                         className={styles["roomcountDet_bedcount_count"]}
@@ -995,7 +995,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     <p className={styles["bedtype"]}>تعداد
                                                                                         کودک</p>
                                                                                     <p className={styles["bedtypeprc"]}>
-                                                                                        {numberWithCommas(chdPrcGen(hotel.rooms, flight, room.room_type_id))}{" "}
+                                                                                        {numberWithCommas(numberRounder(chdPrcGen(hotel.rooms, flight, room.room_type_id)))}{" "}
                                                                                         تومان
                                                                                     </p>
                                                                                     <div
@@ -1034,7 +1034,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                             <p className={styles["priceTitle"]}>قیمت برای هر نفر:</p>
                                             <p>
                                               <span>
-                                                {numberWithCommas(reservePrc(hotel.rooms, flight))}
+                                               {numberWithCommas(numberRounder(reservePrc(hotel.rooms, flight)))}
                                               </span>
                                                 تومان
                                             </p>

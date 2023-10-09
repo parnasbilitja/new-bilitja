@@ -9,12 +9,16 @@ import PrimaryTextInputMobile from "../../sources/component/PrimaryTextInputMobi
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 import InputValues from "../../sources/tour/InputValues";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCitySearch } from "../../Redux/citiesSearch/Action";
+import {fetchCitySearch, fetchCitySucces} from "../../Redux/citiesSearch/Action";
+import searchBox from "../../sources/tour/SearchBox";
 
 const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
     let cities = useSelector(state => state.CitySearchReducer)
+    const [cities1,setCities1]=useState([])
     const dispatch = useDispatch()
     const [list, setList] = useState({})
+    const [searchInput,setSearchInput]=useState('')
+    const [isSearchbox,setIsSearchbox]=useState(false)
 
     const handleFocusOut = (event) => {
         const { name,value } = event.target;
@@ -24,7 +28,12 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
     };
     const handleChange = (event) => {
         const { name, value } = event.target;
-        // console.log(name, value);
+        setSearchInput(value)
+    };
+
+    const handleChange1 = (event) => {
+        const { name, value } = event.target;
+        console.log(name, value);
         if (name=='slug') {
             setCity(search.id);
             setSearch({...search,hotel:''})
@@ -33,9 +42,22 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
             setSearch({...search,[name]:value});
             setCity('')
         }
+        console.log(value)
     };
+
+    useEffect(()=>{
+
+        if(searchInput===''){
+            setCities1(cities.data)
+        }else{
+            const filtered=cities.data.filter(city=> city.name.indexOf(searchInput)!==-1)
+            console.log(filtered)
+            setCities1(filtered)
+        }
+    },[searchInput])
     const handleFocus = (event) => {
         const { name,value } = event.target;
+        setSearchInput('')
         setList({...list, [name]:value});
         setSearch({...search,[name]:''});
         setCity(search.id);
@@ -46,9 +68,16 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
         dispatch(fetchCitySearch())
         setWidth(window.innerWidth)
     },[])
+    useEffect(()=>{
+        setCities1(cities?.data)
+    },[cities.data])
     useEffect(() => {
         setCity(search.id)
     },[search])
+    useEffect(()=>{
+        console.log(width)
+    },[width])
+
     return (
         <div className="row justify-content-center pt-0 mx-1">
             <div className="col-md-10 px-2">
@@ -57,12 +86,13 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
                     <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
                         <FontAwesomeIcon icon={faCity} style={{height:'30px'}} className="mx-2 tour-input-icon" />
                         <PrimaryTextInputMobile
-                            value={search.slug==" "?'همه':search.slug}
+                            value={searchInput}
                             name={'slug'}
                             onFocus={handleFocus}
                             onBlur={handleFocusOut}
-                            onChange={handleChange}
-                            onClick={(e) => {
+                            onChange={(e)=>handleChange(e)}
+                            onClick={() => {
+                                setIsSearchbox(true)
                                 // console.log(e.target.value);
                             }}
                             placeholder={"مقصد خود را انتخاب کنید"}
@@ -72,8 +102,12 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
                             name='slug'
                             search={search}
                             setSearch={setSearch}
-                            months={[...cities.data]}
-
+                            months={cities1}
+                            setSearchInput={(val)=>setSearchInput(val)}
+                            issearchbox={isSearchbox}
+                            setIsSearchbox={()=>setIsSearchbox(false)}
+                            searchInput={searchInput}
+                            handleChange={(val)=>handleChange(val)}
                         />
 
                     </div>
@@ -82,7 +116,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
                         <PrimaryTextInputMobile
                             value={search.hotel}
                             name={'hotel'}
-                            onChange={handleChange}
+                            onChange={handleChange1}
                             onClick={(e) => {
                                 // console.log(e.target.value);
                             }}
