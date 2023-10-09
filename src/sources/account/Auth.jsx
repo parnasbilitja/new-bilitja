@@ -295,7 +295,7 @@ const Auth = (props) => {
   return (
     <div className="popup-content-container">
       <div className="popup-heading d-flex align-items-center justify-content-center">
-        <img src={'Images/bilitja-logo.webp'} alt="site-logo" width={70} height={50} />
+        <img src='../../../Images/bilitja-logo.webp' alt="site-logo" width={70} height={50} />
         <div
           className="exit-form position-absolute"
           onClick={() => {
