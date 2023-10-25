@@ -1,0 +1,1296 @@
+$primary: #e20000;
+$secondary: #279692;
+$borderColor: #d4d4d4;
+$containerColor: #ebebeb;
+$containerColor2: #bbbbbbe7;
+$costColor: #e20000;
+
+
+.ticket_container {
+    // overflow: hidden;
+    margin-bottom: 1rem;
+    border: 1px solid $containerColor;
+    height: auto !important;
+
+    border-radius: 20px;
+
+    .container {
+        .scale {
+            transform: scale(.6);
+        }
+
+        padding: 0;
+        overflow: hidden;
+        transition: .5s ease-in-out;
+        //border-radius: 20px;
+        //border: 1px solid $containerColor;
+
+        .blur {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        //   &:hover{
+        //     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        //     transition: .5s ease-in-out;
+        //     }
+        .ticket {
+
+            display: flex;
+            justify-content: space-between;
+            padding: .9rem 1.125rem;
+
+
+            &_titles {
+
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                border-left: 2px dashed $borderColor;
+                margin-left: 1rem;
+                width: 11%;
+                padding: 1rem 10px;
+
+                &_info {
+
+                    text-align: center;
+                    font-weight: 600;
+                    font-size: 14px;
+                }
+
+            }
+
+
+            .ticket_flight {
+                width: 100%;
+                padding: 0 .5rem;
+
+
+                .flightDet_container {
+                    //border-bottom: 2px dashed $borderColor;
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .flightDet {
+                        flex-grow: 2;
+
+                        &_title {
+                            margin-bottom: .5rem;
+
+                            p {
+                                margin: 0;
+                                padding: 0;
+                                font-size: .9rem;
+                                font-weight: 800;
+                                text-align: center;
+                            }
+                        }
+
+                        &_loc {
+                            margin-bottom: .5rem;
+                            padding: .5rem;
+                            border-radius: 10px;
+                            background-color: $containerColor;
+
+                            p {
+                                margin: 0;
+                                padding: 0;
+                                font-size: .8rem;
+                                text-align: center;
+                            }
+                        }
+
+                        &_timedate {
+                            margin-bottom: .5rem;
+                            display: flex;
+                            justify-content: center;
+
+                            span {
+                                font-size: .8rem;
+                            }
+
+                            span:not(:last-child) {
+                                margin-left: .725rem;
+                            }
+                        }
+
+                        &_hotelEnt {
+
+                            margin-bottom: .5rem;
+                            display: flex;
+                            justify-content: center;
+
+                            label {
+
+                                font-size: .8rem;
+                                margin-left: .725rem;
+                                font-weight: 900;
+                            }
+
+                            p {
+
+                                font-size: .8rem;
+                            }
+
+                        }
+                    }
+
+                    .flight_company {
+                        flex-grow: 8;
+                        display: flex;
+                        justify-content: space-between;
+                        // padding: .5rem;
+
+                        &_logo {
+                            flex-grow: 1;
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 6px;
+                            transform: translateY(18px);
+
+                            .image_container {
+                                padding: 0;
+                                margin: 0;
+                                height: 70px;
+                                width: 70px;
+                                //border-radius: 50%;
+
+                                overflow: hidden;
+                                align-self: center;
+
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                }
+
+                            }
+
+                            p {
+                                font-size: .9rem;
+                                text-align: center;
+                            }
+                        }
+
+                        &_remaintour {
+                            justify-self: center;
+                            padding-top: 2.5rem;
+                            flex-grow: 8;
+                            align-self: start;
+
+                            p {
+                                font-size: 13px !important;
+                                padding: 0;
+                                margin: 0;
+
+                                span {
+
+                                    margin: 0 5px !important;
+                                }
+
+                            }
+
+                            .seprator {
+                                border-bottom: 1px dashed $primary;
+                                //padding:0 px;
+                                position: relative;
+                                top: -15px;
+                                width: 100px !important;
+
+                            }
+
+                            .dot {
+                                position: relative;
+                                top: 10px;
+                                width: 8px;
+                                height: 8px;
+                                background-color: $primary;
+                                border-radius: 50%;
+                            }
+
+                            p {
+                                text-align: center;
+                                font-size: .9rem;
+                                padding: 0;
+                                margin: 0;
+                            }
+
+                        }
+                    }
+                }
+
+
+                .roomDet_container {
+                    margin-top: 1rem;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr 1fr;
+                    justify-content: space-between;
+                    gap: 1rem;
+
+                    .roomDetcard {
+                        padding: .5rem .5rem 0 .5rem;
+
+                        border: 1px solid $borderColor;
+                        border-radius: 10px;
+
+
+                        &_roomnum {
+
+                            display: flex;
+                            justify-content: space-between;
+                            border-bottom: 2px dashed $borderColor;
+                            padding-bottom: .5rem;
+                            margin-bottom: .5rem;
+
+                            label {
+                                font-size: .9rem;
+                                font-weight: 800;
+
+                            }
+
+                            &_indec {
+                                width: 40%;
+                                display: flex;
+                                justify-content: space-between;
+
+                                .in {
+                                    font-size: 1rem;
+                                    width: 25px;
+                                    border: 1px solid $primary;
+                                    border-radius: 5px;
+                                    color: $primary;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    cursor: pointer;
+                                    align-self: flex-start !important;
+                                }
+
+                                span {
+                                    font-size: 1rem;
+                                }
+
+                                .dec {
+                                    align-self: flex-start !important;
+                                    font-size: 1rem;
+                                    width: 25px;
+                                    border: 1px solid $primary;
+                                    border-radius: 5px;
+                                    color: $primary;
+                                    display: flex;
+                                    justify-content: center;
+                                    cursor: pointer;
+
+                                }
+
+                                .dec-none {
+                                    font-size: 1rem;
+                                    width: 25px;
+                                    border: 1px solid $borderColor;
+                                    border-radius: 5px;
+                                    color: $borderColor;
+                                    display: flex;
+                                    justify-content: center;
+                                    cursor: default;
+                                    align-self: flex-start !important;
+                                }
+                            }
+                        }
+
+                        &_price {
+                            display: flex;
+                            padding-bottom: 6px;
+
+                            justify-content: space-between;
+
+                            p {
+                                align-self: center;
+                                margin: 0;
+                                padding: 0;
+                                color: $costColor;
+                                font-size: 13px;
+                                font-weight: 600;
+                            }
+
+                            .cost {
+                                color: $costColor !important;
+                            }
+
+                            span {
+                                font-size: .9rem;
+                                color: $primary;
+                                margin-left: .5rem;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            .ticket_reserve {
+                align-self: flex-start;
+                border-radius: 20px;
+                background-color: $containerColor;
+                padding: 1rem;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .priceTitle {
+                    font-size: .9rem;
+                    font-weight: 800;
+                    text-align: center;
+                }
+
+                &_price {
+                    display: flex;
+                    justify-content: center;
+
+                    label {
+                        font-weight: 800;
+                        margin-left: 1rem;
+                        font-size: .9rem;
+                    }
+
+                    p {
+                        font-weight: 400;
+                        font-size: .8rem;
+                        color: $costColor;
+
+                        span {
+                            color: $costColor;
+                            font-weight: 800;
+                            font-size: 1rem;
+                            margin-left: .5rem;
+                        }
+                    }
+                }
+
+                &_btn {
+                    background-color: $primary;
+                    opacity: .2;
+                    color: white;
+                    width: 200px;
+                    height: 40px;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    font-weight: 800;
+                    cursor: default;
+                }
+
+                small {
+                    font-size: 10px;
+                    color: $primary;
+                }
+
+                .btn-container {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                &_btn_active {
+                    background-color: $primary;
+                    opacity: 1;
+                    color: white;
+                    width: 200px;
+                    height: 40px;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    font-weight: 800;
+                    cursor: pointer;
+
+                }
+
+            }
+
+
+        }
+    }
+
+    .roomcountdet_roomnum {
+        //scale: 1.2;
+
+        .roomcountDet_container {
+            padding: 1.125rem 10rem 1.125rem 10rem;
+
+            //transform: scale(1.2);
+            .roomcountDet {
+                // border: 1px solid $borderColor;
+                border: 1px solid $containerColor2;
+            ;
+                border-radius: 20px;
+                padding: .725rem 2rem;
+                display: flex;
+                justify-content: space-between;
+
+                &_remove {
+                    width: 30px;
+                    height: 30px;
+                    align-self: center;
+                    cursor: pointer;
+
+                    svg {
+
+                        width: 90%;
+                        height: 90%;
+                    }
+                }
+
+                p {
+                    text-align: center;
+                    font-size: 15px;
+                    margin: .4rem;
+                }
+
+                &_name {
+                    display: flex;
+                    align-items: center;
+                    font-weight: 800;
+
+                    P {
+                        margin: 0;
+                    }
+
+                }
+
+                &_AdlCount {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    font-size: .9rem;
+
+
+                    p:first-child {
+                        font-weight: 800;
+                        margin-bottom: .5rem;
+                    }
+                }
+
+                .borderActive {
+                    border: 1px solid $primary;
+                    height: auto !important;
+                    padding: 10px !important;
+
+                }
+
+                .bordernoneActive {
+                    border: 1px solid $containerColor2;
+                    height: auto !important;
+                    padding: 10px !important;
+
+                    border-radius: 20px !important;
+
+                }
+
+                //.bordernoneActive:not(:last-child){
+                //  border-bottom: 1px solid $containerColor2;
+                //}
+                &_bedcount {
+                    height: 90px;
+                    width: 160px;
+                    // border: 1px solid #999;
+                    // box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+
+                    padding: .3rem .1rem .3rem .1rem;
+
+                    border-radius: 20px;
+
+                    p {
+
+                        margin-bottom: 0;
+                        margin-top: .3rem;
+                    }
+
+                    .bedtype {
+                        font-weight: 900;
+                        font-size: 12.5px;
+                    }
+
+                    .bedtypeprc {
+                        color: #e20000;
+                        font-weight: 500;
+                        font-size: 12px;
+                    }
+
+
+                    &_count {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 0 2.425rem 0 2.425rem;
+                        margin-top: .4rem;
+
+                        .decin {
+                            font-size: 1rem;
+                            width: 23px;
+                            height: 23px;
+                            border: 1px solid $primary;
+                            border-radius: 5px;
+                            color: $primary;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            cursor: pointer;
+                            align-self: start;
+
+                        }
+
+                        .dis_decin {
+                            font-size: 1rem;
+                            width: 23px;
+                            height: 23px;
+                            border: 1px solid $containerColor2;
+                            border-radius: 5px;
+                            color: $containerColor2;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            cursor: context-menu;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 900px) {
+
+    .roomContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100% !important;
+
+        .btnContainer {
+            width: 100% !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 12px;
+            align-self: flex-start;
+
+            .btn {
+                width: 210px;
+                height: 50px;
+                background-color: #e20000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                border-radius: 4px;
+            }
+
+            .disbtn{
+                width: 210px;
+                height: 50px;
+                background-color: #e20000;
+                opacity: .5;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                border-radius: 4px;
+
+            }
+        }
+
+        .roomDet_container {
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            justify-content: space-between;
+            gap: 1rem;
+
+            .roomDetcard {
+                padding: .5rem .5rem 0 .5rem;
+
+                border: 1px solid $borderColor;
+                border-radius: 10px;
+
+                .roomcountDet_options {
+                    width: 100%;
+                    // height: 80px !important;
+                    border: 1px solid #cacaca;
+                    background-color:#f0f0f0;
+                    overflow-y: hidden;
+                    border-radius: 20px;
+                    margin-bottom: 10px;
+                    padding:4px 0px;
+
+                    p {
+                        padding: 0;
+                        margin: 0;
+                        font-size: 13px !important;
+                    }
+
+                    .roomcountDet_bedcount:not(:last-child){
+                        border-bottom: 3px solid #fff;
+                    }
+
+                    .roomcountDet_bedcount {
+                        //background-color: rgba(197, 197, 197, 0.76);
+                        height: 90px;
+                        width: 100%;
+                        margin-bottom: 15px;
+                        padding: 0 8px;
+                        // border: 1px solid #999;
+                        // box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+
+
+
+                        border-radius: 0;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        p {
+                            margin-bottom: 0;
+                            margin-top: .3rem;
+                        }
+
+                        .bedtype {
+                            font-weight: 900;
+                            font-size: 12.5px;
+                        }
+
+                        .bedtypeprc {
+                            color: #e20000;
+                            font-weight: 500;
+                            font-size: 12px;
+                        }
+
+
+                        &_count {
+                            display: flex;
+                            justify-content: space-between;
+                            column-gap: 15px;
+                            //padding: 0 2.425rem 0 2.425rem;
+                            margin-top: .4rem;
+
+                            .decin {
+                                font-size: 1rem;
+                                width: 30px;
+                                height: 30px;
+                                font-size: 12px;
+                                font-weight: 900;
+                                border: 1px solid $primary;
+                                border-radius: 5px;
+                                color: $primary;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                cursor: pointer;
+                                align-self: start;
+
+                            }
+
+                            .dis_decin {
+                                font-size: 1rem;
+                                width: 30px;
+                                height: 30px;
+                                font-size: 12px;
+                                font-weight: 900;
+                                border: 1px solid $containerColor2;
+                                border-radius: 5px;
+                                color: $containerColor2;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                cursor: context-menu;
+                            }
+                        }
+                    }
+                }
+
+                .room_counter {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                }
+
+                &_roomnum {
+                    //border-bottom: 2px dashed $borderColor;
+                    padding-bottom: .5rem;
+                    margin-bottom: .5rem;
+
+                    p {
+                        align-self: center;
+                        margin: 0;
+                        padding: 0;
+                        color: $costColor;
+                        font-size: 13px;
+                        font-weight: 600;
+                    }
+
+                    .cost {
+                        color: $costColor !important;
+                    }
+
+                    span {
+                        font-size: .9rem;
+                        color: $primary;
+                        margin-left: .5rem;
+                        font-weight: 600;
+                    }
+
+                    label {
+                        font-size: .9rem;
+                        font-weight: 800;
+
+                    }
+
+                    &_indec {
+                        width: 40%;
+                        display: flex;
+                        justify-content: space-between;
+
+                        .in {
+                            font-size: 1rem;
+                            width: 30px;
+                            height: 30px;
+                            font-size: 20px;
+                            font-weight: 600;
+                            border: 1px solid $primary;
+                            border-radius: 5px;
+                            color: $primary;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            cursor: pointer;
+                            align-self: flex-start !important;
+                        }
+
+                        .counter {
+                            color: $primary;
+                            margin: 0 8px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            p {
+                                font-size: 1rem;
+                                margin: 0;
+                                padding: 0;
+                                font-weight: 600;
+                            }
+                        }
+
+                        .dec {
+                            align-self: flex-start !important;
+                            font-size: 1rem;
+                            width: 30px;
+                            height: 30px;
+                            font-size: 20px;
+                            font-weight: 600;
+                            border: 1px solid $primary;
+                            border-radius: 5px;
+                            color: $primary;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+
+                        }
+
+                        .dec-none {
+                            font-size: 1rem;
+                            width: 30px;
+                            height: 30px;
+                            font-size: 20px;
+                            font-weight: 600;
+                            border: 1px solid $borderColor;
+                            border-radius: 5px;
+                            color: $borderColor;
+                            display: flex;
+                            justify-content: center;
+                            cursor: default;
+                            align-items: center;
+                            align-self: flex-start !important;
+                        }
+                    }
+                }
+
+                &_price {
+                    display: flex;
+                    padding-bottom: 6px;
+
+                    justify-content: space-between;
+
+
+                }
+            }
+        }
+    }
+
+
+    .ticket_container {
+        height: auto !important;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        // overflow-y: scroll !important;
+
+    }
+
+    .hotelDet_container {
+        padding: 12px !important;
+    }
+
+    .container {
+        padding: 0 12px 8px 12px !important;
+
+        .ticket {
+            padding: 0 !important;
+        }
+
+        .ticket_flight {
+            padding: 0 !important;
+        }
+    }
+
+    .p-middle {
+        font-size: 12px !important;
+        top: -22px !important;
+    }
+
+    .roomDet_container {
+        grid-template-columns: 1fr !important;
+    }
+
+    .hotelDet {
+        flex-direction: column;
+        padding: 12px !important;
+        position: relative;
+
+        .right {
+            .hotelDet-image {
+                width: 100px !important;
+                height: 100px !important;
+                margin-left: 12px !important;
+
+                span {
+                    height: 100% !important;
+                }
+            }
+
+        }
+
+        .left {
+            margin-top: 14px;
+
+            .image_container {
+                grid-template-columns: 1fr 1fr 1fr 1fr !important;
+            }
+        }
+    }
+
+    .hotelDet-names {
+        align-self: center;
+
+        &_star {
+            margin-bottom: 1rem;
+            width: 20% !important;
+            display: flex;
+            //justify-content: center;
+            column-gap: .5rem;
+            position: absolute;
+            right: 20px;
+            top: -8px;
+
+            svg {
+                width: 14px !important;
+            }
+        }
+
+        &_faName {
+            font-size: 14px !important;
+            font-weight: 900;
+            margin: 0;
+        }
+
+        &_enName {
+            font-size: 14px !important;
+            font-weight: 600;
+            margin: 0 !important;
+            color: $secondary;
+        }
+
+
+        &_zoneservice {
+            width: auto;
+            display: flex;
+            // justify-content: space-between;
+            margin-top: 6px !important;
+
+            label {
+                font-weight: 800;
+                font-size: .9rem;
+                margin-left: 10px;
+            }
+
+            p {
+                font-size: .8rem;
+                margin: 0;
+            }
+        }
+    }
+
+    // .img-big {
+    //   display: none !important;
+    // }
+
+    .p-title-page {
+        font-size: 14px !important;
+    }
+
+    .ticket_titles {
+        display: none !important;
+    }
+
+    .isDesktop {
+        display: none !important;
+    }
+
+    .isTablet {
+        display: flex !important;
+    }
+
+    .ticket {
+        flex-direction: column;
+
+        .flightDet_container {
+            flex-direction: column;
+        }
+    }
+
+    .roomDetcard_roomnum_indec {
+
+        width: auto !important;
+
+        span {
+            margin: 0 6px !important;
+        }
+    }
+
+    .roomDetcard {
+        label {
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            padding-top: 6px !important;
+        }
+    }
+
+    .flight_company_logo {
+        .image_container {
+            width: 45px !important;
+            height: 45px !important;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        margin-bottom: 1rem;
+    }
+
+
+    .flight_info {
+        p {
+            margin: 0;
+            padding: 0;
+            font-size: 12px !important;
+            margin-bottom: 5px;
+            font-weight: 900 !important;
+
+
+        }
+    }
+
+    .timeline {
+        width: 100%;
+        background-color: #ebebeb;
+        border-radius: 512px;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        margin-top: .5rem;
+
+        p {
+            margin: 0;
+            padding: 0 5px;
+            font-size: 12px;
+
+        }
+
+        .time {
+            display: flex;
+        }
+
+
+    }
+
+    .roomcountDet_container {
+        padding: 0 !important;
+        margin: 1rem 0;
+
+        .roomcountDet {
+            flex-wrap: wrap;
+            position: relative;
+            display: flex;
+            padding: 2rem 1rem 1rem 1rem !important;
+
+
+
+            .roomcountDet_AdlCount {
+                width: 100% !important;
+                flex-direction: row !important;
+                justify-content: flex-start !important;
+                padding: 2px 0 !important;
+
+                //margin-bottom: 12px;
+
+                p {
+                    font-size: 13px !important;
+                }
+
+                p:not(:first-child) {
+                    color: #e20000;
+                }
+            }
+
+            .roomcountDet_name {
+                color: $primary;
+
+                p {
+                    font-size: 13px !important;
+                    padding: 0;
+                    margin: 0;
+
+                }
+
+                span {
+                    margin-right: 2px;
+                    font-size: 12px;
+                }
+            }
+
+            .roomcountDet_remove {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+            }
+
+            .roomcountDet_bedcount {
+                width: 49% !important;
+                margin-top: 6px;
+            }
+        }
+
+    }
+
+    .flightDet_timedate,
+    .flightDet_hotelEnt {
+        justify-content: space-between !important;
+        margin-top: 6px !important;
+    }
+
+    .ticket_reserve {
+        border-top: 1px dashed #cecece;
+        align-self: flex-start;
+        //border-radius: 20px;
+        //background-color: $containerColor;
+        padding: 5px 8px;
+        height: auto;
+        //display: flex;
+        width: 100%;
+
+        //justify-content: space-between;
+        margin-top: 10px;
+
+        .ticket_reserve_btn {
+            //margin: 0 auto !important;
+        }
+
+        .priceTitle {
+            font-size: .9rem;
+            font-weight: 800;
+            padding: 0;
+            margin: 0;
+            //text-align: center;
+        }
+
+        &_price {
+            display: flex;
+            //flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+
+
+            label {
+                font-weight: 800;
+                margin-left: 1rem;
+                font-size: .5rem;
+            }
+
+            p {
+
+                font-weight: 900;
+                font-size: .9rem;
+                margin: 0;
+                padding: 0;
+
+                span {
+                    color: #e20000;
+                    font-weight: 900;
+                    font-size: 22px;
+                    margin-left: .5rem;
+                }
+            }
+        }
+
+        &_btn {
+            background-color: $primary;
+            opacity: .2;
+            color: white;
+            width: 200px;
+            height: 40px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: default;
+        }
+
+        small {
+            font-size: 10px;
+            color: $primary;
+        }
+
+        .btn-container {
+            //width:100%;
+
+            display: flex;
+            //flex-direction:column;
+            align-items: center;
+            justify-content:center;
+            margin-top: 10px;
+        }
+
+        &_btn_active {
+            background-color: #e20000;
+            opacity: 1;
+            color: white;
+            width: 200px;
+            height: 40px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+
+        }
+
+    }
+}
+
+
+@media only screen and (min-width: 901px) {
+    .isDesktop {
+        display: flex !important;
+    }
+
+    .isTablet {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 868px) {
+    .roomcountDet_container {
+        .roomcountDet {
+            .roomcountDet_options {
+                width: 100%;
+
+                .roomcountDet_bedcount {
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+
+    .hotelDet {
+        .left {
+            display: flex;
+            justify-content: center;
+
+            .images {
+                grid-template-columns: 1fr 1fr 1fr !important;
+            }
+        }
+    }
+}
+
+@keyframes collapse {
+    from  {height: 35px; background-color: #e4e4e4  }
+    //25%   {height: 100px; background-color: #f0f0f0; }
+    //50%   {height: 150px; background-color: #eeeeee; }
+    //75%   {height: 300px; background-color: #f6f6f6; }
+    to {height:355px; background-color: #fff !important; }
+
+}
+
+@keyframes nocollapse {
+    from {height:355px; background-color: #fff !important; }
+    //25%   {height: 100px; background-color: #f0f0f0; }
+    //50%   {height: 150px; background-color: #eeeeee; }
+    //75%   {height: 300px; background-color: #f6f6f6; }
+    to  {height: 35px; background-color: #e4e4e4  }
+
+}
+
+
+.animate {
+    animation-name: collapse !important;
+    animation-duration: .5s;
+}
+
+.bacWhite{
+    animation-name: nocollapse !important;
+    animation-duration: .5s;
+}
