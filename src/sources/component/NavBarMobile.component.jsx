@@ -53,8 +53,23 @@ const NavBarMobile = (props) => {
       props.user.logged = false;
   }
   // console.log(props);
+    const [scrollPosition, setScrollPosition] = useState(0);
+
+
+
+    useEffect(() => {
+        window.addEventListener('scroll', ()=> console.log('sdas'));
+
+    }, [window]);
+
+
+    useEffect(()=>{
+        console.log(scrollPosition)
+    },[scrollPosition])
+
+
   return (
-    <nav className={`${styles["nav-mobile"]} hidden-mobile-head`}>
+    <nav className={`${styles["nav-mobile"]} hidden-mobile-head`}  >
       {/* <div className={styles['error-mobile']}> hghgshghgsd</div> */}
       <div className={styles["nav-text-detail-mobile"]}>
         <div className="pull-right">

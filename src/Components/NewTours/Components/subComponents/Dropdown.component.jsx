@@ -43,7 +43,7 @@ const DropdownComponent = (props) => {
             value={props.destandorgcities.night}
         >
           {/* {props.nights ? } */}
-          <option value='' disabled selected>
+          <option value='' disabled selected style={{color:'#ff0000'}}>
             مدت اقامت
           </option>
 

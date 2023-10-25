@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 // mui
 import { Alert, Snackbar } from '@mui/material';
-
 import axios from 'axios';
 import Link from 'next/link';
 import NavHandler from '../../Components/share/NavHandler';
@@ -10,12 +9,14 @@ import Slider from '../../Components/slider/Slider';
 import RequestTour from '../../Components/modal/RequestTour';
 import PopUp from '../../sources/component/PopUp.component';
 import { Loader } from '../../Utils/Loader';
+// import html2pdf from "html2pdf.js/src";
 import Head from 'next/head';
 import Scrolltoprefresh from '../../sources/component/Scrolltoprefresh';
 import moment from 'moment-jalaali';
 import HotelsDetails from '../../sources/tour/HotelsDetails';
 import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
-
+// import html2pdf from "html2pdf.js";
+import jsPDF from 'jspdf';
 
 const tour = (props) => {
     const [width, setWidth] = useState(0)
@@ -51,31 +52,90 @@ const tour = (props) => {
     const getData = async () => {
         // debugger
         const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${props.Pathname.tour[1]}`)
-
         setData(val.data.data)
         console.log('asdas32',val.datad)
     }
-
     const handleClick = () => {
 
         ref.current?.scrollIntoView({top: 0,behavior: 'smooth'});
       };
     useEffect(() => {
-        console.log('sadsa',props.Pathname.tour)
+        // console.log('sadsa',props.Pathname.tour)
         getData();
         handleClick()
     }, [props.Pathname.tour])
 
     const downloadHandler=()=>{
+        // debugger
         axios.get(`https://api.hamnavaz.com/api/v1/tour/export/${data && data.slug}`).then(res=>{
+
             let popupWin;
+
             popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
             popupWin.document.open();
-            popupWin.document.write(res.data.data);
-            popupWin.document.close()
 
+            popupWin.document.write(res.data.data);
+
+            popupWin.document.close()
         })
+
+        // fetch(`https://api.hamnavaz.com/api/v1/tour/export/${data && data.slug}`, {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'text/html',
+        //     },
+        // })
+        //     .then(response => response?.data?.data?.text())
+        //     .then(html => {
+        //         // Convert the HTML to PDF using a conversion API
+        //         fetch('https://v2.convertapi.com/convert/html/to/pdf?Secret=your-api-secret', {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //             },
+        //             body: JSON.stringify({
+        //                 "Parameters": [
+        //                     {
+        //                         "Name": "File",
+        //                         "FileValue": {
+        //                             "Name": "my_file.html",
+        //                             "Data": btoa(unescape(encodeURIComponent(html))) // Convert the HTML string to base64
+        //                         }
+        //                     },
+        //                     {
+        //                         "Name": "StoreFile",
+        //                         "Value": true
+        //                     }
+        //                 ]
+        //             }),
+        //         })
+        //             .then(response => response.json())
+        //             .then(data => {
+        //                 // Download the PDF
+        //                 const link = document.createElement('div');
+        //                 link.href = data.File?.Url;
+        //                 link.download = 'file.pdf';
+        //                 link.click();
+        //             });
+        //     });
     }
+
+
+    // const fetchHTML = async () => {
+    //     const response = await fetch(`https://api.hamnavaz.com/api/v1/tour/export/${data && data.slug}`);
+    //     const html = await response?.data?.data.text();
+    //     return html;
+    // };
+    // const htmlToPdf = (html) => {
+    //     const element = document.createElement('div');
+    //     element.innerHTML = html;
+    //     html2pdf(element);
+    // };
+    //
+    // const handleDownload = async () => {
+    //     const html = await fetchHTML();
+    //     htmlToPdf(html);
+    // };
     return (
         <div>
             <NavHandler/>

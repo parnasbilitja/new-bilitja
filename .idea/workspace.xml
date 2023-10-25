@@ -4,42 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/AvailableHotel1.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/MapPopUp.component.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/share/MenubarForMobile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sources/component/Map.component.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sources/newTour/HomeDet.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/Map.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/Menubar.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/PopUpMap.module.scss" afterDir="false" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some huge changes were transfered from hamnavaz to BILITJA">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Dropdown.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Dropdown.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/home/Base.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/Base.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/newTour.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/newTour.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/[CityTour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/[CityTour].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/share/NavHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/share/NavHandler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tour/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/[...availablehotels].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightListMobile.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightListMobile.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/OfferdTours.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/OfferdTours.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/TourList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/TourList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/MobileFlightList.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/MobileFlightList.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/PopUpWide.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/PopUpWide.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/Cities.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/Cities.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/NavBarMobile.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/NavBarMobile.component.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +215,7 @@
       <workItem from="1697968250142" duration="584000" />
       <workItem from="1697974459643" duration="292000" />
       <workItem from="1697974862808" duration="155000" />
-      <workItem from="1698214657698" duration="9046000" />
+      <workItem from="1698214657698" duration="21995000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -410,30 +385,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00105" summary="some changes due to hamnavaz project's changes reconciling">
-      <option name="closed" value="true" />
-      <created>1695621402505</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1695621402505</updated>
-    </task>
-    <task id="LOCAL-00106" summary="some changes due to hamnavaz project's changes reconciling">
-      <option name="closed" value="true" />
-      <created>1695622640522</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1695622640522</updated>
-    </task>
-    <task id="LOCAL-00107" summary="some tiny logic bugs have been fixed for loading tour list">
-      <option name="closed" value="true" />
-      <created>1695627791147</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1695627791147</updated>
-    </task>
     <task id="LOCAL-00108" summary="some changes were applied due to hamnavaz reconciling">
       <option name="closed" value="true" />
       <created>1696486913462</created>
@@ -578,7 +529,31 @@
       <option name="project" value="LOCAL" />
       <updated>1696853980591</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <task id="LOCAL-00126" summary="some huge changes were transfered from hamnavaz to BILITJA">
+      <option name="closed" value="true" />
+      <created>1698224473627</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1698224473627</updated>
+    </task>
+    <task id="LOCAL-00127" summary="some huge changes were transfered from hamnavaz to BILITJA">
+      <option name="closed" value="true" />
+      <created>1698224514006</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1698224514006</updated>
+    </task>
+    <task id="LOCAL-00128" summary="some huge changes were transfered from hamnavaz to BILITJA">
+      <option name="closed" value="true" />
+      <created>1698224534449</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1698224534449</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -598,7 +573,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some visual changes in TourSearchBox.jsx(Cities),...." />
     <MESSAGE value="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied" />
     <MESSAGE value="some changes have been applied" />
     <MESSAGE value="new api(v2) for tour was connected to project" />
@@ -623,7 +597,8 @@
     <MESSAGE value="sidebar hotel tour" />
     <MESSAGE value="contactus+aboutus pages have been deployed" />
     <MESSAGE value="some changes have been deployed===&gt;price rounder tour(reservation &amp; comfimation)" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes have been deployed===&gt;price rounder tour(reservation &amp; comfimation)" />
+    <MESSAGE value="some huge changes were transfered from hamnavaz to BILITJA" />
+    <option name="LAST_COMMIT_MESSAGE" value="some huge changes were transfered from hamnavaz to BILITJA" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

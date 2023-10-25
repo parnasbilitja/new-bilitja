@@ -52,9 +52,11 @@ function MyApp({ Component, pageProps }) {
   // }, []);
 
   return (
-      <Provider store={store}>
+      <Provider store={store} >
         <title>خریداینترنتی بلیط ارزان هواپیما |همنواز| 021842799999</title>
         <link rel="canonical" href="https://hamnavaz.com/" />
+
+
 
         {Component.PageLayout ? (
             <Component.PageLayout>
@@ -68,6 +70,7 @@ function MyApp({ Component, pageProps }) {
               <Component {...pageProps} />
             </>
         )}
+
       </Provider>
   );
 }
