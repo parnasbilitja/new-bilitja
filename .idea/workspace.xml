@@ -5,9 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/AvailableHotel1.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/MapPopUp.component.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/share/MenubarForMobile.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sources/component/Map.component.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sources/newTour/HomeDet.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/Map.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/Menubar.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/PopUpMap.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/account/Auth.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/account/Auth.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/PictureModal.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/PictureModal.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Cities.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Dropdown.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Dropdown.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/home/Base.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/Base.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/newTour.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/newTour.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/[CityTour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/[CityTour].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/[...availablehotels].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/[...availablehotels].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightListMobile.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightListMobile.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/OfferdTours.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/OfferdTours.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/TourList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/TourList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/MobileFlightList.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/MobileFlightList.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/PopUpWide.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/PopUpWide.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/Cities.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/Cities.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +50,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
-        <option value="JavaScript File" />
         <option value="SCSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -54,32 +86,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/PouyA/Desktop/bilitjassrnew/styles&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/PouyA/Desktop/bilitjassrnew/src/sources",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\PouyA\\AppData\\Local\\JetBrains\\WebStorm 2023.2.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\sources" />
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\styles" />
-      <recent name="C:\Users\Niusha\WebstormProjects\bilitjassrnew\styles\newTour\components\subComponent" />
-      <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\pages" />
-      <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\public" />
-      <recent name="C:\projects\bilitjassrnew\public\Images" />
+      <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\sources\component" />
+      <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\styles\newTour\components\subComponent" />
+      <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\Components\NewTours\Components\subComponents" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -200,7 +233,14 @@
       <workItem from="1695620326342" duration="7473000" />
       <workItem from="1696420302864" duration="21169000" />
       <workItem from="1696581323456" duration="4101000" />
-      <workItem from="1696850824749" duration="3078000" />
+      <workItem from="1696850824749" duration="4436000" />
+      <workItem from="1697014973034" duration="800000" />
+      <workItem from="1697702265643" duration="3865000" />
+      <workItem from="1697723651202" duration="593000" />
+      <workItem from="1697968250142" duration="584000" />
+      <workItem from="1697974459643" duration="292000" />
+      <workItem from="1697974862808" duration="155000" />
+      <workItem from="1698214657698" duration="9046000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -370,14 +410,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00104" summary="some changes due to hamnavaz project's changes reconciling">
-      <option name="closed" value="true" />
-      <created>1695621221841</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1695621221842</updated>
-    </task>
     <task id="LOCAL-00105" summary="some changes due to hamnavaz project's changes reconciling">
       <option name="closed" value="true" />
       <created>1695621402505</created>
@@ -538,7 +570,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696853581487</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="some changes have been deployed===&gt;price rounder tour(reservation &amp; comfimation)">
+      <option name="closed" value="true" />
+      <created>1696853980591</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1696853980591</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

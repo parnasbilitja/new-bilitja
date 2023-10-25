@@ -5,13 +5,16 @@ import "../../styles/index.css";
 import "../../styles/icon.scss";
 import "../../styles/values.scss";
 import "../../styles/Calendar.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import * as ga from "../../lib/ga";
 import { Provider } from "react-redux";
 import { store } from "../Redux/store";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import MenubarForMobile from "../Components/share/MenubarForMobile";
+
 // import ManagerNav from "./panelnew/compo/ManagerNav.component";
 
 // export const config = { amp: true }
@@ -34,29 +37,38 @@ function MyApp({ Component, pageProps }) {
     };
   }, [router.events]);
 
-  return (
-    <Provider store={store}>
-      <title>خریداینترنتی بلیط ارزان هواپیما |بلیطجا| 021842799999</title>
-      <link rel="canonical" href="https://bilitja.com/" />
-      {/* <motion.div key={router.route} initial="pageInitial" animate="pageAnimate" variants={{
-        pageInitial: {
-          opacity: 0
-        },
-        pageAnimate: {
-          opacity: 1
-        },
-      }}> */}
+  // const [widthMobi, setWidthMobi] = useState(
+  //     typeof window !== "undefined" && getWindowSize()
+  // );
+  // function getWindowSize() {
+  //   const { innerWidth } = window;
+  //   return innerWidth;
+  // }
+  // useEffect(() => {
+  //   function handleWindowResize() {
+  //     setWidthMobi(getWindowSize());
+  //   }
+  //   window.addEventListener("resize", handleWindowResize);
+  // }, []);
 
-      {Component.PageLayout ? (
-        <Component.PageLayout>
-          {/* <ManagerNav /> */}
-          <Component {...pageProps} />
-        </Component.PageLayout>
-      ) : (
-        <Component {...pageProps} />
-      )}
-      {/* </motion.div> */}
-    </Provider>
+  return (
+      <Provider store={store}>
+        <title>خریداینترنتی بلیط ارزان هواپیما |همنواز| 021842799999</title>
+        <link rel="canonical" href="https://hamnavaz.com/" />
+
+        {Component.PageLayout ? (
+            <Component.PageLayout>
+              {/* <ManagerNav /> */}
+              <Component {...pageProps} />
+            </Component.PageLayout>
+        ) : (
+            <>
+              {/*<MenubarForMobile />*/}
+
+              <Component {...pageProps} />
+            </>
+        )}
+      </Provider>
   );
 }
 

@@ -17,35 +17,41 @@ import { connect } from "react-redux";
 import { selcetAccountBox } from "../../Redux/UI/ui.reselect";
 import { accountBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
+import HomeDet from "../../sources/newTour/HomeDet";
 
 const Base = (props) => {
     return (
         <div className={"mt-90"}>
-        <NavHandler />
-        <Scrolltoprefresh/>
-        <Head>
-                <title>بلیطجا | خرید بلیط هواپیما و رزرو اقامتگاه</title>
-        </Head>
-          <Home type={'index'} />
-          <div className="col-md-10 m-auto">
-            <List />
-            <HotelsSuggest />
-            <CitiesSuggest />
-            <Posts/>
-          </div>
-          <TicketDetails/>
-          <MessageBox />
-          <Footer />
-          <HeadSeo props={props} pathName={props.router.asPath} />
+            {/*<NavHandler />*/}
+            <Scrolltoprefresh/>
+            <Head>
+                <title>همنواز | خرید بلیط هواپیما و رزرو اقامتگاه</title>
+            </Head>
+            {/*<Home type={'index'} />*/}
+            {/*<div className="col-md-10 m-auto px-3 padd2">*/}
+            {/*  <List />*/}
+            {/*  <HotelsSuggest />*/}
+            {/*  <CitiesSuggest />*/}
+            {/*  <Posts/>*/}
+            {/*</div>*/}
+            {/*  <div className='padd2'>*/}
+
+            {/*<TicketDetails/>*/}
+            {/*<MessageBox />*/}
+            {/*  </div>*/}
+            {/*<Footer />*/}
+
+            <HomeDet/>
+            <HeadSeo props={props} pathName={props.router.asPath} />
         </div>
     );
 };
 
 const mapStatesToProps = (state) => ({
-  accountBox: selcetAccountBox(state),
+    accountBox: selcetAccountBox(state),
 });
 const mapDispatchesToProps = (dispatch) => ({
-  accountBoxModify: (value) => dispatch(accountBoxModify(value)),
+    accountBoxModify: (value) => dispatch(accountBoxModify(value)),
 });
 
 export default withRouter(connect(mapStatesToProps, mapDispatchesToProps)(Base));

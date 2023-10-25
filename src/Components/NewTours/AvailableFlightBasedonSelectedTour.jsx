@@ -4,17 +4,20 @@ import {useRouter} from "next/router";
 import axios from "axios";
 import {AnimatePresence, motion} from "framer-motion";
 import {
-    MiladiToJalaliConvertor,
-    MiladiToJalaliConvertorDec,
-    MiladiToJalaliConvertorInc,
-    chdPrcGen,
-    dateDiffChecker,
-    extBedPrcGen,
-    flightDateChecker,
-    jalaliToMiladiConvertor,
-    numberWithCommas,
-    roomPrcGen,
-    startBuilder, numberRounder,
+  MiladiToJalaliConvertor,
+  MiladiToJalaliConvertorDec,
+  MiladiToJalaliConvertorInc,
+  chdPrcGen,
+  dateDiffChecker,
+  extBedPrcGen,
+  flightDateChecker,
+  jalaliToMiladiConvertor,
+  numberWithCommas,
+  roomPrcGen,
+  startBuilder,
+  numberRounder,
+  getRandomRounded,
+  getCheapestRoom,
 } from "../../Utils/newTour";
 import Image from "next/image";
 import PictureModal from "./Components/subComponents/PictureModal";
@@ -23,1045 +26,1058 @@ import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 import Shimmers from "./Components/subComponents/Shimmers";
 import Head from "next/head";
 import HeadSeo from "../../sources/component/HeadSeo";
+import AvailableFlightMobile from "./Components/AvailableFlightMobile";
+import MapComponent from "../../sources/component/Map.component";
+import PopUp from "./Components/subComponents/PopUp.component";
+import PopUpWide from "./Components/subComponents/PopUpWide.component";
+import MapPopUpComponent from "./Components/subComponents/MapPopUp.component";
 
 const AvailableFlightBasedonSelectedTour = (props) => {
-    const router = useRouter();
-    const [hotel, setHotel] = useState([]);
-    const [selectedRoom, setSelectedRoom] = useState([]);
-    const [isOpen, setIsOpen] = useState(0);
-    const [ismodal, setIsModal] = useState(null);
-    const ref = useRef(null);
+  const router = useRouter();
+  const [hotel, setHotel] = useState([]);
+  const [selectedRoom, setSelectedRoom] = useState([]);
+  const [selectedRoom2, setSelectedRoom2] = useState([]);
+  const [isOpen, setIsOpen] = useState(0);
 
-    const handleClickRef = () => {
-        ref.current?.scrollIntoView({behavior: 'smooth'});
-    };
-    ///count every selected room based on their type =>:دوتخته , سه تخته , ...........
-    const roomCounter = (roomTypeId) => {
-        const rooms = selectedRoom.filter((room) => room?.room_type_id === roomTypeId);
-        return rooms.length;
-    };
+  const [ismodal, setIsModal] = useState(null);
+  const ref = useRef(null);
+  const [showInMap, setShowInMap] = useState(false)
 
 
-    const minAvRoom = (rates) => Math.min(...rates.map((a) => {
-        return a.available_room_count;
-    }));
+  const handleClickRef = () => {
+    ref.current?.scrollIntoView({behavior: "smooth"});
+  };
 
+  const roomCounter1 = (roomTypeId) => {
+    const room = selectedRoom?.filter(
+        (room) => room?.room_type_id === roomTypeId
+    );
+    return room?.length;
+  };
 
-    ///increase room => :دوتخته , سه تخته , ...........
-    const IncRoom = (flightId, room) => {
+  ///count every selected room based on their type =>:دوتخته , سه تخته , ...........
+  const roomCounter = (roomTypeId) => {
+    const room = selectedRoom?.filter(
+        (room) => room?.room_type_id === roomTypeId
+    );
+    return room.length > 0 ? room[0]?.passCount?.length : 0;
+  };
 
-        let minAvRoom = Math.min(...room.rates?.map((a) => {
+  const minAvRoom = (rates) =>
+      Math.min(
+          ...rates.map((a) => {
             return a.available_room_count;
-        }));
+          })
+      );
 
-        if (minAvRoom > roomCounter(room.room_type_id)) {
-            setIsOpen(flightId);
-            setSelectedRoom([...selectedRoom, {
-                id: Math.random() * 1000,
-                room_type_id: room.room_type_id,
-                room_id: room.id,
-                room_type: room.room_type,
-                Adl_capacity: room.Adl_capacity,
-                extra_bed_count: 0,
-                inf_count: 0,
-                chd_count: 0,
-                chd_capacity: room.chd_capacity,
-                extra_bed_capacity: room.extra_bed_count,
-                total_extra_count: room.total_extra_count
-            },]);
+  const IncRoom1 = (flightId, room) => {
+    let minAvRoom = Math.min(
+        ...room.rates?.map((a) => {
+          return a.available_room_count;
+        })
+    );
 
+    if (minAvRoom > roomCounter1(room.room_type_id)) {
+      setIsOpen(flightId);
+      setSelectedRoom([
+        ...selectedRoom,
+        {
+          id: Math.random() * 1000,
+          room_type_id: room.room_type_id,
+          room_id: room.id,
+          room_type: room.room_type,
+          Adl_capacity: room.Adl_capacity,
+          extra_bed_count: 0,
+          inf_count: 0,
+          chd_count: 0,
+          chd_capacity: room.chd_capacity,
+          extra_bed_capacity: room.extra_bed_count,
+          total_extra_count: room.total_extra_count,
+        },
+      ]);
+    } else {
+      // console.log("noooooooooooooo!");
+      // setIsOpen(0);
+      Err("تعداد اتاق انتخابی بیش از ظرفیت موجود نیست");
+    }
+  };
 
-        } else {
-            // console.log("noooooooooooooo!");
-            // setIsOpen(0);
-            Err("تعداد اتاق انتخابی بیش از ظرفیت موجود نیست");
-        }
-    };
+  useEffect(() => {
+    console.log(selectedRoom);
+  }, [selectedRoom]);
 
+  ///decrease room => :دو تخته , سه تخته , ...........
+  const decRoom1 = (roomTypeId) => {
+    if (roomCounter(roomTypeId) === 0) {
+      return null;
+    } else {
+      const removedRoom = [];
+      const getRooms = selectedRoom.filter(
+          (room) => room.room_type_id === roomTypeId
+      );
+      const finalRoom = getRooms.pop();
+      removedRoom.push(finalRoom);
+      const anoRooms = selectedRoom.filter(
+          (selectroom) => removedRoom[0].id !== selectroom.id
+      );
+      setSelectedRoom([...anoRooms]);
+    }
 
-    ///decrease room => :دو تخته , سه تخته , ...........
-    const decRoom = (roomTypeId) => {
-        if (roomCounter(roomTypeId) === 0) {
-            return null;
-        } else {
-            const removedRoom = [];
-            const getRooms = selectedRoom.filter((room) => room.room_type_id === roomTypeId);
-            const finalRoom = getRooms.pop();
-            removedRoom.push(finalRoom);
-            const anoRooms = selectedRoom.filter((selectroom) => removedRoom[0].id !== selectroom.id);
-            setSelectedRoom([...anoRooms]);
-        }
+    // roomCounter(roomTypeId) ===
+    if (selectedRoom.length <= 1) {
+      setIsOpen(0);
+    }
+  };
 
-        // roomCounter(roomTypeId) ===
-        if (selectedRoom.length <= 1) {
-            setIsOpen(0);
-        }
-    };
-
-    ////inc chd, inf,ext number
-    const incDet = (room, type) => {
-        if (type === "ext_count") {
-            const findRoom = selectedRoom.map((x) => {
-                if (x?.id === room?.id) {
-                    if (x?.chd_count + x?.extra_bed_count >= x?.total_extra_count) {
-                        Err("به دلیل نبود ظرفیت امکان اضافه کردن وجود ندارد");
-                        return x
-                    } else {
-                        if (x.extra_bed_count < x.extra_bed_capacity) {
-                            return {
-                                ...x, extra_bed_count: x.extra_bed_count + 1,
-                            };
-                        } else {
-                            Err("تخت اضافه بیش از تعداد انتخاب شده موجود نیست");
-                            return x;
-                        }
-                    }
-
-
-                } else {
-                    return x;
-                }
-            });
-
-            setSelectedRoom(findRoom);
-        } else if (type === "inf_count") {
-            const findRoom = selectedRoom.map((x) => {
-                if (x?.id === room?.id) {
-                    if (x.inf_count < x.Adl_capacity) {
-                        return {
-                            ...x, inf_count: x.inf_count + 1,
-                        };
-                    } else {
-                        Err("گنجایش نوزاد بیش از تعداد انتخاب شده موجود نیست");
-                        return x;
-                    }
-                } else {
-                    return x;
-                }
-            });
-
-            setSelectedRoom(findRoom);
-        } else if (type === "chd_count") {
-            const findRoom = selectedRoom.map((x) => {
-                if (x?.id === room?.id) {
-                    if (x?.chd_count + x?.extra_bed_count >= x?.total_extra_count) {
-                        Err("به دلیل نبود ظرفیت امکان اضافه کردن وجود ندارد");
-                        return x
-                    } else {
-                        if (x?.chd_count < x?.chd_capacity) {
-                            return {
-                                ...x, chd_count: x?.chd_count + 1,
-                            };
-                        } else {
-                            Err("گنجایش کودک بیش از تعداد انتخاب شده موجود نیست");
-                            return x;
-                        }
-                    }
-
-                } else {
-                    return x;
-                }
-            });
-
-            setSelectedRoom(findRoom);
-        }
-        // console.log(selectedRoom);
-    };
-
-    ////dec chd, inf,ext number
-    const decDet = (id, type) => {
-        if (type === "ext_count") {
-            const findRoom = selectedRoom.map((x) => {
-                if (x?.id === id) {
-                    if (x.extra_bed_count > 0) {
-                        return {
-                            ...x, extra_bed_count: x.extra_bed_count - 1,
-                        };
-                    } else {
-                        return {
-                            ...x, extra_bed_count: 0,
-                        };
-                    }
-                } else {
-                    return x;
-                }
-            });
-            setSelectedRoom(findRoom);
-        } else if (type === "inf_count") {
-            const findRoom = selectedRoom.map((x) => {
-                if (x?.id === id) {
-                    if (x.inf_count) {
-                        return {
-                            ...x, inf_count: x.inf_count - 1,
-                        };
-                    } else {
-                        return {
-                            ...x, inf_count: 0,
-                        };
-                    }
-                } else {
-                    return x;
-                }
-            });
-            setSelectedRoom(findRoom);
-        } else if (type === "chd_count") {
-            const findRoom = selectedRoom.map((x) => {
-                if (x?.id === id) {
-                    if (x?.chd_count) {
-                        return {
-                            ...x, chd_count: x?.chd_count - 1,
-                        };
-                    } else {
-                        return {
-                            ...x, chd_count: 0,
-                        };
-                    }
-                } else {
-                    return x;
-                }
-            });
-            setSelectedRoom(findRoom);
-        }
-        // console.log(selectedRoom);
-    };
-
-    ////remove room
-    const removeRoom = (id) => {
-        const newSelectedRoom = selectedRoom.filter((room) => room.id !== id);
-        setSelectedRoom(newSelectedRoom);
-    };
-
-    useEffect(() => {
-        // debugger
-        // console.log("from me", router.query);
-
-        const hotelFnName = router?.query?.availablehotels;
-        const hotelName = hotelFnName && hotelFnName.length > 2 ? hotelFnName[2] : null;
-        if (hotelName) {
-            // debugger
-            axios
-                .post(`https://hotelobilit-api.iran.liara.run/api/v1/hotels/search/${hotelName}`, {
-                    origin: router.query.origin,
-                    dest: router.query.dest,
-                    stayCount: router.query.night,
-                    date: jalaliToMiladiConvertor(router.query.stDate),
-                })
-                .then((res) => {
-                    setHotel(res.data?.data);
-                    // console.log(res.data?.data);
-                });
-        }
-    }, [router]);
-
-    const reservePrc = (rooms, flight) => {
-        let fiPrice;
-        // debugger;
-        rooms.map((room) => {
-            if (room.room_type_id === 148) {
-                fiPrice = roomPrcGen(room, flight);
+  ////inc chd, inf,ext number
+  const incDet1 = (room, type) => {
+    debugger;
+    if (type === "ext_count") {
+      const findRoom = selectedRoom.map((x) => {
+        if (x?.id === room?.id) {
+          if (x?.chd_count + x?.extra_bed_count >= x?.total_extra_count) {
+            Err("به دلیل نبود ظرفیت امکان اضافه کردن وجود ندارد");
+            return x;
+          } else {
+            if (x.extra_bed_count < x.extra_bed_capacity) {
+              return {
+                ...x,
+                extra_bed_count: x.extra_bed_count + 1,
+              };
+            } else {
+              Err("تخت اضافه بیش از تعداد انتخاب شده موجود نیست");
+              return x;
             }
-        });
-
-        if (fiPrice) {
-            return fiPrice;
+          }
         } else {
-            fiPrice = Math.min(rooms.map((room) => {
-                return roomPrcGen(room, flight);
-            }));
-            return fiPrice;
+          return x;
         }
-    };
+      });
 
-    const roomsGen = (selectedRoom) => {
-        const rooms = [];
-        selectedRoom.map((room) => {
-            rooms.push({
-                adl_count: room.Adl_capacity,
-                chd_count: room.chd_count,
-                inf_count: room.inf_count,
-                room_id: room.room_id,
-                extra_count: room.extra_bed_count,
-                count: 1,
-            });
-        });
-
-        return rooms;
-    };
-
-
-    const picGen = (picsNum) => {
-        const gallary = [];
-        let number = picsNum >= 3 ? 3 : picsNum;
-        let fiNum = props.widthmobi <= 868 ? 2 : number
-
-        for (let i = 1; i <= fiNum; i++) {
-            gallary.push(<motion.div
-                whileHover={{translateY: "-15px"}}
-                onClick={() => {
-                    setIsModal(hotel?.gallery[i]?.url);
-                }}
-                layoutId={hotel?.gallery[i]?.url}
-            >
-                <motion.img src={hotel?.gallery[i]?.url} height={100} width={100}/>
-            </motion.div>);
+      setSelectedRoom(findRoom);
+    } else if (type === "inf_count") {
+      const findRoom = selectedRoom.map((x) => {
+        if (x?.id === room?.id) {
+          if (x.inf_count < x.Adl_capacity) {
+            return {
+              ...x,
+              inf_count: x.inf_count + 1,
+            };
+          } else {
+            Err("گنجایش نوزاد بیش از تعداد انتخاب شده موجود نیست");
+            return x;
+          }
+        } else {
+          return x;
         }
-        return gallary;
-    };
+      });
+
+      setSelectedRoom(findRoom);
+    } else if (type === "chd_count") {
+      const findRoom = selectedRoom.map((x) => {
+        if (x?.id === room?.id) {
+          if (x?.chd_count + x?.extra_bed_count >= x?.total_extra_count) {
+            Err("به دلیل نبود ظرفیت امکان اضافه کردن وجود ندارد");
+            return x;
+          } else {
+            if (x?.chd_count < x?.chd_capacity) {
+              return {
+                ...x,
+                chd_count: x?.chd_count + 1,
+              };
+            } else {
+              Err("گنجایش کودک بیش از تعداد انتخاب شده موجود نیست");
+              return x;
+            }
+          }
+        } else {
+          return x;
+        }
+      });
+
+      setSelectedRoom(findRoom);
+    }
+    // console.log(selectedRoom);
+  };
+
+  ////dec chd, inf,ext number
+  const decDet1 = (id, type) => {
+    if (type === "ext_count") {
+      const findRoom = selectedRoom.map((x) => {
+        if (x?.id === id) {
+          if (x.extra_bed_count > 0) {
+            return {
+              ...x,
+              extra_bed_count: x.extra_bed_count - 1,
+            };
+          } else {
+            return {
+              ...x,
+              extra_bed_count: 0,
+            };
+          }
+        } else {
+          return x;
+        }
+      });
+      setSelectedRoom(findRoom);
+    } else if (type === "inf_count") {
+      const findRoom = selectedRoom.map((x) => {
+        if (x?.id === id) {
+          if (x.inf_count) {
+            return {
+              ...x,
+              inf_count: x.inf_count - 1,
+            };
+          } else {
+            return {
+              ...x,
+              inf_count: 0,
+            };
+          }
+        } else {
+          return x;
+        }
+      });
+      setSelectedRoom(findRoom);
+    } else if (type === "chd_count") {
+      const findRoom = selectedRoom.map((x) => {
+        if (x?.id === id) {
+          if (x?.chd_count) {
+            return {
+              ...x,
+              chd_count: x?.chd_count - 1,
+            };
+          } else {
+            return {
+              ...x,
+              chd_count: 0,
+            };
+          }
+        } else {
+          return x;
+        }
+      });
+      setSelectedRoom(findRoom);
+    }
+    // console.log(selectedRoom);
+  };
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///MOOOOOOOOOOOOOOOOOOOOOOOOBBBBBBBBBBBBBBBBBBIIIIIIIIIIIIIIILLLLLLLLLLLLEEEEEEEEEEEEEEEEEEEEEEEEEEEE/////////////////////
+  ///increase room => :دوتخته , سه تخته , ...........
+
+  // useEffect(() => {
+  //   console.log(selectedRoom);
+  // }, [selectedRoom]);
 
 
-    //f==flight//
-    const tourReserve = (fCheckin, fCheckout, goneDate, arrivalDate, fId, hotelId) => {
-        let routerParam = router.query;
-        let checkin = fCheckin ? MiladiToJalaliConvertorInc(goneDate) : MiladiToJalaliConvertor(goneDate)
-        let checkout = fCheckout ? MiladiToJalaliConvertorDec(arrivalDate) : MiladiToJalaliConvertor(arrivalDate)
-        let stayCount = routerParam.night
-        let rooms = [...roomsGen(selectedRoom)]
-        if (selectedRoom.length > 0) {
-            axios.post("https://hotelobilit-api.iran.liara.run/api/v2/reserves/checking", {
+  ////inc chd, inf,ext number
+
+  ///MOOOOOOOOOOOOOOOOOOOOOOOOBBBBBBBBBBBBBBBBBBIIIIIIIIIIIIIIILLLLLLLLLLLLEEEEEEEEEEEEEEEEEEEEEEEEEEEE/////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  ////remove room
+  useEffect(()=>{
+    console.log(showInMap)
+  },[showInMap])
+  const removeRoom = (id) => {
+    const newSelectedRoom = selectedRoom.filter((room) => room.id !== id);
+    setSelectedRoom(newSelectedRoom);
+  };
+
+  useEffect(() => {
+    const hotelFnName = router?.query?.availablehotels;
+    const hotelName =
+        hotelFnName && hotelFnName.length > 2 ? hotelFnName[2] : null;
+    if (hotelName) {
+      // debugger
+      axios
+          .post(
+              `https://hotelobilit-api.iran.liara.run/api/v1/hotels/search/${hotelName}`,
+              {
+                origin: router.query.origin,
+                dest: router.query.dest,
+                stayCount: router.query.night,
+                date: jalaliToMiladiConvertor(router.query.stDate),
+              }
+          )
+          .then((res) => {
+            setHotel(res.data?.data);
+            // console.log(res.data?.data);
+          });
+    }
+  }, [router]);
+
+  const reservePrc = (rooms, flight) => {
+    let fiPrice;
+    rooms.map((room) => {
+      if (room.room_type_id === 148) {
+        fiPrice = roomPrcGen(room, flight);
+      }
+    });
+    if (fiPrice) {
+      return fiPrice;
+    } else {
+      fiPrice = Math.min(
+          rooms.map((room) => {
+            return roomPrcGen(room, flight);
+          })
+      );
+      return fiPrice;
+    }
+  };
+
+  const roomsGen = (selectedRoom) => {
+    const rooms = [];
+    selectedRoom.map((room) => {
+      rooms.push({
+        adl_count: room.Adl_capacity,
+        chd_count: room.chd_count,
+        inf_count: room.inf_count,
+        room_id: room.room_id,
+        extra_count: room.extra_bed_count,
+        count: 1,
+      });
+    });
+
+    return rooms;
+  };
+
+  const picGen = (picsNum) => {
+    const gallary = [];
+    let number = picsNum >= 3 ? 3 : picsNum;
+    let fiNum = props.widthmobi <= 868 ? 2 : number;
+
+    for (let i = 1; i <= fiNum; i++) {
+      gallary.push(
+          <motion.div
+              whileHover={{translateY: "-15px"}}
+              onClick={() => {
+                setIsModal(hotel?.gallery[i]?.url);
+              }}
+              layoutId={hotel?.gallery[i]?.url}
+          >
+            <motion.img src={hotel?.gallery[i]?.url} height={100} width={100}/>
+          </motion.div>
+      );
+    }
+    return gallary;
+  };
+
+  //f==flight//
+  const tourReserve = (
+      fCheckin,
+      fCheckout,
+      goneDate,
+      arrivalDate,
+      fId,
+      hotelId
+  ) => {
+    let routerParam = router.query;
+    let checkin = fCheckin
+        ? MiladiToJalaliConvertorInc(goneDate)
+        : MiladiToJalaliConvertor(goneDate);
+    let checkout = fCheckout
+        ? MiladiToJalaliConvertorDec(arrivalDate)
+        : MiladiToJalaliConvertor(arrivalDate);
+    let stayCount = routerParam.night;
+    let rooms = [...roomsGen(selectedRoom)];
+    if (selectedRoom.length > 0) {
+      axios
+          .post(
+              "https://hotelobilit-api.iran.liara.run/api/v2/reserves/checking",
+              {
                 checkin: jalaliToMiladiConvertor(checkin),
                 checkout: jalaliToMiladiConvertor(checkout),
                 hotel_id: hotelId,
                 flight_id: fId,
                 rooms,
-            }).then(res => {
-                // console.log(res.data)
-                ErrSuccess("به صفحه تکمیل اطلاعات و رزرو منتقل می‌شوید");
-                router.push(`/tour/reserve/${hotelId}/${fId}?checkin=${checkin}&checkout=${checkout}&rooms=${JSON.stringify(rooms)}&ref_code=${res.data.data.ref_code}`);
-            }).catch(err => {
-                Err('این پرواز با این تعداد اتاق انتخابی موجودی ندارد')
-            })
-        } else {
-            Err("لطفا پرواز و اتاق مورد نظر خود راانتخاب کنید");
-        }
+              }
+          )
+          .then((res) => {
+            // console.log(res.data)
+            ErrSuccess("به صفحه تکمیل اطلاعات و رزرو منتقل می‌شوید");
+            router.push(
+                `/tour/reserve/${hotelId}/${fId}?checkin=${checkin}&checkout=${checkout}&rooms=${JSON.stringify(
+                    rooms
+                )}&ref_code=${res.data.data.ref_code}`
+            );
+          })
+          .catch((err) => {
+            Err("این پرواز با این تعداد اتاق انتخابی موجودی ندارد");
+          });
+    } else {
+      Err("لطفا پرواز و اتاق مورد نظر خود راانتخاب کنید");
     }
+  };
 
 
-    const individualRoomstypeFinder = (selectedrooms, roomtypeid) => {
-        let filteredRoom = selectedrooms.filter(room => room.room_type_id === roomtypeid)
-        return filteredRoom
-    }
-
-    return (<>
+  return (
+      <>
         <NotifAlert/>
-        {ismodal && (<PictureModal
-            url={ismodal}
-            gallery={hotel?.gallery}
-            setIsModal={() => setIsModal()}
-        />)}
+        {ismodal && (
+            <PictureModal
+                url={ismodal}
+                gallery={hotel?.gallery}
+                setIsModal={() => setIsModal()}
+            />
+        )}
 
         <div className={styles["container"]}>
-            <Head>
-                {
-                    hotel.length === 0 ? <title>بلیطجا | تور</title> : <title> بلیطجا {`|  ${hotel?.title}`}</title>
-                }
-            </Head>
-            <Scrolltoprefresh/>
-            <div className={styles["hotelDet_container"]}>
-                {hotel?.gallery ? (<div className={styles["hotelDet"]}>
-                    <div className={styles["right"]}>
-                        <div className={styles["hotelDet-image"]}>
-                            {hotel?.gallery && (<Image
-                                src={hotel?.gallery[0].url}
-                                height={200}
-                                width={300}
-                            />)}
-                        </div>
-                        <div className={styles["hotelDet-names"]}>
-                            <div className={styles["hotelDet-names_star"]}>
-                                {startBuilder(+hotel?.stars).map((x) => {
-                                    return x;
-                                })}
-                            </div>
-
-                            <p className={styles["hotelDet-names_faName"]}>
-                                {hotel.is_domestic ? hotel.title : hotel.titleEn}
-                            </p>
-                            <p className={styles["hotelDet-names_enName"]}>
-                                {hotel.is_domestic ? hotel.titleEn : hotel.title}
-                            </p>
-                            <div className={styles["hotelDet-names_zoneservice"]}>
-                                <label htmlFor="">خدمات:</label>
-                                <p>ثبت نشده</p>
-                            </div>
-                            <div className={styles["hotelDet-names_zoneservice"]}>
-                                <label htmlFor="">منطقه:</label>
-                                <p>{hotel?.location ? hotel?.location : "ثبت نشده"}</p>
-                            </div>
-                        </div>
+          <Head>
+            {hotel.length === 0 ? (
+                <title>همنواز | تور</title>
+            ) : (
+                <title> همنواز {`|  ${hotel?.title}`}</title>
+            )}
+          </Head>
+          <Scrolltoprefresh/>
+          <div className={styles["hotelDet_container"]}>
+            {hotel?.gallery ? (
+                <div className={styles["hotelDet"]}>
+                  <div className={styles["right"]}>
+                    <div className={styles["hotelDet-image"]}>
+                      {hotel?.gallery && (
+                          <Image
+                              src={hotel?.gallery[0].url}
+                              height={200}
+                              width={300}
+                          />
+                      )}
                     </div>
-                    <div className={styles["left"]}>
-                        {hotel?.gallery && (<div className={styles["image_container"]}>
-                            <div className={styles["images"]}>
-                                {picGen(hotel?.gallery.length - 1).map((pic) => {
-                                    return pic;
-                                })}
-                                <motion.div
-                                    className={styles["morePic"]}
-                                    onClick={() => {
-                                        setIsModal(hotel?.gallery[0]?.url);
-                                    }}
-                                    layoutId={hotel?.gallery[0]?.url}
-                                >
-                                    <div className={styles["dots"]}>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                    </div>
-                                    <Image
-                                        src={hotel?.gallery[0].url}
-                                        height={100}
-                                        width={100}
-                                    />
-                                </motion.div>
-                            </div>
-                            {
-                                props.widthmobi > 868 &&
-                                <div className={styles["imgbig_container"]}>
-                                    <Image
-                                        className={styles["img-big"]}
-                                        src={hotel?.gallery[1].url}
-                                        layout="responsive"
-                                        height={205}
-                                        width={200}
-                                    />
+                    <div className={styles["hotelDet-names"]}>
+                      <div className={styles["hotelDet-names_star"]}>
+                        {startBuilder(+hotel?.stars).map((x) => {
+                          return x;
+                        })}
+                      </div>
+
+                      <p className={styles["hotelDet-names_faName"]}>
+                        {hotel.is_domestic ? hotel.title : hotel.titleEn}
+                      </p>
+                      <p className={styles["hotelDet-names_enName"]}>
+                        {hotel.is_domestic ? hotel.titleEn : hotel.title}
+                      </p>
+                      <div className={styles["hotelDet-names_zoneservice"]}>
+                        <label htmlFor="">خدمات:</label>
+                        <p>ثبت نشده</p>
+                      </div>
+                      <div style={{display: 'flex', justifyContent: 'space-between', marginTop: "6px"}}>
+
+                        <div className={styles["hotelDet-names_zoneservice"]}>
+                          <label htmlFor="">منطقه:</label>
+                          <p>{hotel?.location ? hotel?.location : "ثبت نشده"}</p>
+                        </div>
+                        <p style={{fontSize: "12px", color: "#137cb6", margin: '0'}}
+                           onClick={() => setShowInMap(true)}>(نمایش برروی نقشه)</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles["left"]}>
+                    {hotel?.gallery && (
+                        <div className={styles["image_container"]}>
+                          <div className={styles["images"]}>
+                            {picGen(hotel?.gallery.length - 1).map((pic) => {
+                              return pic;
+                            })}
+                            <motion.div
+                                className={styles["morePic"]}
+                                onClick={() => {
+                                  setIsModal(hotel?.gallery[0]?.url);
+                                }}
+                                layoutId={hotel?.gallery[0]?.url}
+                            >
+                              <div className={styles['dots-container']}>
+                                <div className={styles["dots"]}>
+                                  <div></div>
+                                  <div></div>
+                                  <div></div>
                                 </div>
-                            }
+                                <label> تصاویر بیشتر</label>
+                              </div>
+                              <Image
+                                  src={hotel?.gallery[0].url}
+                                  height={100}
+                                  width={100}
+                              />
+                            </motion.div>
+                          </div>
+                          {props.widthmobi > 868 && (
+                              <div className={styles["imgbig_container"]}>
+                                {/*<Image*/}
+                                {/*  className={styles["img-big"]}*/}
+                                {/*  src={hotel?.gallery[1].url}*/}
+                                {/*  layout="responsive"*/}
+                                {/*  height={205}*/}
+                                {/*  width={200}*/}
+                                {/*/>*/}
+                                <MapComponent/>
+                              </div>
+                          )}
+                        </div>
+                    )}
+                  </div>
+                </div>
+            ) : (
+                <Shimmers/>
+            )}
+          </div>
+          <div className={styles["subscription"]}>
+            <p className={styles["p-title-page"]}>
+              با بررسی زمان پرواز و قیمت اتاق ها تور خود را انتخاب کنید
+            </p>
+          </div>
 
-                        </div>)}
-                    </div>
-                </div>) : (<Shimmers/>)}
-            </div>
-            <div className={styles["subscription"]}>
-                <p className={styles["p-title-page"]}>
-                    با بررسی زمان پرواز و قیمت اتاق ها تور خود را انتخاب کنید
-                </p>
-            </div>
-
-            {hotel?.flights ?
-                hotel?.flights?.map((flight) => {
-                    return props.widthmobi > 868 ? (dateDiffChecker(flightDateChecker(flight).checkin, flightDateChecker(flight).checkout, props?.night) ? (
+          {hotel?.flights ? (
+              hotel?.flights?.map((flight) => {
+                return props.widthmobi > 868 ? (
+                    dateDiffChecker(
+                        flightDateChecker(flight).checkin,
+                        flightDateChecker(flight).checkout,
+                        props?.night
+                    ) ? (
                         <div className={styles["ticket_container"]}>
-                            <div className={styles["container"]}>
-                                {isOpen === 0 ? null : isOpen === flight.id ? null : (<motion.div
+                          <div className={styles["container"]}>
+                            {isOpen === 0 ? null : isOpen === flight.id ? null : (
+                                <motion.div
                                     className={styles["blur"]}
                                     initial={{opacity: 0}}
                                     animate={{opacity: 1}}
                                     transition={{ease: "easeOut", duration: 0.4}}
-                                ></motion.div>)}
-                                <div className={styles["ticket"]}>
-                                    {/* title col1 */}
-                                    <div className={styles["ticket_titles"]}>
-                                        <div
-                                            className={styles["ticket_titles_info"]}
-                                            style={isOpen === flight.id ? {padding: 0} : null}
-                                        >
-                                            اطلاعات پرواز
-                                        </div>
-                                        <div className={styles["ticket_titles_info"]}>
-                                            <p>اطلاعات اتاق </p>
-                                        </div>
-                                    </div>
-                                    {/* ticketdet col2 */}
-                                    <div className={styles["ticket_flight"]}>
-                                        <div className={styles["flightDet_container"]}>
-                                            <div className={styles["flightDet"]}>
-                                                <div className={styles["flightDet_title"]}>
-                                                    <p>پرواز رفت</p>
-                                                </div>
-                                                <div className={styles["flightDet_loc"]}>
-                                                    <p>
-                                                        {flight.origin_name} به {flight.destination_name}
-                                                    </p>
-                                                </div>
-                                                <div className={styles["flightDet_timedate"]}>
-                                                    <span>{flight.time.slice(0, 5)}</span>
-                                                    <span>و</span>
-                                                    <span>{MiladiToJalaliConvertor(flight.date)}</span>
-                                                </div>
-                                                <div className={styles["flightDet_hotelEnt"]}>
-                                                    <label htmlFor="">ورود به هتل :</label>
-                                                    <p>
-                                                        {flight.checkin_tomorrow ? MiladiToJalaliConvertorInc(flight.date) : MiladiToJalaliConvertor(flight.date)}
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div className={styles["flight_company"]}>
-                                                <div className={styles["flight_company_logo"]}>
-                                                    <div className={styles["image_container"]}>
-                                                        <img src={flight?.airline_thumb?.url} alt=""/>
-                                                    </div>
-                                                    <p>{flight.airline_name}</p>
-                                                </div>
-                                                <div className={styles["flight_company_remaintour"]}>
-                                                    <p className={styles["p-middle"]}>
-                                                        تعداد موجودی پرواز : {flight.capacity}
-                                                    </p>
-                                                </div>
-                                                <div className={styles["flight_company_logo"]}>
-                                                    <div className={styles["image_container"]}>
-                                                        <img
-                                                            src={flight?.flight?.airline_thumb?.url}
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                    <p>{flight?.flight?.airline_name}</p>
-                                                </div>
-                                            </div>
-
-                                            <div className={styles["flightDet"]}>
-                                                <div className={styles["flightDet_title"]}>
-                                                    <p>پرواز برگشت</p>
-                                                </div>
-                                                <div className={styles["flightDet_loc"]}>
-                                                    <p>
-                                                        {flight?.flight?.origin_name} به{" "}
-                                                        {flight?.flight?.destination_name}
-                                                    </p>
-                                                </div>
-                                                <div className={styles["flightDet_timedate"]}>
-                                                    <span>{flight?.flight?.time.slice(0, 5)}</span>
-                                                    <span>و</span>
-                                                    <span>
-                                                {MiladiToJalaliConvertor(flight?.flight?.date)}
-                                                </span>
-                                                </div>
-                                                <div className={styles["flightDet_hotelEnt"]}>
-                                                    <label htmlFor="">خروج از هتل:</label>
-                                                    <p>
-                                                        {" "}
-                                                        {flight.checkout_yesterday === true ? MiladiToJalaliConvertorDec(flight?.flight?.date) : MiladiToJalaliConvertor(flight?.flight?.date)}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className={styles["roomDet_container"]}>
-                                            {hotel?.rooms?.map((room) => {
-                                                return (<div className={styles["roomDetcard"]}>
-                                                    <div className={styles["roomDetcard_roomnum"]}>
-                                                        <label htmlFor="">{room.room_type}</label>
-                                                        <div
-                                                            className={styles["roomDetcard_roomnum_indec"]}
-                                                        >
-                                                            <div
-                                                                className={minAvRoom(room.rates) <= roomCounter(room.room_type_id) ? styles["dec-none"] : styles["in"]}
-
-                                                                onClick={() => {
-                                                                    IncRoom(flight.id, room);
-                                                                    handleClickRef()
-                                                                }}
-                                                            >
-                                                                +
-                                                            </div>
-                                                            <span>{roomCounter(room.room_type_id)}</span>
-                                                            <div
-                                                                className={roomCounter(room.room_type_id) === 0 ? styles["dec-none"] : styles["dec"]}
-                                                                onClick={() => {
-                                                                    decRoom(room.room_type_id);
-                                                                }}
-                                                            >
-                                                                -
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className={styles["roomDetcard_price"]}
-                                                         style={{justifyContent: 'center'}}>
-                                                        <p>
-                                                      <span style={{color: ' #e20000'}}>
-                                                           {numberWithCommas(numberRounder(roomPrcGen(room, flight)))}
-                                                      </span>
-                                                            تومان
-                                                        </p>
-                                                    </div>
-                                                </div>);
-                                            })}
-                                        </div>
-                                    </div>
-                                    {/* reserve col 3 */}
-                                    <div className={styles["ticket_reserve"]}>
-                                        <div className="d-flex flex-column align-items-center">
-                                            <p className={styles["priceTitle"]}>
-                                                قیمت برای هر نفر:
-                                            </p>
-                                            <div className={styles["ticket_reserve_price"]}>
-
-                                                <p>
-                                                <span>
-                                              {numberWithCommas(numberRounder(reservePrc(hotel?.rooms, flight)) )}
-                                                </span>
-                                                    تومان
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className={styles['btn-container']}>
-
-                                            {selectedRoom.length === 0 ? <small>
-                                                لطفا اتاق مورد نظر خود را انتخاب کنید.
-                                            </small> : null}
-                                            <button
-                                                onClick={() => {
-                                                    tourReserve(flight?.checkin_tomorrow, flight?.checkout_yesterday, flight?.date, flight?.flight?.date, flight.id, hotel.id)
-                                                }}
-                                                className={`${selectedRoom.length === 0 ? styles["ticket_reserve_btn"] : styles["ticket_reserve_btn_active"]}`}
-                                            >
-                                                رزرو تور
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div ref={ref}></div>
+                                ></motion.div>
+                            )}
+                            <div className={styles["ticket"]}>
+                              {/* title col1 */}
+                              <div className={styles["ticket_titles"]}>
+                                <div
+                                    className={styles["ticket_titles_info"]}
+                                    style={isOpen === flight.id ? {padding: 0} : null}
+                                >
+                                  اطلاعات پرواز
                                 </div>
+                                <div className={styles["ticket_titles_info"]}>
+                                  <p>اطلاعات اتاق </p>
+                                </div>
+                              </div>
+                              {/* ticketdet col2 */}
+                              <div className={styles["ticket_flight"]}>
+                                <div className={styles["flightDet_container"]}>
+                                  <div className={styles["flightDet"]}>
+                                    <div className={styles["flightDet_title"]}>
+                                      <p>پرواز رفت</p>
+                                    </div>
+                                    <div className={styles["flightDet_loc"]}>
+                                      <p>
+                                        {flight.origin_name} به{" "}
+                                        {flight.destination_name}
+                                      </p>
+                                    </div>
+                                    <div className={styles["flightDet_timedate"]}>
+                                      {/*<span>ساعت :</span>*/}
+                                      <span
+                                          style={{color: '#e20000',fontSize:'17px'}}>{flight.time.slice(0, 5)}</span>
+                                      <span>و</span>
+                                      <span>
+                                {MiladiToJalaliConvertor(flight.date)}
+                              </span>
+                                    </div>
+                                    <div className={styles["flightDet_hotelEnt"]}>
+                                      <label htmlFor="">ورود به هتل :</label>
+                                      <p>
+                                        {flight.checkin_tomorrow
+                                            ? MiladiToJalaliConvertorInc(flight.date)
+                                            : MiladiToJalaliConvertor(flight.date)}
+                                      </p>
+                                    </div>
+                                  </div>
 
+                                  <div className={styles["flight_company"]}>
+                                    <div className={styles["flight_company_logo"]}>
+                                      <div className={styles["image_container"]}>
+                                        <img src={flight?.airline_thumb?.url} alt=""/>
+                                      </div>
+                                      <p>{flight.airline_name}</p>
+                                    </div>
+                                    <div className={styles["flight_company_remaintour"]}>
+                                      <p style={{whiteSpace: "nowrap"}}>
+                                        تعداد موجودی پرواز :<span style={{
+                                        color: '#137cb6',
+                                        fontWeight: '900',
+                                        fontSize: '15px'
+                                      }}>{flight.capacity}</span>
+                                      </p>
+                                      <div
+                                          style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            padding: "0",
+                                          }}
+                                      >
+                                        <div className={styles["dot"]}></div>
+                                        <div className={styles["seprator"]}></div>
+                                        <svg
+                                            style={{transform: "rotate(270deg)"}}
+                                            viewBox="0 0 24 24"
+                                            fill="#137cb6"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="30"
+                                            height="30"
+                                        >
+                                          <g>
+                                            <path d="M0 0h24v24H0z" fill="none"/>
+                                            <path
+                                                d="M14 8.947L22 14v2l-8-2.526v5.36l3 1.666V22l-4.5-1L8 22v-1.5l3-1.667v-5.36L3 16v-2l8-5.053V3.5a1.5 1.5 0 0 1 3 0v5.447z"/>
+                                          </g>
+                                        </svg>
+                                      </div>
+                                      <p>
+                                                                <span style={{
+                                                                  color: '#137cb6',
+                                                                  fontWeight: '900',
+                                                                  fontSize: '15px'
+                                                                }}> {props?.night}</span> شب و{" "}
+                                        <span style={{
+                                          color: '#137cb6',
+                                          fontWeight: '900',
+                                          fontSize: '15px'
+                                        }}> {+props?.night + 1}</span>
+                                        روز
+                                      </p>
+                                    </div>
+                                    <div className={styles["flight_company_logo"]}>
+                                      <div className={styles["image_container"]}>
+                                        <img
+                                            src={flight?.flight?.airline_thumb?.url}
+                                            alt=""
+                                        />
+                                      </div>
+                                      <p>{flight?.flight?.airline_name}</p>
+                                    </div>
+                                  </div>
+
+                                  <div className={styles["flightDet"]}>
+                                    <div className={styles["flightDet_title"]}>
+                                      <p>پرواز برگشت</p>
+                                    </div>
+                                    <div className={styles["flightDet_loc"]}>
+                                      <p>
+                                        {flight?.flight?.origin_name} به{" "}
+                                        {flight?.flight?.destination_name}
+                                      </p>
+                                    </div>
+                                    <div className={styles["flightDet_timedate"]}>
+                                      {/*<span>ساعت :</span>*/}
+                                      <span
+                                          style={{color: '#e20000',fontSize:'17px'}}>{flight?.flight?.time.slice(0, 5)}</span>
+                                      <span>و</span>
+                                      <span>
+                                                    {MiladiToJalaliConvertor(flight?.flight?.date)}
+                                                  </span>
+                                    </div>
+                                    <div className={styles["flightDet_hotelEnt"]}>
+                                      <label htmlFor="">خروج از هتل:</label>
+                                      <p>
+                                        {" "}
+                                        {flight.checkout_yesterday === true
+                                            ? MiladiToJalaliConvertorDec(
+                                                flight?.flight?.date
+                                            )
+                                            : MiladiToJalaliConvertor(
+                                                flight?.flight?.date
+                                            )}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className={styles["roomDet_container"]}>
+                                  {getCheapestRoom(hotel?.rooms, flight)?.map(
+                                      (room) => {
+                                        return (
+                                            <div className={styles["roomDetcard"]}>
+                                              <div
+                                                  className={styles["roomDetcard_roomnum"]}
+                                              >
+                                                <label htmlFor=""
+                                                       style={{whiteSpace: 'nowrap'}}>{room.room_type}</label>
+                                                <div
+                                                    className={
+                                                      styles["roomDetcard_roomnum_indec"]
+                                                    }
+                                                >
+                                                  <div
+                                                      className={
+                                                        minAvRoom(room.rates) <=
+                                                        roomCounter1(room.room_type_id)
+                                                            ? styles["dec-none"]
+                                                            : styles["in"]
+                                                      }
+                                                      onClick={() => {
+                                                        IncRoom1(flight.id, room);
+                                                        handleClickRef();
+                                                      }}
+                                                  >
+                                                    +
+                                                  </div>
+                                                  <span>
+                                        {roomCounter1(room.room_type_id)}
+                                      </span>
+                                                  <div
+                                                      className={
+                                                        roomCounter1(room.room_type_id) === 0
+                                                            ? styles["dec-none"]
+                                                            : styles["dec"]
+                                                      }
+                                                      onClick={() => {
+                                                        decRoom1(room.room_type_id);
+                                                      }}
+                                                  >
+                                                    -
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div
+                                                  className={styles["roomDetcard_price"]}
+                                                  style={{justifyContent: "center"}}
+                                              >
+                                                <p>
+                                      <span style={{color: " #e20000"}}>
+                                        {numberWithCommas(
+                                            numberRounder(
+                                                roomPrcGen(room, flight)
+                                            )
+                                        )}
+                                      </span>
+                                                  تومان
+                                                </p>
+                                              </div>
+                                            </div>
+                                        );
+                                      }
+                                  )}
+                                </div>
+                              </div>
+                              {/* reserve col 3 */}
+                              <div className={styles["ticket_reserve"]}>
+                                <div className="d-flex flex-column align-items-center">
+                                  <p className={styles["priceTitle"]}>
+                                    قیمت برای هر نفر:
+                                  </p>
+                                  <div className={styles["ticket_reserve_price"]}>
+                                    <p>
+                              <span>
+                                {numberWithCommas(
+                                    numberRounder(
+                                        reservePrc(hotel?.rooms, flight)
+                                    )
+                                )}
+                              </span>
+                                      تومان
+                                    </p>
+                                  </div>
+                                </div>
+                                <div className={styles["btn-container"]}>
+                                  {selectedRoom.length === 0 ? (
+                                      <small>
+                                        لطفا اتاق مورد نظر خود را انتخاب کنید.
+                                      </small>
+                                  ) : null}
+                                  <button
+                                      onClick={() => {
+                                        tourReserve(
+                                            flight?.checkin_tomorrow,
+                                            flight?.checkout_yesterday,
+                                            flight?.date,
+                                            flight?.flight?.date,
+                                            flight.id,
+                                            hotel.id
+                                        );
+                                      }}
+                                      className={`${
+                                          selectedRoom.length === 0
+                                              ? styles["ticket_reserve_btn"]
+                                              : styles["ticket_reserve_btn_active"]
+                                      }`}
+                                  >
+                                    رزرو تور
+                                  </button>
+                                </div>
+                              </div>
+                              <div ref={ref}></div>
                             </div>
-                            {flight.id === isOpen ? (<AnimatePresence>
+                          </div>
+                          {flight.id === isOpen ? (
+                              <AnimatePresence>
                                 <motion.div
                                     initial={{height: 0}}
                                     animate={{height: "auto"}}
                                     transition={{
-                                        type: "spring", stiffness: 100, duration: 0.5,
+                                      type: "spring",
+                                      stiffness: 100,
+                                      duration: 0.5,
                                     }}
                                     className={styles["roomcountdet_roomnum"]}
-
                                 >
-                                    {selectedRoom.map((room) => {
-                                        return (
-                                            <div className={styles["roomcountDet_container"]}>
-                                                <div className={styles["roomcountDet"]}>
-                                                    <div
-                                                        className={styles["roomcountDet_remove"]}
-                                                        onClick={() => {
-                                                            if (selectedRoom.length === 1) {
-                                                                removeRoom(room.id);
-                                                                setIsOpen(0);
-                                                            } else {
-                                                                removeRoom(room.id);
-                                                                setIsOpen(flight.id);
-                                                            }
-                                                        }}
-                                                    >
-                                                        <svg
-                                                            data-name="Layer 1"
-                                                            height="150"
-                                                            id="Layer_1"
-                                                            viewBox="0 0 200 200"
-                                                            width="150"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                        >
-                                                            <title/>
-                                                            <path
-                                                                fill="#e20000"
-                                                                d="M100,15a85,85,0,1,0,85,85A84.93,84.93,0,0,0,100,15Zm0,150a65,65,0,1,1,65-65A64.87,64.87,0,0,1,100,165Z"
-                                                            />
-                                                            <path
-                                                                fill="#e20000"
-                                                                d="M128.5,74a9.67,9.67,0,0,0-14,0L100,88.5l-14-14a9.9,9.9,0,0,0-14,14l14,14-14,14a9.9,9.9,0,0,0,14,14l14-14,14,14a9.9,9.9,0,0,0,14-14l-14-14,14-14A10.77,10.77,0,0,0,128.5,74Z"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                    <div className={styles["roomcountDet_name"]}>
-                                                        <p>{room?.room_type}</p>
-                                                    </div>
-                                                    <div className={styles["roomcountDet_AdlCount"]}>
-                                                        <p>تعداد بزرگسال</p>
-                                                        <p>{room?.Adl_capacity}</p>
-                                                    </div>
-
-                                                    <div
-                                                        className={`${styles["roomcountDet_bedcount"]} ${styles[room?.extra_bed_count > 0 ? 'borderActive' : 'bordernoneActive']}`}>
-                                                        <p className={styles["bedtype"]}>
-                                                            تعداد تخت اضافه
-                                                        </p>
-                                                        <p className={styles["bedtypeprc"]}>
-                                                            {numberWithCommas( numberRounder(extBedPrcGen(hotel?.rooms, flight, room?.room_type_id)))}{" "}
-                                                            تومان
-                                                        </p>
-
-                                                        <div
-                                                            className={styles["roomcountDet_bedcount_count"]}
-                                                        >
-                                                            <div
-                                                                className={styles[room.extra_bed_count >= room?.extra_bed_capacity ? "dis_decin" : "decin"]}
-                                                                onClick={() => {
-                                                                    incDet(room, "ext_count");
-                                                                }}
-                                                            >
-                                                                +
-                                                            </div>
-                                                            <span>{room?.extra_bed_count}</span>
-                                                            <div
-                                                                className={styles[room?.extra_bed_count === 0 ? "dis_decin" : "decin"]}
-                                                                onClick={() => decDet(room?.id, "ext_count")}
-                                                            >
-                                                                -
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        className={`${styles["roomcountDet_bedcount"]} ${styles[room?.inf_count > 0 ? 'borderActive' : 'bordernoneActive']}`}>
-                                                        <p className={styles["bedtype"]}>تعداد نوزاد</p>
-                                                        <p className={styles["bedtypeprc"]}>
-                                                            {numberWithCommas(numberRounder(flight.inf_price))} تومان
-                                                        </p>
-                                                        <div
-                                                            className={styles["roomcountDet_bedcount_count"]}
-                                                        >
-                                                            <div
-                                                                className={styles[room?.inf_count >= room?.Adl_capacity ? "dis_decin" : "decin"]}
-                                                                onClick={() => incDet(room, "inf_count")}
-                                                            >
-                                                                +
-                                                            </div>
-                                                            <span>{room?.inf_count}</span>
-                                                            <div
-                                                                className={styles[room?.inf_count === 0 ? "dis_decin" : "decin"]}
-                                                                onClick={() => decDet(room?.id, "inf_count")}
-                                                            >
-                                                                -
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        className={`${styles["roomcountDet_bedcount"]} ${styles[room?.chd_count > 0 ? 'borderActive' : 'bordernoneActive']}`}>
-                                                        <p className={styles["bedtype"]}>تعداد کودک</p>
-                                                        <p className={styles["bedtypeprc"]}>
-                                                            {numberWithCommas(numberRounder(chdPrcGen(hotel?.rooms, flight, room?.room_type_id)))}{" "}
-                                                            تومان
-                                                        </p>
-                                                        <div
-                                                            className={styles["roomcountDet_bedcount_count"]}
-                                                        >
-                                                            <div
-                                                                className={styles[room?.chd_count >= room?.chd_capacity ? "dis_decin" : "decin"]}
-                                                                onClick={() => incDet(room, "chd_count")}
-                                                            >
-                                                                +
-                                                            </div>
-                                                            <span>{room?.chd_count}</span>
-                                                            <div
-                                                                className={styles[room?.chd_count === 0 ? "dis_decin" : "decin"]}
-                                                                onClick={() => decDet(room?.id, "chd_count")}
-                                                            >
-                                                                -
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>);
-                                    })}
-                                </motion.div>
-                            </AnimatePresence>) : null}
-                        </div>) : null) : dateDiffChecker(flightDateChecker(flight)?.checkin, flightDateChecker(flight)?.checkout, props?.night) ? (
-                        <div>
-                            <div className={styles["ticket_container"]}>
-                                <div className={styles["container"]}>
-                                    {isOpen === 0 ? null : isOpen === flight.id ? null : (<motion.div
-                                        className={styles["blur"]}
-                                        initial={{opacity: 0}}
-                                        animate={{opacity: 1}}
-                                        transition={{ease: "easeOut", duration: 0.4}}
-                                    ></motion.div>)}
-                                    <div className={styles["ticket"]}>
-                                        {/* ticketdet col2 */}
-                                        <div className={styles["ticket_flight"]}>
-                                            <div className={styles["flightDet_container"]}>
-                                                <div className={styles["flightDet"]}>
-                                                    <div className={styles["flightDet_title"]}>
-                                                        <p>پرواز رفت</p>
-                                                    </div>
-                                                    <div className={styles["flightDet_loc"]}>
-                                                        <p>
-                                                            {flight.origin_name} به {flight.destination_name}
-                                                        </p>
-                                                    </div>
-                                                    <div className={styles["flightDet_timedate"]}>
-                                                        <span>{flight.time.slice(0, 5)}</span>
-                                                        <span>و</span>
-                                                        <span>{MiladiToJalaliConvertor(flight.date)}</span>
-                                                    </div>
-                                                    <div className={styles["flightDet_hotelEnt"]}>
-                                                        <label htmlFor="">ورود به هتل :</label>
-                                                        <p>
-                                                            {flight.checkin_tomorrow ? MiladiToJalaliConvertorInc(flight.date) : MiladiToJalaliConvertor(flight.date)}
-                                                        </p>
-                                                    </div>
-                                                </div>
-
-                                                <div className={styles["flight_company"]}>
-                                                    <div className={styles["flight_company_logo"]}>
-                                                        <div className={styles["image_container"]}>
-                                                            <img src={flight?.airline_thumb?.url} alt=""/>
-                                                        </div>
-                                                        <p>{flight.airline_name}</p>
-                                                    </div>
-                                                    <div className={styles["flight_company_remaintour"]}>
-                                                        <p className={styles["p-middle"]}>
-                                                            تعداد موجودی پرواز :{flight.capacity}
-                                                        </p>
-                                                    </div>
-                                                    <div className={styles["flight_company_logo"]}>
-                                                        <div className={styles["image_container"]}>
-                                                            <img
-                                                                src={flight?.flight?.airline_thumb?.url}
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <p>{flight?.flight?.airline_name}</p>
-                                                    </div>
-                                                </div>
-
-                                                <div className={styles["flightDet"]}>
-                                                    <div className={styles["flightDet_title"]}>
-                                                        <p>پرواز برگشت</p>
-                                                    </div>
-                                                    <div className={styles["flightDet_loc"]}>
-                                                        <p>
-                                                            {flight?.flight?.origin_name} به{" "}
-                                                            {flight?.flight?.destination_name}
-                                                        </p>
-                                                    </div>
-                                                    <div className={styles["flightDet_timedate"]}>
-                                                        <span>{flight?.flight?.time.slice(0, 5)}</span>
-                                                        <span>و</span>
-                                                        <span>
-                                                             {MiladiToJalaliConvertor(flight?.flight?.date)}
-                                                        </span>
-                                                    </div>
-                                                    <div className={styles["flightDet_hotelEnt"]}>
-                                                        <label htmlFor="">خروج از هتل :</label>
-                                                        <p>
-                                                            {" "}
-                                                            {flight.checkout_yesterday === true ? MiladiToJalaliConvertorDec(flight?.flight?.date) : MiladiToJalaliConvertor(flight?.flight?.date)}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className={styles["roomDet_container"]}>
-                                                {hotel?.rooms?.map((room) => {
-                                                    return (
-
-                                                        <div>
-                                                            <div className={styles["roomDetcard"]}>
-                                                                <div className={styles["roomDetcard_roomnum"]}>
-                                                                    <label htmlFor="">{room?.room_type}</label>
-                                                                </div>
-                                                                <div className={styles["roomDetcard_price"]}>
-                                                                    <div>
-                                                                        <p style={{color: 'black'}}>قیمت :</p>
-                                                                        <p>
-                                                              <span className={styles['cost']}>
-                                                                 {numberWithCommas(numberRounder(roomPrcGen(room, flight)) )}
-                                                              </span>
-                                                                            تومان
-                                                                        </p>
-                                                                    </div>
-                                                                    <div
-                                                                        className={styles["roomDetcard_roomnum_indec"]}
-                                                                    >
-                                                                        <div
-                                                                            className={minAvRoom(room.rates) <= roomCounter(room.room_type_id) ? styles["dec-none"] : styles["in"]}
-                                                                            onClick={() => {
-                                                                                IncRoom(flight.id, room);
-                                                                            }}
-                                                                        >
-                                                                            +
-                                                                        </div>
-                                                                        <span>{roomCounter(room?.room_type_id)}</span>
-                                                                        <div
-                                                                            className={roomCounter(room.room_type_id) === 0 ? styles["dec-none"] : styles["dec"]}
-                                                                            onClick={() => {
-                                                                                decRoom(room.room_type_id);
-                                                                            }}
-                                                                        >
-                                                                            -
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-                                                            {flight.id === isOpen && individualRoomstypeFinder(selectedRoom, room.room_type_id).length > 0 ? (
-                                                                <motion.div
-                                                                    initial={{height: 0}}
-                                                                    animate={{height: "auto"}}
-                                                                    transition={{
-                                                                        type: "spring", stiffness: 100, duration: 0.5,
-                                                                    }}
-                                                                    className={styles["roomcountdet_roomnum"]}
-                                                                >
-                                                                    {individualRoomstypeFinder(selectedRoom, room.room_type_id).map((room) => {
-                                                                        return (<div
-                                                                            className={styles["roomcountDet_container"]}>
-                                                                            <div className={styles["roomcountDet"]}>
-                                                                                <div
-                                                                                    className={styles["roomcountDet_remove"]}
-                                                                                    onClick={() => {
-                                                                                        if (selectedRoom.length === 1) {
-                                                                                            removeRoom(room.id);
-                                                                                            setIsOpen(0);
-                                                                                        } else {
-                                                                                            removeRoom(room.id);
-                                                                                            setIsOpen(flight.id);
-                                                                                        }
-                                                                                    }}
-                                                                                >
-                                                                                    <svg
-                                                                                        data-name="Layer 1"
-                                                                                        height="150"
-                                                                                        id="Layer_1"
-                                                                                        viewBox="0 0 200 200"
-                                                                                        width="150"
-                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                    >
-                                                                                        <title/>
-                                                                                        <path
-                                                                                            fill="#e20000"
-                                                                                            d="M100,15a85,85,0,1,0,85,85A84.93,84.93,0,0,0,100,15Zm0,150a65,65,0,1,1,65-65A64.87,64.87,0,0,1,100,165Z"
-                                                                                        />
-                                                                                        <path
-                                                                                            fill="#e20000"
-                                                                                            d="M128.5,74a9.67,9.67,0,0,0-14,0L100,88.5l-14-14a9.9,9.9,0,0,0-14,14l14,14-14,14a9.9,9.9,0,0,0,14,14l14-14,14,14a9.9,9.9,0,0,0,14-14l-14-14,14-14A10.77,10.77,0,0,0,128.5,74Z"
-                                                                                        />
-                                                                                    </svg>
-                                                                                </div>
-                                                                                <div
-                                                                                    className={styles["roomcountDet_name"]}>
-                                                                                    <p>{room?.room_type}</p>
-                                                                                </div>
-                                                                                <div
-                                                                                    className={styles["roomcountDet_AdlCount"]}>
-                                                                                    <p>تعداد بزرگسال</p>
-                                                                                    <p>{room?.Adl_capacity}</p>
-                                                                                </div>
-
-                                                                                <div
-                                                                                    className={`${styles["roomcountDet_bedcount"]} ${styles[room?.extra_bed_count > 0 ? 'borderActive' : 'bordernoneActive']}`}>
-                                                                                    <p className={styles["bedtype"]}>
-                                                                                        تعداد تخت اضافه
-                                                                                    </p>
-                                                                                    <p className={styles["bedtypeprc"]}>
-                                                                                        {numberWithCommas(numberRounder(extBedPrcGen(hotel?.rooms, flight, room?.room_type_id)))}{" "}
-                                                                                        تومان
-                                                                                    </p>
-
-                                                                                    <div
-                                                                                        className={styles["roomcountDet_bedcount_count"]}
-
-
-                                                                                    >
-                                                                                        <div
-                                                                                            className={styles[room.extra_bed_count >= room?.extra_bed_capacity ? "dis_decin" : "decin"]}
-                                                                                            onClick={() => {
-                                                                                                incDet(room, "ext_count");
-                                                                                            }}
-                                                                                        >
-                                                                                            +
-                                                                                        </div>
-                                                                                        <span>{room?.extra_bed_count}</span>
-                                                                                        <div
-                                                                                            className={styles[room.extra_bed_count === 0 ? "dis_decin" : "decin"]}
-                                                                                            onClick={() => decDet(room.id, "ext_count")}
-                                                                                        >
-                                                                                            -
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    className={`${styles["roomcountDet_bedcount"]} ${styles[room?.inf_count > 0 ? 'borderActive' : 'bordernoneActive']}`}>
-                                                                                    <p className={styles["bedtype"]}>تعداد
-                                                                                        نوزاد</p>
-                                                                                    <p className={styles["bedtypeprc"]}>
-                                                                                        {numberWithCommas(numberRounder(flight?.inf_price))} تومان
-                                                                                    </p>
-                                                                                    <div
-                                                                                        className={styles["roomcountDet_bedcount_count"]}
-                                                                                    >
-                                                                                        <div
-                                                                                            className={styles[room?.inf_count >= room.Adl_capacity ? "dis_decin" : "decin"]}
-                                                                                            onClick={() => incDet(room, "inf_count")}
-                                                                                        >
-                                                                                            +
-                                                                                        </div>
-                                                                                        <span>{room?.inf_count}</span>
-                                                                                        <div
-                                                                                            className={styles[room?.inf_count === 0 ? "dis_decin" : "decin"]}
-                                                                                            onClick={() => decDet(room.id, "inf_count")}
-                                                                                        >
-                                                                                            -
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    className={`${styles["roomcountDet_bedcount"]} ${styles[room?.chd_count > 0 ? 'borderActive' : 'bordernoneActive']}`}>
-                                                                                    <p className={styles["bedtype"]}>تعداد
-                                                                                        کودک</p>
-                                                                                    <p className={styles["bedtypeprc"]}>
-                                                                                        {numberWithCommas(numberRounder(chdPrcGen(hotel.rooms, flight, room.room_type_id)))}{" "}
-                                                                                        تومان
-                                                                                    </p>
-                                                                                    <div
-                                                                                        className={styles["roomcountDet_bedcount_count"]}
-                                                                                    >
-                                                                                        <div
-                                                                                            className={styles[room?.chd_count >= room?.chd_capacity ? "dis_decin" : "decin"]}
-                                                                                            onClick={() => incDet(room, "chd_count")}
-                                                                                        >
-                                                                                            +
-                                                                                        </div>
-                                                                                        <span>{room?.chd_count}</span>
-                                                                                        <div
-                                                                                            className={styles[room.chd_count === 0 ? "dis_decin" : "decin"]}
-                                                                                            onClick={() => decDet(room.id, "chd_count")}
-                                                                                        >
-                                                                                            -
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>);
-                                                                    })}
-                                                                </motion.div>) : null}
-                                                        </div>);
-
-
-                                                })}
-                                            </div>
-                                        </div>
-                                        {/* reserve col 3 */}
-                                    </div>
-                                    <div className={styles["ticket_reserve"]}>
-
-                                        <div className={styles["ticket_reserve_price"]}>
-                                            <p className={styles["priceTitle"]}>قیمت برای هر نفر:</p>
-                                            <p>
-                                              <span>
-                                               {numberWithCommas(numberRounder(reservePrc(hotel.rooms, flight)))}
-                                              </span>
-                                                تومان
-                                            </p>
-                                        </div>
-
-                                        <div className={styles['btn-container']}>
-
-                                            {selectedRoom.length === 0 ? <small>
-                                                لطفا اتاق مورد نظر خود را انتخاب کنید.
-                                            </small> : null}
-                                            <button
+                                  {selectedRoom.map((room) => {
+                                    return (
+                                        <div className={styles["roomcountDet_container"]}>
+                                          <div className={styles["roomcountDet"]}>
+                                            <div
+                                                className={styles["roomcountDet_remove"]}
                                                 onClick={() => {
-                                                    tourReserve(flight?.checkin_tomorrow, flight?.checkout_yesterday, flight?.date, flight?.flight?.date, flight.id, hotel.id)
+                                                  if (selectedRoom.length === 1) {
+                                                    removeRoom(room.id);
+                                                    setIsOpen(0);
+                                                  } else {
+                                                    removeRoom(room.id);
+                                                    setIsOpen(flight.id);
+                                                  }
                                                 }}
-                                                className={`${selectedRoom.length === 0 ? styles["ticket_reserve_btn"] : styles["ticket_reserve_btn_active"]}`}
                                             >
-                                                رزرو تور
-                                            </button>
-                                        </div>
+                                              <svg
+                                                  data-name="Layer 1"
+                                                  height="150"
+                                                  id="Layer_1"
+                                                  viewBox="0 0 200 200"
+                                                  width="150"
+                                                  xmlns="http://www.w3.org/2000/svg"
+                                              >
+                                                <title/>
+                                                <path
+                                                    fill="#e20000"
+                                                    d="M100,15a85,85,0,1,0,85,85A84.93,84.93,0,0,0,100,15Zm0,150a65,65,0,1,1,65-65A64.87,64.87,0,0,1,100,165Z"
+                                                />
+                                                <path
+                                                    fill="#e20000"
+                                                    d="M128.5,74a9.67,9.67,0,0,0-14,0L100,88.5l-14-14a9.9,9.9,0,0,0-14,14l14,14-14,14a9.9,9.9,0,0,0,14,14l14-14,14,14a9.9,9.9,0,0,0,14-14l-14-14,14-14A10.77,10.77,0,0,0,128.5,74Z"
+                                                />
+                                              </svg>
+                                            </div>
+                                            <div className={styles["roomcountDet_name"]}>
+                                              <p>{room?.room_type}</p>
+                                            </div>
+                                            <div
+                                                className={styles["roomcountDet_AdlCount"]}
+                                            >
+                                              <p>تعداد بزرگسال</p>
+                                              <p>{room?.Adl_capacity}</p>
+                                            </div>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>) : null;
-                }) : (<Shimmers/>)}
+                                            <div
+                                                className={`${
+                                                    styles["roomcountDet_bedcount"]
+                                                } ${
+                                                    styles[
+                                                        room?.extra_bed_count > 0
+                                                            ? "borderActive"
+                                                            : "bordernoneActive"
+                                                        ]
+                                                }`}
+                                            >
+                                              <p className={styles["bedtype"]}>
+                                                تعداد تخت اضافه
+                                              </p>
+                                              <p className={styles["bedtypeprc"]}>
+                                                {numberWithCommas(
+                                                    numberRounder(
+                                                        extBedPrcGen(
+                                                            hotel?.rooms,
+                                                            flight,
+                                                            room?.room_type_id
+                                                        )
+                                                    )
+                                                )}{" "}
+                                                تومان
+                                              </p>
+
+                                              <div
+                                                  className={
+                                                    styles["roomcountDet_bedcount_count"]
+                                                  }
+                                              >
+                                                <div
+                                                    className={
+                                                      styles[
+                                                          room.extra_bed_count >=
+                                                          room?.extra_bed_capacity
+                                                              ? "dis_decin"
+                                                              : "decin"
+                                                          ]
+                                                    }
+                                                    onClick={() => {
+                                                      incDet1(room, "ext_count");
+                                                    }}
+                                                >
+                                                  +
+                                                </div>
+                                                <span>{room?.extra_bed_count}</span>
+                                                <div
+                                                    className={
+                                                      styles[
+                                                          room?.extra_bed_count === 0
+                                                              ? "dis_decin"
+                                                              : "decin"
+                                                          ]
+                                                    }
+                                                    onClick={() =>
+                                                        decDet1(room?.id, "ext_count")
+                                                    }
+                                                >
+                                                  -
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div
+                                                className={`${
+                                                    styles["roomcountDet_bedcount"]
+                                                } ${
+                                                    styles[
+                                                        room?.inf_count > 0
+                                                            ? "borderActive"
+                                                            : "bordernoneActive"
+                                                        ]
+                                                }`}
+                                            >
+                                              <p className={styles["bedtype"]}>
+                                                تعداد نوزاد
+                                              </p>
+                                              <p className={styles["bedtypeprc"]}>
+                                                {numberWithCommas(
+                                                    numberRounder(flight.inf_price)
+                                                )}{" "}
+                                                تومان
+                                              </p>
+                                              <div
+                                                  className={
+                                                    styles["roomcountDet_bedcount_count"]
+                                                  }
+                                              >
+                                                <div
+                                                    className={
+                                                      styles[
+                                                          room?.inf_count >= room?.Adl_capacity
+                                                              ? "dis_decin"
+                                                              : "decin"
+                                                          ]
+                                                    }
+                                                    onClick={() => incDet1(room, "inf_count")}
+                                                >
+                                                  +
+                                                </div>
+                                                <span>{room?.inf_count}</span>
+                                                <div
+                                                    className={
+                                                      styles[
+                                                          room?.inf_count === 0
+                                                              ? "dis_decin"
+                                                              : "decin"
+                                                          ]
+                                                    }
+                                                    onClick={() =>
+                                                        decDet1(room?.id, "inf_count")
+                                                    }
+                                                >
+                                                  -
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div
+                                                className={`${
+                                                    styles["roomcountDet_bedcount"]
+                                                } ${
+                                                    styles[
+                                                        room?.chd_count > 0
+                                                            ? "borderActive"
+                                                            : "bordernoneActive"
+                                                        ]
+                                                }`}
+                                            >
+                                              <p className={styles["bedtype"]}>
+                                                تعداد کودک
+                                              </p>
+                                              <p className={styles["bedtypeprc"]}>
+                                                {numberWithCommas(
+                                                    numberRounder(
+                                                        chdPrcGen(
+                                                            hotel?.rooms,
+                                                            flight,
+                                                            room?.room_type_id
+                                                        )
+                                                    )
+                                                )}{" "}
+                                                تومان
+                                              </p>
+                                              <div
+                                                  className={
+                                                    styles["roomcountDet_bedcount_count"]
+                                                  }
+                                              >
+                                                <div
+                                                    className={
+                                                      styles[
+                                                          room?.chd_count >= room?.chd_capacity
+                                                              ? "dis_decin"
+                                                              : "decin"
+                                                          ]
+                                                    }
+                                                    onClick={() => incDet1(room, "chd_count")}
+                                                >
+                                                  +
+                                                </div>
+                                                <span>{room?.chd_count}</span>
+                                                <div
+                                                    className={
+                                                      styles[
+                                                          room?.chd_count === 0
+                                                              ? "dis_decin"
+                                                              : "decin"
+                                                          ]
+                                                    }
+                                                    onClick={() =>
+                                                        decDet1(room?.id, "chd_count")
+                                                    }
+                                                >
+                                                  -
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    );
+                                  })}
+                                </motion.div>
+                              </AnimatePresence>
+                          ) : null}
+                        </div>
+                    ) : null
+                ) : dateDiffChecker(
+                    flightDateChecker(flight)?.checkin,
+                    flightDateChecker(flight)?.checkout,
+                    props?.night
+                ) ? (
+                    <AvailableFlightMobile
+                        isOpen={isOpen}
+                        flight={flight}
+                        night={props?.night}
+                        hotel={hotel}
+                        selectedRoom={selectedRoom}
+                        setSelectedRoom={(val) => setSelectedRoom(val)}
+                        setIsOpen={val => setIsOpen(val)}
+                    />
+                ) : null;
+              })
+          ) : (
+              <Shimmers/>
+          )}
         </div>
-    </>);
+
+        {
+            showInMap && <MapPopUpComponent setShowInMap={(val)=>setShowInMap(val)}/>
+        }
+
+      </>
+  );
 };
 
 export default AvailableFlightBasedonSelectedTour;

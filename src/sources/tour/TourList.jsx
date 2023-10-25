@@ -27,7 +27,7 @@ const TourList = (props) => {
         console.log(data)
     },[data])
     return (
-        <div className="mt-5">
+        <div>
             <Scrolltoprefresh/>
             <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-4 col-12">
                 <div className="d-flex align-items-center justify-content-between">

@@ -28,8 +28,11 @@ import NewLoader from "./subComponents/NewLoader";
 
 const TourSearchBox = (props) => {
 
+
+
     const router = useRouter();
     const [width, setWidth] = useState();
+    const [isNight,setIsNight]=useState(false)
     const [citiesData, setCitiesData] = useState({
         origin: {},
         destination: {},
@@ -43,7 +46,8 @@ const TourSearchBox = (props) => {
     const [nights, setNights] = useState([]);
     const [inputSearchDest,setInputSearchDest]=useState('')
     const [inputSearchOrg,setInputSearchOrg]=useState('')
-    const [prevDest,setPrevDest]=useState({})
+    const [isDate,setIsDate]=useState(false)
+// const [prevDest,setPrevDest]=useState({})
     const getDestandOrgCities = () => {
         axios
             .post("https://hotelobilit-api.iran.liara.run/api/v1/cities", {
@@ -134,15 +138,7 @@ const TourSearchBox = (props) => {
         searchReset: false,
     });
 
-    const handleChangeCre = (event) => {
-        const {name, value} = event.target;
 
-        if (name == "sourceName") {
-            setState({...state, searchTermSource: value});
-        } else {
-            setState({...state, searchTermDestination: value});
-        }
-    };
     const [list, setList] = useState({});
     const handleFocusOut = (event) => {
         // console.log(list);
@@ -183,31 +179,78 @@ const TourSearchBox = (props) => {
 
 
 
-    const validation = () => {
+    useEffect(()=>{
+        console.log(isDate)
+    },[isDate])
+    const validation = (valinputType) => {
         const {
             destandorgcities: {origin, destination, date, night},
         } = props;
-        if (!origin.code) {
+
+        // let obj ={
+        //     org:origin,
+        //     dest:destination,
+        //     date:date,
+        //     night:night
+        // }
+
+
+
+        if (!origin.code || !destination.code || date === {} || (!date.miladiDate && !date.persianDate) ||!night) {
+            if (!night) {
+                // debugger
+                Err('لطفا مدت اقامت را وارد کنید')
+                setIsNight(true)
+                return false;
+            }else{
+                setIsNight(false)
+            }
+
             return false;
         }
 
-        if (!destination.code) {
-            return false;
-        }
-        if (date === {} || (!date.miladiDate && !date.persianDate)) {
-            return false;
-        }
-        if (!night) {
-            return false;
-        }
+
+
+        // if (!destination.code) {
+        //     return false;
+        // }
+        // if (date === {} || (!date.miladiDate && !date.persianDate)) {
+        //     setIsDate(true)
+        //     return false;
+        // }else{
+        //     setIsDate(false)
+        // }
+        // if (!night) {
+        //     debugger
+        //     Err('لطفا مدت اقامت را وارد کنید')
+        //     setIsNight(true)
+        //     return false;
+        // }else{
+        //     setIsNight(false)
+        //
+        // }
+
         return true;
     };
+
+    const valid2=()=>{
+        const {
+            destandorgcities: {date},
+        } = props;
+        if (!date.persianDate) {
+            Err('لطفا تاریخ را وارد کنید')
+            setIsDate(true)
+            return false;
+        }else{
+            setIsDate(false)
+        }
+    }
 
     return (
         <>
             <NotifAlert/>
             <div className={styles["home-flight-form"]} >
-                <div style={{position: "relative"}} className={styles['flight-container']}>
+                <div style={{position: "relative"}} >
                     <Scrolltoprefresh/>
                     <div
                         className={` form-input-border  ${styles["form-input-border-private"]} `}
@@ -279,7 +322,7 @@ const TourSearchBox = (props) => {
 
                 <div >
                     <div
-                        className={` form-input-border  ${styles["form-input-border-private"]} ${styles['flight-container']} `}
+                        className={` form-input-border  ${styles["form-input-border-private"]}  `}
                     >
                         {" "}
 
@@ -353,7 +396,7 @@ const TourSearchBox = (props) => {
                 </div>
 
                 <div
-                    className={` form-input-border  ${styles["form-input-border-private"]} ${styles['flight-container']}`}
+                    className={` form-input-border  ${styles["form-input-border-private"]}  ${(isDate  && !props.destandorgcities.date.persianDate) && 'select-custom1'}`}
                 >
                     <i
                         className="bilitja icon-calendar form-input-icon-larger "
@@ -363,6 +406,7 @@ const TourSearchBox = (props) => {
                         placeholder={" تاریخ پرواز رفت"}
                         readOnly="true"
                         value={props.destandorgcities.date.persianDate}
+
                         onClick={(e) => {
                             e.preventDefault();
                             if(dateAndNight.length===0) {
@@ -371,37 +415,44 @@ const TourSearchBox = (props) => {
                                 managePopUpCalendar(true);
                             }
                         }}
-
                     />
                 </div>
-                <div style={{padding: ".5rem 0"}} className={styles['flight-container']}>
+                <div style={{padding: ".5rem 0"}} >
                     <DropdownComponent
                         nights={nights}
                         setNight={(value) => props.setNightNumber(value)}
                         night={props?.night}
+                        valid={()=>validation()}
+                        isNight={isNight}
                     />
                 </div>
-                <div  className={`without-focus ${styles['flight-container']}`}>
+                <div  className={`without-focus`}>
                     <PrimaryButton
                         style={{height: "55px", marginTop: "9px", borderRadius: "10px"}}
                         value={props.searchReset == false ? "جستجو" : "لطفا صبر کنید..."}
-                        onClick={(e) => {
-                            if (validation() === false) {
-                                Err("لطفا اطلاعات را کامل وارد کنید");
 
+                        onClick={(e) => {
+                            valid2()
+                            if (validation() === false ) {
+                                Err("لطفا اطلاعات را کامل وارد کنید");
                             } else {
                                 e.preventDefault();
                                 const stDate = jalaliDateReformater(
                                     props.destandorgcities.date.persianDate
                                 );
                                 // debugger;
-                                console.log(props?.destandorgcities?.night[0]);
+                                // console.log(props?.destandorgcities?.night[0]);
+
                                 router.push(
-                                    `/tour/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities?.night}`
+                                    `/tour/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities?.night}&fasrc=${props.destandorgcities.origin.name}&fadest=${props.destandorgcities.destination.name}`
                                 );
                                 props.setLoader(true)
                             }
+
+
                         }}
+
+
                     >
                         {"جستجو"}
                     </PrimaryButton>

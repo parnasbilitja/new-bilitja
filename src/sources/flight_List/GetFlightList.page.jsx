@@ -13,7 +13,10 @@ import styles from "../../../styles/Flight.module.scss";
 import globals from "../Global";
 
 import { connect } from "react-redux";
-import { selectSearchObject } from "../../Redux/Search/search.reselect";
+import {
+  selectCredentials,
+  selectSearchObject,
+} from "../../Redux/Search/search.reselect";
 import { selectAirports } from "../../Redux/Airports/airport.reselect";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { addFilters, addCredentials } from "../../Redux/Search/search.action";
@@ -98,7 +101,7 @@ class GetFlightList extends React.Component {
   }
   componentDidUpdate() {
     const pathquery = this.props.router.asPath;
-    console.log("props all", this.props);
+    console.log("props all", this.props.credentials);
     console.log("searchonj", this.props.searchobject);
     const path = pathquery.split("#")[0];
     const src = decodeURI(path.split("/")[2]).split("-to-")[0];
@@ -606,8 +609,10 @@ class GetFlightList extends React.Component {
               <div className="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-12 padding-5px">
                 {/* <FutureDays refreshAction={this.getData}  /> */}
                 {this.state.loading ? (
-                  <div className="mt-4">
-                    <NewLoader />
+                  <div className="mt-5 d-flex h-50 justify-content-center align-items-center">
+                    <NewLoader
+                      title={`همنواز در حال یافتن بهترین پرواز از ${this.props.credentials.sourceName} به ${this.props.credentials.destinationName} در تاریخ ${this.props.credentials.flightDatePersian} است...`}
+                    />
                   </div>
                 ) : this.state.flights != null ? (
                   <div>
@@ -617,6 +622,12 @@ class GetFlightList extends React.Component {
                         <ShowFlightListMobile
                           setReserveBoxData={this.setReserveBoxData}
                           flightList={this.state.flights}
+                          search={() => this.managePopUpSearch(true)}
+                          filter={() =>
+                            this.setState({
+                              slide: true,
+                            })
+                          }
                         />
                       </div>
                     ) : null}
@@ -634,7 +645,7 @@ class GetFlightList extends React.Component {
                   <>
                     <p style={{ marginTop: 40 }} className="text-center mx-3">
                       متاسفانه هیچ پروازی از{" "}
-                      <strong className="text-danger">
+                      <strong style={{ color: "#e20000" }}>
                         {
                           this.props.airports.find(
                             (x) => x.airportNameEn == src
@@ -642,7 +653,7 @@ class GetFlightList extends React.Component {
                         }
                       </strong>{" "}
                       <strong>به </strong>
-                      <strong className="text-danger">
+                      <strong style={{ color: "#e20000" }}>
                         {
                           this.props.airports.find(
                             (x) => x.airportNameEn == dest
@@ -679,27 +690,39 @@ class GetFlightList extends React.Component {
 
         <PopUp opened={this.state.open} closePopUp={this.managePopUpSearch}>
           <div className="popup-content-container">
-            <div className="popup-heading d-flex align-items-center justify-content-between">
+            <div className="popup-heading d-flex align-items-center justify-content-between my-2">
               <span>جستجو مجدد</span>
               <span
-                className="exit-form"
+                className="closeBtn"
                 onClick={() => {
                   this.managePopUpSearch(false);
                 }}
               >
                 <div
-                  style={{ color: "red" }}
+                  style={{ color: "#e20000" }}
                   className="font-bold font-size-15"
                 >
-                  x
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 30 30"
+                    fill="#e20000"
+                  >
+                    <path d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"></path>
+                  </svg>
                 </div>
               </span>
             </div>
-            <FlightSearchBox
-              showSwitch={true}
-              refreshAction={this.getData}
-              length={this.state.flights}
-            />
+            <div className="flight">
+              <FlightSearchBox
+                showSwitch={true}
+                refreshAction={this.getData}
+                length={this.state.flights}
+              />
+            </div>
           </div>
         </PopUp>
 
@@ -718,7 +741,7 @@ class GetFlightList extends React.Component {
                   }}
                 >
                   <div
-                    style={{ color: "red" }}
+                    style={{ color: "#2083b9" }}
                     className="font-bold font-size-15"
                   >
                     x
@@ -750,7 +773,7 @@ class GetFlightList extends React.Component {
           />
         </SlideIn>
 
-        <div className={styles["visible-xs-flight-footer"]}>
+        {/* <div className={styles["visible-xs-flight-footer"]}>
           <div
             onClick={() => {
               this.setState({
@@ -799,7 +822,7 @@ class GetFlightList extends React.Component {
             <FontAwesomeIcon icon={faHome} />
             <p>خانه</p>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
@@ -807,6 +830,7 @@ class GetFlightList extends React.Component {
 const mapStatesToProps = (state) => ({
   searchobject: selectSearchObject(state),
   airports: selectAirports(state),
+  credentials: selectCredentials(state),
 });
 
 const mapDispatchesToProps = (dispatch) => ({

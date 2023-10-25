@@ -1,13 +1,15 @@
 $time-color: #646464;
 $black: #00001f;
+$costColor: #e20000;
 
 
 .p-body {
-  // padding: 0 .5rem 0 .5rem;
+  //padding: 0 2.5rem 0 2.5rem;
 
   .prs-responsive {
     max-width: 1366px;
     margin: 0 auto;
+
 
 
     .main-reserve {
@@ -67,7 +69,7 @@ $black: #00001f;
                 }
 
                 .price {
-                  color: #e20000;
+                  color: $costColor;
                   P {
                     margin: 0;
                     font-size: 14px;
@@ -139,7 +141,7 @@ $black: #00001f;
 
                   span {
                     font-weight: bolder;
-                    color: #e20000;
+                    color: #137cb6;
                     font-size: 1rem;
                     margin-left: 5px;
                   }
@@ -163,16 +165,16 @@ $black: #00001f;
                 width: 135px;
                 height: 50px;
                 border-radius: 10px;
-                background-color:#e20000;
+                background-color:$costColor;
                 font-size: 14px;
                 font-weight: 900;
                 color: white;
               }
 
               p {
-                color: #e20000;
+                color: #137cb6;
                 font-size: .8rem;
-                border-bottom: 1px dashed #e20000;
+                border-bottom: 1px dashed #137cb6;
                 cursor: pointer;
               }
             }
@@ -278,7 +280,7 @@ $black: #00001f;
 
       .box-top-box-reserve {
 
-        padding: 1rem 4rem;
+        padding: 1rem 2rem;
         width: 100%;
         border-radius: 8px;
 
@@ -314,7 +316,7 @@ $black: #00001f;
             display: flex;
             flex-direction: column;
             align-items: start;
-            color: red;
+            color: #137cb6;
 
             font-size: 15px;
 
@@ -429,8 +431,9 @@ $black: #00001f;
           }
 
           span{
-            color: red;
+            color: #137cb6;
             margin: 0 .5rem;
+            font-weight: 600;
           }
         }
 
@@ -468,11 +471,18 @@ $black: #00001f;
 
 
 
+
+
+
 }
 
 
 
 @media only screen and (max-width: 868px) {
+
+  .box-top-box-reserve{
+    padding: 1rem 0 !important;
+  }
   .tourDet-container {
     flex-direction: column !important;
     padding-left: 0 !important;
@@ -490,7 +500,7 @@ $black: #00001f;
     .ent-ext_container {
       width: 100% !important;
       margin-top: 1rem;
-      transform: translateX(0px);
+      transform: translateX(0px) !important;
 
       .entext {
         width: 50% !important;
@@ -535,19 +545,22 @@ $black: #00001f;
 
   .box-fix-user-reservation {
     height: auto !important;
-    padding: 12px !important;
+    padding: 10px !important;
 
     .p-detail-reservation {
-      grid-template-columns: 1fr !important;
+
+      //grid-template-columns: 1fr !important;
 
       .priceDet_container {
         width: 100% !important;
 
+
         .priceDet {
           width: 100% !important;
           justify-content: space-between !important;
-
+          display: block !important;
           .price {
+            margin-top: 5px;
             p {
               font-size: 15px !important;
             }

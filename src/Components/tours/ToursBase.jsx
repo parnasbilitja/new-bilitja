@@ -18,7 +18,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import SearchBox from "../../sources/tour/SearchBox";
 import router, { withRouter } from "next/router";
-import { connect } from "react-redux";
+import {connect, useDispatch, useSelector} from "react-redux";
 import {
   setDestLoc,
   setFlightDate,
@@ -26,6 +26,7 @@ import {
   setOrgLoc,
 } from "../../Redux/newTours/Action";
 import TourSearchBox from "../NewTours/Components/TourSearchBox";
+import {fetchOfferdTour} from "../../Redux/OfferdTours/Action";
 // const TourSearchBox = dynamic(() =>
 //   import("../NewTours/Components/TourSearchBox")
 // );
@@ -78,14 +79,48 @@ const ToursBase = (props) => {
       miladiDate: "",
     });
     props.setNightNumber("");
-
-
     toursHandler()
+  }, [router]);
+
+
+  const [data, setData] = useState([])
+  let getData = useSelector(state => state.DataReducer)
+  const dispatch=useDispatch()
+
+
+  useEffect(() => {
+    if (getData?.data?.length<1) {
+      dispatch(fetchOfferdTour())
+    }
+    // callData();
+    setData(getData)
+
+    // setWidth(window.innerWidth)
+  }, [])
+
+  useEffect(() => {
+    if (data.length<1) {
+      setData(getData.data)
+    }
+  },[getData])
+
+  const [widthMobi, setWidthMobi] = useState(
+      typeof window !== "undefined" && getWindowSize()
+  );
+  function getWindowSize() {
+    const { innerWidth } = window;
+    return innerWidth;
+  }
+  useEffect(() => {
+    function handleWindowResize() {
+      setWidthMobi(getWindowSize());
+    }
+    window.addEventListener("resize", handleWindowResize);
   }, []);
   return (
       <div className={""}>
         <Head>
-          <title>بلیطجا | لیست تورها</title>
+          <title>همنواز | لیست تورها</title>
         </Head>
         <NavHandler />
         <div
@@ -112,7 +147,7 @@ const ToursBase = (props) => {
               <div className={`col-md-10 ${styles["width-mobile-search"]}`}>
                 {/* switch between tours type */}
                 <div
-                    className={`d-flex justify-content-between ${styles["checkboxs_container"]} ${styles["w-100-mobi"]}`}
+                    className={`d-flex ${styles["checkboxs_container"]} ${styles["w-100-mobi"]}`}
                 >
                   <div className={styles["check"]}>
                     <input
@@ -159,8 +194,9 @@ const ToursBase = (props) => {
                       />
                     </div>
                 ) : (
-
-                    <TourSearchBox />
+                    <div className={styles['flight-container']}>
+                      <TourSearchBox />
+                    </div>
                 )}
               </div>
               <div>
@@ -183,7 +219,7 @@ const ToursBase = (props) => {
           </div>
         </div>
         <div className="col-md-10 m-auto px-3 padd">
-          <OfferdTours />
+          <OfferdTours data={data}/>
           <div id="list">
             <List ref={myRef} tourData={tourData} city={state.city} />
           </div>

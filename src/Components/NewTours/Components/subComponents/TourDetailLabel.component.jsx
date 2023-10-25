@@ -28,15 +28,15 @@ const TourDetailLabel = ({ flightDet, stayCount,gallary }) => {
 
 
         <div className="detail-tour col-xl-12 col-lg-12 col-12 d-flex flex-wrap justify-content-between border-bottom py-4">
-            <div className="right col-xl-5 col-lg-5 col-12">
-                <div className="gallery-image">
-                    <div className="image">
-                        {gallary ?
-                            <Slider data={gallary&&handleGallary(gallary)} />
-                            :<NewLoader/>}
-                    </div>
-                </div>
-            </div>
+            {/*<div className="right col-xl-5 col-lg-5 col-12">*/}
+            {/*    <div className="gallery-image">*/}
+            {/*        <div className="image">*/}
+            {/*            {gallary ?*/}
+            {/*                <Slider data={gallary&&handleGallary(gallary)} />*/}
+            {/*                :<NewLoader/>}*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
             <div className="left position-relative col-xl-7 col-lg-7 col-12 " style={{height:'50% !important'}}>
                 <div className="vertical-data" style={{ display: "none" }}></div>
                 <div className="p-info__tour mr-0 d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3">
