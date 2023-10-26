@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some huge changes were transfered from hamnavaz to BILITJA">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Dropdown.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Dropdown.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/share/NavHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/share/NavHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_document.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/NavBarMobile.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/NavBarMobile.component.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,7 +204,7 @@
       <workItem from="1697968250142" duration="584000" />
       <workItem from="1697974459643" duration="292000" />
       <workItem from="1697974862808" duration="155000" />
-      <workItem from="1698214657698" duration="21995000" />
+      <workItem from="1698214657698" duration="22292000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -385,14 +374,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00108" summary="some changes were applied due to hamnavaz reconciling">
-      <option name="closed" value="true" />
-      <created>1696486913462</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1696486913462</updated>
-    </task>
     <task id="LOCAL-00109" summary="some changes were applied due to hamnavaz reconciling">
       <option name="closed" value="true" />
       <created>1696487021315</created>
@@ -553,7 +534,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698224534449</updated>
     </task>
-    <option name="localTasksCounter" value="129" />
+    <task id="LOCAL-00129" summary="some changes">
+      <option name="closed" value="true" />
+      <created>1698240608783</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1698240608783</updated>
+    </task>
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +562,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some changes in tourbase(packagetour-tor),suggestion searchtourbox,availablehotel background white, reservation button , reservationcomfirmation have been applied" />
     <MESSAGE value="some changes have been applied" />
     <MESSAGE value="new api(v2) for tour was connected to project" />
     <MESSAGE value="CountDownTimer has been added to reservation page due to bound time for reserver inorder to set passengers data" />
@@ -598,7 +586,8 @@
     <MESSAGE value="contactus+aboutus pages have been deployed" />
     <MESSAGE value="some changes have been deployed===&gt;price rounder tour(reservation &amp; comfimation)" />
     <MESSAGE value="some huge changes were transfered from hamnavaz to BILITJA" />
-    <option name="LAST_COMMIT_MESSAGE" value="some huge changes were transfered from hamnavaz to BILITJA" />
+    <MESSAGE value="some changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

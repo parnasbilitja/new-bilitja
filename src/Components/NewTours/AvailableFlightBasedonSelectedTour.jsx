@@ -412,6 +412,28 @@ const AvailableFlightBasedonSelectedTour = (props) => {
     }
   };
 
+  const AllSelectedPassengerNumber = () => {
+    // debugger
+    let allPassCounts = [];
+
+    selectedRoom.map((room) =>
+        allPassCounts.push({
+          Adl_capacity: room?.Adl_capacity,
+          extra_bed_count: room.extra_bed_count,
+          inf_count: room.inf_count,
+          chd_count: room.chd_count
+        })
+    );
+
+    let allpassvalue = [];
+    allPassCounts.map((pass) => {
+      let passvalue = Object.values(pass);
+      allpassvalue.push(...passvalue);
+    });
+
+    return allpassvalue.reduce((accumulator, pass) => accumulator + pass, 0);
+  };
+
 
   return (
       <>
@@ -800,7 +822,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                               : styles["ticket_reserve_btn_active"]
                                       }`}
                                   >
-                                    رزرو تور
+                                    {`رزرو تور برای ${AllSelectedPassengerNumber()} رزرو`}
                                   </button>
                                 </div>
                               </div>
