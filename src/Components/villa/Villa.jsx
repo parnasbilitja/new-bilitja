@@ -8,12 +8,13 @@ import NavBarMobileComponent from '../../sources/component/NavBarMobile.componen
 import Vilalistitem from '../../sources/villa/Vilalistitem';
 import VillaPage from '../../sources/villa/villa.page';
 import VillaReceiptPage from '../../sources/villa/villaReceipt.page';
+import NavHandler from "../share/NavHandler";
 
 const Villa = (props) => {
-    const [width, setWidth] = useState(0)
-    useEffect(() => {
-        setWidth(window.innerWidth)
-    },[])
+    // const [width, setWidth] = useState(0)
+    // useEffect(() => {
+    //     setWidth(window.innerWidth)
+    // },[])
     const [type, setType] = useState(4) 
 
     const mainRouter = (pathName) => {
@@ -80,9 +81,10 @@ const Villa = (props) => {
     }
     return (
         <>
-         {width <= 826 ? <NavBarMobileComponent /> : null}
-        {width >= 826 ? <NavBarComponent /> : null}
-        <div className={width <= 826 ? "mt-100" : "mt-90"}>
+        {/* {width <= 826 ? <NavBarMobileComponent /> : null}*/}
+        {/*{width >= 826 ? <NavBarComponent /> : null}*/}
+            <NavHandler/>
+        <div className="mt-90">
         
           {
             mainRouter(props.router.asPath)

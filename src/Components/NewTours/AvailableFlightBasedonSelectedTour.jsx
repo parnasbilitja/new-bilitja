@@ -822,7 +822,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                               : styles["ticket_reserve_btn_active"]
                                       }`}
                                   >
-                                    {`رزرو تور برای ${AllSelectedPassengerNumber()} رزرو`}
+                                    {`رزرو تور برای ${AllSelectedPassengerNumber()} رزر`}
                                   </button>
                                 </div>
                               </div>
