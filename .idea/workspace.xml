@@ -7,7 +7,14 @@
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="add passcount AvailableFlightBasedonSelectedTour.jsx(desktop)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/villa/Villa.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/villa/Villa.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/AvailableHotel1.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/AvailableHotel1.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/home/Base.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/Base.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/Map.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Map.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightListMobile.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightListMobile.component.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +216,9 @@
       <workItem from="1697974459643" duration="292000" />
       <workItem from="1697974862808" duration="155000" />
       <workItem from="1698214657698" duration="22292000" />
-      <workItem from="1698299385077" duration="512000" />
+      <workItem from="1698299385077" duration="1233000" />
+      <workItem from="1699355653843" duration="2385000" />
+      <workItem from="1700057700921" duration="112000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -379,14 +388,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00110" summary="some changes were applied due to hamnavaz reconciling">
-      <option name="closed" value="true" />
-      <created>1696490403214</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1696490403214</updated>
-    </task>
     <task id="LOCAL-00111" summary="some changes were applied due to hamnavaz reconciling">
       <option name="closed" value="true" />
       <created>1696491028053</created>
@@ -547,7 +548,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698299496401</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="add passcount AvailableFlightBasedonSelectedTour.jsx(desktop)">
+      <option name="closed" value="true" />
+      <created>1698299926219</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1698299926219</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

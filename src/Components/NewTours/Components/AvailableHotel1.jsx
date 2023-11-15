@@ -291,7 +291,7 @@ const AvailableHotel1 = () => {
                                 <div className={styles.content}>
                                     {searchData?.loader === true ? (
                                         <div className={styles["loader-container"]}>
-                                            <NewLoader title="همنواز در حال یافتن بهترین نتیجه طبق درخواست شماست...." />
+                                            <NewLoader title="بلیطجا در حال یافتن بهترین نتیجه طبق درخواست شماست...." />
                                         </div>
                                     ) : hotels?.length === 0 && searchData.loader === false ? (
                                         <div className={styles["err"]}>

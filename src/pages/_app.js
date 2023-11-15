@@ -53,10 +53,8 @@ function MyApp({ Component, pageProps }) {
 
   return (
       <Provider store={store} >
-        <title>خریداینترنتی بلیط ارزان هواپیما |همنواز| 021842799999</title>
+        <title>خریداینترنتی بلیط ارزان هواپیما |بلیطجا| 02184278</title>
         <link rel="canonical" href="https://hamnavaz.com/" />
-
-
 
         {Component.PageLayout ? (
             <Component.PageLayout>

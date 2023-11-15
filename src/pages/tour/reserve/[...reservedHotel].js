@@ -30,7 +30,7 @@ const ReservedHotel = () => {
       <NavHandler />
       <div style={{ paddingTop: "7rem"  }}>
           <Head>
-              <title>همنواز | تور</title>
+              <title>بلیطجا | تور</title>
           </Head>
         <Reservation hotelDet={hotelDet} stayCount={stayCount} ref_code={router?.query?.ref_code}/>
       </div>

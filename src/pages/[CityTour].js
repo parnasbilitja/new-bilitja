@@ -97,7 +97,7 @@ const CityTour = (props) => {
     return (
         <>
             <Head>
-                <title> تور {props.Pathname.CityTour.slice(4, props.Pathname.CityTour.length)} | همنواز </title>
+                <title> تور {props.Pathname.CityTour.slice(4, props.Pathname.CityTour.length)} | بلیطجا </title>
             </Head>
             <NavHandler/>
             <div className='mt-lg-5 margin-topsm-1rem'>

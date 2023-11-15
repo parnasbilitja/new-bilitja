@@ -185,7 +185,7 @@ class ShowFlightListMobile extends React.Component {
                           globals.website +
                           `Airlines/${oneFlight.airlineIataCode}.png?ver=1`
                         }
-                        alt="همنواز - لوگو ایرلاین"
+                        alt="بلیطجا - لوگو ایرلاین"
                       />
                       <span
                         className="font-bold-iransanse"

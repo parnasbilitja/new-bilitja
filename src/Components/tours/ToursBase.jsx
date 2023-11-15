@@ -120,7 +120,7 @@ const ToursBase = (props) => {
   return (
       <div className={""}>
         <Head>
-          <title>همنواز | لیست تورها</title>
+          <title>بلیطجا | لیست تورها</title>
         </Head>
         <NavHandler />
         <div
