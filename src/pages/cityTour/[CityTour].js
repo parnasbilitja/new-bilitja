@@ -15,7 +15,7 @@ import TourSearchBox from "../../Components/NewTours/Components/TourSearchBox";
 // import OfferdTours from "../../sources/tour/OfferdTours";
 import {fetchOfferdTour} from "../../Redux/OfferdTours/Action";
 import dynamic from "next/dynamic";
-import Menubar from "../../sources/component/Menubar";
+
 import styles from "../../../styles/Menubar.module.scss";
 const OfferdTours = dynamic(() => import("../../sources/tour/OfferdTours"));
 
