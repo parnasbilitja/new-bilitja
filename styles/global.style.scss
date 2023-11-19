@@ -1918,11 +1918,23 @@ $sizes: 100;
   }
 
   .gallery-image {
-    .image {
-      img {
-        height: 220px;
-      }
+    width: 100% !important;
+    height: 320px !important;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    overflow:hidden !important;
+
+
+
+
+    img {
+      //height: 220px;
+      height: 100%;
+      width: 100%;
+      border-radius: 20px;
+
     }
+
   }
 
   .p-info__tour {
@@ -3970,6 +3982,7 @@ p img {
 .title-custom {
   font-size: 18px;
   font-weight: 600;
+  color: #e20000;
 }
 
 .subtitle-custom {
@@ -4305,16 +4318,19 @@ p img {
   }
   .toursearch{
     display: block !important;
-    position: absolute;
-    bottom: 40px;
-    right: 20px;
-    width: 80px;
-    height: 80px;
-    background-color: #e20000;
-    color: white;
-    border-radius: 50%;
-    font-size: 12px;
-    z-index: 9999;
+    //position: absolute;
+    //bottom: 40px;
+    //right: 20px;
+    width: 100%;
+    border: 2px solid #e20000 ;
+    height: 40px;
+    background-color:white;
+    color: #e20000;
+    border-radius:10px;
+    font-size: 15px;
+    font-weight: 900;
+    //font-family: IranBold;
+    //z-index: 9999;
   }
 
   .hidestat{
@@ -4444,19 +4460,7 @@ p img {
   }
 }
 
-.toursearch{
-  display: none;
-  position: absolute;
-  bottom: 40px;
-  right: 20px;
-  width: 80px;
-  height: 80px;
-  background-color: #e20000;
-  color: white;
-  border-radius: 50%;
-  font-size: 12px;
-  z-index: 9999;
-}
+
 
 
 
@@ -4480,9 +4484,9 @@ p img {
     .close{
       width: 30px;
       height: 35px;
-      border: 1px solid #137cb6;
+      border: 1px solid #e20000;
       border-radius: 5px;
-      color: #137cb6;
+      color: #e20000;
       font-weight: 900;
       display: flex;
       justify-content: center;
@@ -4502,3 +4506,161 @@ p img {
   display: block;
 }
 
+.gallery-image {
+  width: 100% !important;
+  height: 320px !important;
+  border-radius: 20px;
+  padding-bottom: 10px;
+  overflow:hidden !important;
+
+
+
+
+  img {
+    //height: 220px;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+
+  }
+
+}
+
+
+.bedcount-container{
+
+  width: 100%;
+  padding: 1rem .5rem;
+  display: flex;
+  justify-content: center;
+  .bedcount {
+    height: auto;
+    display: flex;
+    align-items: center;
+    //width: 100%;
+    border: 1px solid #cecece;
+    border-radius: 20px;
+    // box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+
+    padding: 1rem ;
+
+    border-radius: 20px;
+
+    p {
+
+      margin-bottom: 0;
+      margin-top: .3rem;
+    }
+
+    .bedtype {
+      font-weight: 900;
+      font-size: 12.5px;
+    }
+
+    .bedtypeprc {
+      color: #e20000;
+      font-weight: 500;
+      font-size: 12px;
+    }
+
+    .passengercount:nth-child(2){
+      border-right: 1px solid #cecece;
+      border-left: 1px solid #cecece;
+    }
+
+    .passengercount{
+      //display: flex;
+      //justify-content: space-between;
+      //padding: 0 2.5rem;
+      //align-items: center;
+      margin-bottom: 10px;
+
+      width: 100%;
+      .count {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0  1rem 0 1rem;
+        //margin-top: .4rem;
+        p{
+          margin: 0 .5rem;
+        }
+        .decin {
+          font-size: 1rem;
+          width: 23px;
+          height: 23px;
+          border: 1px solid #e20000;
+          border-radius: 5px;
+          color: #e20000;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          align-self: start;
+
+        }
+
+        .dis_decin {
+          font-size: 1rem;
+          width: 23px;
+          height: 23px;
+          //border: 1px solid $containerColor2;
+          border-radius: 5px;
+          //color: $containerColor2;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: context-menu;
+        }
+      }
+    }
+
+  }
+}
+
+.fixed-info{
+  width: auto;
+  padding: 1rem;
+  height: auto;
+  background-color: #e20000;
+  color: white;
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 1000;
+  border-radius: 20px;
+  p{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+  }
+  a{
+    //pointer-events: none;
+    color: white;
+    font-size: 22px;
+    font-weight:900;
+    text-align: center !important;
+  }
+
+  .svganim{
+    animation: svganim .4s infinite;
+    //animation-delay: 10s !important;
+  }
+}
+
+.toursearch{
+  display: none;
+  //position: absolute;
+  //bottom: 40px;
+  //right: 20px;
+  width: 100%;
+  border: 2px solid #e20000 ;
+  height: 40px;
+  background-color:white;
+  color: #e20000;
+  border-radius: 10px;
+  //font-family: IranBold;
+  font-weight: 900;
+  font-size: 15px;
+  //z-index: 9999;
+}

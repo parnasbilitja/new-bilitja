@@ -575,8 +575,10 @@ const PassengerForm = (props) => {
                   <button
                       className="py-2 px-4"
                       onClick={() => setCalend(!calend)}
+                      style={{border: '2px solid #e20000', borderRadius: '20px'}}
                   >
-                    {calend ? "تقویم میلادی" : "تقویم شمسی"}
+
+                    {calend ? "تبدیل تقویم به میلادی" : "تبدیل تقویم به شمسی"}
                   </button>
                   <BirthDayParentCl
                       calend={calend}

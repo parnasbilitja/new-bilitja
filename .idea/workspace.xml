@@ -6,6 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/AvailableFlightMobile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/AvailableFlightMobile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BDCalenderMiladi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BDCalenderMiladi.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthDayParentCl.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthDayParentCl.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/home/Base.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/Base.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/modal/RequestTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/RequestTour.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/slider/Slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/slider/Slider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/newTour.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/newTour.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/[CityTour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/[CityTour].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +229,8 @@
       <workItem from="1698299385077" duration="1233000" />
       <workItem from="1699355653843" duration="2385000" />
       <workItem from="1700057700921" duration="257000" />
-      <workItem from="1700058010007" duration="150000" />
+      <workItem from="1700058010007" duration="607000" />
+      <workItem from="1700371980970" duration="7168000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -380,14 +400,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00112" summary="some changes were applied due to hamnavaz reconciling">
-      <option name="closed" value="true" />
-      <created>1696491339120</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1696491339120</updated>
-    </task>
     <task id="LOCAL-00113" summary="some changes were applied due to hamnavaz reconciling">
       <option name="closed" value="true" />
       <created>1696492355542</created>
@@ -548,7 +560,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700057865694</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL-00133" summary="add passcount AvailableFlightBasedonSelectedTour.jsx(desktop)">
+      <option name="closed" value="true" />
+      <created>1700058322924</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1700058322924</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

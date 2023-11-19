@@ -19,29 +19,30 @@ import { accountBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
 import HomeDet from "../../sources/newTour/HomeDet";
 
+
 const Base = (props) => {
     return (
         <div className={"mt-90"}>
-            {/*<NavHandler />*/}
+            <NavHandler />
             <Scrolltoprefresh/>
             <Head>
                 <title>بلیطجا | خرید بلیط هواپیما و رزرو اقامتگاه</title>
             </Head>
-            {/*<Home type={'index'} />*/}
-            {/*<div className="col-md-10 m-auto px-3 padd2">*/}
-            {/*  <List />*/}
-            {/*  <HotelsSuggest />*/}
-            {/*  <CitiesSuggest />*/}
-            {/*  <Posts/>*/}
-            {/*</div>*/}
-            {/*  <div className='padd2'>*/}
+            <Home type={'index'} />
+            <div className="col-md-10 m-auto px-3 padd2">
+              <List />
+              <HotelsSuggest />
+              <CitiesSuggest />
+              <Posts/>
+            </div>
+              <div className='padd2'>
 
-            {/*<TicketDetails/>*/}
-            {/*<MessageBox />*/}
-            {/*  </div>*/}
-            {/*<Footer />*/}
+            <TicketDetails/>
+            <MessageBox />
+              </div>
+            <Footer />
 
-            <HomeDet/>
+
             <HeadSeo props={props} pathName={props.router.asPath} />
         </div>
     );

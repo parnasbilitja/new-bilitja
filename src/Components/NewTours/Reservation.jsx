@@ -9,7 +9,9 @@ import {
     passengerObjModelGen,
     roomNameChecker,
     startBuilder, removeDuplicateObj,
+    getDayInPersian
 } from "../../Utils/newTour";
+import moment from "moment-jalaali";
 import axios from "axios";
 import {motion} from "framer-motion";
 import TourDetailLabel from "./Components/subComponents/TourDetailLabel.component";
@@ -72,9 +74,9 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
         }
     }, [hotelDet]);
 
-    useEffect(() => {
-        console.log('DSAA', flightDet)
-    }, [flightDet])
+    // useEffect(() => {
+    //     // console.log('DSAA', flightDet)
+    // }, [flightDet])
 
 
     const personCounter = (arr) => {
@@ -266,6 +268,10 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                     <p style={{fontWeight: "500", fontSize: "12px"}}>
                                         {flightDet?.checkin_tomorrow ? MiladiToJalaliConvertorInc(flightDet?.date) : MiladiToJalaliConvertor(flightDet?.date)}
                                     </p>
+                                    <p>
+
+                                        {flightDet?.checkin_tomorrow ? getDayInPersian(moment(flightDet?.date).add(1,"YYYY-MM-DD").format('dddd'))  : getDayInPersian(moment(flightDet?.date).format('dddd')) }
+                                    </p>
                                 </div>
                                 <div className={styles["entext"]}>
                                     <p
@@ -277,6 +283,9 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                     <p style={{fontWeight: "500", fontSize: "12px"}}>
                                         {" "}
                                         {flightDet?.checkin_tomorrow ? MiladiToJalaliConvertorInc(flightDet?.flight?.date) : MiladiToJalaliConvertor(flightDet?.flight?.date)}
+                                    </p>
+                                    <p>
+                                        {flightDet?.checkout_yesterday ? getDayInPersian(moment(flightDet?.flight?.date).subtract(1,"YYYY-MM-DD").format('dddd'))  : getDayInPersian(moment(flightDet?.flight?.date).format('dddd')) }
                                     </p>
                                 </div>
                             </>) : (<motion.div
@@ -297,6 +306,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                             flightDet={hotelDet?.data?.reserves[0]?.flight}
                             stayCount={stayCount}
                             gallary={hotelDet?.data?.hotel.gallery}
+                            refcode={router.query.ref_code}
                         />) : (<motion.div
                             initial={{opacity: 0}}
                             animate={{opacity: 1}}

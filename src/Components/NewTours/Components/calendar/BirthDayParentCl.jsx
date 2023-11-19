@@ -36,6 +36,23 @@ const BirthDayParentCl = (props) => {
             props.setBirthdayb(value);
           }}
           closePopUpCalendar={props.closePopUpCalendar}
+
+          dateMaker={(fdate) => {
+            props.dateMaker(fdate);
+          }}
+          roomInfo={props.roomInfo}
+          Birthdate={(date, passId, type, roomid, roomTypeid, datetype, id,reserve_id) =>
+              props.Birthdate(
+                  date,
+                  passId,
+                  type,
+                  roomid,
+                  roomTypeid,
+                  datetype,
+                  id,
+                  reserve_id
+              )
+          }
         />
       )}
     </div>

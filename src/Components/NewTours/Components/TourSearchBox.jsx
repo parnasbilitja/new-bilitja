@@ -29,10 +29,9 @@ import NewLoader from "./subComponents/NewLoader";
 const TourSearchBox = (props) => {
 
 
-
     const router = useRouter();
     const [width, setWidth] = useState();
-    const [isNight,setIsNight]=useState(false)
+    const [isNight, setIsNight] = useState(false)
     const [citiesData, setCitiesData] = useState({
         origin: {},
         destination: {},
@@ -44,9 +43,9 @@ const TourSearchBox = (props) => {
     //to get available date & night
     const [dateAndNight, setDateAndNight] = useState([]);
     const [nights, setNights] = useState([]);
-    const [inputSearchDest,setInputSearchDest]=useState('')
-    const [inputSearchOrg,setInputSearchOrg]=useState('')
-    const [isDate,setIsDate]=useState(false)
+    const [inputSearchDest, setInputSearchDest] = useState('')
+    const [inputSearchOrg, setInputSearchOrg] = useState('')
+    const [isDate, setIsDate] = useState(false)
 // const [prevDest,setPrevDest]=useState({})
     const getDestandOrgCities = () => {
         axios
@@ -178,10 +177,9 @@ const TourSearchBox = (props) => {
     };
 
 
-
-    useEffect(()=>{
+    useEffect(() => {
         console.log(isDate)
-    },[isDate])
+    }, [isDate])
     const validation = (valinputType) => {
         const {
             destandorgcities: {origin, destination, date, night},
@@ -195,20 +193,18 @@ const TourSearchBox = (props) => {
         // }
 
 
-
-        if (!origin.code || !destination.code || date === {} || (!date.miladiDate && !date.persianDate) ||!night) {
+        if (!origin.code || !destination.code || date === {} || (!date.miladiDate && !date.persianDate) || !night) {
             if (!night) {
                 // debugger
                 Err('لطفا مدت اقامت را وارد کنید')
                 setIsNight(true)
                 return false;
-            }else{
+            } else {
                 setIsNight(false)
             }
 
             return false;
         }
-
 
 
         // if (!destination.code) {
@@ -233,7 +229,7 @@ const TourSearchBox = (props) => {
         return true;
     };
 
-    const valid2=()=>{
+    const valid2 = () => {
         const {
             destandorgcities: {date},
         } = props;
@@ -241,7 +237,7 @@ const TourSearchBox = (props) => {
             Err('لطفا تاریخ را وارد کنید')
             setIsDate(true)
             return false;
-        }else{
+        } else {
             setIsDate(false)
         }
     }
@@ -249,8 +245,8 @@ const TourSearchBox = (props) => {
     return (
         <>
             <NotifAlert/>
-            <div className={styles["home-flight-form"]} >
-                <div style={{position: "relative"}} >
+            <div className={styles["home-flight-form"]}>
+                <div style={{position: "relative"}}>
                     <Scrolltoprefresh/>
                     <div
                         className={` form-input-border  ${styles["form-input-border-private"]} `}
@@ -262,9 +258,9 @@ const TourSearchBox = (props) => {
                             onClick={(e) => {
                                 manageSuggestSource(true);
                             }}
-                            onChange={(e)=> setInputSearchOrg(e.target.value)}
+                            onChange={(e) => setInputSearchOrg(e.target.value)}
                             // onChange={handleChangeCre}
-                            onFocus={()=> props.setOrgLoc({name:'',code:''})}
+                            onFocus={() => props.setOrgLoc({name: '', code: ''})}
                             onBlur={handleFocusOut}
                             // onFocus={()=>setInputSearchOrg('')}
                             placeholder={"مبدا خود را وارد کنید"}
@@ -277,7 +273,7 @@ const TourSearchBox = (props) => {
                             width="32.655"
                             height="32.135"
                             viewBox="0 0 39.655 27.135"
-                            style={{zIndex:100,left:'9px',position:'absolute',top:'10px'}}
+                            style={{zIndex: 100, left: '9px', position: 'absolute', top: '10px'}}
                         >
                             <path
                                 id="Path_1760"
@@ -312,15 +308,15 @@ const TourSearchBox = (props) => {
                                 setFlightDate={(value) => props.setFlightDate(value)}
                                 setNights={(value) => setNights(value)}
                                 searchInputval={inputSearchOrg}
-                                setSearchInput={(val)=>setInputSearchOrg(val)}
-                                closemange={()=>   manageSuggestSource(false)}
+                                setSearchInput={(val) => setInputSearchOrg(val)}
+                                closemange={() => manageSuggestSource(false)}
                                 citystat='مبدا'
                             />
                         ) : null}
                     </div>
                 </div>
 
-                <div >
+                <div>
                     <div
                         className={` form-input-border  ${styles["form-input-border-private"]}  `}
                     >
@@ -333,10 +329,10 @@ const TourSearchBox = (props) => {
                                 manageSuggestDestination(true);
                             }}
                             // onChange={handleChangeCre}
-                            onChange={(e)=> setInputSearchDest(e.target.value)}
+                            onChange={(e) => setInputSearchDest(e.target.value)}
                             // onFocus={handleFocus}
-                            onFocus={()=> {
-                                props.setDestLoc({name:'',code:''})
+                            onFocus={() => {
+                                props.setDestLoc({name: '', code: ''})
                             }}
                             // onBlur={()=>setInputSearchDest(props.destandorgcities.destination.name)}
                             placeholder={"مقصد خود را وارد کنید"}
@@ -347,7 +343,7 @@ const TourSearchBox = (props) => {
                             width="32.655"
                             height="32.135"
                             viewBox="0 0 37.922 29.591"
-                            style={{zIndex:100,left:'9px',position:'absolute',top:'10px'}}
+                            style={{zIndex: 100, left: '9px', position: 'absolute', top: '10px'}}
                         >
                             <g
                                 id="_046-arrivals"
@@ -387,7 +383,7 @@ const TourSearchBox = (props) => {
                                 setFlightDate={(value) => props.setFlightDate(value)}
                                 setNights={(value) => setNights(value)}
                                 searchInputval={inputSearchDest}
-                                closemange={()=>   manageSuggestDestination(false)}
+                                closemange={() => manageSuggestDestination(false)}
                                 citystat='مقصد'
                                 // setSearchInput={(val)=>setInputSearchDest(val)}
                             />
@@ -396,7 +392,7 @@ const TourSearchBox = (props) => {
                 </div>
 
                 <div
-                    className={` form-input-border  ${styles["form-input-border-private"]}  ${(isDate  && !props.destandorgcities.date.persianDate) && 'select-custom1'}`}
+                    className={` form-input-border  ${styles["form-input-border-private"]}  ${(isDate && !props.destandorgcities.date.persianDate) && 'select-custom1'}`}
                 >
                     <i
                         className="bilitja icon-calendar form-input-icon-larger "
@@ -409,31 +405,31 @@ const TourSearchBox = (props) => {
 
                         onClick={(e) => {
                             e.preventDefault();
-                            if(dateAndNight.length===0) {
+                            if (dateAndNight.length === 0) {
                                 Err('در حال حاضر پروازی برای مبدا و مقصد انتخاب شده، موجود نیست')
-                            }else {
+                            } else {
                                 managePopUpCalendar(true);
                             }
                         }}
                     />
                 </div>
-                <div style={{padding: ".5rem 0"}} >
+                <div style={{padding: ".5rem 0"}}>
                     <DropdownComponent
                         nights={nights}
                         setNight={(value) => props.setNightNumber(value)}
                         night={props?.night}
-                        valid={()=>validation()}
+                        valid={() => validation()}
                         isNight={isNight}
                     />
                 </div>
-                <div  className={`without-focus`}>
+                <div className={`without-focus`}>
                     <PrimaryButton
                         style={{height: "55px", marginTop: "9px", borderRadius: "10px"}}
                         value={props.searchReset == false ? "جستجو" : "لطفا صبر کنید..."}
 
                         onClick={(e) => {
                             valid2()
-                            if (validation() === false ) {
+                            if (validation() === false) {
                                 Err("لطفا اطلاعات را کامل وارد کنید");
                             } else {
                                 e.preventDefault();
@@ -460,20 +456,34 @@ const TourSearchBox = (props) => {
                 </div>
 
                 <PopUpWide opened={state.open} closePopUp={managePopUpCalendar}>
-                    <div className={styles["flight-search-box-calendar-container"]}>
-                        <CalendarComponent
-                            setDate={(value) => {
-                                props.addCredentials({
-                                    stDate: value.garigorian,
-                                    flightDatePersian: value.jalali,
-                                    typeOfCalendar: value.typeOfCalendar,
-                                });
-                            }}
-                            closePopUpCalendar={managePopUpCalendar}
-                            dateandnight={dateAndNight}
-                            setFlightDate={(value) => props.setFlightDate(value)}
-                        />
-                    </div>
+                    {
+                        dateAndNight.length === 0 ?
+                            <div style={{
+                                width: '910px',
+                                height: '370px !important',
+                                backgroundColor: 'white',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+                                <NewLoader/>
+                            </div>
+
+                            :
+                            <div className={styles["flight-search-box-calendar-container"]}>
+                                <CalendarComponent
+                                    setDate={(value) => {
+                                        props.addCredentials({
+                                            stDate: value.garigorian,
+                                            flightDatePersian: value.jalali,
+                                            typeOfCalendar: value.typeOfCalendar,
+                                        });
+                                    }}
+                                    closePopUpCalendar={managePopUpCalendar}
+                                    dateandnight={dateAndNight}
+                                    setFlightDate={(value) => props.setFlightDate(value)}
+                                />
+                            </div>}
                 </PopUpWide>
             </div>
         </>
@@ -493,7 +503,7 @@ const mapDispatchesToProps = (dispatch) => ({
     setDestLoc: async (value) => dispatch(setDestLoc(value)),
     setFlightDate: async (value) => dispatch(setFlightDate(value)),
     setNightNumber: async (value) => dispatch(setNightNumber(value)),
-    setLoader:async(value)=>dispatch(setLoader(value))
+    setLoader: async (value) => dispatch(setLoader(value))
 });
 export default withRouter(
     connect(mapStatesToProps, mapDispatchesToProps)(TourSearchBox)

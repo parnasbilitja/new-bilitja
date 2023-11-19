@@ -373,7 +373,7 @@ $costColor: #e20000;
                 }
 
                 .seprator {
-                  border-bottom: 1px dashed $primary;
+                  border-bottom: 1px dashed #e20000;
                   //padding:0 px;
                   position: relative;
                   top: -15px;
@@ -449,7 +449,7 @@ $costColor: #e20000;
                 }
 
                 .seprator {
-                  border-bottom: 1px dashed $primary;
+                  border-bottom: 1px dashed $costColor;
                   //padding:0 px;
                   position: relative;
                   top: -15px;
@@ -462,7 +462,7 @@ $costColor: #e20000;
                   top: 10px;
                   width: 8px;
                   height: 8px;
-                  background-color: $primary;
+                  background-color: $costColor;
                   border-radius: 50%;
                 }
 
@@ -514,9 +514,9 @@ $costColor: #e20000;
                   .in {
                     font-size: 1rem;
                     width: 25px;
-                    border: 1px solid $primary;
+                    border: 1px solid $costColor;
                     border-radius: 5px;
-                    color: $primary;
+                    color: $costColor;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -534,9 +534,9 @@ $costColor: #e20000;
                     align-self: flex-start !important;
                     font-size: 1rem;
                     width: 25px;
-                    border: 1px solid $primary;
+                    border: 1px solid $costColor;
                     border-radius: 5px;
-                    color: $primary;
+                    color: $costColor;
                     display: flex;
                     justify-content: center;
                     cursor: pointer;
@@ -578,7 +578,7 @@ $costColor: #e20000;
 
                 span {
                   font-size: .9rem;
-                  color: $primary;
+                  color: $costColor;
                   margin-left: .5rem;
                   font-weight: 600;
                 }
@@ -732,7 +732,7 @@ $costColor: #e20000;
           }
 
           .borderActive {
-            border: 1px solid $primary;
+            border: 1px solid $costColor;
             height: auto !important;
             padding: 10px !important;
 
@@ -788,9 +788,9 @@ $costColor: #e20000;
                 font-size: 1rem;
                 width: 23px;
                 height: 23px;
-                border: 1px solid $primary;
+                border: 1px solid $costColor;
                 border-radius: 5px;
-                color: $primary;
+                color: $costColor;
                 display: flex;
                 justify-content: center;
                 align-items: center;

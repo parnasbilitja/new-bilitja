@@ -101,9 +101,7 @@ const CityTour = (props) => {
             </Head>
             <NavHandler/>
             <div className='mt-lg-5 margin-topsm-1rem'>
-                <button className='toursearch' onClick={() => setIsmodal(true)}>
-                    تورِ تو آنلاین بگیر!
-                </button>
+
                 <Scrolltoprefresh/>
                 <div className='padd'>
                     <div style={{ padding: '0 7rem'}} className='hidestat'>
@@ -147,11 +145,11 @@ const CityTour = (props) => {
 
                         </div>}
 
-                    {newData.length>0 &&
-                        <div className='padding-lg-6'>
-                            <OfferdTours data={newData}/>
-                        </div>
-                    }
+                    {/*{newData.length>0 &&*/}
+                    {/*    <div className='padding-lg-6'>*/}
+                    {/*        <OfferdTours data={newData}/>*/}
+                    {/*    </div>*/}
+                    {/*}*/}
                     <div className="col-md-10 m-auto parent-info-city">
                         {/*<div className="search search-city-info w-100">*/}
                         {/*    <ul className="tab-ul-list">*/}
@@ -180,11 +178,42 @@ const CityTour = (props) => {
                         {/*    </div>*/}
                         {/*</div>*/}
                         <div className='mx-3'>
+                            <button className='toursearch' onClick={() => setIsmodal(true)}>
+                                <svg width='25' height='25' id="Glyph" version="1.1" viewBox="0 0 32 32"
+
+                                     xmlns="http://www.w3.org/2000/svg" fill='#e20000'>
+                                    <path
+                                        d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z"
+                                        id="XMLID_223_"/>
+                                </svg>
+                                تورِ تو آنلاین بگیر!
+                            </button>
+                            {newData.length > 0 && <div className=''>
+                                <OfferdTours data={newData}/>
+                            </div>}
                             <TourList name={props.Pathname.CityTour}/>
                             <TourData currentCity={currentCity} search={search} setSearch={setSearch}
                                       route={props.Pathname.CityTour}/>
                         </div>
                     </div>
+                </div>
+                <div className='fixed-info'>
+                    <div style={{display: 'flex', columnGap: '10px', alignItems: 'center'}}>
+                        <div className='svganim'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20.457" height="20.474"
+                                 viewBox="0 0 20.457 20.474">
+                                <path id="_003-telephone" data-name="003-telephone"
+                                      d="M13.437,20.475C5.234,20.413-4.377,8.46,2.646,1.432c.25-.254.514-.5.785-.725A2.981,2.981,0,0,1,7.46.878l.01.01L8.823,2.294A2.933,2.933,0,0,1,7.86,7.057a6.457,6.457,0,0,0-1.068.527c-.745.759-1.219,1.992,1.567,4.783.9.906,2.243,2.11,3.429,2.11a1.893,1.893,0,0,0,1.349-.622,6.213,6.213,0,0,0,.494-1.023A2.927,2.927,0,0,1,18.4,11.85l1.389,1.345.01.01a2.987,2.987,0,0,1,.179,4.023c-.212.254-.439.5-.674.738A8.113,8.113,0,0,1,13.437,20.475ZM5.356,1.6a1.392,1.392,0,0,0-.9.33c-.232.2-.459.4-.673.622C.042,6.356,2.1,11.55,5.7,15.106c3.564,3.547,8.732,5.486,12.471,1.73.2-.2.4-.415.577-.632a1.381,1.381,0,0,0-.078-1.864l-1.389-1.344-.01-.01a1.317,1.317,0,0,0-2.155.443,6.163,6.163,0,0,1-.823,1.534,3.472,3.472,0,0,1-2.5,1.115c-1.76,0-3.362-1.378-4.561-2.579-1.819-1.745-3.921-4.72-1.547-7.063a6.35,6.35,0,0,1,1.576-.858,1.323,1.323,0,0,0,.43-2.158l-.01-.01L6.324,2a1.37,1.37,0,0,0-.968-.4ZM19.87,9.56a.8.8,0,0,1-.8-.728A7.98,7.98,0,0,0,11.84,1.6.8.8,0,0,1,11.983,0a9.649,9.649,0,0,1,8.684,8.684.8.8,0,0,1-.725.868C19.919,9.559,19.894,9.56,19.87,9.56Zm-6.229,0a.8.8,0,0,0,.505-1.012,3.235,3.235,0,0,0-1.968-2.02.8.8,0,0,0-.533,1.508,1.625,1.625,0,0,1,.984,1.018.8.8,0,0,0,1.011.505Zm3.141-.007a.8.8,0,0,0,.678-.9,6.441,6.441,0,0,0-5.436-5.436A.8.8,0,0,0,11.8,4.794a4.834,4.834,0,0,1,4.079,4.079.8.8,0,0,0,.9.678Z"
+                                      transform="translate(-0.214 -0.001)" fill="#fff"/>
+                            </svg>
+                        </div>
+                        <div>
+
+                            <p>ارتباط با کارشناسان ما</p>
+                            <a href="tel:02184278" style={{textAlign: 'center'}}>021-84278</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

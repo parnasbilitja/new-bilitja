@@ -34,7 +34,7 @@ const ReservedHotel = () => {
           </Head>
         <Reservation hotelDet={hotelDet} stayCount={stayCount} ref_code={router?.query?.ref_code}/>
       </div>
-        <Footer/>
+        {/*<Footer/>*/}
     </>
   );
 };

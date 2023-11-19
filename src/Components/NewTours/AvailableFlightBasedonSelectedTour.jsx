@@ -17,7 +17,7 @@ import {
   startBuilder,
   numberRounder,
   getRandomRounded,
-  getCheapestRoom,
+  getCheapestRoom, getDayInPersian,
 } from "../../Utils/newTour";
 import Image from "next/image";
 import PictureModal from "./Components/subComponents/PictureModal";
@@ -31,6 +31,8 @@ import MapComponent from "../../sources/component/Map.component";
 import PopUp from "./Components/subComponents/PopUp.component";
 import PopUpWide from "./Components/subComponents/PopUpWide.component";
 import MapPopUpComponent from "./Components/subComponents/MapPopUp.component";
+import moment from "moment-jalaali";
+import NewLoader from "./Components/subComponents/NewLoader";
 
 const AvailableFlightBasedonSelectedTour = (props) => {
   const router = useRouter();
@@ -38,6 +40,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
   const [selectedRoom, setSelectedRoom] = useState([]);
   const [selectedRoom2, setSelectedRoom2] = useState([]);
   const [isOpen, setIsOpen] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [ismodal, setIsModal] = useState(null);
   const ref = useRef(null);
@@ -200,6 +203,36 @@ const AvailableFlightBasedonSelectedTour = (props) => {
     // console.log(selectedRoom);
   };
 
+
+
+
+
+  const[isHover,setIsHover]=useState({ticket:false,room:false})
+  const onmouseEnter=(type)=>{
+    if(type==='ticket'){
+      setIsHover({
+        ticket:true,rooms:false
+      })
+    }else if(type==='rooms') {
+      setIsHover({
+        ticket: false, rooms: true
+      })
+    }
+
+  }
+
+
+  const onmouseLeave=(type)=>{
+    if(type==='ticket'){
+      setIsHover({
+        ticket:false,rooms:false
+      })
+    }else if(type==='rooms') {
+      setIsHover({
+        ticket: false, rooms: false
+      })
+    }
+  }
   ////dec chd, inf,ext number
   const decDet1 = (id, type) => {
     if (type === "ext_count") {
@@ -278,9 +311,9 @@ const AvailableFlightBasedonSelectedTour = (props) => {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   ////remove room
-  useEffect(()=>{
+  useEffect(() => {
     console.log(showInMap)
-  },[showInMap])
+  }, [showInMap])
   const removeRoom = (id) => {
     const newSelectedRoom = selectedRoom.filter((room) => room.id !== id);
     setSelectedRoom(newSelectedRoom);
@@ -383,7 +416,10 @@ const AvailableFlightBasedonSelectedTour = (props) => {
         : MiladiToJalaliConvertor(arrivalDate);
     let stayCount = routerParam.night;
     let rooms = [...roomsGen(selectedRoom)];
+
+
     if (selectedRoom.length > 0) {
+      setIsLoading(true)
       axios
           .post(
               "https://hotelobilit-api.iran.liara.run/api/v2/reserves/checking",
@@ -405,9 +441,11 @@ const AvailableFlightBasedonSelectedTour = (props) => {
             );
           })
           .catch((err) => {
+            setIsLoading(false)
             Err("این پرواز با این تعداد اتاق انتخابی موجودی ندارد");
           });
     } else {
+      setIsLoading(false)
       Err("لطفا پرواز و اتاق مورد نظر خود راانتخاب کنید");
     }
   };
@@ -435,6 +473,19 @@ const AvailableFlightBasedonSelectedTour = (props) => {
   };
 
 
+
+  const Variants = {
+    initial: {
+      color: 'rgba(131, 131, 131, 0.78)',
+      fill:'rgba(131, 131, 131, 0.78)'
+    },
+    animate: {
+      color: '#000',
+      fill: '#000',
+      transition: { duration: 0.2 },
+    },
+    exit: { color: 'rgba(131, 131, 131, 0.78)', transition: { duration: 0.5 } },
+  };
   return (
       <>
         <NotifAlert/>
@@ -449,9 +500,9 @@ const AvailableFlightBasedonSelectedTour = (props) => {
         <div className={styles["container"]}>
           <Head>
             {hotel.length === 0 ? (
-                <title>بلیطجا | تور</title>
+                <title>همنواز | تور</title>
             ) : (
-                <title> بلیطجا {`|  ${hotel?.title}`}</title>
+                <title> همنواز {`|  ${hotel?.title}`}</title>
             )}
           </Head>
           <Scrolltoprefresh/>
@@ -491,7 +542,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                           <label htmlFor="">منطقه:</label>
                           <p>{hotel?.location ? hotel?.location : "ثبت نشده"}</p>
                         </div>
-                        <p style={{fontSize: "12px", color: "#137cb6", margin: '0'}}
+                        <p style={{fontSize: "12px", color: "#e20000", margin: '0'}}
                            onClick={() => setShowInMap(true)}>(نمایش برروی نقشه)</p>
                       </div>
                     </div>
@@ -525,18 +576,18 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                               />
                             </motion.div>
                           </div>
-                          {props.widthmobi > 868 && (
-                              <div className={styles["imgbig_container"]}>
-                                {/*<Image*/}
-                                {/*  className={styles["img-big"]}*/}
-                                {/*  src={hotel?.gallery[1].url}*/}
-                                {/*  layout="responsive"*/}
-                                {/*  height={205}*/}
-                                {/*  width={200}*/}
-                                {/*/>*/}
-                                <MapComponent/>
-                              </div>
-                          )}
+                          {/*{props.widthmobi > 868 && (*/}
+                          {/*    // <div className={styles["imgbig_container"]}>*/}
+                          {/*<Image*/}
+                          {/*  className={styles["img-big"]}*/}
+                          {/*  src={hotel?.gallery[1].url}*/}
+                          {/*  layout="responsive"*/}
+                          {/*  height={205}*/}
+                          {/*  width={200}*/}
+                          {/*/>*/}
+                          {/*<MapComponent/>*/}
+                          {/*// </div>*/}
+                          {/*)}*/}
                         </div>
                     )}
                   </div>
@@ -575,16 +626,26 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                 <div
                                     className={styles["ticket_titles_info"]}
                                     style={isOpen === flight.id ? {padding: 0} : null}
+
                                 >
-                                  اطلاعات پرواز
+                                  <motion.svg  height="24" id="Layer_2" viewBox="0 0 100 100" width="24" variants={Variants} initial='initial'  animate={isHover.ticket ?'animate':'exit' } ><title/><path d="M86.8,50.11l-10.8-3V42a3,3,0,0,0-6,0v3.44L59,42.38V20a9,9,0,0,0-9-9,9,9,0,0,0-9,9V42.39l-11,3V42a3,3,0,0,0-6,0v5.11l-10.8,3A3,3,0,0,0,11,53V63a3,3,0,0,0,3.8,2.89L41,58.62V72.46l-1.47.41A9.05,9.05,0,0,0,33,81.53V86a3,3,0,0,0,3.82,2.88L50,85.12l13.18,3.76A2.86,2.86,0,0,0,64,89a3.07,3.07,0,0,0,1.81-.6A3,3,0,0,0,67,86V81.52a9,9,0,0,0-6.52-8.65L59,72.45V58.62l26.2,7.27A3,3,0,0,0,89,63V53A3,3,0,0,0,86.8,50.11Z"/></motion.svg>
+
+
+                                  <motion.p variants={Variants} initial='initial'  animate={isHover.ticket ?'animate':'exit' }   style={{whiteSpace:'nowrap'}}>
+
+                                    اطلاعات پرواز
+                                  </motion.p>
+
                                 </div>
                                 <div className={styles["ticket_titles_info"]}>
-                                  <p>اطلاعات اتاق </p>
+                                  {/*<svg height="30" viewBox="0 0 512 512" width="30" ><title/><path d="M384,240H96V136a40.12,40.12,0,0,1,40-40H376a40.12,40.12,0,0,1,40,40V240Z"/><path d="M48,416V304a64.19,64.19,0,0,1,64-64H400a64.19,64.19,0,0,1,64,64V416" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M48,416v-8a24.07,24.07,0,0,1,24-24H440a24.07,24.07,0,0,1,24,24v8" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M112,240V224a32.09,32.09,0,0,1,32-32h80a32.09,32.09,0,0,1,32,32v16" /><path d="M256,240V224a32.09,32.09,0,0,1,32-32h80a32.09,32.09,0,0,1,32,32v16"/></svg>*/}
+                                  <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><motion.path d="M6.75 4H17.25C18.7125 4 19.9084 5.1417 19.995 6.58248L20 6.75L20.0006 10.1037C21.0968 10.414 21.9147 11.3872 21.9937 12.5628L22 12.75V20.25C22 20.6642 21.6642 21 21.25 21C20.8703 21 20.5565 20.7178 20.5068 20.3518L20.5 20.25V18H3.5V20.25C3.5 20.6297 3.21785 20.9435 2.85177 20.9932L2.75 21C2.3703 21 2.05651 20.7178 2.00685 20.3518L2 20.25V12.75C2 11.4911 2.84596 10.4297 4.00044 10.1034L4 6.75C4 5.28747 5.1417 4.0916 6.58248 4.00502L6.75 4ZM19.25 11.5H4.75C4.10279 11.5 3.57047 11.9919 3.50645 12.6222L3.5 12.75V16.5H20.5V12.75C20.5 12.1028 20.0081 11.5705 19.3778 11.5065L19.25 11.5ZM17.25 5.5H6.75C6.10279 5.5 5.57047 5.99187 5.50645 6.62219L5.5 6.75V10H7C7 9.44772 7.44772 9 8 9H10C10.5128 9 10.9355 9.38604 10.9933 9.88338L11 10H13C13 9.44772 13.4477 9 14 9H16C16.5128 9 16.9355 9.38604 16.9933 9.88338L17 10H18.5V6.75C18.5 6.10279 18.0081 5.57047 17.3778 5.50645L17.25 5.5Z"  variants={Variants} initial='initial'  animate={isHover.rooms ?'animate':'exit' } /></svg>
+                                  <motion.p variants={Variants} initial='initial'  animate={isHover.rooms ?'animate':'exit' }  style={{whiteSpace:'nowrap'}}>اطلاعات اتاق </motion.p>
                                 </div>
                               </div>
                               {/* ticketdet col2 */}
-                              <div className={styles["ticket_flight"]}>
-                                <div className={styles["flightDet_container"]}>
+                              <div className={styles["ticket_flight"]} >
+                                <div className={styles["flightDet_container"]} onMouseEnter={()=>onmouseEnter('ticket')} onMouseLeave={()=>onmouseLeave('ticket')}>
                                   <div className={styles["flightDet"]}>
                                     <div className={styles["flightDet_title"]}>
                                       <p>پرواز رفت</p>
@@ -598,10 +659,13 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                     <div className={styles["flightDet_timedate"]}>
                                       {/*<span>ساعت :</span>*/}
                                       <span
-                                          style={{color: '#e20000',fontSize:'17px'}}>{flight.time.slice(0, 5)}</span>
+                                          style={{
+                                            color: '#e20000',
+                                            fontSize: '17px'
+                                          }}>{flight.time.slice(0, 5)}</span>
                                       <span>و</span>
                                       <span>
-                                {MiladiToJalaliConvertor(flight.date)}
+                             {getDayInPersian(moment(flight.date).format('dddd')) } {MiladiToJalaliConvertor(flight.date)}
                               </span>
                                     </div>
                                     <div className={styles["flightDet_hotelEnt"]}>
@@ -624,7 +688,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                     <div className={styles["flight_company_remaintour"]}>
                                       <p style={{whiteSpace: "nowrap"}}>
                                         تعداد موجودی پرواز :<span style={{
-                                        color: '#137cb6',
+                                        color: '#e20000',
                                         fontWeight: '900',
                                         fontSize: '15px'
                                       }}>{flight.capacity}</span>
@@ -641,7 +705,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                         <svg
                                             style={{transform: "rotate(270deg)"}}
                                             viewBox="0 0 24 24"
-                                            fill="#137cb6"
+                                            fill="#e20000"
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="30"
                                             height="30"
@@ -655,12 +719,12 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                       </div>
                                       <p>
                                                                 <span style={{
-                                                                  color: '#137cb6',
+                                                                  color: '#e20000',
                                                                   fontWeight: '900',
                                                                   fontSize: '15px'
                                                                 }}> {props?.night}</span> شب و{" "}
                                         <span style={{
-                                          color: '#137cb6',
+                                          color: '#e20000',
                                           fontWeight: '900',
                                           fontSize: '15px'
                                         }}> {+props?.night + 1}</span>
@@ -691,10 +755,13 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                     <div className={styles["flightDet_timedate"]}>
                                       {/*<span>ساعت :</span>*/}
                                       <span
-                                          style={{color: '#e20000',fontSize:'17px'}}>{flight?.flight?.time.slice(0, 5)}</span>
+                                          style={{
+                                            color: '#e20000',
+                                            fontSize: '17px'
+                                          }}>{flight?.flight?.time.slice(0, 5)}</span>
                                       <span>و</span>
                                       <span>
-                                                    {MiladiToJalaliConvertor(flight?.flight?.date)}
+                                                   {getDayInPersian(moment(flight?.flight?.date).format('dddd')) } {MiladiToJalaliConvertor(flight?.flight?.date)}
                                                   </span>
                                     </div>
                                     <div className={styles["flightDet_hotelEnt"]}>
@@ -716,7 +783,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                   {getCheapestRoom(hotel?.rooms, flight)?.map(
                                       (room) => {
                                         return (
-                                            <div className={styles["roomDetcard"]}>
+                                            <div className={styles["roomDetcard"]} onMouseEnter={()=>onmouseEnter('rooms')} onMouseLeave={()=>onmouseLeave('rooms')}>
                                               <div
                                                   className={styles["roomDetcard_roomnum"]}
                                               >
@@ -807,14 +874,18 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                   ) : null}
                                   <button
                                       onClick={() => {
-                                        tourReserve(
-                                            flight?.checkin_tomorrow,
-                                            flight?.checkout_yesterday,
-                                            flight?.date,
-                                            flight?.flight?.date,
-                                            flight.id,
-                                            hotel.id
-                                        );
+                                        if(!isLoading){
+
+                                          tourReserve(
+                                              flight?.checkin_tomorrow,
+                                              flight?.checkout_yesterday,
+                                              flight?.date,
+                                              flight?.flight?.date,
+                                              flight.id,
+                                              hotel.id
+                                          );
+
+                                        }
                                       }}
                                       className={`${
                                           selectedRoom.length === 0
@@ -822,7 +893,15 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                               : styles["ticket_reserve_btn_active"]
                                       }`}
                                   >
-                                    {`رزرو تور برای ${AllSelectedPassengerNumber()} رزر`}
+                                    {
+                                      isLoading ?
+
+                                          <span>لطفا منتطر بمانید....</span>:
+                                          <span>
+                                                        {`رزرو تور برای ${AllSelectedPassengerNumber()} رزرو`}
+
+                                                        </span>
+                                    }
                                   </button>
                                 </div>
                               </div>
@@ -885,185 +964,195 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                               <p>تعداد بزرگسال</p>
                                               <p>{room?.Adl_capacity}</p>
                                             </div>
-
-                                            <div
-                                                className={`${
-                                                    styles["roomcountDet_bedcount"]
-                                                } ${
-                                                    styles[
-                                                        room?.extra_bed_count > 0
-                                                            ? "borderActive"
-                                                            : "bordernoneActive"
-                                                        ]
-                                                }`}
-                                            >
-                                              <p className={styles["bedtype"]}>
-                                                تعداد تخت اضافه
-                                              </p>
-                                              <p className={styles["bedtypeprc"]}>
-                                                {numberWithCommas(
-                                                    numberRounder(
-                                                        extBedPrcGen(
-                                                            hotel?.rooms,
-                                                            flight,
-                                                            room?.room_type_id
+                                            {room.extra_bed_capacity > 0 &&
+                                                <div
+                                                    className={`${
+                                                        styles["roomcountDet_bedcount"]
+                                                    } ${
+                                                        styles[
+                                                            room?.extra_bed_count > 0
+                                                                ? "borderActive"
+                                                                : "bordernoneActive"
+                                                            ]
+                                                    }`}
+                                                >
+                                                  <p className={styles["bedtype"]}>
+                                                    تعداد تخت اضافه
+                                                  </p>
+                                                  <p className={styles["bedtypeprc"]}>
+                                                    {numberWithCommas(
+                                                        numberRounder(
+                                                            extBedPrcGen(
+                                                                hotel?.rooms,
+                                                                flight,
+                                                                room?.room_type_id
+                                                            )
                                                         )
-                                                    )
-                                                )}{" "}
-                                                تومان
-                                              </p>
+                                                    )}{" "}
+                                                    تومان
+                                                  </p>
 
-                                              <div
-                                                  className={
-                                                    styles["roomcountDet_bedcount_count"]
-                                                  }
-                                              >
-                                                <div
-                                                    className={
-                                                      styles[
-                                                          room.extra_bed_count >=
-                                                          room?.extra_bed_capacity
-                                                              ? "dis_decin"
-                                                              : "decin"
-                                                          ]
-                                                    }
-                                                    onClick={() => {
-                                                      incDet1(room, "ext_count");
-                                                    }}
-                                                >
-                                                  +
+                                                  <div
+                                                      className={
+                                                        styles["roomcountDet_bedcount_count"]
+                                                      }
+                                                  >
+                                                    <div
+                                                        className={
+                                                          styles[
+                                                              room.extra_bed_count >=
+                                                              room?.extra_bed_capacity
+                                                                  ? "dis_decin"
+                                                                  : "decin"
+                                                              ]
+                                                        }
+                                                        onClick={() => {
+                                                          incDet1(room, "ext_count");
+                                                        }}
+                                                    >
+                                                      +
+                                                    </div>
+                                                    <span>{room?.extra_bed_count}</span>
+                                                    <div
+                                                        className={
+                                                          styles[
+                                                              room?.extra_bed_count === 0
+                                                                  ? "dis_decin"
+                                                                  : "decin"
+                                                              ]
+                                                        }
+                                                        onClick={() =>
+                                                            decDet1(room?.id, "ext_count")
+                                                        }
+                                                    >
+                                                      -
+                                                    </div>
+                                                  </div>
                                                 </div>
-                                                <span>{room?.extra_bed_count}</span>
+                                            }
+
+
+                                            {room.chd_capacity > 0 &&
+
                                                 <div
-                                                    className={
-                                                      styles[
-                                                          room?.extra_bed_count === 0
-                                                              ? "dis_decin"
-                                                              : "decin"
-                                                          ]
-                                                    }
-                                                    onClick={() =>
-                                                        decDet1(room?.id, "ext_count")
-                                                    }
+                                                    className={`${
+                                                        styles["roomcountDet_bedcount"]
+                                                    } ${
+                                                        styles[
+                                                            room?.chd_count > 0
+                                                                ? "borderActive"
+                                                                : "bordernoneActive"
+                                                            ]
+                                                    }`}
                                                 >
-                                                  -
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div
-                                                className={`${
-                                                    styles["roomcountDet_bedcount"]
-                                                } ${
-                                                    styles[
-                                                        room?.inf_count > 0
-                                                            ? "borderActive"
-                                                            : "bordernoneActive"
-                                                        ]
-                                                }`}
-                                            >
-                                              <p className={styles["bedtype"]}>
-                                                تعداد نوزاد
-                                              </p>
-                                              <p className={styles["bedtypeprc"]}>
-                                                {numberWithCommas(
-                                                    numberRounder(flight.inf_price)
-                                                )}{" "}
-                                                تومان
-                                              </p>
-                                              <div
-                                                  className={
-                                                    styles["roomcountDet_bedcount_count"]
-                                                  }
-                                              >
-                                                <div
-                                                    className={
-                                                      styles[
-                                                          room?.inf_count >= room?.Adl_capacity
-                                                              ? "dis_decin"
-                                                              : "decin"
-                                                          ]
-                                                    }
-                                                    onClick={() => incDet1(room, "inf_count")}
-                                                >
-                                                  +
-                                                </div>
-                                                <span>{room?.inf_count}</span>
-                                                <div
-                                                    className={
-                                                      styles[
-                                                          room?.inf_count === 0
-                                                              ? "dis_decin"
-                                                              : "decin"
-                                                          ]
-                                                    }
-                                                    onClick={() =>
-                                                        decDet1(room?.id, "inf_count")
-                                                    }
-                                                >
-                                                  -
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div
-                                                className={`${
-                                                    styles["roomcountDet_bedcount"]
-                                                } ${
-                                                    styles[
-                                                        room?.chd_count > 0
-                                                            ? "borderActive"
-                                                            : "bordernoneActive"
-                                                        ]
-                                                }`}
-                                            >
-                                              <p className={styles["bedtype"]}>
-                                                تعداد کودک
-                                              </p>
-                                              <p className={styles["bedtypeprc"]}>
-                                                {numberWithCommas(
-                                                    numberRounder(
-                                                        chdPrcGen(
-                                                            hotel?.rooms,
-                                                            flight,
-                                                            room?.room_type_id
+                                                  <p className={styles["bedtype"]}>
+                                                    تعداد کودک
+                                                  </p>
+                                                  <p className={styles["bedtypeprc"]}>
+                                                    {numberWithCommas(
+                                                        numberRounder(
+                                                            chdPrcGen(
+                                                                hotel?.rooms,
+                                                                flight,
+                                                                room?.room_type_id
+                                                            )
                                                         )
-                                                    )
-                                                )}{" "}
-                                                تومان
-                                              </p>
-                                              <div
-                                                  className={
-                                                    styles["roomcountDet_bedcount_count"]
-                                                  }
-                                              >
-                                                <div
-                                                    className={
-                                                      styles[
-                                                          room?.chd_count >= room?.chd_capacity
-                                                              ? "dis_decin"
-                                                              : "decin"
-                                                          ]
-                                                    }
-                                                    onClick={() => incDet1(room, "chd_count")}
-                                                >
-                                                  +
+                                                    )}{" "}
+                                                    تومان
+                                                  </p>
+                                                  <div
+                                                      className={
+                                                        styles["roomcountDet_bedcount_count"]
+                                                      }
+                                                  >
+                                                    <div
+                                                        className={
+                                                          styles[
+                                                              room?.chd_count >= room?.chd_capacity
+                                                                  ? "dis_decin"
+                                                                  : "decin"
+                                                              ]
+                                                        }
+                                                        onClick={() => incDet1(room, "chd_count")}
+                                                    >
+                                                      +
+                                                    </div>
+                                                    <span>{room?.chd_count}</span>
+                                                    <div
+                                                        className={
+                                                          styles[
+                                                              room?.chd_count === 0
+                                                                  ? "dis_decin"
+                                                                  : "decin"
+                                                              ]
+                                                        }
+                                                        onClick={() =>
+                                                            decDet1(room?.id, "chd_count")
+                                                        }
+                                                    >
+                                                      -
+                                                    </div>
+                                                  </div>
                                                 </div>
-                                                <span>{room?.chd_count}</span>
+                                            }
+
+                                            {room.Adl_capacity > 0 &&
+
                                                 <div
-                                                    className={
-                                                      styles[
-                                                          room?.chd_count === 0
-                                                              ? "dis_decin"
-                                                              : "decin"
-                                                          ]
-                                                    }
-                                                    onClick={() =>
-                                                        decDet1(room?.id, "chd_count")
-                                                    }
+                                                    className={`${
+                                                        styles["roomcountDet_bedcount"]
+                                                    } ${
+                                                        styles[
+                                                            room?.inf_count > 0
+                                                                ? "borderActive"
+                                                                : "bordernoneActive"
+                                                            ]
+                                                    }`}
                                                 >
-                                                  -
+                                                  <p className={styles["bedtype"]}>
+                                                    تعداد نوزاد
+                                                  </p>
+                                                  <p className={styles["bedtypeprc"]}>
+                                                    {numberWithCommas(
+                                                        numberRounder(flight.inf_price)
+                                                    )}{" "}
+                                                    تومان
+                                                  </p>
+                                                  <div
+                                                      className={
+                                                        styles["roomcountDet_bedcount_count"]
+                                                      }
+                                                  >
+                                                    <div
+                                                        className={
+                                                          styles[
+                                                              room?.inf_count >= room?.Adl_capacity
+                                                                  ? "dis_decin"
+                                                                  : "decin"
+                                                              ]
+                                                        }
+                                                        onClick={() => incDet1(room, "inf_count")}
+                                                    >
+                                                      +
+                                                    </div>
+                                                    <span>{room?.inf_count}</span>
+                                                    <div
+                                                        className={
+                                                          styles[
+                                                              room?.inf_count === 0
+                                                                  ? "dis_decin"
+                                                                  : "decin"
+                                                              ]
+                                                        }
+                                                        onClick={() =>
+                                                            decDet1(room?.id, "inf_count")
+                                                        }
+                                                    >
+                                                      -
+                                                    </div>
+                                                  </div>
                                                 </div>
-                                              </div>
-                                            </div>
+                                            }
                                           </div>
                                         </div>
                                     );
@@ -1086,6 +1175,8 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                         selectedRoom={selectedRoom}
                         setSelectedRoom={(val) => setSelectedRoom(val)}
                         setIsOpen={val => setIsOpen(val)}
+                        isLoading={isLoading}
+                        setIsLoading={(val)=>setIsLoading(val)}
                     />
                 ) : null;
               })
@@ -1095,7 +1186,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
         </div>
 
         {
-            showInMap && <MapPopUpComponent setShowInMap={(val)=>setShowInMap(val)}/>
+            showInMap && <MapPopUpComponent setShowInMap={(val) => setShowInMap(val)}/>
         }
 
       </>

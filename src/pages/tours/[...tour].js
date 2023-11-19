@@ -196,8 +196,10 @@ const tour = (props) => {
                                 <div className="gallery-image">
                                     <div className="image">
                                     {data ?
-                                        <Slider data={data && data.endCity.images} />
-                                    :<Loader />}
+                                        <Slider data={data && data.endCity.images}
+                                                city={data && data?.endCity?.slug}
+                                        />
+                                    :<NewLoader />}
                                     </div>
                                 </div>
                             </div>

@@ -1,12 +1,12 @@
-import React from "react";
-import { MiladiToJalaliConvertor } from "../../../../Utils/newTour";
+import React, {useEffect} from "react";
+import {getDayInPersian, MiladiToJalaliConvertor} from "../../../../Utils/newTour";
 
 import styles from "../../../../../styles/newTour/components/subComponent/TourDetailLabel.module.scss";
 import NewLoader from "./NewLoader";
 import moment from "moment-jalaali";
 import {Loader} from "../../../../Utils/Loader";
 import Slider from "../../../slider/Slider";
-const TourDetailLabel = ({ flightDet, stayCount,gallary }) => {
+const TourDetailLabel = ({ flightDet, stayCount,gallary ,refcode}) => {
     const dateReform = (date) => {
         return date?.slice(0, 5);
     };
@@ -24,71 +24,95 @@ const TourDetailLabel = ({ flightDet, stayCount,gallary }) => {
 
     }
 
+    useEffect(()=>{
+        console.log(gallary )
+    },[gallary])
+
     return (
 
 
-        <div className="detail-tour col-xl-12 col-lg-12 col-12 d-flex flex-wrap justify-content-between border-bottom py-4">
-            {/*<div className="right col-xl-5 col-lg-5 col-12">*/}
-            {/*    <div className="gallery-image">*/}
-            {/*        <div className="image">*/}
-            {/*            {gallary ?*/}
-            {/*                <Slider data={gallary&&handleGallary(gallary)} />*/}
-            {/*                :<NewLoader/>}*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+        <div className="detail-tour col-xl-12 col-lg-12 col-12 d-flex flex-wrap justify-content-between border-bottom">
+            <div className="right col-xl-5 col-lg-5 col-12">
+                <>
+                    <div className="gallery-image">
+
+                        {gallary ?
+                            <img src={ gallary && gallary[0].url} width={'100%'} height={'100%'}  style={{objectFit:'cover',borderRadius:'20px'}}/>
+                            :<NewLoader/>}
+
+                    </div>
+
+
+
+                </>
+            </div>
             <div className="left position-relative col-xl-7 col-lg-7 col-12 " style={{height:'50% !important'}}>
                 <div className="vertical-data" style={{ display: "none" }}></div>
-                <div className="p-info__tour mr-0 d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3">
+                <div className="p-info__tour mr-0 d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3 ">
                     {/* c info */}
-                    <div className="c-info__tour w-100-mobi  d-flex align-items-center col-xl-12 col-gl-12">
-                        <div className="bg-white py-3">
-                            <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3 isDesktop">
-                                <img src={flightDet?.airline_thumb?.url} width={"35px"} height={"35px"} alt="company" style={{ objectFit: 'cover' }} />
+                    <div className="c-info__tour w-100-mobi   col-xl-12 col-gl-12 d-flex justify-content-between">
+                        <div className='d-flex align-items-center'>
+                            <div className="bg-white py-3">
+                                <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3 isDesktop">
+                                    <img src={flightDet?.airline_thumb?.url} width={"35px"} height={"35px"} alt="company" style={{ objectFit: 'cover' }} />
+                                </div>
                             </div>
-                        </div>
-                        <div className="text w-90-mobi m-flex-100 pe-2">
-                            <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1">
+                            <div className="text w-90-mobi m-flex-100 pe-2">
+                                <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1">
 
+                                    <div className="val pe-2 m-pr-15 mb-0">
+                                        <div className="d-flex justify-content-between">
+                                            <p className='px-2 py-0' style={{margin:0, padding:0,fontSize:'14px',fontWeight:'600'}}>
+                                                {flightDet?.origin_name}
+                                            </p>
+                                            <p style={{margin:0, padding:0,fontSize:'14px',fontWeight:'600'}}>به</p>
+                                            <p className='px-2 py-0' style={{margin:0, padding:0,fontSize:'14px',fontWeight:'600'}}>
+                                                {flightDet?.destination_name}
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
                                 <div className="val pe-2 m-pr-15 mb-0">
                                     <div className="d-flex justify-content-between">
                                         <p className='px-2 py-0' style={{margin:0, padding:0,fontSize:'14px',fontWeight:'600'}}>
-                                            {flightDet?.origin_name}
+                                            {flightDet?.airline_name
+                                            }
                                         </p>
-                                        <p style={{margin:0, padding:0,fontSize:'14px',fontWeight:'600'}}>به</p>
-                                        <p className='px-2 py-0'style={{margin:0, padding:0,fontSize:'14px',fontWeight:'600'}}>
-                                            {flightDet?.destination_name}
-                                        </p>
+
                                     </div>
-                                </div>
-                            </div>
-                            <div className="val pe-2 m-pr-15 mb-0">
-                                <div className="d-flex justify-content-between">
-                                    <p className='px-2 py-0' style={{margin:0, padding:0,fontSize:'14px',fontWeight:'600'}}>
-                                        {flightDet?.airline_name
-                                        }
-                                    </p>
 
                                 </div>
-                            </div>
-                            <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1 m-pb-7">
-                                <div className="prop d-flex align-items-center">
-                                    <div className="image ms-2 isMobile" style={{display:"none"}}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18.976" height="18.41" viewBox="0 0 29.976 32.41">
-                                            <g id="Up-Down-3" transform="translate(2.121 1.5)">
-                                                <path id="Path_1175" data-name="Path 1175" d="M1,21.219l9.191,9.191V1" transform="translate(-1 -1)" fill="none" stroke="#0d7b0d" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3}/>
-                                                <path id="Path_1176" data-name="Path 1176" d="M19.191,10.191,10,1V30.41" transform="translate(6.543 -1)" fill="none" stroke="#0d7b0d" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3}/>
-                                            </g>
-                                        </svg>
+                                <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1 m-pb-7">
+                                    <div className="prop d-flex align-items-center">
+                                        <div className="image ms-2 isMobile" style={{display:"none"}}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18.976" height="18.41" viewBox="0 0 29.976 32.41">
+                                                <g id="Up-Down-3" transform="translate(2.121 1.5)">
+                                                    <path id="Path_1175" data-name="Path 1175" d="M1,21.219l9.191,9.191V1" transform="translate(-1 -1)" fill="none" stroke="#0d7b0d" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3}/>
+                                                    <path id="Path_1176" data-name="Path 1176" d="M19.191,10.191,10,1V30.41" transform="translate(6.543 -1)" fill="none" stroke="#0d7b0d" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3}/>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <span className="font-bold font-12-mobi bold-900-mobi bold-900-mobi text-danger" style={{fontSize:'14px'}}>تاریخ و ساعت پرواز رفت</span>
                                     </div>
-                                    <span className="font-bold font-12-mobi bold-900-mobi bold-900-mobi text-danger" style={{fontSize:'14px'}}>تاریخ و ساعت پرواز رفت</span>
+                                    <div className="val pe-2">
+                                        <span className="font-13-mobi bold-900-mobi" style={{fontSize:'13px', fontWeight:'600'}}>{` ${dateReform(flightDet?.time)} | ${getDayInPersian(moment(flightDet?.date).format('dddd'))} ${MiladiToJalaliConvertor(flightDet?.date)}`}</span>
+                                    </div>
                                 </div>
-                                <div className="val pe-2">
-                                    <span className="font-13-mobi bold-900-mobi" style={{fontSize:'13px', fontWeight:'600'}}>{` ${dateReform(flightDet?.time)} | ${MiladiToJalaliConvertor(flightDet?.date)} `}</span>
-                                </div>
+
                             </div>
 
                         </div>
+                        <div style={{paddingTop:'15px',display:'flex',columnGap:'5px'}}>
+                            <p style={{margin:'0',padding:'0',fontSize:'13px',fontWeight:'800',whiteSpace:'nowrap'}}>کد رفرنس: </p>
+
+                            <p style={{fontSize:'14px',fontWeight:'bolder'}}>
+
+                                {refcode}
+                            </p>
+                        </div>
+
                     </div>
                     {/* border */}
                     <div className="border-style-tour isMobile" style={{display:"none"}}></div>
@@ -177,7 +201,7 @@ const TourDetailLabel = ({ flightDet, stayCount,gallary }) => {
                                     <span className="font-bold text-danger font-13-mobi bold-900-mobi" style={{fontSize:'14px'}}>تاریخ و ساعت پرواز برگشت</span>
                                 </div>
                                 <div className="val pe-2">
-                                    <span className="font-13-mobi bold-900-mobi" style={{fontSize:'13px', fontWeight:'600'}}>{` ${dateReform(flightDet?.flight.time)} | ${MiladiToJalaliConvertor(flightDet?.flight.date)} `}</span>
+                                    <span className="font-13-mobi bold-900-mobi" style={{fontSize:'13px', fontWeight:'600'}}>{` ${dateReform(flightDet?.flight.time)} | ${getDayInPersian(moment(flightDet?.flight?.date).format('dddd'))} ${MiladiToJalaliConvertor(flightDet?.flight?.date)}`}</span>
                                 </div>
 
                             </div>

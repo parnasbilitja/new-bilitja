@@ -15,13 +15,14 @@ import {
   numberRounder,
   getRandomRounded,
   reservePrc,
-  getCheapestRoom,
+  getCheapestRoom, getDayInPersian,
 } from "../../../Utils/newTour";
 import { AnimatePresence, motion } from "framer-motion";
 import { Err, ErrSuccess, NotifAlert } from "./NotifAlert.component";
 import { useRouter } from "next/router";
 import axios from "axios";
 import MapPopUpComponent from "./subComponents/MapPopUp.component";
+import moment from "moment-jalaali";
 const AvailableFlightMobile = ({
                                  isOpen,
                                  flight,
@@ -30,6 +31,8 @@ const AvailableFlightMobile = ({
                                  selectedRoom,
                                  setSelectedRoom,
                                  setIsOpen,
+                                 isLoading,
+                                 setIsLoading
                                }) => {
   const [reserveStage, setReserveStage] = useState(1);
   const [passRoomId, setPassRoomId] = useState(null);
@@ -385,6 +388,8 @@ const AvailableFlightMobile = ({
     let stayCount = routerParam.night;
     let rooms = [...roomsGen(reformSelectedRoom())];
     if (selectedRoom.length > 0) {
+      setIsLoading(true)
+
       axios
           .post(
               "https://hotelobilit-api.iran.liara.run/api/v2/reserves/checking",
@@ -406,9 +411,11 @@ const AvailableFlightMobile = ({
             );
           })
           .catch((err) => {
+            setIsLoading(false)
             Err("این پرواز با این تعداد اتاق انتخابی موجودی ندارد");
           });
     } else {
+      setIsLoading(false)
       Err("لطفا پرواز و اتاق مورد نظر خود راانتخاب کنید");
     }
   };
@@ -486,21 +493,21 @@ const AvailableFlightMobile = ({
                                   </p>
                                 </div>
                                 <div
-                                    style={{
-                                      display: "flex",
-                                      justifyContent: "center",
-                                    }}
+
+                                    className={styles['flight_number']}
                                 >
                                   <p>ش.پرواز:  </p>
                                   <p style={{ color: "red",marginRight:'5px'}}>
                                     {flight.flight_number}
                                   </p>
                                 </div>
-                                <div>
+                                <div className={styles['flightdate']}>
+
                                   <p>{MiladiToJalaliConvertor(flight.date)}</p>
+                                  <p>{getDayInPersian(moment(flight.date).format('dddd')) }</p>
                                 </div>
                                 <div>
-                                  <p style={{color:'#e20000'}}>{flight.time.slice(0, 5)}</p>
+                                  <p style={{color:'#e20000',fontSize:'17px'}}>{flight.time.slice(0, 5)}</p>
                                 </div>
                               </div>
                             </div>
@@ -560,23 +567,22 @@ const AvailableFlightMobile = ({
                                   </p>
                                 </div>
                                 <div
-                                    style={{
-                                      display: "flex",
-                                      justifyContent: "center",
-                                    }}
+
+                                    className={styles['flight_number']}
                                 >
                                   <p>ش.پرواز: </p>
                                   <p style={{ color: "#e20000",marginRight:'5px' }}>
                                     {flight.flight.flight_number}
                                   </p>
                                 </div>
-                                <div>
+                                <div className={styles['flightdate']}>
                                   <p>
                                     {MiladiToJalaliConvertor(flight.flight.date)}
                                   </p>
+                                  <p>{getDayInPersian(moment(flight.flight.date).format('dddd')) }</p>
                                 </div>
                                 <div>
-                                  <p style={{color:'#e20000'}}>{flight.flight.time.slice(0, 5)}</p>
+                                  <p style={{color:'#e20000',fontSize:'17px'}}>{flight.flight.time.slice(0, 5)}</p>
                                 </div>
                               </div>
                             </div>
@@ -791,20 +797,21 @@ const AvailableFlightMobile = ({
                         </p>
                       </div>
 
-                      {selectedRoom.length === 0 && (
-                          <p
-                              style={{
-                                color: "red",
-                                fontSize: "10px",
-                                fontWeight: "900",
-                                margin: "2px 0",
-                                textAlign: "center",
-                              }}
-                          >
-                            توجه داشته باشید اتاق ها طبق ظرفیت میباشد، مثلا دوتخته
-                            برای دونفر بزرگسال می باشد
-                          </p>
-                      )}
+
+                      <p
+                          style={{
+                            color: "red",
+                            fontSize: "13px",
+                            fontWeight: "900",
+                            margin: "2px 0",
+                            fontFamily:'iranBold',
+                            textAlign: "center",
+                          }}
+                      >
+                        توجه داشته باشید اتاق ها طبق ظرفیت میباشد، مثلا دوتخته
+                        برای دونفر بزرگسال می باشد
+                      </p>
+
                     </motion.div>
 
                     <div style={{ height: "auto" }}>
@@ -934,337 +941,349 @@ const AvailableFlightMobile = ({
                                               </div>
                                               {passRoomId === pass.room_type_id && (
                                                   <>
-                                                    <div
-                                                        className={`${
-                                                            styles["roomcountDet_bedcount"]
-                                                        } ${
-                                                            styles[
-                                                                room?.extra_bed_count > 0
-                                                                    ? "borderActive"
-                                                                    : "bordernoneActive"
-                                                                ]
-                                                        }`}
-                                                    >
-                                                      <div>
-                                                        <div style={{
-                                                          display: "flex",
-                                                          // justifyContent: "space-between",
-                                                          // padding: "0 5px",
-                                                          columnGap:'5px'
-                                                        }}>
-
-                                                          <p className={styles["bedtype"]}>
-                                                            تعداد تخت اضافه
-                                                          </p>
-                                                          <p>(بالای 12 سال)</p>
-                                                        </div>
-                                                        <p className={styles["bedtypeprc"]}>
-                                                          {numberWithCommas(
-                                                              numberRounder(
-                                                                  extBedPrcGen(
-                                                                      hotel?.rooms,
-                                                                      flight,
-                                                                      room?.room_type_id
-                                                                  )
-                                                              )
-                                                          )}{" "}
-                                                          تومان
-                                                        </p>
-
-                                                      </div>
-                                                      <div
-                                                          style={{
-                                                            display: "flex",
-                                                            justifyContent: "space-between",
-                                                            alignItems: "center",
-                                                            marginTop: "10px",
-                                                            padding: "0 15px",
-                                                          }}
-                                                      >
-
-
-                                                        <div
-                                                            className={
-                                                              styles[
-                                                                  "roomcountDet_bedcount_count"
-                                                                  ]
-                                                            }
-                                                        >
-                                                          <div
-                                                              className={
+                                                    {
+                                                        pass.extra_bed_capacity >0 &&  <div
+                                                            className={`${
+                                                                styles["roomcountDet_bedcount"]
+                                                            } ${
                                                                 styles[
-                                                                    getPassengerCap(
-                                                                        pass.room_type_id,
-                                                                        "extra_bed_count"
-                                                                    ) <=
-                                                                    passCounter(
-                                                                        pass.room_type_id,
-                                                                        "extra_bed_count"
-                                                                    )
-                                                                        ? "dis_decin"
-                                                                        : "decin"
+                                                                    room?.extra_bed_count > 0
+                                                                        ? "borderActive"
+                                                                        : "bordernoneActive"
                                                                     ]
-                                                              }
-                                                              onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                incDet(
-                                                                    room?.room_type_id,
-                                                                    "extra_bed_count"
-                                                                );
+                                                            }`}
+                                                        >
+                                                          <div>
+                                                            <div style={{
+                                                              display: "flex",
+                                                              // justifyContent: "space-between",
+                                                              // padding: "0 5px",
+                                                              columnGap:'5px'
+                                                            }}>
+
+                                                              <p className={styles["bedtype"]}>
+                                                                تعداد تخت اضافه
+                                                              </p>
+                                                              <p>(بالای 12 سال)</p>
+                                                            </div>
+                                                            <p className={styles["bedtypeprc"]}>
+                                                              {numberWithCommas(
+                                                                  numberRounder(
+                                                                      extBedPrcGen(
+                                                                          hotel?.rooms,
+                                                                          flight,
+                                                                          room?.room_type_id
+                                                                      )
+                                                                  )
+                                                              )}{" "}
+                                                              تومان
+                                                            </p>
+
+                                                          </div>
+                                                          <div
+                                                              style={{
+                                                                display: "flex",
+                                                                justifyContent: "space-between",
+                                                                alignItems: "center",
+                                                                marginTop: "10px",
+                                                                padding: "0 15px",
                                                               }}
                                                           >
-                                                            +
-                                                          </div>
-                                                          <span>
+
+
+                                                            <div
+                                                                className={
+                                                                  styles[
+                                                                      "roomcountDet_bedcount_count"
+                                                                      ]
+                                                                }
+                                                            >
+                                                              <div
+                                                                  className={
+                                                                    styles[
+                                                                        getPassengerCap(
+                                                                            pass.room_type_id,
+                                                                            "extra_bed_count"
+                                                                        ) <=
+                                                                        passCounter(
+                                                                            pass.room_type_id,
+                                                                            "extra_bed_count"
+                                                                        )
+                                                                            ? "dis_decin"
+                                                                            : "decin"
+                                                                        ]
+                                                                  }
+                                                                  onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    incDet(
+                                                                        room?.room_type_id,
+                                                                        "extra_bed_count"
+                                                                    );
+                                                                  }}
+                                                              >
+                                                                +
+                                                              </div>
+                                                              <span>
                                                 {getSumOfPassenger(
                                                     room?.room_type_id,
                                                     "extra_bed_count"
                                                 )}
                                               </span>
-                                                          <div
-                                                              className={
-                                                                styles[
-                                                                    passCounter(
-                                                                        pass.room_type_id,
+                                                              <div
+                                                                  className={
+                                                                    styles[
+                                                                        passCounter(
+                                                                            pass.room_type_id,
+                                                                            "extra_bed_count"
+                                                                        ) === 0
+                                                                            ? "dis_decin"
+                                                                            : "decin"
+                                                                        ]
+                                                                  }
+                                                                  onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    decDet(
+                                                                        room?.room_type_id,
                                                                         "extra_bed_count"
-                                                                    ) === 0
-                                                                        ? "dis_decin"
-                                                                        : "decin"
-                                                                    ]
-                                                              }
-                                                              onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                decDet(
-                                                                    room?.room_type_id,
-                                                                    "extra_bed_count"
-                                                                );
-                                                              }}
-                                                          >
-                                                            -
+                                                                    );
+                                                                  }}
+                                                              >
+                                                                -
+                                                              </div>
+                                                            </div>
                                                           </div>
                                                         </div>
-                                                      </div>
-                                                    </div>
+                                                    }
 
-                                                    <div
-                                                        className={`${
-                                                            styles["roomcountDet_bedcount"]
-                                                        } ${
-                                                            styles[
-                                                                room?.chd_count > 0
-                                                                    ? "borderActive"
-                                                                    : "bordernoneActive"
-                                                                ]
-                                                        }`}
-                                                    >
-                                                      <div
+                                                    {
+                                                        pass.chd_capacity>0 &&    <div
+                                                            className={`${
+                                                                styles["roomcountDet_bedcount"]
+                                                            } ${
+                                                                styles[
+                                                                    room?.chd_count > 0
+                                                                        ? "borderActive"
+                                                                        : "bordernoneActive"
+                                                                    ]
+                                                            }`}
+                                                        >
+                                                          <div
 
-                                                      >
-                                                        <div   style={{
-                                                          display: "flex",
-                                                          // justifyContent: "space-between",
-                                                          // padding: "0 5px",
-                                                          columnGap:'5px'
-                                                        }}>
+                                                          >
+                                                            <div   style={{
+                                                              display: "flex",
+                                                              // justifyContent: "space-between",
+                                                              // padding: "0 5px",
+                                                              columnGap:'5px'
+                                                            }}>
 
-                                                          <p className={styles["bedtype"]}>
-                                                            تعداد کودک
-                                                          </p>
-                                                          <p>(2 تا 12 سال)</p>
-                                                        </div>
-                                                        <p className={styles["bedtypeprc"]}>
-                                                          {numberWithCommas(
-                                                              numberRounder(
-                                                                  chdPrcGen(
-                                                                      hotel.rooms,
-                                                                      flight,
-                                                                      room.room_type_id
+                                                              <p className={styles["bedtype"]}>
+                                                                تعداد کودک
+                                                              </p>
+                                                              <p>(2 تا 12 سال)</p>
+                                                            </div>
+                                                            <p className={styles["bedtypeprc"]}>
+                                                              {numberWithCommas(
+                                                                  numberRounder(
+                                                                      chdPrcGen(
+                                                                          hotel.rooms,
+                                                                          flight,
+                                                                          room.room_type_id
+                                                                      )
                                                                   )
-                                                              )
-                                                          )}{" "}
-                                                          تومان
-                                                        </p>
-                                                      </div>
+                                                              )}{" "}
+                                                              تومان
+                                                            </p>
+                                                          </div>
 
-                                                      <div
-                                                          style={{
-                                                            display: "flex",
-                                                            justifyContent: "space-between",
-                                                            alignItems: "center",
-                                                            // marginTop: "10px",
-                                                            padding: "0 15px",
-                                                          }}
-                                                      >
-                                                        .
-                                                        <div
-                                                            className={
-                                                              styles[
-                                                                  "roomcountDet_bedcount_count"
-                                                                  ]
-                                                            }
-                                                        >
                                                           <div
-                                                              className={
-                                                                styles[
-                                                                    getPassengerCap(
-                                                                        pass.room_type_id,
+                                                              style={{
+                                                                display: "flex",
+                                                                justifyContent: "space-between",
+                                                                alignItems: "center",
+                                                                // marginTop: "10px",
+                                                                padding: "0 15px",
+                                                              }}
+                                                          >
+
+                                                            <div
+                                                                className={
+                                                                  styles[
+                                                                      "roomcountDet_bedcount_count"
+                                                                      ]
+                                                                }
+                                                            >
+                                                              <div
+                                                                  className={
+                                                                    styles[
+                                                                        getPassengerCap(
+                                                                            pass.room_type_id,
+                                                                            "chd_count"
+                                                                        ) <=
+                                                                        passCounter(
+                                                                            pass.room_type_id,
+                                                                            "chd_count"
+                                                                        )
+                                                                            ? "dis_decin"
+                                                                            : "decin"
+                                                                        ]
+                                                                  }
+                                                                  onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    incDet(
+                                                                        room?.room_type_id,
                                                                         "chd_count"
-                                                                    ) <=
-                                                                    passCounter(
-                                                                        pass.room_type_id,
-                                                                        "chd_count"
-                                                                    )
-                                                                        ? "dis_decin"
-                                                                        : "decin"
-                                                                    ]
-                                                              }
-                                                              onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                incDet(
+                                                                    );
+                                                                  }}
+                                                              >
+                                                                +
+                                                              </div>
+                                                              <span>
+                                                {" "}
+                                                                {getSumOfPassenger(
                                                                     room?.room_type_id,
                                                                     "chd_count"
-                                                                );
-                                                              }}
-                                                          >
-                                                            +
-                                                          </div>
-                                                          <span>
-                                                {" "}
-                                                            {getSumOfPassenger(
-                                                                room?.room_type_id,
-                                                                "chd_count"
-                                                            )}
+                                                                )}
                                               </span>
-                                                          <div
-                                                              className={
-                                                                styles[
-                                                                    passCounter(
-                                                                        pass.room_type_id,
+                                                              <div
+                                                                  className={
+                                                                    styles[
+                                                                        passCounter(
+                                                                            pass.room_type_id,
+                                                                            "chd_count"
+                                                                        ) === 0
+                                                                            ? "dis_decin"
+                                                                            : "decin"
+                                                                        ]
+                                                                  }
+                                                                  onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    decDet(
+                                                                        room?.room_type_id,
                                                                         "chd_count"
-                                                                    ) === 0
-                                                                        ? "dis_decin"
-                                                                        : "decin"
-                                                                    ]
-                                                              }
-                                                              onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                decDet(
-                                                                    room?.room_type_id,
-                                                                    "chd_count"
-                                                                );
-                                                              }}
-                                                          >
-                                                            -
+                                                                    );
+                                                                  }}
+                                                              >
+                                                                -
+                                                              </div>
+                                                            </div>
                                                           </div>
                                                         </div>
-                                                      </div>
-                                                    </div>
-                                                    <div
-                                                        className={`${
-                                                            styles["roomcountDet_bedcount"]
-                                                        } ${
-                                                            styles[
-                                                                room?.inf_count > 0
-                                                                    ? "borderActive"
-                                                                    : "bordernoneActive"
-                                                                ]
-                                                        }`}
-                                                    >
-                                                      <div
+                                                    }
 
-                                                      >
-                                                        <div style={{
-                                                          display: "flex",
-                                                          // justifyContent: "space-between",
-                                                          // padding: "0 15px",
-                                                          columnGap:'5px'
-                                                        }}>
-
-                                                          <p className={styles["bedtype"]}>
-                                                            تعداد نوزاد
-                                                          </p>
-                                                          <p>(زیر 2 سال)</p>
-                                                        </div>
-                                                        <p className={styles["bedtypeprc"]}>
-                                                          {numberWithCommas(
-                                                              numberRounder(flight?.inf_price)
-                                                          )}{" "}
-                                                          تومان
-                                                        </p>
-                                                      </div>
-                                                      <div
-                                                          style={{
-                                                            display: "flex",
-                                                            justifyContent: "space-between",
-                                                            alignItems: "center",
-                                                            // marginTop: "10px",
-                                                            padding: "0 15px",
-                                                          }}
-                                                      >
-                                                        .
-                                                        <div
-                                                            className={
-                                                              styles[
-                                                                  "roomcountDet_bedcount_count"
-                                                                  ]
-                                                            }
+                                                    {
+                                                        pass.Adl_capacity>0 &&   <div
+                                                            className={`${
+                                                                styles["roomcountDet_bedcount"]
+                                                            } ${
+                                                                styles[
+                                                                    room?.inf_count > 0
+                                                                        ? "borderActive"
+                                                                        : "bordernoneActive"
+                                                                    ]
+                                                            }`}
                                                         >
                                                           <div
-                                                              className={
-                                                                styles[
-                                                                    getPassengerCap(
-                                                                        pass.room_type_id,
-                                                                        "inf_count"
-                                                                    ) <=
-                                                                    passCounter(
-                                                                        pass.room_type_id,
-                                                                        "inf_count"
-                                                                    )
-                                                                        ? "dis_decin"
-                                                                        : "decin"
-                                                                    ]
-                                                              }
-                                                              onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                incDet(
-                                                                    room?.room_type_id,
-                                                                    "inf_count"
-                                                                );
-                                                              }}
+
                                                           >
-                                                            +
+                                                            <div style={{
+                                                              display: "flex",
+                                                              // justifyContent: "space-between",
+                                                              // padding: "0 15px",
+                                                              columnGap:'5px'
+                                                            }}>
+
+                                                              <p className={styles["bedtype"]}>
+                                                                تعداد نوزاد
+                                                              </p>
+                                                              <p>(زیر 2 سال)</p>
+                                                            </div>
+                                                            <p className={styles["bedtypeprc"]}>
+                                                              {numberWithCommas(
+                                                                  numberRounder(flight?.inf_price)
+                                                              )}{" "}
+                                                              تومان
+                                                            </p>
                                                           </div>
-                                                          <span>
-                                                {" "}
-                                                            {getSumOfPassenger(
-                                                                room?.room_type_id,
-                                                                "inf_count"
-                                                            )}
-                                              </span>
                                                           <div
-                                                              className={
-                                                                styles[
-                                                                    passCounter(
-                                                                        pass.room_type_id,
-                                                                        "inf_count"
-                                                                    ) === 0
-                                                                        ? "dis_decin"
-                                                                        : "decin"
-                                                                    ]
-                                                              }
-                                                              onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                decDet(
-                                                                    room?.room_type_id,
-                                                                    "inf_count"
-                                                                );
+                                                              style={{
+                                                                display: "flex",
+                                                                justifyContent: "space-between",
+                                                                alignItems: "center",
+                                                                // marginTop: "10px",
+                                                                padding: "0 15px",
                                                               }}
                                                           >
-                                                            -
+
+                                                            <div
+                                                                className={
+                                                                  styles[
+                                                                      "roomcountDet_bedcount_count"
+                                                                      ]
+                                                                }
+                                                            >
+                                                              <div
+                                                                  className={
+                                                                    styles[
+                                                                        getPassengerCap(
+                                                                            pass.room_type_id,
+                                                                            "inf_count"
+                                                                        ) <=
+                                                                        passCounter(
+                                                                            pass.room_type_id,
+                                                                            "inf_count"
+                                                                        )
+                                                                            ? "dis_decin"
+                                                                            : "decin"
+                                                                        ]
+                                                                  }
+                                                                  onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    incDet(
+                                                                        room?.room_type_id,
+                                                                        "inf_count"
+                                                                    );
+                                                                  }}
+                                                              >
+                                                                +
+                                                              </div>
+                                                              <span>
+                                                {" "}
+                                                                {getSumOfPassenger(
+                                                                    room?.room_type_id,
+                                                                    "inf_count"
+                                                                )}
+                                              </span>
+                                                              <div
+                                                                  className={
+                                                                    styles[
+                                                                        passCounter(
+                                                                            pass.room_type_id,
+                                                                            "inf_count"
+                                                                        ) === 0
+                                                                            ? "dis_decin"
+                                                                            : "decin"
+                                                                        ]
+                                                                  }
+                                                                  onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    decDet(
+                                                                        room?.room_type_id,
+                                                                        "inf_count"
+                                                                    );
+                                                                  }}
+                                                              >
+                                                                -
+                                                              </div>
+                                                            </div>
                                                           </div>
                                                         </div>
-                                                      </div>
-                                                    </div>
+                                                    }
+
+
+
+
+
 
                                                   </>
                                               )}
@@ -1281,20 +1300,32 @@ const AvailableFlightMobile = ({
                     <div className={styles["btnContainer"]}>
                       <button
                           onClick={() => {
-                            tourReserve1(
-                                flight?.checkin_tomorrow,
-                                flight?.checkout_yesterday,
-                                flight?.date,
-                                flight?.flight?.date,
-                                flight.id,
-                                hotel.id
-                            );
+                            if(!isLoading){
+                              tourReserve1(
+                                  flight?.checkin_tomorrow,
+                                  flight?.checkout_yesterday,
+                                  flight?.date,
+                                  flight?.flight?.date,
+                                  flight.id,
+                                  hotel.id
+                              );
+
+                            }
                           }}
                           className={
                             styles[selectedRoom.length === 0 ? "disbtn" : "btn"]
                           }
                       >
-                        {` رزرو تور برای ${AllSelectedPassengerNumber()} نفر`}
+                        {
+                          isLoading ?
+
+                              <span>لطفا منتطر بمانید....</span>:
+                              <span>
+                                                        {`رزرو تور برای ${AllSelectedPassengerNumber()} رزرو`}
+
+                                                        </span>
+                        }
+
                       </button>
                     </div>
                   </div>

@@ -449,3 +449,22 @@ export const getCheapestRoom = (rooms, flight) => {
 
   return newRoomsWithCheapestPrc;
 };
+
+export const getDayInPersian=(dayname)=>{
+  switch (dayname.toLowerCase()) {
+    case "saturday":
+      return "شنبه";
+    case "sunday":
+      return "یک شنبه";
+    case "monday":
+      return "دوشنبه";
+    case "tuesday":
+      return "سه شنبه";
+    case "wednesday":
+      return "چهارشنبه";
+    case "thursday":
+      return "پنج شنبه";
+    case "friday":
+      return "جمعه";
+  }
+}

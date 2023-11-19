@@ -375,10 +375,22 @@ const BirthdayCalenderMiladi = (props) => {
                         "jYYYY/jMM/jDD"
                       );
                       const date = m.format("jYYYY/jMM/jDD");
-
-                      props.setBirthday(date);
+                      const dasheddateformat = m.format("jYYYY-jMM-jDD");
+                      // props.setBirthday(date);
                       props.closePopUpCalendar(false);
                       setState({ ...state, stage: 1 });
+
+                      props.Birthdate(
+                          dasheddateformat,
+                          props.roomInfo.passId,
+                          props.roomInfo.type,
+                          props.roomInfo.roomId,
+                          props.roomInfo.roomTypeId,
+                          "birth_day",
+                          props.roomInfo.id,
+                          props.roomInfo.reserve_id,
+
+                      );
                     }}
                   >
                     {x}
