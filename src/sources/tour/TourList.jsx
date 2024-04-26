@@ -5,8 +5,8 @@ import { Loader } from '../../Utils/Loader';
 import { moneyFormat, moneyFormatrial } from '../../Utils/SimpleTasks';
 import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
-import {getcurrencyfa, getRandomNumber, MiladiToJalaliConvertor} from "@/Utils/newTour";
-import Paginate from "@/Components/NewTours/Components/subComponents/Paginate";
+import {getcurrencyfa, getRandomNumber, MiladiToJalaliConvertor} from "../../Utils/newTour";
+import Paginate from "../../Components/NewTours/Components/subComponents/Paginate";
 import {useRouter} from "next/router";
 
 const TourList = (props) => {
