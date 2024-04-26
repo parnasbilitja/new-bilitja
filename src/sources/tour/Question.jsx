@@ -9,7 +9,7 @@ const Question = ({faq}) => {
         <div>
          <a class="question" href="#" onClick={() => setOpen(!open)} >
             <div class="right">
-                <img src="https://hamnavaz.com/img/FAQ.svg" width="20" alt="سوال و پرسش"/>&nbsp;
+                <img src="../../../Images/FAQ.svg" width="20" alt="سوال و پرسش"/>&nbsp;
                 <span>{faq.question}</span>
             </div>
             <i class="">

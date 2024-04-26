@@ -11,7 +11,7 @@ const Account = (props) => {
     const [state,setState] = useState({
       mobile: "",
     });
-  
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -22,7 +22,7 @@ const Account = (props) => {
     return (
       <>
         {props.accountBox.type == "login" ? (
-          <Login mobile={state.mobile} handleChange={handleChange} />
+          <Login mobile={state.mobile} handleChange={handleChange} func={()=>props.func()}/>
         ) : null}
         {props.accountBox.type == "authentication" ? (
           <Authentication mobile={state.mobile} />

@@ -6,15 +6,22 @@ export const fetchAllHotelsRequest = () =>{
 export const fetchAllHotelsSuccess = (data) =>{
     return {type:'getAllHotelsSuccess',payload:data};
 }
-export const fetchAllHotelsFailures = (error) =>{ 
+export const fetchAllHotelsFailures = (error) =>{
     return {type:'getAllHotelsFailures',payload:error};
 }
 
 export const fetchAllHotels = (city,hotel,page) =>{
+    // debugger
     return (dispatch) =>{
-        axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city, search:hotel, page:page,paginate:true,perPage:12})
+    dispatch(fetchAllHotelsRequest())
+        axios.get(`https://api.hotelobilit.com/api/v2/hotels?city=&page=${page}`, {
+            headers: {
+                "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP'
+            }
+        })
         .then(response =>{
             const tours = response.data
+            console.log(response)
             dispatch(fetchAllHotelsSuccess(tours))
         })
         .catch(error=>{

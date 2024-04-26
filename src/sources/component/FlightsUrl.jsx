@@ -6,12 +6,12 @@ const FlightsUrl = ({flightsData, flightsDataHotel}) => {
   let date = moment().format('jYYYY/jM/jD')
   // console.log(date);
     return (
-      <div className="row justify-content-center">
+      <div className="row justify-content-center padd2">
         <div className="col-md-10" >
           <div className="row justify-content-center">
             <div className={`col-12 col-lg-6 ${styles["home-flight-suggestion"]} text-center container`}>
               <p className="font-bold-iransanse font-size-20">بلیط هواپیمـا</p>
-              <p className="mb-3 font-size-18">قیمت های لحظه آخری بلیطـجا</p>
+              <p className="mb-3 font-size-18">قیمت های لحظه آخری بلبطجا</p>
               <div className="col-sm-12 d-flex row flex-wrap align-items-center justify-content-between">
                 <div className={`${styles["suggestion-list"]} col-6`}>
                   {flightsData[0].map((item,index)=>(

@@ -24,7 +24,7 @@ const HotelsSideBarSearch = (props) => {
         if (e.key === "Enter") {
             dispatch(setLoader(true))
             axios
-                .post("https://hotelobilit-api.iran.liara.run/api/v1/hotels/search", {
+                .post(`https://api.hotelobilit.com/api/v2/tours`, {
                     date: props.date,
                     destination: props.destination,
                     keywords: searchInput,
@@ -32,10 +32,14 @@ const HotelsSideBarSearch = (props) => {
                     origin: props.origin,
                     stars: null,
                     stayCount: props.night,
+                },   {
+                    headers: {
+                        "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                    }
                 })
                 .then((res) => {
                     props?.setHotels([])
-                    props?.setHotels(res?.data?.data?.data);
+                    props?.setHotels(res?.data?.data);
                     dispatch(setLoader(false))
                 })
                 .catch((err) => {
@@ -44,15 +48,15 @@ const HotelsSideBarSearch = (props) => {
             props.setShowFilter(!props.showFilter)
         }
     };
-    const numberSorter=(arr)=>{
+     const numberSorter=(arr)=>{
 
-        return arr.sort((a, b) => +a - +b);
-    }
+         return arr.sort((a, b) => +a - +b);
+     }
 
     const reset=()=>{
         dispatch(setLoader(true))
         axios
-            .post("https://hotelobilit-api.iran.liara.run/api/v1/hotels/search", {
+            .post(`https://api.hotelobilit.com/api/v2/tours`, {
                 date: props.date,
                 destination: props.destination,
                 keywords: '',
@@ -60,10 +64,14 @@ const HotelsSideBarSearch = (props) => {
                 origin: props.origin,
                 stars: null,
                 stayCount: props.night,
+            },   {
+                headers: {
+                    "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                }
             })
             .then((res) => {
                 props?.setHotels([])
-                props?.setHotels(res?.data?.data?.data);
+                props?.setHotels(res?.data?.data);
                 dispatch(setLoader(false))
                 setSearchInput('')
             })
@@ -75,11 +83,12 @@ const HotelsSideBarSearch = (props) => {
     }
     ////////based on (cheapest or most expensive) or hotels name that went to search
     const checkedClick = (checkValue, num, searchtype) => {
+         // debugger
 
         console.log(typeof num)
         dispatch(setLoader(true))
         axios
-            .post("https://hotelobilit-api.iran.liara.run/api/v1/hotels/search", {
+            .post(`https://api.hotelobilit.com/api/v2/tours`, {
                 date: props.date,
                 destination: props.destination,
                 keywords: searchInput,
@@ -87,9 +96,15 @@ const HotelsSideBarSearch = (props) => {
                 origin: props.origin,
                 stars: (searchtype === "star" && num !== 'همه') ? num : null,
                 stayCount: props.night,
-            })
+            },
+            {
+                headers: {
+                    "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                }
+            }
+            )
             .then((res) => {
-                props.setHotels(res?.data?.data?.data);
+                props.setHotels(res?.data?.data);
                 props.setShowFilter(!props.showFilter)
                 dispatch(setLoader(false))
             })
@@ -144,7 +159,7 @@ const HotelsSideBarSearch = (props) => {
                         <CollapseSearchComponent searchTab={searchTab}
                                                  setSearchTab={(value) => setSearchTab(value)}
                                                  title='جستجوی نام هتل یااقامتگاه'
-                                                 svg={<svg enable-background="new 0 0 300 300" height="28px" id="Layer_1" version="1.1" viewBox="0 0 300 300" width="28px"  xmlns="http://www.w3.org/2000/svg" ><g><rect fill="none" height="21" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="21" x="155" y="80"/><rect fill="none" height="21" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="21" x="115" y="80"/><rect fill="none" height="21" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="21" x="155" y="117"/><rect fill="none" height="21" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="21" x="115" y="117"/><rect fill="none" height="21" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="21" x="155" y="153"/><rect fill="none" height="21" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="21" x="115" y="153"/><polyline fill="none" points="   162,229 162,196 129,196 129,229  " stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6"/><g><rect fill="none" height="19" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="19" x="227" y="104"/><rect fill="none" height="19" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="19" x="227" y="138"/><rect fill="none" height="18" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="19" x="227" y="171"/><path d="    M203,241h52.807c1.487,0,2.193-1.706,2.193-3.193V229.5V80.193c0-1.487-0.706-2.193-2.193-2.193H203" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6"/><polyline fill="none" points="    203,189 211,189 211,171 203,171   " stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6"/><rect fill="none" height="18" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="19" x="227" y="201"/><polyline fill="none" points="    203,219 211,219 211,201 203,201   " stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6"/><polyline fill="none" points="    203,157 211,157 211,138 203,138   " stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6"/><polyline fill="none" points="    203,123 211,123 211,104 203,104   " stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6"/></g><g><rect fill="none" height="16" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="16" x="50" y="119"/><rect fill="none" height="16" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="16" x="50" y="148"/><rect fill="none" height="15" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="16" x="50" y="177"/><path d="    M87,241H43.042c-1.282,0-4.042-2.622-4.042-3.903V101.222c0-1.283,2.759-1.222,4.042-1.222H88" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6"/><polyline fill="none" points="    88,192 80,192 80,177 88,177   " stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6"/><rect fill="none" height="16" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" width="16" x="50" y="202"/><polyline fill="none" points="    87,218 80,218 80,202 87,202   " stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6"/><polyline fill="none" points="    88,164 80,164 80,148 87,148   " stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6"/><polyline fill="none" points="    87,135 80,135 80,119 88,119   " stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6"/></g><path d="   M191,63c0-1.657-1.343-3-3-3h-85c-1.657,0-3,1.343-3,3v175c0,1.657,1.343,3,3,3h85c1.657,0,3,0.657,3-1V63z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6"/></g><line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" x1="92" x2="199" y1="60" y2="60"/><line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" x1="32" x2="88" y1="100" y2="100"/><line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" x1="208" x2="264" y1="78" y2="78"/></svg>}
+                                                 svg={<svg enableBackground="new 0 0 300 300" height="28px" id="Layer_1" version="1.1" viewBox="0 0 300 300" width="28px"  xmlns="http://www.w3.org/2000/svg" ><g><rect fill="none" height="21" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="21" x="155" y="80"/><rect fill="none" height="21" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="21" x="115" y="80"/><rect fill="none" height="21" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="21" x="155" y="117"/><rect fill="none" height="21" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="21" x="115" y="117"/><rect fill="none" height="21" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="21" x="155" y="153"/><rect fill="none" height="21" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="21" x="115" y="153"/><polyline fill="none" points="   162,229 162,196 129,196 129,229  " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><g><rect fill="none" height="19" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="19" x="227" y="104"/><rect fill="none" height="19" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="19" x="227" y="138"/><rect fill="none" height="18" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="19" x="227" y="171"/><path d="    M203,241h52.807c1.487,0,2.193-1.706,2.193-3.193V229.5V80.193c0-1.487-0.706-2.193-2.193-2.193H203" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><polyline fill="none" points="    203,189 211,189 211,171 203,171   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><rect fill="none" height="18" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="19" x="227" y="201"/><polyline fill="none" points="    203,219 211,219 211,201 203,201   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><polyline fill="none" points="    203,157 211,157 211,138 203,138   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><polyline fill="none" points="    203,123 211,123 211,104 203,104   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/></g><g><rect fill="none" height="16" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="16" x="50" y="119"/><rect fill="none" height="16" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="16" x="50" y="148"/><rect fill="none" height="15" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="16" x="50" y="177"/><path d="    M87,241H43.042c-1.282,0-4.042-2.622-4.042-3.903V101.222c0-1.283,2.759-1.222,4.042-1.222H88" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><polyline fill="none" points="    88,192 80,192 80,177 88,177   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><rect fill="none" height="16" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="16" x="50" y="202"/><polyline fill="none" points="    87,218 80,218 80,202 87,202   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><polyline fill="none" points="    88,164 80,164 80,148 87,148   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><polyline fill="none" points="    87,135 80,135 80,119 88,119   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/></g><path d="   M191,63c0-1.657-1.343-3-3-3h-85c-1.657,0-3,1.343-3,3v175c0,1.657,1.343,3,3,3h85c1.657,0,3,0.657,3-1V63z" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/></g><line fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" x1="92" x2="199" y1="60" y2="60"/><line fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" x1="32" x2="88" y1="100" y2="100"/><line fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" x1="208" x2="264" y1="78" y2="78"/></svg>}
                                                  inputType='input'
                         >
                             <input
@@ -176,11 +191,11 @@ const HotelsSideBarSearch = (props) => {
 
                                 onClick={(e)=>  e.stopPropagation()}
                             >
-                                <option selected value='همه'>
+                                <option key={'همه'} selected value='همه'>
                                     همه
                                 </option>
-                                {numberSorter([...new Set(props.stars)])?.map((star) => {
-                                    return <option value={star}>{star} ستاره </option>;
+                                {numberSorter([1,2,3,4,5])?.map((star) => {
+                                    return <option key={star} value={star}>{star} ستاره </option>;
                                 })}
                             </select>
                         </CollapseSearchComponent>
@@ -190,7 +205,7 @@ const HotelsSideBarSearch = (props) => {
                                                  setSearchTab={(value) => setSearchTab(value)}
                                                  title='مرتب سازی براساس'
                                                  svg={
-                                                     <svg enable-background="new 0 0 48 48" height="18px"
+                                                     <svg enableBackground="new 0 0 48 48" height="18px"
                                                           version="1.1" viewBox="0 0 48 48" width="18px"
                                                           xmlns="http://www.w3.org/2000/svg">
                                                          <g id="Guides"/>

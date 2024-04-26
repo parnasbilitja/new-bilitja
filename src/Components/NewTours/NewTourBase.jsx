@@ -25,7 +25,7 @@ const NewTourBase = () => {
     <div>
       <div style={{ marginBottom: "2rem" }}>
         <Head>
-          <title>بلیطجا | لیست تورها</title>
+          <title>بلبطجا | لیست تورها</title>
         </Head>
         <NavHandler />
         <div

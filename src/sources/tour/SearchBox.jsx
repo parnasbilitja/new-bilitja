@@ -9,71 +9,115 @@ import {months} from '../../Utils/data'
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 import InputValues from "./InputValues";
 import axios from "axios";
+import styles1 from "../../../styles/PrimaryButton.module.scss";
+// import {usePostHog} from "posthog-js/react";
+import MonthValues from "../../sources/tour/MonthValues";
 //import BirthdayCalendar from "../calendar/BirthdayCalendar.component"
 
 const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
+    const [searchInput,setSearchInput]=useState('')
+    const [isSearchbox,setIsSearchbox]=useState(false)
     const [cities,setCities] = useState([])
+    const [isLoading,setIsLoading] = useState(false)
     const [search,setSearch] = useState({
       month:'',
-      value:'',
-      slug:'',
+      destination:'',
+
     })
 
+    useEffect(()=>{
+        setIsLoading(false)
+    },[isLoading])
     const handleChange = (event) => {
       const { name, value } = event.target;
+        setSearchInput(value)
       setSearch({...search,[name]:value});
+
+
     };
 
-    useEffect(() => {
-        const getData =async () => {
-            let data = await axios.post('https://api.hamnavaz.com/api/v1/city/getCities',{hasTour:true})
-            .then((response) => {setCities(response.data.data),console.log(response.data)})
-            return data 
+    useEffect(()=>{
+        if(searchInput===''){
+            getData()
+        }else{
+
+        const filtered=cities.filter(d=>d.destination_name.includes(searchInput))
+
+        setCities(filtered)
         }
+    },[searchInput])
+    const getData =async () => {
+        let data = await axios.get('https://api.hotelobilit.com/api/v2/tours/destinations',{
+            headers: {
+                "x-app-key":  '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+            }
+        })
+            .then((response) => {
+                setCities(response.data.data)
+                ,console.log(response.data)
+            })
+        return data
+    }
+    useEffect(() => {
         getData()
     },[])
   const [width, setWidth]   = useState();
   useEffect(() => {
     setWidth(window.innerWidth)
-
+    console.log(search);
   },[search])
   useEffect(() => {
     setState({...state, city:search.slug})
   },[search.slug])
+
+    const handleFocus=()=>{
+      setSearchInput('')
+    }
+    // useEffect(()=>{
+    //     console.log(search)
+    // },[search])
+    // const posthog=usePostHog()
     return (
       <div className={'row justify-content-between'}>
         <Scrolltoprefresh />
           <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
             <FontAwesomeIcon icon={faCity} style={{height:'30px'}} className="mx-2 tour-input-icon" />
             <PrimaryTextInputMobile
-              value={search.slug==" "?'همه':search.slug}
+              value={searchInput}
               name={'slug'}
-              // onFocus={handleFocus}
+              onFocus={handleFocus}
               // onBlur={handleFocusOut}
               onChange={handleChange}
-              // onClick={(e) => {
-              //   console.log(e.target.value);
-              // }}
+              onClick={(e) => {
+                // console.log(e.target.value);
+                  setIsSearchbox(true)
+              }}
               placeholder={"مقصد خود را انتخاب کنید"}
             />
             <InputValues
                 type="cities"
-                name='slug'
+                name='destination'
                 search={search}
                 setSearch={setSearch}
                 months={[{
-                  "name": "همه",
-                  "slug": " ",
+                  "destination_name": "همه",
+                  "destination_code": " ",
               },...cities]}
-                
+                issearchbox={isSearchbox}
+                setIsSearchbox={()=>setIsSearchbox(false)}
+                setsearchInput={(val)=>setSearchInput(val)}
+                searchInput={searchInput}
+                handleChange={(val)=>handleChange(val)}
+
+
             />
-          
+
         </div>
         <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
             {/* <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i> */}
-            <FontAwesomeIcon icon={faCalendarAlt} style={{height:'30px'}} className="mx-2 tour-input-icon" />
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>
             <PrimaryTextInputMobile
-              value={search.value}
+              value={months?.filter(m=>m.value===search.month)[0]?.name}
               name={'month'}
               // onFocus={handleFocus}
               // onBlur={handleFocusOut}
@@ -81,9 +125,9 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
               // onClick={(e) => {
               //   console.log(e.target.value);
               // }}
-              placeholder={"چه ماهی میخواید سفر کنید"}
+              placeholder={" در چه ماهی میخواهید سفر کنید"}
             />
-            <InputValues
+            <MonthValues
                 type="months"
                 name='month'
                 search={search}
@@ -93,13 +137,27 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
           </div>
 
         <div className="col-12 col-md-2 without-focus px-0">
-          <PrimaryButton className={`px-0`}
+          <button className={`${styles1['primary-button']} px-0 soc01`}
             style={{ height: "55px", marginTop: "7px",fontSize:'14px',fontWeight:'600',textAlign:'center',borderRadius: "10px"}}
             value={ "جستجو" }
-            onClick={() =>{toursHandler(search);executeScroll()}}
-          >{ "جستجو" }</PrimaryButton>
+            onClick={() =>{
+                // posthog.capture("FormStartTourPackage", {HMNCity: search.slug})
+
+                if(isLoading===false){
+                setIsLoading(true)
+                toursHandler(search);
+                // executeScroll();
+                }
+                    // debugger
+
+                // if(state.city==='استانبول'){
+                //     posthog.capture("pouya", { to:"ist"})
+                //
+                // }
+            }}
+          >{isLoading===false? "جستجو" :'لطفا صبر کنید...'}</button>
         </div>
-        
+
       </div>
     );
   }

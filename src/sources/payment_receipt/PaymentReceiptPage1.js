@@ -36,7 +36,7 @@ const PaymentReceiptPage = (props) => {
                   className="my-2"
                   width="auto"
                   height="80px"
-                  alt="بلیطجا - لوگو پرداخت موفقیت آمیز"
+                  alt="بلبطجا - لوگو پرداخت موفقیت آمیز"
                   src="/Images/check.webp"
                   />
                   <br/>

@@ -30,7 +30,7 @@ const Charetrflight = () => {
             <p className={style["title-text"]}>ارزانترین و لحظه آخری</p>
           </div>
 
-          <img src="../../../Images/airplane-view.jpg" alt="بلیطجا - لوگو" />
+          <img src="../../../Images/airplane-view.jpg" alt="بلبطجا - لوگو" />
         </div>
       </div>
       <div className={style["charterlist-box"]}>
@@ -76,7 +76,7 @@ const Charetrflight = () => {
                 width="100%"
                 height="100%"
                 src="../../../Images/QB.png"
-                alt="بلیطجا - لوگو"
+                alt="بلبطجا - لوگو"
               />
             </div>
             <div>قشم ایر</div>
@@ -123,7 +123,7 @@ const Charetrflight = () => {
                 width="100%"
                 height="100%"
                 src="../../../Images/QB.png"
-                alt="بلیطجا - لوگو"
+                alt="بلبطجا - لوگو"
               />
             </div>
             <div>قشم ایر</div>
@@ -172,7 +172,7 @@ const Charetrflight = () => {
                 width="100%"
                 height="100%"
                 src="../../../Images/QB.png"
-                alt="بلیطجا - لوگو"
+                alt="بلبطجا - لوگو"
               />
             </div>
             <div>قشم ایر</div>
@@ -218,7 +218,7 @@ const Charetrflight = () => {
                 width="100%"
                 height="100%"
                 src="../../../Images/QB.png"
-                alt="بلیطجا - لوگو"
+                alt="بلبطجا - لوگو"
               />
             </div>
             <div>قشم ایر</div>

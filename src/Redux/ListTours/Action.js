@@ -15,6 +15,7 @@ export const fetchListTour = () =>{
         // dispatch(fetchListTourRequest())
         axios.post('https://api.hamnavaz.com/api/v1/tour/getTours',{limit:10})
         .then(response =>{
+        // debugger
             const tours = response.data.data
             dispatch(fetchListTourSucces(tours))
         })

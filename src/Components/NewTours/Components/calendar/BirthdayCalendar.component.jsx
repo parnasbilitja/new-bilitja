@@ -5,7 +5,7 @@ const BirthdayCalendar = (props) => {
     let current = 1402
     const today = moment().format('jYYYY/jMM/jDD')
     const date = today.split("/")
-    current = parseInt(date[0]) 
+    current = parseInt(date[0])
     const [state,setState] = useState({
         stage: 1,
         year: '',
@@ -13,7 +13,7 @@ const BirthdayCalendar = (props) => {
     });
 
     let childAge = moment().add(-2,'jyears').format('jYYYY/jMM/jDD')
-    
+
     const getYears = () => {
         if (props.typePassenger == "ADL") {
             return new Array(current - 11 - props.type=="BD"?51:props.type=="EXT"?10:85).fill().map((x, index) => {
@@ -203,11 +203,25 @@ const BirthdayCalendar = (props) => {
                                         <div className={styles['birthday-item']} onClick={() => {
                                             const m = moment(`${state.year+'/'+state.month+'/'+x}`, 'jYYYY/jMM/jDD')
                                             const date = m.format('jYYYY/jMM/jDD')
-                                            props.setBirthday(date)
+                                            // props.setBirthday(date)
                                             props.closePopUpCalendar(false)
                                             setState({...state,
                                                 stage: 1
                                             })
+                                            // debugger
+                                            const dasheddateformat = m.format("jYYYY/jMM/jDD");
+                                            props.Birthdate(
+                                                dasheddateformat,
+                                                props.roomInfo.passId,
+                                                props.roomInfo.type,
+                                                props.roomInfo.roomId,
+                                                props.roomInfo.roomTypeId,
+                                                "expired_passport",
+                                                props.roomInfo.id,
+                                                props.roomInfo.reserve_id,
+                                                props.roomInfo.passindex,
+                                                props.roomInfo.roomindex,
+                                            );
                                         }}>
                                             {x}
                                         </div>

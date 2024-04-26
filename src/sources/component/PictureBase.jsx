@@ -13,29 +13,29 @@ const PictureBase = () => {
           },}}
   >
         <div className="hidden-xs hidden-sm row">
-          <div className="col-md-4 px-0">
+          <div className="col-md-6 px-0">
             <img
               width=""
               height=""
-              alt="بلیطجا- لوگو - بیس"
+              alt="بلبطجا- لوگو - بیس"
               src="../../../Images/map.webp"
               className={`${styles["hero-image-2"]} pull-right`}
             />
           </div>
-          <div className="text-center col-md-4 pt-10 mt-5 px-0">
+          {/*<div className="text-center col-md-4 pt-10 mt-5 px-0">*/}
+          {/*  <img*/}
+          {/*    width=""*/}
+          {/*    height=""*/}
+          {/*    alt="بلیطجا - لوگو- بیس۲"*/}
+          {/*    src="../../../Images/hamnavaz-logo-bg-tr1.png"*/}
+          {/*    className={styles["hero-image-center"]}*/}
+          {/*  />*/}
+          {/*</div>*/}
+          <div className="col-md-6 px-0">
             <img
               width=""
               height=""
-              alt="بلیطجا - لوگو- بیس۲"
-              src="../../../Images/bilitja.webp"
-              className={styles["hero-image-center"]}
-            />
-          </div>
-          <div className="col-md-4 px-0">
-            <img
-              width=""
-              height=""
-              alt="بلیطجا - قطب نما"
+              alt="بلبطجا - قطب نما"
               src="../../../Images/earth.webp"
               className={`${styles["hero-image-1"]} pull-left`}
             />

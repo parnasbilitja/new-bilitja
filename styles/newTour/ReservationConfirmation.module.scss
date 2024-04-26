@@ -1,5 +1,187 @@
+.message_con{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(203, 203, 203, 0.47);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .message{
+    width: 350px;
+    height: auto;
+    background-color: white;
+    padding: 1rem 1.5rem;
+    border-radius:20px ;
+    span{
+      font-size: 14px;
+      margin-left: 5px;
+
+    }
+    p{
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .paymentbtn {
+      display: flex;
+      padding-top: .5rem;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    margin-top: 20px;
+      button {
+        padding: .5rem;
+        margin-bottom: .5rem;
+        width: 150px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #069e2c;
+        font-size: .8rem;
+        font-weight: 900;
+        color: white;
+      }
+
+      p {
+        color: #e20000;
+        font-size: .8rem;
+        border-bottom: 1px dashed #e20000;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.UpadateContainer{
+  position: absolute;
+  z-index: 100000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(53, 53, 53, 0.28);
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .updatePass{
+    padding: 1.5rem;
+    border-radius: 20px;
+    margin-top: 3rem;
+    width: 900px;
+    height: auto;
+    background-color: white;
+
+    &_con{
+      height: auto;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+}
+
+
+
+
+
 .reserveinfo_container {
-  padding: 7rem 8rem 2rem 8rem;
+  padding: 0rem 8rem 0rem 8rem;
+
+  .tourDet-container {
+    border-bottom: 1px solid #C6C6C6;
+    // "d-flex  align-items-center justify-content-between title-complete"
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    padding-bottom: 0;
+
+    .ent-ext_container {
+      display: flex;
+      // justify-content: space-between;
+      transform: translateX(-30px);
+
+      width: 20%;
+      padding-bottom: .5rem;
+
+      .entext {
+        margin-left: 1rem;
+        padding: 0 0 0 .5rem;
+
+        .entexttitle {
+          font-weight: 900;
+        }
+
+
+        p {
+          font-size: 13px;
+          text-align: center;
+          margin: 0;
+        }
+
+      }
+
+      .entext:not(:last-child) {
+        border-left: 1px solid #C6C6C6;
+        margin-left: .8rem;
+      }
+    }
+
+    .tourDet {
+      // d-flex align-items-center mt-4
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+
+      .title-tour {
+        color: black;
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+    }
+
+    .selected-hotel_conatiner {
+
+      .selected-hotel {
+        // d-flex align-items-center
+        padding-right: 0;
+        margin-bottom: .2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h2 {
+          font-weight: 700;
+          font-size: 16px;
+        }
+
+        &-names {
+          margin-right: 1rem;
+
+          h2 {
+            font-size: 15px;
+
+            font-weight: 900;
+            margin: 0;
+          }
+
+          p {
+            font-size: 13px;
+
+            font-weight: 200;
+            margin: 0;
+          }
+
+        }
+
+
+      }
+    }
+  }
 
 
   .detail-box-fix-user-reservation {
@@ -195,6 +377,47 @@
 
 
 @media only screen and (max-width: 868px) {
+
+  .reserveinfo_container{
+    .tourDet-container {
+      flex-direction: column !important;
+      padding-left: 0 !important;
+
+      .selected-hotel_conatiner {
+        width: 100% !important;
+        display: flex;
+        justify-content: space-between;
+
+        h2 {
+          font-size: 14px !important;
+        }
+      }
+
+      .ent-ext_container {
+        width: 100% !important;
+        margin-top: 1rem;
+        transform: translateX(0px) !important;
+
+        .entext {
+          width: 50% !important;
+          margin: 0 !important;
+
+          .entexttitle {
+            font-size: 12px !important;
+            color: #151515 !important;
+          }
+
+          p {
+            font-size: 11px;
+            color: #999;
+          }
+        }
+      }
+    }
+  }
+  .UpadateContainer{
+    .updatePass{}
+  }
   .detail-box-fix-user-reservation {
     position: unset !important;
     width: 100% !important;
@@ -206,6 +429,7 @@
   .finalprice {
     border: none !important;
   }
+
 
 
 

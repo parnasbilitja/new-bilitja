@@ -170,7 +170,7 @@ const FlightReciept = (props) => {
       });
   };
   const getBanks = () => {
-    debugger
+    // debugger
     fetch(
       `${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/getBanks/${props.reserveProperties.reqNo}/${props.reserveProperties.reqPnr}?customerId=1a157116-a01a-4027-ab10-74098ac63815`
     )
@@ -297,7 +297,7 @@ const FlightReciept = (props) => {
       </div>
       <div className="row ">
         {/* <div className="col-lg-1"></div> */}
-        <div className="col-lg-12 no-padding-xs border-pill-lg px-4" style={{padding:'0 3rem'}}>
+        <div className="col-lg-12 no-padding-xs border-pill-lg px-4">
           <p
             className={`text-right font-size-14 ${styles["pcolor-textpill"]}  `}
           >
@@ -570,8 +570,8 @@ const FlightReciept = (props) => {
               <p>مبلغ قابل پرداخت:</p>
 
               <div
-                  className="col-lg-5 col-6 text-left text-center d-flex align-items-center justify-content-center"
-                  style={{ width: "fit-content" }}
+                className="col-lg-5 col-6 text-left text-center d-flex align-items-center justify-content-center"
+                style={{ width: "fit-content" }}
               >
                 <span className="font-size-14 text-danger mb-0 font-bold-iransanse">
                   {moneyFormat(state.feeGet)}{" "}
@@ -582,17 +582,17 @@ const FlightReciept = (props) => {
           </div>
           <div className={styles["paymentbtn"]}>
             <button
-                onClick={() => {
-                  compeleteReservation();
-                  getBanks();
-                }}
+              onClick={() => {
+                compeleteReservation();
+                getBanks();
+              }}
             >
               پرداخت با کارت شتاب
             </button>
             <p
-                onClick={() => {
-                  router.push("/tours");
-                }}
+              onClick={() => {
+                router.push("/tours");
+              }}
             >
               انصراف از خرید
             </p>

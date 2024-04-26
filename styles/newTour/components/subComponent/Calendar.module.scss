@@ -111,17 +111,17 @@
 
   .calendar-item {
     text-align: center;
-    border: 2px solid $primaryColor;
+    border: 2px solid $secondaryColor;
     height: 47px;
     line-height: 47px;
     border-radius: 5px;
-    color: $primaryColor;
+    color: $secondaryColor;
     font-size: 14px;
     cursor: pointer;
     font-family: BYekan !important;
 
     &:hover {
-      background-color: $primaryColor;
+      background-color: $secondaryColor;
       color: $whiteColor;
     }
   }
@@ -186,7 +186,7 @@
   font-family: BYekan !important;
 }
 .AFTER {
-  background-color: #279692;
+  background-color: $secondaryColor;
   border: 1px solid #c1c1c1;
   border-radius: 3px;
   cursor: pointer !important;
@@ -201,11 +201,11 @@
   .BirthdayCalendar_birthday-item__iJZEI {
   font-family: BYekan !important;
   text-align: center;
-  border: 2px solid #279692;
+  border: 2px solid $secondaryColor;
   height: 47px;
   line-height: 47px;
   border-radius: 5px;
-  color: #279692;
+  color: $secondaryColor;
   font-size: 14px;
   cursor: pointer;
 }

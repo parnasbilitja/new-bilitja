@@ -25,101 +25,65 @@ import DropdownComponent from "./subComponents/Dropdown.component";
 import {isEmpty, jalaliDateReformater} from "../../../Utils/newTour";
 import {Err, NotifAlert} from "./NotifAlert.component";
 import NewLoader from "./subComponents/NewLoader";
+// import {usePostHog} from "posthog-js/react";
 
 const TourSearchBox = (props) => {
+
+    // const posthog=usePostHog()
+
 
 
     const router = useRouter();
     const [width, setWidth] = useState();
-    const [isNight, setIsNight] = useState(false)
+    const [isNight,setIsNight]=useState(false)
     const [citiesData, setCitiesData] = useState({
         origin: {},
         destination: {},
         date: {},
         night: "",
     });
-    const [destCities, setDestCities] = useState([]);
-    const [orgCities, setOrgCities] = useState([]);
+    const [cities, setCities] = useState([]);
+    const [destStat, setDestStat] = useState([]);
     //to get available date & night
     const [dateAndNight, setDateAndNight] = useState([]);
     const [nights, setNights] = useState([]);
-    const [inputSearchDest, setInputSearchDest] = useState('')
-    const [inputSearchOrg, setInputSearchOrg] = useState('')
-    const [isDate, setIsDate] = useState(false)
+    const [inputSearchDest,setInputSearchDest]=useState('')
+    const [inputSearchOrg,setInputSearchOrg]=useState('')
+    const [isDate,setIsDate]=useState(false)
 // const [prevDest,setPrevDest]=useState({})
     const getDestandOrgCities = () => {
         axios
-            .post("https://hotelobilit-api.iran.liara.run/api/v1/cities", {
-                hasHotel: 1,
-                hasFlight: 0,
+            .get("https://api.hotelobilit.com/api/v2/tours/active-routes",{
+                headers: {
+                    "x-app-key":  '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                }
             })
             .then((res) => {
-                const destLoc = res.data.data;
-                setDestCities(destLoc);
-
+                const cities = res.data.data;
+                setCities(cities);
             })
             .catch((err) => {
                 console.log(err);
             });
 
-        axios
-            .post("https://hotelobilit-api.iran.liara.run/api/v1/cities", {
-                hasHotel: 0,
-                hasFlight: 1,
-            })
-            .then((res) => {
-                const orgLoc = res.data.data;
-                setOrgCities(orgLoc);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+
     };
 
+
+
     useEffect(() => {
+        // debugger
         setWidth(window.innerWidth);
         getDestandOrgCities();
         ///////////////////////
-    }, [props.selectedSrc, props.selectedDest]);
+    }, [props.iscity]);
 
-    useEffect(() => {
-        /////get avalaible dates and night number based on Org & Dset
-        if (
-            props.destandorgcities.destination.code &&
-            props.destandorgcities.origin.code
-        ) {
-            axios
-                .get(
-                    `https://hotelobilit-api.iran.liara.run/api/v1/cities/getDates/${props.destandorgcities.origin.code}/${props.destandorgcities.destination.code}`
-                )
-                .then((res) => {
-                    setDateAndNight(res.data.data);
-                    const nightsNumber = res.data.data.filter(
-                        (datenight) =>
-                            datenight.date === props.destandorgcities.date.miladiDate
-                    );
-                    setNights(nightsNumber);
-                });
-        }
-        // else {
-        //   return false;
-        // }
-        if (props.destandorgcities.date.miladiDate) {
-            const nightsNumber = dateAndNight.filter(
-                (datenight) => datenight.date === props.destandorgcities.date.miladiDate
-            );
-            setNights(nightsNumber);
-        }
-        setInputSearchDest(props.destandorgcities.destination.name)
-        setInputSearchOrg(props.destandorgcities.origin.name)
-        // else {
-        //   return false;
-        // }
-    }, [
-        props.destandorgcities.destination,
-        props.destandorgcities.origin,
-        props.destandorgcities.date.miladiDate,
-    ]);
+
+
+
+    useEffect(()=>{
+        console.log(nights)
+    },[nights])
 
     const [state, setState] = useState({
         searchBool: false,
@@ -177,9 +141,10 @@ const TourSearchBox = (props) => {
     };
 
 
-    useEffect(() => {
-        console.log(isDate)
-    }, [isDate])
+
+    useEffect(()=>{
+        props.setLoader(false)
+    },[])
     const validation = (valinputType) => {
         const {
             destandorgcities: {origin, destination, date, night},
@@ -193,18 +158,20 @@ const TourSearchBox = (props) => {
         // }
 
 
-        if (!origin.code || !destination.code || date === {} || (!date.miladiDate && !date.persianDate) || !night) {
+
+        if (!origin.code || !destination.code || date === {} || (!date.miladiDate && !date.persianDate) ||!night) {
             if (!night) {
                 // debugger
                 Err('لطفا مدت اقامت را وارد کنید')
                 setIsNight(true)
                 return false;
-            } else {
+            }else{
                 setIsNight(false)
             }
 
             return false;
         }
+
 
 
         // if (!destination.code) {
@@ -229,7 +196,7 @@ const TourSearchBox = (props) => {
         return true;
     };
 
-    const valid2 = () => {
+    const valid2=()=>{
         const {
             destandorgcities: {date},
         } = props;
@@ -237,16 +204,69 @@ const TourSearchBox = (props) => {
             Err('لطفا تاریخ را وارد کنید')
             setIsDate(true)
             return false;
-        } else {
+        }else{
             setIsDate(false)
         }
     }
 
+    useEffect(()=> {
+// debugger
+
+        if(props.destandorgcities.origin.code){
+            // debugger
+
+            let dest=cities?.filter(city=>city.code===props.destandorgcities.origin.code)
+
+            if(dest.length>0){
+
+                setDestStat(dest[0]?.destinations)
+            }
+        }
+    },[props.destandorgcities.origin.code])
+
+    useEffect(() => {
+        /////get avalaible dates and night number based on Org & Dest
+        if (
+           ( props.destandorgcities.destination.code &&
+            props.destandorgcities.origin.code)
+        ) {
+            // debugger
+            if(destStat.length>0){
+                let currentDestinationDates=destStat.filter(city=>city.code=== props.destandorgcities.destination.code)[0]?.dates
+            setDateAndNight(currentDestinationDates)
+            }
+
+        }
+
+
+        setInputSearchDest(props.destandorgcities.destination.name)
+        setInputSearchOrg(props.destandorgcities.origin.name)
+
+    }, [
+        props.destandorgcities.destination,
+        props.destandorgcities.origin,
+       destStat
+
+    ]);
+useEffect(()=>{
+    console.log(dateAndNight)
+},[dateAndNight])
+    useEffect(()=>{
+        // debugger
+        if (props.destandorgcities.date.miladiDate && dateAndNight.length>0) {
+            const nightsNumber = dateAndNight?.filter(
+                (datenight) => datenight?.date === props.destandorgcities.date.miladiDate
+            );
+            setNights(nightsNumber[0]?.nights);
+        }
+    },[ props.destandorgcities.date.miladiDate,dateAndNight])
+
+
     return (
         <>
             <NotifAlert/>
-            <div className={styles["home-flight-form"]}>
-                <div style={{position: "relative"}}>
+            <div className={styles["home-flight-form"]} >
+                <div style={{position: "relative"}} >
                     <Scrolltoprefresh/>
                     <div
                         className={` form-input-border  ${styles["form-input-border-private"]} `}
@@ -258,9 +278,9 @@ const TourSearchBox = (props) => {
                             onClick={(e) => {
                                 manageSuggestSource(true);
                             }}
-                            onChange={(e) => setInputSearchOrg(e.target.value)}
+                            onChange={(e)=> setInputSearchOrg(e.target.value)}
                             // onChange={handleChangeCre}
-                            onFocus={() => props.setOrgLoc({name: '', code: ''})}
+                            onFocus={()=> props.setOrgLoc({name:'',code:''})}
                             onBlur={handleFocusOut}
                             // onFocus={()=>setInputSearchOrg('')}
                             placeholder={"مبدا خود را وارد کنید"}
@@ -270,10 +290,10 @@ const TourSearchBox = (props) => {
                             xmlns="http://www.w3.org/2000/svg"
                             id="_044-Departures"
                             data-name="044-Departures"
-                            width="32.655"
-                            height="32.135"
+                            width="25"
+                            height="25"
                             viewBox="0 0 39.655 27.135"
-                            style={{zIndex: 100, left: '9px', position: 'absolute', top: '10px'}}
+                            style={{zIndex:100,left:'9px',position:'absolute',top:'15px'}}
                         >
                             <path
                                 id="Path_1760"
@@ -302,21 +322,21 @@ const TourSearchBox = (props) => {
                                 credenrialType="source"
                                 closeSuggest={manageSuggestSource}
                                 searchTerm={state.searchTermSource}
-                                cities={orgCities}
+                                cities={cities}
                                 setCities={(value) => props.setOrgLoc(value)}
                                 setcitiesData={(val) => setCitiesData(val)}
                                 setFlightDate={(value) => props.setFlightDate(value)}
                                 setNights={(value) => setNights(value)}
                                 searchInputval={inputSearchOrg}
-                                setSearchInput={(val) => setInputSearchOrg(val)}
-                                closemange={() => manageSuggestSource(false)}
+                                setSearchInput={(val)=>setInputSearchOrg(val)}
+                                closemange={()=>   manageSuggestSource(false)}
                                 citystat='مبدا'
                             />
                         ) : null}
                     </div>
                 </div>
 
-                <div>
+                <div >
                     <div
                         className={` form-input-border  ${styles["form-input-border-private"]}  `}
                     >
@@ -329,10 +349,10 @@ const TourSearchBox = (props) => {
                                 manageSuggestDestination(true);
                             }}
                             // onChange={handleChangeCre}
-                            onChange={(e) => setInputSearchDest(e.target.value)}
+                            onChange={(e)=> setInputSearchDest(e.target.value)}
                             // onFocus={handleFocus}
-                            onFocus={() => {
-                                props.setDestLoc({name: '', code: ''})
+                            onFocus={()=> {
+                                props.setDestLoc({name:'',code:''})
                             }}
                             // onBlur={()=>setInputSearchDest(props.destandorgcities.destination.name)}
                             placeholder={"مقصد خود را وارد کنید"}
@@ -340,15 +360,16 @@ const TourSearchBox = (props) => {
                         />
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            width="32.655"
-                            height="32.135"
+                            width="25"
+                            height="25"
                             viewBox="0 0 37.922 29.591"
-                            style={{zIndex: 100, left: '9px', position: 'absolute', top: '10px'}}
+                            style={{zIndex:100,left:'9px',position:'absolute',top:'15px'}}
                         >
                             <g
                                 id="_046-arrivals"
                                 data-name="046-arrivals"
                                 transform="translate(0 0)"
+
                             >
                                 <path
                                     id="Path_1767"
@@ -356,6 +377,7 @@ const TourSearchBox = (props) => {
                                     d="M63.513,65.451a7.4,7.4,0,0,1-5.178,5.15l-5.787,1.565a.748.748,0,1,1-.391-1.444l5.787-1.565a5.9,5.9,0,0,0,4.127-4.1l1.473-5.323-2.38.362-2.9,4.746a.748.748,0,0,1-.445.332l-6.72,1.8a.748.748,0,0,1-.926-.873l1.775-8.66-2.952.689L42,69.2a.748.748,0,0,1-.439.323l-8.918,2.391A2.025,2.025,0,0,0,31.317,74.3a1.951,1.951,0,0,0,2.407,1.425l11.96-3.236a.748.748,0,1,1,.391,1.444l-11.96,3.236a3.47,3.47,0,0,1-.908.122,3.452,3.452,0,0,1-3.343-2.639,3.541,3.541,0,0,1,2.351-4.168l.026-.007,8.649-2.319,7-11.089a.747.747,0,0,1,.462-.329l4.388-1.025a.748.748,0,0,1,.9.879l-1.767,8.619L57.14,63.8l2.93-4.787a.748.748,0,0,1,.525-.349l3.865-.588a.748.748,0,0,1,.833.939Z"
                                     transform="translate(-29.626 -55.689)"
                                     fill="#808285"
+
                                 />
                                 <path
                                     id="Path_1768"
@@ -378,12 +400,12 @@ const TourSearchBox = (props) => {
                                 credenrialType="destination"
                                 closeSuggest={manageSuggestDestination}
                                 searchTerm={state.searchTermDestination}
-                                cities={destCities}
+                                cities={destStat}
                                 setCities={(value) => props.setDestLoc(value)}
                                 setFlightDate={(value) => props.setFlightDate(value)}
                                 setNights={(value) => setNights(value)}
                                 searchInputval={inputSearchDest}
-                                closemange={() => manageSuggestDestination(false)}
+                                closemange={()=>   manageSuggestDestination(false)}
                                 citystat='مقصد'
                                 // setSearchInput={(val)=>setInputSearchDest(val)}
                             />
@@ -392,44 +414,191 @@ const TourSearchBox = (props) => {
                 </div>
 
                 <div
-                    className={` form-input-border  ${styles["form-input-border-private"]}  ${(isDate && !props.destandorgcities.date.persianDate) && 'select-custom1'}`}
+                    className={` form-input-border  ${styles["form-input-border-private"]}  ${(isDate  && !props.destandorgcities.date.persianDate) && 'select-custom1'}`}
                 >
-                    <i
-                        className="bilitja icon-calendar form-input-icon-larger "
-                        style={{marginTop: "5px", zIndex: "100"}}
-                    ></i>
+
+
                     <PrimaryTextInput
                         placeholder={" تاریخ پرواز رفت"}
                         readOnly="true"
                         value={props.destandorgcities.date.persianDate}
-
                         onClick={(e) => {
                             e.preventDefault();
-                            if (dateAndNight.length === 0) {
+                            if(props.destandorgcities.origin.name ==='' && props.destandorgcities.destination.name==='') {
                                 Err('در حال حاضر پروازی برای مبدا و مقصد انتخاب شده، موجود نیست')
-                            } else {
+                            }else {
                                 managePopUpCalendar(true);
                             }
                         }}
                     />
+                    <svg style={{position:'absolute',left:'10px',top:'14px'}} width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="24" height="24" fill="white"/>
+                        <g filter="url(#filter0_d_15_268)">
+                            <path d="M3 8.26667V19C3 19.5523 3.44772 20 4 20H20C20.5523 20 21 19.5523 21 19V8.26667M3 8.26667V5C3 4.44772 3.44772 4 4 4H20C20.5523 4 21 4.44772 21 5V8.26667M3 8.26667H21" stroke="#000000" strokeLinejoin="round"/>
+                        </g>
+                        <g filter="url(#filter1_d_15_268)">
+                            <path d="M7 2V5" stroke="#000000" strokeLinecap="round" strokeLinejoin="round"/>
+                        </g>
+                        <g filter="url(#filter2_d_15_268)">
+                            <path d="M17 2V5" stroke="#000000" strokeLinecap="round" strokeLinejoin="round"/>
+                        </g>
+                        <g filter="url(#filter3_d_15_268)">
+                            <path d="M18 11H16" stroke="#000000" strokeLinecap="round" strokeLinejoin="round"/>
+                        </g>
+                        <g filter="url(#filter4_d_15_268)">
+                            <path d="M18 17H16" stroke="#000000" strokeLinecap="round" strokeLinejoin="round"/>
+                        </g>
+                        <g filter="url(#filter5_d_15_268)">
+                            <path d="M13 11H11" stroke="#000000" strokeLinecap="round" strokeLinejoin="round"/>
+                        </g>
+                        <g filter="url(#filter6_d_15_268)">
+                            <path d="M13 17H11" stroke="#000000" strokeLinecap="round" strokeLinejoin="round"/>
+                        </g>
+                        <g filter="url(#filter7_d_15_268)">
+                            <path d="M8 11H6" stroke="#000000" strokeLinecap="round" strokeLinejoin="round"/>
+                        </g>
+                        <g filter="url(#filter8_d_15_268)">
+                            <path d="M8 17H6" stroke="#000000" strokeLinecap="round" strokeLinejoin="round"/>
+                        </g>
+                        <g filter="url(#filter9_d_15_268)">
+                            <path d="M18 14H16" stroke="#000000" strokeLinecap="round" strokeLinejoin="round"/>
+                        </g>
+                        <g filter="url(#filter10_d_15_268)">
+                            <path d="M13 14H11" stroke="#000000" strokeLinecap="round" strokeLinejoin="round"/>
+                        </g>
+                        <g filter="url(#filter11_d_15_268)">
+                            <path d="M8 14H6" stroke="#000000" strokeLinecap="round" strokeLinejoin="round"/>
+                        </g>
+                        <defs>
+                            <filter id="filter0_d_15_268" x="1.5" y="3.5" width="21" height="19" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="0.5"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_268"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_268" result="shape"/>
+                            </filter>
+                            <filter id="filter1_d_15_268" x="5.5" y="1.5" width="3" height="6" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="0.5"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_268"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_268" result="shape"/>
+                            </filter>
+                            <filter id="filter2_d_15_268" x="15.5" y="1.5" width="3" height="6" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="0.5"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_268"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_268" result="shape"/>
+                            </filter>
+                            <filter id="filter3_d_15_268" x="14.5" y="10.5" width="5" height="3" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="0.5"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_268"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_268" result="shape"/>
+                            </filter>
+                            <filter id="filter4_d_15_268" x="14.5" y="16.5" width="5" height="3" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="0.5"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_268"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_268" result="shape"/>
+                            </filter>
+                            <filter id="filter5_d_15_268" x="9.5" y="10.5" width="5" height="3" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="0.5"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_268"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_268" result="shape"/>
+                            </filter>
+                            <filter id="filter6_d_15_268" x="9.5" y="16.5" width="5" height="3" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="0.5"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_268"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_268" result="shape"/>
+                            </filter>
+                            <filter id="filter7_d_15_268" x="4.5" y="10.5" width="5" height="3" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="0.5"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_268"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_268" result="shape"/>
+                            </filter>
+                            <filter id="filter8_d_15_268" x="4.5" y="16.5" width="5" height="3" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="0.5"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_268"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_268" result="shape"/>
+                            </filter>
+                            <filter id="filter9_d_15_268" x="14.5" y="13.5" width="5" height="3" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="0.5"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_268"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_268" result="shape"/>
+                            </filter>
+                            <filter id="filter10_d_15_268" x="9.5" y="13.5" width="5" height="3" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="0.5"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_268"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_268" result="shape"/>
+                            </filter>
+                            <filter id="filter11_d_15_268" x="4.5" y="13.5" width="5" height="3" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="0.5"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_268"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_268" result="shape"/>
+                            </filter>
+                        </defs>
+                    </svg>
                 </div>
-                <div style={{padding: ".5rem 0"}}>
+                <div style={{padding: ".5rem 0"}} >
                     <DropdownComponent
                         nights={nights}
                         setNight={(value) => props.setNightNumber(value)}
                         night={props?.night}
-                        valid={() => validation()}
+                        valid={()=>validation()}
                         isNight={isNight}
+                        flightDate={props.destandorgcities.date}
                     />
                 </div>
-                <div className={`without-focus`}>
+                <div  className={`without-focus`}>
                     <PrimaryButton
                         style={{height: "55px", marginTop: "9px", borderRadius: "10px"}}
                         value={props.searchReset == false ? "جستجو" : "لطفا صبر کنید..."}
 
                         onClick={(e) => {
                             valid2()
-                            if (validation() === false) {
+                            if (validation() === false ) {
                                 Err("لطفا اطلاعات را کامل وارد کنید");
                             } else {
                                 e.preventDefault();
@@ -440,50 +609,48 @@ const TourSearchBox = (props) => {
                                 // console.log(props?.destandorgcities?.night[0]);
 
                                 router.push(
-                                    `/tour/${props.destandorgcities.origin.code}-${props.destandorgcities.destination.code}?origin=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stDate=${stDate}%2F03&night=${props.destandorgcities?.night}&fasrc=${props.destandorgcities.origin.name}&fadest=${props.destandorgcities.destination.name}`
+                                    `/tour/hotelselect?org=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stdate=${stDate}&night=${props.destandorgcities?.night}`
                                 );
                                 props.setLoader(true)
                             }
+
+                            // posthog.capture("FormStartTour", {HMNOrigin: props.destandorgcities.origin.code, HMNDest: props.destandorgcities.destination.code,HMNDate:props.destandorgcities.date.miladiDate,HMNNight:props.destandorgcities.night })
 
 
                         }}
 
 
                     >
-                        {"جستجو"}
+                        {props.destandorgcities.loader?'لطفا صبر کنید...':"جستجو"}
                     </PrimaryButton>
 
                 </div>
 
                 <PopUpWide opened={state.open} closePopUp={managePopUpCalendar}>
+
                     {
-                        dateAndNight.length === 0 ?
-                            <div style={{
-                                width: '910px',
-                                height: '370px !important',
-                                backgroundColor: 'white',
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center'
-                            }}>
+                        dateAndNight?.length===0 ?
+                            <div style={{width:'910px',height:'370px !important',backgroundColor:'white',display:'flex',justifyContent:'center',alignItems:'center'}}>
                                 <NewLoader/>
                             </div>
 
-                            :
-                            <div className={styles["flight-search-box-calendar-container"]}>
+                            :<div className={styles["flight-search-box-calendar-container"]}>
                                 <CalendarComponent
                                     setDate={(value) => {
                                         props.addCredentials({
                                             stDate: value.garigorian,
                                             flightDatePersian: value.jalali,
                                             typeOfCalendar: value.typeOfCalendar,
+                                            dateAndNight:dateAndNight
                                         });
                                     }}
                                     closePopUpCalendar={managePopUpCalendar}
                                     dateandnight={dateAndNight}
                                     setFlightDate={(value) => props.setFlightDate(value)}
                                 />
-                            </div>}
+                            </div>
+                    }
+
                 </PopUpWide>
             </div>
         </>
@@ -503,7 +670,7 @@ const mapDispatchesToProps = (dispatch) => ({
     setDestLoc: async (value) => dispatch(setDestLoc(value)),
     setFlightDate: async (value) => dispatch(setFlightDate(value)),
     setNightNumber: async (value) => dispatch(setNightNumber(value)),
-    setLoader: async (value) => dispatch(setLoader(value))
+    setLoader:async(value)=>dispatch(setLoader(value))
 });
 export default withRouter(
     connect(mapStatesToProps, mapDispatchesToProps)(TourSearchBox)

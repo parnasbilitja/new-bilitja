@@ -2,58 +2,45 @@ import React, { useEffect, useState } from "react";
 import styles from "../../../../../styles/Dropdown.module.scss";
 import { withRouter } from "next/router";
 import { connect } from "react-redux";
+import moment from "moment-jalaali";
 
 const DropdownComponent = (props) => {
-  const [filteredNights, setFilteredNights] = useState([]);
 
-
-  useEffect(() => {
-    setFilteredNights([])
-    if (props.nights) {
-      const uniqueData = props.nights.filter(
-          (value, index, self) =>
-              self.findIndex((item) => item.night === value.night) === index
-      );
-      setFilteredNights(uniqueData);
-    }
-
-  }, [props.nights]);
-  // useEffect(() => {
-  //   if (props.destandorgcities.date.miladiDate && props.night) {
-  //     props.setNight(props?.night);
-  //   } else if (props.destandorgcities.date.miladiDate === "") {
-  //     props.setNight(null);
-  //   } else {
-  //     props.setNight(filteredNights[0]?.night);
-  //   }
-  // }, [props.destandorgcities.date.miladiDate, filteredNights]);
-
-  // ${!props.valid() && 'select-custom1'}
   return (
-      <div className={styles.dropdowncontainer}>
-        <select
-            className={`select-custom ${(props.isNight && !props.destandorgcities.night) && 'select-custom1'}`}
+    <div className={styles.dropdowncontainer}>
 
-            id=""
-            onChange={(e) => {
-              props.setNight(e.target.value);
-            }}
-            onClick={(e) => props.setNight(e.target.value)}
-            // value={}
-            value={props.destandorgcities.night}
-        >
-          {/* {props.nights ? } */}
-          <option value='' disabled selected style={{color:'#ff0000'}}>
-            مدت اقامت
-          </option>
+      <select key='night'
+        className={`select-custom ${(props.isNight && !props.destandorgcities.night) && 'select-custom1'}`}
 
-          {filteredNights?.map((nightItem) => {
-            return <option value={nightItem.night}>
-              {nightItem.night} شب
+        id=""
+        onChange={(e) => {
+            props.setNight(e.target.value);
+        }}
+        onClick={(e) => props.setNight(e.target.value)}
+        // value={}
+        value={props.destandorgcities.night}
+      >
+        {/* {props.nights ? } */}
+          {
+              props.destandorgcities.night ?    <option key={'مدت اقامت'} value='' disabled selected>
+                  {props.destandorgcities.night} شب{moment(props.flightDate.miladiDate).add(+props.destandorgcities.night,'days').format("jYYYY/jMM/jDD")}
+              </option>:   <option key={'مدت اقامت'} value='' disabled selected>
+                  مدت اقامت
+              </option>
+
+          }
+        {/* <option value='' disabled selected>*/}
+        {/*  مدت اقامت*/}
+        {/*</option>*/}
+
+        {props.nights?.map((nightItem) => {
+          return <option key={nightItem} value={nightItem}>
+            {nightItem}  شب
+              ({moment(props.flightDate.miladiDate).add(+nightItem,'days').format("jYYYY/jMM/jDD")})
             </option>
-          })}
-        </select>
-      </div>
+        })}
+      </select>
+    </div>
   );
 };
 

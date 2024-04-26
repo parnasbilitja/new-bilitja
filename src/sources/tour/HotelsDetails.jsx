@@ -4,212 +4,243 @@ import { useEffect } from 'react';
 import { moneyFormat, moneyFormatrial } from '../../Utils/SimpleTasks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-const HotelsDetails = ({pack,data,setPackData,setShow}) => {
+import {Err, NotifAlert} from "../../Components/NewTours/Components/NotifAlert.component";
+// import {usePostHog} from "posthog-js/react";
+import {set} from "react-hook-form";
+import {getcurrencyfa, numberWithCommas} from "../../Utils/newTour";
+
+const HotelsDetails = ({setIsReserve,hotel,pack,data,setPackData,setShow,currency,infPrc,cwb,setHotel,flightId}) => {
     const [width, setWidth] = useState(0)
-    const [seeMore, setSeeMore] = useState(false);
+    const [seeMore, setSeeMore] = useState(true);
     useEffect(()=>{
         setWidth(window.innerWidth)
         setTimeout(() => {
-            
             if (width>=826) {
                 setSeeMore(true)
             }
         }, 100);
     },[])
-    return (
-        <div className={width<=826 ? 'w-100' : 'p-data w-70'}>
-            
-            <div className='hidden-mobile-head'>
-                    <div className="d-flex justify-content-center my-2 font-bold-iransanse" style={{color:'#279692',alignItems:"center"}} 
-                    onClick={()=>setSeeMore(!seeMore)}><span className='font-bold-iransanse'>{'   '}مشاهده جزئیات بیشتر{'   '}</span>
-                    <FontAwesomeIcon className="font-bold-iransanse mx-2" icon={faAngleDown} /></div>
-                <div className={`${seeMore?'position-relative d-flex flex-wrap align-items-stretch bg-white py-2 px-2 mb-2 justify-content-between':'d-none' }`}>
-                <div className="c-detail">
-                    <div className="info-price position-relative d-flex align-items-start">
-                        <div className="text d-flex flex-column align-items-center w-100 py-3">
-                            <span className="text-show-m color-base-color font-bold">دو تخته (هر نفر)</span>
-                            {data.defineTour && <span className="font-bold font-size-13 font-bold color-gray">{moneyFormatrial(pack.prices.twinRate)} تومان</span>}
-                            {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.twin)} {pack.rate.name}</span>}
-                            {/* <span className="font-font-size-16 font-bold">تومان</span> */}
-                        </div>
-                    </div>
-                </div>
-                {data && data.type && <>
-                    <div className="c-detail">
-                        <div className="info-price position-relative d-flex align-items-start">
-                            <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                <span className="text-show-m color-base-color font-bold">سه تخته (هر نفر)</span>
-                                {data.defineTour && <span className="font-bold font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.tripleRate)} تومان</span>}
-                                {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.triple)} {pack.rate.name}</span>}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="c-detail">
-                        <div className="info-price position-relative d-flex align-items-start">
-                            <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                <span className="text-show-m color-base-color font-bold">چهار تخته (هر نفر)</span>
-                                {data.defineTour && <span className="font-bold font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.quadRate)} تومان</span>}
-                                {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.quad)} {pack.rate.name}</span>}
-                            </div>
-                        </div>
-                    </div>
-                </>
-                }
-                {data && !data.type &&
-                    <div className="c-detail">
-                        <div className="info-price position-relative d-flex align-items-start">
-                            <div
-                                className="text d-flex flex-column align-items-center w-100 py-3">
-                                <span className="text-show-m color-base-color font-bold"> سینگل</span>
-                                {data.defineTour && <span className="font-bold font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.singleRate)} تومان</span>}
-                                {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.single)} {pack.rate.name}</span>}
-                            </div>
-                        </div>
-                    </div>
-                }
-                {data && !data.type &&
-                    <div className="c-detail">
-                        <div className="info-price position-relative d-flex align-items-start">
-                            <div className="text d-flex flex-column align-items-center w-100 py-3">
-                                <span className="text-show-m color-base-color font-bold">کودک با تخت</span>
-                                {data.defineTour && <span className="font-bold font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.cwbRate)} تومان</span>}
-                                {!data.defineTour && <span className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.cwb)} {pack.rate.name}</span>}
-                            </div>
-                        </div>
-                    </div>
-                }
-                <div className="c-detail">
-                    <div className="info-price position-relative d-flex align-items-start">
-                        <div className="text d-flex flex-column align-items-center w-100 py-3">
-                            <span className="text-show-m color-base-color font-bold">کودک بدون تخت</span>
-                            <span className="font-size-14 font-bold color-gray">{undefined == undefined?'--': pack.prices.cnb?.includes(',') == true ?`${pack.prices.cnb} تومان`: `${moneyFormat(`${pack.prices.cnb}`)}تومان` } </span>
-                        </div>
-                    </div>
-                </div>
-                <div className="c-detail child-number d-flex flex-column text-center ml-3 py-3">
-                    <span className="text-show-m color-base-color font-bold">سن کودک</span>
-                    <span className="font-size-16 font-bold color-gray">{pack.prices.age}</span>
-                </div>
-                <div className="c-btn request-data">
-                    <button className="ancher text-white font-size-13 py-2 px-4 rounded-3 mt-2" style={{backgroundColor:'#279692'}} onClick={() => { setShow(true); setPackData({ tourId: pack.id });  }}>
-                        درخواست رزرو
-                    </button>
-                </div>
-                </div>
-            </div>
-                
 
-            <div style={{display:'flex',alignItems:'center',position:'relative', justifyContent:'space-between'}} 
-            className={'position-relative d-flex align-items-center bg-white py-2 px-2 hidden-desktop'}>
+    // const posthog=usePostHog()
+
+    useEffect(()=>{
+        if (flightId){
+
+      getHotelRooms(pack)
+        }
+
+        // console.log(flightId)
+    },[flightId,pack])
+
+    const[rooms,setRooms]=useState([])
+    const getHotelRooms= (roomsArr)=>{
+
+
+                if(data?.is_bundle===true){
+                    setRooms(roomsArr)
+
+                    // foundRoom=roomsArr.filter(room=>room.id===roomTypeID)
+
+                }else{
+                    // debugger
+                    let foundrooms=roomsArr.filter(room=>(room.flight_id.toString()+room.return_flight_id.toString())===flightId)
+
+                    setRooms(foundrooms)
+                    // foundRoom=rooms.filter(room=>room.roomTypeId===roomTypeID)
+
+                }
+
+
+
+    }
+
+    const roomFinder=(roomTypeID)=>{
+        // debugger
+        // let foundRoom
+
+        return rooms.filter(room=>room.roomTypeId===roomTypeID)
+
+    }
+
+    //
+    // useEffect(()=>{
+    //     console.log(cwb)
+    // },[cwb])
+
+    return (
+        <div className={width<=826 ? 'w-100' : 'p-data w-100'}>
+
+
+
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr 1fr',justifyContent:'center'}}
+            className={'w-100 bg-white py-2 px-2 hidden-desktop'}>
                 <div className="c-detail">
                     <div className="info-price position-relative d-flex align-items-start ">
-                        <div className="text d-flex align-items-center w-100 py-3">
-                            {data.defineTour && 
-                            <>
-                                <spanfont-bold 
-                                    className="font-size-13 font-bold color-gray">{moneyFormatrial(pack.prices.twinRate)} 
-                                </spanfont-bold>
-                                <span className="px-2 font-size-13 text-danger"> تومان </span>
-                            </>
-                                }
-                            {!data.defineTour && <span
-                                className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.twin)} {pack.rate.name}</span>}
+                        <div className="text w-100 py-3">
+
+
+                            {
+                                roomFinder(148)[0]?.price?
+                                    <>
+                                        <p
+                                            className="font-size-16 font-bold  m-0 price-color" style={{fontWeight:'bold'}}>{moneyFormatrial(roomFinder(148)[0]?.price)}
+
+                                            <span className="font-size-14 font-bold px-1  m-0 color-gray">
+                                {!data.is_bundle?'تومان':getcurrencyfa(currency)}
+                            </span>
+                                        </p>
+
+                                        {/*<p className="px-2 font-size-13 m-0 text-center font-blue text-center"> {getcurrencyfa(currency) } </p>*/}
+                                    </>:
+                                    <span className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+
+                            }
+
+
+
                         </div>
                     </div>
                 </div>
-                {data && data.type && <>
-                    <div className="c-detail">
-                        <div className="info-price position-relative d-flex align-items-start ">
-                            <div className="text d-flex align-items-center w-100 py-3">
-                                {data.defineTour && 
-                                <>
-                                <spanfont-bold 
-                                    className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.tripleRate)}
-                                     </spanfont-bold>
-                                     <span className="px-2 font-size-13 text-danger"> تومان </span>
-                                </>
-                                     }
-                                {!data.defineTour && <span
-                                    className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.triple)} {pack.rate.name}</span>}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="c-detail">
-                        <div className="info-price position-relative d-flex align-items-start ">
-                            <div className="text d-flex align-items-center w-100 py-3">
-                                {data.defineTour &&
-                                    <>
-                                <span
-                                    classNamefont-bold ="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.quadRate)}
-                                    </span>
-                                    <span className="px-2 font-size-13 text-danger"> تومان </span>
-                                    </>
-                                    }
-                                {!data.defineTour && <span
-                                    className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.quad)} {pack.rate.name}</span>}
-                            </div>
-                        </div>
-                    </div>
-                </>
-                }
-                {data && !data.type &&
+
+
                 <div className="c-detail">
                     <div className="info-price position-relative d-flex align-items-start ">
                         <div
-                            className="text d-flex align-items-center w-100 py-3">
-                            {data.defineTour && 
+                            className="text w-100 py-3">
+
                             <>
-                            <spanfont-bold 
-                                className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.singleRate)}</spanfont-bold>
-                                <span className="px-2 font-size-13 text-danger"> تومان </span>
+                                {roomFinder(494)[0]?.price? <>
+
+                                        <p
+                                            className="font-size-16 font-bold  m-0 mx-1 price-color" style={{fontWeight:'bold'}}>{moneyFormatrial(roomFinder(494)[0].price)}
+
+
+                                            <span className="font-size-14 font-bold px-1  m-0 color-gray">
+                                {!data.is_bundle?'تومان':getcurrencyfa(currency)}
+                            </span>
+                                        </p>
+                                        {/*<p className="px-2 font-size-13 m-0 text-center font-blue"> {getcurrencyfa(currency) } </p>*/}
+
+                                </>:
+
+                                    <span className="font-bold font-size-13 font-bold color-gray">عدم موجودی</span>
+                                }
+
+
+
+
+
                                 </>
-                                }
-                            {!data.defineTour && <span
-                                className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.single)} {pack.rate.name}</span>}
+
+
                         </div>
                     </div>
                 </div>
-                }
-                {data && !data.type &&
+
+
+                <div className="c-detail">
+                    <div className="info-price position-relative ">
+                        <div className="text w-100 py-3">
+                            {data?.is_bundle?
+                                <>
+                                    <p className="font-size-16 font-bold  m-0 price-color" style={{fontWeight:'bold'}}>{'0' }
+                                        <span className="font-size-14 font-bold  m-0 color-gray px-1">
+                                {getcurrencyfa(currency)}
+                            </span>
+                                    </p>
+                                    {/*<p className="px-2 font-size-13 m-0 text-center font-blue"> {getcurrencyfa(currency) } </p>*/}
+                                </>  :
+
+                                <>{roomFinder(148)[0]?.chd_w_price?
+                                    <p className="font-size-16 font-bold  m-0 price-color"
+                                       style={{fontWeight: 'bold'}}>{data.is_bundle ? '0' : moneyFormatrial(roomFinder(148)[0]?.chd_w_price)}
+                                        <span className="font-size-14 font-bold  m-0 color-gray px-1">
+
+                                            {getcurrencyfa(currency)}
+                            </span>
+                                    </p>:                                <span className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+                            }
+                                    {/*<p className="px-2 font-size-13 m-0 text-center font-blue"> {getcurrencyfa(currency) } </p>*/}
+                                </>
+                            }
+
+
+
+                        </div>
+                    </div>
+                </div>
+
                 <div className="c-detail">
                     <div className="info-price position-relative d-flex align-items-start ">
-                        <div className="text d-flex align-items-center w-100 py-3">
-                            {data.defineTour && 
-                            <>
-                            <span
-                                className="font-size-13 font-bold color-gray"> {moneyFormatrial(pack.prices.cwbRate)}</span>
-                                <span className="px-2 font-size-13 text-danger"> تومان </span>
-                            </>
-                                }
-                            {!data.defineTour && <span
-                                className="font-size-14 font-bold color-gray">{moneyFormatrial(pack.prices.cwb)} {pack.rate.name}</span>}
+                        <div className="text w-100 py-3">
+<>
+    {data.is_bundle ? <>
+        {
+             <>{infPrc?
+
+                 <p className="font-size-16 m-0 price-color" style={{fontWeight: 'bold'}}>{numberWithCommas(infPrc)}
+
+                     <span className="font-size-14 font-bold  m-0 color-gray px-1">
+                                {getcurrencyfa(currency)}
+                            </span>
+                 </p>:<span className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+             }
+                    {/*<p className="px-2 font-size-13 m-0 text-center font-blue">{getcurrencyfa(currency) }</p>*/}
+
+                </>
+        }
+
+    </>: <>
+
+        {
+           ( roomFinder(148)[0]?.chd_n_price) ?<>
+
+                    <p className="font-size-16 m-0 price-color" style={{fontWeight:'bold'}}>{moneyFormatrial(roomFinder(148)[0]?.chd_n_price)}
+
+                        <span className="font-size-14 font-bold  m-0 color-gray px-1">
+                                {!data.is_bundle?'تومان':getcurrencyfa(currency)}
+                            </span>
+                    </p>
+                    {/*<p className="px-2 font-size-13 m-0 text-center font-blue">{getcurrencyfa(currency) }</p>*/}
+                </>:
+                <span className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+        }
+
+
+    </> }
+
+</>
+
+
                         </div>
                     </div>
                 </div>
-                }
-                <div className="c-detail">
-                    <div className="info-price position-relative d-flex align-items-start ">
-                        <div className="text d-flex align-items-center w-100 py-3">
-                            <span
-                                className="font-size-14 font-bold color-gray">{pack.prices.cnb == undefined ? '--' : pack.prices.cnb?.includes(',') == true ? `${pack.prices.cnb} تومان` : `${moneyFormat(`${pack.prices.cnb}0`)} تومان`} </span>
-                                {!pack.prices.cnb == undefined && <span className="px-2 font-size-13 text-danger"> تومان </span>}
-                        </div>
-                    </div>
-                </div>
-                <div className="c-detail child-number d-flex text-center ml-3 py-3">
-                    <span className="font-size-16 font-bold color-gray">{pack.prices.age}</span>
-                </div>
-                <div className="c-btn request-data position-relative " style={{right:'50px'}}>
-                    <button className="ancher text-white font-size-13 py-2 px-3 rounded-3 mt-2 me-2"
-                            style={{backgroundColor: '#279692'}} onClick={() => {
-                        setShow(true);
-                        setPackData({tourId: pack.id});
-                    }}>
-                        درخواست رزرو
-                    </button>
-                </div>
+                {/*<div className="c-detail child-number d-flex text-center ml-3 py-3">*/}
+
+                {/*    <span className="font-size-16 font-bold ">{hotel?.child_age? hotel?.child_age :'---'}</span>*/}
+                {/*</div>*/}
+                {/*<div className=" w-100 c-btn d-flex justify-content-center align-items-center  request-data position-relative" style={{right:'30px'}} >*/}
+                {/*    <button className="ancher text-white font-size-13 py-2 px-3 rounded-3 me-2"*/}
+                {/*            style={{backgroundColor: '#069e2c',height:"50px",whiteSpace:'nowrap',width:'47%',fontSize:'200px'}} onClick={() => {*/}
+                {/*        setShow(true);*/}
+                {/*        // posthog.capture("TourPackageHotelSelect")*/}
+                {/*        // setPackData({tourId: pack.id});*/}
+                {/*        setHotel(hotel)*/}
+
+                {/*    }}>*/}
+                {/*        اتاق های بیشتر*/}
+                {/*    </button>*/}
+
+                {/*    <button className="ancher text-white font-size-13 py-2 px-3 rounded-3  me-2"  onClick={()=> {*/}
+                {/*        setIsReserve(true)*/}
+                {/*        setHotel(hotel)*/}
+                {/*    }} style={{backgroundColor: '#e20000',whiteSpace:'nowrap',height:"50px",width:'80%',fontWeight:'800'}}>*/}
+
+                {/*    <p style={{fontSize:'20px',margin:0,padding:0,letterSpacing:'1px'}}>رزرو</p>*/}
+                {/*    </button>*/}
+                {/*</div>*/}
             </div>
-            
+
         </div>
     );
 };

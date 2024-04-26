@@ -70,14 +70,14 @@ const villa = (props) => {
           <img
             width=""
             height=""
-            alt="بلیطجا - لوگو پذیرش میزبان"
+            alt="بلبطجا - لوگو پذیرش میزبان"
             src="../../../Images/villa-index.webp"
           />
         </div>
 
         <div className={styles["home-become-host"]}>
           <div>
-            <h2>ویلا و اقامتگاه خود را در بلیطجا ثبت کنید و میزبان شوید</h2>
+            <h2>ویلا و اقامتگاه خود را در بلبطجا ثبت کنید و میزبان شوید</h2>
             <p>
               عکس بگیرید و اطلاعات خود را در بلیطجا به رایگان به نمایش بگذارید و
               میزبان مسافران بلیطجا باشید
@@ -144,7 +144,7 @@ const villa = (props) => {
                   <img
                     width=""
                     height=""
-                    alt="بلیطجا - پیش نمایش ویلا"
+                    alt="بلبطجا - پیش نمایش ویلا"
                     src="Images/picture3.jpg"
                   />
                   <p className={styles["vilia-desc"]}>
@@ -170,7 +170,7 @@ const villa = (props) => {
                   <img
                     width=""
                     height=""
-                    alt="بلیطجا - پیش نمایش ویلا"
+                    alt="بلبطجا - پیش نمایش ویلا"
                     src="Images/picture3.jpg"
                   />
                   <p className={styles["vilia-desc"]}>
@@ -196,7 +196,7 @@ const villa = (props) => {
                   <img
                     width=""
                     height=""
-                    alt="بلیطجا - پیش نمایش ویلا"
+                    alt="بلبطجا - پیش نمایش ویلا"
                     src="Images/picture3.jpg"
                   />
                   <p className={styles["vilia-desc"]}>
@@ -222,7 +222,7 @@ const villa = (props) => {
                   <img
                     width=""
                     height=""
-                    alt="بلیطجا - پیش نمایش ویلا"
+                    alt="بلبطجا - پیش نمایش ویلا"
                     src="Images/picture3.jpg"
                   />
                   <p className={styles["vilia-desc"]}>
@@ -248,7 +248,7 @@ const villa = (props) => {
                   <img
                     width=""
                     height=""
-                    alt="بلیطجا - پیش نمایش ویلا"
+                    alt="بلبطجا - پیش نمایش ویلا"
                     src="Images/picture3.jpg"
                   />
                   <p className={styles["vilia-desc"]}>
@@ -274,7 +274,7 @@ const villa = (props) => {
                   <img
                     width=""
                     height=""
-                    alt="بلیطجا - پیش نمایش ویلا"
+                    alt="بلبطجا - پیش نمایش ویلا"
                     src="Images/picture3.jpg"
                   />
                   <p className={styles["vilia-desc"]}>

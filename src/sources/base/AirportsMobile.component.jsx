@@ -14,7 +14,12 @@ class AirportsMobile extends React.Component {
         this.state = {
             searchTerm: ''
         }
+        this.myRef = React.createRef();
     }
+componentDidMount() {
+        this.myRef.current.focus();
+
+}
 
     handleChange = (event) => {
         const { value } = event.target
@@ -55,6 +60,7 @@ class AirportsMobile extends React.Component {
                     </span>
 
                 </div>
+                <button ref={this.myRef}></button>
                 <input name="searchTerm" autoFocus={false} value={this.props.searchTerm} autoComplete="false" className={`${styles['input-search-private']} input-search `} onChange={this.handleChange} placeholder="مبدا خود را وارد کنید" />
                 <div className={styles['mobile-airport-list']}>
                     {

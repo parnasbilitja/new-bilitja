@@ -105,7 +105,7 @@ export const getServerSideProps = async (req) => {
               userId: localStorage.getItem("token"),
               customerId: "1a157116-a01a-4027-ab10-74098ac63815",
               hostname: "bilitja.com",
-              agencyName: "بلیطجا",
+              agencyName: "بلبطجا",
               telNumber: "02157874"
 
             }),

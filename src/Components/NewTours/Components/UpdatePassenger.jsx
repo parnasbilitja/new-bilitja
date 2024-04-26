@@ -23,9 +23,9 @@ const UpdatePassenger = (props) => {
     const [currentType, setCurrenttype] = useState('adl');
     const[currentPassId,setCrrentPassId]=useState('')
     useEffect(() => {
-        setFormData(props.targetedRoom.details.passengers)
-    }, [props.targetedRoom.details.passengers])
-
+        setFormData(props.targetedRoom?.passengers)
+    }, [props.targetedRoom?.passengers])
+    //
     useEffect(() => {
         console.log('sad324456', formdata)
     }, [formdata])
@@ -52,13 +52,14 @@ const UpdatePassenger = (props) => {
     const FormDataPicker = (e, passId) => {
         // debugger;
         const enRegEx = /[^A-Za-z0-9\s]/g;
+        const regEx = /^\d+$/;
         const findpassenger = formdata.filter(
-            (passenger) => passenger.id === passId
+            (passenger) => passenger.pass_id === passId
         );
         let newpassengerArr = [];
         if (findpassenger) {
             const filteredpassengers = formdata.filter(
-                (passenger) => passenger.id !== passId
+                (passenger) => passenger.pass_id !== passId
             );
             if (enRegEx.test(e.target.value)) {
                 newpassengerArr.push(...filteredpassengers, {
@@ -92,7 +93,7 @@ const UpdatePassenger = (props) => {
     const findDate = (passId, datetype) => {
         // debugger;
         const findPassenger = formdata.filter(
-            (passenger) => passenger.id === passId
+            (passenger) => passenger.pass_id === passId
         );
         if (findPassenger && findPassenger[0]?.hasOwnProperty(datetype)) {
             if (datetype === "birth_day") {
@@ -107,12 +108,12 @@ const UpdatePassenger = (props) => {
     const Birthdate = (date, passId, type, roomid, roomTypeid, datetype) => {
         // debugger
             const findpassenger = formdata.filter(
-                (passenger) => passenger.id === passId
+                (passenger) => passenger.pass_id === passId
             );
             let newpassengerArr = [];
             if (findpassenger) {
                 const filteredpassengers = formdata.filter(
-                    (passenger) => passenger.id !== passId
+                    (passenger) => passenger.pass_id !== passId
                 );
 
                 newpassengerArr.push(...filteredpassengers, {
@@ -128,7 +129,7 @@ const UpdatePassenger = (props) => {
     const validation = (passId, inputname) => {
 
         const findPassInput = formdata.filter(
-            (passenger) => passenger.id == passId
+            (passenger) => passenger.pass_id == passId
         );
 
         if (findPassInput[0]?.[inputname]?.length > 0) {
@@ -138,6 +139,10 @@ const UpdatePassenger = (props) => {
         }
 
     };
+
+    useEffect(()=>{
+        console.log(formdata)
+    },[formdata])
     return (
         <>
 
@@ -146,7 +151,7 @@ const UpdatePassenger = (props) => {
                     className={`${styles["box-room-Det"]} ${styles["flex-column-mobi"]}`}
                 >
                     <div className={styles["box-room-Det-name"]}>
-                        <p>{props.targetedRoom.room.room_type}</p>
+                        <p>{props.targetedRoom.info_room.room_type}</p>
                     </div>
                 </div>
                 <div>
@@ -156,7 +161,7 @@ const UpdatePassenger = (props) => {
                         >
                             {/* <label className={styles["label-fix"]}>سرپرست</label> */}
                             <div>
-                                {props.targetedRoom.details.passengers.map((pass ,passIndex) => {
+                                {props.targetedRoom?.passengers.map((pass ,passIndex) => {
                                     return (
                                         <div className={styles['container']}>
                                             <div className={styles["personDet"]}>
@@ -173,14 +178,14 @@ const UpdatePassenger = (props) => {
                                                     </small>
                                                 </label>
                                                 <div className={styles["price-fix"]}>
-                                                    <p>{numberWithCommas(pass.price)}</p>
+                                                    {/*<p>{numberWithCommas(pass.price)}</p>*/}
                                                     <small>تومان</small>
                                                 </div>
                                             </div>
                                             <form
                                                 // key={index}
                                                 className={
-                                                    props.hotelDets?.hotel?.is_domestic
+                                                    indexidfinder(props.passId, props.reserve_id, "nationality")==='1'
                                                         ? styles["form-container"]
                                                         : styles["form-container2"]
                                                 }
@@ -349,44 +354,45 @@ const UpdatePassenger = (props) => {
 
                                                 {/* "item-form w-15" */}
 
-                                                {/*{props.hotelDets?.hotels?.is_domestic ? (*/}
-                                                {/*    <div className={styles["item-form"]}>*/}
-                                                {/*        <div className={styles["inp-form"]}>*/}
-                                                {/*            <input*/}
-                                                {/*                // {...form.register("id_code")}*/}
-                                                {/*                type="text"*/}
-                                                {/*                placeholder="کدملی"*/}
-                                                {/*                maxLength="10"*/}
-                                                {/*                onChange={(e) =>*/}
-                                                {/*                    FormDataPicker(*/}
-                                                {/*                        e,*/}
-                                                {/*                        props.passId,*/}
-                                                {/*                        props.type,*/}
-                                                {/*                        props.roomid,*/}
-                                                {/*                        props.room_type_id,*/}
-                                                {/*                        props.id,*/}
-                                                {/*                        props.reserve_id*/}
-                                                {/*                    )*/}
-                                                {/*                }*/}
-                                                {/*                name="id_code"*/}
-                                                {/*            />*/}
-                                                {/*        </div>*/}
-                                                {/*        {props.Errs?.errors &&*/}
-                                                {/*        errValidation(*/}
-                                                {/*            props.Errs?.errors,*/}
-                                                {/*            errStruct(props.roomIndex, props.passIndex, "id_code")*/}
-                                                {/*        ) &&*/}
-                                                {/*        !validation(props.passId, props.id, "id_code") ? (*/}
-                                                {/*            <small>*/}
-                                                {/*                {*/}
-                                                {/*                    props.Errs?.errors[*/}
-                                                {/*                        errStruct(props.roomIndex, props.passIndex, "id_code")*/}
-                                                {/*                        ]*/}
-                                                {/*                }*/}
-                                                {/*            </small>*/}
-                                                {/*        ) : null}*/}
-                                                {/*    </div>*/}
-                                                {/*) : null}*/}
+
+                                                {indexidfinder(pass.id, "nationality")==='1'&&<div className={styles["item-form"]}>
+                                                    <div className={styles["inp-form"]}>
+                                                        <input
+                                                            // {...form.register("id_code")}
+                                                            value={indexidfinder(pass.id, "id_code")}
+                                                            type="text"
+                                                            placeholder="کدملی"
+                                                            maxLength="10"
+                                                            onChange={(e) =>
+                                                                FormDataPicker(
+                                                                    e,
+                                                                    props.passId,
+                                                                    props.type,
+                                                                    props.roomid,
+                                                                    props.room_type_id,
+                                                                    props.id,
+                                                                    props.reserve_id
+                                                                )
+                                                            }
+                                                            name="id_code"
+                                                        />
+                                                    </div>
+                                                    {props.Errs?.errors &&
+                                                    errValidation(
+                                                        props.Errs?.errors,
+                                                        errStruct(props.roomIndex, props.passIndex, "id_code")
+                                                    ) &&
+                                                    !validation(props.passId, props.id, "id_code") ? (
+                                                        <small>
+                                                            {
+                                                                props.Errs?.errors[
+                                                                    errStruct(props.roomIndex, props.passIndex, "id_code")
+                                                                    ]
+                                                            }
+                                                        </small>
+                                                    ) : null}
+                                                </div>}
+
 
                                                 {/* ) : null} */}
 
@@ -494,6 +500,7 @@ const UpdatePassenger = (props) => {
                                                         <button
                                                             className="py-2 px-4"
                                                             onClick={() =>  setCalend(!calend)}
+                                                            style={{border: '2px solid #e20000', borderRadius: '20px'}}
                                                         >
                                                             {calend ? "تقویم میلادی" : "تقویم شمسی"}
                                                         </button>
@@ -598,7 +605,7 @@ const UpdatePassenger = (props) => {
             </div>
             <div style={{width: "100%", display: 'flex', justifyContent: 'center'}}>
 
-                <PrimaryButton onClick={()=>props.EditClickHandler(formdata)} style={{height: "52px", marginTop: "15px", borderRadius: "5px",width:'20%'}}>ویرایش </PrimaryButton>
+                <PrimaryButton onClick={()=>props.EditClickHandler(formdata,props.targetedRoom.info_room)} style={{height: "52px", marginTop: "15px", borderRadius: "5px",width:'20%'}}>ویرایش </PrimaryButton>
             {/*<button style={{marginTop: '1rem'}} onClick={()=>props.EditClickHandler(formdata)}>ویرایش</button>*/}
             </div>
         </>

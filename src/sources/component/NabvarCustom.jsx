@@ -67,7 +67,7 @@ const NavBar = (props) => {
     setState({ ...state, logged: false })
   }
   return (
-    <div className="col-xl-12 col-lg-12 hidden-xs">
+    <div className="col-xl-12 col-lg-12">
       <nav className={styles.navVar}>
           <div className="d-flex flex-row-reverse justify-content-center">
             <div className="d-flex flex-row-reverse">
@@ -79,8 +79,8 @@ const NavBar = (props) => {
                       width=""
                       height=""
                       className={styles["logo"]}
-                      src="../../../../Images/logo512.webp"
-                      alt="بلیطجا - لوگو"
+                      src="/Images/hamnavaz-logo.webp"
+                      alt="بلبطجا - لوگو"
                       style={{ cursor: "pointer" }}
                     />
                   </Link>

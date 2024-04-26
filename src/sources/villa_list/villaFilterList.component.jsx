@@ -27,7 +27,7 @@ class villaFilterList extends React.Component {
               height=""
               width=""
               height=""
-              alt="بلیطجا - لوگو فیلتر منظره"
+              alt="بلبطجا - لوگو فیلتر منظره"
             />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
@@ -42,7 +42,7 @@ class villaFilterList extends React.Component {
               height=""
               width=""
               height=""
-              alt="بلیطجا - لوگو فیلتر منظره"
+              alt="بلبطجا - لوگو فیلتر منظره"
             />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
@@ -57,7 +57,7 @@ class villaFilterList extends React.Component {
               height=""
               width=""
               height=""
-              alt="بلیطجا - لوگو فیلتر منظره"
+              alt="بلبطجا - لوگو فیلتر منظره"
             />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
@@ -72,7 +72,7 @@ class villaFilterList extends React.Component {
               height=""
               width=""
               height=""
-              alt="بلیطجا - لوگو فیلتر منظره"
+              alt="بلبطجا - لوگو فیلتر منظره"
             />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
@@ -87,7 +87,7 @@ class villaFilterList extends React.Component {
               height=""
               width=""
               height=""
-              alt="بلیطجا - لوگو فیلتر منظره"
+              alt="بلبطجا - لوگو فیلتر منظره"
             />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
@@ -105,7 +105,7 @@ class villaFilterList extends React.Component {
               height=""
               width=""
               height=""
-              alt="بلیطجا - لوگو فیلتر منظره"
+              alt="بلبطجا - لوگو فیلتر منظره"
             />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
@@ -120,7 +120,7 @@ class villaFilterList extends React.Component {
               height=""
               width=""
               height=""
-              alt="بلیطجا - لوگو فیلتر منظره"
+              alt="بلبطجا - لوگو فیلتر منظره"
             />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
@@ -135,7 +135,7 @@ class villaFilterList extends React.Component {
               height=""
               width=""
               height=""
-              alt="بلیطجا - لوگو فیلتر منظره"
+              alt="بلبطجا - لوگو فیلتر منظره"
             />
             <label className="font-size-14" htmlFor="cheapest">
               منظره
@@ -150,7 +150,7 @@ class villaFilterList extends React.Component {
               height=""
               width=""
               height=""
-              alt="بلیطجا - لوگو فیلتر منظره"
+              alt="بلبطجا - لوگو فیلتر منظره"
             />
             <label className="font-size-14" htmlFor="cheapest">
               منظره

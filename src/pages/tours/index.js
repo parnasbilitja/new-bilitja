@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ToursBase from "../../Components/tours/ToursBase";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 import {useRouter} from "next/router";
-import Head from "next/head";
+import axios from "axios";
 
 const index = () => {
     const router=useRouter()
@@ -12,11 +12,27 @@ const index = () => {
         router.push(url)
 
     }
+    useEffect(()=>{
+        // dispatch(fetchAllHotels(city,search.hotel,page))
+
+        axios.get(`https://api.hotelobilit.com/api/v2/hotels?city=`, {
+            headers: {
+                "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP'
+            }
+        })
+            .then(response =>{
+                const tours = response.data.data
+                console.log('32746',response)
+                // dispatch(fetchAllHotelsSuccess(tours))
+            })
+            .catch(error=>{
+                const errMsg = error.message
+                // dispatch(fetchAllHotelsFailures(errMsg))
+            })
+    },[router])
+
     return (
         <div className="mt-90 bodyVar">
-            <Head>
-                <title>بلیطجا | لیست تورها</title>
-            </Head>
             <Scrolltoprefresh/>
             <ToursBase tourSwitch={tourSwitch}  setTourType={(val,url)=> setTourType(val,url)} />
         </div>

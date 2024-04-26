@@ -39,7 +39,7 @@ const DashboardNav = (props) => {
               <img
                 width=""
                 height=""
-                alt="بلیطجا - لوگو"
+                alt="بلبطجا - لوگو"
                 src="../../../Images/bilitja-logo.webp"
               />
             </Link>
@@ -233,7 +233,7 @@ const DashboardNav = (props) => {
             <img
               width=""
               height=""
-              alt="بلیطجا - لوگو"
+              alt="بلبطجا - لوگو"
               src="../../../Images/bilitja-logo.webp"
             />
           </Link>

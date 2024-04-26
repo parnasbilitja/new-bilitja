@@ -28,7 +28,7 @@ class ImageSlider extends React.Component {
           <img
             width=""
             height=""
-            alt="بلیطجا - اسلایدر"
+            alt="بلبطجا - اسلایدر"
             src={image}
             className={`${
               index == this.state.currentImage ? "visible-image" : null
@@ -73,7 +73,7 @@ class ImageSlider extends React.Component {
               <img
                 width=""
                 height=""
-                alt="بلیطجا - اسلایدر"
+                alt="بلبطجا - اسلایدر"
                 src={image}
               />
             </div>

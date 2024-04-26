@@ -2,14 +2,14 @@
 .primary-button {
   height: 100%;
   width: 100%;
-  background-color: $primaryColor;
+  background-color: #e20000;
   border-radius: $borderRadius;
   color: $whiteColor !important;
   outline: initial !important;
-  border: solid 2px $primaryColor;
+  border: solid 2px #e20000;
   &:hover {
     background-color: white;
-    color: $primaryColor !important;
+    color: #e20000 !important;
   }
 }
 .disable-button {
@@ -19,7 +19,7 @@
   border-radius: $borderRadius;
   color: $whiteColor !important;
   outline: initial !important;
-  border: solid 2px $primaryColor;
+  border: solid 2px #e20000;
   &:hover {
     background-color: $disabledBtn;
     color: $whiteColor !important;

@@ -20,7 +20,7 @@ const Submit = (props) => {
                         className="mx-2"
                     />
                     <label htmlFor="terms" style={{ fontSize: 15 }}>
-                        <span onClick={() => props.setClosePopUp(true)} style={{ borderBottom: '2px dashed red', paddingBottom: 10 }}>
+                        <span onClick={() => props.setClosePopUp(true)} style={{ borderBottom: '2px dashed #e20000', paddingBottom: 10 }}>
                             قوانین و مقررات و صحت اطلاعات{' '}
                         </span>
                         را قبول دارم.

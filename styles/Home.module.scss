@@ -184,9 +184,12 @@
 }
 
 .hero-image-center {
+
   margin-top: -5%;
-  width: 185px;
-  height: auto;
+  width: 360px;
+  height: 75px;
+  position: relative;
+  top: 45px;
 }
 
 .tab-container {
@@ -307,7 +310,7 @@
   background-image: url(../public/Images/banner_bg_colored.webp);
   background-size: cover;
   background-position: bottom;
-  background-color: $primaryColor;
+  background-color: #e20000;
   max-height: 78px;
   margin-top: 8px;
   padding-bottom: 10px;
@@ -410,7 +413,9 @@
   }
 
   p {
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 24px;
     color: $pillTextGray;
   }
 }
@@ -439,7 +444,7 @@
 }
 
 .border-bottom {
-  border-bottom: 2px solid #279692;
+  border-bottom: 2px solid #e20000;
   // padding-bottom: 5.2px;
 }
 
@@ -526,7 +531,7 @@
   }
 
   span {
-    color: #279692 !important;
+    color: #e20000 !important;
     font-size: 14px !important;
     position: relative;
     top: 4px;
@@ -534,7 +539,7 @@
 }
 
 .home-tab-active {
-  border: 3px solid #279692 !important;
+  border: 3px solid #e20000 !important;
   position: relative;
   display: flex;
   justify-content: center;
@@ -547,18 +552,18 @@
     height: 15px;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-top: 16px solid #279692;
+    border-top: 16px solid #e20000;
     transform: scale(0.8);
   }
 
   svg {
     path {
-      fill: #279692 !important;
+      fill: #e20000 !important;
     }
   }
 
   span {
-    color: #279692 !important;
+    color: #e20000 !important;
   }
 }
 
@@ -573,7 +578,7 @@
       height: 15px;
       border-left: 8px solid transparent;
       border-right: 8px solid transparent;
-      border-top: 16px solid #279692;
+      border-top: 16px solid #e20000;
       transform: scale(0.8);
     }
   }
@@ -584,13 +589,16 @@
 /////new pouya
 
 .width-mobile-search {
+  padding-right:0 !important ;
+  padding-left:0 !important ;
   .checkboxs_container {
     margin-bottom: .5rem;
     margin-top: .5rem;
     column-gap: 15px;
     width: 15%;
-    // display: flex;
 
+
+    // display: flex;
     // align-items: center;
 
 
@@ -622,7 +630,7 @@
         color: currentColor;
         width: 1.45rem;
         height: 1.45rem;
-        border: 0.15em solid #279692;
+        border: 0.15em solid #e20000;
         border-radius: 0.15em;
         transform: translateY(-0.095em);
         display: grid;
@@ -636,7 +644,7 @@
         transform: scale(0);
         border-radius: 2px;
         transition: 120ms transform ease-in-out;
-        box-shadow: inset 1em 1em #279692;
+        box-shadow: inset 1em 1em #e20000;
       }
 
       input[type="checkbox"]:checked::before {
@@ -656,14 +664,20 @@
 }
 
 @media only screen and (min-width: 868px){
+  .w-100-mobi{
+    width: 100% !important;
+  }
+
   .checkboxs_container {
     transform: translateY(-30px);
     width: 15% !important;
 
   }
+}
+
+@media only screen and (min-width: 868px) {
   .flight-container{
     position: relative;
     top: -35px;
   }
-
 }

@@ -7,13 +7,13 @@
     }
     .nav-text-detail,.nav-items-container{
         display: none !important;
-        
+
     }
     .nav-logo-container{
         div{
             float: right !important;
         }
-        
+
     }
 }
 @media only screen and (max-width : 1259px) and (min-width :827px){
@@ -31,7 +31,7 @@
                 grid-template-rows: auto;
                 gap: 5px;
             }
-            
+
         }
     }
     // .nav-text-detail{
@@ -54,22 +54,32 @@
             grid-template-rows: auto;
             gap: 5px;
         }
-        
+
     }
 }
-.navVar{
-    // display: flex !important;
-    flex-direction: row-reverse;
-    padding:8px 140px 8px 140px;
-    width: 100%;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    height: 90px !important;
+@media only screen and (max-width : 1020px) and (min-width :820px){
+    .navVar{
+        padding:15px 20px 15px 20px !important;
+    }
+}
+.navbar{
     position: fixed;
-    background-color: $whiteColor;
     top: 0;
     z-index: 9999;
-   
+width: 100%;
+    .navVar{
+        // display: flex !important;
+        flex-direction: row-reverse;
+        padding:15px 120px 15px 120px;
+        width: 100%;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        height: 100px !important;
+        background-color: $whiteColor;
+
+
+    }
 }
+
 .nav-text-detail{
     text-align: center;
     display: grid;
@@ -77,9 +87,9 @@
     padding: 1px;
     // & > div:first-child{
     //     margin: 10px 2px;
-    // } 
+    // }
     div.font-size-12{
-        margin:6px 15px 10px 0;       
+        margin:6px 15px 10px 0;
     }
     .nav-detail-first-line{
         display: grid;
@@ -88,7 +98,7 @@
         span{
             margin-right: 5px;
         }
-        
+
     }
     .nav-detail-second-line{
         margin-top: 8px;
@@ -109,7 +119,7 @@
         float: right;
         padding: 0 10px;
         text-align: center;
-        // border-left:solid 1px $pillGray ; 
+        // border-left:solid 1px $pillGray ;
         min-width: 85px;
         height: 57.85px;
         font-weight: 400;
@@ -141,8 +151,8 @@
         margin-top: -5px;
     }
     .logo{
-        width:60px;
-        height: auto;
+        width:80px;
+        height: 50px;
         margin: 5px auto;
     }
 }

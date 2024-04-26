@@ -42,15 +42,22 @@ export const MiladiToJalaliConvertorDec = (miladiDate) => {
 ////sperate price with (,)
 export function numberWithCommas(number) {
   // debugger;
-  var parts = number?.toString().split(".");
-  parts[0] = parts[0]?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if(number){
+    var parts = number?.toString().split(".");
+    parts[0] = parts[0]?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-  /////////////this condition is temporaily
-  if (parts.length > 0) {
-    return parts?.join(".");
-  } else {
-    return "";
+    /////////////this condition is temporaily
+    if (parts.length > 0) {
+      return parts?.join(".");
+    } else {
+      return "";
+    }
   }
+
+}
+
+export  const timeFixer=(time)=>{
+  return time?.slice(0,5)
 }
 
 ////star builder
@@ -102,129 +109,186 @@ export const currencyExchanger = (currency_code, currency) => {
   }
 };
 
-///extbed =تخت اضافه
-export const extBedPrcGen = (rooms, flight, roomTypeId) => {
-  let price = 0;
-  let services;
-  rooms?.map((room) => {
-    if (roomTypeId === room.room_type_id) {
-      let rates = room.rates.filter(
-        (rate) =>
-          moment(rate.date).isSameOrBefore(
-            flightDateChecker(flight).checkout
-          ) &&
-          moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
-      );
-      rates.map((rate) => {
-        return (price +=
-          rate.extra_price *
-          currencyExchanger(rate.currency_code, room.currencies));
-      });
+export const jalaliMonthName=(jalalimonth)=>{
+  switch (jalalimonth) {
+    case 'Farvardin':
+      return 'فروردبن'
+    case 'Ordibehesht':
+      return 'اردیبهشت'
+    case 'Khordaad':
+      return 'خرداد'
+    case 'Tir':
+      return 'تیر'
+    case 'Amordaad':
+      return 'مرداد'
+    case 'Shahrivar':
+      return 'شهریور'
+    case 'Mehr':
+      return 'مهر'
+    case 'Aabaan':
+      return 'آبان'
+    case 'Aazar':
+      return 'آذر'
+    case 'Dey':
+      return 'دی'
+    case 'Bahman':
+      return 'بهمن'
+    case 'Esfand':
+      return 'اسفند'
 
-      // price = price - PrcController(room, flight, true);
-      price += flight.adl_price; //flights=>adl_price
-      services = room.services.filter(
-        (service) =>
-          service.airport_id === flight.destination_id ||
-          service.airport_id === 0
-      );
 
-      services.map((service) => {
-        price +=
-          service.rate * currencyExchanger(service.rate_type, room.currencies);
-        return price;
-      });
-    }
-    return price;
-  });
-
-  return price;
-};
-
-export const roomPrcGen = (room, flight) => {
-  // debugger
-  let services;
-  let price = 0;
-  let isCheckIn = room.rates[0]?.checkin_base;
-  // debugger
-  let rates = room.rates.filter(
-    (rate) =>
-      moment(rate.date).isSameOrBefore(flightDateChecker(flight).checkout) &&
-      moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
-  );
-  if (isCheckIn) {
-    price +=
-      rates[0].offer_price *
-      currencyExchanger(room.rates[0].currency_code, room.currencies) *
-      rates.length;
-  } else {
-    rates.map((rate) => {
-      return (price +=
-        rate.price * currencyExchanger(rate.currency_code, room.currencies));
-    });
   }
-  // price = price - PrcController(room, flight, false, isCheckIn);
-  price += flight.adl_price; //flights=>adl_price
-  services = room.services.filter(
-    (service) =>
-      service.airport_id === flight.destination_id || service.airport_id === 0
-  );
 
-  services.map((service) => {
-    price +=
-      service.rate * currencyExchanger(service.rate_type, room.currencies);
-    return price;
-  });
 
-  return price;
-};
+}
 
-export const chdPrcGen = (rooms, flight, roomTypeId) => {
-  // debugger
-  let price = 0;
-  let services;
-  rooms?.map((room) => {
-    if (roomTypeId === room.room_type_id) {
-      let isCheckIn = room.rates[0]?.checkin_base;
-      let rates = room.rates.filter(
-        (rate) =>
-          moment(rate.date).isSameOrBefore(
-            flightDateChecker(flight).checkout
-          ) &&
-          moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
-      );
-      if (isCheckIn) {
-        price +=
-          rates[0].offer_price *
-          currencyExchanger(room.rates[0].currency_code, room.currencies) *
-          rates.length;
-      } else {
-        rates.map((rate) => {
-          return (price +=
-            rate.price *
-            currencyExchanger(rate.currency_code, room.currencies));
-        });
-      }
+///extbed =تخت اضافه
 
-      // price -= PrcController(room, flight, false, false);
-      price += flight.chd_price; //flights=>adl_price
-      services = room.services.filter(
-        (service) =>
-          service.airport_id === flight.destination_id ||
-          service.airport_id === 0
-      );
+//
+// export const extBedPrcGen = (rooms, flight, roomTypeId) => {
+//   let price = 0;
+//   let services;
+//   rooms?.map((room) => {
+//     if (roomTypeId === room.room_type_id) {
+//       let rates = room.rates.filter(
+//         (rate) =>
+//           moment(rate.date).isSameOrBefore(
+//             flightDateChecker(flight).checkout
+//           ) &&
+//           moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
+//       );
+//       rates.map((rate) => {
+//         return (price +=
+//           rate.extra_price *
+//           currencyExchanger(rate.currency_code, room.currencies));
+//       });
+//
+//       // price = price - PrcController(room, flight, true);
+//       price += flight.adl_price; //flights=>adl_price
+//       services = room.services.filter(
+//         (service) =>
+//           service.airport_id === flight.destination_id ||
+//           service.airport_id === 0
+//       );
+//
+//       services.map((service) => {
+//         price +=
+//           service.rate * currencyExchanger(service.rate_type, room.currencies);
+//         return price;
+//       });
+//     }
+//     return price;
+//   });
+//
+//   return price;
+// };
 
-      services.map((service) => {
-        price +=
-          service.rate * currencyExchanger(service.rate_type, room.currencies);
-        return price;
-      });
-    }
-    return price;
-  });
 
-  return price;
-};
+export const getDayInPersian=(dayname)=>{
+  switch (dayname.toLowerCase()) {
+    case "saturday":
+      return "شنبه";
+    case "sunday":
+      return "یک شنبه";
+    case "monday":
+      return "دوشنبه";
+    case "tuesday":
+      return "سه شنبه";
+      case "wednesday":
+      return "چهارشنبه";
+      case "thursday":
+      return "پنج شنبه";
+    case "friday":
+      return "جمعه";
+  }
+}
+// export const roomPrcGen = (room, flight) => {
+//   // debugger
+//   let services;
+//   let price = 0;
+//   let isCheckIn = room.rates[0]?.checkin_base;
+//   // debugger
+//   let rates = room.rates.filter(
+//     (rate) =>
+//       moment(rate.date).isSameOrBefore(flightDateChecker(flight).checkout) &&
+//       moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
+//   );
+//   if (isCheckIn) {
+//     price +=
+//       rates[0].offer_price *
+//       currencyExchanger(room.rates[0].currency_code, room.currencies) *
+//       rates.length;
+//   } else {
+//     rates.map((rate) => {
+//       return (price +=
+//         rate.price * currencyExchanger(rate.currency_code, room.currencies));
+//     });
+//   }
+//   // price = price - PrcController(room, flight, false, isCheckIn);
+//   price += flight.adl_price; //flights=>adl_price
+//
+//   services = room.services.filter(
+//     (service) =>
+//       service.airport_id === flight.destination_id || service.airport_id === 0
+//   );
+//
+//   services.map((service) => {
+//     price +=
+//       service.rate * currencyExchanger(service.rate_type, room.currencies);
+//     return price;
+//   });
+//
+//   return price;
+// };
+
+
+//
+// export const chdPrcGen = (rooms, flight, roomTypeId) => {
+//   // debugger
+//   let price = 0;
+//   let services;
+//   rooms?.map((room) => {
+//     if (roomTypeId === room.room_type_id) {
+//       let isCheckIn = room.rates[0]?.checkin_base;
+//       let rates = room.rates.filter(
+//         (rate) =>
+//           moment(rate.date).isSameOrBefore(
+//             flightDateChecker(flight).checkout
+//           ) &&
+//           moment(rate.date).isSameOrAfter(flightDateChecker(flight).checkin)
+//       );
+//       if (isCheckIn) {
+//         price +=
+//           rates[0].offer_price *
+//           currencyExchanger(room.rates[0].currency_code, room.currencies) *
+//           rates.length;
+//       } else {
+//         rates.map((rate) => {
+//           return (price +=
+//             rate.price *
+//             currencyExchanger(rate.currency_code, room.currencies));
+//         });
+//       }
+//
+//       // price -= PrcController(room, flight, false, false);
+//       price += flight.chd_price; //flights=>adl_price
+//       services = room.services.filter(
+//         (service) =>
+//           service.airport_id === flight.destination_id ||
+//           service.airport_id === 0
+//       );
+//
+//       services.map((service) => {
+//         price +=
+//           service.rate * currencyExchanger(service.rate_type, room.currencies);
+//         return price;
+//       });
+//     }
+//     return price;
+//   });
+//
+//   return price;
+// };
 export const roomNameChecker = (roomsarr, room_id) => {
   // debugger
   const roomName = roomsarr?.filter((room) => room.id === room_id);
@@ -246,29 +310,47 @@ export const dateDiffChecker = (stDate, enDate, stayCount) => {
   }
 };
 
-export const flightDateChecker = (flight) => {
-  //
-  // debugger;
-  let checkin;
-  let checkout;
-  if (flight.checkin_tomorrow && flight.checkout_yesterday) {
-    checkin = moment(flight.date).add(1, "days");
-    checkout = moment(flight.flight.date).subtract(2, "d").format("YYYY-MM-DD");
-    return { checkin, checkout };
-  } else if (flight.checkin_tomorrow && !flight.checkout_yesterday) {
-    checkin = moment(flight.date).add(1, "d").format("YYYY-MM-DD");
-    checkout = flight.flight.date;
-    return { checkin, checkout };
-  } else if (!flight.checkin_tomorrow && flight.checkout_yesterday) {
-    checkin = flight.date;
-    checkout = moment(flight.flight.date).subtract(2, "d").format("YYYY-MM-DD");
-    return { checkin, checkout };
-  } else {
-    checkout = moment(flight.flight.date).subtract(1, "d").format("YYYY-MM-DD");
-    checkin = flight.date;
-    return { checkin, checkout };
+export const getcurrencyfa=(c)=>{
+  switch (c) {
+    case 'dollar':
+      return 'دلار'
+    case 'euro':
+      return 'یورو'
+    case 'derham':
+      return 'درهم'
+    case 'toman':
+      return 'تومان'
+    default:
+      return 'تومان'
   }
-};
+}
+//
+// export const flightDateChecker = (flight) => {
+//   //
+//   // debugger;
+//   let checkin;
+//   let checkout;
+//   if (flight.checkin_tomorrow && flight.checkout_yesterday) {
+//     checkin = moment(flight.date).add(1, "days");
+//     checkout = moment(flight.flight.date).subtract(2, "d").format("YYYY-MM-DD");
+//     return { checkin, checkout };
+//   } else if (flight.checkin_tomorrow && !flight.checkout_yesterday) {
+//     checkin = moment(flight.date).add(1, "d").format("YYYY-MM-DD");
+//     checkout = flight.flight.date;
+//     return { checkin, checkout };
+//   } else if (!flight.checkin_tomorrow && flight.checkout_yesterday) {
+//     checkin = flight.date;
+//     checkout = moment(flight.flight.date).subtract(2, "d").format("YYYY-MM-DD");
+//     return { checkin, checkout };
+//   } else {
+//     // debugger
+//     checkout = moment(flight.flight.date).subtract(1, "d").format("YYYY-MM-DD");
+//     checkin = flight.date;
+//     return { checkin, checkout };
+//   }
+// };
+
+
 
 export const errStruct = (roomId, passenId, inputName) => {
   return `reserves.${roomId}.passengers.${passenId}.${inputName}`;
@@ -329,11 +411,11 @@ export const humanType1 = (id) => {
   //   case "ext":
   //     return "تخت اضافه";
   // }
-  if (id.includes("adl")) {
+  if (id?.includes("adl")) {
     return "بزرگسال";
-  } else if (id.includes("chd")) {
+  } else if (id?.includes("chd")) {
     return "کودک";
-  } else if (id.includes("inf")) {
+  } else if (id?.includes("inf")) {
     return "نوزاد";
   } else {
     return "تخت اضافه";
@@ -377,18 +459,54 @@ export const removeDuplicateObj = (data, prop) => {
 };
 
 export const humantype = (type) => {
-  // debugger
+
   switch (type) {
     case "adl":
       return "بزرگسال";
     case "inf":
       return "نوزاد";
-    case "chd":
-      return "کودک";
+    case 'chdnobed':
+      return "کودک بدون تخت";
+      case 'chdwithbed':
+      return "کودک با تخت";
     default:
       return "تخت اضافه";
   }
 };
+
+export const numberToWordConvertor=(num)=>{
+  switch (num) {
+    case 1:
+      return 'اول'
+    case 2:
+      return 'دوم'
+    case 3:
+      return 'سوم'
+    case 4:
+      return 'چهارم'
+    case 5:
+      return 'پنجم'
+    case 6:
+      return 'ششم'
+
+    case 7:
+      return 'هفتم'
+    case 8:
+      return 'هشتم'
+    case 9:
+      return 'نهم'
+    case 10:
+      return 'دهم'
+
+  }
+}
+export const chdAgeStr=(low,high)=>{
+  // debugger
+
+  return low +' '+'تا'+' '+ high + 'سال'
+
+
+}
 
 export const numberRounder = (num) => {
   return num - (num % 100000);
@@ -399,72 +517,151 @@ export const getRandomRounded = (min, max) => {
   return Math.round(randomNumber);
 };
 
-export const reservePrc = (rooms, flight) => {
-  let fiPrice;
-  rooms.map((room) => {
-    if (room.room_type_id === 148) {
-      fiPrice = roomPrcGen(room, flight);
+
+// export const reservePrc = (rooms, flight) => {
+//   let fiPrice;
+//   rooms.map((room) => {
+//     if (room.room_type_id === 148) {
+//       fiPrice = roomPrcGen(room, flight);
+//     }
+//   });
+//   if (fiPrice) {
+//     return fiPrice;
+//   } else {
+//     fiPrice = Math.min(
+//       rooms.map((room) => {
+//         return roomPrcGen(room, flight);
+//       })
+//     );
+//     return fiPrice;
+//   }
+// };
+
+
+// export const getCheapestRoom = (rooms, flight) => {
+//   let roomtypeIdArr = [];
+//   let newRoomsWithCheapestPrc = [];
+//   rooms.map((room) => roomtypeIdArr.push(room.room_type_id));
+//
+//   roomtypeIdArr = [...new Set(roomtypeIdArr)];
+//
+//   roomtypeIdArr.map((typeid) => {
+//     let roomWithPrc = [];
+//
+//     let commonRooms = rooms.filter((room) => room.room_type_id === typeid);
+//
+//     commonRooms.map((room) => {
+//       roomWithPrc.push({
+//         roomId: room.id,
+//         price: roomPrcGen(room, flight),
+//       });
+//     });
+//     let minPriceObj = roomWithPrc.reduce(
+//       (min, obj) => (obj.price < min.price ? obj : min),
+//       roomWithPrc[0]
+//     );
+//
+//     let findAlldatarooms = commonRooms.filter(
+//       (room) => room.id === minPriceObj.roomId
+//     );
+//     newRoomsWithCheapestPrc.push(findAlldatarooms[0]);
+//   });
+//
+//   let orderbybed=newRoomsWithCheapestPrc.sort((a,b)=> a.Adl_capacity-b.Adl_capacity)
+//
+//   return orderbybed;
+// };
+export const RouteTranslator=(routeArr,queryRoute)=>{
+
+  // debugger
+  // debugger
+ let translatedRouteArr=['بلبطجا آسمان آبی']
+ routeArr.shift()
+
+  routeArr.map((route,i)=>{
+    if(i===0){
+      if(routeArr[0].includes('CityTour')){
+        translatedRouteArr.push(queryRoute?.CityTour)
+
+      }
+
+      translatedRouteArr.push(routeDic[route]?.trs)
+    }else {
+      if (routeArr[0]==='hotels'){
+        translatedRouteArr.push(queryRoute?.hotel)
+      }else if (routeArr[0]==='blog' || routeArr[0]==='blogs'){
+        translatedRouteArr.push(queryRoute?.blog)
+
+      }else if(routeArr[0]==='tours'){
+        translatedRouteArr.push(queryRoute?.tour)
+
+      }else{
+        translatedRouteArr.push(routeDic[routeArr[0]]?.subRoute[route]?.trs)
+
+      }
+
     }
-  });
-  if (fiPrice) {
-    return fiPrice;
-  } else {
-    fiPrice = Math.min(
-      rooms.map((room) => {
-        return roomPrcGen(room, flight);
-      })
-    );
-    return fiPrice;
-  }
-};
+  })
 
-export const getCheapestRoom = (rooms, flight) => {
-  let roomtypeIdArr = [];
-  let newRoomsWithCheapestPrc = [];
-  rooms.map((room) => roomtypeIdArr.push(room.room_type_id));
+  return translatedRouteArr
+}
+ const routeDic={
+   tour:{
+     trs:'تور',
+     subRoute:{
+       hotelselect:{trs:'انتخاب هتل'},
+       flight:{trs:'انتخاب پرواز'},
+       reserve:{trs:'رزرو تور'},
+       reserveconfirmation:{trs:'تایید اطلاعات'}
+     }
+   },
+   tours:{
+     trs:' پکیح تور',
+     subRoute:{
+       hotelselect:{trs:'انتخاب هتل'},
+       flight:{trs:'انتخاب پرواز'},
+       reserve:{trs:'رزرو تور'},
+       reserveconfirmation:{trs:'تایید اطلاعات'}
+     }
+   } ,
 
-  roomtypeIdArr = [...new Set(roomtypeIdArr)];
+   hotels:{
+     trs:' اطلاعات هتل ',
+     subRoute:{
+       // hotelselect:{trs:'انتخاب هتل'},
+       // flight:{trs:'انتخاب پرواز'},
+       // reserve:{trs:'رزرو تور'},
+       // reserveconfirmation:{trs:'تایید اطلاعات'}
+     }
+   },
 
-  roomtypeIdArr.map((typeid) => {
-    let roomWithPrc = [];
+   blog:{
+     trs:' بلاگ ',
+     subRoute:{
+       // hotelselect:{trs:'انتخاب هتل'},
+       // flight:{trs:'انتخاب پرواز'},
+       // reserve:{trs:'رزرو تور'},
+       // reserveconfirmation:{trs:'تایید اطلاعات'}
+     }
+   },blogs:{
+     trs:' بلاگ ',
+     subRoute:{
+       // hotelselect:{trs:'انتخاب هتل'},
+       // flight:{trs:'انتخاب پرواز'},
+       // reserve:{trs:'رزرو تور'},
+       // reserveconfirmation:{trs:'تایید اطلاعات'}
+     }
+   },
 
-    let commonRooms = rooms.filter((room) => room.room_type_id === typeid);
 
-    commonRooms.map((room) => {
-      roomWithPrc.push({
-        roomId: room.id,
-        price: roomPrcGen(room, flight),
-      });
-    });
-    let minPriceObj = roomWithPrc.reduce(
-      (min, obj) => (obj.price < min.price ? obj : min),
-      roomWithPrc[0]
-    );
+ }
 
-    let findAlldatarooms = commonRooms.filter(
-      (room) => room.id === minPriceObj.roomId
-    );
-    newRoomsWithCheapestPrc.push(findAlldatarooms[0]);
-  });
+export const getRandomNumber=()=>{
+  let first=Math.floor(Math.random() * 8)
+  let second=Math.floor(Math.random() * 8)
 
-  return newRoomsWithCheapestPrc;
-};
-
-export const getDayInPersian=(dayname)=>{
-  switch (dayname.toLowerCase()) {
-    case "saturday":
-      return "شنبه";
-    case "sunday":
-      return "یک شنبه";
-    case "monday":
-      return "دوشنبه";
-    case "tuesday":
-      return "سه شنبه";
-    case "wednesday":
-      return "چهارشنبه";
-    case "thursday":
-      return "پنج شنبه";
-    case "friday":
-      return "جمعه";
-  }
+  do {
+    second=Math.floor(Math.random() * 8)
+  }while (+first===second)
+  return [first , second]
 }

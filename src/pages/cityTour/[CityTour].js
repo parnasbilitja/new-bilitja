@@ -15,7 +15,7 @@ import TourSearchBox from "../../Components/NewTours/Components/TourSearchBox";
 // import OfferdTours from "../../sources/tour/OfferdTours";
 import {fetchOfferdTour} from "../../Redux/OfferdTours/Action";
 import dynamic from "next/dynamic";
-
+import Menubar from "../../sources/component/Menubar";
 import styles from "../../../styles/Menubar.module.scss";
 const OfferdTours = dynamic(() => import("../../sources/tour/OfferdTours"));
 
@@ -75,7 +75,7 @@ const CityTour = (props) => {
     //
     // }, [data])
 
-    const router= useRouter()
+const router= useRouter()
 
     // const [widthMobi, setWidthMobi] = useState(
     //     typeof window !== "undefined" && getWindowSize()
@@ -97,6 +97,7 @@ const CityTour = (props) => {
     const [isModal, setIsmodal] = useState(false)
 
     useEffect(()=>{
+        // debugger
         console.log(router)
         if(router.asPath.includes('cityTour')){
             router.push(`/${router.query.CityTour}`)

@@ -118,7 +118,7 @@
         .btn-outlined-private {
             text-align: center;
             border-width: 2px;
-            color: $primaryColor;
+            color: #e20000;
             display: inline-block;
             width: 98%;
             height: 56px !important;
@@ -129,10 +129,10 @@
             }
         }
         .btn-outlined.color-secondary {
-            border-color: $secondaryColor;
-            color: $secondaryColor;
+            border-color: #e20000;
+            color: #e20000;
             &:hover {
-                background-color: $secondaryColor;
+                background-color: #e20000;
                 color: $whiteColor;
             }
         }
@@ -144,14 +144,14 @@
     .btn-outlined-private {
         text-align: center;
         border-width: 2px;
-        color: $primaryColor;
+        color: #e20000;
         display: inline-block;
         width: 98%;
         margin-top: 5px;
         font-size: 13px;
         padding: 3px 8px;
         &:hover {
-            background-color: $primaryColor;
+            background-color: #e20000;
             color: $whiteColor;
         }
         svg {
@@ -183,7 +183,7 @@
         line-height: 70px;
     }
     .background-world {
-        margin-top: 60px;
+        margin-top: 1px;
         background-image: url('../public/Images/worldmap.webp');
         background-position: center;
         background-size: cover;

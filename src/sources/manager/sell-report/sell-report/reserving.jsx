@@ -28,6 +28,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Loader } from "../../../../Utils/Loader";
 import Tabs from "../../TableAndSearch/Tabs";
+import NewLoader from "../../../../Components/NewTours/Components/subComponents/NewLoader";
 
 
 const fetchedList = async () => {
@@ -202,7 +203,7 @@ const FlightSellReport = () => {
         reserving={true}
          />
       </>
-      :<Loader/>}
+      :<NewLoader/>}
 
 
         {openInfo ? (

@@ -1,26 +1,41 @@
 .paginate-container{
   width: 100%;
   display: flex;
-  justify-content: center;
-  margin-top: 2rem;
+  justify-content: start;
+  //margin-top: 2rem;
   direction: rtl;
 
   .paginate{
     display: flex;
-width: auto;
-justify-content: space-between;
+    width: auto;
+    justify-content: space-between;
 
-  div{
+  .pagenumber{
     width:30px ;
     height: 30px;
     margin: 0 10px;
-    background-color: #e20000;
+    //background-color: #e20000;
+    border: 1px solid #e20000;
     display: flex;
     justify-content: center;
-align-items: center;
-    color: white;
+    align-items: center;
+    color: #e20000;
     border-radius: 10px;
     cursor: pointer;
   }
+.active{
+  width:30px ;
+  height: 30px;
+  margin: 0 10px;
+  background-color: #e20000 !important;
+  border: 1px solid #e20000 !important;
+  color: white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
   }
 }
+

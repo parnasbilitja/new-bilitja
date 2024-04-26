@@ -43,7 +43,7 @@ const FlightReserveMobileHeader = (props) =>
               height=""
               className="airline-icon"
               src={globals.website + `Airlines/${props.airlineCode}.png?ver=1`}
-              alt="بلیطجا - لوگو ایرلاین"
+              alt="بلبطجا - لوگو ایرلاین"
             />
             <div className="">
               <span className="font-size-10">ایرلاین</span>{" "}
@@ -52,12 +52,17 @@ const FlightReserveMobileHeader = (props) =>
           </div>
           <div className="col-4 mt-1rem-mobi padding-3pxheader">
             <p className="font-size-12 center-p">
+              <svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="25"><path d="M560-440q-33 0-56.5-23.5T480-520v-200q0-33 23.5-56.5T560-800h80q33 0 56.5 23.5T720-720v200q0 33-23.5 56.5T640-440h-80Zm0-80h80v-200h-80v200ZM380-240q-27 0-48-15.5T303-297L200-640v-160h80v160l100 320h340v80H380Zm-60 120v-80h400v80H320Zm240-600h80-80Z"/></svg>
+
               <strong className="text-danger mx-1 font-size-14">
                 {props.capLast}
               </strong>
-              <i className="bilitja icon-seat font-size-16"></i>
+              {/*<i className="bilitja icon-seat font-size-16"></i>*/}
+
+
               صندلی
                خالی
+
             </p>
           </div>
         </div>
@@ -66,7 +71,7 @@ const FlightReserveMobileHeader = (props) =>
             <span className="text-right">
               <FontAwesomeIcon icon={faCalendarAlt} className="mx-2" />
               <span className="text-danger font-size-12">
-                {getweekday(String(props.flightDay))} 
+                {getweekday(String(props.flightDay))}
               </span>
             </span>
             <span className="mx-2 font-size-12">

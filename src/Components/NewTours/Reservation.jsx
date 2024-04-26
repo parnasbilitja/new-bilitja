@@ -8,20 +8,31 @@ import {
     numberWithCommas,
     passengerObjModelGen,
     roomNameChecker,
-    startBuilder, removeDuplicateObj,
-    getDayInPersian
+    startBuilder, removeDuplicateObj, getDayInPersian, MiladiToJalaliConvertorDec,
 } from "../../Utils/newTour";
-import moment from "moment-jalaali";
 import axios from "axios";
 import {motion} from "framer-motion";
 import TourDetailLabel from "./Components/subComponents/TourDetailLabel.component";
-import {useRouter} from "next/router";
+import {useRouter, withRouter} from "next/router";
 import {Err, ErrSuccess, NotifAlert} from "./Components/NotifAlert.component";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 import base from "../home/Base";
 import CountDownTimer from "./Components/CountDownTimer";
+import moment from "moment-jalaali";
+import {Shimmers4, Shimmers5} from "../../Components/NewTours/Components/subComponents/Shimmers";
+import {accountBoxModify, messageBoxModify} from "../../Redux/UI/ui.action";
+import {addReservationProperties} from "../../Redux/Reserve/reserve.action";
+import {selectProperties} from "../../Redux/Reserve/reserve.reselect";
+import {connect} from "react-redux";
+import PopUp from "../../sources/component/PopUp.component";
+import Account from "../../sources/account/Account.component";
+import {selcetAccountBox} from "../../Redux/UI/ui.reselect";
+import {selectAirports} from "../../Redux/Airports/airport.reselect";
+import {selectCredentials} from "../../Redux/Search/search.reselect";
+import globals from "../../sources/Global";
+// import {usePostHog} from "posthog-js/react";
 
-const Reservation = ({hotelDet, stayCount,ref_code}) => {
+const Reservation = (props) => {
     const [generalRoomsData, setGeneralRoomsData] = useState([])
     const [roomBaseDet, setRoomBaseDet] = useState([])
     const [flightDet, setFlightDet] = useState(null)
@@ -30,52 +41,84 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
     const [reserverData, setReserverData] = useState({
         reserver_phone: "", reserver_id_code: "", reserver_name: "", reserver_lastname: "",
     });
-    const [reformSelectedRooms, setReformSelectedRooms] = useState([]);
+
+    useEffect(()=>{
+        console.log(dataq)
+    },[dataq])
+
+    const [state, setState] = useState({
+        stateRegister: false,
+        // passengers: [],
+        // priceAll: 0,
+        mobileSubmiter:  '',
+        // phoneSubmiter: '',
+        // mobileSubmiterErr: "شماره همراه اجباری است",
+        // phoneSubmiterErr: "شماره ثابت اجباری است",
+        // agreeWithTerm: false,
+        // agreeWithTermerr: false,
+        // email: ''
+    });
     const [evRoomsPrc, setEvRoomsPrc] = useState([]);
     const [err, setErr] = useState({});
     const router = useRouter();
 
+    const [roomsData1,setRoomsData1]=useState()
+const[isSubmit,setIsSubmit]=useState(false)
+    // useEffect(()=>{
+    //
+    //     try {
+    //
+    //         setRoomsData1(JSON?.parse(props.roomsCount))
+    //     }catch (error){
+    //
+    //     }
+    //
+    // },[props.roomsCount])
 
-    useEffect(() => {
-        const baseRoomDeta = generalRoomsData.filter(
-            (obj, index) =>
-                generalRoomsData.findIndex((item) => item.id === obj.id && item.room_type_id
-                    === obj.room_type_id
-                ) === index
-        );
-        setRoomBaseDet(baseRoomDeta)
-    }, [generalRoomsData])
-
-
-    useEffect(() => {
-        if (hotelDet?.data?.details?.request) {
-            let flight = hotelDet.data?.reserves?.filter(reserve => reserve?.reserve_type === 'flight')
-            setFlightDet(flight[0].flight)
-            let filterdRooms = []
-            let rooms = hotelDet.data?.reserves?.filter(reserve => reserve?.reserve_type !== 'flight')
-            rooms.map(room => filterdRooms.push(room.room))
-            // baseRoom=
-            setGeneralRoomsData(filterdRooms)
-            const newSelectedRooms = [];
-            hotelDet?.data?.details?.request?.map((roomselected) => {
-                // debugger
-                rooms?.map((room) => {
-                    if (room.room.id === roomselected.room_id) {
-                        newSelectedRooms.push({
-                            ...roomselected,
-                            room_type_id: room.room.room_type_id,
-                            id: Math.random() * 100,
-                            reserve_id: room.id
-                        });
-                    }
-                });
-            });
-            setReformSelectedRooms(removeDuplicateObj(newSelectedRooms));
-        }
-    }, [hotelDet]);
 
     // useEffect(() => {
-    //     // console.log('DSAA', flightDet)
+    //     const baseRoomDeta = generalRoomsData.filter(
+    //         (obj, index) =>
+    //             generalRoomsData.findIndex((item) => item.id === obj.id && item.room_type_id
+    //                 === obj.room_type_id
+    //             ) === index
+    //     );
+    //     setRoomBaseDet(baseRoomDeta)
+    // }, [generalRoomsData])
+useEffect(()=>{
+   if(localStorage?.getItem('mobile') ){
+       setState({ ...state, mobileSubmiter: localStorage?.getItem('mobile') ? localStorage?.getItem('mobile') :'' })   }
+},[props])
+
+    // useEffect(() => {
+    //     if (hotelDet?.data?.details?.request) {
+    //         let flight = hotelDet.data?.reserves?.filter(reserve => reserve?.reserve_type === 'flight')
+    //         setFlightDet(flight)
+    //         let filterdRooms = []
+    //         let rooms = hotelDet.data?.reserves?.filter(reserve => reserve?.reserve_type !== 'flight')
+    //         rooms.map(room => filterdRooms.push(room.room))
+    //         // baseRoom=
+    //         setGeneralRoomsData(filterdRooms)
+    //         const newSelectedRooms = [];
+    //         hotelDet?.data?.details?.request?.map((roomselected) => {
+    //             // debugger
+    //             rooms?.map((room) => {
+    //                 if (room.room.id === roomselected.room_id) {
+    //                     newSelectedRooms.push({
+    //                         ...roomselected,
+    //                         room_type_id: room.room.room_type_id,
+    //                         id: Math.random() * 100,
+    //                         reserve_id: room.id
+    //                     });
+    //                 }
+    //             });
+    //         });
+    //         setReformSelectedRooms(removeDuplicateObj(newSelectedRooms));
+    //     }
+    // }, [hotelDet]);
+
+    // useEffect(() => {
+    //     console.log('DSAA', flightDet)
     // }, [flightDet])
 
 
@@ -98,6 +141,10 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                 setReserverData({
                     ...reserverData, [name]: value,
                 });
+                if(name === "reserver_phone"){
+                    setState({ ...state, mobileSubmiter: value })
+
+                }
             } else {
                 setReserverData({
                     ...reserverData, [name]: "",
@@ -110,47 +157,214 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
         }
     };
 
-    const roundToFourDigits=(number)=>{
-        if(number.length<=5){
-            return number
-        }else{
-            return number-(number%10000)
-        }
-    }
 
-    useEffect(() => {
-        // debugger
-        if (reformSelectedRooms.length > 0) {
-            reformSelectedRooms?.map((selectedroom) => {
-                let passarr = [];
-                const adlCount = selectedroom?.adl_count;
-                const chdCount = selectedroom?.chd_count;
-                const infCount = selectedroom?.inf_count;
-                const extCount = selectedroom?.extra_count;
-                passarr.push(...passengerObjModelGen(adlCount, "adl"));
-                passarr.push(...passengerObjModelGen(chdCount, "chd"));
-                passarr.push(...passengerObjModelGen(infCount, "inf"));
-                passarr.push(...passengerObjModelGen(extCount, "ext"));
-                setRoomsData((prev) => [...prev, {
-                    id: selectedroom.id,
-                    room_type_id: selectedroom.room_type_id,
-                    room_id: selectedroom.room_id,
-                    reserve_id: selectedroom.reserve_id,
-                    passengers: [...passarr],
-                },]);
-            });
-        }
-    }, [reformSelectedRooms]);
+
+
+    // useEffect(() => {
+    //     // debugger
+    //     if (reformSelectedRooms.length > 0) {
+    //         reformSelectedRooms?.map((selectedroom) => {
+    //             let passarr = [];
+    //             const adlCount = selectedroom?.adl_count;
+    //             const chdCount = selectedroom?.chd_count;
+    //             const infCount = selectedroom?.inf_count;
+    //             const extCount = selectedroom?.extra_count;
+    //             passarr.push(...passengerObjModelGen(adlCount, "adl"));
+    //             passarr.push(...passengerObjModelGen(chdCount, "chd"));
+    //             passarr.push(...passengerObjModelGen(infCount, "inf"));
+    //             passarr.push(...passengerObjModelGen(extCount, "ext"));
+    //             setRoomsData((prev) => [...prev, {
+    //                 id: selectedroom.id,
+    //                 room_type_id: selectedroom.room_type_id,
+    //                 room_id: selectedroom.room_id,
+    //                 reserve_id: selectedroom.reserve_id,
+    //                 passengers: [...passarr],
+    //             },]);
+    //         });
+    //     }
+    // }, [reformSelectedRooms]);
 
     useEffect(() => {
         setDataq(roomsData);
     }, [roomsData]);
 
+    const login = () => {
+
+
+        localStorage.setItem("mobile", state.mobileSubmiter)
+        setState({ ...state, btn_disabled: true });
+        // setLoading(true)
+        fetch(`${globals.baseUrlNew}auth/getMobile`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+
+                mobile: state.mobileSubmiter,
+                password: '',
+                register: 0,
+                customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+                hostname: "hamnavaz.com",
+                agencyName: "بلبطجا",
+                telNumber: "02184278",
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                // debugger
+                if (data.status == "0") {
+                    setState({
+                        ...state,
+                        btn_disabled: false,
+                        get_mobile_status: true,
+                        btn_text: "تایید کد احراز هویت",
+                    });
+                    // setLoading(false)
+                } else if (data.status == "10") {
+                    setState({ ...state, btn_disabled: false });
+                    // setLoading(false)
+                    localStorage.setItem("mobile", data.mobile);
+                    // localStorage.setItem("token", data.token);
+                    props.checkUserLogged();
+                    props.getUserInfo({
+                        mobile: data.mobile,
+                    });
+                    props.accountBoxModify({
+                        state: false,
+                        type: "authentication",
+                    });
+                    props.messageBoxModify({
+                        color: true,
+                        state: true,
+                        message: "ورود شما موفقیت آمیز بود.",
+                    });
+                    props.accountBoxModify({
+                        state: false,
+                        type: "authentication",
+                    });
+                    reserveTour()
+
+                } else if (data.status === "-111") {
+
+                    register();
+
+                } else if (data.status === "-200") {
+                    setState({
+                        ...state,
+                        btn_disabled: false,
+                        error: true,
+                        errText: "شماره موبایل یا رمز ثابت نادرست می باشد.",
+                    });
+                    // setLoading(false)
+                } else {
+                    // setLoading(false)
+                    setState({
+                        ...state,
+                        btn_disabled: false,
+                        error: true,
+                        errText: data.message,
+                    });
+                }
+            });
+    };
+
+
+    const getYear=(d)=>{
+        // debugger
+        let date=moment(d)
+        let f=date.format('YYYY')
+        return f
+    }
+   const changeDateFormat=(arr)=>{
+       // debugger
+     let newData =arr.map((room)=>{
+        return {
+            ...room,
+            passengers:room.passengers.map(pass=>{
+                return{
+                    ...pass,
+                    birth_day :pass.birth_day===''?'': (+getYear(pass.birth_day)>1900?pass.birth_day:moment(pass.birth_day,'jYYYY/jMM/jDD').format('YYYY-MM-DD')),
+                    expired_passport:pass.expired_passport===''?'': (+getYear(pass.expired_passport)>1900?pass.expired_passport:moment(pass.expired_passport,'jYYYY/jMM/jDD').format('YYYY-MM-DD'))
+
+                }
+            })
+        }
+             })
+
+       return newData
+   }
+    useEffect(
+        ()=>{
+
+
+            const selected_roomsReformat=props.hotelDet?.data?.selected_rooms.map(selectedRoom=>{
+                return {
+                    ...selectedRoom,
+                    passengers: selectedRoom.passengers.map((passenger,i) => {
+                      return {
+                        ...passenger,
+                        pass_id: i+passenger.type+ (passenger.child_type?passenger.child_type:''),
+                      };
+                    }),
+                  };
+            })
+
+
+
+            setRoomsData(selected_roomsReformat)
+        },[props.hotelDet])
+
+
+    useEffect(()=>{
+        console.log('sdfs',dataq)
+    },[dataq])
+const reserveTour=()=>{
+    let hotel_id = props.hotelDet.data.hotel.id;
+    axios
+        .post(`https://api.hotelobilit.com/api/v2/reserves/${router.query.ref_code}`, {
+            reserver_full_name: `${reserverData.reserver_name} ${reserverData.reserver_lastname}`,
+            reserver_id_code: reserverData.reserver_id_code,
+            reserver_phone: reserverData.reserver_phone,
+            reserves: [...changeDateFormat(dataq)],
+        },{
+            headers: {
+                "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+            }
+        })
+        .then((res) => {
+            router.push(`/tour/reserve/reserveconfirmation/${hotel_id}?ref_code=${router.query.ref_code}&staycount=${props.stayCount}`);
+            ErrSuccess("به صفحه تایید اطلاعات رزرو و پرداخت نهایی منتقل می شوید");
+        })
+        .catch((err) => {
+
+            if(err.response?.status===400){
+                Err('متاسفانه زمان رزرو شما به پایان رسید؛ به صفحه میشوید.')
+
+                setTimeout(()=>{
+                    router.push('/tour')
+                },5000)
+            }else{
+
+                Err("لطفا فیلد های زیر را تکمیل کنید");
+                setErr(err?.response?.data);
+            }
+
+        });
+    if (dataq.length === 0) {
+        Err("هنوز اطلاعاتی وارد نشده!");
+    } else if (!err.isDone && err.errors?.length > 0) {
+        Err("لطفا اطلاعات مسافرین را تکمیل نمایید!");
+    } else if (!err.isDone && err.errors?.length === 0) {
+        Err("این پرواز موجودی ندارد!");
+        router.push("/tour");
+    }
+
+
+}
 
 
     return (<>
         <div className={styles["p-body"]}>
-            <Scrolltoprefresh/>
+        <Scrolltoprefresh/>
             <NotifAlert/>
             <div className={styles["prs-responsive"]}>
                 <div className={styles["main-reserve"]}>
@@ -164,16 +378,35 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                       اعتبار کیف پول شما: ...........................
                       <span>1000</span> تومان
                     </p> */}
-                                        <div className={styles["price-title"]}>
-                                            <p>مبلغ قابل پرداخت:</p>
-                                        </div>
-                                        <div className={styles["price"]}>
-                                            <p>{numberWithCommas(roundToFourDigits(TotalPrcGen(evRoomsPrc)) )} تومان</p>
-                                        </div>
+                                        {
+                                            props.hotelDet?.data?.prices?.total_price ? <>
+
+                                                <div className={styles["price-title"]}>
+                                                    <p>مبلغ قابل پرداخت:</p>
+                                                </div>
+                                                <div className={styles["price"]}>
+                                                    {
+                                                        props.hotelDet?.data?.prices?.total_price &&
+                                                        <p>{numberWithCommas(props.hotelDet?.data?.prices?.total_price) } تومان</p>
+
+                                                    }
+                                                </div>
+                                            </>:<>
+                                                <motion.div
+                                                    initial={{opacity: 0}}
+                                                    animate={{opacity: 1}}
+                                                    transition={{
+                                                        duration: 0.9, repeat: Infinity, repeatType: "reverse",
+                                                    }}
+                                                    className={styles["box-top-box-reserve2"]}
+                                                    style={{height: "50px", width: "220px"}}
+                                                ></motion.div>
+                                            </>
+                                        }
+
                                         {" "}
                                     </div>
                                 </div>
-
                                 {/*<div className={styles["finalprice"]}>*/}
                                 {/*    <div className={styles["totalprice_container"]}>*/}
                                 {/*        <div className={styles["peopleroomnum"]}>*/}
@@ -189,36 +422,31 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                 <div className={styles["paymentbtn"]}>
                                     <button
                                         onClick={() => {
+                                            // posthog.capture("FormEndTourPackage",{})
+                                            // posthog.identify(reserverData.reserver_phone)
                                             // debugger
-                                            let flight_id = flightDet.id;
-                                            let hotel_id = hotelDet.data.hotel.id;
-                                            axios
-                                                .post(`https://hotelobilit-api.iran.liara.run/api/v2/reserves/${router.query.ref_code}`, {
-                                                    reserver_full_name: `${reserverData.reserver_name} ${reserverData.reserver_lastname}`,
-                                                    reserver_id_code: reserverData.reserver_id_code,
-                                                    reserver_phone: reserverData.reserver_phone,
-                                                    reserves: [...dataq],
-                                                })
-                                                .then((res) => {
-                                                    let rooms = [...dataq];
-                                                    let reserverdata = [reserverData];
-                                                    router.push(`/tour/reserve/reserveconfirmation/${hotel_id}/${flight_id}?reserverData=${JSON.stringify(reserverdata)}&hotel=${JSON.stringify(hotelDet)}&rooms=${JSON.stringify(rooms)}&fiPrc=${TotalPrcGen(evRoomsPrc)}&stayCount=${stayCount}&flightDet=${JSON.stringify(flightDet)}&roombase=${JSON.stringify(roomBaseDet)}&ref_code=${router.query.ref_code}`);
-                                                    ErrSuccess("به صفحه تایید اطلاعات رزرو و پرداخت نهایی منتقل می شوید");
-                                                })
-                                                .catch((err) => {
+                                            // let flight_id = flightDet.id;
+                                            // debugger
+                                                if(props.user.logged) {
+                                                    reserveTour()
+                                                }else {
+                                                    Err('ابتدا وارد سایت شوید')
+                                                    setState({ ...state, stateRegister: false });
+                                                    login();
+                                                    // props.messageBoxModify({
+                                                    //     state: true,
+                                                    //     color: false,
+                                                    //     message: "لطفا کد تایید ارسال شده را وارد کنید!",
+                                                    // });
+                                                    props.accountBoxModify({
+                                                        state: true,
+                                                        type: "login",
+                                                    });
+                                                }
 
-                                                    Err("لطفا فیلد های زیر را تکمیل کنید");
-                                                    setErr(err?.response?.data);
-                                                });
-                                            if (dataq.length === 0) {
-                                                Err("هنوز اطلاعاتی وارد نشده!");
-                                            } else if (!err.isDone && err.errors?.length > 0) {
-                                                Err("لطفا اطلاعات مسافرین را تکمیل نمایید!");
-                                            } else if (!err.isDone && err.errors?.length === 0) {
-                                                Err("این پرواز موجودی ندارد!");
-                                                router.push("/tour");
-                                            }
-                                        }}
+
+                                        }
+                                    }
                                     >
                                         تایید اطلاعات
                                     </button>
@@ -231,11 +459,11 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                             <div className={styles["selected-hotel"]}>
                                 <div className={styles["selected-hotel-names"]}>
                                     <h2>
-                                        {hotelDet?.data?.hotel?.is_domestic ? hotelDet?.data?.hotel?.title : hotelDet?.data?.hotel?.titleEn}
+                                        {props.hotelDet?.data?.hotel?.is_domestic ? props.hotelDet?.data?.hotel?.title : props.hotelDet?.data?.hotel?.titleEn}
                                     </h2>
                                     <p>
                                         {" "}
-                                        {hotelDet?.data?.hotel?.is_domestic ? hotelDet?.data?.hotel?.titleEn : hotelDet?.data?.hotel?.title}
+                                        {props.hotelDet?.data?.hotel?.is_domestic ? props.hotelDet?.data?.hotel?.titleEn : props.hotelDet?.data?.hotel?.title}
                                     </p>
                                 </div>
                             </div>
@@ -245,7 +473,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                     display: "flex", marginBottom: ".1rem", paddingRight: "1rem",
                                 }}
                             >
-                                {startBuilder(+hotelDet?.data?.hotel?.stars).map((x) => {
+                                {startBuilder(+props.hotelDet?.data?.hotel?.stars).map((x) => {
                                     return (<div
                                         style={{
                                             width: "20px", height: "30px", marginLeft: ".5rem",
@@ -257,7 +485,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                             </div>
                         </div>
                         <div className={styles["ent-ext_container"]}>
-                            {flightDet ? (<>
+                            {props.hotelDet?.data ? (<>
                                 <div className={styles["entext"]}>
                                     <p
                                         className={styles["entexttitle"]}
@@ -266,11 +494,14 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                         تاریخ ورود به هتل
                                     </p>
                                     <p style={{fontWeight: "500", fontSize: "12px"}}>
-                                        {flightDet?.checkin_tomorrow ? MiladiToJalaliConvertorInc(flightDet?.date) : MiladiToJalaliConvertor(flightDet?.date)}
+                                        {
+                                            MiladiToJalaliConvertor(props.hotelDet?.data?.hotel?.checkin)
+
+                                        }
                                     </p>
                                     <p>
 
-                                        {flightDet?.checkin_tomorrow ? getDayInPersian(moment(flightDet?.date).add(1,"YYYY-MM-DD").format('dddd'))  : getDayInPersian(moment(flightDet?.date).format('dddd')) }
+                                        { getDayInPersian(moment(props.hotelDet?.data?.hotel?.checkin).format('dddd'))   }
                                     </p>
                                 </div>
                                 <div className={styles["entext"]}>
@@ -281,11 +512,14 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                         تاریخ خروج از هتل
                                     </p>
                                     <p style={{fontWeight: "500", fontSize: "12px"}}>
-                                        {" "}
-                                        {flightDet?.checkin_tomorrow ? MiladiToJalaliConvertorInc(flightDet?.flight?.date) : MiladiToJalaliConvertor(flightDet?.flight?.date)}
+                                        {
+                                            MiladiToJalaliConvertor(props.hotelDet?.data?.hotel?.checkout)
+
+                                        }
                                     </p>
                                     <p>
-                                        {flightDet?.checkout_yesterday ? getDayInPersian(moment(flightDet?.flight?.date).subtract(1,"YYYY-MM-DD").format('dddd'))  : getDayInPersian(moment(flightDet?.flight?.date).format('dddd')) }
+
+                                        { getDayInPersian(moment(props.hotelDet?.data?.hotel?.checkout).format('dddd'))}
                                     </p>
                                 </div>
                             </>) : (<motion.div
@@ -302,10 +536,11 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
 
                     {/* {hotelDet?.flight ?} */}
                     <div className={styles["box-top-box-reserve"]}>
-                        {hotelDet?.data?.reserves[0]?.flight ? (<TourDetailLabel
-                            flightDet={hotelDet?.data?.reserves[0]?.flight}
-                            stayCount={stayCount}
-                            gallary={hotelDet?.data?.hotel.gallery}
+                        {props.hotelDet?.data?.flights ? (<TourDetailLabel
+                            hotelName={props.hotelDet?.data?.hotel?.title}
+                            flightDet={props.hotelDet?.data?.flights}
+                            stayCount={props.stayCount}
+                            gallary={props.hotelDet?.data?.hotel.gallery}
                             refcode={router.query.ref_code}
                         />) : (<motion.div
                             initial={{opacity: 0}}
@@ -315,10 +550,25 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                             }}
                             className={styles["box-top-box-reserve2"]}
                         ></motion.div>)}
+
                         {
-                            hotelDet.data &&
-                            <CountDownTimer minute={hotelDet.data?.expired_in_minutes}/>
+                            props.hotelDet.data?.information?.expired_in_minutes ?
+                            <CountDownTimer hoteldata={props.hotelDet.data} exp_time={props.hotelDet.data?.information?.expired_in_minutes}/>:
+
+                                <div style={{display:'flex',justifyContent:'end'}}>
+                                    <motion.div
+                                        initial={{opacity: 0}}
+                                        animate={{opacity: 1}}
+                                        transition={{
+                                            duration: 0.9, repeat: Infinity, repeatType: "reverse",
+                                        }}
+                                        className={styles["box-top-box-reserve2"]}
+                                        style={{height: "50px", width: "220px"}}
+                                    ></motion.div>
+                                </div>
+
                         }
+
                         <div className={styles["reserverform_container"]}>
                             <h2 className={styles["reserver-info"]}>
                                 <strong>اطلاعات رزروگیرنده</strong>
@@ -343,7 +593,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                         />
                                     </div>
 
-                                    {err.errors?.reserver_full_name && reserverData.reserver_name.length === 0 ? (
+                                    {err?.errors?.reserver_full_name && reserverData.reserver_name.length === 0 ? (
                                         <small>لطفا فیلد نام را وارد کنید</small>) : null}
                                 </div>
                                 <div className={styles["item-form"]}>
@@ -359,7 +609,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                         />
                                     </div>
                                     <small>
-                                        {err.errors?.reserver_full_name && reserverData.reserver_lastname.length === 0 ? "لطفا فیلد نام و نام خانوادگی را وارد کنید" : null}
+                                        {err?.errors?.reserver_full_name && reserverData.reserver_lastname.length === 0 ? "لطفا فیلد نام و نام خانوادگی را وارد کنید" : null}
                                     </small>
                                 </div>
 
@@ -374,6 +624,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                             }}
                                             value={reserverData.reserver_id_code}
                                             maxLength={10}
+                                            inputMode='numeric'
                                         />
                                     </div>
 
@@ -398,6 +649,7 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                                             value={reserverData.reserver_phone}
                                             name="reserver_phone"
                                             maxLength="11"
+                                            inputMode='numeric'
                                         />
                                     </div>
                                     {err.errors?.reserver_phone && reserverData.reserver_phone.length === 0 ? (
@@ -408,9 +660,9 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
 
                         <h2 style={{fontSize: "1.5rem"}}>اطلاعات مسافران</h2>
 
-                        {roomsData?.map((room, roomIndex) => (<InfoPasserngers
+                        {roomsData?roomsData?.map((room, roomIndex) => (<InfoPasserngers
                             room={room}
-                            hotelDets={hotelDet}
+                            hotelDets={props.hotelDet}
                             generalRoomDet={generalRoomsData && generalRoomsData}
                             flightDet={flightDet}
                             roomName={roomNameChecker(generalRoomsData, room?.room_id)}
@@ -421,11 +673,15 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                             roomsData={roomsData}
                             setRoomsData={setRoomsData}
                             roomIndex={roomIndex}
-                        />))}
+                        />)):<>
+
+                        {
+                            <Shimmers5/>
+                        }
+                        </>}
 
                         <div className={styles["rules"]}>
                             <div style={{display: 'flex', alignItems: 'center',marginBottom:'4rem'}}>
-
                                 <p> ثبت درخواست به منزله پذیرش تمام <span>قوانین و مقررات</span>   مرتبط با سایت هتل و بلیط و پکیجهای این تور می
                                     باشد</p>
                             </div>
@@ -434,7 +690,35 @@ const Reservation = ({hotelDet, stayCount,ref_code}) => {
                 </div>
             </div>
         </div>
+
+        <PopUp
+            opened={props.accountBox.state}
+            closePopUp={() => {
+                props.accountBoxModify({
+                    state: false,
+                });
+            }}
+        >
+            <Account func={()=>reserveTour()} />
+        </PopUp>
     </>);
 };
 
-export default Reservation;
+const mapStateToProps = (state) => {
+    return {
+        reserveProperties: selectProperties(state),
+        user: state.user,
+        accountBox: selcetAccountBox(state),
+        airports: selectAirports(state),
+        credentials: selectCredentials(state),
+    }
+};
+const mapDispatchToProps = (dispatch) => ({
+    accountBoxModify: (value) => dispatch(accountBoxModify(value)),
+    // addReservationProperties: async (value) =>
+    //     dispatch(addReservationProperties(value)),
+    // messageBoxModify: (value) => dispatch(messageBoxModify(value)),
+})
+
+export default withRouter(
+    connect( mapStateToProps,mapDispatchToProps) (Reservation));

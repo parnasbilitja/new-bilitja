@@ -111,8 +111,8 @@ class JalaliDays extends React.Component {
     const m = moment(`${year}-${month}-${x}`, "jYYYY-jMM-jDD");
     const date = m.format("YYYY-MM-DD");
 
-    const final = this.props.dateandnight.filter((x) => x.date === date);
-    return final.length > 0;
+    const final = this.props.dateandnight?.filter((x) => x.date === date);
+    return final?.length > 0;
   };
   evDateByDestAndOrg = (x) => {
     const year =
@@ -125,8 +125,8 @@ class JalaliDays extends React.Component {
     const m = moment(`${year}-${month}-${x}`, "jYYYY-jMM-jDD");
     const date = m.format("YYYY-MM-DD");
 
-    const final = this.props.dateandnight.filter((x) => x.date === date);
-    return final.length > 0;
+    const final = this.props.dateandnight?.filter((x) => x.date === date);
+    return final?.length > 0;
   };
   //title on top of each month
   getDateTitle = () => {
@@ -234,6 +234,7 @@ class JalaliDays extends React.Component {
 
     return (
       <div className={"calendar"}>
+        {/*<p>dksjfdkls</p>*/}
         {this.state.stage == 1 ? (
           <div>
             <div className="calendar-year-container">
@@ -513,6 +514,7 @@ class JalaliDays extends React.Component {
                             this.props.setFlightDate({
                               persianDate: persianDate,
                               miladiDate: dateDashFormat,
+
                             });
                           }}
                         >
@@ -643,6 +645,7 @@ class JalaliDays extends React.Component {
             </div>
           </div>
         ) : null}
+
       </div>
     );
   }

@@ -19,9 +19,9 @@ import Ticket from "../Components/ticket/Ticket";
 import moment from "moment-jalaali";
 
 const ticket = (props) => {
-  useEffect(() => {
-    console.log("adadsa", moment().jYear());
-  }, []);
+  // useEffect(() => {
+  //   // console.log("adadsa", moment().jYear());
+  // }, []);
   return (
     <div className="bodyVar">
       <NavHandler />

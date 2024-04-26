@@ -170,7 +170,7 @@ const EnhancedTableHead = (props) => {
 };
 
 const DesktopInfoSell = ({ open, close, reqNo, reqPnr }) => {
-  console.log(reqNo, reqPnr);
+  // console.log(reqNo, reqPnr);
   let i = 1;
   const [data, setData] = React.useState([]);
 
@@ -226,7 +226,7 @@ const DesktopInfoSell = ({ open, close, reqNo, reqPnr }) => {
   }, [open]);
 
   return (
-    <Dialog open={open} maxWidth="lg" onClick={close}>
+    <Dialog open={open} maxWidth="xl" onClick={close}>
       <DialogContent>
         <div className="d-flex mb-3 align-items-center">
           <div className="col-11">

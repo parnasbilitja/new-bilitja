@@ -131,10 +131,10 @@ const ForgetPassword = (props) => {
           UserId: localStorage.getItem("f-token"),
           password: state.password,
           passwordnew: state.passwordnew,
-          hostname: "bilitja.com",
+          hostname: "hamnavaz.com",
           customerId: "1a157116-a01a-4027-ab10-74098ac63815",
-          agencyName: "بلیطجا",
-          telNumber: "02157874",
+          agencyName: "بلبطجا",
+          telNumber: "02184278",
 
         }),
       })
@@ -326,7 +326,7 @@ const ForgetPassword = (props) => {
               disabled={state.btn_disabled}
               onClick={(e) => {
                 setNewPassword();
-                
+
               }}
             >{state.loading === false ? "ثبت گذرواژه جدید" : <Loader />}</button>
           </div>

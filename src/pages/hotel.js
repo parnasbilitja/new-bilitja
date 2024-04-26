@@ -50,7 +50,7 @@ const hotel = () => {
         <div>
             <div className="mt-5 bodyVar">
                 <NavBar />
-                {/* detail hotels container base */}
+                {/* detail hotel container base */}
                 <section className="mt-5 pt-5">
                     <div className="container">
                         <div className="m-main-data detail-title col-xl-12 col-lg-12 col-12 d-flex justify-content-between border-bottom pb-2">

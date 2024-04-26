@@ -210,7 +210,7 @@ const Dashboard = () => {
                   globals.website +
                   `Airlines/${item1.airlineIataCode}.png?ver=1`
                 }
-                alt="بلیطجا - لوگو ایرلاین"
+                alt="بلبطجا - لوگو ایرلاین"
               />
               <p>{item1.airline}</p>
             </div>

@@ -7,10 +7,10 @@
 }
 
 .primary-text::placeholder {
-  color: $pillTextGray;
+  color: #c5c5c5 !important;
 }
 .primary-text::-moz-placeholder {
-  color: $pillTextGray;
+  color: #c5c5c5 !important;
 }
 .primary-text::-webkit-input-placeholder {
   font-size: 20px !important;

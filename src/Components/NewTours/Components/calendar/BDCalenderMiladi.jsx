@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment-jalaali";
 import styles from "../../../../../styles/BirthdayCalendar.module.scss";
+import {jalaliToMiladiConvertor} from "../../../..//Utils/newTour";
 const BirthdayCalenderMiladi = (props) => {
   const { typePassenger } = props;
   let current = 2022;
@@ -14,20 +15,29 @@ const BirthdayCalenderMiladi = (props) => {
     year: "",
     month: "",
   });
+  const [CHDage,setCHDage]=useState('')
 
-  let CHDage = moment().add(-12, "years").format("YYYY/MM/DD");
+  // let CHDage = moment().add(-12, "years").format("YYYY/MM/DD");
   let INFage = moment().add(-2, "years").format("YYYY/MM/DD");
   let month31 = [1, 3, 5, 7, 8, 10, 12];
   let month30 = [4, 6, 9, 11];
 
+  useEffect(()=>{
+    // debugger
+    let chdagewith=typePassenger==='CHD' && props.roomInfo.chdages[props?.roomInfo?.chdType][1]
+    let chdage=moment().add(-(chdagewith+1), "years").format("YYYY/MM/DD")
+    setCHDage(chdage)
+
+    // console.log(chdage)
+  },[typePassenger,props.roomInfo?.chdType])
   const getYears = () => {
-    
+
     if (typePassenger == "ADL") {
       return new Array(current - 1931).fill().map((x, index) => {
         return current - 12 - index;
       });
     } else if (typePassenger == "CHD") {
-      return new Array(11)
+      return new Array(props.roomInfo.chdages[props.roomInfo?.chdType][1]-props.roomInfo.chdages[props.roomInfo.chdType][0]+2)
         .fill()
         .map((x, index) => {
           return parseInt(CHDage.split("/")[0]) + index;
@@ -230,6 +240,27 @@ const BirthdayCalenderMiladi = (props) => {
       title: "December",
     },
   ];
+
+  const ageTypeValidate=(chdtype,daynum)=> {
+    if (typePassenger === 'ADL' || typePassenger === 'INF') {
+      return true
+    } else {
+      const m = moment(
+          `${state.year + "/" + state.month + "/" + daynum}`,
+          "jYYYY/jMM/jDD"
+      );
+      const date = m.format("jYYYY/jMM/jDD");
+
+      let checkin = props.roomInfo.checkin
+
+      if (moment(jalaliToMiladiConvertor(date)).isAfter(moment(checkin).add(-(props.roomInfo.chdages[props.roomInfo.chdType][1] + 1), "years").format("YYYY-MM-DD"))) {
+        return true
+      } else {
+        return false
+      }
+
+    }
+  }
   const checkMonth = () => {
     let data = [];
     if (typePassenger === "INF") {
@@ -324,7 +355,11 @@ const BirthdayCalenderMiladi = (props) => {
                   setState({ ...state, month: item.month, stage: item.stage });
                 }}
               >
-                {item.title}
+                <span className='mx-1'>{item.month}</span>
+
+
+
+                <span>{item.title}</span>
               </div>
             ))}
           </div>
@@ -352,17 +387,17 @@ const BirthdayCalenderMiladi = (props) => {
             </span>
           </p>
           <div className={styles["birthday-day-container"]}>
-            <div className="font-size-13 color-black">Sat</div>
-            <div className="font-size-13 color-black">Sun</div>
-            <div className="font-size-13 color-black">Mon</div>
-            <div className="font-size-13 color-black">Tues</div>
-            <div className="font-size-13 color-black">Wednes</div>
-            <div className="font-size-13 color-black">Thurs</div>
-            <div className="font-size-13 color-black">Fri</div>
+            <div className="font-size-13 color-black">شنبه</div>
+            <div className="font-size-13 color-black">یکشنبه</div>
+            <div className="font-size-13 color-black">دوشنبه</div>
+            <div className="font-size-13 color-black">سه شنبه</div>
+            <div className="font-size-13 color-black">چهارشنبه</div>
+            <div className="font-size-13 color-black">پنج شنبه</div>
+            <div className="font-size-13 color-black">جمعه</div>
 
             {getDays().map((x, i) => (
               <div key={i}>
-                {x != undefined ? (
+                {x != undefined &&  ageTypeValidate(props.roomInfo.passId,x) ? (
                   <div
                     className={styles["birthday-item"]}
                     style={{
@@ -370,15 +405,18 @@ const BirthdayCalenderMiladi = (props) => {
                         "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif",
                     }}
                     onClick={() => {
+                      // debugger
                       const m = moment(
                         `${state.year + "/" + state.month + "/" + x}`,
                         "jYYYY/jMM/jDD"
                       );
                       const date = m.format("jYYYY/jMM/jDD");
                       const dasheddateformat = m.format("jYYYY-jMM-jDD");
+
                       // props.setBirthday(date);
                       props.closePopUpCalendar(false);
                       setState({ ...state, stage: 1 });
+
 
                       props.Birthdate(
                           dasheddateformat,
@@ -389,8 +427,12 @@ const BirthdayCalenderMiladi = (props) => {
                           "birth_day",
                           props.roomInfo.id,
                           props.roomInfo.reserve_id,
+                          props.roomInfo.passindex,
+                          props.roomInfo.roomindex,
 
                       );
+                      // console.log(props.roomInfo.index);
+
                     }}
                   >
                     {x}

@@ -8,8 +8,8 @@ const NotFountPage = () => {
         <img
           width=""
           height=""
-          alt="بلیطجا-لوگو"
-          src="../../../Images/bilitja.webp"
+          alt="بلبطجا-لوگو"
+          src="../../../Images/hamnavaz-logo.webp"
         />
 
         <h5 className="font-bold-iransanse text-center mt-4">

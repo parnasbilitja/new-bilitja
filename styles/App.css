@@ -42,8 +42,8 @@ span {
     border: none !important;
 }
 .form-input-auth:-webkit-autofill,
-.form-input-auth:-webkit-autofill:hover, 
-.form-input-auth:-webkit-autofill:focus, 
+.form-input-auth:-webkit-autofill:hover,
+.form-input-auth:-webkit-autofill:focus,
 .form-input-auth:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
@@ -132,7 +132,7 @@ input[type="button"]:hover {
 
 .title-box {
     background-color: #f6f6f6;
-    border-right: 3px solid #279692;
+    border-right: 3px solid #e20000;
     padding: 3px 8px;
     border-radius: 3px 0 0 3px;
     font-family: IranBold !important;
@@ -167,20 +167,20 @@ input[type="button"]:hover {
 }
 
 .menu-btn {
-    border: 1px solid #279692 !important;
+    border: 1px solid #e20000 !important;
     border-radius: 4px !important;
-    color: #279692 !important;
+    color: #e20000 !important;
     font-size: 13px;
     font-family: IranBold !important;
 }
 
 .active-menu {
-    background-color: #279692 !important;
+    background-color: #e20000 !important;
     color: #fff !important;
 }
 
 .menu-btn:hover {
-    background-color: #279692 !important;
+    background-color: #3a8bb7 !important;
     color: #fff !important;
 }
 
@@ -258,10 +258,10 @@ input[type="button"]:hover {
 
 .dashboard-manager-content-container section,
 .panel-manager-content-container section {
-    background-color: #f1f1f1;
+    /* background-color: #f1f1f1; */
     border-radius: 6px;
     padding: 15px 7px;
-    border: 1px solid #E0E0E0;
+    /* border: 1px solid #E0E0E0; */
 }
 
 .dashboard-exit {
@@ -282,7 +282,7 @@ input[type="button"]:hover {
 
 .panel-menu-item-active {
     background-color: #fff;
-    border-left: 3px solid wheat;
+    /*border-left: 3px solid wheat;*/
 }
 
 .villa-information-content {
@@ -295,7 +295,7 @@ input[type="button"]:hover {
 
 .prev-next-btn {
     background-color: #fff;
-    border: 2px solid #279692;
+    border: 2px solid #e20000;
     padding: 10px 40px;
     font-size: 14px;
     height: 35px;
@@ -304,12 +304,12 @@ input[type="button"]:hover {
     justify-content: center;
     position: relative;
     top: 3px;
-    color: #279692 !important;
+    color: #e20000 !important;
     border-radius: 3px;
 }
 
 .prev-next-btn:hover {
-    background-color: #279692;
+    background-color: #e20000;
     color: #fff !important;
 }
 
@@ -333,16 +333,16 @@ input[type="button"]:hover {
 }
 
 .end-payment-btn {
-    background-color: #279692;
+    background-color: #e20000;
     color: #fff !important;
-    border: 2px solid #279692;
+    border: 2px solid #e20000;
     margin-right: 15px;
 }
 
 .end-payment-btn:hover {
     background-color: #fff !important;
-    border: 2px solid #279692 !important;
-    color: #279692 !important;
+    border: 2px solid #e20000 !important;
+    color: #e20000 !important;
 }
 
 .back-payment-btn {
@@ -415,7 +415,7 @@ input[type="button"]:hover {
 }
 
 .btn-container-header-login {
-    border: 2px solid #279692;
+    border: 2px solid #e20000;
     width: 80%;
     height: 33px;
 }
@@ -432,10 +432,10 @@ input[type="button"]:hover {
 }
 
 .btn-header-login-active {
-    background-color: #279692 !important;
+    background-color: #e20000 !important;
     border: none !important;
     color: #fff;
-    height: 30px; 
+    height: 30px;
     padding-top: 3px;
 }
 
@@ -768,7 +768,7 @@ button:not(:disabled) {
     width: 21px;
     height: 3px;
     border-radius: 10px;
-    background-color: #279692;
+    background-color: #e20000;
     position: absolute;
     bottom: -2px;
     right: 6px;

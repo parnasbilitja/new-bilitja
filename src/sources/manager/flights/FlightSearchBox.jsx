@@ -21,12 +21,15 @@ import {
 import { messageBoxModify } from "../../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
 import Scrolltoprefresh from "../../component/Scrolltoprefresh";
+// import {usePostHog} from "posthog-js/react";
 
 const FlightSearchBox = (props) => {
+
+  // const posthog=usePostHog()
   console.log(props);
   const [width, setWidth] = useState();
   useEffect(() => {
-   
+
     setWidth(window.innerWidth);
   }, []);
   const [state, setState] = useState({
@@ -142,6 +145,8 @@ const FlightSearchBox = (props) => {
   } = props;
   // console.log("flightDatePersian");
   // console.log(flightDatePersian);
+
+
   return (
     <div className={styles["home-flight-form"]}>
       <div>
@@ -275,6 +280,8 @@ const FlightSearchBox = (props) => {
               src != props.credentials.sourceNameEn ||
               dest != props.credentials.destinationNameEn
             ) {
+
+
               if (props.refreshAction) {
                 setState({ ...state, searchReset: true });
                 props

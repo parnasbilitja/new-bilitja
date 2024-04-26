@@ -3,9 +3,13 @@ import moment from "moment-jalaali";
 import styles from "../../../../../styles/BirthdayCalendar.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
+import {jalaliToMiladiConvertor} from "../../../../Utils/newTour";
 const BirthdayCalendar = (props) => {
   // console.log("fromsadsadsa", props);
   const { typePassenger } = props;
+
+  useEffect(()=>{
+    console.log(props)},[props])
   let current = 1401;
   const today = moment().format("jYYYY/jMM/jDD");
   const date = today.split("/");
@@ -17,7 +21,18 @@ const BirthdayCalendar = (props) => {
     month: "",
   });
 
-  let CHDage = moment().add(-12, "jyears").format("jYYYY/jMM/jDD");
+  useEffect(()=>{
+    console.log(props)
+  },[props.roomInfo])
+  const [CHDage,setCHDage]=useState('')
+useEffect(()=>{
+  // debugger
+let chdagewith=typePassenger==='CHD' && props.roomInfo.chdages[props?.roomInfo?.chdType][1]
+  let chdage=moment().add(-(chdagewith+1), "jyears").format("jYYYY/jMM/jDD")
+  setCHDage(chdage)
+
+  // console.log(chdage)
+},[typePassenger,props.roomInfo?.chdType])
 
   let INFage = moment().add(-2, "jyears").format("jYYYY/jMM/jDD");
   //
@@ -30,12 +45,12 @@ const BirthdayCalendar = (props) => {
         })
         .reverse();
     } else if (typePassenger == "CHD") {
-      return new Array(11)
+      return new Array(props.roomInfo?.chdType==='withbed'?13:props.roomInfo.chdages[props.roomInfo?.chdType][1]-props.roomInfo.chdages[props.roomInfo.chdType][0]+2)
         .fill()
         .map((x, index) => {
           return parseInt(CHDage.split("/")[0]) + index;
         })
-        .reverse();
+        .reverse()
     } else if (typePassenger == "INF") {
       return new Array(3)
         .fill()
@@ -47,6 +62,7 @@ const BirthdayCalendar = (props) => {
   };
   //calculate days in a month, month and year are defined in previous steps!
   const getDays = () => {
+
     let arrayOfdays;
     if (parseInt(state.month) >= 1 && state.month <= 6) {
       arrayOfdays = Array.from({ length: 31 }, (_, i) => i + 1);
@@ -84,6 +100,7 @@ const BirthdayCalendar = (props) => {
           );
         return data;
       } else if (moment().jYear() == parseInt(state.year)) {
+
         revArrayOfDay
           .reverse()
           .map((item) =>
@@ -113,7 +130,7 @@ const BirthdayCalendar = (props) => {
               parseInt(INFage.split("/")[1]) == parseInt(state.month) &&
               parseInt(INFage.split("/")[2]) >= parseInt(item)
             ? data.push(item)
-            : data.push(undefined)
+            : data.push(item)
         );
       return data;
     } else if (
@@ -215,6 +232,29 @@ const BirthdayCalendar = (props) => {
 
     return monthes[parseInt(state.month)];
   };
+  const ageTypeValidate=(chdtype,daynum)=>{
+if(typePassenger==='ADL'||typePassenger==='INF'){
+  return true
+}else{
+  const m = moment(
+      `${state.year + "/" + state.month + "/" + daynum}`,
+      "jYYYY/jMM/jDD"
+  );
+  // debugger
+  const date = m.format("jYYYY/jMM/jDD");
+
+  let checkin=props.roomInfo.checkin
+
+    if(moment(jalaliToMiladiConvertor(date)).isAfter(moment(checkin).add(-(props.roomInfo.chdages[props.roomInfo.chdType][1]+1), "years").format("YYYY-MM-DD"))){
+      return true
+    }else{
+      return false
+    }
+
+}
+
+
+  }
 
   const checkMonth = () => {
     let data = [];
@@ -294,9 +334,12 @@ const BirthdayCalendar = (props) => {
       {state.stage == 2 ? (
         <div>
 
-          <div style={{display:'flex' ,justifyContent:'space-between',padding:'0 4.5rem 0 1rem'}}>
-
-            <div></div>
+          <div style={{display:'flex' ,justifyContent:'space-between',padding:'0 1rem 0 4.5rem'}}>
+            <button className="prevNextbtnSwiper2" onClick={() => {
+              setState({ ...state, stage: 1 });
+            }}>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </button>
             <p className="font-size-14 black-color font-bold-iransanse text-center">
               <div
                   onClick={() => {
@@ -307,11 +350,9 @@ const BirthdayCalendar = (props) => {
               </div>
               لطفا ماه تولد خود را وارد کنید
             </p>
-            <button className="prevNextbtnSwiper2" onClick={() => {
-              setState({ ...state, stage: 1 });
-            }}>
-              <FontAwesomeIcon icon={faAngleLeft} />
-            </button>
+
+
+            <div></div>
           </div>
 
           <div className={styles["birthday-month-container"]}>
@@ -337,8 +378,12 @@ const BirthdayCalendar = (props) => {
       ) : null}
       {state.stage == 3 ? (
         <div>
-          <div style={{display:'flex' ,justifyContent:'space-between',padding:'0 4.5rem 0 .5rem',borderBottom:'1px solid black'}}>
-            <div></div>
+          <div style={{display:'flex' ,justifyContent:'space-between',padding:'0 .5rem 0 4.5rem',borderBottom:'1px solid black'}}>
+            <button className="prevNextbtnSwiper2" onClick={() => {
+              setState({ ...state, stage: 2 });
+            }}>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </button>
           <p className="font-size-14 black-color font-bold-iransanse text-center"
              style={{marginTop:'25px'}}
           >
@@ -360,11 +405,9 @@ const BirthdayCalendar = (props) => {
               {getMonth()}
             </span>
           </p>
-            <button className="prevNextbtnSwiper2" onClick={() => {
-              setState({ ...state, stage: 2 });
-            }}>
-              <FontAwesomeIcon icon={faAngleLeft} />
-            </button>
+
+            <div></div>
+
           </div>
           <div className={styles["birthday-day-container"]}>
             <div className="font-size-13 color-black">شنبه</div>
@@ -376,7 +419,7 @@ const BirthdayCalendar = (props) => {
             <div className="font-size-13 color-black">جمعه</div>
 
             {getDays().map((x) =>
-              x != undefined ? (
+              x != undefined &&  ageTypeValidate(props.roomInfo.passId,x)? (
                 <div
                   className={styles["birthday-item"]}
                   onClick={() => {
@@ -385,13 +428,15 @@ const BirthdayCalendar = (props) => {
                       "jYYYY/jMM/jDD"
                     );
                     const date = m.format("jYYYY/jMM/jDD");
+
+                    const miladi=jalaliToMiladiConvertor(date)
                     const dasheddateformat = m.format("jYYYY-jMM-jDD");
                     // props.setBirthday(date);
                     props.closePopUpCalendar(false);
                     setState({ ...state, stage: 1 });
 
                     // props.dateMaker(dasheddateformat);
-
+                    // debugger
                     props.Birthdate(
                       dasheddateformat,
                       props.roomInfo.passId,
@@ -401,11 +446,19 @@ const BirthdayCalendar = (props) => {
                       "birth_day",
                       props.roomInfo.id,
                       props.roomInfo.reserve_id,
+                        props.roomInfo.passindex,
+                        props.roomInfo.roomindex,
 
                     );
                     // console.log(props.roomInfo.index);
                   }}
                 >
+                  {/*{*/}
+
+                  {/*    props.roomInfo.type==='CHD'?*/}
+                  {/*        childTypeValidate(props.roomInfo.passId,x):*/}
+                  {/*        x*/}
+                  {/*}*/}
                   {x}
                 </div>
               ) : (

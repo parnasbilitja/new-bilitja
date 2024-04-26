@@ -16,7 +16,7 @@ const BirthDayParentCl = (props) => {
             props.dateMaker(fdate);
           }}
           roomInfo={props.roomInfo}
-          Birthdate={(date, passId, type, roomid, roomTypeid, datetype, id,reserve_id) =>
+          Birthdate={(date, passId, type, roomid, roomTypeid, datetype, id,reserve_id,passindex,roomindex) =>
             props.Birthdate(
               date,
               passId,
@@ -25,7 +25,7 @@ const BirthDayParentCl = (props) => {
               roomTypeid,
               datetype,
               id,
-                reserve_id
+                reserve_id,passindex,roomindex
             )
           }
         />
@@ -41,7 +41,7 @@ const BirthDayParentCl = (props) => {
             props.dateMaker(fdate);
           }}
           roomInfo={props.roomInfo}
-          Birthdate={(date, passId, type, roomid, roomTypeid, datetype, id,reserve_id) =>
+          Birthdate={(date, passId, type, roomid, roomTypeid, datetype, id,reserve_id,passindex,roomindex) =>
               props.Birthdate(
                   date,
                   passId,
@@ -50,7 +50,8 @@ const BirthDayParentCl = (props) => {
                   roomTypeid,
                   datetype,
                   id,
-                  reserve_id
+                  reserve_id,
+                  passindex,roomindex
               )
           }
         />

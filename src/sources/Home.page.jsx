@@ -59,7 +59,10 @@ const Home = (props) => {
     return (
         <div>
             <div style={{background: '#F7F7F7',marginTop: width>=826? '0rem':'-0.7rem' }}>
+
+
                 <PictureBase/>
+
                 <div className={`${styles["heor-main-container"]}`}>
                     <Scrolltoprefresh/>
                     <div>
@@ -96,7 +99,7 @@ const Home = (props) => {
                             className={`${styles[""]}`}
                             width="50%"
                             height=""
-                            alt="بلیطجا-اسلایدر"
+                            alt="بلبطجا-اسلایدر"
                             src="../../../Images/fly-bg-new.png"
                         />
                     </div>
@@ -105,7 +108,7 @@ const Home = (props) => {
                         <img
                             width=""
                             height=""
-                            alt="بلیطجا-اسلایدر2"
+                            alt="بلبطجا-اسلایدر2"
                             src="../../../Images/fly-bg-new.png"
                         />
                     </div>

@@ -8,6 +8,7 @@ import {
 } from "../../../../Redux/Reports/reports.action";
 import { Loader } from "../../../../Utils/Loader";
 import Tabs from "../../TableAndSearch/Tabs";
+import NewLoader from "../../../../Components/NewTours/Components/subComponents/NewLoader";
 
 
 
@@ -175,7 +176,7 @@ const FlightSellReport = () => {
         header={header}
          />
       </>
-      :<Loader/>}
+      :<NewLoader/>}
 
         {openInfo ? (
           <DesktopInfoSell

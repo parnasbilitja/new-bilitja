@@ -4,7 +4,6 @@ const initialState = {
   destination: {name:'',code:''},
   date: {},
   night: "",
-
   loader:false
 };
 

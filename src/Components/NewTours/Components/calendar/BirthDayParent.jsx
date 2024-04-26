@@ -12,10 +12,23 @@ const BirthDayParent = (props) => {
                     num={props.numSh}
                     placeholder={props.placeholder}
                     typePassenger={props.typePassenger}
-                    setBirthday={(value) => {
-                        props.setBirthdayb(value);
-                    }}
+                    // setBirthday={(value) => {
+                    //     props.setBirthdayb(value);
+                    // }}
                     closePopUpCalendar={props.closePopUpCalendar}
+                    roomInfo={props.roomInfo}
+                    Birthdate={(date, passId, type, roomid, roomTypeid, datetype, id,    reserve_id,  passindex,roomindex) =>
+                        props.Birthdate(
+                            date,
+                            passId,
+                            type,
+                            roomid,
+                            roomTypeid,
+                            datetype,
+                            id,
+                            reserve_id,  passindex,roomindex
+                        )
+                    }
                 />
             ) : (
                 <BirthdayCalenderMiladi
@@ -29,7 +42,7 @@ const BirthDayParent = (props) => {
                     // }}
                     closePopUpCalendar={props.closePopUpCalendar}
                     roomInfo={props.roomInfo}
-                    Birthdate={(date, passId, type, roomid, roomTypeid, datetype, id,    reserve_id) =>
+                    Birthdate={(date, passId, type, roomid, roomTypeid, datetype, id,    reserve_id,  passindex,roomindex) =>
                         props.Birthdate(
                             date,
                             passId,
@@ -38,7 +51,7 @@ const BirthDayParent = (props) => {
                             roomTypeid,
                             datetype,
                             id,
-                            reserve_id
+                            reserve_id,  passindex,roomindex
                         )
                     }
                 />

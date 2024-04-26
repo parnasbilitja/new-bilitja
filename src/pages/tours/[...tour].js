@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 // mui
-import { Alert, Snackbar } from '@mui/material';
+
 import axios from 'axios';
 import Link from 'next/link';
 import NavHandler from '../../Components/share/NavHandler';
@@ -8,25 +8,62 @@ import Footer from '../../sources/component/Footer.component';
 import Slider from '../../Components/slider/Slider';
 import RequestTour from '../../Components/modal/RequestTour';
 import PopUp from '../../sources/component/PopUp.component';
-import { Loader } from '../../Utils/Loader';
-// import html2pdf from "html2pdf.js/src";
+import {Loader} from '../../Utils/Loader';
 import Head from 'next/head';
 import Scrolltoprefresh from '../../sources/component/Scrolltoprefresh';
 import moment from 'moment-jalaali';
 import HotelsDetails from '../../sources/tour/HotelsDetails';
 import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
-// import html2pdf from "html2pdf.js";
-import jsPDF from 'jspdf';
+import {Err, NotifAlert} from "../../Components/NewTours/Components/NotifAlert.component";
+// import {usePostHog} from "posthog-js/react";
+import router, {useRouter} from "next/router";
+import {
+    chdAgeStr,
+    getcurrencyfa,
+    getDayInPersian, isEmpty,
+    MiladiToJalaliConvertor,
+    numberWithCommas,
+    startBuilder,
+    timeFixer
+} from "../../Utils/newTour";
+import PopUpWide from "../../sources/component/PopUpWide.component";
+import PackageReserve from "../../Components/modal/PackageReserve";
+
+import dynamic from "next/dynamic";
+import {Shimmers, Shimmers1, Shimmers3, Shimmers4} from "../../Components/NewTours/Components/subComponents/Shimmers";
+import PopUp2 from "../../sources/component/PopUp2";
+
+const TransfersList = dynamic(() =>
+        import("../../sources/component/TransfersList"),
+    {
+        ssr: false
+    }
+);const MapComponent = dynamic(() =>
+        import('../../sources/component/Map.component'),
+    {
+        ssr: false
+    }
+);
+
+import styles from '../../../styles/TourPackage/PackageTourDetails.module.scss'
+import {moneyFormatrial} from "../../Utils/SimpleTasks";
+import Image from "next/image";
+// import {browserName, browserVersion, isMobile} from 'react-device-detect';
+// import MapComponent from "@/sources/component/Map.component";
 
 const tour = (props) => {
     const [width, setWidth] = useState(0)
     const ref = useRef(null);
+
+    // const posthog = usePostHog()
+
     function moneyFormat(input) {
         return parseFloat(input)
-          .toFixed(1)
-          .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-          .split(".")[0];
-      }
+            .toFixed(1)
+            .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+            .split(".")[0];
+    }
+
     // mui
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -34,11 +71,14 @@ const tour = (props) => {
         }
         setOpen(false);
     };
+    const [isdownload, setIsDownload] = useState(false)
 
     const [open, setOpen] = useState(false);
     const [seeMore, setSeeMore] = useState(false);
     const [data, setData] = useState(null)
     const [show, setShow] = useState(false);
+    const [flightList, setFlightList] = useState([])
+    const [hotel, setHotel] = useState()
     const [tourId, setTourId] = useState(null);
     const [packData, setPackData] = useState({
         number: '',
@@ -50,663 +90,1645 @@ const tour = (props) => {
         message: ''
     })
     const getData = async () => {
-        // debugger
-        const val = await axios.get(`https://api.hamnavaz.com/api/v1/tour/getTour/${props.Pathname.tour[1]}`)
-        setData(val.data.data)
-        console.log('asdas32',val.datad)
-    }
-    const handleClick = () => {
 
-        ref.current?.scrollIntoView({top: 0,behavior: 'smooth'});
-      };
-    useEffect(() => {
-        // console.log('sadsa',props.Pathname.tour)
-        getData();
-        handleClick()
-    }, [props.Pathname.tour])
+        // console.log(props.Pathname.tour)
+        axios.post(`https://api.hotelobilit.com/api/v2/tours/${props.Pathname.tour[0]}`, {req_type: 'package'}, {
+            headers: {
+                "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+            }
+        }).then((res) => {
 
-    const downloadHandler=()=>{
-        // debugger
-        axios.get(`https://api.hamnavaz.com/api/v1/tour/export/${data && data.slug}`).then(res=>{
-
-            let popupWin;
-
-            popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
-            popupWin.document.open();
-
-            popupWin.document.write(res.data.data);
-
-            popupWin.document.close()
+            setData(res.data.data)
         })
 
-        // fetch(`https://api.hamnavaz.com/api/v1/tour/export/${data && data.slug}`, {
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'text/html',
-        //     },
-        // })
-        //     .then(response => response?.data?.data?.text())
-        //     .then(html => {
-        //         // Convert the HTML to PDF using a conversion API
-        //         fetch('https://v2.convertapi.com/convert/html/to/pdf?Secret=your-api-secret', {
-        //             method: 'POST',
-        //             headers: {
-        //                 'Content-Type': 'application/json',
-        //             },
-        //             body: JSON.stringify({
-        //                 "Parameters": [
-        //                     {
-        //                         "Name": "File",
-        //                         "FileValue": {
-        //                             "Name": "my_file.html",
-        //                             "Data": btoa(unescape(encodeURIComponent(html))) // Convert the HTML string to base64
-        //                         }
-        //                     },
-        //                     {
-        //                         "Name": "StoreFile",
-        //                         "Value": true
-        //                     }
-        //                 ]
-        //             }),
-        //         })
-        //             .then(response => response.json())
-        //             .then(data => {
-        //                 // Download the PDF
-        //                 const link = document.createElement('div');
-        //                 link.href = data.File?.Url;
-        //                 link.download = 'file.pdf';
-        //                 link.click();
-        //             });
-        //     });
+
     }
 
 
-    // const fetchHTML = async () => {
-    //     const response = await fetch(`https://api.hamnavaz.com/api/v1/tour/export/${data && data.slug}`);
-    //     const html = await response?.data?.data.text();
-    //     return html;
-    // };
-    // const htmlToPdf = (html) => {
-    //     const element = document.createElement('div');
-    //     element.innerHTML = html;
-    //     html2pdf(element);
-    // };
-    //
-    // const handleDownload = async () => {
-    //     const html = await fetchHTML();
-    //     htmlToPdf(html);
-    // };
+    useEffect(() => {
+        getData();
+        // handleClick()
+    }, [props.Pathname.tour])
+
+
+    const [url,setUrl]=useState('')
+
+    const downloadHandler = async () => {
+        setIsDownload(true)
+        axios.get(`https://api.hotelobilit.com/api/v2/tours/pdf/${props.Pathname.tour[0]}/${flightId.depratureId}/${flightId.returnId}`,
+            {
+                headers: {
+                    "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP'
+                }
+            }
+        ).then(res => {
+
+
+                setIsDownload(false)
+
+                router.push(res.data.data.url)
+
+
+        })
+
+    }
+
+
+
+
+    function removeDuplicates(arr, prop1, prop2) {
+        const map = new Map();
+        for (const item of arr) {
+            const key = `${item[prop1]}-${item[prop2]}`;
+            if (!map.has(key)) {
+                map.set(key, item);
+            }
+        }
+        return Array.from(map.values());
+    }
+
+    // const router=useRouter()
+
+    useEffect(() => {
+        // console.log('adsa',data)
+        // debugger
+        let transferslist = []
+
+        if (data?.is_bundle === false) {
+
+
+            if(data.packages.length>0){
+                data.transfers.map(t => {
+                    data.packages.map(pack => {
+                        pack.prices.map(price => {
+                            if (price.roomTypeId === 148 && (t.id.toString() + t.return_id.toString()) === (price.flight_id.toString() + price.return_flight_id.toString())) {
+
+                                transferslist.push({
+                                    ...t,
+                                    price: price.price
+
+                                })
+
+                            }
+
+                        })
+                    })
+                })
+                let newList = removeDuplicates(transferslist, 'id', 'return_id')
+                setFlightList(newList.sort((a, b) => a.price - b.price))
+            }else{
+                setFlightList(data?.transfers)
+
+            }
+
+
+        } else {
+            setFlightList(data?.transfers)
+        }
+
+
+    }, [data]);
+
+
+    const [selectedHotel, setSelectedHotel] = useState(null)
+    const [selectedFlight, setSelectedFlight] = useState(null)
+    const [infPrice, setInfPrice] = useState(null)
+    const [flightData, setFlightData] = useState([])
+    const [flightId, setFlightId] = useState({
+        depratureId: null,
+        returnId: null
+    })
+
+
+    useEffect(() => {
+        let selectedFlightdata = data?.transfers?.filter(transfer => (transfer.id === flightId.depratureId && transfer.return_id === flightId.returnId))
+        if (selectedFlightdata) {
+            setFlightData(selectedFlightdata[0])
+        }
+    }, [flightId]);
+
+    useEffect(()=>{
+        console.log(flightId)
+    },[flightId])
+
+
+    useEffect(() => {
+        // if (data) {
+        //     posthog?.capture('selectTourPackage', {HMNTourPackageTitle: data?.title, HMNPrice: data?.minPrice})
+        // }
+
+        if (flightList) {
+            // debugger
+
+            setInfPrice(flightList[0]?.inf_price)
+            setSelectedFlight(flightList[0]?.id?.toString() + flightList[0]?.return_id?.toString())
+
+            setFlightId({
+                depratureId: flightList[0]?.id,
+                returnId: flightList[0]?.return_id
+            })
+        }
+    }, [flightList])
+
+
+
+    const roomFinder = (roomsArr, roomTypeID) => {
+        // debugger
+        let cheapestRooms = roomsArr.sort((a, b) => a.price - b.price)
+        return cheapestRooms.filter(room => room.roomTypeId === roomTypeID)[0]?.price
+
+    }
+    const [showTransfers, setShowTransfers] = useState(false)
+
+    const [isReserve, setIsReserve] = useState(false)
+    const dateReform = (date) => {
+        return date?.slice(0, 5);
+    };
+    const [rooms, setRooms] = useState([])
+
+    useEffect(() => {
+        console.log(flightList)
+    }, [flightList])
+
+    const getHotelRooms = (roomsArr) => {
+
+
+        if (data?.is_bundle === true) {
+            return roomsArr
+
+            // foundRoom=roomsArr.filter(room=>room.id===roomTypeID)
+
+        } else {
+            // debugger
+            let foundrooms = roomsArr.filter(room => (room.flight_id.toString() + room.return_flight_id.toString()) === selectedFlight)
+            return foundrooms
+            // setRooms(foundrooms)
+            // foundRoom=rooms.filter(room=>room.roomTypeId===roomTypeID)
+
+        }
+
+
+    }
+    const roomFinder1 = (pack, roomTypeID) => {
+        // debugger
+        // let foundRoom
+
+        return pack.filter(room => room.roomTypeId === roomTypeID)
+
+    }
+
+
+   const getroomsTitle=(rooms)=>{
+        debugger
+        return rooms?.prices.filter(room=>room.pin===0)
+   }
+
+   const[moreInfoTab,setMoreInfoTab] =useState(null)
+   const[hotelid,setHotelId] =useState(null)
+
+
     return (
-        <div>
+        <div >
+            {
+                open &&
+                <NotifAlert/>
+            }
             <NavHandler/>
             <Head>
-                <title> {data && `${data.title} | `} بلیطجا</title>
+                <title> {data && `${data.title} | `} بلبطجا</title>
             </Head>
             <div ref={ref}></div>
-            <div className="mt-5 bodyVar padd">
+            <div className={styles['tours']}>
                 {/* section 1 */}
-                {data ?
-                <div className='padd' style={{padding:'0 2rem'}}>
-                <Scrolltoprefresh />
-                <section className=" mt-2-mobi pt-3-mobi pt-5 " style={{marginTop:'4rem'}}>
-                    <div className="container mt-2 ">
-                        <div className="m-main-data flex-column-mobi detail-title col-xl-12 col-lg-12 col-12 d-flex justify-content-between border-bottom pb-2">
-                            <div className="title-tour d-flex align-items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 19.643 19.68">
-                                    <g id="Ticket-index" transform="translate(-0.022)">
-                                        <path id="Path_1168" data-name="Path 1168" d="M2.235,8.086a3.6,3.6,0,0,1-.584-.018l-.169.786.169-.786a.83.83,0,0,1-.622-.641,3.194,3.194,0,0,1,0-.548,8.679,8.679,0,0,1,.385-2.755A4.211,4.211,0,0,1,3.406,1.7C4.216,1.247,5.483,1,8.058,1h3.571c2.575,0,3.842.247,4.652.7a4.211,4.211,0,0,1,1.993,2.423,8.675,8.675,0,0,1,.385,2.755,3.2,3.2,0,0,1,0,.548l.791.144-.791-.144a.83.83,0,0,1-.622.641,3.6,3.6,0,0,1-.584.018A1.876,1.876,0,0,0,15.7,10.059a1.876,1.876,0,0,0,1.757,1.974,3.5,3.5,0,0,1,.573.018.843.843,0,0,1,.625.655,2.943,2.943,0,0,1-.006.52,7.652,7.652,0,0,1-.369,2.331,4.212,4.212,0,0,1-1.993,2.423c-.811.454-2.077.7-4.652.7H8.058c-2.575,0-3.842-.247-4.652-.7a4.212,4.212,0,0,1-1.993-2.423,7.652,7.652,0,0,1-.369-2.331,2.933,2.933,0,0,1-.006-.52.842.842,0,0,1,.625-.655,3.5,3.5,0,0,1,.573-.018,1.876,1.876,0,0,0,1.757-1.974A1.876,1.876,0,0,0,2.235,8.086Z" fill="none" stroke="#e20000" stroke-width="2"/>
-                                        <path id="Path_1169" data-name="Path 1169" d="M14.8,4a.8.8,0,0,1,.8.8V6.411a.8.8,0,0,1-1.607,0V4.8A.8.8,0,0,1,14.8,4Zm0,4.822a.8.8,0,0,1,.8.8v1.607a.8.8,0,0,1-1.607,0V9.625A.8.8,0,0,1,14.8,8.822Zm.8,5.625a.8.8,0,1,0-1.607,0v1.607a.8.8,0,0,0,1.607,0Z" transform="translate(-2.549 -0.589)" fill="#e20000" fill-rule="evenodd"/>
-                                    </g>
-                                </svg>
-                                <div className="text title-info-tour px-3">
-                                    <h5 className="font-bold" >{data && data.title}</h5>
-                                    <span className="d-none-mobi" style={{color:'#e20000'}}>شروع قیمت از: {data && moneyFormat(data.minPrice)} تومان</span>
-                                </div>
-                            </div>
-                            <span className="d-none-desktop font-14-mobi">شروع قیمت از: {data && moneyFormat(data.minPrice)} تومان</span>
-                            <div className="d-flex flex-column justify-content-around me-auto mt-2">
-                                <div className="d-flex d-none-mobi">
-                                    <img src={data.transfers[0].logo} width='25px' height={'25px'} />
-                                    <div className="text " style={{marginRight:'.5rem'}}>
-                                        <span className="font-bold " style={{color:'#e20000',fontSize:'14px',fontWeight:'700' }}>ایرلاین رفت :</span>
-                                    </div>
-                                    <div className="text pe-2">
-                                        {data &&
-                                            <span style={{color:'black',fontWeight:'600',fontSize:'14px'}}>{data.transfers[0].transfer}</span>
-                                        }
-                                    </div>
-                                </div>
-                                <div className="d-flex d-none-mobi">
-                                <img src={data.transfers[1].logo} width='25px' height={'25px'} />
-                                    <div className="text" style={{marginRight:'.5rem'}}>
-                                        <span className="font-bold" style={{color:'#e20000',fontSize:'14px',fontWeight:'700' }}>ایرلاین برگشت :</span>
-                                    </div>
-                                    <div className="text pe-2">
-                                        {data &&
-                                            <span style={{color:'black',fontWeight:'600',fontSize:'14px'}}>
-                                                {data.transfers[1].transfer}
-                                            </span>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="detail-tour col-xl-12 col-lg-12 col-12 d-flex flex-wrap justify-content-between border-bottom py-4">
-                            <div className="right col-xl-5 col-lg-5 col-12">
-                                <div className="gallery-image">
-                                    <div className="image">
-                                    {data ?
-                                        <Slider data={data && data.endCity.images}
-                                                city={data && data?.endCity?.slug}
-                                        />
-                                    :<NewLoader />}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="left position-relative col-xl-7 col-lg-7 col-12" style={{height:'50% !important'}}>
-                                <div className="vertical-data" style={{ display: "none" }}></div>
-                                <div className="p-info__tour mr-0 d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3">
-                                    {/* c info */}
-                                    <div className="c-info__tour w-100-mobi  d-flex align-items-center col-xl-12 col-gl-12">
-                                        <div className="bg-white py-3">
-                                            <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3 isDesktop">
-                                            {data ?
-                                                <img src={data && data.transfers[0].logo} width={"35px"} height={"35px"} alt="company" style={{ objectFit: 'cover' }} />
-                                            :
-                                                <NewLoader title='اطفا صبر کنید' />}
-                                            </div>
-                                        </div>
-                                        <div className="text w-90-mobi m-flex-100 pe-2">
-                                            <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1">
-                                                <div className="prop  ps-2 isDesktop m-pr-10">
-                                                    <p className='px-0 py-0' style={{margin:0, padding:0,fontSize:'16px',fontWeight:'500'}}>اطلاعات مبدا</p>
-                                                </div>
-                                                <div className="val pe-2 m-pr-15">
-                                                    <p className='px-2 py-0' style={{margin:0, padding:0,fontSize:'15px',fontWeight:'600'}}>{data && data.stCity.name}</p>
-                                                </div>
-                                            </div>
-                                            <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1 m-pb-7">
-                                                <div className="prop d-flex align-items-center">
-                                                    <div className="image ms-2 isMobile" style={{display:"none"}}>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18.976" height="18.41" viewBox="0 0 29.976 32.41">
-                                                            <g id="Up-Down-3" transform="translate(2.121 1.5)">
-                                                                <path id="Path_1175" data-name="Path 1175" d="M1,21.219l9.191,9.191V1" transform="translate(-1 -1)" fill="none" stroke="#0d7b0d" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3}/>
-                                                                <path id="Path_1176" data-name="Path 1176" d="M19.191,10.191,10,1V30.41" transform="translate(6.543 -1)" fill="none" stroke="#0d7b0d" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3}/>
-                                                            </g>
-                                                        </svg>
-                                                    </div>
-                                                    <span className="font-bold font-12-mobi bold-900-mobi bold-900-mobi text-danger" style={{fontSize:'14px'}}>تاریخ و ساعت پرواز رفت</span>
-                                                </div>
-                                                <div className="val pe-2">
-                                                    <span className="font-13-mobi bold-900-mobi" style={{fontSize:'13px'}}>{data && moment((data.transfers[0].dateTime)).locale('en').format('jYYYY/jMM/jDD')} | {data.transfers[0].dateTime.split(' ')[1]}</span>
-                                                </div>
-                                            </div>
-                                            <div className="m-main-data d-flex flex-between-mobi align-items-center pb-1 m-pb-15">
-                                                <div className="prop d-flex align-items-center">
-                                                    <div className="image ms-2 isMobile" style={{display:"none"}}>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18.069" height="15.058" viewBox="0 0 18.069 15.058">
-                                                            <path id="Dish" d="M9.787,2.259a.753.753,0,1,1-.753-.753A.753.753,0,0,1,9.787,2.259Zm1.307.928a2.259,2.259,0,1,0-4.119,0A6.258,6.258,0,0,0,3.4,5.042C2.087,6.464,1.506,8.57,1.506,11.293q0,.019,0,.037a1.882,1.882,0,0,0,.376,3.727h14.3a1.882,1.882,0,0,0,.376-3.727q0-.019,0-.037c0-2.723-.581-4.829-1.894-6.251A6.258,6.258,0,0,0,11.094,3.187Zm-2.06,1.33c-2.142,0-3.595.534-4.529,1.546s-1.494,2.683-1.494,5.23H15.058c0-2.547-.548-4.205-1.494-5.23S11.177,4.517,9.035,4.517ZM16.187,12.8a.376.376,0,0,1,0,.753H1.882a.376.376,0,1,1,0-.753Z" fill="#0d7b0d" fillRule="evenodd"/>
-                                                        </svg>
-                                                    </div>
-                                                    <span className="font-bold font-13-mobi bold-900-mobi"  style={{color:'#e20000',fontSize:'14px'}}>تاریخ ورود به هتل</span>
-                                                </div>
-                                                <div className="val pe-2 p-0-mobi">
-                                                    <span className="ps-2 p-0-mobi font-13-mobi bold-900-mobi" style={{fontSize:'13px'}}>{data && moment((data.stDate.split(' ')[0])).locale('en').format('jYYYY/jMM/jDD')}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* border */}
-                                    <div className="border-style-tour isMobile" style={{display:"none"}}></div>
-                                    {/* c info */}
-                                    <div className="c-info__tour bg-white d-flex align-items-center justify-content-center box-shadow-sm col-xl-12 col-lg-12 col-12 my-4 m-my-20">
-                                        <div className="border-box box-right"></div>
-                                        <div className="text flex-between-mobi w-100-mobi d-flex align-items-center justify-content-center m-justify-content-between px-2 m-px-0 bg-white rounded shadow-sm h-25 py-2" style={{zIndex:1000}}>
-                                            <div className="text d-flex align-items-center m-pr-6">
-                                                <div className="image ms-2 isMobile" style={{display:"none"}}>
-                                                    <svg id="Moon_2" data-name="Moon 2" xmlns="http://www.w3.org/2000/svg" width="20.292" height="20.759" viewBox="0 0 35.292 36.759">
-                                                        <path id="Path_1046" data-name="Path 1046" d="M33.821,24.779l1.36.559a1.471,1.471,0,0,0-2.018-1.874ZM14.728,1.471l1.187.868a1.471,1.471,0,0,0-1.5-2.3ZM27.05,24.905A14.006,14.006,0,0,1,13.172,10.774H10.231A16.947,16.947,0,0,0,27.05,27.846Zm6.113-1.441a13.611,13.611,0,0,1-6.113,1.441v2.941a16.552,16.552,0,0,0,7.43-1.752Zm-.7.756a15.358,15.358,0,0,1-14.168,9.6v2.941A18.3,18.3,0,0,0,35.181,25.338Zm-14.168,9.6A15.493,15.493,0,0,1,2.941,18.187H0A18.434,18.434,0,0,0,18.293,36.759ZM2.941,18.187a15.574,15.574,0,0,1,12.1-15.28L14.413.034A18.515,18.515,0,0,0,0,18.187Zm10.231-7.413a14.232,14.232,0,0,1,2.742-8.435L13.541.6a17.173,17.173,0,0,0-3.31,10.172Z" transform="translate(0 0)" fill="#646564"/>
-                                                        <path id="Path_1047" data-name="Path 1047" d="M19.238,2.989a1.029,1.029,0,0,1,1.931,0l1.253,3.387a1.029,1.029,0,0,0,.608.608l3.387,1.253a1.029,1.029,0,0,1,0,1.931L23.03,11.422a1.029,1.029,0,0,0-.608.608l-1.253,3.387a1.029,1.029,0,0,1-1.931,0L17.984,12.03a1.029,1.029,0,0,0-.608-.608l-3.387-1.253a1.029,1.029,0,0,1,0-1.931l3.387-1.253a1.029,1.029,0,0,0,.608-.608Z" transform="translate(6.265 1.09)" fill="none" stroke="#e20000" stroke-linecap="round" stroke-width="2"/>
-                                                    </svg>
-                                                </div>
-                                                <span className="font-13-mobi text-danger bold-900-mobi font-bold">مدت اقامت</span>
-                                            </div>
-                                            <div className="image w-50-mobi flex-center-mobi  d-flex align-items-center mx-3 isDesktop">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                    viewBox="0 0 43.84 45.663">
-                                                    <g id="Moon_2" data-name="Moon 2" transform="translate(0 0)">
-                                                        <path id="Path_1046" data-name="Path 1046"
-                                                            d="M42.014,30.781l1.689.695A1.827,1.827,0,0,0,41.2,29.147ZM18.3,1.827l1.474,1.079A1.827,1.827,0,0,0,17.9.043ZM33.6,30.938A17.4,17.4,0,0,1,16.363,13.383H12.709A21.052,21.052,0,0,0,33.6,34.591Zm7.594-1.79a16.909,16.909,0,0,1-7.594,1.79v3.653a20.562,20.562,0,0,0,9.23-2.177Zm-.872.939a19.078,19.078,0,0,1-17.6,11.923v3.653A22.731,22.731,0,0,0,43.7,31.476Zm-17.6,11.923A19.246,19.246,0,0,1,3.653,22.592H0a22.9,22.9,0,0,0,22.725,23.07ZM3.653,22.592A19.347,19.347,0,0,1,18.687,3.611L17.9.043A23,23,0,0,0,0,22.592Zm12.709-9.209A17.679,17.679,0,0,1,19.769,2.906L16.821.748a21.333,21.333,0,0,0-4.111,12.636Z"
-                                                            transform="translate(0 0)" fill="#ff4422" />
-                                                        <path isd="Path_1047" data-name="Path 1047"
-                                                            d="M20.672,3.152a1.279,1.279,0,0,1,2.4,0L24.627,7.36a1.279,1.279,0,0,0,.756.755L29.59,9.672a1.279,1.279,0,0,1,0,2.4l-4.208,1.557a1.279,1.279,0,0,0-.756.755L23.07,18.59a1.279,1.279,0,0,1-2.4,0l-1.557-4.208a1.278,1.278,0,0,0-.755-.755L14.152,12.07a1.279,1.279,0,0,1,0-2.4L18.36,8.115a1.278,1.278,0,0,0,.755-.755Z"
-                                                            transform="translate(11.009 1.915)" fill="none" stroke="#ff2233"
-                                                            strokeLinecap="round" strokeWidth={3} />
+
+                <div className='padd' style={{padding: '0 2rem'}}>
+                    <section className=" mt-2-mobi pt-3-mobi pt-5 " style={{marginTop: '4rem'}}>
+                        <Scrolltoprefresh/>
+                        <div className="container mt-2 ">
+                            {/*<div*/}
+                            {/*    className="m-main-data flex-column-mobi detail-title col-xl-12 col-lg-12 col-12 d-flex justify-content-between border-bottom pb-2">*/}
+                            {/*    <div className="title-tour d-flex align-items-center">*/}
+                            {/*        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"*/}
+                            {/*             viewBox="0 0 19.643 19.68">*/}
+                            {/*            <g id="Ticket-index" transform="translate(-0.022)">*/}
+                            {/*                <path id="Path_1168" data-name="Path 1168"*/}
+                            {/*                      d="M2.235,8.086a3.6,3.6,0,0,1-.584-.018l-.169.786.169-.786a.83.83,0,0,1-.622-.641,3.194,3.194,0,0,1,0-.548,8.679,8.679,0,0,1,.385-2.755A4.211,4.211,0,0,1,3.406,1.7C4.216,1.247,5.483,1,8.058,1h3.571c2.575,0,3.842.247,4.652.7a4.211,4.211,0,0,1,1.993,2.423,8.675,8.675,0,0,1,.385,2.755,3.2,3.2,0,0,1,0,.548l.791.144-.791-.144a.83.83,0,0,1-.622.641,3.6,3.6,0,0,1-.584.018A1.876,1.876,0,0,0,15.7,10.059a1.876,1.876,0,0,0,1.757,1.974,3.5,3.5,0,0,1,.573.018.843.843,0,0,1,.625.655,2.943,2.943,0,0,1-.006.52,7.652,7.652,0,0,1-.369,2.331,4.212,4.212,0,0,1-1.993,2.423c-.811.454-2.077.7-4.652.7H8.058c-2.575,0-3.842-.247-4.652-.7a4.212,4.212,0,0,1-1.993-2.423,7.652,7.652,0,0,1-.369-2.331,2.933,2.933,0,0,1-.006-.52.842.842,0,0,1,.625-.655,3.5,3.5,0,0,1,.573-.018,1.876,1.876,0,0,0,1.757-1.974A1.876,1.876,0,0,0,2.235,8.086Z"*/}
+                            {/*                      fill="none" stroke="#e20000" strokeWidth="2"/>*/}
+                            {/*                <path id="Path_1169" data-name="Path 1169"*/}
+                            {/*                      d="M14.8,4a.8.8,0,0,1,.8.8V6.411a.8.8,0,0,1-1.607,0V4.8A.8.8,0,0,1,14.8,4Zm0,4.822a.8.8,0,0,1,.8.8v1.607a.8.8,0,0,1-1.607,0V9.625A.8.8,0,0,1,14.8,8.822Zm.8,5.625a.8.8,0,1,0-1.607,0v1.607a.8.8,0,0,0,1.607,0Z"*/}
+                            {/*                      transform="translate(-2.549 -0.589)" fill="#e20000"*/}
+                            {/*                      fill-rule="evenodd"/>*/}
+                            {/*            </g>*/}
+                            {/*        </svg>*/}
+                            {/*        <div className="text title-info-tour px-3">*/}
+                            {/*            <h5 className="font-bold">{data && data.title}</h5>*/}
+                            {/*            <span className="d-none-mobi"*/}
+                            {/*                  style={{color: '#e20000'}}>شروع قیمت از: </span>*/}
+                            {/*            <span style={{*/}
+                            {/*                color: '#e20000',*/}
+                            {/*                fontWeight: '900'*/}
+                            {/*            }}>{data && moneyFormat(data.minPrice)} {data.defineTour ? 'تومان' : data.packages[0].rate.name}</span>*/}
+                            {/*        </div>*/}
+                            {/*    </div>*/}
+                            {/*    <span*/}
+                            {/*        className="d-none-desktop font-14-mobi">شروع قیمت از: {data && moneyFormat(data.minPrice)} تومان</span>*/}
+                            {/*    <div className="d-flex flex-column justify-content-around me-auto mt-2">*/}
+                            {/*        <div className="d-flex d-none-mobi">*/}
+                            {/*            <img src={data.transfers[0].logo} width='30px' height={'auto'}/>*/}
+                            {/*            <div className="text " style={{marginRight: '.5rem'}}>*/}
+                            {/*                <span className="font-bold "*/}
+                            {/*                      style={{color: '#e20000', fontSize: '14px', fontWeight: '700'}}>ایرلاین رفت :</span>*/}
+                            {/*            </div>*/}
+                            {/*            <div className="text pe-2">*/}
+                            {/*                {data &&*/}
+                            {/*                    <span style={{*/}
+                            {/*                        color: 'black',*/}
+                            {/*                        fontWeight: '600',*/}
+                            {/*                        fontSize: '14px'*/}
+                            {/*                    }}>{data.transfers[0].transfer}</span>*/}
+                            {/*                }*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*        <div className="d-flex align-items-center d-none-mobi">*/}
+                            {/*            <img src={data.transfers[1].logo} width='30px' height={'auto'}/>*/}
+                            {/*            <div className="text" style={{marginRight: '.5rem'}}>*/}
+                            {/*                <span className="font-bold"*/}
+                            {/*                      style={{color: '#e20000', fontSize: '14px', fontWeight: '700'}}>ایرلاین برگشت :</span>*/}
+                            {/*            </div>*/}
+                            {/*            <div className="text pe-2">*/}
+                            {/*                {data &&*/}
+                            {/*                    <span style={{color: 'black', fontWeight: '600', fontSize: '14px'}}>*/}
+                            {/*                {data.transfers[1].transfer}*/}
+                            {/*            </span>*/}
+                            {/*                }*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
+                            <div
+                                className="detail-tour col-xl-12 col-lg-12 col-12 d-flex flex-wrap justify-content-between border-bottom py-1">
+
+
+                                {/*<div className="right col-xl-4 col-lg-4 col-12">*/}
+                                {/*    <div className="gallery-image">*/}
+
+                                {/*        /!*{data ?*!/*/}
+                                {/*        /!*    <Slider data={data && data.endCity.images}*!/*/}
+                                {/*        /!*            city={data && data?.endCity?.slug}/>*!/*/}
+                                {/*        /!*    : <Loader/>}*!/*/}
+
+                                {/*        <img src="../Images/turkey/antalya.png" alt=""/>*/}
+
+
+                                {/*    </div>*/}
+                                {/*</div>*/}
+
+
+                                {data ?
+
+                                    <>
+                                        <TransfersList setShowTransfers={(val) => {
+                                            setShowTransfers(val)
+                                        }} transfers={flightList && flightList} showTransfers={showTransfers}
+                                                       setFlightId={(val) => setFlightId(val)} setInfPrice={(val) => {
+                                            setInfPrice(val)
+                                        }} setSelectedFlight={(val) => setSelectedFlight(val)}
+                                                       selectedFlight={selectedFlight}/>
+                                        <div className="right col-lg-7 col-lg-7 col-12 px-3 my-sm-4">
+                                            <div className='d-flex justify-content-center align-items-center'
+                                                 style={{position: 'relative', bottom: '20px',marginTop:'20px'}}>
+                                                <svg className="ms-1"
+                                                     xmlns="http://www.w3.org/2000/svg" width="20"
+                                                     height="20" viewBox="0 0 23.528 26.039">
+                                                    <g id="Location" transform="translate(0.028)">
+                                                        <path id="Path_1011" data-name="Path 1011"
+                                                              d="M1.152,12.976a14.6,14.6,0,0,0,4.131,7.545,25.71,25.71,0,0,0,5.471,4.223,1.912,1.912,0,0,0,1.962,0,25.71,25.71,0,0,0,5.471-4.223,14.6,14.6,0,0,0,4.131-7.545,10.842,10.842,0,0,0-1.656-7.829C19.058,2.823,16.236,1,11.736,1S4.413,2.823,2.809,5.147A10.842,10.842,0,0,0,1.152,12.976Z"
+                                                              transform="translate(0 0)" fill="none"
+                                                              stroke="#e20000" strokeLinecap="round"
+                                                              strokeLinejoin="round"
+                                                              strokeWidth={2}>
+                                                        </path>
+                                                        <circle id="Ellipse_49"
+                                                                data-name="Ellipse 49"
+                                                                cx="2.928" cy="2.928" r="2.928"
+                                                                transform="translate(14.663 12.712) rotate(180)"
+                                                                fill="none" stroke="#e20000"
+                                                                strokeWidth={2}>
+                                                        </circle>
                                                     </g>
                                                 </svg>
-                                            </div>
-                                            <div className="text">
-                                                <span className="ps-1 font-bold font-13-mobi">{data && data.nightNum} شب</span>
-                                                <span className="pe-1 font-bold ps-2 p-0-mobi font-13-mobi">{data && data.dayNum} روز</span>
-                                            </div>
-                                        </div>
-                                        <div className="border-box box-left"></div>
-                                    </div>
-                                    {/* border */}
-                                    <div className="border-style-tour isMobile" style={{display:"none"}}></div>
-                                    {/* c info */}
-                                    <div className="c-info__tour d-flex flex-row-reverse align-items-center col-xl-12 col-lg-12 col-12">
-                                        <div className="bg-white py-3">
-                                            <div className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3 isDesktop">
-                                            {data ?
-                                                <img src={data && data.transfers[1].logo} width={"35px"} height={"35px"} alt="company" style={{ objectFit: 'cover' }} />
-                                            :<NewLoader />}
-                                            </div>
-                                        </div>
-                                        <div className="text w-90-mobi m-flex-100 p-0-mobi pe-2 ps-3">
-                                            <div className="m-main-data  flex-between-mobi d-flex flex-row-reverse align-items-center pb-1 m-pt-15">
-                                                <div className="prop pe-2 isDesktop">
-                                                    <p className="font-bold font-14-mobi bold-900-mobi font-size-18 " style={{margin:0, padding:0,fontSize:'16px',fontWeight:'500'}}>اطلاعات مقصد</p>
-                                                </div>
-                                                <div className="val pe-2 m-pr-25">
-                                                    <p className="font-13-mobi bold-900-mobi" style={{margin:0, padding:0,fontSize:'15px',fontWeight:'600'}}>{data && data.endCity.name}</p>
-                                                </div>
-                                            </div>
-                                            <div className="m-main-data flex-between-mobi d-flex flex-row-reverse align-items-center pb-1 m-pb-7">
-                                                <div className="prop d-flex align-items-center pe-2">
-                                                    <div className="image ms-2 isMobile" style={{display:"none"}}>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18.976" height="18.41" viewBox="0 0 29.976 32.41">
-                                                            <g id="Up-Down-3" transform="translate(2.121 1.5)">
-                                                                <path id="Path_1175" data-name="Path 1175" d="M1,21.219l9.191,9.191V1" transform="translate(-1 -1)" fill="none" stroke="#ff0000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3}/>
-                                                                <path id="Path_1176" data-name="Path 1176" d="M19.191,10.191,10,1V30.41" transform="translate(6.543 -1)" fill="none" stroke="#ff0000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3}/>
-                                                            </g>
-                                                        </svg>
-                                                    </div>
-                                                    <span className="font-bold text-danger font-13-mobi bold-900-mobi" style={{fontSize:'14px'}}>تاریخ و ساعت پرواز برگشت</span>
-                                                </div>
-                                                <div className="val pe-2">
-                                                    <span className="font-13-mobi bold-900-mobi"style={{fontSize:'13px'}}> &nbsp;{ data.transfers[1].dateTime.split(' ')[1]} | {data && moment(data.transfers[1].dateTime).locale('en').format('jYYYY/jMM/jDD')}</span>
-                                                </div>
-                                            </div>
-                                            <div className="m-main-data flex-between-mobi d-flex flex-row-reverse align-items-center pb-1">
-                                                <div className="prop d-flex align-items-center pe-2">
-                                                    <div className="image ms-2 isMobile" style={{display:"none"}}>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18.069" height="15.058" viewBox="0 0 18.069 15.058">
-                                                            <path id="Dish" d="M9.787,2.259a.753.753,0,1,1-.753-.753A.753.753,0,0,1,9.787,2.259Zm1.307.928a2.259,2.259,0,1,0-4.119,0A6.258,6.258,0,0,0,3.4,5.042C2.087,6.464,1.506,8.57,1.506,11.293q0,.019,0,.037a1.882,1.882,0,0,0,.376,3.727h14.3a1.882,1.882,0,0,0,.376-3.727q0-.019,0-.037c0-2.723-.581-4.829-1.894-6.251A6.258,6.258,0,0,0,11.094,3.187Zm-2.06,1.33c-2.142,0-3.595.534-4.529,1.546s-1.494,2.683-1.494,5.23H15.058c0-2.547-.548-4.205-1.494-5.23S11.177,4.517,9.035,4.517ZM16.187,12.8a.376.376,0,0,1,0,.753H1.882a.376.376,0,1,1,0-.753Z" fill="#ff0000" fillRule="evenodd"/>
-                                                        </svg>
-                                                    </div>
-                                                    <p className="font-bold font-13-mobi bold-900-mobi m-0" style={{color:'#e20000',fontSize:'14px'}}>تاریخ خروج از هتل</p>
-                                                </div>
-                                                <div className="val ps-2 p-0-mobi">
-                                                    <span className="font-13-mobi p-0-mobi bold-900-mobi m-0" style={{fontSize:'13px'}}>{data && moment(data.stDate).locale('en').format('jYYYY/jMM/jDD')}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section className="select-hotel mt-4">
-                    <div className="container">
-                        <div className="p-data">
-                            <div className="title d-flex align-items-center justify-content-between">
-                                <div className="d-flex justify-content-between ps-2 ms-2 w-100">
-                                    <div className="d-flex align-items-center text-4b ps-2 pb-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 17.401 17.401">
-                                            <g id="Document_Align_Center_1" data-name="Document Align Center 1" transform="translate(1 1)">
-                                                <path id="Path_895" data-name="Path 895" d="M1,8.7a19.485,19.485,0,0,0,.323,4.079A4.335,4.335,0,0,0,2.4,15a4.336,4.336,0,0,0,2.22,1.078A19.488,19.488,0,0,0,8.7,16.4a19.488,19.488,0,0,0,4.079-.323A4.335,4.335,0,0,0,15,15a4.335,4.335,0,0,0,1.078-2.22A19.488,19.488,0,0,0,16.4,8.7a19.488,19.488,0,0,0-.323-4.079A4.336,4.336,0,0,0,15,2.4a4.335,4.335,0,0,0-2.22-1.078A19.485,19.485,0,0,0,8.7,1a19.485,19.485,0,0,0-4.079.323A4.335,4.335,0,0,0,2.4,2.4a4.335,4.335,0,0,0-1.078,2.22A19.485,19.485,0,0,0,1,8.7Z" transform="translate(-1 -1)" fill="none" stroke="#646564" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                                                <path id="Path_896" data-name="Path 896" d="M10,7h2.8" transform="translate(-3.699 -2.8)" fill="none" stroke="#646564" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                                                <path id="Path_897" data-name="Path 897" d="M7,12h7" transform="translate(-2.8 -4.299)" fill="none" stroke="#646564" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                                                <path id="Path_898" data-name="Path 898" d="M10,17h2.8" transform="translate(-3.699 -5.799)" fill="none" stroke="#646564" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                                            </g>
-                                        </svg>
 
-                                        <h5 className="font-bold mb-0 mx-2">{`هتل های ${data && data.title}`}</h5>
-                                    </div>
-                                    <div>
-                                        <button className='pdfbtn' onClick={()=>downloadHandler()}>
-                                           <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" fill='#fff'><path d="M18,19 L18,17 C19.6568542,17 21,15.6568542 21,14 C21,12.3431458 19.6568542,11 18,11 C17.9686786,11.0001061 17.9686786,11.0001061 17.9374883,11.0006341 L17.0737589,11.0181765 L16.9309417,10.1661557 C16.5303438,7.77626335 14.4511274,6 12,6 C10.1923998,6 8.55429829,6.96642863 7.6664163,8.50398349 L7.39066076,8.98151234 L6.83965518,9.0031404 C4.69934052,9.08715198 3,10.8504451 3,13 C3,14.8638394 4.27477279,16.4299397 6,16.8739825 L6,18.9170416 C3.16228666,18.4409635 1,15.9729963 1,13 C1,9.95876977 3.26703071,7.43346119 6.21989093,7.05027488 C7.50901474,5.16507238 9.65343535,4 12,4 C15.1586186,4 17.8750012,6.1056212 18.7254431,9.0522437 C21.1430685,9.40362782 23,11.4849591 23,14 C23,16.7614237 20.7614237,19 18,19 Z M11,18.2532546 L11,12 L13,12 L13,18.2532546 L15.2928932,16.0092816 L16.7071068,17.3933221 L12,22 L7.29289322,17.3933221 L8.70710678,16.0092816 L11,18.2532546 Z" fill-rule="evenodd"/></svg>
-                                            دانلود فایل PDF</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="p-info__tour col-xl-12 col-lg-12 col-12 mt-2 border-bottom pb-4 pos-relative">
-                                <div className="p-thead d-flex align-items-center col-xl-12 col-lg-12 col-12 pos-absolute ">
-                                    <div className="c-thead text-center rounded py-2 me-2 isDesktop">
-                                        <span className="font-bold font-size-16">اطلاعات هتل</span>
-                                    </div>
-                                    <div className="c-thead text-center rounded py-2 me-2 isDesktop">
-                                        <span className="font-bold font-size-16">دو تخته(هرنفر)</span>
-                                    </div>
-                                    <div className="c-thead text-center rounded py-2 me-2 isDesktop">
-                                        <span className="font-bold font-size-16">سینگل</span>
-                                    </div>
-                                    <div className="c-thead text-center rounded py-2 me-2 isDesktop">
-                                        <span className="font-bold font-size-16">کودک با تخت</span>
-                                    </div>
-                                    <div className="c-thead text-center rounded py-2 me-2 isDesktop">
-                                        <span className="font-bold font-size-16">کودک بدون تخت</span>
-                                    </div>
-                                    <div className="c-thead text-center rounded py-2 me-2 isDesktop">
-                                        <span className="font-bold font-size-16">سن کودک</span>
-                                    </div>
-                                </div>
-                                {data && console.log(data)}
-                                {data ? data.packages.map((pack) => (
-                                    <div className="p-detail col-xl-12 col-lg-12 mt-2" key={pack.id}>
-                                        <div className="d-detail position-relative col-xl-12 col-lg-12 col-12 d-flex flex-wrap align-items-center bg-white py-2 mb-2">
-                                            <div className="c-detail ms-2">
-                                                {pack.offered &&
-                                                    <div className="position-absolute bg-danger py-1 px-1 rounded-2">
+                                                <p style={{
+                                                    textAlign: 'center',
+                                                    fontSize: '15px',
+                                                    color: '#000',
+                                                    margin: '0',
+                                                    padding: '0',
+                                                    fontWeight: '800'
+                                                }}>
+                                                    اطلاعات پرواز انتخابی
+                                                </p>
+
+                                            </div>
+                                            <div className="vertical-data" style={{display: "none"}}></div>
+                                            <div
+                                                className="p-info__tour mr-0 d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3 ">
+                                                {/* c info */}
+                                                <div
+                                                    className="c-info__tour w-100-mobi   col-xl-12 col-gl-12 d-flex justify-content-between">
+                                                    <div className='d-flex align-items-center'>
+                                                        <div className="bg-white py-3">
+                                                            <div
+                                                                className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3 isDesktop">
+                                                                <img
+                                                                    // src={getFlightDet('departure')?.airline_logo?.url}
+                                                                    src={flightData?.origin_airline_thumb?.url}
+
+                                                                    width={"55px"} height={"55px"} alt="company"
+                                                                    style={{objectFit: 'contain'}}/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="text w-90-mobi m-flex-100 pe-2">
+                                                            <div
+                                                                className="m-main-data d-flex flex-between-mobi align-items-center pb-1">
+
+                                                                <div className="val pe-2 m-pr-15 mb-0">
+                                                                    <div className="d-flex justify-content-between">
+                                                                        <p className='px-2 py-0' style={{
+                                                                            margin: 0,
+                                                                            padding: 0,
+                                                                            fontSize: '14px',
+                                                                            fontWeight: '600'
+                                                                        }}>
+                                                                            {flightData?.origin}
+                                                                        </p>
+                                                                        <p style={{
+                                                                            margin: 0,
+                                                                            padding: 0,
+                                                                            fontSize: '14px',
+                                                                            fontWeight: '600'
+                                                                        }}>به</p>
+                                                                        <p className='px-2 py-0' style={{
+                                                                            margin: 0,
+                                                                            padding: 0,
+                                                                            fontSize: '14px',
+                                                                            fontWeight: '600'
+                                                                        }}>
+                                                                            {flightData?.destination}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div className="val pe-2 m-pr-15 mb-0">
+                                                                <div className="d-flex justify-content-between">
+                                                                    <p className='px-2 py-0' style={{
+                                                                        margin: 0,
+                                                                        padding: 0,
+                                                                        fontSize: '14px',
+                                                                        fontWeight: '600'
+                                                                    }}>
+                                                                        {flightData?.origin_airline}
+                                                                        {/*}*/}
+                                                                    </p>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div
+                                                                className="m-main-data d-flex flex-between-mobi align-items-center pb-1 m-pb-7">
+                                                                <div className="prop d-flex align-items-center">
+                                                                    <div className="image ms-2 isMobile"
+                                                                         style={{display: "none"}}>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             width="18.976" height="18.41"
+                                                                             viewBox="0 0 29.976 32.41">
+                                                                            <g id="Up-Down-3"
+                                                                               transform="translate(2.121 1.5)">
+                                                                                <path id="Path_1175"
+                                                                                      data-name="Path 1175"
+                                                                                      d="M1,21.219l9.191,9.191V1"
+                                                                                      transform="translate(-1 -1)"
+                                                                                      fill="none" stroke="#0d7b0d"
+                                                                                      strokeLinecap="round"
+                                                                                      strokeLinejoin="round"
+                                                                                      strokeWidth={3}/>
+                                                                                <path id="Path_1176"
+                                                                                      data-name="Path 1176"
+                                                                                      d="M19.191,10.191,10,1V30.41"
+                                                                                      transform="translate(6.543 -1)"
+                                                                                      fill="none" stroke="#0d7b0d"
+                                                                                      strokeLinecap="round"
+                                                                                      strokeLinejoin="round"
+                                                                                      strokeWidth={3}/>
+                                                                            </g>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span
+                                                                        className="font-bold font-12-mobi bold-900-mobi bold-900-mobi text-danger"
+                                                                        style={{fontSize: '14px'}}>تاریخ و ساعت پرواز رفت</span>
+                                                                </div>
+                                                                <div className="val pe-2">
+                                                                <span className="font-13-mobi bold-900-mobi"
+                                                                      style={{fontSize: '13px', fontWeight: '600'}}>
+                                                                    {` ${dateReform(flightData?.origin_time)} | ${getDayInPersian(moment(flightData?.origin_date)?.format('dddd'))} ${MiladiToJalaliConvertor(flightData?.origin_date)}`}
+                                                                </span>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    {/*<div style={{paddingTop:'15px',display:'flex',columnGap:'5px'}}>*/}
+                                                    {/*    <p style={{margin:'0',padding:'0',fontSize:'13px',fontWeight:'800',whiteSpace:'nowrap'}}>کد رفرنس: </p>*/}
+
+                                                    {/*    <p style={{fontSize:'14px',fontWeight:'bolder'}}>*/}
+
+                                                    {/*        /!*{refcode}*!/*/}
+                                                    {/*    </p>*/}
+                                                    {/*</div>*/}
+
+                                                </div>
+                                                {/* border */}
+                                                <div className="border-style-tour isMobile"
+                                                     style={{display: "none"}}></div>
+                                                {/* c info */}
+                                                <div
+                                                    className="c-info__tour bg-white d-flex align-items-center justify-content-lg-center justify-content-sm-end box-shadow-sm col-xl-12 col-lg-12 col-12 my-4 m-my-20">
+                                                    <div className="border-box box-right"></div>
+                                                    <div
+                                                        className="text flex-between-mobi w-80-mobi d-flex align-items-center justify-content-center m-justify-content-between px-3 bg-white rounded shadow-sm h-25 py-2"
+                                                        style={{zIndex: 100}}>
+                                                        <div className="text d-flex align-items-center m-pr-6">
+                                                            <div className="image ms-2 isMobile"
+                                                                 style={{display: "none"}}>
+                                                                <svg id="Moon_2" data-name="Moon 2"
+                                                                     xmlns="http://www.w3.org/2000/svg" width="20.292"
+                                                                     height="20.759" viewBox="0 0 35.292 36.759">
+                                                                    <path id="Path_1046" data-name="Path 1046"
+                                                                          d="M33.821,24.779l1.36.559a1.471,1.471,0,0,0-2.018-1.874ZM14.728,1.471l1.187.868a1.471,1.471,0,0,0-1.5-2.3ZM27.05,24.905A14.006,14.006,0,0,1,13.172,10.774H10.231A16.947,16.947,0,0,0,27.05,27.846Zm6.113-1.441a13.611,13.611,0,0,1-6.113,1.441v2.941a16.552,16.552,0,0,0,7.43-1.752Zm-.7.756a15.358,15.358,0,0,1-14.168,9.6v2.941A18.3,18.3,0,0,0,35.181,25.338Zm-14.168,9.6A15.493,15.493,0,0,1,2.941,18.187H0A18.434,18.434,0,0,0,18.293,36.759ZM2.941,18.187a15.574,15.574,0,0,1,12.1-15.28L14.413.034A18.515,18.515,0,0,0,0,18.187Zm10.231-7.413a14.232,14.232,0,0,1,2.742-8.435L13.541.6a17.173,17.173,0,0,0-3.31,10.172Z"
+                                                                          transform="translate(0 0)" fill="#646564"/>
+                                                                    <path id="Path_1047" data-name="Path 1047"
+                                                                          d="M19.238,2.989a1.029,1.029,0,0,1,1.931,0l1.253,3.387a1.029,1.029,0,0,0,.608.608l3.387,1.253a1.029,1.029,0,0,1,0,1.931L23.03,11.422a1.029,1.029,0,0,0-.608.608l-1.253,3.387a1.029,1.029,0,0,1-1.931,0L17.984,12.03a1.029,1.029,0,0,0-.608-.608l-3.387-1.253a1.029,1.029,0,0,1,0-1.931l3.387-1.253a1.029,1.029,0,0,0,.608-.608Z"
+                                                                          transform="translate(6.265 1.09)" fill="none"
+                                                                          stroke="#e20000" strokeLinecap="round"
+                                                                          strokeWidth="2"/>
+                                                                </svg>
+                                                            </div>
+                                                            {/*<span className="font-13-mobi text-danger bold-900-mobi font-bold">مدت اقامت</span>*/}
+                                                        </div>
+                                                        <div
+                                                            className="image w-50-mobi flex-end-mobi  d-flex align-items-center mx-3 isDesktop">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                                 height="30"
+                                                                 viewBox="0 0 43.84 45.663">
+                                                                <g id="Moon_2" data-name="Moon 2"
+                                                                   transform="translate(0 0)">
+                                                                    <path id="Path_1046" data-name="Path 1046"
+                                                                          d="M42.014,30.781l1.689.695A1.827,1.827,0,0,0,41.2,29.147ZM18.3,1.827l1.474,1.079A1.827,1.827,0,0,0,17.9.043ZM33.6,30.938A17.4,17.4,0,0,1,16.363,13.383H12.709A21.052,21.052,0,0,0,33.6,34.591Zm7.594-1.79a16.909,16.909,0,0,1-7.594,1.79v3.653a20.562,20.562,0,0,0,9.23-2.177Zm-.872.939a19.078,19.078,0,0,1-17.6,11.923v3.653A22.731,22.731,0,0,0,43.7,31.476Zm-17.6,11.923A19.246,19.246,0,0,1,3.653,22.592H0a22.9,22.9,0,0,0,22.725,23.07ZM3.653,22.592A19.347,19.347,0,0,1,18.687,3.611L17.9.043A23,23,0,0,0,0,22.592Zm12.709-9.209A17.679,17.679,0,0,1,19.769,2.906L16.821.748a21.333,21.333,0,0,0-4.111,12.636Z"
+                                                                          transform="translate(0 0)" fill="#ff4422"/>
+                                                                    <path isd="Path_1047" data-name="Path 1047"
+                                                                          d="M20.672,3.152a1.279,1.279,0,0,1,2.4,0L24.627,7.36a1.279,1.279,0,0,0,.756.755L29.59,9.672a1.279,1.279,0,0,1,0,2.4l-4.208,1.557a1.279,1.279,0,0,0-.756.755L23.07,18.59a1.279,1.279,0,0,1-2.4,0l-1.557-4.208a1.278,1.278,0,0,0-.755-.755L14.152,12.07a1.279,1.279,0,0,1,0-2.4L18.36,8.115a1.278,1.278,0,0,0,.755-.755Z"
+                                                                          transform="translate(11.009 1.915)"
+                                                                          fill="none" stroke="#ff2233"
+                                                                          strokeLinecap="round" strokeWidth={3}/>
+                                                                </g>
+                                                            </svg>
+                                                        </div>
                                                         <div className="text">
-                                                            <span className="text-white font-size-16">ویژه</span>
+                                                        <span className="ps-1 font-bold font-13-mobi">
+                                                            {data.nightNum}
+                                                            شب</span>
+                                                            <span className="pe-1 font-bold ps-2 p-0-mobi font-13-mobi">
+                                                            {data.dayNum}
+                                                                روز</span>
                                                         </div>
                                                     </div>
-                                                }
-                                                <div className="info-detail pos-relative d-flex align-items-center w-100">
-                                                        <div className="image d-flex align-items-center">
-                                                        {data ?
-                                                            <img src={pack.hotel.thumbnail} width="100px" height="100px" className="rounded-2" alt="" />
-                                                            :<Loader />}
+                                                    <div className="border-box box-left"></div>
+                                                </div>
+                                                {/* border */}
+                                                <div className="border-style-tour isMobile"
+                                                     style={{display: "none"}}></div>
+                                                {/* c info */}
+                                                <div
+                                                    className="c-info__tour d-flex flex-row-reverse align-items-center col-xl-12 col-lg-12 col-12">
+                                                    <div className="bg-white py-3">
+                                                        <div
+                                                            className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3 isDesktop">
+
+                                                            <img
+                                                                src={flightData?.destination_airline_thumb?.url}
+                                                                width={"55px"} height={"55px"} alt="company"
+                                                                style={{objectFit: 'contain'}}/>
+
                                                         </div>
-                                                    <div className="text d-flex flex-column justify-content-between mt-1 pe-2 w-100">
-                                                        <span className="pb-1 iranBold" style={{fontSize:'11px'}}>{pack.hotel.nameEn}</span>
-                                                        <span className="font-light pb-1 font-size-12">{pack.hotel.name}</span>
-                                                        <div className="star d-flex align-items-center pb-1">
-                                                            <div className="d-flex align-items-center">
-                                                                <div className="image d-flex align-items-center">
-                                                                {(() => {
-                                                                    let stars = [];
-                                                                    for (let i = 1; i <= parseInt(pack.hotel.stars); i++) {
-                                                                    stars.push(
-                                                                        <svg className="mx-1" xmlns="http://www.w3.org/2000/svg" width="12"
-                                                                            height="12" viewBox="0 0 21.443 21.387">
-                                                                            <path id="Star"
-                                                                                d="M10.749,1c.915,0,2.352,4.154,2.871,5.751a.916.916,0,0,0,.84.632c1.666.057,5.983.3,5.983,1.273s-3.077,3.38-4.335,4.328A.915.915,0,0,0,15.789,14c.512,1.585,1.742,5.7.952,6.343s-4.1-1.885-5.447-2.963a.919.919,0,0,0-1.147,0c-1.35,1.078-4.669,3.6-5.392,2.964s.431-4.772.912-6.351a.914.914,0,0,0-.324-1C4.093,12.047,1,9.619,1,8.655S5.326,7.438,6.988,7.382a.916.916,0,0,0,.838-.625C8.357,5.165,9.833,1,10.749,1Z"
-                                                                                fill="#f7db06" stroke="#f7db06"
-                                                                                strokeLinecap="round" strokeLinejoin="round"
-                                                                                strokeWidth={2} />
-                                                                        </svg>
-                                                                        );
-                                                                    }
-                                                                    return stars;
-                                                                })()}
+                                                    </div>
+                                                    <div className="text w-90-mobi m-flex-100 p-0-mobi pe-2 ps-3">
+                                                        <div
+                                                            className="m-main-data  flex-between-mobi d-flex flex-row-reverse align-items-center pb-1 m-pt-15">
+
+                                                            <div
+                                                                className="m-main-data d-flex flex-between-mobi align-items-center ">
+
+                                                                <div className="val pe-2 m-pr-15 mb-0">
+                                                                    <div className="d-flex justify-content-between">
+                                                                        <p className='px-2 py-0' style={{
+                                                                            margin: 0,
+                                                                            padding: 0,
+                                                                            fontSize: '14px',
+                                                                            fontWeight: '600'
+                                                                        }}>
+                                                                            {flightData?.destination}
+                                                                        </p>
+                                                                        <p style={{
+                                                                            margin: 0,
+                                                                            padding: 0,
+                                                                            fontSize: '14px',
+                                                                            fontWeight: '600'
+                                                                        }}>به</p>
+                                                                        <p className='px-2 py-0' style={{
+                                                                            margin: 0,
+                                                                            padding: 0,
+                                                                            fontSize: '14px',
+                                                                            fontWeight: '600'
+                                                                        }}>
+                                                                            {flightData?.origin}
+                                                                        </p>
+
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="d-flex align-items-center mt-1">
-                                                            <svg className="ms-1" xmlns="http://www.w3.org/2000/svg" width="20"
-                                                                height="20" viewBox="0 0 23.528 26.039">
-                                                                <g id="Location" transform="translate(0.028)">
-                                                                    <path id="Path_1011" data-name="Path 1011"
-                                                                        d="M1.152,12.976a14.6,14.6,0,0,0,4.131,7.545,25.71,25.71,0,0,0,5.471,4.223,1.912,1.912,0,0,0,1.962,0,25.71,25.71,0,0,0,5.471-4.223,14.6,14.6,0,0,0,4.131-7.545,10.842,10.842,0,0,0-1.656-7.829C19.058,2.823,16.236,1,11.736,1S4.413,2.823,2.809,5.147A10.842,10.842,0,0,0,1.152,12.976Z"
-                                                                        transform="translate(0 0)" fill="none"
-                                                                        stroke="#333333" strokeLinecap="round"
-                                                                        strokeLinejoin="round" strokeWidth={2}>
-                                                                    </path>
-                                                                    <circle id="Ellipse_49" data-name="Ellipse 49"
-                                                                        cx="2.928" cy="2.928" r="2.928"
-                                                                        transform="translate(14.663 12.712) rotate(180)"
-                                                                        fill="none" stroke="#333333" strokeWidth={2}>
-                                                                    </circle>
-                                                                </g>
-                                                            </svg>
-                                                            <span className="font-bold font-size-12">{pack.hotel.location}</span>
+                                                        <div className="val pe-2 m-pr-15 mb-2">
+                                                            <div className="d-flex justify-content-lg-end">
+                                                                <p className='px-2 py-0' style={{
+                                                                    margin: 0,
+                                                                    padding: 0,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: '600'
+                                                                }}>
+                                                                    {flightData?.destination_airline
+                                                                    }
+                                                                </p>
+                                                            </div>
                                                         </div>
+                                                        <div
+                                                            className="m-main-data flex-between-mobi d-flex flex-row-reverse align-items-center pb-1 m-pb-7">
+
+                                                            <div className="prop d-flex align-items-center pe-2">
+                                                                <div className="image ms-2 isMobile"
+                                                                     style={{display: "none"}}>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="18.976" height="18.41"
+                                                                         viewBox="0 0 29.976 32.41">
+                                                                        <g id="Up-Down-3"
+                                                                           transform="translate(2.121 1.5)">
+                                                                            <path id="Path_1175" data-name="Path 1175"
+                                                                                  d="M1,21.219l9.191,9.191V1"
+                                                                                  transform="translate(-1 -1)"
+                                                                                  fill="none" stroke="#ff0000"
+                                                                                  strokeLinecap="round"
+                                                                                  strokeLinejoin="round"
+                                                                                  strokeWidth={3}/>
+                                                                            <path id="Path_1176" data-name="Path 1176"
+                                                                                  d="M19.191,10.191,10,1V30.41"
+                                                                                  transform="translate(6.543 -1)"
+                                                                                  fill="none" stroke="#ff0000"
+                                                                                  strokeLinecap="round"
+                                                                                  strokeLinejoin="round"
+                                                                                  strokeWidth={3}/>
+                                                                        </g>
+                                                                    </svg>
+                                                                </div>
+                                                                <span
+                                                                    className="font-bold text-danger font-13-mobi bold-900-mobi"
+                                                                    style={{fontSize: '14px'}}>تاریخ و ساعت پرواز برگشت</span>
+                                                            </div>
+                                                            <div className="val pe-2">
+                                                            <span className="font-13-mobi bold-900-mobi"
+                                                                  style={{fontSize: '13px', fontWeight: '600'}}>
+                                                                {/*{` ${dateReform(getFlightDet('return')?.time)} | ${getDayInPersian(moment(getFlightDet('return')?.date).format('dddd'))} ${MiladiToJalaliConvertor(getFlightDet('return')?.date)}`}*/}
+                                                                {` ${dateReform(flightData?.destination_time)} | ${getDayInPersian(moment(flightData?.destination_date)?.format('dddd'))} ${MiladiToJalaliConvertor(flightData?.destination_date)}`}
+                                                            </span>
+                                                            </div>
+
+                                                        </div>
+
                                                     </div>
-                                                    <div className="image left-border-line">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="1" height="110"
-                                                            viewBox="0 0 1 186.408">
-                                                            <line id="Line_87" data-name="Line 87" y2="186.408"
-                                                                transform="translate(0.5)" fill="none" stroke="#333"
-                                                                strokeWidth={1} strokeDasharray={10} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
+                                    : <Shimmers1/>}
+
+
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section className="mt-4">
+
+                        {data ?
+
+                            <div className="container">
+                                <div className={styles['p-data']}>
+
+
+                                        {data ?
+                                            <div className={styles['pdfbtntitle']}>
+                                                <div className="d-flex justify-content-between ps-2 ms-2 w-100">
+                                                    <div className="d-flex align-items-center text-4b ps-2 pb-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                             viewBox="0 0 17.401 17.401">
+                                                            <g id="Document_Align_Center_1"
+                                                               data-name="Document Align Center 1"
+                                                               transform="translate(1 1)">
+                                                                <path id="Path_895" data-name="Path 895"
+                                                                      d="M1,8.7a19.485,19.485,0,0,0,.323,4.079A4.335,4.335,0,0,0,2.4,15a4.336,4.336,0,0,0,2.22,1.078A19.488,19.488,0,0,0,8.7,16.4a19.488,19.488,0,0,0,4.079-.323A4.335,4.335,0,0,0,15,15a4.335,4.335,0,0,0,1.078-2.22A19.488,19.488,0,0,0,16.4,8.7a19.488,19.488,0,0,0-.323-4.079A4.336,4.336,0,0,0,15,2.4a4.335,4.335,0,0,0-2.22-1.078A19.485,19.485,0,0,0,8.7,1a19.485,19.485,0,0,0-4.079.323A4.335,4.335,0,0,0,2.4,2.4a4.335,4.335,0,0,0-1.078,2.22A19.485,19.485,0,0,0,1,8.7Z"
+                                                                      transform="translate(-1 -1)" fill="none"
+                                                                      stroke="#646564"
+                                                                      strokeLinecap="round" strokeLinejoin="round"
+                                                                      strokeWidth="2"/>
+                                                                <path id="Path_896" data-name="Path 896" d="M10,7h2.8"
+                                                                      transform="translate(-3.699 -2.8)" fill="none"
+                                                                      stroke="#646564" strokeLinecap="round"
+                                                                      strokeLinejoin="round" strokeWidth="2"/>
+                                                                <path id="Path_897" data-name="Path 897" d="M7,12h7"
+                                                                      transform="translate(-2.8 -4.299)" fill="none"
+                                                                      stroke="#646564" strokeLinecap="round"
+                                                                      strokeLinejoin="round" strokeWidth="2"/>
+                                                                <path id="Path_898" data-name="Path 898" d="M10,17h2.8"
+                                                                      transform="translate(-3.699 -5.799)" fill="none"
+                                                                      stroke="#646564" strokeLinecap="round"
+                                                                      strokeLinejoin="round" strokeWidth="2"/>
+                                                            </g>
+                                                        </svg>
+
+                                                        <h5 className="font-bold mb-0 mx-2">{`هتل های ${data && data.title}`}</h5>
+                                                    </div>
+                                                    <div>
+
+                                                        <button id="openWindowButton" className='pdfbtn' onClick={() => {
+                                                            if (isdownload === false) {
+
+                                                                    downloadHandler()
+
+                                                                // console.log(`The user is browsing with ${browserName} version ${browserVersion}`)
+                                                            } else {
+                                                                return null
+                                                            }
+                                                        }}>
+
+                                                                    <>
+                                                                        {isdownload === false ?
+                                                                            <>
+                                                                                <svg height="24" viewBox="0 0 24 24" width="24"
+                                                                                     xmlns="http://www.w3.org/2000/svg" fill='#fff'>
+                                                                                    <path
+                                                                                        d="M18,19 L18,17 C19.6568542,17 21,15.6568542 21,14 C21,12.3431458 19.6568542,11 18,11 C17.9686786,11.0001061 17.9686786,11.0001061 17.9374883,11.0006341 L17.0737589,11.0181765 L16.9309417,10.1661557 C16.5303438,7.77626335 14.4511274,6 12,6 C10.1923998,6 8.55429829,6.96642863 7.6664163,8.50398349 L7.39066076,8.98151234 L6.83965518,9.0031404 C4.69934052,9.08715198 3,10.8504451 3,13 C3,14.8638394 4.27477279,16.4299397 6,16.8739825 L6,18.9170416 C3.16228666,18.4409635 1,15.9729963 1,13 C1,9.95876977 3.26703071,7.43346119 6.21989093,7.05027488 C7.50901474,5.16507238 9.65343535,4 12,4 C15.1586186,4 17.8750012,6.1056212 18.7254431,9.0522437 C21.1430685,9.40362782 23,11.4849591 23,14 C23,16.7614237 20.7614237,19 18,19 Z M11,18.2532546 L11,12 L13,12 L13,18.2532546 L15.2928932,16.0092816 L16.7071068,17.3933221 L12,22 L7.29289322,17.3933221 L8.70710678,16.0092816 L11,18.2532546 Z"
+                                                                                        fill-rule="evenodd"/>
+                                                                                </svg>
+                                                                                دانلود فایل PDF
+                                                                            </> :
+                                                                            <div
+                                                                                className='w-100 text-center d-flex justify-content-center align-items-center'>
+                                                                                لطفا صبر کنید...
+                                                                            </div>
+                                                                        }
+                                                                    </>
+
+
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            : <Shimmers4/>}
+
+
+                                    <div>
+                                        <div
+                                            className="p-info__tour col-xl-12 col-lg-12 col-12 mt-2 border-bottom pb-4 ">
+
+
+                                            {data ? data.packages.sort((a, b) => a?.min_price - b?.min_price).map((pack) => (
+                                                    <div className={styles['hotel-item']} key={pack.id}>
+                                                        <div
+                                                            className="d-detail position-relative col-xl-12 col-lg-12 col-12  bg-white py-2 ">
+                                                            <div className="ms-2">
+                                                                {/*{pack.offered &&*/}
+                                                                {/*    <div*/}
+                                                                {/*        className="position-absolute bg-danger py-1 px-1 rounded-2">*/}
+                                                                {/*        <div className="text">*/}
+                                                                {/*            <span*/}
+                                                                {/*                className="text-white font-size-16">ویژه</span>*/}
+                                                                {/*        </div>*/}
+                                                                {/*    </div>*/}
+                                                                {/*}*/}
+                                                                <div
+                                                                    className="info-detail pos-relative d-flex align-items-center w-100"
+                                                                    // style={{cursor: 'pointer'}}
+                                                                    // onClick={()=>{
+                                                                    // let url=`/hotels/${pack.hotel.slug}`
+                                                                    // router.push(url) }}
+                                                                >
+                                                                    <div className="image w-100 px-2">
+
+                                                                        {data ?
+
+                                                                            <div className={styles['hotelDet']}>
+
+                                                                                <div className={styles['img-con']}>
+                                                                                     { pack?.offered && <div
+                                                                                        className={styles['offered']}>
+                                                                                        <p>
+                                                                                            نرخ
+                                                                                            ویژه
+                                                                                        </p>
+                                                                                        </div>}
+                                                                                    {pack?.thumbnail !== null ?
+                                                                                        <img src={pack?.thumbnail?.url}
+                                                                                             alt="" style={{
+                                                                                            position: 'relative',
+                                                                                            overflow: 'hidden'
+                                                                                        }}
+                                                                                        /> :
+
+                                                                                        <img
+                                                                                            src='../../../Images/noPicture.png'
+                                                                                            alt="" style={{
+                                                                                            position: 'relative',
+                                                                                            overflow: 'hidden'
+                                                                                        }}
+                                                                                            width={'290px'}
+                                                                                            height={'180px'}
+                                                                                        />
+                                                                                    }
+
+
+                                                                                </div>
+                                                                                <div>
+
+                                                                                    <div style={{
+                                                                                        display: 'flex',
+                                                                                        justifyContent: 'space-between'
+                                                                                    }}>
+                                                                                        <div
+                                                                                            className={styles['names']}>
+                                                                                            <div>
+                                                                                                <div className="star"
+                                                                                                     style={{
+                                                                                                         display: 'flex',
+                                                                                                         marginBottom: '5px'
+                                                                                                     }}>
+                                                                                                    <div
+                                                                                                        className="d-flex align-items-center">
+                                                                                                        <div
+                                                                                                            className="image d-flex align-items-center">
+                                                                                                            {(() => {
+                                                                                                                let stars = [];
+                                                                                                                for (let i = 1; i <= parseInt(pack.hotel_stars); i++) {
+                                                                                                                    stars.push(
+                                                                                                                        // <svg className="mx-1"
+                                                                                                                        //      key={i}
+                                                                                                                        //      xmlns="http://www.w3.org/2000/svg"
+                                                                                                                        //      width="15"
+                                                                                                                        //      height="15"
+                                                                                                                        //      viewBox="0 0 21.443 21.387">
+                                                                                                                        //     <path id="Star"
+                                                                                                                        //           d="M10.749,1c.915,0,2.352,4.154,2.871,5.751a.916.916,0,0,0,.84.632c1.666.057,5.983.3,5.983,1.273s-3.077,3.38-4.335,4.328A.915.915,0,0,0,15.789,14c.512,1.585,1.742,5.7.952,6.343s-4.1-1.885-5.447-2.963a.919.919,0,0,0-1.147,0c-1.35,1.078-4.669,3.6-5.392,2.964s.431-4.772.912-6.351a.914.914,0,0,0-.324-1C4.093,12.047,1,9.619,1,8.655S5.326,7.438,6.988,7.382a.916.916,0,0,0,.838-.625C8.357,5.165,9.833,1,10.749,1Z"
+                                                                                                                        //           fill="#f7db06"
+                                                                                                                        //           stroke="#f7db06"
+                                                                                                                        //           strokeLinecap="round"
+                                                                                                                        //           strokeLinejoin="round"
+                                                                                                                        //           strokeWidth={2}/>
+                                                                                                                        // </svg>
+
+                                                                                                                        <svg
+                                                                                                                            width="20px"
+                                                                                                                            height="20px"
+                                                                                                                            viewBox="0 0 24 24"
+                                                                                                                            fill="#F8CF15"
+                                                                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                                                                            <path
+                                                                                                                                d="M11.245 4.174C11.4765 3.50808 11.5922 3.17513 11.7634 3.08285C11.9115 3.00298 12.0898 3.00298 12.238 3.08285C12.4091 3.17513 12.5248 3.50808 12.7563 4.174L14.2866 8.57639C14.3525 8.76592 14.3854 8.86068 14.4448 8.93125C14.4972 8.99359 14.5641 9.04218 14.6396 9.07278C14.725 9.10743 14.8253 9.10947 15.0259 9.11356L19.6857 9.20852C20.3906 9.22288 20.743 9.23007 20.8837 9.36432C21.0054 9.48051 21.0605 9.65014 21.0303 9.81569C20.9955 10.007 20.7146 10.2199 20.1528 10.6459L16.4387 13.4616C16.2788 13.5829 16.1989 13.6435 16.1501 13.7217C16.107 13.7909 16.0815 13.8695 16.0757 13.9507C16.0692 14.0427 16.0982 14.1387 16.1563 14.3308L17.506 18.7919C17.7101 19.4667 17.8122 19.8041 17.728 19.9793C17.6551 20.131 17.5108 20.2358 17.344 20.2583C17.1513 20.2842 16.862 20.0829 16.2833 19.6802L12.4576 17.0181C12.2929 16.9035 12.2106 16.8462 12.1211 16.8239C12.042 16.8043 11.9593 16.8043 11.8803 16.8239C11.7908 16.8462 11.7084 16.9035 11.5437 17.0181L7.71805 19.6802C7.13937 20.0829 6.85003 20.2842 6.65733 20.2583C6.49056 20.2358 6.34626 20.131 6.27337 19.9793C6.18915 19.8041 6.29123 19.4667 6.49538 18.7919L7.84503 14.3308C7.90313 14.1387 7.93218 14.0427 7.92564 13.9507C7.91986 13.8695 7.89432 13.7909 7.85123 13.7217C7.80246 13.6435 7.72251 13.5829 7.56262 13.4616L3.84858 10.6459C3.28678 10.2199 3.00588 10.007 2.97101 9.81569C2.94082 9.65014 2.99594 9.48051 3.11767 9.36432C3.25831 9.23007 3.61074 9.22289 4.31559 9.20852L8.9754 9.11356C9.176 9.10947 9.27631 9.10743 9.36177 9.07278C9.43726 9.04218 9.50414 8.99359 9.55657 8.93125C9.61593 8.86068 9.64887 8.76592 9.71475 8.57639L11.245 4.174Z"
+                                                                                                                                stroke="#F8CF15"
+                                                                                                                                strokeWidth="1"
+                                                                                                                                strokeLinecap="round"
+                                                                                                                                strokeLinejoin="round"/>
+                                                                                                                        </svg>
+                                                                                                                    );
+                                                                                                                }
+                                                                                                                return stars;
+                                                                                                            })()}
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                            </div>
+                                                                                            {/*<Link href={`/hotels/dshgfj`}>*/}
+
+                                                                                            <div style={{
+                                                                                                display: 'flex',
+                                                                                                flexDirection: 'column'
+                                                                                            }}>
+                                                                                                <a href={`/hotels/${pack.hotel_slug}`}
+                                                                                                   style={{
+                                                                                                       color: "#000",
+                                                                                                       fontWeight: '900'
+                                                                                                   }}>{pack.hotel_nameEn}</a>
+                                                                                                <a href={`/hotels/${pack.hotel_slug}`}
+                                                                                                   style={{color: "rgb(101,101,101)"}}>{pack.hotel_name}</a>
+                                                                                            </div>
+
+                                                                                            {/*</Link>*/}
+                                                                                            <div>
+                                                                                                <div
+                                                                                                    className="d-flex align-items-center mt-1">
+                                                                                                    <svg
+                                                                                                        className="ms-1"
+                                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                                        width="15"
+                                                                                                        height="15"
+                                                                                                        viewBox="0 0 23.528 26.039">
+                                                                                                        <g id="Location"
+                                                                                                           transform="translate(0.028)">
+                                                                                                            <path
+                                                                                                                id="Path_1011"
+                                                                                                                data-name="Path 1011"
+                                                                                                                d="M1.152,12.976a14.6,14.6,0,0,0,4.131,7.545,25.71,25.71,0,0,0,5.471,4.223,1.912,1.912,0,0,0,1.962,0,25.71,25.71,0,0,0,5.471-4.223,14.6,14.6,0,0,0,4.131-7.545,10.842,10.842,0,0,0-1.656-7.829C19.058,2.823,16.236,1,11.736,1S4.413,2.823,2.809,5.147A10.842,10.842,0,0,0,1.152,12.976Z"
+                                                                                                                transform="translate(0 0)"
+                                                                                                                fill="none"
+                                                                                                                stroke="#000"
+                                                                                                                strokeLinecap="round"
+                                                                                                                strokeLinejoin="round"
+                                                                                                                strokeWidth={2}>
+                                                                                                            </path>
+                                                                                                            <circle
+                                                                                                                id="Ellipse_49"
+                                                                                                                data-name="Ellipse 49"
+                                                                                                                cx="2.928"
+                                                                                                                cy="2.928"
+                                                                                                                r="2.928"
+                                                                                                                transform="translate(14.663 12.712) rotate(180)"
+                                                                                                                fill="none"
+                                                                                                                stroke="#000"
+                                                                                                                strokeWidth={2}>
+                                                                                                            </circle>
+                                                                                                        </g>
+                                                                                                    </svg>
+                                                                                                    <span
+                                                                                                        className="font-bold font-size-12">{pack.location}</span>
+                                                                                                </div>
+                                                                                            </div>
+
+
+                                                                                        </div>
+                                                                                        <div className='isDesktop'>
+                                                                                            <div
+                                                                                                className={styles['btn-con']}>
+                                                                                                <button className=""
+                                                                                                        onClick={() => {
+                                                                                                            setShow(true);
+                                                                                                            // posthog.capture("TourPackageHotelSelect")
+                                                                                                            // setPackData({tourId: pack.id});
+                                                                                                            setSelectedHotel(pack)
+
+                                                                                                        }}>
+                                                                                                    اتاق های بیشتر
+                                                                                                </button>
+
+                                                                                                <button className=""
+                                                                                                        style={{fontWeight:'700'}}
+                                                                                                        onClick={() => {
+                                                                                                            setIsReserve(true)
+                                                                                                            setSelectedHotel(pack)
+                                                                                                        }}>
+
+                                                                                                    رزرو
+                                                                                                </button>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div className={styles['roomsDet']}>
+
+                                                                                        <div>
+                                                                                            {!data.is_bundle &&
+                                                                                                <div
+                                                                                                    className={styles['rooms-title']}>
+                                                                                                    <div
+                                                                                                        className={styles['room-prc']}>
+
+                                                                                                        <div
+                                                                                                            className={styles['room-title']}>
+                                                                                            <span
+                                                                                                className={styles['']}>دو تخته (هرنفر)</span>
+
+
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            className={styles['room']}>
+                                                                                                            <div
+                                                                                                                className=" d-flex align-items-start ">
+                                                                                                                <div
+                                                                                                                    className=" w-100 py-3">
+
+
+                                                                                                                    {
+                                                                                                                        // getHotelRooms(pack)
+                                                                                                                        roomFinder1(getHotelRooms(pack.prices), 148)[0]?.price ?
+                                                                                                                            <>
+                                                                                                                                <p
+                                                                                                                                    className="font-size-16 font-bold  m-0 price-color"
+                                                                                                                                    style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(getHotelRooms(pack.prices), 148)[0]?.price)}
+
+                                                                                                                                    <span
+                                                                                                                                        className="font-size-14 font-bold px-1  m-0 color-gray">
+                                                                                                                        {!data.is_bundle ? 'تومان' : getcurrencyfa(data?.currencies)}
+                                                                                                                    </span>
+                                                                                                                                </p>
+
+                                                                                                                                {/*<p className="px-2 font-size-13 m-0 text-center font-blue text-center"> {getcurrencyfa(currency) } </p>*/}
+                                                                                                                            </> :
+                                                                                                                            <span
+                                                                                                                                className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+
+                                                                                                                    }
+
+
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div
+                                                                                                        className={styles['room-prc']}>
+
+                                                                                                        <div
+                                                                                                            className={styles['room-title']}>
+                                                                                    <span
+                                                                                        className={styles['']}>سینگل</span>
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            className={styles['room']}>
+                                                                                                            <div
+                                                                                                                className=" position-relative d-flex align-items-start ">
+                                                                                                                <div
+                                                                                                                    className=" w-100 py-3">
+
+                                                                                                                    <>
+                                                                                                                        {roomFinder1(getHotelRooms(pack.prices), 494)[0]?.price ? <>
+
+                                                                                                                                <p
+                                                                                                                                    className="font-size-16 font-bold  m-0 mx-1 price-color"
+                                                                                                                                    style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(getHotelRooms(pack.prices), 494)[0].price)}
+
+
+                                                                                                                                    <span
+                                                                                                                                        className="font-size-14 font-bold px-1  m-0 color-gray">
+                                                                                                                                {!data.is_bundle ? 'تومان' : getcurrencyfa(data?.currencies)}
+                                                                                                                            </span>
+                                                                                                                                </p>
+                                                                                                                                {/*<p className="px-2 font-size-13 m-0 text-center font-blue"> {getcurrencyfa(currency) } </p>*/}
+
+                                                                                                                            </> :
+
+                                                                                                                            <span
+                                                                                                                                className="font-bold font-size-13 font-bold color-gray">عدم موجودی</span>
+                                                                                                                        }
+
+
+                                                                                                                    </>
+
+
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div
+                                                                                                        className={styles['room-prc']}>
+                                                                                                        <div
+                                                                                                            className={styles['room-title']}>
+                                                                                    <span
+                                                                                        className={styles['']}> کودک با تخت </span>
+                                                                                                            {pack?.with_bed_child_ages.length > 0 &&
+                                                                                                                <small
+                                                                                                                    style={{marginRight: '3px'}}>({chdAgeStr(pack?.with_bed_child_ages[0], pack?.with_bed_child_ages[1])})</small>}
+
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            className={styles['room']}>
+                                                                                                            <div
+                                                                                                                className=" position-relative ">
+                                                                                                                <div
+                                                                                                                    className=" w-100 py-3">
+                                                                                                                    {data?.is_bundle ?
+                                                                                                                        <>
+                                                                                                                            <p className="font-size-16 font-bold  m-0 price-color"
+                                                                                                                               style={{fontWeight: 'bold'}}>{pack.cwb}
+                                                                                                                                <span
+                                                                                                                                    className="font-size-14 font-bold  m-0 color-gray px-1">
+                                {getcurrencyfa(data?.currencies)}
+                            </span>
+                                                                                                                            </p>
+                                                                                                                            {/*<p className="px-2 font-size-13 m-0 text-center font-blue"> {getcurrencyfa(currency) } </p>*/}
+                                                                                                                        </> :
+
+                                                                                                                        <>{roomFinder1(getHotelRooms(pack.prices), 148)[0]?.chd_w_price ?
+                                                                                                                            <p className="font-size-16 font-bold  m-0 price-color"
+                                                                                                                               style={{fontWeight: 'bold'}}>{data.is_bundle ? '0' : moneyFormatrial(roomFinder1(getHotelRooms(pack.prices), 148)[0]?.chd_w_price)}
+                                                                                                                                <span
+                                                                                                                                    className="font-size-14 font-bold  m-0 color-gray px-1">
+
+                                            {getcurrencyfa(data?.currencies)}
+                            </span>
+                                                                                                                            </p> :
+                                                                                                                            <span
+                                                                                                                                className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+                                                                                                                        }
+                                                                                                                            {/*<p className="px-2 font-size-13 m-0 text-center font-blue"> {getcurrencyfa(currency) } </p>*/}
+                                                                                                                        </>
+                                                                                                                    }
+
+
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+
+                                                                                                    <div
+                                                                                                        className={styles['room-prc']}>
+                                                                                                        <div
+                                                                                                            className={styles['room-title']}>
+                                                                                                <span
+                                                                                                    className={styles['']}>کودک بدون تخت</span>
+
+                                                                                                            {pack?.no_bed_child_ages?.length > 0 &&
+                                                                                                                <small
+                                                                                                                    style={{marginRight: '3px'}}>({chdAgeStr(pack?.no_bed_child_ages[0], pack?.no_bed_child_ages[1])})</small>
+                                                                                                            }
+
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            className={styles['room']}>
+                                                                                                            <div
+                                                                                                                className=" d-flex align-items-start ">
+                                                                                                                <div
+                                                                                                                    className=" w-100 py-3">
+                                                                                                                    <>
+                                                                                                                        {data.is_bundle ? <>
+                                                                                                                            {
+                                                                                                                                <>{infPrice ?
+
+                                                                                                                                    <p className="font-size-16 m-0 price-color"
+                                                                                                                                       style={{fontWeight: 'bold'}}>{numberWithCommas(infPrice)}
+
+                                                                                                                                        <span
+                                                                                                                                            className="font-size-14 font-bold  m-0 color-gray px-1">
+                                {/*{getcurrencyfa(data?.currencies)}*/}
+                                                                                                                                            تومان
+                            </span>
+                                                                                                                                    </p> :
+                                                                                                                                    <span
+                                                                                                                                        className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+                                                                                                                                }
+                                                                                                                                    {/*<p className="px-2 font-size-13 m-0 text-center font-blue">{getcurrencyfa(currency) }</p>*/}
+
+                                                                                                                                </>
+                                                                                                                            }
+
+                                                                                                                        </> : <>
+
+                                                                                                                            {
+                                                                                                                                (roomFinder1(getHotelRooms(pack.prices), 148)[0]?.chd_n_price) ? <>
+
+                                                                                                                                        <p className="font-size-16 m-0 price-color"
+                                                                                                                                           style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(getHotelRooms(pack.prices), 148)[0]?.chd_n_price)}
+
+                                                                                                                                            <span
+                                                                                                                                                className="font-size-14 font-bold  m-0 color-gray px-1">
+                                {!data.is_bundle ? 'تومان' : getcurrencyfa(data?.currencies)}
+                            </span>
+                                                                                                                                        </p>
+                                                                                                                                        {/*<p className="px-2 font-size-13 m-0 text-center font-blue">{getcurrencyfa(currency) }</p>*/}
+                                                                                                                                    </> :
+                                                                                                                                    <span
+                                                                                                                                        className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+                                                                                                                            }
+
+
+                                                                                                                        </>}
+
+                                                                                                                    </>
+
+
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+
+                                                                                                </div>}
+
+                                                                                            <div className='isMobile'>
+                                                                                                <div
+                                                                                                    className={styles['btn-con']}>
+                                                                                                    <button className=""
+                                                                                                            onClick={() => {
+                                                                                                                setShow(true);
+                                                                                                                // posthog.capture("TourPackageHotelSelect")
+                                                                                                                // setPackData({tourId: pack.id});
+                                                                                                                setSelectedHotel(pack)
+
+                                                                                                            }}>
+                                                                                                        اتاق های بیشتر
+                                                                                                    </button>
+
+                                                                                                    <button className=""
+                                                                                                            style={{fontWeight:'700'}}
+
+                                                                                                            onClick={() => {
+                                                                                                                setIsReserve(true)
+                                                                                                                setSelectedHotel(pack)
+                                                                                                            }}>
+
+                                                                                                        رزرو
+                                                                                                    </button>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                        </div>
+
+
+                                                                                        {data.is_bundle &&
+                                                                                            <div
+                                                                                                className={styles['rooms-title']}>
+                                                                                                {getroomsTitle(pack).map(t => (
+                                                                                                    <div
+                                                                                                        className={styles['room-prc']}>
+
+                                                                                                        <div
+                                                                                                            className={styles['room-title']}>
+                                                                                                <span
+                                                                                                    className={styles['']}>{t.name}</span>
+
+
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            className={styles['room']}>
+                                                                                                            <div
+                                                                                                                className=" d-flex align-items-start ">
+                                                                                                                <div
+                                                                                                                    className=" w-100 py-3">
+
+
+                                                                                                                    {
+                                                                                                                        // getHotelRooms(pack)
+                                                                                                                        t.price ?
+                                                                                                                            <>
+                                                                                                                                <p
+                                                                                                                                    className="font-size-16 font-bold  m-0 price-color"
+                                                                                                                                    style={{fontWeight: 'bold'}}>{t?.price}
+
+                                                                                                                                    <span
+                                                                                                                                        className="font-size-14 font-bold px-1  m-0 color-gray">
+                                                                                                                    {!data.is_bundle ? 'تومان' : getcurrencyfa(data?.currencies)}
+                                                                                                                </span>
+                                                                                                                                </p>
+
+                                                                                                                                {/*<p className="px-2 font-size-13 m-0 text-center font-blue text-center"> {getcurrencyfa(currency) } </p>*/}
+                                                                                                                            </> :
+                                                                                                                            <span
+                                                                                                                                className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+
+                                                                                                                    }
+
+
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                ))}
+
+                                                                                                <div
+                                                                                                    className={styles['room-prc']}>
+
+                                                                                                    <div
+                                                                                                        className={styles['room-title']}>
+                                                                                                        <span
+                                                                                                            className={styles['']}>کودک با تخت </span>
+
+
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        className={styles['room']}>
+                                                                                                        <div
+                                                                                                            className=" d-flex align-items-start ">
+                                                                                                            <div
+                                                                                                                className=" w-100 py-3">
+
+
+                                                                                                                {
+                                                                                                                    // getHotelRooms(pack)
+                                                                                                                    pack.cwb ?
+                                                                                                                        <>
+                                                                                                                            <p
+                                                                                                                                className="font-size-16 font-bold  m-0 price-color"
+                                                                                                                                style={{fontWeight: 'bold'}}>{pack.cwb}
+
+                                                                                                                                <span
+                                                                                                                                    className="font-size-14 font-bold px-1  m-0 color-gray">
+                                                                                                                    {getcurrencyfa(data.currencies)}
+                                                                                                                </span>
+                                                                                                                            </p>
+
+                                                                                                                            {/*<p className="px-2 font-size-13 m-0 text-center font-blue text-center"> {getcurrencyfa(currency) } </p>*/}
+                                                                                                                        </> :
+                                                                                                                        <span
+                                                                                                                            className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+
+                                                                                                                }
+
+
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                {<div
+                                                                                                    className={styles['room-prc']}>
+
+                                                                                                    <div
+                                                                                                        className={styles['room-title']}>
+                                                                                    <span
+                                                                                        className={styles['']}>کودک بدون تخت </span>
+
+
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        className={styles['room']}>
+                                                                                                        <div
+                                                                                                            className=" d-flex align-items-start ">
+                                                                                                            <div
+                                                                                                                className=" w-100 py-3">
+
+
+                                                                                                                {
+                                                                                                                    // getHotelRooms(pack)
+                                                                                                                    infPrice ?
+                                                                                                                        <>
+                                                                                                                            <p
+                                                                                                                                className="font-size-16 font-bold  m-0 price-color"
+                                                                                                                                style={{fontWeight: 'bold'}}>{moneyFormatrial(infPrice)}
+
+                                                                                                                                <span
+                                                                                                                                    className="font-size-14 font-bold px-1  m-0 color-gray">
+                                                                                                                     تومان
+                                                                                                                </span>
+                                                                                                                            </p>
+
+                                                                                                                            {/*<p className="px-2 font-size-13 m-0 text-center font-blue text-center"> {getcurrencyfa(currency) } </p>*/}
+                                                                                                                        </> :
+                                                                                                                        <span
+                                                                                                                            className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+
+                                                                                                                }
+
+
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>}
+
+
+                                                                                            </div>}
+
+                                                                                    </div>
+                                                                                        {/*<div className={styles['moreinfocon']} style={{display:'flex',columnGap:'20px',justifyContent:'center',alignItems:'end',marginTop:'10px'}}>*/}
+                                                                                        {/*    <div className={styles['info']} onClick={()=> {*/}
+                                                                                        {/*        setMoreInfoTab('amenities')*/}
+                                                                                        {/*        setHotelId(pack.hotel_id)*/}
+                                                                                        {/*    }}>*/}
+                                                                                        {/*        <p>امکانات</p>*/}
+                                                                                        {/*    </div>*/}
+                                                                                        {/*    <div className={styles['info']}  onClick={()=> {*/}
+                                                                                        {/*        setMoreInfoTab('map')*/}
+                                                                                        {/*        setHotelId(pack.hotel_id)*/}
+                                                                                        {/*    }}>*/}
+                                                                                        {/*        <p>نقشه</p>*/}
+                                                                                        {/*    </div>*/}
+                                                                                        {/*    <div className={styles['info']}  onClick={()=> {*/}
+                                                                                        {/*        setMoreInfoTab('services')*/}
+                                                                                        {/*        setHotelId(pack.hotel_id)*/}
+                                                                                        {/*    }}>*/}
+                                                                                        {/*        <p>خدمات</p>*/}
+                                                                                        {/*    </div>*/}
+                                                                                        {/*</div>*/}
+                                                                                </div>
+
+
+                                                                                {/*<div className='isDesktop'>*/}
+                                                                                {/*    <div className="star" style={{display:'flex',justifyContent:"center",  paddingTop:'40px'}}>*/}
+                                                                                {/*        <div className="d-flex align-items-center">*/}
+                                                                                {/*            <div*/}
+                                                                                {/*                className="image d-flex align-items-center">*/}
+                                                                                {/*                {(() => {*/}
+                                                                                {/*                    let stars = [];*/}
+                                                                                {/*                    for (let i = 1; i <= parseInt(pack.hotel_stars); i++) {*/}
+                                                                                {/*                        stars.push(*/}
+                                                                                {/*                            <svg className="mx-1"*/}
+                                                                                {/*                                 key={i}*/}
+                                                                                {/*                                 xmlns="http://www.w3.org/2000/svg"*/}
+                                                                                {/*                                 width="20"*/}
+                                                                                {/*                                 height="20"*/}
+                                                                                {/*                                 viewBox="0 0 21.443 21.387">*/}
+                                                                                {/*                                <path id="Star"*/}
+                                                                                {/*                                      d="M10.749,1c.915,0,2.352,4.154,2.871,5.751a.916.916,0,0,0,.84.632c1.666.057,5.983.3,5.983,1.273s-3.077,3.38-4.335,4.328A.915.915,0,0,0,15.789,14c.512,1.585,1.742,5.7.952,6.343s-4.1-1.885-5.447-2.963a.919.919,0,0,0-1.147,0c-1.35,1.078-4.669,3.6-5.392,2.964s.431-4.772.912-6.351a.914.914,0,0,0-.324-1C4.093,12.047,1,9.619,1,8.655S5.326,7.438,6.988,7.382a.916.916,0,0,0,.838-.625C8.357,5.165,9.833,1,10.749,1Z"*/}
+                                                                                {/*                                      fill="#f7db06"*/}
+                                                                                {/*                                      stroke="#f7db06"*/}
+                                                                                {/*                                      strokeLinecap="round"*/}
+                                                                                {/*                                      strokeLinejoin="round"*/}
+                                                                                {/*                                      strokeWidth={2}/>*/}
+                                                                                {/*                            </svg>*/}
+                                                                                {/*                        );*/}
+                                                                                {/*                    }*/}
+                                                                                {/*                    return stars;*/}
+                                                                                {/*                })()}*/}
+                                                                                {/*            </div>*/}
+                                                                                {/*        </div>*/}
+                                                                                {/*    </div>*/}
+
+
+                                                                                {/*</div>*/}
+
+
+                                                                            </div>
+
+                                                                            : <Loader/>}
+
+
+                                                                        {/*<div className='d-sm-flex justify-content-between'>*/}
+
+
+                                                                        {/*    */}
+
+
+                                                                        {/*</div>*/}
+
+
+                                                                        {/*<div className="text-price d-lg-none d-sm-flex w-100  d-flex justify-content-between align-items-center">*/}
+                                                                        {/*    <p className="title-price m-0" style={{fontSize:'12px'}}>شروع قیمت از :</p>*/}
+                                                                        {/*    <div style={{width: '40%', borderBottom:'1px dashed black'}} ></div>*/}
+                                                                        {/*    <p className="price-tour color-base-color m-0" style={{color:' #e20000',fontSize:'15px'}}>*/}
+                                                                        {/*        {moneyFormat(pack.min_price)}*/}
+                                                                        {/*        <small*/}
+                                                                        {/*            // className="pe-1"*/}
+                                                                        {/*        >تومان </small>*/}
+                                                                        {/*    </p>*/}
+                                                                        {/*</div>*/}
+
+                                                                    </div>
+
+                                                                    {/*<div className="image left-border-line">*/}
+                                                                    {/*    <svg xmlns="http://www.w3.org/2000/svg" width="1"*/}
+                                                                    {/*         height="110"*/}
+                                                                    {/*         viewBox="0 0 1 186.408">*/}
+                                                                    {/*        <line id="Line_87" data-name="Line 87" y2="186.408"*/}
+                                                                    {/*              transform="translate(0.5)" fill="none"*/}
+                                                                    {/*              stroke="#333"*/}
+                                                                    {/*              strokeWidth={1} strokeDasharray={10}/>*/}
+                                                                    {/*    </svg>*/}
+                                                                    {/*</div>*/}
+                                                                </div>
+                                                            </div>
+                                                            {/*<HotelsDetails pack={pack.prices}*/}
+                                                            {/*               data={data}*/}
+                                                            {/*               hotel={pack}*/}
+                                                            {/*               currency={data?.currencies}*/}
+                                                            {/*               flightId={selectedFlight}*/}
+                                                            {/*               setHotel={(value)=>{setSelectedHotel(value)}}*/}
+
+                                                            {/*               setShow={setShow}*/}
+                                                            {/*               setPackData={setPackData}*/}
+
+                                                            {/*               setIsReserve={(val)=>setIsReserve(val)}*/}
+
+                                                            {/*               infPrc={infPrice}*/}
+                                                            {/*               cwb={pack.cwb}*/}
+                                                            {/*/>*/}
+                                                        </div>
+
+                                                        {hotelid ===pack.hotel_id && <div style={{borderTop:"1px solid #cecece", padding:'15px'}}>
+
+                                                            <>
+                                                                {
+                                                                    moreInfoTab === 'amenities' && <div>1</div>
+                                                                } {
+                                                                moreInfoTab === 'map' &&
+                                                                <div style={{display: 'flex',justifyContent:'space-between',padding:"0 1.125rem 10px 1.125rem"}}>
+
+                                                                    <div>
+
+                                                                        address
+
+                                                                    </div>
+                                                                    <div style={{height: '300px', width: '700px'}}>
+                                                                        <MapComponent
+                                                                            coordinates={[35.718971, 51.435673]}/>
+
+                                                                    </div>
+
+                                                                </div>
+                                                            }
+                                                                {
+                                                                    moreInfoTab === 'services' && <div>3</div>
+                                                                }</>
+
+
+                                                        </div>}
+
+                                                    </div>
+                                                ))
+                                                    .sort((a, b) => parseInt(a.star) - parseInt(b.star)).reverse()
+                                                    .sort((a, b) => a.prices?.twinRate ? parseInt(a.prices.twinRate) : parseInt(a.prices?.twin) - b.prices?.twinRate ? parseInt(b.prices.twinRate) : parseInt(b.prices?.twin)).reverse()
+                                                :
+                                                // <Loader />
+                                                ''
+                                            }
+
+
+                                        </div>
+                                        <div className={styles['tourdesc']}>
+                                            <div className={styles['service_document']}>
+                                                {data.documents && <div className={styles['con']}>
+                                                    <p>مدارک لازم</p>
+                                                    <div className={styles['item']}>
+
+
+                                                        <ul>
+                                                            {data?.documents?.split('\n').map(item => (
+                                                                <li>{item}</li>
+                                                            ))}
+                                                        </ul>
+
+                                                        <svg width="100px" height="100px" viewBox="0 0 24 24"
+                                                             fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M3 10C3 6.22876 3 4.34315 4.17157 3.17157C5.34315 2 7.22876 2 11 2H13C16.7712 2 18.6569 2 19.8284 3.17157C21 4.34315 21 6.22876 21 10V14C21 17.7712 21 19.6569 19.8284 20.8284C18.6569 22 16.7712 22 13 22H11C7.22876 22 5.34315 22 4.17157 20.8284C3 19.6569 3 17.7712 3 14V10Z"
+                                                                stroke="#cecece" strokeWidth="1.5"/>
+                                                            <path d="M8 10H16" stroke="#cecece" strokeWidth="1.5"
+                                                                  strokeLinecap="round"/>
+                                                            <path d="M8 14H13" stroke="#cecece" strokeWidth="1.5"
+                                                                  strokeLinecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </div>}
+
+
+                                                {data?.service && <div className={styles['con']}>
+                                                    <p>خدمات آژانس</p>
+                                                    <div className={styles['item']}>
+
+                                                        <ul>
+                                                            {data?.service?.split('\n').map(item => (
+                                                                <li>{item}</li>
+                                                            ))}
+                                                        </ul>
+                                                        <svg width="100px" height="100px" viewBox="0 0 24 24"
+                                                             fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M4 21V18.5C4 15.4624 6.46243 13 9.5 13H14.5C17.5376 13 20 15.4624 20 18.5V21M8 21V18M16 21V18M11 9H7.5C6.67157 9 6 8.32843 6 7.5V6.5C6 5.16725 6.57938 3.96983 7.5 3.14585M18 8.00001V6.50001C18 5.16726 17.4206 3.96983 16.5 3.14585M20 7.5V6M4 7.5V6M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                                                                stroke="#cecece" strokeLinecap="round"
+                                                                strokeLinejoin="round" strokeWidth="1.4"/>
                                                         </svg>
                                                     </div>
                                                 </div>
+                                                }
                                             </div>
-                                            <HotelsDetails pack={pack} data={data} setShow={setShow} setPackData={setPackData} />
-                                        </div>
+                                            {data?.description && <div className={styles['servicescon']}>
+                                                <p>توضیحات تکمیلی</p>
+                                                <div className={styles['item']}>
+                                                    <ul>
+                                                        {data?.description?.split('\n').map(item => (
+                                                            <li>{item}</li>
+                                                        ))}
+                                                    </ul>
 
-                                    </div>
-                                ))
-                                .sort((a, b) => parseInt(a.star)- parseInt(b.star) ).reverse()
-                                .sort((a, b) => a.prices?.twinRate ? parseInt(a.prices.twinRate) : parseInt(a.prices?.twin)- b.prices?.twinRate ? parseInt(b.prices.twinRate) : parseInt(b.prices?.twin) ).reverse()
-                                :
-                                // <Loader />
-                                ''
-                            }
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section className="description mt-4">
-                    <div className="container">
-                        <div className="p-data">
-                            <div className="title d-flex align-items-center justify-content-between">
-                                <div className="d-flex justify-content-start ps-2 ms-2 pb-2">
-                                    <div className="d-flex align-items-center text-4b ps-2 pb-2">
-                                        <h5 className="font-bold mb-0">توضیــحات بیشتر</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="p-info__descrip flex-100 mt-2 border-bottom pb-4">
-                                <div className="p-descrip">
-                                    <div
-                                        className="c-descrip bg-white border-base-color d-flex align-items-start pt-3 pb-3 px-3 mb-3">
-                                        <div className="image p-0-mobi ps-4">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85"
-                                                viewBox="0 0 183.266 183.266">
-                                                <g id="Credit_Card" data-name="Credit Card" transform="translate(5 5)"
-                                                    opacity="0.8">
-                                                    <path id="Path_883" data-name="Path 883"
-                                                        d="M1,87.633c0,19.277,1.043,34.23,3.635,45.892C7.207,145.1,11.2,152.939,16.762,158.5s13.407,9.556,24.979,12.128c11.661,2.591,26.615,3.635,45.892,3.635s34.23-1.044,45.892-3.635c11.572-2.572,19.414-6.563,24.979-12.128s9.556-13.407,12.128-24.979c2.591-11.662,3.635-26.614,3.635-45.892s-1.044-34.23-3.635-45.892c-2.572-11.572-6.563-19.414-12.128-24.979S145.1,7.207,133.524,4.635C121.863,2.043,106.91,1,87.633,1S53.4,2.043,41.741,4.635C30.169,7.207,22.327,11.2,16.762,16.762S7.207,30.169,4.635,41.741C2.043,53.4,1,68.356,1,87.633Z"
-                                                        transform="translate(-1 -1)" fill="none" stroke="#279692"
-                                                        strokeLinecap="round" strokeLinejoin="round" strokeWidth={10} />
-                                                    <path id="Path_884" data-name="Path 884" d="M2.5,8H152.138"
-                                                        transform="translate(9.314 47.13)" fill="none" stroke="#279692"
-                                                        strokeLinecap="square" strokeLinejoin="round" strokeWidth={10} />
-                                                    <path id="Path_885" data-name="Path 885" d="M14,18H45.5"
-                                                        transform="translate(88.384 115.887)" fill="none" stroke="#279692"
-                                                        strokeLinecap="round" strokeLinejoin="round" strokeWidth={10} />
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div className="text">
-                                            <div className="title py-3">
-                                                <span className="font-size-23 font-bold text-base-color">مدارک لازم</span>
-                                            </div>
-                                            <div className="paragraph pt-2 pe-3">
-                                                <p className="font-size-16 font-bold">
-                                                    {data && data.documents}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="c-descrip bg-white border-base-color d-flex align-items-start pt-3 pb-3 px-3 mb-3">
-                                        <div className="image ps-4">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85"
-                                                viewBox="0 0 183.266 183.266">
-                                                <g id="Verified" transform="translate(5 5)" opacity="0.8">
-                                                    <path id="Path_1193" data-name="Path 1193"
-                                                        d="M64.13,10,24.751,49.379,9,33.627"
-                                                        transform="translate(54.006 60.881)" fill="none" stroke="#279692"
-                                                        strokeLinecap="round" strokeLinejoin="round" strokeWidth={10} />
-                                                    <path id="Path_1194" data-name="Path 1194"
-                                                        d="M73.385,8.077a17.88,17.88,0,0,1,28.5,0l8.937,11.785a8.941,8.941,0,0,0,8.342,3.455L133.812,21.3a17.881,17.881,0,0,1,20.15,20.15l-2.015,14.653a8.941,8.941,0,0,0,3.455,8.342l11.786,8.937a17.881,17.881,0,0,1,0,28.5L155.4,110.817a8.942,8.942,0,0,0-3.455,8.342l2.015,14.653a17.881,17.881,0,0,1-20.15,20.15l-14.653-2.015a8.942,8.942,0,0,0-8.342,3.455l-8.937,11.786a17.881,17.881,0,0,1-28.5,0L64.448,155.4a8.941,8.941,0,0,0-8.342-3.455l-14.653,2.015a17.881,17.881,0,0,1-20.15-20.15l2.015-14.653a8.941,8.941,0,0,0-3.455-8.342L8.077,101.881a17.88,17.88,0,0,1,0-28.5l11.785-8.937a8.94,8.94,0,0,0,3.455-8.342L21.3,41.454A17.881,17.881,0,0,1,41.454,21.3l14.653,2.015a8.94,8.94,0,0,0,8.342-3.455Z"
-                                                        transform="translate(-1 -1)" fill="none" stroke="#279692"
-                                                        strokeWidth={10} />
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div className="text">
-                                            <div className="title py-3">
-                                                <span className="font-size-23 font-bold text-base-color">خدمات آژانس</span>
-                                            </div>
-                                            <div className="paragraph pt-2 pe-2">
-                                                <p className="font-size-16 font-bold">
-                                                    {data && data.services}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="c-descrip bg-white border-second-color d-flex align-items-start pt-3 pb-3 px-3 mb-3">
-                                        <div className="image ps-4">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85"
-                                                viewBox="0 0 183.266 183.266">
-                                                <g id="Message_Align_Left" data-name="Message Align Left"
-                                                    transform="translate(5 5)" opacity="0.8">
-                                                    <path id="Path_1028" data-name="Path 1028"
-                                                        d="M87.633,1c19.315,0,34.352.877,46.112,3.14,11.721,2.255,19.6,5.78,25.12,10.644,10.965,9.665,15.4,27.131,15.4,62.348,0,22.694-2.037,39.393-7.524,50.271a26.145,26.145,0,0,1-10.163,11.345c-4.24,2.472-9.926,4.014-17.753,4.014-10.09,0-17.663,2.266-23.585,6.278-5.78,3.917-9.267,9.044-11.86,13.126q-.588.925-1.107,1.752c-2.174,3.452-3.582,5.686-5.536,7.439-1.741,1.563-4.174,2.909-9.1,2.909s-7.363-1.346-9.1-2.909C76.578,169.6,75.17,167.37,73,163.918q-.521-.828-1.107-1.753c-2.594-4.081-6.081-9.208-11.861-13.125-5.922-4.012-13.5-6.278-23.585-6.278-7.785,0-13.452-1.581-17.692-4.1A26.8,26.8,0,0,1,8.538,127.092C3.032,116.08,1,99.352,1,77.132c0-34.769,4.424-52.281,15.425-62.06,5.535-4.92,13.427-8.511,25.133-10.823C53.307,1.928,68.334,1,87.633,1Z"
-                                                        transform="translate(-1 -1)" fill="none" stroke="#ff0000"
-                                                        strokeLinecap="round" strokeLinejoin="round" strokeWidth={10} />
-                                                    <path id="Path_1029" data-name="Path 1029" d="M7,9H38.5"
-                                                        transform="translate(40.254 54.006)" fill="none" stroke="#ff0000"
-                                                        strokeLinecap="round" strokeLinejoin="round" strokeWidth={10} />
-                                                    <path id="Path_1030" data-name="Path 1030" d="M7,13H85.757"
-                                                        transform="translate(40.254 81.508)" fill="none" stroke="#ff0000"
-                                                        strokeLinecap="round" strokeLinejoin="round" strokeWidth={10} />
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div className="text">
-                                            <div className="title py-3">
-                                                <span className="font-size-23 font-bold">توضیحات</span>
-                                            </div>
-                                            <div className="paragraph pt-2 pe-2">
-                                                <p className="font-size-16 font-bold">
-                                                    {data && data.description}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section className="mt-4">
-                    <div className="container">
-                        <div className="p-data">
-                            <div className="title d-flex align-items-center justify-content-between">
-                                <div className="d-flex justify-content-start ps-2 ms-2 pb-2">
-                                    <div className="d-flex align-items-center text-4b ps-2 pb-2">
-                                        <svg className="ms-2" xmlns="http://www.w3.org/2000/svg" width="30.436" height="30.432" viewBox="0 0 52.436 49.432">
-                                            <g id="Notification_2" data-name="Notification 2" transform="translate(-0.473)">
-                                                <path id="Path_1062" data-name="Path 1062" d="M9,25.606C13.021,28.2,18.947,26.893,20.851,23" transform="translate(8.316 21.455)" fill="none" stroke="#ff0000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                                <path id="Path_1063" data-name="Path 1063" d="M28.365,16.851A11.411,11.411,0,0,0,16.513,5" transform="translate(15.643 3.901)" fill="none" stroke="#ff0000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                                <path id="Path_1064" data-name="Path 1064" d="M36.266,20.752C36.266,8.9,28.365,1,16.513,1" transform="translate(15.643)" fill="none" stroke="#ff0000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                                <path id="Path_1065" data-name="Path 1065" d="M14.625,4.94q-.011-.05-.024-.1a1.975,1.975,0,0,0-3.816,1.022q.013.05.029.1C4.673,8.593.588,17.387,3.683,25.147c1.148,2.321-.049,4.034-1.294,5.817C1.212,32.649-.008,34.4.665,36.779c.9,3.35,3.292,4.655,6.334,4.8,0,0,5.656.587,14.9-1.889S35.74,33.882,35.74,33.882c2.56-1.651,3.957-4.07,3.083-7.328-.646-2.411-2.576-3.315-4.427-4.182-1.961-.919-3.835-1.8-4-4.382C29.194,9.722,21.259,4.149,14.625,4.94ZM7.73,29.355a7.819,7.819,0,0,0-.423-5.787,11.653,11.653,0,0,1,.385-9.025,9.156,9.156,0,0,1,5.487-5.232l1.072-.287a9.156,9.156,0,0,1,7.368,1.788,11.653,11.653,0,0,1,4.846,7.624,7.821,7.821,0,0,0,2.508,5.212,13.438,13.438,0,0,0,3.511,2.193l.067.031c2.215,1.04,2.336,1.262,2.455,1.706a2.231,2.231,0,0,1-.028,1.594A3.553,3.553,0,0,1,33.6,30.562l-.09.058-.074.054-.006,0-.1.067c-.1.067-.271.178-.513.326-.482.294-1.246.733-2.291,1.251a52.254,52.254,0,0,1-9.655,3.558,52.266,52.266,0,0,1-10.14,1.746c-1.164.074-2.045.076-2.61.062-.282-.007-.486-.018-.607-.025L7.4,37.653H7.391L7.3,37.643l-.107-.005a3.613,3.613,0,0,1-1.9-.493,2.235,2.235,0,0,1-.812-1.388l-.007-.025L4.467,35.7c-.107-.378-.154-.592,1.266-2.628l.043-.061h0A13.57,13.57,0,0,0,7.73,29.355Z" transform="translate(0 2.317)" fill="#279692" fillRule="evenodd" />
-                                            </g>
-                                        </svg>
-                                        <h5 className="font-bold mb-0">تــورهای مشابــه</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* parent data */}
-                            <div className="w-100 col-xl-12 col-lg-12 w-100 d-flex flex-column">
-                                {/* child data */}
-                                {data && data.tours.map((item, index) => (
-                                    <div className="tour-item col-xl-12 col-lg-12 mb-2" key={index}>
-                                        <div className="tour-city">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="41.265" height="48.155" viewBox="0 0 41.265 48.155">
-                                                <g id="location2" transform="translate(1.549 1.5)">
-                                                    <path id="Path_1011" data-name="Path 1011" d="M1.271,23.5A27.9,27.9,0,0,0,8.614,37.67,46.066,46.066,0,0,0,18.34,45.6a3.243,3.243,0,0,0,3.487,0,46.066,46.066,0,0,0,9.725-7.932A27.9,27.9,0,0,0,38.895,23.5,21.308,21.308,0,0,0,35.951,8.79C33.1,4.425,28.083,1,20.083,1S7.067,4.425,4.215,8.79A21.308,21.308,0,0,0,1.271,23.5Z" transform="translate(-1 -1)" fill="none" stroke="#e20000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-                                                    <circle id="Ellipse_49" data-name="Ellipse 49" cx="5.204" cy="5.204" r="5.204" transform="translate(24.288 23.697) rotate(180)" fill="none" stroke="#e20000" stroke-width="3"/>
-                                                </g>
-                                            </svg>
-                                            <div className="info-tour-city mr-2">
-                                                <Link href={`/tours/${item.endCity.nameEn}/${item.slug}`} legacyBehavior={true}>
-                                                    <strong style={{fontSize:'14px'}}>{item.title}</strong>
-                                                </Link>
-                                                <div className="text-price pt-1">
-                                                    <small className="title-price" style={{fontSize:'13px'}}>شروع قیمت از :</small>
-                                                    <strong className="price-tour color-base-color me-2" style={{color:' #e20000',fontSize:'15px'}}>
-                                                        {moneyFormat(item.minPrice)}
-                                                        <small className="pe-1">تومان </small>
-                                                    </strong>
+                                                    <div style={{alignSelf: 'end', justifySelf: 'end', height: 'auto'}}>
+
+                                                        <svg fill="#cecece" width="100px" height="100px"
+                                                             viewBox="0 0 24 24"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M15,16H9a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2ZM9,10h1a1,1,0,0,0,0-2H9a1,1,0,0,0,0,2Zm6,2H9a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm4.71,3.29a1,1,0,0,0-.33-.21.92.92,0,0,0-.76,0,1,1,0,0,0-.33.21,1.15,1.15,0,0,0-.21.33,1,1,0,0,0,.21,1.09A1,1,0,0,0,19,17a1,1,0,0,0,.38-.08,1.15,1.15,0,0,0,.33-.21,1,1,0,0,0,.21-1.09A1.15,1.15,0,0,0,19.71,15.29ZM20,8.94a1.31,1.31,0,0,0-.06-.27l0-.09a1.07,1.07,0,0,0-.19-.28h0l-6-6h0a1.07,1.07,0,0,0-.28-.19.32.32,0,0,0-.09,0A.88.88,0,0,0,13.05,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3h8a1,1,0,0,0,0-2H7a1,1,0,0,1-1-1V5A1,1,0,0,1,7,4h5V7a3,3,0,0,0,3,3h3v2a1,1,0,0,0,2,0V9S20,9,20,8.94ZM15,8a1,1,0,0,1-1-1V5.41L16.59,8Zm4,10a1,1,0,0,0-1,1v2a1,1,0,0,0,2,0V19A1,1,0,0,0,19,18Z"/>
+                                                        </svg>
+                                                    </div>
+
                                                 </div>
-                                            </div>
+
+                                            </div>}
+
                                         </div>
-                                        <div className="tour-days">
-                                            <div className="night mb-2">
-                                                <svg className="ms-2" xmlns="http://www.w3.org/2000/svg" width="15.437" height="16.078" viewBox="0 0 15.437 16.078">
-                                                    <path id="Moon_1" data-name="Moon 1" d="M14.794,10.838l.595.245a.643.643,0,0,0-.883-.82ZM6.442.643l.519.38A.643.643,0,0,0,6.3.015Zm5.39,10.25a6.126,6.126,0,0,1-6.07-6.181H4.475a7.413,7.413,0,0,0,7.356,7.467Zm2.674-.63a5.954,5.954,0,0,1-2.674.63V12.18a7.24,7.24,0,0,0,3.25-.766Zm-.307.33a6.717,6.717,0,0,1-6.2,4.2v1.286a8,8,0,0,0,7.387-5ZM8,14.792A6.777,6.777,0,0,1,1.287,7.955H0a8.063,8.063,0,0,0,8,8.123ZM1.287,7.955A6.812,6.812,0,0,1,6.58,1.271L6.3.015A8.1,8.1,0,0,0,0,7.955ZM5.762,4.712a6.225,6.225,0,0,1,1.2-3.689L5.923.263A7.512,7.512,0,0,0,4.475,4.712Z" transform="translate(0)" fill="#279692" />
-                                                </svg>
-                                                 <span className="font-size-14 font-bold"> {item.nightNum} شب</span>
-                                            </div>
-                                            <div className="day d-flex justify-content-start">
-                                                <svg className="ms-2" id="Sun" xmlns="http://www.w3.org/2000/svg" width="21.159" height="21.159" viewBox="0 0 21.159 21.159">
-                                                    <path id="Path_1144" data-name="Path 1144" d="M7,12.3c-.024,2.225.347,3.463,1.064,4.18s1.973,1.1,4.225,1.1,3.492-.382,4.205-1.1,1.084-1.96,1.084-4.19-.37-3.471-1.084-4.19S14.542,7,12.289,7,8.811,7.382,8.1,8.1,7.024,10.063,7,12.3Z" transform="translate(-1.71 -1.71)" fill="none" stroke="#279692" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                                    <path id="Path_1145" data-name="Path 1145" d="M14.511.756A.756.756,0,0,0,13,.756ZM13,2.267a.756.756,0,0,0,1.511,0ZM13,.756V2.267h1.511V.756Z" transform="translate(-3.176)" fill="#279692" />
-                                                    <path id="Path_1146" data-name="Path 1146" d="M14.511,24.756a.756.756,0,0,0-1.511,0ZM13,26.267a.756.756,0,0,0,1.511,0Zm0-1.511v1.511h1.511V24.756Z" transform="translate(-3.176 -5.864)" fill="#279692" />
-                                                    <path id="Path_1147" data-name="Path 1147" d="M26.267,14.511a.756.756,0,0,0,0-1.511ZM24.756,13a.756.756,0,0,0,0,1.511Zm1.511,0H24.756v1.511h1.511Z" transform="translate(-5.864 -3.176)" fill="#279692" />
-                                                    <path id="Path_1148" data-name="Path 1148" d="M2.267,14.511a.756.756,0,0,0,0-1.511ZM.756,13a.756.756,0,0,0,0,1.511Zm1.511,0H.756v1.511H2.267Z" transform="translate(0 -3.176)" fill="#279692" />
-                                                    <path id="Path_1149" data-name="Path 1149" d="M4.29,3.221A.756.756,0,0,0,3.221,4.29Zm0,2.137A.756.756,0,0,0,5.359,4.29ZM3.221,4.29,4.29,5.359,5.359,4.29,4.29,3.221Z" transform="translate(-0.733 -0.733)" fill="#279692" />
-                                                    <path id="Path_1150" data-name="Path 1150" d="M4.29,24.359A.756.756,0,1,1,3.221,23.29Zm0-2.137A.756.756,0,0,1,5.359,23.29ZM3.221,23.29,4.29,22.221,5.359,23.29,4.29,24.359Z" transform="translate(-0.733 -5.375)" fill="#279692" />
-                                                    <path id="Path_1151" data-name="Path 1151" d="M23.29,3.221A.756.756,0,1,1,24.359,4.29Zm0,2.137A.756.756,0,0,1,22.221,4.29ZM24.359,4.29,23.29,5.359,22.221,4.29,23.29,3.221Z" transform="translate(-5.375 -0.733)" fill="#279692" />
-                                                    <path id="Path_1152" data-name="Path 1152" d="M23.29,24.359a.756.756,0,1,0,1.069-1.069Zm0-2.137a.756.756,0,0,0-1.069,1.069Zm1.069,1.069L23.29,22.221,22.221,23.29l1.069,1.069Z" transform="translate(-5.375 -5.375)" fill="#279692" />
-                                                </svg>
-                                                <span className="font-size-14 font-bold"> {data.dayNum} روز</span>
-                                            </div>
-                                        </div>
-                                        <div className="tour-night d-flex align-items-center">
-                                            <svg className="ms-2" xmlns="http://www.w3.org/2000/svg" width="21.429" height="17.709" viewBox="0 0 21.429 17.709">
-                                                <g id="Up_Down_1" data-name="Up Down 1" transform="translate(21.015 17.294) rotate(180)">
-                                                    <path id="Path_1173" data-name="Path 1173" d="M1,11.23l4.65,4.65m0,0V1m0,14.88,4.65-4.65" fill="none" stroke="#279692" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                                    <path id="Path_1174" data-name="Path 1174" d="M11,5.65,15.65,1m0,0V15.88M15.65,1,20.3,5.65" transform="translate(-0.7)" fill="none" stroke="#ff0000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                                </g>
-                                            </svg>
-                                            <div className="d-flex flex-column">
-                                                <span className="from text-dark">{item.createdAt.split('T')[0]}</span>
-                                                <span className="to text-dark">{item.expireDate.split(' ')[0]}</span>
-                                            </div>
-                                        </div>
-                                        <div className="type">
-                                            <img width="28" src={data && data.transfers[0].logo} />
-                                            <span className="text-dark me-2">{item.transfers[0].transfer}</span>
-                                        </div>
-                                            <Link href={`/tours/${item.endCity.nameEn}/${item.slug}`} legacyBehavior={true} style={{width:'100%', height:'100%'}}>
-                                        <div className="ino-tour-btn" >
-                                                {/* <span className="text-mobi-btn">جزییات</span> */}
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="27.414" height="18.453" viewBox="0 0 27.414 18.453">
-                                                    <path id="Right_Arrow_2" data-name="Right Arrow 2" d="M18.188,1,26,8.812m0,0H1m25,0-7.812,7.813" transform="translate(27.414 18.039) rotate(180)" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                                                </svg>
-                                        </div>
-                                            </Link>
                                     </div>
-                                ))}
+
+                                </div>
+                            </div> :
+                            <div className='container'>
+                                <div className='padd'>
+                                    <Shimmers3/>
+                                    <Shimmers3/>
+                                    <Shimmers3/>
+                                    <Shimmers3/>
+                                    <Shimmers3/>
+                                    <Shimmers3/>
+                                </div>
+
+
                             </div>
-                        </div>
-                    </div>
-                </section>
+                        }
+
+                    </section>
+
                 </div>
-                :
-                <NewLoader/>
-                }
+
                 {/* footer */}
             </div>
             {show &&
-                <PopUp opened={show} closePopUp={setShow}>
-                    <RequestTour setOpen={setOpen} messages={messages} setMessages={setMessages} setShow={setShow} packData={packData} setPackData={setPackData} />
-                </PopUp>
+                <PopUpWide opened={show} closePopUp={setShow}>
+                    <RequestTour setOpen={setOpen} messages={messages} setMessages={setMessages} setShow={setShow}
+                                 packData={packData} setPackData={setPackData} datatitle={data && data}
+                        // selectedHotelID={selectedHotelId}
+                                 currency={data?.currencies}
+                                 isBundle={data.is_bundle}
+                                 flightId={selectedFlight}
+                                 selectedHotel={selectedHotel}
+                                 infPrc={infPrice}
+                                 setShow={() => setShow(false)}
+
+
+                    />
+                </PopUpWide>
             }
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                    {messages.message}
-                </Alert>
-            </Snackbar>
-                <Footer />
+
+            {
+                isReserve &&
+                <>
+
+                    {!data.is_bundle ? <PopUp2 opened={isReserve} closePopUp={setIsReserve}>
+                        <PackageReserve isreserve={isReserve} isBundle={data.is_bundle}
+                                        setOpen={setOpen} messages={messages} setMessages={setMessages}
+                                        setShow={setShow}
+                                        transfers={flightList && flightList}
+                                        packData={packData} setPackData={setPackData} datatitle={data && data}
+                                        setIsReserve={(val) => setIsReserve(val)}
+                                        selectedHotel={selectedHotel}
+                                        flightId={selectedFlight}
+                                        flightIds={flightId}
+                                        tourData={data}
+                                        tranfers={data.tranfers}
+                        />
+                    </PopUp2> : <PopUp opened={isReserve} closePopUp={setIsReserve}>
+                        <PackageReserve isreserve={isReserve} isBundle={data.is_bundle}
+                                        setOpen={setOpen} messages={messages} setMessages={setMessages}
+                                        setShow={setShow}
+                                        transfers={flightList && flightList}
+                                        packData={packData} setPackData={setPackData} datatitle={data && data}
+                                        setIsReserve={(val) => setIsReserve(val)}
+                                        selectedHotel={selectedHotel}
+                                        flightId={selectedFlight}
+                                        flightIds={flightId}
+                                        tourData={data}
+                        />
+                    </PopUp>}
+                </>
+
+
+            }
+            {/*<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>*/}
+            {/*    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>*/}
+            {/*        {messages.message}*/}
+            {/*    </Alert>*/}
+            {/*</Snackbar>*/}
+            <Footer/>
         </div>
+
     );
 };
 
-tour.getInitialProps = ({ query }) => {
+tour.getInitialProps = ({query}) => {
     return {
-      Pathname: query
+        Pathname: query
     }
-  }
+}
 
 export default tour;

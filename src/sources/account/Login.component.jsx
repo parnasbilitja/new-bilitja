@@ -28,7 +28,7 @@ const Login = (props) => {
     reqPnr:localStorage.getItem('reqPnr'),
     reqNo:localStorage.getItem('reqNo')
   }
-  
+
   // props.router.push(`/flights/receipt/${route.reqNo}/${route.reqPnr}`)
 
   const [TimerChecker, setTimerChecker] = useState({
@@ -69,7 +69,7 @@ const Login = (props) => {
     const isString = typeof text === 'string'
     return (isNumber || (isString && text !== '')) && !isNaN(Number(text))
   }
-  
+
   const validateChar = (value, index) => {
     return matchIsNumeric(value)
   }
@@ -111,7 +111,7 @@ const Login = (props) => {
             state: true,
             message: "ورود شما موفقیت آمیز بود.",
           });
-          
+
           props.accountBoxModify({
             state: false,
             type: "authentication",
@@ -225,10 +225,10 @@ const Login = (props) => {
         mobile: checkNumberfatoen(UserMobileAndCode.mobile),
         token:  checkNumberfatoen(UserMobileAndCode.code),
 
-        hostname: "bilitja.com",
+        hostname: "hamnavaz.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
-        agencyName: "بلیطجا",
-        telNumber: "02157874",
+        agencyName: "بلبطجا",
+        telNumber: "02184278",
       }),
     })
       .then((res) => res.json())
@@ -440,8 +440,8 @@ const Login = (props) => {
           </div>
         </div> */}
       {/*<div className="row">
-                    
-                   
+
+
                      <div className="col-lg-6 col-md-6 col-sm-6 col-12 no-padding-horizental">
                         <br />
                         <p className="text-center no-margin font-size-13" onClick={() => {
@@ -450,7 +450,7 @@ const Login = (props) => {
                                 type: 'forget'
                             })
                         }}>رمز عبور را فراموش کرده ام</p>
-                    </div> 
+                    </div>
                     <div className="col-lg-6 col-md-6 col-sm-6 col-12 no-padding-horizental">
                         <br />
                         <p className="text-center font-size-13 no-margin" onClick={() => {
@@ -459,7 +459,7 @@ const Login = (props) => {
                                 type: 'register'
                             })
                         }}>ثبت نام</p>
-                    </div> 
+                    </div>
                 </div>*/}
     </div>
   );

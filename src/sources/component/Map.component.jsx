@@ -1,22 +1,23 @@
 import React from 'react';
-import {MapContainer, Marker, Popup, TileLayer, Tooltip} from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import "leaflet-defaulticon-compatibility";
+import {MapContainer, Marker, Popup, TileLayer, Tooltip} from "react-leaflet"
+import "leaflet/dist/leaflet.css"
+import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-import styles from '../../../styles/Map.module.scss';
+import styles from '../../../styles/Map.module.scss'
 
 
-const MapComponent = () => {
+const MapComponent = (props) => {
     return (
         <>
-            <MapContainer className={styles['map']} center={[35.718881, 51.435420]} zoom={16} scrollWheelZoom={true }>
+            <MapContainer className={styles['map']} center={props.coordinates} zoom={16} scrollWheelZoom={true }>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={[35.718881, 51.435420]}>
+                <Marker position={props.coordinates}>
                     <Popup>
                         <strong>
-                        شرکت خدمات مسافرت هوایی و جهانگردی بلیطجا آسمان آبی
+
+                        شرکت خدمات مسافرت هوایی و جهانگردی بلبطجا آسمان آبی
                         </strong>
                     </Popup>
                 </Marker>

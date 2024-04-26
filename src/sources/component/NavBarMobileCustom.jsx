@@ -59,15 +59,15 @@ const NavBarMobile = (props) => {
           <img
             width=""
             height=""
-            alt="بلیطجا - لوگو"
-            src="../../../Images/logo512.webp"
+            alt="بلبطجا - لوگو"
+            src="../../../Images/hamnavaz-logo.webp"
             className="pull-left"
           />
         </Link>
       <a href="tel:021-84279999" className="color-black font-bold-iransanse">
             {/* <span className="text-dark mx-2">مشاوره تلفنی</span> */}
             <i className="bilitja icon-phone font-size-16"></i>
-            <span className="text-dark font-size-14"> &nbsp;021-8427 9999</span>
+            <span className="text-dark font-size-14"> &nbsp;021-84278</span>
           </a>
       </div>
 
@@ -85,8 +85,8 @@ const NavBarMobile = (props) => {
               <img
                 width=""
                 height=""
-                alt="بلیطجا - لوگو"
-                src="../../../Images/bilitja-light-logo.webp"
+                alt="بلبطجا - لوگو"
+                src="../../../Images/hamnavaz-logo.webp"
               />
             </Link>
             <p className="no-margin color-white">
@@ -141,8 +141,10 @@ const NavBarMobile = (props) => {
             </li>
             <li>
               <div>
-                <a href="/TrackOrder">
-                  <i className="bilitja font-size-24 icon-refrence pull-right rotate-y-180"></i>
+                <a href="/src/pages/TrackOrder">
+                  {/*<i className="bilitja font-size-24 icon-refrence pull-right rotate-y-180"></i>*/}
+                  <svg className='mb-3' xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M160-160v-516L82-846l72-34 94 202h464l94-202 72 34-78 170v516H160Zm240-280h160q17 0 28.5-11.5T600-480q0-17-11.5-28.5T560-520H400q-17 0-28.5 11.5T360-480q0 17 11.5 28.5T400-440ZM240-240h480v-358H240v358Zm0 0v-358 358Z"/></svg>
+
                   <span className="pull-right font-size-14 color-black">
                     پیگیری خرید
                   </span>

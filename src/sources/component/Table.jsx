@@ -6,6 +6,7 @@ const Table = ({tableData,state}) => {
     const [width, setWidth] = useState(0)
     useEffect(() => {
         setWidth(window.innerWidth)
+        console.log(tableData);
     },[])
     return (
         <div className={`controller-table mt-3 scroller`}>

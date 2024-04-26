@@ -35,7 +35,7 @@ const PaymentReceiptPage = (props) => {
         <img
           width=""
           height=""
-          alt="بلیطجا - لوگو پرداخت موفقیت آمیز"
+          alt="بلبطجا - لوگو پرداخت موفقیت آمیز"
           src="/Images/check.webp"
           className="mt-5 text-center"
         />

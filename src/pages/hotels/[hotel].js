@@ -21,57 +21,83 @@ import 'swiper/css/pagination';
 import List from '../../sources/tour/List';
 import Head from "next/head";
 import {isEmpty} from "../../Utils/newTour";
-
-
+// import MapComponent from "@/sources/component/Map.component";
+import dynamic from "next/dynamic";
+import {getCityInfo} from "@/pages/[CityTour]";
+const MapComponent = dynamic(() =>
+        import("@/sources/component/Map.component"),
+    {
+        ssr: false
+    }
+);
 const hotel = (props) => {
-    const [hotel, setHotel] = useState({})
+    // const router=useRouter()
+    // const [hotel, setHotel] = useState({})
     const [show, setShow] = useState(false)
-    useEffect(()=>{
-        const getData = async () => {
-            await axios.post(`https://api.hamnavaz.com/api/v1/hotel/getHotel/${props.Pathname.hotel}`,{isAdmin:0})
-            .then(res => {setHotel(res.data.data),console.log(res)})
-        }
-        getData()
-        console.log(hotel);
-    },[])
-    // console.log(hotels);
+    //     const getData = async () => {
+    //     debugger
+    //         await axios.get(`https://api.hotelobilit.com/api/v2/hotels/${props.Pathname.hotel}`,{
+    //             headers:{
+    //                 "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP'
+    //             }
+    //         })
+    //         .then(res => {
+    //             console.log(res.data)
+    //
+    //             setHotel(res.data.data)})
+    //     }
+    // useEffect(()=>{
+    //     getData()
+    //     // console.log(hotel);
+    // },[])
+    // // console.log(hotel);
     return (
         <>
-        <NavHandler />
+                <NavHandler />
             <div className='padd'>
                 <Scrolltoprefresh/>
-                <div className="col-md-10 m-auto parent-info-hotel marginTop120">
+                <div className="col-md-10 m-auto parent-info-hotel marginTop120 my-5">
                     <Head>
 
                         {
-                            isEmpty(hotel) ? <title> لیست هتل ها | بلیطجا</title> :<title> {`${hotel?.name} | ${hotel.nameEn} in ${hotel.location}`} | بلیطجا</title>
+                            isEmpty(props.hotel) ? <title> لیست هتل ها | بلبطجا</title> :<title> {`${props.hotel?.title} | ${props.hotel.titleEn}`} | بلبطجا</title>
                         }
 
                     </Head>
-                    <div class="title-info-hotel">
-                        <div class="right">
-                            <img src="/Images/Tag.png" width="35" alt="اطلاعات-هتل"/>
-                            <div class="text">
-                                <h2 class="title-fa">{hotel.name}</h2>
-                                <h2 class="title-en">{hotel.nameEn}</h2>
+                    <div className="title-info-hotel">
+                        <div className="right">
+                            <img src="/Images/Tag1.png" width="35" alt="اطلاعات-هتل" className='mx-2'/>
+                            <div className="text">
+                                <h2 className="title-fa" style={{whiteSpace:'nowrap'}}>{props.hotel?.title}</h2>
+                                <h2 className="title-en">{props.hotel?.titleEn}</h2>
                             </div>
                         </div>
-                    </div>
-                    <div class="title-hotel">
-                        <div class="name-city-country">
-                            <img src="/Images/Location.png" width="20" alt="آدرس-شهر و منطقه"/>
-                            <span class="title-small-fa">شهر و منطقه :</span>
-                            <span class="title-fa mr-2">{ hotel.city?.name}</span>
-                            <span class="title-fa mr-2">{ hotel.city?.nameEn}</span>
+                        <div className='w-100 d-flex justify-content-end'>
+                            {
+                                props.hotel?.city?.slug &&
+                                <button style={{padding:'1rem',backgroundColor:'#e20000' ,borderRadius:'15px',color:'#fff'}} onClick={()=>{
+                                    let citytour= '/' + 'تور-' +props.hotel?.city?.slug
+                                    router.push(citytour)
+                                }}>{`تور لاکچری با بهترین قیمت  ${props.hotel?.city?.slug}`}</button>
+                            }
+
                         </div>
-                        <div class="rate-star">
-                            <span class="title-small-fa">درجه هتل :</span>
+                    </div>
+                    <div className="title-hotel">
+                        <div className="name-city-country">
+                            <img src="/Images/Location.svg" width="20" alt="آدرس-شهر و منطقه"/>
+                            <span className="title-small-fa">آدرس و منطقه :</span>
+                            <span className="title-fa mr-2">{ props.hotel?.address}</span>
+                            <span className="title-fa mr-2">{ props.hotel?.location}</span>
+                        </div>
+                        <div className="rate-star">
+                            <span className="title-small-fa">درجه هتل :</span>
                             <div className="star d-flex align-items-center pb-1">
                                 <div className="d-flex align-items-center">
                                     <div className="image d-flex align-items-center">
                                         {(() => {
                                             let stars = [];
-                                            for (let i = 1; i <= parseInt(hotel.stars); i++) {
+                                            for (let i = 1; i <= parseInt(props.hotel?.stars); i++) {
                                                 stars.push(
                                                     <svg className="mx-1" xmlns="http://www.w3.org/2000/svg" width="16"
                                                          height="16" viewBox="0 0 21.443 21.387">
@@ -92,19 +118,20 @@ const hotel = (props) => {
                     </div>
                     <div className="parent-gallery">
                         <div className="right-gallery">
-                            {hotel.images?.map((item,index)=>(
+                            {props.hotel.gallery?.map((item,index)=>(
                                 <>
                                     {index >= 1 && index < 5 &&
-                                        <img className="top-right" src={item} alt=""/>
+                                        <img className="top-right" src={item.url} alt=""/>
                                     }
                                 </>
                             ))}
                         </div>
-                        <div className="left-gallery" style={{backgroundImage: `url(${hotel.images && hotel.images[0] && hotel.images[0]})`}}>
+                        <div className="left-gallery" style={{backgroundImage: `url(${props.hotel?.gallery && props.hotel?.gallery[0]?.url && props.hotel.gallery[0]?.url})`}}>
+                            <img src={props.hotel.thumbnail?.url ? props.hotel.thumbnail?.url:props.hotel.gallery[0]?.url} style={{width:'100%',height:'100%',position:'absolute', zIndex:'-1'}} alt=""/>
                             <div className="parent-view-all-photo">
                                 <div className="btn-photos" onClick={() =>setShow(true)}>
                                     <img className="d-none" src="https://api.hamnavaz.com/source/jadid/اس8.jpg" alt="مشاهده-عکس ها"/>
-                                    <img src="https://hamnavaz.com/img/Menu-hotel.svg" width="20" alt=""/>
+                                    <img src="../../../Images/Menu-hotel.svg" width="20" alt=""/>
                                     <span className="text-dark" style={{cursor:'pointer'}}>&nbsp;مشاهده همه عکس ها</span>
                                 </div>
                             </div>
@@ -113,13 +140,12 @@ const hotel = (props) => {
                     <div className="about-hotel">
                         <div className="map">
                             <div className="no-map">
-                                <span>نقشه موجود نیست</span>
+                                {props.hotel?.coordinates && <MapComponent coordinates={props.hotel?.coordinates}/>}
                             </div>
-
                             <a className="btn-map">مسیریابی از مبدا شما !</a>
                             <div className="address">
                                 <img src="../../../Images/008-maps.svg" width="20" alt="آدرس-روی-نقشه"/>
-                                <p className="text-en" style={{textAlign:'justify'}}>{hotel.address}</p>
+                                <p className="text-en" style={{textAlign:'justify'}}>{props.hotel?.address}</p>
                             </div>
                             {/* <div class="telephone">
                         <img src="https://hamnavaz.com/img/003-telephone.svg" width="20" alt="تلفن-تماس"/>
@@ -127,11 +153,11 @@ const hotel = (props) => {
                     </div> */}
                         </div>
                         <div className="info-about-hotel">
-                            <h2>درباره {hotel.name} بیشتر بدانید :</h2>
+                            <h2>درباره {props.hotel.title} بیشتر بدانید :</h2>
                             <div className="scrollbar" id="style-1"></div>
                             <span className="editor">
-                        <p dir="RTL" style={{marginBottom:"0cm",textAlign:'justify',lineHeight:'normal'}} className='font-size-15' dangerouslySetInnerHTML={{__html:hotel.body}}/>
-                                {/* {hotels.city?.description} */}
+                        <p dir="RTL" style={{marginBottom:"0cm",textAlign:'justify',lineHeight:'normal'}} className='font-size-15' >{props.hotel?.description}</p>
+                                {/* {hotel.city?.description} */}
                                 {/* </p> */}
                         </span>
                         </div>
@@ -141,10 +167,12 @@ const hotel = (props) => {
                             <div className="option">
                                 <h2 className="font-size-15 font-bold mb-4">امکانات هتل ، اتاق ها و خدمات دیگر در یک نگاه</h2>
                                 <div className="d-flex flex-wrap align-items-center" style={{rowGap:'10px'}}>
-                                    {hotel?.services && hotel?.services[0]?.services?.map(service =>(
+                                    {props.hotel?.facilities
+                                        && props.hotel?.
+                                            facilities?.map(service =>(
                                         <div key={service.id} className="col-6 col-sm-4 col-md-3 d-flex">
                                             <FontAwesomeIcon icon={faAngleLeft} className='p-0 m-0' />
-                                            <p className="text-center font-size-14 font-bold m-0 p-0 px-2" >{' '} {service.name}</p>
+                                            <p className="text-center font-size-14 font-bold m-0 p-0 px-2">{' '} {service.name}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -152,10 +180,11 @@ const hotel = (props) => {
                         </div>
                     </div>
                 </div>
-                {hotel.tours?.length > 0 &&
-                    <div class="row justify-content-center">
+
+                {props.hotel.tours?.length > 0 &&
+                    <div className="row justify-content-center">
                         <div className='col-10'>
-                            <List name='hotel' tourData={hotel.tours}/>
+                            <List name='hotel' tourData={props.hotel.tours}/>
                         </div>
                     </div>
                 }
@@ -169,10 +198,10 @@ const hotel = (props) => {
                         navigation
                         pagination={{ clickable: true }}
                     >
-                        {hotel.images?.map(image => (
+                        {props.hotel.gallery?.map(image => (
                             <SwiperSlide>
                                 <div style={{paddingBottom: '30px'}}>
-                                    <Image class="img-blog" src={image} width='1200%' height='1200%' />
+                                    <Image class="img-blog" src={image.url} width='1200%' height='1200%' />
                                 </div>
                             </SwiperSlide>
                         ))}
@@ -180,15 +209,44 @@ const hotel = (props) => {
                 </PopUp>
             </div>
             <Footer />
-
         </>
+
     );
 };
 
-hotel.getInitialProps = ({ query }) => {
-    return {
-      Pathname: query
+const getData = async (hotelslug) => {
+    try {
+        const response = await axios.get(`https://api.hotelobilit.com/api/v2/hotels/${hotelslug}`, {
+            headers: {"x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP',
+                referer:'hamnavaz.com'
+            },
+
+        });
+        return response.data.data;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
     }
-  }
+
+
+        }
+export async function getServerSideProps(context) {
+    // Access the query parameter
+
+    console.log('again',context.query)
+    let hotel =await getData(encodeURIComponent(context.query.hotel))
+    console.log('end',hotel)
+    return {
+        props: {
+            hotel:hotel
+        },
+    };
+}
+
+// hotel.getInitialProps = ({ query }) => {
+//     return {
+//       Pathname: query
+//     }
+//   }
 
 export default hotel;

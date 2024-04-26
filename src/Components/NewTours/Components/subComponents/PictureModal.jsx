@@ -27,10 +27,10 @@ const PictureModal = ({ url, setIsModal, gallery }) => {
             spaceBetween={50}
             slidesPerView={1}
             navigation
-            pagination={{ clickable: true }}
+            pagination={{ clickable: false }}
             scrollbar={{ draggable: false }}
             onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
+            // onSlideChange={() => console.log("slide change")}
             loop={true}
           >
             <svg
@@ -64,18 +64,21 @@ const PictureModal = ({ url, setIsModal, gallery }) => {
             </svg>
             <SwiperSlide
               style={{
-                height: "auto",
-                borderRadius: "20px",
-                overflow: "hidden",
+                  height: "auto",
+                  borderRadius: "20px",
+                  overflow: "hidden",
+                  display:'flex',
+                  justifyContent:'center',
               }}
             >
               <img
                 src={url}
                 alt=""
                 style={{
-                  height: "100%",
-                  width: "100%",
-                  objectFit: "contain",
+                    height: "600px",
+                    width: "900px",
+                    objectFit:'contain',
+                    alignSelf:'start'
                 }}
               />
             </SwiperSlide>
@@ -86,15 +89,21 @@ const PictureModal = ({ url, setIsModal, gallery }) => {
                     height: "auto",
                     borderRadius: "20px",
                     overflow: "hidden",
+                      display:'flex',
+                      justifyContent:'center',
+                      width:'100%',
+
+
                   }}
                 >
                   <img
                     src={pic.url}
                     alt=""
                     style={{
-                      height: "100%",
-                      width: "100%",
-                      objectFit: "cover",
+                      height: "600px",
+                      width: "900px",
+                     objectFit:'contain',
+                        alignSelf:'start'
                     }}
                   />
                 </SwiperSlide>

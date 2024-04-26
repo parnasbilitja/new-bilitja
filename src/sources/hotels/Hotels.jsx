@@ -12,6 +12,7 @@ import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Link from 'next/link';
 import { Loader } from '../../Utils/Loader';
+import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
 
 const Hotels = () => {
     const swiperRef = useRef();
@@ -69,7 +70,7 @@ const Hotels = () => {
                                         </g>
                                     </svg>
                                     <div className="text col-12 col-sm-10 d-flex">
-                                        <h5 className="font-bold" style={{marginTop:`${width>826?'2px':'4px'}`}}>هتل های برگزیده شهر</h5>
+                                        <h5 className="font-bold p-0" style={{marginTop:`${width>826?'2px':'4px'}`,fontSize:'2px'}}>هتل های برگزیده شهر</h5>
                                         <select style={{width: '20%',marginBottom: '8px',color: '#279692'}}
                                          className="selectCity font-bold" value={city} onChange={(val) => setCity(val.target.value)}>
                                             {cities.map(item=>(
@@ -96,7 +97,7 @@ const Hotels = () => {
                         <div className="border-left"></div>
                     </div>
                     {loading ?
-                    <Loader/> :
+                    <NewLoader/> :
                     hotels.length>0 && !loading?
                     <Swiper
                     slidesPerView={'auto'}
@@ -177,7 +178,7 @@ const Hotels = () => {
                     
                     </Swiper>
                     : hotels.length == 0 ?
-                    <div className="hotelNotFound">متاسفانه هتلی موجود نیست</div>:<Loader/>
+                    <div className="hotelNotFound">متاسفانه هتلی موجود نیست</div>:<NewLoader/>
 }
         </div>
     );

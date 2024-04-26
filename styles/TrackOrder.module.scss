@@ -1,65 +1,199 @@
-$pillGray :#dee2e6;
-$pillTextGray :#888;
-$whiteColor : #fff;
-$blackColor : #000;
-$primaryColor: #279692;
-$secondaryColor:#ff0000;
-$blackBackground:#333;
-$borderRadius : 0.25rem;
+.tourDetailsContainer{
+  width:100%;
+  height:auto;
+  border:1px solid #cecece;
+  margin-top:20px;
+  //padding: 0px 10px 0 10px;
+  overflow: hidden;
 
-.track-order-title {
-  svg {
-    margin-left: 5px;
-  }
-}
-.height-short-input {
-  height: 31px;
-}
-.track-order-second-title {
-  margin-top: 10px;
-  margin-bottom: 0 !important;
-}
-.border-bottom-black-track {
-  width: 99.9%;
-  margin: 0 auto;
-  padding-bottom: 10px;
-  border-bottom: 1px solid black;
-}
-.parent-page-trakorder{
-  margin: 3rem 0;
-  border: 2px solid $pillGray;
-  border-radius: 10px;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  width: 90%;
-  justify-content: space-between;
-}
-.title-track-order{
-  margin-right: 8px;
-  font-weight: 600;
-  font-size: 18px;
-  margin-bottom: 0;
-}
-.icon-size{
-  font-size: 18px;
-}
-.details-order{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.border-bottom-black-track{
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  .img{
-    img{
-      height: 350px !important;
+
+  border-radius:20px;
+
+  .flight-item{
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    column-gap: 15px;
+    color: #e20000;
+    width: 100%;
+
+    .middle-det{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .cap{
+        display: flex;
+        justify-content: center;
+        p{
+          padding: 0;
+          margin: 0;
+          font-size: 14px;
+          font-weight: 700;
+          color: #e20000;
+        }
+      }
+
+      .f{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 1px;
+        width: 100%;
+        .separator{
+          position: relative;
+          bottom: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .dot{
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: relative;
+            top: 3px;
+            background-color:#e20000;
+          }
+
+          .dash{
+            border-bottom:2px dashed #e20000;
+            width:100px;
+            height:8px
+          }
+
+          .flightlogo{
+            svg{
+              transform: rotate(270deg);
+              position:relative;
+              top:3px;
+              fill:#e20000;
+            }
+
+          }
+
+        }
+      }
+    }
+
+
+    .airline-det{
+      padding: 0 10px 0 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 25%;
+      //column-gap: 25px;
+      .image-con{
+        width: 40px;
+        height: 40px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+
+
+      }
+      .det{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 5px;
+
+        p{
+          text-align: center;
+          font-size: 14px;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        .flight-number{
+          display: flex;
+          p:first-child{
+            color: #e20000;
+            margin-left: 2px;
+            font-size: 12px;
+            font-weight: 700;
+          }
+          p{
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+          }
+        }
+      }
+
+    }
+
+    .show-det{
+      display: flex;
+      align-items: center;
+      button{
+        border-radius: 10px;
+        width: 150px;
+        height: 50px;
+        background-color: #e20000;
+        color: #ffff;
+      }
     }
   }
+
+
 }
-.img-fluid-1{
-  height: 430px;
-  object-fit: contain;
+
+.trackordercontainer{
+  width: 100%;
+display: grid;
+ grid-template-columns: repeat(2,1fr);
+  flex-wrap: nowrap;
+  .track-con{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .track{
+      margin-top: 32px;
+      width: 100%;
+      padding: 0 140px;
+      .track-title{
+        display: flex;
+        align-content: center;
+        h2{
+          font-size: 20px;
+          font-weight: 700;
+        }
+
+      }
+      .track-input-con{
+        //display: flex;
+        //align-items: center;
+        .track-desc{
+          p{
+            font-size: 14px;
+          }
+        }
+
+        .track-input{
+          display: flex;
+          column-gap: 20px;
+
+          .buttoncon{
+            height: 100%;
+            width: 100px;
+            background-color: #e20000;
+            border-radius: 0.25rem;
+            color: #fff !important;
+            outline: medium none invert !important;
+            outline: initial !important;
+            border: 2px solid #e20000;
+          }
+        }
+
+      }
+    }
+
+  }
 }

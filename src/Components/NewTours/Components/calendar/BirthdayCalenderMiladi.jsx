@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import moment from "moment-jalaali";
 import styles from "../../../../../styles/BirthdayCalendar.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -14,6 +14,9 @@ const BirthdayCalenderMiladi = (props) => {
         month: "",
     });
 
+    // useEffect(()=>{
+    //     console.log(props.roomInfo)
+    // },[props.roomInfo])
     const getYears = () => {
         if (props.typePassenger == "ADL") {
             return new Array(current - 11 - props.numBase)
@@ -175,6 +178,20 @@ const BirthdayCalenderMiladi = (props) => {
             title: "December",
         },
     ];
+
+    const childTypeValidate=(chdtype)=>{
+       let checkin=props.roomInfo.checkin
+        if(chdtype.includes('withbed')){
+            console.log('hi')
+        }else{
+            console.log('bye')
+        }
+
+    }
+
+    useEffect(()=>{
+        console.log('type',childTypeValidate(props.roomInfo.type))
+    },[props.roomInfo.type])
     return (
         <div className={styles["birthday-calendar"]}>
             {state.stage == 1 ? (
@@ -211,7 +228,7 @@ const BirthdayCalenderMiladi = (props) => {
                         className="font-size-14 black-color font-bold-iransanse text-center"
                         style={{paddingTop:'25px'}}
                     >
-                        Please enter your desired month
+                        لطفا ماه مد نظر خود را انتخاب کنید
                     </p>
 
                         <button className="prevNextbtnSwiper2" onClick={() => {
@@ -236,6 +253,7 @@ const BirthdayCalenderMiladi = (props) => {
                                         }}
                                     >
                                         {item.title}
+                                        {item.month}
                                     </div>
                                 ) : parseInt(state.year) != parseInt(today.split("/")[0]) ? (
                                     <div
@@ -248,7 +266,13 @@ const BirthdayCalenderMiladi = (props) => {
                                             });
                                         }}
                                     >
-                                        {item.title}
+                                        <span className='mx-1'>{item.month}</span>
+
+
+
+                                        <span>{item.title}</span>
+
+
                                     </div>
                                 ) : null}
                             </>
@@ -274,13 +298,13 @@ const BirthdayCalenderMiladi = (props) => {
                     </button>
                     </div>
                     <div className={styles["birthday-day-container"]}>
-                        <div className="font-size-13 color-black">Sat</div>
-                        <div className="font-size-13 color-black">Sun</div>
-                        <div className="font-size-13 color-black">Mon</div>
-                        <div className="font-size-13 color-black">Tues</div>
-                        <div className="font-size-13 color-black">Wednes</div>
-                        <div className="font-size-13 color-black">Thurs</div>
-                        <div className="font-size-13 color-black">Fri</div>
+                        <div className="font-size-13 color-black">شنبه</div>
+                        <div className="font-size-13 color-black">یکشنبه</div>
+                        <div className="font-size-13 color-black">دوشنبه</div>
+                        <div className="font-size-13 color-black">سه شنبه</div>
+                        <div className="font-size-13 color-black">چهارشنبه</div>
+                        <div className="font-size-13 color-black">پنج شنبه</div>
+                        <div className="font-size-13 color-black">جمعه</div>
 
                         {getDays().map((x, i) => (
                             <div key={i}>
@@ -311,7 +335,9 @@ const BirthdayCalenderMiladi = (props) => {
                                                 props.roomInfo.roomTypeId,
                                                 "expired_passport",
                                                 props.roomInfo.id,
-                                               props.roomInfo.reserve_id
+                                               props.roomInfo.reserve_id,
+                                               props.roomInfo.passindex,
+                                               props.roomInfo.roomindex,
                                             );
                                         }}
                                     >

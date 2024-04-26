@@ -3,14 +3,14 @@ import styles from "../../../styles/Home.module.scss";
 
 const HomePicture = ({state}) => {
     return (
-        <div>
+        <div  >
         {state.width >= 826 ? (
           <div className={`${styles["parentbackTour"]}`}>
           <img
             className={`${styles[""]}`}
             width="60%"
             height=""
-            alt="بلیطجا-اسلایدر"
+            alt="بلبطجا-اسلایدر"
             src="../../../../Images/tour-bg-new.png"
           />
         </div>
@@ -20,7 +20,7 @@ const HomePicture = ({state}) => {
             <img
               width=""
               height=""
-              alt="بلیطجا-اسلایدر"
+              alt="بلبطجا-اسلایدر"
               src="../../../../Images/tour-bg-new.png"
             />
           </div>

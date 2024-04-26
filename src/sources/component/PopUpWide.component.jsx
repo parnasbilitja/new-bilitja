@@ -10,6 +10,7 @@ const PopUpWide = (props) => {
   return (
     <div className={`${styles["parent"]} ${props.opened ? "d-block" : "d-none"}`}
       onClick={() => {
+        // e.stop()
         props.closePopUp(false);
       }}
     >
@@ -17,7 +18,7 @@ const PopUpWide = (props) => {
         className={` ${styles["popup-calendar-main-box"]} ${
           props.opened ? styles["popup-animation"] : ""
         }`}
-        
+
       >
         <div
         style={{top:props.type =='editReciept' && width < 400 && '-80px',height: !props.type =='editReciept' && '100%'}}

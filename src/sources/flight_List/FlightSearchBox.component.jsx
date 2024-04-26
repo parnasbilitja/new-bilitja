@@ -14,10 +14,16 @@ import { addCredentials, switchRoute } from "../../Redux/Search/search.action";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 import { withRouter } from "next/router";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
+import styles1 from "../../../styles/PrimaryButton.module.scss";
+// import * as gtag from "gtag"
+import {event} from '../../../lib/ga/index'
+import {usePostHog} from "posthog-js/react";
+
 //import BirthdayCalendar from "../calendar/BirthdayCalendar.component"
 
 const FlightSearchBox = (props) => {
   const [width, setWidth] = useState();
+  const posthog=usePostHog()
   useEffect(() => {
     setWidth(window.innerWidth);
     console.log("from flightsearchbox", props.router);
@@ -159,6 +165,24 @@ const FlightSearchBox = (props) => {
   } = props;
   // console.log("flightDatePersian");
   // console.log(flightDatePersian);
+
+  // { action, category, label, value }
+  // const event = ()=> {
+  //   //  if(process.browser){
+  //   //     window.gtag("event", 'formStarted', { 'destination': props.credentials.dest, 'selectedDate': props.credentials.stDate});
+  //   // }
+  //   // if (typeof window !== 'undefined') {
+  //   // gtag('event', action, {
+  //   //     event_category: category,
+  //   //     event_label: label,
+  //   //     value: value,
+  //   //   });
+  //   // }
+  //   gtag('event', 'formStarted', { 'destination': props.credentials.dest, 'selectedDate': props.credentials.stDate})
+  // };
+  useEffect(()=>{
+    console.log(props.credentials.source.split(','))
+  },[props.credentials])
   return (
     <div className={`${styles["home-flight-form"]}`}>
       <div className="position-relative">
@@ -396,9 +420,9 @@ const FlightSearchBox = (props) => {
           }}
         />
       </div>
-      <div className=" without-focus">
+      <div className="without-focus">
         {/* {console.log(props)} */}
-        <PrimaryButton
+        <button className={`${styles1['primary-button']}`}
           type={"index"}
           style={{
             height: "55px",
@@ -470,10 +494,22 @@ const FlightSearchBox = (props) => {
                   props.refreshAction();
                 });
             }
-          }}
+            //   debugger
+            // if(props.credentials?.destinationName==='استانبول جدید' && props.credentials?.stDate==='2023/11/18' && props.credentials?.sourceName===){
+            //   // gtag('event', 'formStarted', { 'destination': props.credentials.dest, 'selectedDate': props.credentials.stDate})
+            // // console.log(props.credentials)
+            // //   if(typeof window !== 'undefined'){
+            // //     event('formStarted',{ 'destination': props.credentials.dest, 'selectedDate': props.credentials.stDate})
+            // //   }
+            //
+            // }
+            posthog.capture("FormStartFlight", {HMNOrigin: props.credentials.source, HMNDest: props.credentials.dest, HMNDate:props.credentials.stDate})
+          }
+
+        }
         >
           {state.searchReset == false ? "جستجو" : "لطفا صبر کنید..."}
-        </PrimaryButton>
+        </button>
       </div>
 
       <PopUpWide opened={state.open} closePopUp={managePopUpCalendar}>

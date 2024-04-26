@@ -35,10 +35,10 @@ const Authentication = (props) => {
       body: JSON.stringify({
         mobile: props.mobile,
         token: state.token,
-        hostname: "bilitja.com",
+        hostname: "hamnavaz.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
-        agencyName: "بلیطجا",
-        telNumber: "02157874",
+        agencyName: "بلبطجا",
+        telNumber: "02184278",
 
       }),
     })
@@ -49,7 +49,7 @@ const Authentication = (props) => {
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
           setTimeout(() => {
-            window.location.reload();
+            window?.location?.reload();
           }, 2000);
           props.accountBoxModify({
             state: false,

@@ -49,7 +49,7 @@ const FlightReserveMobileHeader = (props) =>{
               <img
                 width=""
                 height=""
-                alt="بلیطجا - لوگو رزرو بلیط هواپیما"
+                alt="بلبطجا - لوگو رزرو بلیط هواپیما"
                 className="airline-icon col-4 px-0"
                 src="../../../../../Images/airplane_reserve.png"
                 style={{ transform: 'rotateY(180deg)' }}

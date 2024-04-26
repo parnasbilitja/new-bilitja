@@ -12,6 +12,7 @@ import { Loader } from "../../../Utils/Loader";
 import MiniClaender from "./MiniClaender";
 import ShowFlightListMobile from "../../flight_List/ShowFlightListMobile.component";
 import axios from "axios";
+import NewLoader from "../../../Components/NewTours/Components/subComponents/NewLoader";
 
 
 const Flights = (props) => {
@@ -87,7 +88,7 @@ const Flights = (props) => {
         <div className="mt-5">
           {
             loading?
-            <Loader/>
+            <NewLoader/>
             :
             data.length>0 ?
             <>

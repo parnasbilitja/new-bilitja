@@ -611,7 +611,7 @@ class GetFlightList extends React.Component {
                 {this.state.loading ? (
                   <div className="mt-5 d-flex h-50 justify-content-center align-items-center">
                     <NewLoader
-                      title={`بلیطجا در حال یافتن بهترین پرواز از ${this.props.credentials.sourceName} به ${this.props.credentials.destinationName} در تاریخ ${this.props.credentials.flightDatePersian} است...`}
+                      title={`بلبطجا در حال یافتن بهترین پرواز از ${this.props.credentials.sourceName} به ${this.props.credentials.destinationName} در تاریخ ${this.props.credentials.flightDatePersian} است...`}
                     />
                   </div>
                 ) : this.state.flights != null ? (
@@ -773,7 +773,7 @@ class GetFlightList extends React.Component {
           />
         </SlideIn>
 
-        {/* <div className={styles["visible-xs-flight-footer"]}>
+          <div className={styles["visible-xs-flight-footer"]}>
           <div
             onClick={() => {
               this.setState({
@@ -822,7 +822,7 @@ class GetFlightList extends React.Component {
             <FontAwesomeIcon icon={faHome} />
             <p>خانه</p>
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }

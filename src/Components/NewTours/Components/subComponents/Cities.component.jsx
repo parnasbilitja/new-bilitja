@@ -17,7 +17,7 @@ const Cities = (props) => {
 
     useEffect(() => {
         if(widthMobi<868){
-            inputRef.current.focus();
+        inputRef.current.focus();
         }
     }, []);
 
@@ -37,6 +37,7 @@ const Cities = (props) => {
 
 
     useEffect(() => {
+        console.log('daa',props)
         setCities(props.cities)
     }, [props.cities])
 
@@ -89,7 +90,7 @@ const Cities = (props) => {
                     className="suggestion-box"
                 >
                     {/* //fill airport */}
-                    {Cities.length === 0 ? (
+                    {Cities?.length === 0 ? (
                         <NewLoader/>
                     ) : (
                         Cities?.map((city) => (
@@ -155,6 +156,7 @@ const Cities = (props) => {
                                                 props.setNights([]);
                                             }}
                                             style={{marginBottom:'10px'}}
+                                            key={city.code}
 
                                         >
                                             <span className="font-size-14">{city.name}</span>

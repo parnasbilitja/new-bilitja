@@ -75,6 +75,7 @@ const FlightReserve = (props) => {
     // },[state.price])
     useEffect(() => {
         setWidth(window.innerWidth)
+        console.log(props)
         route = props.router.asPath.split('info')[0]
         if (localStorage.getItem('reqNo') !== null) {
             props.messageBoxModify({
@@ -82,7 +83,7 @@ const FlightReserve = (props) => {
                 message: 'به علت تغییر قیمت, جستجو مجدد انجام می شود!<br/> درحال انتقال به صفحه پرواز ...',
                 state: true,
             })
-            setTimeout(() => { 
+            setTimeout(() => {
                 props.router.push(route)
             }, "3000")
         }
@@ -143,7 +144,7 @@ const FlightReserve = (props) => {
         getAllPrice();
         // localStorage.removeItem('reqNo');
     }, []);
-    
+
     const validation = () => {
         let isValid = true;
 
@@ -214,7 +215,11 @@ const FlightReserve = (props) => {
     };
     const fillPassengersData = (field, passengerNo, value) => {
         let passenger = state.passengers.find((x) => x.id == passengerNo);
-        passenger[field] = value;
+        if (field == "pasno"){
+            passenger[field] = value.toUpperCase();
+        }else{
+            passenger[field] = value;
+        }
         if (field == 'nationality') {
             if (value=='IR') {
                 // passenger.pasno = ''
@@ -265,7 +270,7 @@ const FlightReserve = (props) => {
                 passenger.codeErr = "";
             }
         }
-        
+
         let passengers_ = state.passengers.map((x) => {
             if (x.id == passengerNo) {
                 return passenger;
@@ -485,6 +490,7 @@ const FlightReserve = (props) => {
     useEffect(() => { getAllPrice() }, [state.passengers])
 
     const login = () => {
+
         localStorage.setItem("mobile", state.mobileSubmiter)
         setState({ ...state, btn_disabled: true });
         setLoading(true)
@@ -498,9 +504,9 @@ const FlightReserve = (props) => {
                 register: 0,
 
                 customerId: "1a157116-a01a-4027-ab10-74098ac63815",
-                hostname: "bilitja.com",
-                agencyName: "بلیطجا",
-                telNumber: "02157874",
+                hostname: "hamnavaz.com",
+                agencyName: "بلبطجا",
+                telNumber: "02184278",
             }),
         })
             .then((res) => res.json())
@@ -571,10 +577,10 @@ const FlightReserve = (props) => {
                 token: state.token,
                 password: state.password,
                 register: 1,
-                hostname: "bilitja.com",
+                hostname: "hamnavaz.com",
                 customerId: "1a157116-a01a-4027-ab10-74098ac63815",
-                agencyName: "بلیطجا",
-                telNumber: "02157874",
+                agencyName: "بلبطجا",
+                telNumber: "02184278",
             }),
         })
             .then((res) => res.json())
@@ -618,7 +624,7 @@ const FlightReserve = (props) => {
     }, [loginGoNext])
 
     return (
-        <div className={`container ${width>=826?"mt-90":'mt-110'}`} style={{ height: '100%' }}>
+        <div className={`container ${width>=826?"mt-90 pt-3":'mt-110'}`} style={{ height: '100%' }}>
             <Scrolltoprefresh />
             <div className={`${styles["flight-detail"]}`} ref={Ref}>
                 <FlightReserveDesktopHeader {...state} />
@@ -683,7 +689,7 @@ const FlightReserve = (props) => {
                             handleChange={handleChange}
                         />
 
-                        <Submit 
+                        <Submit
                             route={props.router.asPath.split('info')[0]}
                             {...props}
                             state={state}
@@ -720,7 +726,7 @@ const FlightReserve = (props) => {
                     </div>
                 </div>
             </PopUp>
-            
+
             <PopUp opened={closePopUpPrice} closePopUp={setClosePopUpPrice} >
                 <div className="p-2">
                     <div className="text-start row justify-content-end">
@@ -740,7 +746,7 @@ const FlightReserve = (props) => {
                         </p>
                     </div>
                 </div>
-            
+
             </PopUp>
         </div>
     );

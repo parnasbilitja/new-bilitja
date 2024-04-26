@@ -46,9 +46,9 @@ class Flights extends React.Component {
 
         pathName = decodeURI(pathName);
         if (pathName.indexOf("info") > 0) {
-            return "بلیطجا"; //<FlightReserve />;
+            return "بلبطجا"; //<FlightReserve />;
         } else if (pathName.indexOf("receipt") > 0) {
-            return "بلیطجا"; //<FlightReciept />;
+            return "بلبطجا"; //<FlightReciept />;
         } else {
             // srcEn = decodeURI(pathName.split("/")[2]).split("-")[0];
             // destEn = decodeURI(pathName.split("/")[2]).split("-")[1];
@@ -60,7 +60,7 @@ class Flights extends React.Component {
                 this.props.credentials.sourceName +
                 "-" +
                 this.props.credentials.destinationName +
-                " با ارزانترین قیمت|20درصد تخفیف بلیطجا  " +
+                " با ارزانترین قیمت|20درصد تخفیف بلبطجا  " +
                 "/" +
                 "خرید اینترنتی بلیط هواپیما " +
                 this.props.credentials.sourceName +
@@ -81,8 +81,6 @@ class Flights extends React.Component {
         }
     }
     componentDidMount() {
-
-        
         localStorage.setItem("url", JSON.stringify(this.props.router.asPath))
     this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
@@ -109,7 +107,6 @@ class Flights extends React.Component {
                         <title>
                             {
                                 // {`بلیطجا ${decodeURI(this.props.router.asPath).replace('-',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ').replace('/',' ')}`}
-
                                 this.setTitleMeta(this.props.router.asPath.split("#")[0]).split(
                                     "/"
                                 )[0]

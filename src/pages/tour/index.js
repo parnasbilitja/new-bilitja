@@ -11,12 +11,12 @@ const index = () => {
         router.push(url)
 
     }
-    return (
-        <div className="mt-90 bodyVar">
-            <Scrolltoprefresh/>
-            <ToursBase tourSwitch={tourSwitch}  setTourType={(val,url)=> setTourType(val,url)}/>
-        </div>
-    );
+  return (
+    <div className="mt-90 bodyVar">
+        <Scrolltoprefresh/>
+      <ToursBase tourSwitch={tourSwitch}  setTourType={(val,url)=> setTourType(val,url)}/>
+    </div>
+  );
 };
 
 export default index;

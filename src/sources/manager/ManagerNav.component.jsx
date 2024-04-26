@@ -51,8 +51,8 @@ const ManagerNav = (props) => {
             <img
               width=""
               height=""
-              alt="بلیطجا - لوگو"
-              src="../../../Images/bilitja-logo.webp"
+              alt="بلبطجا - لوگو"
+              src="../../../Images/hamnavaz-logo.webp"
             />
           </a>
         </div>
@@ -158,7 +158,7 @@ const ManagerNav = (props) => {
             }
           }}
         >
-          
+
           <div>
             {/* <FontAwesomeIcon icon={faPlaneDeparture} /> */}
             <svg width="25" height="25" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg">

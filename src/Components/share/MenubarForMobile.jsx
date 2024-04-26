@@ -1,19 +1,72 @@
-import React, {useEffect, useState} from "react";
+'use-client'
+
+import React, {useEffect, useRef, useState} from "react";
 import styles from "../../../styles/Menubar.module.scss";
 import {useRouter} from "next/router";
+import {motion,useScroll,useMotionValueEvent} from 'framer-motion'
+// import {useInView} from "react-intersection-observer";
+// import {useScroll} from "./custom-hook";
+// import { useScroll } from 'react-scroll';
+
+// import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+
 const MenubarForMobile = () => {
   const[navigationType,setNavigationType]=useState()
-
+  const[hidden,setHidden]=useState(false)
+  // const { isVisible } = useScroll();
   const router=useRouter()
 
-  useEffect(()=>{
-    console.log('from me', router)
 
-    setNavigationType(router.asPath)
-  },[router])
+  // useMotionValueEvent(scrollY,"change",(latest)=> {
+  //   const prev=scrollY.getPrevious()
+  //   if(latest>prev && latest >150){
+  //     setHidden(true)
+  //   }else {
+  //     setHidden(false)
+  //   }
+  // })
+
+  // const [scrollPosition, setScrollPosition] = useState(0);
+  //
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollPosition(window.scrollY);
+  //   };
+  //
+  //   window.addEventListener('scroll', handleScroll);
+  //
+  //   // Cleanup function to remove the event listener
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [window?.scrollY]);
+  //
+  // useEffect(()=>{
+  //   console.log(scrollPosition)
+  // },[scrollPosition])
+
+  const menuBarRef = useRef(null);
+
+  // useEffect(() => {
+  //   gsap.to(menuBarRef.current, {
+  //     y: '150%',
+  //     scrollTrigger: {
+  //       trigger: menuBarRef.current,
+  //       start: 'top top',
+  //       end: 'bottom bottom',
+  //       scrub: true,
+  //     },
+  //   });
+  // }, []);
+
+
+
   return (
-    <>
-      <div className={styles["menubarmob"]}>
+
+      <div ref={menuBarRef} className={styles["menubarmob"]}
+
+      >
         <div className={styles["menubarcontainer"]}>
           <div style={{}} className={styles["menubar"]}>
             <div
@@ -65,7 +118,7 @@ const MenubarForMobile = () => {
                 }}
             >
               <svg
-                  enable-background="new 0 0 32 32"
+                  enableBackground="new 0 0 32 32"
                   id="Stock_cut"
                   version="1.1"
                   viewBox="0 0 32 32"
@@ -79,9 +132,9 @@ const MenubarForMobile = () => {
                       d="M27,12   c0-6.075-4.925-11-11-11S5,5.925,5,12c0,8,11,19,11,19S27,20,27,12z"
                       fill="none"
                       stroke={navigationType?.includes('tour')?'#e20000':'#000000'}
-                      stroke-linejoin="round"
-                      stroke-miterlimit="10"
-                      stroke-width="2"
+                      strokeLinejoin="round"
+                      strokeMiterlimit="10"
+                      strokeWidth="2"
                   />
                   <circle
                       cx="16"
@@ -89,9 +142,9 @@ const MenubarForMobile = () => {
                       fill="none"
                       r="4"
                       stroke={navigationType?.includes('tour')?'#e20000':'#000000'}
-                      stroke-linejoin="round"
-                      stroke-miterlimit="10"
-                      stroke-width="2"
+                      strokeLinejoin="round"
+                      strokeMiterlimit="10"
+                      strokeWidth="2"
                   />
                 </g>
               </svg>
@@ -102,7 +155,7 @@ const MenubarForMobile = () => {
           </div>
         </div>
       </div>
-    </>
+
   );
 };
 

@@ -29,7 +29,7 @@ const villaListMobile = ({ history, villaList }) => {
                   <img
                     width=""
                     height=""
-                    alt="بلیطجا - پیشنمایش هتل"
+                    alt="بلبطجا - پیشنمایش هتل"
                     src="../../../Images/hotel_view.jpg"
                   />
                 </div>

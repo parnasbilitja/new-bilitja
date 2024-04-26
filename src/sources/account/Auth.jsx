@@ -19,8 +19,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { checkNumberfatoen } from "../../Utils/SimpleTasks";
 import PasswordBox from "../../Components/share/PasswordBox";
+// import {usePostHog} from "posthog-js/react";
 const Auth = (props) => {
-  
+  // const posthog=usePostHog()
+
   const [state, setState] = useState({
     btn_disabled: false,
     loading: false,
@@ -159,10 +161,10 @@ const Auth = (props) => {
         token: checkNumberfatoen(state.token),
         password: checkNumberfatoen(state.password),
         register: 1,
-        hostname: "bilitja.com",
+        hostname: "hamnavaz.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
-        agencyName: "بلیطجا",
-        telNumber: "02157874",
+        agencyName: "بلبطجا",
+        telNumber: "02184278",
       }),
     })
       .then((res) => res.json())
@@ -196,7 +198,7 @@ const Auth = (props) => {
         }
       });
   };
-  
+
   const loginWithToken = () => {
     setState({ ...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/checkUser`, {
@@ -269,14 +271,24 @@ const Auth = (props) => {
   };
   const handleKeypress = e => {
     //it triggers by pressing the enter key
-    
+
   if (e.keyCode === 13) {
     state.get_mobile_status == true ? loginWithToken():login()
+
+    // if(type===1){
+    //   posthog.capture('SignInOTP',{num:state.mobile})
+    //   posthog.identify(state.mobile)
+    // }else {
+    //   posthog.capture('SignInPass',{num:state.mobile})
+    //   posthog.identify(state.mobile)
+    // }
   }
 };
 
   // Renderer callback with condition
   const renderer = ({ minutes, seconds, completed }) => {
+
+
     if (completed) {
       setState({
         ...state,
@@ -295,7 +307,7 @@ const Auth = (props) => {
   return (
     <div className="popup-content-container">
       <div className="popup-heading d-flex align-items-center justify-content-center">
-        <img src='../../../Images/bilitja-logo.webp' alt="site-logo" width={70} height={50} />
+        <img src='../../Images/hamnavaz-logo.webp' alt="site-logo" width={200} height={50} />
         <div
           className="exit-form position-absolute"
           onClick={() => {
@@ -304,10 +316,10 @@ const Auth = (props) => {
             });
           }} style={{ left: 10,top:10 }}
         >
-          <div style={{ color: "red" }} className="font-bold font-size-15" >x</div>
+          <div style={{ color: "blue" }} className="font-bold font-size-15" >x</div>
         </div>
       </div>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center my-4">
         <div className="row btn-container-header-login rounded-pill m-2">
           <button
             className={
@@ -338,9 +350,9 @@ const Auth = (props) => {
             {state.errText !== undefined ? state.errText : 'شماره وارد شده باید ۱۱ رقم باشد'}</div>
         </div>
       ) : null}
-      <div className="container">
+      <div className="container " style={{margin:'2rem 0'}}>
         {/* <div className=""> */}
-          <div className="row mb-2 d-flex align-center d-flex justify-content-center border rounded mx-4">
+          <div className="row mb-2 d-flex align-center d-flex justify-content-center border rounded mx-4 my-lg-3">
             <div className="col-1 padding-horizental-3px">
               <FontAwesomeIcon icon={faUser} className="margin-top-10px" />
             </div>
@@ -399,7 +411,7 @@ const Auth = (props) => {
                 <div className="col-12 padding-horizental-3px row justify-content-center">
                   <PasswordBox value={state.token} valueLength={4} onChange={handleSetToken}/>
                   {/* <MuiOtpInput value={state.token.length==4?'':state.token} onChange={handleSetToken} validateChar={validateChar} TextFieldsProps={{ type:'number',autoFocus:'true' }} /> */}
-                  
+
                 </div>
               </>
             }
@@ -411,6 +423,14 @@ const Auth = (props) => {
           <button
             onClick={(e) => {
                 state.get_mobile_status == true ? loginWithToken():login()
+
+              // if(type===1){
+              //   posthog.capture('SignInOTP',{num:state.mobile})
+              //   posthog.identify(state.mobile)
+              // }else {
+              //   posthog.capture('SignInPass',{num:state.mobile})
+              //   posthog.identify(state.mobile)
+              // }
             }}
             className={`w-80  ${
               props.disabled === false
@@ -422,7 +442,7 @@ const Auth = (props) => {
             {state.loading === false ? state.btn_text : <Loader />}
           </button>
         </div>
-        {state.get_mobile_status && 
+        {state.get_mobile_status &&
         <div className="justify-content-center row mt-3">
             <span className="btn btn-outline-danger col-5 btn-block" style={{border: "1px dashed"}} onClick={()=>{setState({...state,get_mobile_status:false})}}>تغییر شماره</span>
         </div>
