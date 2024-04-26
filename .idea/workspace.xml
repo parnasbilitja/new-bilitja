@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="Updated bilitja">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/TrackOrder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/TrackOrder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/[CityTour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/[CityTour].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/blogs/[blog].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/blogs/[blog].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" afterDir="false" />
-    </list>
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="Updated bilitja" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -228,7 +222,7 @@
       <workItem from="1700371980970" duration="7560000" />
       <workItem from="1714113513289" duration="476000" />
       <workItem from="1714114337672" duration="187000" />
-      <workItem from="1714114550694" duration="3046000" />
+      <workItem from="1714114550694" duration="3516000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -398,30 +392,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00117" summary="sidebar hotel tour">
-      <option name="closed" value="true" />
-      <created>1696577244403</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1696577244403</updated>
-    </task>
-    <task id="LOCAL-00118" summary="sidebar hotel tour">
-      <option name="closed" value="true" />
-      <created>1696747034256</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1696747034256</updated>
-    </task>
-    <task id="LOCAL-00119" summary="sidebar hotel tour">
-      <option name="closed" value="true" />
-      <created>1696747093990</created>
-      <option name="number" value="00119" />
-      <option name="presentableId" value="LOCAL-00119" />
-      <option name="project" value="LOCAL" />
-      <updated>1696747093990</updated>
-    </task>
     <task id="LOCAL-00120" summary="sidebar hotel tour">
       <option name="closed" value="true" />
       <created>1696747620819</created>
@@ -566,7 +536,31 @@
       <option name="project" value="LOCAL" />
       <updated>1714117705031</updated>
     </task>
-    <option name="localTasksCounter" value="138" />
+    <task id="LOCAL-00138" summary="Updated bilitja">
+      <option name="closed" value="true" />
+      <created>1714118050562</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1714118050562</updated>
+    </task>
+    <task id="LOCAL-00139" summary="Updated bilitja">
+      <option name="closed" value="true" />
+      <created>1714118241847</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1714118241847</updated>
+    </task>
+    <task id="LOCAL-00140" summary="Updated bilitja">
+      <option name="closed" value="true" />
+      <created>1714118507892</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1714118507892</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
