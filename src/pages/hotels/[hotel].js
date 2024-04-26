@@ -22,6 +22,7 @@ import List from '../../sources/tour/List';
 import Head from "next/head";
 import {isEmpty} from "../../Utils/newTour";
 
+
 const hotel = (props) => {
     const [hotel, setHotel] = useState({})
     const [show, setShow] = useState(false)
