@@ -1,13 +1,13 @@
 import React from 'react';
-import {cityContent} from "@/Utils/staticContent";
-import {Content} from "@/Utils/CityContent";
+import {cityContent} from "../../Utils/staticContent";
+import {Content} from "../../Utils/CityContent";
 import Head from "next/head";
-import NavHandler from "@/Components/share/NavHandler";
-import Scrolltoprefresh from "@/sources/component/Scrolltoprefresh";
-import TourSearchBox from "@/Components/NewTours/Components/TourSearchBox";
-import OfferdTours from "@/sources/tour/OfferdTours";
-import TourList from "@/sources/tour/TourList";
-import Footer from "@/sources/component/Footer.component";
+import NavHandler from "../../Components/share/NavHandler";
+import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
+import TourSearchBox from "../../Components/NewTours/Components/TourSearchBox";
+import OfferdTours from "../../sources/tour/OfferdTours";
+import TourList from "../../sources/tour/TourList";
+import Footer from "../../sources/component/Footer.component";
 
 const tourName= (props) => {
     return (
