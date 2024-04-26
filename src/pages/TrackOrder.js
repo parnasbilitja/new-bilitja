@@ -18,11 +18,11 @@ import {
     MiladiToJalaliConvertorInc,
     startBuilder,
     timeFixer
-} from "@/Utils/newTour";
+} from "../Utils/newTour";
 import {useRouter} from "next/router";
 import moment from "moment-jalaali";
 import styles from '../../styles/TrackOrder.module.scss'
-import {ErrSuccess} from "@/Components/NewTours/Components/NotifAlert.component";
+import {ErrSuccess} from "../Components/NewTours/Components/NotifAlert.component";
 const TrackOrder = () =>{
         const [state,setState] = useState({
             trackRef:'',

@@ -23,9 +23,9 @@ import Head from "next/head";
 import {isEmpty} from "../../Utils/newTour";
 // import MapComponent from "@/sources/component/Map.component";
 import dynamic from "next/dynamic";
-import {getCityInfo} from "@/pages/[CityTour]";
+// import {getCityInfo} from "@/pages/[CityTour]";
 const MapComponent = dynamic(() =>
-        import("@/sources/component/Map.component"),
+        import("../../sources/component/Map.component"),
     {
         ssr: false
     }

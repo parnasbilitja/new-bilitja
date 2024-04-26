@@ -18,7 +18,7 @@ import {fetchOfferdTour} from "../Redux/OfferdTours/Action";
 import dynamic from "next/dynamic";
 import {useRouter} from "next/router";
 import NotFound from "./NotFound";
-import {isEmpty, jalaliMonthName} from "@/Utils/newTour";
+import {isEmpty, jalaliMonthName} from "../Utils/newTour";
 
 const OfferdTours = dynamic(() => import("../sources/tour/OfferdTours"));
 
