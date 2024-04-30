@@ -92,12 +92,12 @@ var body =document.getElementsByTagName("body")
                   <div style={{ marginLeft: "15x" }}>
                     <img src="../../../Images/Display.png" alt="display" />
                   </div>
-                  <b className="mr-2"> معرفی بلبطجا آسمان آبی </b>
+                  <b className="mr-2"> معرفی بلیطجا </b>
                 </div>
 
                 <div className="px-4 mt-3">
                   <p style={{ textAlign: "justify" }}>
-                    شرکت خدمات مسافرت هوایی و جهانگردی بلبطجا آسمان آبی با ۱۴
+                    شرکت خدمات مسافرت هوایی و جهانگردی بلیطجا با ۱۴
                     سال سابقه وبادارا بودن مجوز های بند الف و ب از سازمان میراث
                     فرهنگی و گردشگری و سازمان هواپیمایی کشوری همواره بر آن بوده
                     است که بهترین خدمات فروش بلیط هواپیما و تور مسافرتی را به
@@ -321,7 +321,7 @@ var body =document.getElementsByTagName("body")
             <div>© کپی رایت1402 Ver 1.2.3</div> &nbsp;
             {width < 826 && <br />}
             <span>
-              کلیه حقوق این سایت محفوظ و متعلق به بلبطجا آسمان آبی است.{" "}
+              کلیه حقوق این سایت محفوظ و متعلق به بلیطجا است.{" "}
             </span>
           </div>
           <a href="http://parnas.agency">

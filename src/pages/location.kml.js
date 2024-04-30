@@ -15,12 +15,12 @@ export const getServerSideProps = async ({ res }) => {
 
     const sitemap = `<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 	<Document>
-		<name>Locations for آژانس هواپیمایی بلبطجا آسمان آبی</name>
+		<name>Locations for آژانس هواپیمایی بلیطجا</name>
 		<open>1</open>
 		<Folder>
 			<atom:link href="https://hamnavaz.com" />
 			<Placemark>
-				<name><![CDATA[آژانس هواپیمایی بلبطجا آسمان آبی]]></name>
+				<name><![CDATA[آژانس هواپیمایی بلیطجا]]></name>
 				<description><![CDATA[بلبطجا ]]></description>
 				<address><![CDATA[سهروردی جنوبی، خیابان ابرار شرقی، خیابان اقلیمی، پلاک 12، واحد سوم]]></address>
 				<phoneNumber><![CDATA[+982184278]]></phoneNumber>

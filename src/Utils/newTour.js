@@ -575,7 +575,7 @@ export const RouteTranslator=(routeArr,queryRoute)=>{
 
   // debugger
   // debugger
- let translatedRouteArr=['بلبطجا آسمان آبی']
+ let translatedRouteArr=['بلیطجا']
  routeArr.shift()
 
   routeArr.map((route,i)=>{
