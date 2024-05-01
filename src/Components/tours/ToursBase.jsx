@@ -27,6 +27,7 @@ import {
 } from "../../Redux/newTours/Action";
 import TourSearchBox from "../NewTours/Components/TourSearchBox";
 import {fetchOfferdTour} from "../../Redux/OfferdTours/Action";
+import {Err, NotifAlert} from "../NewTours/Components/NotifAlert.component";
 // const TourSearchBox = dynamic(() =>
 //   import("../NewTours/Components/TourSearchBox")
 // );
@@ -53,8 +54,14 @@ const ToursBase = (props) => {
     // debugger
     console.log(search)
 // debugger
-    setState({ ...state, city: search?.slug ?search?.slug:null  });
-router.push(`تور-${search?.destination}/`)
+    debugger
+    if(search?.destination===''){
+      Err('لطفا مقصد خود را انتخاب کنید')
+    }else {
+      setState({ ...state, city: search?.slug ?search?.slug:null  });
+      router.push(`تور-${search?.destination}/`)
+    }
+
     // axios
     //   .post("https://api.hotelobilit.com/api/v2/tours", {
     //     ...search,
@@ -161,6 +168,7 @@ const dispatch=useDispatch()
   }, [offeredtourData]);
   return (
     <div className={""}>
+      <NotifAlert/>
 
       <Head>
         <title>بلبطجا | لیست تورها</title>
