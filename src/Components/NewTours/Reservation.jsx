@@ -204,7 +204,7 @@ useEffect(()=>{
                 register: 0,
                 customerId: "1a157116-a01a-4027-ab10-74098ac63815",
                 hostname: "hamnavaz.com",
-                agencyName: "بلبطجا",
+                agencyName: "بلیطجا",
                 telNumber: "02184278",
             }),
         })

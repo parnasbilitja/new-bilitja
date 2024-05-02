@@ -73,7 +73,7 @@ const FlightReserveDesktopHeader = (props) =>
                   src={
                     globals.website + `Airlines/${props.airlineCode}.png?ver=1`
                   }
-                  alt="بلبطجا - لوگو ایرلاین"
+                  alt="بلیطجا - لوگو ایرلاین"
                   style={{ objectFit: 'scale-down' }}
                 />
                 <p className="pt-4">
@@ -87,7 +87,7 @@ const FlightReserveDesktopHeader = (props) =>
                   <img
                     width=""
                     height=""
-                    alt="بلبطجا - لوگو رزرو بلیط هواپیما"
+                    alt="بلیطجا - لوگو رزرو بلیط هواپیما"
                     className="pe-3"
                     src="../../../../../Images/airplane_reserve.png"
                     style={{ transform: 'rotateY(180deg)' }}
@@ -121,7 +121,7 @@ const FlightReserveDesktopHeader = (props) =>
                     height=""
                     src="../../../../../Images/barcode.webp"
                     className="imgbarcode"
-                    alt="بلبطجا - بارکد "
+                    alt="بلیطجا - بارکد "
                   />
                 </div>
               </div>

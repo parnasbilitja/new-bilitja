@@ -557,7 +557,7 @@ class AddVilaDesktop extends React.Component {
                     <img
                       width=""
                       height=""
-                      alt="بلبطجا - تصویر اقامتگاه"
+                      alt="بلیطجا - تصویر اقامتگاه"
                       src={this.state.file}
                     />
                     <FontAwesomeIcon
@@ -1261,7 +1261,7 @@ class AddVilaDesktop extends React.Component {
                   <img
                     width=""
                     height=""
-                    alt="بلبطجا - تصویر اقامتگاه"
+                    alt="بلیطجا - تصویر اقامتگاه"
                     src={this.state.file}
                   />
                   <FontAwesomeIcon

@@ -40,7 +40,7 @@ const Posts = () => {
                                 </g>
                             </svg>
                             <div className="text d-flex justify-content-center flex-column mx-2">
-                                <p className="font-bold title-custom p-0 my-0 d-flex align-items-center" style={{marginTop:`${width>826?'2px':'4px'}`,fontSize:'18px',padding:'0',fontWeight:'bold'}}>وبلاگ گردشگری بلبطجا</p>
+                                <p className="font-bold title-custom p-0 my-0 d-flex align-items-center" style={{marginTop:`${width>826?'2px':'4px'}`,fontSize:'18px',padding:'0',fontWeight:'bold'}}>وبلاگ گردشگری بلیطجا</p>
                                 <h6 className="subtitle-custom">هتل ها، مکان های دیدنی، پارک های آبی، همه و همه در اینجا</h6>
                             </div>
                         </div>

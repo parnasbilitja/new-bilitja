@@ -27,7 +27,7 @@ const ComplateProfile = () => {
                     width=""
                     height=""
                     src="https://profiles.utdallas.edu/img/default.png"
-                    alt="بلبطجا - عکس پروفایل کاربر"
+                    alt="بلیطجا - عکس پروفایل کاربر"
                     className="img-fluid img-responsive rounded-circle border-black profile-img"
                   />
                 </div>

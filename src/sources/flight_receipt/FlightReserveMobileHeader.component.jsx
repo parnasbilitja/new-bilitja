@@ -44,7 +44,7 @@ const FlightReserveMobileHeader = (props) =>
               height=""
               className="airline-icon"
               src={globals.website + `Airlines/${props.airlineCode}.png?ver=1`}
-              alt="بلبطجا - لوگو ایرلاین"
+              alt="بلیطجا - لوگو ایرلاین"
             />
             <p className="font-size-14">
               <span className="font-bold-iransanse">ایرلاین</span>{" "}

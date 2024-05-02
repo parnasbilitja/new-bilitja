@@ -251,7 +251,7 @@ const [passsengerCount,setPassengerCount]=useState({
                     {/*        </p>*/}
                     {/*        <span className="text-center font-yekan font-bold font-size-14 py-2">یا</span>*/}
                     {/*        <p className="text-center font-yekan font-bold font-size-14">*/}
-                    {/*            جهت تماس با شما از طریق کارشناسان  بلبطجا اطلاعات درخواستی زیر را تکمیل و ارسال فرمایید.*/}
+                    {/*            جهت تماس با شما از طریق کارشناسان  بلیطجا اطلاعات درخواستی زیر را تکمیل و ارسال فرمایید.*/}
                     {/*        </p>*/}
                     {/*    </div>*/}
                     {/*    <div className="in-data w-75 d-flex flex-column align-items-stretch justify-content-center m-auto mb-2">*/}

@@ -8,7 +8,7 @@ const BloginfoRoute = (props) => {
     <div className="bodyVar">
         <Head>
 
-        <title> لیست بلاگ ها | بلبطجا</title>
+        <title> لیست بلاگ ها | بلیطجا</title>
         </Head>
       <Scrolltoprefresh />
       <NavHandler />

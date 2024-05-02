@@ -69,7 +69,7 @@ function MyApp({ Component, pageProps }) {
       // <PostHogProvider client={posthog}>
 
     <Provider store={store}>
-      <title>خریداینترنتی بلیط ارزان هواپیما |بلبطجا| 021842799999</title>
+      <title>خریداینترنتی بلیط ارزان هواپیما |بلیطجا| 021842799999</title>
       <link rel="canonical" href="https://hamnavaz.com/" />
 
       {Component.PageLayout ? (

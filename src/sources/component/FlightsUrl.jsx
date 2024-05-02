@@ -11,7 +11,7 @@ const FlightsUrl = ({flightsData, flightsDataHotel}) => {
           <div className="row justify-content-center">
             <div className={`col-12 col-lg-6 ${styles["home-flight-suggestion"]} text-center container`}>
               <p className="font-bold-iransanse font-size-20">بلیط هواپیمـا</p>
-              <p className="mb-3 font-size-18">قیمت های لحظه آخری بلبطجا</p>
+              <p className="mb-3 font-size-18">قیمت های لحظه آخری بلیطجا</p>
               <div className="col-sm-12 d-flex row flex-wrap align-items-center justify-content-between">
                 <div className={`${styles["suggestion-list"]} col-6`}>
                   {flightsData[0].map((item,index)=>(

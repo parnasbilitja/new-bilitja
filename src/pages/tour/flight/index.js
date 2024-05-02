@@ -14,7 +14,7 @@ const AvailableFlight = () => {
     return (
         <>
             <Head>
-                <title>بلبطجا | تور</title>
+                <title>بلیطجا | تور</title>
             </Head>
             <NavHandler/>
             <AvFlight/>

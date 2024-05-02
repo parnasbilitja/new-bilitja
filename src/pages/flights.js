@@ -46,9 +46,9 @@ class Flights extends React.Component {
 
         pathName = decodeURI(pathName);
         if (pathName.indexOf("info") > 0) {
-            return "بلبطجا"; //<FlightReserve />;
+            return "بلیطجا"; //<FlightReserve />;
         } else if (pathName.indexOf("receipt") > 0) {
-            return "بلبطجا"; //<FlightReciept />;
+            return "بلیطجا"; //<FlightReciept />;
         } else {
             // srcEn = decodeURI(pathName.split("/")[2]).split("-")[0];
             // destEn = decodeURI(pathName.split("/")[2]).split("-")[1];
@@ -60,7 +60,7 @@ class Flights extends React.Component {
                 this.props.credentials.sourceName +
                 "-" +
                 this.props.credentials.destinationName +
-                " با ارزانترین قیمت|20درصد تخفیف بلبطجا  " +
+                " با ارزانترین قیمت|20درصد تخفیف بلیطجا  " +
                 "/" +
                 "خرید اینترنتی بلیط هواپیما " +
                 this.props.credentials.sourceName +

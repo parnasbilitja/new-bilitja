@@ -198,11 +198,11 @@ const Turkey = () => {
     return (<>
             <Head>
                 <title>
-                    رزرو تور گردشگری ترکیه | استانبول | آژانس بلبطجا
+                    رزرو تور گردشگری ترکیه | استانبول | آژانس بلیطجا
                 </title>
                 <meta
                     name="description"
-                    content="تور استانبول و تخفیف ویژه‌ی عید رزرو تور ترکیه با ارزانترین قیمت. بهترین مقصد سفر عیدانه با بلبطجا. خرید و رزرو تور گردشگری شهر زیبای استانبول با بهترین و لوکس ترین شرایط آژانس بلبطجا."
+                    content="تور استانبول و تخفیف ویژه‌ی عید رزرو تور ترکیه با ارزانترین قیمت. بهترین مقصد سفر عیدانه با بلیطجا. خرید و رزرو تور گردشگری شهر زیبای استانبول با بهترین و لوکس ترین شرایط آژانس بلیطجا."
                     key="desc"
                 />
             </Head>
@@ -395,7 +395,7 @@ const Turkey = () => {
                                 <li style={{fontSize:'20px', textAlign:'justify'}}>بهترین قیمت تور و رزرو</li>
                                 <li style={{fontSize:'20px', textAlign:'justify'}}>بهترین هتل‌های لوکس</li>
                                 <li style={{fontSize:'20px', textAlign:'justify'}}>از تمام نقاط کشور</li>
-                                <li style={{fontSize:'20px', textAlign:'justify'}}>با مشاوره‌ی متخصصین بلبطجا</li>
+                                <li style={{fontSize:'20px', textAlign:'justify'}}>با مشاوره‌ی متخصصین بلیطجا</li>
                             </ul>
                             <div style={{ padding:'1rem',marginTop:"20px",borderTop:'1px solid white',display:'flex',justifyContent:'center'}}>
                                 <div style={{backgroundColor:'white',color:'#e20000',width:'100%',borderRadius:'20px',padding:'10px',display:'flex',flexDirection:'column',justifyContent:'center'}}>

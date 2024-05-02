@@ -99,7 +99,7 @@ const Home = (props) => {
                             className={`${styles[""]}`}
                             width="50%"
                             height=""
-                            alt="بلبطجا-اسلایدر"
+                            alt="بلیطجا-اسلایدر"
                             src="../../../Images/fly-bg-new.png"
                         />
                     </div>
@@ -108,7 +108,7 @@ const Home = (props) => {
                         <img
                             width=""
                             height=""
-                            alt="بلبطجا-اسلایدر2"
+                            alt="بلیطجا-اسلایدر2"
                             src="../../../Images/fly-bg-new.png"
                         />
                     </div>

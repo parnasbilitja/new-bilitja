@@ -86,7 +86,7 @@ const ShowFlightList = (props) => {
                   globals.website +
                   `Airlines/${oneFlight.airlineIataCode}.png?ver=1`
                 }
-                alt="بلبطجا - لوگو ایرلاین"
+                alt="بلیطجا - لوگو ایرلاین"
               />
               <p className="font-bold-iransanse">{oneFlight.airline}</p>
             </div>

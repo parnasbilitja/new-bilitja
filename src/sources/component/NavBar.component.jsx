@@ -240,7 +240,7 @@ const router=useRouter()
                         height=""
                         className={styles["logo"]}
                         src="/Images/bilitja.webp"
-                        alt="بلبطجا - لوگو - دسکتاپ"
+                        alt="بلیطجا - لوگو - دسکتاپ"
                         style={{ cursor: "pointer" }}
                     />
                   </a>

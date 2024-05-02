@@ -198,7 +198,7 @@ const IstanbulNorouz = () => {
     return (<>
         <Head>
             <title>
-                رزرو تور گردشگری ترکیه | استانبول و آنتالیا | آژانس بلبطجا
+                رزرو تور گردشگری ترکیه | استانبول و آنتالیا | آژانس بلیطجا
             </title>
         </Head>
         <NavHandler/>
@@ -394,7 +394,7 @@ const IstanbulNorouz = () => {
                             <li style={{fontSize:'20px', textAlign:'justify'}}>بهترین قیمت تور و رزرو</li>
                             <li style={{fontSize:'20px', textAlign:'justify'}}>بهترین هتل‌های لوکس</li>
                             <li style={{fontSize:'20px', textAlign:'justify'}}>از تمام نقاط کشور</li>
-                            <li style={{fontSize:'20px', textAlign:'justify'}}>با مشاوره‌ی متخصصین بلبطجا</li>
+                            <li style={{fontSize:'20px', textAlign:'justify'}}>با مشاوره‌ی متخصصین بلیطجا</li>
                         </ul>
                         <div style={{ padding:'1rem',marginTop:"20px",borderTop:'1px solid white',display:'flex',justifyContent:'center'}}>
                             <div style={{backgroundColor:'white',color:'#e20000',width:'100%',borderRadius:'20px',padding:'10px',display:'flex',flexDirection:'column',justifyContent:'center'}}>

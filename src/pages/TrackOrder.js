@@ -137,7 +137,7 @@ switch (color) {
     return (
         <div >
             <Head>
-                <title> پیگیری خرید | بلبطجا</title>
+                <title> پیگیری خرید | بلیطجا</title>
             </Head>
             <NavHandler/>
             <div style={{marginTop:'140px'}}>

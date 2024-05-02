@@ -391,7 +391,7 @@ const AvailableHotel1 = () => {
                                 {searchData?.loader === true ? (
                                     <div style={{height: '90vh',display:'flex',alignItems:'center'}}>
                                         <Scrolltoprefresh/>
-                                        <NewLoader title="بلبطجا در حال یافتن بهترین نتیجه طبق درخواست شماست...."/>
+                                        <NewLoader title="بلیطجا در حال یافتن بهترین نتیجه طبق درخواست شماست...."/>
                                     </div>
                                 ) : hotels?.length === 0 && searchData.loader === false ? (
                                     <div className={styles["err"]}>

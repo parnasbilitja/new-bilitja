@@ -10,7 +10,7 @@ const HomePicture = ({state}) => {
             className={`${styles[""]}`}
             width="60%"
             height=""
-            alt="بلبطجا-اسلایدر"
+            alt="بلیطجا-اسلایدر"
             src="../../../../Images/tour-bg-new.png"
           />
         </div>
@@ -20,7 +20,7 @@ const HomePicture = ({state}) => {
             <img
               width=""
               height=""
-              alt="بلبطجا-اسلایدر"
+              alt="بلیطجا-اسلایدر"
               src="../../../../Images/tour-bg-new.png"
             />
           </div>

@@ -31,7 +31,7 @@ const villaListDesktop = ({ history, villaList }) => {
                   <img
                     width=""
                     height=""
-                    alt="بلبطجا - پیشنمایش هتل"
+                    alt="بلیطجا - پیشنمایش هتل"
                     src="../../../Images/hotel_view.jpg"
                   />
                 </div>

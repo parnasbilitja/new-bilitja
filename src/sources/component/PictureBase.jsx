@@ -17,7 +17,7 @@ const PictureBase = () => {
             <img
               width=""
               height=""
-              alt="بلبطجا- لوگو - بیس"
+              alt="بلیطجا- لوگو - بیس"
               src="../../../Images/map.webp"
               className={`${styles["hero-image-2"]} pull-right`}
             />
@@ -35,7 +35,7 @@ const PictureBase = () => {
             <img
               width=""
               height=""
-              alt="بلبطجا - قطب نما"
+              alt="بلیطجا - قطب نما"
               src="../../../Images/earth.webp"
               className={`${styles["hero-image-1"]} pull-left`}
             />

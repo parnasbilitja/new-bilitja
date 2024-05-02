@@ -35,7 +35,7 @@ const Blog = () => {
                       <div className="title-blog-item">
                           <img src="../../../Images/Document-align-2.svg" width="30" alt="لیست-وبلاگ ها"/>&nbsp;
                           <div className="text">
-                              <h1>وبلاگ گردشگری بلبطجا</h1>
+                              <h1>وبلاگ گردشگری بلیطجا</h1>
                               <span style={{color:'#e20000'}}>{posts.length} مقاله گردشگری و شهرگردی</span>
                           </div>
                       </div>

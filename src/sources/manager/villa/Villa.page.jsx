@@ -132,7 +132,7 @@ class Villa extends React.Component {
                         height=""
                         src="/images/flight-parallax.jpg"
                         className="rounded img-fluid img-responsive m-3"
-                        alt="بلبطجا - پیشنمایش ویلا"
+                        alt="بلیطجا - پیشنمایش ویلا"
                       />
                     </div>
                     <div className="col-lg-10">

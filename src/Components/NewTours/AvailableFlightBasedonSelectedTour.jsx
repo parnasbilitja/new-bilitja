@@ -658,9 +658,9 @@ const chdAgeStr=(low,high)=>{
                 <div className={styles["container"]}>
                     <Head>
                         {hotel?.hotel?.length === 0 ? (
-                            <title>بلبطجا | تور</title>
+                            <title>بلیطجا | تور</title>
                         ) : (
-                            <title> بلبطجا {`|  ${hotel?.hotel?.title}`}</title>
+                            <title> بلیطجا {`|  ${hotel?.hotel?.title}`}</title>
                         )}
                     </Head>
                     <Scrolltoprefresh/>

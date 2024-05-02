@@ -9,7 +9,7 @@ const NotFound = () => {
                 <img
                     width=""
                     height=""
-                    alt="بلبطجا-لوگو"
+                    alt="بلیطجا-لوگو"
                     src="../../../Images/hamnavaz-logo.webp"
                 />
 

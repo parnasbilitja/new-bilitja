@@ -59,7 +59,7 @@ const NavBarMobile = (props) => {
           <img
             width=""
             height=""
-            alt="بلبطجا - لوگو"
+            alt="بلیطجا - لوگو"
             src="../../../Images/hamnavaz-logo.webp"
             className="pull-left"
           />
@@ -85,7 +85,7 @@ const NavBarMobile = (props) => {
               <img
                 width=""
                 height=""
-                alt="بلبطجا - لوگو"
+                alt="بلیطجا - لوگو"
                 src="../../../Images/hamnavaz-logo.webp"
               />
             </Link>

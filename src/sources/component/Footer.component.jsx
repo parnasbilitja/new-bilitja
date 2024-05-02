@@ -57,10 +57,10 @@ var body =document.getElementsByTagName("body")
               marginBottom: "4px",
             }}
           >
-            عضویت در خبرنامه بلبطجا
+            عضویت در خبرنامه بلیطجا
           </p>
           <p style={{ fontSize: "1rem", color: "black" }}>
-            از آفر ها و تور های لحظه آخری بلبطجا با خبر شوید !
+            از آفر ها و تور های لحظه آخری بلیطجا با خبر شوید !
           </p>
         </div>
         <div className="container-fluid">

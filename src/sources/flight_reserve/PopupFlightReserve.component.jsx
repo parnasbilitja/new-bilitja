@@ -200,7 +200,7 @@ const PopupFlightReserve = (props) => {
               width={35}
               height={35}
               src={globals.website + `Airlines/${airlineIataCode}.png?ver=1`}
-              alt="بلبطجا - لوگو ایرلاین"
+              alt="بلیطجا - لوگو ایرلاین"
             />
           </div>
           <span className="font-size-15 xs-font-size-14">{airline}</span>

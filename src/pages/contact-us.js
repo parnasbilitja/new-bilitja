@@ -14,7 +14,7 @@ const ContactUs = () => {
     return (
         <>
             <Head>
-                <title>تماس با ما | بلبطجا</title>
+                <title>تماس با ما | بلیطجا</title>
             </Head>
             <NavHandler/>
             <div className={styles['mapcontainer']}>

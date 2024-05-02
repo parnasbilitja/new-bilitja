@@ -171,7 +171,7 @@ const dispatch=useDispatch()
       <NotifAlert/>
 
       <Head>
-        <title>بلبطجا | لیست تورها</title>
+        <title>بلیطجا | لیست تورها</title>
         {/*<meta name="google-site-verification" content="google-site-verification=z-i-kKLHqUdTjsvja701WQg4UWXrnyoIcqHXhygx0do" />*/}
       </Head>
       <NavHandler />

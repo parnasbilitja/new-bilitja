@@ -18,7 +18,7 @@ const BecomeMizban = () => {
                 <img
                   width=""
                   height=""
-                  alt="بلبطجا-لوگو میزبان شوید"
+                  alt="بلیطجا-لوگو میزبان شوید"
                   src="../../../Images/first-time.webp"
                 />
               </div>

@@ -38,7 +38,7 @@ const PaymentReceiptDesktopHeader = (props) => {
                 <img
                   width=""
                   height=""
-                  alt="بلبطجا - رزرو بلیط هواپیما"
+                  alt="بلیطجا - رزرو بلیط هواپیما"
                   src="../../../../../Images/airplane_reserve.webp"
                 />
               </div>
@@ -73,7 +73,7 @@ const PaymentReceiptDesktopHeader = (props) => {
                       globals.website +
                       `Airlines/${flight_info.airlineCode}.png?ver=1`
                     }
-                    alt="بلبطجا - لوگو ایرلاین"
+                    alt="بلیطجا - لوگو ایرلاین"
                   />
                   <p>
                     ایرلاین :{" "}
@@ -88,7 +88,7 @@ const PaymentReceiptDesktopHeader = (props) => {
                     <img
                       width=""
                       height=""
-                      alt="بلبطجا - لوگو رزرو بلیط هواپیما"
+                      alt="بلیطجا - لوگو رزرو بلیط هواپیما"
                       src="../../../../../Images/airplane_reserve.webp"
                     />
                     <p>
@@ -107,7 +107,7 @@ const PaymentReceiptDesktopHeader = (props) => {
                     height=""
                     src="../../../../../Images/barcode.webp"
                     className="imgbarcode barcode-img"
-                    alt="بلبطجا - بارکد"
+                    alt="بلیطجا - بارکد"
                   />
                 </div>
               </div>

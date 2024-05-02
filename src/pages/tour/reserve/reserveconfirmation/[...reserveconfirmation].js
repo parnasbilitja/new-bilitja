@@ -223,7 +223,7 @@ const ReservationConfirmation = () => {
             <div className={styles["reserveinfo_container"]}>
 
                 <Head>
-                    <title>بلبطجا | تور</title>
+                    <title>بلیطجا | تور</title>
                 </Head>
                 <div className={styles["tourDet-container"]} style={{marginBottom:'15px'}}>
                     <div className={styles["selected-hotel_conatiner"]}>

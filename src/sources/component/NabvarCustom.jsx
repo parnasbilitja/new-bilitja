@@ -80,7 +80,7 @@ const NavBar = (props) => {
                       height=""
                       className={styles["logo"]}
                       src="/Images/hamnavaz-logo.webp"
-                      alt="بلبطجا - لوگو"
+                      alt="بلیطجا - لوگو"
                       style={{ cursor: "pointer" }}
                     />
                   </Link>

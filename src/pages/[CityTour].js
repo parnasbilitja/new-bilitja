@@ -145,9 +145,9 @@ const CityTour = (props) => {
                 // (data1 && notfound === false) &&
                 <>
                     <Head>
-                        <title>  لیست‌ تور‌های شهر {props.cityInfo.name} | آژانس مسافرتی بلبطجا
+                        <title>  لیست‌ تور‌های شهر {props.cityInfo.name} | آژانس مسافرتی بلیطجا
                         </title>
-                        <meta name="description" content={`تور‌های ${props.cityInfo.name} ماه ${jalaliMonthName(moment().locale('fa').format('jMMMM')) } با ایرلاین‌های معتبر و هتل دلخواه شما. شروع قیمت‌ تور‌های ${props.cityInfo.name} از ${props.tourMinPrice+ ' ' + 'تومان'}. رزرو تور از سایت مسافرتی بلبطجا.`} />
+                        <meta name="description" content={`تور‌های ${props.cityInfo.name} ماه ${jalaliMonthName(moment().locale('fa').format('jMMMM')) } با ایرلاین‌های معتبر و هتل دلخواه شما. شروع قیمت‌ تور‌های ${props.cityInfo.name} از ${props.tourMinPrice+ ' ' + 'تومان'}. رزرو تور از سایت مسافرتی بلیطجا.`} />
                     </Head>
                     <NavHandler/>
                     <div style={{padding:'1.5rem 2rem'}} className=' margin-top margin-topsm-1rem d-lg-flex justify-lg-content-center '>

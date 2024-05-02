@@ -80,7 +80,7 @@ const FlightReserveDesktopHeader = (props) =>{
                 <img
                     width="135px"
                     height="65px"
-                    alt="بلبطجا - لوگو رزرو بلیط هواپیما"
+                    alt="بلیطجا - لوگو رزرو بلیط هواپیما"
                     className="pe-3"
                     src="../../../../../Images/flight.png"
                   />
@@ -117,7 +117,7 @@ const FlightReserveDesktopHeader = (props) =>{
                     height=""
                     src="../../../../../Images/barcode.webp"
                     className="imgbarcode"
-                    alt="بلبطجا - بارکد "
+                    alt="بلیطجا - بارکد "
                   />
                 </div>
               </div>

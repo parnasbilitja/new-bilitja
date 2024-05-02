@@ -21,7 +21,7 @@ export const getServerSideProps = async ({ res }) => {
 			<atom:link href="https://hamnavaz.com" />
 			<Placemark>
 				<name><![CDATA[آژانس هواپیمایی بلیطجا]]></name>
-				<description><![CDATA[بلبطجا ]]></description>
+				<description><![CDATA[بلیطجا ]]></description>
 				<address><![CDATA[سهروردی جنوبی، خیابان ابرار شرقی، خیابان اقلیمی، پلاک 12، واحد سوم]]></address>
 				<phoneNumber><![CDATA[+982184278]]></phoneNumber>
 				<atom:link href="https://hamnavaz.com"/>
