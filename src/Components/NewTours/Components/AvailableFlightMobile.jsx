@@ -79,8 +79,18 @@ const AvailableFlightMobile = ({
   useEffect(()=>{
     console.log(selectedRoom)
   },[selectedRoom])
-  const IncRoom = (flightId, room, adlprc) => {
 
+  const serviceflightprc=(id,servicearr)=>{
+    let foundservice=servicearr.filter(s=>s?.airport_id===id)
+    if(foundservice.length>0){
+      return foundservice[0].rate
+    }else{
+      return 0
+    }
+  }
+  const IncRoom = (flightId, room, adlprc) => {
+    let service_Flight_Prc
+    service_Flight_Prc= serviceflightprc(0,room.services) +  serviceflightprc(flightDet?.departure?.destination_id,room.services)
     // debugger
     setPassRoomId(null);
     // let minAvRoom = Math.min(
@@ -119,10 +129,10 @@ const AvailableFlightMobile = ({
             chd_capacity: room.chd_capacity,
             extra_bed_capacity: room.extra_bed_count,
             total_extra_count: room.total_extra_count,
-            chd_n_prc: room?.rate?.chd_n_price + flight?.total_chd_price,
-            chd_w_prc:room?.rate?.chd_w_price ===0 ? 0 : room?.rate?.chd_w_price + flight?.total_chd_price,
-            ext_prc: room.rate.extra_price + flight?.total_adl_price,
-            inf_prc:flight.departure?.inf_price+flight?.return?.inf_price,
+            chd_n_prc: room?.rate?.chd_n_price + flight?.total_chd_price + service_Flight_Prc,
+            chd_w_prc:room?.rate?.chd_w_price ===0 ? 0 : room?.rate?.chd_w_price + flight?.total_chd_price +service_Flight_Prc,
+            ext_prc: room.rate.extra_price + flight?.total_adl_price + service_Flight_Prc,
+            inf_prc:flight.departure?.inf_price+flight?.return?.inf_price +service_Flight_Prc,
             room_prc:getRoomPrc(room.room_type_id)
 
             // adlprc,

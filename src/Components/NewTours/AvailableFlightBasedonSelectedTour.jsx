@@ -66,13 +66,25 @@ const AvailableFlightBasedonSelectedTour = (props) => {
     };
 
 
+
+    const serviceflightprc=(id,servicearr)=>{
+        let foundservice=servicearr.filter(s=>s?.airport_id===id)
+        if(foundservice.length>0){
+            return foundservice[0].rate
+        }else{
+            return 0
+        }
+    }
     const IncRoom1 = (flightId, room,flightDet) => {
         // let minAvRoom = Math.min(
         //     ...room.rates?.map((a) => {
         //         return a.available_room_count;
         //     })
         // );
+        let service_Flight_Prc
+        service_Flight_Prc= serviceflightprc(0,room.services) +  serviceflightprc(flightDet?.departure?.destination_id,room.services)
 
+        console.log(service_Flight_Prc)
         if (room.rate.available_room_count > roomCounter1(room.room_type_id)) {
             setIsOpen(flightDet.departure.id.toString()+flightDet.return.id.toString());
             setSelectedRoom([
@@ -97,10 +109,10 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                     total_extra_count: room?.total_extra_count,
                     // chd_prc:room?.rate?.chd_price + flightDet?.departure?.chd_price+flightDet?.return?.chd_price,
                     // chd_prc:room?.rate?.chd_price + flightDet?.departure?.chd_price+flightDet?.return?.chd_price,
-                    chd_n_prc: room?.rate?.chd_n_price + flightDet?.total_chd_price,
-                    chd_w_prc:room?.rate?.chd_w_price ===0 ? 0 : room?.rate?.chd_w_price + flightDet?.total_chd_price,
-                    ext_prc: room?.rate?.extra_price + flightDet?.total_adl_price,
-                    inf_prc:flightDet.departure?.inf_price+flightDet?.return?.inf_price
+                    chd_n_prc: room?.rate?.chd_n_price + flightDet?.total_chd_price +service_Flight_Prc,
+                    chd_w_prc:room?.rate?.chd_w_price ===0 ? 0 : room?.rate?.chd_w_price + flightDet?.total_chd_price +service_Flight_Prc,
+                    ext_prc: room?.rate?.extra_price + flightDet?.total_adl_price +service_Flight_Prc,
+                    inf_prc:flightDet.departure?.inf_price+flightDet?.return?.inf_price+service_Flight_Prc
                 },
             ]);
 
