@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some task has been resolved">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/AvailableFlightMobile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/AvailableFlightMobile.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -234,7 +233,7 @@
       <workItem from="1714222607596" duration="12000" />
       <workItem from="1714487198139" duration="276000" />
       <workItem from="1714540811419" duration="1476000" />
-      <workItem from="1714629100640" duration="851000" />
+      <workItem from="1714629100640" duration="1773000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -404,14 +403,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00125" summary="some changes have been deployed===&gt;price rounder tour(reservation &amp; comfimation)">
-      <option name="closed" value="true" />
-      <created>1696853980591</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1696853980591</updated>
-    </task>
     <task id="LOCAL-00126" summary="some huge changes were transfered from hamnavaz to BILITJA">
       <option name="closed" value="true" />
       <created>1698224473627</created>
@@ -572,7 +563,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714639914694</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="some task has been resolved">
+      <option name="closed" value="true" />
+      <created>1714640143179</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1714640143179</updated>
+    </task>
+    <option name="localTasksCounter" value="147" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

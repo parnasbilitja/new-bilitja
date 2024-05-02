@@ -88,9 +88,10 @@ const AvailableFlightMobile = ({
       return 0
     }
   }
-  const IncRoom = (flightId, room, adlprc) => {
+  const IncRoom = (flightId, room, destid) => {
+    console.log(destid)
     let service_Flight_Prc
-    service_Flight_Prc= serviceflightprc(0,room.services) +  serviceflightprc(flightDet?.departure?.destination_id,room.services)
+    service_Flight_Prc= serviceflightprc(0,room.services) +  serviceflightprc(destid,room.services)
     // debugger
     setPassRoomId(null);
     // let minAvRoom = Math.min(
@@ -964,7 +965,8 @@ useEffect(()=>{
                                                   IncRoom(
                                                       flight.departure.id.toString()+flight.return.id.toString()
                                                       ,
-                                                      room
+                                                      room,
+                                                      flight.departure.destination_id
                                                   );
                                                 }}
                                             >
