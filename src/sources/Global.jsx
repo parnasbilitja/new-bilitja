@@ -6,3 +6,4 @@ const globals = {
 };
 // https://cors-anywhere.herokuapp.com/
 export default globals;
+
