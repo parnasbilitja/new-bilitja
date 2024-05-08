@@ -37,7 +37,7 @@ const Flightlist = () => {
     try {
       axios
         .get(
-          `http://tpa.ravis24.ir/api/BilitAirLines/getRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`
+          `https://tpa.ravis24.ir/api/BilitAirLines/getRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`
         )
         .then((res) => {
           setFlightlist(res.data);
@@ -174,7 +174,7 @@ const Flightlist = () => {
                 <button
                   onClick={() =>
                     changesrv(
-                      "http://tpa.ravis24.ir/api/BilitAirLines/SetRaviskndSysDeclare"
+                      "https://tpa.ravis24.ir/api/BilitAirLines/SetRaviskndSysDeclare"
                     )
                   }
                 >
@@ -222,7 +222,7 @@ const Flightlist = () => {
                         onClick={() => {
                           getiditem(item);
                           changesrvitem(
-                            "http://tpa.ravis24.ir/api/BilitAirLines/SetRaviskndSysDeclare"
+                            "https://tpa.ravis24.ir/api/BilitAirLines/SetRaviskndSysDeclare"
                           );
                         }}
                       >
@@ -262,7 +262,7 @@ const Flightlist = () => {
                           onClick={() => {
                             getiditem(item);
                             changesrvitem(
-                              "http://tpa.ravis24.ir/api/BilitAirLines/SetRaviskndSysDeclare"
+                              "https://tpa.ravis24.ir/api/BilitAirLines/SetRaviskndSysDeclare"
                             );
                           }}
                         >

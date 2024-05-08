@@ -17,7 +17,7 @@ const PaymentReceiptPage = (props) => {
   const handlePrint = (reqNo, reqPnr) => {
     console.log(reqNo, reqPnr);
     setBtnDisabel(true);
-    axios.get(`http://tpa.ravis24.ir/Eticket/Ticket?reqNo=${reqNo}&reqPnr=${reqPnr}`)
+    axios.get(`https://tpa.ravis24.ir/Eticket/Ticket?reqNo=${reqNo}&reqPnr=${reqPnr}`)
       .then((blob) => {
         setBtnDisabel(false);
         var file = window.URL.createObjectURL(blob);

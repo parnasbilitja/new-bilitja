@@ -12,7 +12,7 @@ const PaymentReceipt = ({ PaymentInfo }) => {
 
 export const getServerSideProps = async (context) => {
   const response = await fetch(
-    `http://tpa.ravis24.ir/api/OnlinePay/api/onlinePay/reference/${context.query.reqPnr}/1a157116-a01a-4027-ab10-74098ac63815`
+    `https://tpa.ravis24.ir/api/OnlinePay/api/onlinePay/reference/${context.query.reqPnr}/1a157116-a01a-4027-ab10-74098ac63815`
   );
   const data = await response.json();
 

@@ -59,7 +59,7 @@ const Dashboard = () => {
     try {
       axios
         .get(
-          `http://tpa.ravis24.ir/api/BilitAirLines/getRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`
+          `https://tpa.ravis24.ir/api/BilitAirLines/getRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`
         )
         .then((res) => {
           console.log(res);
@@ -168,7 +168,7 @@ const Dashboard = () => {
 
         <button
           onClick={() =>
-            search("http://tpa.ravis24.ir/api/BilitAirLines/GetFlights")
+            search("https://tpa.ravis24.ir/api/BilitAirLines/GetFlights")
           }
         >
           جستجو

@@ -18,7 +18,7 @@ const PaymentReceiptPage = (props) => {
   const handlePrint = (reqNo, reqPnr) => {
     setBtnDisabel(true);
     fetch(
-      `http://tpa.ravis24.ir/Eticket/Ticket?reqNo=${reqNo}&reqPnr=${reqPnr}`
+      `https://tpa.ravis24.ir/Eticket/Ticket?reqNo=${reqNo}&reqPnr=${reqPnr}`
     )
       .then((res) => res.blob())
       .then((blob) => {

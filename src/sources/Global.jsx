@@ -1,6 +1,6 @@
 const globals = {
-  baseUrl2: "http://tpa.ravis24.ir/api/",
-  baseUrlNew: "http://tpa.ravis24.ir/api/",
+  baseUrl2: "https://tpa.ravis24.ir/api/",
+  baseUrlNew: "https://tpa.ravis24.ir/api/",
   baseUrl: "Https://bilitja.ravis.ir/api/",
   website: "https://bilitja.com/",
 };
