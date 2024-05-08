@@ -6,15 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some task has been resolved">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Azhanslist/AzhanslistAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Azhanslist/AzhanslistAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/payment-receipt.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/payment-receipt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/test2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/test2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/Global.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/Global.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/dashboard/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/dashboard/Dashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/flightlist/Flightlist.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/flightlist/Flightlist.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/reports/Reports.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/reports/Reports.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/payment_receipt/PaymentReceipt.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/payment_receipt/PaymentReceipt.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/payment_receipt/PaymentReceiptPage1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/payment_receipt/PaymentReceiptPage1.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +234,7 @@
       <workItem from="1714540811419" duration="1476000" />
       <workItem from="1714629100640" duration="3805000" />
       <workItem from="1714727668018" duration="1808000" />
-      <workItem from="1715153067349" duration="76000" />
+      <workItem from="1715153067349" duration="2074000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -413,22 +404,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00127" summary="some huge changes were transfered from hamnavaz to BILITJA">
-      <option name="closed" value="true" />
-      <created>1698224514006</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1698224514006</updated>
-    </task>
-    <task id="LOCAL-00128" summary="some huge changes were transfered from hamnavaz to BILITJA">
-      <option name="closed" value="true" />
-      <created>1698224534449</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1698224534449</updated>
-    </task>
     <task id="LOCAL-00129" summary="some changes">
       <option name="closed" value="true" />
       <created>1698240608783</created>
@@ -581,7 +556,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714641160241</updated>
     </task>
-    <option name="localTasksCounter" value="148" />
+    <task id="LOCAL-00148" summary="some task has been resolved">
+      <option name="closed" value="true" />
+      <created>1715153174170</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1715153174186</updated>
+    </task>
+    <task id="LOCAL-00149" summary="some task has been resolved">
+      <option name="closed" value="true" />
+      <created>1715153240779</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1715153240779</updated>
+    </task>
+    <option name="localTasksCounter" value="150" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
