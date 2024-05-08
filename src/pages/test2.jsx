@@ -167,8 +167,8 @@ export const getServerSideProps = async (req) => {
 
   const responsePnr2 = await fetch(
     // `${globals.baseUrl}onlinePay/reference/${reqPnr}`
-//              `https://tpa.ravis.ir/api/OnlinePay/api/onlinePay/reference/OUPHKE/1a157116-a01a-4027-ab10-74098ac63815`
-  `https://tpa.ravis.ir/api/appCallBackBank/AppCallBackBank/saman`,
+//              `http://tpa.ravis24.ir/api/OnlinePay/api/onlinePay/reference/OUPHKE/1a157116-a01a-4027-ab10-74098ac63815`
+  `http://tpa.ravis24.ir/api/appCallBackBank/AppCallBackBank/saman`,
  //   );
    {
     method: "POST",
