@@ -253,7 +253,7 @@ const AccommodationReceipt = (props) => {
                                   "-"
                                 );
                                 window.open(
-                                  `Https://bilitja.ravis.ir/ApplicationBank/CallBank?reqNo=${properties[0]}&reqPnr=${properties[1]}`
+                                  `https://tpa.ravis24.ir/ApplicationBank/CallBank?reqNo=${properties[0]}&reqPnr=${properties[1]}`
                                 );
                               } else {
                                 props.messageBoxModify({

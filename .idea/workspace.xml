@@ -234,7 +234,7 @@
       <workItem from="1714540811419" duration="1476000" />
       <workItem from="1714629100640" duration="3805000" />
       <workItem from="1714727668018" duration="1808000" />
-      <workItem from="1715153067349" duration="3566000" />
+      <workItem from="1715153067349" duration="4321000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -404,14 +404,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00130" summary="add passcount AvailableFlightBasedonSelectedTour.jsx(desktop)">
-      <option name="closed" value="true" />
-      <created>1698299496400</created>
-      <option name="number" value="00130" />
-      <option name="presentableId" value="LOCAL-00130" />
-      <option name="project" value="LOCAL" />
-      <updated>1698299496401</updated>
-    </task>
     <task id="LOCAL-00131" summary="add passcount AvailableFlightBasedonSelectedTour.jsx(desktop)">
       <option name="closed" value="true" />
       <created>1698299926219</created>
@@ -572,7 +564,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715163144193</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="some task has been resolved">
+      <option name="closed" value="true" />
+      <created>1715176286619</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1715176286619</updated>
+    </task>
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
