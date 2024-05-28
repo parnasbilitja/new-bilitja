@@ -91,6 +91,7 @@ debugger
     Profit2+= parseFloat(item.feeGet-item.feeGetKh)
   })
 
+
   useEffect(() => {
 
     const range = calculateRange(len, rowsPerPage);
