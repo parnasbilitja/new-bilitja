@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some task has been resolved">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_reserve/FlightReserveDesktopHeader.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_reserve/FlightReserveDesktopHeader.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/UseTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/UseTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/DesktopFlightSellReport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/DesktopFlightSellReport.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="table bug fixed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,7 +233,7 @@
       <workItem from="1714629100640" duration="3805000" />
       <workItem from="1714727668018" duration="1808000" />
       <workItem from="1715153067349" duration="4321000" />
-      <workItem from="1716875084650" duration="3732000" />
+      <workItem from="1716875084650" duration="4063000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -408,22 +403,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00133" summary="add passcount AvailableFlightBasedonSelectedTour.jsx(desktop)">
-      <option name="closed" value="true" />
-      <created>1700058322924</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1700058322924</updated>
-    </task>
-    <task id="LOCAL-00134" summary="some changes have been transfered from hamnavaz to BILLITJAAA">
-      <option name="closed" value="true" />
-      <created>1700379774151</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
-      <option name="project" value="LOCAL" />
-      <updated>1700379774152</updated>
-    </task>
     <task id="LOCAL-00135" summary="some changes have been transfered from hamnavaz to BILLITJAAA">
       <option name="closed" value="true" />
       <created>1714113564297</created>
@@ -576,7 +555,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715855030310</updated>
     </task>
-    <option name="localTasksCounter" value="154" />
+    <task id="LOCAL-00154" summary="table bug fixed">
+      <option name="closed" value="true" />
+      <created>1716882839617</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1716882839617</updated>
+    </task>
+    <task id="LOCAL-00155" summary="table bug fixed">
+      <option name="closed" value="true" />
+      <created>1716882921309</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1716882921309</updated>
+    </task>
+    <option name="localTasksCounter" value="156" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,7 +591,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some tiny bugs for chdPrc calculation has been fixed in reservation&gt;&gt;info Passenger" />
     <MESSAGE value="reservedData update has been added to reservationComfirmation for changing passengers data based on room" />
     <MESSAGE value="some validations have been applied to UpdatePassenger.jsx form in reservationComfirmation" />
     <MESSAGE value="some style has been applied" />
@@ -621,7 +615,8 @@
     <MESSAGE value="Updated bilitja" />
     <MESSAGE value="Updated bilitjaD" />
     <MESSAGE value="some task has been resolved" />
-    <option name="LAST_COMMIT_MESSAGE" value="some task has been resolved" />
+    <MESSAGE value="table bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="table bug fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
