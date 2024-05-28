@@ -9,6 +9,7 @@ import {
 import { Loader } from "../../../../Utils/Loader";
 import Tabs from "../../TableAndSearch/Tabs";
 import NewLoader from "../../../../Components/NewTours/Components/subComponents/NewLoader";
+import {useEffect} from "react";
 
 
 
@@ -29,7 +30,7 @@ const fetchedList = async () => {
 };
 
 const FlightSellReport = () => {
-  
+
   const [openInfo, setOpenInfo] = React.useState(false);
   const [reqNo, setReqNo] = React.useState("");
   const [reqPnr, setReqPnr] = React.useState("");
@@ -40,9 +41,14 @@ const FlightSellReport = () => {
     const getList = async()=>{
       const list = await fetchedList();
       setList(list)
+
     }
     getList()
   },[])
+
+  useEffect(()=>{
+    console.log(list)
+  },[list])
   const header = [
     {
       title: 'ردیف',
@@ -152,7 +158,7 @@ const FlightSellReport = () => {
       flex: 7,
       mFlex:25,
     },
-    
+
   ]
   return (
     <section>
@@ -169,7 +175,7 @@ const FlightSellReport = () => {
         <Tabs active='Sell' />
         {list.status=='success'?
       <>
-        <TableCustom list2={list.data} 
+        <TableCustom list2={list.data}
         setReqPnr={setReqPnr}
         setReqNo={setReqNo}
         setOpenInfo={setOpenInfo}

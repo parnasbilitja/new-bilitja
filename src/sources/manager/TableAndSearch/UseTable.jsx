@@ -8,16 +8,17 @@ const calculateRange = (len, rowsPerPage) => {
   }
   return range;
 };
-  
+
 const sliceData = (SearchData, page, rowsPerPage) => {
-    return SearchData.slice((page - 1) * rowsPerPage, page * rowsPerPage);  
+    return SearchData.slice((page - 1) * rowsPerPage, page * rowsPerPage);
 };
-  
+
 const useTable = (data, page, rowsPerPage,searchBar) => {
   const [tableRange, setTableRange] = useState([]);
   const [slice, setSlice] = useState([]);
 
-  const SearchData = data.length>1&&
+debugger
+  const SearchData = (data.length>1&& searchBar.length>0)?
   [
     ...data
     .filter((item) =>
@@ -60,10 +61,14 @@ const useTable = (data, page, rowsPerPage,searchBar) => {
     item.serviceName?.toString().toLowerCase().includes(searchBar.toString().toLowerCase())
     ),
 
-  ];
+  ] : [...data];
   SearchData.sort(function(o1,o2){
     return o1.dateTimeSabt>o2.dateTimeSabt ? -1 : o1.dateTimeSabt<o2.dateTimeSabt ? 1 : 0;
   });
+
+  useEffect(()=>{
+    console.log('tablehook',SearchData)
+  },[SearchData])
 
   let len = SearchData.length
   let foroshAll = 0;
@@ -79,13 +84,13 @@ const useTable = (data, page, rowsPerPage,searchBar) => {
   let foroshAll2 = 0;
   let buyAll2 = 0;
   let Profit2 = 0;
-  
+
   SearchData.map((item) => {
     foroshAll2+= !item.amount ? parseFloat(item.feeGet):parseFloat(item.amount)
     buyAll2+= parseFloat(item.feeGetKh)
     Profit2+= parseFloat(item.feeGet-item.feeGetKh)
   })
-  
+
   useEffect(() => {
 
     const range = calculateRange(len, rowsPerPage);
