@@ -72,36 +72,36 @@ const Table = ({
 
         </div>
         <div className="col-12 col-md-9">
-          <div className="row justify-content-md-end justify-content-center">
-            <div
-                className="col-10 my-1 col-md-3 mx-2 text-white p-2 rounded"
-                style={{
-                backgroundColor: "#090026",
-              }}
-            >
-              کل فروش :{moneyFormatrial(foroshAll2)}
-            </div>
-            {isNaN(buyAll2) == false && (
-              <div
-                className="col-10 my-1 col-md-3 mx-2 text-white p-2 rounded"
-                style={{
-                  backgroundColor: "#090026",
-                }}
-              >
-                کل خرید:{moneyFormatrial(buyAll2)}
-              </div>
-            )}
-            {isNaN(Profit2) == false && (
-              <div
-                className="col-10 my-1 col-md-3 mx-2 text-white p-2 rounded"
-                style={{
-                  backgroundColor: "#090026",
-                }}
-              >
-                کل سود:{moneyFormatrial(Profit2)}
-              </div>
-            )}
-          </div>
+          {/*<div className="row justify-content-md-end justify-content-center">*/}
+          {/*  <div*/}
+          {/*      className="col-10 my-1 col-md-3 mx-2 text-white p-2 rounded"*/}
+          {/*      style={{*/}
+          {/*      backgroundColor: "#090026",*/}
+          {/*    }}*/}
+          {/*  >*/}
+          {/*    کل فروش :{moneyFormatrial(foroshAll2)}*/}
+          {/*  </div>*/}
+          {/*  {isNaN(buyAll2) == false && (*/}
+          {/*    <div*/}
+          {/*      className="col-10 my-1 col-md-3 mx-2 text-white p-2 rounded"*/}
+          {/*      style={{*/}
+          {/*        backgroundColor: "#090026",*/}
+          {/*      }}*/}
+          {/*    >*/}
+          {/*      کل خرید:{moneyFormatrial(buyAll2)}*/}
+          {/*    </div>*/}
+          {/*  )}*/}
+          {/*  {isNaN(Profit2) == false && (*/}
+          {/*    <div*/}
+          {/*      className="col-10 my-1 col-md-3 mx-2 text-white p-2 rounded"*/}
+          {/*      style={{*/}
+          {/*        backgroundColor: "#090026",*/}
+          {/*      }}*/}
+          {/*    >*/}
+          {/*      کل سود:{moneyFormatrial(Profit2)}*/}
+          {/*    </div>*/}
+          {/*  )}*/}
+          {/*</div>*/}
         </div>
       </div>
       <div className="controller-table mt-3 scroller" style={{scrollbarWidth: '90px'}}>
