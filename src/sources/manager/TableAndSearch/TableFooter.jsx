@@ -11,8 +11,9 @@ const TableFooter = ({ range, setPage, page, slice }) => {
     // if (page < 10) {
     // }
   }, [slice, page, setPage]);
+
   const rangeFilter = (el) => {
-   
+
     if (el <= page + 4 && el >= page - 4) {
       return el;
     } else {

@@ -17,7 +17,7 @@ const useTable = (data, page, rowsPerPage,searchBar) => {
   const [tableRange, setTableRange] = useState([]);
   const [slice, setSlice] = useState([]);
 
-debugger
+
   const SearchData = (data.length>1&& searchBar.length>0)?
   [
     ...data

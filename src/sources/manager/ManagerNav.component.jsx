@@ -52,7 +52,8 @@ const ManagerNav = (props) => {
               width=""
               height=""
               alt="بلیطجا - لوگو"
-              src="../../../Images/hamnavaz-logo.webp"
+              src="../../../Images/bilitja.webp"
+              style={{width:'100%',height:'90px'}}
             />
           </a>
         </div>

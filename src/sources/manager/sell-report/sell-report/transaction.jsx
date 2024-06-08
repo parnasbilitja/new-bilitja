@@ -34,8 +34,8 @@ const Transaction = () => {
   const [openInfo, setOpenInfo] = React.useState(false);
   const [reqNo, setReqNo] = React.useState("");
   const [reqPnr, setReqPnr] = React.useState("");
-  
-  
+
+
   const [list,setList] = useState([])
   useEffect(()=>{
     const getList = async()=>{
@@ -106,7 +106,7 @@ const Transaction = () => {
       flex: 12,
       mFlex:35,
     },
-    
+
   ]
   return (
     <section>
@@ -123,16 +123,17 @@ const Transaction = () => {
         <Tabs active='Transaction' />
         {list.status=='success'?
       <>
-        <TableCustom list2={list.data} 
+        <TableCustom list2={list.data}
         setOpenInfo={setOpenInfo}
         setReqPnr={setReqPnr}
         setReqNo={setReqNo}
         Transaction={true}
         header={header}
+
          />
       </>
       :<NewLoader/>}
-       
+
         {openInfo ? (
           <DesktopInfoSell
             open={openInfo}

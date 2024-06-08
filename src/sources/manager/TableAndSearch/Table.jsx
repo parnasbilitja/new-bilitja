@@ -7,6 +7,7 @@ import Search from "./Search";
 import { moneyFormatrial } from "../../../Utils/SimpleTasks";
 import PricesRow from "./PricesRow";
 import NewLoader from "../../../Components/NewTours/Components/subComponents/NewLoader";
+import {useRouter} from "next/router";
 const Table = ({
   list2,
   setOpenInfo,
@@ -18,11 +19,12 @@ const Table = ({
 }) => {
   const [searchBar, setSearchBar] = useState("");
   const [perPage, setPerPage] = useState(5);
-  const data = list2.length > 1 && {
+  let data = list2.length > 1 && {
     ...list2.filter((item) =>
       item["reqPnr"].toLowerCase().includes(searchBar.toLowerCase())
     ),
   };
+  const[paymentstat,setPaymentstats] = useState('پرداخت ناموفق');
   const [page, setPage] = useState(1);
   const [inputNum, setInputNum] = useState(1);
   let len = data.length;
@@ -36,17 +38,44 @@ const Table = ({
     buyAll2,
     Profit2,
   } = useTable(list2, page, perPage, searchBar);
+
+  const[newdata,setNewData] = useState([]);
+  useEffect(()=>{
+    if(router.asPath.includes('transaction') ){
+      console.log(paymentstat,data,slice)
+      debugger
+      if(slice.length > 0){
+        let newdata=slice?.filter((item) => item.stat===paymentstat)
+        setNewData(newdata)
+      }
+    }else {
+      setNewData(slice)
+    }
+
+  },[paymentstat,slice])
+  const router =useRouter()
+  useEffect(()=>{
+    console.log(router)
+  },[router])
   return (
     <>
       <div className="row d-flex justify-content-center align-items-center">
-        <div className="col-12 col-md-3">
+        <div className="col-12 col-md-3" >
           <Search searchBar={searchBar} setSearchBar={setSearchBar} />
+          {
+              router.asPath.includes('transaction') &&
+              <select style={{height:'45px',border:'1px solid #cecece',borderRadius:'10px',marginTop:'5px',fontSize:'14px'}} name="" id="" defaultValue={paymentstat} onChange={e => setPaymentstats(e.target.value)}>
+                <option value="پرداخت موفق">پرداخت موفق</option>
+                <option value="پرداخت ناموفق">پرداخت ناموفق</option>
+              </select>
+          }
+
         </div>
         <div className="col-12 col-md-9">
           <div className="row justify-content-md-end justify-content-center">
             <div
-              className="col-10 my-1 col-md-3 mx-2 text-white p-2 rounded"
-              style={{
+                className="col-10 my-1 col-md-3 mx-2 text-white p-2 rounded"
+                style={{
                 backgroundColor: "#090026",
               }}
             >
@@ -86,9 +115,9 @@ const Table = ({
           ))}
         </div>
         <div className="data-detail">
-          {slice ? (
+          {newdata ? (
             <>
-              {slice.map((item, index) => (
+              {newdata.map((item, index) => (
                 <div
                   onDoubleClick={() => {
                     setOpenInfo(true);
@@ -158,10 +187,10 @@ const Table = ({
 
           <button
             className="col-md-3 m-0"
-        
+
             onClick={() => {
               setPage(inputNum);
-              
+
             }}
           >
             برو
