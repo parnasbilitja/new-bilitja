@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="table bug fixed">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/ManagerNav.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/ManagerNav.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/Table.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/TableFooter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/TableFooter.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/UseTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/UseTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/transaction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/transaction.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/ManagerNav.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/ManagerNav.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +236,7 @@
       <workItem from="1714727668018" duration="1808000" />
       <workItem from="1715153067349" duration="4321000" />
       <workItem from="1716875084650" duration="5489000" />
-      <workItem from="1717835114429" duration="4112000" />
+      <workItem from="1717835114429" duration="4460000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -412,14 +406,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00136" summary="Updated bilitja">
-      <option name="closed" value="true" />
-      <created>1714117700693</created>
-      <option name="number" value="00136" />
-      <option name="presentableId" value="LOCAL-00136" />
-      <option name="project" value="LOCAL" />
-      <updated>1714117700693</updated>
-    </task>
     <task id="LOCAL-00137" summary="Updated bilitja">
       <option name="closed" value="true" />
       <created>1714117705031</created>
@@ -580,7 +566,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716883052171</updated>
     </task>
-    <option name="localTasksCounter" value="157" />
+    <task id="LOCAL-00157" summary="table bug fixed">
+      <option name="closed" value="true" />
+      <created>1717844856004</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1717844856004</updated>
+    </task>
+    <option name="localTasksCounter" value="158" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

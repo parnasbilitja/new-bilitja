@@ -104,7 +104,7 @@ const Table = ({
           </div>
         </div>
       </div>
-      <div className="controller-table mt-3 scroller">
+      <div className="controller-table mt-3 scroller" style={{scrollbarWidth: '90px'}}>
         <div className="thead d-flex align-items-center">
           {header.map((item, i) => (
             <div className={`head flex-${item.flex} m-flex-${item.mFlex}`}>
