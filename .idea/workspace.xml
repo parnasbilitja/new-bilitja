@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="table bug fixed">
-      <change afterPath="$PROJECT_DIR$/public/Images/tour-bg-pack.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/tour/flight/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/flight/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tour/hotelselect/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/hotelselect/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/reserveconfirmation/[...reserveconfirmation].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/reserveconfirmation/[...reserveconfirmation].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/tours/alltours/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/alltours/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/List.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +241,7 @@
       <workItem from="1715153067349" duration="4321000" />
       <workItem from="1716875084650" duration="5489000" />
       <workItem from="1717835114429" duration="11082000" />
-      <workItem from="1718792259636" duration="1635000" />
+      <workItem from="1718792259636" duration="1993000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -420,14 +411,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00139" summary="Updated bilitja">
-      <option name="closed" value="true" />
-      <created>1714118241847</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
-      <option name="project" value="LOCAL" />
-      <updated>1714118241847</updated>
-    </task>
     <task id="LOCAL-00140" summary="Updated bilitja">
       <option name="closed" value="true" />
       <created>1714118507892</created>
@@ -588,7 +571,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717847875270</updated>
     </task>
-    <option name="localTasksCounter" value="160" />
+    <task id="LOCAL-00160" summary="table bug fixed">
+      <option name="closed" value="true" />
+      <created>1718794431112</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1718794431112</updated>
+    </task>
+    <option name="localTasksCounter" value="161" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
