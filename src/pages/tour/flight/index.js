@@ -1,9 +1,8 @@
 import React from 'react';
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import NavHandler from "@/Components/share/NavHandler";
-import Footer from "@/sources/component/Footer.component";
-import {jalaliToMiladiConvertor} from "@/Utils/newTour";
+import NavHandler from "../../../Components/share/NavHandler";
+// import {jalaliToMiladiConvertor} from "@/Utils/newTour";
 const AvFlight = dynamic(() =>
         import("../../../Components/NewTours/AvailableFlightBasedonSelectedTour"),
     {

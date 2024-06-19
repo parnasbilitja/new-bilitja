@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import NavHandler from "@/Components/share/NavHandler";
+import NavHandler from "../../../Components/share/NavHandler";
 import List from '../../../sources/tour/List'
 import axios from "axios";
-import Paginate from "@/Components/NewTours/Components/subComponents/Paginate";
-import Scrolltoprefresh from "@/sources/component/Scrolltoprefresh";
+// import Paginate from "@/Components/NewTours/Components/subComponents/Paginate";
+import Scrolltoprefresh from "../../../sources/component/Scrolltoprefresh";
 import styles from '../../../../styles/allTours.module.scss'
 
 

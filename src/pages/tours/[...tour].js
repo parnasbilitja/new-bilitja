@@ -25,13 +25,13 @@ import {
     numberWithCommas,
     startBuilder,
     timeFixer
-} from "@/Utils/newTour";
+} from "../../Utils/newTour";
 import PopUpWide from "../../sources/component/PopUpWide.component";
-import PackageReserve from "@/Components/modal/PackageReserve";
+import PackageReserve from "../../Components/modal/PackageReserve";
 
 import dynamic from "next/dynamic";
-import {Shimmers, Shimmers1, Shimmers3, Shimmers4} from "@/Components/NewTours/Components/subComponents/Shimmers";
-import PopUp2 from "@/sources/component/PopUp2";
+import {Shimmers, Shimmers1, Shimmers3, Shimmers4} from "../../Components/NewTours/Components/subComponents/Shimmers";
+import PopUp2 from "../../sources/component/PopUp2";
 
 const TransfersList = dynamic(() =>
         import("../../sources/component/TransfersList"),
@@ -46,7 +46,7 @@ const TransfersList = dynamic(() =>
 );
 
 import styles from '../../../styles/TourPackage/PackageTourDetails.module.scss'
-import {moneyFormatrial} from "@/Utils/SimpleTasks";
+import {moneyFormatrial} from "../../Utils/SimpleTasks";
 import Image from "next/image";
 // import {browserName, browserVersion, isMobile} from 'react-device-detect';
 // import MapComponent from "@/sources/component/Map.component";

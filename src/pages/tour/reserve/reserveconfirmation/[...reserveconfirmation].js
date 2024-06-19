@@ -23,7 +23,7 @@ import UpdatePassenger from "../../../../Components/NewTours/Components/UpdatePa
 import Head from "next/head";
 import NavHandler from "../../../../Components/share/NavHandler";
 import moment from "moment-jalaali";
-import {Shimmers3, Shimmers4, Shimmers6} from "@/Components/NewTours/Components/subComponents/Shimmers";
+import {Shimmers3, Shimmers4, Shimmers6} from "../../../../Components/NewTours/Components/subComponents/Shimmers";
 
 const ReservationConfirmation = () => {
     const [hotelDet, setHotelDet] = useState();
@@ -51,7 +51,7 @@ const ReservationConfirmation = () => {
             getReservedData(router?.query?.ref_code)
             // setStayCount(router?.query?.staycount)
         }
-        // 
+        //
     }, [router?.query]);
 
     useEffect(() => {
@@ -63,7 +63,7 @@ const ReservationConfirmation = () => {
     // useEffect(() => {
     //
     //
-    //     
+    //
     //
     // }, [reservedRoom]);
 
@@ -95,7 +95,7 @@ const ReservationConfirmation = () => {
             // setTourData(res.data.data)
             // reservedRoomData = res.data.data.reserves.filter(room => room.reserve_type === 'room')
             setReservedRoom(res.data.data)
-            // 
+            //
 
         })
     }
