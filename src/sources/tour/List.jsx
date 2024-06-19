@@ -29,7 +29,7 @@ const router=useRouter()
     const [dest, setDest] = useState([])
     const [city, setCity] = useState('')
     const [meta, setMeta] = useState({})
-    const [sortStat, setSortStat] = useState('')
+    const [sortStat, setSortStat] = useState('dptdate')
 
 
 
@@ -96,7 +96,7 @@ const router=useRouter()
             }
         })
             .then((response) => {
-                setDest(prevstate=>[{destination_code:'',destination_name:'همه'},...response.data.data])
+                setDest(prevstate=>[{code:'',name:'همه'},...response.data.data[0].destinations])
                     // console.log('73267846328736482',response.data)
             })
         return data
@@ -229,14 +229,16 @@ const router=useRouter()
                             {/*</>*/}
 
                             <>
-                                <ul className='city-list' style={{columnGap:"6px"}}>{dest.map(d=>  <li className={city===d.destination_code && 'city-active'} onClick={()=> {
+                                <ul className='city-list' style={{columnGap: "6px"}}>{dest.map(d => <li
+                                        className={city === d.code && 'city-active'} onClick={() => {
 
-                                        setCity(d.destination_code)                                }}
-                                >
-                                    {d.destination_name}
-                                </li>
+                                        setCity(d.code)
+                                    }}
+                                    >
+                                        {d.name}
+                                    </li>
                                 )
-                                  }
+                                }
                                 </ul>
                             </>
 
@@ -247,7 +249,9 @@ const router=useRouter()
                         <div className="border-left"></div>
                     </div>
 
-                    <div className={`${isShowMore || !Array.isArray(data) || data?.length===0 || !props.hideShowMore ?'auto':'listH'}`} style={{overflowY:'hidden',position:'relative',padding:'8px'}}>
+                    <div
+                        className={`${isShowMore || !Array.isArray(data) || data?.length === 0 || !props.hideShowMore ? 'auto' : 'listH'}`}
+                        style={{overflowY: 'hidden',position:'relative',padding:'8px'}}>
                         {
                             !Array.isArray(data) || data?.length===0  ?
 

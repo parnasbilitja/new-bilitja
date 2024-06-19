@@ -514,8 +514,8 @@
 .tab-home-main {
   background: $whiteColor;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  width: 85px;
-  height: 85px;
+  width: 80px;
+  height: 80px;
   padding: 12px;
   border-radius: 35px;
   display: flex;
@@ -569,6 +569,11 @@
 
 
 @media only screen and (max-width: 868px) {
+  .tabscontainer{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    margin-top: 20px !important;
+  }
   .home-tab-active {
     &:after {
       content: '';
@@ -674,10 +679,16 @@
 
   }
 }
+.flight-container{
+  position: relative;
+  //top: -35px;
+  padding: 0px !important;
+}
 
 @media only screen and (min-width: 868px) {
   .flight-container{
     position: relative;
-    top: -35px;
+    //top: -35px;
+    padding: 0 20px !important; ;
   }
 }

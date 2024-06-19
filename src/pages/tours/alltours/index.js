@@ -1,18 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import NavHandler from "../../../Components/share/NavHandler";
+import NavHandler from "@/Components/share/NavHandler";
 import List from '../../../sources/tour/List'
 import axios from "axios";
-import Paginate from "../../../Components/NewTours/Components/subComponents/Paginate";
-import Scrolltoprefresh from "../../../sources/component/Scrolltoprefresh";
+import Paginate from "@/Components/NewTours/Components/subComponents/Paginate";
+import Scrolltoprefresh from "@/sources/component/Scrolltoprefresh";
 import styles from '../../../../styles/allTours.module.scss'
 
 
 function Index(props) {
     const [tour,setTour]=useState([])
     const [meta,setMeta]=useState([])
+   let loading=false
 const AlltoursHandler = (page=1) => {
         setTour([])
-
     axios
         .post(`https://api.hotelobilit.com/api/v2/tours?page=${page}`, {
 
@@ -23,7 +23,6 @@ const AlltoursHandler = (page=1) => {
             }
         })
         .then((res) => {
-            console.log(res.data.data)
             setTour(res.data.data)
             setMeta(res?.data?.meta)
         })
@@ -46,7 +45,6 @@ useEffect(()=>{
                 <Scrolltoprefresh/>
 
                 <List scrollToTop={true} hideShowMore={false} tourData={tour} shimmerNumber={15} />
-                    {/*<Paginate to={meta?.last_page} apiCall={(page)=>AlltoursHandler(page)} />*/}
                 </div>
             </div>
         </>

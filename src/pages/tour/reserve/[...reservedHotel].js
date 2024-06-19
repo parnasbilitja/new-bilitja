@@ -8,9 +8,9 @@ import moment from "moment-jalaali";
 import Footer from "../../../sources/component/Footer.component";
 import Head from "next/head";
 import {connect} from "react-redux";
-import {accountBoxModify, messageBoxModify} from "../../../Redux/UI/ui.action";
-import {addReservationProperties} from "../../../Redux/Reserve/reserve.action";
-import {selectProperties} from "../../../Redux/Reserve/reserve.reselect";
+import {accountBoxModify, messageBoxModify} from "@/Redux/UI/ui.action";
+import {addReservationProperties} from "@/Redux/Reserve/reserve.action";
+import {selectProperties} from "@/Redux/Reserve/reserve.reselect";
 
 const ReservedHotel = (props) => {
   const router = useRouter();
@@ -45,7 +45,7 @@ const ReservedHotel = (props) => {
       <NavHandler />
       <div className='reservedHotelcon'>
           <Head>
-               <title>بلیطجا | تور</title>
+               <title>همنواز | تور</title>
           </Head>
         <Reservation roomsCount={router.query.rooms} hotelDet={hotelDet} stayCount={stayCount} ref_code={router?.query?.ref_code}/>
       </div>

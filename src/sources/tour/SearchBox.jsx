@@ -78,7 +78,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
     // },[search])
     // const posthog=usePostHog()
     return (
-      <div className={'row justify-content-between'}>
+      <div className={'row justify-content-between'} style={{padding:'0 10px'}}>
         <Scrolltoprefresh />
           <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
             <FontAwesomeIcon icon={faCity} style={{height:'30px'}} className="mx-2 tour-input-icon" />
@@ -100,9 +100,9 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
                 search={search}
                 setSearch={setSearch}
                 months={[{
-                  "destination_name": "همه",
-                  "destination_code": " ",
-              },...cities]}
+                    "name": "همه",
+                    "code": " ",
+                },...cities]}
                 issearchbox={isSearchbox}
                 setIsSearchbox={()=>setIsSearchbox(false)}
                 setsearchInput={(val)=>setSearchInput(val)}

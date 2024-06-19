@@ -23,7 +23,7 @@ import UpdatePassenger from "../../../../Components/NewTours/Components/UpdatePa
 import Head from "next/head";
 import NavHandler from "../../../../Components/share/NavHandler";
 import moment from "moment-jalaali";
-import {Shimmers3, Shimmers4, Shimmers6} from "../../../../Components/NewTours/Components/subComponents/Shimmers";
+import {Shimmers3, Shimmers4, Shimmers6} from "@/Components/NewTours/Components/subComponents/Shimmers";
 
 const ReservationConfirmation = () => {
     const [hotelDet, setHotelDet] = useState();
@@ -51,7 +51,7 @@ const ReservationConfirmation = () => {
             getReservedData(router?.query?.ref_code)
             // setStayCount(router?.query?.staycount)
         }
-        // console.log("fsdfsasa", router?.query);
+        // 
     }, [router?.query]);
 
     useEffect(() => {
@@ -63,7 +63,7 @@ const ReservationConfirmation = () => {
     // useEffect(() => {
     //
     //
-    //     console.log('sdsadw342', reservedRoom);
+    //     
     //
     // }, [reservedRoom]);
 
@@ -95,7 +95,7 @@ const ReservationConfirmation = () => {
             // setTourData(res.data.data)
             // reservedRoomData = res.data.data.reserves.filter(room => room.reserve_type === 'room')
             setReservedRoom(res.data.data)
-            // console.log(res.data.data);
+            // 
 
         })
     }
@@ -223,7 +223,7 @@ const ReservationConfirmation = () => {
             <div className={styles["reserveinfo_container"]}>
 
                 <Head>
-                    <title>بلیطجا | تور</title>
+                    <title>همنواز | تور</title>
                 </Head>
                 <div className={styles["tourDet-container"]} style={{marginBottom:'15px'}}>
                     <div className={styles["selected-hotel_conatiner"]}>
@@ -334,7 +334,7 @@ const ReservationConfirmation = () => {
                                         <div style={{color: 'red', cursor: "pointer"}}
                                              onClick={() => OpenEdit(reservedroom.reserve_id)}>
                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15"
-                                                 height="15" viewBox="0 0 24 24" fill='#e20000'>
+                                                 height="15" viewBox="0 0 24 24" fill='#137cb6'>
                                                 <path
                                                     d="M 18 2 L 15.585938 4.4140625 L 19.585938 8.4140625 L 22 6 L 18 2 z M 14.076172 5.9238281 L 3 17 L 3 21 L 7 21 L 18.076172 9.9238281 L 14.076172 5.9238281 z"></path>
                                             </svg>

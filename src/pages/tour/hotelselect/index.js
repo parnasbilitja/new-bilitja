@@ -19,7 +19,7 @@ const availablehotels = () => {
     return (
         <>
             <Head>
-                <title>بلیطجا | تور</title>
+                <title>همنواز | تور</title>
             </Head>
             <NavHandler/>
             <AvHotel/>

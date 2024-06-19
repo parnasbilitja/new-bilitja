@@ -5,8 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="table bug fixed">
+      <change afterPath="$PROJECT_DIR$/public/Images/tour-bg-pack.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/Table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/flight/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/flight/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/hotelselect/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/hotelselect/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/reserveconfirmation/[...reserveconfirmation].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/reserveconfirmation/[...reserveconfirmation].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/alltours/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/alltours/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/List.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,33 +68,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/pa/Desktop/bilitjassrnew/public&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/Users/pa/Desktop/bilitjassrnew/public/Images",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/Images" />
+      <recent name="$PROJECT_DIR$/src/pages" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src" />
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\sources" />
-      <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\styles" />
-      <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\sources\component" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\pages" />
@@ -237,7 +249,8 @@
       <workItem from="1714727668018" duration="1808000" />
       <workItem from="1715153067349" duration="4321000" />
       <workItem from="1716875084650" duration="5489000" />
-      <workItem from="1717835114429" duration="6538000" />
+      <workItem from="1717835114429" duration="11082000" />
+      <workItem from="1718792259636" duration="1635000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -407,14 +420,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00138" summary="Updated bilitja">
-      <option name="closed" value="true" />
-      <created>1714118050562</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
-      <option name="project" value="LOCAL" />
-      <updated>1714118050562</updated>
-    </task>
     <task id="LOCAL-00139" summary="Updated bilitja">
       <option name="closed" value="true" />
       <created>1714118241847</created>
@@ -575,7 +580,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717845458221</updated>
     </task>
-    <option name="localTasksCounter" value="159" />
+    <task id="LOCAL-00159" summary="table bug fixed">
+      <option name="closed" value="true" />
+      <created>1717847875270</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1717847875270</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +660,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx</url>
-          <line>103</line>
+          <line>28</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">

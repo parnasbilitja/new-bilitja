@@ -25,13 +25,13 @@ import {
     numberWithCommas,
     startBuilder,
     timeFixer
-} from "../../Utils/newTour";
+} from "@/Utils/newTour";
 import PopUpWide from "../../sources/component/PopUpWide.component";
-import PackageReserve from "../../Components/modal/PackageReserve";
+import PackageReserve from "@/Components/modal/PackageReserve";
 
 import dynamic from "next/dynamic";
-import {Shimmers, Shimmers1, Shimmers3, Shimmers4} from "../../Components/NewTours/Components/subComponents/Shimmers";
-import PopUp2 from "../../sources/component/PopUp2";
+import {Shimmers, Shimmers1, Shimmers3, Shimmers4} from "@/Components/NewTours/Components/subComponents/Shimmers";
+import PopUp2 from "@/sources/component/PopUp2";
 
 const TransfersList = dynamic(() =>
         import("../../sources/component/TransfersList"),
@@ -46,7 +46,7 @@ const TransfersList = dynamic(() =>
 );
 
 import styles from '../../../styles/TourPackage/PackageTourDetails.module.scss'
-import {moneyFormatrial} from "../../Utils/SimpleTasks";
+import {moneyFormatrial} from "@/Utils/SimpleTasks";
 import Image from "next/image";
 // import {browserName, browserVersion, isMobile} from 'react-device-detect';
 // import MapComponent from "@/sources/component/Map.component";
@@ -295,7 +295,7 @@ const tour = (props) => {
             }
             <NavHandler/>
             <Head>
-                <title> {data && `${data.title} | `} بلیطجا</title>
+                <title> {data && `${data.title} | `} همنواز</title>
             </Head>
             <div ref={ref}></div>
             <div className={styles['tours']}>
@@ -313,17 +313,17 @@ const tour = (props) => {
                             {/*            <g id="Ticket-index" transform="translate(-0.022)">*/}
                             {/*                <path id="Path_1168" data-name="Path 1168"*/}
                             {/*                      d="M2.235,8.086a3.6,3.6,0,0,1-.584-.018l-.169.786.169-.786a.83.83,0,0,1-.622-.641,3.194,3.194,0,0,1,0-.548,8.679,8.679,0,0,1,.385-2.755A4.211,4.211,0,0,1,3.406,1.7C4.216,1.247,5.483,1,8.058,1h3.571c2.575,0,3.842.247,4.652.7a4.211,4.211,0,0,1,1.993,2.423,8.675,8.675,0,0,1,.385,2.755,3.2,3.2,0,0,1,0,.548l.791.144-.791-.144a.83.83,0,0,1-.622.641,3.6,3.6,0,0,1-.584.018A1.876,1.876,0,0,0,15.7,10.059a1.876,1.876,0,0,0,1.757,1.974,3.5,3.5,0,0,1,.573.018.843.843,0,0,1,.625.655,2.943,2.943,0,0,1-.006.52,7.652,7.652,0,0,1-.369,2.331,4.212,4.212,0,0,1-1.993,2.423c-.811.454-2.077.7-4.652.7H8.058c-2.575,0-3.842-.247-4.652-.7a4.212,4.212,0,0,1-1.993-2.423,7.652,7.652,0,0,1-.369-2.331,2.933,2.933,0,0,1-.006-.52.842.842,0,0,1,.625-.655,3.5,3.5,0,0,1,.573-.018,1.876,1.876,0,0,0,1.757-1.974A1.876,1.876,0,0,0,2.235,8.086Z"*/}
-                            {/*                      fill="none" stroke="#e20000" strokeWidth="2"/>*/}
+                            {/*                      fill="none" stroke="#137cb6" strokeWidth="2"/>*/}
                             {/*                <path id="Path_1169" data-name="Path 1169"*/}
                             {/*                      d="M14.8,4a.8.8,0,0,1,.8.8V6.411a.8.8,0,0,1-1.607,0V4.8A.8.8,0,0,1,14.8,4Zm0,4.822a.8.8,0,0,1,.8.8v1.607a.8.8,0,0,1-1.607,0V9.625A.8.8,0,0,1,14.8,8.822Zm.8,5.625a.8.8,0,1,0-1.607,0v1.607a.8.8,0,0,0,1.607,0Z"*/}
-                            {/*                      transform="translate(-2.549 -0.589)" fill="#e20000"*/}
+                            {/*                      transform="translate(-2.549 -0.589)" fill="#137cb6"*/}
                             {/*                      fill-rule="evenodd"/>*/}
                             {/*            </g>*/}
                             {/*        </svg>*/}
                             {/*        <div className="text title-info-tour px-3">*/}
                             {/*            <h5 className="font-bold">{data && data.title}</h5>*/}
                             {/*            <span className="d-none-mobi"*/}
-                            {/*                  style={{color: '#e20000'}}>شروع قیمت از: </span>*/}
+                            {/*                  style={{color: '#137cb6'}}>شروع قیمت از: </span>*/}
                             {/*            <span style={{*/}
                             {/*                color: '#e20000',*/}
                             {/*                fontWeight: '900'*/}
@@ -337,7 +337,7 @@ const tour = (props) => {
                             {/*            <img src={data.transfers[0].logo} width='30px' height={'auto'}/>*/}
                             {/*            <div className="text " style={{marginRight: '.5rem'}}>*/}
                             {/*                <span className="font-bold "*/}
-                            {/*                      style={{color: '#e20000', fontSize: '14px', fontWeight: '700'}}>ایرلاین رفت :</span>*/}
+                            {/*                      style={{color: '#137cb6', fontSize: '14px', fontWeight: '700'}}>ایرلاین رفت :</span>*/}
                             {/*            </div>*/}
                             {/*            <div className="text pe-2">*/}
                             {/*                {data &&*/}
@@ -353,7 +353,7 @@ const tour = (props) => {
                             {/*            <img src={data.transfers[1].logo} width='30px' height={'auto'}/>*/}
                             {/*            <div className="text" style={{marginRight: '.5rem'}}>*/}
                             {/*                <span className="font-bold"*/}
-                            {/*                      style={{color: '#e20000', fontSize: '14px', fontWeight: '700'}}>ایرلاین برگشت :</span>*/}
+                            {/*                      style={{color: '#137cb6', fontSize: '14px', fontWeight: '700'}}>ایرلاین برگشت :</span>*/}
                             {/*            </div>*/}
                             {/*            <div className="text pe-2">*/}
                             {/*                {data &&*/}
@@ -404,7 +404,7 @@ const tour = (props) => {
                                                         <path id="Path_1011" data-name="Path 1011"
                                                               d="M1.152,12.976a14.6,14.6,0,0,0,4.131,7.545,25.71,25.71,0,0,0,5.471,4.223,1.912,1.912,0,0,0,1.962,0,25.71,25.71,0,0,0,5.471-4.223,14.6,14.6,0,0,0,4.131-7.545,10.842,10.842,0,0,0-1.656-7.829C19.058,2.823,16.236,1,11.736,1S4.413,2.823,2.809,5.147A10.842,10.842,0,0,0,1.152,12.976Z"
                                                               transform="translate(0 0)" fill="none"
-                                                              stroke="#e20000" strokeLinecap="round"
+                                                              stroke="#137cb6" strokeLinecap="round"
                                                               strokeLinejoin="round"
                                                               strokeWidth={2}>
                                                         </path>
@@ -412,7 +412,7 @@ const tour = (props) => {
                                                                 data-name="Ellipse 49"
                                                                 cx="2.928" cy="2.928" r="2.928"
                                                                 transform="translate(14.663 12.712) rotate(180)"
-                                                                fill="none" stroke="#e20000"
+                                                                fill="none" stroke="#137cb6"
                                                                 strokeWidth={2}>
                                                         </circle>
                                                     </g>
@@ -572,7 +572,7 @@ const tour = (props) => {
                                                                     <path id="Path_1047" data-name="Path 1047"
                                                                           d="M19.238,2.989a1.029,1.029,0,0,1,1.931,0l1.253,3.387a1.029,1.029,0,0,0,.608.608l3.387,1.253a1.029,1.029,0,0,1,0,1.931L23.03,11.422a1.029,1.029,0,0,0-.608.608l-1.253,3.387a1.029,1.029,0,0,1-1.931,0L17.984,12.03a1.029,1.029,0,0,0-.608-.608l-3.387-1.253a1.029,1.029,0,0,1,0-1.931l3.387-1.253a1.029,1.029,0,0,0,.608-.608Z"
                                                                           transform="translate(6.265 1.09)" fill="none"
-                                                                          stroke="#e20000" strokeLinecap="round"
+                                                                          stroke="#137cb6" strokeLinecap="round"
                                                                           strokeWidth="2"/>
                                                                 </svg>
                                                             </div>
@@ -598,10 +598,10 @@ const tour = (props) => {
                                                         </div>
                                                         <div className="text">
                                                         <span className="ps-1 font-bold font-13-mobi">
-                                                            {data.nightNum}
+                                                            {data?.nightNum}
                                                             شب</span>
                                                             <span className="pe-1 font-bold ps-2 p-0-mobi font-13-mobi">
-                                                            {data.dayNum}
+                                                            {data?.dayNum}
                                                                 روز</span>
                                                         </div>
                                                     </div>
