@@ -40,7 +40,7 @@ const FlightReserveDesktopHeader = (props) =>{
                 </svg>
               </div>
 
-n
+
               <div className="col-lg-4 col-md-4 col-sm-4 col-4 d-flex justify-content-center pe-3">
                 <strong className="font-size-18"style={{color:'#e20000'}}>{props.airport2}</strong>
               </div>
