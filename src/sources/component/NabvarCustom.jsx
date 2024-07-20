@@ -71,7 +71,7 @@ const NavBar = (props) => {
       <nav className={styles.navVar}>
           <div className="d-flex flex-row-reverse justify-content-center">
             <div className="d-flex flex-row-reverse">
-              
+
               <div className={styles["nav-logo-container"]}>
                 <div>
                   <Link href="/" >
@@ -79,7 +79,7 @@ const NavBar = (props) => {
                       width=""
                       height=""
                       className={styles["logo"]}
-                      src="/Images/hamnavaz-logo.webp"
+                      src="/Images/bilitja-logo.webp"
                       alt="بلیطجا - لوگو"
                       style={{ cursor: "pointer" }}
                     />
@@ -90,9 +90,9 @@ const NavBar = (props) => {
                 </div>
               </div>
             </div>
-            
+
           </div>
-        
+
       </nav>
     </div>
   );
