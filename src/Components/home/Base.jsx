@@ -27,6 +27,7 @@ const Base = (props) => {
         <Head>
                 <title>بلیطجا | خرید بلیط هواپیما و رزرو اقامتگاه</title>
         </Head>
+            <NavHandler/>
           <Home type={'index'} />
           {/*<div className="col-md-10 m-auto px-3 padd2">*/}
           {/*  <List />*/}
