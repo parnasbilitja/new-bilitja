@@ -47,7 +47,7 @@ const OfferdTours = (data) => {
       }
     return (
         <>
-            {data?.data.length!==0 &&
+            {data?.data?.length>0 &&
         <div className="pb-4 mx-2">
                 <div className="d-flex flex-wrap align-items-center justify-content-between mt-2">
                             <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-4 col-12">

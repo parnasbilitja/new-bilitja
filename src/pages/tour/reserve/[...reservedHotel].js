@@ -45,7 +45,7 @@ const ReservedHotel = (props) => {
       <NavHandler />
       <div className='reservedHotelcon'>
           <Head>
-               <title>همنواز | تور</title>
+               <title>بلیطجا | تور</title>
           </Head>
         <Reservation roomsCount={router.query.rooms} hotelDet={hotelDet} stayCount={stayCount} ref_code={router?.query?.ref_code}/>
       </div>

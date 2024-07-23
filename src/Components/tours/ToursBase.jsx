@@ -264,7 +264,7 @@ const ToursBase = (props) => {
                             <img
                                 width="100%"
                                 height=""
-                                alt="همنواز-اسلایدر"
+                                alt="بلیطجا-اسلایدر"
                                 src="../../../../Images/tour-bg-pack.png"
                             />
                           </div>}
@@ -273,7 +273,7 @@ const ToursBase = (props) => {
                             <img
                                 width=""
                                 height=""
-                                alt="همنواز-اسلایدر"
+                                alt="بلیطجا-اسلایدر"
                                 src="../../../Images/tour-bg-pack.png"
                             />
                           </div>

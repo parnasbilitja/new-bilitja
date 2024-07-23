@@ -20,7 +20,7 @@ const PageTabls = (props) => {
                   className={`${
                       styles["tab-home-main"]
                   } col-6 col-md-2 col-xl-1 cursor-pointer  ${
-                      router.asPath=== "/ticket"  ? styles["home-tab-active"] : null
+                      ( router.asPath=== "/ticket"|| router.asPath=== "/")   ? styles["home-tab-active"] : null
                   } `}
                   onClick={() => {
                     // props.setType(1);
@@ -299,7 +299,7 @@ const PageTabls = (props) => {
                   className={`${styles["tab-home-main"]} ${
                       styles["mobile-tab4"]
                   } col-6 col-md-2 col-xl-1 cursor-pointer  ${
-                      (router.asPath=== "/tours" || router.asPath=== "/") ? styles["home-tab-active"] : null
+                      router.asPath=== "/tours" ? styles["home-tab-active"] : null
                   } ${styles["width-full"]}`}
                   onClick={() => {
                     // props.setType(2);
