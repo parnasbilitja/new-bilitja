@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some task and bugs have been resolved">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/UseTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/UseTable.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/PriceHandling.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/PriceHandling.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/Row.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/Row.jsx" afterDir="false" />
     </list>
@@ -244,7 +245,7 @@
       <workItem from="1721475931321" duration="5925000" />
       <workItem from="1721651252065" duration="4904000" />
       <workItem from="1722779549107" duration="1754000" />
-      <workItem from="1722847953923" duration="3750000" />
+      <workItem from="1722847953923" duration="14127000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -414,14 +415,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00146" summary="some task has been resolved">
-      <option name="closed" value="true" />
-      <created>1714640143179</created>
-      <option name="number" value="00146" />
-      <option name="presentableId" value="LOCAL-00146" />
-      <option name="project" value="LOCAL" />
-      <updated>1714640143179</updated>
-    </task>
     <task id="LOCAL-00147" summary="some task has been resolved">
       <option name="closed" value="true" />
       <created>1714641160240</created>
@@ -582,7 +575,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721726197448</updated>
     </task>
-    <option name="localTasksCounter" value="167" />
+    <task id="LOCAL-00167" summary="some task and bugs have been resolved">
+      <option name="closed" value="true" />
+      <created>1722851895331</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1722851895331</updated>
+    </task>
+    <option name="localTasksCounter" value="168" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

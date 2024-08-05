@@ -1,8 +1,9 @@
 import React from "react";
 import globals from "./../../Global";
 import style from "./Filter.module.scss";
+import filter from "./Filter";
 
-const Row = ({ option, index, filters }) => {
+const Row = ({ option, index, filters ,setFilter}) => {
   const [data, setData] = React.useState(null);
   const [precent, setPrecent] = React.useState(0);
   const [reserveStatus, setReserveStatus] = React.useState(0);
@@ -11,6 +12,7 @@ const Row = ({ option, index, filters }) => {
   const [change, setChange] = React.useState(0);
 
   const handleSave = async (option) => {
+    debugger
     const info = {
       customerId: "1a157116-a01a-4027-ab10-74098ac63815",
       kndSys: option.kndsys,
@@ -43,9 +45,21 @@ const Row = ({ option, index, filters }) => {
     setPrice(+option.markupPrice);
     setPrecent(+option.markupPercent);
     setData(option);
-    console.log(option)
   }, [option, filters]);
 
+React.useEffect(() => {
+  const newFilter=filters
+  newFilter[index].reserveStat=reserveStatus
+  option.reserveStat=reserveStatus
+
+  setFilter(newFilter)
+
+},[reserveStatus])
+
+
+  React.useEffect(() => {
+    console.log(data)
+  },[data])
   return (
     <div className={style["price"]}>
       <div className={style["price-items"]} key={index}>
@@ -79,7 +93,10 @@ const Row = ({ option, index, filters }) => {
           />
         </div>
         <div>
-          <button onClick={() => handleSave(data)}>
+          <button onClick={() => {
+
+            handleSave(data)
+          }}>
             {loader ? "منتظر بمانید" : "ثبت"}
           </button>
         </div>

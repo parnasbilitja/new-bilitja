@@ -17,8 +17,12 @@ const useTable = (data, page, rowsPerPage,searchBar) => {
   const [tableRange, setTableRange] = useState([]);
   const [slice, setSlice] = useState([]);
 
+useEffect(()=>{
+  console.log(data)
+},[data])
 
-  const SearchData = (data.length>1&& searchBar.length>0)?
+  const SearchData = (data?.length>1&& searchBar.length>0)?
+
   [
     ...data
     .filter((item) =>
@@ -99,7 +103,7 @@ const useTable = (data, page, rowsPerPage,searchBar) => {
     setTableRange([...range]);
 
     const slice = sliceData(SearchData, page, rowsPerPage);
-    setSlice([...slice]);
+    // setSlice([...slice]);
   }, [page,searchBar,rowsPerPage]);
 
   return { slice, range: tableRange, foroshAll, buyAll, Profit, foroshAll2, buyAll2, Profit2 };

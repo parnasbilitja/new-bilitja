@@ -8,8 +8,7 @@ import globals from "./../../Global";
 import style from "./Filter.module.scss";
 import axios from "axios";
 import TableFooter from "../TableAndSearch/TableFooter";
-import useTable from "../TableAndSearch/UseTable";
-
+// import TableCustom from "../TableAndSearch/TableCustom";
 const SaveAllDialog = ({ open, close, save }) => {
   return (
     <Dialog open={open} onClose={close}>
@@ -41,6 +40,34 @@ const PriceHandling = () => {
 
 
   const [openSaveAll, setSaveAll] = React.useState(false);
+
+
+
+  const getList = async () => {
+
+    const agencies = await axios.get(
+      `${globals.baseUrlNew}BilitAirLines/GetAzhansList`
+    );
+    const agenciesDeclare = await axios.get(
+      `${globals.baseUrlNew}BilitAirLines/GetRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`
+    );
+    if (agencies.data.length != 0) {
+      const items = agencies.data.map((element) => {
+            const findByKndSys = agenciesDeclare.data.filter((ele) =>ele.kndsys===element.kndsys)
+            const newItem = { ...element, ...findByKndSys[0] };
+            return newItem;
+          }
+
+      );
+
+      console.log(items)
+      setFilter(items);
+      setAgency(items);
+
+
+    }
+  };
+
   // const {
   //   slice,
   //   range,
@@ -51,30 +78,6 @@ const PriceHandling = () => {
   //   buyAll2,
   //   Profit2,
   // } = useTable(filter, page, perPage);
-
-
-  const getList = async () => {
-    debugger
-    const agencies = await axios.get(
-      `${globals.baseUrlNew}BilitAirLines/GetAzhansList`
-    );
-    const agenciesDeclare = await axios.get(
-      `${globals.baseUrlNew}BilitAirLines/GetRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`
-    );
-    if (agencies.data.length != 0) {
-      const items = agencies.data.map((element) => {
-        const findByKndSys = agenciesDeclare.data.filter((ele) =>ele.kndsys===element.kndsys)
-            const newItem = { ...element, ...findByKndSys[0] };
-            return newItem;
-      }
-
-      );
-
-      console.log(items)
-      setFilter(items);
-      setAgency(items);
-    }
-  };
 
   React.useEffect(() => {
     getList();
@@ -89,6 +92,7 @@ const PriceHandling = () => {
   };
 
   const handleSave = async () => {
+    debugger
     const list = [...filter];
     list.map(async (option) => {
       const info = {
@@ -109,12 +113,10 @@ const PriceHandling = () => {
         }
       );
       const response = await feteched.json();
-      if (response.status == "0") {
-        alert("ثبت با موفقیت انجام شد");
-      } else {
-        alert("در ثبت خطایی رخ داده است");
-      }
     });
+
+      alert("ثبت با موفقیت انجام شد");
+
   };
 
   return (
@@ -130,7 +132,7 @@ const PriceHandling = () => {
           </div>
         </div>
         <Filter
-          list={agency}
+          list={filter}
           setFilter={(data) => setFilter(data)}
           cancel={handleCancel}
           filters={filter}
@@ -162,12 +164,12 @@ const PriceHandling = () => {
 
               {filter != null ? (
                 filter.map((option, index) => (
-
                   <Row
                     option={option}
                     index={index}
                     key={index}
                     filters={filter}
+                    setFilter={(data) => setFilter(data)}
                   />
                 ))
               ) : (
@@ -184,7 +186,7 @@ const PriceHandling = () => {
         <SaveAllDialog
           open={openSaveAll}
           close={() => setSaveAll(false)}
-          save={handleSave}
+          save={()=>handleSave()}
         />
       </div>
 
