@@ -43,6 +43,7 @@ const Row = ({ option, index, filters }) => {
     setPrice(+option.markupPrice);
     setPrecent(+option.markupPercent);
     setData(option);
+    console.log(option)
   }, [option, filters]);
 
   return (

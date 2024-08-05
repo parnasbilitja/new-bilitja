@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Row from "./Row";
 import Filter from "./Filter";
 import { useRouter } from "next/router";
@@ -7,6 +7,8 @@ import DialogContent from "@mui/material/DialogContent";
 import globals from "./../../Global";
 import style from "./Filter.module.scss";
 import axios from "axios";
+import TableFooter from "../TableAndSearch/TableFooter";
+import useTable from "../TableAndSearch/UseTable";
 
 const SaveAllDialog = ({ open, close, save }) => {
   return (
@@ -34,9 +36,25 @@ const PriceHandling = () => {
   const router = useRouter();
   const [agency, setAgency] = React.useState(null);
   const [filter, setFilter] = React.useState(null);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(40);
+
+
   const [openSaveAll, setSaveAll] = React.useState(false);
+  // const {
+  //   slice,
+  //   range,
+  //   foroshAll,
+  //   buyAll,
+  //   Profit,
+  //   foroshAll2,
+  //   buyAll2,
+  //   Profit2,
+  // } = useTable(filter, page, perPage);
+
 
   const getList = async () => {
+    debugger
     const agencies = await axios.get(
       `${globals.baseUrlNew}BilitAirLines/GetAzhansList`
     );
@@ -44,14 +62,17 @@ const PriceHandling = () => {
       `${globals.baseUrlNew}BilitAirLines/GetRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`
     );
     if (agencies.data.length != 0) {
-      const items = agencies.data.map((element) =>
-        agenciesDeclare.data.map((ele) => {
-          const newItem = { ...element, ...ele };
-          return newItem;
-        })
+      const items = agencies.data.map((element) => {
+        const findByKndSys = agenciesDeclare.data.filter((ele) =>ele.kndsys===element.kndsys)
+            const newItem = { ...element, ...findByKndSys[0] };
+            return newItem;
+      }
+
       );
-      setFilter(items[0]);
-      setAgency(items[0]);
+
+      console.log(items)
+      setFilter(items);
+      setAgency(items);
     }
   };
 
@@ -59,6 +80,10 @@ const PriceHandling = () => {
     getList();
   }, []);
 
+
+  React.useEffect(() => {
+    console.log(filter)
+  }, [filter]);
   const handleCancel = async () => {
     router.reload();
   };
@@ -137,6 +162,7 @@ const PriceHandling = () => {
 
               {filter != null ? (
                 filter.map((option, index) => (
+
                   <Row
                     option={option}
                     index={index}
@@ -161,6 +187,13 @@ const PriceHandling = () => {
           save={handleSave}
         />
       </div>
+
+      {/*<TableFooter*/}
+      {/*    range={range}*/}
+      {/*    slice={slice}*/}
+      {/*    setPage={setPage}*/}
+      {/*    page={page}*/}
+      {/*/>*/}
     </section>
   );
 };
