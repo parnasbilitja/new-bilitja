@@ -3,7 +3,7 @@ import globals from "./../../Global";
 import style from "./Filter.module.scss";
 import filter from "./Filter";
 
-const Row = ({ option, index, filters ,setFilter}) => {
+const Row = ({ option, index, filters ,setFilter,close}) => {
   const [data, setData] = React.useState(null);
   const [precent, setPrecent] = React.useState(0);
   const [reserveStatus, setReserveStatus] = React.useState(0);

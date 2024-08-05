@@ -170,6 +170,7 @@ const PriceHandling = () => {
                     key={index}
                     filters={filter}
                     setFilter={(data) => setFilter(data)}
+                    close={()=>close()}
                   />
                 ))
               ) : (
@@ -186,7 +187,10 @@ const PriceHandling = () => {
         <SaveAllDialog
           open={openSaveAll}
           close={() => setSaveAll(false)}
-          save={()=>handleSave()}
+          save={()=> {
+            setSaveAll(false);
+            handleSave()
+          }}
         />
       </div>
 
