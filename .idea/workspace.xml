@@ -4,139 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some task and bugs have been resolved">
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="new bilitja">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Images/Display.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/Display.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Images/calendar-svgrepo-com.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Images/cart-check-svgrepo-com.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/cart-check-svgrepo-com.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Images/comment-svgrepo-com.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/comment-svgrepo-com.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Images/costumer-support-call-svgrepo-com.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/costumer-support-call-svgrepo-com.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Images/document-svgrepo-com.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/document-svgrepo-com.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Images/hotel-svgrepo-com.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/hotel-svgrepo-com.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Images/star.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/star.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/flight-land-svgrepo-com.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/logo192.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableHotel1.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableHotel1.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/AvailableFlightMobile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/AvailableFlightMobile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/CountDownTimer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/CountDownTimer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/InfoPasserngers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/InfoPasserngers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/RoomsInfo.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/RoomsInfo.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/TourSearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BDCalendarShamsi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BDCalendarShamsi.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BDCalenderMiladi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BDCalenderMiladi.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthDayParentCl.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthDayParentCl.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalendar.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalendar.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalenderMiladi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalenderMiladi.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/Calendar.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/Calendar.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/JalaliDays.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/JalaliDays.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/CollapseSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/CollapseSearch.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/HotelsSideBarSearch.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Paginate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Paginate.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerForm.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerInfo.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PassengerInfo.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PictureModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/PictureModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Shimmers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Shimmers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/home/Base.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/Base.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/hotel/HotelsSearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hotel/HotelsSearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/modal/RequestTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/RequestTour.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Airports/airport.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Airports/airport.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Azhanslist/AzhanslistAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Azhanslist/AzhanslistAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/newTour.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/newTour.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/404.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/404.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/TrackOrder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/TrackOrder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/[CityTour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/[CityTour].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/blogs/[blog].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/blogs/[blog].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/callbackbank.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/callbackbank.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/cityTour/[CityTour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/cityTour/[CityTour].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/flights.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/flights.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/france.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/france.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/hotel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/hotels/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotels/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/istanbul-norouz.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/istanbul-norouz.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pages/[tourname].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages/[tourname].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/panel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/test.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/test2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/test2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tour/flight/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/flight/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/reserveconfirmation/[...reserveconfirmation].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/reserveconfirmation/[...reserveconfirmation].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/turkey-automn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/turkey-automn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/turkey.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/turkey.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/Global.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/Global.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/account/Auth.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/account/Auth.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/account/ForgetPassword.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/account/ForgetPassword.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/account/Login.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/account/Login.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/calendar/BirthdayCalendar.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/calendar/BirthdayCalendar.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/calendar/BirthdayCalenderMiladi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/calendar/BirthdayCalenderMiladi.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/calendar/JalaliDays.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/calendar/JalaliDays.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/charterflight/charterflight.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/charterflight/charterflight.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/FlightsUrl.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/FlightsUrl.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/HeadSeo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/HeadSeo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/MessageBox.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/MessageBox.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/NabvarCustom.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/NabvarCustom.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/NavBar.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/NavBar.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/NavBarMobile.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/NavBarMobile.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/NavBarMobileCustom.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/NavBarMobileCustom.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/PrimaryTextInput.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/PrimaryTextInput.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Table.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/TransfersList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/TransfersList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/dashboard/DashboardNav.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/dashboard/DashboardNav.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/dashboard/orders/OrderList.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/dashboard/orders/OrderList.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/dashboard/orders/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/dashboard/orders/Table.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/dashboard/profile/ChangePassword.components.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/dashboard/profile/ChangePassword.components.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/dashboard/profile/Image.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/dashboard/profile/Image.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/dashboard/profile/Profile.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/dashboard/profile/Profile.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/Filters.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/Filters.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/FlightSearchBox.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/FlightSearchBox.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/FutureDays.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/FutureDays.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightList.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightList.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightListMobile.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightListMobile.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_receipt/FlightPassengerEditForm.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_receipt/FlightPassengerEditForm.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_receipt/FlightReciept.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_receipt/FlightReciept.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_reserve/FlightPassengerForm.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_reserve/FlightPassengerForm.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_reserve/FlightReserveDesktopHeader.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_reserve/FlightReserveDesktopHeader.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_reserve/PopupFlightReserve.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_reserve/PopupFlightReserve.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/hotels/Hotels.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/hotels/Hotels.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/payment_receipt/PaymentReceipt.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/payment_receipt/PaymentReceipt.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/payment_receipt/PaymentReceiptPage1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/payment_receipt/PaymentReceiptPage1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/CitiesSuggest.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/CitiesSuggest.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/HotelsSuggest.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/HotelsSuggest.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/List.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/MonthValues.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/MonthValues.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/OfferdTours.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/OfferdTours.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/TourData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/TourData.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/TourList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/TourList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/villa/Vilialist.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/villa/Vilialist.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/AirportsMobile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AirportsMobile.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AvailableHotels.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Flight.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Flight.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/FlightList.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/FlightList.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/FlightReserve.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/FlightReserve.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/FlightSearchBox.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/FlightSearchBox.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/InputValues.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/InputValues.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/ManagerNav.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/ManagerNav.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/NavBar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/NavBar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/TrackOrder.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/TrackOrder.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/AvailableFlightBasedonSelectedTour.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/CollapseSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/CollapseSearch.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/HotelSidebarSearch.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/components/subComponent/Shimmers.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/components/subComponent/Shimmers.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,26 +56,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/Users/pa/Desktop/bilitjassrnew",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/pa/Desktop/bilitjassrnew&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
@@ -375,6 +245,8 @@
       <workItem from="1722779549107" duration="1754000" />
       <workItem from="1722847953923" duration="19718000" />
       <workItem from="1722947627548" duration="4604000" />
+      <workItem from="1722952518337" duration="194000" />
+      <workItem from="1722952718993" duration="12000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -544,22 +416,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00150" summary="some task has been resolved">
-      <option name="closed" value="true" />
-      <created>1715163144193</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1715163144193</updated>
-    </task>
-    <task id="LOCAL-00151" summary="some task has been resolved">
-      <option name="closed" value="true" />
-      <created>1715176286619</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1715176286619</updated>
-    </task>
     <task id="LOCAL-00152" summary="some task has been resolved">
       <option name="closed" value="true" />
       <created>1715854966750</created>
@@ -712,7 +568,23 @@
       <option name="project" value="LOCAL" />
       <updated>1722867648261</updated>
     </task>
-    <option name="localTasksCounter" value="171" />
+    <task id="LOCAL-00171" summary="new bilitja">
+      <option name="closed" value="true" />
+      <created>1722952536955</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1722952536955</updated>
+    </task>
+    <task id="LOCAL-00172" summary="new bilitja">
+      <option name="closed" value="true" />
+      <created>1722952542317</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1722952542317</updated>
+    </task>
+    <option name="localTasksCounter" value="173" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -732,7 +604,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some validations have been applied to UpdatePassenger.jsx form in reservationComfirmation" />
     <MESSAGE value="some style has been applied" />
     <MESSAGE value="level back button has been deployed on expiredPass/birth_day =&gt; Reservation.jsx + rules style has been changed on Reservation.jsx" />
     <MESSAGE value="some logic and stylish changes in filter available hotel page" />
@@ -757,7 +628,8 @@
     <MESSAGE value="some task has been resolved" />
     <MESSAGE value="table bug fixed" />
     <MESSAGE value="some task and bugs have been resolved" />
-    <option name="LAST_COMMIT_MESSAGE" value="some task and bugs have been resolved" />
+    <MESSAGE value="new bilitja" />
+    <option name="LAST_COMMIT_MESSAGE" value="new bilitja" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -19,7 +19,7 @@ import Head from "next/head";
 import AvailableFlightMobile from "./Components/AvailableFlightMobile";
 import MapPopUpComponent from "./Components/subComponents/MapPopUp.component";
 import moment from "moment-jalaali";
-import Footer from "@/sources/component/Footer.component";
+import Footer from "../../sources/component/Footer.component";
 
 const AvailableFlightBasedonSelectedTour = (props) => {
     const router = useRouter();
