@@ -94,7 +94,7 @@ const Login = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        // 
         if (data.status == "10") {
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
@@ -197,7 +197,7 @@ const Login = (props) => {
   useEffect(() => {
     if (UserMobileAndCode.mobile.length == 11) {
       localStorage.setItem("mobile", UserMobileAndCode.mobile);
-      // console.log(UserMobileAndCode.mobile);
+      // 
     }
   }, [UserMobileAndCode.mobile])
   const handleSetToken = (e) => {
@@ -215,7 +215,7 @@ const Login = (props) => {
 
 
   const loginWithToken = () => {
-    // console.log(UserMobileAndCode);
+    // 
     setState({ ...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/checkUser`, {
       method: "POST",
@@ -233,7 +233,7 @@ const Login = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        // 
         if (data.status == "2" || data.status == "1") {
           localStorage.setItem('loginGoNext',JSON.stringify(1))
           setState({ ...state, btn_disabled: false, loading: false });
@@ -286,8 +286,8 @@ const Login = (props) => {
 
   const userMobileHandler = (e) => {
     setUserMobileAndCode({ ...UserMobileAndCode, [e.target.name]: e.target.value });
-    // console.log(UserMobileAndCode);
-    // console.log(TestForValue);
+    // 
+    // 
   }
 
   const handleChange = (newValue) => {
@@ -351,12 +351,12 @@ const Login = (props) => {
           <div className=" without-focus col-12">
             <button
               onClick={() => {
-                // console.log(UserMobileAndCode, UserMobileAndCode.code.length);
+                // 
                 if (UserMobileAndCode.code.length !== 4 && UserMobileAndCode.mobile.length == 11) {
                   setTestForValue({ ...TestForValue, num: true })
                   login()
                 } else if (UserMobileAndCode.code.length == 4) {
-                  // console.log(UserMobileAndCode.code);
+                  // 
                   loginWithToken()
                 }
 

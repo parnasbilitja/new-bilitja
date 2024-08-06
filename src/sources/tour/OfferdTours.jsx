@@ -15,6 +15,7 @@ import Link from 'next/link';
 import { useSelector ,useDispatch } from 'react-redux';
 import { fetchOfferdTour } from '../../Redux/OfferdTours/Action';
 import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
+import {Shimmers6} from "../../Components/NewTours/Components/subComponents/Shimmers";
 
 const OfferdTours = (data) => {
     let getData = useSelector(state => state.DataReducer)
@@ -47,7 +48,7 @@ const OfferdTours = (data) => {
       }
     return (
         <>
-            {data?.data?.length>0 &&
+            {
         <div className="pb-4 mx-2">
                 <div className="d-flex flex-wrap align-items-center justify-content-between mt-2">
                             <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-4 col-12">
@@ -82,8 +83,8 @@ const OfferdTours = (data) => {
                     <div className="border-left"></div>
                 </div>
 
-            {
-          <Swiper
+            {data?.data ?
+                <Swiper
           spaceBetween={20}
           slidesPerGroup={1}
           // centeredSlides={true}
@@ -227,7 +228,7 @@ const OfferdTours = (data) => {
                   </div>
               </SwiperSlide>
               ))}
-          </Swiper>
+          </Swiper> : <Shimmers6 selectedHeight={'250px'} />
         }
         </div>
 }

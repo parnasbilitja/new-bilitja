@@ -2,7 +2,7 @@ import React from 'react';
 import Row from './Row';
 
 const Table = ({ props }) => {
-  // console.log(props);
+  // 
   return (
     <div className="controller-table mt-3 scroller">
       {/* head */}

@@ -231,7 +231,7 @@ const ForgetPassword = (props) => {
                   placeholder="تلفن همراه"
                   value={state.mobile}
                   onChange={(e) => {
-                    // console.log(state);
+                    // 
                     setState({
                       ...state,
                       mobile: e.target.value,

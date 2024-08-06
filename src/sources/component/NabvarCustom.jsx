@@ -79,7 +79,7 @@ const NavBar = (props) => {
                       width=""
                       height=""
                       className={styles["logo"]}
-                      src="/Images/bilitja-logo.webp"
+                      src="/Images/bilitja.webp"
                       alt="بلیطجا - لوگو"
                       style={{ cursor: "pointer" }}
                     />

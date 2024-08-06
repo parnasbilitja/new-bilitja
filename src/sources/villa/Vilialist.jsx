@@ -27,9 +27,9 @@ const Vilalist = () => {
   const [emkanat, setEmkanat] = useState();
 
   let datelist = new Date().getTime(datalist);
-  console.log("data :", datelist);
+  
   let datalist2 = new Date().getTime(datalistback);
-  console.log("data 2 :", datalist2);
+  
 
   const [width, setWidth] = useState();
   useEffect(() => {
@@ -39,43 +39,43 @@ const Vilalist = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [width]);
-  console.log("width", width);
+  
 
   useEffect(() => {
     try {
       axios.get(`${globals.baseUrl}bj/eghamatEmkanat/view/`).then((res) => {
-        console.log("res :", res);
+        
         setEmkanat(res.data);
-        console.log("emkanat :", emkanat);
+        
       });
     } catch (e) {
-      console.log(e);
+      
     }
   }, []);
 
   useEffect(() => {
     try {
       axios.get(`${globals.baseUrl}bj/eghamat/view/`).then((res) => {
-        console.log(" vilia data :", res);
+        
         setListvila(res.data);
-        console.log("vila :", listvila);
+        
       });
     } catch (e) {
-      console.log("e", e);
+      
     }
   }, []);
   useEffect(() => {
     try {
       axios.get(`${globals.baseUrl}bj/eghamatRoom/view/`).then((res) => {
-        console.log(" vilia data2 :", res);
+        
         setListvilatwo(res.data);
-        console.log("vila2 :", listvilatwo);
+        
       });
     } catch (e) {
-      console.log("e", e);
+      
     }
   }, []);
-  console.log("asdasda 2", listvilatwo);
+  
 
   const handeldata = (value) => {
     setOpen(value);

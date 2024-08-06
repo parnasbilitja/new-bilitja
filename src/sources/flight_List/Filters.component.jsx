@@ -33,7 +33,7 @@ const Filters = (props) => {
 //   componentDidMount() {
 //         // const prevTickets = [...props.realData];
 //         // const filtring = prevTickets.sort((a, b) => a.priceView - b.priceView);
-//         // console.log(filtring);
+//         // 
 //         // props.setFilter(filtring);
 //         updateWindowDimensions();
 //         window.addEventListener("resize", updateWindowDimensions);
@@ -96,7 +96,7 @@ const Filters = (props) => {
     const handleFindByPrice = (lowMood, e) => {
         const { checked } = e.target;
         if (checked === true) {
-            // console.log("checkeds :", checked);
+            // 
 
             if (lowMood === true) {
                 setState({...state,
@@ -135,7 +135,7 @@ const Filters = (props) => {
                 checked: false,
                 lowPrice: null,
             });
-            // console.log("checkeds :", checked);
+            // 
             props.setFilter(props.realData);
         }
     };

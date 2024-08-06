@@ -63,7 +63,7 @@ const TourSearchBox = (props) => {
                 setCities(cities);
             })
             .catch((err) => {
-                console.log(err);
+                
             });
 
 
@@ -104,7 +104,7 @@ const TourSearchBox = (props) => {
 
     const [list, setList] = useState({});
     const handleFocusOut = (event) => {
-        // console.log(list);
+        // 
         const {name, value} = event.target;
         setList({...list, [name]: value});
         props.addCredentials({
@@ -112,7 +112,7 @@ const TourSearchBox = (props) => {
         });
     };
     const handleFocus = (event) => {
-        // console.log(list);
+        // 
         const {name, value} = event.target;
         setList({...list, [name]: value});
         props.addCredentials({
@@ -606,7 +606,7 @@ useEffect(()=>{
                                     props.destandorgcities.date.persianDate
                                 );
                                 // debugger;
-                                // console.log(props?.destandorgcities?.night[0]);
+                                // 
 
                                 router.push(
                                     `/tour/hotelselect?org=${props.destandorgcities.origin.code}&dest=${props.destandorgcities.destination.code}&stdate=${stDate}&night=${props.destandorgcities?.night}`

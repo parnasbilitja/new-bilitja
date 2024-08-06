@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import {jalaliToMiladiConvertor} from "../../../../Utils/newTour";
 const BirthdayCalendar = (props) => {
-  // console.log("fromsadsadsa", props);
+  //
   const { typePassenger } = props;
 
   useEffect(()=>{
@@ -450,7 +450,7 @@ if(typePassenger==='ADL'||typePassenger==='INF'){
                         props.roomInfo.roomindex,
 
                     );
-                    // console.log(props.roomInfo.index);
+                    //
                   }}
                 >
                   {/*{*/}

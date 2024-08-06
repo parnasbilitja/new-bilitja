@@ -10,6 +10,17 @@ export function isEmpty(obj) {
   return true;
 }
 
+
+export function removeDuplicates(arr, prop1, prop2) {
+  const map = new Map();
+  for (const item of arr) {
+    const key = `${item[prop1]}-${item[prop2]}`;
+    if (!map.has(key)) {
+      map.set(key, item);
+    }
+  }
+  return Array.from(map.values());
+}
 //jalali convert to miladi
 export const jalaliToMiladiConvertor = (jalaliDate) => {
   const jalali = moment(jalaliDate, "jYYYY/jMM/jDD");

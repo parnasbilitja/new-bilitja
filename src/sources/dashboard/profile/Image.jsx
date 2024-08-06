@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 // import './style.css';
 
 const ImgPrev = ({state,setState}) => {
-    // console.log(state);
+    // 
     const [{alt, src}, setImg] = useState({
         src: state.image,
         alt: 'Upload an Image'

@@ -77,7 +77,7 @@ const PopupFlightReserve = (props) => {
       faranegarId,
     } = props;
 
-    // console.log(props);
+    // 
     const reserveObject = {
       numADL: state.numADL,
       numCHD: state.numCHD,
@@ -109,7 +109,7 @@ const PopupFlightReserve = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        
         if (data.message == "OK") {
           props
             .addReservationProperties({
@@ -118,7 +118,7 @@ const PopupFlightReserve = (props) => {
               priceMessage: data.priceMessage,
             })
             .then(() => {
-              console.log(props.router);
+              
               props.router.push(
                 `${props.router.asPath}/info/${data.reqNo}/${data.reqPnr}`
               );

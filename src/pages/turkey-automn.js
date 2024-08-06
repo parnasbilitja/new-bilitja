@@ -18,8 +18,8 @@ import {useRouter} from "next/router";
 import NotFound from "./NotFound";
 import axios from "axios";
 import {ContentAutomn} from '../Utils/CityContent'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
+// import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+// import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
 
 const Turkey = () => {
     const [currentCity, setCurrentCity] = useState('تور-آنتالیا')
@@ -43,7 +43,7 @@ const Turkey = () => {
     //     console.log(router)
     // },[router])
     // useEffect(() => {
-    //     // console.log(city);
+    //     //
     //     if (city?.data?.length < 1) {
     //         dispatch(fetchCity())
     //     }

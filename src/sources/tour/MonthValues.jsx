@@ -21,7 +21,7 @@ const MonthValues = ({setSearch, search, name, months,setsearchInput,issearchbox
 
     }
     useEffect(()=>{
-        console.log(name);
+        
         setHide(false)
     },[months,search])
 

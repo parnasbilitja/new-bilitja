@@ -22,7 +22,7 @@ const PaymentReceiptPage = (props) => {
     )
       .then((res) => res.blob())
       .then((blob) => {
-        console.log(blob);
+        
         setBtnDisabel(false);
         var file = window.URL.createObjectURL(blob);
         window.location.assign(file);

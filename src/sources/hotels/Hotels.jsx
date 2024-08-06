@@ -28,7 +28,7 @@ const Hotels = () => {
             .then(res => {setCities(res.data.data)})
         }
         getData()
-        console.log('check');
+        
 
     },[])
     useEffect(()=>{
@@ -37,12 +37,12 @@ const Hotels = () => {
             await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
             .then(res => {setHotels(res.data.data),setLoading(false)})
         }
-        console.log(loading);
-        console.log(hotels);
-        getData()
-        console.log('check');
         
-        console.log(loading);
+        
+        getData()
+        
+        
+        
     },[city])
     useEffect(()=>{
         setLoading(true)
@@ -50,10 +50,10 @@ const Hotels = () => {
             await axios.post('https://api.hamnavaz.com/api/v1/hotel/getHotels',{isAdmin:0,city:city})
             .then(res => {setHotels(res.data.data),setLoading(false)})
         }
-        console.log(loading);
+        
         getData()
-        console.log('check');
-        console.log(loading);
+        
+        
         
     },[])
 

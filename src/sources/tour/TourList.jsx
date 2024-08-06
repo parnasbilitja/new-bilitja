@@ -5,9 +5,10 @@ import { Loader } from '../../Utils/Loader';
 import { moneyFormat, moneyFormatrial } from '../../Utils/SimpleTasks';
 import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
-import {getcurrencyfa, getRandomNumber, MiladiToJalaliConvertor} from "../../Utils/newTour";
-import Paginate from "../..//Components/NewTours/Components/subComponents/Paginate";
+import {getcurrencyfa, getRandomNumber, isEmpty, MiladiToJalaliConvertor} from "../../Utils/newTour";
+import Paginate from "../../Components/NewTours/Components/subComponents/Paginate";
 import {useRouter} from "next/router";
+import {Shimmers6} from "../../Components/NewTours/Components/subComponents/Shimmers";
 
 const TourList = (props) => {
     // const [data, setData] = useState([])
@@ -51,6 +52,9 @@ const TourList = (props) => {
         }
     }, [props.name])
 
+    useEffect(()=>{
+        console.log(props.data)
+    },[props.data])
 
     useEffect(()=>{
 if(props.code){
@@ -70,13 +74,13 @@ useEffect(()=>{
 
 
     const router=useRouter()
-    const tags=['مجری مستقیم','بهترین قیمت','لیدر فارسی زبان','خدمات ویژه','لاکچری','پرواز بدون تغییر','لحظه آخری','رزرو آنلابن تلفتی']
+    const tags=['مجری مستقیم','بهترین قیمت','لیدر فارسی زبان','خدمات ویژه','لاکچری','پرواز بدون تغییر','لحظه آخری','رزرو آنلاین تلفنی']
 
     return (
         <div >
             <Scrolltoprefresh/>
-            <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-4 col-12">
-                            <div className="d-flex align-items-center justify-content-between">
+            <div className="w-100 d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-4 col-12">
+                            <div style={{paddingLeft:'10px'}} className=" d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="17.326" height="20.086" viewBox="0 0 14.326 17.086">
                                         <g id="Bookmark" transform="translate(1 1)">
@@ -89,15 +93,28 @@ useEffect(()=>{
                                         <p className='subtitle-custom m-0'>ارزان ترین و با کیفیت ترین ها</p>
                                     </div>
                                 </div>
+
+                                <button style={{width:'80px' ,height:'40px',borderRadius:'10px', backgroundColor:'#e20000',color:'#fff'}} onClick={()=>props.setShowFilter()} className='isMobile'>
+                                    فیلتر ها
+                                </button>
                             </div>
                         </div>
                         <div className="bottom d-flex align-items-center mt-3 mb-3">
                         <div className="border-right"></div>
                         <div className="border-left"></div>
                     </div>
-                    {
-                       props?.data?.data?.length===0 || props.data===undefined ? <div className="hotelNotFound">متاسفانه برای {props.name} ، توری موجود نیست</div>: props?.data?.data?.sort((a,b)=>a.min_price-b.min_price)
-                        .map((item) => (
+            {/*// props?.data?.data?.length===0 || props.data===undefined ? <div className="hotelNotFound">متاسفانه برای {props.name} ، توری موجود نیست</div>: props?.data?.data?.sort((a,b)=>a.min_price-b.min_price)*/}
+
+
+
+            {
+                        props.data===undefined ? <div className="hotelNotFound">متاسفانه برای {props.name} ، توری موجود نیست</div>: isEmpty(props.data)?<>{
+                    [...Array(7)].map(i=>(<div style={{marginBottom:'24px'}}>
+                            <Shimmers6 selectedHeight={'95px'}/>
+                        </div>
+                    ))
+                }</>: props?.data?.data
+                        ?.map((item) => (
                                 <Link href={`/tours/${item?.id}`} onClick={() => slugHandler(item?.id)} key={item?.id} className="w-100 col-xl-12 col-lg-12 w-100 d-flex flex-column">
                                     <div className="tour-item col-xl-12 col-lg-12 mb-4"  style={{cursor:'pointer'}}>
                                         <div className="tour-city">

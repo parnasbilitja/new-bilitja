@@ -98,7 +98,7 @@ const PictureModal = ({ url, setIsModal, gallery }) => {
                 >
                   <img
                     src={pic.url}
-                    alt=""
+                    alt={pic?.id}
                     style={{
                       height: "600px",
                       width: "900px",

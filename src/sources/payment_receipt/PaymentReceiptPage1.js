@@ -15,7 +15,7 @@ const PaymentReceiptPage = (props) => {
   let i = 1;
 
   const handlePrint = (reqNo, reqPnr) => {
-    console.log(reqNo, reqPnr);
+    
     setBtnDisabel(true);
     axios.get(`https://tpa.ravis24.ir/Eticket/Ticket?reqNo=${reqNo}&reqPnr=${reqPnr}`)
       .then((blob) => {
@@ -143,7 +143,7 @@ const PaymentReceiptPage = (props) => {
                         </p>
                       </div>
                     </td>
-                              
+
                     <td className="hidden-xs">
                         {moneyFormatrial(option.ticketPrice)} ریال
                     </td>

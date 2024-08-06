@@ -21,11 +21,11 @@ function convertUtftoAscii(str) {
 }
 export default function ({ data }) {
   var a = "GmshtyjwKSun20WdgeTQP%2BPKL8GFh5Thg3P3xX7qDy";
-  // console.log("startt");
+  // 
   a = convertUtftoAscii(a);
   // console.log(a.toString("utf-8"));
   // console.log(decodeURI(a.toString("utf-8")));
-  // console.log("end");
+  // 
 
   // Render data...
   return <div>{data}</div>;
@@ -43,11 +43,11 @@ export async function getServerSideProps({ req }) {
   //if (req.method == "POST") {
 
   const body = await getRawBody(req);
-  // console.log("ssdjdsds");
+  // 
   // console.log(body.toString("utf-8"));
 
   // console.log(body.toJSON())
-  // console.log("ssdjdsdsaasasaasas");
+  // 
   const data = JSON.stringify(body.toString());
   //}
   return { props: { data } };
@@ -60,7 +60,7 @@ export async function getServerSideProps({ req }) {
 //   const router = useRouter();
 
 //   var error = "";
-//  console.log(router);a
+//  a
 //   switch (router.query.status) {
 //     case "-1":
 //       error = "شما از تراکنش انصراف داده اید.";

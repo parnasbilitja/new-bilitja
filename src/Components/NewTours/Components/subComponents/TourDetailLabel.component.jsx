@@ -49,18 +49,24 @@ const TourDetailLabel = ({ hotelName,flightDet, stayCount,gallary ,refcode}) => 
     <>
     <div className="gallery-image">
 
-        {gallary ?
-            <img src={ gallary && gallary[0].url} width={'100%'} alt={`${getFlightDet('departure')?.destination_name} ${hotelName? `| ${hotelName}`:null}`} height={'100%'}  style={{objectFit:'contain',borderRadius:'20px'}}/>
-            :<NewLoader/>}
+      {gallary.length > 0 ?
+          <img src={gallary && gallary[0]?.url} width={'100%'}
+               alt={`${getFlightDet('departure')?.destination_name} ${hotelName ? `| ${hotelName}` : null}`}
+               height={'100%'} style={{objectFit: 'contain', borderRadius: '20px'}}/>
+          :
+          <img src='../../../../Images/noPicture.png' width={'100%'}
+
+               height={'100%'} style={{objectFit: 'contain', borderRadius: '20px'}}/>
+
+      }
 
     </div>
 
 
-
     </>
   </div>
-  <div className="left position-relative col-xl-7 col-lg-7 col-12 " style={{height:'50% !important'}}>
-    <div className="vertical-data" style={{ display: "none" }}></div>
+  <div className="left position-relative col-xl-7 col-lg-7 col-12 " style={{height: '50% !important'}}>
+    <div className="vertical-data" style={{display: "none"}}></div>
     <div className="p-info__tour mr-0 d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3 ">
       {/* c info */}
       <div className="c-info__tour w-100-mobi   col-xl-12 col-gl-12 d-flex justify-content-between">

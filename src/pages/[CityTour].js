@@ -1,141 +1,249 @@
 import axios from 'axios';
-import Link from 'next/link';
 import React, {useEffect, useState} from 'react';
 import moment from 'moment-jalaali'
 import NavHandler from '../Components/share/NavHandler';
 import Footer from '../sources/component/Footer.component';
-import Scrolltoprefresh from '../sources/component/Scrolltoprefresh';
 import TourData from '../sources/tour/TourData';
 import TourList from '../sources/tour/TourList';
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchCity} from '../Redux/citiesSuggest/Action';
 import Head from 'next/head';
-import {tourName} from "../Utils/data";
-import router from "next/router";
 import TourSearchBox from "../Components/NewTours/Components/TourSearchBox";
-// import OfferdTours from "../sources/tour/OfferdTours";
-import {fetchOfferdTour} from "../Redux/OfferdTours/Action";
-import dynamic from "next/dynamic";
-import {useRouter} from "next/router";
-import NotFound from "./NotFound";
-import {isEmpty, jalaliMonthName} from "../Utils/newTour";
-
-const OfferdTours = dynamic(() => import("../sources/tour/OfferdTours"));
+import { jalaliMonthName} from "../Utils/newTour";
+import styles from "../../styles/AvailableHotels.module.scss";
+import HotelsSideBarSearch from "../Components/NewTours/Components/subComponents/HotelsSideBarSearch.component";
+import NewLoader from "../Components/NewTours/Components/subComponents/NewLoader";
+import CalendarComponent from "../Components/NewTours/Components/calendar/Calendar.component";
+import PopUpWide from "../Components/NewTours/Components/subComponents/PopUpWide.component";
+import globals from "../sources/Global";
+import {AnimatePresence, motion} from "framer-motion";
+// import {Loader} from "@/Utils/Loader";
+import Loader1 from "../Components/NewTours/Components/subComponents/Loader1";
 
 const CityTour = (props) => {
-    // console.log(props.Pathname.CityTour.slice(4,props.Pathname.CityTour.length));
-    let city = useSelector(state => state.CityReducer)
-    const dispatch = useDispatch()
-    // const [currentCity, setCurrentCity] = useState(props.Pathname.CityTour.slice(4, props.Pathname.CityTour.length))
-    const [search, setSearch] = useState(false)
-    const refreshData = (val) => {
-        setCurrentCity(val.target.value)
-    }
-    const router=useRouter()
-
-    // console.log('possr',props)
-    // useEffect(()=>{
-    //     if(!router.query.CityTour.includes('تور-')){
-    //         router.push(`/تور-${router.query.CityTour}`)
-    //     }
-    //     console.log(router)
-    // },[router])
-    // useEffect(() => {
-    //     // console.log(city);
-    //     if (city?.data?.length < 1) {
-    //         dispatch(fetchCity())
-    //     }
-    // }, [])
-    //
-    // useEffect(() => {
-    //     setCurrentCity(props.Pathname.CityTour.slice(4, props.Pathname.CityTour.length))
-    // }, [props.Pathname])
-
-
-
-
-    const [data, setData] = useState([])
-    const [data1, setData1] = useState([])
-    const [newData, setNewData] = useState([])
-    const [notfound, setNotFound] = useState(false)
-    let getData = useSelector(state => state.DataReducer)
-
-
-
-
-
-    // useEffect(() => {
-    //     if(props.Pathname){
-    //
-    //     getData1(props.Pathname.CityTour.slice(4, props.Pathname.CityTour.length))
-    //     }else{
-    //         return false
-    //     }
-    //
-    // }, [props.Pathname])
-
-    // useEffect(() => {
-    //     if (getData?.data?.length < 1) {
-    //         dispatch(fetchOfferdTour())
-    //     }
-    //     setData(getData)
-    // }, [])
-
-    // useEffect(() => {
-    //     if (data.length < 1) {
-    //         setData(getData.data)
-    //     }
-    // }, [getData])
-    //
-    // useEffect(() => {
-    //     if (data) {
-    //
-    //         setNewData(data?.filter(city => city.endCity.name === props.Pathname.CityTour.slice(4, props.Pathname.CityTour.length)))
-    //     }
-    // }, [data])
-    const pageNavigate=(page)=>{
-        router.push(props.tourName+`?page=${page}`)
-
-
-    }
-
-    // const [widthMobi, setWidthMobi] = useState(
-    //     typeof window !== "undefined" && getWindowSize()
-    // );
-    //
-    // function getWindowSize() {
-    //     const {innerWidth} = window;
-    //     return innerWidth;
-    // }
-    //
-    // useEffect(() => {
-    //     function handleWindowResize() {
-    //         setWidthMobi(getWindowSize());
-    //     }
-    //
-    //     window.addEventListener("resize", handleWindowResize);
-    // }, []);
-
+    const [nightsList,setNightsList]=useState([])
+    const [order,setOrder]=useState(1)
+    const [staycount,setStayCount]=useState(null)
+    const [page,setPage]=useState(1)
+    const [showFilter, setShowFilter] = useState(false);
     const [isModal, setIsmodal] = useState(false)
+    const [isLoading, setISLoading] = useState(false)
+    const [tours,setTours]=useState({})
+    const [datesList,setDatesList]=useState([])
+    const [flightDate,setFlightDate]=useState({
+        persianDate: '', miladiDate: ''
+    })
 
-    // useEffect(() => {
-    //     const handleRouteChange = (url, { shallow }) => {
-    //         if (url !== router.asPath) {
-    //             // This will run when leaving the current page on back/forward actions
-    //             // Add your logic here, like toggling the modal state
-    //             router.back()
-    //         }
-    //     }
-    //
-    //     router.beforePopState(handleRouteChange)
-    //
-    //     // Cleanup function to remove the event listener when the component unmounts
-    //     return () => {
-    //         router.beforePopState(() => true)
-    //     }
-    // }, [router])
+    const getTour = async (cityCode,page=1) => {
+        setISLoading(true)
+        setTours({})
+        try {
+            const response = await axios.post(`${globals.tourPackagesnew}packages?page=${page}`, {
+                destination:cityCode,
+                month:'',
+                stayCount:staycount,
+                ordering:order,
+                req_type:'package',
+                date:flightDate.miladiDate.length>0 ? flightDate.miladiDate:null
+            },{
+                headers: {"x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP',
+                    referer:'hamnavaz.com'
+                },
 
-    const[code,setCode]=useState(null)
+            });
+            setISLoading(false)
+
+            setTours(response.data)
+            // return response.data;
+        } catch (error) {
+            setISLoading(false)
+
+            console.error("Error fetching data:", error);
+            throw error;
+        }
+
+    }
+
+    let searchElement=[{
+        title: 'مرتب سازی براساس تاریخ ورود به هتل',
+        svg: <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+            <path
+                d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/>
+        </svg>
+        ,
+        inputType: 'checkbox',
+        inputTag:
+            <div>
+
+                <div className={styles.checkboxcontainer}>
+                    <input
+                        className={styles.checkbox}
+                        type="checkbox"
+                        name="نزدیک ترین"
+                        id=""
+                        onClick={() => {
+                            setOrder(1)
+                            setShowFilter(!showFilter)
+                        }
+                        }
+                        checked={order === 1 ? true : false}
+                    />
+                    <p style={{whiteSpace: 'nowrap'}}>نزدیک ترین</p>
+                </div>
+                <div className={styles.checkboxcontainer}>
+                    <input
+                        className={styles.checkbox}
+                        type="checkbox"
+                        name="دور ترین"
+                        id=""
+                        checked={order === 2 ? true : false}
+                        onClick={() => {
+
+                            setOrder(2)
+                            setShowFilter(!showFilter)
+                        }
+
+                        }
+                    />
+                    <p style={{whiteSpace: 'nowrap'}}>دور ترین</p>
+                </div>
+            </div>
+    }, {
+        title: 'تعداد شب',
+        svg: <svg width="28px" height="28px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  stroke="#000000" stroke-width="3.136">
+
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <g id="SVGRepo_iconCarrier">
+
+                <path d="M46 44a26 26 0 0 1-24.94-33.36 24 24 0 1 0 32.3 32.3A26.24 26.24 0 0 1 46 44z"/>
+
+            </g>
+
+        </svg>,
+        inputType: 'select',
+        inputTag: <select
+            name=""
+            id=""
+            onChange={(e) => {
+                setStayCount(e.target.value)
+
+            }}
+
+            onClick={(e) => e.stopPropagation()}
+        >
+            <option key={'همه'} selected value='همه'>
+                همه
+            </option>
+            {nightsList?.map((night) => {
+                return <option key={night} value={night}>{night} شب </option>;
+            })}
+        </select>
+    },
+        {
+            title: 'تاریخ پرواز',
+            svg: <svg width='28px' height='28px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" id="flight-date">
+                <path
+                    d="M303.41 816.85H276a16 16 0 01-15.41-20.29l39-140.27L215 652.34l-42.76 40.22a16 16 0 01-13.83 4.09l-15.58-2.84a16 16 0 01-12.25-21l20.87-59.9L130.58 553a16 16 0 0112.25-21l15.58-2.83a16 16 0 0113.83 4.08L215 573.47l84.62-3.94-39-140.28A16 16 0 01276 409h27.39a16 16 0 0113.44 7.31L413 565a391.47 391.47 0 0144.2 1.74C499 571 523.44 582.31 532 601.36a28.34 28.34 0 010 23.1c-8.51 19-33 30.36-74.75 34.6a389.52 389.52 0 01-44.2 1.75L316.85 809.53A16 16 0 01303.41 816.85zM209 620.05h.74l111.45 5.2a16 16 0 0114.67 20.27L298.88 778.39 391 635.86a15.94 15.94 0 0114.27-7.29 364.67 364.67 0 0049-1.38c30.5-3.13 43.6-9.87 47.43-14.28-3.85-4.44-17-11.2-47.76-14.32a363.65 363.65 0 00-48.67-1.34A16 16 0 01391 590L298.88 447.42l36.95 132.87a16 16 0 01-14.67 20.27l-111.45 5.19a15.94 15.94 0 01-11.7-4.33l-24.8-23.32 10.29 29.55a16.07 16.07 0 010 10.52l-10.29 29.55L198 624.39A16 16 0 01209 620.05zM723 243H550.78a16 16 0 010-32H723a16 16 0 010 32z"></path>
+                <path
+                    d="M900,891.86H100a16,16,0,0,1-16-16V227a16,16,0,0,1,16-16h75.41a16,16,0,0,1,0,32H116V859.86H884V243H824.58a16,16,0,0,1,0-32H900a16,16,0,0,1,16,16V875.86A16,16,0,0,1,900,891.86Z"></path>
+                <path
+                    d="M449.22 243H277a16 16 0 010-32H449.22a16 16 0 010 32zM900 366H100a16 16 0 010-32H900a16 16 0 010 32zM672 523.66H565.82a16 16 0 01-16-16V401.49a16 16 0 0116-16H672a16 16 0 0116 16V507.66A16 16 0 01672 523.66zm-90.17-32H656V417.49H581.82zM834.56 523.66H728.39a16 16 0 01-16-16V401.49a16 16 0 0116-16H834.56a16 16 0 0116 16V507.66A16 16 0 01834.56 523.66zm-90.17-32h74.17V417.49H744.39zM672 682.35H565.82a16 16 0 01-16-16V560.19a16 16 0 0116-16H672a16 16 0 0116 16V666.35A16 16 0 01672 682.35zm-90.17-32H656V576.19H581.82zM834.56 682.35H728.39a16 16 0 01-16-16V560.19a16 16 0 0116-16H834.56a16 16 0 0116 16V666.35A16 16 0 01834.56 682.35zm-90.17-32h74.17V576.19H744.39zM672 841H565.82a16 16 0 01-16-16V718.88a16 16 0 0116-16H672a16 16 0 0116 16V825A16 16 0 01672 841zm-90.17-32H656V734.88H581.82zM834.56 841H728.39a16 16 0 01-16-16V718.88a16 16 0 0116-16H834.56a16 16 0 0116 16V825A16 16 0 01834.56 841zm-90.17-32h74.17V734.88H744.39z"></path>
+                <path
+                    d="M226.2 300.82A66.85 66.85 0 01159.42 234V174.92a66.78 66.78 0 11133.55 0V234A66.85 66.85 0 01226.2 300.82zm0-160.68a34.82 34.82 0 00-34.78 34.78V234A34.78 34.78 0 10261 234V174.92A34.81 34.81 0 00226.2 140.14zM500 300.82A66.86 66.86 0 01433.22 234V174.92a66.78 66.78 0 11133.56 0V234A66.86 66.86 0 01500 300.82zm0-160.68a34.82 34.82 0 00-34.78 34.78V234a34.78 34.78 0 1069.56 0V174.92A34.82 34.82 0 00500 140.14zM773.8 300.82A66.85 66.85 0 01707 234V174.92a66.78 66.78 0 11133.55 0V234A66.85 66.85 0 01773.8 300.82zm0-160.68A34.81 34.81 0 00739 174.92V234a34.78 34.78 0 1069.55 0V174.92A34.82 34.82 0 00773.8 140.14z"></path>
+            </svg>
+            ,
+            inputType: 'input',
+            inputTag: <input readOnly={true} placeholder='تاریخ پرواز را وترد کنید' value={flightDate.persianDate}
+                             type='text' onClick={() => {
+                managePopUpCalendar(true);
+
+            }}/>
+        }
+
+    ]
+
+
+    useEffect(() => {
+        getTour(props.cityInfo.nameEn)
+        getData()
+    }, [props.cityInfo])
+
+
+    function scrollToTop() {
+
+
+        var body = document.getElementsByTagName("body")
+        body[0].scrollTo({top: 0, left: 0, behavior: "smooth"});
+    }
+
+    useEffect(() => {
+        getTour(props.cityInfo.nameEn, page)
+        scrollToTop()
+    }, [staycount, order, page, flightDate.miladiDate])
+
+
+    let getlistofNight = (dest) => {
+        let nights = []
+        dest?.dates?.map(date => {
+            date.nights.map(night => {
+                let findNightIndex = nights.findIndex(el => el === night)
+                if (findNightIndex >= 0) {
+                    nights.splice(findNightIndex, 1)
+                    nights.push(night)
+
+                } else {
+                    nights.push(night)
+                }
+            })
+        })
+        setNightsList(nights.sort((a, b) => a - b))
+    }
+
+    const getData = async () => {
+
+        let data = await axios.get('https://api.hotelobilit.com/api/v2/tours/destinations', {
+            headers: {
+                "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+            }
+        }, {
+            destination: props.cityInfo.nameEn
+        })
+            .then((response) => {
+
+                let destTime = response.data.data[0].destinations.filter(dest => dest.code === props.cityInfo.nameEn)
+                getlistofNight(destTime[0])
+                let dates = []
+                destTime[0]?.dates?.map((date) => dates.push(date.date))
+                setDatesList(destTime[0]?.dates)
+
+
+            })
+        return data
+    }
+    const [state, setState] = useState({
+        searchBool: false,
+        sourceSearch: "",
+        destinationSearch: "",
+        // width: width,
+        open: false,
+        openSource: false,
+        openDestination: false,
+        suggestSource: false,
+        suggestDestination: false,
+        mobileSearchTerm: "",
+        searchTermSource: "",
+        searchTermDestination: "",
+        searchReset: false,
+    });
+    const managePopUpCalendar = (value) => {
+        setState({...state, open: value});
+    };
+
+    useEffect(() => {
+        console.log('fdate', flightDate)
+    }, [flightDate])
     return (
         <>
 
@@ -145,16 +253,18 @@ const CityTour = (props) => {
                 // (data1 && notfound === false) &&
                 <>
                     <Head>
-                        <title>  لیست‌ تور‌های شهر {props.cityInfo.name} | آژانس مسافرتی بلیطجا
+                        <title> لیست‌ تور‌های شهر {props.cityInfo.name} | آژانس مسافرتی بلیطجا
                         </title>
-                        <meta name="description" content={`تور‌های ${props.cityInfo.name} ماه ${jalaliMonthName(moment().locale('fa').format('jMMMM')) } با ایرلاین‌های معتبر و هتل دلخواه شما. شروع قیمت‌ تور‌های ${props.cityInfo.name} از ${props.tourMinPrice+ ' ' + 'تومان'}. رزرو تور از سایت مسافرتی بلیطجا.`} />
+                        <meta name="description"
+                              content={`تور‌های ${props.cityInfo.name} ماه ${jalaliMonthName(moment().locale('fa').format('jMMMM'))} با ایرلاین‌های معتبر و هتل دلخواه شما. شروع قیمت‌ تور‌های ${props.cityInfo.name} از ${props.tourMinPrice + ' ' + 'تومان'}. رزرو تور از سایت مسافرتی بلیطجا.`}/>
                     </Head>
                     <NavHandler/>
-                    <div style={{padding:'1.5rem 2rem'}} className=' margin-top margin-topsm-1rem d-lg-flex justify-lg-content-center '>
+                    <div className='padd margin-top margin-topsm-1rem d-lg-flex justify-lg-content-center '
+                         style={{marginTop: '5rem',position:"relative"}}>
                         {/*<Scrolltoprefresh/>*/}
                         <div className='widre100'>
 
-                                <div style={{padding: '0 1rem'}} className='hidestat'>
+                            <div style={{padding: '0 1rem'}} className='hidestat'>
                                 <div className="d-flex mt-2 flex-column col-xl-5 col-lg-5 col-sm-4 col-12 ">
                                     <div className="d-flex align-items-center justify-content-between">
                                         <div className="d-flex align-items-center">
@@ -167,7 +277,8 @@ const CityTour = (props) => {
                                                           strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
                                                     <path id="Path_836" data-name="Path 836"
                                                           d="M12,5a1.727,1.727,0,0,1,1.541.51c.514.512.514,2.227.514,2.911"
-                                                          transform="translate(-4.468 -2.262)" fill="none" stroke="#053742"
+                                                          transform="translate(-4.468 -2.262)" fill="none"
+                                                          stroke="#053742"
                                                           strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
                                                 </g>
                                             </svg>
@@ -184,46 +295,128 @@ const CityTour = (props) => {
                                     <div className="border-right"></div>
                                     <div className="border-left"></div>
                                 </div>
-                                <TourSearchBox/>
-                            </div>
-                            {isModal && <div className='modalContainer'>
-                                <div className='modal12'>
-                                    <div style={{display: 'flex', justifyContent: "flex-end", width: '100%'}}>
-                                        <div className='close' onClick={() => setIsmodal(false)}>X</div>
-                                    </div>
-                                    <TourSearchBox/>
-                                </div>
 
-                            </div>}
+                                <div style={{display:'grid',gridTemplateColumns:'.2fr 1fr 1fr 1fr .2fr',backgroundColor:'#cecece',padding:'1rem',borderRadius:'10px',width:'100%',columnGap:"10px",alignItems:'center'}}>
+
+                                    <div style={{fontSize:'16px',color:'black'}}>
+                                        <p style={{padding:'0',margin:'0',fontWeight:'700',whiteSpace:'wrap'}}>فیلتر ها :</p>
+                                    </div>
+                                    <input readOnly={true} placeholder='تاریخ پرواز را وارد کنید'
+                                           value={flightDate.persianDate}
+                                           style={{width:'100%',height:'50px',borderRadius:'10px',outline:'none',border:'1px solid #cecece',padding:'0 2px'}}
+                                           type='text' onClick={() => {
+                                        managePopUpCalendar(true);
+                                    }}/>
+                                    <select
+                                        name=""
+                                        id=""
+                                        onChange={(e) => {
+                                            setStayCount(e.target.value)
+
+                                        }}
+                                        style={{
+                                            width:'100%',height:'50px',borderRadius:'10px',outline:'none',border:'1px solid #cecece'
+                                        }}
+
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <option selected>شب</option>
+                                        <option key={'همه'}  value='همه'>
+                                            همه
+                                        </option>
+                                        {nightsList?.map((night) => {
+                                            return <option key={night} value={night}>{night} شب </option>;
+                                        })}
+                                    </select>
+                                    <div style={{display: 'flex'}}>
+
+
+                                        <select
+                                            name=""
+                                            id=""
+                                            onChange={(e) => {
+                                                setOrder(e.target.value)
+
+
+                                            }}
+                                            style={{
+                                                width:'100%',
+                                                height: '50px',
+                                                borderRadius: '10px',
+                                                outline: 'none',
+                                                border: '1px solid #cecece'
+                                            }}
+
+                                            onClick={(e) => {
+                                                e.stopPropagation()
+
+                                            }}
+                                        >
+
+                                            <option selected>ورود به هتل</option>
+
+                                            <option key={1} value={1}>نزدیک ترین</option>
+                                            ;
+                                            <option key={2} value={2}>دور ترین</option>;
+
+                                        </select>
+                                        {/*<div className={styles.checkboxcontainer}>*/}
+                                        {/*    <input*/}
+                                        {/*        className={styles.checkbox}*/}
+                                        {/*        type="checkbox"*/}
+                                        {/*        name="نزدیک ترین"*/}
+                                        {/*        id=""*/}
+                                        {/*        onClick={() => {*/}
+                                        {/*            setOrder(1)*/}
+                                        {/*            setShowFilter(!showFilter)*/}
+                                        {/*        }*/}
+                                        {/*        }*/}
+                                        {/*        checked={order === 1 ? true : false}*/}
+                                        {/*    />*/}
+                                        {/*    <p style={{whiteSpace: 'nowrap'}}>نزدیک ترین</p>*/}
+                                        {/*</div>*/}
+                                        {/*<div className={styles.checkboxcontainer}>*/}
+                                        {/*    <input*/}
+                                        {/*        className={styles.checkbox}*/}
+                                        {/*        type="checkbox"*/}
+                                        {/*        name="دور ترین"*/}
+                                        {/*        id=""*/}
+                                        {/*        checked={order === 2 ? true : false}*/}
+                                        {/*        onClick={() => {*/}
+
+                                        {/*            setOrder(2)*/}
+                                        {/*            setShowFilter(!showFilter)*/}
+                                        {/*        }*/}
+
+                                        {/*        }*/}
+                                        {/*    />*/}
+                                        {/*    <p style={{whiteSpace: 'nowrap'}}>دور ترین</p>*/}
+                                        {/*</div>*/}
+                                    </div>
+                                    {isLoading &&
+                                        <div style={{display: 'flex', justifyContent: 'center',}}>
+                                            <Loader1/>
+
+                                        </div>
+                                    }
+
+
+                                </div>
+                                {/*<TourSearchBox/>*/}
+                            </div>
+                            {/*{isModal && <div className='modalContainer'>*/}
+                            {/*    <div className='modal12'>*/}
+                            {/*        <div style={{display: 'flex', justifyContent: "flex-end", width: '100%'}}>*/}
+                            {/*            <div className='close' onClick={() => setIsmodal(false)}>X</div>*/}
+                            {/*        </div>*/}
+                            {/*        <TourSearchBox/>*/}
+                            {/*    </div>*/}
+
+                            {/*</div>}*/}
 
 
                             <div className=" m-auto parent-info-city">
-                                {/*<div className="search search-city-info w-100">*/}
-                                {/*    <ul className="tab-ul-list">*/}
-                                {/*        <li className="li-city"><a href="#about-tour" className="about-tab">تور ها</a></li>*/}
-                                {/*        <li className="li-city"><a href="#blog" className="news-tab">اخبار گردشگری </a></li>*/}
-                                {/*        <li className="li-city"><a href="#questions" className="question-tab">سوالات متداول</a></li>*/}
-                                {/*        <li className="b-none"><a href="#tours" className="tour-tab">توضیحات*/}
-                                {/*            تور</a></li>*/}
-                                {/*        <li className="border-floating"></li>*/}
-                                {/*    </ul>*/}
-                                {/*    <div className="box-search justify-content-end px-sm-2 " >*/}
-                                {/*        <div className="inp-form">*/}
-                                {/*            <select name="" id="" onChange={(val)=> {*/}
-                                {/*                refreshData(val)*/}
-                                {/*            }} value={currentCity}>*/}
-                                {/*                {!search && <option value="" selected> شهر خود را انتخاب کنید</option>}*/}
 
-                                {/*                {city.data.map((item) => (*/}
-                                {/*                    <option key={item.name} value={item.name}>{item.name}</option>*/}
-                                {/*                ))}*/}
-                                {/*            </select>*/}
-                                {/*        </div>*/}
-                                {/*        <Link href={`تور-${currentCity}/`}>*/}
-                                {/*            <button className="btn-search btn-search-city" onClick={()=>setSearch(true)}>جستجو</button>*/}
-                                {/*        </Link>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
                                 <div className='mx-3'>
                                     <button className='toursearch' onClick={() => setIsmodal(true)}>
                                         <svg width='25' height='25' id="Glyph" version="1.1" viewBox="0 0 32 32"
@@ -235,10 +428,12 @@ const CityTour = (props) => {
 
                                         تورِ تو آنلاین بگیر!
                                     </button>
-                                    {/*{newData.length > 0 && <div className=''>*/}
-                                    {/*    <OfferdTours data={newData}/>*/}
-                                    {/*</div>}*/}
-                                    <TourList citycode={props.cityInfo.nameEn} name={props.cityInfo.name} city={props.placeId} data={props.tour} func={(page)=>{pageNavigate(page)}}/>
+                                    <TourList setShowFilter={() => setShowFilter(true)} citycode={props.cityInfo.nameEn}
+                                              name={props.cityInfo.name}
+                                              city={props.placeId} data={tours} func={(page) => {
+                                        setPage(page)
+                                    }}/>
+
                                     <TourData cityInfo={props} city={props.placeId}
                                     />
                                 </div>
@@ -246,145 +441,241 @@ const CityTour = (props) => {
                         </div>
 
                         <div className='isDesktop'>
-                            <div className='fixed-info'>
-                                <div style={{ columnGap: '10px',padding:"0 15px"}}>
-                                    {/*<div className='svganim'>*/}
-                                    {/*    <svg xmlns="http://www.w3.org/2000/svg" width="20.457" height="20.474"*/}
-                                    {/*         viewBox="0 0 20.457 20.474">*/}
-                                    {/*        <path id="_003-telephone" data-name="003-telephone"*/}
-                                    {/*              d="M13.437,20.475C5.234,20.413-4.377,8.46,2.646,1.432c.25-.254.514-.5.785-.725A2.981,2.981,0,0,1,7.46.878l.01.01L8.823,2.294A2.933,2.933,0,0,1,7.86,7.057a6.457,6.457,0,0,0-1.068.527c-.745.759-1.219,1.992,1.567,4.783.9.906,2.243,2.11,3.429,2.11a1.893,1.893,0,0,0,1.349-.622,6.213,6.213,0,0,0,.494-1.023A2.927,2.927,0,0,1,18.4,11.85l1.389,1.345.01.01a2.987,2.987,0,0,1,.179,4.023c-.212.254-.439.5-.674.738A8.113,8.113,0,0,1,13.437,20.475ZM5.356,1.6a1.392,1.392,0,0,0-.9.33c-.232.2-.459.4-.673.622C.042,6.356,2.1,11.55,5.7,15.106c3.564,3.547,8.732,5.486,12.471,1.73.2-.2.4-.415.577-.632a1.381,1.381,0,0,0-.078-1.864l-1.389-1.344-.01-.01a1.317,1.317,0,0,0-2.155.443,6.163,6.163,0,0,1-.823,1.534,3.472,3.472,0,0,1-2.5,1.115c-1.76,0-3.362-1.378-4.561-2.579-1.819-1.745-3.921-4.72-1.547-7.063a6.35,6.35,0,0,1,1.576-.858,1.323,1.323,0,0,0,.43-2.158l-.01-.01L6.324,2a1.37,1.37,0,0,0-.968-.4ZM19.87,9.56a.8.8,0,0,1-.8-.728A7.98,7.98,0,0,0,11.84,1.6.8.8,0,0,1,11.983,0a9.649,9.649,0,0,1,8.684,8.684.8.8,0,0,1-.725.868C19.919,9.559,19.894,9.56,19.87,9.56Zm-6.229,0a.8.8,0,0,0,.505-1.012,3.235,3.235,0,0,0-1.968-2.02.8.8,0,0,0-.533,1.508,1.625,1.625,0,0,1,.984,1.018.8.8,0,0,0,1.011.505Zm3.141-.007a.8.8,0,0,0,.678-.9,6.441,6.441,0,0,0-5.436-5.436A.8.8,0,0,0,11.8,4.794a4.834,4.834,0,0,1,4.079,4.079.8.8,0,0,0,.9.678Z"*/}
-                                    {/*              transform="translate(-0.214 -0.001)" fill="#fff"/>*/}
-                                    {/*    </svg>*/}
-                                    {/*</div>*/}
 
-                                    <ul style={{listStyleType:'circle'}}>
-                                        <li style={{fontSize:'16px', textAlign:'justify'}}>بهترین قیمت تور و رزرو</li>
-                                        <li style={{fontSize:'16px', textAlign:'justify'}}>بهترین هتل‌های لوکس</li>
-                                        <li style={{fontSize:'16px', textAlign:'justify'}}>از تمام نقاط کشور</li>
-                                        <li style={{fontSize:'16px', textAlign:'justify'}}>با مشاوره‌ی متخصصین بلیطجا</li>
-                                    </ul>
-                                    <div style={{ padding:'1rem',marginTop:"20px",borderTop:'1px solid white',display:'flex',justifyContent:'center'}}>
-                                        <div style={{backgroundColor:'white',color:'#e20000',width:'100%',borderRadius:'20px',padding:'10px',display:'flex',flexDirection:'column',justifyContent:'center'}}>
 
-                                            <p className='m-0' style={{fontSize:'16px',textAlign:'center'}}>ارتباط با کارشناسان ما</p>
-                                            <a href="tel:02184278" style={{textAlign: 'center'}}>021-84279000</a>
+                            <div className='sticky-section'>
+
+                                <div style={{
+                                    position: "relative",
+                                    height: '100%'
+                                    , width: '100%'
+                                }}>
+
+
+                                    <motion.div
+                                        initial={{position: 'absolute', top: '0px', width: '100%'}}
+                                        animate={showFilter ? {
+                                            position: 'absolute',
+                                            top: '-400px',
+                                            width: '100%'
+                                        } : {top: '0px'}}
+                                    >
+                                        <div
+                                            className='fixed-info' style={{marginBottom: '20px'}}>
+                                            <div style={{columnGap: '10px', padding: "0 15px"}}>
+                                                <ul style={{listStyleType: 'circle'}}>
+                                                    <li style={{fontSize: '16px', textAlign: 'justify'}}>بهترین قیمت تور
+                                                        و
+                                                        رزرو
+                                                    </li>
+                                                    <li style={{fontSize: '16px', textAlign: 'justify'}}>بهترین هتل‌های
+                                                        لوکس
+                                                    </li>
+                                                    <li style={{fontSize: '16px', textAlign: 'justify'}}>از تمام نقاط
+                                                        کشور
+                                                    </li>
+                                                    <li style={{fontSize: '16px', textAlign: 'justify'}}>با مشاوره‌ی
+                                                        متخصصین
+                                                        بلیطجا
+                                                    </li>
+                                                </ul>
+                                                <div style={{
+                                                    padding: '1rem',
+                                                    marginTop: "20px",
+                                                    borderTop: '1px solid white',
+                                                    display: 'flex',
+                                                    justifyContent: 'center'
+                                                }}>
+                                                    <div style={{
+                                                        backgroundColor: 'white',
+                                                        color: '#e20000',
+                                                        width: '100%',
+                                                        borderRadius: '20px',
+                                                        padding: '10px',
+                                                        display: 'flex',
+                                                        flexDirection: 'column',
+                                                        justifyContent: 'center'
+                                                    }}>
+
+                                                        <p className='m-0'
+                                                           style={{fontSize: '16px', textAlign: 'center'}}>ارتباط با
+                                                            کارشناسان
+                                                            ما</p>
+                                                        <a href="tel:02184278"
+                                                           style={{textAlign: 'center'}}>021-84279000</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
-                                    </div>
+                                    </motion.div>
+
+
+
+
+                                            {/*<AnimatePresence>*/}
+                                            {/*    <motion.div*/}
+                                            {/*        // whileHover={!showFilter && {bottom: '50px'}}*/}
+                                            {/*        initial={{position: 'absolute', bottom: '-230px', width: '100%'}}*/}
+                                            {/*        animate={showFilter ? {*/}
+                                            {/*            position: 'absolute',*/}
+                                            {/*            top: '0',*/}
+                                            {/*            width: '100%',*/}
+                                            {/*        } : {bottom: '-230px'}}*/}
+                                            {/*        transition={{ease: "easeOut", duration: 0.4}}*/}
+                                            {/*    >*/}
+                                            {/*        <div style={{*/}
+                                            {/*            display: 'flex',*/}
+                                            {/*            justifyContent: 'center',*/}
+                                            {/*            flexDirection: 'column',*/}
+                                            {/*            alignItems: "center",*/}
+
+
+                                            {/*        }}>*/}
+                                            {/*            <svg className='svg' width="25px" height="25px"*/}
+                                            {/*                 viewBox="0 0 24 24"*/}
+                                            {/*                 fill="none" xmlns="http://www.w3.org/2000/svg">*/}
+                                            {/*                <path*/}
+                                            {/*                    d="M18.2929 15.2893C18.6834 14.8988 18.6834 14.2656 18.2929 13.8751L13.4007 8.98766C12.6195 8.20726 11.3537 8.20757 10.5729 8.98835L5.68257 13.8787C5.29205 14.2692 5.29205 14.9024 5.68257 15.2929C6.0731 15.6835 6.70626 15.6835 7.09679 15.2929L11.2824 11.1073C11.673 10.7168 12.3061 10.7168 12.6966 11.1073L16.8787 15.2893C17.2692 15.6798 17.9024 15.6798 18.2929 15.2893Z"*/}
+                                            {/*                    fill="#e20000"/>*/}
+                                            {/*            </svg>*/}
+                                            {/*            <button style={{*/}
+                                            {/*                width: '140px',*/}
+                                            {/*                height: '40px',*/}
+                                            {/*                backgroundColor: '#000',*/}
+                                            {/*                borderRadius: '10px 10px 0 0',*/}
+                                            {/*                color: 'white'*/}
+                                            {/*            }} onClick={() => setShowFilter(prev => !prev)}>فیلتر براساس*/}
+                                            {/*            </button>*/}
+                                            {/*        </div>*/}
+                                            {/*        <motion.div*/}
+                                            {/*            initial={{*/}
+                                            {/*                // display:"none",*/}
+                                            {/*                opacity:'0'}}*/}
+                                            {/*            animate={showFilter ? {*/}
+                                            {/*                // display: "block",*/}
+                                            {/*                opacity:'1'*/}
+                                            {/*            } : {*/}
+                                            {/*                // display:"none",*/}
+                                            {/*            opacity:'0'}}*/}
+
+                                            {/*        >*/}
+                                            {/*            <HotelsSideBarSearch*/}
+                                            {/*                reset={() => {*/}
+                                            {/*                    setOrder(0)*/}
+                                            {/*                    setPage(1)*/}
+                                            {/*                    setStayCount(null)*/}
+                                            {/*                }}*/}
+                                            {/*                searchElement={searchElement}*/}
+                                            {/*                setShowFilter={() => setShowFilter(false)}*/}
+
+                                            {/*            />*/}
+                                            {/*        </motion.div>*/}
+                                            {/*        </motion.div>*/}
+
+                                            {/*</AnimatePresence>*/}
+
+
+
+
                                 </div>
 
+
                             </div>
+                        </div>
+
+                        <div className='isMobile'>
+                            {
+                                showFilter &&
+                                <HotelsSideBarSearch
+                                    reset={() => {
+                                        setOrder(0)
+                                        setPage(1)
+                                        setStayCount(null)
+                                    }}
+                                    setShowFilter={() => setShowFilter(false)}
+                                    searchElement={searchElement}
+                                />
+                            }
+
                         </div>
 
                     </div>
 
 
-                    <Footer/>
+                    <div style={{position: 'relative', zIndex: '999'}}>
+
+                        <Footer/>
+                    </div>
 
                 </>
+
             }
             {/*.slice(4, props.Pathname.CityTour.length)*/}
+            <PopUpWide
+                opened={state.open} closePopUp={managePopUpCalendar}
+            >
+
+                {
+                    datesList?.length === 0 ?
+                        <div style={{
+                            width: '910px',
+                            height: '370px !important',
+                            backgroundColor: 'white',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <NewLoader/>
+                        </div>
+
+                        : <div className={styles["flight-search-box-calendar-container"]}>
+                            <CalendarComponent
+                                setDate={(value) => {
+
+                                }}
+                                closePopUpCalendar={managePopUpCalendar}
+                                dateandnight={datesList}
+                                setFlightDate={(value) => setFlightDate(value)}
+                            />
+                        </div>
+                }
+
+            </PopUpWide>
 
         </>
     );
 };
 
-// CityTour.getInitialProps = ({query}) => {
-//     return {
-//         Pathname: query
-//     }
-// }
 
 export const getCityInfo = async (city) => {
     const res = await fetch(`https://api.hamnavaz.com/api/v1/city/getCity/${city}`)
-    const data=await res.json()
+    const data = await res.json()
     return data
 }
-const getTour = async (cityCode,page=1) => {
 
-    // Request options
-    // const options = {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
-    //
-    //     },
-    //     body: JSON.stringify({
-    //         destination:cityCode,
-    //         month:'',
-    //         req_type:'package'
-    //     })
-    //
-    // };
 
-    try {
-        const response = await axios.post(`https://api.hotelobilit.com/api/v2/tours?page=${page}`, {
-            destination:cityCode,
-            month:'',
-            req_type:'package'
-        },{
-            headers: {"x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP',
-            referer:'hamnavaz.com'
-            },
-
-        });
-        return response.data;
-    } catch (error) {
-        console.error("Error fetching data:", error);
-        throw error;
-    }
-
-    // Send the POST request
-    // const res =await fetch(`https://api.hotelobilit.com/api/v2/tours?page=${page}`, options)
-    // if (!res.ok) {
-    //     // If not OK, attempt to read the response as text
-    //     const text = await res.text();
-    //     console.error('Error response:', text);
-    //     if(res.status===404){
-    //         return []
-    //     }
-    //     // throw new Error(`HTTP error! status: ${res.status}`);
-    // }
-    //
-    // // Attempt to parse the response as JSON
-    // try {
-    //     const data = await res.json();
-    //     return data;
-    // } catch (error) {
-    //     // If parsing fails, log the error and the raw response text
-    //     console.error('Error parsing JSON:', error);
-    //     // const text = await res.text();
-    //     // console.error('Raw response text:', text);
-    //     throw error; // Rethrow the error after logging
-    // }
-
-}
 export async function getServerSideProps(context) {
-   // Access the query parameter
+    // Access the query parameter
 
     let cityInfo
-    let tour
-    const placeId = context.params.CityTour.slice(4,context.params.CityTour.length);
-    cityInfo =await getCityInfo(placeId)
+    const placeId = context.params.CityTour.slice(4, context.params.CityTour.length);
+    console.log(context.params.CityTour)
+    cityInfo = await getCityInfo(placeId)
 
-        // console.log('pouya',cityInfo)
     if (!cityInfo.isDone) {
 
         // If data is not found, return a 404 status code
         return {
             notFound: true,
         };
-    }else{
-        tour= await getTour(cityInfo.data.nameEn,context.query.page)
-
     }
+
     return {
         props: {
-            cityInfo:cityInfo.data,
-            placeId
-            ,tour,
-            tourMinPrice:tour?.data?.length>0&&Math.min(...tour?.data?.map(item => item.min_price)),
-            tourName:context.query.CityTour
+            cityInfo: cityInfo.data,
+            placeId,
+            tourName: context.query.CityTour
         },
     };
 }

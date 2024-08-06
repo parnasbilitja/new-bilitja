@@ -2,7 +2,7 @@ import React from "react";
 import BirthdayCalendar from "./BDCalendarShamsi";
 import BirthdayCalenderMiladi from "./BDCalenderMiladi";
 const BirthDayParentCl = (props) => {
-  // console.log("from birth cal", props);
+  // 
   return (
     <div>
       {props.calend ? (

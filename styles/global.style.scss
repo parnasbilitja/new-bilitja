@@ -599,7 +599,7 @@ html {
     width: 100%;
     position: absolute;
     background-color: white;
-    height: 200px;
+    max-height: 100px;
     top: 44px;
     overflow-y: scroll;
     text-align: right;
@@ -697,9 +697,9 @@ html {
 
 
     .roomscon {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      //justify-content: space-between;
+      display: flex;
+      //grid-template-columns: repeat(4, 1fr);
+      justify-content: center;
       //align-items: center;
       column-gap: 10px;
       width: 100%;
@@ -2920,18 +2920,19 @@ $sizes: 100;
 
   li {
     padding: .5rem;
-    width: 120px;
+    width: 180px;
     border: 1px solid #cecece;
     border-radius: 20px;
     text-align: center;
+    font-size: 14px;
   }
 
 
 }
 
 .city-active {
-  border-color: #e20000 !important;
-  color: #e20000 !important;
+  border-color: #337ab7 !important;
+  color: #337ab7 !important;
   width: 120px;
 
 }
@@ -4760,7 +4761,9 @@ p img {
 //   }
 // }
 
-
+.hide {
+  display: none !important;
+}
 @media (max-width: 768px) {
   .m-justify-content-between {
     justify-content: space-between !important;
@@ -5288,40 +5291,52 @@ p img {
 
 }
 
+@keyframes mymove {
+  50% {opacity: 0;}
+}
+.svg{
+  animation: mymove 1s infinite;
+}
 /////////////////////////
-
-.fixed-info {
-  width: 400px;
-  padding: 1rem;
-  height: 270px;
-  background-color: #e20000;
-  color: white;
+.sticky-section{
   position: sticky;
   top: 150px;
-  left: 3.5rem;
-  //right: 40px;
-  //bottom: 40px;
-  //z-index: 1000;
-  border-radius: 20px;
+  //left: 3.5rem;
+  width: 350px;
+  height: 100vh;
+  .fixed-info {
+    width: 100%;
+    padding: 1rem;
+    height: 270px;
+    background-color: #e20000;
+    color: white;
+    //top: 150px;
 
-  p {
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
+    //right: 40px;
+    //bottom: 40px;
+    //z-index: 1000;
+    border-radius: 20px;
+
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+    }
+
+    a {
+      //pointer-events: none;
+      color: #e20000;
+      font-size: 22px;
+      font-weight: 900;
+      text-align: center !important;
+    }
+
+    .svganim {
+      animation: svganim .4s infinite;
+      //animation-delay: 10s !important;
+    }
   }
 
-  a {
-    //pointer-events: none;
-    color: #e20000;
-    font-size: 22px;
-    font-weight: 900;
-    text-align: center !important;
-  }
-
-  .svganim {
-    animation: svganim .4s infinite;
-    //animation-delay: 10s !important;
-  }
 }
 
 
@@ -5393,6 +5408,7 @@ p img {
       //padding: 0 2.5rem;
       //align-items: center;
       margin-bottom: 10px;
+      text-align: center;
 
       width: 100%;
 
@@ -5481,7 +5497,9 @@ p img {
 
 .activeflight {
 
-  border: 1px solid #000 !important;
+  border: 2px solid #000 !important;
+  background-color: rgba(239, 239, 239, 0.85);
+
   //background-color: rgba(19, 124, 182, 0.09) !important;
   //  p{
   //    color: #e20000 !important;
@@ -5502,16 +5520,20 @@ p img {
   //  }
 }
 
+.calendarres{
+  display: flex;
+
+}
 .header-left-container {
   overflow-y: scroll;
-  height: 360px;
+  //height: 360px;
   padding: 0 20px;
+  scrollbar-width: none;
 
   .header {
-    margin-bottom: 16px;
-    background-color: rgba(239, 239, 239, 0.85);
+    //margin-bottom: 16px;
     border-radius: 20px;
-    padding: 10px;
+    padding: 4px;
     border: 2px dashed #c2bfbf;
     transition: border 0.2s ease-in-out;
     cursor: pointer;
@@ -5559,9 +5581,13 @@ p img {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          column-gap: 15px;
+          column-gap: 12px;
 
           width: 100%;
+          small{
+            color: #e20000;
+            font-weight: 700;
+          }
 
           .separator {
             position: relative;
@@ -5584,6 +5610,7 @@ p img {
               width: 140px;
               height: 8px
             }
+
 
             .flightlogo {
               svg {
@@ -5683,6 +5710,9 @@ p img {
 }
 
 @media only screen and (max-width: 868px) {
+  .calendarres{
+    display: block;
+  }
 
   .header-left-container {
     //height: 200px;
@@ -5764,7 +5794,7 @@ p img {
 
   .header-left-container {
     padding: 0 !important;
-    height: 200px !important;
+    //height: 200px !important;
   }
   .header {
     padding: 10px 0 !important;
@@ -5807,6 +5837,7 @@ p img {
   }
 
   .flight-item {
+    //border: none;
 
     display: flex;
     justify-content: space-between !important;
@@ -5945,6 +5976,10 @@ p img {
       max-height: 90% !important;
     }
   }
+
+
+
+
   .roomcountDet_container {
 
     .roomcountDet {
@@ -5984,6 +6019,7 @@ p img {
 
 
 }
+
 
 .endlessscroll {
   cursor: pointer;
@@ -6058,6 +6094,38 @@ p img {
 }
 
 @media only screen and (max-width: 868px) {
+  .header-left-container{
+    .header{
+      .flight-item {
+        border: none;
+
+        display: flex;
+        justify-content: space-between !important;
+        //flex-wrap: wrap;
+          .middle-det{
+            .f{
+              .separator{
+                .dash{
+                  width: 80px !important;
+                }
+              }
+            }
+          }
+        .airline-det {
+          width: 100%;
+          padding: 0 2px !important;
+
+
+        }
+
+        .show-det {
+          margin-top: 10px !important;
+        }
+      }
+    }
+  }
+
+
   .roomtour {
     height: 400px;
   }

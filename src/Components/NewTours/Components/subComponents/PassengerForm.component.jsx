@@ -5,13 +5,9 @@ import BirthDayParentCl from "../calendar/BirthDayParentCl";
 import BirthDayParent from "../calendar/BirthDayParent";
 import {chdAgeStr, errStruct, errValidation, humantype} from "../../../../Utils/newTour";
 import {Err} from "../NotifAlert.component";
-import {useRouter} from "next/router";
 
 const PassengerForm = (props) => {
-    // useEffect(() => {
-    //     console.log('ewdwe232e094',props.dataq)
-    // }, [props.dataq])
-    const router = useRouter()
+
     const [state, setState] = useState({
         open: false,
         extOpen: false,
@@ -61,25 +57,11 @@ const PassengerForm = (props) => {
 
 
     const FormDataPicker = (e, passId, type, roomid, roomTypeid, id, reserve_id,passindex,roomindex) => {
-        // debugger;
-        let savedDataq=props.dataq
-        const findroom = props.dataq.filter((data) => data.reserve_id === reserve_id);
         let newrooms = [];
         const enRegEx = /[^A-Za-z0-9\s]/g;
         const digitRegEx = /^\d+$/;
-// debugger
-        // if (findroom.length > 0) {
-        //     // debugger
-            const filteredrooms = props.dataq.filter((data) => data.reserve_id !== reserve_id);
-            // const findpassenger = findroom[0].passengers.filter(
-            //     (passenger) => passenger.pass_id === passId
-            // );
-            //
-            // let newpassengerArr = [];
-            // if (findpassenger) {
-            //     const filteredpassengers = findroom[0].passengers.filter(
-            //         (passenger) => passenger.pass_id !== passId
-            //     );
+
+
                 if (enRegEx.test(e.target.value)) {
                     props.dataq[roomindex].passengers[passindex]= {
                         ...props.dataq[roomindex].passengers[passindex],
@@ -119,16 +101,13 @@ const PassengerForm = (props) => {
                         [e.target.name]: false,
                     });
                 }
-            // }
 
 
 
             newrooms=props.dataq
             props.setDataq(newrooms);
-        // }
     };
     const Birthdate = (date, passId, type, roomid, roomTypeid, datetype, id, reserve_id,passindex,roomindex) => {
-        const findroom = props.dataq.filter((data) => data.reserve_id === reserve_id);
         let newrooms = []
                 props.dataq[roomindex].passengers[passindex]= {
                     ...props.dataq[roomindex].passengers[passindex],
@@ -143,8 +122,7 @@ const PassengerForm = (props) => {
             props.setDataq(newrooms);
 
     };
-useEffect(()=>{
-    console.log('form',props)},[props])
+
     const validation = (passId, id, inputname) => {
         const findroom = props.dataq.filter((data) => data.id === id);
         if (findroom.length > 0) {
@@ -164,7 +142,6 @@ useEffect(()=>{
 
 
     const indexidfinder = (passId, reserve_id, name) => {
-        // debugger
         const findroom = props.dataq?.filter((data) => data?.reserve_id === reserve_id);
         if (findroom?.length > 0) {
             const findPassInput = findroom[0].passengers.filter(
@@ -174,9 +151,7 @@ useEffect(()=>{
         }
     };
 
-    // useEffect(()=>{
-    //     console.log(props.hotelDets);
-    // },[props.hotelDets])
+
 
     return (
         <>
@@ -211,16 +186,14 @@ useEffect(()=>{
                             styles["form-container2"]
                             : styles["form-container"]
                         }
-                        // onClick={() => {
-                        //   console.log(index);
-                        // }}
+
                     >
                         <div className={styles["item-form"]}>
                             {/* "inp-form mt-2" */}
                             <div className={styles["inp-form"]}>
                                 <select
                                     id=""
-                                    // {...form.register("gender")}
+
                                     name="gender"
                                     onChange={(e) =>
                                         FormDataPicker(
@@ -259,7 +232,6 @@ useEffect(()=>{
                                 </small>
                             ) : null}
                         </div>
-                        {/* align-items-center w-18 */}
                         <div className={styles["item-form"]}>
                             <div className={styles["inp-form"]}>
                                 <input
@@ -441,13 +413,6 @@ useEffect(()=>{
                                 </small>
                             ) : null}
                         </div>}
-                        {/*{props.hotelDets?.hotel?.is_domestic ? (*/}
-
-                        {/*// ) : null}*/}
-
-                        {/* ) : null} */}
-
-                        {/* "item-form w-15" */}
                         <div className={styles["item-form"]}>
                             <div className={styles["inp-form"]}>
                                 <input
@@ -590,7 +555,6 @@ useEffect(()=>{
                                         id: props.id,
                                         reserve_id: props.reserve_id,
                                         checkin:props.hotelDets.data.hotel.checkin,
-                                        // index: currentindex,
                                         chdages:{
                                             withbed:props.hotelDets.data.hotel?.with_bed_child_ages,
                                             nobed:props.hotelDets.data.hotel?.no_bed_child_ages

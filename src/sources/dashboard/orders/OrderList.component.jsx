@@ -16,7 +16,7 @@ const OrderList = () => {
 
   useEffect(() => {
     getList();
-    // console.log(state);
+    // 
   }, []);
 
 

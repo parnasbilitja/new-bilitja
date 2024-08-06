@@ -22,7 +22,7 @@ import {
 import {useRouter} from "next/router";
 import moment from "moment-jalaali";
 import styles from '../../styles/TrackOrder.module.scss'
-import {ErrSuccess} from "../Components/NewTours/Components/NotifAlert.component";
+// import {ErrSuccess} from "@/Components/NewTours/Components/NotifAlert.component";
 const TrackOrder = () =>{
         const [state,setState] = useState({
             trackRef:'',
@@ -140,8 +140,8 @@ switch (color) {
                 <title> پیگیری خرید | بلیطجا</title>
             </Head>
             <NavHandler/>
-            <div style={{marginTop:'140px'}}>
             <Scrolltoprefresh />
+            <div style={{marginTop:'140px'}}>
 <div className={styles['trackordercontainer']}>
 
     <div className={styles['track-con']}>

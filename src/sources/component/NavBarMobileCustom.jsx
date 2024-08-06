@@ -51,7 +51,7 @@ const NavBarMobile = (props) => {
     localStorage.removeItem("mobile");
     setState({ ...state, logged: false })
   }
-  // console.log(props);
+  //
   return (
     <nav className={`${styles["nav-mobile"]} hidden-mobile-head`}>
       <div className={styles["nav-logo-container-mobile"]}>
@@ -60,7 +60,7 @@ const NavBarMobile = (props) => {
             width=""
             height=""
             alt="بلیطجا - لوگو"
-            src="../../../Images/hamnavaz-logo.webp"
+            src="../../../Images/bilitja.webp"
             className="pull-left"
           />
         </Link>
@@ -86,7 +86,7 @@ const NavBarMobile = (props) => {
                 width=""
                 height=""
                 alt="بلیطجا - لوگو"
-                src="../../../Images/hamnavaz-logo.webp"
+                src="../../../Images/bilitja.webp"
               />
             </Link>
             <p className="no-margin color-white">

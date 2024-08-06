@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../../../../styles/newTour/components/subComponent/PassengerInfo.module.scss";
 const PassengerInfo = ({ passenger }) => {
-  //   console.log(props);
+  //   
   return (
     <tr className={styles["passenger_container"]}>
       <td>{passenger.gender === "1" ? "آقا" : "خانم"}</td>

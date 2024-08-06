@@ -35,7 +35,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
 
   const handleChange1 = (event) => {
     const { name, value } = event.target;
-    console.log(name, value);
+    
     if (name=='slug') {
         setCity(search.id);
         setSearch({...search,hotel:''})
@@ -96,7 +96,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
                   onChange={(e)=>handleChange(e)}
                   onClick={() => {
                     setIsSearchbox(true)
-                    // console.log(e.target.value);
+                    // 
                   }}
                   placeholder={"مقصد خود را انتخاب کنید"}
                 />
@@ -122,7 +122,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
                   name={'hotel'}
                   onChange={handleChange1}
                   onClick={(e) => {
-                    // console.log(e.target.value);
+                    // 
                   }}
                   placeholder={"نام هتل را وارد کنید"}
                 />

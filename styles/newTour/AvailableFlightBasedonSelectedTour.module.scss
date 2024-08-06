@@ -219,7 +219,7 @@ $costColor: #e20000;
       border: 1px solid $containerColor;
       box-shadow: rgba(0, 0, 0, 0.37) 0px 2px 8px;
       height: auto !important;
-
+      position: relative;
       border-radius: 20px;
 
       .container {
@@ -234,7 +234,7 @@ $costColor: #e20000;
         //border: 1px solid $containerColor;
 
         .blur {
-          height: 235px;
+          height: 100%;
 
           width: 1140px;
           position: absolute;

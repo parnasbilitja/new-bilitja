@@ -64,7 +64,7 @@ const BirthdayCalenderMiladi = (props) => {
             revArrayOfDay.push(undefined);
         }
         let data = [];
-        // console.log(today);
+        // 
         if (
             parseInt(state.year) == parseInt(today.split("/")[0]) &&
             parseInt(state.month) == parseInt(today.split("/")[1])
@@ -321,7 +321,7 @@ const BirthdayCalenderMiladi = (props) => {
                                                 "jYYYY/jMM/jDD"
                                             );
                                             const date = m.format("jYYYY/jMM/jDD");
-                                            // console.log(state);
+                                            // 
                                             // props.setBirthday(date);
                                             props.closePopUpCalendar(false);
                                             setState({ ...state, stage: 1 });

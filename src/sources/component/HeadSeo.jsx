@@ -2,7 +2,7 @@ import React from 'react';
 import Head from "next/head";
 
 const HeadSeo = (props) => {
-    // console.log(props);
+    //
     const setTitleMeta = (pathName) => {
         // var src = "";
         // var dest = "";
@@ -45,7 +45,7 @@ const HeadSeo = (props) => {
             <meta
               name="image"
               property="og:image"
-              content={'../../../Images/bilitja-logo.webp'
+              content={'../../../Images/bilitja.webp'
               }
             />
 

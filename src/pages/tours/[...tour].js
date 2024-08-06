@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 // mui
-
+import styles from '../../../styles/TourPackage/PackageTourDetails.module.scss'
+import {moneyFormatrial} from "../../Utils/SimpleTasks";
 import axios from 'axios';
 import Link from 'next/link';
 import NavHandler from '../../Components/share/NavHandler';
@@ -11,75 +12,55 @@ import PopUp from '../../sources/component/PopUp.component';
 import {Loader} from '../../Utils/Loader';
 import Head from 'next/head';
 import Scrolltoprefresh from '../../sources/component/Scrolltoprefresh';
-import moment from 'moment-jalaali';
-import HotelsDetails from '../../sources/tour/HotelsDetails';
-import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
+import globals from '../../sources/Global'
 import {Err, NotifAlert} from "../../Components/NewTours/Components/NotifAlert.component";
-// import {usePostHog} from "posthog-js/react";
 import router, {useRouter} from "next/router";
 import {
     chdAgeStr,
     getcurrencyfa,
-    getDayInPersian, isEmpty,
-    MiladiToJalaliConvertor,
     numberWithCommas,
-    startBuilder,
-    timeFixer
 } from "../../Utils/newTour";
 import PopUpWide from "../../sources/component/PopUpWide.component";
 import PackageReserve from "../../Components/modal/PackageReserve";
 
 import dynamic from "next/dynamic";
-import {Shimmers, Shimmers1, Shimmers3, Shimmers4} from "../../Components/NewTours/Components/subComponents/Shimmers";
+import {Shimmers1, Shimmers3, Shimmers4} from "../../Components/NewTours/Components/subComponents/Shimmers";
 import PopUp2 from "../../sources/component/PopUp2";
+// import error from "@/pages/error";
+import {useDispatch, useSelector} from "react-redux";
+// import {fetchCity, fetchCityFailures, fetchCitySucces} from "@/Redux/citiesSuggest/Action";
 
 const TransfersList = dynamic(() =>
         import("../../sources/component/TransfersList"),
     {
         ssr: false
     }
-);const MapComponent = dynamic(() =>
+);
+const MapComponent = dynamic(() =>
         import('../../sources/component/Map.component'),
     {
         ssr: false
     }
 );
 
-import styles from '../../../styles/TourPackage/PackageTourDetails.module.scss'
-import {moneyFormatrial} from "../../Utils/SimpleTasks";
-import Image from "next/image";
-// import {browserName, browserVersion, isMobile} from 'react-device-detect';
-// import MapComponent from "@/sources/component/Map.component";
 
 const tour = (props) => {
-    const [width, setWidth] = useState(0)
+
+    const [selectedHotel, setSelectedHotel] = useState(null)
+    const [selectedFlight, setSelectedFlight] = useState(null)
+    const [infPrice, setInfPrice] = useState(null)
     const ref = useRef(null);
-
-    // const posthog = usePostHog()
-
-    function moneyFormat(input) {
-        return parseFloat(input)
-            .toFixed(1)
-            .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-            .split(".")[0];
-    }
-
-    // mui
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-        setOpen(false);
-    };
     const [isdownload, setIsDownload] = useState(false)
-
     const [open, setOpen] = useState(false);
-    const [seeMore, setSeeMore] = useState(false);
     const [data, setData] = useState(null)
+    const [packages, setPackages] = useState([])
     const [show, setShow] = useState(false);
     const [flightList, setFlightList] = useState([])
-    const [hotel, setHotel] = useState()
     const [tourId, setTourId] = useState(null);
+    // const [packageId, setPackageID] = useState('');
+    const [showTransfers, setShowTransfers] = useState(false)
+
+    const [isReserve, setIsReserve] = useState(false)
     const [packData, setPackData] = useState({
         number: '',
         count: '1',
@@ -89,16 +70,27 @@ const tour = (props) => {
         isDone: false,
         message: ''
     })
-    const getData = async () => {
+    const getData = async (flightId = 0) => {
+        setData(null)
 
-        // console.log(props.Pathname.tour)
-        axios.post(`https://api.hotelobilit.com/api/v2/tours/${props.Pathname.tour[0]}`, {req_type: 'package'}, {
+        axios.post(`${globals.tourPackagesnew}packages/${props.Pathname.tour[0]}`, {flight_id:flightId}, {
             headers: {
                 "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
             }
         }).then((res) => {
 
             setData(res.data.data)
+            setPackages(res.data?.data?.packages)
+            setSelectedFlight(res.data.data?.selected_flight)
+            let foundFlight = res.data.data?.flights.filter(flight => flight.id == res.data.data?.selected_flight);
+
+            setFlightId({
+                depratureId: foundFlight[0].departure_flight.id,
+                returnId: foundFlight[0].return_flight.id,
+            })
+            setFlightList(res.data.data?.flights)
+
+
         })
 
 
@@ -107,15 +99,18 @@ const tour = (props) => {
 
     useEffect(() => {
         getData();
-        // handleClick()
     }, [props.Pathname.tour])
 
 
-    const [url,setUrl]=useState('')
+    const dispatch = useDispatch()
+
 
     const downloadHandler = async () => {
         setIsDownload(true)
-        axios.get(`https://api.hotelobilit.com/api/v2/tours/pdf/${props.Pathname.tour[0]}/${flightId.depratureId}/${flightId.returnId}`,
+        axios.post(`${globals.tourPackagesnew}packages/${props.Pathname.tour[0]}`, {
+                flight_id: selectedFlight,
+                pdf: true
+            },
             {
                 headers: {
                     "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP'
@@ -124,171 +119,69 @@ const tour = (props) => {
         ).then(res => {
 
 
-                setIsDownload(false)
+            setIsDownload(false)
+            handleDownload(res.data.data.url)
 
-                router.push(res.data.data.url)
 
-
+        }).catch((err) => {
+            setIsDownload(false)
+            Err('مشکلی در دانلود pdf بوجود آمده')
         })
 
     }
 
+    function handleDownload(pdfLink) {
 
-
-
-    function removeDuplicates(arr, prop1, prop2) {
-        const map = new Map();
-        for (const item of arr) {
-            const key = `${item[prop1]}-${item[prop2]}`;
-            if (!map.has(key)) {
-                map.set(key, item);
-            }
-        }
-        return Array.from(map.values());
+        // window.open(pdfLink, '_blank');
+        const url = window.URL.createObjectURL(new Blob([pdfLink], {type: 'application/pdf'}));
+        const link = document.createElement('a');
+        link.href = pdfLink;
+        link.setAttribute('download', 'downloaded-file.pdf'); // Set the desired filename
+        link.download = 'tours.pdf'
+        link.target = '_blank'
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 
-    // const router=useRouter()
 
-    useEffect(() => {
-        // console.log('adsa',data)
-        // debugger
-        let transferslist = []
-
-        if (data?.is_bundle === false) {
-
-
-            if(data.packages.length>0){
-                data.transfers.map(t => {
-                    data.packages.map(pack => {
-                        pack.prices.map(price => {
-                            if (price.roomTypeId === 148 && (t.id.toString() + t.return_id.toString()) === (price.flight_id.toString() + price.return_flight_id.toString())) {
-
-                                transferslist.push({
-                                    ...t,
-                                    price: price.price
-
-                                })
-
-                            }
-
-                        })
-                    })
-                })
-                let newList = removeDuplicates(transferslist, 'id', 'return_id')
-                setFlightList(newList.sort((a, b) => a.price - b.price))
-            }else{
-                setFlightList(data?.transfers)
-
-            }
-
-
-        } else {
-            setFlightList(data?.transfers)
-        }
-
-
-    }, [data]);
-
-
-    const [selectedHotel, setSelectedHotel] = useState(null)
-    const [selectedFlight, setSelectedFlight] = useState(null)
-    const [infPrice, setInfPrice] = useState(null)
-    const [flightData, setFlightData] = useState([])
     const [flightId, setFlightId] = useState({
         depratureId: null,
         returnId: null
     })
 
 
-    useEffect(() => {
-        let selectedFlightdata = data?.transfers?.filter(transfer => (transfer.id === flightId.depratureId && transfer.return_id === flightId.returnId))
-        if (selectedFlightdata) {
-            setFlightData(selectedFlightdata[0])
-        }
-    }, [flightId]);
+    const roomFinder1 = (rooms, roomTypeID) => {
 
-    useEffect(()=>{
-        console.log(flightId)
-    },[flightId])
-
-
-    useEffect(() => {
-        // if (data) {
-        //     posthog?.capture('selectTourPackage', {HMNTourPackageTitle: data?.title, HMNPrice: data?.minPrice})
-        // }
-
-        if (flightList) {
-            // debugger
-
-            setInfPrice(flightList[0]?.inf_price)
-            setSelectedFlight(flightList[0]?.id?.toString() + flightList[0]?.return_id?.toString())
-
-            setFlightId({
-                depratureId: flightList[0]?.id,
-                returnId: flightList[0]?.return_id
-            })
-        }
-    }, [flightList])
-
-
-
-    const roomFinder = (roomsArr, roomTypeID) => {
-        // debugger
-        let cheapestRooms = roomsArr.sort((a, b) => a.price - b.price)
-        return cheapestRooms.filter(room => room.roomTypeId === roomTypeID)[0]?.price
-
-    }
-    const [showTransfers, setShowTransfers] = useState(false)
-
-    const [isReserve, setIsReserve] = useState(false)
-    const dateReform = (date) => {
-        return date?.slice(0, 5);
-    };
-    const [rooms, setRooms] = useState([])
-
-    useEffect(() => {
-        console.log(flightList)
-    }, [flightList])
-
-    const getHotelRooms = (roomsArr) => {
-
-
-        if (data?.is_bundle === true) {
-            return roomsArr
-
-            // foundRoom=roomsArr.filter(room=>room.id===roomTypeID)
-
-        } else {
-            // debugger
-            let foundrooms = roomsArr.filter(room => (room.flight_id.toString() + room.return_flight_id.toString()) === selectedFlight)
-            return foundrooms
-            // setRooms(foundrooms)
-            // foundRoom=rooms.filter(room=>room.roomTypeId===roomTypeID)
-
-        }
-
-
-    }
-    const roomFinder1 = (pack, roomTypeID) => {
-        // debugger
-        // let foundRoom
-
-        return pack.filter(room => room.roomTypeId === roomTypeID)
-
+        return rooms?.filter(room => room?.room_type_id === roomTypeID)
     }
 
 
-   const getroomsTitle=(rooms)=>{
-        debugger
-        return rooms?.prices.filter(room=>room.pin===0)
-   }
+    const getroomsTitle = (rooms) => {
 
-   const[moreInfoTab,setMoreInfoTab] =useState(null)
-   const[hotelid,setHotelId] =useState(null)
+
+        return rooms?.filter(room => room.pin === 0)
+    }
+
+
+    const hotelSearch = (searchTerm) => {
+        let filteredHotel = data?.packages.filter(pack => pack.hotel_name.includes(searchTerm) || pack.hotel_nameEn.toUpperCase().includes(searchTerm.toUpperCase()))
+        setPackages(filteredHotel)
+
+    }
+
+    const sortByStars = (hotellist) => {
+        let filteredHotel = []
+        for (let i = 1; i < 7; i++) {
+            let filterdHotelBystar = hotellist.filter(hotel => +hotel.hotel_stars === i)
+            filteredHotel.push(...filterdHotelBystar.sort((a, b) => roomFinder1(a.rooms, 148)[0]?.price - roomFinder1(b.rooms, 148)[0]?.price))
+        }
+        return filteredHotel
+    }
 
 
     return (
-        <div >
+        <div>
             {
                 open &&
                 <NotifAlert/>
@@ -305,420 +198,26 @@ const tour = (props) => {
                     <section className=" mt-2-mobi pt-3-mobi pt-5 " style={{marginTop: '4rem'}}>
                         <Scrolltoprefresh/>
                         <div className="container mt-2 ">
-                            {/*<div*/}
-                            {/*    className="m-main-data flex-column-mobi detail-title col-xl-12 col-lg-12 col-12 d-flex justify-content-between border-bottom pb-2">*/}
-                            {/*    <div className="title-tour d-flex align-items-center">*/}
-                            {/*        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"*/}
-                            {/*             viewBox="0 0 19.643 19.68">*/}
-                            {/*            <g id="Ticket-index" transform="translate(-0.022)">*/}
-                            {/*                <path id="Path_1168" data-name="Path 1168"*/}
-                            {/*                      d="M2.235,8.086a3.6,3.6,0,0,1-.584-.018l-.169.786.169-.786a.83.83,0,0,1-.622-.641,3.194,3.194,0,0,1,0-.548,8.679,8.679,0,0,1,.385-2.755A4.211,4.211,0,0,1,3.406,1.7C4.216,1.247,5.483,1,8.058,1h3.571c2.575,0,3.842.247,4.652.7a4.211,4.211,0,0,1,1.993,2.423,8.675,8.675,0,0,1,.385,2.755,3.2,3.2,0,0,1,0,.548l.791.144-.791-.144a.83.83,0,0,1-.622.641,3.6,3.6,0,0,1-.584.018A1.876,1.876,0,0,0,15.7,10.059a1.876,1.876,0,0,0,1.757,1.974,3.5,3.5,0,0,1,.573.018.843.843,0,0,1,.625.655,2.943,2.943,0,0,1-.006.52,7.652,7.652,0,0,1-.369,2.331,4.212,4.212,0,0,1-1.993,2.423c-.811.454-2.077.7-4.652.7H8.058c-2.575,0-3.842-.247-4.652-.7a4.212,4.212,0,0,1-1.993-2.423,7.652,7.652,0,0,1-.369-2.331,2.933,2.933,0,0,1-.006-.52.842.842,0,0,1,.625-.655,3.5,3.5,0,0,1,.573-.018,1.876,1.876,0,0,0,1.757-1.974A1.876,1.876,0,0,0,2.235,8.086Z"*/}
-                            {/*                      fill="none" stroke="#137cb6" strokeWidth="2"/>*/}
-                            {/*                <path id="Path_1169" data-name="Path 1169"*/}
-                            {/*                      d="M14.8,4a.8.8,0,0,1,.8.8V6.411a.8.8,0,0,1-1.607,0V4.8A.8.8,0,0,1,14.8,4Zm0,4.822a.8.8,0,0,1,.8.8v1.607a.8.8,0,0,1-1.607,0V9.625A.8.8,0,0,1,14.8,8.822Zm.8,5.625a.8.8,0,1,0-1.607,0v1.607a.8.8,0,0,0,1.607,0Z"*/}
-                            {/*                      transform="translate(-2.549 -0.589)" fill="#137cb6"*/}
-                            {/*                      fill-rule="evenodd"/>*/}
-                            {/*            </g>*/}
-                            {/*        </svg>*/}
-                            {/*        <div className="text title-info-tour px-3">*/}
-                            {/*            <h5 className="font-bold">{data && data.title}</h5>*/}
-                            {/*            <span className="d-none-mobi"*/}
-                            {/*                  style={{color: '#137cb6'}}>شروع قیمت از: </span>*/}
-                            {/*            <span style={{*/}
-                            {/*                color: '#e20000',*/}
-                            {/*                fontWeight: '900'*/}
-                            {/*            }}>{data && moneyFormat(data.minPrice)} {data.defineTour ? 'تومان' : data.packages[0].rate.name}</span>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*    <span*/}
-                            {/*        className="d-none-desktop font-14-mobi">شروع قیمت از: {data && moneyFormat(data.minPrice)} تومان</span>*/}
-                            {/*    <div className="d-flex flex-column justify-content-around me-auto mt-2">*/}
-                            {/*        <div className="d-flex d-none-mobi">*/}
-                            {/*            <img src={data.transfers[0].logo} width='30px' height={'auto'}/>*/}
-                            {/*            <div className="text " style={{marginRight: '.5rem'}}>*/}
-                            {/*                <span className="font-bold "*/}
-                            {/*                      style={{color: '#137cb6', fontSize: '14px', fontWeight: '700'}}>ایرلاین رفت :</span>*/}
-                            {/*            </div>*/}
-                            {/*            <div className="text pe-2">*/}
-                            {/*                {data &&*/}
-                            {/*                    <span style={{*/}
-                            {/*                        color: 'black',*/}
-                            {/*                        fontWeight: '600',*/}
-                            {/*                        fontSize: '14px'*/}
-                            {/*                    }}>{data.transfers[0].transfer}</span>*/}
-                            {/*                }*/}
-                            {/*            </div>*/}
-                            {/*        </div>*/}
-                            {/*        <div className="d-flex align-items-center d-none-mobi">*/}
-                            {/*            <img src={data.transfers[1].logo} width='30px' height={'auto'}/>*/}
-                            {/*            <div className="text" style={{marginRight: '.5rem'}}>*/}
-                            {/*                <span className="font-bold"*/}
-                            {/*                      style={{color: '#137cb6', fontSize: '14px', fontWeight: '700'}}>ایرلاین برگشت :</span>*/}
-                            {/*            </div>*/}
-                            {/*            <div className="text pe-2">*/}
-                            {/*                {data &&*/}
-                            {/*                    <span style={{color: 'black', fontWeight: '600', fontSize: '14px'}}>*/}
-                            {/*                {data.transfers[1].transfer}*/}
-                            {/*            </span>*/}
-                            {/*                }*/}
-                            {/*            </div>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
+
                             <div
                                 className="detail-tour col-xl-12 col-lg-12 col-12 d-flex flex-wrap justify-content-between border-bottom py-1">
-
-
-                                {/*<div className="right col-xl-4 col-lg-4 col-12">*/}
-                                {/*    <div className="gallery-image">*/}
-
-                                {/*        /!*{data ?*!/*/}
-                                {/*        /!*    <Slider data={data && data.endCity.images}*!/*/}
-                                {/*        /!*            city={data && data?.endCity?.slug}/>*!/*/}
-                                {/*        /!*    : <Loader/>}*!/*/}
-
-                                {/*        <img src="../Images/turkey/antalya.png" alt=""/>*/}
-
-
-                                {/*    </div>*/}
-                                {/*</div>*/}
-
-
                                 {data ?
 
                                     <>
                                         <TransfersList setShowTransfers={(val) => {
                                             setShowTransfers(val)
-                                        }} transfers={flightList && flightList} showTransfers={showTransfers}
+
+                                        }}
+                                                       hotelInfo={data}
+                                                       index={flightList.findIndex((transfer) => selectedFlight === transfer.id)}
+                                                       transfers={flightList && flightList}
+                                                       showTransfers={showTransfers}
                                                        setFlightId={(val) => setFlightId(val)} setInfPrice={(val) => {
                                             setInfPrice(val)
-                                        }} setSelectedFlight={(val) => setSelectedFlight(val)}
+                                            x
+                                        }} setSelectedFlight={(val) => getData(val)}
                                                        selectedFlight={selectedFlight}/>
-                                        <div className="right col-lg-7 col-lg-7 col-12 px-3 my-sm-4">
-                                            <div className='d-flex justify-content-center align-items-center'
-                                                 style={{position: 'relative', bottom: '20px',marginTop:'20px'}}>
-                                                <svg className="ms-1"
-                                                     xmlns="http://www.w3.org/2000/svg" width="20"
-                                                     height="20" viewBox="0 0 23.528 26.039">
-                                                    <g id="Location" transform="translate(0.028)">
-                                                        <path id="Path_1011" data-name="Path 1011"
-                                                              d="M1.152,12.976a14.6,14.6,0,0,0,4.131,7.545,25.71,25.71,0,0,0,5.471,4.223,1.912,1.912,0,0,0,1.962,0,25.71,25.71,0,0,0,5.471-4.223,14.6,14.6,0,0,0,4.131-7.545,10.842,10.842,0,0,0-1.656-7.829C19.058,2.823,16.236,1,11.736,1S4.413,2.823,2.809,5.147A10.842,10.842,0,0,0,1.152,12.976Z"
-                                                              transform="translate(0 0)" fill="none"
-                                                              stroke="#137cb6" strokeLinecap="round"
-                                                              strokeLinejoin="round"
-                                                              strokeWidth={2}>
-                                                        </path>
-                                                        <circle id="Ellipse_49"
-                                                                data-name="Ellipse 49"
-                                                                cx="2.928" cy="2.928" r="2.928"
-                                                                transform="translate(14.663 12.712) rotate(180)"
-                                                                fill="none" stroke="#137cb6"
-                                                                strokeWidth={2}>
-                                                        </circle>
-                                                    </g>
-                                                </svg>
 
-                                                <p style={{
-                                                    textAlign: 'center',
-                                                    fontSize: '15px',
-                                                    color: '#000',
-                                                    margin: '0',
-                                                    padding: '0',
-                                                    fontWeight: '800'
-                                                }}>
-                                                    اطلاعات پرواز انتخابی
-                                                </p>
-
-                                            </div>
-                                            <div className="vertical-data" style={{display: "none"}}></div>
-                                            <div
-                                                className="p-info__tour mr-0 d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3 ">
-                                                {/* c info */}
-                                                <div
-                                                    className="c-info__tour w-100-mobi   col-xl-12 col-gl-12 d-flex justify-content-between">
-                                                    <div className='d-flex align-items-center'>
-                                                        <div className="bg-white py-3">
-                                                            <div
-                                                                className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3 isDesktop">
-                                                                <img
-                                                                    // src={getFlightDet('departure')?.airline_logo?.url}
-                                                                    src={flightData?.origin_airline_thumb?.url}
-
-                                                                    width={"55px"} height={"55px"} alt="company"
-                                                                    style={{objectFit: 'contain'}}/>
-                                                            </div>
-                                                        </div>
-                                                        <div className="text w-90-mobi m-flex-100 pe-2">
-                                                            <div
-                                                                className="m-main-data d-flex flex-between-mobi align-items-center pb-1">
-
-                                                                <div className="val pe-2 m-pr-15 mb-0">
-                                                                    <div className="d-flex justify-content-between">
-                                                                        <p className='px-2 py-0' style={{
-                                                                            margin: 0,
-                                                                            padding: 0,
-                                                                            fontSize: '14px',
-                                                                            fontWeight: '600'
-                                                                        }}>
-                                                                            {flightData?.origin}
-                                                                        </p>
-                                                                        <p style={{
-                                                                            margin: 0,
-                                                                            padding: 0,
-                                                                            fontSize: '14px',
-                                                                            fontWeight: '600'
-                                                                        }}>به</p>
-                                                                        <p className='px-2 py-0' style={{
-                                                                            margin: 0,
-                                                                            padding: 0,
-                                                                            fontSize: '14px',
-                                                                            fontWeight: '600'
-                                                                        }}>
-                                                                            {flightData?.destination}
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </div>
-                                                            <div className="val pe-2 m-pr-15 mb-0">
-                                                                <div className="d-flex justify-content-between">
-                                                                    <p className='px-2 py-0' style={{
-                                                                        margin: 0,
-                                                                        padding: 0,
-                                                                        fontSize: '14px',
-                                                                        fontWeight: '600'
-                                                                    }}>
-                                                                        {flightData?.origin_airline}
-                                                                        {/*}*/}
-                                                                    </p>
-
-                                                                </div>
-
-                                                            </div>
-                                                            <div
-                                                                className="m-main-data d-flex flex-between-mobi align-items-center pb-1 m-pb-7">
-                                                                <div className="prop d-flex align-items-center">
-                                                                    <div className="image ms-2 isMobile"
-                                                                         style={{display: "none"}}>
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="18.976" height="18.41"
-                                                                             viewBox="0 0 29.976 32.41">
-                                                                            <g id="Up-Down-3"
-                                                                               transform="translate(2.121 1.5)">
-                                                                                <path id="Path_1175"
-                                                                                      data-name="Path 1175"
-                                                                                      d="M1,21.219l9.191,9.191V1"
-                                                                                      transform="translate(-1 -1)"
-                                                                                      fill="none" stroke="#0d7b0d"
-                                                                                      strokeLinecap="round"
-                                                                                      strokeLinejoin="round"
-                                                                                      strokeWidth={3}/>
-                                                                                <path id="Path_1176"
-                                                                                      data-name="Path 1176"
-                                                                                      d="M19.191,10.191,10,1V30.41"
-                                                                                      transform="translate(6.543 -1)"
-                                                                                      fill="none" stroke="#0d7b0d"
-                                                                                      strokeLinecap="round"
-                                                                                      strokeLinejoin="round"
-                                                                                      strokeWidth={3}/>
-                                                                            </g>
-                                                                        </svg>
-                                                                    </div>
-                                                                    <span
-                                                                        className="font-bold font-12-mobi bold-900-mobi bold-900-mobi text-danger"
-                                                                        style={{fontSize: '14px'}}>تاریخ و ساعت پرواز رفت</span>
-                                                                </div>
-                                                                <div className="val pe-2">
-                                                                <span className="font-13-mobi bold-900-mobi"
-                                                                      style={{fontSize: '13px', fontWeight: '600'}}>
-                                                                    {` ${dateReform(flightData?.origin_time)} | ${getDayInPersian(moment(flightData?.origin_date)?.format('dddd'))} ${MiladiToJalaliConvertor(flightData?.origin_date)}`}
-                                                                </span>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                    {/*<div style={{paddingTop:'15px',display:'flex',columnGap:'5px'}}>*/}
-                                                    {/*    <p style={{margin:'0',padding:'0',fontSize:'13px',fontWeight:'800',whiteSpace:'nowrap'}}>کد رفرنس: </p>*/}
-
-                                                    {/*    <p style={{fontSize:'14px',fontWeight:'bolder'}}>*/}
-
-                                                    {/*        /!*{refcode}*!/*/}
-                                                    {/*    </p>*/}
-                                                    {/*</div>*/}
-
-                                                </div>
-                                                {/* border */}
-                                                <div className="border-style-tour isMobile"
-                                                     style={{display: "none"}}></div>
-                                                {/* c info */}
-                                                <div
-                                                    className="c-info__tour bg-white d-flex align-items-center justify-content-lg-center justify-content-sm-end box-shadow-sm col-xl-12 col-lg-12 col-12 my-4 m-my-20">
-                                                    <div className="border-box box-right"></div>
-                                                    <div
-                                                        className="text flex-between-mobi w-80-mobi d-flex align-items-center justify-content-center m-justify-content-between px-3 bg-white rounded shadow-sm h-25 py-2"
-                                                        style={{zIndex: 100}}>
-                                                        <div className="text d-flex align-items-center m-pr-6">
-                                                            <div className="image ms-2 isMobile"
-                                                                 style={{display: "none"}}>
-                                                                <svg id="Moon_2" data-name="Moon 2"
-                                                                     xmlns="http://www.w3.org/2000/svg" width="20.292"
-                                                                     height="20.759" viewBox="0 0 35.292 36.759">
-                                                                    <path id="Path_1046" data-name="Path 1046"
-                                                                          d="M33.821,24.779l1.36.559a1.471,1.471,0,0,0-2.018-1.874ZM14.728,1.471l1.187.868a1.471,1.471,0,0,0-1.5-2.3ZM27.05,24.905A14.006,14.006,0,0,1,13.172,10.774H10.231A16.947,16.947,0,0,0,27.05,27.846Zm6.113-1.441a13.611,13.611,0,0,1-6.113,1.441v2.941a16.552,16.552,0,0,0,7.43-1.752Zm-.7.756a15.358,15.358,0,0,1-14.168,9.6v2.941A18.3,18.3,0,0,0,35.181,25.338Zm-14.168,9.6A15.493,15.493,0,0,1,2.941,18.187H0A18.434,18.434,0,0,0,18.293,36.759ZM2.941,18.187a15.574,15.574,0,0,1,12.1-15.28L14.413.034A18.515,18.515,0,0,0,0,18.187Zm10.231-7.413a14.232,14.232,0,0,1,2.742-8.435L13.541.6a17.173,17.173,0,0,0-3.31,10.172Z"
-                                                                          transform="translate(0 0)" fill="#646564"/>
-                                                                    <path id="Path_1047" data-name="Path 1047"
-                                                                          d="M19.238,2.989a1.029,1.029,0,0,1,1.931,0l1.253,3.387a1.029,1.029,0,0,0,.608.608l3.387,1.253a1.029,1.029,0,0,1,0,1.931L23.03,11.422a1.029,1.029,0,0,0-.608.608l-1.253,3.387a1.029,1.029,0,0,1-1.931,0L17.984,12.03a1.029,1.029,0,0,0-.608-.608l-3.387-1.253a1.029,1.029,0,0,1,0-1.931l3.387-1.253a1.029,1.029,0,0,0,.608-.608Z"
-                                                                          transform="translate(6.265 1.09)" fill="none"
-                                                                          stroke="#137cb6" strokeLinecap="round"
-                                                                          strokeWidth="2"/>
-                                                                </svg>
-                                                            </div>
-                                                            {/*<span className="font-13-mobi text-danger bold-900-mobi font-bold">مدت اقامت</span>*/}
-                                                        </div>
-                                                        <div
-                                                            className="image w-50-mobi flex-end-mobi  d-flex align-items-center mx-3 isDesktop">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="30"
-                                                                 height="30"
-                                                                 viewBox="0 0 43.84 45.663">
-                                                                <g id="Moon_2" data-name="Moon 2"
-                                                                   transform="translate(0 0)">
-                                                                    <path id="Path_1046" data-name="Path 1046"
-                                                                          d="M42.014,30.781l1.689.695A1.827,1.827,0,0,0,41.2,29.147ZM18.3,1.827l1.474,1.079A1.827,1.827,0,0,0,17.9.043ZM33.6,30.938A17.4,17.4,0,0,1,16.363,13.383H12.709A21.052,21.052,0,0,0,33.6,34.591Zm7.594-1.79a16.909,16.909,0,0,1-7.594,1.79v3.653a20.562,20.562,0,0,0,9.23-2.177Zm-.872.939a19.078,19.078,0,0,1-17.6,11.923v3.653A22.731,22.731,0,0,0,43.7,31.476Zm-17.6,11.923A19.246,19.246,0,0,1,3.653,22.592H0a22.9,22.9,0,0,0,22.725,23.07ZM3.653,22.592A19.347,19.347,0,0,1,18.687,3.611L17.9.043A23,23,0,0,0,0,22.592Zm12.709-9.209A17.679,17.679,0,0,1,19.769,2.906L16.821.748a21.333,21.333,0,0,0-4.111,12.636Z"
-                                                                          transform="translate(0 0)" fill="#ff4422"/>
-                                                                    <path isd="Path_1047" data-name="Path 1047"
-                                                                          d="M20.672,3.152a1.279,1.279,0,0,1,2.4,0L24.627,7.36a1.279,1.279,0,0,0,.756.755L29.59,9.672a1.279,1.279,0,0,1,0,2.4l-4.208,1.557a1.279,1.279,0,0,0-.756.755L23.07,18.59a1.279,1.279,0,0,1-2.4,0l-1.557-4.208a1.278,1.278,0,0,0-.755-.755L14.152,12.07a1.279,1.279,0,0,1,0-2.4L18.36,8.115a1.278,1.278,0,0,0,.755-.755Z"
-                                                                          transform="translate(11.009 1.915)"
-                                                                          fill="none" stroke="#ff2233"
-                                                                          strokeLinecap="round" strokeWidth={3}/>
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                        <div className="text">
-                                                        <span className="ps-1 font-bold font-13-mobi">
-                                                            {data?.nightNum}
-                                                            شب</span>
-                                                            <span className="pe-1 font-bold ps-2 p-0-mobi font-13-mobi">
-                                                            {data?.dayNum}
-                                                                روز</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="border-box box-left"></div>
-                                                </div>
-                                                {/* border */}
-                                                <div className="border-style-tour isMobile"
-                                                     style={{display: "none"}}></div>
-                                                {/* c info */}
-                                                <div
-                                                    className="c-info__tour d-flex flex-row-reverse align-items-center col-xl-12 col-lg-12 col-12">
-                                                    <div className="bg-white py-3">
-                                                        <div
-                                                            className="image d-flex align-items-center bg-white rounded shadow-sm py-3 px-3 isDesktop">
-
-                                                            <img
-                                                                src={flightData?.destination_airline_thumb?.url}
-                                                                width={"55px"} height={"55px"} alt="company"
-                                                                style={{objectFit: 'contain'}}/>
-
-                                                        </div>
-                                                    </div>
-                                                    <div className="text w-90-mobi m-flex-100 p-0-mobi pe-2 ps-3">
-                                                        <div
-                                                            className="m-main-data  flex-between-mobi d-flex flex-row-reverse align-items-center pb-1 m-pt-15">
-
-                                                            <div
-                                                                className="m-main-data d-flex flex-between-mobi align-items-center ">
-
-                                                                <div className="val pe-2 m-pr-15 mb-0">
-                                                                    <div className="d-flex justify-content-between">
-                                                                        <p className='px-2 py-0' style={{
-                                                                            margin: 0,
-                                                                            padding: 0,
-                                                                            fontSize: '14px',
-                                                                            fontWeight: '600'
-                                                                        }}>
-                                                                            {flightData?.destination}
-                                                                        </p>
-                                                                        <p style={{
-                                                                            margin: 0,
-                                                                            padding: 0,
-                                                                            fontSize: '14px',
-                                                                            fontWeight: '600'
-                                                                        }}>به</p>
-                                                                        <p className='px-2 py-0' style={{
-                                                                            margin: 0,
-                                                                            padding: 0,
-                                                                            fontSize: '14px',
-                                                                            fontWeight: '600'
-                                                                        }}>
-                                                                            {flightData?.origin}
-                                                                        </p>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="val pe-2 m-pr-15 mb-2">
-                                                            <div className="d-flex justify-content-lg-end">
-                                                                <p className='px-2 py-0' style={{
-                                                                    margin: 0,
-                                                                    padding: 0,
-                                                                    fontSize: '14px',
-                                                                    fontWeight: '600'
-                                                                }}>
-                                                                    {flightData?.destination_airline
-                                                                    }
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            className="m-main-data flex-between-mobi d-flex flex-row-reverse align-items-center pb-1 m-pb-7">
-
-                                                            <div className="prop d-flex align-items-center pe-2">
-                                                                <div className="image ms-2 isMobile"
-                                                                     style={{display: "none"}}>
-                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                                         width="18.976" height="18.41"
-                                                                         viewBox="0 0 29.976 32.41">
-                                                                        <g id="Up-Down-3"
-                                                                           transform="translate(2.121 1.5)">
-                                                                            <path id="Path_1175" data-name="Path 1175"
-                                                                                  d="M1,21.219l9.191,9.191V1"
-                                                                                  transform="translate(-1 -1)"
-                                                                                  fill="none" stroke="#ff0000"
-                                                                                  strokeLinecap="round"
-                                                                                  strokeLinejoin="round"
-                                                                                  strokeWidth={3}/>
-                                                                            <path id="Path_1176" data-name="Path 1176"
-                                                                                  d="M19.191,10.191,10,1V30.41"
-                                                                                  transform="translate(6.543 -1)"
-                                                                                  fill="none" stroke="#ff0000"
-                                                                                  strokeLinecap="round"
-                                                                                  strokeLinejoin="round"
-                                                                                  strokeWidth={3}/>
-                                                                        </g>
-                                                                    </svg>
-                                                                </div>
-                                                                <span
-                                                                    className="font-bold text-danger font-13-mobi bold-900-mobi"
-                                                                    style={{fontSize: '14px'}}>تاریخ و ساعت پرواز برگشت</span>
-                                                            </div>
-                                                            <div className="val pe-2">
-                                                            <span className="font-13-mobi bold-900-mobi"
-                                                                  style={{fontSize: '13px', fontWeight: '600'}}>
-                                                                {/*{` ${dateReform(getFlightDet('return')?.time)} | ${getDayInPersian(moment(getFlightDet('return')?.date).format('dddd'))} ${MiladiToJalaliConvertor(getFlightDet('return')?.date)}`}*/}
-                                                                {` ${dateReform(flightData?.destination_time)} | ${getDayInPersian(moment(flightData?.destination_date)?.format('dddd'))} ${MiladiToJalaliConvertor(flightData?.destination_date)}`}
-                                                            </span>
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </>
                                     : <Shimmers1/>}
 
@@ -736,104 +235,166 @@ const tour = (props) => {
                                 <div className={styles['p-data']}>
 
 
-                                        {data ?
-                                            <div className={styles['pdfbtntitle']}>
-                                                <div className="d-flex justify-content-between ps-2 ms-2 w-100">
-                                                    <div className="d-flex align-items-center text-4b ps-2 pb-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                                             viewBox="0 0 17.401 17.401">
-                                                            <g id="Document_Align_Center_1"
-                                                               data-name="Document Align Center 1"
-                                                               transform="translate(1 1)">
-                                                                <path id="Path_895" data-name="Path 895"
-                                                                      d="M1,8.7a19.485,19.485,0,0,0,.323,4.079A4.335,4.335,0,0,0,2.4,15a4.336,4.336,0,0,0,2.22,1.078A19.488,19.488,0,0,0,8.7,16.4a19.488,19.488,0,0,0,4.079-.323A4.335,4.335,0,0,0,15,15a4.335,4.335,0,0,0,1.078-2.22A19.488,19.488,0,0,0,16.4,8.7a19.488,19.488,0,0,0-.323-4.079A4.336,4.336,0,0,0,15,2.4a4.335,4.335,0,0,0-2.22-1.078A19.485,19.485,0,0,0,8.7,1a19.485,19.485,0,0,0-4.079.323A4.335,4.335,0,0,0,2.4,2.4a4.335,4.335,0,0,0-1.078,2.22A19.485,19.485,0,0,0,1,8.7Z"
-                                                                      transform="translate(-1 -1)" fill="none"
-                                                                      stroke="#646564"
-                                                                      strokeLinecap="round" strokeLinejoin="round"
-                                                                      strokeWidth="2"/>
-                                                                <path id="Path_896" data-name="Path 896" d="M10,7h2.8"
-                                                                      transform="translate(-3.699 -2.8)" fill="none"
-                                                                      stroke="#646564" strokeLinecap="round"
-                                                                      strokeLinejoin="round" strokeWidth="2"/>
-                                                                <path id="Path_897" data-name="Path 897" d="M7,12h7"
-                                                                      transform="translate(-2.8 -4.299)" fill="none"
-                                                                      stroke="#646564" strokeLinecap="round"
-                                                                      strokeLinejoin="round" strokeWidth="2"/>
-                                                                <path id="Path_898" data-name="Path 898" d="M10,17h2.8"
-                                                                      transform="translate(-3.699 -5.799)" fill="none"
-                                                                      stroke="#646564" strokeLinecap="round"
-                                                                      strokeLinejoin="round" strokeWidth="2"/>
-                                                            </g>
-                                                        </svg>
+                                    {data ?
+                                        <div className={styles['pdfbtntitle']}>
+                                            <div className="d-flex justify-content-between ps-2 ms-2 w-100">
+                                                <div className="d-flex align-items-center text-4b ps-2 pb-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                         viewBox="0 0 17.401 17.401">
+                                                        <g id="Document_Align_Center_1"
+                                                           data-name="Document Align Center 1"
+                                                           transform="translate(1 1)">
+                                                            <path id="Path_895" data-name="Path 895"
+                                                                  d="M1,8.7a19.485,19.485,0,0,0,.323,4.079A4.335,4.335,0,0,0,2.4,15a4.336,4.336,0,0,0,2.22,1.078A19.488,19.488,0,0,0,8.7,16.4a19.488,19.488,0,0,0,4.079-.323A4.335,4.335,0,0,0,15,15a4.335,4.335,0,0,0,1.078-2.22A19.488,19.488,0,0,0,16.4,8.7a19.488,19.488,0,0,0-.323-4.079A4.336,4.336,0,0,0,15,2.4a4.335,4.335,0,0,0-2.22-1.078A19.485,19.485,0,0,0,8.7,1a19.485,19.485,0,0,0-4.079.323A4.335,4.335,0,0,0,2.4,2.4a4.335,4.335,0,0,0-1.078,2.22A19.485,19.485,0,0,0,1,8.7Z"
+                                                                  transform="translate(-1 -1)" fill="none"
+                                                                  stroke="#646564"
+                                                                  strokeLinecap="round" strokeLinejoin="round"
+                                                                  strokeWidth="2"/>
+                                                            <path id="Path_896" data-name="Path 896" d="M10,7h2.8"
+                                                                  transform="translate(-3.699 -2.8)" fill="none"
+                                                                  stroke="#646564" strokeLinecap="round"
+                                                                  strokeLinejoin="round" strokeWidth="2"/>
+                                                            <path id="Path_897" data-name="Path 897" d="M7,12h7"
+                                                                  transform="translate(-2.8 -4.299)" fill="none"
+                                                                  stroke="#646564" strokeLinecap="round"
+                                                                  strokeLinejoin="round" strokeWidth="2"/>
+                                                            <path id="Path_898" data-name="Path 898" d="M10,17h2.8"
+                                                                  transform="translate(-3.699 -5.799)" fill="none"
+                                                                  stroke="#646564" strokeLinecap="round"
+                                                                  strokeLinejoin="round" strokeWidth="2"/>
+                                                        </g>
+                                                    </svg>
 
-                                                        <h5 className="font-bold mb-0 mx-2">{`هتل های ${data && data.title}`}</h5>
+                                                    <h5 className="font-bold mb-0 mx-2">{`هتل های ${data && data.title}`}</h5>
+                                                </div>
+
+                                                <div style={{display: 'flex', columnGap: '10px', alignItems: 'center'}}>
+                                                    <div className={'isDesktop'}>
+                                                        <div style={{
+                                                            border: "1px solid #cecece",
+                                                            borderRadius: '10px',
+                                                            height: '50px',
+                                                            width: "220px",
+                                                            padding: '2px',
+                                                            display: 'flex',
+                                                            justifyContent: 'space-between',
+                                                            alignItems: 'center'
+                                                        }}>
+                                                            <input placeholder='جستجو براساس نام هتل'
+                                                                   style={{
+                                                                       width: '100%'
+                                                                       // , height: '100%'
+                                                                       , border: 'none'
+                                                                       , outline: 'none',
+                                                                       fontSize: '13px',
+                                                                   }}
+                                                                   onChange={(e) => hotelSearch(e.target.value)}/>
+
+                                                            <svg width="25px" height="25px" viewBox="0 0 24 24"
+                                                                 fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+                                                                    stroke="#cecece" stroke-width="2"
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </div>
+
                                                     </div>
+
+
                                                     <div>
 
-                                                        <button id="openWindowButton" className='pdfbtn' onClick={() => {
-                                                            if (isdownload === false) {
+                                                        <button id="openWindowButton" className='pdfbtn'
+                                                                onClick={() => {
+                                                                    if (isdownload === false) {
 
-                                                                    downloadHandler()
+                                                                        downloadHandler()
 
-                                                                // console.log(`The user is browsing with ${browserName} version ${browserVersion}`)
-                                                            } else {
-                                                                return null
-                                                            }
-                                                        }}>
+                                                                        // console.log(`The user is browsing with ${browserName} version ${browserVersion}`)
+                                                                    } else {
+                                                                        return null
+                                                                    }
+                                                                }}>
 
+                                                            <>
+                                                                {isdownload === false ?
                                                                     <>
-                                                                        {isdownload === false ?
-                                                                            <>
-                                                                                <svg height="24" viewBox="0 0 24 24" width="24"
-                                                                                     xmlns="http://www.w3.org/2000/svg" fill='#fff'>
-                                                                                    <path
-                                                                                        d="M18,19 L18,17 C19.6568542,17 21,15.6568542 21,14 C21,12.3431458 19.6568542,11 18,11 C17.9686786,11.0001061 17.9686786,11.0001061 17.9374883,11.0006341 L17.0737589,11.0181765 L16.9309417,10.1661557 C16.5303438,7.77626335 14.4511274,6 12,6 C10.1923998,6 8.55429829,6.96642863 7.6664163,8.50398349 L7.39066076,8.98151234 L6.83965518,9.0031404 C4.69934052,9.08715198 3,10.8504451 3,13 C3,14.8638394 4.27477279,16.4299397 6,16.8739825 L6,18.9170416 C3.16228666,18.4409635 1,15.9729963 1,13 C1,9.95876977 3.26703071,7.43346119 6.21989093,7.05027488 C7.50901474,5.16507238 9.65343535,4 12,4 C15.1586186,4 17.8750012,6.1056212 18.7254431,9.0522437 C21.1430685,9.40362782 23,11.4849591 23,14 C23,16.7614237 20.7614237,19 18,19 Z M11,18.2532546 L11,12 L13,12 L13,18.2532546 L15.2928932,16.0092816 L16.7071068,17.3933221 L12,22 L7.29289322,17.3933221 L8.70710678,16.0092816 L11,18.2532546 Z"
-                                                                                        fill-rule="evenodd"/>
-                                                                                </svg>
-                                                                                دانلود فایل PDF
-                                                                            </> :
-                                                                            <div
-                                                                                className='w-100 text-center d-flex justify-content-center align-items-center'>
-                                                                                لطفا صبر کنید...
-                                                                            </div>
-                                                                        }
-                                                                    </>
+                                                                        <svg height="24" viewBox="0 0 24 24" width="24"
+                                                                             xmlns="http://www.w3.org/2000/svg"
+                                                                             fill='#fff'>
+                                                                            <path
+                                                                                d="M18,19 L18,17 C19.6568542,17 21,15.6568542 21,14 C21,12.3431458 19.6568542,11 18,11 C17.9686786,11.0001061 17.9686786,11.0001061 17.9374883,11.0006341 L17.0737589,11.0181765 L16.9309417,10.1661557 C16.5303438,7.77626335 14.4511274,6 12,6 C10.1923998,6 8.55429829,6.96642863 7.6664163,8.50398349 L7.39066076,8.98151234 L6.83965518,9.0031404 C4.69934052,9.08715198 3,10.8504451 3,13 C3,14.8638394 4.27477279,16.4299397 6,16.8739825 L6,18.9170416 C3.16228666,18.4409635 1,15.9729963 1,13 C1,9.95876977 3.26703071,7.43346119 6.21989093,7.05027488 C7.50901474,5.16507238 9.65343535,4 12,4 C15.1586186,4 17.8750012,6.1056212 18.7254431,9.0522437 C21.1430685,9.40362782 23,11.4849591 23,14 C23,16.7614237 20.7614237,19 18,19 Z M11,18.2532546 L11,12 L13,12 L13,18.2532546 L15.2928932,16.0092816 L16.7071068,17.3933221 L12,22 L7.29289322,17.3933221 L8.70710678,16.0092816 L11,18.2532546 Z"
+                                                                                fill-rule="evenodd"/>
+                                                                        </svg>
+                                                                        دانلود فایل PDF
+                                                                    </> :
+                                                                    <div
+                                                                        className='w-100 text-center d-flex justify-content-center align-items-center'>
+                                                                        لطفا صبر کنید...
+                                                                    </div>
+                                                                }
+                                                            </>
 
 
                                                         </button>
                                                     </div>
                                                 </div>
+
+
                                             </div>
+                                        </div>
 
 
-                                            : <Shimmers4/>}
+                                        : <Shimmers4/>}
 
+                                    <div className={'isMobile'}>
+                                        <div style={{
+                                            border: "1px solid #cecece",
+                                            borderRadius: '10px',
+                                            height: '50px',
+                                            width: "100%",
+                                            padding: '2px',
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            alignItems: 'center'
+                                        }}>
+                                            <input placeholder='جستجو براساس نام هتل'
+                                                   style={{
+                                                       width: '100%'
+                                                       // , height: '100%'
+                                                       , border: 'none'
+                                                       , outline: 'none',
+                                                       fontSize: '13px',
+                                                   }}
+                                                   onChange={(e) => hotelSearch(e.target.value)}/>
+
+                                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+                                                    stroke="#cecece" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+
+                                    </div>
 
                                     <div>
                                         <div
                                             className="p-info__tour col-xl-12 col-lg-12 col-12 mt-2 border-bottom pb-4 ">
 
 
-                                            {data ? data.packages.sort((a, b) => a?.min_price - b?.min_price).map((pack) => (
+                                            {packages.length > 0 ? sortByStars(packages)?.map((pack) => (
                                                     <div className={styles['hotel-item']} key={pack.id}>
                                                         <div
                                                             className="d-detail position-relative col-xl-12 col-lg-12 col-12  bg-white py-2 ">
                                                             <div className="ms-2">
-                                                                {/*{pack.offered &&*/}
-                                                                {/*    <div*/}
-                                                                {/*        className="position-absolute bg-danger py-1 px-1 rounded-2">*/}
-                                                                {/*        <div className="text">*/}
-                                                                {/*            <span*/}
-                                                                {/*                className="text-white font-size-16">ویژه</span>*/}
-                                                                {/*        </div>*/}
-                                                                {/*    </div>*/}
-                                                                {/*}*/}
+
                                                                 <div
                                                                     className="info-detail pos-relative d-flex align-items-center w-100"
-                                                                    // style={{cursor: 'pointer'}}
-                                                                    // onClick={()=>{
-                                                                    // let url=`/hotels/${pack.hotel.slug}`
-                                                                    // router.push(url) }}
+
                                                                 >
                                                                     <div className="image w-100 px-2">
 
@@ -842,13 +403,13 @@ const tour = (props) => {
                                                                             <div className={styles['hotelDet']}>
 
                                                                                 <div className={styles['img-con']}>
-                                                                                     { pack?.offered && <div
+                                                                                    {pack?.offered && <div
                                                                                         className={styles['offered']}>
                                                                                         <p>
                                                                                             نرخ
                                                                                             ویژه
                                                                                         </p>
-                                                                                        </div>}
+                                                                                    </div>}
                                                                                     {pack?.thumbnail !== null ?
                                                                                         <img src={pack?.thumbnail?.url}
                                                                                              alt="" style={{
@@ -924,6 +485,11 @@ const tour = (props) => {
                                                                                                                 }
                                                                                                                 return stars;
                                                                                                             })()}
+
+                                                                                                            <div style={{marginRight:'10px',padding:'3px',backgroundColor:'#e20000',borderRadius:'10px',width:'60px',height:'20px',color:'white',display:'flex',justifyContent:'center',fontSize:'13px'}}>
+                                                                                                                {pack.board_type}
+
+                                                                                                            </div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -999,11 +565,11 @@ const tour = (props) => {
                                                                                                             setSelectedHotel(pack)
 
                                                                                                         }}>
-                                                                                                    اتاق های بیشتر
+                                                                                                    اتاق های دیگر
                                                                                                 </button>
 
                                                                                                 <button className=""
-                                                                                                        style={{fontWeight:'700'}}
+                                                                                                        style={{fontWeight: '700'}}
                                                                                                         onClick={() => {
                                                                                                             setIsReserve(true)
                                                                                                             setSelectedHotel(pack)
@@ -1019,7 +585,7 @@ const tour = (props) => {
                                                                                     <div className={styles['roomsDet']}>
 
                                                                                         <div>
-                                                                                            {!data.is_bundle &&
+                                                                                            {
                                                                                                 <div
                                                                                                     className={styles['rooms-title']}>
                                                                                                     <div
@@ -1042,15 +608,14 @@ const tour = (props) => {
 
                                                                                                                     {
                                                                                                                         // getHotelRooms(pack)
-                                                                                                                        roomFinder1(getHotelRooms(pack.prices), 148)[0]?.price ?
+                                                                                                                        roomFinder1(pack.rooms, 148)[0]?.price ?
                                                                                                                             <>
                                                                                                                                 <p
                                                                                                                                     className="font-size-16 font-bold  m-0 price-color"
-                                                                                                                                    style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(getHotelRooms(pack.prices), 148)[0]?.price)}
+                                                                                                                                    style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.price)}
 
                                                                                                                                     <span
-                                                                                                                                        className="font-size-14 font-bold px-1  m-0 color-gray">
-                                                                                                                        {!data.is_bundle ? 'تومان' : getcurrencyfa(data?.currencies)}
+                                                                                                                                        className="font-size-14 font-bold px-1  m-0 color-gray">تومان
                                                                                                                     </span>
                                                                                                                                 </p>
 
@@ -1083,16 +648,16 @@ const tour = (props) => {
                                                                                                                     className=" w-100 py-3">
 
                                                                                                                     <>
-                                                                                                                        {roomFinder1(getHotelRooms(pack.prices), 494)[0]?.price ? <>
+                                                                                                                        {roomFinder1(pack.rooms, 494)[0]?.price ? <>
 
                                                                                                                                 <p
                                                                                                                                     className="font-size-16 font-bold  m-0 mx-1 price-color"
-                                                                                                                                    style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(getHotelRooms(pack.prices), 494)[0].price)}
+                                                                                                                                    style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 494)[0].price)}
 
 
                                                                                                                                     <span
                                                                                                                                         className="font-size-14 font-bold px-1  m-0 color-gray">
-                                                                                                                                {!data.is_bundle ? 'تومان' : getcurrencyfa(data?.currencies)}
+                                                                                                                                تومان
                                                                                                                             </span>
                                                                                                                                 </p>
                                                                                                                                 {/*<p className="px-2 font-size-13 m-0 text-center font-blue"> {getcurrencyfa(currency) } </p>*/}
@@ -1116,8 +681,9 @@ const tour = (props) => {
                                                                                                         className={styles['room-prc']}>
                                                                                                         <div
                                                                                                             className={styles['room-title']}>
-                                                                                    <span
-                                                                                        className={styles['']}> کودک با تخت </span>
+
+                                                                                                            <span
+                                                                                                                className={styles['']}> کودک با تخت </span>
                                                                                                             {pack?.with_bed_child_ages.length > 0 &&
                                                                                                                 <small
                                                                                                                     style={{marginRight: '3px'}}>({chdAgeStr(pack?.with_bed_child_ages[0], pack?.with_bed_child_ages[1])})</small>}
@@ -1129,32 +695,17 @@ const tour = (props) => {
                                                                                                                 className=" position-relative ">
                                                                                                                 <div
                                                                                                                     className=" w-100 py-3">
-                                                                                                                    {data?.is_bundle ?
-                                                                                                                        <>
+                                                                                                                    {
+                                                                                                                            <>
                                                                                                                             <p className="font-size-16 font-bold  m-0 price-color"
-                                                                                                                               style={{fontWeight: 'bold'}}>{pack.cwb}
+                                                                                                                               style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_w_price)}
                                                                                                                                 <span
                                                                                                                                     className="font-size-14 font-bold  m-0 color-gray px-1">
                                 {getcurrencyfa(data?.currencies)}
                             </span>
                                                                                                                             </p>
-                                                                                                                            {/*<p className="px-2 font-size-13 m-0 text-center font-blue"> {getcurrencyfa(currency) } </p>*/}
-                                                                                                                        </> :
-
-                                                                                                                        <>{roomFinder1(getHotelRooms(pack.prices), 148)[0]?.chd_w_price ?
-                                                                                                                            <p className="font-size-16 font-bold  m-0 price-color"
-                                                                                                                               style={{fontWeight: 'bold'}}>{data.is_bundle ? '0' : moneyFormatrial(roomFinder1(getHotelRooms(pack.prices), 148)[0]?.chd_w_price)}
-                                                                                                                                <span
-                                                                                                                                    className="font-size-14 font-bold  m-0 color-gray px-1">
-
-                                            {getcurrencyfa(data?.currencies)}
-                            </span>
-                                                                                                                            </p> :
-                                                                                                                            <span
-                                                                                                                                className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
-                                                                                                                        }
-                                                                                                                            {/*<p className="px-2 font-size-13 m-0 text-center font-blue"> {getcurrencyfa(currency) } </p>*/}
                                                                                                                         </>
+
                                                                                                                     }
 
 
@@ -1184,48 +735,48 @@ const tour = (props) => {
                                                                                                                 <div
                                                                                                                     className=" w-100 py-3">
                                                                                                                     <>
-                                                                                                                        {data.is_bundle ? <>
-                                                                                                                            {
-                                                                                                                                <>{infPrice ?
-
-                                                                                                                                    <p className="font-size-16 m-0 price-color"
-                                                                                                                                       style={{fontWeight: 'bold'}}>{numberWithCommas(infPrice)}
-
-                                                                                                                                        <span
-                                                                                                                                            className="font-size-14 font-bold  m-0 color-gray px-1">
-                                {/*{getcurrencyfa(data?.currencies)}*/}
-                                                                                                                                            تومان
-                            </span>
-                                                                                                                                    </p> :
-                                                                                                                                    <span
-                                                                                                                                        className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
-                                                                                                                                }
-                                                                                                                                    {/*<p className="px-2 font-size-13 m-0 text-center font-blue">{getcurrencyfa(currency) }</p>*/}
-
-                                                                                                                                </>
-                                                                                                                            }
-
-                                                                                                                        </> : <>
-
-                                                                                                                            {
-                                                                                                                                (roomFinder1(getHotelRooms(pack.prices), 148)[0]?.chd_n_price) ? <>
+                                                                                                                        {data.is_bundle ?
+                                                                                                                            <>
+                                                                                                                                {
+                                                                                                                                    <>{roomFinder1(pack.rooms, 148)[0]?.chd_n_price ?
 
                                                                                                                                         <p className="font-size-16 m-0 price-color"
-                                                                                                                                           style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(getHotelRooms(pack.prices), 148)[0]?.chd_n_price)}
+                                                                                                                                           style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_n_price)}
 
                                                                                                                                             <span
                                                                                                                                                 className="font-size-14 font-bold  m-0 color-gray px-1">
-                                {!data.is_bundle ? 'تومان' : getcurrencyfa(data?.currencies)}
+                                                                                                                                            تومان
                             </span>
-                                                                                                                                        </p>
+                                                                                                                                        </p> :
+                                                                                                                                        <span
+                                                                                                                                            className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+                                                                                                                                    }
                                                                                                                                         {/*<p className="px-2 font-size-13 m-0 text-center font-blue">{getcurrencyfa(currency) }</p>*/}
-                                                                                                                                    </> :
-                                                                                                                                    <span
-                                                                                                                                        className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
-                                                                                                                            }
+
+                                                                                                                                    </>
+                                                                                                                                }
+
+                                                                                                                            </> : <>
+
+                                                                                                                                {
+                                                                                                                                    (roomFinder1(pack.rooms, 148)[0]?.chd_n_price) ? <>
+
+                                                                                                                                            <p className="font-size-16 m-0 price-color"
+                                                                                                                                               style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_n_price)}
+
+                                                                                                                                                <span
+                                                                                                                                                    className="font-size-14 font-bold  m-0 color-gray px-1">
+                                تومان
+                            </span>
+                                                                                                                                            </p>
+                                                                                                                                            {/*<p className="px-2 font-size-13 m-0 text-center font-blue">{getcurrencyfa(currency) }</p>*/}
+                                                                                                                                        </> :
+                                                                                                                                        <span
+                                                                                                                                            className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
+                                                                                                                                }
 
 
-                                                                                                                        </>}
+                                                                                                                            </>}
 
                                                                                                                     </>
 
@@ -1244,16 +795,13 @@ const tour = (props) => {
                                                                                                     <button className=""
                                                                                                             onClick={() => {
                                                                                                                 setShow(true);
-                                                                                                                // posthog.capture("TourPackageHotelSelect")
-                                                                                                                // setPackData({tourId: pack.id});
                                                                                                                 setSelectedHotel(pack)
-
                                                                                                             }}>
                                                                                                         اتاق های بیشتر
                                                                                                     </button>
 
                                                                                                     <button className=""
-                                                                                                            style={{fontWeight:'700'}}
+                                                                                                            style={{fontWeight: '700'}}
 
                                                                                                             onClick={() => {
                                                                                                                 setIsReserve(true)
@@ -1268,10 +816,10 @@ const tour = (props) => {
                                                                                         </div>
 
 
-                                                                                        {data.is_bundle &&
+
                                                                                             <div
                                                                                                 className={styles['rooms-title']}>
-                                                                                                {getroomsTitle(pack).map(t => (
+                                                                                                {getroomsTitle(pack.rooms).map(t => (
                                                                                                     <div
                                                                                                         className={styles['room-prc']}>
 
@@ -1300,7 +848,7 @@ const tour = (props) => {
 
                                                                                                                                     <span
                                                                                                                                         className="font-size-14 font-bold px-1  m-0 color-gray">
-                                                                                                                    {!data.is_bundle ? 'تومان' : getcurrencyfa(data?.currencies)}
+                                                                                                                   تومان
                                                                                                                 </span>
                                                                                                                                 </p>
 
@@ -1319,119 +867,32 @@ const tour = (props) => {
 
                                                                                                 ))}
 
-                                                                                                <div
-                                                                                                    className={styles['room-prc']}>
-
-                                                                                                    <div
-                                                                                                        className={styles['room-title']}>
-                                                                                                        <span
-                                                                                                            className={styles['']}>کودک با تخت </span>
 
 
-                                                                                                    </div>
-                                                                                                    <div
-                                                                                                        className={styles['room']}>
-                                                                                                        <div
-                                                                                                            className=" d-flex align-items-start ">
-                                                                                                            <div
-                                                                                                                className=" w-100 py-3">
 
-
-                                                                                                                {
-                                                                                                                    // getHotelRooms(pack)
-                                                                                                                    pack.cwb ?
-                                                                                                                        <>
-                                                                                                                            <p
-                                                                                                                                className="font-size-16 font-bold  m-0 price-color"
-                                                                                                                                style={{fontWeight: 'bold'}}>{pack.cwb}
-
-                                                                                                                                <span
-                                                                                                                                    className="font-size-14 font-bold px-1  m-0 color-gray">
-                                                                                                                    {getcurrencyfa(data.currencies)}
-                                                                                                                </span>
-                                                                                                                            </p>
-
-                                                                                                                            {/*<p className="px-2 font-size-13 m-0 text-center font-blue text-center"> {getcurrencyfa(currency) } </p>*/}
-                                                                                                                        </> :
-                                                                                                                        <span
-                                                                                                                            className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
-
-                                                                                                                }
-
-
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                {<div
-                                                                                                    className={styles['room-prc']}>
-
-                                                                                                    <div
-                                                                                                        className={styles['room-title']}>
-                                                                                    <span
-                                                                                        className={styles['']}>کودک بدون تخت </span>
-
-
-                                                                                                    </div>
-                                                                                                    <div
-                                                                                                        className={styles['room']}>
-                                                                                                        <div
-                                                                                                            className=" d-flex align-items-start ">
-                                                                                                            <div
-                                                                                                                className=" w-100 py-3">
-
-
-                                                                                                                {
-                                                                                                                    // getHotelRooms(pack)
-                                                                                                                    infPrice ?
-                                                                                                                        <>
-                                                                                                                            <p
-                                                                                                                                className="font-size-16 font-bold  m-0 price-color"
-                                                                                                                                style={{fontWeight: 'bold'}}>{moneyFormatrial(infPrice)}
-
-                                                                                                                                <span
-                                                                                                                                    className="font-size-14 font-bold px-1  m-0 color-gray">
-                                                                                                                     تومان
-                                                                                                                </span>
-                                                                                                                            </p>
-
-                                                                                                                            {/*<p className="px-2 font-size-13 m-0 text-center font-blue text-center"> {getcurrencyfa(currency) } </p>*/}
-                                                                                                                        </> :
-                                                                                                                        <span
-                                                                                                                            className="font-bold font-size-13 font-bold color-gray"> عدم موجودی</span>
-
-                                                                                                                }
-
-
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>}
-
-
-                                                                                            </div>}
+                                                                                            </div>
 
                                                                                     </div>
-                                                                                        {/*<div className={styles['moreinfocon']} style={{display:'flex',columnGap:'20px',justifyContent:'center',alignItems:'end',marginTop:'10px'}}>*/}
-                                                                                        {/*    <div className={styles['info']} onClick={()=> {*/}
-                                                                                        {/*        setMoreInfoTab('amenities')*/}
-                                                                                        {/*        setHotelId(pack.hotel_id)*/}
-                                                                                        {/*    }}>*/}
-                                                                                        {/*        <p>امکانات</p>*/}
-                                                                                        {/*    </div>*/}
-                                                                                        {/*    <div className={styles['info']}  onClick={()=> {*/}
-                                                                                        {/*        setMoreInfoTab('map')*/}
-                                                                                        {/*        setHotelId(pack.hotel_id)*/}
-                                                                                        {/*    }}>*/}
-                                                                                        {/*        <p>نقشه</p>*/}
-                                                                                        {/*    </div>*/}
-                                                                                        {/*    <div className={styles['info']}  onClick={()=> {*/}
-                                                                                        {/*        setMoreInfoTab('services')*/}
-                                                                                        {/*        setHotelId(pack.hotel_id)*/}
-                                                                                        {/*    }}>*/}
-                                                                                        {/*        <p>خدمات</p>*/}
-                                                                                        {/*    </div>*/}
-                                                                                        {/*</div>*/}
+                                                                                    {/*<div className={styles['moreinfocon']} style={{display:'flex',columnGap:'20px',justifyContent:'center',alignItems:'end',marginTop:'10px'}}>*/}
+                                                                                    {/*    <div className={styles['info']} onClick={()=> {*/}
+                                                                                    {/*        setMoreInfoTab('amenities')*/}
+                                                                                    {/*        setHotelId(pack.hotel_id)*/}
+                                                                                    {/*    }}>*/}
+                                                                                    {/*        <p>امکانات</p>*/}
+                                                                                    {/*    </div>*/}
+                                                                                    {/*    <div className={styles['info']}  onClick={()=> {*/}
+                                                                                    {/*        setMoreInfoTab('map')*/}
+                                                                                    {/*        setHotelId(pack.hotel_id)*/}
+                                                                                    {/*    }}>*/}
+                                                                                    {/*        <p>نقشه</p>*/}
+                                                                                    {/*    </div>*/}
+                                                                                    {/*    <div className={styles['info']}  onClick={()=> {*/}
+                                                                                    {/*        setMoreInfoTab('services')*/}
+                                                                                    {/*        setHotelId(pack.hotel_id)*/}
+                                                                                    {/*    }}>*/}
+                                                                                    {/*        <p>خدمات</p>*/}
+                                                                                    {/*    </div>*/}
+                                                                                    {/*</div>*/}
                                                                                 </div>
 
 
@@ -1509,51 +970,42 @@ const tour = (props) => {
                                                                     {/*</div>*/}
                                                                 </div>
                                                             </div>
-                                                            {/*<HotelsDetails pack={pack.prices}*/}
-                                                            {/*               data={data}*/}
-                                                            {/*               hotel={pack}*/}
-                                                            {/*               currency={data?.currencies}*/}
-                                                            {/*               flightId={selectedFlight}*/}
-                                                            {/*               setHotel={(value)=>{setSelectedHotel(value)}}*/}
 
-                                                            {/*               setShow={setShow}*/}
-                                                            {/*               setPackData={setPackData}*/}
-
-                                                            {/*               setIsReserve={(val)=>setIsReserve(val)}*/}
-
-                                                            {/*               infPrc={infPrice}*/}
-                                                            {/*               cwb={pack.cwb}*/}
-                                                            {/*/>*/}
                                                         </div>
 
-                                                        {hotelid ===pack.hotel_id && <div style={{borderTop:"1px solid #cecece", padding:'15px'}}>
+                                                        {/*{hotelid === pack.hotel_id &&*/}
+                                                        {/*    <div style={{borderTop: "1px solid #cecece", padding: '15px'}}>*/}
 
-                                                            <>
-                                                                {
-                                                                    moreInfoTab === 'amenities' && <div>1</div>
-                                                                } {
-                                                                moreInfoTab === 'map' &&
-                                                                <div style={{display: 'flex',justifyContent:'space-between',padding:"0 1.125rem 10px 1.125rem"}}>
+                                                        {/*        <>*/}
+                                                        {/*            {*/}
+                                                        {/*                moreInfoTab === 'amenities' && <div>1</div>*/}
+                                                        {/*            } {*/}
+                                                        {/*            moreInfoTab === 'map' &&*/}
+                                                        {/*            <div style={{*/}
+                                                        {/*                display: 'flex',*/}
+                                                        {/*                justifyContent: 'space-between',*/}
+                                                        {/*                padding: "0 1.125rem 10px 1.125rem"*/}
+                                                        {/*            }}>*/}
 
-                                                                    <div>
+                                                        {/*                <div>*/}
 
-                                                                        address
+                                                        {/*                    address*/}
 
-                                                                    </div>
-                                                                    <div style={{height: '300px', width: '700px'}}>
-                                                                        <MapComponent
-                                                                            coordinates={[35.718971, 51.435673]}/>
+                                                        {/*                </div>*/}
+                                                        {/*                <div style={{height: '300px', width: '700px'}}>*/}
+                                                        {/*                    <MapComponent*/}
+                                                        {/*                        coordinates={[35.718971, 51.435673]}/>*/}
 
-                                                                    </div>
+                                                        {/*                </div>*/}
 
-                                                                </div>
-                                                            }
-                                                                {
-                                                                    moreInfoTab === 'services' && <div>3</div>
-                                                                }</>
+                                                        {/*            </div>*/}
+                                                        {/*        }*/}
+                                                        {/*            {*/}
+                                                        {/*                moreInfoTab === 'services' && <div>3</div>*/}
+                                                        {/*            }</>*/}
 
 
-                                                        </div>}
+                                                        {/*    </div>}*/}
 
                                                     </div>
                                                 ))
@@ -1685,7 +1137,7 @@ const tour = (props) => {
                 <>
 
                     {!data.is_bundle ? <PopUp2 opened={isReserve} closePopUp={setIsReserve}>
-                        <PackageReserve isreserve={isReserve} isBundle={data.is_bundle}
+                        <PackageReserve tourId={props.Pathname.tour[0]} isreserve={isReserve} isBundle={data.is_bundle}
                                         setOpen={setOpen} messages={messages} setMessages={setMessages}
                                         setShow={setShow}
                                         transfers={flightList && flightList}
@@ -1708,17 +1160,14 @@ const tour = (props) => {
                                         flightId={selectedFlight}
                                         flightIds={flightId}
                                         tourData={data}
+
                         />
                     </PopUp>}
                 </>
 
 
             }
-            {/*<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>*/}
-            {/*    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>*/}
-            {/*        {messages.message}*/}
-            {/*    </Alert>*/}
-            {/*</Snackbar>*/}
+
             <Footer/>
         </div>
 

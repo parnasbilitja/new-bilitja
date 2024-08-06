@@ -11,7 +11,7 @@ import { withRouter } from "next/router";
 
 const FutureDays = (props) => {
     let year, month,month2,toDay;
-    console.log(props.credentials.flightDatePersian);
+    
 
     // useEffect(() => {
       if (props.credentials.flightDatePersian != "") {
@@ -56,7 +56,7 @@ const FutureDays = (props) => {
 
     useEffect(() => {
       getData(true);
-      console.log(state);
+      
     },[props.credentials.flightDatePersian])
 
   const checkLastDays = (days = []) => {
@@ -78,7 +78,7 @@ const FutureDays = (props) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        
         // check if this is from componentdidmount or not
         if (idInitReq) {
           if (!checkLastDays(data[0])) {
@@ -96,7 +96,7 @@ const FutureDays = (props) => {
             )
               .then((res) => res.json())
               .then((data) => {
-                console.log(data);
+                
                 setState({...state,
                   firstMonth: data,
                   year: year,
@@ -140,9 +140,9 @@ const FutureDays = (props) => {
                       `${state.year}/${state.month}/${day.day}`,
                       "jYYYY/jMM/jDD"
                     );
-                    console.log(state);
-                    console.log(day.day);
-                    // console.log(m);
+                    
+                    
+                    // 
                     const persianDate = m.format("jYYYY/jMM/jDD");
                     const miladidate = m.format("YYYY/MM/DD");
 

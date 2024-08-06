@@ -30,7 +30,7 @@ const CityTour = (props) => {
     //     setCurrentCity(val.target.value)
     // }
     // useEffect(() => {
-    //     // console.log(city);
+    //     // 
     //     if (city?.data?.length < 1) {
     //         dispatch(fetchCity())
     //     }

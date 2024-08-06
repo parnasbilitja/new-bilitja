@@ -39,7 +39,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment-jalaali";
 import MinimumPriceCalendar from "./MinimumPriceCalendar.component";
 
-import { getCustomFormat } from "../../Utils/SimpleTasks";
+import {getCustomFormat, getweekday} from "../../Utils/SimpleTasks";
 import { withRouter } from "next/router";
 import Descflightlist from "./Descflitlist";
 import FutureDays from "./FutureDays";
@@ -101,8 +101,8 @@ class GetFlightList extends React.Component {
   }
   componentDidUpdate() {
     const pathquery = this.props.router.asPath;
-    console.log("props all", this.props.credentials);
-    console.log("searchonj", this.props.searchobject);
+
+
     const path = pathquery.split("#")[0];
     const src = decodeURI(path.split("/")[2]).split("-to-")[0];
     const srccod = decodeURI(path.split("/")[3]).split("-")[1];
@@ -383,7 +383,7 @@ class GetFlightList extends React.Component {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+
           if (data.length != 0 && data != undefined) {
             this.props.addCredentials({
               flightDateNext: data[0].flightDateNext,
@@ -606,7 +606,7 @@ class GetFlightList extends React.Component {
           {/* <div className="col-lg-1 col-md-1 col-sm-1"></div> */}
           <div className="col-lg-12 col-md-12 col-sm-12">
             <div className="row min-height">
-              <div className="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-12 padding-5px">
+              <div className="col-xl-9 col-lg-8 col-md-8 col-sm-8 col-12 padding-5px">
                 {/* <FutureDays refreshAction={this.getData}  /> */}
                 {this.state.loading ? (
                   <div className="mt-5 d-flex h-50 justify-content-center align-items-center">
@@ -616,49 +616,77 @@ class GetFlightList extends React.Component {
                   </div>
                 ) : this.state.flights != null ? (
                   <div>
-                    {window.innerWidth < 826 ? (
-                      <div className="visible-xs">
-                        {console.log(this.state.flights)}
-                        <ShowFlightListMobile
-                          setReserveBoxData={this.setReserveBoxData}
-                          flightList={this.state.flights}
-                          search={() => this.managePopUpSearch(true)}
-                          filter={() =>
-                            this.setState({
-                              slide: true,
-                            })
-                          }
-                        />
-                      </div>
-                    ) : null}
+                    {/*{window.innerWidth < 826 ? (*/}
+                    {/*  <div className="visible-xs">*/}
+                    {/*    <ShowFlightListMobile*/}
+                    {/*      setReserveBoxData={this.setReserveBoxData}*/}
+                    {/*      flightList={this.state.flights}*/}
+                    {/*      search={() => this.managePopUpSearch(true)}*/}
+                    {/*      filter={() =>*/}
+                    {/*        this.setState({*/}
+                    {/*          slide: true,*/}
+                    {/*        })*/}
+                    {/*      }*/}
+                    {/*    />*/}
+                    {/*  </div>*/}
+                    {/*) : null}*/}
 
-                    {window.innerWidth >= 826 ? (
-                      <div className={styles["hidden-xs-flight"]}>
-                        <ShowFlightList
+                    {/*{window.innerWidth >= 826 ? (*/}
+                    {/*  <div className={styles["hidden-xs-flight"]}>*/}
+                      <div className={'isMobile'} style={{marginTop:'20px'}}>
+                          <div
+                              className={` ${styles["mobile-flight-list-header"]} font-bold-iransanse`}
+                          >
+                              <p className="font-light-iransans pt-1 pb-3">
+                                  خريد بليط هواپيما{" "}
+                                  <span className="color-secondary font-bold-iransanse">
+                {this.state.flights.length != 0
+                    ? this.state.flights[0]?.source
+                    : ""}
+              </span>{" "}
+                                  به{" "}
+                                  <span className="color-secondary font-bold-iransanse">
+                {this.state.flights.length != 0
+                    ? this.state.flights[0]?.destinate
+                    : ""}
+              </span>
+                              </p>
+                              <p className={`${styles["date-style"]}`}>
+                                  {this.state.flights.length != 0
+                                      ? getweekday(this.state.flights[0]?.flightDay)
+                                      : ""}{" "}
+                                  &nbsp;
+                                  {this.state.flights.length != 0
+                                      ? `${this.state.flights[0]?.flightDate}`
+                                      : ""}
+                              </p>
+                          </div>
+                      </div>
+                      <ShowFlightList
                           setReserveBoxData={this.setReserveBoxData}
                           flightList={this.state.flights}
-                        />
-                      </div>
-                    ) : null}
+                      />
+                      {/*</div>*/}
+                      {/*) : null}*/}
                   </div>
                 ) : (
-                  <>
-                    <p style={{ marginTop: 40 }} className="text-center mx-3">
-                      متاسفانه هیچ پروازی از{" "}
-                      <strong style={{ color: "#e20000" }}>
-                        {
-                          this.props.airports.find(
-                            (x) => x.airportNameEn == src
-                          ).airportName
-                        }
-                      </strong>{" "}
-                      <strong>به </strong>
-                      <strong style={{ color: "#e20000" }}>
-                        {
-                          this.props.airports.find(
-                            (x) => x.airportNameEn == dest
-                          ).airportName
-                        }
+                    <>
+                        <p style={{marginTop: 40}} className="text-center mx-3">
+                            متاسفانه هیچ پروازی از{" "}
+                            <strong style={{color: "#e20000"}}>
+                                {
+                                    this.props.airports.find(
+                                        (x) => x.airportNameEn == src
+                                    ).airportName
+                                }
+                            </strong>{" "}
+                            <strong>به </strong>
+                            <strong style={{color: "#e20000"}}>
+                                {
+                                    this.props.airports.find(
+                                        (x) => x.airportNameEn == dest
+                                    ).airportName
+                                }
                       </strong>{" "}
                       یافت نشد لطفا از تقویم انتخاب کنید.
                     </p>
@@ -667,7 +695,7 @@ class GetFlightList extends React.Component {
                 )}
               </div>
               <div
-                className={`col-lg-3 col-md-3 col-sm-4 ${styles["flight-filter-box"]} ${styles["hidden-xs-flight"]}`}
+                className={`col-xl-3 col-lg-4 col-md-4 col-sm-4 ${styles["flight-filter-box"]} ${styles["hidden-xs-flight"]}`}
               >
                 <div className={styles["marginLeftFilter"]}>
                   {}

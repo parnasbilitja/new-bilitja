@@ -7,9 +7,9 @@ import {fontSize} from "@mui/system";
 const RoomsInfo = (props) => {
 
     useEffect(()=>{
-        console.log(props.totalRservedroomData);
+        
     },[props.totalRservedroomData])
-    console.log("from rooms info", props);
+    
     const [isEdit, setIsEdit] = useState(false)
 
     const PrcRoomGen=(flight,services)=>{

@@ -4,15 +4,28 @@ import {Err, ErrSuccess, NotifAlert} from "../NewTours/Components/NotifAlert.com
 import PrimaryTextInput from "../../sources/component/PrimaryTextInput.component";
 import {usePostHog} from "posthog-js/react";
 import {chdAgeStr, numberToWordConvertor, numberWithCommas} from "../../Utils/newTour";
-import {useRouter} from "next/router";
+import {useRouter, withRouter} from "next/router";
+import {fontSize} from "@mui/system";
+import globals from "../../sources/Global";
+import {selectProperties} from "../../Redux/Reserve/reserve.reselect";
+import {selcetAccountBox} from "../../Redux/UI/ui.reselect";
+import {selectAirports} from "../../Redux/Airports/airport.reselect";
+import {selectCredentials} from "../../Redux/Search/search.reselect";
+import {connect} from "react-redux";
+import {accountBoxModify} from "../../Redux/UI/ui.action";
 
 
 const PackageReserve = ({
+    tourId,
                             transfers,
+    user,
+                            reserveProperties,
+                            accountBoxModify,
                             tourData,
                             flightIds,
                             selectedHotel,
                             flightId,
+                            messageBoxModify,
                             setIsReserve,
                             messages,
                             setMessages,
@@ -21,15 +34,9 @@ const PackageReserve = ({
                             packData,
                             setOpen,
                             datatitle,
-                            isBundle
+                            isBundle,
                         }) => {
     const router = useRouter()
-    const [foundFlight, setFoundFlight] = useState([])
-    useEffect(() => {
-        let flight = transfers.filter(f => +(f.id.toString() + f.return_id.toString()) === +flightId)
-        setFoundFlight(flight[0])
-        console.log(flight, transfers, flightId)
-    }, [transfers, flightId])
 
 
     const [loading, setLoading] = useState(false)
@@ -46,33 +53,32 @@ const PackageReserve = ({
         return (+getIndex)+1
     }
     const incRoom = (room) => {
-// debugger
 
         rooms.map(r => {
 
-            if (r.roomTypeId === room.roomTypeId) {
-                if (r.capacity > roomNumber(room.roomTypeId).length) {
+            if (r.room_type_id === room.room_type_id) {
+                if (r?.available_room_count > roomNumber(room.room_type_id).length) {
                     setSelecetedRoomsData(prevState => [...prevState, {
                         id: Math.random() * 1000,
-                        room_type_id: room.roomTypeId,
-                        room_id: room.roomId,
-                        room_type: room?.roomName,
+                        room_type_id: room.room_type_id,
+                        room_id: room.room_id,
+                        room_type: room?.room_name,
                         hotel_id: selectedHotel.hotel_id,
-                        Adl_capacity: room?.roomCapacity,
+                        Adl_capacity: room?.adl_capacity,
                         extra_bed_count: 0,
                         inf_count: 0,
                         chd_withbed_count: 0,
                         chd_nobed_count: 0,
-                        chd_capacity: room?.roomChdCapacity,
+                        chd_capacity: room?.room_chd_capacity,
                         extra_bed_capacity: room?.extra_bed_count,
                         total_extra_count: room?.total_extra_count,
                         chd_withbed_prc: room?.chd_w_price,
                         chd_nobed_prc: room?.chd_n_price,
-                        chd_withbed_ages: room.with_bed_child_ages,
-                        chd_nobed_ages: room.no_bed_child_ages,
+                        chd_withbed_ages: selectedHotel?.with_bed_child_ages,
+                        chd_nobed_ages: selectedHotel?.no_bed_child_ages,
                         ext_prc: room?.extra_bed_price,
                         inf_prc: room.inf_price,
-                        adl_count: room.roomCapacity,
+                        adl_count: room.adl_capacity,
                         extra_count: 0,
                         count: 1,
                     }])
@@ -95,11 +101,91 @@ const PackageReserve = ({
 
     }
 
+
+
     const removeRoom = (id) => {
 
         const newSelectedRoom = selectedRoomsData.filter((room) => room.id !== id);
         setSelecetedRoomsData(newSelectedRoom);
     };
+
+    const login = () => {
+        localStorage.setItem("mobile", state.mobileSubmiter)
+        setState({ ...state, btn_disabled: true });
+        // setLoading(true)
+        fetch(`${globals.baseUrlNew}auth/getMobile`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+
+                mobile: state.mobileSubmiter,
+                password: '',
+                register: 0,
+                customerId: "1a157116-a01a-4027-ab10-74098ac63815",
+                hostname: "hamnavaz.com",
+                agencyName: "بلیطجا",
+                telNumber: "02184278",
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                // debugger
+                if (data.status == "0") {
+                    setState({
+                        ...state,
+                        btn_disabled: false,
+                        get_mobile_status: true,
+                        btn_text: "تایید کد احراز هویت",
+                    });
+                    // setLoading(false)
+                } else if (data.status == "10") {
+                    setState({ ...state, btn_disabled: false });
+                    // setLoading(false)
+                    localStorage.setItem("mobile", data.mobile);
+                    // localStorage.setItem("token", data.token);
+                    props.checkUserLogged();
+                    props.getUserInfo({
+                        mobile: data.mobile,
+                    });
+                    props.accountBoxModify({
+                        state: false,
+                        type: "authentication",
+                    });
+                    props.messageBoxModify({
+                        color: true,
+                        state: true,
+                        message: "ورود شما موفقیت آمیز بود.",
+                    });
+                    props.accountBoxModify({
+                        state: false,
+                        type: "authentication",
+                    });
+                    reserveTour()
+
+                } else if (data.status === "-111") {
+
+                    register();
+
+                } else if (data.status === "-200") {
+                    setState({
+                        ...state,
+                        btn_disabled: false,
+                        error: true,
+                        errText: "شماره موبایل یا رمز ثابت نادرست می باشد.",
+                    });
+                    // setLoading(false)
+                } else {
+                    // setLoading(false)
+                    setState({
+                        ...state,
+                        btn_disabled: false,
+                        error: true,
+                        errText: data.message,
+                    });
+                }
+            });
+    };
+
     const decDet1 = (id, type) => {
         if (type === "ext_count") {
             const findRoom = selectedRoomsData.map((x) => {
@@ -140,6 +226,7 @@ const PackageReserve = ({
             });
             setSelecetedRoomsData(findRoom);
         } else if (type === "chd_withbed_count") {
+            debugger
             const findRoom = selectedRoomsData.map((x) => {
                 if (x?.id === id) {
                     if (x?.chd_withbed_count) {
@@ -178,23 +265,22 @@ const PackageReserve = ({
             });
             setSelecetedRoomsData(findRoom);
         }
-        // console.log(selectedRoom);
+        //
     };
 
-    useEffect(() => {
-        console.log('pouya', selectedRoomsData)
-    }, [selectedRoomsData])
+
 
     const incDet1 = (room, type) => {
         // debugger;
         if (type === "ext_count") {
+            debugger
             const findRoom = selectedRoomsData.map((x) => {
                 if (x?.id === room?.id) {
-                    if (x?.extra_count + x.chd_withbed_count >= x?.extra_bed_capacity) {
+                    if (x?.extra_count + x.chd_withbed_count >= x?.total_extra_count) {
                         Err("به دلیل نبود ظرفیت امکان اضافه کردن وجود ندارد");
                         return x;
                     } else {
-                        if (x.extra_count <= x.extra_bed_capacity) {
+                        if (x.extra_count < x.extra_bed_capacity) {
                             return {
                                 ...x,
                                 extra_count: x.extra_count + 1,
@@ -229,6 +315,7 @@ const PackageReserve = ({
 
             setSelecetedRoomsData(findRoom);
         } else if (type === "chd_withbed_count") {
+            debugger
             const findRoom = selectedRoomsData.map((x) => {
                 if (x?.id === room?.id) {
                     if (x?.chd_withbed_count + x?.extra_count >= x?.total_extra_count) {
@@ -236,7 +323,7 @@ const PackageReserve = ({
                         return x;
                     } else {
                         // debugger
-                        if (x?.chd_withbed_count < x?.chd_capacity) {
+                        if (x?.chd_withbed_count + x?.chd_nobed_count < x?.chd_capacity) {
                             return {
                                 ...x,
                                 chd_withbed_count: x?.chd_withbed_count + 1,
@@ -259,7 +346,7 @@ const PackageReserve = ({
                         Err("به دلیل نبود ظرفیت امکان اضافه کردن وجود ندارد");
                         return x;
                     } else {
-                        if (x?.chd_nobed_count < x?.chd_capacity) {
+                        if (x?.chd_nobed_count +x?.chd_withbed_count< x?.chd_capacity) {
                             return {
                                 ...x,
                                 chd_nobed_count: x?.chd_nobed_count + 1,
@@ -276,12 +363,10 @@ const PackageReserve = ({
 
             setSelecetedRoomsData(findRoom);
         }
-        // console.log(selectedRoom);
+        //
     };
 
-    useEffect(() => {
-        console.log(tourData)
-    }, [tourData])
+
     const tourReserve = (
         fCheckin,
         fCheckout,
@@ -289,30 +374,23 @@ const PackageReserve = ({
         fRId,
         hotelId
     ) => {
-        let routerParam = router.query;
-        // let checkin = fCheckin
-        //     ? MiladiToJalaliConvertorInc(goneDate)
-        //     : MiladiToJalaliConvertor(goneDate);
-        // let checkout = fCheckout
-        //     ? MiladiToJalaliConvertorDec(arrivalDate)
-        //     : MiladiToJalaliConvertor(arrivalDate);
-        // let stayCount = routerParam.night;
-        // let rooms = [...roomsGen(selectedRoom)];
+
 
 
         if (selectedRoomsData.length > 0) {
             // setIsLoading(true)
-
             axios
                 .post(
-                    "https://api.hotelobilit.com/api/v2/reserves/checking",
+                    `${globals.tourPackages}reserves/checking`,
                     {
-
+                        tour_id:+tourId,
+                        package_id:selectedHotel.id,
+                        reserver_phone:user.logged ? localStorage.getItem('mobile'):'',
                         checkin: tourData.checkin,
                         checkout: tourData.checkout,
                         hotel_id: selectedHotel.hotel_id,
-                        flight_id: flightIds.depratureId,
-                        return_flight_id: flightIds.returnId,
+                        flight_id: tourData.selected_flight,
+
                         rooms: selectedRoomsData,
                     },
                     {
@@ -328,7 +406,7 @@ const PackageReserve = ({
                     router.push(
                         `/tour/reserve/${selectedHotel.hotel_id}/${flightIds.depratureId}/${flightIds.returnId}?checkin=${tourData.checkin}&checkout=${tourData.checkout}&rooms=${JSON.stringify(
                             selectedRoomsData
-                        )}&ref_code=${res.data.data.ref_code}`
+                        )}&ref_code=${res.data.data.information.ref_code}`
                     );
                 })
                 .catch((err) => {
@@ -422,9 +500,9 @@ const PackageReserve = ({
     useEffect(() => {
         // console.log('asdas32432',selectedHotel)
         if (!isBundle) {
-            // debugger
-            let selectedRooms = selectedHotel.prices.filter(room => (room.flight_id.toString() + room.return_flight_id.toString()) === flightId)
-            selectedRooms = getCheapestRoom(selectedRooms)
+
+            let selectedRooms
+            selectedRooms = selectedHotel.rooms
             selectedRooms = selectedRooms.map(room =>
                 ({...room, count: 0, id: Math.random() * 100})
             )
@@ -435,6 +513,11 @@ const PackageReserve = ({
     }, [isBundle])
 
 
+    useEffect(()=>{
+
+        console.log(localStorage.getItem('mobile'),user.logged)
+    },[])
+
     const roomNumber = (roomid) => {
 
         let foundrooms = selectedRoomsData.filter(room => room.room_type_id === roomid)
@@ -442,15 +525,12 @@ const PackageReserve = ({
         return foundrooms
     }
 
-    useEffect(() => {
 
-        console.log(tourData)
-    }, [tourData])
     const decRoom = (room) => {
-        // debugger
-        let foundRoom = selectedRoomsData?.filter(r => r.room_type_id === room.roomTypeId)
+        debugger
+        let foundRoom = selectedRoomsData?.filter(r => r.room_type_id === room.room_type_id)
         foundRoom.pop()
-        let filteredRoom = selectedRoomsData?.filter(r => r.room_type_id !== room.roomTypeId)
+        let filteredRoom = selectedRoomsData?.filter(r => r.room_type_id !== room.room_type_id)
         filteredRoom.push(...foundRoom)
         setSelecetedRoomsData(filteredRoom)
     }
@@ -458,6 +538,19 @@ const PackageReserve = ({
         console.log(selectedRoomsData)
     }, [selectedRoomsData])
 
+
+    const [state, setState] = useState({
+        stateRegister: false,
+        // passengers: [],
+        // priceAll: 0,
+        mobileSubmiter:  '',
+        // phoneSubmiter: '',
+        // mobileSubmiterErr: "شماره همراه اجباری است",
+        // phoneSubmiterErr: "شماره ثابت اجباری است",
+        // agreeWithTerm: false,
+        // agreeWithTermerr: false,
+        // email: ''
+    });
     return (
 
 
@@ -548,8 +641,11 @@ const PackageReserve = ({
                                     {/*        <PrimaryTextInput type="text" value={packData.number} onChange={e => valueHandler(e)} name="number" className="w-100 px-2 rounded-3 border-secondary font-yekan" placeholder="شماره همراه خود را وارد کنید" style={{ height: "40px", outline: "none" }} />*/}
                                     {/*    </div>*/}
                                     {/*</div>*/}
-
+<div>
+    {/*<input type="text" value={reserverPhone} onChange={(e)=>setReserverPhone(e.target.value)}/>*/}
+</div>
                                     <div className="bedcount-container">
+
                                         <div className="bedcount">
 
                                             {rooms?.map(room => (
@@ -559,8 +655,10 @@ const PackageReserve = ({
                                                         margin: '0',
                                                         padding: '0',
                                                         textAlign: 'center',
-                                                        marginBottom: '8px'
-                                                    }}>{room.roomName}</p>
+                                                        marginBottom: '3px'
+                                                    }}>تعداد {room.room_name} </p>
+                                                    <span style={{fontSize: '12px'}}> (مناسب برای {room.adl_capacity}نفر )
+                                                    </span>
                                                     <p style={{
                                                         fontSize: '12px',
                                                         margin: '0',
@@ -576,7 +674,7 @@ const PackageReserve = ({
                                                             onClick={() => incRoom(room)}>
                                                             +
                                                         </div>
-                                                        <p>{roomNumber(room.roomTypeId)?.length}</p>
+                                                        <p>{roomNumber(room.room_type_id)?.length}</p>
                                                         <div
                                                             className={roomCounter(room.room_type_id) === 0 ? 'dis_decin' : 'decin'}
                                                             onClick={() => decRoom(room)}>
@@ -592,6 +690,7 @@ const PackageReserve = ({
 
 
                                     </div>
+
 
                                     <>
                                         {selectedRoomsData && <>
@@ -633,7 +732,12 @@ const PackageReserve = ({
                                                                         </svg>
                                                                     </div>
                                                                     <div className={"roomcountDet_name"}>
-                                                                        <p className='p-0 m-0'>{room?.room_type}  <small style={{fontWeight:600,fontSize:'12px'}}>({ numberToWordConvertor(findRoomByName(room.room_type_id,room.id)) })</small> </p>
+                                                                        <p className='p-0 m-0'>{room?.room_type} <small
+                                                                            style={{
+                                                                                fontWeight: 600,
+                                                                                fontSize: '12px'
+                                                                            }}>({numberToWordConvertor(findRoomByName(room.room_type_id, room.id))})</small>
+                                                                        </p>
                                                                     </div>
 
                                                                 </div>
@@ -642,9 +746,10 @@ const PackageReserve = ({
                                                                     className={'roomcount'}
 
                                                                 >
-                                                                    <p style={{fontSize:'12px'}}>تعداد بزرگسال این اتاق:</p>
+                                                                    <p style={{fontSize: '12px'}}>تعداد بزرگسال این
+                                                                        اتاق:</p>
                                                                     <p style={{
-                                                                        fontSize:'13px',
+                                                                        fontSize: '13px',
                                                                         color: '#e20000',
                                                                         fontWeight: '700'
                                                                     }}>{room?.Adl_capacity}</p>
@@ -686,8 +791,8 @@ const PackageReserve = ({
                                                                             <div
                                                                                 className={
 
-                                                                                    room.extra_count >=
-                                                                                    room?.extra_bed_capacity
+                                                                                    (room?.extra_count + room?.chd_withbed_count >=
+                                                                                        room?.total_extra_count) || room.extra_count >= room.extra_bed_capacity
                                                                                         ? "dis_decin"
                                                                                         :
                                                                                         "decin"
@@ -734,13 +839,12 @@ const PackageReserve = ({
 
                                                                         }`}
                                                                     >
-                                                                        <>
-                                                                        </>
+
                                                                         <>
                                                                             <p className={"bedtype"}>
                                                                                 تعداد کودک با تخت
                                                                             </p>
-                                                                            {selectedHotel?.with_bed_child_ages.length>0 &&
+                                                                            {selectedHotel?.with_bed_child_ages.length > 0 &&
                                                                                 <p>{chdAgeStr(selectedHotel?.with_bed_child_ages[0], selectedHotel?.with_bed_child_ages[1])}</p>}
                                                                         </>
                                                                         <p className={"bedtypeprc"}>
@@ -757,7 +861,7 @@ const PackageReserve = ({
                                                                             <div
                                                                                 className={
 
-                                                                                    room?.chd_nobed_count + room?.chd_withbed_count >= room?.chd_capacity
+                                                                                    room?.chd_nobed_count + room?.chd_withbed_count >= room?.chd_capacity || (room.chd_withbed_count + room.extra_count >= room.total_extra_count)
                                                                                         ? "dis_decin"
                                                                                         :
                                                                                         "decin"
@@ -805,7 +909,7 @@ const PackageReserve = ({
                                                                         <p className={"bedtype"}>
                                                                             تعداد کودک بدون تخت
                                                                         </p>
-                                                                        {selectedHotel?.no_bed_child_ages.length>0 &&
+                                                                        {selectedHotel?.no_bed_child_ages.length > 0 &&
                                                                             <p>{chdAgeStr(selectedHotel?.no_bed_child_ages[0], selectedHotel?.no_bed_child_ages[1])}</p>}
                                                                     </>
                                                                     <p className={"bedtypeprc"}>
@@ -946,8 +1050,28 @@ const PackageReserve = ({
                                     className={`ancher bg-success text-white font-size-13 py-2 px-4 rounded-3  foc01`}
                                     onClick={() => {
                                         if (!loading) {
+                                            // console.log(reserveProperties)
+                                            // if(user.logged) {
+                                                tourReserve()
+                                            // }else {
+                                            //
+                                            //         Err('ابتدا وارد سایت شوید')
+                                            //         setState({ ...state, stateRegister: false });
+                                            //         login();
+                                            //         setIsReserve(false)
+                                            //         // messageBoxModify({
+                                            //         //     state: true,
+                                            //         //     color: false,
+                                            //         //     message: "لطفا کد تایید ارسال شده را وارد کنید!",
+                                            //         // });
+                                            //         accountBoxModify({
+                                            //             state: true,
+                                            //             type: "login",
+                                            //         });
+                                            //
+                                            //
+                                            // }
                                             setLoading(true)
-                                            tourReserve()
                                             posthog.capture("FormEndTourPackage", {
                                                 HMNPhone: packData.number,
                                                 HMNPassengerCount: packData.count
@@ -976,5 +1100,24 @@ const PackageReserve = ({
     );
 };
 
-export default PackageReserve;
+
+const mapStateToProps = (state) => {
+    return {
+        reserveProperties: selectProperties(state),
+        user: state.user,
+        accountBox: selcetAccountBox(state),
+        airports: selectAirports(state),
+        credentials: selectCredentials(state),
+    }
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    accountBoxModify: (value) => dispatch(accountBoxModify(value)),
+    // addReservationProperties: async (value) =>
+    //     dispatch(addReservationProperties(value)),
+    // messageBoxModify: (value) => dispatch(messageBoxModify(value)),
+})
+export default withRouter(
+    connect( mapStateToProps,mapDispatchToProps) (PackageReserve));
+// export default PackageReserve;
 

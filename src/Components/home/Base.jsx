@@ -27,8 +27,7 @@ const Base = (props) => {
         <Head>
                 <title>بلیطجا | خرید بلیط هواپیما و رزرو اقامتگاه</title>
         </Head>
-            <NavHandler/>
-          <Home type={'index'} />
+          {/*<Home type={'index'} />*/}
           {/*<div className="col-md-10 m-auto px-3 padd2">*/}
           {/*  <List />*/}
           {/*  <HotelsSuggest />*/}
@@ -40,9 +39,9 @@ const Base = (props) => {
           {/*<TicketDetails/>*/}
           {/*<MessageBox />*/}
           {/*  </div>*/}
-          <Footer />
+          {/*<Footer />*/}
 
-            {/*<HomeDet/>*/}
+            <HomeDet/>
           <HeadSeo props={props} pathName={props.router.asPath} />
         </div>
     );

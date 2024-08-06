@@ -190,7 +190,7 @@ const UpdatePassenger = (props) => {
                                                         : styles["form-container2"]
                                                 }
                                                 // onClick={() => {
-                                                //   console.log(index);
+                                                //   
                                                 // }}
                                             >
                                                 <div className={styles["item-form"]}>

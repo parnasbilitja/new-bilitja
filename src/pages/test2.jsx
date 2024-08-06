@@ -26,10 +26,10 @@ function convertUtftoAscii(str) {
 
 const page = ({ data,PaymentInfo }) => {
 //const Page({ data, PaymentInfo }) {
-  // console.log("top");
-  // console.log(data);
-  // console.log(PaymentInfo);
-  // console.log("top2");
+  // 
+  // 
+  // 
+  // 
 
   return (
     <div>
@@ -38,7 +38,7 @@ const page = ({ data,PaymentInfo }) => {
 }
 
 //This gets called on every request
-export const getServerSideProps = async (req) => {  
+export const getServerSideProps = async (req) => {
   if (req.method == "POST") {
     const body = await getRawBody(req);
     //  console.log("start")
@@ -50,9 +50,9 @@ export const getServerSideProps = async (req) => {
       .split("&")
       .map((x) => (data[x.split("=")[0]] = x.split("=")[1]));
 
-    // console.log("bottom");
-    // console.log(data);
-    // console.log("bottom2");
+    // 
+    // 
+    // 
     // console.log("end3")
     var refNum = "";
     var error = "";
@@ -65,7 +65,7 @@ export const getServerSideProps = async (req) => {
       refNum = data.RefNum;
     }
     data.RRN = "";
-    console.log(data.StateCode);
+    
     data.StateCode ="0" ; // موقت برای تست
 
     switch (data.StateCode) {

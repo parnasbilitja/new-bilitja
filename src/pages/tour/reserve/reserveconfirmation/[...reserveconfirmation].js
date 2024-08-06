@@ -5,29 +5,22 @@ import styles from "../../../../../styles/newTour/ReservationConfirmation.module
 import RoomsInfo from "../../../../Components/NewTours/Components/RoomsInfo.component";
 import {
     getDayInPersian, isEmpty,
-    MiladiToJalaliConvertor, MiladiToJalaliConvertorDec,
-    MiladiToJalaliConvertorInc,
+    MiladiToJalaliConvertor,
     numberWithCommas,
-    roomNameChecker,
     startBuilder
 } from "../../../../Utils/newTour";
 import NabvarCustom from "../../../../sources/component/NabvarCustom";
 import {motion, AnimatePresence} from "framer-motion";
 import {Err, ErrSuccess, NotifAlert} from "../../../../Components/NewTours/Components/NotifAlert.component";
-import Footer from "../../../../sources/component/Footer.component";
-import globals from "../../../../sources/Global";
 import Scrolltoprefresh from "../../../../sources/component/Scrolltoprefresh";
 import axios from "axios";
-import InfoPasserngers from "../../../../Components/NewTours/Components/InfoPasserngers";
 import UpdatePassenger from "../../../../Components/NewTours/Components/UpdatePassenger";
 import Head from "next/head";
-import NavHandler from "../../../../Components/share/NavHandler";
 import moment from "moment-jalaali";
 import {Shimmers3, Shimmers4, Shimmers6} from "../../../../Components/NewTours/Components/subComponents/Shimmers";
 
 const ReservationConfirmation = () => {
-    const [hotelDet, setHotelDet] = useState();
-    const [flightDet, setFlightDet] = useState();
+
     const [reservedRooms, setReservedRooms] = useState();
     const router = useRouter();
     const [roomId, setRoomId] = useState();
@@ -42,16 +35,9 @@ const ReservationConfirmation = () => {
     useEffect(() => {
         if (router?.query?.ref_code) {
 
-            // setHotelDet(JSON.parse(router?.query?.hotel));
-            // setFlightDet(JSON.parse(router?.query?.flightDet));
-            // setRoomBaseDet(JSON.parse(router?.query?.roombase))
-            // setReservedRooms(JSON.parse(router?.query?.rooms));
-            // setFiPrc(router?.query?.fiPrc);
-            // debugger
             getReservedData(router?.query?.ref_code)
-            // setStayCount(router?.query?.staycount)
         }
-        //
+
     }, [router?.query]);
 
     useEffect(() => {
@@ -60,12 +46,7 @@ const ReservationConfirmation = () => {
         }
     }, [reservedRoom]);
 
-    // useEffect(() => {
-    //
-    //
-    //
-    //
-    // }, [reservedRoom]);
+
 
     const variants = {
         initial: {
@@ -89,21 +70,12 @@ const ReservationConfirmation = () => {
                 "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
             }
         }).then((res) => {
-            debugger
-            // debugger
-            // console.log('reserves', res.data)
-            // setTourData(res.data.data)
-            // reservedRoomData = res.data.data.reserves.filter(room => room.reserve_type === 'room')
+
             setReservedRoom(res.data.data)
-            //
 
         })
     }
 
-
-    useEffect(() => {
-        console.log('ryeutie', reservedRoom)
-    }, [reservedRoom])
 
 
     const OpenEdit = (reserveId) => {
@@ -111,7 +83,6 @@ const ReservationConfirmation = () => {
         setIsEdit(!isEdit)
         setTargetedReservedId(reserveId)
 
-        // console.log(reserveId)
         let selectRoom = reservedRoom?.selected_rooms?.filter(reserveRoom => reserveRoom?.reserve_id === reserveId)
         setTargetedRoom(selectRoom)
     }
@@ -126,9 +97,7 @@ const ReservationConfirmation = () => {
             reserves: [{
                 reserve_id: targetedReservedId, passengers: [...passengersArr],info_room:roominfo
             }],
-            // reserver_full_name: reservedRoom.information.reserver.reserver_full_name,
-            // reserver_phone: reservedRoom.information.reserver.reserver_phone,
-            // reserver_id_code: reservedRoom.information.reserver.reserver_id_code
+
         },{
             headers: {
                 "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
@@ -334,7 +303,7 @@ const ReservationConfirmation = () => {
                                         <div style={{color: 'red', cursor: "pointer"}}
                                              onClick={() => OpenEdit(reservedroom.reserve_id)}>
                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15"
-                                                 height="15" viewBox="0 0 24 24" fill='#137cb6'>
+                                                 height="15" viewBox="0 0 24 24" fill='#e20000'>
                                                 <path
                                                     d="M 18 2 L 15.585938 4.4140625 L 19.585938 8.4140625 L 22 6 L 18 2 z M 14.076172 5.9238281 L 3 17 L 3 21 L 7 21 L 18.076172 9.9238281 L 14.076172 5.9238281 z"></path>
                                             </svg>
@@ -460,11 +429,7 @@ const ReservationConfirmation = () => {
                         <div className={styles["paymentbtn"]}>
                             <button
                                 onClick={() => {
-                                    // ErrSuccess('رزرو شما با موفقیت انجام شد.به صفحه نخست منتقل می شوید. ')
 
-                                    // setTimeout(() => {
-                                    //     router.push('/')
-                                    // }, 3000)
 
                                     axios.post(`https://api.hotelobilit.com/api/v2/reserves/confirm/${router.query.ref_code}`,{},{
                                         headers: {

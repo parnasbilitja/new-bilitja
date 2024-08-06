@@ -43,7 +43,7 @@ const Turkey = () => {
     //     console.log(router)
     // },[router])
     // useEffect(() => {
-    //     // console.log(city);
+    //     // 
     //     if (city?.data?.length < 1) {
     //         dispatch(fetchCity())
     //     }

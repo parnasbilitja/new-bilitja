@@ -22,7 +22,7 @@ const FlightPassengerEditForm = (props) => {
   const [calend, setCalend] = useState(true)
   const [date, setDate] = useState('')
   const [EXT, setEXT] = useState('')
-  console.log(props);
+  
   useEffect(() => {
     props.pathKind == 2 ? setCalend(false):setCalend(true)
 
@@ -81,13 +81,13 @@ const FlightPassengerEditForm = (props) => {
     })
   }, [props])
 // useEffect(() =>{
-//   console.log(state);
+//   
 // },[state])
 
   const handleChange = (event) => {
     
     const { name, value } = event.target;
-    // console.log(name);
+    // 
     if (name == 'meliat') {
       setState({...state,meliCode:'',codeErr:'',pasnoErr:'',[name]: value})
     }else if (name == 'meliCode') {
@@ -367,7 +367,7 @@ const FlightPassengerEditForm = (props) => {
               name="birthday"
               setBirthdayb={(value) => {
                 setDate(value);
-                // console.log(date);
+                // 
               }}
               closePopUpCalendar={managePopUpBirthdayCalendar}
             />

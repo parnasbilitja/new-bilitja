@@ -6,8 +6,8 @@ const INITIAL_STATE = {
 };
 
 const airportReducer = (state = INITIAL_STATE, action) => {
-  // console.log('blsbbbvb');
-  // console.log(action.type);
+  // 
+  // 
   switch (action.type) {
     case AirportType.LOAD_AIRPORTS: {
       return {

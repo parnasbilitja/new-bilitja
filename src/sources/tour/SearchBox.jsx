@@ -11,10 +11,13 @@ import InputValues from "./InputValues";
 import axios from "axios";
 import styles1 from "../../../styles/PrimaryButton.module.scss";
 // import {usePostHog} from "posthog-js/react";
-import MonthValues from "../../sources/tour/MonthValues";
+// import MonthValues from "@/sources/tour/MonthValues";
+import {useRouter} from "next/router";
 //import BirthdayCalendar from "../calendar/BirthdayCalendar.component"
 
 const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
+
+    let router=useRouter()
     const [searchInput,setSearchInput]=useState('')
     const [isSearchbox,setIsSearchbox]=useState(false)
     const [cities,setCities] = useState([])
@@ -40,8 +43,8 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
         if(searchInput===''){
             getData()
         }else{
-
-        const filtered=cities.filter(d=>d.destination_name.includes(searchInput))
+debugger
+        const filtered=cities.filter(d=>d.name.includes(searchInput))
 
         setCities(filtered)
         }
@@ -53,7 +56,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
             }
         })
             .then((response) => {
-                setCities(response.data.data)
+                setCities(response.data.data[0].destinations)
                 ,console.log(response.data)
             })
         return data
@@ -64,7 +67,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
   const [width, setWidth]   = useState();
   useEffect(() => {
     setWidth(window.innerWidth)
-    console.log(search);
+
   },[search])
   useEffect(() => {
     setState({...state, city:search.slug})
@@ -73,12 +76,12 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
     const handleFocus=()=>{
       setSearchInput('')
     }
-    // useEffect(()=>{
-    //     console.log(search)
-    // },[search])
+    useEffect(()=>{
+        // console.log(cities[0].destinations)
+    },[cities])
     // const posthog=usePostHog()
     return (
-      <div className={'row justify-content-between'} style={{padding:'0 10px'}}>
+      <div className={'row justify-content-center'} style={{padding:'0 10px',columnGap:'12px'}}>
         <Scrolltoprefresh />
           <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
             <FontAwesomeIcon icon={faCity} style={{height:'30px'}} className="mx-2 tour-input-icon" />
@@ -89,7 +92,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
               // onBlur={handleFocusOut}
               onChange={handleChange}
               onClick={(e) => {
-                // console.log(e.target.value);
+                //
                   setIsSearchbox(true)
               }}
               placeholder={"مقصد خود را انتخاب کنید"}
@@ -100,9 +103,9 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
                 search={search}
                 setSearch={setSearch}
                 months={[{
-                    "name": "همه",
-                    "code": " ",
-                },...cities]}
+                  "name": "همه",
+                  "code": " ",
+              },...cities]}
                 issearchbox={isSearchbox}
                 setIsSearchbox={()=>setIsSearchbox(false)}
                 setsearchInput={(val)=>setSearchInput(val)}
@@ -113,28 +116,28 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
             />
 
         </div>
-        <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
-            {/* <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i> */}
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>
-            <PrimaryTextInputMobile
-              value={months?.filter(m=>m.value===search.month)[0]?.name}
-              name={'month'}
-              // onFocus={handleFocus}
-              // onBlur={handleFocusOut}
-              onChange={handleChange}
-              // onClick={(e) => {
-              //   console.log(e.target.value);
-              // }}
-              placeholder={" در چه ماهی میخواهید سفر کنید"}
-            />
-            <MonthValues
-                type="months"
-                name='month'
-                search={search}
-                setSearch={setSearch}
-                months={months}
-            />
-          </div>
+        {/*<div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>*/}
+        {/*    /!* <i className="bilitja icon-plane-departure form-input-icon rotate-y-180"></i> *!/*/}
+        {/*    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>*/}
+        {/*    <PrimaryTextInputMobile*/}
+        {/*      value={months?.filter(m=>m.value===search.month)[0]?.name}*/}
+        {/*      name={'month'}*/}
+        {/*      // onFocus={handleFocus}*/}
+        {/*      // onBlur={handleFocusOut}*/}
+        {/*      onChange={handleChange}*/}
+        {/*      // onClick={(e) => {*/}
+        {/*      //*/}
+        {/*      // }}*/}
+        {/*      placeholder={" در چه ماهی میخواهید سفر کنید"}*/}
+        {/*    />*/}
+        {/*    <MonthValues*/}
+        {/*        type="months"*/}
+        {/*        name='month'*/}
+        {/*        search={search}*/}
+        {/*        setSearch={setSearch}*/}
+        {/*        months={months}*/}
+        {/*    />*/}
+        {/*  </div>*/}
 
         <div className="col-12 col-md-2 without-focus px-0">
           <button className={`${styles1['primary-button']} px-0 soc01`}
@@ -144,8 +147,13 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
                 // posthog.capture("FormStartTourPackage", {HMNCity: search.slug})
 
                 if(isLoading===false){
-                setIsLoading(true)
-                toursHandler(search);
+                    setIsLoading(true)
+                    if(search.destination==='همه'){
+                        router.push('/tours/alltours')
+                    }else{
+                        toursHandler(search);
+                    }
+
                 // executeScroll();
                 }
                     // debugger

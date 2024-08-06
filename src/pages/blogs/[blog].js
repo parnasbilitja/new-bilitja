@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 import Head from "next/head";
-// import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 
 const blog = (props) => {
@@ -62,7 +62,7 @@ const blog = (props) => {
     const [firstPa,setFirstPa]=useState('')
     useEffect(()=>{
         const firstParagraphContent = extractFirstParagraph(post.body);
-        // console.log('dsjhfgjhgfuyewgyufwe',firstParagraphContent);
+        // 
         setFirstPa(firstParagraphContent)
 // Manipulate the parsed content (e.g., extracting text from <p> tags)
 //         const paragraphs = reactComponents.map(node => {

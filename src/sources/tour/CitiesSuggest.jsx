@@ -1,15 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-// Import Swiper React components
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Navigation } from 'swiper';
 
-// Import Swiper styles
+
 import 'swiper/css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
-import { Loader } from '../../Utils/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCity } from '../../Redux/citiesSuggest/Action';
 import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
@@ -87,8 +86,8 @@ const CitiesSuggest = () => {
                         centeredSlidesBounds={true}
                         breakpoints={{
                             0: {
-                                spaceBetween: 20,
-                                slidesPerView: 2,
+                                spaceBetween: 15,
+                                slidesPerView: 2.2,
                             },
                             480: {
                                 slidesPerView: 3,
@@ -106,7 +105,7 @@ const CitiesSuggest = () => {
                     >
 
                         {getData.data?.map(item=>(
-                            <SwiperSlide key={item.id}>
+                            <SwiperSlide key={item.id} >
                             <Link class="swiper-slide" key={item.id} href={`تور-${item.slug}/`}>
                                 <div class="box-sort-tour-city">
                                     <div class="img-sort-tour-city">

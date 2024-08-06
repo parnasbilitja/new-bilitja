@@ -13,8 +13,10 @@ import PopUp from "./PopUp.component";
 
 import Account from '../account/Account.component'
 import {RouteTranslator} from "../../Utils/newTour";
+import useScrollDirection from "../..//sources/useScrollDirection";
+// import {useScroll}
 const NavBar = (props) => {
-// console.log(props);
+//
   const [state, setState] = useState({
     mobile: '',
     logged: false,
@@ -68,7 +70,10 @@ const router=useRouter()
   // }
 
 
-
+  const scrollDirection = useScrollDirection();
+useEffect(()=>{
+  console.log(scrollDirection)
+},[scrollDirection])
 
   const handleLogoutUser = (e) => {
     e.preventDefault();
@@ -78,6 +83,7 @@ const router=useRouter()
       props.user.logged = false;
   }
   return (
+
     <div className="col-xl-12 col-lg-12 hidden-desktop">
 
       <div className={styles.navbar}>
@@ -255,22 +261,25 @@ const router=useRouter()
 
         </nav>
 
-        { router.pathname==='/'  || (router.pathname.split('/').length<=2&&(router.pathname.split('/')[1]==='tours' || router.pathname.split('/')[1]==='hotels'|| router.pathname.split('/')[1]==='flights'|| router.pathname.split('/')[1]==='tour') || router.pathname.split('/')[1]==='ticket')?null:
-          <div style={{ width:'100%',height:'20px', backgroundColor:'#e20000',padding:'1rem 2rem',color:'white',display:'flex',alignItems:'center'}} key={'routebar'}>
-            {RouteTranslator(router.pathname.split('/'),router.query).map((r,i)=>{
-            return(
-                <div key={r}>
+        <div className={`${scrollDirection === "down"? "hide" : ""}`}>
+          { router.pathname==='/'  || (router.pathname.split('/').length<=2&&(router.pathname.split('/')[1]==='tours' || router.pathname.split('/')[1]==='hotels'|| router.pathname.split('/')[1]==='flights'|| router.pathname.split('/')[1]==='tour') || router.pathname.split('/')[1]==='ticket')?null:
+              <div style={{ width:'100%',height:'20px', backgroundColor:'#e20000',padding:'1rem 2rem',color:'white',display:'flex',alignItems:'center'}} key={'routebar'} >
+                {RouteTranslator(router.pathname.split('/'),router.query).map((r,i)=>{
+                  return(
+                      <div key={r}>
 
-                  <span style={{fontSize:'14px',fontWeight:'700'}}>{r}</span>
-                  {
-                      i!==RouteTranslator(router.pathname.split('/')).length -1 &&
-                      <svg height="20" viewBox="0 0 48 48" width="20" fill='#fff' xmlns="http://www.w3.org/2000/svg"><path d="M30.83 32.67l-9.17-9.17 9.17-9.17-2.83-2.83-12 12 12 12z"/><path d="M0-.5h48v48h-48z" fill="none"/></svg>
+                        <span style={{fontSize:'14px',fontWeight:'700'}}>{r}</span>
+                        {
+                            i!==RouteTranslator(router.pathname.split('/')).length -1 &&
+                            <svg height="20" viewBox="0 0 48 48" width="20" fill='#fff' xmlns="http://www.w3.org/2000/svg"><path d="M30.83 32.67l-9.17-9.17 9.17-9.17-2.83-2.83-12 12 12 12z"/><path d="M0-.5h48v48h-48z" fill="none"/></svg>
 
-                  }
-                </div>
-            )
-          })}</div>
-        }
+                        }
+                      </div>
+                  )
+                })}</div>
+          }
+        </div>
+
 
         <PopUp
             opened={props.accountBox.state}

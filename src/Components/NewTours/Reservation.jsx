@@ -21,7 +21,7 @@ import CountDownTimer from "./Components/CountDownTimer";
 import moment from "moment-jalaali";
 import {Shimmers4, Shimmers5} from "../../Components/NewTours/Components/subComponents/Shimmers";
 import {accountBoxModify, messageBoxModify} from "../../Redux/UI/ui.action";
-import {addReservationProperties} from "../../Redux/Reserve/reserve.action";
+// import {addReservationProperties} from "@/Redux/Reserve/reserve.action";
 import {selectProperties} from "../../Redux/Reserve/reserve.reselect";
 import {connect} from "react-redux";
 import PopUp from "../../sources/component/PopUp.component";
@@ -42,9 +42,7 @@ const Reservation = (props) => {
         reserver_phone: "", reserver_id_code: "", reserver_name: "", reserver_lastname: "",
     });
 
-    useEffect(()=>{
-        console.log(dataq)
-    },[dataq])
+
 
     const [state, setState] = useState({
         stateRegister: false,
@@ -62,64 +60,13 @@ const Reservation = (props) => {
     const [err, setErr] = useState({});
     const router = useRouter();
 
-    const [roomsData1,setRoomsData1]=useState()
-const[isSubmit,setIsSubmit]=useState(false)
-    // useEffect(()=>{
-    //
-    //     try {
-    //
-    //         setRoomsData1(JSON?.parse(props.roomsCount))
-    //     }catch (error){
-    //
-    //     }
-    //
-    // },[props.roomsCount])
 
-
-    // useEffect(() => {
-    //     const baseRoomDeta = generalRoomsData.filter(
-    //         (obj, index) =>
-    //             generalRoomsData.findIndex((item) => item.id === obj.id && item.room_type_id
-    //                 === obj.room_type_id
-    //             ) === index
-    //     );
-    //     setRoomBaseDet(baseRoomDeta)
-    // }, [generalRoomsData])
 useEffect(()=>{
    if(localStorage?.getItem('mobile') ){
        setState({ ...state, mobileSubmiter: localStorage?.getItem('mobile') ? localStorage?.getItem('mobile') :'' })   }
 },[props])
 
-    // useEffect(() => {
-    //     if (hotelDet?.data?.details?.request) {
-    //         let flight = hotelDet.data?.reserves?.filter(reserve => reserve?.reserve_type === 'flight')
-    //         setFlightDet(flight)
-    //         let filterdRooms = []
-    //         let rooms = hotelDet.data?.reserves?.filter(reserve => reserve?.reserve_type !== 'flight')
-    //         rooms.map(room => filterdRooms.push(room.room))
-    //         // baseRoom=
-    //         setGeneralRoomsData(filterdRooms)
-    //         const newSelectedRooms = [];
-    //         hotelDet?.data?.details?.request?.map((roomselected) => {
-    //             // debugger
-    //             rooms?.map((room) => {
-    //                 if (room.room.id === roomselected.room_id) {
-    //                     newSelectedRooms.push({
-    //                         ...roomselected,
-    //                         room_type_id: room.room.room_type_id,
-    //                         id: Math.random() * 100,
-    //                         reserve_id: room.id
-    //                     });
-    //                 }
-    //             });
-    //         });
-    //         setReformSelectedRooms(removeDuplicateObj(newSelectedRooms));
-    //     }
-    // }, [hotelDet]);
 
-    // useEffect(() => {
-    //     console.log('DSAA', flightDet)
-    // }, [flightDet])
 
 
     const personCounter = (arr) => {
@@ -160,29 +107,7 @@ useEffect(()=>{
 
 
 
-    // useEffect(() => {
-    //     // debugger
-    //     if (reformSelectedRooms.length > 0) {
-    //         reformSelectedRooms?.map((selectedroom) => {
-    //             let passarr = [];
-    //             const adlCount = selectedroom?.adl_count;
-    //             const chdCount = selectedroom?.chd_count;
-    //             const infCount = selectedroom?.inf_count;
-    //             const extCount = selectedroom?.extra_count;
-    //             passarr.push(...passengerObjModelGen(adlCount, "adl"));
-    //             passarr.push(...passengerObjModelGen(chdCount, "chd"));
-    //             passarr.push(...passengerObjModelGen(infCount, "inf"));
-    //             passarr.push(...passengerObjModelGen(extCount, "ext"));
-    //             setRoomsData((prev) => [...prev, {
-    //                 id: selectedroom.id,
-    //                 room_type_id: selectedroom.room_type_id,
-    //                 room_id: selectedroom.room_id,
-    //                 reserve_id: selectedroom.reserve_id,
-    //                 passengers: [...passarr],
-    //             },]);
-    //         });
-    //     }
-    // }, [reformSelectedRooms]);
+
 
     useEffect(() => {
         setDataq(roomsData);
@@ -294,7 +219,12 @@ useEffect(()=>{
    }
     useEffect(
         ()=>{
+            // debugger
+            setReserverData({
+                ...reserverData, reserver_phone:props.hotelDet?.data?.information.reserver.phone,
+            });
 
+            // console.log('phone',props.hotelDet?.data?.information.reserver.phone)
 
             const selected_roomsReformat=props.hotelDet?.data?.selected_rooms.map(selectedRoom=>{
                 return {
@@ -314,9 +244,7 @@ useEffect(()=>{
         },[props.hotelDet])
 
 
-    useEffect(()=>{
-        console.log('sdfs',dataq)
-    },[dataq])
+
 const reserveTour=()=>{
     let hotel_id = props.hotelDet.data.hotel.id;
     axios
@@ -361,6 +289,14 @@ const reserveTour=()=>{
 
 }
 
+const formValidation=()=>{
+        if(reserverData.reserver_phone){
+
+        }
+
+
+}
+const [isReservePhone,setIsreservePhone]=useState(false);
 
     return (<>
         <div className={styles["p-body"]}>
@@ -427,22 +363,33 @@ const reserveTour=()=>{
                                             // debugger
                                             // let flight_id = flightDet.id;
                                             // debugger
+
                                                 if(props.user.logged) {
-                                                    reserveTour()
+                                                    // reserveTour()
                                                 }else {
-                                                    Err('ابتدا وارد سایت شوید')
-                                                    setState({ ...state, stateRegister: false });
-                                                    login();
-                                                    // props.messageBoxModify({
-                                                    //     state: true,
-                                                    //     color: false,
-                                                    //     message: "لطفا کد تایید ارسال شده را وارد کنید!",
-                                                    // });
-                                                    props.accountBoxModify({
-                                                        state: true,
-                                                        type: "login",
-                                                    });
+                                                    if(reserverData.reserver_phone.length>0){
+                                                        reserveTour()
+
+                                                        // Err('ابتدا وارد سایت شوید')
+                                                        // setState({ ...state, stateRegister: false });
+                                                        // login();
+                                                        // // props.messageBoxModify({
+                                                        // //     state: true,
+                                                        // //     color: false,
+                                                        // //     message: "لطفا کد تایید ارسال شده را وارد کنید!",
+                                                        // // });
+                                                        // props.accountBoxModify({
+                                                        //     state: true,
+                                                        //     type: "login",
+                                                        // });
+                                                    }else {
+
+                                                        Err('لطفا شماره رزرو گیرنده را وارد کنید')
+                                                    }
+
                                                 }
+
+
 
 
                                         }
@@ -552,8 +499,8 @@ const reserveTour=()=>{
                         ></motion.div>)}
 
                         {
-                            props.hotelDet.data?.information?.expired_in_minutes ?
-                            <CountDownTimer hoteldata={props.hotelDet.data} exp_time={props.hotelDet.data?.information?.expired_in_minutes}/>:
+                            props.hotelDet.data?.information?.expired_at ?
+                            <CountDownTimer hoteldata={props.hotelDet.data} exp_time={props.hotelDet.data?.information?.expired_at}/>:
 
                                 <div style={{display:'flex',justifyContent:'end'}}>
                                     <motion.div
@@ -650,6 +597,7 @@ const reserveTour=()=>{
                                             name="reserver_phone"
                                             maxLength="11"
                                             inputMode='numeric'
+                                            disabled={reserverData?.reserver_phone?.length>0?true:false}
                                         />
                                     </div>
                                     {err.errors?.reserver_phone && reserverData.reserver_phone.length === 0 ? (

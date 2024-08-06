@@ -38,7 +38,7 @@ const hotel = () => {
     // }
     // useEffect(() => {
     //     getData();
-    //     console.log(data);
+    //     
     // }, [slug])
 
 

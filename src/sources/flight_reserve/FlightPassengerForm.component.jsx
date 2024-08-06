@@ -13,7 +13,7 @@ import BirthDayParent from "../calendar/BirthDayParent";
 import BirthDayParentCl from "../calendar/BirthDayParentCl";
 
 const FlightPassengerForm = (props) => {
-  console.log(props);
+  
   const [calend, setCalend] = useState(true);
   const [state, setState] = useState({
     open: false,

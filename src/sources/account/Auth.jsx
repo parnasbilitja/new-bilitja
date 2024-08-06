@@ -78,7 +78,7 @@ const Auth = (props) => {
     setState({ ...state, password: e.target.value, error: false, errText: "" });
   };
   const login = () => {
-    // console.log(state);
+    //
     if (state.mobile.length ==11) {
       setState({ ...state, btn_disabled: true, loading: true });
       fetch(`${globals.baseUrlNew}auth/getMobile`, {
@@ -215,7 +215,7 @@ const Auth = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        //
         localStorage.setItem("token", data.token);
         if (data.status == "2" || data.status == "1") {
           setState({ ...state, btn_disabled: false, loading: false });
@@ -307,7 +307,7 @@ const Auth = (props) => {
   return (
     <div className="popup-content-container">
       <div className="popup-heading d-flex align-items-center justify-content-center">
-        <img src='../../Images/hamnavaz-logo.webp' alt="site-logo" width={200} height={50} />
+        <img src='../../Images/bilitja.webp' alt="site-logo" width={200} height={50} />
         <div
           className="exit-form position-absolute"
           onClick={() => {

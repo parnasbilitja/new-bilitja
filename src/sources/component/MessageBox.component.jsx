@@ -6,7 +6,7 @@ import { selectMessageBox } from "../../Redux/UI/ui.reselect";
 import { messageBoxModify } from "../../Redux/UI/ui.action";
 // this component opens when ever a messsage is goigng to be shown to user...throughout the project
 const MessageBox = (props) => {
-  // console.log(props.messageBox);
+  // 
   useEffect(() => {
     if (props.messageBox.state) {
       // message disapears after 4 seconds

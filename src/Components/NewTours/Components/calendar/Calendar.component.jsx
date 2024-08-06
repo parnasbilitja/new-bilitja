@@ -16,8 +16,12 @@ const CalendarComponent = (props) => {
       ...state,
       typeOfCalendar: "JAL",
     });
-    // console.log("from calendar", props.dateandnight);
+    // 
   }, []);
+
+  useEffect(()=>{
+      console.log(props.dateandnight)
+  },[props.dateandnight])
 
   return (
       <>

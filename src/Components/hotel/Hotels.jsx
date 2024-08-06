@@ -30,7 +30,7 @@ const Hotels = () => {
     },[])
     const searchHotel = ()=>{
         dispatch(fetchAllHotels(city,search.hotel,page))
-        // console.log(city,search.hotel,page);
+        // 
     }
     useEffect(()=>{
         dispatch(fetchAllHotels(city,search.hotel,page))

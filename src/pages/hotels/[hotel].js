@@ -31,8 +31,8 @@ const MapComponent = dynamic(() =>
     }
 );
 const hotel = (props) => {
-    // const router=useRouter()
-    // const [hotel, setHotel] = useState({})
+    const router=useRouter()
+    // const [hotel, setHotl] = useState({})
     const [show, setShow] = useState(false)
     //     const getData = async () => {
     //     debugger
@@ -48,9 +48,9 @@ const hotel = (props) => {
     //     }
     // useEffect(()=>{
     //     getData()
-    //     // console.log(hotel);
+    //     //
     // },[])
-    // // console.log(hotel);
+    // //
     return (
         <>
                 <NavHandler />
@@ -76,9 +76,9 @@ const hotel = (props) => {
                             {
                                 props.hotel?.city?.slug &&
                                 <button style={{padding:'1rem',backgroundColor:'#e20000' ,borderRadius:'15px',color:'#fff'}} onClick={()=>{
-                                    let citytour= '/' + 'تور-' +props.hotel?.city?.slug
+                                    let citytour= '/' + 'تور-' +props.hotel?.city?.name
                                     router.push(citytour)
-                                }}>{`تور لاکچری با بهترین قیمت  ${props.hotel?.city?.slug}`}</button>
+                                }}>{`تور لاکچری با بهترین قیمت  ${props.hotel?.city?.name}`}</button>
                             }
 
                         </div>

@@ -4,7 +4,7 @@ import globals from "../sources/Global";
 import React from "react";
 import PaymentReceiptPage from "../sources/payment_receipt/PaymentReceiptPage1.js";
 function convertUtftoAscii(str) {
-  // console.log(str);
+  // 
   while (str.indexOf("%") > 0) {
     str = String(str).replace("%24", "$");
     str = String(str).replace("%26", "&");
@@ -97,10 +97,10 @@ function Page({ data, PaymentInfo }) {
   //   "status": "0",
   //   "message": "OK"
   // }
-  // console.log("top");
-  // console.log(data);
-  // console.log(PaymentInfo);
-  // console.log("top2");
+  // 
+  // 
+  // 
+  // 
 
 
   return (
@@ -144,7 +144,7 @@ function Page({ data, PaymentInfo }) {
 //This gets called on every request
 //export const getServerSideProps = async (req) => {
 export async function getServerSideProps({ req }) {
-  // console.log(req);
+  // 
   if (req.method == "POST")
   {
     const body = await getRawBody(req);
@@ -157,9 +157,9 @@ export async function getServerSideProps({ req }) {
       .split("&")
       .map((x) => (data[x.split("=")[0]] = x.split("=")[1]));
 
-    // console.log("bottom");
-    // console.log(data);
-    // console.log("bottom2");
+    // 
+    // 
+    // 
     // console.log("end3")
     var refNum = "";
     var error = "";
@@ -172,7 +172,7 @@ export async function getServerSideProps({ req }) {
       refNum = data.RefNum;
     }
     data.RRN = "";
-    // console.log(data.StateCode);
+    // 
     data.StateCode ="0" ; // موقت برای تست
 
     switch (data.StateCode) {

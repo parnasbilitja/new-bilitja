@@ -22,7 +22,6 @@ import {
 } from "../../Utils/newTour";
 
 import HotelsSideBarSearch from "../../Components/NewTours/Components/subComponents/HotelsSideBarSearch.component";
-import { motion } from "framer-motion";
 import Footer from "../../sources/component/Footer.component";
 import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
@@ -75,7 +74,9 @@ const AvailableHotel1 = () => {
     const[loading,setLoading]=useState(false)
 
 
-    const [showInMap,setShowInMap]=useState(false)
+    const [showInMap,setShowInMap]=useState({status:false,
+    coordinates:[]
+    })
 
 
 
@@ -113,7 +114,7 @@ const AvailableHotel1 = () => {
                 dispatch(setLoader(false));
             })
             .catch((err) => {
-                // console.log(err);
+                //
                 dispatch(setLoader(false));
             });
     };
@@ -136,7 +137,6 @@ const AvailableHotel1 = () => {
     }, [router]);
 
     useEffect(()=>{
-// debugger
         const newDate = router.query.stdate?.slice(0, 10);
         setJalaliDate(newDate);
         const finalDate = jalaliToMiladiConvertor(newDate);
@@ -167,12 +167,9 @@ const AvailableHotel1 = () => {
                 .then((res) => {
                     const src = res.data.data.filter(city=>city.code===router.query?.org)
                     const dest=src[0].destinations.filter(dest=>dest.code===router.query?.dest)
-
-
                     dispatch(setNightNumber(router.query?.night))
                     setSelectedSrc(src)
                     dispatch(setOrgLoc({name:src[0].name,code:src[0].code}));
-                    // setCities(cities);
                     dispatch(setDestLoc({name:dest[0].name,code:dest[0].code}));
                     setSelectedDest(dest)
 
@@ -182,7 +179,7 @@ const AvailableHotel1 = () => {
                     }
                 })
                 .catch((err) => {
-                    console.log(err);
+
                 });
 
         }
@@ -193,9 +190,7 @@ const AvailableHotel1 = () => {
             })
         );
     },[router?.query])
-// useEffect(()=>{
-//     console.log(selectedSrc,selectedDest)
-// },[selectedSrc,selectedDest])
+
 
     //////////////////width
     const [widthMobi, setWidthMobi] = useState(
@@ -224,79 +219,205 @@ const AvailableHotel1 = () => {
         }
     }, [showFilter]);
 
-    // const [imageData, setImageData] = useState(null);
-    // const [webpConverter, setWebpConverter] = useState(null);
-    // const [createWorker, setCreateWorker] = useState(null);
-    //
-    // useEffect(() => {
-    //     // Import the webp-converter module dynamically when the component mounts
-    //     const importWebpConverter = async () => {
-    //         try {
-    //             // Dynamically import the webp-converter module
-    //             const webpConverterModule = await import('webp-converter');
-    //             setWebpConverter(webpConverterModule);
-    //             setCreateWorker(webpConverterModule.createWorker); // Extract createWorker function
-    //         } catch (error) {
-    //             console.error('Error importing webp-converter:', error);
-    //         }
-    //     };
-    //
-    //     // Call the function to import the webp-converter module
-    //     importWebpConverter();
-    // }, []);
-    //
-    // useEffect(() => {
-    //     // Check if imageData, webpConverter, and createWorker are available
-    //     if (imageData && webpConverter && createWorker) {
-    //         // Function to convert JPEG images to WebP format
-    //         const convertToWebP = async (jpegUrl) => {
-    //             try {
-    //                 // Create a worker using the createWorker function
-    //                 const worker = createWorker();
-    //
-    //                 // Determine the output URL for the WebP image
-    //                 const outputUrl = jpegUrl.replace(/\.[^/.]+$/, "") + ".webp";
-    //
-    //                 // Load the worker
-    //                 await worker.load();
-    //
-    //                 // Convert the JPEG image to WebP format
-    //                 await worker.webp({ lossless: true }).from(jpegUrl).toFile(outputUrl);
-    //
-    //                 // Return the URL of the converted WebP image
-    //                 return outputUrl;
-    //             } catch (error) {
-    //                 console.error('Error converting image to WebP:', error);
-    //             }
-    //         };
-    //
-    //         // Example usage: Convert JPEG images from the fetched image data to WebP format
-    //         if (hotels && Array.isArray(hotels)) {
-    //
-    //             const convertImageDataToWebP = async () => {
-    //                 return await Promise.all(
-    //                     hotels.map(async (item) => {
-    //
-    //                         item.hotel.gallery.map(async (g)=>{
-    //                             const webpUrl = await convertToWebP(g.url); // Convert JPEG image URL to WebP format
-    //                             return { ...item, webpUrl };
-    //                         })
-    //                      // Add WebP image URL to the image data
-    //                     })
-    //                 );
-    //             };
-    //             convertImageDataToWebP()
-    //                 .then((convertedImageData) => {
-    //                     console.log('Converted image data:', convertedImageData);
-    //                     // Further processing or rendering of the converted image data
-    //                 })
-    //                 .catch((error) => {
-    //                     console.error('Error converting image data:', error);
-    //                 });
-    //             // Further processing or rendering of the converted image data
-    //         }
-    //     }
-    // }, [hotels, webpConverter, createWorker])
+//////////////////////////////SEARCH/////////////////////////////////////////
+
+    const [searchInput, setSearchInput] = useState("");
+    const [check, setCheck] = useState("");
+
+    const search = (e) => {
+        if (e.key === "Enter") {
+            dispatch(setLoader(true))
+            axios
+                .post(`https://api.hotelobilit.com/api/v2/tours`, {
+                    date: date,
+                    destination: destination,
+                    keywords: searchInput,
+                    orderBy: 1,
+                    origin: origin,
+                    stars: null,
+                    stayCount: night,
+                },   {
+                    headers: {
+                        "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                    }
+                })
+                .then((res) => {
+                   setHotels([])
+                   setHotels(res?.data?.data);
+                    dispatch(setLoader(false))
+                })
+                .catch((err) => {
+
+                });
+        }
+    };
+    const numberSorter=(arr)=>{
+
+        return arr.sort((a, b) => +a - +b);
+    }
+
+    const reset=()=>{
+        dispatch(setLoader(true))
+        axios
+            .post(`https://api.hotelobilit.com/api/v2/tours`, {
+                date: date,
+                destination: destination,
+                keywords: '',
+                orderBy: 1,
+                origin: origin,
+                stars: null,
+                stayCount: night,
+            },   {
+                headers: {
+                    "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                }
+            })
+            .then((res) => {
+               setHotels([])
+                setHotels(res?.data?.data);
+                dispatch(setLoader(false))
+                setSearchInput('')
+            })
+            .catch((err) => {
+
+            });
+        // props.setShowFilter(!props.showFilter)
+
+    }
+    ////////based on (cheapest or most expensive) or hotels name that went to search
+    const checkedClick = (checkValue, num, searchtype) => {
+        dispatch(setLoader(true))
+        axios
+            .post(`https://api.hotelobilit.com/api/v2/tours`, {
+                    date: date,
+                    destination:destination,
+                    keywords: searchInput,
+                    orderBy: searchtype === "order" ? num : null,
+                    origin: origin,
+                    stars: (searchtype === "star" && num !== 'همه') ? num : null,
+                    stayCount: night,
+                },
+                {
+                    headers: {
+                        "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                    }
+                }
+            )
+            .then((res) => {
+                setHotels(res?.data?.data);
+                dispatch(setLoader(false))
+            })
+            .catch((err) => {
+
+            });
+        setCheck(checkValue);
+
+    };
+
+    let searchElement=[{
+        title:'جستجوی نام هتل یااقامتگاه',
+        svg:<svg enableBackground="new 0 0 300 300" height="28px" id="Layer_1" version="1.1" viewBox="0 0 300 300" width="28px"  xmlns="http://www.w3.org/2000/svg" ><g><rect fill="none" height="21" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="21" x="155" y="80"/><rect fill="none" height="21" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="21" x="115" y="80"/><rect fill="none" height="21" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="21" x="155" y="117"/><rect fill="none" height="21" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="21" x="115" y="117"/><rect fill="none" height="21" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="21" x="155" y="153"/><rect fill="none" height="21" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="21" x="115" y="153"/><polyline fill="none" points="   162,229 162,196 129,196 129,229  " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><g><rect fill="none" height="19" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="19" x="227" y="104"/><rect fill="none" height="19" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="19" x="227" y="138"/><rect fill="none" height="18" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="19" x="227" y="171"/><path d="    M203,241h52.807c1.487,0,2.193-1.706,2.193-3.193V229.5V80.193c0-1.487-0.706-2.193-2.193-2.193H203" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><polyline fill="none" points="    203,189 211,189 211,171 203,171   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><rect fill="none" height="18" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="19" x="227" y="201"/><polyline fill="none" points="    203,219 211,219 211,201 203,201   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><polyline fill="none" points="    203,157 211,157 211,138 203,138   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><polyline fill="none" points="    203,123 211,123 211,104 203,104   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/></g><g><rect fill="none" height="16" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="16" x="50" y="119"/><rect fill="none" height="16" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="16" x="50" y="148"/><rect fill="none" height="15" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="16" x="50" y="177"/><path d="    M87,241H43.042c-1.282,0-4.042-2.622-4.042-3.903V101.222c0-1.283,2.759-1.222,4.042-1.222H88" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><polyline fill="none" points="    88,192 80,192 80,177 88,177   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><rect fill="none" height="16" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" width="16" x="50" y="202"/><polyline fill="none" points="    87,218 80,218 80,202 87,202   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><polyline fill="none" points="    88,164 80,164 80,148 87,148   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/><polyline fill="none" points="    87,135 80,135 80,119 88,119   " stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/></g><path d="   M191,63c0-1.657-1.343-3-3-3h-85c-1.657,0-3,1.343-3,3v175c0,1.657,1.343,3,3,3h85c1.657,0,3,0.657,3-1V63z" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6"/></g><line fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" x1="92" x2="199" y1="60" y2="60"/><line fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" x1="32" x2="88" y1="100" y2="100"/><line fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="6" x1="208" x2="264" y1="78" y2="78"/></svg>,
+        inputType:'input',
+        inputTag:   <input
+            type="text"
+            placeholder="نام هتل را وارد کنید"
+
+            value={searchInput}
+            onClick={(e)=>{
+                e.stopPropagation()
+            }}
+            onChange={(e) => setSearchInput(e.target.value)}
+            onKeyDown={(e) => {
+                search(e)
+            }}
+        />
+    },
+        {
+        title:'جستجوی براساس ستاره',
+
+        svg:<svg viewBox="0 0 512 512" width='25px' height='25px' xmlns="http://www.w3.org/2000/svg"><title/><g data-name="1" id="_1"><path d="M370.24,425.59a14.89,14.89,0,0,1-7-1.72L257,368,150.74,423.87A15,15,0,0,1,129,408.06l20.3-118.32-86-83.8a15,15,0,0,1,8.31-25.59l118.81-17.26L243.55,55.43a15,15,0,0,1,26.9,0l53.13,107.66,118.8,17.26a15,15,0,0,1,8.32,25.59l-86,83.8L385,408.06a15,15,0,0,1-14.78,17.53ZM106,205.67l69.85,68.09A15,15,0,0,1,180.17,287l-16.49,96.14L250,337.78a15,15,0,0,1,14,0l86.34,45.39L333.83,287a15,15,0,0,1,4.31-13.27L408,205.67l-96.53-14a15,15,0,0,1-11.29-8.2L257,96l-43.17,87.47a15,15,0,0,1-11.3,8.2Z"/></g></svg>
+        ,
+        inputType:'select',
+        inputTag:<select
+            name=""
+            id=""
+            onChange={(e) => {
+                checkedClick(null, e.target.value, "star");
+               setShowFilter()
+            }}
+
+            onClick={(e)=>  e.stopPropagation()}
+        >
+            <option key={'همه'} selected value='همه'>
+                همه
+            </option>
+            {numberSorter([1,2,3,4,5])?.map((star) => {
+                return <option key={star} value={star}>{star} ستاره </option>;
+            })}
+        </select>
+    },
+        {
+        title:'مرتب سازی براساس',
+        svg:<svg enableBackground="new 0 0 48 48" height="18px"
+                 version="1.1" viewBox="0 0 48 48" width="18px"
+                 xmlns="http://www.w3.org/2000/svg">
+            <g id="Guides"/>
+            <g id="Layer_3">
+                <polygon
+                    points="27,17.906 30.115,17.906 24.083,7.937 18.052,17.905 21.083,17.905 21.084,30.016 18.017,30.016 24.049,39.985    30.08,30.015 27,30.015  "/>
+                <rect height="6" width="40" x="4"/>
+                <rect height="6" width="39.951" x="4.024" y="42"/>
+            </g>
+        </svg>,
+        inputType:'checkbox',
+        inputTag: <div>
+
+            <div className={styles.checkboxcontainer}    onClick={() => {
+                checkedClick("cheap", 1, "order")
+                setShowFilter(!showFilter)
+            }}>
+                <input
+                    className={styles.checkbox}
+                    type="checkbox"
+                    name="ارزان ترین"
+                    id=""
+                    onClick={() => {
+                        checkedClick("cheap", 1, "order")
+                       setShowFilter(!showFilter)
+                    }}
+                    checked={check === "cheap" ? true : false}
+                />
+                <p style={{whiteSpace:"nowrap"}}>ارزان ترین</p>
+            </div>
+            <div className={styles.checkboxcontainer}
+
+                 onClick={() => {
+                     checkedClick("expensive", 2, "order")
+                     setShowFilter(!showFilter)
+
+                 }
+
+
+            }
+
+            >
+                <input
+                    className={styles.checkbox}
+                    type="checkbox"
+                    name="گران ترین"
+                    id=""
+                    checked={check === "expensive" ? true : false}
+                    onClick={() => checkedClick("expensive", 2, "order")}
+                />
+                <p style={{whiteSpace:"nowrap"}}>گران ترین</p>
+            </div>
+        </div>
+    },
+
+    ]
+
+    ///////////////////////////
+
 
     return (
         <>
@@ -419,47 +540,7 @@ const AvailableHotel1 = () => {
                                                         justifyContent: "space-between",
                                                     }}
                                                 >
-                                                    {/*<div*/}
-                                                    {/*  style={{*/}
-                                                    {/*    width: "90px",*/}
-                                                    {/*    height: "45px",*/}
-                                                    {/*    border: "2px solid #e20000",*/}
-                                                    {/*    color: "#e20000",*/}
-                                                    {/*    borderRadius: "512px",*/}
-                                                    {/*    display: "flex",*/}
-                                                    {/*    columnGap: "8px",*/}
-                                                    {/*    justifyContent: "center",*/}
-                                                    {/*    alignItems: "center",*/}
-                                                    {/*    fontSize: "16px",*/}
-                                                    {/*    padding: "0 10px",*/}
-                                                    {/*  }}*/}
-                                                    {/*  onClick={() => {*/}
-                                                    {/*    setShowFilter(!showFilter);*/}
-                                                    {/*    console.log(showFilter);*/}
-                                                    {/*  }}*/}
-                                                    {/*>*/}
-                                                    {/*  فیلتر*/}
-                                                    {/*  <svg*/}
-                                                    {/*    width="18px"*/}
-                                                    {/*    height="18px"*/}
-                                                    {/*    enableBackground="new 0 0 32 32"*/}
-                                                    {/*    id="Editable-line"*/}
-                                                    {/*    version="1.1"*/}
-                                                    {/*    viewBox="0 0 32 32"*/}
-                                                    {/*    xmlns="http://www.w3.org/2000/svg"*/}
-                                                    {/*  >*/}
-                                                    {/*    <path*/}
-                                                    {/*      d="  M3.241,7.646L13,19v9l6-4v-5l9.759-11.354C29.315,6.996,28.848,6,27.986,6H4.014C3.152,6,2.685,6.996,3.241,7.646z"*/}
-                                                    {/*      fill="none"*/}
-                                                    {/*      id="XMLID_6_"*/}
-                                                    {/*      stroke="#e20000"*/}
-                                                    {/*      strokeLinecap="round"*/}
-                                                    {/*      strokeLinejoin="round"*/}
-                                                    {/*      strokeMiterlimit="10"*/}
-                                                    {/*      strokeWidth="2"*/}
-                                                    {/*    />*/}
-                                                    {/*  </svg>*/}
-                                                    {/*</div>*/}
+
                                                 </div>
                                                 <div
                                                     className={styles["search-header"]}
@@ -574,7 +655,7 @@ const AvailableHotel1 = () => {
                                                                             ? hotel?.hotel?.location
                                                                             : "ثبت نشده"}
                                                                     </p>
-                                                                    <p style={{color:'#e20000',marginRight:'6px',cursor:'pointer'}} onClick={()=>setShowInMap(true)}> (نمایش بر روی نقشه)</p>
+                                                                    <p style={{color:'#e20000',marginRight:'6px',cursor:'pointer'}} onClick={()=>setShowInMap({status: true,coordinates: hotel.hotel.coordinates})}> (نمایش بر روی نقشه)</p>
                                                                 </div>
                                                             </div>
 
@@ -637,20 +718,19 @@ const AvailableHotel1 = () => {
                                 widthMobi={widthMobi}
                                 setShowFilter={(value) => setShowFilter(value)}
                                 showFilter={showFilter}
+                                searchElement={searchElement}
+                                reset={()=>reset()}
+
+
                             />
                         ) : widthMobi > 868 ? (
                             <div style={{ width: "27%", transform: "translateY(-22px)" }}>
                                 <HotelsSideBarSearch
-                                    date={date}
-                                    destination={destination}
-                                    origin={origin}
-                                    night={night}
-                                    setHotels={(value) => setHotels(value)}
-                                    stars={stars}
-                                    hotels={hotels}
-                                    widthMobi={widthMobi}
+
                                     setShowFilter={(value) => setShowFilter(value)}
                                     showFilter={showFilter}
+                                    searchElement={searchElement}
+                                    reset={()=>reset()}
                                 />
                             </div>
                         ) : null}
@@ -658,7 +738,7 @@ const AvailableHotel1 = () => {
                         {/*<Paginate to={totalPage}/>*/}
                     </div>
                     {
-                        showInMap && <MapPopUpComponent setShowInMap={(val)=>setShowInMap(val)}/>
+                        (showInMap.status && showInMap.coordinates.length>0) && <MapPopUpComponent coordinates={showInMap.coordinates}  setShowInMap={(val)=>setShowInMap(val)}/>
                     }
                 </>
 

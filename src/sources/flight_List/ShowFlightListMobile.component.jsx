@@ -12,7 +12,7 @@ class ShowFlightListMobile extends React.Component {
   }
 
   render() {
-    console.log(this.props.flightList);
+    
     {
     }
     return (
@@ -207,42 +207,32 @@ class ShowFlightListMobile extends React.Component {
                   </div>
 
                   <div>
-                      <div className={styles["mobile-one-row-time"]}>
-                          <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30">
-                              <path
-                                  d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/>
-                          </svg>
-                          <span
-                              style={{fontSize: 15}}
-                              className="font-size-18 font-bold-iransanse"
-                          >
+                    <div className={styles["mobile-one-row-time"]}>
+                      <span
+                        style={{ fontSize: 15 }}
+                        className="font-size-18 font-bold-iransanse"
+                      >
                         {String(oneFlight.flightDateTime)
-                            .split("T")[1]
-                            .slice(0, 5)}
+                          .split("T")[1]
+                          .slice(0, 5)}
                       </span>
-
-
-                      </div>
-                      <div className={styles["mobile-one-row-cap"]}>
-                          <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30">
-                              <path
-                                  d="M560-440q-33 0-56.5-23.5T480-520v-200q0-33 23.5-56.5T560-800h80q33 0 56.5 23.5T720-720v200q0 33-23.5 56.5T640-440h-80Zm0-80h80v-200h-80v200ZM380-240q-27 0-48-15.5T303-297L200-640v-160h80v160l100 320h340v80H380Zm-60 120v-80h400v80H320Zm240-600h80-80Z"/>
-                          </svg>
-                          <span
-                              style={{fontSize: 15}}
-                              className="font-bold-iransanse"
-                          >
+                      <i className="bilitja icon-clock"></i>
+                    </div>
+                    <div className={styles["mobile-one-row-cap"]}>
+                      <span
+                        style={{ fontSize: 15 }}
+                        className="font-bold-iransanse"
+                      >
                         {oneFlight.cap}
                       </span>
+                      <i className="bilitja icon-seat"></i>
 
-
-                          <span className="font-size-18">&nbsp;صندلی خالی</span>
-
-                      </div>
+                      <span className="font-size-18">&nbsp;صندلی خالی</span>
+                    </div>
                   </div>
                 </div>
               ))
-              : null}
+            : null}
         </div>
       </div>
     );

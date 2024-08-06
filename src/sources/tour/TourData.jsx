@@ -10,7 +10,7 @@ import {FAQ} from "../../Utils/data";
 import {AnimatePresence, motion} from "framer-motion";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 import Head from "next/head";
-import {Shimmers5} from "../../Components/NewTours/Components/subComponents/Shimmers";
+// import {Shimmers5} from "@/Components/NewTours/Components/subComponents/Shimmers";
 
 const TourData = ({currentCity, search, setSearch,route,setCode,cityInfo,city}) => {
     const [ data, setData ] = useState([])

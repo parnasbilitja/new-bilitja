@@ -182,7 +182,7 @@ const NavBarMobile = (props) => {
             width=""
             height=""
             alt="بلیطجا - لوگو"
-            src="../../../../Images/bilitja-logo.webp"
+            src="../../../../Images/bilitja.webp"
             className="pull-left"
           />
         </Link>
@@ -203,7 +203,7 @@ const NavBarMobile = (props) => {
                 width=""
                 height=""
                 alt="بلیطجا - لوگو - موبایل"
-                src="../../../Images/bilitja-logo.webp"
+                src="../../../Images/bilitja.webp"
               />
             </a>
             <p className="no-margin color-white">
@@ -278,7 +278,7 @@ const NavBarMobile = (props) => {
 
             <li>
               <div>
-                <a href="/src/pages/TrackOrder">
+                <a href="/TrackOrder">
                      <span className="pull-right font-size-14 color-black">
  <svg width="30" height="30" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M32.6172 17.8203L25.9245 27.8844C25.4988 28.5245 24.5401 28.4649 24.197 27.777L21.9143 23.2003C21.5712 22.5124 20.6125 22.4528 20.1868 23.0929L13.4941 33.157" stroke="#013136" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />

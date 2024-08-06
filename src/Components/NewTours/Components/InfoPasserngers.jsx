@@ -13,7 +13,7 @@ import {useRouter} from "next/router";
 const InfoPasserngers = (props) => {
   const router=useRouter()
   // useEffect(() => {
-  //   console.log("from info passs", router.query.passengernumber);
+  //
   // }, [router]);
 
   const [chdPrc, setChdPrc] = useState("");
@@ -57,34 +57,7 @@ const InfoPasserngers = (props) => {
     return totalPrc
 
 }
-//
-// useEffect(()=>{
-// console.log(props.room,props.hotelDets);
-//
-// },[])
-  //
-  //
-  // useEffect(() => {
-  //   const baseRoomDet = props.generalRoomDet?.filter(
-  //       (obj, index) =>
-  //           props.generalRoomDet?.findIndex((item) => item.id === obj.id && item.room_type_id
-  //               ===obj.room_type_id
-  //           ) === index
-  //   );
-  //   // let filterbasedonreserveId=generalRoomDet.filter(det=>)
-  //   // debugger
-  //   setChdPrc(numberRounder(chdPrcGen(baseRoomDet, props.flightDet, props.room?.room_type_id)) );
-  //   setextPrc(numberRounder(extBedPrcGen(baseRoomDet, props.flightDet, props.room?.room_type_id)));
-  //   setinfPrc(numberRounder(props.flightDet.inf_price));
-  //   setAdlPrc(numberRounder(roomprcFinder(baseRoomDet, props?.room)));
-  //   if(props.isEdit?.length>0){
-  //     return ()=>null
-  //   }else {
-  //     props?.setEvRoomsPrc((prev) => [
-  //       ...prev, totalPrice(adlPrc, chdPrc, infPrc, extPrc),
-  //     ]);
-  //   }
-  // }, [props?.hotelDets, props?.room_type_id, chdPrc, adlPrc, infPrc, extPrc]);
+
 
   const prcTypeBase = (type) => {
     switch (type) {
@@ -113,7 +86,7 @@ const InfoPasserngers = (props) => {
 
   useEffect(() => {
     // debugger
-    console.log("das", props.room);
+
   }, [props.room]);
 
   return (

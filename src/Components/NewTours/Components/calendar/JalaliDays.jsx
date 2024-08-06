@@ -12,7 +12,7 @@ class JalaliDays extends React.Component {
     super(props);
     const today = moment().format("jYYYY/jMM/jDD");
 
-    // console.log("from jalali ", props);
+    // 
     // console.log('today=')
     // console.log(today)
 
@@ -29,7 +29,7 @@ class JalaliDays extends React.Component {
     //  this.getDays()
     const today = moment().format("jYYYY/jMM/jDD");
 
-    // console.log("from jalal", this.props.dateandnight);
+    // 
   }
   getYears = () => {
     return new Array(this.currentYear - 1300)
@@ -176,7 +176,7 @@ class JalaliDays extends React.Component {
     } else if (date < today) {
       return "BEFORE";
     } else {
-      // console.log('TODAYTODAY=');
+      // 
       // console.log(day)
       return "TODAY";
     }
@@ -405,7 +405,7 @@ class JalaliDays extends React.Component {
                   <span
                     onClick={() => {
                       const persianDate = moment().format("jYYYY/jMM/jDD");
-                      // console.log('test date jalali');
+                      // 
                       const miladidate = moment().format("YYYY/MM/DD");
                       this.props.setDate({
                         garigorian: miladidate,

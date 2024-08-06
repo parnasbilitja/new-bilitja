@@ -1,6 +1,7 @@
 import React from 'react';
 import {motion} from "framer-motion";
 import styles from "../../../../../styles/newTour/components/subComponent/Shimmers.module.scss";
+import NewLoader from "../../../NewTours/Components/subComponents/NewLoader";
 
 export const Shimmers = () => {
     return (
@@ -12,7 +13,7 @@ export const Shimmers = () => {
             }}
             className={styles["box-top-box-reserve2"]}
         >
-            {/* <div className={styles["skew"]}></div> */}
+
         </motion.div>
     );
 };
@@ -27,12 +28,18 @@ export const Shimmers1= () => {
             }}
             className={styles["box-top-box-reserve3"]}
         >
-            {/* <div className={styles["skew"]}></div> */}
+            <div className={styles["loadingbox_container"]}>
+                <div className={styles["loadingbox"]}>
+                    <NewLoader/>
+                    <p>بلیطجا در حال یافتن تور انتخابی شماست...</p>
+                </div>
+            </div>
+
         </motion.div>
     );
 };
 
-export const Shimmers3= () => {
+export const Shimmers3 = () => {
     return (
         <motion.div
             initial={{opacity: 0}}

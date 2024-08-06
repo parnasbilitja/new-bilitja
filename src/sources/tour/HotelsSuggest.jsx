@@ -10,13 +10,12 @@ import { Navigation } from 'swiper';
 // import styles from '../../../styles/HotelsSuggest.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
 import Link from 'next/link';
-import { Loader } from '../../Utils/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchHotels } from '../../Redux/hotels/Action';
 import { fetchCitySearch } from '../../Redux/citiesSearch/Action';
 import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
+import {Shimmers6} from "../../Components/NewTours/Components/subComponents/Shimmers";
 
 const HotelsSuggest = () => {
     let getData = useSelector(state => state.HotelReducer)
@@ -35,7 +34,7 @@ const HotelsSuggest = () => {
         setWidth(window.innerWidth)
         dispatch(fetchHotels(city))
         setHotels(getData.data)
-        console.log(getData);
+
 
     }, [city])
 
@@ -59,7 +58,7 @@ const HotelsSuggest = () => {
                                     </svg>
 
                                     <div className="text col-12 col-sm-10 d-flex w-100">
-                                        <p className="font-bold title-custom p-0 mx-2 my-0 d-flex align-items-center" style={{marginTop:`${width>826?'2px':'4px'}`,fontSize:'18px',padding:'0',fontWeight:'bold'}}>هتل های برگزیده شهر</p>
+                                        <p className="font-bold title-custom p-0 mx-2 my-0 d-flex align-items-center" style={{marginTop:`${width>826?'2px':'4px'}`,fontSize:'18px',padding:'0',fontWeight:'bold',whiteSpace:'nowrap'}}>هتل های برگزیده شهر</p>
                                         <select style={{width: '30%',color: 'black'}}
                                          className="selectCity font-bold" value={city} onChange={(val) => setCity(val.target.value)}>
                                             {CitySearch.data.map(item=>(
@@ -87,7 +86,7 @@ const HotelsSuggest = () => {
                     </div>
                     {getData.loading ?
                         <div className='mt-5'>
-                            <NewLoader/>
+                            <Shimmers6 selectedHeight={'400px'}/>
                         </div>
                      :
                     getData.data.length>0 && !getData.loading?

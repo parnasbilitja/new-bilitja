@@ -141,7 +141,7 @@ class JalaliDays extends React.Component {
     } else if (date < today) {
       return "BEFORE";
     } else {
-      // console.log('TODAYTODAY=');
+      //
       // console.log(day)
       return "TODAY";
     }
@@ -354,7 +354,7 @@ class JalaliDays extends React.Component {
           </div>
         ) : null}
         {this.state.stage == 3 ? (
-          <div>
+
             <div className="row m-0">
               <div className="col-lg-1 col-1 no-padding no-margin">
                 <FontAwesomeIcon
@@ -368,7 +368,7 @@ class JalaliDays extends React.Component {
                   <span
                     onClick={() => {
                       const persianDate = moment().format("jYYYY/jMM/jDD");
-                      // console.log('test date jalali');
+                      //
                       const miladidate = moment().format("YYYY/MM/DD");
                       this.props.setDate({
                         garigorian: miladidate,
@@ -389,7 +389,7 @@ class JalaliDays extends React.Component {
                   onClick={this.increaseMonth}
                 />
               </div>
-            </div>
+
 
             <div className="two-month-container">
               <div>
@@ -403,194 +403,201 @@ class JalaliDays extends React.Component {
                 >
                   {`${currentAndNextDate[0][0]} ${currentAndNextDate[0][1]}`}
                 </p>
-                <div className="calendar-day-container">
-                  <div className="font-size-13 color-black">شنبه</div>
-                  <div className="font-size-13 color-black">1شنبه</div>
-                  <div className="font-size-13 color-black">2شنبه</div>
-                  <div className="font-size-13 color-black">3شنبه</div>
-                  <div className="font-size-13 color-black">4شنبه</div>
-                  <div className="font-size-13 color-black">5شنبه</div>
-                  <div className="font-size-13 color-black">جمعه</div>
+                <div style={{display:"flex",justifyContent:'center'}}>
+                  <div className="calendar-day-container">
+                    <div className="font-size-13 color-black">شنبه</div>
+                    <div className="font-size-13 color-black">1شنبه</div>
+                    <div className="font-size-13 color-black">2شنبه</div>
+                    <div className="font-size-13 color-black">3شنبه</div>
+                    <div className="font-size-13 color-black">4شنبه</div>
+                    <div className="font-size-13 color-black">5شنبه</div>
+                    <div className="font-size-13 color-black">جمعه</div>
 
-                  {this.getDays().map((x) => {
-                    const compareToToday = this.checkDateIsAfterToday(
-                      this.state.year,
-                      this.state.month,
-                      x
-                    );
-
-                    if (compareToToday == "TODAY") {
-                      return x != undefined ? (
-                        <div key={x}
-                          className="calendar-item TODAY"
-                          onClick={() => {
-                            const m = moment(
-                              `${this.state.year}/${this.state.month}/${x}`,
-                              "jYYYY/jMM/jDD"
-                            );
-                            const persianDate = m.format("jYYYY/jMM/jDD");
-                            const miladidate = m.format("YYYY/MM/DD");
-
-                            this.props.setDate({
-                              garigorian: miladidate,
-                              jalali: persianDate,
-                              typeOfCalendar: "JAL",
-                            });
-                            this.props.closePopUpCalendar(false);
-                          }}
-                        >
-                          {x}
-                        </div>
-                      ) : (
-                        <div key={x}>{x}</div>
+                    {this.getDays().map((x) => {
+                      const compareToToday = this.checkDateIsAfterToday(
+                          this.state.year,
+                          this.state.month,
+                          x
                       );
-                    }
 
-                    if (compareToToday == "BEFORE") {
-                      return x != undefined ? (
-                        <div className="calendar-item BEFORE">{x}</div>
-                      ) : (
-                        <div>{x}</div>
-                      );
-                    }
+                      if (compareToToday == "TODAY") {
+                        return x != undefined ? (
+                            <div key={x}
+                                 className="calendar-item TODAY"
+                                 onClick={() => {
+                                   const m = moment(
+                                       `${this.state.year}/${this.state.month}/${x}`,
+                                       "jYYYY/jMM/jDD"
+                                   );
+                                   const persianDate = m.format("jYYYY/jMM/jDD");
+                                   const miladidate = m.format("YYYY/MM/DD");
 
-                    if (compareToToday == "AFTER") {
-                      return x != undefined ? (
-                        <div
-                          className="calendar-item AFTER"
-                          onClick={() => {
-                            const m = moment(
-                              `${this.state.year}/${this.state.month}/${x}`,
-                              "jYYYY/jMM/jDD"
-                            );
-                            const persianDate = m.format("jYYYY/jMM/jDD");
-                            const miladidate = m.format("YYYY/MM/DD");
+                                   this.props.setDate({
+                                     garigorian: miladidate,
+                                     jalali: persianDate,
+                                     typeOfCalendar: "JAL",
+                                   });
+                                   this.props.closePopUpCalendar(false);
+                                 }}
+                            >
+                              {x}
+                            </div>
+                        ) : (
+                            <div key={x}>{x}</div>
+                        );
+                      }
 
-                            this.props.setDate({
-                              garigorian: miladidate,
-                              jalali: persianDate,
-                              typeOfCalendar: "JAL",
-                            });
-                            this.props.closePopUpCalendar(false);
-                          }}
-                        >
-                          {x}
-                        </div>
-                      ) : (
-                        <div>{x}</div>
-                      );
-                    }
-                  })}
+                      if (compareToToday == "BEFORE") {
+                        return x != undefined ? (
+                            <div className="calendar-item BEFORE">{x}</div>
+                        ) : (
+                            <div>{x}</div>
+                        );
+                      }
+
+                      if (compareToToday == "AFTER") {
+                        return x != undefined ? (
+                            <div
+                                className="calendar-item AFTER"
+                                onClick={() => {
+                                  const m = moment(
+                                      `${this.state.year}/${this.state.month}/${x}`,
+                                      "jYYYY/jMM/jDD"
+                                  );
+                                  const persianDate = m.format("jYYYY/jMM/jDD");
+                                  const miladidate = m.format("YYYY/MM/DD");
+
+                                  this.props.setDate({
+                                    garigorian: miladidate,
+                                    jalali: persianDate,
+                                    typeOfCalendar: "JAL",
+                                  });
+                                  this.props.closePopUpCalendar(false);
+                                }}
+                            >
+                              {x}
+                            </div>
+                        ) : (
+                            <div>{x}</div>
+                        );
+                      }
+                    })}
+                  </div>
+
                 </div>
               </div>
               <div>
                 <p
-                  className="no-margin padding-5px font-size-14 black-color font-bold-iransanse text-center"
-                  onClick={(e) => {
-                    this.setState({
-                      stage: 1,
-                    });
-                  }}
+                    className="no-margin padding-5px font-size-14 black-color font-bold-iransanse text-center"
+                    onClick={(e) => {
+                      this.setState({
+                        stage: 1,
+                      });
+                    }}
                 >
                   {`${currentAndNextDate[1][0]} ${currentAndNextDate[1][1]}`}
                 </p>
-                <div className="calendar-day-container">
-                  <div className="font-size-13 color-black">شنبه</div>
-                  <div className="font-size-13 color-black">1شنبه</div>
-                  <div className="font-size-13 color-black">2شنبه</div>
-                  <div className="font-size-13 color-black">3شنبه</div>
-                  <div className="font-size-13 color-black">4شنبه</div>
-                  <div className="font-size-13 color-black">5شنبه</div>
-                  <div className="font-size-13 color-black">جمعه</div>
 
-                  {this.getDaysNextMonth().map((x) => {
-                    const compareToToday =
-                      this.checkDateIsAfterTodayNextMonth(x);
+                <div style={{display:'flex',justifyContent:'center'}}>
+                  <div className="calendar-day-container">
+                    <div className="font-size-13 color-black">شنبه</div>
+                    <div className="font-size-13 color-black">1شنبه</div>
+                    <div className="font-size-13 color-black">2شنبه</div>
+                    <div className="font-size-13 color-black">3شنبه</div>
+                    <div className="font-size-13 color-black">4شنبه</div>
+                    <div className="font-size-13 color-black">5شنبه</div>
+                    <div className="font-size-13 color-black">جمعه</div>
 
-                    if (compareToToday == "TODAY") {
-                      return x != undefined ? (
-                        <div key={x}
-                          className="calendar-item TODAY"
-                          onClick={() => {
-                            const year =
-                              parseInt(this.state.month) + 1 > 12
-                                ? parseInt(this.state.year) + 1
-                                : parseInt(this.state.year);
-                            const month =
-                              parseInt(this.state.month) + 1 > 12
-                                ? 1
-                                : parseInt(this.state.month) + 1;
+                    {this.getDaysNextMonth().map((x) => {
+                      const compareToToday =
+                          this.checkDateIsAfterTodayNextMonth(x);
 
-                            const m = moment(
-                              `${year}/${month}/${x}`,
-                              "jYYYY/jMM/jDD"
-                            );
-                            const persianDate = m.format("jYYYY/jMM/jDD");
-                            const date = m.format("YYYY/MM/DD");
-                            this.props.setDate({
-                              garigorian: date,
-                              jalali: persianDate,
-                              typeOfCalendar: "JAL",
-                            });
+                      if (compareToToday == "TODAY") {
+                        return x != undefined ? (
+                            <div key={x}
+                                 className="calendar-item TODAY"
+                                 onClick={() => {
+                                   const year =
+                                       parseInt(this.state.month) + 1 > 12
+                                           ? parseInt(this.state.year) + 1
+                                           : parseInt(this.state.year);
+                                   const month =
+                                       parseInt(this.state.month) + 1 > 12
+                                           ? 1
+                                           : parseInt(this.state.month) + 1;
 
-                            this.props.closePopUpCalendar(false);
-                          }}
-                        >
-                          {x}
-                        </div>
-                      ) : (
-                        <div>{x}</div>
-                      );
-                    }
+                                   const m = moment(
+                                       `${year}/${month}/${x}`,
+                                       "jYYYY/jMM/jDD"
+                                   );
+                                   const persianDate = m.format("jYYYY/jMM/jDD");
+                                   const date = m.format("YYYY/MM/DD");
+                                   this.props.setDate({
+                                     garigorian: date,
+                                     jalali: persianDate,
+                                     typeOfCalendar: "JAL",
+                                   });
 
-                    if (compareToToday == "BEFORE") {
-                      return x != undefined ? (
-                        <div className="calendar-item BEFORE">{x}</div>
-                      ) : (
-                        <div>{x}</div>
-                      );
-                    }
+                                   this.props.closePopUpCalendar(false);
+                                 }}
+                            >
+                              {x}
+                            </div>
+                        ) : (
+                            <div>{x}</div>
+                        );
+                      }
 
-                    if (compareToToday == "AFTER") {
-                      return x != undefined ? (
-                        <div
-                          className="calendar-item AFTER"
-                          onClick={() => {
-                            const year =
-                              parseInt(this.state.month) + 1 > 12
-                                ? parseInt(this.state.year) + 1
-                                : parseInt(this.state.year);
-                            const month =
-                              parseInt(this.state.month) + 1 > 12
-                                ? 1
-                                : parseInt(this.state.month) + 1;
+                      if (compareToToday == "BEFORE") {
+                        return x != undefined ? (
+                            <div className="calendar-item BEFORE">{x}</div>
+                        ) : (
+                            <div>{x}</div>
+                        );
+                      }
 
-                            const m = moment(
-                              `${year}/${month}/${x}`,
-                              "jYYYY/jMM/jDD"
-                            );
-                            const persianDate = m.format("jYYYY/jMM/jDD");
-                            const date = m.format("YYYY/MM/DD");
-                            this.props.setDate({
-                              garigorian: date,
-                              jalali: persianDate,
-                              typeOfCalendar: "JAL",
-                            });
+                      if (compareToToday == "AFTER") {
+                        return x != undefined ? (
+                            <div
+                                className="calendar-item AFTER"
+                                onClick={() => {
+                                  const year =
+                                      parseInt(this.state.month) + 1 > 12
+                                          ? parseInt(this.state.year) + 1
+                                          : parseInt(this.state.year);
+                                  const month =
+                                      parseInt(this.state.month) + 1 > 12
+                                          ? 1
+                                          : parseInt(this.state.month) + 1;
 
-                            this.props.closePopUpCalendar(false);
-                          }}
-                        >
-                          {x}
-                        </div>
-                      ) : (
-                        <div>{x}</div>
-                      );
-                    }
-                  })}
+                                  const m = moment(
+                                      `${year}/${month}/${x}`,
+                                      "jYYYY/jMM/jDD"
+                                  );
+                                  const persianDate = m.format("jYYYY/jMM/jDD");
+                                  const date = m.format("YYYY/MM/DD");
+                                  this.props.setDate({
+                                    garigorian: date,
+                                    jalali: persianDate,
+                                    typeOfCalendar: "JAL",
+                                  });
+
+                                  this.props.closePopUpCalendar(false);
+                                }}
+                            >
+                              {x}
+                            </div>
+                        ) : (
+                            <div>{x}</div>
+                        );
+                      }
+                    })}
+                  </div>
+
                 </div>
               </div>
             </div>
-          </div>
+            </div>
         ) : null}
       </div>
     );

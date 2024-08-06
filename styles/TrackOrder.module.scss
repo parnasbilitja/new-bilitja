@@ -197,3 +197,64 @@ display: grid;
 
   }
 }
+
+
+@media only screen and (max-width: 868px) {
+  .trackordercontainer{
+    padding: 0 !important;
+    width: 100%;
+    display: block;
+    //grid-template-columns: repeat(2,1fr);
+    //flex-wrap: nowrap;
+    .track-con{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      .track{
+        margin-top: 2px;
+        margin-bottom: 10px;
+        width: 100%;
+        padding: 0 1rem !important;
+        .track-title{
+          display: flex;
+          align-content: center;
+          column-gap: 10px;
+          h2{
+            font-size: 20px;
+            font-weight: 700;
+          }
+
+        }
+        .track-input-con{
+          //display: flex;
+          //align-items: center;
+          .track-desc{
+            p{
+              font-size: 14px;
+            }
+          }
+
+          .track-input{
+            display: flex;
+            column-gap: 20px;
+
+            .buttoncon{
+              height: 100%;
+              width: 100px;
+              background-color: #e20000;
+              border-radius: 0.25rem;
+              color: #fff !important;
+              outline: medium none invert !important;
+              outline: initial !important;
+              border: 2px solid #e20000;
+            }
+          }
+
+        }
+      }
+
+    }
+  }
+
+
+}

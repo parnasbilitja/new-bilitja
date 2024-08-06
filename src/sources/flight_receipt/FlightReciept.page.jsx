@@ -246,8 +246,8 @@ const FlightReciept = (props) => {
     });
   };
   const updatePassengerData = (index, value) => {
-    console.log(value);
-    console.log(state);
+    
+    
 
     let names = state.nameAll_;
     let families = state.familyAll_;

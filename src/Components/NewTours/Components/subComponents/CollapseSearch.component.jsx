@@ -1,14 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styles from "../../../../../styles/newTour/components/subComponent/CollapseSearch.module.scss";
 import {AnimatePresence, motion} from "framer-motion";
 import {collapseVariants, rotateVariants} from "../../../../Utils/newTour";
 
 const CollapseSearchComponent = (props) => {
+
     return (<>
         <div className={styles.hotelSearchInput}>
             <div className={styles['filter_type']} onClick={(e) => {
                 e.stopPropagation()
-                props.setSearchTab(props.inputType)
+                props.setSearchTab()
             }}>
                 <div style={{display: 'flex', alignItems: 'center'}}>
                     {props.svg}

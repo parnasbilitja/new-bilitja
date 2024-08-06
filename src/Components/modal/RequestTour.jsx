@@ -46,12 +46,13 @@ const [passsengerCount,setPassengerCount]=useState({
 
     useEffect(() => {
         if(isBundle){
-          setRooms(selectedHotel.prices.filter(p=>p.pin===0))
+            debugger
+          setRooms(selectedHotel.rooms.filter(p=>p.pin===false))
 
         }else{
 
-            let filteredRoomsBasedOnFlightId=selectedHotel.prices.filter(room=>(room.flight_id.toString()+room.return_flight_id.toString())===flightId)
-            setRooms(getCheapestRoom(filteredRoomsBasedOnFlightId))
+            // let filteredRoomsBasedOnFlightId=selectedHotel.rooms.filter(room=>(room.flight_id.toString()+room.return_flight_id.toString())===flightId)
+            setRooms(selectedHotel.rooms.sort((a,b)=>a.adl_capacity-b.adl_capacity))
         }
         // console.log(isBundle)
     }, [isBundle]);
@@ -118,12 +119,12 @@ const [passsengerCount,setPassengerCount]=useState({
                                 <div className='title'>
                                     <p>قیمت اتاق </p>
                                 </div>
-                                {!isBundle&&
+
 
                                     <div className='title'>
                                         <p>تخت اضافه</p>
                                     </div>
-                                }
+
 
                                 <div className='title'>
                                     <p>کودک با تخت</p>
@@ -140,24 +141,23 @@ const [passsengerCount,setPassengerCount]=useState({
                             {rooms.map(price=>{
                                 return(
                                     <div className='room-description'>
-                                        {isBundle?<div className='description'>
-                                                <p style={{color: '#e20000', fontWeight: 700}}>{price.name}</p>
-                                                {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
-                                            </div>:
+                                        {/*{isBundle?<div className='description'>*/}
+                                        {/*        <p style={{color: '#e20000', fontWeight: 700}}>{price.room_name}</p>*/}
+                                        {/*        /!*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*!/*/}
+                                        {/*    </div>:*/}
 
                                             <div className='description'>
-                                                <p style={{color: '#e20000', fontWeight: 700}}>{price.roomName}</p>
+                                                <p style={{color: '#e20000', fontWeight: 700}}>{price.room_name}</p>
                                                 {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
                                             </div>
-                                        }
+                                        {/*}*/}
                                         <div className='description'>
                                             <p >{numberWithCommas(price.price)}</p>
                                             <span>{getcurrencyfa(currency)}</span>
 
                                             {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
                                         </div>
-                                        {
-                                            !isBundle&&
+
 
                                             <div className='description'>
                                                 <p >{price.extra_bed_price===0||price.extra_bed_count===0?'عدم موجودی':numberWithCommas( price.extra_bed_price)}</p>
@@ -167,30 +167,30 @@ const [passsengerCount,setPassengerCount]=useState({
                                                 {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
                                             </div>
 
-                                        }
 
 
-                                        {isBundle?
-                                            <div className='description'>
-                                                <p >{numberWithCommas(selectedHotel.cwb) }</p>
-                                                <span>{getcurrencyfa(currency)}</span>
 
-                                                {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
-                                            </div>:
+
+                                            {/*<div className='description'>*/}
+                                            {/*    <p >{numberWithCommas(selectedHotel.cwb) }</p>*/}
+                                            {/*    <span>{getcurrencyfa(currency)}</span>*/}
+
+                                            {/*    /!*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*!/*/}
+                                            {/*</div>*/}
                                             <div className='description'>
                                                 <p >{price.chd_w_price===0||price.roomChdCapacity===0?'عدم موجودی':numberWithCommas(price.chd_w_price)}</p>
                                                 <span>{(price.chd_w_price===0||price.roomChdCapacity===0)
                                                     ?null:getcurrencyfa(currency) }</span>
                                                 {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
                                             </div>
-                                        }
-                                        {isBundle?
-                                            <div className='description'>
-                                                <p >{numberWithCommas(selectedHotel.cnb) }</p>
-                                                <span>{getcurrencyfa(currency)}</span>
 
-                                                {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
-                                            </div>:
+                                        {/*{isBundle?*/}
+                                        {/*    <div className='description'>*/}
+                                        {/*        <p >{numberWithCommas(selectedHotel.cnb) }</p>*/}
+                                        {/*        <span>{getcurrencyfa(currency)}</span>*/}
+
+                                        {/*        /!*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*!/*/}
+                                        {/*    </div>:*/}
                                             <div className='description'>
                                                <p> {price.chd_n_price===0||price.roomChdCapacity===0?'عدم موجودی':numberWithCommas(price.chd_n_price)}</p>
                                                 {price.chd_n_price===0 || price.roomChdCapacity===0
@@ -198,17 +198,17 @@ const [passsengerCount,setPassengerCount]=useState({
 
                                                 {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
                                             </div>
-                                        }
+                                        {/*}*/}
 
 
                                         {
-                                            isBundle?
-                                                <div className='description'>
-                                                    <p >{numberWithCommas(infPrc)}</p>
-                                                    <span>{getcurrencyfa(currency)}</span>
-
-                                                    {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
-                                                </div>:
+                                            // isBundle?
+                                            //     <div className='description'>
+                                            //         <p >{numberWithCommas(infPrc)}</p>
+                                            //         <span>{getcurrencyfa(currency)}</span>
+                                            //
+                                            //         {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
+                                            //     </div>:
                                                 <div className='description'>
                                                     <p >{numberWithCommas(price.inf_price) }</p>
                                                     <span>{getcurrencyfa(currency)}</span>

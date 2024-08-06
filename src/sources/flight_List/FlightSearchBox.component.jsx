@@ -26,7 +26,7 @@ const FlightSearchBox = (props) => {
   const posthog=usePostHog()
   useEffect(() => {
     setWidth(window.innerWidth);
-    console.log("from flightsearchbox", props.router);
+    
   }, []);
   const [state, setState] = useState({
     searchBool: false,
@@ -63,7 +63,7 @@ const FlightSearchBox = (props) => {
   };
   const [list, setList] = useState({});
   const handleFocusOut = (event) => {
-    // console.log(list);
+    // 
     const { name, value } = event.target;
     setList({ ...list, [name]: value });
     props.addCredentials({
@@ -71,7 +71,7 @@ const FlightSearchBox = (props) => {
     });
   };
   const handleFocus = (event) => {
-    // console.log(list);
+    // 
     const { name, value } = event.target;
     setList({ ...list, [name]: value });
     props.addCredentials({
@@ -163,8 +163,8 @@ const FlightSearchBox = (props) => {
     },
     history,
   } = props;
-  // console.log("flightDatePersian");
-  // console.log(flightDatePersian);
+  // 
+  // 
 
   // { action, category, label, value }
   // const event = ()=> {

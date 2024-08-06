@@ -3,14 +3,11 @@ import React, { useEffect, useState } from "react";
 import Reservation from "../../../Components/NewTours/Reservation";
 import NavHandler from "../../../Components/share/NavHandler";
 import axios from "axios";
-import { jalaliToMiladiConvertor } from "../../../Utils/newTour";
 import moment from "moment-jalaali";
-import Footer from "../../../sources/component/Footer.component";
 import Head from "next/head";
-import {connect} from "react-redux";
 import {accountBoxModify, messageBoxModify} from "../../../Redux/UI/ui.action";
-// import {addReservationProperties} from "@/Redux/Reserve/reserve.action";
 import {selectProperties} from "../../../Redux/Reserve/reserve.reselect";
+import globals from "../../../sources/Global";
 
 const ReservedHotel = (props) => {
   const router = useRouter();
@@ -21,7 +18,7 @@ const ReservedHotel = (props) => {
 
       setStayCount(moment(router.query.checkout).diff(router.query.checkin, "days"));
             axios.get(
-               `https://api.hotelobilit.com/api/v2/reserves/${router?.query?.ref_code
+               `${globals.tourPackages}reserves/${router?.query?.ref_code
                }`,
                 {
                     headers: {
@@ -31,14 +28,12 @@ const ReservedHotel = (props) => {
                 ).then(res=>{
 
                 setHoteldet(res?.data);
+
             })
     }
   }, [router]);
 
 
-    // useEffect(() => {
-    //     // console.log(props)
-    // }, [props]);
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment-jalaali";
 import styles from "../../../../../styles/BirthdayCalendar.module.scss";
-import {jalaliToMiladiConvertor} from "../../../..//Utils/newTour";
+import {jalaliToMiladiConvertor} from "../../../../Utils/newTour";
 const BirthdayCalenderMiladi = (props) => {
   const { typePassenger } = props;
   let current = 2022;
@@ -431,7 +431,7 @@ const BirthdayCalenderMiladi = (props) => {
                           props.roomInfo.roomindex,
 
                       );
-                      // console.log(props.roomInfo.index);
+                      //
 
                     }}
                   >

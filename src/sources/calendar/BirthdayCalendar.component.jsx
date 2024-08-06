@@ -17,7 +17,7 @@ const BirthdayCalendar = (props) => {
     const getYears = () => {
         if (props.typePassenger == "ADL") {
             return new Array(current - 11 - props.type=="BD"?51:props.type=="EXT"?10:85).fill().map((x, index) => {
-                // console.log(props.type=="BD"?1390:80  + index);
+                // 
                 return (props.type=="BD"?1300:props.type=="EXT"?1405:1400)  + index
             }).reverse()
         } else if (props.typePassenger == "CHD") {
