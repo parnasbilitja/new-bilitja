@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some task and bugs have been resolved">
+      <change afterPath="$PROJECT_DIR$/public/flight-land-svgrepo-com.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/UseTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/UseTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/panel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/dashboard/profile/Profile.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/dashboard/profile/Profile.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightListMobile.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightListMobile.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_reserve/FlightReserveDesktopHeader.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_reserve/FlightReserveDesktopHeader.component.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,31 +60,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/pa/Desktop/bilitjassrnew/public/Images&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/Users/pa/Desktop/bilitjassrnew/public",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/Images" />
       <recent name="$PROJECT_DIR$/src/pages" />
-      <recent name="$PROJECT_DIR$/public" />
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src" />
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\sources" />
     </key>
@@ -243,7 +247,7 @@
       <workItem from="1721475931321" duration="5925000" />
       <workItem from="1721651252065" duration="4904000" />
       <workItem from="1722779549107" duration="1754000" />
-      <workItem from="1722847953923" duration="15777000" />
+      <workItem from="1722847953923" duration="19718000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -413,14 +417,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00149" summary="some task has been resolved">
-      <option name="closed" value="true" />
-      <created>1715153240779</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1715153240779</updated>
-    </task>
     <task id="LOCAL-00150" summary="some task has been resolved">
       <option name="closed" value="true" />
       <created>1715163144193</created>
@@ -581,7 +577,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722866709703</updated>
     </task>
-    <option name="localTasksCounter" value="170" />
+    <task id="LOCAL-00170" summary="some task and bugs have been resolved">
+      <option name="closed" value="true" />
+      <created>1722867648261</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1722867648261</updated>
+    </task>
+    <option name="localTasksCounter" value="171" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

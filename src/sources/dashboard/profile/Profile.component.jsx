@@ -10,6 +10,7 @@ import { SetUserInformation } from "../../../Redux/Dashboard/Profile/profile.act
 const Profile = (props) => {
   const router = useRouter();
   useEffect(() => {
+    debugger
     fetch(`${globals.baseUrlNew}auth/profileView`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -31,7 +32,9 @@ const Profile = (props) => {
           // alert("Have Profnlem");
         }
       });
-  }, []);
+
+    console.log('sadgh')
+  }, [router]);
 
   return (
     <section>
