@@ -41,7 +41,7 @@ const Base = (props) => {
           {/*  </div>*/}
           {/*<Footer />*/}
 
-            <HomeDet/>
+            <Home/>
           <HeadSeo props={props} pathName={props.router.asPath} />
         </div>
     );
