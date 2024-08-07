@@ -9,18 +9,18 @@ const HomeDetails = ( props) => {
   const [ width, setWidth ] = useState(0)
   useEffect(() => {
     setWidth(window.innerWidth)
-  },[]) 
+  },[])
     return (
         <div>
 
           <div className="justify-content-center">
             <div className="col-md-12 px-0">
-                
+
           <div className={'row justify-content-center'}>
             <div className='col-md-10'>
-              {props.type == 'index' &&
-            <OfferdTours/>
-            }
+            {/*  {props.type == 'index' &&*/}
+            {/*<OfferdTours/>*/}
+            {/*}*/}
             <div className="row padding-xs-5-15 justify-content-center">
                 <div className="col-lg-4 col-md-5 col-sm-12 padding-5px">
                   <div className={styles["home-value-propsal"]}>
@@ -77,7 +77,7 @@ const HomeDetails = ( props) => {
                       گردشگردی قرار دهید.
                     </p>
                   </div>
-                </div>  
+                </div>
             </div>
             </div></div>
             </div>
@@ -109,7 +109,7 @@ const HomeDetails = ( props) => {
                     تور های ویژه گردشگری ، بازدید از موزه ها و مکان های دیدنی کشور
                     ها
                   </p>
-                  
+
                 </div>
               </div>
               <div className={`col-4 col-md-2 justify-content-end ${styles["tour-intro-button"]}`} >
@@ -125,7 +125,7 @@ const HomeDetails = ( props) => {
         </div>
         <FlightsUrl flightsData={flightsData} flightsDataHotel={flightsDataHotel} />
         {props.type !== 'index' &&
-          <TicketDetails /> 
+          <TicketDetails />
         }
         </div>
     );
