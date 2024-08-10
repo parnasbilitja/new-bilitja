@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="new bilitja">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/Map.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Map.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/Row.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/Row.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +250,7 @@
       <workItem from="1722952518337" duration="194000" />
       <workItem from="1722952718993" duration="374000" />
       <workItem from="1722953583505" duration="3984000" />
-      <workItem from="1723296885627" duration="995000" />
+      <workItem from="1723296885627" duration="2218000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -421,14 +420,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00157" summary="table bug fixed">
-      <option name="closed" value="true" />
-      <created>1717844856004</created>
-      <option name="number" value="00157" />
-      <option name="presentableId" value="LOCAL-00157" />
-      <option name="project" value="LOCAL" />
-      <updated>1717844856004</updated>
-    </task>
     <task id="LOCAL-00158" summary="table bug fixed">
       <option name="closed" value="true" />
       <created>1717845458221</created>
@@ -589,7 +580,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723009992016</updated>
     </task>
-    <option name="localTasksCounter" value="178" />
+    <task id="LOCAL-00178" summary="new bilitja">
+      <option name="closed" value="true" />
+      <created>1723298126446</created>
+      <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
+      <option name="project" value="LOCAL" />
+      <updated>1723298126447</updated>
+    </task>
+    <option name="localTasksCounter" value="179" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

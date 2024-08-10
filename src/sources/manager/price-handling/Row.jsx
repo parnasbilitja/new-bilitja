@@ -60,6 +60,10 @@ React.useEffect(() => {
   React.useEffect(() => {
     console.log(data)
   },[data])
+
+  function formatNumberWithCommas(number) {
+    return number.toLocaleString();
+  }
   return (
     <div className={style["price"]}>
       <div className={style["price-items"]} key={index}>
@@ -81,6 +85,7 @@ React.useEffect(() => {
         <div>
           <input
             type="text"
+
             placeholder={precent}
             onChange={(e) => setPrecent(e.target.value)}
           />
@@ -88,7 +93,8 @@ React.useEffect(() => {
         <div>
           <input
             type="text"
-            placeholder={price}
+            value={formatNumberWithCommas(price)}
+            placeholder={formatNumberWithCommas(price)}
             onChange={(e) => setPrice(e.target.value)}
           />
         </div>
