@@ -51,6 +51,20 @@ const hotel = (props) => {
     //     //
     // },[])
     // //
+
+
+    const latLngSeparator=(coordinates)=>{
+        debugger
+        let latlng=coordinates?.split(',')
+    return [+latlng[0],+latlng[1]]
+
+
+    }
+
+
+    useEffect(() => {
+        console.log(props.hotel)
+    },[props.hotel])
     return (
         <>
                 <NavHandler />
@@ -140,7 +154,7 @@ const hotel = (props) => {
                     <div className="about-hotel">
                         <div className="map">
                             <div className="no-map">
-                                {props.hotel?.coordinates && <MapComponent coordinates={props.hotel?.coordinates}/>}
+                                {props.hotel?.coordinates && <MapComponent coordinates={typeof props.hotel?.coordinates==="string"? latLngSeparator(props.hotel?.coordinates):props.hotel?.coordinates}/>}
                             </div>
                             <a className="btn-map">مسیریابی از مبدا شما !</a>
                             <div className="address">
