@@ -90,7 +90,9 @@ const PriceHandling = () => {
   const handleCancel = async () => {
     router.reload();
   };
-
+  function removeCommasFromString(numberStr) {
+    return numberStr.replace(/,/g, '');
+  }
   const handleSave = async () => {
     debugger
     const list = [...filter];
@@ -100,7 +102,7 @@ const PriceHandling = () => {
         kndSys: option.kndsys,
         reserveStat: option.reserveStat,
         markupPercent: +option.markupPercent,
-        markupPrice: +option.markupPrice,
+        markupPrice: +removeCommasFromString(option.markupPrice) ,
         userIdSabt: "1a157116-a01a-4027-ab10-74098ac63815",
       };
 
@@ -155,7 +157,7 @@ const PriceHandling = () => {
                   <h5> درصد افزایش</h5>
                 </div>
                 <div>
-                  <h5>مبلغ افزایش</h5>
+                  <h5>مبلغ افزایش(تومان)</h5>
                 </div>
                 <div>
                   <h5>ذخیره</h5>

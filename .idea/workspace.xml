@@ -4,28 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="new bilitja">
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ticket/Ticket.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ticket/Ticket.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/blog-sitemap.xml.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/blog-sitemap.xml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/citytour-sitemap.xml.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/citytour-sitemap.xml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/hotel-sitemap.xml.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotel-sitemap.xml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index-sitemap.xml.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index-sitemap.xml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/landing-sitemap.xml.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landing-sitemap.xml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/local-sitemap.xml.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/local-sitemap.xml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/location.kml.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/location.kml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pages-sitemap.xml.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages-sitemap.xml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours-sitemap.xml.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours-sitemap.xml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/account/Auth.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/account/Auth.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/account/Authentication.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/account/Authentication.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/account/Login.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/account/Login.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/NavBar.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/NavBar.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/TicketDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/TicketDetails.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_reserve/FlightReserveDesktopHeader.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_reserve/FlightReserveDesktopHeader.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/PriceHandling.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/PriceHandling.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/price-handling/Row.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/price-handling/Row.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +254,7 @@
       <workItem from="1722952718993" duration="374000" />
       <workItem from="1722953583505" duration="3984000" />
       <workItem from="1723296885627" duration="8556000" />
-      <workItem from="1723368731905" duration="3395000" />
+      <workItem from="1723368731905" duration="7274000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -440,14 +424,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00160" summary="table bug fixed">
-      <option name="closed" value="true" />
-      <created>1718794431112</created>
-      <option name="number" value="00160" />
-      <option name="presentableId" value="LOCAL-00160" />
-      <option name="project" value="LOCAL" />
-      <updated>1718794431112</updated>
-    </task>
     <task id="LOCAL-00161" summary="some task and bugs have been resolved">
       <option name="closed" value="true" />
       <created>1718794799380</created>
@@ -608,7 +584,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723354824954</updated>
     </task>
-    <option name="localTasksCounter" value="181" />
+    <task id="LOCAL-00181" summary="some changes">
+      <option name="closed" value="true" />
+      <created>1723373702398</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1723373702398</updated>
+    </task>
+    <option name="localTasksCounter" value="182" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,7 +628,6 @@
     <MESSAGE value="contactus+aboutus pages have been deployed" />
     <MESSAGE value="some changes have been deployed===&gt;price rounder tour(reservation &amp; comfimation)" />
     <MESSAGE value="some huge changes were transfered from hamnavaz to BILITJA" />
-    <MESSAGE value="some changes" />
     <MESSAGE value="add passcount AvailableFlightBasedonSelectedTour.jsx(desktop)" />
     <MESSAGE value="some changes have been transfered from hamnavaz to BILLITJAAA" />
     <MESSAGE value="Updated bilitja" />
@@ -653,7 +636,8 @@
     <MESSAGE value="table bug fixed" />
     <MESSAGE value="some task and bugs have been resolved" />
     <MESSAGE value="new bilitja" />
-    <option name="LAST_COMMIT_MESSAGE" value="new bilitja" />
+    <MESSAGE value="some changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

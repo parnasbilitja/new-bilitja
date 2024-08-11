@@ -8,6 +8,7 @@ const Row = ({ option, index, filters ,setFilter,close}) => {
   const [precent, setPrecent] = React.useState(0);
   const [reserveStatus, setReserveStatus] = React.useState(0);
   const [price, setPrice] = React.useState(0);
+  const [price1, setPrice1] = React.useState(0);
   const [loader, setLoader] = React.useState(false);
   const [change, setChange] = React.useState(0);
 
@@ -56,10 +57,23 @@ React.useEffect(() => {
 
 },[reserveStatus])
 
+  function removeCommasFromString(numberStr) {
+    return numberStr.replace(/,/g, '');
+  }
 
   React.useEffect(() => {
-    console.log(data)
-  },[data])
+
+    if(price.toString().length > 3){
+      const value = (+price).toLocaleString()
+      setPrice1(value)
+
+    }else{
+      setPrice1(price)
+
+
+    }
+
+  },[price])
 
   function formatNumberWithCommas(number) {
     return number.toLocaleString();
@@ -89,17 +103,17 @@ React.useEffect(() => {
             placeholder={precent}
             onChange={(e) => {
               setPrecent(e.target.value)
-              option.markupPercent=e.target
+              option.markupPercent=e.target.value
             }}
           />
         </div>
         <div>
           <input
             type="text"
-            // value={formatNumberWithCommas(price) +'  '+ 'تومان'}
-            placeholder={ formatNumberWithCommas(price) +' '+ 'تومان'}
+            value={price1}
+            // placeholder={ formatNumberWithCommas(price) }
             onChange={(e) => {
-              setPrice(e.target.value)
+              setPrice(removeCommasFromString(e.target.value))
               option.markupPrice=e.target.value
             }
           }
