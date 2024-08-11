@@ -87,15 +87,22 @@ React.useEffect(() => {
             type="text"
 
             placeholder={precent}
-            onChange={(e) => setPrecent(e.target.value)}
+            onChange={(e) => {
+              setPrecent(e.target.value)
+              option.markupPercent=e.target
+            }}
           />
         </div>
         <div>
           <input
             type="text"
-            value={formatNumberWithCommas(price)}
-            placeholder={formatNumberWithCommas(price)}
-            onChange={(e) => setPrice(e.target.value)}
+            // value={formatNumberWithCommas(price) +'  '+ 'تومان'}
+            placeholder={ formatNumberWithCommas(price) +' '+ 'تومان'}
+            onChange={(e) => {
+              setPrice(e.target.value)
+              option.markupPrice=e.target.value
+            }
+          }
           />
         </div>
         <div>

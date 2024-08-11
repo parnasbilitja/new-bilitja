@@ -250,7 +250,7 @@
       <workItem from="1722952518337" duration="194000" />
       <workItem from="1722952718993" duration="374000" />
       <workItem from="1722953583505" duration="3984000" />
-      <workItem from="1723296885627" duration="2218000" />
+      <workItem from="1723296885627" duration="5695000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -420,14 +420,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00158" summary="table bug fixed">
-      <option name="closed" value="true" />
-      <created>1717845458221</created>
-      <option name="number" value="00158" />
-      <option name="presentableId" value="LOCAL-00158" />
-      <option name="project" value="LOCAL" />
-      <updated>1717845458221</updated>
-    </task>
     <task id="LOCAL-00159" summary="table bug fixed">
       <option name="closed" value="true" />
       <created>1717847875270</created>
@@ -588,7 +580,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723298126447</updated>
     </task>
-    <option name="localTasksCounter" value="179" />
+    <task id="LOCAL-00179" summary="new bilitja">
+      <option name="closed" value="true" />
+      <created>1723312861886</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
+      <option name="project" value="LOCAL" />
+      <updated>1723312861886</updated>
+    </task>
+    <option name="localTasksCounter" value="180" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
