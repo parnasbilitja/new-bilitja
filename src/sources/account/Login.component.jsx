@@ -88,13 +88,13 @@ const Login = (props) => {
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         hostname: "bilitja.com",
         agencyName: "بلیطجا",
-        telNumber: "02157874",
+        telNumber: "02184279999",
         // token: state.token|'',
       }),
     })
       .then((res) => res.json())
       .then((data) => {
-        // 
+        //
         if (data.status == "10") {
           localStorage.setItem("mobile", data.mobile);
           localStorage.setItem("token", data.token);
@@ -153,7 +153,7 @@ const Login = (props) => {
         hostname: "bilitja.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         agencyName: "بلیطجا",
-        telNumber: "02157874",
+        telNumber: "02184279999",
       }),
     })
       .then((res) => res.json())
@@ -197,7 +197,7 @@ const Login = (props) => {
   useEffect(() => {
     if (UserMobileAndCode.mobile.length == 11) {
       localStorage.setItem("mobile", UserMobileAndCode.mobile);
-      // 
+      //
     }
   }, [UserMobileAndCode.mobile])
   const handleSetToken = (e) => {
@@ -215,7 +215,7 @@ const Login = (props) => {
 
 
   const loginWithToken = () => {
-    // 
+    //
     setState({ ...state, btn_disabled: true, loading: true });
     fetch(`${globals.baseUrlNew}auth/checkUser`, {
       method: "POST",
@@ -233,7 +233,7 @@ const Login = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // 
+        //
         if (data.status == "2" || data.status == "1") {
           localStorage.setItem('loginGoNext',JSON.stringify(1))
           setState({ ...state, btn_disabled: false, loading: false });
@@ -286,8 +286,8 @@ const Login = (props) => {
 
   const userMobileHandler = (e) => {
     setUserMobileAndCode({ ...UserMobileAndCode, [e.target.name]: e.target.value });
-    // 
-    // 
+    //
+    //
   }
 
   const handleChange = (newValue) => {
@@ -351,12 +351,12 @@ const Login = (props) => {
           <div className=" without-focus col-12">
             <button
               onClick={() => {
-                // 
+                //
                 if (UserMobileAndCode.code.length !== 4 && UserMobileAndCode.mobile.length == 11) {
                   setTestForValue({ ...TestForValue, num: true })
                   login()
                 } else if (UserMobileAndCode.code.length == 4) {
-                  // 
+                  //
                   loginWithToken()
                 }
 

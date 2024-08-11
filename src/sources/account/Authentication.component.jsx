@@ -35,10 +35,10 @@ const Authentication = (props) => {
       body: JSON.stringify({
         mobile: props.mobile,
         token: state.token,
-        hostname: "hamnavaz.com",
+        hostname: "bilitja.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         agencyName: "بلیطجا",
-        telNumber: "02184278",
+        telNumber: "02184279999",
 
       }),
     })

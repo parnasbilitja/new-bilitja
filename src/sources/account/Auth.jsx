@@ -92,7 +92,7 @@ const Auth = (props) => {
           hostname: "bilitja.com",
           customerId: "1a157116-a01a-4027-ab10-74098ac63815",
           agencyName: "بلیطجا",
-          telNumber: "02157874",
+          telNumber: "02184279999",
         }),
       })
         .then((res) => res.json())
@@ -161,10 +161,10 @@ const Auth = (props) => {
         token: checkNumberfatoen(state.token),
         password: checkNumberfatoen(state.password),
         register: 1,
-        hostname: "hamnavaz.com",
+        hostname: "bilitja.com",
         customerId: "1a157116-a01a-4027-ab10-74098ac63815",
         agencyName: "بلیطجا",
-        telNumber: "02184278",
+        telNumber: "02184279999",
       }),
     })
       .then((res) => res.json())

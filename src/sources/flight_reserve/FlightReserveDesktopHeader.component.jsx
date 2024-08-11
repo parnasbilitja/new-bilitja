@@ -33,7 +33,7 @@ const FlightReserveDesktopHeader = (props) =>{
               <div className="border-between col-md-1 col-lg-1" style={{ transform: 'translate(-40px, 35px)' }}>
                 {/* <svg id="Outline" viewBox="0 0 24 24" width="45" height="45"><path fill="#dbdbdb" d="M.88,14.09,4.75,18a1,1,0,0,0,1.42,0h0a1,1,0,0,0,0-1.42L2.61,13H23a1,1,0,0,0,1-1h0a1,1,0,0,0-1-1H2.55L6.17,7.38A1,1,0,0,0,6.17,6h0A1,1,0,0,0,4.75,6L.88,9.85A3,3,0,0,0,.88,14.09Z" /></svg> */}
                 {/*<i className={`bilitja icon-plane-departure ${styles["form-input-icon"]} rotate-upsidedown-reverse`} style={{ fontSize: 45 }}></i>*/}
-                <svg xmlns="http://www.w3.org/2000/svg" height="50" viewBox="0 -960 960 960" width="50" ><path d="M754-324 120-500v-220l60 20 28 84 192 54v-318l80 20 110 350 200 56q23 6 36.5 24.5T840-388q0 33-27 53t-59 11ZM120-120v-80h720v80H120Z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" height="50" viewBox="0 -960 960 960" width="50" style={{transform:'rotateY(180deg)'}}><path d="M754-324 120-500v-220l60 20 28 84 192 54v-318l80 20 110 350 200 56q23 6 36.5 24.5T840-388q0 33-27 53t-59 11ZM120-120v-80h720v80H120Z"/></svg>
               </div>
 
               <div className="col-lg-4 col-md-4 col-sm-4 col-4 d-flex justify-content-center pe-3">

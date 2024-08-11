@@ -48,19 +48,19 @@ const TicketDetails = () => {
                                         </g>
                                     </svg>
                                     <div className="text mx-2">
-                                        <p className="font-bold title-custom p-0 my-0 d-flex align-items-center" style={{marginTop:`${width>826?'2px':'4px'}`,fontSize:'18px',padding:'0',fontWeight:'bold',color:'#e20000'}}>درباره آژانس بلیطجا</p>
+                                        <p className="font-bold title-custom p-0 my-0 d-flex align-items-center" style={{marginTop:`${width>826?'2px':'4px'}`,fontSize:'18px',padding:'0',fontWeight:'bold',color:'#e20000'}}>درباره بلیطجا</p>
                                         <h6 className="subtitle-custom mt-1">#بفرمائید‌ـ سفر</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
             </div>
             <div className="bottom d-flex align-items-center justify-content-between mt-3 mb-3">
                 <div className="border-right"></div>
                 <div className="border-left"></div>
             </div>
-              
+
               <div className='container' >
                   <div className='row' >
 

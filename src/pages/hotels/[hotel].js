@@ -157,10 +157,7 @@ const hotel = (props) => {
                                 {props.hotel?.coordinates && <MapComponent coordinates={typeof props.hotel?.coordinates==="string"? latLngSeparator(props.hotel?.coordinates):props.hotel?.coordinates}/>}
                             </div>
                             <a className="btn-map">مسیریابی از مبدا شما !</a>
-                            <div className="address">
-                                <img src="../../../Images/008-maps.svg" width="20" alt="آدرس-روی-نقشه"/>
-                                <p className="text-en" style={{textAlign:'justify'}}>{props.hotel?.address}</p>
-                            </div>
+
                             {/* <div class="telephone">
                         <img src="https://hamnavaz.com/img/003-telephone.svg" width="20" alt="تلفن-تماس"/>
                         <p> -</p>

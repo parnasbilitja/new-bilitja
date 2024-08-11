@@ -166,7 +166,7 @@ var body =document.getElementsByTagName("body")
                 </div>
 
                 <div className="mb-4" style={{ height: "180px" }}>
-                  <MapComponent coordinates={[35.718971, 51.435673]}/>
+                  <MapComponent coordinates={[35.718982, 51.434697619]}/>
                 </div>
 
                 <div>
@@ -186,7 +186,7 @@ var body =document.getElementsByTagName("body")
                         alt="telephone"
                       />
                     </div>
-                    <span className="mr-2">021-84278 - 021-84279000</span>
+                    <span className="mr-2">021-84279999</span>
                   </div>
                   <div className="d-flex mb-1">
                     <div className="ml-2 align-self-start">
@@ -195,7 +195,7 @@ var body =document.getElementsByTagName("body")
                         alt="whatsapp"
                       />
                     </div>
-                    <span className="mr-2">واتساپ : 09102500025</span>
+                    <span className="mr-2">واتساپ : 09371000007</span>
                   </div>
 
                   <div className="d-flex justify-content-between mb-3">

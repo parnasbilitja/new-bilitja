@@ -6,7 +6,7 @@ const Sitemap = () => {
 
 export const getServerSideProps = ({res}) => {
     const baseUrl = {
-        development: "http://localhost:3008", production: "https://hamnavaz.com",
+        development: "http://localhost:3008", production: "https://bilitja.com",
     }[process.env.NODE_ENV];
 
 
