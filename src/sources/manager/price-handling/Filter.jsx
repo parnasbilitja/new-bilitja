@@ -2,10 +2,10 @@ import { useRouter } from "next/router";
 import React from "react";
 import style from "./Filter.module.scss";
 
-const Filter = ({ list, cancel, setFilter, filters }) => {
+const Filter = ({ list, cancel, setFilter, filters,staticData }) => {
   const [data, setData] = React.useState(list);
   const [activeStatus, setActiveStatus] = React.useState("Cancel");
-
+const [filterData,setFilterData] = React.useState(list);
   const [allprecent, setAllPrecent] = React.useState(0);
   const [allprice, setAllPrice] = React.useState(0);
   const Router = useRouter();
@@ -26,18 +26,19 @@ const Filter = ({ list, cancel, setFilter, filters }) => {
     setFilter(finded);
   };
   const findByStatus = async (e) => {
+    debugger
     if (e.target.value == "Active") {
       setActiveStatus("Active");
-      const finded = data.filter((res) => +res.reserveStat == 1);
+      const finded = staticData.filter((res) => +res.reserveStat === 1);
       setFilter(finded);
     } else if (e.target.value == "Not-Active") {
       setActiveStatus("Not-Active");
-      const finded = data.filter((res) => res.reserveStat == 0);
+      const finded = staticData.filter((res) => +res.reserveStat === 0);
       setFilter(finded);
     } else {
-      setFilter(list);
+      setFilter(staticData);
       setActiveStatus("Cancel");
-      setData(list);
+      setData(staticData);
     }
   };
 

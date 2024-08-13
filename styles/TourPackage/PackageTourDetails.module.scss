@@ -6,18 +6,18 @@
   margin-top:10px;
 
   .info{
-  p{
-    font-size: 14px;
-    margin:0;
-    padding: 0;
-    cursor: pointer;
+    p{
+      font-size: 14px;
+      margin:0;
+      padding: 0;
+      cursor: pointer;
 
 
-    &:hover{
-      color: #e20000;
+      &:hover{
+        color: #137cb6;
+      }
     }
   }
-}
 }
 .p-data{
   position: relative;
@@ -69,7 +69,7 @@
   left:0;
   top:132px;
   z-index: 99;
-    background-color: white;
+  background-color: white;
   padding: 10px 0;
 
 }
@@ -143,7 +143,7 @@
 
   }
   .img-con{
-height: 219px;
+    height: 219px;
     width:340px;
     position: relative;
     overflow: hidden;
@@ -155,7 +155,7 @@ height: 219px;
       position: absolute;
       top: 26px;
       right: -33px;
-z-index: 9;
+      z-index: 9;
       height: 20px;
       text-align: center;
       width: 131px;
@@ -193,7 +193,7 @@ z-index: 9;
       white-space: nowrap;
     }
     p:nth-child(1){
-      color: #e20000 !important;
+      color: #137cb6 !important;
       font-size: 16px;
       font-weight: bold;
 
@@ -218,7 +218,6 @@ z-index: 9;
 
 
     .room-prc{
-
       display: flex;
       justify-content: center;
       flex-direction: column;
@@ -226,9 +225,13 @@ z-index: 9;
       border: 1px solid #cecece;
       border-radius: 10px;
       overflow: hidden;
+      //height: 100px;
+
       .room{
+        height: 60px;
         display: flex;
         justify-content: center;
+        align-items: center;
         p{
           color: #000;
         }
@@ -250,7 +253,7 @@ z-index: 9;
         align-items: center;
         span{
           font-size: 12px;
-          font-weight: 500;
+          font-weight: 700;
         }
         small{
           font-size: 11px;
@@ -271,16 +274,16 @@ z-index: 9;
   .service_document{
     margin-bottom: 10px;
     display: flex;
-column-gap: 10px;
+    column-gap: 10px;
 
     .con{
       width: 100%;
-      border: 1px solid #e20000;
+      border: 1px solid #137cb6;
       border-radius: 10px;
       min-height: 200px;
       padding: 1rem .5rem;
       p{
-        color: #e20000;
+        color: #137cb6;
         font-size: 1.2rem;
         font-weight: 700;
       }
@@ -310,39 +313,39 @@ column-gap: 10px;
   }
 
   .servicescon{
-    border: 1px solid #e20000;
+    border: 1px solid #137cb6;
     border-radius: 10px;
     min-height: 150px;
     padding: 1rem .5rem;
     p{
-      color: #e20000;
+      color: #137cb6;
       font-size: 1.2rem;
       font-weight: 700;
     }
 
-      .item{
+    .item{
 
 
-        display: grid;
-        grid-template-columns: 1fr .25fr;
-        justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr .25fr;
+      justify-content: space-between;
 
-        svg{
-          align-self: end;
-          justify-self: end;
-        }
+      svg{
+        align-self: end;
+        justify-self: end;
+      }
 
-        //.services{
-        //  display: flex;
-        //  column-gap: 10px;
-        //}
-        ul{
-          li{
-            font-size: 15px;
-            font-weight: 700;
-          }
+      //.services{
+      //  display: flex;
+      //  column-gap: 10px;
+      //}
+      ul{
+        li{
+          font-size: 15px;
+          font-weight: 700;
         }
       }
+    }
 
 
   }
@@ -351,11 +354,11 @@ column-gap: 10px;
 
 @media only screen and (max-width: 868px) {
   .btn-con{
-   padding: 10px 10px 0 10px;
+    padding: 10px 10px 0 10px;
     justify-content: space-between;
   }
   .pdfbtntitle{
-top: 79px
+    top: 79px
   }
   .tourdesc {
     margin-top: 25px;
@@ -399,24 +402,30 @@ top: 79px
   .roomsDet{
     margin-top: 20px;
     .rooms-title{
-      display: grid;
-        gap: 15px;
-      grid-template-columns: repeat(2,1fr);
+      display: block;
+      padding: 0 ;
+
 
       .room-prc{
         width: 100%;
+        height: 50px;
+        margin-bottom: 5px;
+        display: flex !important;
+        flex-direction: row;
+        overflow: hidden;
 
-      .room-title{
-        justify-self: center;
-        width: 100%;
-        padding: .5rem;
-        //border-radius: 20px;
-        background-color: #cecece;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+        .room-title{
+          justify-self: center;
+          width: 100%;
+          height: 60px !important;
+          padding:0 .5rem;
+          //border-radius: 20px;
+          background-color: #cecece;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
         .room{
           width: 100%;
         }
@@ -425,3 +434,456 @@ top: 79px
   }
 
 }
+//
+//.rooms-title{
+//  display: grid;
+//  gap: 15px;
+//  grid-template-columns: repeat(2,1fr);
+//
+//  .room-prc{
+//    width: 100%;
+//
+//    .room-title{
+//      justify-self: center;
+//      width: 100%;
+//      padding: .5rem;
+//      //border-radius: 20px;
+//      background-color: #cecece;
+//      display: flex;
+//      flex-direction: column;
+//      justify-content: center;
+//      align-items: center;
+//    }
+//    .room{
+//      width: 100%;
+//    }
+//  }
+//}
+//
+
+//.moreinfocon{
+//  display:flex;column-gap:20px;
+//  justify-content:center;
+//  align-items:end;
+//  margin-top:10px;
+//
+//  .info{
+//    p{
+//      font-size: 14px;
+//      margin:0;
+//      padding: 0;
+//      cursor: pointer;
+//
+//
+//      &:hover{
+//        color: #137cb6;
+//      }
+//    }
+//  }
+//}
+//.p-data{
+//  position: relative;
+//  display: flex;
+//  flex-direction: column;
+//}
+//
+//.btn-con{
+//  padding-top: 40px;
+//  display: flex;
+//  justify-content: end;
+//  column-gap: 10px;
+//  button{
+//    padding: 1rem;
+//    font-size: 14px;
+//    border-radius: 20px 20px 0 20px;
+//    width: 120px;
+//    height: 40px;
+//    white-space: nowrap;
+//    display: flex;
+//    justify-content: center;
+//    align-items: center;
+//    color: white;
+//    //font-weight: 700;
+//    transition: .2s ease-out;
+//  }
+//  button:nth-child(1){
+//    background-color:#008000;
+//  } button:nth-child(2){
+//      background-color: #e20000;
+//    }
+//
+//  button:nth-child(1):hover{
+//    background-color: white;
+//    border: 2px solid #008000;
+//    color: #008000;
+//  }   button:nth-child(2):hover{
+//        background-color: white;
+//        border: 2px solid #e20000;
+//        color: #e20000;
+//      }
+//}
+//
+//.pdfbtntitle{
+//  display: flex;
+//  align-items: center;
+//  justify-content: space-between;
+//  position:sticky;
+//  left:0;
+//  top:132px;
+//  z-index: 99;
+//  background-color: white;
+//  padding: 10px 0;
+//
+//}
+//.header-left-container{
+//
+//
+//  .header-left-item{
+//    display: flex;
+//    justify-content: space-between;
+//    .airline-det{
+//      .image-con{
+//        width: 30px;
+//        height: 30px;
+//        overflow: hidden;
+//        img{
+//          width: 100%;
+//          height: 100%;
+//          object-fit: cover;
+//        }
+//      }
+//
+//    }
+//  }
+//
+//}
+//
+//.tours{
+//
+//  padding: 2rem 8rem;
+//}
+//
+//
+//.hotels-section{
+//
+//  margin-top: 3rem ;
+//
+//  .container{
+//    max-width: 1320px;
+//
+//    .p-data{
+//      width: 70%;
+//    }
+//  }
+//}
+//
+//.hotel-item{
+//
+//  border: 1px solid #cecece;
+//  margin-bottom: .5rem;
+//  border-radius: 10px;
+//
+//}
+//
+//.hotelDet{
+//  display: grid;
+//  //column-gap: 20px;
+//  grid-template-columns: .35fr 1fr ;
+//
+//  @media only screen and (max-width: 868px) {
+//
+//    .img-con {
+//      width: 100% !important;
+//      height: 180px;
+//      Image{
+//        width: 100% ;
+//        height: 100%;
+//        object-fit: fill;
+//      }
+//
+//    }
+//
+//  }
+//  .img-con{
+//    height: 219px;
+//    width:340px;
+//    position: relative;
+//    overflow: hidden;
+//    border-radius: 10px;
+//
+//    .offered{
+//      transform: rotate(45deg);
+//      //clip-path: polygon(0 0, 100% 99%, 100% 0);
+//      position: absolute;
+//      top: 26px;
+//      right: -33px;
+//      z-index: 9;
+//      height: 20px;
+//      text-align: center;
+//      width: 131px;
+//      color: white;
+//      display: flex;
+//      justify-content: center;
+//      align-items: center;
+//      background-color: #e20000;
+//      //font-weight: 700;
+//      p{
+//
+//        padding: 0;
+//        margin: 0;
+//        font-size: 15px;
+//      }
+//    }
+//
+//
+//
+//    img{
+//      width: 100%;
+//      height: 100%;
+//      object-fit: fill;
+//    }
+//  }
+//
+//
+//
+//  .names{
+//    margin-right: 20px;
+//    padding-top: 20px;
+//    p{
+//      padding: 0;
+//      margin: 0;
+//      white-space: nowrap;
+//    }
+//    p:nth-child(1){
+//      color: #137cb6 !important;
+//      font-size: 16px;
+//      font-weight: bold;
+//
+//    }
+//    p:nth-child(2){
+//      font-size: 14px;
+//      color: rgb(101,101,101);
+//
+//    }
+//  }
+//
+//}
+//
+//.roomsDet{
+//  margin-top: 10px;
+//  .rooms-title{
+//    padding: 0 .5rem;
+//    display: grid;
+//
+//    grid-template-columns: repeat(4,.75fr);
+//    column-gap: 15px;
+//
+//
+//    .room-prc{
+//
+//      display: flex;
+//      justify-content: center;
+//      flex-direction: column;
+//      align-items: center;
+//      border: 1px solid #cecece;
+//      border-radius: 10px;
+//      overflow: hidden;
+//      .room{
+//        display: flex;
+//        justify-content: center;
+//        p{
+//          color: #000;
+//        }
+//      }
+//
+//      .room-title{
+//        justify-self: center;
+//        width: 100%;
+//
+//        //padding: .5rem;
+//        height: 100%;
+//        //border-radius: 20px;
+//        background-color: #cecece;
+//        display: flex;
+//        justify-content: center;
+//        flex-direction: column;
+//        padding-top: 1px;
+//
+//        align-items: center;
+//        span{
+//          font-size: 12px;
+//          font-weight: 500;
+//        }
+//        small{
+//          font-size: 11px;
+//          font-weight: 500;
+//
+//        }
+//      }
+//    }
+//  }
+//}
+//
+//
+//.tourdesc{
+//  margin-top: 25px;
+//  width: 100%;
+//  height: auto;
+//  //background-color: #e20000;
+//  .service_document{
+//    margin-bottom: 10px;
+//    display: flex;
+//    column-gap: 10px;
+//
+//    .con{
+//      width: 100%;
+//      border: 1px solid #137cb6;
+//      border-radius: 10px;
+//      min-height: 200px;
+//      padding: 1rem .5rem;
+//      p{
+//        color: #137cb6;
+//        font-size: 1.2rem;
+//        font-weight: 700;
+//      }
+//      .item{
+//
+//
+//        display: grid;
+//        grid-template-columns: 1fr .25fr;
+//        justify-content: space-between;
+//
+//        svg{
+//          align-self: end;
+//          justify-self: end;
+//        }
+//        ul{
+//          li{
+//            font-size: 15px;
+//            font-weight: 700;
+//          }
+//        }
+//      }
+//    }
+//
+//
+//
+//
+//  }
+//
+//  .servicescon{
+//    border: 1px solid #137cb6;
+//    border-radius: 10px;
+//    min-height: 150px;
+//    padding: 1rem .5rem;
+//    p{
+//      color: #137cb6;
+//      font-size: 1.2rem;
+//      font-weight: 700;
+//    }
+//
+//    .item{
+//
+//
+//      display: grid;
+//      grid-template-columns: 1fr .25fr;
+//      justify-content: space-between;
+//
+//      svg{
+//        align-self: end;
+//        justify-self: end;
+//      }
+//
+//      //.services{
+//      //  display: flex;
+//      //  column-gap: 10px;
+//      //}
+//      ul{
+//        li{
+//          font-size: 15px;
+//          font-weight: 700;
+//        }
+//      }
+//    }
+//
+//
+//  }
+//}
+//
+//
+//@media only screen and (max-width: 868px) {
+//  .btn-con{
+//    padding: 10px 10px 0 10px;
+//    justify-content: space-between;
+//  }
+//  .pdfbtntitle{
+//    top: 79px
+//  }
+//  .tourdesc {
+//    margin-top: 25px;
+//    width: 100%;
+//    height: auto;
+//    //background-color: #e20000;
+//    .service_document {
+//      margin-bottom: 10px;
+//      display: flex;
+//      flex-direction: column;
+//      row-gap: 10px;
+//    }
+//  }
+//
+//  .tours{
+//    padding: 2rem 0;
+//  }
+//
+//  .hotelDet{
+//    display: block;
+//    .names {
+//      margin-top: 10px;
+//      margin-right: 0;
+//      padding-top: 0;
+//    }
+//    .img-con{
+//      height: 200px;
+//      width: 100%;
+//
+//
+//
+//      img{
+//        width: 100%;
+//      }
+//    }
+//    .btn-con{
+//      justify-content: space-between;
+//    }
+//  }
+//
+//  .roomsDet{
+//    margin-top: 20px;
+//    .rooms-title{
+//      display: grid;
+//      gap: 15px;
+//      grid-template-columns: repeat(2,1fr);
+//
+//      .room-prc{
+//        width: 100%;
+//
+//        .room-title{
+//          justify-self: center;
+//          width: 100%;
+//          padding: .5rem;
+//          //border-radius: 20px;
+//          background-color: #cecece;
+//          display: flex;
+//          flex-direction: column;
+//          justify-content: center;
+//          align-items: center;
+//        }
+//        .room{
+//          width: 100%;
+//        }
+//      }
+//    }
+//  }
+//
+//}

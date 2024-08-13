@@ -33,6 +33,7 @@ const SaveAllDialog = ({ open, close, save }) => {
 
 const PriceHandling = () => {
   const router = useRouter();
+  const[staticData, setStaticData] = useState([]);
   const [agency, setAgency] = React.useState(null);
   const [filter, setFilter] = React.useState(null);
   const [page, setPage] = useState(1);
@@ -62,6 +63,7 @@ const PriceHandling = () => {
 
       console.log(items)
       setFilter(items);
+      setStaticData(items)
       setAgency(items);
 
 
@@ -134,6 +136,7 @@ const PriceHandling = () => {
           </div>
         </div>
         <Filter
+            staticData={staticData}
           list={filter}
           setFilter={(data) => setFilter(data)}
           cancel={handleCancel}
