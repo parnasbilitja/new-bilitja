@@ -100,7 +100,7 @@ const AvailableHotel1 = () => {
                 },
                 {
                     headers: {
-                        "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                        "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
                     }
                 }
             )
@@ -161,7 +161,7 @@ const AvailableHotel1 = () => {
             axios
                 .get("https://api.hotelobilit.com/api/v2/tours/active-routes",{
                     headers: {
-                        "x-app-key":  '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                        "x-app-key":  '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
                     }
                 })
                 .then((res) => {
@@ -238,7 +238,7 @@ const AvailableHotel1 = () => {
                     stayCount: night,
                 },   {
                     headers: {
-                        "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                        "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
                     }
                 })
                 .then((res) => {
@@ -269,7 +269,7 @@ const AvailableHotel1 = () => {
                 stayCount: night,
             },   {
                 headers: {
-                    "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                    "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
                 }
             })
             .then((res) => {
@@ -299,7 +299,7 @@ const AvailableHotel1 = () => {
                 },
                 {
                     headers: {
-                        "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                        "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
                     }
                 }
             )

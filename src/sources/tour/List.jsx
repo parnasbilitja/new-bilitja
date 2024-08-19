@@ -88,7 +88,7 @@ const router=useRouter()
     const getdest =async () => {
         let data = await axios.get('https://api.hotelobilit.com/api/v2/tours/destinations',{
             headers: {
-                "x-app-key":  '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                "x-app-key":  '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
             }
         })
             .then((response) => {
@@ -116,7 +116,7 @@ const router=useRouter()
 
 
             },{
-                headers: {"x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP',
+                headers: {"x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05',
                     referer:'hamnavaz.com'
                 },
 

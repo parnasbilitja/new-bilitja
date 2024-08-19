@@ -69,7 +69,7 @@ router.push(`تور-${search?.destination}/`)
         req_type:'package'
       }, {
         headers: {
-          "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+          "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
         }
       })
       .then((res) => {

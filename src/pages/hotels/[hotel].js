@@ -38,7 +38,7 @@ const hotel = (props) => {
     //     debugger
     //         await axios.get(`https://api.hotelobilit.com/api/v2/hotels/${props.Pathname.hotel}`,{
     //             headers:{
-    //                 "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP'
+    //                 "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05'
     //             }
     //         })
     //         .then(res => {
@@ -228,7 +228,7 @@ const hotel = (props) => {
 const getData = async (hotelslug) => {
     try {
         const response = await axios.get(`https://api.hotelobilit.com/api/v2/hotels/${hotelslug}`, {
-            headers: {"x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP',
+            headers: {"x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05',
                 referer:'hamnavaz.com'
             },
 

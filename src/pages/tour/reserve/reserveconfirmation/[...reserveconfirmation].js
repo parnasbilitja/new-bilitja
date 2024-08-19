@@ -67,7 +67,7 @@ const ReservationConfirmation = () => {
         let reservedRoomData
         axios.get(`https://api.hotelobilit.com/api/v2/reserves/${refcode}`,{
             headers: {
-                "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
             }
         }).then((res) => {
 
@@ -100,7 +100,7 @@ const ReservationConfirmation = () => {
 
         },{
             headers: {
-                "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
             }
         }).then((res) => {
             getReservedData(router?.query?.ref_code)
@@ -433,7 +433,7 @@ const ReservationConfirmation = () => {
 
                                     axios.post(`https://api.hotelobilit.com/api/v2/reserves/confirm/${router.query.ref_code}`,{},{
                                         headers: {
-                                            "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
+                                            "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
                                         }
                                     }).then(res=>{
                                         ErrSuccess(res.message)

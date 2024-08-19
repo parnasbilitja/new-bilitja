@@ -16,7 +16,7 @@ export const fetchAllHotels = (city,hotel,page) =>{
     dispatch(fetchAllHotelsRequest())
         axios.get(`https://api.hotelobilit.com/api/v2/hotels?city=&page=${page}`, {
             headers: {
-                "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP'
+                "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05'
             }
         })
         .then(response =>{
