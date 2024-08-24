@@ -48,13 +48,22 @@ const Row = (props) => {
           :item.name=='nameFamilyEn'?
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
             <span className={`font-size-13 `}>{props.item.nameFamilyEn?.split(',').map(item=>(<div>{item}</div>))}</span>
+            <span className={`font-size-13 `}>{props.item?.mobileNo}</span>
           </div>
           :item.name=='reqPnr'?
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
             <span className={`font-size-14 fontEn`}>{props.item.reqPnr}</span>
+          </div> :item.name=='flightDate'?
+          <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
+            <span className={`font-size-14 fontEn`}>{props.item.flightDate}</span>
+          </div> :item.name=='airline'?
+          <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
+            <span className={`font-size-14 fontEn`}>{props.item.airline}</span>
+            <br/>
+            <span className={`font-size-14 fontEn`}>{props.item.flightNo}</span>
           </div>
         :
-        
+
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
             <span className="font-size-13">{props.item[item.name]}</span>
           </div>}

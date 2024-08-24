@@ -69,7 +69,7 @@ const FlightSellReport = () => {
       mFlex:35,
     },
     {
-      title: 'نام سرپرست',
+      title: 'نام سرپرست / موبایل',
       name:'nameFamilyEn',
       flex: 12,
       mFlex:50,
@@ -92,24 +92,24 @@ const FlightSellReport = () => {
       flex: 7,
       mFlex:35,
     },
-    {
-      title: 'موبایل',
-      name:'mobileNo',
-      flex: 7,
-      mFlex:35,
-    },
+    // {
+    //   title: 'موبایل',
+    //   name:'mobileNo',
+    //   flex: 7,
+    //   mFlex:35,
+    // },
     {
       title: 'مسیر',
       name:'route',
       flex: 15,
       mFlex:35,
     },
-    {
-      title: 'شماره پرواز',
-      name:'flightNo',
-      flex: 7,
-      mFlex:35,
-    },
+    // {
+    //   title: 'شماره پرواز',
+    //   name:'flightNo',
+    //   flex: 7,
+    //   mFlex:35,
+    // },
     {
       title: 'ایرلاین',
       name:'airline',

@@ -41,6 +41,8 @@ import Flights from "../sources/manager/flights/Flights";
 const ManagePanel = () =>{
   const myRouter = useRouter();
   const [width, setWidth] = useState(0);
+  const [isOpend, setOpend] = useState(true);
+
   const [myid, setmyId] = useState(0);
 
   const handleResize = () => {
@@ -55,7 +57,7 @@ const ManagePanel = () =>{
   }, []);
   function mainRouter(pathName) {
     var path = decodeURI(pathName);
-    // 
+    //
 
     if (path.indexOf("villas/search/") > 0) {
       //console.log(path.substr(21));
@@ -164,13 +166,17 @@ const ManagePanel = () =>{
 
   return (
     <Provider store={store}>
-      <ManagerNav />
-      <div className="panel-manager-main-container">
-        <div className="panel-manager-content-container">
-          {mainRouter(myRouter.asPath)}
-          <MessageBox />
+      <div style={{ display: "flex"}}>
+        <ManagerNav setOpen={(val)=>setOpend(val)} isOpened={isOpend} />
+
+        <div className="panel-manager-main-container" style={{ flex:!isOpend? '0 0 96.5%':'0 0 84.5%',width:'100%'}} >
+          <div className="panel-manager-content-container">
+            {mainRouter(myRouter.asPath)}
+            <MessageBox />
+          </div>
         </div>
       </div>
+
     </Provider>
   );
 }

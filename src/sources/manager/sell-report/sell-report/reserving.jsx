@@ -48,12 +48,12 @@ const fetchedList = async () => {
 };
 
 const FlightSellReport = () => {
-  
+
   const [openInfo, setOpenInfo] = React.useState(false);
   const [reqNo, setReqNo] = React.useState("");
   const [reqPnr, setReqPnr] = React.useState("");
-  
-  
+
+
   const [list,setList] = useState([])
   useEffect(()=>{
     const getList = async()=>{
@@ -88,7 +88,7 @@ const FlightSellReport = () => {
       mFlex:35,
     },
     {
-      title: 'نام سرپرست',
+      title: 'نام سرپرست موبایل',
       name:'nameFamilyEn',
       flex: 12,
       mFlex:50,
@@ -177,9 +177,9 @@ const FlightSellReport = () => {
       flex: 7,
       mFlex:35,
     },
-    
+
   ]
-  
+
   return (
     <section>
       <div>
@@ -195,7 +195,7 @@ const FlightSellReport = () => {
         <Tabs active='Reserving' />
       {list.status=='success'?
       <>
-        <TableCustom list2={list.data} 
+        <TableCustom list2={list.data}
         setOpenInfo={setOpenInfo}
         setReqPnr={setReqPnr}
         setReqNo={setReqNo}

@@ -6,6 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/[CityTour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/[CityTour].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/panel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/ManagerNav.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/ManagerNav.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/Row.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/TableAndSearch/Row.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/DesktopFlightSellReport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/DesktopFlightSellReport.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/reserving.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/manager/sell-report/sell-report/reserving.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/ManagerNav.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/ManagerNav.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +266,9 @@
       <workItem from="1723555224704" duration="5349000" />
       <workItem from="1723645141979" duration="4499000" />
       <workItem from="1723708956707" duration="5095000" />
-      <workItem from="1724050236627" duration="4522000" />
+      <workItem from="1724050236627" duration="10213000" />
+      <workItem from="1724145054436" duration="25000" />
+      <workItem from="1724365960453" duration="14394000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -428,14 +438,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00168" summary="some task and bugs have been resolved">
-      <option name="closed" value="true" />
-      <created>1722866504482</created>
-      <option name="number" value="00168" />
-      <option name="presentableId" value="LOCAL-00168" />
-      <option name="project" value="LOCAL" />
-      <updated>1722866504482</updated>
-    </task>
     <task id="LOCAL-00169" summary="some task and bugs have been resolved">
       <option name="closed" value="true" />
       <created>1722866709703</created>
@@ -596,7 +598,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724054076950</updated>
     </task>
-    <option name="localTasksCounter" value="189" />
+    <task id="LOCAL-00189" summary="some changes">
+      <option name="closed" value="true" />
+      <created>1724076264839</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1724076264840</updated>
+    </task>
+    <option name="localTasksCounter" value="190" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

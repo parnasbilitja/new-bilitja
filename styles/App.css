@@ -73,15 +73,16 @@ span {
     .panel-manager-main-container {
         /* padding-right: 280px; */
         flex: 0 0 80.5%;
-        max-width: 80.5%;
-        margin-right: auto;
+        max-width: 100.5%;
+        /*margin-right: auto;*/
     }
 }
 
 @media (min-width: 1600px) {
     .panel-manager-main-container {
-        flex: 0 0 86.5%;
-        max-width: 86.5%;
+        /*flex: 0 0 86.5%;*/
+        width: 100%;
+        max-width: 100%;
     }
 }
 
