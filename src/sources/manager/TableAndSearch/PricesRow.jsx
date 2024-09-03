@@ -26,19 +26,19 @@ const PricesRow = ({ foroshAll, buyAll, Profit, Transaction,reserving }) => {
             <div className={`detail flex-7 m-flex-35`}>
               <span className="font-size-14"></span>
             </div>
-            <div className={`detail flex-7 m-flex-35`}>
-              <span className="font-size-14"></span>
-            </div>
-            <div className={`detail flex-7 m-flex-35`}>
-              <span className="font-size-14"></span>
-            </div>
+            {/*<div className={`detail flex-7 m-flex-35`}>*/}
+            {/*  <span className="font-size-14"></span>*/}
+            {/*</div>*/}
+            {/*<div className={`detail flex-7 m-flex-35`}>*/}
+            {/*  <span className="font-size-14"></span>*/}
+            {/*</div>*/}
 
-            <div className={`detail flex-7 m-flex-35`}>
-              <span className="font-size-14"></span>
-            </div>
-            <div className={`detail flex-7 m-flex-35`}>
-              <span className="font-size-14"></span>
-            </div>
+            {/*<div className={`detail flex-7 m-flex-35`}>*/}
+            {/*  <span className="font-size-14"></span>*/}
+            {/*</div>*/}
+            {/*<div className={`detail flex-7 m-flex-35`}>*/}
+            {/*  <span className="font-size-14"></span>*/}
+            {/*</div>*/}
             <div className={`detail flex-7 m-flex-${Transaction== true ?'5':"35"}`}>
               <span className="font-size-14"></span>
             </div>
@@ -54,7 +54,7 @@ const PricesRow = ({ foroshAll, buyAll, Profit, Transaction,reserving }) => {
             <div className={`detail flex-8 m-flex-${Transaction== true ?'0':"28"}`}>
               <span className="font-size-14"></span>
             </div>
-            
+
             <div className={`detail flex-7 m-flex-35`}>
               <span className="font-size-14"></span>
             </div>

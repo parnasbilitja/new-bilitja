@@ -29,17 +29,33 @@ const Row = (props) => {
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
             <span className="font-size-13">{moneyFormat(props.item.feeGet-props.item.feeGetKh)}</span>
           </div>
-          :item.name=='feeGetKh'?
-          <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
-            <span className="font-size-13">{moneyFormat(props.item.feeGetKh)}</span>
-          </div>
+          // :item.name=='feeGetKh'?
+          // <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
+          //   <span className="font-size-13">{moneyFormat(props.item.feeGetKh)}</span>
+          // </div>
           :item.name=='feeGet'?
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
+            <span className="font-size-13">{moneyFormat(props.item.feeGetKh)}</span>
+            <br/>
             <span className="font-size-13">{moneyFormat(props.item.feeGet)}</span>
           </div>
           :item.name=='amount'?
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
             <span className="font-size-13">{moneyFormat(props.item.amount)}</span>
+          </div>
+                              :item.name=='kndSysName'?
+          <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
+            <span className="font-size-13">{props.item.kndSysName}</span>
+            <br/>
+            <span className="font-size-13">{props.item.serviceName}</span>
+
+          </div>
+                                  :item.name=='route'?
+          <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
+            <span className="font-size-13">{props.item.route}</span>
+            <br/>
+            <span className="font-size-13">{props.item.pathKind}</span>
+
           </div>
           :item.name=='stat'?
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
@@ -53,6 +69,9 @@ const Row = (props) => {
           :item.name=='reqPnr'?
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
             <span className={`font-size-14 fontEn`}>{props.item.reqPnr}</span>
+            <br/>
+            <span className={`font-size-14 fontEn`}>{props.item.reqNo}</span>
+
           </div> :item.name=='flightDate'?
           <div className={`detail flex-${item.flex} m-flex-${item.mFlex}`}>
             <span className={`font-size-14 fontEn`}>{props.item.flightDate}</span>

@@ -57,17 +57,17 @@ const FlightSellReport = () => {
       mFlex:25,
     },
     {
-      title: 'رفرنس',
+      title: 'رفرنس/درخواست',
       name:'reqPnr',
       flex: 7,
       mFlex:35,
     },
-    {
-      title: 'درخواست',
-      name:'reqNo',
-      flex: 7,
-      mFlex:35,
-    },
+    // {
+    //   title: 'درخواست',
+    //   name:'reqNo',
+    //   flex: 7,
+    //   mFlex:35,
+    // },
     {
       title: 'نام سرپرست / موبایل',
       name:'nameFamilyEn',
@@ -123,41 +123,41 @@ const FlightSellReport = () => {
       mFlex:35,
     },
     {
-      title: 'خرید از',
+      title: 'خرید از / سرویس',
       name:'kndSysName',
       flex: 7,
       mFlex:35,
     },
     {
-      title: 'فروش',
+      title: 'خرید/فروش',
       name:'feeGet',
       flex: 7,
       mFlex:35,
     },
-    {
-      title: 'خرید',
-      name:'feeGetKh',
-      flex: 7,
-      mFlex:35,
-    },
+    // {
+    //   title: 'خرید',
+    //   name:'feeGetKh',
+    //   flex: 7,
+    //   mFlex:35,
+    // },
     {
       title: 'سود',
       name:'Profit',
       flex: 7,
       mFlex:35,
     },
-    {
-      title: 'سرویس',
-      name:'serviceName',
-      flex: 7,
-      mFlex:35,
-    },
-    {
-      title: 'نوع مسیر',
-      name:'pathKind',
-      flex: 7,
-      mFlex:25,
-    },
+    // {
+    //   title: 'سرویس',
+    //   name:'serviceName',
+    //   flex: 7,
+    //   mFlex:35,
+    // },
+    // {
+    //   title: 'نوع مسیر',
+    //   name:'pathKind',
+    //   flex: 7,
+    //   mFlex:25,
+    // },
 
   ]
   return (
