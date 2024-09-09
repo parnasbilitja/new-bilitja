@@ -10,32 +10,42 @@
     width: auto;
     justify-content: space-between;
 
-  .pagenumber{
-    width:30px ;
-    height: 30px;
-    margin: 0 10px;
-    //background-color: #e20000;
-    border: 1px solid #e20000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #e20000;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-.active{
-  width:30px ;
-  height: 30px;
-  margin: 0 10px;
-  background-color: #e20000 !important;
-  border: 1px solid #e20000 !important;
-  color: white !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  cursor: pointer;
-}
+    .pagenumber{
+      width:30px ;
+      height: 30px;
+      margin: 0 10px;
+      //background-color: #137cb6;
+      border: 1px solid #e20000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #e20000;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .active{
+      width:30px ;
+      height: 30px;
+      margin: 0 10px;
+      background-color: #e20000 !important;
+      border: 1px solid #e20000 !important;
+      color: white !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      cursor: pointer;
+    }
   }
 }
 
+@media only screen and (max-width: 868px) {
+  .paginate-container{
+    .paginate{
+
+      flex-wrap: wrap;
+      justify-content: start;
+      row-gap: 10px;
+    }
+  }
+}

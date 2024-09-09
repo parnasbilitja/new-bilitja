@@ -153,9 +153,18 @@ const router=useRouter()
         getdest()
     },[])
 
+
     useEffect(()=>{
-        getTour(city,sortStat)
-    },[city,sortStat])
+
+        if(props.isHotel){
+            getTour(props.code,sortStat)
+        }else{
+
+
+            getTour(city,sortStat)
+        }
+    },[city,sortStat,props.isHotel])
+
     const sortedDptdate =(data)=>{
 
       let newdata= data.sort((a, b) => {
@@ -228,7 +237,7 @@ const router=useRouter()
                         </div>
 
                         <div style={{display: 'flex', justifyContent: 'flex-end', columnGap: '12px'}}>
-                            <div className="c-input col-xl-3 col-lg-3 col-sm-3 col-12 position-relative " style={{
+                            {!props.isHotel && <div className="c-input col-xl-3 col-lg-3 col-sm-3 col-12 position-relative " style={{
                                 width: '180px',
                                 height: "50px",
                                 display: 'flex',
@@ -248,7 +257,7 @@ const router=useRouter()
                                     </option>)}
 
                                 </select>
-                            </div>
+                            </div>}
                             <div className='isDesktop'>
 
                                 <div className="c-input col-xl-3 col-lg-3 col-sm-3 col-12 position-relative " style={{

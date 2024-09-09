@@ -192,10 +192,18 @@ const hotel = (props) => {
                     </div>
                 </div>
 
-                {props.hotel.tours?.length > 0 &&
+                {/*{props.hotel.tours?.length > 0 &&*/}
+                {/*    <div className="row justify-content-center">*/}
+                {/*        <div className='col-10'>*/}
+                {/*            <List name='hotel' tourData={props.hotel.tours}/>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*}*/}
+
+                {props.hotel &&
                     <div className="row justify-content-center">
                         <div className='col-10'>
-                            <List name='hotel' tourData={props.hotel.tours}/>
+                            <List name='hotel' code={props.hotel?.city.code} isHotel={true} shimmerNumber={15}/>
                         </div>
                     </div>
                 }
