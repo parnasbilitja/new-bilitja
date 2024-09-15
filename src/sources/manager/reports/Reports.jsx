@@ -16,7 +16,7 @@ const Reports = () => {
     try {
       axios
         .get(
-          `https://tpa.ravis24.ir/api/Auth/reports/dfe64807-341f-44f8-9e6a-34c8cc8b3504/1a157116-a01a-4027-ab10-74098ac63815`
+          `https://api.bilitja.com/api/Auth/reports/dfe64807-341f-44f8-9e6a-34c8cc8b3504/1a157116-a01a-4027-ab10-74098ac63815`
         )
         .then((response) => {
           console.log("response", response);
@@ -31,7 +31,7 @@ const Reports = () => {
     try {
       axios
         .get(
-          `https://tpa.ravis24.ir/api/Auth/reports/dfe64807-341f-44f8-9e6a-34c8cc8b3504/1a157116-a01a-4027-ab10-74098ac63815`
+          `https://api.bilitja.com/api/Auth/reports/dfe64807-341f-44f8-9e6a-34c8cc8b3504/1a157116-a01a-4027-ab10-74098ac63815`
         )
         .then((response) => {
           console.log("response", response);

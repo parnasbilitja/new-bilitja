@@ -17,7 +17,7 @@ const PaymentReceiptPage = (props) => {
   const handlePrint = (reqNo, reqPnr) => {
     
     setBtnDisabel(true);
-    axios.get(`https://tpa.ravis24.ir/Eticket/Ticket?reqNo=${reqNo}&reqPnr=${reqPnr}`)
+    axios.get(`https://api.bilitja.com/Eticket/Ticket?reqNo=${reqNo}&reqPnr=${reqPnr}`)
       .then((blob) => {
         setBtnDisabel(false);
         var file = window.URL.createObjectURL(blob);

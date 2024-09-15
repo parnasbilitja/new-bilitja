@@ -259,7 +259,7 @@ class villaReceipt extends React.Component {
                                   "-"
                                 );
                                 window.open(
-                                  `https://tpa.ravis24.ir/ApplicationBank/CallBank?reqNo=${properties[0]}&reqPnr=${properties[1]}`
+                                  `https://api.bilitja.com/ApplicationBank/CallBank?reqNo=${properties[0]}&reqPnr=${properties[1]}`
                                 );
                               } else {
                                 this.props.messageBoxModify({
