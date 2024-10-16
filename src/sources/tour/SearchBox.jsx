@@ -56,8 +56,28 @@ debugger
             }
         })
             .then((response) => {
-                setCities(response.data.data[0].destinations)
-                ,console.log(response.data)
+
+                let allDest=[]
+                response.data.data.map(dest=>{
+                    allDest.push(...dest.destinations)
+                })
+
+                let uniqueData = Array.from(
+                    allDest.reduce((map, item) => {
+                        if (!map.has(item.name)) {
+                            map.set(item.name, item);
+                        } else {
+                            // If you want to keep the item with the largest 'dates' array
+                            let existingItem = map.get(item.name);
+                            if (item.dates.length > existingItem.dates.length) {
+                                map.set(item.name, item);
+                            }
+                        }
+                        return map;
+                    }, new Map()).values()
+                );
+                setCities(uniqueData)
+                console.log('newdest',uniqueData)
             })
         return data
     }

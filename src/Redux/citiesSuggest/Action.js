@@ -16,7 +16,7 @@ export const fetchCity = () =>{
         axios.post('https://api.hamnavaz.com/api/v1/city/getCities',{hasTour:false})
         .then(response =>{
             // debugger
-            const tours = response.data.data.filter(t=>t?.name==='استانبول' || t?.name==='آنتالیا' || t?.name==='مارماریس' || t?.name==='آلانیا' )
+            const tours = response.data.data.filter(t=>t?.name==='استانبول' || t?.name==='آنتالیا' || t?.name==='مارماریس' || t?.name==='آلانیا' || t?.name==='دبی')
 
             dispatch(fetchCitySucces(tours))
         })

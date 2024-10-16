@@ -171,8 +171,7 @@ router.push(`تور-${search?.destination}/`)
   useEffect(() => {
     console.log('pouya',cities)
   }, [cities]);
-  let tourCities
-=[{name:'استانبول' , code:'IST',slug:'istanbul',image:'../../../../Images/istanbul.jpg'},{name:'آنتالیا' , code:'AYT',slug:'antalya',image:'../../../../Images/antalya.jpg'},{name:'آلانیا' , code:'GZP',slug:'alanya',image:'../../../../Images/alanya.jpg'},]
+  let tourCities =[{name:'استانبول' , code:'IST',slug:'istanbul',image:'../../../../Images/istanbul.jpg'},{name:'آنتالیا' , code:'AYT',slug:'antalya',image:'../../../../Images/antalya.jpg'},{name:'آلانیا' , code:'GZP',slug:'alanya',image:'../../../../Images/alanya.jpg'}, {name:'دبی' , code:'"DXB"',slug:'dubai',image:'../../../../Images/dubai.jpg'},]
   return (
     <div className={""}>
 
