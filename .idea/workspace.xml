@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="flight api has been changed" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some changes for bug">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -271,7 +273,8 @@
       <workItem from="1726467460775" duration="1236000" />
       <workItem from="1729064440042" duration="864000" />
       <workItem from="1729067058642" duration="619000" />
-      <workItem from="1730113533483" duration="487000" />
+      <workItem from="1730113533483" duration="885000" />
+      <workItem from="1730114427996" duration="788000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -441,30 +444,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00177" summary="new bilitja">
-      <option name="closed" value="true" />
-      <created>1723009992016</created>
-      <option name="number" value="00177" />
-      <option name="presentableId" value="LOCAL-00177" />
-      <option name="project" value="LOCAL" />
-      <updated>1723009992016</updated>
-    </task>
-    <task id="LOCAL-00178" summary="new bilitja">
-      <option name="closed" value="true" />
-      <created>1723298126446</created>
-      <option name="number" value="00178" />
-      <option name="presentableId" value="LOCAL-00178" />
-      <option name="project" value="LOCAL" />
-      <updated>1723298126447</updated>
-    </task>
-    <task id="LOCAL-00179" summary="new bilitja">
-      <option name="closed" value="true" />
-      <created>1723312861886</created>
-      <option name="number" value="00179" />
-      <option name="presentableId" value="LOCAL-00179" />
-      <option name="project" value="LOCAL" />
-      <updated>1723312861886</updated>
-    </task>
     <task id="LOCAL-00180" summary="new bilitja">
       <option name="closed" value="true" />
       <created>1723354824954</created>
@@ -609,7 +588,31 @@
       <option name="project" value="LOCAL" />
       <updated>1730114016986</updated>
     </task>
-    <option name="localTasksCounter" value="198" />
+    <task id="LOCAL-00198" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1730114232612</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1730114232612</updated>
+    </task>
+    <task id="LOCAL-00199" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1730114432902</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1730114432902</updated>
+    </task>
+    <task id="LOCAL-00200" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1730115214428</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1730115214428</updated>
+    </task>
+    <option name="localTasksCounter" value="201" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +632,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="level back button has been deployed on expiredPass/birth_day =&gt; Reservation.jsx + rules style has been changed on Reservation.jsx" />
     <MESSAGE value="some logic and stylish changes in filter available hotel page" />
     <MESSAGE value="some styles changes" />
     <MESSAGE value="tiny logical changes" />
@@ -654,7 +656,8 @@
     <MESSAGE value="new bilitja" />
     <MESSAGE value="some changes" />
     <MESSAGE value="flight api has been changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="flight api has been changed" />
+    <MESSAGE value="some changes for bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes for bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

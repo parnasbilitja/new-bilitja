@@ -111,6 +111,7 @@ const CityTour = (props) => {
                             }
 
                             }
+                            
                         />
                         <p style={{whiteSpace: 'nowrap'}}>دور ترین</p>
                     </div>
