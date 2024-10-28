@@ -84,15 +84,15 @@
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\sources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/Images" />
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\pages" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-2e7d6887c066-JavaScript-WS-241.15989.47" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
       </set>
     </attachedChunks>
   </component>
@@ -271,6 +271,8 @@
       <workItem from="1726292214368" duration="598000" />
       <workItem from="1726390963802" duration="4591000" />
       <workItem from="1726467460775" duration="1236000" />
+      <workItem from="1729064440042" duration="864000" />
+      <workItem from="1729067058642" duration="619000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -440,22 +442,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00173" summary="new bilitja">
-      <option name="closed" value="true" />
-      <created>1722952813466</created>
-      <option name="number" value="00173" />
-      <option name="presentableId" value="LOCAL-00173" />
-      <option name="project" value="LOCAL" />
-      <updated>1722952813466</updated>
-    </task>
-    <task id="LOCAL-00174" summary="new bilitja">
-      <option name="closed" value="true" />
-      <created>1723008187273</created>
-      <option name="number" value="00174" />
-      <option name="presentableId" value="LOCAL-00174" />
-      <option name="project" value="LOCAL" />
-      <updated>1723008187274</updated>
-    </task>
     <task id="LOCAL-00175" summary="new bilitja">
       <option name="closed" value="true" />
       <created>1723008788766</created>
@@ -608,7 +594,23 @@
       <option name="project" value="LOCAL" />
       <updated>1726391026568</updated>
     </task>
-    <option name="localTasksCounter" value="194" />
+    <task id="LOCAL-00194" summary="flight api has been changed">
+      <option name="closed" value="true" />
+      <created>1729064544301</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
+      <option name="project" value="LOCAL" />
+      <updated>1729064544301</updated>
+    </task>
+    <task id="LOCAL-00195" summary="flight api has been changed">
+      <option name="closed" value="true" />
+      <created>1729065293260</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1729065293260</updated>
+    </task>
+    <option name="localTasksCounter" value="196" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
