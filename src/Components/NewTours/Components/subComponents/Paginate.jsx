@@ -54,7 +54,7 @@
 
 import React, {useEffect, useState} from 'react';
 import styles from '../../../../../styles/newTour/components/subComponent/Paginate.module.scss'
-import {useRouter} from "next/router";
+// import {useRouter} from "next/router";
 const Paginate = ({from, to,currentPage, apiCall,param,scrollToTop}) => {
     const [el, setEl] = useState([])
     const[selectedpage,setSelectedPage]=useState(1)
@@ -67,6 +67,7 @@ const Paginate = ({from, to,currentPage, apiCall,param,scrollToTop}) => {
     const [middleArrExtra,setMiddleArrExtra]=useState([])
 
 
+    
     const paginateElGen = (to) => {
         let arr = []
         for (let i = 1; i <= to; i++) {
@@ -162,6 +163,8 @@ const Paginate = ({from, to,currentPage, apiCall,param,scrollToTop}) => {
                 }
             </div>
         </div>
+
+
 
     );
 };
