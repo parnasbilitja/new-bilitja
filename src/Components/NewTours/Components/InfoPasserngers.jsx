@@ -84,10 +84,10 @@ const InfoPasserngers = (props) => {
     return roomPrcGen(...foundRoom, props.flightDet);
   };
 
-  useEffect(() => {
-    // debugger
-
-  }, [props.room]);
+  // useEffect(() => {
+  //   // debugger
+  //
+  // }, [props.room]);
 
   return (
     <>
