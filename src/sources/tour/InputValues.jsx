@@ -21,7 +21,7 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
 
     }
     useEffect(()=>{
-        
+
         setHide(false)
     },[months,search])
 
@@ -42,9 +42,7 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
         window.addEventListener("resize", handleWindowResize);
     }, []);
 
-    useEffect(()=>{
-        console.log(months)
-    },[months])
+
     return (
         <>
             {!hide ? (widthMobi >= 868 ?
