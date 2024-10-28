@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../../../styles/newTour/components/InfoPassengers.module.scss";
 import {
-  chdPrcGen,
-  extBedPrcGen, numberRounder,
+  // chdPrcGen,
+  // extBedPrcGen, numberRounder,
   numberWithCommas,
-  roomPrcGen,
+  // roomPrcGen,
 } from "../../../Utils/newTour";
 
 import PassengerForm from "./subComponents/PassengerForm.component";
@@ -41,22 +41,22 @@ const InfoPasserngers = (props) => {
     let totExtPrc = extPrc * (typeof extCount === "number" ? extCount : 0);
     return totAdlPrc + totChdPrc + totInfPrc + totExtPrc;
   };
-
-  const PrcRoomGen=(flight,services)=>{
-    // debugger
-
-    let flifgtsPrc=flight?.departure?.adl_price + flight?.return?.adl_price
-
-    let totalPrc=0
-    totalPrc+=flifgtsPrc
-
-    services.map(service=>{
-        totalPrc+=service?.rate
-    })
-
-    return totalPrc
-
-}
+//
+//   const PrcRoomGen=(flight,services)=>{
+//     // debugger
+//
+//     let flifgtsPrc=flight?.departure?.adl_price + flight?.return?.adl_price
+//
+//     let totalPrc=0
+//     totalPrc+=flifgtsPrc
+//
+//     services.map(service=>{
+//         totalPrc+=service?.rate
+//     })
+//
+//     return totalPrc
+//
+// }
 
 
   const prcTypeBase = (type) => {
