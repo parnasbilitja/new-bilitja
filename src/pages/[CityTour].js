@@ -3,20 +3,18 @@ import React, {useEffect, useState} from 'react';
 import moment from 'moment-jalaali'
 import NavHandler from '../Components/share/NavHandler';
 import Footer from '../sources/component/Footer.component';
-import TourData from '../sources/tour/TourData';
 import TourList from '../sources/tour/TourList';
 import Head from 'next/head';
-import {jalaliMonthName, jalaliToMiladiConvertor, MiladiToJalaliConvertor} from "../Utils/newTour";
+import {jalaliMonthName,  MiladiToJalaliConvertor} from "../Utils/newTour";
 import styles from "../../styles/AvailableHotels.module.scss";
 import HotelsSideBarSearch from "../Components/NewTours/Components/subComponents/HotelsSideBarSearch.component";
 import NewLoader from "../Components/NewTours/Components/subComponents/NewLoader";
 import CalendarComponent from "../Components/NewTours/Components/calendar/Calendar.component";
 import PopUpWide from "../Components/NewTours/Components/subComponents/PopUpWide.component";
 import globals from "../sources/Global";
-import {AnimatePresence, motion} from "framer-motion";
-// import {Loader} from "@/Utils/Loader";
+import { motion} from "framer-motion";
 import Loader1 from "../Components/NewTours/Components/subComponents/Loader1";
-import router, {useRouter} from "next/router";
+import {useRouter} from "next/router";
 
 const CityTour = (props) => {
     const[orgs,setOrgs]=useState([])
@@ -111,7 +109,7 @@ const CityTour = (props) => {
                             }
 
                             }
-                            
+
                         />
                         <p style={{whiteSpace: 'nowrap'}}>دور ترین</p>
                     </div>
