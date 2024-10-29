@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Base from "../Components/home/Base";
 import Ticket from "../Components/ticket/Ticket";
 import Account from "../sources/account/Account.component";
@@ -9,6 +9,10 @@ import {withRouter} from "next/router";
 import {connect} from "react-redux";
 import NavHandler from "../Components/share/NavHandler";
 const App = (props) =>  {
+
+    useEffect(()=>{
+        console.log('node v',process?.version)
+    },[process])
     return (
       <div className="bodyVar">
           <NavHandler/>
