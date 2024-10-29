@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some changes for bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +276,8 @@
       <workItem from="1729064440042" duration="864000" />
       <workItem from="1729067058642" duration="619000" />
       <workItem from="1730113533483" duration="885000" />
-      <workItem from="1730114427996" duration="788000" />
+      <workItem from="1730114427996" duration="4732000" />
+      <workItem from="1730180423782" duration="310000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -444,22 +447,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00180" summary="new bilitja">
-      <option name="closed" value="true" />
-      <created>1723354824954</created>
-      <option name="number" value="00180" />
-      <option name="presentableId" value="LOCAL-00180" />
-      <option name="project" value="LOCAL" />
-      <updated>1723354824954</updated>
-    </task>
-    <task id="LOCAL-00181" summary="some changes">
-      <option name="closed" value="true" />
-      <created>1723373702398</created>
-      <option name="number" value="00181" />
-      <option name="presentableId" value="LOCAL-00181" />
-      <option name="project" value="LOCAL" />
-      <updated>1723373702398</updated>
-    </task>
     <task id="LOCAL-00182" summary="some changes">
       <option name="closed" value="true" />
       <created>1723377823179</created>
@@ -612,7 +599,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730115214428</updated>
     </task>
-    <option name="localTasksCounter" value="201" />
+    <task id="LOCAL-00201" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1730116066904</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
+      <option name="project" value="LOCAL" />
+      <updated>1730116066905</updated>
+    </task>
+    <task id="LOCAL-00202" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1730118096787</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
+      <option name="project" value="LOCAL" />
+      <updated>1730118096787</updated>
+    </task>
+    <option name="localTasksCounter" value="203" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
