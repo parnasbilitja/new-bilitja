@@ -198,7 +198,7 @@ const tour = (props) => {
             <NotifAlert/>
             <NavHandler mobileFixed={true}/>
             <Head>
-                <title> {data && `${data.title} | `} همنواز</title>
+                <title> {data && `${data.title} | `} بلیطجا</title>
             </Head>
             <div ref={ref}></div>
             <div className={styles['tours']}>

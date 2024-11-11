@@ -312,7 +312,7 @@ const CityTour = (props) => {
                 // (data1 && notfound === false) &&
                 <>
                     <Head>
-                        <title> لیست‌ تور‌های شهر {props.cityInfo.name} | آژانس مسافرتی همنواز
+                        <title> لیست‌ تور‌های شهر {props.cityInfo.name} | آژانس مسافرتی بلیطجا
                         </title>
                         <meta name="description"
                               content={`تور‌های ${props.cityInfo.name} ماه ${jalaliMonthName(moment().locale('fa').format('jMMMM'))} با ایرلاین‌های معتبر و هتل دلخواه شما. شروع قیمت‌ تور‌های ${props.cityInfo.name} از ${props.tourMinPrice + ' ' + 'تومان'}. رزرو تور از سایت مسافرتی بلیطجا.`}/>
@@ -598,7 +598,7 @@ const CityTour = (props) => {
                                                     </li>
                                                     <li style={{fontSize: '16px', textAlign: 'justify'}}>با مشاوره‌ی
                                                         متخصصین
-                                                        همنواز
+                                                        بلیطجا
                                                     </li>
                                                 </ul>
                                                 <div style={{

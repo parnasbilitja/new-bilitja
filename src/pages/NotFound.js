@@ -9,7 +9,7 @@ const NotFound = (props) => {
                 <img
                     width=""
                     height=""
-                    alt="همنواز-لوگو"
+                    alt="بلیطجا-لوگو"
                     src="../../../Images/bilitja-logo.webp"
                 />
 

@@ -178,7 +178,7 @@ const ToursBase = (props) => {
       <div className={""}>
 
         <Head>
-          <title>همنواز | لیست تورها</title>
+          <title>بلیطجا | لیست تورها</title>
           {/*<meta name="google-site-verification" content="google-site-verification=z-i-kKLHqUdTjsvja701WQg4UWXrnyoIcqHXhygx0do" />*/}
         </Head>
         <NavHandler />
