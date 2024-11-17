@@ -597,7 +597,7 @@ const [isReservePhone,setIsreservePhone]=useState(false);
                                             name="reserver_phone"
                                             maxLength="11"
                                             inputMode='numeric'
-                                            disabled={reserverData?.reserver_phone?.length>0?true:false}
+                                            // disabled={reserverData?.reserver_phone?.length>0?true:false}
                                         />
                                     </div>
                                     {err.errors?.reserver_phone && reserverData.reserver_phone.length === 0 ? (
