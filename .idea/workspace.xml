@@ -289,6 +289,7 @@
       <workItem from="1731906309925" duration="1216000" />
       <workItem from="1731932110395" duration="1542000" />
       <workItem from="1731996005810" duration="1290000" />
+      <workItem from="1732168336392" duration="636000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -458,14 +459,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00186" summary="some changes">
-      <option name="closed" value="true" />
-      <created>1723980760866</created>
-      <option name="number" value="00186" />
-      <option name="presentableId" value="LOCAL-00186" />
-      <option name="project" value="LOCAL" />
-      <updated>1723980760866</updated>
-    </task>
     <task id="LOCAL-00187" summary="some changes">
       <option name="closed" value="true" />
       <created>1724052981403</created>
@@ -626,7 +619,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731820525534</updated>
     </task>
-    <option name="localTasksCounter" value="207" />
+    <task id="LOCAL-00207" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1732168573847</created>
+      <option name="number" value="00207" />
+      <option name="presentableId" value="LOCAL-00207" />
+      <option name="project" value="LOCAL" />
+      <updated>1732168573847</updated>
+    </task>
+    <option name="localTasksCounter" value="208" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
