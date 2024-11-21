@@ -64,7 +64,7 @@ const BirthdayCalenderMiladi = (props) => {
             revArrayOfDay.push(undefined);
         }
         let data = [];
-        // 
+        //
         if (
             parseInt(state.year) == parseInt(today.split("/")[0]) &&
             parseInt(state.month) == parseInt(today.split("/")[1])
@@ -179,19 +179,19 @@ const BirthdayCalenderMiladi = (props) => {
         },
     ];
 
-    const childTypeValidate=(chdtype)=>{
-       let checkin=props.roomInfo.checkin
-        if(chdtype.includes('withbed')){
-            console.log('hi')
-        }else{
-            console.log('bye')
-        }
-
-    }
-
-    useEffect(()=>{
-        console.log('type',childTypeValidate(props.roomInfo.type))
-    },[props.roomInfo.type])
+    // const childTypeValidate=(chdtype)=>{
+    //    let checkin=props.roomInfo.checkin
+    //     if(chdtype.includes('withbed')){
+    //         console.log('hi')
+    //     }else{
+    //         console.log('bye')
+    //     }
+    //
+    // }
+    //
+    // useEffect(()=>{
+    //     console.log('type',childTypeValidate(props.roomInfo.type))
+    // },[props.roomInfo.type])
     return (
         <div className={styles["birthday-calendar"]}>
             {state.stage == 1 ? (
@@ -321,7 +321,7 @@ const BirthdayCalenderMiladi = (props) => {
                                                 "jYYYY/jMM/jDD"
                                             );
                                             const date = m.format("jYYYY/jMM/jDD");
-                                            // 
+                                            //
                                             // props.setBirthday(date);
                                             props.closePopUpCalendar(false);
                                             setState({ ...state, stage: 1 });
