@@ -20,7 +20,7 @@ const MapComponent = (props) => {
                     <Popup>
                         <strong>
 
-                        شرکت خدمات مسافرت هوایی و جهانگردی بلیطجا
+                        سایت بلیطجا
                         </strong>
                     </Popup>
                 </Marker>
