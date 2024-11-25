@@ -6,6 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some changes for bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalenderMiladi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/calendar/BirthdayCalenderMiladi.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/france.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/france.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/istanbul-norouz.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/istanbul-norouz.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pages/[tourname].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages/[tourname].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/turkey-automn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/turkey-automn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/turkey.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/turkey.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,7 +298,8 @@
       <workItem from="1731906309925" duration="1216000" />
       <workItem from="1731932110395" duration="1542000" />
       <workItem from="1731996005810" duration="1290000" />
-      <workItem from="1732168336392" duration="636000" />
+      <workItem from="1732168336392" duration="837000" />
+      <workItem from="1732527727879" duration="3120000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -459,14 +469,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00187" summary="some changes">
-      <option name="closed" value="true" />
-      <created>1724052981403</created>
-      <option name="number" value="00187" />
-      <option name="presentableId" value="LOCAL-00187" />
-      <option name="project" value="LOCAL" />
-      <updated>1724052981403</updated>
-    </task>
     <task id="LOCAL-00188" summary="some changes">
       <option name="closed" value="true" />
       <created>1724054076950</created>
@@ -627,7 +629,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732168573847</updated>
     </task>
-    <option name="localTasksCounter" value="208" />
+    <task id="LOCAL-00208" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1732168992947</created>
+      <option name="number" value="00208" />
+      <option name="presentableId" value="LOCAL-00208" />
+      <option name="project" value="LOCAL" />
+      <updated>1732168992947</updated>
+    </task>
+    <option name="localTasksCounter" value="209" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -435,7 +435,7 @@ const ToursBase = (props) => {
             <List ref={myRef} city={state.city} hideShowMore={true} shimmerNumber={5}/>
           </div>
           <HotelsSuggest/>
-          <Posts/>
+          {/*<Posts/>*/}
         </div>
         <Footer/>
       </div>

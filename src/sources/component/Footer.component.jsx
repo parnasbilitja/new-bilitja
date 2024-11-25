@@ -30,59 +30,59 @@ var body =document.getElementsByTagName("body")
 
   let today = new Date().toLocaleDateString("fa-IR-u-nu-latn");
   return (
-    <div>
-      <div className={styles["newsletter"]}>
-        <div className={styles["borderbottom-container"]}>
-          <div className={styles["circle1"]} style={{cursor:'pointer !important'}} onClick={() => scrollToTop()}>
-            <svg
-              viewBox="0 0 96 96"
-              xmlns="http://www.w3.org/2000/svg"
-              height="25px"
-              width="25px"
-            >
-              <title />
-              <path d="M82.6074,62.1072,52.6057,26.1052a6.2028,6.2028,0,0,0-9.2114,0L13.3926,62.1072a5.999,5.999,0,1,0,9.2114,7.6879L48,39.3246,73.396,69.7951a5.999,5.999,0,1,0,9.2114-7.6879Z" />
-            </svg>
-          </div>
-        </div>
-        <div
-          className="d-flex w-100 justify-content-center flex-column align-items-center"
-          style={{ marginTop: "3rem" }}
-        >
-          <p
-            style={{
-              fontSize: "1.6rem",
-              color: "#e20000",
-              fontWeight: 600,
-              marginBottom: "4px",
-            }}
-          >
-            عضویت در خبرنامه بلیطجا
-          </p>
-          <p style={{ fontSize: "1rem", color: "black" }}>
-            از آفر ها و تور های لحظه آخری بلیطجا با خبر شوید !
-          </p>
-        </div>
-        <div className="container-fluid">
-          <div className="row justify-content-center">
-            <form className="search w-20  col-lg-3 col-sm-12  mb-2">
-              <div className="inp-form">
-                <input type="text" placeholder="شماره موبایل *" />
-              </div>
-            </form>
-            <form className="search w-20 col-lg-3 col-sm-12 col-6 ">
-              <div className="inp-form">
-                <input type="text" placeholder="ایمیل (اختیاری)" />
-              </div>
-            </form>
-          </div>
-        </div>
-        <div
-          className={`d-flex justify-content-center mt-3 ${styles["btn-con"]}`}
-        >
-          <button>عضویت در خبرنامه</button>
-        </div>
-      </div>
+    <div style={{marginTop:'15px'}}>
+      {/*<div className={styles["newsletter"]}>*/}
+      {/*  <div className={styles["borderbottom-container"]}>*/}
+      {/*    <div className={styles["circle1"]} style={{cursor:'pointer !important'}} onClick={() => scrollToTop()}>*/}
+      {/*      <svg*/}
+      {/*        viewBox="0 0 96 96"*/}
+      {/*        xmlns="http://www.w3.org/2000/svg"*/}
+      {/*        height="25px"*/}
+      {/*        width="25px"*/}
+      {/*      >*/}
+      {/*        <title />*/}
+      {/*        <path d="M82.6074,62.1072,52.6057,26.1052a6.2028,6.2028,0,0,0-9.2114,0L13.3926,62.1072a5.999,5.999,0,1,0,9.2114,7.6879L48,39.3246,73.396,69.7951a5.999,5.999,0,1,0,9.2114-7.6879Z" />*/}
+      {/*      </svg>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*  <div*/}
+      {/*    className="d-flex w-100 justify-content-center flex-column align-items-center"*/}
+      {/*    style={{ marginTop: "3rem" }}*/}
+      {/*  >*/}
+      {/*    <p*/}
+      {/*      style={{*/}
+      {/*        fontSize: "1.6rem",*/}
+      {/*        color: "#e20000",*/}
+      {/*        fontWeight: 600,*/}
+      {/*        marginBottom: "4px",*/}
+      {/*      }}*/}
+      {/*    >*/}
+      {/*      عضویت در خبرنامه بلیطجا*/}
+      {/*    </p>*/}
+      {/*    <p style={{ fontSize: "1rem", color: "black" }}>*/}
+      {/*      از آفر ها و تور های لحظه آخری بلیطجا با خبر شوید !*/}
+      {/*    </p>*/}
+      {/*  </div>*/}
+      {/*  <div className="container-fluid">*/}
+      {/*    <div className="row justify-content-center">*/}
+      {/*      <form className="search w-20  col-lg-3 col-sm-12  mb-2">*/}
+      {/*        <div className="inp-form">*/}
+      {/*          <input type="text" placeholder="شماره موبایل *" />*/}
+      {/*        </div>*/}
+      {/*      </form>*/}
+      {/*      <form className="search w-20 col-lg-3 col-sm-12 col-6 ">*/}
+      {/*        <div className="inp-form">*/}
+      {/*          <input type="text" placeholder="ایمیل (اختیاری)" />*/}
+      {/*        </div>*/}
+      {/*      </form>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*  <div*/}
+      {/*    className={`d-flex justify-content-center mt-3 ${styles["btn-con"]}`}*/}
+      {/*  >*/}
+      {/*    <button>عضویت در خبرنامه</button>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
       <div className={styles["footer"]}>
         <div className="container-fluid">
           <div className="row parent-footer-top justify-content-between">
