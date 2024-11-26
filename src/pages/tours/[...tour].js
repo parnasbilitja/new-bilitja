@@ -63,6 +63,7 @@ const tour = (props) => {
     const [isLoading, setIsLoading] = useState(true)
 
     const [isReserve, setIsReserve] = useState(false)
+    const [filterStats,setFilterStats] = useState('2')
     const [packData, setPackData] = useState({
         number: '',
         count: '1',
@@ -181,12 +182,26 @@ const tour = (props) => {
 
     const sortByStars = (hotellist) => {
         let filteredHotel = []
-        for (let i = 1; i < 7; i++) {
-            let filterdHotelBystar = hotellist.filter(hotel => +hotel.hotel_stars === i)
-            filteredHotel.push(...filterdHotelBystar.sort((a, b) => roomFinder1(a.rooms, 148)[0]?.price - roomFinder1(b.rooms, 148)[0]?.price))
+        if(filterStats==='0'){
+            // for (let i = 1; i < 7; i++) {
+                let filterdHotelBystar = hotellist.sort((a,b)=>(+a.hotel_stars)-(+b.hotel_stars))
+                filteredHotel.push(...filterdHotelBystar)
+            // }
+        }else if(filterStats==='1'){
+            // for (let i = 1; i < 7; i++) {
+            //     let filterdHotelBystar = hotellist.filter(hotel => +hotel.hotel_stars === i)
+                filteredHotel.push(...hotellist.sort((a, b) => roomFinder1(a.rooms, 148)[0]?.price - roomFinder1(b.rooms, 148)[0]?.price))
+            // }
+        }else{
+            for (let i = 1; i < 7; i++) {
+                let filterdHotelBystar = hotellist.filter(hotel => +hotel.hotel_stars === i)
+                filteredHotel.push(...filterdHotelBystar.sort((a, b) => roomFinder1(a.rooms, 148)[0]?.price - roomFinder1(b.rooms, 148)[0]?.price))
+            }
         }
+
         return filteredHotel
     }
+
 
 
     return (
@@ -306,7 +321,11 @@ const tour = (props) => {
                                                         <h5 className="font-bold mb-0 mx-2">{`هتل های ${data && data.title}`}</h5>
                                                     </div>
 
-                                                    <div style={{display: 'flex', columnGap: '10px', alignItems: 'center'}}>
+                                                    <div style={{
+                                                        display: 'flex',
+                                                        columnGap: '10px',
+                                                        alignItems: 'center'
+                                                    }}>
                                                         <div className={'isDesktop'}>
                                                             <div style={{
                                                                 border: "1px solid #cecece",
@@ -340,6 +359,32 @@ const tour = (props) => {
                                                             </div>
 
                                                         </div>
+                                                        <div
+                                                            className="c-input col-xl-3 col-lg-3 col-sm-3 col-12 position-relative "
+                                                            style={{
+                                                                width: '180px',
+                                                                height: "50px",
+                                                                display: 'flex',
+                                                                justifyContent: 'center',
+                                                                alignItems: 'center',
+                                                                border: '1px solid #cecece',
+                                                                borderRadius: '10px'
+                                                            }}>
+                                                            <select name="" style={{
+                                                                outline: 'none',
+                                                                border: 'none',
+                                                                width: '90%'
+                                                            }} id=""
+                                                                    onChange={(e) => setFilterStats(e.target.value)}
+                                                                    value={filterStats}
+                                                                    >
+                                                                <option value="" disabled={true}>فیلتر براساس....
+                                                                </option>
+                                                                <option value="0">ستاره</option>
+                                                                <option value="1"> قیمت</option>
+                                                                <option value="2"> هردو</option>
+                                                            </select>
+                                                        </div>
 
 
                                                         <div>
@@ -359,7 +404,8 @@ const tour = (props) => {
                                                                 <>
                                                                     {isdownload === false ?
                                                                         <>
-                                                                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                                                            <svg height="24" viewBox="0 0 24 24"
+                                                                                 width="24"
                                                                                  xmlns="http://www.w3.org/2000/svg"
                                                                                  fill='#fff'>
                                                                                 <path

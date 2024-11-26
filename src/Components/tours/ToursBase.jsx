@@ -76,6 +76,7 @@ const ToursBase = (props) => {
         })
         .then((res) => {
           if(offered===true){
+            debugger
             setOfferedtourData(res.data)
           }else{
             SetTourData(res?.data?.data);
