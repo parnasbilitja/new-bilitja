@@ -337,6 +337,7 @@ const tour = (props) => {
                                                                 justifyContent: 'space-between',
                                                                 alignItems: 'center'
                                                             }}>
+                                                                
                                                                 <input placeholder='جستجو براساس نام هتل'
                                                                        style={{
                                                                            width: '100%'
