@@ -35,6 +35,8 @@ const CitiesSuggest = () => {
             setData(getData.data)
         }
     },[getData])
+    let tourCities =[{name:'استانبول' , code:'IST',slug:'istanbul',image:'../../../../Images/istanbul.jpg'},{name:'آنتالیا' , code:'AYT',slug:'antalya',image:'../../../../Images/antalya.jpg'},{name:'آلانیا' , code:'GZP',slug:'alanya',image:'../../../../Images/alanya.jpg'}, {name:'دبی' , code:'"DXB"',slug:'dubai',image:'../../../../Images/dubai.jpg'},]
+
     const swiperRef = useRef();
     return (
         <div className="mx-2">
@@ -74,7 +76,7 @@ const CitiesSuggest = () => {
             {
                 getData.loading?
                 <NewLoader/>:
-                data.length>0?
+                tourCities.length>0?
                     <Swiper
                         modules={[Navigation]}
                         onBeforeInit={(swiper) => {
@@ -103,10 +105,10 @@ const CitiesSuggest = () => {
 
                         }}
                     >
-
-                        {getData.data?.map(item=>(
+                        {/*getData.data*/}
+                        {tourCities?.map(item=>(
                             <SwiperSlide key={item.id} >
-                            <Link class="swiper-slide" key={item.id} href={`تور-${item.slug}/`}>
+                            <Link class="swiper-slide" key={item.id} href={`تور-${item.name}/`}>
                                 <div class="box-sort-tour-city">
                                     <div class="img-sort-tour-city">
                                         <div class="info-img-sort-tour-city animated fadeInDown">
@@ -120,7 +122,7 @@ const CitiesSuggest = () => {
                                     </div>
                                     <div class="text-sort-tour-city">
                                         <h2>
-                                            <Link class="view-details-more" href={`تور-${item.slug}/`}>
+                                            <Link class="view-details-more" href={`تور-${item.name}/`}>
                                                 {`تور ${item.name}`}
                                             </Link>
                                         </h2>

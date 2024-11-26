@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some changes for bug">
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="filtered package by stars and price has been set">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,7 +291,7 @@
       <workItem from="1731996005810" duration="1290000" />
       <workItem from="1732168336392" duration="837000" />
       <workItem from="1732527727879" duration="4785000" />
-      <workItem from="1732618608203" duration="2805000" />
+      <workItem from="1732618608203" duration="3895000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -463,30 +461,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00193" summary="flight api has been changed">
-      <option name="closed" value="true" />
-      <created>1726391026568</created>
-      <option name="number" value="00193" />
-      <option name="presentableId" value="LOCAL-00193" />
-      <option name="project" value="LOCAL" />
-      <updated>1726391026568</updated>
-    </task>
-    <task id="LOCAL-00194" summary="flight api has been changed">
-      <option name="closed" value="true" />
-      <created>1729064544301</created>
-      <option name="number" value="00194" />
-      <option name="presentableId" value="LOCAL-00194" />
-      <option name="project" value="LOCAL" />
-      <updated>1729064544301</updated>
-    </task>
-    <task id="LOCAL-00195" summary="flight api has been changed">
-      <option name="closed" value="true" />
-      <created>1729065293260</created>
-      <option name="number" value="00195" />
-      <option name="presentableId" value="LOCAL-00195" />
-      <option name="project" value="LOCAL" />
-      <updated>1729065293260</updated>
-    </task>
     <task id="LOCAL-00196" summary="flight api has been changed">
       <option name="closed" value="true" />
       <created>1730113689570</created>
@@ -631,7 +605,31 @@
       <option name="project" value="LOCAL" />
       <updated>1732532848040</updated>
     </task>
-    <option name="localTasksCounter" value="214" />
+    <task id="LOCAL-00214" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732623016420</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
+      <option name="project" value="LOCAL" />
+      <updated>1732623016421</updated>
+    </task>
+    <task id="LOCAL-00215" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732623181707</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
+      <option name="project" value="LOCAL" />
+      <updated>1732623181707</updated>
+    </task>
+    <task id="LOCAL-00216" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732623194445</created>
+      <option name="number" value="00216" />
+      <option name="presentableId" value="LOCAL-00216" />
+      <option name="project" value="LOCAL" />
+      <updated>1732623194445</updated>
+    </task>
+    <option name="localTasksCounter" value="217" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,7 +649,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some logic and stylish changes in filter available hotel page" />
     <MESSAGE value="some styles changes" />
     <MESSAGE value="tiny logical changes" />
     <MESSAGE value="image Gallary bugs have been fixed on avFilght" />
@@ -676,7 +673,8 @@
     <MESSAGE value="some changes" />
     <MESSAGE value="flight api has been changed" />
     <MESSAGE value="some changes for bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes for bug" />
+    <MESSAGE value="filtered package by stars and price has been set" />
+    <option name="LAST_COMMIT_MESSAGE" value="filtered package by stars and price has been set" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
