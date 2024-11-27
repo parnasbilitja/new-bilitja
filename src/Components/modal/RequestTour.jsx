@@ -17,6 +17,10 @@ const [passsengerCount,setPassengerCount]=useState({
         setPackData({ ...packData, [e.target.name]:e.target.value })
     }
 
+
+    useEffect(()=>{
+        console.log(selectedHotel)
+    },[selectedHotel])
     const[rooms,setRooms]=useState([])
 
     useEffect(()=>{
@@ -101,16 +105,30 @@ const [passsengerCount,setPassengerCount]=useState({
     },[rooms])
     return (
         <div className='req-container'  style={{padding:'2rem 3rem',overflowX:'scroll',maxWidth:'1200px',margin:'0 auto'}} >
-            <div style={{width:'100%',display:'flex',justifyContent:'end'}}>
+            <div style={{width: '100%', display: 'flex', justifyContent: 'space-between',alignItems: 'center'}}>
 
-            <div onClick={()=>setShow()} className="ic-close  cursor-pointer my-3" style={{bottom:'10px', width:'30px',height:'30px',border:'2px solid #e20000',borderRadius:'5px',color:'#e20000',display:'flex',justifyContent:"center",alignItems:'center'}}>
-                x
-            </div>
+
+                <div>
+                    <p className={'p-0 m-0 font-bold'}>{`نرخ اتاق های دیگر ${selectedHotel.hotel_name}`}</p>
+                </div>
+                <div onClick={() => setShow()} className="ic-close  cursor-pointer my-3" style={{
+                    bottom: '10px',
+                    width: '30px',
+                    height: '30px',
+                    border: '2px solid #e20000',
+                    borderRadius: '5px',
+                    color: '#e20000',
+                    display: 'flex',
+                    justifyContent: "center",
+                    alignItems: 'center'
+                }}>
+                    x
+                </div>
             </div>
 
             {
-                rooms.length>0 ?  <div className="col-xl-12 col-lg-12 col-12  position-relative" >
-                    <div >
+                rooms.length > 0 ? <div className="col-xl-12 col-lg-12 col-12  position-relative">
+                    <div>
                         <div className='rooms'>
                             <div className='room-title'>
                                 <div className='title'>

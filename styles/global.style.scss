@@ -2264,10 +2264,10 @@ $sizes: 100;
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 410px;
+  height: 450px;
   border: 1px solid #eee;
   border-radius: 14px;
-  margin-top: 1rem;
+  margin-top: 12px;
   overflow: hidden;
   cursor: pointer;
   background-repeat: no-repeat;
@@ -5973,10 +5973,10 @@ p img {
   background-color: rgba(128, 127, 128, 0.6);
 
   .contentContainer {
-
+position: relative;
     overflow-y: scroll;
     width: 50%;
-    max-height: 90%;
+    height: 90%;
     background-color: white;
   }
 }
@@ -5985,7 +5985,7 @@ p img {
   .modalContainer {
     .contentContainer {
       width: 90%;
-      max-height: 90% !important;
+      height: 90% !important;
     }
   }
 
@@ -6100,9 +6100,9 @@ p img {
 }
 
 .roomtour{
-  padding-bottom:750px;
+  //padding-bottom:750px;
   //overflow-y: auto;
-  height: 700px;
+  height: fit-content;
 }
 
 @media only screen and (max-width: 868px) {

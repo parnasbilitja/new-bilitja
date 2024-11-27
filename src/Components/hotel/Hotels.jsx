@@ -15,10 +15,10 @@ import NewLoader from "../NewTours/Components/subComponents/NewLoader";
 const Hotels = () => {
     let hotels = useSelector(state => state.AllHotelReducer)
     const dispatch = useDispatch()
-    const [city, setCity] = useState(null);
+    const [city, setCity] = useState('');
     const [width, setWidth] = useState();
     const [search,setSearch] = useState({
-        hotel:null,
+        hotel:'',
         value:'',
         slug:'',
       })
@@ -29,8 +29,8 @@ const Hotels = () => {
         setWidth(window.innerWidth)
     },[])
     const searchHotel = ()=>{
-        dispatch(fetchAllHotels(city,search.hotel,page))
-        // 
+        dispatch(fetchAllHotels(city,search.hotel,1))
+        //
     }
     useEffect(()=>{
         dispatch(fetchAllHotels(city,search.hotel,page))
@@ -38,11 +38,9 @@ const Hotels = () => {
 
     },[])
     useEffect(() => {
-        dispatch(fetchAllHotels(city,search.hotel,page))
+        dispatch(fetchAllHotels(!city?'':city,search.hotel,page))
     },[page])
-    useEffect(()=>{
-        console.log(hotels)
-    },[hotels])
+
 
     const [type, setType] = useState(3)
     const myRef = useRef(null)
@@ -122,8 +120,8 @@ const Hotels = () => {
                         <div className="row justify-content-center">
                             {hotels.loading? <NewLoader/>: hotels.data.data?.map((item)=>(
                                 <Link href={`/hotels/${item.slug}`}>
-                                    <div className="col-12 col-md-3 d-flex justify-content-center">
-                                        <div class="box-hotel" style={{width: '95%'}}>
+                                    <div className="col-12 col-md-3 d-flex justify-content-center" style={{padding:'0 6px'}}>
+                                        <div class="box-hotel" style={{width: '100%'}}>
                                                 {!item.thumbnail? <img className="img-blog" src='../../../Images/noPicture.png' alt='no-picture'/>:
                                                 <img className="img-blog" src={item.thumbnail.url} alt={item.id}/> }
                                                 <div class="opacity-bg-parent">
@@ -134,7 +132,7 @@ const Hotels = () => {
                                                         </svg>
                                                     </div>
                                                     <div class="info-hotel">
-                                                        <span x-text="hotel.name">{item.title}</span>
+                                                        <span x-text="hotel.name " className={'font-bold-iransanse'}>{item.title}</span>
                                                         <div class="footer-hotel-info">
                                                             <div class="location-hotel">
                                                                 <img src="../../../Images/Location-white.svg" width="17" alt="آدرس-هتل"/>
@@ -176,10 +174,10 @@ const Hotels = () => {
                     <div className="d-flex mt-5 justify-content-center">
                     {hotels.data?.meta?.links?.map((item)=>(
                         <>
-                            <span className={`px-1 cursor-pointer border rounded py-1 ${page == parseInt(item.label) && 'font-bold-iransanse' }`}
+                            <span className={`px-4 cursor-pointer border rounded py-1 ${page === parseInt(item.label) && 'font-bold-iransanse' }`}
                             onClick={()=>{setPage(item.label),executeScroll()}}
                             dangerouslySetInnerHTML={{__html:item.label}}
-                            style={{margin:'auto 2px', color:'#e20000'}} />
+                            style={{margin:'auto 2px', color:'#e20000' ,width:'45px' ,display:'flex' ,justifyContent:'center',whiteSpace:'nowrap' }} />
                         </>
                     ))}
                     </div>

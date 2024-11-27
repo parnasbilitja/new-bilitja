@@ -11,6 +11,7 @@ import {Shimmers, Shimmers6} from "../../Components/NewTours/Components/subCompo
 import axios from "axios";
 import Paginate from "../../Components/NewTours/Components/subComponents/Paginate";
 import globals from "../../sources/Global";
+import scrolltoprefresh from "../component/Scrolltoprefresh";
 
 const Account = dynamic(() => import("./../../sources/account/Account.component"));
 
@@ -506,7 +507,10 @@ const router=useRouter()
 
                     </div>
                     <div style={{display: 'flex', justifyContent:'space-between',alignItems:'center',width:'100%'}}>
-                    <Paginate scrollToTop={props.scrollToTop}  apiCall={(page)=>getTour(city,sortStat,page)} to={meta.last_page}/>
+                    <Paginate scrollToTop={props.scrollToTop}  apiCall={(page)=> {
+                        getTour(city, sortStat, page)
+                        props.scroll_top()
+                    }} to={meta.last_page}/>
                         <div className='endlessscroll' onClick={()=> {
 
                                 router.push('/tours/alltours')

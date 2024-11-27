@@ -608,7 +608,7 @@ class GetFlightList extends React.Component {
         <div className="row">
           {/* <div className="col-lg-1 col-md-1 col-sm-1"></div> */}
           <div className="col-lg-12 col-md-12 col-sm-12">
-            <div className="row min-height">
+            <div className="row min-height" >
               <div className="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-12 padding-5px">
                 {/* <FutureDays refreshAction={this.getData}  /> */}
                 {this.state.loading ? (
@@ -698,7 +698,7 @@ class GetFlightList extends React.Component {
                 )}
               </div>
               <div
-                className={`col-xl-3 col-lg-3 col-md-3 col-sm-4 ${styles["flight-filter-box"]} ${styles["hidden-xs-flight"]}`}
+                className={`col-xl-3 col-lg-3 col-md-3 col-sm-4 mr-1 ${styles["flight-filter-box"]} ${styles["hidden-xs-flight"]}`}
               >
                 <div className={styles["marginLeftFilter"]}>
                   <Filters

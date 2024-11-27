@@ -323,7 +323,7 @@ const [isReservePhone,setIsreservePhone]=useState(false);
                                                 <div className={styles["price"]}>
                                                     {
                                                         props.hotelDet?.data?.prices?.total_price &&
-                                                        <p>{numberWithCommas(props.hotelDet?.data?.prices?.total_price) } تومان</p>
+                                                        <p className={'font-bold-iransanse '}>{numberWithCommas(props.hotelDet?.data?.prices?.total_price) } تومان</p>
 
                                                     }
                                                 </div>

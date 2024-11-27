@@ -383,7 +383,7 @@ const tour = (props) => {
                                                                 </option>
                                                                 <option value="0">ستاره</option>
                                                                 <option value="1"> قیمت</option>
-                                                                <option value="2"> هردو</option>
+                                                                <option value="2"> ستاره + قیمت</option>
                                                             </select>
                                                         </div>
 
@@ -702,7 +702,7 @@ const tour = (props) => {
                                                                                                                             roomFinder1(pack.rooms, 148)[0]?.price ?
                                                                                                                                 <>
                                                                                                                                     <p
-                                                                                                                                        className="font-size-16 font-bold  m-0 price-color"
+                                                                                                                                        className="font-size-16 font-bold-iransanse  m-0 price-color"
                                                                                                                                         style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.price)}
 
                                                                                                                                         <span
@@ -742,7 +742,7 @@ const tour = (props) => {
                                                                                                                             {roomFinder1(pack.rooms, 494)[0]?.price ? <>
 
                                                                                                                                     <p
-                                                                                                                                        className="font-size-16 font-bold  m-0 mx-1 price-color"
+                                                                                                                                        className="font-size-16 font-bold-iransanse  m-0 mx-1 price-color"
                                                                                                                                         style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 494)[0].price)}
 
 
@@ -788,7 +788,7 @@ const tour = (props) => {
                                                                                                                         className=" w-100 ">
                                                                                                                         {
                                                                                                                             <>
-                                                                                                                                <p className="font-size-16 font-bold  m-0 price-color"
+                                                                                                                                <p className="font-size-16 font-bold-iransanse  m-0 price-color"
                                                                                                                                    style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_w_price)}
                                                                                                                                     <span
                                                                                                                                         className="font-size-14 font-bold  m-0 color-gray px-1">
@@ -831,11 +831,11 @@ const tour = (props) => {
                                                                                                                                     {
                                                                                                                                         <>{roomFinder1(pack.rooms, 148)[0]?.chd_n_price ?
 
-                                                                                                                                            <p className="font-size-16 m-0 price-color"
+                                                                                                                                            <p className="font-size-16 m-0 price-color font-bold-iransanse"
                                                                                                                                                style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_n_price)}
 
                                                                                                                                                 <span
-                                                                                                                                                    className="font-size-14 font-bold  m-0 color-gray px-1">
+                                                                                                                                                    className="font-size-14 font-bold-iransanse  m-0 color-gray px-1">
                                                                                                                                             تومان
                             </span>
                                                                                                                                             </p> :
@@ -852,11 +852,11 @@ const tour = (props) => {
                                                                                                                                     {
                                                                                                                                         (roomFinder1(pack.rooms, 148)[0]?.chd_n_price) ? <>
 
-                                                                                                                                                <p className="font-size-16 m-0 price-color"
+                                                                                                                                                <p className="font-size-16 m-0 price-color font-bold-iransanse"
                                                                                                                                                    style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_n_price)}
 
                                                                                                                                                     <span
-                                                                                                                                                        className="font-size-14 font-bold  m-0 color-gray px-1">
+                                                                                                                                                        className="font-size-14 font-bold-iransanse  m-0 color-gray px-1">
                                 تومان
                             </span>
                                                                                                                                                 </p>

@@ -556,10 +556,10 @@ const PackageReserve = ({
 
         <>
             <NotifAlert/>
-            <div className="col-xl-12 col-lg-12 col-12 " >
+            <div className="col-xl-12 col-lg-12 col-12 " style={{height:'100%'}}>
 
-                <div style={{position:'relative'}}>
-                    <div className={selectedRoomsData.length > 1 ? 'roomtour':'h-auto'}>
+                <div style={{position:'relative' , height:'100%'}}>
+                    <div className={'roomtour'}>
                         <div onClick={() => {
                             setIsReserve(false)
                         }} className="ic-close  cursor-pointer" style={{

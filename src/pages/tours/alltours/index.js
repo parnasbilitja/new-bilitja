@@ -44,7 +44,7 @@ useEffect(()=>{
                 <div>
                 <Scrolltoprefresh/>
 
-                <List scrollToTop={true} hideShowMore={false} tourData={tour} shimmerNumber={15} />
+                <List scrollToTop={true} scroll_top={()=>scrollToTop()} hideShowMore={false} tourData={tour} shimmerNumber={15} />
                 </div>
             </div>
         </>

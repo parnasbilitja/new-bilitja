@@ -31,7 +31,7 @@ const ShowFlightList = (props) => {
           >
             <div className={styles["one-row-price"]}>
               <div>
-                <span style={{ fontWeight: 900 }} className="font-size-20">
+                <span style={{ fontWeight: "bolder" }} className="font-size-22">
                   {moneyFormat(oneFlight?.priceView)}
                 </span>
                 <span className="text-dark font-size-14 p-1 font-bold-iransanse">
@@ -148,7 +148,7 @@ const ShowFlightList = (props) => {
 
                   {oneFlight.className==='بیزینس' && <span style={{color: 'yellow'}}>*</span>}
 
-                <span className={'font-size-18 font-bold-iransanse'}>{oneFlight.className}</span>
+                <span className={'font-size-15 font-bold-iransanse'}>{oneFlight.className}</span>
               </div>
             </div>
 

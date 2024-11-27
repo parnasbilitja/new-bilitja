@@ -218,9 +218,9 @@ const OfferdTours = (data) => {
                                   <span style={{fontSize:'12px'}}>شروع قیمت از :</span>
                               </div>
                               <div className="d-flex align-items-center" style={{color:"#e20000"}}>
-                                  <strong className="price-tour-special ml-2 mr-2">{moneyFormat(item?.min_price)}</strong>
+                                  <strong className="price-tour-special ml-2 mr-2 " style={{fontWeight:'900' ,fontSize:'16px'}}>{moneyFormat(item?.min_price)}</strong>
                                   <strong className="price-tour-special">
-                                      {item?.currency} </strong>
+                                      تومان </strong>
                               </div>
 
                           </div>
