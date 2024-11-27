@@ -789,7 +789,7 @@ const tour = (props) => {
                                                                                                                         {
                                                                                                                             <>
                                                                                                                                 <p className="font-size-16 font-bold-iransanse  m-0 price-color"
-                                                                                                                                   style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_w_price)}
+                                                                                                                                   style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_w_price) ? moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_w_price): 'عدم موجودی'}
                                                                                                                                     <span
                                                                                                                                         className="font-size-14 font-bold  m-0 color-gray px-1">
                                 {getcurrencyfa(data?.currencies)}
