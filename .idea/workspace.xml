@@ -6,21 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="filtered package by stars and price has been set">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/modal/RequestTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/RequestTour.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/allHotels/Action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/allHotels/Action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/alltours/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/alltours/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightList.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/ShowFlightList.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/List.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/OfferdTours.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/OfferdTours.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/FlightList.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/FlightList.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/TourPackage/PackageTourDetails.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/TourPackage/PackageTourDetails.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/newTour/Reserve.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +291,7 @@
       <workItem from="1731996005810" duration="1290000" />
       <workItem from="1732168336392" duration="837000" />
       <workItem from="1732527727879" duration="4785000" />
-      <workItem from="1732618608203" duration="9386000" />
+      <workItem from="1732618608203" duration="10449000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -476,14 +461,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00197" summary="flight api has been changed">
-      <option name="closed" value="true" />
-      <created>1730114016986</created>
-      <option name="number" value="00197" />
-      <option name="presentableId" value="LOCAL-00197" />
-      <option name="project" value="LOCAL" />
-      <updated>1730114016986</updated>
-    </task>
     <task id="LOCAL-00198" summary="some changes for bug">
       <option name="closed" value="true" />
       <created>1730114232612</created>
@@ -644,7 +621,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732625563930</updated>
     </task>
-    <option name="localTasksCounter" value="218" />
+    <task id="LOCAL-00218" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732690378941</created>
+      <option name="number" value="00218" />
+      <option name="presentableId" value="LOCAL-00218" />
+      <option name="project" value="LOCAL" />
+      <updated>1732690378941</updated>
+    </task>
+    <option name="localTasksCounter" value="219" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

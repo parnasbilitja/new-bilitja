@@ -140,7 +140,7 @@ const ShowFlightList = (props) => {
                   </svg>
                 </div>
                 <span className="font-size-18 font-bold-iransanse">
-                {oneFlight.cap + " صندلی خالی"}
+                {" ظرفیت : "+oneFlight.cap }
               </span>
 
               </div>
@@ -148,7 +148,7 @@ const ShowFlightList = (props) => {
 
                   {oneFlight.className==='بیزینس' && <span style={{color: 'yellow'}}>*</span>}
 
-                <span className={'font-size-15 font-bold-iransanse'}>{oneFlight.className}</span>
+                <span className={'font-size-14 font-bold'}>{oneFlight.className}</span>
               </div>
             </div>
 
