@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="filtered package by stars and price has been set" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="filtered package by stars and price has been set">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Paginate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Paginate.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/[CityTour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/[CityTour].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/reserveconfirmation/[...reserveconfirmation].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/reserveconfirmation/[...reserveconfirmation].js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -289,7 +295,13 @@
       <workItem from="1731996005810" duration="1290000" />
       <workItem from="1732168336392" duration="837000" />
       <workItem from="1732527727879" duration="4785000" />
-      <workItem from="1732618608203" duration="11039000" />
+      <workItem from="1732618608203" duration="11806000" />
+      <workItem from="1732706541743" duration="675000" />
+      <workItem from="1732772591937" duration="1041000" />
+      <workItem from="1733062796025" duration="122000" />
+      <workItem from="1733119352195" duration="604000" />
+      <workItem from="1733207706411" duration="1867000" />
+      <workItem from="1733217306351" duration="5403000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -459,30 +471,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00199" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1730114432902</created>
-      <option name="number" value="00199" />
-      <option name="presentableId" value="LOCAL-00199" />
-      <option name="project" value="LOCAL" />
-      <updated>1730114432902</updated>
-    </task>
-    <task id="LOCAL-00200" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1730115214428</created>
-      <option name="number" value="00200" />
-      <option name="presentableId" value="LOCAL-00200" />
-      <option name="project" value="LOCAL" />
-      <updated>1730115214428</updated>
-    </task>
-    <task id="LOCAL-00201" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1730116066904</created>
-      <option name="number" value="00201" />
-      <option name="presentableId" value="LOCAL-00201" />
-      <option name="project" value="LOCAL" />
-      <updated>1730116066905</updated>
-    </task>
     <task id="LOCAL-00202" summary="some changes for bug">
       <option name="closed" value="true" />
       <created>1730118096787</created>
@@ -627,7 +615,31 @@
       <option name="project" value="LOCAL" />
       <updated>1732697423259</updated>
     </task>
-    <option name="localTasksCounter" value="220" />
+    <task id="LOCAL-00220" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732697890966</created>
+      <option name="number" value="00220" />
+      <option name="presentableId" value="LOCAL-00220" />
+      <option name="project" value="LOCAL" />
+      <updated>1732697890966</updated>
+    </task>
+    <task id="LOCAL-00221" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732697943035</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
+      <option name="project" value="LOCAL" />
+      <updated>1732697943035</updated>
+    </task>
+    <task id="LOCAL-00222" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732706579194</created>
+      <option name="number" value="00222" />
+      <option name="presentableId" value="LOCAL-00222" />
+      <option name="project" value="LOCAL" />
+      <updated>1732706579197</updated>
+    </task>
+    <option name="localTasksCounter" value="223" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -710,7 +722,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx</url>
           <line>699</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>

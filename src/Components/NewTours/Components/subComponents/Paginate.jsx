@@ -47,15 +47,23 @@
 // };
 //
 // export default Paginate;
-//
-//
-//
+
+
+
 
 
 import React, {useEffect, useState} from 'react';
 import styles from '../../../../../styles/newTour/components/subComponent/Paginate.module.scss'
-// import {useRouter} from "next/router";
-const Paginate = ({from, to,currentPage, apiCall,param,scrollToTop}) => {
+import {useRouter} from "next/router";
+
+
+// interface Props {
+//     to: number;
+//     apiCall: (page: number) => void;
+//     scrollToTop?: boolean;
+//     currentPage?: any;
+// }
+const Paginate=({ to, apiCall,scrollToTop})=>{
     const [el, setEl] = useState([])
     const[selectedpage,setSelectedPage]=useState(1)
     const [stagedPage,setstagedPage]=useState([])
@@ -67,7 +75,6 @@ const Paginate = ({from, to,currentPage, apiCall,param,scrollToTop}) => {
     const [middleArrExtra,setMiddleArrExtra]=useState([])
 
 
-    
     const paginateElGen = (to) => {
         let arr = []
         for (let i = 1; i <= to; i++) {
@@ -81,14 +88,23 @@ const Paginate = ({from, to,currentPage, apiCall,param,scrollToTop}) => {
     }, [to])
 
 
-    const paginateStaging=()=>{
-
-        setFirstfour(el.slice(0,4))
-        setLastFour(el.slice(-4))
+    const paginateStaging=()=> {
         setMiddleArr(el.slice(4,el.length-4))
+        setFirstfour(el.slice(0, 4))
 
+        if (el.length > 5) {
+            setLastFour(el.slice(-4))
+        } else {
+
+            setLastFour(el.slice(4, el.length))
+
+
+        }
     }
+    // useEffect(() => {
+    //     console.log(firstfour,lastfour,middleArr)
 
+    // }, [firstfour,lastfour,middleArr]);
     useEffect(() => {
 
         paginateStaging()
@@ -99,7 +115,9 @@ const Paginate = ({from, to,currentPage, apiCall,param,scrollToTop}) => {
         setstagedPage([...firstfour,middleArrExtra,...secondFour,middleArr,...lastfour])
     },[middleArr,firstfour,lastfour,middleArrExtra,secondFour])
 
-
+    // const handleClick=()=>{
+    //
+    // }
     useEffect(()=>{
 
         if(selectedpage+1 ===middleArr[0] ){
@@ -110,7 +128,7 @@ const Paginate = ({from, to,currentPage, apiCall,param,scrollToTop}) => {
         }
 
         if(selectedpage-1 ===middleArrExtra[middleArrExtra.length-1] ){
-            debugger
+
             let newmiddleArr=middleArrExtra
             let secondfour=secondFour
             let newsecondfour=secondFour[secondfour.length-1]
@@ -120,7 +138,6 @@ const Paginate = ({from, to,currentPage, apiCall,param,scrollToTop}) => {
             setMiddleArrExtra(newmiddleArr)
             setSecondtFour([...removedFromMiddleArray,...secondfour])
         }
-
 
     },[selectedpage])
 
@@ -164,9 +181,7 @@ const Paginate = ({from, to,currentPage, apiCall,param,scrollToTop}) => {
             </div>
         </div>
 
-
-
     );
-};
+}
 
 export default Paginate;

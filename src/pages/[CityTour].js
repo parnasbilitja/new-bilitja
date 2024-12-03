@@ -38,7 +38,7 @@ const CityTour = (props) => {
         setISLoading(true)
         setTours({})
         try {
-            const response = await axios.post(`${globals.tourPackagesnew}packages?page=${router.query.page}`, {
+            const response = await axios.post(`${globals.tourPackages}packages?page=${router.query.page}`, {
                 destination:cityCode,
                 origin: router.query?.org?router?.query?.org.split('-')[1]:'',
                 month:'',
@@ -47,7 +47,7 @@ const CityTour = (props) => {
                 req_type:'package',
                 date:router.query?.date ? router.query?.date : '',
             },{
-                headers: {"x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP',
+                headers: {"x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05',
                     referer:'hamnavaz.com'
                 },
 

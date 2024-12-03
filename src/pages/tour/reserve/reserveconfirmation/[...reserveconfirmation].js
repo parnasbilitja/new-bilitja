@@ -65,7 +65,7 @@ const ReservationConfirmation = () => {
     const getReservedData = (refcode) => {
         // debugger
         let reservedRoomData
-        axios.get(`https://api.hotelobilit.com/api/v2/reserves/${refcode}`,{
+        axios.get(`https://api.hotelobilit.com/api/v3/reserves/${refcode}`,{
             headers: {
                 "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
             }
@@ -82,7 +82,6 @@ const ReservationConfirmation = () => {
 
         setIsEdit(!isEdit)
         setTargetedReservedId(reserveId)
-
         let selectRoom = reservedRoom?.selected_rooms?.filter(reserveRoom => reserveRoom?.reserve_id === reserveId)
         setTargetedRoom(selectRoom)
     }
@@ -106,7 +105,6 @@ const ReservationConfirmation = () => {
             getReservedData(router?.query?.ref_code)
             setIsEdit(false)
         }).catch((err) => {
-
             setErr(err?.response?.data);
         });
 
@@ -123,18 +121,14 @@ const ReservationConfirmation = () => {
             <div className={styles['message_con']}>
                 <div className={styles['message']}>
                     <div>
-
                     </div>
                     <div style={{width:'100%',display:'flex',justifyContent:'space-between', fontSize:'14px',borderBottom:'1px solid #cecece',paddingBottom:'8px'}}>
                     <span style={{fontSize:'13px',fontWeight:'700'}}>مسافر/همکارگرامی</span>
                     <strong>{tourData.reserver_full_name}</strong>
-
                     </div>
                     <div>
                     <p style={{textAlign:'center',fontSize:'13px',fontWeight:'900',color:'#757575'}}>ثبت شما با موفقیت انجام شد همکاران ما جهت تایید نهایی با شما تماس می گیرند.</p>
-
                     </div>
-
                     <div style={{width:'100%',display:'flex',justifyContent:'space-between', fontSize:'14px',paddingBottom:'8px',backgroundColor:'#e0e0e0',borderRadius:'512px',padding:'.725rem'}}>
                         <span>شماره رفرنس </span>
                         <strong>{router.query.ref_code}</strong>
@@ -277,8 +271,6 @@ const ReservationConfirmation = () => {
                         <Shimmers6 selectedHeight={'320px'}/>
                     }
                 </>
-
-
                 <div className={styles["rooms"]}>
                     <Scrolltoprefresh/>
                     {reservedRoom?.selected_rooms?reservedRoom?.selected_rooms?.map((reservedroom) => {
@@ -431,7 +423,7 @@ const ReservationConfirmation = () => {
                                 onClick={() => {
 
 
-                                    axios.post(`https://api.hotelobilit.com/api/v2/reserves/confirm/${router.query.ref_code}`,{},{
+                                    axios.post(`https://api.hotelobilit.com/api/v3/reserves/confirm/${router.query.ref_code}`,{},{
                                         headers: {
                                             "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
                                         }

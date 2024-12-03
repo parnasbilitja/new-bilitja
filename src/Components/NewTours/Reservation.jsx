@@ -248,7 +248,7 @@ useEffect(()=>{
 const reserveTour=()=>{
     let hotel_id = props.hotelDet.data.hotel.id;
     axios
-        .post(`https://api.hotelobilit.com/api/v2/reserves/${router.query.ref_code}`, {
+        .post(`https://api.hotelobilit.com/api/v3/reserves/${router.query.ref_code}`, {
             reserver_full_name: `${reserverData.reserver_name} ${reserverData.reserver_lastname}`,
             reserver_id_code: reserverData.reserver_id_code,
             reserver_phone: reserverData.reserver_phone,
@@ -367,7 +367,7 @@ const [isReservePhone,setIsreservePhone]=useState(false);
                                                 if(props.user.logged) {
                                                     // reserveTour()
                                                 }else {
-                                                    if(reserverData.reserver_phone.length>0){
+                                                    if(reserverData.reserver_phone?.length>0){
                                                         reserveTour()
 
                                                         // Err('ابتدا وارد سایت شوید')
