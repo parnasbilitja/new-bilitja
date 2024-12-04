@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="filtered package by stars and price has been set">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Paginate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/Paginate.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Reservation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/[CityTour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/[CityTour].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/reserveconfirmation/[...reserveconfirmation].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/reserveconfirmation/[...reserveconfirmation].js" afterDir="false" />
-    </list>
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="filtered package by stars and price has been set" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -301,7 +295,7 @@
       <workItem from="1733062796025" duration="122000" />
       <workItem from="1733119352195" duration="604000" />
       <workItem from="1733207706411" duration="1867000" />
-      <workItem from="1733217306351" duration="5403000" />
+      <workItem from="1733217306351" duration="6397000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -471,14 +465,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00202" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1730118096787</created>
-      <option name="number" value="00202" />
-      <option name="presentableId" value="LOCAL-00202" />
-      <option name="project" value="LOCAL" />
-      <updated>1730118096787</updated>
-    </task>
     <task id="LOCAL-00203" summary="some changes for bug">
       <option name="closed" value="true" />
       <created>1730183746973</created>
@@ -639,7 +625,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732706579197</updated>
     </task>
-    <option name="localTasksCounter" value="223" />
+    <task id="LOCAL-00223" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1733231415115</created>
+      <option name="number" value="00223" />
+      <option name="presentableId" value="LOCAL-00223" />
+      <option name="project" value="LOCAL" />
+      <updated>1733231415115</updated>
+    </task>
+    <option name="localTasksCounter" value="224" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

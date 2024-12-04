@@ -116,7 +116,7 @@ const CitiesSuggest = () => {
                                                 <path id="Attachment_1" data-name="Attachment 1" d="M15.129,2.531s.8,2.8-1.01,9.564c-2.459,9.176-5.038,11.074-8.9,10.038S.069,18.166,2.528,8.99,10.11.909,11.36,3.074c1.414,2.449-.88,9.082-.88,9.082s-1.5,5.291-3.838,4.666c-3.381-.906.4-9.211.4-9.211" transform="translate(-0.285 -0.488)" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
                                             </svg>
 
-                                            <Link style={{color:"#fff",marginTop:"12px"}} class="view-details-more text-white font-size-14 font-bold" href={`تور-${item.slug}/`}>مشاهده جزئیات بیشتر</Link>
+                                            <Link style={{color:"#fff",marginTop:"12px"}} class="view-details-more text-white font-size-14 font-bold" href={`تور-${item.name}/`}>مشاهده جزئیات بیشتر</Link>
                                         </div>
                                         <img src={item.image} alt={item.name} />
                                     </div>
