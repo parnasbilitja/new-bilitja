@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="filtered package by stars and price has been set" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="filtered package by stars and price has been set">
+      <change afterPath="$PROJECT_DIR$/src/Redux/TourSearchbox/Action.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/TourSearchbox/TourSearchBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/root-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/root-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -296,6 +303,12 @@
       <workItem from="1733119352195" duration="604000" />
       <workItem from="1733207706411" duration="1867000" />
       <workItem from="1733217306351" duration="6397000" />
+      <workItem from="1733310245975" duration="997000" />
+      <workItem from="1733464361665" duration="1115000" />
+      <workItem from="1733477985505" duration="30000" />
+      <workItem from="1733478630386" duration="7798000" />
+      <workItem from="1733555292233" duration="605000" />
+      <workItem from="1733559242811" duration="481000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -465,22 +478,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00203" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1730183746973</created>
-      <option name="number" value="00203" />
-      <option name="presentableId" value="LOCAL-00203" />
-      <option name="project" value="LOCAL" />
-      <updated>1730183746973</updated>
-    </task>
-    <task id="LOCAL-00204" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1730264070335</created>
-      <option name="number" value="00204" />
-      <option name="presentableId" value="LOCAL-00204" />
-      <option name="project" value="LOCAL" />
-      <updated>1730264070335</updated>
-    </task>
     <task id="LOCAL-00205" summary="some changes for bug">
       <option name="closed" value="true" />
       <created>1731301455598</created>
@@ -633,7 +630,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733231415115</updated>
     </task>
-    <option name="localTasksCounter" value="224" />
+    <task id="LOCAL-00224" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1733310348392</created>
+      <option name="number" value="00224" />
+      <option name="presentableId" value="LOCAL-00224" />
+      <option name="project" value="LOCAL" />
+      <updated>1733310348392</updated>
+    </task>
+    <task id="LOCAL-00225" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1733467224372</created>
+      <option name="number" value="00225" />
+      <option name="presentableId" value="LOCAL-00225" />
+      <option name="project" value="LOCAL" />
+      <updated>1733467224372</updated>
+    </task>
+    <option name="localTasksCounter" value="226" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

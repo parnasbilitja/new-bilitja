@@ -786,18 +786,37 @@ const tour = (props) => {
                                                                                                                     className=" position-relative ">
                                                                                                                     <div
                                                                                                                         className=" w-100 ">
-                                                                                                                        {
-                                                                                                                            <>
-                                                                                                                                <p className="font-size-16 font-bold-iransanse  m-0 price-color"
-                                                                                                                                   style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_w_price) ? moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_w_price): 'عدم موجودی'}
-                                                                                                                                    <span
-                                                                                                                                        className="font-size-14 font-bold  m-0 color-gray px-1">
-                                {getcurrencyfa(data?.currencies)}
-                            </span>
-                                                                                                                                </p>
-                                                                                                                            </>
+                                                                                                                        {roomFinder1(pack.rooms, 148)[0]?.chd_w_price ? <>
 
+                                                                                                                                <p
+                                                                                                                                    className="font-size-16 font-bold-iransanse  m-0 mx-1 price-color"
+                                                                                                                                style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0].chd_w_price)}
+
+
+                                                                                                                                    <span
+                                                                                                                                        className="font-size-14 font-bold px-1  m-0 color-gray">
+                                                                                                                                تومان
+                                                                                                                            </span>
+                                                                                                                                </p>
+                                                                                                                                {/*<p className="px-2 font-size-13 m-0 text-center font-blue"> {getcurrencyfa(currency) } </p>*/}
+
+                                                                                                                            </> :
+
+                                                                                                                            <span
+                                                                                                                                className="font-bold font-size-13 font-bold color-gray">عدم موجودی</span>
                                                                                                                         }
+                            {/*                                                                                            {*/}
+                            {/*                                                                                                <>*/}
+                            {/*                                                                                                    <p className="font-size-16 font-bold-iransanse  m-0 price-color"*/}
+                            {/*                                                                                                       style={{fontWeight: 'bold'}}>{moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_w_price) ? moneyFormatrial(roomFinder1(pack.rooms, 148)[0]?.chd_w_price): 'عدم موجودی'}*/}
+                            {/*                                                                                                        <span*/}
+                            {/*                                                                                                            className="font-size-14 font-bold  m-0 color-gray px-1">*/}
+                            {/*    {getcurrencyfa(data?.currencies)}*/}
+                            {/*</span>*/}
+                            {/*                                                                                                    </p>*/}
+                            {/*                                                                                                </>*/}
+
+                            {/*                                                                                            }*/}
 
 
                                                                                                                     </div>
