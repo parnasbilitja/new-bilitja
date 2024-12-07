@@ -38,7 +38,7 @@ const CityTour = (props) => {
         setISLoading(true)
         setTours({})
         try {
-            const response = await axios.post(`${globals.tourPackages}packages?page=${router.query.page}`, {
+            const response = await axios.post(`${globals.tourPackagesnew}packages?page=${router.query.page}`, {
                 destination:cityCode,
                 origin: router.query?.org?router?.query?.org.split('-')[1]:'',
                 month:'',
