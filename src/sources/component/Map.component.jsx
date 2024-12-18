@@ -7,9 +7,7 @@ import styles from '../../../styles/Map.module.scss'
 
 
 const MapComponent = (props) => {
-    useEffect(()=>{
-        console.log('lat',props.coordinates)
-    },[props.coordinates])
+
     return (
         <>
             <MapContainer className={styles['map']} center={props.coordinates} zoom={16} scrollWheelZoom={true }>

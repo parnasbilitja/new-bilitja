@@ -4,8 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="filtered package by stars and price has been set">
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="tour has been redesigned">
+      <change afterPath="$PROJECT_DIR$/next-env.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/api/cache.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/tours/packagelist/[...packages].jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/tours/tourdetails/[tourdata].jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/tours/tourdetails/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/tours/tourlist/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sources/common/Gallery.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sources/component/Packages.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sources/flight/FlightList_tour.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sources/hotels/hotelInfo/HotelDet.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/FlightListTour.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/Inputs/InputText.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/hotel/hotelInfo.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/modal/RequestTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/RequestTour.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/TourSearchbox/Action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/TourSearchbox/Action.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/TourSearchbox/TourSearchBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/TourSearchbox/TourSearchBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/alltours/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/alltours/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/Map.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Map.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/TransfersList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/TransfersList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/List.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/FlightSearchBox.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/FlightSearchBox.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/Map.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Map.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/TourPackage/PackageTourDetails.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/TourPackage/PackageTourDetails.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +52,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
-        <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="JSX File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -55,35 +92,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/pa/Desktop/old_bilitjassrnew/bilitjassrnew&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Merging main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/Users/pa/Desktop/bilitjassrnew/src/sources/common",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.splitter.proportion": "0.2293578",
+    "ts.external.directory.path": "/Users/pa/Desktop/bilitjassrnew/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/sources/common" />
+      <recent name="$PROJECT_DIR$/src/sources/hotels/hotelInfo" />
+      <recent name="$PROJECT_DIR$/src/pages/tours/tourlist" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/Images" />
-      <recent name="$PROJECT_DIR$/src/pages" />
-      <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src" />
-      <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\sources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/tours/tourlist" />
       <recent name="$PROJECT_DIR$/public/Images" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="C:\Users\PouyA\Desktop\bilitjassrnew\src\pages" />
@@ -303,13 +342,10 @@
       <workItem from="1733477985505" duration="30000" />
       <workItem from="1733478630386" duration="7798000" />
       <workItem from="1733555292233" duration="605000" />
-      <workItem from="1733559242811" duration="481000" />
-      <workItem from="1733568866329" duration="875000" />
-      <workItem from="1733574314938" duration="677000" />
-      <workItem from="1733638905126" duration="803000" />
-      <workItem from="1734171194300" duration="2156000" />
-      <workItem from="1734173895304" duration="1423000" />
-      <workItem from="1734177794705" duration="6410000" />
+      <workItem from="1733559242811" duration="52141000" />
+      <workItem from="1733747763639" duration="19495000" />
+      <workItem from="1733831298909" duration="40867000" />
+      <workItem from="1734070873908" duration="106615000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -479,6 +515,102 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
+    <task id="LOCAL-00208" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1732168992947</created>
+      <option name="number" value="00208" />
+      <option name="presentableId" value="LOCAL-00208" />
+      <option name="project" value="LOCAL" />
+      <updated>1732168992947</updated>
+    </task>
+    <task id="LOCAL-00209" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1732531794561</created>
+      <option name="number" value="00209" />
+      <option name="presentableId" value="LOCAL-00209" />
+      <option name="project" value="LOCAL" />
+      <updated>1732531794561</updated>
+    </task>
+    <task id="LOCAL-00210" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1732531816895</created>
+      <option name="number" value="00210" />
+      <option name="presentableId" value="LOCAL-00210" />
+      <option name="project" value="LOCAL" />
+      <updated>1732531816895</updated>
+    </task>
+    <task id="LOCAL-00211" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1732532065303</created>
+      <option name="number" value="00211" />
+      <option name="presentableId" value="LOCAL-00211" />
+      <option name="project" value="LOCAL" />
+      <updated>1732532065303</updated>
+    </task>
+    <task id="LOCAL-00212" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1732532086220</created>
+      <option name="number" value="00212" />
+      <option name="presentableId" value="LOCAL-00212" />
+      <option name="project" value="LOCAL" />
+      <updated>1732532086220</updated>
+    </task>
+    <task id="LOCAL-00213" summary="some changes for bug">
+      <option name="closed" value="true" />
+      <created>1732532848040</created>
+      <option name="number" value="00213" />
+      <option name="presentableId" value="LOCAL-00213" />
+      <option name="project" value="LOCAL" />
+      <updated>1732532848040</updated>
+    </task>
+    <task id="LOCAL-00214" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732623016420</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
+      <option name="project" value="LOCAL" />
+      <updated>1732623016421</updated>
+    </task>
+    <task id="LOCAL-00215" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732623181707</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
+      <option name="project" value="LOCAL" />
+      <updated>1732623181707</updated>
+    </task>
+    <task id="LOCAL-00216" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732623194445</created>
+      <option name="number" value="00216" />
+      <option name="presentableId" value="LOCAL-00216" />
+      <option name="project" value="LOCAL" />
+      <updated>1732623194445</updated>
+    </task>
+    <task id="LOCAL-00217" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732625563930</created>
+      <option name="number" value="00217" />
+      <option name="presentableId" value="LOCAL-00217" />
+      <option name="project" value="LOCAL" />
+      <updated>1732625563930</updated>
+    </task>
+    <task id="LOCAL-00218" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732690378941</created>
+      <option name="number" value="00218" />
+      <option name="presentableId" value="LOCAL-00218" />
+      <option name="project" value="LOCAL" />
+      <updated>1732690378941</updated>
+    </task>
+    <task id="LOCAL-00219" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1732697423259</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1732697423259</updated>
+    </task>
     <task id="LOCAL-00220" summary="filtered package by stars and price has been set">
       <option name="closed" value="true" />
       <created>1732697890966</created>
@@ -527,127 +659,31 @@
       <option name="project" value="LOCAL" />
       <updated>1733467224372</updated>
     </task>
-    <task id="LOCAL-00226" summary="filtered package by stars and price has been set">
+    <task id="LOCAL-00226" summary="tour has been redesigned">
       <option name="closed" value="true" />
-      <created>1733569125782</created>
+      <created>1734514285008</created>
       <option name="number" value="00226" />
       <option name="presentableId" value="LOCAL-00226" />
       <option name="project" value="LOCAL" />
-      <updated>1733569125782</updated>
+      <updated>1734514285008</updated>
     </task>
-    <task id="LOCAL-00227" summary="filtered package by stars and price has been set">
+    <task id="LOCAL-00227" summary="tour has been redesigned">
       <option name="closed" value="true" />
-      <created>1733574391890</created>
+      <created>1734514415610</created>
       <option name="number" value="00227" />
       <option name="presentableId" value="LOCAL-00227" />
       <option name="project" value="LOCAL" />
-      <updated>1733574391890</updated>
+      <updated>1734514415610</updated>
     </task>
-    <task id="LOCAL-00228" summary="filtered package by stars and price has been set">
+    <task id="LOCAL-00228" summary="tour has been redesigned">
       <option name="closed" value="true" />
-      <created>1733638976780</created>
+      <created>1734514506233</created>
       <option name="number" value="00228" />
       <option name="presentableId" value="LOCAL-00228" />
       <option name="project" value="LOCAL" />
-      <updated>1733638976780</updated>
+      <updated>1734514506233</updated>
     </task>
-    <task id="LOCAL-00229" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1733639061763</created>
-      <option name="number" value="00229" />
-      <option name="presentableId" value="LOCAL-00229" />
-      <option name="project" value="LOCAL" />
-      <updated>1733639061763</updated>
-    </task>
-    <task id="LOCAL-00230" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1734171881316</created>
-      <option name="number" value="00230" />
-      <option name="presentableId" value="LOCAL-00230" />
-      <option name="project" value="LOCAL" />
-      <updated>1734171881317</updated>
-    </task>
-    <task id="LOCAL-00231" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1734171974041</created>
-      <option name="number" value="00231" />
-      <option name="presentableId" value="LOCAL-00231" />
-      <option name="project" value="LOCAL" />
-      <updated>1734171974041</updated>
-    </task>
-    <task id="LOCAL-00232" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1734172068264</created>
-      <option name="number" value="00232" />
-      <option name="presentableId" value="LOCAL-00232" />
-      <option name="project" value="LOCAL" />
-      <updated>1734172068264</updated>
-    </task>
-    <task id="LOCAL-00233" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1734172100218</created>
-      <option name="number" value="00233" />
-      <option name="presentableId" value="LOCAL-00233" />
-      <option name="project" value="LOCAL" />
-      <updated>1734172100218</updated>
-    </task>
-    <task id="LOCAL-00234" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1734172149531</created>
-      <option name="number" value="00234" />
-      <option name="presentableId" value="LOCAL-00234" />
-      <option name="project" value="LOCAL" />
-      <updated>1734172149531</updated>
-    </task>
-    <task id="LOCAL-00235" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1734172188117</created>
-      <option name="number" value="00235" />
-      <option name="presentableId" value="LOCAL-00235" />
-      <option name="project" value="LOCAL" />
-      <updated>1734172188117</updated>
-    </task>
-    <task id="LOCAL-00236" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1734172297911</created>
-      <option name="number" value="00236" />
-      <option name="presentableId" value="LOCAL-00236" />
-      <option name="project" value="LOCAL" />
-      <updated>1734172297911</updated>
-    </task>
-    <task id="LOCAL-00237" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1734172734986</created>
-      <option name="number" value="00237" />
-      <option name="presentableId" value="LOCAL-00237" />
-      <option name="project" value="LOCAL" />
-      <updated>1734172734986</updated>
-    </task>
-    <task id="LOCAL-00238" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1734173903642</created>
-      <option name="number" value="00238" />
-      <option name="presentableId" value="LOCAL-00238" />
-      <option name="project" value="LOCAL" />
-      <updated>1734173903642</updated>
-    </task>
-    <task id="LOCAL-00239" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1734173925471</created>
-      <option name="number" value="00239" />
-      <option name="presentableId" value="LOCAL-00239" />
-      <option name="project" value="LOCAL" />
-      <updated>1734173925471</updated>
-    </task>
-    <task id="LOCAL-00240" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1734174804786</created>
-      <option name="number" value="00240" />
-      <option name="presentableId" value="LOCAL-00240" />
-      <option name="project" value="LOCAL" />
-      <updated>1734174804786</updated>
-    </task>
-    <option name="localTasksCounter" value="241" />
+    <option name="localTasksCounter" value="229" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -667,7 +703,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="some styles changes" />
     <MESSAGE value="tiny logical changes" />
     <MESSAGE value="image Gallary bugs have been fixed on avFilght" />
     <MESSAGE value="Shimmers has been added to AvailableFlightBasedonSelectedTour" />
@@ -691,6 +726,7 @@
     <MESSAGE value="some changes" />
     <MESSAGE value="flight api has been changed" />
     <MESSAGE value="some changes for bug" />
+    <MESSAGE value="tour has been redesigned" />
     <MESSAGE value="filtered package by stars and price has been set" />
     <option name="LAST_COMMIT_MESSAGE" value="filtered package by stars and price has been set" />
   </component>
@@ -713,24 +749,9 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx</url>
-          <line>9</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx</url>
-          <line>28</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx</url>
           <line>156</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx</url>
-          <line>704</line>
-          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

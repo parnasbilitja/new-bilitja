@@ -4,7 +4,8 @@ const initialState = {
   selectedDestination: {name:'',code:''}    ,
   selectedDate: {miladiDate:'',persianDate:''},
   selectedNight: null,
-  searchboxStep:''
+  searchboxStep:'',
+  tour_type: 'hotel'
 };
 
 const TourSearchBox = (state = initialState, action) => {
@@ -34,6 +35,12 @@ const TourSearchBox = (state = initialState, action) => {
       return {
         ...state,
         searchboxStep:action.payload,
+      };
+      case "SET_TOUR_TYPE":
+
+      return {
+        ...state,
+        tour_type:action.payload,
       };
     default:
       return state;

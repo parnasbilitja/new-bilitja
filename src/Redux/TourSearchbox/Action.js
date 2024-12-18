@@ -30,3 +30,10 @@ export const setSearchStep = (step) => {
         payload: step,
     };
 };
+export const setTourType = (step) => {
+
+    return {
+        type: "SET_TOUR_TYPE",
+        payload: step,
+    };
+};

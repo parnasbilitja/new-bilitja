@@ -1,0 +1,15 @@
+.form-input {
+  border: none;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+
+  &::placeholder {
+    font-size: 14px !important;
+  }
+
+  &:focus {
+    outline: none;
+    border-radius: 3px;
+  }
+}

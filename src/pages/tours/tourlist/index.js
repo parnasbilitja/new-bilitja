@@ -17,11 +17,18 @@ function Index(props) {
    let loading=false
 const AlltoursHandler = (page=1) => {
         setTour([])
-    axios
-        .post(`${globals.tourPackagesnew}packages?page=${router.query.page}`, {
 
-            req_type:'package'
-        }, {
+
+
+    axios.post(`${globals.tourPackagesnew}packages?page=${page}`, {
+            destination:router.query.destination,
+            origin: router.query?.origin,
+            month:'',
+            stayCount:+router.query?.nights ,
+            ordering:1,
+            req_type:'package',
+            date:router.query?.date ,
+    }, {
             headers: {
                 "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
             }
@@ -29,6 +36,8 @@ const AlltoursHandler = (page=1) => {
         .then((res) => {
             setTour(res.data.data)
             setMeta(res?.data?.meta)
+
+            console.log('end')
         })
         // .catch((err) =>r);
 };
@@ -36,7 +45,7 @@ const AlltoursHandler = (page=1) => {
 
 useEffect(()=>{
     AlltoursHandler()
-},[])
+},[router.query])
 
     function scrollToTop() {
         var body =document.getElementsByTagName("body")

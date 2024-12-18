@@ -12,11 +12,14 @@ import axios from "axios";
 import Paginate from "../../Components/NewTours/Components/subComponents/Paginate";
 import globals from "../../sources/Global";
 import scrolltoprefresh from "../component/Scrolltoprefresh";
+import {useSelector} from "react-redux";
 
 const Account = dynamic(() => import("./../../sources/account/Account.component"));
 
 const List = (props) => {
 const router=useRouter()
+
+    const {tour_type}=useSelector(state=>state.TourSearchBox)
 
     const [data, setData] = useState([])
     const [dest, setDest] = useState([])
@@ -99,9 +102,7 @@ const router=useRouter()
         return data
     }
 
-    useEffect(()=>{
-        console.log(dest)
-    },[dest])
+
 
     const getTour = async (cityCode,ordering=null,page=1) => {
         setLoading(true)
@@ -155,16 +156,16 @@ const router=useRouter()
     },[])
 
 
-    useEffect(()=>{
-
-        if(props.isHotel){
-            getTour(props.code,sortStat)
-        }else{
-
-
-            getTour(city,sortStat)
-        }
-    },[city,sortStat,props.isHotel])
+    // useEffect(()=>{
+    //
+    //     if(props.isHotel){
+    //         getTour(props.code,sortStat)
+    //     }else{
+    //
+    //
+    //         getTour(city,sortStat)
+    //     }
+    // },[city,sortStat,props.isHotel])
 
     const sortedDptdate =(data)=>{
 
@@ -323,7 +324,7 @@ const router=useRouter()
                                         </div>
                                     )) :
                                     ( data?.map((item) => (
-                                           <Link href={`/tours/${item?.id}`} onClick={() => slugHandler(item?.id)}
+                                           <Link href={`/tours/${item?.id}?tour_type=${router.query.tour_type}`} onClick={() => slugHandler(item?.id)}
                                                  key={item?.id}
                                                  className="w-100 col-xl-12 col-lg-12 w-100 d-flex flex-column">
                                                <div className="tour-item col-xl-12 col-lg-12 mb-4"
@@ -345,7 +346,7 @@ const router=useRouter()
                                                        </svg>
 
                                                        <div className="info-tour-city mr-2">
-                                                           <Link href={`/tours/${item.id}`}>
+                                                           <Link href={`/tours/${item.id}?tour_type=${router.query.tour_type}`}>
                                                                <>
                                                                    <strong
                                                                        style={{fontSize: '14px'}}>{item.title}</strong>
@@ -482,7 +483,7 @@ const router=useRouter()
                                                        {/*<img width="45" src={item.transfers[0].logo} alt={item.title} />*/}
                                                        {/*<span className="text-dark me-2 font-size-14">{item.transfers[0].transfer}</span>*/}
                                                    </div>
-                                                   <Link href={`/tours/${item.id}`}>
+                                                   <Link href={`/tours/${item.id}?tour_type=${router.query.tour_type}`}>
                                                        <div className="ino-tour-btn">
                                                            <span
                                                                className="text-white isMobile ms-2 font-bold-iransanse"

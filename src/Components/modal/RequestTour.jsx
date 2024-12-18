@@ -5,126 +5,13 @@ import PrimaryTextInput from "../../sources/component/PrimaryTextInput.component
 // import {usePostHog} from "posthog-js/react";
 import {getcurrencyfa, numberWithCommas} from "../../Utils/newTour";
 // import "../../../styles/AccommodationReceipt.module.scss";
-const RequestTour = ({isBundle,infPrc,currency, selectedHotelID,messages, setMessages, setShow, setPackData, packData, setOpen,datatitle,selectedpinZeroRoom,selectedHotel,flightId }) => {
+const RequestTour = ({rooms }) => {
 
-    // const posthog=usePostHog()
-const [passsengerCount,setPassengerCount]=useState({
-    adl:0,
-    chd:0,
-    inf:0
-})
-    const valueHandler = (e) => {
-        setPackData({ ...packData, [e.target.name]:e.target.value })
-    }
-
-
-    useEffect(()=>{
-        console.log(selectedHotel)
-    },[selectedHotel])
-    const[rooms,setRooms]=useState([])
-
-    useEffect(()=>{
-        setPackData({ ...packData, count: passsengerCount.adl+passsengerCount.chd+passsengerCount.inf })
-    },[passsengerCount])
-
-    const data = {
-        noPackage: false,
-        package_id: packData.tourId,
-        city_id: null,
-        phone: packData.number,
-        name: null,
-        month: null,
-        count: packData.count ? packData.count : 1
-    }
-
-    const dataHandler = async () => {
-        await axios.post('https://api.hamnavaz.com/api/v1/reserve/createReserve', data)
-            .then(response => {
-                setMessages({ ...messages, isDone: response.data.isDone, message: response.data.message });
-                ErrSuccess('درخواست رزرو با موفقیت ثبت شد. منتظر تماس کارشناسان ما باشید.')
-            })
-        setShow(false);
-        setOpen(true)
-    }
-
-
-    useEffect(() => {
-        if(isBundle){
-            debugger
-          setRooms(selectedHotel.rooms.filter(p=>p.pin===false))
-
-        }else{
-
-            // let filteredRoomsBasedOnFlightId=selectedHotel.rooms.filter(room=>(room.flight_id.toString()+room.return_flight_id.toString())===flightId)
-            setRooms(selectedHotel.rooms.sort((a,b)=>a.adl_capacity-b.adl_capacity))
-        }
-        // console.log(isBundle)
-    }, [isBundle]);
-
-    // useEffect(()=>{
-    //    let h=targetHotel.filter(hotel=>hotel.hotel_id===selectedHotelID)
-    //     console.log(h)
-    // },[])
-
-    const removeDuplicateObj = (data, prop) => {
-        // debugger
-        const seenIds = {}; // Helper object to keep track of seen IDs
-
-        const filteredData = data.filter((obj) => {
-            if (!seenIds[obj.roomTypeId]) {
-                seenIds[obj.roomTypeId] = true; // Mark the ID as seen
-                return true; // Keep the object in the filtered data
-            }
-            return false; // Ignore the object as duplicate
-        });
-        return filteredData;
-    };
-    const getCheapestRoom=(roomsArr)=>{
-
-        let chepestRooms=[]
-        roomsArr.map(room=>{
-            let roomtypeId=room.roomTypeId
-
-            let filteredRoom= roomsArr?.filter(room=>room.roomTypeId===roomtypeId)
-            let minprc= filteredRoom.reduce((min, obj) => (obj.price < min.price ? obj : min),filteredRoom[0]);
-            chepestRooms.push(minprc)
-        })
-
-
-
-
-       return removeDuplicateObj(chepestRooms)
-
-    }
-
-
-
-    useEffect(()=>{
-
-        console.log('ds۲۳۴۲fds',rooms)
-    },[rooms])
     return (
         <div className='req-container'  style={{padding:'2rem 3rem',overflowX:'scroll',maxWidth:'1200px',margin:'0 auto'}} >
-            <div style={{width: '100%', display: 'flex', justifyContent: 'space-between',alignItems: 'center'}}>
+            {/*<div style={{width: '100%', display: 'flex', justifyContent: 'space-between',alignItems: 'center'}}>*/}
 
 
-                <div>
-                    <p className={'p-0 m-0 font-bold'}>{`نرخ اتاق های دیگر ${selectedHotel.hotel_name}`}</p>
-                </div>
-                <div onClick={() => setShow()} className="ic-close  cursor-pointer my-3" style={{
-                    bottom: '10px',
-                    width: '30px',
-                    height: '30px',
-                    border: '2px solid #e20000',
-                    borderRadius: '5px',
-                    color: '#e20000',
-                    display: 'flex',
-                    justifyContent: "center",
-                    alignItems: 'center'
-                }}>
-                    x
-                </div>
-            </div>
 
             {
                 rooms.length > 0 ? <div className="col-xl-12 col-lg-12 col-12  position-relative">
@@ -170,17 +57,17 @@ const [passsengerCount,setPassengerCount]=useState({
                                             </div>
                                         {/*}*/}
                                         <div className='description'>
-                                            <p >{numberWithCommas(price.price)}</p>
-                                            <span>{getcurrencyfa(currency)}</span>
+                                            <p >{price.price ? numberWithCommas(price.price)+'تومان' : 'عدم موجودی'}</p>
+                                            {/*<span>{getcurrencyfa(currency)}</span>*/}
 
                                             {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
                                         </div>
 
 
                                             <div className='description'>
-                                                <p >{price.extra_bed_price===0||price.extra_bed_count===0?'عدم موجودی':numberWithCommas( price.extra_bed_price)}</p>
-                                                <span>{(price.extra_bed_price===0||price.extra_bed_count===0)
-                                                    ?null:getcurrencyfa(currency) }</span>
+                                                <p >{price.extra_bed_price===0||price.extra_bed_count===0?'عدم موجودی':numberWithCommas( price.extra_bed_price) + 'تومان'} </p>
+                                                {/*<span>{(price.extra_bed_price===0||price.extra_bed_count===0)*/}
+                                                {/*    ?null:getcurrencyfa(currency) }</span>*/}
 
                                                 {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
                                             </div>
@@ -196,9 +83,9 @@ const [passsengerCount,setPassengerCount]=useState({
                                             {/*    /!*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*!/*/}
                                             {/*</div>*/}
                                             <div className='description'>
-                                                <p >{price.chd_w_price===0||price.roomChdCapacity===0?'عدم موجودی':numberWithCommas(price.chd_w_price)}</p>
-                                                <span>{(price.chd_w_price===0||price.roomChdCapacity===0)
-                                                    ?null:getcurrencyfa(currency) }</span>
+                                                <p >{price.chd_w_price===0||price.roomChdCapacity===0?'عدم موجودی':numberWithCommas(price.chd_w_price) + 'تومان'} </p>
+                                                {/*<span>{(price.chd_w_price===0||price.roomChdCapacity===0)*/}
+                                                {/*    ?null:getcurrencyfa(currency) }</span>*/}
                                                 {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
                                             </div>
 
@@ -210,9 +97,9 @@ const [passsengerCount,setPassengerCount]=useState({
                                         {/*        /!*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*!/*/}
                                         {/*    </div>:*/}
                                             <div className='description'>
-                                               <p> {price.chd_n_price===0||price.roomChdCapacity===0?'عدم موجودی':numberWithCommas(price.chd_n_price)}</p>
-                                                {price.chd_n_price===0 || price.roomChdCapacity===0
-                                                    ?null: <span>{getcurrencyfa(currency)} </span>}
+                                               <p> {price.chd_n_price===0||price.roomChdCapacity===0?'عدم موجودی':numberWithCommas(price.chd_n_price) + 'تومان'} </p>
+                                                {/*{price.chd_n_price===0 || price.roomChdCapacity===0*/}
+                                                {/*    ?null: <span>{getcurrencyfa(currency)} </span>}*/}
 
                                                 {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
                                             </div>
@@ -228,8 +115,8 @@ const [passsengerCount,setPassengerCount]=useState({
                                             //         {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
                                             //     </div>:
                                                 <div className='description'>
-                                                    <p >{numberWithCommas(price.inf_price) }</p>
-                                                    <span>{getcurrencyfa(currency)}</span>
+                                                    <p >{numberWithCommas(price.inf_price) + 'تومان' } </p>
+                                                    {/*<span>{getcurrencyfa(currency)}</span>*/}
 
                                                     {/*<p className='text-center' style={{color:'#e20000',fontSize:'14px',fontWeight:700}}>{numberWithCommas(price?.price) }</p>*/}
                                                 </div>

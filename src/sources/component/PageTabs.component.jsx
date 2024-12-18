@@ -104,6 +104,7 @@ const PageTabls = (props) => {
                   cy="1.113"
                   rx="1.113"
                   ry="1.113"
+
                   transform="translate(38.377 27.086)"
                 />
                 <ellipse
@@ -341,7 +342,7 @@ const PageTabls = (props) => {
               </svg>
 
               <div className="pull-right">
-                <span className="font-size-13 ">پکیج تور </span>
+                <span className="font-size-13 "> تور </span>
               </div>
             </div>
           </Link>

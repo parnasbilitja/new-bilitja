@@ -139,3 +139,57 @@
 
    }
 }
+
+
+.search_box_container{
+  justify-content: center;
+  place-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr .5fr;
+}
+
+@media only screen and (max-width: 868px) {
+  .search_box_container{
+
+    grid-template-columns: 1fr 1fr ;
+  }
+}
+
+.tour_type{
+  margin-top: 10px;
+  gap: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.type_active{
+color: #e20000 !important;
+  border:2px solid #e20000 !important;
+}
+
+.type_hotel{
+  color: black;
+  cursor: pointer;
+  border:2px solid #b9b9b9;
+  width: 60px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 10px 10px 0;
+}
+
+.type_package{
+  cursor: pointer;
+  color: black;
+  border:2px solid #b9b9b9;
+  width: 60px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 0 0 10px;
+}
