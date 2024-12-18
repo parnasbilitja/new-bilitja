@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="filtered package by stars and price has been set" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="filtered package by stars and price has been set">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -305,7 +307,9 @@
       <workItem from="1733568866329" duration="875000" />
       <workItem from="1733574314938" duration="677000" />
       <workItem from="1733638905126" duration="803000" />
-      <workItem from="1734171194300" duration="968000" />
+      <workItem from="1734171194300" duration="2156000" />
+      <workItem from="1734173895304" duration="1423000" />
+      <workItem from="1734177794705" duration="6410000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -475,54 +479,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00214" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1732623016420</created>
-      <option name="number" value="00214" />
-      <option name="presentableId" value="LOCAL-00214" />
-      <option name="project" value="LOCAL" />
-      <updated>1732623016421</updated>
-    </task>
-    <task id="LOCAL-00215" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1732623181707</created>
-      <option name="number" value="00215" />
-      <option name="presentableId" value="LOCAL-00215" />
-      <option name="project" value="LOCAL" />
-      <updated>1732623181707</updated>
-    </task>
-    <task id="LOCAL-00216" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1732623194445</created>
-      <option name="number" value="00216" />
-      <option name="presentableId" value="LOCAL-00216" />
-      <option name="project" value="LOCAL" />
-      <updated>1732623194445</updated>
-    </task>
-    <task id="LOCAL-00217" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1732625563930</created>
-      <option name="number" value="00217" />
-      <option name="presentableId" value="LOCAL-00217" />
-      <option name="project" value="LOCAL" />
-      <updated>1732625563930</updated>
-    </task>
-    <task id="LOCAL-00218" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1732690378941</created>
-      <option name="number" value="00218" />
-      <option name="presentableId" value="LOCAL-00218" />
-      <option name="project" value="LOCAL" />
-      <updated>1732690378941</updated>
-    </task>
-    <task id="LOCAL-00219" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1732697423259</created>
-      <option name="number" value="00219" />
-      <option name="presentableId" value="LOCAL-00219" />
-      <option name="project" value="LOCAL" />
-      <updated>1732697423259</updated>
-    </task>
     <task id="LOCAL-00220" summary="filtered package by stars and price has been set">
       <option name="closed" value="true" />
       <created>1732697890966</created>
@@ -643,7 +599,55 @@
       <option name="project" value="LOCAL" />
       <updated>1734172149531</updated>
     </task>
-    <option name="localTasksCounter" value="235" />
+    <task id="LOCAL-00235" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1734172188117</created>
+      <option name="number" value="00235" />
+      <option name="presentableId" value="LOCAL-00235" />
+      <option name="project" value="LOCAL" />
+      <updated>1734172188117</updated>
+    </task>
+    <task id="LOCAL-00236" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1734172297911</created>
+      <option name="number" value="00236" />
+      <option name="presentableId" value="LOCAL-00236" />
+      <option name="project" value="LOCAL" />
+      <updated>1734172297911</updated>
+    </task>
+    <task id="LOCAL-00237" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1734172734986</created>
+      <option name="number" value="00237" />
+      <option name="presentableId" value="LOCAL-00237" />
+      <option name="project" value="LOCAL" />
+      <updated>1734172734986</updated>
+    </task>
+    <task id="LOCAL-00238" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1734173903642</created>
+      <option name="number" value="00238" />
+      <option name="presentableId" value="LOCAL-00238" />
+      <option name="project" value="LOCAL" />
+      <updated>1734173903642</updated>
+    </task>
+    <task id="LOCAL-00239" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1734173925471</created>
+      <option name="number" value="00239" />
+      <option name="presentableId" value="LOCAL-00239" />
+      <option name="project" value="LOCAL" />
+      <updated>1734173925471</updated>
+    </task>
+    <task id="LOCAL-00240" summary="filtered package by stars and price has been set">
+      <option name="closed" value="true" />
+      <created>1734174804786</created>
+      <option name="number" value="00240" />
+      <option name="presentableId" value="LOCAL-00240" />
+      <option name="project" value="LOCAL" />
+      <updated>1734174804786</updated>
+    </task>
+    <option name="localTasksCounter" value="241" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -725,7 +729,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx</url>
-          <line>701</line>
+          <line>704</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>

@@ -510,6 +510,7 @@ export const numberToWordConvertor=(num)=>{
       return 'دهم'
 
   }
+
 }
 export const chdAgeStr=(low,high)=>{
   // debugger
