@@ -16,25 +16,13 @@ import {accountBoxModify} from "../../Redux/UI/ui.action";
 
 
 const PackageReserve = ({
-    tourId,
-                            transfers,
+
+    target_rooms,
+    hotel,
+    selectedFlight,
+   close,
     user,
-                            reserveProperties,
-                            accountBoxModify,
-                            tourData,
-                            flightIds,
-                            selectedHotel,
-                            flightId,
-                            messageBoxModify,
-                            setIsReserve,
-                            messages,
-                            setMessages,
-                            setShow,
-                            setPackData,
-                            packData,
-                            setOpen,
-                            datatitle,
-                            isBundle,
+
                         }) => {
     const router = useRouter()
 
@@ -52,6 +40,9 @@ const PackageReserve = ({
 
         return (+getIndex)+1
     }
+    useEffect(()=>{
+        console.log(hotel)
+    },[hotel])
     const incRoom = (room) => {
 
         rooms.map(r => {
@@ -63,7 +54,8 @@ const PackageReserve = ({
                         room_type_id: room.room_type_id,
                         room_id: room.room_id,
                         room_type: room?.room_name,
-                        hotel_id: selectedHotel.hotel_id,
+
+                        hotel_id: hotel.hotel_id,
                         Adl_capacity: room?.adl_capacity,
                         extra_bed_count: 0,
                         inf_count: 0,
@@ -74,8 +66,8 @@ const PackageReserve = ({
                         total_extra_count: room?.total_extra_count,
                         chd_withbed_prc: room?.chd_w_price,
                         chd_nobed_prc: room?.chd_n_price,
-                        chd_withbed_ages: selectedHotel?.with_bed_child_ages,
-                        chd_nobed_ages: selectedHotel?.no_bed_child_ages,
+                        chd_withbed_ages: hotel?.with_bed_child_ages,
+                        chd_nobed_ages: hotel?.no_bed_child_ages,
                         ext_prc: room?.extra_bed_price,
                         inf_prc: room.inf_price,
                         adl_count: room.adl_capacity,
@@ -315,7 +307,7 @@ const PackageReserve = ({
 
             setSelecetedRoomsData(findRoom);
         } else if (type === "chd_withbed_count") {
-            debugger
+
             const findRoom = selectedRoomsData.map((x) => {
                 if (x?.id === room?.id) {
                     if (x?.chd_withbed_count + x?.extra_count >= x?.total_extra_count) {
@@ -367,30 +359,26 @@ const PackageReserve = ({
     };
 
 
+
     const tourReserve = (
-        fCheckin,
-        fCheckout,
-        fDId,
-        fRId,
-        hotelId
     ) => {
 
-
+        console.log(hotel)
 
         if (selectedRoomsData.length > 0) {
             // setIsLoading(true)
+
             axios
                 .post(
                     `${globals.tourPackages}reserves/checking`,
                     {
-                        tour_id:+tourId,
-                        package_id:selectedHotel.id,
+                        tour_id:+hotel.tour_id,
+                        package_id:hotel.id,
                         reserver_phone:user.logged ? localStorage.getItem('mobile'):'',
-                        checkin: tourData.checkin,
-                        checkout: tourData.checkout,
-                        hotel_id: selectedHotel.hotel_id,
-                        flight_id: tourData.selected_flight,
-
+                        checkin: hotel.check_in,
+                        checkout: hotel.check_out,
+                        hotel_id: hotel.hotel_id,
+                        flight_id: selectedFlight,
                         rooms: selectedRoomsData,
                     },
                     {
@@ -401,16 +389,15 @@ const PackageReserve = ({
                 )
                 .then((res) => {
                     setLoading(false)
-                    console.log('data', res.data)
+                    // console.log('data', res.data)
                     ErrSuccess("به صفحه تکمیل اطلاعات و رزرو منتقل می‌شوید");
                     router.push(
-                        `/tour/reserve/${selectedHotel.hotel_id}/${flightIds.depratureId}/${flightIds.returnId}?checkin=${tourData.checkin}&checkout=${tourData.checkout}&rooms=${JSON.stringify(
-                            selectedRoomsData
-                        )}&ref_code=${res.data.data.information.ref_code}`
+                        `/tour/reserve/${hotel.hotel_id}/${res.data.data.flights.departure.id}/${res.data.data.flights.return.id}?checkin=${hotel.check_in}&checkout=${hotel.check_out}&rooms=${JSON.stringify(selectedRoomsData)}&ref_code=${res.data.data.information.ref_code}`
                     );
                 })
                 .catch((err) => {
                     // setIsLoading(false)
+                    console.log(err)
                     setLoading(false)
                     Err("این پرواز با این تعداد اتاق انتخابی موجودی ندارد");
                 });
@@ -435,20 +422,20 @@ const PackageReserve = ({
     const [selectedRoomsData, setSelecetedRoomsData] = useState([])
 
 
-    useEffect(() => {
+    // useEffect(() => {
+    //
+    //     setPackData({...packData, count: passsengerCount.adl + passsengerCount.chd + passsengerCount.inf})
+    // }, [passsengerCount])
 
-        setPackData({...packData, count: passsengerCount.adl + passsengerCount.chd + passsengerCount.inf})
-    }, [passsengerCount])
-
-    const data = {
-        noPackage: false,
-        package_id: packData.tourId,
-        city_id: null,
-        phone: packData.number,
-        name: null,
-        month: null,
-        count: packData.count ? packData.count : 1
-    }
+    // const data = {
+    //     noPackage: false,
+    //     package_id: packData.tourId,
+    //     city_id: null,
+    //     phone: packData.number,
+    //     name: null,
+    //     month: null,
+    //     count: packData.count ? packData.count : 1
+    // }
 
     const dataHandler = async () => {
         await axios.post('https://api.hotelobilit.com/api/v2/tours/createReserve', data,
@@ -499,24 +486,24 @@ const PackageReserve = ({
     }
     useEffect(() => {
         // console.log('asdas32432',selectedHotel)
-        if (!isBundle) {
+        // if (!isBundle) {
+        //
+        //     let selectedRooms
+        //     selectedRooms = selectedHotel.rooms
+        //     selectedRooms = selectedRooms.map(room =>
+        //         ({...room, count: 0, id: Math.random() * 100})
+        //     )
+        //     setRooms(selectedRooms)
+        // } else {
+            setRooms(target_rooms)
+        // }
+    }, [])
 
-            let selectedRooms
-            selectedRooms = selectedHotel.rooms
-            selectedRooms = selectedRooms.map(room =>
-                ({...room, count: 0, id: Math.random() * 100})
-            )
-            setRooms(selectedRooms)
-        } else {
-            setRooms(selectedHotel)
-        }
-    }, [isBundle])
 
-
-    useEffect(()=>{
-
-        console.log(localStorage.getItem('mobile'),user.logged)
-    },[])
+    // useEffect(()=>{
+    //
+    //     console.log(localStorage.getItem('mobile'),user.logged)
+    // },[])
 
     const roomNumber = (roomid) => {
 
@@ -527,16 +514,14 @@ const PackageReserve = ({
 
 
     const decRoom = (room) => {
-        debugger
+
         let foundRoom = selectedRoomsData?.filter(r => r.room_type_id === room.room_type_id)
         foundRoom.pop()
         let filteredRoom = selectedRoomsData?.filter(r => r.room_type_id !== room.room_type_id)
         filteredRoom.push(...foundRoom)
         setSelecetedRoomsData(filteredRoom)
     }
-    useEffect(() => {
-        console.log(selectedRoomsData)
-    }, [selectedRoomsData])
+
 
 
     const [state, setState] = useState({
@@ -551,6 +536,13 @@ const PackageReserve = ({
         // agreeWithTermerr: false,
         // email: ''
     });
+
+    useEffect(()=>{
+        console.log(hotel)
+    },[hotel])
+    useEffect(()=>{
+        console.log(selectedRoomsData)
+    },[selectedRoomsData])
     return (
 
 
@@ -561,7 +553,7 @@ const PackageReserve = ({
                 <div style={{position:'relative' , height:'100%'}}>
                     <div className={'roomtour'}>
                         <div onClick={() => {
-                            setIsReserve(false)
+                            close(false)
                         }} className="ic-close  cursor-pointer" style={{
                             position: 'relative',
                             right: "15px",
@@ -586,43 +578,7 @@ const PackageReserve = ({
                                         style={{color: '#e20000',padding:'0 4px'}} href='tel:02184278'>02184278</a>
                                     تماس حاصل فرمایید.
                                 </p>
-                                {
-                                    isBundle &&
 
-                                    <>
-                                        <div className="text d-flex flex-column align-items-center w-100 px-2 mb-2">
-
-                                            <span className="text-center font-yekan font-bold font-size-14 py-2">یا</span>
-                                            <p className="text-center font-yekan font-bold font-size-14">
-                                                جهت تماس با شما از طریق کارشناسان بلیطجا اطلاعات درخواستی زیر را تکمیل و
-                                                ارسال فرمایید.
-                                            </p>
-                                        </div>
-                                        <div
-                                            className="in-data w-75 d-flex flex-column align-items-stretch justify-content-center m-auto mb-2">
-                                            <label htmlFor="" className="pb-2 font-yekan font-bold">شماره تلفن همراه</label>
-                                            <div className='form-input-border'>
-                                                <PrimaryTextInput type="text" value={packData.number}
-                                                                  onChange={e => valueHandler(e)} name="number"
-                                                                  className="w-100 px-2 rounded-3 border-secondary font-yekan"
-                                                                  placeholder="شماره همراه خود را وارد کنید"
-                                                                  style={{height: "40px", outline: "none"}}/>
-                                            </div>
-                                        </div>
-                                        <div
-                                            className="c-btn request-data my-3 font-yekan m-auto w-100 d-flex justify-content-center">
-                                            <button style={{
-                                                width: '130px',
-                                                height: '50px',
-                                                backgroundColor: '#069e2c !important'
-                                            }}
-                                                    className={`ancher bg-success text-white font-size-13 py-2 px-4 rounded-3 mt-2 foc01`}>
-                                                درخواست رزرو
-                                            </button>
-                                        </div>
-                                    </>
-                                }
-                                {!isBundle &&
                                     <>
                                                      <span
                                                          className="text-center font-yekan font-bold font-size-14 py-2">یا</span>
@@ -630,11 +586,13 @@ const PackageReserve = ({
                                             جهت رزرو لطفا اتاق خود را انتخاب کنید.
                                         </p>
                                     </>
-                                }
+                                {/*}*/}
                                 {/*جهت تماس با شما از طریق کارشناسان  بلیطجا اطلاعات درخواستی زیر را تکمیل و ارسال فرمایید.*/}
                             </div>
-                            {
-                                !isBundle && <>
+                            {/*{*/}
+                            {/*    !isBundle &&*/}
+
+                                <>
                                     {/*<div className="in-data w-75 d-flex flex-column align-items-stretch justify-content-center m-auto mb-2">*/}
                                     {/*    <label htmlFor="" className="pb-2 font-yekan font-bold">شماره تلفن همراه</label>*/}
                                     {/*    <div className='form-input-border'>*/}
@@ -701,6 +659,7 @@ const PackageReserve = ({
                                                             <div className='room-s'>
                                                                 <div style={{display: 'flex', columnGap: '10px'}}>
                                                                     <div
+                                                                        className={'cursor-pointer'}
                                                                         // className={"roomcountDet_remove"}
                                                                         onClick={() => {
                                                                             if (selectedRoomsData.length === 1) {
@@ -712,24 +671,17 @@ const PackageReserve = ({
                                                                             }
                                                                         }}
                                                                     >
-                                                                        <svg
-                                                                            data-name="Layer 1"
-                                                                            height="30"
-                                                                            id="Layer_1"
-                                                                            viewBox="0 0 200 200"
-                                                                            width="30"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                        >
-                                                                            <title/>
-                                                                            <path
-                                                                                fill="#e20000"
-                                                                                d="M100,15a85,85,0,1,0,85,85A84.93,84.93,0,0,0,100,15Zm0,150a65,65,0,1,1,65-65A64.87,64.87,0,0,1,100,165Z"
-                                                                            />
-                                                                            <path
-                                                                                fill="#e20000"
-                                                                                d="M128.5,74a9.67,9.67,0,0,0-14,0L100,88.5l-14-14a9.9,9.9,0,0,0-14,14l14,14-14,14a9.9,9.9,0,0,0,14,14l14-14,14,14a9.9,9.9,0,0,0,14-14l-14-14,14-14A10.77,10.77,0,0,0,128.5,74Z"
-                                                                            />
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             width={20}
+                                                                             height={20}
+                                                                             fill="#e20000" viewBox="0 0 24 24"
+                                                                             stroke-width="1.5" stroke="#e20000"
+                                                                             className="size-6">
+                                                                            <path stroke-linecap="round"
+                                                                                  stroke-linejoin="round"
+                                                                                  d="M6 18 18 6M6 6l12 12"/>
                                                                         </svg>
+
                                                                     </div>
                                                                     <div className={"roomcountDet_name"}>
                                                                         <p className='p-0 m-0'>{room?.room_type} <small
@@ -773,7 +725,7 @@ const PackageReserve = ({
                                                                             <p className={"bedtype"}>
                                                                                 تعداد تخت اضافه
                                                                             </p>
-                                                                            <p>۱۲ سال به بالا</p>
+                                                                            <small>(۱۲ سال به بالا)</small>
 
                                                                         </>
                                                                         <p className={"bedtypeprc"}>
@@ -844,8 +796,8 @@ const PackageReserve = ({
                                                                             <p className={"bedtype"}>
                                                                                 تعداد کودک با تخت
                                                                             </p>
-                                                                            {selectedHotel?.with_bed_child_ages.length > 0 &&
-                                                                                <p>{chdAgeStr(selectedHotel?.with_bed_child_ages[0], selectedHotel?.with_bed_child_ages[1])}</p>}
+                                                                            {hotel?.with_bed_child_ages.length > 0 &&
+                                                                                <small>({chdAgeStr(hotel?.with_bed_child_ages[0], hotel?.with_bed_child_ages[1])})</small>}
                                                                         </>
                                                                         <p className={"bedtypeprc"}>
                                                                             {(room.chd_capacity > 0 && room.chd_withbed_prc > 0) ? ` ${numberWithCommas(
@@ -909,8 +861,8 @@ const PackageReserve = ({
                                                                         <p className={"bedtype"}>
                                                                             تعداد کودک بدون تخت
                                                                         </p>
-                                                                        {selectedHotel?.no_bed_child_ages.length > 0 &&
-                                                                            <p>{chdAgeStr(selectedHotel?.no_bed_child_ages[0], selectedHotel?.no_bed_child_ages[1])}</p>}
+                                                                        {hotel?.no_bed_child_ages.length > 0 &&
+                                                                            <small>({chdAgeStr(hotel?.no_bed_child_ages[0], hotel?.no_bed_child_ages[1])})</small>}
                                                                     </>
                                                                     <p className={"bedtypeprc"}>
                                                                         {room.chd_capacity > 0 ? `${numberWithCommas(
@@ -977,7 +929,7 @@ const PackageReserve = ({
                                                                             <p className={"bedtype"}>
                                                                                 تعداد نوزاد
                                                                             </p>
-                                                                            <p>{chdAgeStr(0, 2)}</p>
+                                                                            <small>({chdAgeStr(0, 2)})</small>
                                                                         </>
 
                                                                         <p className={"bedtypeprc"}>
@@ -1034,7 +986,7 @@ const PackageReserve = ({
 
 
                                 </>
-                            }
+                            {/*}*/}
                         </div>
                     </div>
 
@@ -1072,11 +1024,11 @@ const PackageReserve = ({
                                             //
                                             // }
                                             setLoading(true)
-                                            posthog.capture("FormEndTourPackage", {
-                                                HMNPhone: packData.number,
-                                                HMNPassengerCount: packData.count
-                                            })
-                                            posthog.identify(packData.number)
+                                            // posthog.capture("FormEndTourPackage", {
+                                            //     HMNPhone: packData.number,
+                                            //     HMNPassengerCount: packData.count
+                                            // })
+                                            // posthog.identify(packData.number)
                                         }
                                     }}>
                                 {loading ? 'لطقا منتظر بمانید...' : `درخواست رزرو`}

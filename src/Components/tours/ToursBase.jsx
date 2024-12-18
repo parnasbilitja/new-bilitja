@@ -30,6 +30,7 @@ import {fetchOfferdTour} from "../../Redux/OfferdTours/Action";
 import Link from "next/link";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation} from "swiper";
+import {setSearchStep} from "../../Redux/TourSearchbox/Action";
 
 
 const ToursBase = (props) => {
@@ -174,9 +175,10 @@ const ToursBase = (props) => {
     console.log('pouya',cities)
   }, [cities]);
 
+
   let tourCities =[{name:'استانبول' , code:'IST',slug:'istanbul',image:'../../../../Images/istanbul.jpg'},{name:'آنتالیا' , code:'AYT',slug:'antalya',image:'../../../../Images/antalya.jpg'},{name:'آلانیا' , code:'GZP',slug:'alanya',image:'../../../../Images/alanya.jpg'}, {name:'دبی' , code:'"DXB"',slug:'dubai',image:'../../../../Images/dubai.jpg'},]
   return (
-      <div className={""}>
+      <div className={""} >
 
         <Head>
           <title>بلیطجا | لیست تورها</title>
@@ -188,7 +190,10 @@ const ToursBase = (props) => {
             style={{ marginTop: state.width >= 826 ? "" : "-0.8rem" }}
         >
           <Scrolltoprefresh />
-          <div style={{ background: "#F7F7F7" }}>
+          <div style={{ background: "#F7F7F7" }} onClick={(e)=>{
+            e.stopPropagation()
+            dispatch(setSearchStep(''))
+          }}>
             <div style={{transform:'translateY(14px)'}}>
               <PictureBase />
 
@@ -385,13 +390,9 @@ const ToursBase = (props) => {
                                         </p>
                                       </a>
                                     </SwiperSlide>
-
-
                                 ))}
 
                               </div>
-
-
                             </div>
                           </Swiper>
                       }
@@ -430,11 +431,11 @@ const ToursBase = (props) => {
         </div>
         <div className="col-md-10 m-auto px-3 padd">
           <OfferdTours data={offeredtourData?.data}/>
-          <CitiesSuggest/>
+          {/*<CitiesSuggest/>*/}
 
-          <div id="list">
-            <List ref={myRef} city={state.city} hideShowMore={true} shimmerNumber={5}/>
-          </div>
+          {/*<div id="list">*/}
+          {/*  <List ref={myRef} city={state.city} hideShowMore={true} shimmerNumber={5}/>*/}
+          {/*</div>*/}
           <HotelsSuggest/>
           {/*<Posts/>*/}
         </div>

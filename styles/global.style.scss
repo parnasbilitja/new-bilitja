@@ -672,7 +672,7 @@ html {
   box-shadow: 0px -11px 32px -32px rgba(0, 0, 0, 0.98);
   position: sticky;
   padding: 1rem .5rem;
-  bottom: 0;
+  bottom: -15px;
   left: 0;
   width: 100%;
   background-color: white;
@@ -691,8 +691,9 @@ html {
 
 
   .roomcountDet {
-    border: 1px solid #cecece;
+    //border: 1px solid #cecece;
     padding: 1rem 2rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 20px;
 
 
@@ -743,8 +744,9 @@ justify-content: center        }
 
   .roomcountDet_bedcount {
     //width: 100%;
-    border: 1px solid #cecece;
-    border-radius: 20px;
+    //border: 1px solid #cecece;
+    border-radius: 10px;
+    background-color: #f8f9fd;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -754,11 +756,15 @@ justify-content: center        }
 
     p {
       white-space: nowrap;
-      font-size: 14px;
+      font-size: 13px;
+      font-weight: 500;
       padding: 5px;
       margin: 0;
     }
 
+    small{
+      font-size: 11px;
+    }
     .bedtypeprc {
 
       color: #e20000;
@@ -4973,11 +4979,13 @@ p img {
 }
 
 .pdfbtn {
+  margin-top: 10px;
   padding: 12px;
   align-items: center;
-  background: rgb(192, 51, 65);
-  border: 2px solid rgb(192, 51, 65);
-  border-radius: 15px 15px 1px 15px;
+  transition: .2s ease-in-out;
+  background: #e20000;
+  border: #e20000;
+  border-radius: 10px;
   color: white;
   display: flex;
   height: 40px;
@@ -4988,7 +4996,8 @@ p img {
   font-weight: 600;
 
   &:hover {
-    color: rgb(192, 51, 65);
+    color: #e20000;
+    border: 1px solid #e20000;
     background: white;
 
     svg {
@@ -5383,8 +5392,9 @@ p img {
     display: flex;
     align-items: center;
     //width: 100%;
-    border: 1px solid #cecece;
-    border-radius: 20px;
+    //border: 1px solid #cecece;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     // box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
 
     padding: 1rem;
@@ -5876,7 +5886,7 @@ p img {
   flex-direction: column;
   align-items: center;
   //margin-top: 12px;
-  background-color: rgba(229, 228, 228, 0.62);
+  background-color: #f8f9fd;
 
   border-radius: 0 0 10px 10px;
   padding: 2rem 1rem 1rem 1rem;
@@ -6146,4 +6156,77 @@ position: relative;
     height: 700px;
   }
 
+}
+
+.Modal {
+  // position: absolute;
+  width: 600px;
+  max-height: 600px; // height: 50%;
+  bottom: 40px;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  //overflow-y: auto;
+}
+.Modal-2 {
+  // position: absolute;
+  width: 700px;
+  max-height: 900px; // height: 50%;
+  bottom: 40px;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+.Modal-calendar {
+  // position: absolute;
+  width: 700px;
+ height: fit-content; // height: 50%;
+  bottom: 40px;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+
+
+.Overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(122, 120, 121, 0.6);
+}
+.Overlay_calendar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(122, 120, 121, 0.6);
+}
+
+@media (max-width: 868px) {
+  .Modal {
+    width: 95%;
+    height: 60%;
+    overflow: hidden;
+  }
+  .Overlay_calendar{
+    display: none;
+  }
 }

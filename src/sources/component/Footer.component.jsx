@@ -89,14 +89,19 @@ var body =document.getElementsByTagName("body")
             <div className="d-lg-flex align-items-start">
               <div className="col-lg-4 col-md-12 col-12 col-sm-12 item-footer mb-2">
                 <div className="d-flex align-items-center mb-2">
-                  <div style={{ marginLeft: "15x" }}>
-                    <img src="../../../Images/Display.png" alt="display" />
+                  <div style={{marginLeft: "15x"}}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width={25} height={25} fill="none" viewBox="0 0 24 24"
+                         stroke-width="1.5"
+                         stroke="#e20000" className="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"/>
+                    </svg>
                   </div>
                   <b className="mr-2"> معرفی بلیطجا </b>
                 </div>
 
                 <div className="px-4 mt-3">
-                  <p style={{ textAlign: "justify" }}>
+                  <p style={{textAlign: "justify"}}>
                     سایت بلیطجا با ۱۴
                     سال سابقه وبادارا بودن مجوز های بند الف و ب از سازمان میراث
                     فرهنگی و گردشگری و سازمان هواپیمایی کشوری همواره بر آن بوده
@@ -128,10 +133,14 @@ var body =document.getElementsByTagName("body")
                 <div className={styles["footer-virtual-mobile"]}>
                   <div style={{ marginBottom: 8 }}>
                     <div className="d-flex align-items-center justify-content-lg-center mb-2">
-                      <div style={{ marginLeft: "15x" }}>
-                        <img src="../../../Images/Display.png" alt="" />
+                      <div style={{marginLeft: "15x"}}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width={25} height={25} fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="#e20000" className="size-6">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"/>
+                        </svg>
                       </div>
-                      <b style={{ marginTop: 3 }} className="mb-0 mr-2">
+                      <b style={{marginTop: 3}} className="mb-0 mr-2">
                         دسترسی سریع{" "}
                       </b>
                     </div>
@@ -140,7 +149,7 @@ var body =document.getElementsByTagName("body")
                   <div className="mt-4 w-100 d-flex justify-content-center">
                     <ul className={`${styles["ul-lists"]}`}>
                       {footerLinks.map((item, i) => (
-                        <li key={i} style={{ color: "black!important" }}>
+                          <li key={i} style={{color: "black!important"}}>
                           <p
                             className="font-size-8 mb-0 color-black"
                             style={{ color: "black!important" }}
@@ -159,20 +168,25 @@ var body =document.getElementsByTagName("body")
                 style={{ width: "fit-content" }}
               >
                 <div className="d-flex align-items-center mb-2">
-                  <div style={{ marginLeft: "15x" }}>
-                    <img src="../../../Images/Display.png" alt="display" />
+                  <div style={{marginLeft: "15x"}}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width={25} height={25} fill="none" viewBox="0 0 24 24"
+                         stroke-width="1.5"
+                         stroke="#e20000" className="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"/>
+                    </svg>
                   </div>
                   <b className="mb-0 mr-2">تماس با ما</b>
                 </div>
 
-                <div className="mb-4" style={{ height: "180px" }}>
+                <div className="mb-4" style={{height: "180px"}}>
                   <MapComponent coordinates={[35.718982, 51.434697619]}/>
                 </div>
 
                 <div>
                   <div className="d-flex justify-content-between mb-3">
                     <div className="ml-2 align-self-start">
-                      <img src="../../../Images/008-maps.svg" alt="maps" />
+                      <img src="../../../Images/008-maps.svg" alt="maps"/>
                     </div>
                     <span className="mr-2">
                       سهروردی جنوبی، خیابان ابرار شرقی، خیابان اقلیمی، پلاک 12،
