@@ -115,7 +115,7 @@ useEffect(()=>{
                     ))
                 }</>: props?.data?.data
                         ?.map((item) => (
-                                <Link href={`/tours/${item?.id}`} onClick={() => slugHandler(item?.id)} key={item?.id} className="w-100 col-xl-12 col-lg-12 w-100 d-flex flex-column">
+                                <Link href={`/tours/${item?.id}?tour_type=package`} onClick={() => slugHandler(item?.id)} key={item?.id} className="w-100 col-xl-12 col-lg-12 w-100 d-flex flex-column">
                                     <div className="tour-item col-xl-12 col-lg-12 mb-4"  style={{cursor:'pointer'}}>
                                         <div className="tour-city">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="41.265" height="48.155" viewBox="0 0 41.265 48.155">
@@ -126,7 +126,7 @@ useEffect(()=>{
                                             </svg>
 
                                             <div className="info-tour-city mr-2">
-                                                <Link href={`/tours/${item.id}`}>
+                                                <Link href={`/tours/${item?.id}?tour_type=package`}>
                                                     <>
                                                         <strong style={{fontSize:'14px',whiteSpace:'nowrap'}}>{item.title}</strong>
                                                         <small style={{marginRight:'5px'}}>({item.id})</small>
@@ -210,7 +210,7 @@ useEffect(()=>{
                                             {/*<img width="45" src={item.transfers[0].logo} alt={item.title} />*/}
                                             {/*<span className="text-dark me-2 font-size-14">{item.transfers[0].transfer}</span>*/}
                                         </div>
-                                        <Link href={`/tours/${item.id}`}>
+                                        <Link href={`/tours/${item?.id}?tour_type=package`}>
                                             <div className="ino-tour-btn">
                                                 <span className="text-white isMobile ms-2 font-bold-iransanse" style={{display: "none"}}>جزییات</span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="27.414" height="18.453" viewBox="0 0 27.414 18.453">
