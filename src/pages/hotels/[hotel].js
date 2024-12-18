@@ -23,6 +23,7 @@ import Head from "next/head";
 import {isEmpty} from "../../Utils/newTour";
 // import MapComponent from "@/sources/component/Map.component";
 import dynamic from "next/dynamic";
+import globals from "../../sources/Global";
 // import {getCityInfo} from "@/pages/[CityTour]";
 const MapComponent = dynamic(() =>
         import("../../sources/component/Map.component"),
@@ -32,8 +33,28 @@ const MapComponent = dynamic(() =>
 );
 const hotel = (props) => {
     const router=useRouter()
+
+    const [Tours,setTours] = useState([])
+    const [Meta,setMeta] = useState([])
     // const [hotel, setHotl] = useState({})
     const [show, setShow] = useState(false)
+    const AlltoursHandler = (city_code,page=1) => {
+        // setTour([])
+        axios
+            .post(`${globals.tourPackagesnew}packages?page=${page}`, {
+                destination:city_code,
+                req_type:'package'
+            }, {
+                headers: {
+                    "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
+                }
+            })
+            .then((res) => {
+                setTours(res.data.data)
+                setMeta(res?.data?.meta)
+            })
+        // .catch((err) =>r);
+    };
     //     const getData = async () => {
     //     debugger
     //         await axios.get(`https://api.hotelobilit.com/api/v2/hotels/${props.Pathname.hotel}`,{
@@ -63,7 +84,7 @@ const hotel = (props) => {
 
 
     useEffect(() => {
-        console.log(props.hotel)
+AlltoursHandler(props.hotel.city.code)
     },[props.hotel])
     return (
         <>
@@ -203,7 +224,7 @@ const hotel = (props) => {
                 {props.hotel &&
                     <div className="row justify-content-center">
                         <div className='col-10'>
-                            <List name='hotel' code={props.hotel?.city.code} isHotel={true} shimmerNumber={15}/>
+                            <List tourData ={Tours}name='hotel' code={props.hotel?.city.code} isHotel={true} shimmerNumber={15} tour/>
                         </div>
                     </div>
                 }
