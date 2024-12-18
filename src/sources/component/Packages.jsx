@@ -93,7 +93,6 @@ const Packages = (props) => {
                 for (let i = 1; i < 7; i++) {
                     let filterdHotelBystar = packages.filter(hotel => +hotel.hotel_stars === i)
                     list.push(...filterdHotelBystar.sort((a, b) => +roomFinder1(a.rooms, 148)?.price - +roomFinder1(b.rooms, 148)?.price))
-
                 }
 
                 filteredData=list
