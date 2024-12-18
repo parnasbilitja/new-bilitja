@@ -79,7 +79,7 @@ const Packages = (props) => {
 
         // Filter by flight numbers
         if (filter.sort_by) {
-            debugger
+
 
             if(filter.sort_by === "0") {
                filteredData= filteredData.sort((a,b)=>(+a.hotel_stars)-(+b.hotel_stars))
@@ -92,14 +92,17 @@ const Packages = (props) => {
                 let list=[]
                 for (let i = 1; i < 7; i++) {
                     let filterdHotelBystar = packages.filter(hotel => +hotel.hotel_stars === i)
-                    list.push(...filterdHotelBystar.sort((a, b) => roomFinder1(a.rooms, 148)?.price - roomFinder1(b.rooms, 148)?.price))
+                    list.push(...filterdHotelBystar.sort((a, b) => +roomFinder1(a.rooms, 148)?.price - +roomFinder1(b.rooms, 148)?.price))
+
                 }
+
+                filteredData=list
             }
 
 
         }
 
-        setPackages(filteredData);
+        return filteredData
     }
     // const sortByStars = (hotellist) => {
     //     let filteredHotel = []
@@ -123,12 +126,9 @@ const Packages = (props) => {
     //     return filteredHotel
     // }
     const[selectedRooms,setSelectedRoom]=useState(0);
-const foundRooms=(pack)=>{
+    const foundRooms=(pack)=>{
     let foundRoom= pack?.filter(room => +room?.room_type_id === 148)
-
     let cheapest148room=foundRoom.reduce((min, obj) => (obj.price < min.price ? obj : min), foundRoom[0])
-
-
     let rooms = [cheapest148room];
     let OtherRoom=pack.filter(room=>room.flight_id === cheapest148room.flight_id && +room?.room_type_id !== 148 )
 
@@ -139,9 +139,9 @@ const foundRooms=(pack)=>{
 }
 
 
-useEffect(()=>{
-    compositionFilter()
-},[filter])
+// useEffect(()=>{
+//     compositionFilter()
+// },[filter])
     const sortByStars = (hotellist=[]) => {
         let filteredHotel = [];
 
@@ -391,7 +391,7 @@ useEffect(()=>{
                                                 className="p-info__tour col-xl-12 col-lg-12 col-12 mt-3 border-bottom pb-4 ">
 
 
-                                                {packages.length > 0 ? packages?.map((pack) => (
+                                                {packages.length > 0 ? compositionFilter()?.map((pack) => (
                                                         <motion.div className={styles['hotel-item']} key={pack.id}
 
 
