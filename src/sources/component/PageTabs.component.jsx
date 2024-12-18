@@ -104,6 +104,7 @@ const PageTabls = (props) => {
                   cy="1.113"
                   rx="1.113"
                   ry="1.113"
+                  
                   transform="translate(38.377 27.086)"
                 />
                 <ellipse
