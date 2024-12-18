@@ -410,8 +410,7 @@ return found_room
                 <div className={styles['flight_container']}>
                     <div className={styles['flight_title']}>
                         <p>
-                            انتخاب پرواز
-                        </p>
+                            انتخاب پرواز هاي قابل ارائه با اين تور                         </p>
 
                         <div className={'isMobile'}>
                             <button style={{

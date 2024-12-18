@@ -637,7 +637,7 @@ className='p-0 m-0'
                                 SearchBoxSteps('date')
                                 setIsSearchbox(true)
                             }}
-                            placeholder={"تاریخ پرواز خود را انتخاب کنید"}
+                            placeholder={"تاریخ رفت خود را انتخاب کنید"}
                         />
                     </div>
                     <div className="isDesktop">
