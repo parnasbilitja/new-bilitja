@@ -181,7 +181,7 @@ useEffect(()=>{
                     </Link>
                   </li>
                   <li>
-                    <Link href="/tour">
+                    <Link href="/tours">
                       <a>
                         {/* <i
                           className={`bilitja icon-tours  ${styles["nav-icon"]} rotate-y-180`}
