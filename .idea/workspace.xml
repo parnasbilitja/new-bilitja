@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="tour has been redesigned">
-      <change beforePath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="tour has been redesigned" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -309,7 +307,7 @@
       <workItem from="1733559242811" duration="52141000" />
       <workItem from="1733747763639" duration="19495000" />
       <workItem from="1733831298909" duration="40867000" />
-      <workItem from="1734070873908" duration="106288000" />
+      <workItem from="1734070873908" duration="106615000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -479,14 +477,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00207" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1732168573847</created>
-      <option name="number" value="00207" />
-      <option name="presentableId" value="LOCAL-00207" />
-      <option name="project" value="LOCAL" />
-      <updated>1732168573847</updated>
-    </task>
     <task id="LOCAL-00208" summary="some changes for bug">
       <option name="closed" value="true" />
       <created>1732168992947</created>
@@ -647,7 +637,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734514415610</updated>
     </task>
-    <option name="localTasksCounter" value="228" />
+    <task id="LOCAL-00228" summary="tour has been redesigned">
+      <option name="closed" value="true" />
+      <created>1734514506233</created>
+      <option name="number" value="00228" />
+      <option name="presentableId" value="LOCAL-00228" />
+      <option name="project" value="LOCAL" />
+      <updated>1734514506233</updated>
+    </task>
+    <option name="localTasksCounter" value="229" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
