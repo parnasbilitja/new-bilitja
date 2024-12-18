@@ -100,9 +100,7 @@ const PackageListPage = () => {
 
     }, [mergedData.allTours]);
 
-    useEffect(() => {
-        console.log(mergedData)
-    }, [mergedData])
+
     return ( <>
             <NavHandler mobileFixed={true}/>
             {(optimizedPackages.length>0 && (!toursLoading && !isLoading))  ?<Packages tourdata={optimizedPackages}
