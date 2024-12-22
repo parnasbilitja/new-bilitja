@@ -668,12 +668,12 @@ export const RouteTranslator=(routeArr,queryRoute)=>{
 
  }
 
-export const getRandomNumber=()=>{
-  let first=Math.floor(Math.random() * 8)
-  let second=Math.floor(Math.random() * 8)
+export const getRandomNumber=(num)=>{
+  let first=Math.floor(Math.random() * num)
+  let second=Math.floor(Math.random() * num)
 
   do {
-    second=Math.floor(Math.random() * 8)
+    second=Math.floor(Math.random() * num)
   }while (+first===second)
   return [first , second]
 }

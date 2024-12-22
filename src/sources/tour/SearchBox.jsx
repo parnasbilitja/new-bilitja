@@ -287,7 +287,7 @@ className='p-0 m-0'
 
                 <div className={'w-100'}>
                     <div className={` form-input-border ${styles["prs-input"]} `}
-                         style={{width: '100%'}}>
+                         style={{width: '300px'}}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             id="_044-Departures"
@@ -352,7 +352,7 @@ className='p-0 m-0'
 
                 <div className={'w-100'}>
                     <div className={` form-input-border ${styles["prs-input"]} `}
-                         style={{width: '100%'}}>
+                         style={{width: '300px'}}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="25"
@@ -676,7 +676,7 @@ className='p-0 m-0'
 
                 <div className={'w-100'}>
                     <div className={` form-input-border ${styles["prs-input"]} `}
-                         style={{width: '100%'}}>
+                         style={{width: '300px'}}>
                         <svg width="25"
                              height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                              stroke-width="1.5" stroke="#b9b9b9" class="size-6">

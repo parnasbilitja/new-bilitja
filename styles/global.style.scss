@@ -698,8 +698,8 @@ html {
 
 
     .roomscon {
-      display: flex;
-      //grid-template-columns: repeat(4, 1fr);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       justify-content: center;
       //align-items: center;
       column-gap: 10px;
@@ -707,6 +707,7 @@ html {
     }
 
     @media only screen and (max-width: 868px) {
+
       .roomscon {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -1466,8 +1467,7 @@ button {
   overflow: hidden;
   padding-right: 1rem;
   // border: 2px solid #E0E0E0;
-  box-shadow: 0 0 4px #b9b0b0;
-
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px
 }
 
 .tour-item:hover {
@@ -3770,58 +3770,6 @@ h2 a {
   background-color: #0537428c;
 }
 
-.pagination {
-  display: flex;
-  list-style: none;
-  padding-left: 0;
-}
-
-.pagination .page-item .page-link {
-  background-color: white !important;
-  color: #0d6efd;
-  width: 35px;
-}
-
-.page-item.active .page-link {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
-  color: #fff;
-  z-index: 3;
-}
-
-.page-item:not(:first-child) .page-link {
-  margin-left: -1px;
-}
-
-.page-link {
-  padding: .375rem .75rem;
-}
-
-.page-link {
-  background-color: #fff;
-  border: 1px solid #dee2e6;
-  color: #0d6efd;
-  display: block;
-  position: relative;
-  text-decoration: none;
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
-
-.pagination .active .page-link {
-  background-color: #0d6efd !important;
-  color: white;
-  width: 35px !important;
-}
-
-.pagination .active .page-link,
-.pagination .page-item .page-link {
-  align-items: center;
-  border-radius: 15px 15px 1px 15px !important;
-  display: flex;
-  height: 30px !important;
-  justify-content: center;
-  margin: 0 3px !important;
-}
 
 .hideflex {
   display: none !important;
@@ -6221,6 +6169,9 @@ position: relative;
 }
 
 @media (max-width: 868px) {
+  .reservecon{
+    bottom: -40px !important;
+  }
   .Modal {
     width: 95%;
     height: 60%;
@@ -6229,4 +6180,74 @@ position: relative;
   .Overlay_calendar{
     display: none;
   }
+}
+
+
+.airline_img{
+ width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  overflow: hidden;
+  img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+.pagination {
+  margin-top: 20px;
+  justify-content: center;
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.pagination .page-item .page-link {
+  background-color: white !important;
+  color: #e20000;
+  width: 40px;
+  white-space: nowrap;
+}
+
+.page-item.active .page-link {
+  background-color: #e20000;
+  border-color: #e20000;
+  color: #fff;
+  z-index: 3;
+}
+
+.page-item:not(:first-child) .page-link {
+  margin-left: -1px;
+}
+
+.page-link {
+  padding: .375rem .75rem;
+}
+
+.page-link {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  color: #e20000;
+  display: block;
+  position: relative;
+  text-decoration: none;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.pagination .active .page-link {
+  background-color: #e20000 !important;
+  color: white;
+  width: 30px !important;
+}
+
+.pagination .active .page-link,
+.pagination .page-item .page-link {
+  align-items: center;
+  border-radius: 5px !important;
+  display: flex;
+  height: 30px !important;
+  justify-content: center;
+  margin: 0 3px !important;
 }

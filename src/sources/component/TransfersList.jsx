@@ -7,8 +7,6 @@ import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import styles from '../../../styles/TourPackage/TransferList.module.scss';
 
 const TransfersList = (props) => {
-
-
     const swiperRef = useRef();
 
     return (

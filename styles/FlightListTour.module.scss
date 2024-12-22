@@ -152,8 +152,8 @@ gap: 5px;
       padding: 2px;
       margin-bottom: 10px;
       .airline_list{
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
+        display: block;
+        //grid-template-columns: repeat(3,1fr);
 
       }
 

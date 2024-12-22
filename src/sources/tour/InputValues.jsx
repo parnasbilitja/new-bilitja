@@ -24,6 +24,7 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
 
 
     }
+    const [lists,setLists] = useState(months);
     useEffect(()=>{
         setHide(false)
     },[])
@@ -44,6 +45,18 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
 
         window.addEventListener("resize", handleWindowResize);
     }, []);
+
+    const InputHandler = (value) => {
+        if(value!==''){
+
+        let new_list = months.filter((item) => item.name.includes(value));
+            setLists(new_list);
+
+        }else {
+            setLists(months)
+        }
+
+    }
 
 
 
@@ -87,9 +100,6 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
                         <div style={{height:'100px',width:'100%' ,display:'flex',justifyContent:'center',alignItems:'center'}}>
                             <NewLoader/>
                         </div>
-
-
-
                     }
                 </motion.div>
             </div>
@@ -113,19 +123,24 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
 
                             </div>
                             <div className={styles['inputcon']}>
-                                {/*<input type="text" value={searchInput} onChange={(e) => {*/}
-                                {/*    // setsearch(e.target.value)*/}
-                                {/*    handleChange(e)*/}
-                                {/*}} placeholder={``}/>*/}
-                                <button></button>
+                                <input type="text" autoFocus={true}  onChange={(e) => {
+                                    // e.preventDefault()
+                                    e?.stopPropagation()
+InputHandler(e.target.value)
+                                    // setsearch(e.target.value)
+                                    // handleChange(e)
+                                }} placeholder={`جستجو کنید`}
+                                />
+                                {/*<button></button>*/}
                             </div>
 
                             <div className={styles['citiesItem']}>
-                                {months?.length === 0 ? (
+                                {lists?.length === 0 ? (
                                     // <MainLoader/>
-                                    <>loading....</>
+                                        <>
+                                        <p style={{color:'#e20000'}}>موردی یافت نشد</p></>
                                 ) : (
-                                    months?.map((item) => (
+                                    lists?.map((item) => (
                                         <>
                                             <div key={item.code}
                                                  onClick={() => {

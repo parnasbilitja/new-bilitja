@@ -4,44 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="tour has been redesigned">
-      <change afterPath="$PROJECT_DIR$/next-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/cache.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/tours/packagelist/[...packages].jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/tours/tourdetails/[tourdata].jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/tours/tourdetails/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/tours/tourlist/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sources/common/Gallery.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sources/component/Packages.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sources/flight/FlightList_tour.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sources/hotels/hotelInfo/HotelDet.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/FlightListTour.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/Inputs/InputText.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/hotel/hotelInfo.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some bugs have been resolved">
+      <change afterPath="$PROJECT_DIR$/src/Components/NewTours/TourListData.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/newTour/TourLIstData.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/Components/subComponents/TourDetailLabel.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/modal/RequestTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/RequestTour.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/tours/ToursBase.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/TourSearchbox/Action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/TourSearchbox/Action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/TourSearchbox/TourSearchBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/TourSearchbox/TourSearchBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tour/reserve/[...reservedHotel].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/newTour.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/newTour.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/alltours/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/alltours/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/Map.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Map.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/packagelist/[...packages].jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/packagelist/[...packages].jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/tourdetails/[tourdata].jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/tourdetails/[tourdata].jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tours/tourlist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/tourlist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/common/Gallery.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/common/Gallery.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/component/Packages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Packages.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/component/TransfersList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/TransfersList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/flight/FlightList_tour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight/FlightList_tour.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/hotels/hotelInfo/HotelDet.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/hotels/hotelInfo/HotelDet.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/InputValues.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/tour/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/List.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sources/tour/TourList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/TourList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/FlightListTour.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/FlightListTour.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/FlightSearchBox.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/FlightSearchBox.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Map.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Map.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/TourPackage/PackageTourDetails.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/TourPackage/PackageTourDetails.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/allTours.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/allTours.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/hotel/hotelInfo.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/hotel/hotelInfo.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,27 +82,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/Users/pa/Desktop/bilitjassrnew/src/sources/common",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "settings.editor.splitter.proportion": "0.2293578",
-    "ts.external.directory.path": "/Users/pa/Desktop/bilitjassrnew/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/pa/Desktop/bilitjassrnew/src/sources/common&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.2293578&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/pa/Desktop/old_bilitjassrnew/bilitjassrnew/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/sources/common" />
@@ -346,6 +336,8 @@
       <workItem from="1733747763639" duration="19495000" />
       <workItem from="1733831298909" duration="40867000" />
       <workItem from="1734070873908" duration="106615000" />
+      <workItem from="1734668786920" duration="611000" />
+      <workItem from="1734675076958" duration="60662000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -515,62 +507,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00208" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1732168992947</created>
-      <option name="number" value="00208" />
-      <option name="presentableId" value="LOCAL-00208" />
-      <option name="project" value="LOCAL" />
-      <updated>1732168992947</updated>
-    </task>
-    <task id="LOCAL-00209" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1732531794561</created>
-      <option name="number" value="00209" />
-      <option name="presentableId" value="LOCAL-00209" />
-      <option name="project" value="LOCAL" />
-      <updated>1732531794561</updated>
-    </task>
-    <task id="LOCAL-00210" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1732531816895</created>
-      <option name="number" value="00210" />
-      <option name="presentableId" value="LOCAL-00210" />
-      <option name="project" value="LOCAL" />
-      <updated>1732531816895</updated>
-    </task>
-    <task id="LOCAL-00211" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1732532065303</created>
-      <option name="number" value="00211" />
-      <option name="presentableId" value="LOCAL-00211" />
-      <option name="project" value="LOCAL" />
-      <updated>1732532065303</updated>
-    </task>
-    <task id="LOCAL-00212" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1732532086220</created>
-      <option name="number" value="00212" />
-      <option name="presentableId" value="LOCAL-00212" />
-      <option name="project" value="LOCAL" />
-      <updated>1732532086220</updated>
-    </task>
-    <task id="LOCAL-00213" summary="some changes for bug">
-      <option name="closed" value="true" />
-      <created>1732532848040</created>
-      <option name="number" value="00213" />
-      <option name="presentableId" value="LOCAL-00213" />
-      <option name="project" value="LOCAL" />
-      <updated>1732532848040</updated>
-    </task>
-    <task id="LOCAL-00214" summary="filtered package by stars and price has been set">
-      <option name="closed" value="true" />
-      <created>1732623016420</created>
-      <option name="number" value="00214" />
-      <option name="presentableId" value="LOCAL-00214" />
-      <option name="project" value="LOCAL" />
-      <updated>1732623016421</updated>
-    </task>
     <task id="LOCAL-00215" summary="filtered package by stars and price has been set">
       <option name="closed" value="true" />
       <created>1732623181707</created>
@@ -683,7 +619,63 @@
       <option name="project" value="LOCAL" />
       <updated>1734514506233</updated>
     </task>
-    <option name="localTasksCounter" value="229" />
+    <task id="LOCAL-00229" summary="tour has been redesigned">
+      <option name="closed" value="true" />
+      <created>1734515489627</created>
+      <option name="number" value="00229" />
+      <option name="presentableId" value="LOCAL-00229" />
+      <option name="project" value="LOCAL" />
+      <updated>1734515489627</updated>
+    </task>
+    <task id="LOCAL-00230" summary="some bugs have been resolved">
+      <option name="closed" value="true" />
+      <created>1734519959312</created>
+      <option name="number" value="00230" />
+      <option name="presentableId" value="LOCAL-00230" />
+      <option name="project" value="LOCAL" />
+      <updated>1734519959312</updated>
+    </task>
+    <task id="LOCAL-00231" summary="some bugs have been resolved">
+      <option name="closed" value="true" />
+      <created>1734519978013</created>
+      <option name="number" value="00231" />
+      <option name="presentableId" value="LOCAL-00231" />
+      <option name="project" value="LOCAL" />
+      <updated>1734519978013</updated>
+    </task>
+    <task id="LOCAL-00232" summary="some bugs have been resolved">
+      <option name="closed" value="true" />
+      <created>1734525836430</created>
+      <option name="number" value="00232" />
+      <option name="presentableId" value="LOCAL-00232" />
+      <option name="project" value="LOCAL" />
+      <updated>1734525836430</updated>
+    </task>
+    <task id="LOCAL-00233" summary="some bugs have been resolved">
+      <option name="closed" value="true" />
+      <created>1734528035609</created>
+      <option name="number" value="00233" />
+      <option name="presentableId" value="LOCAL-00233" />
+      <option name="project" value="LOCAL" />
+      <updated>1734528035609</updated>
+    </task>
+    <task id="LOCAL-00234" summary="some bugs have been resolved">
+      <option name="closed" value="true" />
+      <created>1734530034309</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1734530034310</updated>
+    </task>
+    <task id="LOCAL-00235" summary="some bugs have been resolved">
+      <option name="closed" value="true" />
+      <created>1734530200732</created>
+      <option name="number" value="00235" />
+      <option name="presentableId" value="LOCAL-00235" />
+      <option name="project" value="LOCAL" />
+      <updated>1734530200732</updated>
+    </task>
+    <option name="localTasksCounter" value="236" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -703,7 +695,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="tiny logical changes" />
     <MESSAGE value="image Gallary bugs have been fixed on avFilght" />
     <MESSAGE value="Shimmers has been added to AvailableFlightBasedonSelectedTour" />
     <MESSAGE value="some verfication logic has been changed" />
@@ -726,9 +717,10 @@
     <MESSAGE value="some changes" />
     <MESSAGE value="flight api has been changed" />
     <MESSAGE value="some changes for bug" />
-    <MESSAGE value="tour has been redesigned" />
     <MESSAGE value="filtered package by stars and price has been set" />
-    <option name="LAST_COMMIT_MESSAGE" value="filtered package by stars and price has been set" />
+    <MESSAGE value="tour has been redesigned" />
+    <MESSAGE value="some bugs have been resolved" />
+    <option name="LAST_COMMIT_MESSAGE" value="some bugs have been resolved" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -752,6 +744,18 @@
           <url>file://$PROJECT_DIR$/src/Components/NewTours/Components/UpdatePassenger.jsx</url>
           <line>156</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/sources/hotels/hotelInfo/HotelDet.jsx</url>
+          <line>69</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/sources/hotels/hotelInfo/HotelDet.jsx</url>
+          <line>84</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

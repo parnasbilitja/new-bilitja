@@ -9,6 +9,12 @@
     padding: 0;
   }
 }
+
+
+.gallery-container{
+  width:450px;
+  height:260px
+}
 .hotelInfo {
 
 
@@ -16,7 +22,7 @@
 
   display: block; // Default (fallback)
 
-  grid-template-columns:.7fr 1fr; // grid-cols-2
+  grid-template-columns:.5fr 1fr; // grid-cols-2
   gap: 0.5rem; // gap-2
 }
 
@@ -45,7 +51,7 @@
 
 
 .info{
-  padding: 12px;
+  padding: 5px;
   .container {
 
     width: 100%; // w-full
@@ -93,6 +99,10 @@
 }
 
 @media (max-width: 868px) {
+  .gallery-container{
+    width:385px;
+    height:260px
+  }
   .gallary {
     margin-top: 5px;
     height: 70px;

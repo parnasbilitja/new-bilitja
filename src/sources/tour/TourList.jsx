@@ -15,33 +15,7 @@ const TourList = (props) => {
     const [meta, setmeta] = useState({})
     const [loading, setLoading] = useState(true)
     const[cityName,setCityName]=useState('')
-    // const getData = async (code ,page=1) => {
-    //     debugger
-    //     setLoading(true)
-    //     setData([])
-    //     await axios.post(`https://api.hotelobilit.com/api/v2/tours?page=${page}`,{
-    //         destination:code,
-    //         month:'',
-    //         req_type:'package'
-    //     },{
-    //         headers: {
-    //             "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05' //the token is a variable which holds the token
-    //         }
-    //     })
-    //     .then(res =>{
-    //         setData(res.data.data),
-    //             setLoading(false)
-    //         setmeta(res.data.meta)
-    //
-    //     }).catch(err=>{
-    //             // console.log(err.statusCode)
-    //             setLoading(false)
-    //             setData([])
-    //         })
-    // }
-    // useEffect(() => {
-    //     getData();
-    // }, [])
+
     useEffect(() => {
         if(props.name){
         let slugarr=props.name.split('-')

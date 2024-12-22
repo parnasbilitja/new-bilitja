@@ -164,7 +164,7 @@ return found_room
         return cheapest148room
         // console.log(cheapest148room)
     };
-    const rooms_flightBase_finder2=(flight_id )=>{
+    const rooms_flightBase_finder2=(flight_id)=>{
        let found_room= props.default_hotel[0]?.rooms.filter(room=>+room.flight_id===+flight_id)
 
 
@@ -183,7 +183,18 @@ return found_room
                             <div className={styles['flight_title']}
                                  style={{display: 'flex', justifyContent: 'space-between'}}
                                  onClick={() => setISFilter_nobile(false)}>
-                                <p>فیلتر پرواز</p>
+
+                                <div className={'d-flex align-items-center gap-2'}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         width={20}
+                                         height={20}
+                                         stroke-width="1.5" stroke="#e20000" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"/>
+                                    </svg>
+
+                                    <p>فیلتر پرواز</p>
+                                </div>
 
                                 <div className={'isDesktop'} style={{justifySelf: 'flex-end'}}>
                                     <div className={'d-flex justify-content-center'} onClick={() => {
@@ -244,7 +255,7 @@ return found_room
                                     </svg>
 
 
-                                    <p className={styles['title']}> ایرلاین های برگشت</p>
+                                    <p className={`${styles['title']} font-bold-iransanse`}> ایرلاین های برگشت</p>
                                 </div>
                                 <div className={`${styles['airline_list']}`}>
                                     {airlines.departure.map((airline) => (
@@ -283,7 +294,7 @@ return found_room
                                     </svg>
 
 
-                                    <p className={styles['title']}> ایرلاین های برگشت</p>
+                                    <p className={`${styles['title']} font-bold-iransanse`}> ایرلاین های برگشت</p>
                                 </div>
                                 <div className={styles['airline_list']}>
                                     {airlines.return.map((airline) => (
@@ -326,7 +337,7 @@ return found_room
                                     </svg>
 
 
-                                    <p className={styles['title']}> شماره پرواز</p>
+                                    <p className={`${styles['title']} font-bold-iransanse`}> شماره پرواز</p>
                                 </div>
                                 <div className={styles['flight_number']}>
                                     <input type="text" placeholder={'شماره پرواز رفت'} onChange={(e) => {
@@ -409,8 +420,18 @@ return found_room
 
                 <div className={styles['flight_container']}>
                     <div className={styles['flight_title']}>
-                        <p>
-                            انتخاب پرواز هاي قابل ارائه با اين تور                         </p>
+
+                        <div className={'d-flex align-items-center gap-1'}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke-width="1.5"
+                                 stroke="currentColor" className="size-6" width={20} height={20}>
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15.75 19.5 8.25 12l7.5-7.5"/>
+                            </svg>
+
+                            <p className={'font-size-15'}>
+                                انتخاب پرواز هاي قابل ارائه با اين تور </p>
+                        </div>
 
                         <div className={'isMobile'}>
                             <button style={{

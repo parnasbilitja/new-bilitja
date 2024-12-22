@@ -553,9 +553,9 @@ const PackageReserve = ({
 
         <>
             <NotifAlert/>
-            <div className="col-xl-12 col-lg-12 col-12 " style={{height:'100%'}}>
+            <div className="col-xl-12 col-lg-12 col-12 "style={{position:'relative' , height:'100%'}} >
 
-                <div style={{position:'relative' , height:'100%'}}>
+                <div >
                     <div className={'roomtour'}>
                         <div onClick={() => {
                             close(false)
@@ -603,10 +603,10 @@ const PackageReserve = ({
                                     {/*    <div className='form-input-border'>*/}
                                     {/*        <PrimaryTextInput type="text" value={packData.number} onChange={e => valueHandler(e)} name="number" className="w-100 px-2 rounded-3 border-secondary font-yekan" placeholder="شماره همراه خود را وارد کنید" style={{ height: "40px", outline: "none" }} />*/}
                                     {/*    </div>*/}
-                                    {/*</div>*/}
-<div>
-    {/*<input type="text" value={reserverPhone} onChange={(e)=>setReserverPhone(e.target.value)}/>*/}
-</div>
+                                            {/*</div>*/}
+        <div>
+            {/*<input type="text" value={reserverPhone} onChange={(e)=>setReserverPhone(e.target.value)}/>*/}
+        </div>
                                     <div className="bedcount-container">
 
                                         <div className="bedcount">
@@ -618,9 +618,9 @@ const PackageReserve = ({
                                                         margin: '0',
                                                         padding: '0',
                                                         textAlign: 'center',
-                                                        marginBottom: '3px'
+                                                        // marginBottom: '3px'
                                                     }}>تعداد {room.room_name} </p>
-                                                    <span style={{fontSize: '12px'}}> (مناسب برای {room.adl_capacity}نفر )
+                                                    <span style={{fontSize: '10px'}}> (مناسب برای {room.adl_capacity}نفر )
                                                     </span>
                                                     <p style={{
                                                         fontSize: '12px',
@@ -730,7 +730,7 @@ const PackageReserve = ({
                                                                             <p className={"bedtype"}>
                                                                                 تعداد تخت اضافه
                                                                             </p>
-                                                                            <small>(۱۲ سال به بالا)</small>
+                                                                            <small style={{fontSize:'10px'}}>(۱۲ سال به بالا)</small>
 
                                                                         </>
                                                                         <p className={"bedtypeprc"}>
@@ -802,7 +802,7 @@ const PackageReserve = ({
                                                                                 تعداد کودک با تخت
                                                                             </p>
                                                                             {hotel?.with_bed_child_ages.length > 0 &&
-                                                                                <small>({chdAgeStr(hotel?.with_bed_child_ages[0], hotel?.with_bed_child_ages[1])})</small>}
+                                                                                <small style={{fontSize:'10px'}} >({chdAgeStr(hotel?.with_bed_child_ages[0], hotel?.with_bed_child_ages[1])})</small>}
                                                                         </>
                                                                         <p className={"bedtypeprc"}>
                                                                             {(room.chd_capacity > 0 && room.chd_withbed_prc > 0) ? ` ${numberWithCommas(
@@ -867,7 +867,7 @@ const PackageReserve = ({
                                                                             تعداد کودک بدون تخت
                                                                         </p>
                                                                         {hotel?.no_bed_child_ages.length > 0 &&
-                                                                            <small>({chdAgeStr(hotel?.no_bed_child_ages[0], hotel?.no_bed_child_ages[1])})</small>}
+                                                                            <small style={{fontSize:'10px'}}>({chdAgeStr(hotel?.no_bed_child_ages[0], hotel?.no_bed_child_ages[1])})</small>}
                                                                     </>
                                                                     <p className={"bedtypeprc"}>
                                                                         {room.chd_capacity > 0 ? `${numberWithCommas(
@@ -934,7 +934,7 @@ const PackageReserve = ({
                                                                             <p className={"bedtype"}>
                                                                                 تعداد نوزاد
                                                                             </p>
-                                                                            <small>({chdAgeStr(0, 2)})</small>
+                                                                            <small style={{fontSize:'10px'}}>({chdAgeStr(0, 2)})</small>
                                                                         </>
 
                                                                         <p className={"bedtypeprc"}>
@@ -995,60 +995,57 @@ const PackageReserve = ({
                         </div>
                     </div>
 
-                    {selectedRoomsData.length > 0 && <div className={'reservecon'}>
-                        <div className=" font-yekan w-100"
-                             style={{display: 'flex', justifyContent: 'center'}}>
-                            <button style={{
-                                width: '130px',
-                                height: '50px',
-                                backgroundColor: '#069e2c !important',
-                                whiteSpace: 'nowrap'
-                            }}
-                                    className={`ancher bg-success text-white font-size-13 py-2 px-4 rounded-3  foc01`}
-                                    onClick={() => {
-                                        if (!loading) {
-                                            // console.log(reserveProperties)
-                                            // if(user.logged) {
-                                                tourReserve()
-                                            // }else {
-                                            //
-                                            //         Err('ابتدا وارد سایت شوید')
-                                            //         setState({ ...state, stateRegister: false });
-                                            //         login();
-                                            //         setIsReserve(false)
-                                            //         // messageBoxModify({
-                                            //         //     state: true,
-                                            //         //     color: false,
-                                            //         //     message: "لطفا کد تایید ارسال شده را وارد کنید!",
-                                            //         // });
-                                            //         accountBoxModify({
-                                            //             state: true,
-                                            //             type: "login",
-                                            //         });
-                                            //
-                                            //
-                                            // }
-                                            setLoading(true)
-                                            // posthog.capture("FormEndTourPackage", {
-                                            //     HMNPhone: packData.number,
-                                            //     HMNPassengerCount: packData.count
-                                            // })
-                                            // posthog.identify(packData.number)
-                                        }
-                                    }}>
-                                {loading ? 'لطقا منتظر بمانید...' : `درخواست رزرو`}
-                            </button>
-                        </div>
-                        <div style={{display: 'flex', columnGap: '10px'}}>
-                            <p className={'p-0 m-0'}>تعداد اتاق:</p>
-                            <p className={'p-0 m-0'}
-                               style={{color: '#e20000', fontWeight: '700'}}>{selectedRoomsData.length}</p>
-                        </div>
-                    </div>}
                 </div>
-
-
-
+                {selectedRoomsData.length > 0 && <div className={'reservecon'}>
+                    <div className="font-yekan w-100"
+                         style={{display: 'flex', justifyContent: 'center'}}>
+                        <button style={{
+                            width: '130px',
+                            height: '50px',
+                            backgroundColor: '#069e2c !important',
+                            whiteSpace: 'nowrap'
+                        }}
+                                className={`ancher bg-success text-white font-size-13 py-2 px-4 rounded-3  foc01`}
+                                onClick={() => {
+                                    if (!loading) {
+                                        // console.log(reserveProperties)
+                                        // if(user.logged) {
+                                        tourReserve()
+                                        // }else {
+                                        //
+                                        //         Err('ابتدا وارد سایت شوید')
+                                        //         setState({ ...state, stateRegister: false });
+                                        //         login();
+                                        //         setIsReserve(false)
+                                        //         // messageBoxModify({
+                                        //         //     state: true,
+                                        //         //     color: false,
+                                        //         //     message: "لطفا کد تایید ارسال شده را وارد کنید!",
+                                        //         // });
+                                        //         accountBoxModify({
+                                        //             state: true,
+                                        //             type: "login",
+                                        //         });
+                                        //
+                                        //
+                                        // }
+                                        setLoading(true)
+                                        // posthog.capture("FormEndTourPackage", {
+                                        //     HMNPhone: packData.number,
+                                        //     HMNPassengerCount: packData.count
+                                        // })
+                                        // posthog.identify(packData.number)
+                                    }
+                                }}>
+                            {loading ? 'لطقا منتظر بمانید...' : `درخواست رزرو`}
+                        </button>
+                    </div>
+                    <div style={{display: 'flex', columnGap: '10px'}}>
+                        <p className={'p-0 m-0'}>تعداد اتاق:</p>
+                        <p className={'p-0 m-0'}
+                           style={{color: '#e20000', fontWeight: '700'}}>{selectedRoomsData.length}</p>
+                    </div>
+                </div>}
             </div>
             {/*${datatitle.endCity.name==='استانبول' && 'ist'} ${datatitle.endCity.name==='آنتالیا' && 'ayt'}*/}
         </>

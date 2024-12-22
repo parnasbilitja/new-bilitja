@@ -2,7 +2,7 @@ import {Err, NotifAlert} from "../../Components/NewTours/Components/NotifAlert.c
 import Head from "next/head";
 import styles from "../../../styles/TourPackage/PackageTourDetails.module.scss";
 import Scrolltoprefresh from "./Scrolltoprefresh";
-import { MiladiToJalaliConvertor} from "../../Utils/newTour";
+import {getRandomNumber, MiladiToJalaliConvertor} from "../../Utils/newTour";
 import {Shimmers1, Shimmers4} from "../../Components/NewTours/Components/subComponents/Shimmers";
 import {moneyFormatrial} from "../../Utils/SimpleTasks";
 import {Loader} from "../../Utils/Loader";
@@ -61,6 +61,7 @@ const Packages = (props) => {
 
     }
     const compositionFilter = () => {
+        // debugger
 
         let filteredData = [...packages];
 
@@ -91,7 +92,7 @@ const Packages = (props) => {
             } else{
                 let list=[]
                 for (let i = 1; i < 7; i++) {
-                    let filterdHotelBystar = packages.filter(hotel => +hotel.hotel_stars === i)
+                    let filterdHotelBystar = filteredData.filter(hotel => +hotel.hotel_stars === i)
                     list.push(...filterdHotelBystar.sort((a, b) => +roomFinder1(a.rooms, 148)?.price - +roomFinder1(b.rooms, 148)?.price))
                 }
 
@@ -160,6 +161,8 @@ const Packages = (props) => {
     };
 
     useEffect(() => {
+
+        console.log(props.all_data)
         setData(null);
 
         setData(props.tourdata);
@@ -203,6 +206,7 @@ const Packages = (props) => {
 
 
     const hotel_flight_merger = (hotels, flights) => {
+
         return hotels.map((hotel) => {
             let related_flights = [];
             hotel.rooms = hotel.rooms.map((room) => {
@@ -215,7 +219,8 @@ const Packages = (props) => {
             });
             return {
                 ...hotel,
-                related_flights: removeDuplicatesByName(related_flights),
+                related_flights:related_flights,
+                // related_flights: removeDuplicatesByName(related_flights),
             }; // Return the modified hotel
         });
     };
@@ -324,6 +329,8 @@ const Packages = (props) => {
 
     }
 
+    const tags=['ترانسفر رایگان', 'بیمه مسافرتی رایگان', 'پرواز رفت و برگشت']
+
     return (
         <>
             <div>
@@ -334,45 +341,43 @@ const Packages = (props) => {
                     <title> {props.tour_type === 'package' ? data?.title : props.all_data?.tour_info?.title} بلیطجا| </title>
                 </Head>
                 <div className={styles['tours']}>
-                    {/* section 1 */}
+                    <div className='padd' style={{position:'relative !important'}}>
+                        {/*{(props.tour_type === 'package' && props.tourdata?.flights.length > 0) &&*/}
+                        {/*    <section className=" mt-2-mobi pt-3-mobi  ">*/}
+                        {/*        <Scrolltoprefresh/>*/}
+                        {/*        /!*<div className="container mt-2 ">*!/*/}
 
-                    <div className='padd' style={{padding: '10rem 2rem',position:'relative !important'}}>
-                        {(props.tour_type === 'package' && props.tourdata?.flights.length > 0) &&
-                            <section className=" mt-2-mobi pt-3-mobi  ">
-                                <Scrolltoprefresh/>
-                                <div className="container mt-2 ">
+                        {/*            <div*/}
+                        {/*                className="detail-tour col-xl-12 col-lg-12 col-12 d-flex flex-wrap justify-content-between border-bottom py-1">*/}
+                        {/*                {data && !props.isLoading ? (*/}
 
-                                    <div
-                                        className="detail-tour col-xl-12 col-lg-12 col-12 d-flex flex-wrap justify-content-between border-bottom py-1">
-                                        {data && !props.isLoading ? (
+                        {/*                    <>*/}
+                        {/*                        <TransfersList setShowTransfers={(val) => {*/}
+                        {/*                            setShowTransfers(val);*/}
+                        {/*                        }}*/}
+                        {/*                                       hotelInfo={data}*/}
+                        {/*                                       index={flightList?.findIndex(*/}
+                        {/*                                           (transfer) => selectedFlight === transfer.id*/}
+                        {/*                                       )}*/}
+                        {/*                                       transfers={flightList && flightList}*/}
+                        {/*                                       showTransfers={showTransfers}*/}
+                        {/*                                       setFlightId={(val) => setFlightId(val)}*/}
 
-                                            <>
-                                                <TransfersList setShowTransfers={(val) => {
-                                                    setShowTransfers(val);
-                                                }}
-                                                               hotelInfo={data}
-                                                               index={flightList?.findIndex(
-                                                                   (transfer) => selectedFlight === transfer.id
-                                                               )}
-                                                               transfers={flightList && flightList}
-                                                               showTransfers={showTransfers}
-                                                               setFlightId={(val) => setFlightId(val)}
+                        {/*                                       setSelectedFlight={(val) => props.getData(val)}*/}
+                        {/*                                       selectedFlight={selectedFlight}*/}
+                        {/*                        />*/}
 
-                                                               setSelectedFlight={(val) => props.getData(val)}
-                                                               selectedFlight={selectedFlight}
-                                                />
-
-                                            </>
-                                        ) : (
-                                            <Shimmers1/>
-                                        )}
+                        {/*                    </>*/}
+                        {/*                ) : (*/}
+                        {/*                    <Shimmers1/>*/}
+                        {/*                )}*/}
 
 
-                                    </div>
-                                </div>
-                            </section>
+                        {/*            </div>*/}
+                        {/*        /!*</div>*!/*/}
+                        {/*    </section>*/}
 
-                        }
+                        {/*}*/}
 
 
                         <section className="mt-8">
@@ -380,7 +385,7 @@ const Packages = (props) => {
                             {
 
                                 <div className={styles['tour']}>
-                                    <div className={styles['p-data']} style={{padding: '1rem 0'}}>
+                                    <div className={styles['p-data']}>
 
 
 
@@ -389,11 +394,41 @@ const Packages = (props) => {
                                             <div
                                                 className="p-info__tour col-xl-12 col-lg-12 col-12 mt-3 border-bottom pb-4 ">
 
+                                                <div className={'isMobile'}>
+
+                                                <div className={styles['title_info']}>
+                                                    <div>
+                                                        <p className={`p-0 m-0 text-center mb-1 font-bold  ${styles['title']}`}
+                                                           style={{marginBottom: '3px !important'}}>{`هتل های ${props.tour_type === 'package' ? data?.title : props.all_data?.tour_info?.title}`}</p>
+
+                                                    </div>
+
+                                                    <div className={'d-flex justify-content-between'}>
+                                                        <div className={styles['checkin_checkout']}>
+                                                            <p className={'p-0 m-0'}>تاریخ ورود به هتل:</p>
+                                                            <p className={'p-0 m-0'}>   {MiladiToJalaliConvertor(
+                                                                props.tour_type === "package"
+                                                                    ? data.checkin
+                                                                    : props.all_data?.tour_info?.checkin
+                                                            )}</p>
+                                                        </div>
+                                                        <div className={styles['checkin_checkout']}>
+                                                            <p className={'p-0 m-0'}>تاریخ خروج از هتل:</p>
+                                                            <p className={'p-0 m-0'}>   {MiladiToJalaliConvertor(
+                                                                props.tour_type === "package"
+                                                                    ? data.checkout
+                                                                    : props.all_data?.tour_info?.checkout
+                                                            )}</p>
+                                                        </div>
+                                                </div>
+
+
+                                                    </div>
+
+                                                </div>
 
                                                 {packages.length > 0 ? compositionFilter()?.map((pack) => (
                                                         <motion.div className={styles['hotel-item']} key={pack.id}
-
-
                                                                     whileHover={{translateX: '20px'}}
                                                             // animate={{translateX:'100px'}}
                                                         >
@@ -510,14 +545,18 @@ const Packages = (props) => {
                                                                                                 <div style={{
                                                                                                     display: 'flex',
                                                                                                     flexDirection: 'column'
-                                                                                                }}>
-                                                                                                    <a href={`/hotels/${pack?.hotel_slug}`}
+                                                                                                }} onClick={()=>  props.tour_type==='hotel' &&handlePackageClick(
+                                                                                                    pack
+                                                                                                )}>
+                                                                                                    <p
+                                                                                                        // href={`/hotels/${pack?.hotel_slug}`}
                                                                                                        style={{
                                                                                                            color: "#000",
                                                                                                            fontWeight: '900'
-                                                                                                       }}>{pack?.hotel_nameEn}</a>
-                                                                                                    <a href={`/hotels/${pack.hotel_slug}`}
-                                                                                                       style={{color: "rgb(101,101,101)"}}>{pack?.hotel_name}</a>
+                                                                                                       }}>{pack?.hotel_nameEn}</p>
+                                                                                                    <p
+                                                                                                        // href={`/hotels/${pack.hotel_slug}`}
+                                                                                                       style={{color: "rgb(101,101,101)",fontSize:'13px'}}>{pack?.hotel_name}</p>
                                                                                                 </div>
 
                                                                                                 {/*</Link>*/}
@@ -561,56 +600,32 @@ const Packages = (props) => {
                                                                                                     </div>
                                                                                                 </div>
 
+
+
                                                                                                 <div
                                                                                                     className={'d-flex gap-3 align-items-center mt-3 justify-content-center'}>
-                                                                                                    <div style={{
-                                                                                                        width: 'fit-content',
-                                                                                                        padding: '6px',
-                                                                                                        height: '30px',
-                                                                                                        backgroundColor: 'rgb(236,236,236)',
-                                                                                                        borderRadius: '20px'
-                                                                                                    }}>
-                                                                                                        <p className={'font-size-8 '}
-                                                                                                           style={{
-                                                                                                               fontSize: '11px',
-                                                                                                               color: 'white !important',
-                                                                                                               fontWeight: '900'
-                                                                                                           }}>ترانسفر
-                                                                                                            رایگان</p>
-                                                                                                    </div>
-                                                                                                    <div style={{
-                                                                                                        width: 'fit-content',
-                                                                                                        padding: '6px',
-                                                                                                        height: '30px',
-                                                                                                        backgroundColor: 'rgb(236,236,236)',
-                                                                                                        borderRadius: '20px'
-                                                                                                    }}>
-                                                                                                        <p className={'font-size-8 '}
-                                                                                                           style={{
-                                                                                                               fontSize: '11px',
-                                                                                                               color: 'white !important',
-                                                                                                               fontWeight: '900'
 
-                                                                                                           }}> بیمه
-                                                                                                            مسافرتی
-                                                                                                            رایگان</p>
-                                                                                                    </div>
-                                                                                                    <div style={{
-                                                                                                        width: 'fit-content',
-                                                                                                        padding: '6px',
-                                                                                                        height: '30px',
-                                                                                                        backgroundColor: 'rgb(236,236,236)',
-                                                                                                        borderRadius: '20px'
-                                                                                                    }}>
-                                                                                                        <p className={'font-size-8 '}
-                                                                                                           style={{
-                                                                                                               fontSize: '11px',
-                                                                                                               color: 'white !important',
-                                                                                                               fontWeight: '900'
+                                                                                                    {
+                                                                                                        getRandomNumber(3).map((item, index) => (
+                                                                                                            <div
+                                                                                                                style={{
+                                                                                                                    width: 'fit-content',
+                                                                                                                    padding: '6px',
+                                                                                                                    height: '30px',
+                                                                                                                    backgroundColor: 'rgb(236,236,236)',
+                                                                                                                    borderRadius: '20px'
+                                                                                                                }}>
+                                                                                                                <p className={'font-size-8 '}
+                                                                                                                   style={{
+                                                                                                                       fontSize: '11px',
+                                                                                                                       color: 'white !important',
+                                                                                                                       fontWeight: '900'
+                                                                                                                   }}>{tags[item]}
+                                                                                                                    </p>
+                                                                                                            </div>
+                                                                                                        ))
+                                                                                                    }
 
-                                                                                                           }}> پرواز رفت و
-                                                                                                            برگشت</p>
-                                                                                                    </div>
                                                                                                 </div>
 
 
@@ -693,13 +708,13 @@ const Packages = (props) => {
                                                                                                                     style={{fontWeight: '700'}}
                                                                                                                     onClick={() => {
                                                                                                                         // setIsReserve(true)
-                                                                                                                        // setSelectedHotel(pack)
+                                                                                                                        setSelectedHotel(pack.id)
                                                                                                                         handlePackageClick(
                                                                                                                             pack
                                                                                                                         );
                                                                                                                     }}>
 
-                                                                                                                    رزرو
+                                                                                                                    {+selectedHotel===+pack.id ? 'منتظر بمانید...':'رزرو'}
                                                                                                                 </button>}
                                                                                                         </div>
 
@@ -1164,53 +1179,26 @@ const Packages = (props) => {
                             }
 
                         </section>
-                        <div className={styles['date_mobile']}>
-                            <div
-                                className="d-flex align-items-center justify-content-center mb-1">
-
-
-                                <p className={`p-0 m-0  ${styles['title']}`}
-                                   style={{marginBottom: '3px !important'}}>{`هتل های ${props.tour_type === 'package' ? data?.title : props.all_data?.tour_info?.title}`}</p>
-                            </div>
-
-
-                            <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                                <div>
-                                    <div className={styles['checkin_checkout']}>
-                                        <p className={'p-0 m-0'}>تاریخ ورود به هتل:</p>
-                                        <p className={'p-0 m-0'}>   {MiladiToJalaliConvertor(
-                                            props.tour_type === "package"
-                                                ? data.checkin
-                                                : props.all_data?.tour_info?.checkin
-                                        )}</p>
-                                    </div>
-                                    <div className={styles['checkin_checkout']}>
-                                        <p className={'m-0 p-0'}>تاریخ خروج از هتل:</p>
-                                        <p className={'m-0 p-0'}>   {MiladiToJalaliConvertor(
-                                            props.tour_type === "package"
-                                                ? data.checkout
-                                                : props.all_data?.tour_info?.checkout
-                                        )}</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className={'d-flex align-items-center justify-content-center mb-1'}>
-                                        {/*<p className={'font-size-15 p-0 m-0'}>نام آژانس</p>*/}
-                                        <p className={'font-size-15 p-0 m-0'}>آژانس {data?.agency}</p>
-    </div>
-
-    <div className={'d-flex justify-content-center align-items-center gap-2'} >
-        <a href={`tel:${data.agency_tell}`} style={{width:'70px' ,height:'30px' , backgroundColor:'#e20000',color:'white',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'10px'}}>تماس</a>
-        <button style={{width:'70px' ,height:'30px' , backgroundColor:'#e20000',color:'white',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'10px'}} onClick={()=>setIsOpenFilter(!isOpenFilter)}>فیلتر</button>
-    </div>
-</div>
-                            </div>
-                        </div>
                     </div>
 
 
                     {/* footer */}
                 </div>
+                        <div className={styles['date_mobile']}>
+
+
+
+                            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+
+
+
+
+                            <div className={'w-100 d-flex justify-content-center align-items-center gap-2'} >
+                                <a href={`tel:${data.agency_tell}`} style={{width:'100%' ,height:'40px' , backgroundColor:'#e20000',color:'white',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'10px'}}>تماس</a>
+                                <button style={{width:'100%' ,height:'40px' , backgroundColor:'#e20000',color:'white',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'10px'}} onClick={()=>setIsOpenFilter(!isOpenFilter)}>فیلتر</button>
+                            </div>
+                            </div>
+                        </div>
                 {show &&
                     <PopUpWide opened={show} closePopUp={setShow}>
                         <RequestTour rooms={selectedRooms}

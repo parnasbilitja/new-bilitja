@@ -77,10 +77,12 @@ const router=useRouter()
 
 
     useEffect(()=>{
-            getData()
+            getData(props.Pathname?.flight_id)
 
-        console.log(props.Pathname)
     },[props.Pathname])
+
+
+
     const getData = async (flightId = 0) => {
 
         setIsLoading(true)

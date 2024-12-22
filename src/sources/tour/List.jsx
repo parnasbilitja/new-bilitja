@@ -452,7 +452,7 @@ const router=useRouter()
                                                                columnGap: '3px',
                                                                justifyContent: 'center'
                                                            }}>
-                                                               {!item.offered ? getRandomNumber().map(num => (
+                                                               {!item.offered ? getRandomNumber(8).map(num => (
                                                                    <div style={{
                                                                        padding: '4px',
                                                                        width: '110px',

@@ -17,11 +17,12 @@ const PackageListPage = () => {
 
     useEffect(() => {
         if (router.isReady && router.query.packages) {
+            debugger
             setApiParams({
                 origin: router.query.packages[0].split('-')[0],
                 destination: router.query.packages[0].split('-')[1],
                 month: '',
-                stayCount: router.query.nights,
+                stayCount: (router.query.nights ==="null" || !router.query.nights )? '':router.query.nights,
                 ordering: 1,
                 req_type: 'package',
                 date: router.query.date
@@ -57,12 +58,12 @@ const PackageListPage = () => {
     // }
 
     const mergedData = useMemo(() => {
-
-        if (!tourData || tourData.length === 0 || tourData[0].isDone === false) {
+debugger
+        if (!tourData || tourData.length === 0 ) {
             return { allFlights: [], allTours: [] }
         } else {
 
-            return tourData?.reduce((acc, tour) => ({
+            return tourData.filter(tour=>tour.isDone===true)?.reduce((acc, tour) => ({
                 tour_info: { title: initialData?.data[0]?.title, checkin: initialData?.data[0]?.checkin, checkout: initialData?.data[0]?.checkout, day_num: initialData?.data[0]?.day_num, night_num: initialData?.data[0]?.night_num },
                 allFlights: [...acc?.allFlights, ...tour?.data?.flights ?.map((flight) => ({
                     ...flight,
@@ -86,17 +87,19 @@ const PackageListPage = () => {
             if (!acc[tour.hotel_nameEn]) acc[tour.hotel_nameEn] = [];
             acc[tour.hotel_nameEn].push(tour);
             return acc;
-        }, {}); // Provide an initial empty object
+        }, {});
 
-        // Handle the case where groupedTours might still be undefined
+
         if (!groupedTours) return [];
+let final=Array.from(new Map(
+    Object.values(groupedTours)
+        .map(tours => tours.reduce((cheapest, tour) =>
+            tour?.min_price < cheapest?.min_price ? tour : cheapest))
+        .map(item => [item?.hotel_nameEn, item])
+).values());
 
-        return Array.from(new Map(
-            Object.values(groupedTours)
-            .map(tours => tours.reduce((cheapest, tour) =>
-                tour?.min_price < cheapest?.min_price ? tour : cheapest))
-            .map(item => [item?.hotel_nameEn, item])
-        ).values());
+        console.log(final)
+        return final
 
     }, [mergedData.allTours]);
 
@@ -108,7 +111,6 @@ const PackageListPage = () => {
                        tour_type={router.query.tour_type} isLoading={isLoading}/>:toursLoading || isLoading?
 
             <div className={'container'} style={{marginTop:'120px'}}>
-
                 <Shimmers3/>
                 <Shimmers3/>
                 <Shimmers3/>

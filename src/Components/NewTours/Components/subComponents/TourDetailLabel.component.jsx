@@ -47,27 +47,36 @@ const TourDetailLabel = ({ hotelName,flightDet, stayCount,gallary ,refcode}) => 
 <div className="detail-tour col-xl-12 col-lg-12 col-12 d-flex flex-wrap justify-content-between border-bottom">
   <div className="right col-xl-5 col-lg-5 col-12">
     <>
-    <div className="gallery-image">
+      <div style={{paddingTop: '15px', display: 'flex', columnGap: '5px',justifyContent:"center"}}>
+        <p style={{margin: '0', padding: '0', fontSize: '13px', fontWeight: '800', whiteSpace: 'nowrap'}}>کد رفرنس: </p>
 
-      {gallary.length > 0 ?
-          <img src={gallary && gallary[0]?.url} width={'100%'}
-               alt={`${getFlightDet('departure')?.destination_name} ${hotelName ? `| ${hotelName}` : null}`}
-               height={'100%'} style={{objectFit: 'contain', borderRadius: '20px'}}/>
-          :
-          <img src='../../../../Images/noPicture.png' width={'100%'}
+        <p style={{fontSize: '14px', fontWeight: 'bolder'}}>
 
-               height={'100%'} style={{objectFit: 'contain', borderRadius: '20px'}}/>
+          {refcode}
+        </p>
+      </div>
+      <div className="gallery-image">
 
-      }
+        {gallary.length > 0 ?
+            <img src={gallary && gallary[0]?.url} width={'100%'}
+                 alt={`${getFlightDet('departure')?.destination_name} ${hotelName ? `| ${hotelName}` : null}`}
+                 height={'100%'} style={{objectFit: 'contain', borderRadius: '20px'}}/>
+            :
+            <img src='../../../../Images/noPicture.png' width={'100%'}
 
-    </div>
+                 height={'100%'} style={{objectFit: 'contain', borderRadius: '20px'}}/>
+
+        }
+
+      </div>
 
 
     </>
   </div>
   <div className="left position-relative col-xl-7 col-lg-7 col-12 " style={{height: '50% !important'}}>
     <div className="vertical-data" style={{display: "none"}}></div>
-    <div className="p-info__tour mr-0 d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3 ">
+    <div
+        className="p-info__tour mr-0 d-flex flex-wrap align-items-center justify-content-between col-xl-12 col-lg-12 me-3 ">
       {/* c info */}
       <div className="c-info__tour w-100-mobi   col-xl-12 col-gl-12 d-flex justify-content-between">
 <div className='d-flex align-items-center'>
@@ -123,14 +132,7 @@ const TourDetailLabel = ({ hotelName,flightDet, stayCount,gallary ,refcode}) => 
   </div>
 
 </div>
-        <div style={{paddingTop:'15px',display:'flex',columnGap:'5px'}}>
-          <p style={{margin:'0',padding:'0',fontSize:'13px',fontWeight:'800',whiteSpace:'nowrap'}}>کد رفرنس: </p>
 
-        <p style={{fontSize:'14px',fontWeight:'bolder'}}>
-
-        {refcode}
-        </p>
-        </div>
 
       </div>
       {/* border */}
@@ -162,7 +164,7 @@ const TourDetailLabel = ({ hotelName,flightDet, stayCount,gallary ,refcode}) => 
               </g>
             </svg>
           </div>
-          <div className="text">
+          <div className="text " style={{marginLeft:'10px'}}>
             <span className="ps-1 font-bold font-13-mobi">{+stayCount}  شب</span>
             <span className="pe-1 font-bold ps-2 p-0-mobi font-13-mobi">{+stayCount + 1} روز</span>
           </div>
