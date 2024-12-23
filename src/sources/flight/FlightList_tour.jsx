@@ -467,7 +467,8 @@ return found_room
 
                                             </div>
                                             <div className={styles['item']}>
-                                                <p>{flight?.departure_flight?.origin}-{flight?.departure_flight?.destination}</p>
+
+                                                <p>{flight?.departure_flight?.origin} به {flight?.departure_flight?.destination}</p>
                                             </div>
                                         </div>
 

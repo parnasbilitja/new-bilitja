@@ -2,7 +2,7 @@ import {Err, NotifAlert} from "../../Components/NewTours/Components/NotifAlert.c
 import Head from "next/head";
 import styles from "../../../styles/TourPackage/PackageTourDetails.module.scss";
 import Scrolltoprefresh from "./Scrolltoprefresh";
-import {getRandomNumber, MiladiToJalaliConvertor} from "../../Utils/newTour";
+import {getRandomNumber, isEmpty, MiladiToJalaliConvertor, numberWithCommas, timeFixer} from "../../Utils/newTour";
 import {Shimmers1, Shimmers4} from "../../Components/NewTours/Components/subComponents/Shimmers";
 import {moneyFormatrial} from "../../Utils/SimpleTasks";
 import {Loader} from "../../Utils/Loader";
@@ -21,10 +21,10 @@ const Packages = (props) => {
     const router = useRouter();
     const [selectedHotel, setSelectedHotel] = useState(null);
     const [selectedFlight, setSelectedFlight] = useState(null);
-    const [infPrice, setInfPrice] = useState(null);
+    const [TargetFlight, setTargetFlight] = useState({});
     const [filter, setFilter] = useState({
-        search_input:'',
-        sort_by:'2'
+        search_input: '',
+        sort_by: '2'
     });
 
     const [isdownload, setIsDownload] = useState(false);
@@ -33,16 +33,16 @@ const Packages = (props) => {
     const [show, setShow] = useState(false);
     const [flightList, setFlightList] = useState([]);
     const [isOpenFilter, setIsOpenFilter] = useState(false);
-    const [showTransfers, setShowTransfers] = useState(false);
-    const [flightId, setFlightId] = useState({
-        depratureId: null,
-        returnId: null,
-    });
+    // const [showTransfers, setShowTransfers] = useState(false);
+    // const [flightId, setFlightId] = useState({
+    //     depratureId: null,
+    //     returnId: null,
+    // });
 
     // const[isDownload,setIsDownload]
     const roomFinder1 = (rooms, roomTypeID) => {
-        let foundRoom= rooms?.filter(room => room?.room_type_id === roomTypeID)
-        let cheapest=foundRoom.reduce((min, obj) => (obj.price < min.price ? obj : min), foundRoom[0])
+        let foundRoom = rooms?.filter(room => room?.room_type_id === roomTypeID)
+        let cheapest = foundRoom.reduce((min, obj) => (obj.price < min.price ? obj : min), foundRoom[0])
         // console.log(cheapest)
         return cheapest
     }
@@ -67,13 +67,13 @@ const Packages = (props) => {
 
 
         // Filter by airline names
-        if (filter.search_input!=='') {
+        if (filter.search_input !== '') {
             filteredData = filteredData.filter(data =>
-               ( data.hotel_name.includes(filter.search_input) || data.hotel_nameEn.toUpperCase().includes(filter.search_input.toUpperCase()))
+                (data.hotel_name.includes(filter.search_input) || data.hotel_nameEn.toUpperCase().includes(filter.search_input.toUpperCase()))
             );
-       }else{
+        } else {
 
-            filteredData=props.tour_type === "package"
+            filteredData = props.tour_type === "package"
                 ? props.tourdata?.packages
                 : props.tourdata
         }
@@ -82,21 +82,21 @@ const Packages = (props) => {
         if (filter.sort_by) {
 
 
-            if(filter.sort_by === "0") {
-               filteredData= filteredData.sort((a,b)=>(+a.hotel_stars)-(+b.hotel_stars))
+            if (filter.sort_by === "0") {
+                filteredData = filteredData.sort((a, b) => (+a.hotel_stars) - (+b.hotel_stars))
 
-            }else if(filter.sort_by === "1") {
+            } else if (filter.sort_by === "1") {
 
-                filteredData=filteredData.sort((a, b) => roomFinder1(a.rooms, 148)?.price - roomFinder1(b.rooms, 148)?.price)
+                filteredData = filteredData.sort((a, b) => roomFinder1(a.rooms, 148)?.price - roomFinder1(b.rooms, 148)?.price)
 
-            } else{
-                let list=[]
+            } else {
+                let list = []
                 for (let i = 1; i < 7; i++) {
                     let filterdHotelBystar = filteredData.filter(hotel => +hotel.hotel_stars === i)
                     list.push(...filterdHotelBystar.sort((a, b) => +roomFinder1(a.rooms, 148)?.price - +roomFinder1(b.rooms, 148)?.price))
                 }
 
-                filteredData=list
+                filteredData = list
             }
 
 
@@ -104,61 +104,37 @@ const Packages = (props) => {
 
         return filteredData
     }
-    // const sortByStars = (hotellist) => {
-    //     let filteredHotel = []
-    //     if(filterStats==='0'){
-    //         // for (let i = 1; i < 7; i++) {
-    //         let filterdHotelBystar = hotellist.sort((a,b)=>(+a.hotel_stars)-(+b.hotel_stars))
-    //         filteredHotel.push(...filterdHotelBystar)
-    //         // }
-    //     }else if(filterStats==='1'){
-    //         // for (let i = 1; i < 7; i++) {
-    //         //     let filterdHotelBystar = hotellist.filter(hotel => +hotel.hotel_stars === i)
-    //         filteredHotel.push(...hotellist.sort((a, b) => roomFinder1(a.rooms, 148)[0]?.price - roomFinder1(b.rooms, 148)[0]?.price))
-    //         // }
-    //     }else{
-    //         for (let i = 1; i < 7; i++) {
-    //             let filterdHotelBystar = hotellist.filter(hotel => +hotel.hotel_stars === i)
-    //             filteredHotel.push(...filterdHotelBystar.sort((a, b) => roomFinder1(a.rooms, 148)[0]?.price - roomFinder1(b.rooms, 148)[0]?.price))
-    //         }
-    //     }
-    //
-    //     return filteredHotel
-    // }
-    const[selectedRooms,setSelectedRoom]=useState(0);
-    const foundRooms=(pack)=>{
-    let foundRoom= pack?.filter(room => +room?.room_type_id === 148)
-    let cheapest148room=foundRoom.reduce((min, obj) => (obj.price < min.price ? obj : min), foundRoom[0])
-    let rooms = [cheapest148room];
-    let OtherRoom=pack.filter(room=>room.flight_id === cheapest148room.flight_id && +room?.room_type_id !== 148 )
 
-    rooms.push(...OtherRoom)
-    // rooms.sort((a,b) => a.price - b.price)
+    const [selectedRooms, setSelectedRoom] = useState(0);
+    const foundRooms = (pack) => {
+        let foundRoom = pack?.filter(room => +room?.room_type_id === 148)
+        let cheapest148room = foundRoom.reduce((min, obj) => (obj.price < min.price ? obj : min), foundRoom[0])
+        let rooms = [cheapest148room];
+        let OtherRoom = pack.filter(room => room.flight_id === cheapest148room.flight_id && +room?.room_type_id !== 148)
+
+        rooms.push(...OtherRoom)
 
         setSelectedRoom(rooms);
-}
+    }
 
 
-// useEffect(()=>{
-//     compositionFilter()
-// },[filter])
-    const sortByStars = (hotellist=[]) => {
-        let filteredHotel = [];
-
-        for (let i = 1; i < 7; i++) {
-            let filterdHotelBystar = hotellist?.filter(
-                (hotel) => +hotel.hotel_stars === i
-            );
-            filteredHotel.push(
-                ...filterdHotelBystar.sort(
-                    (a, b) =>
-                        roomFinder1(a.rooms, 148)[0]?.price -
-                        roomFinder1(b.rooms, 148)[0]?.price
-                )
-            );
-        }
-        return filteredHotel;
-    };
+    // const sortByStars = (hotellist=[]) => {
+    //     let filteredHotel = [];
+    //
+    //     for (let i = 1; i < 7; i++) {
+    //         let filterdHotelBystar = hotellist?.filter(
+    //             (hotel) => +hotel.hotel_stars === i
+    //         );
+    //         filteredHotel.push(
+    //             ...filterdHotelBystar.sort(
+    //                 (a, b) =>
+    //                     roomFinder1(a.rooms, 148)[0]?.price -
+    //                     roomFinder1(b.rooms, 148)[0]?.price
+    //             )
+    //         );
+    //     }
+    //     return filteredHotel;
+    // };
 
     useEffect(() => {
 
@@ -180,12 +156,12 @@ const Packages = (props) => {
             );
 
             // Check if foundFlight exists and has at least one element
-            if (Array.isArray(foundFlight) && foundFlight.length > 0) {
-                setFlightId({
-                    departureId: foundFlight[0]?.departure_flight?.id,
-                    returnId: foundFlight[0]?.return_flight?.id,
-                });
-            }
+            // if (Array.isArray(foundFlight) && foundFlight.length > 0) {
+            //     setFlightId({
+            //         departureId: foundFlight[0]?.departure_flight?.id,
+            //         returnId: foundFlight[0]?.return_flight?.id,
+            //     });
+            // }
 
             setFlightList(props.tourdata?.flights);
         }
@@ -207,6 +183,7 @@ const Packages = (props) => {
 
     const hotel_flight_merger = (hotels, flights) => {
 
+
         return hotels.map((hotel) => {
             let related_flights = [];
             hotel.rooms = hotel.rooms.map((room) => {
@@ -215,12 +192,11 @@ const Packages = (props) => {
                         related_flights.push(flight);
                     }
                 });
-                return { ...room }; // Return the modified room
+                return {...room}; // Return the modified room
             });
             return {
                 ...hotel,
-                related_flights:related_flights,
-                // related_flights: removeDuplicatesByName(related_flights),
+                related_flights: removeDuplicatesByName(related_flights),
             }; // Return the modified hotel
         });
     };
@@ -230,25 +206,27 @@ const Packages = (props) => {
 
         let default_hotel =
             props.tour_type === "package"
-                ? [{ ...pack }]
-                : props.all_data.allTours.filter(
-                    (tour) =>
-                        tour.hotel_id === pack.hotel_id && tour.id === pack.id
-                );
+                ? [{...pack}]
+                : [{...pack}]
+        // props.all_data.allTours.filter(
+        //     (tour) =>
+        //         tour.hotel_id === pack.hotel_id && tour.id === pack.id
+        // );
 
 
-        let suggested_hotels=
-            props.tour_type === "package"
-                ? []
-                : props.all_data.allTours.filter(
-                    (tour) =>
-                        tour.hotel_id === pack.hotel_id && tour.id !== pack.id
-                );
+        // let suggested_hotels=
+        //     props.tour_type === "package"
+        //         ? []
+        //         : props.all_data.allTours.filter(
+        //             (tour) =>
+        //                 tour.hotel_id === pack.hotel_id && tour.id !== pack.id
+        //         );
 
-        suggested_hotels =
-            props.tour_type === "package"
-                ? hotel_flight_merger(suggested_hotels, flightList)
-                : hotel_flight_merger(suggested_hotels, props?.all_data?.allFlights);
+        // suggested_hotels =
+        //     props.tour_type === "package"
+        //         ? hotel_flight_merger(suggested_hotels, flightList)
+        //         : hotel_flight_merger(suggested_hotels, props?.all_data?.allFlights);
+
         default_hotel =
             props.tour_type === "package"
                 ? hotel_flight_merger(default_hotel, flightList)
@@ -257,6 +235,7 @@ const Packages = (props) => {
             default_hotel[0].tour_id = props.tourId;
         }
 
+        console.log(hotel_flight_merger(default_hotel, props?.all_data?.allFlights))
         if (default_hotel.length > 0) {
             try {
                 // Cache the selected package
@@ -267,7 +246,7 @@ const Packages = (props) => {
                     },
                     body: JSON.stringify({
                         default_hotel,
-                        suggested_hotels,
+                        // suggested_hotels,
                         hote_slug: pack.hotel_slug,
                     }),
                 });
@@ -275,7 +254,7 @@ const Packages = (props) => {
                 const data = await response.json();
 
                 if (response.ok) {
-                    const { key } = data;
+                    const {key} = data;
 
                     setSelectedHotel(pack.id)
                     router.push(`/tours/tourdetails/${key}`)
@@ -302,6 +281,7 @@ const Packages = (props) => {
         link.click();
         document.body.removeChild(link);
     }
+
     const downloadHandler = async () => {
         setIsDownload(true)
         axios.post(`${globals.tourPackagesnew}packages/${props.tourId}`, {
@@ -313,7 +293,6 @@ const Packages = (props) => {
                     "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05'
                 }
             }
-
         ).then(res => {
 
 
@@ -329,8 +308,15 @@ const Packages = (props) => {
 
     }
 
-    const tags=['ترانسفر رایگان', 'بیمه مسافرتی رایگان', 'پرواز رفت و برگشت']
+    const tags = ['ترانسفر رایگان', 'بیمه مسافرتی رایگان', 'پرواز رفت و برگشت']
+    useEffect(() => {
+        setTargetFlight(flightList.filter(flight => flight.id === selectedFlight)[0])
+    }, [flightList])
 
+
+    useEffect(() => {
+        console.log(TargetFlight)
+    }, [TargetFlight])
     return (
         <>
             <div>
@@ -341,7 +327,8 @@ const Packages = (props) => {
                     <title> {props.tour_type === 'package' ? data?.title : props.all_data?.tour_info?.title} بلیطجا| </title>
                 </Head>
                 <div className={styles['tours']}>
-                    <div className='padd' style={{position:'relative !important'}}>
+                    <div className='padd' style={{position: 'relative !important'}}>
+
                         {/*{(props.tour_type === 'package' && props.tourdata?.flights.length > 0) &&*/}
                         {/*    <section className=" mt-2-mobi pt-3-mobi  ">*/}
                         {/*        <Scrolltoprefresh/>*/}
@@ -388,44 +375,134 @@ const Packages = (props) => {
                                     <div className={styles['p-data']}>
 
 
-
-
                                         <div>
                                             <div
                                                 className="p-info__tour col-xl-12 col-lg-12 col-12 mt-3 border-bottom pb-4 ">
 
                                                 <div className={'isMobile'}>
 
-                                                <div className={styles['title_info']}>
-                                                    <div>
-                                                        <p className={`p-0 m-0 text-center mb-1 font-bold  ${styles['title']}`}
-                                                           style={{marginBottom: '3px !important'}}>{`هتل های ${props.tour_type === 'package' ? data?.title : props.all_data?.tour_info?.title}`}</p>
+                                                    <div className={styles['title_info']}>
+                                                        <div>
+                                                            <p className={`p-0 m-0 text-center mb-1 font-bold  ${styles['title']}`}
+                                                               style={{marginBottom: '3px !important'}}>{`هتل های ${props.tour_type === 'package' ? data?.title : props.all_data?.tour_info?.title}`}</p>
+
+                                                        </div>
+
+                                                        <div className={'d-flex justify-content-between'}>
+                                                            <div className={styles['checkin_checkout']}>
+                                                                <p className={'p-0 m-0'}>تاریخ ورود به هتل:</p>
+                                                                <p className={'p-0 m-0'}>   {MiladiToJalaliConvertor(
+                                                                    props.tour_type === "package"
+                                                                        ? data.checkin
+                                                                        : props.all_data?.tour_info?.checkin
+                                                                )}</p>
+                                                            </div>
+                                                            <div className={styles['checkin_checkout']}>
+                                                                <p className={'p-0 m-0'}>تاریخ خروج از هتل:</p>
+                                                                <p className={'p-0 m-0'}>   {MiladiToJalaliConvertor(
+                                                                    props.tour_type === "package"
+                                                                        ? data.checkout
+                                                                        : props.all_data?.tour_info?.checkout
+                                                                )}</p>
+                                                            </div>
+                                                        </div>
+
 
                                                     </div>
 
-                                                    <div className={'d-flex justify-content-between'}>
-                                                        <div className={styles['checkin_checkout']}>
-                                                            <p className={'p-0 m-0'}>تاریخ ورود به هتل:</p>
-                                                            <p className={'p-0 m-0'}>   {MiladiToJalaliConvertor(
-                                                                props.tour_type === "package"
-                                                                    ? data.checkin
-                                                                    : props.all_data?.tour_info?.checkin
-                                                            )}</p>
-                                                        </div>
-                                                        <div className={styles['checkin_checkout']}>
-                                                            <p className={'p-0 m-0'}>تاریخ خروج از هتل:</p>
-                                                            <p className={'p-0 m-0'}>   {MiladiToJalaliConvertor(
-                                                                props.tour_type === "package"
-                                                                    ? data.checkout
-                                                                    : props.all_data?.tour_info?.checkout
-                                                            )}</p>
-                                                        </div>
                                                 </div>
+                                                {(props.tour_type==='package' && !isEmpty(TargetFlight))&& <div>
+                                                    <motion.div className={styles['flight_card']} style={{cursor: 'pointer'}}>
+
+                                                        <div className={styles['dep_return']}>
+                                                            <div className={styles['item_details']}>
+                                                                <div className={styles['img_container']}>
+                                                                    <img
+                                                                        src={TargetFlight?.departure_flight?.airline_thumb?.url}
+                                                                        alt=""/>
+
+                                                                </div>
+                                                                <div className={styles['item']}>
+                                                                    <p >{TargetFlight?.departure_flight?.airline}</p>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div className={styles['item_details']}>
+                                                                <div className={styles['item']}>
+
+                                                                    <p  className={'font-bold'}>{TargetFlight?.departure_flight?.origin} به {TargetFlight?.departure_flight?.destination}</p>
+                                                                </div>
+                                                                <div className={styles['item']}>
+                                                                    <p> ش.پ:</p>
+                                                                    <p className={'font-bold'}>{TargetFlight?.departure_flight?.flight_number}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className={styles['item_details']}>
+                                                                <div className={styles['item']}>
+                                                                    <p>زمان پرواز:</p>
+                                                                    <p>{MiladiToJalaliConvertor(TargetFlight?.departure_flight?.date)} | {timeFixer(TargetFlight?.departure_flight?.time)}</p>
+                                                                </div>
+                                                                <div className={styles['item']}>
+                                                                    <p>مدت پرواز:</p>
+                                                                    <p>{TargetFlight?.departure_flight?.flight_duration} ساعت</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className={'d-flex justify-content-center  align-content-center'}>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="#e20000" viewBox="0 0 24 24"
+                                                                 width={25}
+                                                                 className={styles['svg']}
+                                                                 height={25}
+                                                                 stroke-width="1.5" stroke="#e20000">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/>
+                                                            </svg>
+
+                                                        </div>
+                                                        <div className={styles['dep_return']}>
+                                                            <div className={styles['item_details']}>
+
+                                                                <div className={styles['img_container']}>
+                                                                    <img
+                                                                        src={TargetFlight?.return_flight?.airline_thumb?.url}
+                                                                        alt=""/>
+
+                                                                </div>
+                                                                <div className={styles['item']}>
+                                                                    <p>{TargetFlight?.return_flight?.airline}</p>
+                                                                </div>
 
 
-                                                    </div>
+                                                            </div>
 
-                                                </div>
+                                                            <div className={styles['item_details']}>
+                                                                <div className={styles['item']}>
+                                                                    <p  className={'font-bold'}>{TargetFlight?.return_flight?.origin} به {TargetFlight?.return_flight?.destination}</p>
+                                                                </div>
+                                                                <div className={styles['item']}>
+                                                                    <p> ش.پ:</p>
+                                                                    <p className={'font-bold'}>{TargetFlight?.return_flight?.flight_number}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className={styles['item_details']}>
+                                                                <div className={styles['item']}>
+                                                                <p>زمان پرواز:</p>
+                                                                    <p>{MiladiToJalaliConvertor(TargetFlight?.return_flight?.date)} | {timeFixer(TargetFlight?.return_flight?.time)}</p>
+                                                                </div>
+                                                                <div className={styles['item']}>
+                                                                    <p>مدت پرواز:</p>
+                                                                    <p>{TargetFlight?.return_flight?.flight_duration} ساعت</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </motion.div>
+
+                                                </div>}
+
 
                                                 {packages.length > 0 ? compositionFilter()?.map((pack) => (
                                                         <motion.div className={styles['hotel-item']} key={pack.id}
@@ -545,18 +622,22 @@ const Packages = (props) => {
                                                                                                 <div style={{
                                                                                                     display: 'flex',
                                                                                                     flexDirection: 'column'
-                                                                                                }} onClick={()=>  props.tour_type==='hotel' &&handlePackageClick(
-                                                                                                    pack
-                                                                                                )}>
+                                                                                                }}
+                                                                                                     onClick={() => props.tour_type === 'hotel' && handlePackageClick(
+                                                                                                         pack
+                                                                                                     )}>
                                                                                                     <p
                                                                                                         // href={`/hotels/${pack?.hotel_slug}`}
-                                                                                                       style={{
-                                                                                                           color: "#000",
-                                                                                                           fontWeight: '900'
-                                                                                                       }}>{pack?.hotel_nameEn}</p>
+                                                                                                        style={{
+                                                                                                            color: "#000",
+                                                                                                            fontWeight: '900'
+                                                                                                        }}>{pack?.hotel_nameEn}</p>
                                                                                                     <p
                                                                                                         // href={`/hotels/${pack.hotel_slug}`}
-                                                                                                       style={{color: "rgb(101,101,101)",fontSize:'13px'}}>{pack?.hotel_name}</p>
+                                                                                                        style={{
+                                                                                                            color: "rgb(101,101,101)",
+                                                                                                            fontSize: '13px'
+                                                                                                        }}>{pack?.hotel_name}</p>
                                                                                                 </div>
 
                                                                                                 {/*</Link>*/}
@@ -601,7 +682,6 @@ const Packages = (props) => {
                                                                                                 </div>
 
 
-
                                                                                                 <div
                                                                                                     className={'d-flex gap-3 align-items-center mt-3 justify-content-center'}>
 
@@ -621,7 +701,7 @@ const Packages = (props) => {
                                                                                                                        color: 'white !important',
                                                                                                                        fontWeight: '900'
                                                                                                                    }}>{tags[item]}
-                                                                                                                    </p>
+                                                                                                                </p>
                                                                                                             </div>
                                                                                                         ))
                                                                                                     }
@@ -714,7 +794,7 @@ const Packages = (props) => {
                                                                                                                         );
                                                                                                                     }}>
 
-                                                                                                                    {+selectedHotel===+pack.id ? 'منتظر بمانید...':'رزرو'}
+                                                                                                                    {+selectedHotel === +pack.id ? 'منتظر بمانید...' : 'رزرو'}
                                                                                                                 </button>}
                                                                                                         </div>
 
@@ -782,18 +862,12 @@ const Packages = (props) => {
                                                                                         </div>
 
 
-
                                                                                     </div>
-
-
-
 
 
                                                                                 </div>
 
                                                                                 : <Loader/>}
-
-
 
 
                                                                         </div>
@@ -803,7 +877,6 @@ const Packages = (props) => {
                                                                 </div>
 
                                                             </div>
-
 
 
                                                         </motion.div>
@@ -817,7 +890,7 @@ const Packages = (props) => {
 
 
                                             </div>
-                                            {props.tour_type==='package' && <div className={styles['tourdesc']}>
+                                            {props.tour_type === 'package' && <div className={styles['tourdesc']}>
                                                 <div className={styles['service_document']}>
                                                     {props.tourdata.documents && <div className={styles['con']}>
                                                         <p>مدارک لازم</p>
@@ -901,278 +974,279 @@ const Packages = (props) => {
                                     </div>
 
                                     {/*<div className={'isDesktop'}>*/}
-                                        {props.tourdata ?
+                                    {props.tourdata ?
 
-                                            <div className={styles['tour_details_container']}>
-                                                <div className={styles['tour_details']}>
+                                        <div className={styles['tour_details_container']}>
+                                            <div className={styles['tour_details']}>
 
-                                                    <div className="ps-2 ms-2 w-100">
+                                                <div className="ps-2 ms-2 w-100">
 
-                                                        <div className={`isDesktop ${styles['tour_info']}`}>
-                                                            <div
-                                                                className="d-flex align-items-center justify-content-center">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                                     height="20"
-                                                                     viewBox="0 0 17.401 17.401">
-                                                                    <g id="Document_Align_Center_1"
-                                                                       data-name="Document Align Center 1"
-                                                                       transform="translate(1 1)">
-                                                                        <path id="Path_895" data-name="Path 895"
-                                                                              d="M1,8.7a19.485,19.485,0,0,0,.323,4.079A4.335,4.335,0,0,0,2.4,15a4.336,4.336,0,0,0,2.22,1.078A19.488,19.488,0,0,0,8.7,16.4a19.488,19.488,0,0,0,4.079-.323A4.335,4.335,0,0,0,15,15a4.335,4.335,0,0,0,1.078-2.22A19.488,19.488,0,0,0,16.4,8.7a19.488,19.488,0,0,0-.323-4.079A4.336,4.336,0,0,0,15,2.4a4.335,4.335,0,0,0-2.22-1.078A19.485,19.485,0,0,0,8.7,1a19.485,19.485,0,0,0-4.079.323A4.335,4.335,0,0,0,2.4,2.4a4.335,4.335,0,0,0-1.078,2.22A19.485,19.485,0,0,0,1,8.7Z"
-                                                                              transform="translate(-1 -1)" fill="none"
-                                                                              stroke="#646564"
-                                                                              strokeLinecap="round"
-                                                                              strokeLinejoin="round"
-                                                                              strokeWidth="2"/>
-                                                                        <path id="Path_896" data-name="Path 896"
-                                                                              d="M10,7h2.8"
-                                                                              transform="translate(-3.699 -2.8)"
-                                                                              fill="none"
-                                                                              stroke="#646564" strokeLinecap="round"
-                                                                              strokeLinejoin="round" strokeWidth="2"/>
-                                                                        <path id="Path_897" data-name="Path 897"
-                                                                              d="M7,12h7"
-                                                                              transform="translate(-2.8 -4.299)"
-                                                                              fill="none"
-                                                                              stroke="#646564" strokeLinecap="round"
-                                                                              strokeLinejoin="round" strokeWidth="2"/>
-                                                                        <path id="Path_898" data-name="Path 898"
-                                                                              d="M10,17h2.8"
-                                                                              transform="translate(-3.699 -5.799)"
-                                                                              fill="none"
-                                                                              stroke="#646564" strokeLinecap="round"
-                                                                              strokeLinejoin="round" strokeWidth="2"/>
-                                                                    </g>
-                                                                </svg>
+                                                    <div className={`isDesktop ${styles['tour_info']}`}>
+                                                        <div
+                                                            className="d-flex align-items-center justify-content-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                                                 height="20"
+                                                                 viewBox="0 0 17.401 17.401">
+                                                                <g id="Document_Align_Center_1"
+                                                                   data-name="Document Align Center 1"
+                                                                   transform="translate(1 1)">
+                                                                    <path id="Path_895" data-name="Path 895"
+                                                                          d="M1,8.7a19.485,19.485,0,0,0,.323,4.079A4.335,4.335,0,0,0,2.4,15a4.336,4.336,0,0,0,2.22,1.078A19.488,19.488,0,0,0,8.7,16.4a19.488,19.488,0,0,0,4.079-.323A4.335,4.335,0,0,0,15,15a4.335,4.335,0,0,0,1.078-2.22A19.488,19.488,0,0,0,16.4,8.7a19.488,19.488,0,0,0-.323-4.079A4.336,4.336,0,0,0,15,2.4a4.335,4.335,0,0,0-2.22-1.078A19.485,19.485,0,0,0,8.7,1a19.485,19.485,0,0,0-4.079.323A4.335,4.335,0,0,0,2.4,2.4a4.335,4.335,0,0,0-1.078,2.22A19.485,19.485,0,0,0,1,8.7Z"
+                                                                          transform="translate(-1 -1)" fill="none"
+                                                                          stroke="#646564"
+                                                                          strokeLinecap="round"
+                                                                          strokeLinejoin="round"
+                                                                          strokeWidth="2"/>
+                                                                    <path id="Path_896" data-name="Path 896"
+                                                                          d="M10,7h2.8"
+                                                                          transform="translate(-3.699 -2.8)"
+                                                                          fill="none"
+                                                                          stroke="#646564" strokeLinecap="round"
+                                                                          strokeLinejoin="round" strokeWidth="2"/>
+                                                                    <path id="Path_897" data-name="Path 897"
+                                                                          d="M7,12h7"
+                                                                          transform="translate(-2.8 -4.299)"
+                                                                          fill="none"
+                                                                          stroke="#646564" strokeLinecap="round"
+                                                                          strokeLinejoin="round" strokeWidth="2"/>
+                                                                    <path id="Path_898" data-name="Path 898"
+                                                                          d="M10,17h2.8"
+                                                                          transform="translate(-3.699 -5.799)"
+                                                                          fill="none"
+                                                                          stroke="#646564" strokeLinecap="round"
+                                                                          strokeLinejoin="round" strokeWidth="2"/>
+                                                                </g>
+                                                            </svg>
 
-                                                                <p className={styles['title']}>{`هتل های ${props.tour_type === 'package' ? data?.title : props.all_data?.tour_info?.title}`}</p>
-                                                            </div>
+                                                            <p className={styles['title']}>{`هتل های ${props.tour_type === 'package' ? data?.title : props.all_data?.tour_info?.title}`}</p>
+                                                        </div>
 
-                                                            <hr className={'p-0 mt-2'}/>
+                                                        <hr className={'p-0 mt-2'}/>
 
-                                                            <div className={styles['date_time']}>
-                                                                <div>
-                                                                    <div className={styles['checkin_checkout']}>
-                                                                        <p>تاریخ ورود به هتل:</p>
-                                                                        <p>   {MiladiToJalaliConvertor(
-                                                                            props.tour_type === "package"
-                                                                                ? data.checkin
-                                                                                : props.all_data?.tour_info?.checkin
-                                                                        )}</p>
-                                                                    </div>
-                                                                    <div className={styles['checkin_checkout']}>
-                                                                        <p>تاریخ خروج از هتل:</p>
-                                                                        <p>   {MiladiToJalaliConvertor(
-                                                                            props.tour_type === "package"
-                                                                                ? data.checkout
-                                                                                : props.all_data?.tour_info?.checkout
-                                                                        )}</p>
-                                                                    </div>
+                                                        <div className={styles['date_time']}>
+                                                            <div>
+                                                                <div className={styles['checkin_checkout']}>
+                                                                    <p>تاریخ ورود به هتل:</p>
+                                                                    <p>   {MiladiToJalaliConvertor(
+                                                                        props.tour_type === "package"
+                                                                            ? data.checkin
+                                                                            : props.all_data?.tour_info?.checkin
+                                                                    )}</p>
                                                                 </div>
-
-                                                                <div className={styles['night']}>
-                                                                    <p className="text-xs text-secondary-color font-black">
-                                                                        {props.tour_type === "package"
-                                                                            ? data.night_num
-                                                                            : props.all_data?.tour_info
-                                                                                ?.night_num}{" "}
-                                                                        شب
-                                                                    </p>
-                                                                    <p className="text-xs text-secondary-color font-black">
-                                                                        و
-                                                                    </p>
-                                                                    <p className="text-xs text-secondary-color font-black">
-                                                                        {props.tour_type === "package"
-                                                                            ? data.day_num
-                                                                            : props.all_data?.tour_info
-                                                                                ?.day_num}{" "}
-                                                                        روز
-                                                                    </p>
+                                                                <div className={styles['checkin_checkout']}>
+                                                                    <p>تاریخ خروج از هتل:</p>
+                                                                    <p>   {MiladiToJalaliConvertor(
+                                                                        props.tour_type === "package"
+                                                                            ? data.checkout
+                                                                            : props.all_data?.tour_info?.checkout
+                                                                    )}</p>
                                                                 </div>
                                                             </div>
-                                                            <hr/>
 
-                                                            {props.tour_type === "package" &&
-                                                                <>
-                                                                    <div className={'d-flex justify-content-between'}>
-                                                                        <p className={'font-size-14'}>نام آژانس:</p>
-                                                                        <p className={'font-size-15 font-bold'}>
-                                                                            {data?.agency}
-                                                                        </p>
-                                                                    </div>
+                                                            <div className={styles['night']}>
+                                                                <p className="text-xs text-secondary-color font-black">
+                                                                    {props.tour_type === "package"
+                                                                        ? data.night_num
+                                                                        : props.all_data?.tour_info
+                                                                            ?.night_num}{" "}
+                                                                    شب
+                                                                </p>
+                                                                <p className="text-xs text-secondary-color font-black">
+                                                                    و
+                                                                </p>
+                                                                <p className="text-xs text-secondary-color font-black">
+                                                                    {props.tour_type === "package"
+                                                                        ? data.day_num
+                                                                        : props.all_data?.tour_info
+                                                                            ?.day_num}{" "}
+                                                                    روز
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <hr/>
 
-                                                                    <div
-                                                                        className={'d-flex justify-content-center align-items-center gap-3 cursor-pointer'}
-                                                                        style={{
-                                                                            width: '100%',
-                                                                            padding: '10px',
-                                                                            border: '1px solid #e20000',
-                                                                            borderRadius: '20px',
-                                                                            cursor: 'pointer',
-                                                                        }}>
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             fill="none"
-                                                                             viewBox="0 0 24 24" stroke-width="1.5"
-                                                                             width={20}
-                                                                             height={20}
-                                                                             stroke="#e20000" className="size-6">
-                                                                            <path stroke-linecap="round"
-                                                                                  stroke-linejoin="round"
-                                                                                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/>
-                                                                        </svg>
+                                                        {props.tour_type === "package" &&
+                                                            <>
+                                                                <div className={'d-flex justify-content-between'}>
+                                                                    <p className={'font-size-14'}>نام آژانس:</p>
+                                                                    <p className={'font-size-15 font-bold'}>
+                                                                        {data?.agency}
+                                                                    </p>
+                                                                </div>
 
-                                                                        <a href={`tel:${data.agency_tell}`}
-                                                                           className={'p-0 m-0 font-bold cursor-pointer'}>{
-                                                                            data.agency_tell
-                                                                        }</a>
-                                                                    </div>
-                                                                </>
+                                                                <div
+                                                                    className={'d-flex justify-content-center align-items-center gap-3 cursor-pointer'}
+                                                                    style={{
+                                                                        width: '100%',
+                                                                        padding: '10px',
+                                                                        border: '1px solid #e20000',
+                                                                        borderRadius: '20px',
+                                                                        cursor: 'pointer',
+                                                                    }}>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         fill="none"
+                                                                         viewBox="0 0 24 24" stroke-width="1.5"
+                                                                         width={20}
+                                                                         height={20}
+                                                                         stroke="#e20000" className="size-6">
+                                                                        <path stroke-linecap="round"
+                                                                              stroke-linejoin="round"
+                                                                              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/>
+                                                                    </svg>
 
-                                                            }
+                                                                    <a href={`tel:${data.agency_tell}`}
+                                                                       className={'p-0 m-0 font-bold cursor-pointer'}>{
+                                                                        data.agency_tell
+                                                                    }</a>
+                                                                </div>
+                                                            </>
+
+                                                        }
+
+                                                    </div>
+
+                                                    <div
+                                                        className={`${styles['tour_info']} ${isOpenFilter && styles['filter_active']}`}>
+
+                                                        <div>
+                                                            <p className={'p-0 m-0 mb-2'}>فیلترها</p>
+                                                        </div>
+
+                                                        <hr className={'p-0 mt-2 mb-2'}/>
+
+                                                        <div style={{
+                                                            border: "1px solid #cecece",
+                                                            borderRadius: '10px',
+                                                            height: '50px',
+                                                            width: "100%",
+                                                            padding: '2px',
+                                                            display: 'flex',
+                                                            justifyContent: 'space-between',
+                                                            alignItems: 'center'
+                                                        }}>
+
+                                                            <input placeholder='جستجو براساس نام هتل'
+                                                                   style={{
+                                                                       width: '100%'
+                                                                       // , height: '100%'
+                                                                       , border: 'none'
+                                                                       , outline: 'none',
+                                                                       fontSize: '13px',
+                                                                   }}
+                                                                   onChange={(e) => setFilter(prev => ({
+                                                                       ...prev,
+                                                                       search_input: e.target.value
+                                                                   }))}
+                                                            />
+
+                                                            <svg width="25px" height="25px" viewBox="0 0 24 24"
+                                                                 fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+                                                                    stroke="#cecece" stroke-width="2"
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"/>
+                                                            </svg>
 
                                                         </div>
 
-                                                        <div className={`${styles['tour_info']} ${isOpenFilter && styles['filter_active']}`}>
-
-                                                            <div>
-                                                                <p className={'p-0 m-0 mb-2'}>فیلترها</p>
-                                                            </div>
-
-                                                            <hr className={'p-0 mt-2 mb-2'}/>
-
-                                                            <div style={{
-                                                                border: "1px solid #cecece",
-                                                                borderRadius: '10px',
-                                                                height: '50px',
-                                                                width: "100%",
-                                                                padding: '2px',
+                                                        <hr/>
+                                                        <div
+                                                            className="c-input col-xl-3 col-lg-3 col-sm-3 col-12 position-relative "
+                                                            style={{
+                                                                width: '100%',
+                                                                height: "50px",
                                                                 display: 'flex',
-                                                                justifyContent: 'space-between',
-                                                                alignItems: 'center'
+                                                                justifyContent: 'center',
+                                                                alignItems: 'center',
+                                                                border: '1px solid #cecece',
+                                                                borderRadius: '10px'
                                                             }}>
+                                                            <select name="" style={{
+                                                                outline: 'none',
+                                                                border: 'none',
+                                                                width: '100%'
+                                                            }} id=""
+                                                                    onChange={(e) => setFilter(prev => ({
+                                                                        ...prev,
+                                                                        sort_by: e.target.value
+                                                                    }))}
+                                                                    value={filter.sort_by}
+                                                            >
+                                                                <option value="" disabled={true}>فیلتر براساس....
+                                                                </option>
+                                                                <option value="0">ستاره</option>
+                                                                <option value="1"> قیمت</option>
+                                                                <option value="2"> ستاره + قیمت</option>
+                                                            </select>
+                                                        </div>
+                                                        <div>
+                                                            <div className={' d-flex gap-3 justify-content-center'}>
+                                                                {props.tour_type === 'package' && <div
+                                                                    style={{
+                                                                        display: 'flex',
+                                                                        justifyContent: 'center'
+                                                                    }}>
 
-                                                                <input placeholder='جستجو براساس نام هتل'
-                                                                       style={{
-                                                                           width: '100%'
-                                                                           // , height: '100%'
-                                                                           , border: 'none'
-                                                                           , outline: 'none',
-                                                                           fontSize: '13px',
-                                                                       }}
-                                                                       onChange={(e) => setFilter(prev => ({
-                                                                           ...prev,
-                                                                           search_input: e.target.value
-                                                                       }))}
-                                                                />
+                                                                    <button id="openWindowButton" className='pdfbtn'
+                                                                            onClick={() => {
+                                                                                if (isdownload === false) {
 
-                                                                <svg width="25px" height="25px" viewBox="0 0 24 24"
-                                                                     fill="none"
-                                                                     xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
-                                                                        stroke="#cecece" stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"/>
-                                                                </svg>
+                                                                                    downloadHandler()
 
-                                                            </div>
+                                                                                    // console.log(`The user is browsing with ${browserName} version ${browserVersion}`)
+                                                                                } else {
+                                                                                    return null
+                                                                                }
+                                                                            }}
+                                                                    >
 
-                                                            <hr/>
-                                                            <div
-                                                                className="c-input col-xl-3 col-lg-3 col-sm-3 col-12 position-relative "
-                                                                style={{
-                                                                    width: '100%',
-                                                                    height: "50px",
-                                                                    display: 'flex',
-                                                                    justifyContent: 'center',
-                                                                    alignItems: 'center',
-                                                                    border: '1px solid #cecece',
-                                                                    borderRadius: '10px'
-                                                                }}>
-                                                                <select name="" style={{
-                                                                    outline: 'none',
-                                                                    border: 'none',
-                                                                    width: '100%'
-                                                                }} id=""
-                                                                        onChange={(e) => setFilter(prev => ({
-                                                                            ...prev,
-                                                                            sort_by: e.target.value
-                                                                        }))}
-                                                                        value={filter.sort_by}
-                                                                >
-                                                                    <option value="" disabled={true}>فیلتر براساس....
-                                                                    </option>
-                                                                    <option value="0">ستاره</option>
-                                                                    <option value="1"> قیمت</option>
-                                                                    <option value="2"> ستاره + قیمت</option>
-                                                                </select>
-                                                            </div>
-                                                            <div>
-                                                                <div className={' d-flex gap-3 justify-content-center'}>
-                                                                    {props.tour_type === 'package' && <div
+                                                                        <>
+                                                                            {isdownload === false ?
+                                                                                <>
+                                                                                    <svg height="24"
+                                                                                         viewBox="0 0 24 24"
+                                                                                         width="24"
+                                                                                         xmlns="http://www.w3.org/2000/svg"
+                                                                                         fill='#fff'>
+                                                                                        <path
+                                                                                            d="M18,19 L18,17 C19.6568542,17 21,15.6568542 21,14 C21,12.3431458 19.6568542,11 18,11 C17.9686786,11.0001061 17.9686786,11.0001061 17.9374883,11.0006341 L17.0737589,11.0181765 L16.9309417,10.1661557 C16.5303438,7.77626335 14.4511274,6 12,6 C10.1923998,6 8.55429829,6.96642863 7.6664163,8.50398349 L7.39066076,8.98151234 L6.83965518,9.0031404 C4.69934052,9.08715198 3,10.8504451 3,13 C3,14.8638394 4.27477279,16.4299397 6,16.8739825 L6,18.9170416 C3.16228666,18.4409635 1,15.9729963 1,13 C1,9.95876977 3.26703071,7.43346119 6.21989093,7.05027488 C7.50901474,5.16507238 9.65343535,4 12,4 C15.1586186,4 17.8750012,6.1056212 18.7254431,9.0522437 C21.1430685,9.40362782 23,11.4849591 23,14 C23,16.7614237 20.7614237,19 18,19 Z M11,18.2532546 L11,12 L13,12 L13,18.2532546 L15.2928932,16.0092816 L16.7071068,17.3933221 L12,22 L7.29289322,17.3933221 L8.70710678,16.0092816 L11,18.2532546 Z"
+                                                                                            fill-rule="evenodd"/>
+                                                                                    </svg>
+                                                                                    دانلود فایل PDF
+                                                                                </> :
+                                                                                <div
+                                                                                    className='w-100 text-center d-flex justify-content-center align-items-center'>
+                                                                                    لطفا صبر کنید...
+                                                                                </div>
+                                                                            }
+                                                                        </>
+
+
+                                                                    </button>
+                                                                </div>}
+
+                                                                <button onClick={() => setIsOpenFilter(false)}
                                                                         style={{
                                                                             display: 'flex',
                                                                             justifyContent: 'center'
-                                                                        }}>
-
-                                                                        <button id="openWindowButton" className='pdfbtn'
-                                                                                onClick={() => {
-                                                                                    if (isdownload === false) {
-
-                                                                                        downloadHandler()
-
-                                                                                        // console.log(`The user is browsing with ${browserName} version ${browserVersion}`)
-                                                                                    } else {
-                                                                                        return null
-                                                                                    }
-                                                                                }}
-                                                                        >
-
-                                                                            <>
-                                                                                {isdownload === false ?
-                                                                                    <>
-                                                                                        <svg height="24"
-                                                                                             viewBox="0 0 24 24"
-                                                                                             width="24"
-                                                                                             xmlns="http://www.w3.org/2000/svg"
-                                                                                             fill='#fff'>
-                                                                                            <path
-                                                                                                d="M18,19 L18,17 C19.6568542,17 21,15.6568542 21,14 C21,12.3431458 19.6568542,11 18,11 C17.9686786,11.0001061 17.9686786,11.0001061 17.9374883,11.0006341 L17.0737589,11.0181765 L16.9309417,10.1661557 C16.5303438,7.77626335 14.4511274,6 12,6 C10.1923998,6 8.55429829,6.96642863 7.6664163,8.50398349 L7.39066076,8.98151234 L6.83965518,9.0031404 C4.69934052,9.08715198 3,10.8504451 3,13 C3,14.8638394 4.27477279,16.4299397 6,16.8739825 L6,18.9170416 C3.16228666,18.4409635 1,15.9729963 1,13 C1,9.95876977 3.26703071,7.43346119 6.21989093,7.05027488 C7.50901474,5.16507238 9.65343535,4 12,4 C15.1586186,4 17.8750012,6.1056212 18.7254431,9.0522437 C21.1430685,9.40362782 23,11.4849591 23,14 C23,16.7614237 20.7614237,19 18,19 Z M11,18.2532546 L11,12 L13,12 L13,18.2532546 L15.2928932,16.0092816 L16.7071068,17.3933221 L12,22 L7.29289322,17.3933221 L8.70710678,16.0092816 L11,18.2532546 Z"
-                                                                                                fill-rule="evenodd"/>
-                                                                                        </svg>
-                                                                                        دانلود فایل PDF
-                                                                                    </> :
-                                                                                    <div
-                                                                                        className='w-100 text-center d-flex justify-content-center align-items-center'>
-                                                                                        لطفا صبر کنید...
-                                                                                    </div>
-                                                                                }
-                                                                            </>
-
-
-                                                                        </button>
-                                                                    </div>}
-
-                                                                    <button onClick={() => setIsOpenFilter(false)}
-                                                                            style={{
-                                                                                display: 'flex',
-                                                                                justifyContent: 'center'
-                                                                            }} className='pdfbtn isMobile'>
-                                                                        جستجو هتل
-                                                                    </button>
-                                                                </div>
+                                                                        }} className='pdfbtn isMobile'>
+                                                                    جستجو هتل
+                                                                </button>
                                                             </div>
-
-
                                                         </div>
 
 
                                                     </div>
+
+
                                                 </div>
                                             </div>
+                                        </div>
 
 
-                                            : <Shimmers4/>}
+                                        : <Shimmers4/>}
                                     {/*</div>*/}
 
                                 </div>
@@ -1184,21 +1258,37 @@ const Packages = (props) => {
 
                     {/* footer */}
                 </div>
-                        <div className={styles['date_mobile']}>
+                <div className={styles['date_mobile']}>
 
 
-
-                            <div style={{display: 'flex', justifyContent: 'space-between'}}>
-
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
 
 
-
-                            <div className={'w-100 d-flex justify-content-center align-items-center gap-2'} >
-                                <a href={`tel:${data.agency_tell}`} style={{width:'100%' ,height:'40px' , backgroundColor:'#e20000',color:'white',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'10px'}}>تماس</a>
-                                <button style={{width:'100%' ,height:'40px' , backgroundColor:'#e20000',color:'white',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'10px'}} onClick={()=>setIsOpenFilter(!isOpenFilter)}>فیلتر</button>
-                            </div>
-                            </div>
+                        <div className={'w-100 d-flex justify-content-center align-items-center gap-2'}>
+                            <a href={`tel:${data.agency_tell}`} style={{
+                                width: '100%',
+                                height: '40px',
+                                backgroundColor: '#e20000',
+                                color: 'white',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderRadius: '10px'
+                            }}>تماس</a>
+                            <button style={{
+                                width: '100%',
+                                height: '40px',
+                                backgroundColor: '#e20000',
+                                color: 'white',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderRadius: '10px'
+                            }} onClick={() => setIsOpenFilter(!isOpenFilter)}>فیلتر
+                            </button>
                         </div>
+                    </div>
+                </div>
                 {show &&
                     <PopUpWide opened={show} closePopUp={setShow}>
                         <RequestTour rooms={selectedRooms}

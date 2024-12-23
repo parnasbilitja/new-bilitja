@@ -201,9 +201,7 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
 
     },[toursData.selectedDate])
 
-    useEffect(()=>{
-        console.log(toursData)
-    },[toursData])
+
     const SearchBoxSteps = (step) => {
         switch (step) {
             case 'org':
@@ -239,8 +237,8 @@ const SearchBox = ({state, setState,toursHandler, executeScroll}) =>{
     };
 
     useEffect(()=>{
-
-    })
+        console.log(toursData)
+    },[toursData])
 
     return (
         <>
@@ -286,41 +284,11 @@ className='p-0 m-0'
             <div className={styles['search_box_container']} style={{padding: '0 10px', columnGap: '12px'}}>
 
                 <div className={'w-100'}>
-                    <div className={` form-input-border ${styles["prs-input"]} `}
-                         style={{width: '300px'}}>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            id="_044-Departures"
-                            data-name="044-Departures"
-                            width="25"
-                            height="25"
-                            viewBox="0 0 39.655 27.135"
-                            style={{zIndex: 100, left: '9px', position: 'absolute', top: '15px'}}
-                        >
-                            <path
-                                id="Path_1760"
-                                data-name="Path 1760"
-                                d="M.782,406.966h38.09a.782.782,0,1,1,0,1.564H.782a.782.782,0,1,1,0-1.564Z"
-                                transform="translate(0 -381.396)"
-                                fill="#b9b9b9"
-                            />
-                            <path
-                                id="Path_1761"
-                                data-name="Path 1761"
-                                d="M39.736,93.474l-5.765,3.94a7.742,7.742,0,0,1-7.611.621l-5.68-2.654a.782.782,0,0,1,.662-1.417l5.679,2.654a6.172,6.172,0,0,0,6.066-.5l4.768-3.259-2.146-1.316L30.189,93.38a.782.782,0,0,1-.58-.035l-6.58-3.1a.782.782,0,0,1-.151-1.322L30.139,83.2l-2.824-1.441L14.254,85.893a.783.783,0,0,1-.569-.038L4.948,81.749a2.117,2.117,0,0,0-2.666,1.01,2.04,2.04,0,0,0,.962,2.762l11.739,5.484a.782.782,0,1,1-.662,1.417L2.581,86.939a3.6,3.6,0,0,1-1.7-4.879,3.7,3.7,0,0,1,4.691-1.744l.026.012,8.475,3.982,13.075-4.137a.782.782,0,0,1,.591.049l4.2,2.142a.782.782,0,0,1,.129,1.311L24.84,89.369,29.993,91.8l5.571-1.848a.783.783,0,0,1,.655.076L39.7,92.162a.782.782,0,0,1,.032,1.312Z"
-                                transform="translate(-0.462 -80.036)"
-                                fill="#b9b9b9"
-                            />
-                            <path
-                                id="Path_1762"
-                                data-name="Path 1762"
-                                d="M275.938,238.18a.781.781,0,1,1-1.038.377A.781.781,0,0,1,275.938,238.18Z"
-                                transform="translate(-258.229 -225.743)"
-                                fill="#b9b9b9"
-                            />
-                        </svg>
+                    <div className={` form-input-border ${styles["prs-input"]} `}>
+
+
                         <PrimaryTextInputMobile
-                            value={toursData.selectedOrigin.name}
+                            value={toursData?.selectedOrigin?.name}
                             name={'slug'}
                             onFocus={handleFocus}
                             // onBlur={handleFocusOut}
@@ -332,6 +300,52 @@ className='p-0 m-0'
                             }}
                             placeholder={"مبدا خود را انتخاب کنید"}
                         />
+                        <div className={'d-flex align-items-center justify-content-between gap-2 ml-2 px-2'}>
+                            {toursData.selectedOrigin.name && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                                   onClick={()=>dispatch(setOrgLoc({name:'',code:''}))}
+                                  width={15}
+                                  height={15}
+                                                                   className={'cursor-pointer'}
+                                                                   style={{cursor: 'pointer'}}
+                                  stroke="#e20000" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                            </svg>}
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                id="_044-Departures"
+                                data-name="044-Departures"
+                                width="25"
+                                height="25"
+                                viewBox="0 0 39.655 27.135"
+                                // style={{zIndex: 100, left: '9px', position: 'absolute', top: '15px'}}
+                            >
+                                <path
+                                    id="Path_1760"
+                                    data-name="Path 1760"
+                                    d="M.782,406.966h38.09a.782.782,0,1,1,0,1.564H.782a.782.782,0,1,1,0-1.564Z"
+                                    transform="translate(0 -381.396)"
+                                    fill="#b9b9b9"
+                                />
+                                <path
+                                    id="Path_1761"
+                                    data-name="Path 1761"
+                                    d="M39.736,93.474l-5.765,3.94a7.742,7.742,0,0,1-7.611.621l-5.68-2.654a.782.782,0,0,1,.662-1.417l5.679,2.654a6.172,6.172,0,0,0,6.066-.5l4.768-3.259-2.146-1.316L30.189,93.38a.782.782,0,0,1-.58-.035l-6.58-3.1a.782.782,0,0,1-.151-1.322L30.139,83.2l-2.824-1.441L14.254,85.893a.783.783,0,0,1-.569-.038L4.948,81.749a2.117,2.117,0,0,0-2.666,1.01,2.04,2.04,0,0,0,.962,2.762l11.739,5.484a.782.782,0,1,1-.662,1.417L2.581,86.939a3.6,3.6,0,0,1-1.7-4.879,3.7,3.7,0,0,1,4.691-1.744l.026.012,8.475,3.982,13.075-4.137a.782.782,0,0,1,.591.049l4.2,2.142a.782.782,0,0,1,.129,1.311L24.84,89.369,29.993,91.8l5.571-1.848a.783.783,0,0,1,.655.076L39.7,92.162a.782.782,0,0,1,.032,1.312Z"
+                                    transform="translate(-0.462 -80.036)"
+                                    fill="#b9b9b9"
+                                />
+                                <path
+                                    id="Path_1762"
+                                    data-name="Path 1762"
+                                    d="M275.938,238.18a.781.781,0,1,1-1.038.377A.781.781,0,0,1,275.938,238.18Z"
+                                    transform="translate(-258.229 -225.743)"
+                                    fill="#b9b9b9"
+                                />
+                            </svg>
+
+
+                        </div>
+
+
                     </div>
                     {toursData.searchboxStep === 'org' &&
                         <InputValues
@@ -352,46 +366,11 @@ className='p-0 m-0'
 
                 <div className={'w-100'}>
                     <div className={` form-input-border ${styles["prs-input"]} `}
-                         style={{width: '300px'}}>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="25"
-                            height="25"
-                            viewBox="0 0 37.922 29.591"
-                            style={{zIndex: 100, left: '9px', position: 'absolute', top: '15px'}}
-                        >
-                            <g
-                                id="_046-arrivals"
-                                data-name="046-arrivals"
-                                transform="translate(0 0)"
+                        // style={{width: '300px'}}
+                    >
 
-                            >
-                                <path
-                                    id="Path_1767"
-                                    data-name="Path 1767"
-                                    d="M63.513,65.451a7.4,7.4,0,0,1-5.178,5.15l-5.787,1.565a.748.748,0,1,1-.391-1.444l5.787-1.565a5.9,5.9,0,0,0,4.127-4.1l1.473-5.323-2.38.362-2.9,4.746a.748.748,0,0,1-.445.332l-6.72,1.8a.748.748,0,0,1-.926-.873l1.775-8.66-2.952.689L42,69.2a.748.748,0,0,1-.439.323l-8.918,2.391A2.025,2.025,0,0,0,31.317,74.3a1.951,1.951,0,0,0,2.407,1.425l11.96-3.236a.748.748,0,1,1,.391,1.444l-11.96,3.236a3.47,3.47,0,0,1-.908.122,3.452,3.452,0,0,1-3.343-2.639,3.541,3.541,0,0,1,2.351-4.168l.026-.007,8.649-2.319,7-11.089a.747.747,0,0,1,.462-.329l4.388-1.025a.748.748,0,0,1,.9.879l-1.767,8.619L57.14,63.8l2.93-4.787a.748.748,0,0,1,.525-.349l3.865-.588a.748.748,0,0,1,.833.939Z"
-                                    transform="translate(-29.626 -55.689)"
-                                    fill="#b9b9b9"
-
-                                />
-                                <path
-                                    id="Path_1768"
-                                    data-name="Path 1768"
-                                    d="M237.923,268.478a.747.747,0,1,1-.916-.526A.747.747,0,0,1,237.923,268.478Z"
-                                    transform="translate(-217.713 -252.051)"
-                                    fill="#b9b9b9"
-                                />
-                                <path
-                                    id="Path_1769"
-                                    data-name="Path 1769"
-                                    d="M.748,431.31H37.174a.748.748,0,0,1,0,1.5H.748a.748.748,0,1,1,0-1.5Z"
-                                    transform="translate(0 -403.214)"
-                                    fill="#b9b9b9"
-                                />
-                            </g>
-                        </svg>
                         <PrimaryTextInputMobile
-                            value={toursData.selectedDestination.name}
+                            value={toursData?.selectedDestination?.name}
                             name={'slug'}
                             onFocus={handleFocus}
                             // onBlur={handleFocusOut}
@@ -404,6 +383,63 @@ className='p-0 m-0'
                             }}
                             placeholder={"مقصد خود را انتخاب کنید"}
                         />
+
+                        <div
+                            className={'d-flex align-items-center justify-content-between gap-2 ml-2 px-2'}>
+                            {toursData.selectedDestination.name && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                                   onClick={()=> {
+                                                                       dispatch(setDestLoc({name: '', code: ''}))
+
+                                                                            dispatch(setFlightDate({miladiDate:'',persianDate:''}))
+                                                                            dispatch(setNightNumber(null))
+                                                                   }
+                            }
+                                                                   width={15}
+                                                                   height={15}
+                                                                   className={'cursor-pointer'}
+                                                                   style={{cursor: 'pointer'}}
+                                                                   stroke="#e20000" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                            </svg>}
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="25"
+                                height="25"
+                                viewBox="0 0 37.922 29.591"
+                                // style={{zIndex: 100, left: '9px', position: 'absolute', top: '15px'}}
+                            >
+                                <g
+                                    id="_046-arrivals"
+                                    data-name="046-arrivals"
+                                    transform="translate(0 0)"
+
+                                >
+                                    <path
+                                        id="Path_1767"
+                                        data-name="Path 1767"
+                                        d="M63.513,65.451a7.4,7.4,0,0,1-5.178,5.15l-5.787,1.565a.748.748,0,1,1-.391-1.444l5.787-1.565a5.9,5.9,0,0,0,4.127-4.1l1.473-5.323-2.38.362-2.9,4.746a.748.748,0,0,1-.445.332l-6.72,1.8a.748.748,0,0,1-.926-.873l1.775-8.66-2.952.689L42,69.2a.748.748,0,0,1-.439.323l-8.918,2.391A2.025,2.025,0,0,0,31.317,74.3a1.951,1.951,0,0,0,2.407,1.425l11.96-3.236a.748.748,0,1,1,.391,1.444l-11.96,3.236a3.47,3.47,0,0,1-.908.122,3.452,3.452,0,0,1-3.343-2.639,3.541,3.541,0,0,1,2.351-4.168l.026-.007,8.649-2.319,7-11.089a.747.747,0,0,1,.462-.329l4.388-1.025a.748.748,0,0,1,.9.879l-1.767,8.619L57.14,63.8l2.93-4.787a.748.748,0,0,1,.525-.349l3.865-.588a.748.748,0,0,1,.833.939Z"
+                                        transform="translate(-29.626 -55.689)"
+                                        fill="#b9b9b9"
+
+                                    />
+                                    <path
+                                        id="Path_1768"
+                                        data-name="Path 1768"
+                                        d="M237.923,268.478a.747.747,0,1,1-.916-.526A.747.747,0,0,1,237.923,268.478Z"
+                                        transform="translate(-217.713 -252.051)"
+                                        fill="#b9b9b9"
+                                    />
+                                    <path
+                                        id="Path_1769"
+                                        data-name="Path 1769"
+                                        d="M.748,431.31H37.174a.748.748,0,0,1,0,1.5H.748a.748.748,0,1,1,0-1.5Z"
+                                        transform="translate(0 -403.214)"
+                                        fill="#b9b9b9"
+                                    />
+                                </g>
+                            </svg>
+                        </div>
+
                     </div>
                     {toursData.searchboxStep === 'dest' &&
                         <InputValues
@@ -424,9 +460,27 @@ className='p-0 m-0'
 
                 <div className={'w-100 '}>
                     <div className={`form-input-border ${styles["prs-input"]} `}
-                         style={{width: '100%'}}>
-                        <svg style={{position: 'absolute', left: '10px', top: '14px'}} width="27" height="27"
-                             viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        // style={{width: '100%'}}
+                    >
+
+                        <PrimaryTextInputMobile
+                            value={toursData.selectedDate.persianDate}
+                            name={'slug'}
+                            onFocus={handleFocus}
+                            // onBlur={handleFocusOut}
+                            onChange={handleChange}
+                            onClick={(e) => {
+                                e.stopPropagation();
+
+                                SearchBoxSteps('date')
+                                setIsSearchbox(true)
+                            }}
+                            placeholder={"تاریخ رفت خود را انتخاب کنید"}
+                        />
+                        <svg
+                            // style={{position: 'absolute', left: '10px', top: '14px'}}
+                            width="27" height="27"
+                            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="24" height="24" fill="white"/>
                             <g filter="url(#filter0_d_15_268)">
                                 <path
@@ -625,20 +679,6 @@ className='p-0 m-0'
                                 </filter>
                             </defs>
                         </svg>
-                        <PrimaryTextInputMobile
-                            value={toursData.selectedDate.persianDate}
-                            name={'slug'}
-                            onFocus={handleFocus}
-                            // onBlur={handleFocusOut}
-                            onChange={handleChange}
-                            onClick={(e) => {
-                                e.stopPropagation();
-
-                                SearchBoxSteps('date')
-                                setIsSearchbox(true)
-                            }}
-                            placeholder={"تاریخ رفت خود را انتخاب کنید"}
-                        />
                     </div>
                     <div className="isDesktop">
                         {toursData.searchboxStep === 'date' ? <motion.div
@@ -676,15 +716,11 @@ className='p-0 m-0'
 
                 <div className={'w-100'}>
                     <div className={` form-input-border ${styles["prs-input"]} `}
-                         style={{width: '300px'}}>
-                        <svg width="25"
-                             height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                             stroke-width="1.5" stroke="#b9b9b9" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/>
-                        </svg>
+                        // style={{width: '300px'}}
+                    >
+
                         <PrimaryTextInputMobile
-                            value={toursData.selectedNight?toursData.selectedNight + ' ' + 'شب' :''}
+                            value={toursData.selectedNight ? toursData.selectedNight + ' ' + 'شب' : ''}
                             name={'slug'}
                             onFocus={handleFocus}
                             // onBlur={handleFocusOut}
@@ -697,6 +733,12 @@ className='p-0 m-0'
                             }}
                             placeholder={"تعداد شب خود را انتخاب کنید"}
                         />
+                        <svg width="25"
+                             height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke-width="1.5" stroke="#b9b9b9" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/>
+                        </svg>
                     </div>
                     {toursData.searchboxStep === 'night' &&
                         <InputValues
@@ -714,7 +756,6 @@ className='p-0 m-0'
 
                         />}
                 </div>
-
 
 
                 <div className="col-12 without-focus px-0">
@@ -736,10 +777,10 @@ className='p-0 m-0'
                                     setIsLoading(true)
                                     // if (search.destination === 'همه') {
 
-                                    if(toursData.tour_type==='package') {
+                                    if (toursData.tour_type === 'package') {
                                         router.push(`/tours/tourlist?origin=${toursData.selectedOrigin.code}&destination=${toursData.selectedDestination.code}&date=${toursData.selectedDate.miladiDate}&nights=${toursData.selectedNight}&tour_type=${toursData.tour_type}`);
 
-                                    }else{
+                                    } else {
                                         router.push(`/tours/packagelist/${toursData.selectedOrigin.code}-${toursData.selectedDestination.code}?date=${toursData.selectedDate.miladiDate}&nights=${toursData.selectedNight}&tour_type=${toursData.tour_type}`);
 
                                     }
@@ -749,51 +790,50 @@ className='p-0 m-0'
                             }}
                     >{isLoading === false ? "جستجو" : 'لطفا صبر کنید...'}</button>
                 </div>
-    { toursData.searchboxStep === 'date' &&
+                {toursData.searchboxStep === 'date' &&
 
-        <div className={'isMobile'}>
-            <PopUpWide
-              opened={toursData.searchboxStep === 'date'}
-            >
+                    <div className={'isMobile'}>
+                        <PopUpWide
+                            opened={toursData.searchboxStep === 'date'}
+                        >
 
-                <div   style={{
-                    // position: 'absolute',
-                    // top: '70px',
-                    // left: '0',
-                    // right: '20%',
-                    // bottom: '0',
-                    // zIndex: '999',
-                    width: 'fit-content',
-                    height: 'fit-content',
+                            <div style={{
+                                // position: 'absolute',
+                                // top: '70px',
+                                // left: '0',
+                                // right: '20%',
+                                // bottom: '0',
+                                // zIndex: '999',
+                                width: 'fit-content',
+                                height: 'fit-content',
 
-                    marginTop:'100px',
-                    // transform:'translateX(-25px)',
+                                marginTop: '100px',
+                                // transform:'translateX(-25px)',
 
-                    backgroundColor: 'white',
-                    borderRadius: '20px',
-                    padding: '10px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                    <CalendarComponent setDate={(value) => {
+                                backgroundColor: 'white',
+                                borderRadius: '20px',
+                                padding: '10px',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+                                <CalendarComponent setDate={(value) => {
 
-                    }}
-                                       closePopUpCalendar={() => SearchBoxSteps('')}
-                                       dateandnight={AvDates}
-                                       setFlightDate={(value) => setDates(value)}/>
+                                }}
+                                                   closePopUpCalendar={() => SearchBoxSteps('')}
+                                                   dateandnight={AvDates}
+                                                   setFlightDate={(value) => setDates(value)}/>
 
-                </div>
+                            </div>
 
 
-            </PopUpWide>
-        </div>
+                        </PopUpWide>
+                    </div>
 
-    }
+                }
 
 
             </div>
-
 
 
         </>

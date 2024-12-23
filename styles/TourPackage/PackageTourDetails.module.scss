@@ -605,3 +605,159 @@ p{
   background-color: rgba(232, 232, 232, 0.66);
   border-radius: 5px;
 }
+
+
+///flightInfo
+
+
+.flight_container{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.flight_title{
+  padding: 5px;
+  width: 100%;
+  //background-color: #e20000;
+  color: #e20000;
+  //border-bottom: 1px solid #e20000;
+  p{
+    margin: 0;
+    font-weight: 900;
+    padding: 0;
+  }
+}
+
+
+
+
+
+  .flight_card{
+    //width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr .25fr 1fr;
+    border-radius: 10px;
+    background-color: #f8f9fd;
+    cursor: pointer !important;
+    //box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+    .dep_return{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .item_details{
+        //margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        .item{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 2px;
+          //width: 180px;
+          p{
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            word-break: auto-phrase;
+            //margin: 0 10px;
+            //white-space: nowrap;
+          }
+        }
+        .img_container{
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          justify-self: end;
+          img{
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 4 / 3; /* This is an example ratio; change as needed */
+            object-fit: contain;
+          }
+        }
+
+      }
+
+    }
+
+
+
+
+  }
+
+
+
+.flight_card{
+  &:hover{
+    .btn-con{
+      button{
+        background-color: white !important;
+        border: 1px solid #e20000!important;
+        color: #e20000 !important;
+
+      }
+
+    }
+  }
+}
+
+
+.flights{
+  display: grid;
+  grid-template-columns:.35fr 1fr ;
+  margin-top:20px !important;
+  gap: 5px;
+
+}
+.svg {
+  transform: scaleX(-1);
+}
+
+.selected_airline{
+  border-radius: 10px;
+  background-color: rgb(236,236,236);
+}
+
+
+.price{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  p{
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 868px) {
+  .flights{
+    display: block;
+  }
+  .flight_card{
+    display: block !important;
+  }
+
+  .btn-con{
+    justify-content: space-between;
+    margin-top: 25px;
+    flex-direction: row  }
+  .flight_title{
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+}

@@ -17,7 +17,7 @@ const PackageListPage = () => {
 
     useEffect(() => {
         if (router.isReady && router.query.packages) {
-            debugger
+            // debugger
             setApiParams({
                 origin: router.query.packages[0].split('-')[0],
                 destination: router.query.packages[0].split('-')[1],
@@ -58,7 +58,7 @@ const PackageListPage = () => {
     // }
 
     const mergedData = useMemo(() => {
-debugger
+// debugger
         if (!tourData || tourData.length === 0 ) {
             return { allFlights: [], allTours: [] }
         } else {
@@ -82,6 +82,29 @@ debugger
 
     }, [tourData])
 
+
+    const hotelsrooms_merger=(hotels)=>{
+        let all_hotels=[]
+
+
+            Object.keys(hotels).map((item)=>{
+              let hotel_profile=  hotels[item][0]
+                all_hotels.push(hotel_profile)
+            })
+            let merged_rooms=[]
+        all_hotels = all_hotels.map(hotel => {
+          merged_rooms = [];
+
+            hotels[hotel?.hotel_nameEn]?.forEach(item => {
+                merged_rooms.push(...item?.rooms);
+            });
+            return {
+                ...hotel,
+                rooms:merged_rooms,
+            };
+        });
+return(all_hotels)
+    }
     const optimizedPackages = useMemo(() => {
         const groupedTours = mergedData.allTours?.reduce((acc, tour) => {
             if (!acc[tour.hotel_nameEn]) acc[tour.hotel_nameEn] = [];
@@ -89,21 +112,26 @@ debugger
             return acc;
         }, {});
 
+let new_merged=hotelsrooms_merger(groupedTours)
 
         if (!groupedTours) return [];
-let final=Array.from(new Map(
-    Object.values(groupedTours)
-        .map(tours => tours.reduce((cheapest, tour) =>
-            tour?.min_price < cheapest?.min_price ? tour : cheapest))
-        .map(item => [item?.hotel_nameEn, item])
-).values());
+        // debugger
+// let final=Array.from(new Map(
+//     Object.values(groupedTours)
+//         .map(tours => tours.reduce((cheapest, tour) =>
+//             tour?.min_price < cheapest?.min_price ? tour : cheapest))
+//         .map(item => [item?.hotel_nameEn, item])
+// ).values());
 
-        console.log(final)
-        return final
+
+        console.log(new_merged)
+        return new_merged
 
     }, [mergedData.allTours]);
 
-
+    useEffect(() => {
+        console.log(mergedData,optimizedPackages)
+    }, [mergedData,optimizedPackages]);
     return ( <>
             <NavHandler mobileFixed={true}/>
             {(optimizedPackages.length>0 && (!toursLoading && !isLoading))  ?<Packages tourdata={optimizedPackages}
