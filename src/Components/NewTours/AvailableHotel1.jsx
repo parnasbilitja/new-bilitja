@@ -88,7 +88,7 @@ const AvailableHotel1 = () => {
         const finalDate = jalaliToMiladiConvertor(newDate);
         axios
             .post(
-                `https://api.hotelobilit.com/api/v2/tours`,
+                `https://api.hotelobilit.com/api/v3/packages`,
                 {
                     date: finalDate,
                     destination: router.query?.dest,
@@ -228,7 +228,7 @@ const AvailableHotel1 = () => {
         if (e.key === "Enter") {
             dispatch(setLoader(true))
             axios
-                .post(`https://api.hotelobilit.com/api/v2/tours`, {
+                .post(`https://api.hotelobilit.com/api/v2/packages`, {
                     date: date,
                     destination: destination,
                     keywords: searchInput,
@@ -259,7 +259,7 @@ const AvailableHotel1 = () => {
     const reset=()=>{
         dispatch(setLoader(true))
         axios
-            .post(`https://api.hotelobilit.com/api/v2/tours`, {
+            .post(`https://api.hotelobilit.com/api/v2/packages`, {
                 date: date,
                 destination: destination,
                 keywords: '',
@@ -288,7 +288,7 @@ const AvailableHotel1 = () => {
     const checkedClick = (checkValue, num, searchtype) => {
         dispatch(setLoader(true))
         axios
-            .post(`https://api.hotelobilit.com/api/v2/tours`, {
+            .post(`https://api.hotelobilit.com/api/v2/packages`, {
                     date: date,
                     destination:destination,
                     keywords: searchInput,
@@ -622,28 +622,28 @@ const AvailableHotel1 = () => {
                                                         </div>
                                                         <div className={styles["hotelDetprice"]}>
                                                             <div className={styles.hotelNameDetail}>
-                                                                {hotel.hotel.is_domestic ? (
+                                                                {hotel?.hotel?.is_domestic ? (
                                                                     <div className={styles.nameCon}>
                                                                         <p className={styles.faName}>
-                                                                            {hotel?.hotel.title}
+                                                                            {hotel?.hotel?.title}
                                                                         </p>
                                                                         <h2 className={styles.enName}>
-                                                                            {hotel?.hotel.titleEn}
+                                                                            {hotel?.hotel?.titleEn}
                                                                         </h2>
                                                                     </div>
                                                                 ) : (
                                                                     <div className={styles.nameCon}>
                                                                         <h2 className={styles.faName}>
-                                                                            {hotel?.hotel.titleEn}
+                                                                            {hotel?.hotel?.titleEn}
                                                                         </h2>
                                                                         <h2 className={styles.enName}>
-                                                                            {hotel?.hotel.title}
+                                                                            {hotel?.hotel?.title}
                                                                         </h2>
                                                                     </div>
                                                                 )}
 
                                                                 <div className={styles.pStar}>
-                                                                    {startBuilder(+hotel.hotel.stars)?.map((x) => {
+                                                                    {startBuilder(+hotel?.hotel?.stars)?.map((x) => {
                                                                         return x;
                                                                     })}
                                                                 </div>
@@ -676,7 +676,7 @@ const AvailableHotel1 = () => {
 
                                                                 <div className={styles.btnContainer}>
                                                                     <a
-                                                                        href={`/tour/flight?org=${origin}&dest=${destination}&stdate=${jalaliDateReformater(jalaliDate)}&night=${night}&hotel=${hotel.hotel.slug}`}
+                                                                        href={`/tour/flight?org=${origin}&dest=${destination}&stdate=${jalaliDateReformater(jalaliDate)}&night=${night}&hotel=${hotel?.hotel?.slug}`}
                                                                         onClick={() => {
 
                                                                             if(!loading) {

@@ -45,9 +45,9 @@ border-radius: 10px;
       .item_details{
         margin-bottom: 10px;
         display: flex;
-        //justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        gap: 0px;
+        //gap: 40px;
         .item{
           display: flex;
           justify-content: center;
