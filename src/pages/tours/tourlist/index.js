@@ -220,7 +220,9 @@ setTour(new_tour_list)
     },[filter])
     return (
         <>
-        <NavHandler/>
+            <Scrolltoprefresh/>
+
+            <NavHandler/>
 
             <div className={styles['alltour']}>
                 <div>

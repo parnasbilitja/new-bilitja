@@ -7,6 +7,7 @@ import {Shimmers3} from "../../../Components/NewTours/Components/subComponents/S
 import NotFound from "../../NotFound";
 import NavHandler from "../../../Components/share/NavHandler";
 import Footer from "../../../sources/component/Footer.component";
+import Scrolltoprefresh from "../../../sources/component/Scrolltoprefresh";
 
 const PackageListPage = () => {
     const router = useRouter();
@@ -133,6 +134,7 @@ let new_merged=hotelsrooms_merger(groupedTours)
         console.log(mergedData,optimizedPackages)
     }, [mergedData,optimizedPackages]);
     return ( <>
+            <Scrolltoprefresh/>
             <NavHandler mobileFixed={true}/>
             {(optimizedPackages.length>0 && (!toursLoading && !isLoading))  ?<Packages tourdata={optimizedPackages}
                                                                                        all_data={mergedData}

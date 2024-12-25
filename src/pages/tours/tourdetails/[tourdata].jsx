@@ -1,5 +1,5 @@
 import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import HotelDet from "../../../sources/hotels/hotelInfo/HotelDet";
 import NavHandler from "../../../Components/share/NavHandler";
 import Footer from "../../../sources/component/Footer.component";
@@ -7,6 +7,7 @@ import FlightListTour from "../../../sources/flight/FlightList_tour";
 import {Shimmers6} from "../../../Components/NewTours/Components/subComponents/Shimmers";
 import {isEmpty} from "../../../Utils/newTour";
 import NotFound from "../../NotFound";
+import Scrolltoprefresh from "../../../sources/component/Scrolltoprefresh";
 
 const TourData = () => {
 const [data,setData] = useState({});
@@ -47,6 +48,8 @@ return(
 
 <>
     <NavHandler/>
+    <Scrolltoprefresh/>
+
 
     <div className={'container'} style={{paddingTop:'10rem'}}>
         {!isloading && !isEmpty(data) ?
