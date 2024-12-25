@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import {Loader} from "../../Utils/Loader";
 import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
 
-const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox,searchInput,handleChange,setIsSearchbox}) => {
+const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox,searchInput,handleChange,setIsSearchbox,type}) => {
     const [hide, setHide] = useState(false)
     const searchHandler = (value='',name) => {
         // debugger
@@ -109,7 +109,7 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
                     <div className={styles['citycon']}>
                         <div className={styles['cities']}>
                             <div className={styles['title']}>
-                                <p>شهرها</p>
+                                <p>{type}</p>
                                 <div className={styles['closebtn']} onClick={() => {
                                     setIsSearchbox()
                                 }}>
@@ -126,7 +126,7 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
                                 <input type="text" autoFocus={true}  onChange={(e) => {
                                     // e.preventDefault()
                                     e?.stopPropagation()
-InputHandler(e.target.value)
+                                    InputHandler(e.target.value)
                                     // setsearch(e.target.value)
                                     // handleChange(e)
                                 }} placeholder={`جستجو کنید`}
@@ -135,11 +135,13 @@ InputHandler(e.target.value)
                             </div>
 
                             <div className={styles['citiesItem']}>
-                                {lists?.length === 0 ? (
-                                    // <MainLoader/>
-                                        <>
-                                        <p style={{color:'#e20000'}}>موردی یافت نشد</p></>
-                                ) : (
+                                {
+
+                                //     lists?.length === 0 ? (
+                                //     // <MainLoader/>
+                                //         <>
+                                //         <p style={{color:'#e20000'}}>موردی یافت نشد</p></>
+                                // ) : (
                                     lists?.map((item) => (
                                         <>
                                             <div key={item.code}
@@ -155,9 +157,10 @@ InputHandler(e.target.value)
                                                 {item.name ? item.name : (item + ' '+ 'شب')}
                                                 </span>
                                             </div>
-                                        </>
-                                    ))
-                                )}
+                                        </>))
+                                    // ))
+
+                                }
 
                             </div>
                         </div>

@@ -358,6 +358,7 @@ className='p-0 m-0'
                             // setIsSearchbox={() => SearchBoxSteps('org')}
                             setsearchInput={(val) => setSearchInput(val)}
                             searchInput={searchInput}
+                            type={'شهرها'}
                             handleChange={(val) => setOrigin(val)}
 
 
@@ -448,6 +449,8 @@ className='p-0 m-0'
                             search={search}
                             setSearch={setSearch}
                             months={destinations}
+                            type={'شهرها'}
+
                             // issearchbox={toursData.searchboxStep === 'dest'}
                             // setIsSearchbox={() => SearchBoxSteps('dest')}
                             setsearchInput={(val) => setSearchInput(val)}
@@ -746,6 +749,8 @@ className='p-0 m-0'
                             name='destination'
                             search={search}
                             setSearch={setSearch}
+                            type={'تعداد شب'}
+
                             months={nights}
                             // issearchbox={toursData.searchboxStep === 'dest'}
                             // setIsSearchbox={() => SearchBoxSteps('dest')}

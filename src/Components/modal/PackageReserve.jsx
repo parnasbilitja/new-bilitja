@@ -531,36 +531,24 @@ const PackageReserve = ({
 
     const [state, setState] = useState({
         stateRegister: false,
-        // passengers: [],
-        // priceAll: 0,
         mobileSubmiter:  '',
-        // phoneSubmiter: '',
-        // mobileSubmiterErr: "شماره همراه اجباری است",
-        // phoneSubmiterErr: "شماره ثابت اجباری است",
-        // agreeWithTerm: false,
-        // agreeWithTermerr: false,
-        // email: ''
+
     });
 
-    useEffect(()=>{
-        console.log(hotel)
-    },[hotel])
-    useEffect(()=>{
-        console.log(selectedRoomsData)
-    },[selectedRoomsData])
+
     return (
 
 
         <>
             <NotifAlert/>
-            <div className="col-xl-12 col-lg-12 col-12 "style={{position:'relative' , height:'100%'}} >
+            <div className="col-xl-12 col-lg-12 col-12 "style={{ height:'100%'}} >
 
                 <div >
                     <div className={'roomtour'}>
                         <div onClick={() => {
                             close(false)
                         }} className="ic-close  cursor-pointer" style={{
-                            position: 'relative',
+                            // position: 'relative',
                             right: "15px",
                             top: "20px",
                             width: '30px',
@@ -996,57 +984,58 @@ const PackageReserve = ({
                     </div>
 
                 </div>
-                {selectedRoomsData.length > 0 && <div className={'reservecon'}>
-                    <div className="font-yekan w-100"
-                         style={{display: 'flex', justifyContent: 'center'}}>
-                        <button style={{
-                            width: '130px',
-                            height: '50px',
-                            backgroundColor: '#069e2c !important',
-                            whiteSpace: 'nowrap'
-                        }}
-                                className={`ancher bg-success text-white font-size-13 py-2 px-4 rounded-3  foc01`}
-                                onClick={() => {
-                                    if (!loading) {
-                                        // console.log(reserveProperties)
-                                        // if(user.logged) {
-                                        tourReserve()
-                                        // }else {
-                                        //
-                                        //         Err('ابتدا وارد سایت شوید')
-                                        //         setState({ ...state, stateRegister: false });
-                                        //         login();
-                                        //         setIsReserve(false)
-                                        //         // messageBoxModify({
-                                        //         //     state: true,
-                                        //         //     color: false,
-                                        //         //     message: "لطفا کد تایید ارسال شده را وارد کنید!",
-                                        //         // });
-                                        //         accountBoxModify({
-                                        //             state: true,
-                                        //             type: "login",
-                                        //         });
-                                        //
-                                        //
-                                        // }
-                                        setLoading(true)
-                                        // posthog.capture("FormEndTourPackage", {
-                                        //     HMNPhone: packData.number,
-                                        //     HMNPassengerCount: packData.count
-                                        // })
-                                        // posthog.identify(packData.number)
-                                    }
-                                }}>
-                            {loading ? 'لطقا منتظر بمانید...' : `درخواست رزرو`}
-                        </button>
-                    </div>
-                    <div style={{display: 'flex', columnGap: '10px'}}>
-                        <p className={'p-0 m-0'}>تعداد اتاق:</p>
-                        <p className={'p-0 m-0'}
-                           style={{color: '#e20000', fontWeight: '700'}}>{selectedRoomsData.length}</p>
-                    </div>
-                </div>}
+
             </div>
+            {selectedRoomsData.length > 0 && <div className={'reservecon'}>
+                <div className="font-yekan w-100"
+                     style={{display: 'flex', justifyContent: 'center'}}>
+                    <button style={{
+                        width: '130px',
+                        height: '50px',
+                        backgroundColor: '#069e2c !important',
+                        whiteSpace: 'nowrap'
+                    }}
+                            className={`ancher bg-success text-white font-size-13 py-2 px-4 rounded-3  foc01`}
+                            onClick={() => {
+                                if (!loading) {
+                                    // console.log(reserveProperties)
+                                    // if(user.logged) {
+                                    tourReserve()
+                                    // }else {
+                                    //
+                                    //         Err('ابتدا وارد سایت شوید')
+                                    //         setState({ ...state, stateRegister: false });
+                                    //         login();
+                                    //         setIsReserve(false)
+                                    //         // messageBoxModify({
+                                    //         //     state: true,
+                                    //         //     color: false,
+                                    //         //     message: "لطفا کد تایید ارسال شده را وارد کنید!",
+                                    //         // });
+                                    //         accountBoxModify({
+                                    //             state: true,
+                                    //             type: "login",
+                                    //         });
+                                    //
+                                    //
+                                    // }
+                                    setLoading(true)
+                                    // posthog.capture("FormEndTourPackage", {
+                                    //     HMNPhone: packData.number,
+                                    //     HMNPassengerCount: packData.count
+                                    // })
+                                    // posthog.identify(packData.number)
+                                }
+                            }}>
+                        {loading ? 'لطقا منتظر بمانید...' : `درخواست رزرو`}
+                    </button>
+                </div>
+                <div style={{display: 'flex', columnGap: '10px'}}>
+                    <p className={'p-0 m-0'}>تعداد اتاق:</p>
+                    <p className={'p-0 m-0'}
+                       style={{color: '#e20000', fontWeight: '700'}}>{selectedRoomsData.length}</p>
+                </div>
+            </div>}
             {/*${datatitle.endCity.name==='استانبول' && 'ist'} ${datatitle.endCity.name==='آنتالیا' && 'ayt'}*/}
         </>
 

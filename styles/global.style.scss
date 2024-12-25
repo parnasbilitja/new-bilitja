@@ -6117,7 +6117,7 @@ position: relative;
   //overflow-y: auto;
 }
 .Modal-2 {
-  // position: absolute;
+   //position: absolute;
   width: 700px;
   max-height: 900px; // height: 50%;
   bottom: 40px;
@@ -6170,7 +6170,8 @@ position: relative;
 
 @media (max-width: 868px) {
   .reservecon{
-    bottom: -40px !important;
+    position: sticky;
+    bottom: -35px !important;
   }
   .Modal {
     width: 95%;
