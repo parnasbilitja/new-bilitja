@@ -687,12 +687,14 @@ $costColor: #e20000;
 
         .roomcountDet_container {
           padding: 1.125rem 4rem 1.125rem 4rem;
+          background-color: white;
 
           //transform: scale(1.2);
           .roomcountDet {
             // border: 1px solid $borderColor;
-            border: 1px solid $containerColor2;;
-            border-radius: 20px;
+            border: 1px solid $containerColor2;
+            border-radius: 10px;
+            background-color: #fff;
             padding: .725rem 2rem;
             display: flex;
             justify-content: space-between;

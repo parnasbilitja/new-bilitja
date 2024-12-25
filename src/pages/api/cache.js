@@ -96,7 +96,7 @@ export default async function handler(req, res) {
         try {
             const data = req.body;
 
-            console.log('request', data.default_hotel[0].related_flights);
+            // console.log('request', data.default_hotel[0].related_flights);
 
             let hotelInfo;
             if (data) {

@@ -329,7 +329,7 @@ setTour(new_tour_list)
 
 
                                                     <p className={`${styles['title']} font-bold-iransanse`}> ایرلاین های
-                                                        برگشت</p>
+                                                        رفت</p>
                                                 </div>
                                                 <div className={`${styles['airline_list']}`}>
                                                     {airlines.departure.map((airline) => (

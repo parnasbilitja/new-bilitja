@@ -1,9 +1,11 @@
 import styles from '../../../styles/FlightListTour.module.scss'
 import React, {useEffect, useState} from "react";
-import {MiladiToJalaliConvertor, numberWithCommas, timeFixer} from "../../Utils/newTour";
+import {getDayInPersian, MiladiToJalaliConvertor, numberWithCommas, timeFixer} from "../../Utils/newTour";
 import {motion} from "framer-motion";
 import Modal from "react-modal";
 import PackageReserve from "../../Components/modal/PackageReserve";
+import RoomSelection from "../../Components/NewTours/Rooms/RoomSelection";
+import moment from "moment-jalaali";
 
 const FlightListTour = (props) => {
 
@@ -255,7 +257,7 @@ return found_room
                                     </svg>
 
 
-                                    <p className={`${styles['title']} font-bold-iransanse`}> ایرلاین های برگشت</p>
+                                    <p className={`${styles['title']} font-bold-iransanse`}> ایرلاین های رقت</p>
                                 </div>
                                 <div className={`${styles['airline_list']}`}>
                                     {airlines.departure.map((airline) => (
@@ -452,95 +454,196 @@ return found_room
                     <div className={styles['flight_list']}>
                         {flights?.map(flight => {
                             return (
+                                <motion.div className={styles["flightDet_container"]}
+                                    // onMouseEnter={() => onmouseEnter('ticket')}
+                                    // onMouseLeave={() => onmouseLeave('ticket')}
+                                                    whileHover={{scale: 1.02}}
+                                                    onClick={() => {
+                                                        setSelectedRoom(rooms_flightBase_finder2(flight.id))
+                                                        setIsOpen(true)
+                                                        setSelectedFlight(flight.id)
+                                                    }}>
 
-                                <motion.div className={styles['flight_card']} style={{cursor:'pointer'}} whileHover={{scale: 1.02}}
-                                            onClick={() => {
-                                                setSelectedRoom(rooms_flightBase_finder2(flight.id))
-                                                setIsOpen(true)
-                                                setSelectedFlight(flight.id)
-                                            }}>
+                                    <div className={styles["flightDet"]}>
+                                        {/*<div className={styles["flightDet_title"]}>*/}
+                                        {/*    <p>پرواز رفت</p>*/}
+                                        {/*</div>*/}
+                                        <div className={styles["flightDet_loc"]}>
+                                            <p>
+                                                {flight?.departure_flight?.origin} به {flight?.departure_flight?.destination}
+                                            </p>
+                                        </div>
+                                        <div className={styles["flightDet_timedate"]}>
 
-                                    <div className={styles['dep_return']}>
-                                        <div className={styles['item_details']}>
-                                            <div className={styles['img_container']}>
-                                                <img src={flight?.departure_flight?.airline_thumb?.url} alt=""/>
+                                                 <span>
+                                                                 {MiladiToJalaliConvertor(flight?.departure_flight.date)} - {getDayInPersian(moment(flight?.departure_flight.date).format('dddd'))}
+                                                                      </span>
 
+                                            <span>|</span>
+                                            <span
+                                                style={{
+                                                    // color: '#e20000',
+                                                    // fontSize: '1px',
+                                                    fontWeight: '900'
+                                                }}>{timeFixer(flight?.departure_flight?.time)}</span>
+                                        </div>
+
+                                        <div className={'d-flex justify-content-center gap-3'}>
+                                            <div className={styles["flightDet_timedate"]}>
+                                                <span>ش.پ:</span>
+                                                <span>{flight?.departure_flight?.flight_number}</span>
                                             </div>
-                                            <div className={styles['item']}>
-
-                                                <p>{flight?.departure_flight?.origin} به {flight?.departure_flight?.destination}</p>
+                                            <div className={styles["flightDet_timedate"]}>
+                                                <span>مدت پرواز:</span>
+                                                <span>{flight?.departure_flight?.flight_duration} ساعت </span>
                                             </div>
                                         </div>
 
-                                        <div className={styles['item_details']}>
-                                            <div className={styles['item']}>
-                                                <p>نام ایرلاین:</p>
-                                                <p className={'font-bold'}>{flight?.departure_flight?.airline}</p>
+                                        {/*{*/}
+                                        {/*    !moment(flight?.departure?.date).isSame(hotel.hotel.checkin) &&*/}
+                                        {/*    <div className={styles["flightDet_hotelEnt"]}>*/}
+                                        {/*        <label htmlFor="">ورود به هتل :</label>*/}
+                                        {/*        <p>*/}
+                                        {/*            /!*{MiladiToJalaliConvertor(hotel.hotel.checkin)}*!/*/}
+                                        {/*        </p>*/}
+                                        {/*    </div>*/}
+                                        {/*}*/}
+                                    </div>
+
+                                    <div className={styles["flight_company"]}>
+                                        <div className={styles["flight_company_logo"]}>
+                                            <div className={styles["image_container"]}>
+                                                {
+                                                    flight?.departure_flight?.airline_thumb?.url ?
+                                                        <img
+                                                            src={flight?.departure_flight?.airline_thumb?.url}
+                                                            alt={flight?.departure_flight?.airline_code}/> :
+                                                        <img src='Images/noPicture.png'
+                                                             alt="no-picture"/>
+                                                }
                                             </div>
-                                            <div className={styles['item']}>
-                                                <p> ش.پ:</p>
-                                                <p className={'font-bold'}>{flight?.departure_flight?.flight_number}</p>
+                                            <div>
+
+                                                <p style={{
+                                                    fontSize: '12px',
+                                                    padding: '0',
+                                                    marginBottom: '2px'
+                                                }}>{flight.departure_flight.airline} </p>
+                                                {/*<p style={{*/}
+                                                {/*    fontSize: '12px',*/}
+                                                {/*    padding: '0',*/}
+                                                {/*    margin: '0',*/}
+                                                {/*    color: flight?.departure_flight.cabin_type === 'c' ? 'red !important' : null*/}
+                                                {/*}}>({flightClass(flight?.departure_flight.cabin_type)})</p>*/}
                                             </div>
                                         </div>
+                                        {/*<div className={styles["flight_company_remaintour"]}>*/}
+                                        {/*<p style={{whiteSpace: "nowrap"}}>*/}
+                                        {/*    تعداد موجودی پرواز :<span style={{*/}
+                                        {/*    color: '#e20000',*/}
+                                        {/*    fontWeight: '900',*/}
+                                        {/*    fontSize: '15px'*/}
+                                        {/*}}>*/}
+                                        {/*                            {flight?.capacity}*/}
 
-                                        <div className={styles['item_details']}>
-                                            <div className={styles['item']}>
-                                                <p>زمان پرواز:</p>
-                                                <p>{MiladiToJalaliConvertor(flight?.departure_flight?.date)} | {timeFixer(flight?.departure_flight?.time)}</p>
+                                        {/*                        </span>*/}
+                                        {/*</p>*/}
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                // alignItems: "center",
+                                                padding: "0",
+                                            }}
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="#e20000" viewBox="0 0 24 24"
+                                                 width={25}
+                                                 className={styles['svg']}
+                                                 height={25}
+                                                 stroke-width="1.5" stroke="#e20000">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/>
+                                            </svg>
+
+                                        </div>
+
+                                        {/*</div>*/}
+                                        <div className={styles["flight_company_logo"]}>
+                                            <div className={styles["image_container"]}>
+                                                {
+                                                    flight?.return_flight?.airline_thumb?.url ?
+                                                        <img
+                                                            src={flight?.return_flight?.airline_thumb?.url}
+                                                            alt={flight?.return_flight?.airline_code}/> :
+                                                        <img src='/Images/noPicture.png'
+                                                             alt="no-picture"/>
+
+                                                }
                                             </div>
-                                            <div className={styles['item']}>
-                                                <p>مدت پرواز:</p>
-                                                <p>{flight?.departure_flight?.flight_duration} ساعت</p>
+                                            <div style={{marginBottom: '10px'}}>
+
+                                                <p style={{
+                                                    fontSize: '12px',
+                                                    padding: '0',
+                                                    marginBottom: '2px'
+                                                }}>{flight.return_flight.airline}</p>
+                                                {/*<p style={{*/}
+                                                {/*    fontSize: '12px',*/}
+                                                {/*    padding: '0',*/}
+                                                {/*    margin: '0',*/}
+                                                {/*    color: flight?.return_flight.cabin_type === 'c' ? 'red !important' : null*/}
+                                                {/*}}>({flightClass(flight?.return_flight.cabin_type)})</p>*/}
                                             </div>
+
                                         </div>
                                     </div>
 
-                                    <div className={'d-flex justify-content-center  align-content-center'}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="#e20000" viewBox="0 0 24 24"
-                                             width={25}
-                                             className={styles['svg']}
-                                             height={25}
-                                             stroke-width="1.5" stroke="#e20000">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/>
-                                        </svg>
+                                    <div className={styles["flightDet"]}>
+                                        {/*<div className={styles["flightDet_title"]}>*/}
+                                        {/*    <p>پرواز برگشت</p>*/}
+                                        {/*</div>*/}
+                                        <div className={styles["flightDet_loc"]}>
+                                            <p>
+                                                {flight?.return_flight?.origin} به {flight?.return_flight?.destination}
+                                            </p>
+                                        </div>
+                                        <div className={styles["flightDet_timedate"]}>
+  <span>
+                                                                       {MiladiToJalaliConvertor(flight?.return_flight.date)} - {getDayInPersian(moment(flight?.return_flight.date).format('dddd'))}
+                                                                      </span>
+
+                                            <span>|</span>
+                                            <span
+                                                style={{
+                                                    // color: '#e20000',
+                                                    // fontSize: '12px'
+                                                }}>{flight?.return_flight?.time.slice(0, 5)}</span>
+                                        </div>
+
+                                        <div className={'d-flex justify-content-center gap-3'}>
+                                            <div className={styles["flightDet_timedate"]}>
+                                                <span>ش.پ:</span>
+                                                <span>{flight?.return_flight?.flight_number}</span>
+                                            </div>
+                                            <div className={styles["flightDet_timedate"]}>
+                                                <span>مدت پرواز:</span>
+                                                <span>{flight?.return_flight?.flight_duration} ساعت </span>
+                                            </div>
+                                        </div>
+
+                                        {/*{!moment(flight?.return_flight.date).isSame(hotel?.hotel?.checkout) &&*/}
+
+                                        {/*    <div className={styles["flightDet_hotelEnt"]}>*/}
+                                        {/*        <label htmlFor="">خروج از هتل:</label>*/}
+                                        {/*        <p>*/}
+                                        {/*            {" "}*/}
+                                        {/*            {MiladiToJalaliConvertor(hotel?.hotel?.checkout)}*/}
+                                        {/*        </p>*/}
+                                        {/*    </div>*/}
+
+                                        {/*}*/}
 
                                     </div>
-                                    <div className={styles['dep_return']}>
-                                        <div className={styles['item_details']}>
-                                            <div className={styles['item']}>
-                                                <p>{flight?.return_flight?.origin}-{flight?.return_flight?.destination}</p>
-                                            </div>
-                                            <div className={styles['img_container']}>
-                                                <img src={flight?.return_flight?.airline_thumb?.url} alt=""/>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div className={styles['item_details']}>
-                                            <div className={styles['item']}>
-                                                <p>نام ایرلاین:</p>
-                                                <p className={'font-bold'}>{flight?.return_flight?.airline}</p>
-                                            </div>
-                                            <div className={styles['item']}>
-                                                <p> ش.پ:</p>
-                                                <p className={'font-bold'}>{flight?.return_flight?.flight_number}</p>
-                                            </div>
-                                        </div>
-
-                                        <div className={styles['item_details']}>
-                                            <div className={styles['item']}>
-                                                <p>زمان پرواز:</p>
-                                                <p>{MiladiToJalaliConvertor(flight?.return_flight?.date)} | {timeFixer(flight?.return_flight?.time)}</p>
-                                            </div>
-                                            <div className={styles['item']}>
-                                                <p>مدت پرواز:</p>
-                                                <p>{flight?.return_flight?.flight_duration} ساعت</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
 
                                     <div className={styles['btn-con']}>
                                         <div className={styles['price']}>
@@ -554,6 +657,118 @@ return found_room
                                         <button> انتخاب پرواز</button>
                                     </div>
                                 </motion.div>
+                                // <div className={styles['flight_card_container']}>
+                                //
+                                //     <motion.div className={styles['flight_card']} style={{cursor: 'pointer'}}
+                                //                 whileHover={{scale: 1.02}}
+                                //                 onClick={() => {
+                                //                     setSelectedRoom(rooms_flightBase_finder2(flight.id))
+                                //                     setIsOpen(true)
+                                //                     setSelectedFlight(flight.id)
+                                //                 }}>
+                                //
+                                //         <div className={styles['dep_return']}>
+                                //             <div className={styles['item_details']}>
+                                //                 <div className={styles['img_container']}>
+                                //                     <img src={flight?.departure_flight?.airline_thumb?.url} alt=""/>
+                                //
+                                //                 </div>
+                                //                 <div className={styles['item']}>
+                                //
+                                //                     <p>{flight?.departure_flight?.origin} به {flight?.departure_flight?.destination}</p>
+                                //                 </div>
+                                //             </div>
+                                //
+                                //             <div className={styles['item_details']}>
+                                //                 <div className={styles['item']}>
+                                //                     <p>نام ایرلاین:</p>
+                                //                     <p className={'font-bold'}>{flight?.departure_flight?.airline}</p>
+                                //                 </div>
+                                //                 <div className={styles['item']}>
+                                //                     <p> ش.پ:</p>
+                                //                     <p className={'font-bold'}>{flight?.departure_flight?.flight_number}</p>
+                                //                 </div>
+                                //             </div>
+                                //
+                                //             <div className={styles['item_details']}>
+                                //                 <div className={styles['item']}>
+                                //                     <p>زمان پرواز:</p>
+                                //                     <p>{MiladiToJalaliConvertor(flight?.departure_flight?.date)} | {timeFixer(flight?.departure_flight?.time)}</p>
+                                //                 </div>
+                                //                 <div className={styles['item']}>
+                                //                     <p>مدت پرواز:</p>
+                                //                     <p>{flight?.departure_flight?.flight_duration} ساعت</p>
+                                //                 </div>
+                                //             </div>
+                                //         </div>
+                                //
+                                //         <div className={'d-flex justify-content-center  align-content-center'}>
+                                //             <svg xmlns="http://www.w3.org/2000/svg" fill="#e20000" viewBox="0 0 24 24"
+                                //                  width={25}
+                                //                  className={styles['svg']}
+                                //                  height={25}
+                                //                  stroke-width="1.5" stroke="#e20000">
+                                //                 <path stroke-linecap="round" stroke-linejoin="round"
+                                //                       d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/>
+                                //             </svg>
+                                //
+                                //         </div>
+                                //         <div className={styles['dep_return']}>
+                                //             <div className={styles['item_details']}>
+                                //                 <div className={styles['item']}>
+                                //                     <p>{flight?.return_flight?.origin}-{flight?.return_flight?.destination}</p>
+                                //                 </div>
+                                //                 <div className={styles['img_container']}>
+                                //                     <img src={flight?.return_flight?.airline_thumb?.url} alt=""/>
+                                //
+                                //                 </div>
+                                //
+                                //             </div>
+                                //
+                                //             <div className={styles['item_details']}>
+                                //                 <div className={styles['item']}>
+                                //                     <p>نام ایرلاین:</p>
+                                //                     <p className={'font-bold'}>{flight?.return_flight?.airline}</p>
+                                //                 </div>
+                                //                 <div className={styles['item']}>
+                                //                     <p> ش.پ:</p>
+                                //                     <p className={'font-bold'}>{flight?.return_flight?.flight_number}</p>
+                                //                 </div>
+                                //             </div>
+                                //
+                                //             <div className={styles['item_details']}>
+                                //                 <div className={styles['item']}>
+                                //                     <p>زمان پرواز:</p>
+                                //                     <p>{MiladiToJalaliConvertor(flight?.return_flight?.date)} | {timeFixer(flight?.return_flight?.time)}</p>
+                                //                 </div>
+                                //                 <div className={styles['item']}>
+                                //                     <p>مدت پرواز:</p>
+                                //                     <p>{flight?.return_flight?.flight_duration} ساعت</p>
+                                //                 </div>
+                                //             </div>
+                                //         </div>
+                                //
+                                //
+                                //         <div className={styles['btn-con']}>
+                                //             <div className={styles['price']}>
+                                //                 <p>
+                                //                     قیمت هتل + پرواز (هرنفر)
+                                //                 </p>
+                                //                 <p className={'font-bold'}>
+                                //                     {numberWithCommas(rooms_flightBase_finder(flight.id, 148)[0].price) + ' ' + 'تومان'}
+                                //                 </p>
+                                //             </div>
+                                //             <button> انتخاب پرواز</button>
+                                //         </div>
+                                //
+                                //
+                                //     </motion.div>
+                                //
+                                //     {/*{flight.id === selectedFlight && <div className={styles["separator"]}></div>}*/}
+                                //     {/*{flight.id===selectedFlight &&<>*/}
+                                //     {/*    <RoomSelection rooms={selectedRoom} hotel={props.default_hotel[0]} />*/}
+                                //     {/*</>}*/}
+                                // </div>
 
 
                             )
@@ -568,7 +783,8 @@ return found_room
                 className={"Modal-2"}
                 overlayClassName={"Overlay"}
                 contentLabel="Example Modal">
-                <PackageReserve target_rooms={selectedRoom} hotel={props.default_hotel[0]} selectedFlight={selectedFlight} close={(val)=>setIsOpen(val)}/>
+                <PackageReserve target_rooms={selectedRoom} hotel={props.default_hotel[0]}
+                                selectedFlight={selectedFlight} close={(val) => setIsOpen(val)}/>
 
             </Modal>
         </>

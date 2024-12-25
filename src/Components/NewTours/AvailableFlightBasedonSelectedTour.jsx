@@ -718,21 +718,20 @@ const AvailableFlightBasedonSelectedTour = (props) => {
 
 
                                         <div className={styles["ticket_container"]}
-                                             // ref={el => collapseRefs.current[flight.departure.id.toString() + flight.return.id.toString()] = el}
-                                        >
+                                             ref={el => collapseRefs.current[flight.departure.id.toString() + flight.return.id.toString()] = el}>
                                             <div className={styles["container"]}>
                                                 <AnimatePresence>
 
-                                                    {/*{isOpen === 0 ? null : isOpen === flight.departure.id.toString() + flight.return.id.toString() ? null :*/}
+                                                    {isOpen === 0 ? null : isOpen === flight.departure.id.toString() + flight.return.id.toString() ? null :
 
-                                                    {/*    <motion.div*/}
-                                                    {/*        className={styles["blur"]}*/}
-                                                    {/*        initial={{opacity: 0}}*/}
-                                                    {/*        animate={{opacity: 1}}*/}
-                                                    {/*        transition={{ease: "easeOut", duration: 0.4}}*/}
-                                                    {/*        exit={{opacity: 0}}*/}
-                                                    {/*    ></motion.div>*/}
-                                                    {/*}*/}
+                                                        <motion.div
+                                                            className={styles["blur"]}
+                                                            initial={{opacity: 0}}
+                                                            animate={{opacity: 1}}
+                                                            transition={{ease: "easeOut", duration: 0.4}}
+                                                            exit={{opacity: 0}}
+                                                        ></motion.div>
+                                                    }
                                                 </AnimatePresence>
                                                 <div className={styles["ticket"]}>
                                                     {/* title col1 */}
@@ -804,42 +803,42 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                      {/*{getDayInPersian(moment(flight?.departure?.date).format('dddd'))} {MiladiToJalaliConvertor(flight?.departure?.date)}*/}
                                                                       </span>
                                                                 </div>
-                                                                {/*{*/}
-                                                                {/*    !moment(flight?.departure?.date).isSame(hotel.hotel.checkin) &&*/}
-                                                                {/*    <div className={styles["flightDet_hotelEnt"]}>*/}
-                                                                {/*        <label htmlFor="">ورود به هتل :</label>*/}
-                                                                {/*        <p>*/}
-                                                                {/*            /!*{MiladiToJalaliConvertor(hotel.hotel.checkin)}*!/*/}
-                                                                {/*        </p>*/}
-                                                                {/*    </div>*/}
-                                                                {/*}*/}
+                                                                {
+                                                                    !moment(flight?.departure?.date).isSame(hotel.hotel.checkin) &&
+                                                                    <div className={styles["flightDet_hotelEnt"]}>
+                                                                        <label htmlFor="">ورود به هتل :</label>
+                                                                        <p>
+                                                                            {/*{MiladiToJalaliConvertor(hotel.hotel.checkin)}*/}
+                                                                        </p>
+                                                                    </div>
+                                                                }
                                                             </div>
 
                                                             <div className={styles["flight_company"]}>
                                                                 <div className={styles["flight_company_logo"]}>
                                                                     <div className={styles["image_container"]}>
-                                                                        {/*{*/}
-                                                                        {/*    flight?.departure.airline_logo?.url ?*/}
-                                                                        {/*        <img*/}
-                                                                        {/*            src={flight?.departure.airline_logo?.url}*/}
-                                                                        {/*            alt={flight?.departure.airline_logo?.id}/> :*/}
+                                                                        {
+                                                                            flight?.departure.airline_logo?.url ?
+                                                                                <img
+                                                                                    src={flight?.departure.airline_logo?.url}
+                                                                                    alt={flight?.departure.airline_logo?.id}/> :
                                                                                 <img src='Images/noPicture.png'
                                                                                      alt="no-picture"/>
-                                                                        {/*}*/}
+                                                                        }
                                                                     </div>
                                                                     <div>
 
-                                                                        {/*<p style={{*/}
-                                                                        {/*    fontSize: '15px',*/}
-                                                                        {/*    padding: '0',*/}
-                                                                        {/*    marginBottom: '2px'*/}
-                                                                        {/*}}>{flight.departure.airline_name} </p>*/}
-                                                                        {/*<p style={{*/}
-                                                                        {/*    fontSize: '12px',*/}
-                                                                        {/*    padding: '0',*/}
-                                                                        {/*    margin: '0',*/}
-                                                                        {/*    color: flight?.departure.cabin_type === 'c' ? 'red !important' : null*/}
-                                                                        {/*}}>({flightClass(flight?.departure.cabin_type)})</p>*/}
+                                                                        <p style={{
+                                                                            fontSize: '15px',
+                                                                            padding: '0',
+                                                                            marginBottom: '2px'
+                                                                        }}>{flight.departure.airline_name} </p>
+                                                                        <p style={{
+                                                                            fontSize: '12px',
+                                                                            padding: '0',
+                                                                            margin: '0',
+                                                                            color: flight?.departure.cabin_type === 'c' ? 'red !important' : null
+                                                                        }}>({flightClass(flight?.departure.cabin_type)})</p>
                                                                     </div>
                                                                 </div>
                                                                 <div className={styles["flight_company_remaintour"]}>
@@ -898,21 +897,21 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                             color: '#e20000',
                                                                             fontWeight: '900',
                                                                             fontSize: '15px'
-                                                                        }}> 3</span>
+                                                                        }}> {+router.query.night[0] + 1}</span>
                                                                         روز
                                                                     </p>
                                                                 </div>
                                                                 <div className={styles["flight_company_logo"]}>
                                                                     <div className={styles["image_container"]}>
-                                                                        {/*{*/}
-                                                                        {/*    flight?.return.airline_logo?.url ?*/}
-                                                                        {/*        <img*/}
-                                                                        {/*            src={flight?.return.airline_logo?.url}*/}
-                                                                        {/*            alt={flight?.return.airline_logo?.id}/> :*/}
+                                                                        {
+                                                                            flight?.return.airline_logo?.url ?
+                                                                                <img
+                                                                                    src={flight?.return.airline_logo?.url}
+                                                                                    alt={flight?.return.airline_logo?.id}/> :
                                                                                 <img src='/Images/noPicture.png'
                                                                                      alt="no-picture"/>
 
-                                                                        {/*}*/}
+                                                                        }
                                                                     </div>
                                                                     <div style={{marginBottom: '10px'}}>
 
@@ -920,13 +919,13 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                             fontSize: '15px',
                                                                             padding: '0',
                                                                             marginBottom: '2px'
-                                                                        }}>taban</p>
+                                                                        }}>{flight.return.airline_name}</p>
                                                                         <p style={{
                                                                             fontSize: '12px',
                                                                             padding: '0',
                                                                             margin: '0',
-                                                                            // color: flight?.return.cabin_type === 'c' ? 'red !important' : null
-                                                                        }}>y</p>
+                                                                            color: flight?.return.cabin_type === 'c' ? 'red !important' : null
+                                                                        }}>({flightClass(flight?.return.cabin_type)})</p>
                                                                     </div>
 
                                                                 </div>
@@ -938,10 +937,8 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                 </div>
                                                                 <div className={styles["flightDet_loc"]}>
                                                                     <p>
-                                                                        {/*{flight?.return?.origin_name}*/}
-                                                                        به
-                                                                        {" "}
-                                                                        {/*{flight?.return?.destination_name}*/}
+                                                                        {flight?.return?.origin_name} به{" "}
+                                                                        {flight?.return?.destination_name}
                                                                     </p>
                                                                 </div>
                                                                 <div className={styles["flightDet_timedate"]}>
@@ -950,94 +947,94 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                         style={{
                                                                             color: '#e20000',
                                                                             fontSize: '19px'
-                                                                        }}>13:13</span>
+                                                                        }}>{flight?.return?.time.slice(0, 5)}</span>
                                                                     <span>و</span>
                                                                     <span>
-                                                   {/*{getDayInPersian(moment(flight?.return.date).format('dddd'))} {MiladiToJalaliConvertor(flight?.return.date)}*/}
-                                                  </span>
+                                                                       {getDayInPersian(moment(flight?.return.date).format('dddd'))} {MiladiToJalaliConvertor(flight?.return.date)}
+                                                                      </span>
                                                                 </div>
 
-                                                                {/*{!moment(flight?.return.date).isSame(hotel?.hotel?.checkout) &&*/}
+                                                                {!moment(flight?.return.date).isSame(hotel?.hotel?.checkout) &&
 
                                                                     <div className={styles["flightDet_hotelEnt"]}>
                                                                         <label htmlFor="">خروج از هتل:</label>
                                                                         <p>
                                                                             {" "}
-                                                                            {/*{MiladiToJalaliConvertor(hotel?.hotel?.checkout)}*/}
+                                                                            {MiladiToJalaliConvertor(hotel?.hotel?.checkout)}
                                                                         </p>
                                                                     </div>
 
-                                                                {/*}*/}
+                                                                }
 
                                                             </div>
                                                         </div>
                                                         <div className={styles["roomDet_container"]}>
-                                      {/*                      {hotel?.rooms?.sort((a, b) => a?.Adl_capacity - b?.Adl_capacity)?.map(*/}
-                                      {/*                          (room) => {*/}
-                                      {/*                              return (*/}
-                                      {/*                                  <div className={styles["roomDetcard"]}*/}
-                                      {/*                                       onMouseEnter={() => onmouseEnter('rooms')}*/}
-                                      {/*                                       onMouseLeave={() => onmouseLeave('rooms')}>*/}
-                                      {/*                                      <div*/}
-                                      {/*                                          className={styles["roomDetcard_roomnum"]}*/}
-                                      {/*                                      >*/}
-                                      {/*                                          <label htmlFor=""*/}
-                                      {/*                                                 style={{whiteSpace: 'nowrap'}}>{room.room_type}</label>*/}
-                                      {/*                                          <div*/}
-                                      {/*                                              className={*/}
-                                      {/*                                                  styles["roomDetcard_roomnum_indec"]*/}
-                                      {/*                                              }*/}
-                                      {/*                                          >*/}
-                                      {/*                                              <div*/}
-                                      {/*                                                  className={*/}
-                                      {/*                                                      room?.rate?.available_room_count <=*/}
-                                      {/*                                                      roomCounter1(room.room_type_id)*/}
-                                      {/*                                                          ? styles["dec-none"]*/}
-                                      {/*                                                          : styles["in"]*/}
-                                      {/*                                                  }*/}
-                                      {/*                                                  onClick={() => {*/}
-                                      {/*                                                      IncRoom1(index, room, flight);*/}
-                                      {/*                                                      // handleClickRef(index);*/}
-                                      {/*                                                      toggleCollapse(flight.departure.id.toString() + flight.return.id.toString())*/}
-                                      {/*                                                  }}*/}
-                                      {/*                                              >*/}
-                                      {/*                                                  +*/}
-                                      {/*                                              </div>*/}
-                                      {/*                                              <span>*/}
-                                      {/*                                   {roomCounter1(room.room_type_id)}*/}
-                                      {/*                          </span>*/}
-                                      {/*                                              <div*/}
-                                      {/*                                                  className={*/}
-                                      {/*                                                      roomCounter1(room.room_type_id) === 0*/}
-                                      {/*                                                          ? styles["dec-none"]*/}
-                                      {/*                                                          : styles["dec"]*/}
-                                      {/*                                                  }*/}
-                                      {/*                                                  onClick={() => {*/}
-                                      {/*                                                      decRoom1(room.room_type_id);*/}
-                                      {/*                                                  }}*/}
-                                      {/*                                              >*/}
-                                      {/*                                                  -*/}
-                                      {/*                                              </div>*/}
-                                      {/*                                          </div>*/}
-                                      {/*                                      </div>*/}
+                                                            {hotel?.rooms?.sort((a, b) => a?.Adl_capacity - b?.Adl_capacity)?.map(
+                                                                (room) => {
+                                                                    return (
+                                                                        <div className={styles["roomDetcard"]}
+                                                                             onMouseEnter={() => onmouseEnter('rooms')}
+                                                                             onMouseLeave={() => onmouseLeave('rooms')}>
+                                                                            <div
+                                                                                className={styles["roomDetcard_roomnum"]}
+                                                                            >
+                                                                                <label htmlFor=""
+                                                                                       style={{whiteSpace: 'nowrap'}}>{room.room_type}</label>
+                                                                                <div
+                                                                                    className={
+                                                                                        styles["roomDetcard_roomnum_indec"]
+                                                                                    }
+                                                                                >
+                                                                                    <div
+                                                                                        className={
+                                                                                            room?.rate?.available_room_count <=
+                                                                                            roomCounter1(room.room_type_id)
+                                                                                                ? styles["dec-none"]
+                                                                                                : styles["in"]
+                                                                                        }
+                                                                                        onClick={() => {
+                                                                                            IncRoom1(index, room, flight);
+                                                                                            // handleClickRef(index);
+                                                                                            toggleCollapse(flight.departure.id.toString() + flight.return.id.toString())
+                                                                                        }}
+                                                                                    >
+                                                                                        +
+                                                                                    </div>
+                                                                                    <span>
+                                                                         {roomCounter1(room.room_type_id)}
+                                                                </span>
+                                                                                    <div
+                                                                                        className={
+                                                                                            roomCounter1(room.room_type_id) === 0
+                                                                                                ? styles["dec-none"]
+                                                                                                : styles["dec"]
+                                                                                        }
+                                                                                        onClick={() => {
+                                                                                            decRoom1(room.room_type_id);
+                                                                                        }}
+                                                                                    >
+                                                                                        -
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
 
-                                      {/*                                      <div*/}
-                                      {/*                                          className={styles["roomDetcard_price"]}*/}
-                                      {/*                                          style={{justifyContent: "center"}}*/}
-                                      {/*                                      >*/}
-                                      {/*                                          <p>*/}
-                                      {/*<span style={{color: " #e20000"}}>*/}
-                                      {/*  {numberWithCommas(*/}
-                                      {/*      +room.rate.price + PrcRoomGen(flight, room)*/}
-                                      {/*  )}*/}
-                                      {/*</span>*/}
-                                      {/*                                              تومان*/}
-                                      {/*                                          </p>*/}
-                                      {/*                                      </div>*/}
-                                      {/*                                  </div>*/}
-                                      {/*                              );*/}
-                                      {/*                          }*/}
-                                      {/*                      )}*/}
+                                                                            <div
+                                                                                className={styles["roomDetcard_price"]}
+                                                                                style={{justifyContent: "center"}}
+                                                                            >
+                                                                                <p>
+                                      <span style={{color: " #e20000"}}>
+                                        {numberWithCommas(
+                                            +room.rate.price + PrcRoomGen(flight, room)
+                                        )}
+                                      </span>
+                                                                                    تومان
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    );
+                                                                }
+                                                            )}
                                                         </div>
                                                     </div>
                                                     {/* reserve col 3 */}
@@ -1049,9 +1046,9 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                             <div className={styles["ticket_reserve_price"]}>
                                                                 <p>
                               <span>
-                                {/*{numberWithCommas(*/}
-                                {/*    getDoublePrc(flight)*/}
-                                {/*)}*/}
+                                {numberWithCommas(
+                                    getDoublePrc(flight)
+                                )}
                               </span>
                                                                     تومان
                                                                 </p>
@@ -1097,7 +1094,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/*{flight.departure.id.toString() + flight.return.id.toString() === isOpen ? (*/}
+                                            {flight.departure.id.toString() + flight.return.id.toString() === isOpen ? (
                                                 <AnimatePresence>
                                                     <motion.div
 
@@ -1111,7 +1108,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                         className={styles["roomcountdet_roomnum"]}
                                                     >
                                                         {/*<div ref={ref}></div>*/}
-                                                        {/*{selectedRoom.map((room) => {*/}
+                                                        {selectedRoom.map((room) => {
                                                             return (
                                                                 <div className={styles["roomcountDet_container"]}>
                                                                     <div className={styles["roomcountDet"]}>
@@ -1147,24 +1144,23 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                             </svg>
                                                                         </div>
                                                                         <div className={styles["roomcountDet_name"]}>
-                                                                            {/*<p>{room?.room_type}</p>*/}
+                                                                            <p>{room?.room_type}</p>
                                                                         </div>
                                                                         <div
                                                                             className={styles["roomcountDet_AdlCount"]}
                                                                         >
                                                                             <p>تعداد بزرگسال</p>
-                                                                            {/*<p>{room?.Adl_capacity}</p>*/}
+                                                                            <p>{room?.Adl_capacity}</p>
                                                                         </div>
-                                                                        {/*{room.extra_bed_capacity > 0 &&*/}
+                                                                        {room.extra_bed_capacity > 0 &&
                                                                             <div
                                                                                 className={`${
                                                                                     styles["roomcountDet_bedcount"]
                                                                                 } ${
                                                                                     styles[
-                                                                                        // room?.extra_bed_count > 0
-                                                                                        //     ? 
-                                                                                        "borderActive"
-                                                                                            // : "bordernoneActive"
+                                                                                        room?.extra_bed_count > 0
+                                                                                            ? "borderActive"
+                                                                                            : "bordernoneActive"
                                                                                         ]
                                                                                 }`}
                                                                             >
@@ -1181,9 +1177,9 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                 </>
 
                                                                                 <p className={styles["bedtypeprc"]}>
-                                                                                    {/*{numberWithCommas(*/}
-                                                                                    {/*    room.ext_prc*/}
-                                                                                    {/*)}{" "}*/}
+                                                                                    {numberWithCommas(
+                                                                                        room.ext_prc
+                                                                                    )}{" "}
                                                                                     تومان
                                                                                 </p>
 
@@ -1195,11 +1191,10 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     <div
                                                                                         className={
                                                                                             styles[
-                                                                                                // room.extra_bed_count >=
-                                                                                                // room?.extra_bed_capacity
-                                                                                                //     ? "dis_decin"
-                                                                                                //     :
-                                                                                            "decin"
+                                                                                                room.extra_bed_count >=
+                                                                                                room?.extra_bed_capacity
+                                                                                                    ? "dis_decin"
+                                                                                                    : "decin"
                                                                                                 ]
                                                                                         }
                                                                                         onClick={() => {
@@ -1208,14 +1203,13 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     >
                                                                                         +
                                                                                     </div>
-                                                                                    {/*<span>{room?.extra_bed_count}</span>*/}
+                                                                                    <span>{room?.extra_bed_count}</span>
                                                                                     <div
                                                                                         className={
                                                                                             styles[
-                                                                                                // room?.extra_bed_count === 0
-                                                                                                //     ? "dis_decin"
-                                                                                                //     :
-                                                                                            "decin"
+                                                                                                room?.extra_bed_count === 0
+                                                                                                    ? "dis_decin"
+                                                                                                    : "decin"
                                                                                                 ]
 
                                                                                         }
@@ -1227,7 +1221,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        {/*}*/}
+                                                                        }
 
 
                                                                         {
@@ -1237,10 +1231,9 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     styles["roomcountDet_bedcount"]
                                                                                 } ${
                                                                                     styles[
-                                                                                        // room?.chd_withbed_count > 0
-                                                                                        //     ? "borderActive"
-                                                                                        //     : 
-                                                                                "bordernoneActive"
+                                                                                        room?.chd_withbed_count > 0
+                                                                                            ? "borderActive"
+                                                                                            : "bordernoneActive"
                                                                                         ]
                                                                                 }`}
                                                                             >
@@ -1252,14 +1245,14 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                         fontSize: '12px',
                                                                                         whiteSpace: 'nowrap'
                                                                                     }}>
-                                                                                        {/*({chdAgeStr(room.chd_withbed_ages[0], room.chd_withbed_ages[1])})*/}
+                                                                                        ({chdAgeStr(room.chd_withbed_ages[0], room.chd_withbed_ages[1])})
                                                                                     </p>
                                                                                 </>
                                                                                 <p className={styles["bedtypeprc"]}>
-                                                                {/*                    {(room.chd_capacity > 0 && room.chd_w_prc > 0) ? ` ${numberWithCommas(*/}
-                                                                {/*                        room.chd_w_prc*/}
-                                                                {/*                    )}*/}
-                                                                {/*تومان` : 'عدم موجودی'}*/}
+                                                                                    {(room.chd_capacity > 0 && room.chd_w_prc > 0) ? ` ${numberWithCommas(
+                                                                                        room.chd_w_prc
+                                                                                    )}
+                                                                تومان` : 'عدم موجودی'}
                                                                                 </p>
                                                                                 <div
                                                                                     className={
@@ -1269,10 +1262,9 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     <div
                                                                                         className={
                                                                                             styles[
-                                                                                                // room?.chd_nobed_count + room?.chd_withbed_count >= room?.chd_capacity || room.chd_w_prc === 0
-                                                                                                //     ?
-                                                                                                "dis_decin"
-                                                                                                    // : "decin"
+                                                                                                room?.chd_nobed_count + room?.chd_withbed_count >= room?.chd_capacity || room.chd_w_prc === 0
+                                                                                                    ? "dis_decin"
+                                                                                                    : "decin"
                                                                                                 ]
                                                                                         }
                                                                                         onClick={() => {
@@ -1285,19 +1277,18 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     >
                                                                                         +
                                                                                     </div>
-                                                                                    {/*<span>{room?.chd_withbed_count}</span>*/}
+                                                                                    <span>{room?.chd_withbed_count}</span>
                                                                                     <div
                                                                                         className={
                                                                                             styles[
-                                                                                                // room?.chd_withbed_count === 0
-                                                                                                //     ? "dis_decin"
-                                                                                                //     :
-                                                                                            "decin"
+                                                                                                room?.chd_withbed_count === 0
+                                                                                                    ? "dis_decin"
+                                                                                                    : "decin"
                                                                                                 ]
                                                                                         }
-                                                                                        // onClick={() =>
-                                                                                        //     decDet1(room?.id, "chd_withbed_count")
-                                                                                        // }
+                                                                                        onClick={() =>
+                                                                                            decDet1(room?.id, "chd_withbed_count")
+                                                                                        }
                                                                                     >
                                                                                         -
                                                                                     </div>
@@ -1311,10 +1302,9 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     styles["roomcountDet_bedcount"]
                                                                                 } ${
                                                                                     styles[
-                                                                                        // room?.chd_nobed_count > 0
-                                                                                        //     ?
-                                                                                        "borderActive"
-                                                                                            // : "bordernoneActive"
+                                                                                        room?.chd_nobed_count > 0
+                                                                                            ? "borderActive"
+                                                                                            : "bordernoneActive"
                                                                                         ]
                                                                                 }`}
                                                                             >
@@ -1326,15 +1316,15 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                         whiteSpace: 'nowrap',
                                                                                         textAlign: 'center'
                                                                                     }}>
-                                                                                        {/*( {chdAgeStr(room?.chd_nobed_ages[0], room?.chd_nobed_ages[1])})*/}
+                                                                                        ( {chdAgeStr(room?.chd_nobed_ages[0], room?.chd_nobed_ages[1])})
                                                                                     </p>
                                                                                 </>
                                                                                 <p className={styles["bedtypeprc"]}>
 
-                                                                {/*                    {room.chd_capacity > 0 ? `${numberWithCommas(*/}
-                                                                {/*                        room.chd_n_prc*/}
-                                                                {/*                    )}*/}
-                                                                {/*تومان` : 'عدم موجودی'}*/}
+                                                                                    {room.chd_capacity > 0 ? `${numberWithCommas(
+                                                                                        room.chd_n_prc
+                                                                                    )}
+                                                                تومان` : 'عدم موجودی'}
 
                                                                                 </p>
                                                                                 <div
@@ -1345,10 +1335,9 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     <div
                                                                                         className={
                                                                                             styles[
-                                                                                                // room?.chd_nobed_count + room?.chd_withbed_count >= room?.chd_capacity || room.chd_n_prc === 0
-                                                                                                //     ?
-                                                                                                "dis_decin"
-                                                                                                    // : "decin"
+                                                                                                room?.chd_nobed_count + room?.chd_withbed_count >= room?.chd_capacity || room.chd_n_prc === 0
+                                                                                                    ? "dis_decin"
+                                                                                                    : "decin"
                                                                                                 ]
                                                                                         }
                                                                                         onClick={() => {
@@ -1361,14 +1350,13 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     >
                                                                                         +
                                                                                     </div>
-                                                                                    {/*<span>{room?.chd_nobed_count}</span>*/}
+                                                                                    <span>{room?.chd_nobed_count}</span>
                                                                                     <div
                                                                                         className={
                                                                                             styles[
-                                                                                                // room?.chd_nobed_count === 0
-                                                                                                //     ?
-                                                                                                "dis_decin"
-                                                                                                    // : "decin"
+                                                                                                room?.chd_nobed_count === 0
+                                                                                                    ? "dis_decin"
+                                                                                                    : "decin"
                                                                                                 ]
                                                                                         }
                                                                                         onClick={() =>
@@ -1381,18 +1369,16 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                             </div>
                                                                         }
 
-                                                                        {/*{room.Adl_capacity > 0 &&*/}
+                                                                        {room.Adl_capacity > 0 &&
 
                                                                             <div
                                                                                 className={`${
                                                                                     styles["roomcountDet_bedcount"]
-                                                                                } 
-                                                                                ${
+                                                                                } ${
                                                                                     styles[
-                                                                                        // room?.inf_count > 0
-                                                                                        //     ?
-                                                                                        "borderActive"
-                                                                                            // : "bordernoneActive"
+                                                                                        room?.inf_count > 0
+                                                                                            ? "borderActive"
+                                                                                            : "bordernoneActive"
                                                                                         ]
                                                                                 }`}
                                                                             >
@@ -1405,13 +1391,13 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                         whiteSpace: 'nowrap',
                                                                                         textAlign: 'center'
                                                                                     }}>
-                                                                                        {/*({chdAgeStr(0, 2)})*/}
+                                                                                        ({chdAgeStr(0, 2)})
                                                                                     </p>
                                                                                 </>
                                                                                 <p className={styles["bedtypeprc"]}>
-                                                                                    {/*{numberWithCommas(*/}
-                                                                                    {/*    room.inf_prc*/}
-                                                                                    {/*)}{" "}*/}
+                                                                                    {numberWithCommas(
+                                                                                        room.inf_prc
+                                                                                    )}{" "}
                                                                                     تومان
                                                                                 </p>
                                                                                 <div
@@ -1422,24 +1408,22 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     <div
                                                                                         className={
                                                                                             styles[
-                                                                                                // room?.inf_count >= room?.Adl_capacity
-                                                                                                //     ?
-                                                                                                "dis_decin"
-                                                                                                    // : "decin"
+                                                                                                room?.inf_count >= room?.Adl_capacity
+                                                                                                    ? "dis_decin"
+                                                                                                    : "decin"
                                                                                                 ]
                                                                                         }
                                                                                         onClick={() => incDet1(room, "inf_count")}
                                                                                     >
                                                                                         +
                                                                                     </div>
-                                                                                    {/*<span>{room?.inf_count}</span>*/}
+                                                                                    <span>{room?.inf_count}</span>
                                                                                     <div
                                                                                         className={
                                                                                             styles[
-                                                                                                // room?.inf_count === 0
-                                                                                                //     ?
-                                                                                                "dis_decin"
-                                                                                                    // : "decin"
+                                                                                                room?.inf_count === 0
+                                                                                                    ? "dis_decin"
+                                                                                                    : "decin"
                                                                                                 ]
                                                                                         }
                                                                                         onClick={() =>
@@ -1450,16 +1434,15 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        {/*}*/}
+                                                                        }
                                                                     </div>
 
                                                                 </div>
-                                                            {/*);*/}
-                                                        {/*})*/}
-                                                {/*}*/}
+                                                            );
+                                                        })}
                                                     </motion.div>
                                                 </AnimatePresence>
-                                            {/*) : null}*/}
+                                            ) : null}
                                         </div>
                                 {/*    )*/}
                                 {/*) : (*/}
