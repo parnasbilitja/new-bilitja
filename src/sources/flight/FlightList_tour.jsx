@@ -510,93 +510,107 @@ return found_room
                                         {/*}*/}
                                     </div>
 
-                                    <div className={styles["flight_company"]}>
-                                        <div className={styles["flight_company_logo"]}>
-                                            <div className={styles["image_container"]}>
-                                                {
-                                                    flight?.departure_flight?.airline_thumb?.url ?
-                                                        <img
-                                                            src={flight?.departure_flight?.airline_thumb?.url}
-                                                            alt={flight?.departure_flight?.airline_code}/> :
-                                                        <img src='Images/noPicture.png'
-                                                             alt="no-picture"/>
-                                                }
-                                            </div>
-                                            <div>
+                                    <div className={'d-flex flex-column justify-content-center '}>
+                                        <div className={styles["flight_company_remaintour"]}>
+                                            <p style={{whiteSpace: "nowrap", textAlign: 'center'}}>
+                                                موجودی :<span style={{
+                                                color: '#e20000',
+                                                fontWeight: '900',
+                                                fontSize: '15px'
+                                            }}>
+                                                                    {flight?.capacity}
 
-                                                <p style={{
-                                                    fontSize: '12px',
-                                                    padding: '0',
-                                                    marginBottom: '2px'
-                                                }}>{flight.departure_flight.airline} </p>
-                                                {/*<p style={{*/}
-                                                {/*    fontSize: '12px',*/}
-                                                {/*    padding: '0',*/}
-                                                {/*    margin: '0',*/}
-                                                {/*    color: flight?.departure_flight.cabin_type === 'c' ? 'red !important' : null*/}
-                                                {/*}}>({flightClass(flight?.departure_flight.cabin_type)})</p>*/}
-                                            </div>
+                                                                </span>
+                                            </p>
                                         </div>
-                                        {/*<div className={styles["flight_company_remaintour"]}>*/}
-                                        {/*<p style={{whiteSpace: "nowrap"}}>*/}
-                                        {/*    تعداد موجودی پرواز :<span style={{*/}
-                                        {/*    color: '#e20000',*/}
-                                        {/*    fontWeight: '900',*/}
-                                        {/*    fontSize: '15px'*/}
-                                        {/*}}>*/}
-                                        {/*                            {flight?.capacity}*/}
+                                        <div className={styles["flight_company"]}>
+                                            <div className={styles["flight_company_logo"]}>
+                                                <div className={styles["image_container"]}>
+                                                    {
+                                                        flight?.departure_flight?.airline_thumb?.url ?
+                                                            <img
+                                                                src={flight?.departure_flight?.airline_thumb?.url}
+                                                                alt={flight?.departure_flight?.airline_code}/> :
+                                                            <img src='Images/noPicture.png'
+                                                                 alt="no-picture"/>
+                                                    }
+                                                </div>
+                                                <div>
 
-                                        {/*                        </span>*/}
-                                        {/*</p>*/}
-                                        <div
-                                            style={{
-                                                display: "flex",
-                                                justifyContent: "center",
-                                                // alignItems: "center",
-                                                padding: "0",
-                                            }}
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="#e20000" viewBox="0 0 24 24"
-                                                 width={25}
-                                                 className={styles['svg']}
-                                                 height={25}
-                                                 stroke-width="1.5" stroke="#e20000">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/>
-                                            </svg>
+                                                    <p style={{
+                                                        fontSize: '12px',
+                                                        padding: '0',
+                                                        marginBottom: '2px'
+                                                    }}>{flight.departure_flight.airline} </p>
+                                                    {/*<p style={{*/}
+                                                    {/*    fontSize: '12px',*/}
+                                                    {/*    padding: '0',*/}
+                                                    {/*    margin: '0',*/}
+                                                    {/*    color: flight?.departure_flight.cabin_type === 'c' ? 'red !important' : null*/}
+                                                    {/*}}>({flightClass(flight?.departure_flight.cabin_type)})</p>*/}
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                style={{
+                                                    display: "flex",
+                                                    justifyContent: "center",
+                                                    // alignItems: "center",
+                                                    padding: "0",
+                                                }}
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="#e20000"
+                                                     viewBox="0 0 24 24"
+                                                     width={25}
+                                                     className={styles['svg']}
+                                                     height={25}
+                                                     stroke-width="1.5" stroke="#e20000">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                          d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/>
+                                                </svg>
+
+                                            </div>
+
+                                            {/*</div>*/}
+
+
+                                            <div className={styles["flight_company_logo"]}>
+                                                <div className={styles["image_container"]}>
+                                                    {
+                                                        flight?.return_flight?.airline_thumb?.url ?
+                                                            <img
+                                                                src={flight?.return_flight?.airline_thumb?.url}
+                                                                alt={flight?.return_flight?.airline_code}/> :
+                                                            <img src='/Images/noPicture.png'
+                                                                 alt="no-picture"/>
+
+                                                    }
+                                                </div>
+                                                <div style={{marginBottom: '10px'}}>
+
+                                                    <p style={{
+                                                        fontSize: '12px',
+                                                        padding: '0',
+                                                        marginBottom: '2px'
+                                                    }}>{flight.return_flight.airline}</p>
+                                                    {/*<p style={{*/}
+                                                    {/*    fontSize: '12px',*/}
+                                                    {/*    padding: '0',*/}
+                                                    {/*    margin: '0',*/}
+                                                    {/*    color: flight?.return_flight.cabin_type === 'c' ? 'red !important' : null*/}
+                                                    {/*}}>({flightClass(flight?.return_flight.cabin_type)})</p>*/}
+                                                </div>
+
+                                            </div>
+
 
                                         </div>
 
-                                        {/*</div>*/}
-                                        <div className={styles["flight_company_logo"]}>
-                                            <div className={styles["image_container"]}>
-                                                {
-                                                    flight?.return_flight?.airline_thumb?.url ?
-                                                        <img
-                                                            src={flight?.return_flight?.airline_thumb?.url}
-                                                            alt={flight?.return_flight?.airline_code}/> :
-                                                        <img src='/Images/noPicture.png'
-                                                             alt="no-picture"/>
-
-                                                }
-                                            </div>
-                                            <div style={{marginBottom: '10px'}}>
-
-                                                <p style={{
-                                                    fontSize: '12px',
-                                                    padding: '0',
-                                                    marginBottom: '2px'
-                                                }}>{flight.return_flight.airline}</p>
-                                                {/*<p style={{*/}
-                                                {/*    fontSize: '12px',*/}
-                                                {/*    padding: '0',*/}
-                                                {/*    margin: '0',*/}
-                                                {/*    color: flight?.return_flight.cabin_type === 'c' ? 'red !important' : null*/}
-                                                {/*}}>({flightClass(flight?.return_flight.cabin_type)})</p>*/}
-                                            </div>
+                                        <div className={styles["date_night"]}>
 
                                         </div>
                                     </div>
+
 
                                     <div className={styles["flightDet"]}>
                                         {/*<div className={styles["flightDet_title"]}>*/}
