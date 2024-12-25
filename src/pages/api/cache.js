@@ -115,7 +115,7 @@ export default async function handler(req, res) {
         }
     }
 
-    
+
     // Handle GET request
     else if (req.method === 'GET') {
         const { key } = req.query;
