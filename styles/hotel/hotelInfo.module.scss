@@ -9,7 +9,11 @@
     padding: 0;
   }
 }
-
+.address{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
 
 .gallery-container{
   width:450px;
@@ -95,6 +99,9 @@
     display: flex;
 
   }// lg breakpoint
+  .address{
+    display: block !important;
+  }
   // sm breakpoint
 }
 
@@ -106,6 +113,10 @@
   .gallary {
     margin-top: 5px;
     height: 70px;
+  }
+
+  .address{
+    display: block !important;
   }
 }
 

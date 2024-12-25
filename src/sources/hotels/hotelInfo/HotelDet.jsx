@@ -79,9 +79,9 @@ useEffect(()=>{
                     {/* <p className="text-sm text-secondary-color">{hotel?.board_type}</p> */}
                     {/*</div>*/}
                   </div>
-                  <div className=" d-flex align-items-center gap-1 my-1">
+                  <div className={styles['address']}>
                     <p className="font-size-12">{hotel?.location}</p>
-                    <p>-</p>
+                    <p className={'isDesktop'}>-</p>
                     <p className="font-size-11 text-nowrap text-gray-500">{hotel?.address}</p>
                     {/*<p*/}
                     {/*    className="text-sm  cursor-pointer"*/}
