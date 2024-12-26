@@ -331,7 +331,7 @@ return found_room
 
                             </div>
                             <div className={styles['filter_item']}>
-                                <div className={styles['title']}>
+                                <div className={styles['title']} style={{marginBottom:'15px'}}>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                          stroke-width="1.5"
                                          stroke="currentColor" className="size-6" width={15} height={15}>
