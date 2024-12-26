@@ -2,6 +2,7 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 import {Err, ErrSuccess, NotifAlert} from "../NewTours/Components/NotifAlert.component";
 import PrimaryTextInput from "../../sources/component/PrimaryTextInput.component";
+import styles from '../../../styles/newTour/PackageReserve.module.scss'
 import {usePostHog} from "posthog-js/react";
 import {chdAgeStr, numberToWordConvertor, numberWithCommas} from "../../Utils/newTour";
 import {useRouter, withRouter} from "next/router";
@@ -17,11 +18,11 @@ import {accountBoxModify} from "../../Redux/UI/ui.action";
 
 const PackageReserve = ({
 
-    target_rooms,
-    hotel,
-    selectedFlight,
-   close,
-    user,
+                            target_rooms,
+                            hotel,
+                            selectedFlight,
+                            close,
+                            user,
 
                         }) => {
     const router = useRouter()
@@ -35,7 +36,7 @@ const PackageReserve = ({
     }
 
     const findRoomByName=(roomtypeid,id)=>{
-       let foundroom= selectedRoomsData.filter(room=>room.room_type_id===roomtypeid)
+        let foundroom= selectedRoomsData.filter(room=>room.room_type_id===roomtypeid)
         let getIndex= foundroom.findIndex(item => item.id === id)
 
         return (+getIndex)+1
@@ -500,7 +501,7 @@ const PackageReserve = ({
         //     )
         //     setRooms(selectedRooms)
         // } else {
-            setRooms(target_rooms)
+        setRooms(target_rooms)
         // }
     }, [])
 
@@ -541,9 +542,9 @@ const PackageReserve = ({
 
         <>
             <NotifAlert/>
-            <div className="col-xl-12 col-lg-12 col-12 "style={{ height:'100%'}} >
+            <div className={styles['package-reserve']}style={{ height:'100%'}} >
 
-                <div >
+                <div className={styles['scrollable-content']} >
                     <div className={'roomtour'}>
                         <div onClick={() => {
                             close(false)
@@ -572,270 +573,206 @@ const PackageReserve = ({
                                     تماس حاصل فرمایید.
                                 </p>
 
-                                    <>
+                                <>
                                                      <span
                                                          className="text-center font-yekan font-bold font-size-14 py-2">یا</span>
-                                        <p className="text-center font-yekan font-bold font-size-14 p-0 m-0">
-                                            جهت رزرو لطفا اتاق خود را انتخاب کنید.
-                                        </p>
-                                    </>
+                                    <p className="text-center font-yekan font-bold font-size-14 p-0 m-0">
+                                        جهت رزرو لطفا اتاق خود را انتخاب کنید.
+                                    </p>
+                                </>
                                 {/*}*/}
                                 {/*جهت تماس با شما از طریق کارشناسان  بلیطجا اطلاعات درخواستی زیر را تکمیل و ارسال فرمایید.*/}
                             </div>
                             {/*{*/}
                             {/*    !isBundle &&*/}
 
-                                <>
-                                    {/*<div className="in-data w-75 d-flex flex-column align-items-stretch justify-content-center m-auto mb-2">*/}
-                                    {/*    <label htmlFor="" className="pb-2 font-yekan font-bold">شماره تلفن همراه</label>*/}
-                                    {/*    <div className='form-input-border'>*/}
-                                    {/*        <PrimaryTextInput type="text" value={packData.number} onChange={e => valueHandler(e)} name="number" className="w-100 px-2 rounded-3 border-secondary font-yekan" placeholder="شماره همراه خود را وارد کنید" style={{ height: "40px", outline: "none" }} />*/}
-                                    {/*    </div>*/}
-                                            {/*</div>*/}
-        <div>
-            {/*<input type="text" value={reserverPhone} onChange={(e)=>setReserverPhone(e.target.value)}/>*/}
-        </div>
-                                    <div className="bedcount-container">
+                            <>
+                                {/*<div className="in-data w-75 d-flex flex-column align-items-stretch justify-content-center m-auto mb-2">*/}
+                                {/*    <label htmlFor="" className="pb-2 font-yekan font-bold">شماره تلفن همراه</label>*/}
+                                {/*    <div className='form-input-border'>*/}
+                                {/*        <PrimaryTextInput type="text" value={packData.number} onChange={e => valueHandler(e)} name="number" className="w-100 px-2 rounded-3 border-secondary font-yekan" placeholder="شماره همراه خود را وارد کنید" style={{ height: "40px", outline: "none" }} />*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
+                                <div>
+                                    {/*<input type="text" value={reserverPhone} onChange={(e)=>setReserverPhone(e.target.value)}/>*/}
+                                </div>
+                                <div className="bedcount-container">
 
-                                        <div className="bedcount">
+                                    <div className="bedcount">
 
-                                            {rooms?.map(room => (
-                                                <div className='passengercount'>
-                                                    <p style={{
-                                                        fontSize: '14px',
-                                                        margin: '0',
-                                                        padding: '0',
-                                                        textAlign: 'center',
-                                                        // marginBottom: '3px'
-                                                    }}>تعداد {room.room_name} </p>
-                                                    <span style={{fontSize: '10px'}}> (مناسب برای {room.adl_capacity}نفر )
+                                        {rooms?.map(room => (
+                                            <div className='passengercount'>
+                                                <p style={{
+                                                    fontSize: '14px',
+                                                    margin: '0',
+                                                    padding: '0',
+                                                    textAlign: 'center',
+                                                    // marginBottom: '3px'
+                                                }}>تعداد {room.room_name} </p>
+                                                <span style={{fontSize: '10px'}}> (مناسب برای {room.adl_capacity}نفر )
                                                     </span>
-                                                    <p style={{
-                                                        fontSize: '12px',
-                                                        margin: '0',
-                                                        padding: '0',
-                                                        textAlign: 'center',
-                                                        marginBottom: '8px',
-                                                        color: '#e20000'
-                                                    }}>{numberWithCommas(room.price)} تومان</p>
-                                                    <div className='count'>
+                                                <p style={{
+                                                    fontSize: '12px',
+                                                    margin: '0',
+                                                    padding: '0',
+                                                    textAlign: 'center',
+                                                    marginBottom: '8px',
+                                                    color: '#e20000'
+                                                }}>{numberWithCommas(room.price)} تومان</p>
+                                                <div className='count'>
 
-                                                        <div
-                                                            className={roomCounter(room.room_type_id) > 0 ? 'decin' : 'dis_decin'}
-                                                            onClick={() => incRoom(room)}>
-                                                            +
-                                                        </div>
-                                                        <p>{roomNumber(room.room_type_id)?.length}</p>
-                                                        <div
-                                                            className={roomCounter(room.room_type_id) === 0 ? 'dis_decin' : 'decin'}
-                                                            onClick={() => decRoom(room)}>
-                                                            -
-                                                        </div>
+                                                    <div
+                                                        className={roomCounter(room.room_type_id) > 0 ? 'decin' : 'dis_decin'}
+                                                        onClick={() => incRoom(room)}>
+                                                        +
+                                                    </div>
+                                                    <p>{roomNumber(room.room_type_id)?.length}</p>
+                                                    <div
+                                                        className={roomCounter(room.room_type_id) === 0 ? 'dis_decin' : 'decin'}
+                                                        onClick={() => decRoom(room)}>
+                                                        -
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                            ))}
-
-
-                                        </div>
+                                        ))}
 
 
                                     </div>
 
 
-                                    <>
-                                        {selectedRoomsData && <>
-                                            {selectedRoomsData.map((room) => {
-                                                return (
-                                                    <div className="roomcountDet_container">
-                                                        <div className={"roomcountDet"}>
-                                                            <div className='room-s'>
-                                                                <div style={{display: 'flex', columnGap: '10px'}}>
-                                                                    <div
-                                                                        className={'cursor-pointer'}
-                                                                        // className={"roomcountDet_remove"}
-                                                                        onClick={() => {
-                                                                            if (selectedRoomsData.length === 1) {
-                                                                                removeRoom(room.id);
-                                                                                // setIsOpen(0);
-                                                                            } else {
-                                                                                removeRoom(room.id);
-                                                                                // setIsOpen(flight.departure.id.toString()+flight.return.id.toString());
-                                                                            }
-                                                                        }}
-                                                                    >
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width={20}
-                                                                             height={20}
-                                                                             fill="#e20000" viewBox="0 0 24 24"
-                                                                             stroke-width="1.5" stroke="#e20000"
-                                                                             className="size-6">
-                                                                            <path stroke-linecap="round"
-                                                                                  stroke-linejoin="round"
-                                                                                  d="M6 18 18 6M6 6l12 12"/>
-                                                                        </svg>
+                                </div>
 
-                                                                    </div>
-                                                                    <div className={"roomcountDet_name"}>
-                                                                        <p className='p-0 m-0'>{room?.room_type} <small
-                                                                            style={{
-                                                                                fontWeight: 600,
-                                                                                fontSize: '12px'
-                                                                            }}>({numberToWordConvertor(findRoomByName(room.room_type_id, room.id))})</small>
-                                                                        </p>
-                                                                    </div>
 
-                                                                </div>
-
+                                <>
+                                    {selectedRoomsData && <>
+                                        {selectedRoomsData.map((room) => {
+                                            return (
+                                                <div className="roomcountDet_container">
+                                                    <div className={"roomcountDet"}>
+                                                        <div className='room-s'>
+                                                            <div style={{display: 'flex', columnGap: '10px'}}>
                                                                 <div
-                                                                    className={'roomcount'}
-
+                                                                    className={'cursor-pointer'}
+                                                                    // className={"roomcountDet_remove"}
+                                                                    onClick={() => {
+                                                                        if (selectedRoomsData.length === 1) {
+                                                                            removeRoom(room.id);
+                                                                            // setIsOpen(0);
+                                                                        } else {
+                                                                            removeRoom(room.id);
+                                                                            // setIsOpen(flight.departure.id.toString()+flight.return.id.toString());
+                                                                        }
+                                                                    }}
                                                                 >
-                                                                    <p style={{fontSize: '12px'}}>تعداد بزرگسال این
-                                                                        اتاق:</p>
-                                                                    <p style={{
-                                                                        fontSize: '13px',
-                                                                        color: '#e20000',
-                                                                        fontWeight: '700'
-                                                                    }}>{room?.Adl_capacity}</p>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width={20}
+                                                                         height={20}
+                                                                         fill="#e20000" viewBox="0 0 24 24"
+                                                                         stroke-width="1.5" stroke="#e20000"
+                                                                         className="size-6">
+                                                                        <path stroke-linecap="round"
+                                                                              stroke-linejoin="round"
+                                                                              d="M6 18 18 6M6 6l12 12"/>
+                                                                    </svg>
+
                                                                 </div>
+                                                                <div className={"roomcountDet_name"}>
+                                                                    <p className='p-0 m-0'>{room?.room_type} <small
+                                                                        style={{
+                                                                            fontWeight: 600,
+                                                                            fontSize: '12px'
+                                                                        }}>({numberToWordConvertor(findRoomByName(room.room_type_id, room.id))})</small>
+                                                                    </p>
+                                                                </div>
+
                                                             </div>
 
-                                                            <div className='roomscon'>
-                                                                {room.extra_bed_capacity > 0 &&
-                                                                    <div
-                                                                        className={`${
-                                                                            "roomcountDet_bedcount"
-                                                                        } ${
+                                                            <div
+                                                                className={'roomcount'}
 
-                                                                            room?.extra_bed_count > 0
-                                                                                ? "borderActive"
-                                                                                : "bordernoneActive"
+                                                            >
+                                                                <p style={{fontSize: '12px'}}>تعداد بزرگسال این
+                                                                    اتاق:</p>
+                                                                <p style={{
+                                                                    fontSize: '13px',
+                                                                    color: '#e20000',
+                                                                    fontWeight: '700'
+                                                                }}>{room?.Adl_capacity}</p>
+                                                            </div>
+                                                        </div>
 
-                                                                        }`}
-                                                                    >
-                                                                        <>
-                                                                            <p className={"bedtype"}>
-                                                                                تعداد تخت اضافه
-                                                                            </p>
-                                                                            <small style={{fontSize:'10px'}}>(۱۲ سال به بالا)</small>
+                                                        <div className='roomscon'>
+                                                            {room.extra_bed_capacity > 0 &&
+                                                                <div
+                                                                    className={`${
+                                                                        "roomcountDet_bedcount"
+                                                                    } ${
 
-                                                                        </>
-                                                                        <p className={"bedtypeprc"}>
-                                                                            {numberWithCommas(
-                                                                                room.ext_prc
-                                                                            )}{" "}
-                                                                            تومان
+                                                                        room?.extra_bed_count > 0
+                                                                            ? "borderActive"
+                                                                            : "bordernoneActive"
+
+                                                                    }`}
+                                                                >
+                                                                    <>
+                                                                        <p className={"bedtype"}>
+                                                                            تعداد تخت اضافه
                                                                         </p>
+                                                                        <small style={{fontSize:'10px'}}>(۱۲ سال به بالا)</small>
 
-                                                                        <div
-                                                                            className={
-                                                                                "roomcountDet_bedcount_count"
-                                                                            }
-                                                                        >
-                                                                            <div
-                                                                                className={
-
-                                                                                    (room?.extra_count + room?.chd_withbed_count >=
-                                                                                        room?.total_extra_count) || room.extra_count >= room.extra_bed_capacity
-                                                                                        ? "dis_decin"
-                                                                                        :
-                                                                                        "decin"
-
-                                                                                }
-                                                                                onClick={() => {
-                                                                                    incDet1(room, "ext_count");
-                                                                                }}
-                                                                            >
-                                                                                +
-                                                                            </div>
-                                                                            <span>{room?.extra_count}</span>
-                                                                            <div
-                                                                                className={
-
-                                                                                    room?.extra_count === 0
-                                                                                        ? "dis_decin"
-                                                                                        :
-                                                                                        "decin"
-
-
-                                                                                }
-                                                                                onClick={() =>
-                                                                                    decDet1(room?.id, "ext_count")
-                                                                                }
-                                                                            >
-                                                                                -
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                }
-
-
-                                                                {
+                                                                    </>
+                                                                    <p className={"bedtypeprc"}>
+                                                                        {numberWithCommas(
+                                                                            room.ext_prc
+                                                                        )}{" "}
+                                                                        تومان
+                                                                    </p>
 
                                                                     <div
-                                                                        className={`${
-                                                                            "roomcountDet_bedcount"
-                                                                        } ${
-
-                                                                            room?.chd_count > 0
-                                                                                ? "borderActive"
-                                                                                : "bordernoneActive"
-
-                                                                        }`}
+                                                                        className={
+                                                                            "roomcountDet_bedcount_count"
+                                                                        }
                                                                     >
-
-                                                                        <>
-                                                                            <p className={"bedtype"}>
-                                                                                تعداد کودک با تخت
-                                                                            </p>
-                                                                            {hotel?.with_bed_child_ages.length > 0 &&
-                                                                                <small style={{fontSize:'10px'}} >({chdAgeStr(hotel?.with_bed_child_ages[0], hotel?.with_bed_child_ages[1])})</small>}
-                                                                        </>
-                                                                        <p className={"bedtypeprc"}>
-                                                                            {(room.chd_capacity > 0 && room.chd_withbed_prc > 0) ? ` ${numberWithCommas(
-                                                                                room.chd_withbed_prc
-                                                                            )}
-                                                                تومان` : 'عدم موجودی'}
-                                                                        </p>
                                                                         <div
                                                                             className={
-                                                                                "roomcountDet_bedcount_count"
+
+                                                                                (room?.extra_count + room?.chd_withbed_count >=
+                                                                                    room?.total_extra_count) || room.extra_count >= room.extra_bed_capacity
+                                                                                    ? "dis_decin"
+                                                                                    :
+                                                                                    "decin"
+
+                                                                            }
+                                                                            onClick={() => {
+                                                                                incDet1(room, "ext_count");
+                                                                            }}
+                                                                        >
+                                                                            +
+                                                                        </div>
+                                                                        <span>{room?.extra_count}</span>
+                                                                        <div
+                                                                            className={
+
+                                                                                room?.extra_count === 0
+                                                                                    ? "dis_decin"
+                                                                                    :
+                                                                                    "decin"
+
+
+                                                                            }
+                                                                            onClick={() =>
+                                                                                decDet1(room?.id, "ext_count")
                                                                             }
                                                                         >
-                                                                            <div
-                                                                                className={
-
-                                                                                    room?.chd_nobed_count + room?.chd_withbed_count >= room?.chd_capacity || (room.chd_withbed_count + room.extra_count >= room.total_extra_count)
-                                                                                        ? "dis_decin"
-                                                                                        :
-                                                                                        "decin"
-
-                                                                                }
-                                                                                onClick={() => incDet1(room, "chd_withbed_count")}
-                                                                            >
-                                                                                +
-                                                                            </div>
-                                                                            <span>{room?.chd_withbed_count}</span>
-                                                                            <div
-                                                                                className={
-
-                                                                                    room?.chd_withbed_count === 0
-                                                                                        ?
-                                                                                        "dis_decin"
-                                                                                        :
-                                                                                        "decin"
-
-                                                                                }
-                                                                                onClick={() =>
-                                                                                    decDet1(room?.id, "chd_withbed_count")
-                                                                                }
-                                                                            >
-                                                                                -
-                                                                            </div>
+                                                                            -
                                                                         </div>
                                                                     </div>
-                                                                }{
+                                                                </div>
+                                                            }
+
+
+                                                            {
 
                                                                 <div
                                                                     className={`${
@@ -848,18 +785,17 @@ const PackageReserve = ({
 
                                                                     }`}
                                                                 >
-                                                                    <>
-                                                                    </>
+
                                                                     <>
                                                                         <p className={"bedtype"}>
-                                                                            تعداد کودک بدون تخت
+                                                                            تعداد کودک با تخت
                                                                         </p>
-                                                                        {hotel?.no_bed_child_ages.length > 0 &&
-                                                                            <small style={{fontSize:'10px'}}>({chdAgeStr(hotel?.no_bed_child_ages[0], hotel?.no_bed_child_ages[1])})</small>}
+                                                                        {hotel?.with_bed_child_ages.length > 0 &&
+                                                                            <small style={{fontSize:'10px'}} >({chdAgeStr(hotel?.with_bed_child_ages[0], hotel?.with_bed_child_ages[1])})</small>}
                                                                     </>
                                                                     <p className={"bedtypeprc"}>
-                                                                        {room.chd_capacity > 0 ? `${numberWithCommas(
-                                                                            room.chd_nobed_prc
+                                                                        {(room.chd_capacity > 0 && room.chd_withbed_prc > 0) ? ` ${numberWithCommas(
+                                                                            room.chd_withbed_prc
                                                                         )}
                                                                 تومان` : 'عدم موجودی'}
                                                                     </p>
@@ -871,21 +807,21 @@ const PackageReserve = ({
                                                                         <div
                                                                             className={
 
-                                                                                room?.chd_nobed_count + room?.chd_withbed_count >= room?.chd_capacity
+                                                                                room?.chd_nobed_count + room?.chd_withbed_count >= room?.chd_capacity || (room.chd_withbed_count + room.extra_count >= room.total_extra_count)
                                                                                     ? "dis_decin"
                                                                                     :
                                                                                     "decin"
 
                                                                             }
-                                                                            onClick={() => incDet1(room, "chd_nobed_count")}
+                                                                            onClick={() => incDet1(room, "chd_withbed_count")}
                                                                         >
                                                                             +
                                                                         </div>
-                                                                        <span>{room?.chd_nobed_count}</span>
+                                                                        <span>{room?.chd_withbed_count}</span>
                                                                         <div
                                                                             className={
 
-                                                                                room?.chd_nobed_count === 0
+                                                                                room?.chd_withbed_count === 0
                                                                                     ?
                                                                                     "dis_decin"
                                                                                     :
@@ -893,7 +829,137 @@ const PackageReserve = ({
 
                                                                             }
                                                                             onClick={() =>
-                                                                                decDet1(room?.id, "chd_nobed_count")
+                                                                                decDet1(room?.id, "chd_withbed_count")
+                                                                            }
+                                                                        >
+                                                                            -
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }{
+
+                                                            <div
+                                                                className={`${
+                                                                    "roomcountDet_bedcount"
+                                                                } ${
+
+                                                                    room?.chd_count > 0
+                                                                        ? "borderActive"
+                                                                        : "bordernoneActive"
+
+                                                                }`}
+                                                            >
+                                                                <>
+                                                                </>
+                                                                <>
+                                                                    <p className={"bedtype"}>
+                                                                        تعداد کودک بدون تخت
+                                                                    </p>
+                                                                    {hotel?.no_bed_child_ages.length > 0 &&
+                                                                        <small style={{fontSize:'10px'}}>({chdAgeStr(hotel?.no_bed_child_ages[0], hotel?.no_bed_child_ages[1])})</small>}
+                                                                </>
+                                                                <p className={"bedtypeprc"}>
+                                                                    {room.chd_capacity > 0 ? `${numberWithCommas(
+                                                                        room.chd_nobed_prc
+                                                                    )}
+                                                                تومان` : 'عدم موجودی'}
+                                                                </p>
+                                                                <div
+                                                                    className={
+                                                                        "roomcountDet_bedcount_count"
+                                                                    }
+                                                                >
+                                                                    <div
+                                                                        className={
+
+                                                                            room?.chd_nobed_count + room?.chd_withbed_count >= room?.chd_capacity
+                                                                                ? "dis_decin"
+                                                                                :
+                                                                                "decin"
+
+                                                                        }
+                                                                        onClick={() => incDet1(room, "chd_nobed_count")}
+                                                                    >
+                                                                        +
+                                                                    </div>
+                                                                    <span>{room?.chd_nobed_count}</span>
+                                                                    <div
+                                                                        className={
+
+                                                                            room?.chd_nobed_count === 0
+                                                                                ?
+                                                                                "dis_decin"
+                                                                                :
+                                                                                "decin"
+
+                                                                        }
+                                                                        onClick={() =>
+                                                                            decDet1(room?.id, "chd_nobed_count")
+                                                                        }
+                                                                    >
+                                                                        -
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+
+                                                            {room.Adl_capacity > 0 &&
+
+                                                                <div
+                                                                    className={`${
+
+
+                                                                        "roomcountDet_bedcount"
+                                                                    }
+                                                                                 ${
+
+                                                                        room?.inf_count > 0
+                                                                            ? "borderActive"
+                                                                            : "bordernoneActive"
+
+                                                                    }`}
+                                                                >
+                                                                    <>
+                                                                        <p className={"bedtype"}>
+                                                                            تعداد نوزاد
+                                                                        </p>
+                                                                        <small style={{fontSize:'10px'}}>({chdAgeStr(0, 2)})</small>
+                                                                    </>
+
+                                                                    <p className={"bedtypeprc"}>
+                                                                        {numberWithCommas(
+                                                                            room.inf_prc
+                                                                        )}{" "}
+                                                                        تومان
+                                                                    </p>
+                                                                    <div
+                                                                        className={
+                                                                            "roomcountDet_bedcount_count"
+                                                                        }
+                                                                    >
+                                                                        <div
+                                                                            className={
+                                                                                room?.inf_count >= room?.Adl_capacity
+                                                                                    ? "dis_decin"
+                                                                                    :
+                                                                                    "decin"
+
+                                                                            }
+                                                                            onClick={() => incDet1(room, "inf_count")}
+                                                                        >
+                                                                            +
+                                                                        </div>
+                                                                        <span>{room?.inf_count}</span>
+                                                                        <div
+                                                                            className={
+                                                                                room?.inf_count === 0
+                                                                                    ?
+                                                                                    "dis_decin"
+                                                                                    :
+                                                                                    "decin"
+                                                                            }
+                                                                            onClick={() =>
+                                                                                decDet1(room?.id, "inf_count")
                                                                             }
                                                                         >
                                                                             -
@@ -901,84 +967,19 @@ const PackageReserve = ({
                                                                     </div>
                                                                 </div>
                                                             }
-
-                                                                {room.Adl_capacity > 0 &&
-
-                                                                    <div
-                                                                        className={`${
-
-
-                                                                            "roomcountDet_bedcount"
-                                                                        }
-                                                                                 ${
-
-                                                                            room?.inf_count > 0
-                                                                                ? "borderActive"
-                                                                                : "bordernoneActive"
-
-                                                                        }`}
-                                                                    >
-                                                                        <>
-                                                                            <p className={"bedtype"}>
-                                                                                تعداد نوزاد
-                                                                            </p>
-                                                                            <small style={{fontSize:'10px'}}>({chdAgeStr(0, 2)})</small>
-                                                                        </>
-
-                                                                        <p className={"bedtypeprc"}>
-                                                                            {numberWithCommas(
-                                                                                room.inf_prc
-                                                                            )}{" "}
-                                                                            تومان
-                                                                        </p>
-                                                                        <div
-                                                                            className={
-                                                                                "roomcountDet_bedcount_count"
-                                                                            }
-                                                                        >
-                                                                            <div
-                                                                                className={
-                                                                                    room?.inf_count >= room?.Adl_capacity
-                                                                                        ? "dis_decin"
-                                                                                        :
-                                                                                        "decin"
-
-                                                                                }
-                                                                                onClick={() => incDet1(room, "inf_count")}
-                                                                            >
-                                                                                +
-                                                                            </div>
-                                                                            <span>{room?.inf_count}</span>
-                                                                            <div
-                                                                                className={
-                                                                                    room?.inf_count === 0
-                                                                                        ?
-                                                                                        "dis_decin"
-                                                                                        :
-                                                                                        "decin"
-                                                                                }
-                                                                                onClick={() =>
-                                                                                    decDet1(room?.id, "inf_count")
-                                                                                }
-                                                                            >
-                                                                                -
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                }
-                                                            </div>
-
                                                         </div>
 
                                                     </div>
-                                                );
-                                            })}
 
-                                        </>}
-                                    </>
+                                                </div>
+                                            );
+                                        })}
 
-
+                                    </>}
                                 </>
+
+
+                            </>
                             {/*}*/}
                         </div>
                     </div>
@@ -998,7 +999,6 @@ const PackageReserve = ({
                             className={`ancher bg-success text-white font-size-13 py-2 px-4 rounded-3  foc01`}
                             onClick={() => {
                                 if (!loading) {
-                                    // console.log(reserveProperties)
                                     // if(user.logged) {
                                     tourReserve()
                                     // }else {
@@ -1020,11 +1020,7 @@ const PackageReserve = ({
                                     //
                                     // }
                                     setLoading(true)
-                                    // posthog.capture("FormEndTourPackage", {
-                                    //     HMNPhone: packData.number,
-                                    //     HMNPassengerCount: packData.count
-                                    // })
-                                    // posthog.identify(packData.number)
+
                                 }
                             }}>
                         {loading ? 'لطقا منتظر بمانید...' : `درخواست رزرو`}
@@ -1063,4 +1059,3 @@ const mapDispatchToProps = (dispatch) => ({
 export default withRouter(
     connect( mapStateToProps,mapDispatchToProps) (PackageReserve));
 // export default PackageReserve;
-

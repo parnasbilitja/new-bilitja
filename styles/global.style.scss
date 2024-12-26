@@ -667,12 +667,10 @@ html {
 }
 
 .reservecon {
-  -webkit-box-shadow: 0px -11px 32px -32px rgba(0, 0, 0, 0.98);
-  -moz-box-shadow: 0px -11px 32px -32px rgba(0, 0, 0, 0.98);
   box-shadow: 0px -11px 32px -32px rgba(0, 0, 0, 0.98);
   position: sticky;
-  padding: 1rem .5rem;
-  bottom: -15px;
+  padding: 1rem 0.5rem;
+  bottom: 0; /* Stick to the bottom of the scrollable container */
   left: 0;
   width: 100%;
   background-color: white;
@@ -690,7 +688,7 @@ html {
   width: 100%;
 
   .roomcountDet {
-background-color: white;
+    background-color: white;
     //border: 1px solid #cecece;
     padding: 1rem 2rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -723,7 +721,7 @@ background-color: white;
 
       @media only screen and (max-width: 868px) {
         .roomcount {
-justify-content: center        }
+          justify-content: center        }
 
       }
       .roomcount {
@@ -5931,7 +5929,7 @@ p img {
   background-color: rgba(128, 127, 128, 0.6);
 
   .contentContainer {
-position: relative;
+    position: relative;
     overflow-y: scroll;
     width: 50%;
     height: 90%;
@@ -6072,15 +6070,15 @@ position: relative;
         display: flex;
         justify-content: space-between !important;
         //flex-wrap: wrap;
-          .middle-det{
-            .f{
-              .separator{
-                .dash{
-                  width: 80px !important;
-                }
+        .middle-det{
+          .f{
+            .separator{
+              .dash{
+                width: 80px !important;
               }
             }
           }
+        }
         .airline-det {
           width: 100%;
           padding: 0 2px !important;
@@ -6117,19 +6115,20 @@ position: relative;
   //overflow-y: auto;
 }
 .Modal-2 {
-   //position: absolute;
-  width: 700px;
-  max-height: 900px; // height: 50%;
-  bottom: 40px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh; /* Responsive height */
   padding: 1rem;
   background-color: white;
   border-radius: 10px;
-  overflow-y: auto;
+  overflow-y: auto; /* Scrollable parent */
+  display: flex;
+  flex-direction: column;
 }
 .Modal-calendar {
   // position: absolute;
   width: 700px;
- height: fit-content; // height: 50%;
+  height: fit-content; // height: 50%;
   bottom: 40px;
   padding: 1rem;
   background-color: white;
@@ -6171,7 +6170,7 @@ position: relative;
 @media (max-width: 868px) {
   .reservecon{
     position: sticky;
-    bottom: -35px !important;
+    bottom: 0px !important;
   }
   .Modal {
     width: 95%;
@@ -6185,7 +6184,7 @@ position: relative;
 
 
 .airline_img{
- width: 25px;
+  width: 25px;
   height: 25px;
   border-radius: 50%;
   overflow: hidden;

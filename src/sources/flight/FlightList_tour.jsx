@@ -704,10 +704,8 @@ return found_room
                 overlayClassName={"Overlay"}
                 contentLabel="Example Modal">
 
-                <div style={{position:'relative',overflowY:'auto'}}>
                     <PackageReserve target_rooms={selectedRoom} hotel={props.default_hotel[0]}
                                     selectedFlight={selectedFlight} close={(val) => setIsOpen(val)}/>
-                </div>
 
 
             </Modal>
