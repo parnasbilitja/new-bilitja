@@ -2,6 +2,7 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   overflow: hidden;
   border-radius: 10px;
+  background-color: #eaeaea;
 }
 
 .flight_title{
@@ -132,7 +133,7 @@ border-radius: 10px;
   display: grid;
   grid-template-columns:.35fr 1fr ;
   margin-top:20px !important;
-gap: 5px;
+gap: 10px;
 
 }
 .svg {
@@ -143,6 +144,8 @@ gap: 5px;
   .filter_box{
     padding: 10px;
     position: sticky;
+    background-color: #eaeaea;
+
     top: 150px;
     right: 0;
     border-radius: 10px;
@@ -165,6 +168,9 @@ gap: 5px;
       margin-bottom: 10px;
       .airline_list{
         display: block;
+        margin-top: 15px;
+        background-color: white;
+        border-radius: 5px;
         //grid-template-columns: repeat(3,1fr);
 
       }
@@ -175,12 +181,13 @@ gap: 5px;
         justify-content: space-between;
         padding: 0 10px;
         input{
+          height: 40px;
           width: 150px;
           margin-top: 3px;
           border:1px solid #cecece;
           border-radius: 5px;
           outline: none;
-          padding: 2px;
+          padding: 4px;
           &::placeholder{
             font-size: 12px;
           }
@@ -226,7 +233,8 @@ gap: 5px;
 
 .selected_airline{
   border-radius: 10px;
-  background-color: rgb(236,236,236);
+  border: 2px solid #e20000;
+  // background-color: rgb(236,236,236);
 }
 
 
@@ -406,6 +414,7 @@ flex-direction: row  }
 
               span {
                 font-size: .8rem;
+                
                 font-weight: 900;
               }
 
@@ -882,6 +891,7 @@ flex-direction: row  }
 .flightDet_container {
   //border-bottom: 2px dashed $borderColor;
   background-color: #f8f9fd;
+  border: 1px solid #cecece;
   border-radius: 10px;
   padding: 10px;
   width: 100%;

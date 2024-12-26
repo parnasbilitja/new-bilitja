@@ -493,10 +493,10 @@ return found_room
                                                     <span>ش.پ:</span>
                                                     <span>{flight?.departure_flight?.flight_number}</span>
                                                 </div>
-                                                <div className={styles["flightDet_timedate"]}>
+                                                {/* <div className={styles["flightDet_timedate"]}>
                                                     <span>مدت پرواز:</span>
                                                     <span>{flight?.departure_flight?.flight_duration} ساعت </span>
-                                                </div>
+                                                </div> */}
                                             </div>
 
                                             {/*{*/}
@@ -639,10 +639,10 @@ return found_room
                                                     <span>ش.پ:</span>
                                                     <span>{flight?.return_flight?.flight_number}</span>
                                                 </div>
-                                                <div className={styles["flightDet_timedate"]}>
+                                                {/* <div className={styles["flightDet_timedate"]}>
                                                     <span>مدت پرواز:</span>
                                                     <span>{flight?.return_flight?.flight_duration} ساعت </span>
-                                                </div>
+                                                </div> */}
                                             </div>
 
                                             {/*{!moment(flight?.return_flight.date).isSame(hotel?.hotel?.checkout) &&*/}
