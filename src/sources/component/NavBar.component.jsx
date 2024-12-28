@@ -72,8 +72,8 @@ const router=useRouter()
 
   const scrollDirection = useScrollDirection();
 useEffect(()=>{
-  console.log(scrollDirection)
-},[scrollDirection])
+  console.log(RouteTranslator(router.pathname.split('/'),router.query))
+},[router.pathname])
 
   const handleLogoutUser = (e) => {
     e.preventDefault();
@@ -270,9 +270,8 @@ useEffect(()=>{
 
                         <span style={{fontSize:'14px',fontWeight:'700'}}>{r}</span>
                         {
-                            i!==RouteTranslator(router.pathname.split('/')).length -1 &&
+                            r !== undefined && (i !== RouteTranslator(router.pathname.split('/')).length - 1 ) &&
                             <svg height="20" viewBox="0 0 48 48" width="20" fill='#fff' xmlns="http://www.w3.org/2000/svg"><path d="M30.83 32.67l-9.17-9.17 9.17-9.17-2.83-2.83-12 12 12 12z"/><path d="M0-.5h48v48h-48z" fill="none"/></svg>
-
                         }
                       </div>
                   )

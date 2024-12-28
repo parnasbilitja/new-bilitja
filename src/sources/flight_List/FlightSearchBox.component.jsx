@@ -312,7 +312,7 @@ const FlightSearchBox = (props) => {
         </div>
       </div>
 
-      <div>
+      <div className="position-relative">
         <div className={` form-input-border  ${styles["prs-input"]} `}>
           {" "}
 

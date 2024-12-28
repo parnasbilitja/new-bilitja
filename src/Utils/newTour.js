@@ -605,6 +605,7 @@ export const RouteTranslator=(routeArr,queryRoute)=>{
         translatedRouteArr.push(queryRoute?.blog)
 
       }else if(routeArr[0]==='tours'){
+        debugger
         translatedRouteArr.push(queryRoute?.tour)
 
       }else{
@@ -633,7 +634,9 @@ export const RouteTranslator=(routeArr,queryRoute)=>{
        hotelselect:{trs:'انتخاب هتل'},
        flight:{trs:'انتخاب پرواز'},
        reserve:{trs:'رزرو تور'},
-       reserveconfirmation:{trs:'تایید اطلاعات'}
+       reserveconfirmation:{trs:'تایید اطلاعات'},
+       packagelist:{trs:'لیست پکیج ها'}
+
      }
    } ,
 
