@@ -111,12 +111,32 @@ function Index(props) {
     (urls) => Promise.all(urls.map(fetcher))
   );
 
+
+  const get_tour_min_price=(tour,flight_id)=>{
+    let all_rooms=[]
+    tour?.packages?.forEach(pack=>{
+        all_rooms.push(...pack.rooms)
+    })
+
+    all_rooms=all_rooms.filter(room=>+room.flight_id===+flight_id)
+
+    const min_price = all_rooms
+    .filter(room => room?.price && room.price > 0)
+    .reduce((min, room) => 
+        Math.min(min, room.price), 
+        Infinity
+    ) || 0;
+
+    return min_price
+    
+  }
   const new_tour_list = useMemo(() => {
     let final_Tour = [];
 
     if (tourData?.length > 0) {
       tourData?.forEach((tour) => {
         tour?.data?.flights?.forEach((flight) => {
+            // console.log(get_tour_min_price(tour.data))
           let t = {
             ...tour.data,
             flightData: {
@@ -126,6 +146,7 @@ function Index(props) {
 
           delete t.flights;
           delete t.packages;
+          t.min_price=get_tour_min_price(tour.data,flight.id)
           final_Tour.push(t);
         });
       });
