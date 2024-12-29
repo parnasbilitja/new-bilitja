@@ -168,7 +168,9 @@ const router = useRouter();
                                         {<div style={{
                                             display: 'flex',
                                             columnGap: '3px',
-                                            justifyContent: 'center'
+                                            justifyContent: 'center',
+                                            flexDirection:'column',
+                                            gap:'3px'
                                         }}>
                                             {!item.offered ? getRandomNumber(8).map(num => (
                                                 <div style={{
