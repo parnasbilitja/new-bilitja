@@ -108,9 +108,9 @@ const Packages = (props) => {
     const [selectedRooms, setSelectedRoom] = useState(0);
     const foundRooms = (pack) => {
         let foundRoom = pack?.filter(room => +room?.room_type_id === 148)
-        let cheapest148room = foundRoom.reduce((min, obj) => (obj.price < min.price ? obj : min), foundRoom[0])
+        let cheapest148room = foundRoom?.reduce((min, obj) => (obj.price < min.price ? obj : min), foundRoom[0])
         let rooms = [cheapest148room];
-        let OtherRoom = pack.filter(room => room.flight_id === cheapest148room.flight_id && +room?.room_type_id !== 148)
+        let OtherRoom = pack?.filter(room => room?.flight_id === cheapest148room?.flight_id && +room?.room_type_id !== 148)
 
         rooms.push(...OtherRoom)
 

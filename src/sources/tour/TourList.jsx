@@ -151,7 +151,7 @@ useEffect(()=>{
                                         </div>
                                         <div className="type">
 
-                                        
+
 
                                             <div className={'isDesktop'} >
                                                 {<div style={{display: 'flex', columnGap: '3px',justifyContent:'center'}}>
