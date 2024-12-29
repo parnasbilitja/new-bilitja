@@ -150,6 +150,7 @@ useEffect(()=>{
                                             </div>
                                         </div>
                                         <div className="type">
+
                                         
 
                                             <div className={'isDesktop'} >
