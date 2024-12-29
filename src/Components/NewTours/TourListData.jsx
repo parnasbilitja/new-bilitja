@@ -2,7 +2,7 @@ import styles from '../../../styles/newTour/TourLIstData.module.scss'
 import React, {useEffect} from "react";
 import Link from "next/link";
 import {moneyFormatrial} from "../../Utils/SimpleTasks";
-import {getcurrencyfa, getRandomNumber, MiladiToJalaliConvertor} from "../../Utils/newTour";
+import {getcurrencyfa, getRandomNumber, MiladiToJalaliConvertor, timeFixer} from "../../Utils/newTour";
 import {useRouter} from "next/router";
 
 const TourListData = (props) => {
@@ -158,9 +158,9 @@ const router = useRouter();
                                     </svg>
                                     <div className="d-flex flex-column">
                                                            <span
-                                                               className="to text-dark font-size-14 pt-1">{MiladiToJalaliConvertor(item?.checkin)}</span>
+                                                               className="to text-dark font-size-14 pt-1">{MiladiToJalaliConvertor(item?.flightData?.departure_flight?.date)} | {timeFixer(item?.flightData?.departure_flight?.time)}</span>
                                         <span
-                                            className="from text-dark font-size-14 pt-1">{MiladiToJalaliConvertor(item?.checkout)}</span>
+                                            className="from text-dark font-size-14 pt-1">{MiladiToJalaliConvertor(item?.flightData?.return_flight?.date)} | {timeFixer(item?.flightData?.return_flight?.time)}</span>
                                     </div>
                                 </div>
                                 <div className="type">

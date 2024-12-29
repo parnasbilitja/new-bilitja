@@ -585,8 +585,6 @@ export const getRandomRounded = (min, max) => {
 // };
 export const RouteTranslator=(routeArr,queryRoute)=>{
 
-  // debugger
-  // debugger
  let translatedRouteArr=['بلیطجا']
  routeArr.shift()
 
@@ -605,7 +603,6 @@ export const RouteTranslator=(routeArr,queryRoute)=>{
         translatedRouteArr.push(queryRoute?.blog)
 
       }else if(routeArr[0]==='tours'){
-        debugger
         translatedRouteArr.push(queryRoute?.tour)
 
       }else{

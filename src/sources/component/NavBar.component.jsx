@@ -71,9 +71,7 @@ const router=useRouter()
 
 
   const scrollDirection = useScrollDirection();
-useEffect(()=>{
-  console.log(RouteTranslator(router.pathname.split('/'),router.query))
-},[router.pathname])
+
 
   const handleLogoutUser = (e) => {
     e.preventDefault();
