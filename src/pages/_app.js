@@ -18,6 +18,7 @@ import TagManager from 'react-gtm-module'
 import {QueryClient, QueryClientProvider} from "react-query";
 function MyApp({ Component, pageProps }) {
 
+  
 
   const router = useRouter();
 

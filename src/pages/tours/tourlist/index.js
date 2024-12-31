@@ -658,11 +658,9 @@ function Index(props) {
             />
           )}
 
-          {/*<List scrollToTop={true} scroll_top={()=>scrollToTop()} hideShowMore={false} tourData={tour} shimmerNumber={15} />*/}
         </div>
       </div>
     </>
-    // <div>fuck</div>
   );
 }
 
