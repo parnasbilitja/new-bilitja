@@ -640,7 +640,7 @@ function Index(props) {
                       فیلتر ها
                     </button>
                   </div>
-                  <TourListData tours={tour} />
+                  <TourListData tours={tour.sort((a,b)=>a.min_price-b.min_price)} />
                 </>
               </div>
             )}
