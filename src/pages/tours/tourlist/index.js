@@ -117,18 +117,15 @@ function Index(props) {
     tour?.packages?.forEach(pack=>{
         all_rooms.push(...pack.rooms)
     })
-
     all_rooms=all_rooms.filter(room=>+room.flight_id===+flight_id)
-
     const min_price = all_rooms
-    .filter(room => room?.price && room.price > 0)
+    .filter(room => room?.price && room?.price > 0)
     .reduce((min, room) => 
-        Math.min(min, room.price), 
-        Infinity
+        Math.min(min, room?.price),
+        Infinity 
     ) || 0;
 
-    return min_price
-    
+    return min_price === Infinity ? 0 : min_price;    
   }
   const new_tour_list = useMemo(() => {
     let final_Tour = [];
@@ -235,9 +232,7 @@ function Index(props) {
     body[0].scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }
 
-  useEffect(() => {
-    console.log(tour);
-  }, [tour]);
+
   return (
     <>
       <Scrolltoprefresh />
