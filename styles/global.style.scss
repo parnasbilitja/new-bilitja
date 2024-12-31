@@ -5689,7 +5689,7 @@ p img {
     margin-top: 20px;
   }
   .req-container {
-    width: 100% !important;
+    // width: 100% !important;
     //overflow: auto !important;
   }
   .rooms {
@@ -6127,6 +6127,17 @@ p img {
   display: flex;
   flex-direction: column;
 }
+.Modal-rooms {
+  width: 100%;
+  max-width: 1200px;
+  max-height: 90vh; /* Responsive height */
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  overflow-y: auto; /* Scrollable parent */
+  display: flex;
+  flex-direction: column;
+}
 .Modal-calendar {
   // position: absolute;
   width: 700px;
@@ -6178,6 +6189,11 @@ p img {
     width: 95%;
     height: 60%;
     overflow: hidden;
+  }
+
+  .Modal-rooms{
+    width: 95%;
+    height: 60%;
   }
   .Overlay_calendar{
     display: none;
