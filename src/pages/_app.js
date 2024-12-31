@@ -15,7 +15,6 @@ import TagManager from 'react-gtm-module'
 
 // export const config = { amp: true }
 
-import { PostHogProvider } from 'posthog-js/react'
 import {QueryClient, QueryClientProvider} from "react-query";
 function MyApp({ Component, pageProps }) {
 

@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="UI bug fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,6 +319,8 @@
       <workItem from="1735360912443" duration="3233000" />
       <workItem from="1735389003377" duration="39000" />
       <workItem from="1735393463902" duration="17000" />
+      <workItem from="1735449793076" duration="4961000" />
+      <workItem from="1735537649871" duration="600000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -487,46 +490,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00236" summary="some bugs have been resolved">
-      <option name="closed" value="true" />
-      <created>1734876932608</created>
-      <option name="number" value="00236" />
-      <option name="presentableId" value="LOCAL-00236" />
-      <option name="project" value="LOCAL" />
-      <updated>1734876932608</updated>
-    </task>
-    <task id="LOCAL-00237" summary="some bugs have been resolved">
-      <option name="closed" value="true" />
-      <created>1734956673117</created>
-      <option name="number" value="00237" />
-      <option name="presentableId" value="LOCAL-00237" />
-      <option name="project" value="LOCAL" />
-      <updated>1734956673117</updated>
-    </task>
-    <task id="LOCAL-00238" summary="some bugs have been resolved">
-      <option name="closed" value="true" />
-      <created>1735019635236</created>
-      <option name="number" value="00238" />
-      <option name="presentableId" value="LOCAL-00238" />
-      <option name="project" value="LOCAL" />
-      <updated>1735019635236</updated>
-    </task>
-    <task id="LOCAL-00239" summary="some bugs have been resolved">
-      <option name="closed" value="true" />
-      <created>1735023031990</created>
-      <option name="number" value="00239" />
-      <option name="presentableId" value="LOCAL-00239" />
-      <option name="project" value="LOCAL" />
-      <updated>1735023031990</updated>
-    </task>
-    <task id="LOCAL-00240" summary="some style of flight list has been changed due to better UX &amp; UI">
-      <option name="closed" value="true" />
-      <created>1735104203410</created>
-      <option name="number" value="00240" />
-      <option name="presentableId" value="LOCAL-00240" />
-      <option name="project" value="LOCAL" />
-      <updated>1735104203410</updated>
-    </task>
     <task id="LOCAL-00241" summary="some style of flight list has been changed due to better UX &amp; UI">
       <option name="closed" value="true" />
       <created>1735107747781</created>
@@ -655,7 +618,47 @@
       <option name="project" value="LOCAL" />
       <updated>1735393467148</updated>
     </task>
-    <option name="localTasksCounter" value="257" />
+    <task id="LOCAL-00257" summary="UI bug fixed">
+      <option name="closed" value="true" />
+      <created>1735449802759</created>
+      <option name="number" value="00257" />
+      <option name="presentableId" value="LOCAL-00257" />
+      <option name="project" value="LOCAL" />
+      <updated>1735449802759</updated>
+    </task>
+    <task id="LOCAL-00258" summary="UI bug fixed">
+      <option name="closed" value="true" />
+      <created>1735458758556</created>
+      <option name="number" value="00258" />
+      <option name="presentableId" value="LOCAL-00258" />
+      <option name="project" value="LOCAL" />
+      <updated>1735458758556</updated>
+    </task>
+    <task id="LOCAL-00259" summary="UI bug fixed">
+      <option name="closed" value="true" />
+      <created>1735465691300</created>
+      <option name="number" value="00259" />
+      <option name="presentableId" value="LOCAL-00259" />
+      <option name="project" value="LOCAL" />
+      <updated>1735465691300</updated>
+    </task>
+    <task id="LOCAL-00260" summary="UI bug fixed">
+      <option name="closed" value="true" />
+      <created>1735469988333</created>
+      <option name="number" value="00260" />
+      <option name="presentableId" value="LOCAL-00260" />
+      <option name="project" value="LOCAL" />
+      <updated>1735469988334</updated>
+    </task>
+    <task id="LOCAL-00261" summary="UI bug fixed">
+      <option name="closed" value="true" />
+      <created>1735470286170</created>
+      <option name="number" value="00261" />
+      <option name="presentableId" value="LOCAL-00261" />
+      <option name="project" value="LOCAL" />
+      <updated>1735470286170</updated>
+    </task>
+    <option name="localTasksCounter" value="262" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
