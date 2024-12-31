@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {Err, ErrSuccess, NotifAlert} from "../NewTours/Components/NotifAlert.component";
 import PrimaryTextInput from "../../sources/component/PrimaryTextInput.component";
 import styles from '../../../styles/newTour/PackageReserve.module.scss'
-import {usePostHog} from "posthog-js/react";
+// import {usePostHog} from "posthog-js/react";
 import {chdAgeStr, numberToWordConvertor, numberWithCommas} from "../../Utils/newTour";
 import {useRouter, withRouter} from "next/router";
 import {fontSize} from "@mui/system";
@@ -414,7 +414,7 @@ const PackageReserve = ({
 
 
 ////////////////////
-    const posthog = usePostHog()
+    // const posthog = usePostHog()
     const [passsengerCount, setPassengerCount] = useState({
         adl: 0,
         chd: 0,

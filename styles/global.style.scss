@@ -708,6 +708,7 @@ html {
 
       .roomscon {
         grid-template-columns: repeat(2, 1fr);
+        gap:3px;
       }
 
     }
@@ -721,7 +722,8 @@ html {
 
       @media only screen and (max-width: 868px) {
         .roomcount {
-          justify-content: center        }
+          justify-content: center      
+          }
 
       }
       .roomcount {
