@@ -283,7 +283,7 @@ className='p-0 m-0'
             </div>
             <div className={styles['search_box_container']} style={{padding: '0 10px', columnGap: '12px'}}>
 
-                <div className={'w-100'}>
+                <div className={'w-100 position-relative'}>
                     <div className={` form-input-border ${styles["prs-input"]} `}>
 
 
@@ -359,13 +359,15 @@ className='p-0 m-0'
                             setsearchInput={(val) => setSearchInput(val)}
                             searchInput={searchInput}
                             type={'شهرها'}
+                            close={()=> SearchBoxSteps('')}
+
                             handleChange={(val) => setOrigin(val)}
 
 
                         />}
                 </div>
 
-                <div className={'w-100'}>
+                <div className={'w-100 position-relative'}>
                     <div className={` form-input-border ${styles["prs-input"]} `}
                         // style={{width: '300px'}}
                     >
@@ -450,6 +452,7 @@ className='p-0 m-0'
                             setSearch={setSearch}
                             months={destinations}
                             type={'شهرها'}
+                            close={()=> SearchBoxSteps('')}
 
                             // issearchbox={toursData.searchboxStep === 'dest'}
                             // setIsSearchbox={() => SearchBoxSteps('dest')}
@@ -717,7 +720,7 @@ className='p-0 m-0'
 
                 </div>
 
-                <div className={'w-100'}>
+                <div className={'w-100 position-relative'}>
                     <div className={` form-input-border ${styles["prs-input"]} `}
                         // style={{width: '300px'}}
                     >

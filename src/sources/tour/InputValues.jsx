@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import {Loader} from "../../Utils/Loader";
 import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
 
-const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox,searchInput,handleChange,setIsSearchbox,type}) => {
+const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox,searchInput,handleChange,setIsSearchbox,type,close}) => {
     const [hide, setHide] = useState(false)
     const searchHandler = (value='',name) => {
         // debugger
@@ -69,12 +69,12 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
                     transition={{duration:0.3}}
                     className={styles['suggestion-box']}
 
-                    style={{backgroundColor:'white',padding:'2px 10px',marginTop:'8px',borderRadius:'10px',position:'absolute',zIndex:'9999',width:'300px' , maxHeight:'100px' ,minHeight:'40px',overflowY:'scroll'}}
+                    style={{backgroundColor:'white',padding:'2px 10px',marginTop:'8px',borderRadius:'10px',position:'absolute',zIndex:'9999',width:'100%' , maxHeight:'100px' ,minHeight:'40px',overflowY:'scroll'}}
                 >
                     {months?.length > 0 ? months?.map((item) => (
                             <>
-                                <div key={item.code}
-                                     style={{cursor:'pointer'}}
+                                <div  key={item.code}
+                                     style={{cursor:'pointer',display:'flex',flexDirection:'column',gap:'5px',padding:'5px 0'}}
 
                                      onClick={(e) => {
                                          e.stopPropagation()
@@ -111,7 +111,7 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
                             <div className={styles['title']}>
                                 <p>{type}</p>
                                 <div className={styles['closebtn']} onClick={() => {
-                                    setIsSearchbox()
+                                    close()
                                 }}>
                                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times"
                                          className="svg-inline--fa fa-times fa-w-11 " role="img"
