@@ -117,3 +117,12 @@ overflow-y: hidden;
 
   }
 }
+
+
+.item{
+  padding: 2px 15px;
+  &:hover{
+    background-color: #e2e6e998;
+    width: 100%;
+  }
+}

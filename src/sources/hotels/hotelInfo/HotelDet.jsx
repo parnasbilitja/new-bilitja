@@ -1,7 +1,7 @@
 "use client";
 // import { startBuilder } from "@/Utils/newTour";
 // import styles from "../../../styles/Tours/common/HotelInfo.module.scss";
-import Image from "next/image";
+// import Image from "next/image";
 import Modal from "react-modal";
 import {useEffect, useState} from "react";
 // import MapComponent from "@/components/common/Map";
@@ -21,9 +21,7 @@ const MapComponent = dynamic(() => import("../../component/Map.component"), {
 const HotelInfo = ({ hotel }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenImg, setIsOpenImg] = useState(false);
-useEffect(()=>{
-  console.log(hotel)
-},[hotel])
+
 
   return (
     <>
@@ -34,23 +32,17 @@ useEffect(()=>{
           <div
               className={styles['gallery-container']}
 
-              // onClick={() => setIsOpenImg(true)}
+              onClick={() => setIsOpenImg(true)}
           >
-            <Gallery images={hotel?.gallery} />
-
-            {/*{hotel?.gallery?.map((item, index) => {*/}
-            {/*  if (index < 3) {*/}
-            {/*    return (*/}
-            {/*        <div*/}
-            {/*            key={item.url || index}*/}
-            {/*            className={styles["img_container"]}*/}
-            {/*            onClick={() => setIsOpenImg(true)}*/}
-            {/*        >*/}
-            {/*          <img src={item.url} alt={""} style={{width: '100%', height: '100%', objectFit: 'cover'}}/>*/}
-            {/*        </div>*/}
-            {/*    );*/}
-            {/*  }*/}
-            {/*})}*/}
+    
+                   <div
+                       key={hotel.thumbnail.url }
+                       className={styles["img_container"]}
+                       onClick={() => setIsOpenImg(true)}
+                   >
+                     <img src={hotel.thumbnail.url} alt={""} style={{width: '100%', height: '100%', objectFit: 'cover'}}/>
+                   </div>
+       
           </div>
           <div
               className={styles["main_img_container"]}
@@ -61,10 +53,33 @@ useEffect(()=>{
             {/*  style={{width: '100%', height: '100%',objectFit: 'cover'}}*/}
             {/*/>*/}
             <div className={styles['info']}>
-              <div style={{height: '150px'}}>
+            <div className={styles['map_gallary_container']}>
+              <div className={styles['gallaries']}>
+              {
+                hotel.gallery.map((hotel,index)=>{
+                  if (index!==0 &&index <= 4 ) {
+                  return(
+                    <div
+                       key={hotel.url }
+                       className={styles["gallary_img_container"]}
+                       onClick={() => setIsOpenImg(true)}
+                   >
+                     <img src={hotel.url} alt={""} />
+                   </div>
+                  )
+                  }else{
+                    return(
+                      null
+                    )
+                  }
+                })
+              }
+              </div>
+              <div style={{height: '170px'}}>
                 <MapComponent coordinates={hotel?.coordinates} locName={hotel?.title}/>
               </div>
-              <div style={{gap: '5px'}} className={'mt-3'}>
+            </div>
+              <div style={{gap: '5px'}} className={'mt-2'}>
                 <div className="d-flex align-items-center gap-x-4 mb-1 mt-1">
                   {startBuilder(parseInt(hotel?.stars))}
                   <p className="text-md font-size-14 font-bold mx-1">{hotel?.titleEn}</p>

@@ -8,8 +8,7 @@ const BirthdayCalendar = (props) => {
   //
   const { typePassenger } = props;
 
-  useEffect(()=>{
-    console.log(props)},[props])
+
   let current = 1401;
   const today = moment().format("jYYYY/jMM/jDD");
   const date = today.split("/");
@@ -21,17 +20,14 @@ const BirthdayCalendar = (props) => {
     month: "",
   });
 
-  useEffect(()=>{
-    console.log(props)
-  },[props.roomInfo])
+
   const [CHDage,setCHDage]=useState('')
 useEffect(()=>{
-  // debugger
+  
 let chdagewith=typePassenger==='CHD' && props.roomInfo.chdages[props?.roomInfo?.chdType][1]
   let chdage=moment().add(-(chdagewith+1), "jyears").format("jYYYY/jMM/jDD")
   setCHDage(chdage)
 
-  // console.log(chdage)
 },[typePassenger,props.roomInfo?.chdType])
 
   let INFage = moment().add(-2, "jyears").format("jYYYY/jMM/jDD");
@@ -240,7 +236,7 @@ if(typePassenger==='ADL'||typePassenger==='INF'){
       `${state.year + "/" + state.month + "/" + daynum}`,
       "jYYYY/jMM/jDD"
   );
-  // debugger
+  
   const date = m.format("jYYYY/jMM/jDD");
 
   let checkin=props.roomInfo.checkin
@@ -436,7 +432,7 @@ if(typePassenger==='ADL'||typePassenger==='INF'){
                     setState({ ...state, stage: 1 });
 
                     // props.dateMaker(dasheddateformat);
-                    // debugger
+                    
                     props.Birthdate(
                       dasheddateformat,
                       props.roomInfo.passId,

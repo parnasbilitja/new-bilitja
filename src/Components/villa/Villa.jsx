@@ -90,7 +90,7 @@ const Villa = (props) => {
         
           {
             mainRouter(props.router.asPath)
-            //console.log(props.router)
+ 
             //   props.router.push("/flights")
           }
           <MessageBoxComponent />

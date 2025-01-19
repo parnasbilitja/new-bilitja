@@ -44,7 +44,6 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
         setSearch({...search,[name]:value});
         setCity('')
     }
-    console.log(value)
   };
 
     useEffect(()=>{
@@ -52,7 +51,6 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
         setCities1(cities.data)
       }else{
         const filtered=cities.data.filter(city=> city.name.indexOf(searchInput)!==-1)
-        console.log(filtered)
         setCities1(filtered)
       }
     },[searchInput])
@@ -75,9 +73,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
   useEffect(() => {
     setCity(search.id)
   },[search])
-  useEffect(()=>{
-    console.log(width)
-  },[width])
+
 
   const posthog=usePostHog()
 

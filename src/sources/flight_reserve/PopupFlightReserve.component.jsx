@@ -31,7 +31,6 @@ const PopupFlightReserve = (props) => {
   });
 
   const numToArr=(num)=>{
-    // debugger
     let passengerArr=[]
     for (let i=0;i<=num;i++){
       passengerArr.push(i)

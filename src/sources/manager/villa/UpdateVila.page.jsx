@@ -66,7 +66,7 @@ class UpdateVila extends React.Component {
     // get base facilities
 
     //var path=this.props.router.asPath;
-    console.log(this.props.router.asPath.substr(21));
+ 
     fetch(`${globals.baseUrl}bj/emkanat/view`)
       .then((res) => res.json())
       .then((data) => {
@@ -1298,7 +1298,7 @@ class UpdateVila extends React.Component {
                             Stat: 1,
                           })
                         );
-                        console.log(JSON.stringify(param));
+                
 
                         fetch(`${globals.baseUrl}bj/eghamatEmkanat/save`, {
                           headers: { "Content-Type": "application/json" },
@@ -1307,7 +1307,7 @@ class UpdateVila extends React.Component {
                         })
                           .then((res) => res.json())
                           .then((data2) => {
-                            console.log(data2);
+                          
                           });
 
                         ///  step 2
@@ -1359,7 +1359,6 @@ class UpdateVila extends React.Component {
                               )
                                 .then((res) => res.json())
                                 .then((data3) => {
-                                  // console.log(data2)
                                 });
 
                               this.props.messageBoxModify({

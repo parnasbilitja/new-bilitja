@@ -24,7 +24,7 @@ const AvailableFlightMobile = ({flight, setSelectedRoom, setSelectedFlight, setI
                                                 <div className={styles["flight_info"]}>
                                                     <div style={{
                                                         backgroundColor: 'rgb(236,236,236)',
-                                                        padding: '.5rem',
+                                                        padding: '.3rem',
                                                         borderRadius: '20px',
                                                         marginBottom: '5px'
                                                     }}>

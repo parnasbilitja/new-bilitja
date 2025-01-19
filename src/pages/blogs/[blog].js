@@ -29,7 +29,6 @@ const blog = (props) => {
 
     const router =useRouter()
     useEffect(()=>{
-        console.log(post.body)
         let generatedSchema= {
             "@context": "https://schema.org",
             "@type": "NewsArticle",

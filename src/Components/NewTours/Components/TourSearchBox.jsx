@@ -72,7 +72,7 @@ const TourSearchBox = (props) => {
 
 
     useEffect(() => {
-        // debugger
+        
         setWidth(window.innerWidth);
         getDestandOrgCities();
         ///////////////////////
@@ -81,9 +81,6 @@ const TourSearchBox = (props) => {
 
 
 
-    useEffect(()=>{
-        console.log(nights)
-    },[nights])
 
     const [state, setState] = useState({
         searchBool: false,
@@ -159,9 +156,9 @@ const TourSearchBox = (props) => {
 
 
 
-        if (!origin.code || !destination.code || date === {} || (!date.miladiDate && !date.persianDate) ||!night) {
+        if (!origin.code || !destination.code  || (!date.miladiDate && !date.persianDate) ||!night) {
             if (!night) {
-                // debugger
+                
                 Err('لطفا مدت اقامت را وارد کنید')
                 setIsNight(true)
                 return false;
@@ -184,7 +181,7 @@ const TourSearchBox = (props) => {
         //     setIsDate(false)
         // }
         // if (!night) {
-        //     debugger
+        //     
         //     Err('لطفا مدت اقامت را وارد کنید')
         //     setIsNight(true)
         //     return false;
@@ -210,10 +207,10 @@ const TourSearchBox = (props) => {
     }
 
     useEffect(()=> {
-// debugger
+
 
         if(props.destandorgcities.origin.code){
-            // debugger
+            
 
             let dest=cities?.filter(city=>city.code===props.destandorgcities.origin.code)
 
@@ -230,7 +227,7 @@ const TourSearchBox = (props) => {
            ( props.destandorgcities.destination.code &&
             props.destandorgcities.origin.code)
         ) {
-            // debugger
+            
             if(destStat.length>0){
                 let currentDestinationDates=destStat.filter(city=>city.code=== props.destandorgcities.destination.code)[0]?.dates
             setDateAndNight(currentDestinationDates)
@@ -248,11 +245,9 @@ const TourSearchBox = (props) => {
        destStat
 
     ]);
-useEffect(()=>{
-    console.log(dateAndNight)
-},[dateAndNight])
+
     useEffect(()=>{
-        // debugger
+        
         if (props.destandorgcities.date.miladiDate && dateAndNight.length>0) {
             const nightsNumber = dateAndNight?.filter(
                 (datenight) => datenight?.date === props.destandorgcities.date.miladiDate
@@ -605,7 +600,7 @@ useEffect(()=>{
                                 const stDate = jalaliDateReformater(
                                     props.destandorgcities.date.persianDate
                                 );
-                                // debugger;
+                                ;
                                 // 
 
                                 router.push(

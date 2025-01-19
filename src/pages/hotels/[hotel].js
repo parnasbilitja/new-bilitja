@@ -56,7 +56,7 @@ const hotel = (props) => {
         // .catch((err) =>r);
     };
     //     const getData = async () => {
-    //     debugger
+    //     
     //         await axios.get(`https://api.hotelobilit.com/api/v2/hotels/${props.Pathname.hotel}`,{
     //             headers:{
     //                 "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05'
@@ -75,7 +75,7 @@ const hotel = (props) => {
 
 
     const latLngSeparator=(coordinates)=>{
-        debugger
+        
         let latlng=coordinates?.split(',')
     return [+latlng[0],+latlng[1]]
 
@@ -273,9 +273,7 @@ const getData = async (hotelslug) => {
 export async function getServerSideProps(context) {
     // Access the query parameter
 
-    console.log('again',context.query)
     let hotel =await getData(encodeURIComponent(context.query.hotel))
-    console.log('end',hotel)
     return {
         props: {
             hotel:hotel

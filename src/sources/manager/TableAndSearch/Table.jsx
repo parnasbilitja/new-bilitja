@@ -42,8 +42,7 @@ const Table = ({
   const[newdata,setNewData] = useState([]);
   useEffect(()=>{
     if(router.asPath.includes('transaction') ){
-      console.log(paymentstat,data,slice)
-      debugger
+      
       if(slice.length > 0){
         let newdata=slice?.filter((item) => item.stat===paymentstat)
         setNewData(newdata)
@@ -54,9 +53,7 @@ const Table = ({
 
   },[paymentstat,slice])
   const router =useRouter()
-  useEffect(()=>{
-    console.log(router)
-  },[router])
+
   return (
     <>
       <div className="row d-flex justify-content-center align-items-center">

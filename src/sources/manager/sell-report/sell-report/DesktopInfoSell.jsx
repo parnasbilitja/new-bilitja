@@ -179,7 +179,7 @@ const DesktopInfoSell = ({ open, close, reqNo, reqPnr }) => {
       `/api/report/getReportInfo?reqNo=${reqNo}&reqPnr=${reqPnr}`
     );
     const response = await fetched.json();
-    console.log(response);
+  
     const array = response.data.map((option) =>
       createData({
         reqNo: option.reqNo,

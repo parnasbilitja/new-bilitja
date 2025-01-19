@@ -13,7 +13,6 @@ const Row = ({ option, index, filters ,setFilter,close}) => {
   const [change, setChange] = React.useState(0);
 
   const handleSave = async (option) => {
-    debugger
     const info = {
       customerId: "1a157116-a01a-4027-ab10-74098ac63815",
       kndSys: option.kndsys,

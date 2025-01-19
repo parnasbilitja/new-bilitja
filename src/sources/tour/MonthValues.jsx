@@ -6,7 +6,7 @@ import styles from "../../../styles/InputValues.module.scss";
 const MonthValues = ({setSearch, search, name, months,setsearchInput,issearchbox,searchInput,handleChange,setIsSearchbox}) => {
     const [hide, setHide] = useState(false)
     const searchHandler = (value='',name) => {
-        // debugger
+        
         setHide(true)
         setSearch({
             ...search,

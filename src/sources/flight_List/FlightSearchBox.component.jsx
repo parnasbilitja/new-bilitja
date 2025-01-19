@@ -498,7 +498,6 @@ const FlightSearchBox = (props) => {
                   props.refreshAction();
                 });
             }
-            //   debugger
             // if(props.credentials?.destinationName==='استانبول جدید' && props.credentials?.stDate==='2023/11/18' && props.credentials?.sourceName===){
             //   // gtag('event', 'formStarted', { 'destination': props.credentials.dest, 'selectedDate': props.credentials.stDate})
             // // console.log(props.credentials)

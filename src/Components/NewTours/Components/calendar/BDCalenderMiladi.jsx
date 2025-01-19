@@ -23,12 +23,11 @@ const BirthdayCalenderMiladi = (props) => {
   let month30 = [4, 6, 9, 11];
 
   useEffect(()=>{
-    // debugger
+    
     let chdagewith=typePassenger==='CHD' && props.roomInfo.chdages[props?.roomInfo?.chdType][1]
     let chdage=moment().add(-(chdagewith+1), "years").format("YYYY/MM/DD")
     setCHDage(chdage)
 
-    // console.log(chdage)
   },[typePassenger,props.roomInfo?.chdType])
   const getYears = () => {
 
@@ -405,7 +404,7 @@ const BirthdayCalenderMiladi = (props) => {
                         "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif",
                     }}
                     onClick={() => {
-                      // debugger
+                      
                       const m = moment(
                         `${state.year + "/" + state.month + "/" + x}`,
                         "jYYYY/jMM/jDD"

@@ -20,7 +20,6 @@ const CountDownTimer = ({exp_time}) => {
 
     useEffect(()=>{
         getTime(exp_time)
-        console.log('dsasad',exp_time)
 
     },[exp_time])
 

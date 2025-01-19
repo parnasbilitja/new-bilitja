@@ -13,7 +13,7 @@
 //         setEl(arr)
 //     }
 //     useEffect(() => {
-//         // debugger
+//         
 //         paginateElGen(to)
 //     }, [to])
 //
@@ -83,7 +83,7 @@ const Paginate=({ to, apiCall,scrollToTop})=>{
         setEl(arr)
     }
     useEffect(() => {
-        // debugger
+        
         paginateElGen(to)
     }, [to])
 
@@ -101,10 +101,7 @@ const Paginate=({ to, apiCall,scrollToTop})=>{
 
         }
     }
-    // useEffect(() => {
-    //     console.log(firstfour,lastfour,middleArr)
 
-    // }, [firstfour,lastfour,middleArr]);
     useEffect(() => {
 
         paginateStaging()

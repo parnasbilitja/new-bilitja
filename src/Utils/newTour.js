@@ -52,7 +52,7 @@ export const MiladiToJalaliConvertorDec = (miladiDate) => {
 
 ////sperate price with (,)
 export function numberWithCommas(number) {
-  // debugger;
+  ;
   if(number){
     var parts = number?.toString().split(".");
     parts[0] = parts[0]?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -72,7 +72,8 @@ export  const timeFixer=(time)=>{
 }
 
 ////star builder
-export const startBuilder = (star, setvalue) => {
+export const startBuilder = (star) => {
+  
   const startarr = [];
   for (let i = 0; i < star; i++) {
     startarr.push(
@@ -90,6 +91,7 @@ export const startBuilder = (star, setvalue) => {
       </svg>
     );
   }
+  
   return startarr;
 };
 
@@ -214,11 +216,11 @@ export const getDayInPersian=(dayname)=>{
   }
 }
 // export const roomPrcGen = (room, flight) => {
-//   // debugger
+//   
 //   let services;
 //   let price = 0;
 //   let isCheckIn = room.rates[0]?.checkin_base;
-//   // debugger
+//   
 //   let rates = room.rates.filter(
 //     (rate) =>
 //       moment(rate.date).isSameOrBefore(flightDateChecker(flight).checkout) &&
@@ -255,7 +257,7 @@ export const getDayInPersian=(dayname)=>{
 
 //
 // export const chdPrcGen = (rooms, flight, roomTypeId) => {
-//   // debugger
+//   
 //   let price = 0;
 //   let services;
 //   rooms?.map((room) => {
@@ -301,18 +303,18 @@ export const getDayInPersian=(dayname)=>{
 //   return price;
 // };
 export const roomNameChecker = (roomsarr, room_id) => {
-  // debugger
+  
   const roomName = roomsarr?.filter((room) => room.id === room_id);
   return roomName[0]?.room_type;
 };
 
 export const errValidation = (ErrObj, errtype) => {
-  // debugger;
+  ;
   return ErrObj?.hasOwnProperty(errtype);
 };
 
 export const dateDiffChecker = (stDate, enDate, stayCount) => {
-  // debugger;
+  ;
   // let diff = moment(enDate).diff(stDate, "days") + 1;
   if (moment(enDate).diff(stDate, "days") + 1 === +stayCount) {
     return true;
@@ -338,7 +340,7 @@ export const getcurrencyfa=(c)=>{
 //
 // export const flightDateChecker = (flight) => {
 //   //
-//   // debugger;
+//   ;
 //   let checkin;
 //   let checkout;
 //   if (flight.checkin_tomorrow && flight.checkout_yesterday) {
@@ -354,7 +356,7 @@ export const getcurrencyfa=(c)=>{
 //     checkout = moment(flight.flight.date).subtract(2, "d").format("YYYY-MM-DD");
 //     return { checkin, checkout };
 //   } else {
-//     // debugger
+//     
 //     checkout = moment(flight.flight.date).subtract(1, "d").format("YYYY-MM-DD");
 //     checkin = flight.date;
 //     return { checkin, checkout };
@@ -456,7 +458,7 @@ export const rotateVariants = {
 };
 
 export const removeDuplicateObj = (data, prop) => {
-  // debugger
+  
   const seenIds = {}; // Helper object to keep track of seen IDs
 
   const filteredData = data.filter((obj) => {
@@ -513,7 +515,7 @@ export const numberToWordConvertor=(num)=>{
 
 }
 export const chdAgeStr=(low,high)=>{
-  // debugger
+  
 
   return low +' '+'تا'+' '+ high + 'سال'
 

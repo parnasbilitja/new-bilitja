@@ -2,9 +2,7 @@ import React, {useEffect} from 'react';
 import Question from './Question';
 
 const Questions = ({data}) => {
-    useEffect(()=>{
-        console.log('shdgfs',data)
-    },[])
+
     return (
         <div id="questions" class="faq">
             <div class="title-faq">

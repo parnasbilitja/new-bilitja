@@ -17,17 +17,12 @@
 
 .gallery-container{
   width:450px;
-  height:260px
+  height:260px;
 }
 .hotelInfo {
-
-
-
-
   display: block; // Default (fallback)
-
   grid-template-columns:.5fr 1fr; // grid-cols-2
-  gap: 0.5rem; // gap-2
+  gap: 5px; // gap-2
 }
 
 .gallary{
@@ -91,6 +86,7 @@
 
 @media (min-width: 640px) and (max-width: 767px) {
 
+
   .hotelInfo{
     display: block;
 
@@ -106,9 +102,16 @@
 }
 
 @media (max-width: 868px) {
+  .hotelInfo{
+    padding-bottom: 5px;
+
+  }
   .gallery-container{
     width:385px;
     height:260px
+  }
+  .map_gallary_container{
+    grid-template-columns: repeat(2,1fr) !important;
   }
   .gallary {
     margin-top: 5px;
@@ -131,5 +134,29 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+}
+
+.map_gallary_container{
+  gap: 10px;
+  display: grid;
+  grid-template-columns: .5fr 1fr;
+}
+
+.gallaries{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 3px;
+  .gallary_img_container{
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
   }
 }

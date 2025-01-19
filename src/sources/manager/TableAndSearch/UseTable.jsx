@@ -66,9 +66,7 @@ const useTable = (data, page, rowsPerPage,searchBar) => {
     return o1.dateTimeSabt>o2.dateTimeSabt ? -1 : o1.dateTimeSabt<o2.dateTimeSabt ? 1 : 0;
   });
 
-  useEffect(()=>{
-    console.log('tablehook',SearchData)
-  },[SearchData])
+
 
   let len = SearchData.length
   let foroshAll = 0;

@@ -11,7 +11,7 @@ export const fetchAllHotelsFailures = (error) =>{
 }
 
 export const fetchAllHotels = (city,hotel,page) =>{
-    // debugger
+    
     return (dispatch) =>{
     dispatch(fetchAllHotelsRequest())
         axios.get(`https://api.hotelobilit.com/api/v2/hotels?q=${hotel}&city=${city}&page=${page}`, {
@@ -21,7 +21,7 @@ export const fetchAllHotels = (city,hotel,page) =>{
         })
         .then(response =>{
             const tours = response.data
-            console.log(response)
+     
             dispatch(fetchAllHotelsSuccess(tours))
         })
         .catch(error=>{

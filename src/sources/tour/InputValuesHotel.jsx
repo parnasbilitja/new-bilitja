@@ -41,7 +41,7 @@ const InputValues = ({
             })
         }
         useEffect(() => {
-            console.log(search)
+         
 
             setHide(false)
         }, [months, search])

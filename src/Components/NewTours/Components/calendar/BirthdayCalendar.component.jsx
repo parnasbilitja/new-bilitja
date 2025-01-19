@@ -208,7 +208,7 @@ const BirthdayCalendar = (props) => {
                                             setState({...state,
                                                 stage: 1
                                             })
-                                            // debugger
+                                            
                                             const dasheddateformat = m.format("jYYYY/jMM/jDD");
                                             props.Birthdate(
                                                 dasheddateformat,

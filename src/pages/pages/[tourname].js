@@ -271,7 +271,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     // Find the data for the current ID
     const item = cityContent.filter((item) => item.id === params.tourname);
-    console.log(item)
 
     return {
         props: {

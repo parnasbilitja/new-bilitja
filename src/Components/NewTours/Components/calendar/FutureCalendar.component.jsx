@@ -10,8 +10,7 @@ class FutureCalendar extends React.Component {
         const today = moment().format('jYYYY/jMM/jDD')
         const date = today.split("/")
         this.current = parseInt(date[0]) 
-//        console.log('current tavalod')
-//        console.log(this.current)
+
         this.state = {
             stage: 1,
             year: '',

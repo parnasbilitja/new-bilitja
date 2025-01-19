@@ -11,7 +11,7 @@ import { withRouter } from "next/router";
 import globals from "../../Global";
 
 const Calendar = (props) => { 
-    console.log(props)
+
     let year, month,day;
     if (props.credentials.flightDatePersian == "") {
       const currentMoment = moment().format("jYYYY,jMM,jDD");

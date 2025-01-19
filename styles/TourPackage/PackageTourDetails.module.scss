@@ -1,38 +1,18 @@
-
-.moreinfocon{
-  display:flex;column-gap:20px;
-  justify-content:center;
-  align-items:end;
-  margin-top:10px;
-
-  .info{
-    p{
-      font-size: 14px;
-      margin:0;
-      padding: 0;
-      cursor: pointer;
-
-
-      &:hover{
-        color: #137cb6;
-      }
-    }
-  }
-}
-.p-data{
+.p-data {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.btn-con{
+
+.btn-con {
   //padding-top: 40px;
-  margin-top: 30px;
+  // margin-top: 30px;
   display: flex;
   justify-content: end;
   column-gap: 10px;
-  button{
-    padding: .5rem;
+  button {
+    padding: 0.5rem;
     font-size: 13px;
     //border-radius: 10px ;
     width: 100px;
@@ -45,21 +25,22 @@
     color: white;
     font-weight: bold;
 
-    transition: .2s ease-out;
+    transition: 0.2s ease-out;
   }
-  button:nth-child(1){
+  button:nth-child(1) {
     color: #008000;
     border-bottom: 1px dashed #008000;
-  } button:nth-child(2){
-  border-radius: 10px;
-  color:white ;
+  }
+  button:nth-child(2) {
+    border-radius: 10px;
+    color: white;
 
-        background-color: #e20000;
-    }
+    background-color: #e20000;
+  }
 
-  button:nth-child(1):hover{
+  button:nth-child(1):hover {
     background-color: #008000;
-    border-radius: 10px ;
+    border-radius: 10px;
 
     border: 1px solid #008000;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -67,118 +48,62 @@
     //color: #008000;
     font-weight: bold;
     color: white;
-  }   button:nth-child(2):hover{
-          border-radius: 10px ;
-          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+  button:nth-child(2):hover {
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 
-
-          background-color: #e20000;
-        border: 2px solid #e20000;
-        //color: #e20000;
-          color: white;
-          font-weight: bold;
-
-
-        }
+    background-color: #e20000;
+    border: 2px solid #e20000;
+    //color: #e20000;
+    color: white;
+    font-weight: bold;
+  }
 }
 
-.pdfbtntitle{
+.pdfbtntitle {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position:sticky;
-  left:0;
-  top:132px;
+  position: sticky;
+  left: 0;
+  top: 132px;
   z-index: 99;
   background-color: white;
   padding: 10px 0;
-
-}
-.header-left-container{
-
-
-  .header-left-item{
-    display: flex;
-    justify-content: space-between;
-    .airline-det{
-      .image-con{
-        width: 30px;
-        height: 30px;
-        overflow: hidden;
-        img{
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-
-    }
-  }
-
 }
 
-.tours{
+.tours {
   max-width: 1366px !important;
   margin: 0 auto !important;
 
-  padding-top: 7.2rem;
-
+  padding-top: 8rem;
 }
 
-
-.hotels-section{
-
-  margin-top: 3rem ;
-
-  .container{
-    max-width: 1320px;
-
-    .p-data{
-      width: 70%;
-    }
-  }
-}
-
-.hotel-item{
-
+.hotel-item {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   border-radius: 10px;
-overflow: hidden;
-
+  overflow: hidden;
 }
 
-
-.hotelDet{
+.hotelDet {
   display: grid;
-  //column-gap: 20px;
-  grid-template-columns: .1fr 1fr ;
+  grid-template-columns: 0.3fr 1fr;
 
   @media only screen and (max-width: 868px) {
-    .details{
+    .details {
       display: block;
-
     }
-    .img-con {
-      width: 100% !important;
-      height: 180px;
-      Image{
-        width: 100% ;
-        height: 100%;
-        object-fit: fill;
-      }
-
-    }
-
   }
-  .img-con{
-    height: 155px;
-    width:250px;
+  .img-con {
+    height: 195px;
+    width: 300px;
     position: relative;
     overflow: hidden;
     //border-radius: 10px;
 
-    .offered{
+    .offered {
       transform: rotate(45deg);
       position: absolute;
       top: 26px;
@@ -192,17 +117,14 @@ overflow: hidden;
       justify-content: center;
       align-items: center;
       background-color: #e20000;
-      p{
-
+      p {
         padding: 0;
         margin: 0;
         font-size: 15px;
       }
     }
 
-
-
-    img{
+    img {
       width: 100%;
       height: 100%;
       aspect-ratio: 4 / 3; /* This is an example ratio; change as needed */
@@ -211,46 +133,46 @@ overflow: hidden;
     }
   }
 
+  .names {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 
-
-  .names{
-    margin-right: 20px;
-    p{
+    // margin-right: 20px;
+    p {
       padding: 0;
       margin: 0;
       white-space: nowrap;
     }
-
   }
-
 }
 
-.roomsDet{
-  margin-top: 10px;
-  .rooms-title{
+.roomsDet {
+  // margin-top: 10px;
+  .rooms-title {
     margin-top: 10px;
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
 
     display: flex;
     justify-content: end;
 
     column-gap: 15px;
 
-
-    .room-prc{
+    .room-prc {
       display: flex;
       flex-direction: column;
 
       overflow: hidden;
-      .room{
+      .room {
         display: flex;
         align-items: center;
-        p{
+        p {
           color: #000;
         }
       }
 
-      .room-title{
+      .room-title {
         justify-self: center;
         width: 100%;
 
@@ -264,112 +186,98 @@ overflow: hidden;
         padding-top: 1px;
 
         align-items: center;
-        span{
+        span {
           font-size: 12px;
           font-weight: 700;
         }
-        small{
+        small {
           font-size: 11px;
           font-weight: 500;
-
         }
       }
     }
   }
 }
 
-
-.tourdesc{
+.tourdesc {
   margin-top: 25px;
   width: 100%;
   height: auto;
   //background-color: #e20000;
-  .service_document{
+  .service_document {
     margin-bottom: 10px;
     display: flex;
     column-gap: 10px;
 
-    .con{
+    .con {
       width: 100%;
       border: 1px solid #e20000;
       border-radius: 10px;
       min-height: 200px;
-      padding: 1rem .5rem;
-      p{
+      padding: 1rem 0.5rem;
+      p {
         color: #e20000;
         font-size: 1.2rem;
         font-weight: 700;
       }
-      .item{
-
-
+      .item {
         display: grid;
-        grid-template-columns: 1fr .25fr;
+        grid-template-columns: 1fr 0.25fr;
         justify-content: space-between;
 
-        svg{
+        svg {
           align-self: end;
           justify-self: end;
         }
 
-
-        ul{
-          li{
+        ul {
+          li {
             font-size: 15px;
             font-weight: 700;
           }
         }
       }
     }
-
-
-
-
   }
 
-  .servicescon{
+  .servicescon {
     border: 1px solid #e20000;
     border-radius: 10px;
     min-height: 150px;
-    padding: 1rem .5rem;
-    p{
+    padding: 1rem 0.5rem;
+    p {
       color: #e20000;
       font-size: 1.2rem;
       font-weight: 700;
     }
 
-    .item{
-
-
+    .item {
       display: grid;
-      grid-template-columns: 1fr .25fr;
+      grid-template-columns: 1fr 0.25fr;
       justify-content: space-between;
 
-      svg{
+      svg {
         align-self: end;
         justify-self: end;
       }
 
-      ul{
-        li{
+      ul {
+        li {
           font-size: 15px;
           font-weight: 700;
         }
       }
     }
-
-
   }
 }
 
-
 @media only screen and (max-width: 868px) {
-  .btn-con{
+  .btn-con {
     padding: 10px 10px 0 10px;
     justify-content: space-between;
   }
-  .pdfbtntitle{
-    top: 79px
+  .pdfbtntitle {
+    top: 79px;
   }
   .tourdesc {
     margin-top: 25px;
@@ -384,167 +292,153 @@ overflow: hidden;
     }
   }
 
-  .tours{
+  .tours {
     padding: 5rem 10px;
   }
 
-  .hotelDet{
+  .hotelDet {
     display: block;
     .names {
-      margin-top: 10px;
+      // margin-top: 10px;
       margin-right: 0;
       padding-top: 0;
+      flex-direction: column;
+      align-items: flex-start;
     }
-    .img-con{
-      height: 200px;
+    .img-con {
+      height: 260px;
       width: 100% !important;
 
-
-
-      img{
+      img {
         width: 100%;
+        object-fit: fill;
       }
     }
-    .btn-con{
+    .btn-con {
       margin: 0;
       justify-content: space-between;
     }
   }
 
-  .roomsDet{
-    //margin-top: 20px;
-    .rooms-title{
+  .roomsDet {
+    margin: 0 auto;
+    justify-self: center !important;
+
+    .rooms-title {
       display: block;
-      padding: 0 ;
+      padding: 0;
+      justify-self: center !important;
 
-
-
-      .room-prc{
+      .room-prc {
         width: 100%;
         height: 50px;
         margin-bottom: 5px;
-        //display: block !important;
+        display: flex !important;
+        align-items: center;
+        justify-self: center;
+        justify-content: space-between !important;
         flex-direction: row;
         overflow: hidden;
 
-        .room-title{
+        .room-title {
           justify-self: center;
           width: 100%;
           height: 60px !important;
-          padding:0 .5rem;
-          //border-radius: 20px;
-          //background-color: #cecece;
+          padding: 0 0.5rem;
+       
           white-space: nowrap;
-          //display: flex;
-          //flex-direction: column;
-          //justify-content: center;
-          //align-items: center;
+      
         }
-        .room{
+        .room {
           width: 100%;
         }
       }
     }
   }
-
 }
 
-.tour_details_container{
-  height:100%;
+.tour_details_container {
+  height: 100%;
   width: 100%;
   position: relative;
-
-
 }
 
-.tour_details{
+.tour_details {
   width: 100%;
   position: sticky;
   top: 140px;
-
 }
 
-
-.tour{
-  //padding-top: 70px;
-  display: grid ;
-  grid-template-columns: 1fr .3fr;
-  gap:10px;
-
-
-
+.tour {
+  display: grid;
+  grid-template-columns: 1fr 0.3fr;
+  gap: 10px;
 }
 
-.tour_info{
+.tour_info {
   margin-top: 5px;
   padding: 6px;
   width: 100%;
   //border :1px solid #cecece;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  .title{
+  .title {
     font-size: 15px;
     white-space: nowrap;
     margin: 0 3px;
     padding: 0;
-
   }
-
-
-
-
-
 }
-.date_time{
+.date_time {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.checkin_checkout{
+.checkin_checkout {
   margin-bottom: 5px;
   display: flex;
-  gap:2px;
-  p{
+  gap: 2px;
+  p {
     font-size: 13px;
     margin: 0;
     padding: 0;
   }
 }
-.night{
+.night {
   background-color: #e20000;
   display: flex;
   padding: 5px;
   border-radius: 5px;
   color: white;
-p{
-  padding: 0;
-  margin: 0;
+  p {
+    padding: 0;
+    margin: 0;
 
-  font-size: 12px;
-}
+    font-size: 12px;
+  }
 }
 
 @media only screen and (max-width: 868px) {
-  .btn-con{
+  .btn-con {
     display: flex;
   }
-  .tour_info{
+  .tour_info {
     display: none;
     padding-top: 100px;
     position: fixed !important;
     width: 100%;
-    height:100%;
+    height: 100%;
     background-color: white;
     z-index: 9999 !important;
     top: 0;
     right: 0;
   }
 
-  .filter_active{
+  .filter_active {
     display: block;
   }
 
-  .date_mobile{
+  .date_mobile {
     width: 100%;
     height: 60px;
     display: block !important;
@@ -555,52 +449,51 @@ p{
     padding: 10px;
     background-color: white;
   }
-.tour{
+  .tour {
+    padding: 0 10px;
 
-  padding: 0 10px;
+    display: block !important;
+  }
 
-  display: block !important;
-}
-
-  .btn-con{
-    button:nth-child(1){
+  .btn-con {
+    button:nth-child(1) {
       color: white;
       width: 100%;
-      border-bottom:2px solid #008000 ;
+      border-bottom: 2px solid #008000;
       border-radius: 10px;
       margin-bottom: 3px;
-      background-color:#008000;
+      background-color: #008000;
     }
-    button:nth-child(2){
+    button:nth-child(2) {
       border-radius: 5px;
       width: 100%;
 
-      color:white ;
+      color: white;
       border-radius: 10px;
-        border-bottom:2px solid #e20000 ;
+      border-bottom: 2px solid #e20000;
 
-        background-color: #e20000;
-      }
+      background-color: #e20000;
+    }
   }
 }
-.details{
+.details {
   display: flex;
   justify-content: space-between;
-  padding:0 5px
+  height: 100%;
+  flex-direction: column;
+  align-items: space-between;
+  padding: 10px;
 }
 
-
-.date_mobile{
+.date_mobile {
   display: none;
 }
 
-
-.hotel_container{
+.hotel_container {
   padding-top: 7rem;
 }
 
-
-.title_info{
+.title_info {
   display: flex;
   flex-direction: column;
   height: fit-content;
@@ -612,136 +505,104 @@ p{
   border-radius: 5px;
 }
 
-
 ///flightInfo
 
-
-.flight_container{
+.flight_container {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   overflow: hidden;
   border-radius: 10px;
 }
 
-.flight_title{
-  padding: 5px;
-  width: 100%;
-  //background-color: #e20000;
-  color: #e20000;
-  //border-bottom: 1px solid #e20000;
-  p{
-    margin: 0;
-    font-weight: 900;
-    padding: 0;
-  }
-}
+.flight_card {
+  //width: 100%;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 0.25fr 1fr;
+  border-radius: 10px;
+  background-color: #f8f9fd;
+  cursor: pointer !important;
+  //box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 
-
-
-
-
-  .flight_card{
-    //width: 100%;
+  .dep_return {
+    display: flex;
     justify-content: space-between;
-    padding: 10px;
-    margin-bottom: 10px;
     align-items: center;
-    display: grid;
-    grid-template-columns: 1fr .25fr 1fr;
-    border-radius: 10px;
-    background-color: #f8f9fd;
-    cursor: pointer !important;
-    //box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-
-    .dep_return{
+    .item_details {
+      //margin-bottom: 10px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      .item_details{
-        //margin-bottom: 10px;
-        display: flex;
-        flex-direction: column;
+      flex-direction: column;
 
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      .item {
+        display: flex;
         justify-content: center;
         align-items: center;
-        gap: 5px;
-        .item{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 2px;
-          //width: 180px;
-          p{
-            margin: 0;
-            padding: 0;
-            font-size: 13px;
-            word-break: auto-phrase;
-            //margin: 0 10px;
-            //white-space: nowrap;
-          }
+        gap: 2px;
+        //width: 180px;
+        p {
+          margin: 0;
+          padding: 0;
+          font-size: 13px;
+          word-break: auto-phrase;
+          //margin: 0 10px;
+          //white-space: nowrap;
         }
-        .img_container{
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          justify-self: end;
-          img{
-            width: 100%;
-            height: 100%;
-            aspect-ratio: 4 / 3; /* This is an example ratio; change as needed */
-            object-fit: contain;
-          }
+      }
+      .img_container {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        justify-self: end;
+        img {
+          width: 100%;
+          height: 100%;
+          aspect-ratio: 4 / 3; /* This is an example ratio; change as needed */
+          object-fit: contain;
         }
-
       }
-
-    }
-
-
-
-
-  }
-
-
-
-.flight_card{
-  &:hover{
-    .btn-con{
-      button{
-        background-color: white !important;
-        border: 1px solid #e20000!important;
-        color: #e20000 !important;
-
-      }
-
     }
   }
 }
 
+.flight_card {
+  &:hover {
+    .btn-con {
+      button {
+        background-color: white !important;
+        border: 1px solid #e20000 !important;
+        color: #e20000 !important;
+      }
+    }
+  }
+}
 
-.flights{
+.flights {
   display: grid;
-  grid-template-columns:.35fr 1fr ;
-  margin-top:20px !important;
+  grid-template-columns: 0.35fr 1fr;
+  margin-top: 20px !important;
   gap: 5px;
-
 }
 .svg {
   transform: scaleX(-1);
 }
 
-.selected_airline{
+.selected_airline {
   border-radius: 10px;
-  background-color: rgb(236,236,236);
+  background-color: rgb(236, 236, 236);
 }
 
-
-.price{
+.price {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 4px;
-  p{
+  p {
     margin: 0;
     padding: 0;
     font-size: 13px;
@@ -749,21 +610,34 @@ p{
 }
 
 @media only screen and (max-width: 868px) {
-  .flights{
+  .roomDet {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .service-btn {
+    display: block !important;
+  }
+  .flights {
     display: block;
   }
-  .flight_card{
+  .flight_card {
     display: block !important;
   }
 
-  .btn-con{
+  .btn-con {
     justify-content: space-between;
     margin-top: 25px;
-    flex-direction: row  }
-  .flight_title{
+    flex-direction: row;
+  }
+  .flight_title {
     display: flex;
     justify-content: space-between;
   }
-
-
 }
+.service-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+

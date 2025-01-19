@@ -1358,7 +1358,7 @@ class AddVilaDesktop extends React.Component {
                               Stat: 1,
                             })
                           );
-                          console.log(JSON.stringify(param));
+                   
 
                           fetch(`${globals.baseUrl}bj/eghamatEmkanat/save`, {
                             headers: { "Content-Type": "application/json" },
@@ -1367,7 +1367,7 @@ class AddVilaDesktop extends React.Component {
                           })
                             .then((res) => res.json())
                             .then((data2) => {
-                              console.log(data2);
+                       
                             });
 
                           ///  step 2

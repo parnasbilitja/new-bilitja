@@ -148,8 +148,8 @@ export async function getServerSideProps({ req }) {
   if (req.method == "POST")
   {
     const body = await getRawBody(req);
-    //  console.log("start")
-    //    console.log(body.toString("utf-8"))
+
+  
     var data = {};
     var responsedatapnr = {};
     //var body2="State=Canceled+By+User&StateCode=-1&ResNum=28333&MID=10916111&RefNum=&CID=&TRACENO=&RRN=&SecurePan=";
@@ -157,10 +157,7 @@ export async function getServerSideProps({ req }) {
       .split("&")
       .map((x) => (data[x.split("=")[0]] = x.split("=")[1]));
 
-    // 
-    // 
-    // 
-    // console.log("end3")
+ 
     var refNum = "";
     var error = "";
     //data.RefNum="sdsssdds%2F%2B%2F%2B";

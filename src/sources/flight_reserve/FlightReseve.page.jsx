@@ -75,7 +75,7 @@ const FlightReserve = (props) => {
     // },[state.price])
     useEffect(() => {
         setWidth(window.innerWidth)
-        console.log(props)
+
         route = props.router.asPath.split('info')[0]
         if (localStorage.getItem('reqNo') !== null) {
             props.messageBoxModify({

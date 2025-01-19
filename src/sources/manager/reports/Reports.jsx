@@ -19,12 +19,10 @@ const Reports = () => {
           `https://api.bilitja.com/api/Auth/reports/dfe64807-341f-44f8-9e6a-34c8cc8b3504/1a157116-a01a-4027-ab10-74098ac63815`
         )
         .then((response) => {
-          console.log("response", response);
           setData(response.data);
-          console.log("Data", data);
         });
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }, []);
   useEffect(() => {
@@ -34,36 +32,34 @@ const Reports = () => {
           `https://api.bilitja.com/api/Auth/reports/dfe64807-341f-44f8-9e6a-34c8cc8b3504/1a157116-a01a-4027-ab10-74098ac63815`
         )
         .then((response) => {
-          console.log("response", response);
           setDatabank(response.data);
-          console.log("Data", databank);
         });
     } catch (e) {
-      console.log(e);
+    
     }
   }, []);
   const getitem = (index) => {
-    console.log("index :", index);
+  
     setItemselected(data?.reportFlightFrLst[index]);
     // console.log("dataasdas", data?.reportFlightFrLst[index]);
-    console.log("itemselected", itemselected);
+
   };
   const handelchange = () => {
     if (!checkeded) {
       setCheckeded(true);
-      console.log(checkeded);
+   
     } else {
       setCheckeded(false);
-      console.log(checkeded);
+  
     }
   };
   const handelchangecancel = () => {
     if (!checkededcancel) {
       setCheckededcancel(true);
-      console.log(checkededcancel);
+    
     } else {
       setCheckededcancel(false);
-      console.log(checkededcancel);
+  
     }
   };
   const menu = (

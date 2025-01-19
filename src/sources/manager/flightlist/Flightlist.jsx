@@ -31,7 +31,7 @@ const Flightlist = () => {
   const marcupprice = parseInt(valuechangesrvprice);
   const reservestats = parseInt(reservestate);
   const [condurl, setCondurl] = useState(false);
-  console.log(flightlist);
+
   const dispatch = useDispatch();
   useEffect(() => {
     try {

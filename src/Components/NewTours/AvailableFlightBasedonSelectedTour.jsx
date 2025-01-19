@@ -78,7 +78,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
         let service_Flight_Prc
         service_Flight_Prc = serviceflightprc(0, room.services) + serviceflightprc(flightDet?.departure?.destination_id, room.services)
 
-        console.log(service_Flight_Prc)
+     
         if (room.rate.available_room_count > roomCounter1(room.room_type_id)) {
             setIsOpen(flightDet.departure.id.toString() + flightDet.return.id.toString());
             setSelectedRoom([
@@ -138,11 +138,11 @@ const AvailableFlightBasedonSelectedTour = (props) => {
 
     ////inc chd, inf,ext number
     const incDet1 = (room, type) => {
-        // debugger;
+        ;
         if (type === "ext_count") {
             const findRoom = selectedRoom.map((x) => {
                 if (x?.id === room?.id) {
-                    // debugger
+                    
                     if (x?.chd_withbed_count + x?.extra_bed_count >= x?.total_extra_count) {
                         Err("به دلیل نبود ظرفیت امکان اضافه کردن وجود ندارد");
                         return x;
@@ -349,7 +349,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
 
 
     const minCapacity = (flight) => {
-        // debugger
+        
         return Math.min(flight?.departure.capacity, flight?.return.capacity)
     }
     const getDoublePrc = (flight) => {
@@ -381,7 +381,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
     useEffect(() => {
 
 
-        // debugger
+        
         axios
             .post(
                 `https://api.hotelobilit.com/api/v2/tours/${router?.query?.hotel}`,
@@ -398,7 +398,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                 }
             )
             .then((res) => {
-                // debugger
+                
                 setHotel(res.data?.data);
                 //
             });
@@ -424,9 +424,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
         return rooms;
     };
 
-    useEffect(() => {
-        console.log(hotel)
-    }, [hotel])
+
     const picGen = (picsNum) => {
         const gallary = [];
         let number = picsNum >= 3 ? 3 : picsNum;
@@ -474,7 +472,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
 
         if (selectedRoom.length > 0) {
             setIsLoading(true)
-            // debugger
+            
             axios
                 .post(
                     "https://api.hotelobilit.com/api/v2/reserves/checking",
@@ -494,7 +492,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                     }
                 )
                 .then((res) => {
-                    console.log('ref', res.data)
+             
                     ErrSuccess("به صفحه تکمیل اطلاعات و رزرو منتقل می‌شوید");
                     router.push(
                         `/tour/reserve/${hotelId}/${fDId}/${fRId}?checkin=${fCheckin}&checkout=${fCheckout}&ref_code=${res.data.data.ref_code}`
@@ -511,7 +509,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
     };
 
     const AllSelectedPassengerNumber = () => {
-        // debugger
+        
         let allPassCounts = [];
 
         selectedRoom.map((room) =>
@@ -1063,7 +1061,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
                                                             <button
                                                                 onClick={() => {
                                                                     if (!isLoading) {
-                                                                        // debugger
+                                                                        
                                                                         tourReserve(
                                                                             hotel.hotel.checkin,
                                                                             hotel.hotel.checkout,

@@ -26,9 +26,7 @@ const UpdatePassenger = (props) => {
         setFormData(props.targetedRoom?.passengers)
     }, [props.targetedRoom?.passengers])
     //
-    useEffect(() => {
-        console.log('sad324456', formdata)
-    }, [formdata])
+
     const indexidfinder = (passId, name) => {
 
         const findPassInput = formdata.filter(
@@ -50,7 +48,7 @@ const UpdatePassenger = (props) => {
 
 
     const FormDataPicker = (e, passId) => {
-        // debugger;
+        ;
         const enRegEx = /[^A-Za-z0-9\s]/g;
         const regEx = /^\d+$/;
         const findpassenger = formdata.filter(
@@ -91,7 +89,7 @@ const UpdatePassenger = (props) => {
 
 
     const findDate = (passId, datetype) => {
-        // debugger;
+        ;
         const findPassenger = formdata.filter(
             (passenger) => passenger.pass_id === passId
         );
@@ -106,7 +104,7 @@ const UpdatePassenger = (props) => {
         }
     }
     const Birthdate = (date, passId, type, roomid, roomTypeid, datetype) => {
-        // debugger
+        
             const findpassenger = formdata.filter(
                 (passenger) => passenger.pass_id === passId
             );
@@ -140,9 +138,7 @@ const UpdatePassenger = (props) => {
 
     };
 
-    useEffect(()=>{
-        console.log(formdata)
-    },[formdata])
+   
     return (
         <>
 
@@ -404,7 +400,6 @@ const UpdatePassenger = (props) => {
                                                                 managePopUpBirthdayCalendar(true);
                                                                 setCurrenttype(pass.type)
                                                                 setCrrentPassId(pass.id)
-                                                                console.log(pass.type)
                                                             }}
                                                             type="text"
                                                             placeholder="تاریخ تولد"

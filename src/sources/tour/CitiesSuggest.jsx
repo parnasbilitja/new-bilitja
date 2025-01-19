@@ -29,7 +29,7 @@ const CitiesSuggest = () => {
     }, [])
 
     useEffect(() => {
-        // debugger
+        
 
         if (data?.length<1) {
             setData(getData.data)

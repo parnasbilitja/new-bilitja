@@ -27,7 +27,7 @@ const France = () => {
     //     setCurrentCity(city)
     // }
     //
-    // // console.log(props.Pathname.CityTour.slice(4,props.Pathname.CityTour.length));
+
     // let city = useSelector(state => state.CityReducer)
     // const dispatch = useDispatch()
     // // const [currentCity, setCurrentCity] = useState(props.Pathname.CityTour.slice(4, props.Pathname.CityTour.length))
@@ -40,7 +40,7 @@ const France = () => {
     // //     if(!router.query.CityTour.includes('تور-')){
     // //         router.push(`/تور-${router.query.CityTour}`)
     // //     }
-    // //     console.log(router)
+
     // // },[router])
     // // useEffect(() => {
     // //     // 
@@ -62,7 +62,7 @@ const France = () => {
     //
     //
     // const getData1 = (city) => {
-    //     debugger
+    //     
     //     axios.get(`https://api.hamnavaz.com/api/v1/city/getCity/${city}`)
     //         .then(res => {
     //             if (res.data.isDone) {
@@ -80,7 +80,7 @@ const France = () => {
     // //
     // //     getData1(props.Pathname.CityTour.slice(4, props.Pathname.CityTour.length))
     // //
-    // //     // console.log(props.pathname)
+
     // // }, [props.Pathname])
     //
     // useEffect(() => {
@@ -116,7 +116,7 @@ const France = () => {
     //
     //
     // useEffect(() => {
-    //     // debugger
+    //     
     //     if (data) {
     //         setNewData(data?.filter(city => city.endCity.name === currentCity.slice(4, currentCity.length)))
     //     }

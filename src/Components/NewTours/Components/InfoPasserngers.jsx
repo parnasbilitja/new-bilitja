@@ -43,7 +43,7 @@ const InfoPasserngers = (props) => {
   };
 //
 //   const PrcRoomGen=(flight,services)=>{
-//     // debugger
+//     
 //
 //     let flifgtsPrc=flight?.departure?.adl_price + flight?.return?.adl_price
 //
@@ -77,7 +77,7 @@ const InfoPasserngers = (props) => {
   };
 
   const roomprcFinder = (rooms, selectedroom) => {
-    // debugger
+    
     const foundRoom = rooms.filter(
       (room) => room.room_type_id === selectedroom.room_type_id
     );
@@ -85,7 +85,7 @@ const InfoPasserngers = (props) => {
   };
 
   // useEffect(() => {
-  //   // debugger
+  //   
   //
   // }, [props.room]);
 

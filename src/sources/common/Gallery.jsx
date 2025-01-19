@@ -18,12 +18,12 @@ const Gallery = ({ images }) => {
 	}, []);
 	return (
 		<div  style={{width:'100%',height:'100%',position:'relative'}}>
-			<div	 style={{display:'flex'	, justifyContent:"space-between" ,width:'100%',position:'absolute' ,top:'45%',zIndex:'50'}}>
+			<div	 style={{display:'flex'	, justifyContent:"space-between" ,width:'100%',position:'absolute' ,top:'50%',zIndex:'50'}}>
 				<button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slidePrev()}>
-					<FontAwesomeIcon icon={faAngleRight}/>
+					<FontAwesomeIcon icon={faAngleRight} style={{fontSize:'16px'}}/>
 				</button>
 				<button className="prevNextbtnSwiper" onClick={() => swiperRef.current?.slideNext()}>
-					<FontAwesomeIcon icon={faAngleLeft}/>
+					<FontAwesomeIcon icon={faAngleLeft} style={{fontSize:'16px'}}/>
 				</button>
 			</div>
 
@@ -33,7 +33,7 @@ const Gallery = ({ images }) => {
 				slidesPerView={1}
 				// modules={[Navigation,Pagination]}
 
-				pagination={{clickable: false}}
+				// pagination={{clickable: false}}
 				onBeforeInit={(swiper) => {
 					swiperRef.current = swiper;
 				}}

@@ -97,8 +97,7 @@ const router= useRouter()
     const [isModal, setIsmodal] = useState(false)
 
     useEffect(()=>{
-        // debugger
-        console.log(router)
+        
         if(router.asPath.includes('cityTour')){
             router.push(`/${router.query.CityTour}`)
         }

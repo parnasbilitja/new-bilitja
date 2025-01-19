@@ -17,6 +17,7 @@ import {accountBoxModify} from "../../Redux/UI/ui.action";
 
 
 const PackageReserve = ({
+    tour_id,
 
                             target_rooms,
                             hotel,
@@ -41,9 +42,7 @@ const PackageReserve = ({
 
         return (+getIndex)+1
     }
-    useEffect(()=>{
-        console.log(hotel)
-    },[hotel])
+ 
     const incRoom = (room) => {
 
         rooms.map(r => {
@@ -86,18 +85,12 @@ const PackageReserve = ({
             }
 
         })
-
         // setRooms(justifiedRooms)
-
-        console.log(selectedRoomsData)
-
-
     }
 
 
 
     const removeRoom = (id) => {
-
         const newSelectedRoom = selectedRoomsData.filter((room) => room.id !== id);
         setSelecetedRoomsData(newSelectedRoom);
     };
@@ -122,7 +115,7 @@ const PackageReserve = ({
         })
             .then((res) => res.json())
             .then((data) => {
-                // debugger
+                // 
                 if (data.status == "0") {
                     setState({
                         ...state,
@@ -219,7 +212,7 @@ const PackageReserve = ({
             });
             setSelecetedRoomsData(findRoom);
         } else if (type === "chd_withbed_count") {
-            debugger
+            
             const findRoom = selectedRoomsData.map((x) => {
                 if (x?.id === id) {
                     if (x?.chd_withbed_count) {
@@ -264,9 +257,9 @@ const PackageReserve = ({
 
 
     const incDet1 = (room, type) => {
-        // debugger;
+        // ;
         if (type === "ext_count") {
-            debugger
+            
             const findRoom = selectedRoomsData.map((x) => {
                 if (x?.id === room?.id) {
                     if (x?.extra_count + x.chd_withbed_count >= x?.total_extra_count) {
@@ -315,7 +308,7 @@ const PackageReserve = ({
                         Err("به دلیل نبود ظرفیت امکان اضافه کردن وجود ندارد");
                         return x;
                     } else {
-                        // debugger
+                        // 
                         if (x?.chd_withbed_count + x?.chd_nobed_count < x?.chd_capacity) {
                             return {
                                 ...x,
@@ -364,7 +357,6 @@ const PackageReserve = ({
     const tourReserve = (
     ) => {
 
-        console.log(hotel)
 
         if (selectedRoomsData.length > 0) {
             // setIsLoading(true)
@@ -373,7 +365,7 @@ const PackageReserve = ({
                 .post(
                     `${globals.tourPackages}reserves/checking`,
                     {
-                        tour_id:+hotel.tour_id,
+                        tour_id:+tour_id,
                         package_id:hotel.id,
                         reserver_phone:user.logged ? localStorage.getItem('mobile'):'',
                         checkin: hotel.check_in,
@@ -390,7 +382,6 @@ const PackageReserve = ({
                 )
                 .then((res) => {
                     setLoading(false)
-                    // console.log('data', res.data)
                     ErrSuccess("به صفحه تکمیل اطلاعات و رزرو منتقل می‌شوید");
                     router.push(
                         `/tour/reserve/${hotel.hotel_id}/${res.data.data.flights.departure.id}/${res.data.data.flights.return.id}?checkin=${hotel.check_in}&checkout=${hotel.check_out}&rooms=${JSON.stringify(selectedRoomsData)}&ref_code=${res.data.data.information.ref_code}`
@@ -398,7 +389,6 @@ const PackageReserve = ({
                 })
                 .catch((err) => {
                     // setIsLoading(false)
-                    console.log(err)
                     setLoading(false)
                     Err("این پرواز با این تعداد اتاق انتخابی موجودی ندارد");
                 });
@@ -459,7 +449,7 @@ const PackageReserve = ({
         setOpen(true)
     }
     const removeDuplicateObj = (data, prop) => {
-        // debugger
+        // 
         const seenIds = {}; // Helper object to keep track of seen IDs
 
         const filteredData = data.filter((obj) => {
@@ -491,7 +481,6 @@ const PackageReserve = ({
 
     }
     useEffect(() => {
-        // console.log('asdas32432',selectedHotel)
         // if (!isBundle) {
         //
         //     let selectedRooms
@@ -506,10 +495,7 @@ const PackageReserve = ({
     }, [])
 
 
-    // useEffect(()=>{
-    //
-    //     console.log(localStorage.getItem('mobile'),user.logged)
-    // },[])
+
 
     const roomNumber = (roomid) => {
 
@@ -698,7 +684,7 @@ const PackageReserve = ({
                                                                     fontSize: '13px',
                                                                     color: '#e20000',
                                                                     fontWeight: '700'
-                                                                }}>{room?.Adl_capacity}</p>
+                                                                }}>{room?.Adl_capacity} نفر</p>
                                                             </div>
                                                         </div>
 
@@ -996,7 +982,7 @@ const PackageReserve = ({
                         backgroundColor: '#069e2c !important',
                         whiteSpace: 'nowrap'
                     }}
-                            className={`ancher bg-success text-white font-size-13 py-2 px-4 rounded-3  foc01`}
+                            className={`ancher d-flex justify-content-center align-items-center bg-success text-white font-size-13 py-2 px-4 rounded-3  foc01`}
                             onClick={() => {
                                 if (!loading) {
                                     // if(user.logged) {
@@ -1023,7 +1009,7 @@ const PackageReserve = ({
 
                                 }
                             }}>
-                        {loading ? 'لطقا منتظر بمانید...' : `درخواست رزرو`}
+                        {loading ? 'لطفا منتظر بمانید...' : ` انتخاب و ورود اسامی`}
                     </button>
                 </div>
                 <div style={{display: 'flex', columnGap: '10px'}}>
@@ -1056,6 +1042,5 @@ const mapDispatchToProps = (dispatch) => ({
     //     dispatch(addReservationProperties(value)),
     // messageBoxModify: (value) => dispatch(messageBoxModify(value)),
 })
-export default withRouter(
-    connect( mapStateToProps,mapDispatchToProps) (PackageReserve));
-// export default PackageReserve;
+export default withRouter(connect( mapStateToProps,mapDispatchToProps) (PackageReserve));
+

@@ -1,10 +1,14 @@
 import React, { useRef} from 'react';
 import {MiladiToJalaliConvertor, timeFixer} from "../../Utils/newTour";
 import {Navigation} from "swiper";
-import {Swiper, SwiperSlide, useSwiper} from 'swiper/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import styles from '../../../styles/TourPackage/TransferList.module.scss';
+
+
+
+
 
 const TransfersList = (props) => {
     const swiperRef = useRef();

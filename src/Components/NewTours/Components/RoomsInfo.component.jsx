@@ -13,7 +13,7 @@ const RoomsInfo = (props) => {
     const [isEdit, setIsEdit] = useState(false)
 
     const PrcRoomGen=(flight,services)=>{
-        // debugger
+        
 
         let flifgtsPrc=flight?.departure?.adl_price + flight?.return?.adl_price
 

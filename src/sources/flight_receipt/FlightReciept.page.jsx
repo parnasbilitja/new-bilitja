@@ -170,7 +170,6 @@ const FlightReciept = (props) => {
       });
   };
   const getBanks = () => {
-    // debugger
     fetch(
       `${globals.baseUrlNew}OnlinePay/api/onlinePay/pricing/getBanks/${props.reserveProperties.reqNo}/${props.reserveProperties.reqPnr}?customerId=1a157116-a01a-4027-ab10-74098ac63815`
     )

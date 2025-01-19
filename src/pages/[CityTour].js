@@ -254,7 +254,7 @@ const CityTour = (props) => {
                 setOrgs(relatedOrg)
 
                 let destTime =[]
-// debugger
+
                 if(selectedOrigin.name.length>0 && selectedOrigin.code.length>0){
                     let foundOrg=relatedOrg.filter(org=>org.code===selectedOrigin.code)[0]
                     let foundDest=foundOrg.destinations.filter(dest=>dest.code===props.cityInfo.code)[0]

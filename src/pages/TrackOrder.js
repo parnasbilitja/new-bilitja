@@ -44,7 +44,7 @@ const TrackOrder = () =>{
             }):setState({...state,errSate:true})
     }
     const checkTourRefrence = () => {
-            // debugger
+            
         axios.get(
             `https://api.hotelobilit.com/api/v2/reserves/${tourState?.trackRef
             }`,
@@ -97,7 +97,7 @@ switch (color) {
     }
 
     const buttonrender=(status)=>{
-            // debugger
+            
             switch (status.id) {
                 case 501:
                     return <button onClick={()=>{

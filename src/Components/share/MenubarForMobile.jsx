@@ -42,9 +42,7 @@ const MenubarForMobile = () => {
   //   };
   // }, [window?.scrollY]);
   //
-  // useEffect(()=>{
-  //   console.log(scrollPosition)
-  // },[scrollPosition])
+
 
   const menuBarRef = useRef(null);
 

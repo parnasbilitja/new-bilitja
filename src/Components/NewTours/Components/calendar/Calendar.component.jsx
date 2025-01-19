@@ -19,9 +19,7 @@ const CalendarComponent = (props) => {
     // 
   }, []);
 
-  useEffect(()=>{
-      console.log(props.dateandnight)
-  },[props.dateandnight])
+
 
   return (
       <>

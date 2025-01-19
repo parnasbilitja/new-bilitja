@@ -78,6 +78,12 @@ function Index(props) {
       ? [`${globals.tourPackagesnew}packages?page=${page}`, apiParams]
       : null,
     fetcher
+    //   {
+    //     revalidateOnFocus: false,
+    //     revalidateOnReconnect: false,
+    //     revalidateIfStale: false,
+    //     dedupingInterval: 10000 // Optional: prevents refetching for 10 seconds
+    // }
   );
 
   useEffect(() => {
@@ -111,29 +117,26 @@ function Index(props) {
     (urls) => Promise.all(urls.map(fetcher))
   );
 
+  const get_tour_min_price = (tour, flight_id) => {
+    let all_rooms = [];
+    tour?.packages?.forEach((pack) => {
+      all_rooms.push(...pack.rooms);
+    });
+    all_rooms = all_rooms.filter((room) => +room.flight_id === +flight_id);
+    const min_price =
+      all_rooms
+        .filter((room) => room?.price && room?.price > 0)
+        .reduce((min, room) => Math.min(min, room?.price), Infinity) || 0;
 
-  const get_tour_min_price=(tour,flight_id)=>{
-    let all_rooms=[]
-    tour?.packages?.forEach(pack=>{
-        all_rooms.push(...pack.rooms)
-    })
-    all_rooms=all_rooms.filter(room=>+room.flight_id===+flight_id)
-    const min_price = all_rooms
-    .filter(room => room?.price && room?.price > 0)
-    .reduce((min, room) => 
-        Math.min(min, room?.price),
-        Infinity 
-    ) || 0;
-
-    return min_price === Infinity ? 0 : min_price;    
-  }
+    return min_price === Infinity ? 0 : min_price;
+  };
   const new_tour_list = useMemo(() => {
     let final_Tour = [];
 
     if (tourData?.length > 0) {
       tourData?.forEach((tour) => {
         tour?.data?.flights?.forEach((flight) => {
-            // console.log(get_tour_min_price(tour.data))
+          // console.log(get_tour_min_price(tour.data))
           let t = {
             ...tour.data,
             flightData: {
@@ -143,7 +146,7 @@ function Index(props) {
 
           delete t.flights;
           delete t.packages;
-          t.min_price=get_tour_min_price(tour.data,flight.id)
+          t.min_price = get_tour_min_price(tour.data, flight.id);
           final_Tour.push(t);
         });
       });
@@ -231,7 +234,6 @@ function Index(props) {
     var body = document.getElementsByTagName("body");
     body[0].scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }
-
 
   return (
     <>
@@ -378,12 +380,9 @@ function Index(props) {
                       <div className={`${styles["airline_list"]}`}>
                         {airlines.departure.map((airline) => (
                           <div
-                            className={`${styles["airline_item"]} ${
-                              filter.airline.departure === airline.name &&
-                              styles["selected_airline"]
-                            }`}
+                            className={`${styles["airline_item"]} `}
                             onClick={() => {
-                              // debugger
+                              
                               setFilters((prev) => ({
                                 ...prev,
                                 airline: {
@@ -395,6 +394,22 @@ function Index(props) {
                               // compositionFilter()
                             }}
                           >
+                            <input
+                              className={"radio"}
+                              type="checkbox"
+                              // value={filter.expense}
+                              checked={
+                                filter.airline.departure === airline.name
+                              }
+
+                              // onChange={(e) =>
+                              //   handleCheckbox(e, "expense")
+                              // }
+                            />
+                            {/* <input
+                      type="radio"
+                      checked={ filter.airline.departure === airline.name}
+                    /> */}
                             <div className={styles["img_container"]}>
                               <img
                                 src={airline.thumb.url}
@@ -438,10 +453,9 @@ function Index(props) {
                       <div className={styles["airline_list"]}>
                         {airlines.return.map((airline) => (
                           <div
-                            className={`${styles["airline_item"]} ${
-                              filter.airline.return === airline.name &&
-                              styles["selected_airline"]
-                            }`}
+                            className={`${styles["airline_item"]} 
+                           
+                            `}
                             // onClick={()=>dispatch(SetReturnFlight(airline.name))}
                             //  onClick={() => setFilters(prev => ({ ...prev, airline: { return: airline.name, ...prev.airline } }))}
 
@@ -456,6 +470,21 @@ function Index(props) {
                               compositionFilter();
                             }}
                           >
+                            <input
+                              className={"radio"}
+                              type="checkbox"
+                              // value={filter.expense}
+                              checked={filter.airline.return === airline.name}
+
+                              // onChange={(e) =>
+                              //   handleCheckbox(e, "expense")
+                              // }
+                            />
+
+                            {/* <input
+                      type="radio"
+                      checked={filter.airline.return === airline.name}
+                    /> */}
                             <div>
                               <img
                                 src={airline.thumb.url}
@@ -640,7 +669,9 @@ function Index(props) {
                       فیلتر ها
                     </button>
                   </div>
-                  <TourListData tours={tour.sort((a,b)=>a.min_price-b.min_price)} />
+                  <TourListData
+                    tours={tour.sort((a, b) => a.min_price - b.min_price)}
+                  />
                 </>
               </div>
             )}
@@ -652,7 +683,6 @@ function Index(props) {
               onPageChange={(e) => handlePageChange(e)}
             />
           )}
-
         </div>
       </div>
     </>

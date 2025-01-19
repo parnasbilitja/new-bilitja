@@ -42,7 +42,7 @@ const HotelsDetails = ({setIsReserve,hotel,pack,data,setPackData,setShow,currenc
                     // foundRoom=roomsArr.filter(room=>room.id===roomTypeID)
 
                 }else{
-                    // debugger
+                    
                     let foundrooms=roomsArr.filter(room=>(room.flight_id.toString()+room.return_flight_id.toString())===flightId)
 
                     setRooms(foundrooms)
@@ -55,7 +55,7 @@ const HotelsDetails = ({setIsReserve,hotel,pack,data,setPackData,setShow,currenc
     }
 
     const roomFinder=(roomTypeID)=>{
-        // debugger
+        
         // let foundRoom
 
         return rooms.filter(room=>room.roomTypeId===roomTypeID)

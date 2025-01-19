@@ -6,17 +6,17 @@ import HomePicture from "../../sources/component/HomePicture";
 import PageTabls from "../../sources/component/PageTabs.component";
 import PictureBase from "../../sources/component/PictureBase";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
-const CitiesSuggest = dynamic(() => import("../../sources/tour/CitiesSuggest"));
+// const CitiesSuggest = dynamic(() => import("../../sources/tour/CitiesSuggest"));
 const HotelsSuggest = dynamic(() => import("../../sources/tour/HotelsSuggest"));
-import List from "../../sources/tour/List"
-const Posts = dynamic(() => import("../../sources/tour/Posts"));
+// import List from "../../sources/tour/List"
+// const Posts = dynamic(() => import("../../sources/tour/Posts"));
 const OfferdTours = dynamic(() => import("../../sources/tour/OfferdTours"));
 import NavHandler from "../share/NavHandler";
 import styles from "../../../styles/Home.module.scss";
 import axios from "axios";
 import { motion } from "framer-motion";
 import SearchBox from "../../sources/tour/SearchBox";
-import router, {useRouter, withRouter} from "next/router";
+import  {useRouter, withRouter} from "next/router";
 import {connect, useDispatch, useSelector} from "react-redux";
 
 import {
@@ -27,7 +27,6 @@ import {
 } from "../../Redux/newTours/Action";
 import TourSearchBox from "../NewTours/Components/TourSearchBox";
 import {fetchOfferdTour} from "../../Redux/OfferdTours/Action";
-import Link from "next/link";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation} from "swiper";
 import {setSearchStep} from "../../Redux/TourSearchbox/Action";
@@ -77,7 +76,7 @@ const ToursBase = (props) => {
         })
         .then((res) => {
           if(offered===true){
-            debugger
+            
             setOfferedtourData(res.data)
           }else{
             SetTourData(res?.data?.data);
@@ -157,9 +156,9 @@ const ToursBase = (props) => {
   useEffect(() => {
     axios.post('https://api.hamnavaz.com/api/v1/city/getCities',{hasTour:false})
         .then(response =>{
-          // debugger
+          
           const tours = response.data.data.filter(t=>t?.name==='استانبول' || t?.name==='آنتالیا'  || t?.name==='آلانیا' )
-          debugger
+          
           setCities(tours)
           // dispatch(fetchCitySucces(tours))
         })
@@ -171,9 +170,7 @@ const ToursBase = (props) => {
 
   }, [])
 
-  useEffect(() => {
-    console.log('pouya',cities)
-  }, [cities]);
+
 
 
   let tourCities =[{name:'استانبول' , code:'IST',slug:'istanbul',image:'../../../../Images/istanbul.jpg'},{name:'آنتالیا' , code:'AYT',slug:'antalya',image:'../../../../Images/antalya.jpg'},{name:'آلانیا' , code:'GZP',slug:'alanya',image:'../../../../Images/alanya.jpg'}, {name:'دبی' , code:'"DXB"',slug:'dubai',image:'../../../../Images/dubai.jpg'},]
@@ -331,12 +328,12 @@ const ToursBase = (props) => {
                               breakpoints={{
                                 0: {
                                   spaceBetween:1,
-                                  slidesPerView: 2.2,
+                                  slidesPerView: 2.5,
                                 },
                                 480: {
                                   spaceBetween:1,
 
-                                  slidesPerView: 3,
+                                  slidesPerView: 2.5,
                                 },
                                 855: {
                                   spaceBetween: 1,

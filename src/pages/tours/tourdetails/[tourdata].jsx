@@ -40,9 +40,7 @@ setLoading(false);
         }
     };
 
-    useEffect(()=>{
-        console.log(data)
-    },[data])
+
 
 return(
 
@@ -51,7 +49,7 @@ return(
     <Scrolltoprefresh/>
 
 
-    <div className={'container'} style={{paddingTop:'10rem'}}>
+    <div className={'container p-res'} >
         {!isloading && !isEmpty(data) ?
             <div style={{height: '100%'}}>
                 <HotelDet hotel={data?.hotel_info}/>

@@ -39,14 +39,7 @@ const NavHandler = (props) => {
     // }, [Router]);
 
 
-    // useEffect(()=>{
-    //     if(typeof window !=='undefined'){
-    //     console.log(window?.scrollY)
-    //
-    //     }
-    //
-    //
-    // },[typeof window !=='undefined' && window.scrollY])
+
         return (
             <div >
                 <div>

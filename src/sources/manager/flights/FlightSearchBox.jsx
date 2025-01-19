@@ -26,7 +26,7 @@ import Scrolltoprefresh from "../../component/Scrolltoprefresh";
 const FlightSearchBox = (props) => {
 
   // const posthog=usePostHog()
-  console.log(props);
+
   const [width, setWidth] = useState();
   useEffect(() => {
 
@@ -61,7 +61,7 @@ const FlightSearchBox = (props) => {
   };
   const [list, setList] = useState({});
   const handleFocusOut = (event) => {
-    console.log(list);
+
     const { name, value } = event.target;
     setList({ ...list, [name]: value });
     props.addCredentials({

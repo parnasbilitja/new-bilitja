@@ -11,7 +11,7 @@ import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoa
 const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox,searchInput,handleChange,setIsSearchbox,type,close}) => {
     const [hide, setHide] = useState(false)
     const searchHandler = (value='',name) => {
-        // debugger
+        
         setHide(true)
         setSearch({
             ...search,
@@ -69,11 +69,12 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
                     transition={{duration:0.3}}
                     className={styles['suggestion-box']}
 
-                    style={{backgroundColor:'white',padding:'2px 10px',marginTop:'8px',borderRadius:'10px',position:'absolute',zIndex:'9999',width:'100%' , maxHeight:'100px' ,minHeight:'40px',overflowY:'scroll'}}
+                    style={{backgroundColor:'white',marginTop:'8px',borderRadius:'10px',position:'absolute',zIndex:'9999',width:'100%' , maxHeight:'180px' ,minHeight:'40px',overflowY:'scroll'}}
                 >
                     {months?.length > 0 ? months?.map((item) => (
                             <>
                                 <div  key={item.code}
+                                className={styles['item']}
                                      style={{cursor:'pointer',display:'flex',flexDirection:'column',gap:'5px',padding:'5px 0'}}
 
                                      onClick={(e) => {
@@ -84,7 +85,7 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
                                          handleChange(item)
                                      }}>
 
-                                    <div className={'d-flex align-items-center justify-content-between'}>
+                                    <div className={'d-flex align-items-center justify-content-between px-2'}>
                                            <span className="font-size-14">
                                               {item.name ? item.name : (item + ' ' + 'شب')}
                                             </span>
@@ -137,12 +138,11 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
                             <div className={styles['citiesItem']}>
                                 {
 
-                                //     lists?.length === 0 ? (
-                                //     // <MainLoader/>
-                                //         <>
-                                //         <p style={{color:'#e20000'}}>موردی یافت نشد</p></>
-                                // ) : (
-                                    lists?.map((item) => (
+                                     months?.length === 0 ? (
+                                     <NewLoader/>
+                                 
+                                 ) : (
+                                    months?.map((item) => (
                                         <>
                                             <div key={item.code}
                                                  onClick={() => {
@@ -158,7 +158,7 @@ const InputValues = ({setSearch, search, name, months,setsearchInput,issearchbox
                                                 </span>
                                             </div>
                                         </>))
-                                    // ))
+                                     )
 
                                 }
 

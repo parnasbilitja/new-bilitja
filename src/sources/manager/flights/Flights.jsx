@@ -32,7 +32,7 @@ const Flights = (props) => {
     },[props.credentials])
     
     const seachData = async() => {
-      console.log('props.credentials',props.credentials)
+     
       const agenciesDeclare = await axios.get(
         `${globals.baseUrlNew}BilitAirLines/GetRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`
       );

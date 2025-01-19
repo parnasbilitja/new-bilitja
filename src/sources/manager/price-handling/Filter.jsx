@@ -26,7 +26,7 @@ const [filterData,setFilterData] = React.useState(list);
     setFilter(finded);
   };
   const findByStatus = async (e) => {
-    debugger
+    
     if (e.target.value == "Active") {
       setActiveStatus("Active");
       const finded = staticData.filter((res) => +res.reserveStat === 1);

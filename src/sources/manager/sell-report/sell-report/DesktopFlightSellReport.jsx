@@ -46,9 +46,7 @@ const FlightSellReport = () => {
     getList()
   },[])
 
-  useEffect(()=>{
-    console.log(list)
-  },[list])
+
   const header = [
     {
       title: 'ردیف',

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Provider } from "react-redux";
-import { store, persistor } from "../Redux/store";
+import { store } from "../Redux/store";
 import AddVilla from "../sources/manager/villa/AddVilla.page";
 import Villa from "../sources/manager/villa/Villa.page";
 import { useRouter } from "next/router";

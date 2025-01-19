@@ -12,9 +12,7 @@ class JalaliDays extends React.Component {
     super(props);
     const today = moment().format("jYYYY/jMM/jDD");
 
-    // 
-    // console.log('today=')
-    // console.log(today)
+   
 
     const date = today.split("/");
     this.currentYear = parseInt(date[0]) + 5;
@@ -168,7 +166,6 @@ class JalaliDays extends React.Component {
     //const today = parseInt(this.state.today.replace("/", "").replace("/", ""))
     const m = moment().format("jYYYY/jMM/jDD");
     const today = parseInt(m.replace("/", "").replace("/", ""));
-    // console.log(` NEWTODAY= ${today}`)
 
     date = parseInt(date);
     if (date > today) {
@@ -177,7 +174,6 @@ class JalaliDays extends React.Component {
       return "BEFORE";
     } else {
       // 
-      // console.log(day)
       return "TODAY";
     }
   };

@@ -14,9 +14,7 @@ const BirthdayCalenderMiladi = (props) => {
         month: "",
     });
 
-    // useEffect(()=>{
-    //     console.log(props.roomInfo)
-    // },[props.roomInfo])
+  
     const getYears = () => {
         if (props.typePassenger == "ADL") {
             return new Array(current - 11 - props.numBase)
@@ -69,7 +67,6 @@ const BirthdayCalenderMiladi = (props) => {
             parseInt(state.year) == parseInt(today.split("/")[0]) &&
             parseInt(state.month) == parseInt(today.split("/")[1])
         ) {
-            // console.log(today,state)
 
             revArrayOfDay
                 .reverse()
@@ -179,20 +176,8 @@ const BirthdayCalenderMiladi = (props) => {
         },
     ];
 
-    // const childTypeValidate=(chdtype)=>{
-    //    let checkin=props.roomInfo.checkin
-    //     if(chdtype.includes('withbed')){
-    //         console.log('hi')
-    //     }else{
-    //         console.log('bye')
-    //     }
-    //
 
-    // }
-    //
-    // useEffect(()=>{
-    //     console.log('type',childTypeValidate(props.roomInfo.type))
-    // },[props.roomInfo.type])
+   
     return (
         <div className={styles["birthday-calendar"]}>
             {state.stage == 1 ? (

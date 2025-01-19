@@ -4,31 +4,23 @@ import {
 } from "../../Components/NewTours/Components/NotifAlert.component";
 import Head from "next/head";
 import styles from "../../../styles/TourPackage/PackageTourDetails.module.scss";
-import Scrolltoprefresh from "./Scrolltoprefresh";
 import {
   getRandomNumber,
   isEmpty,
   MiladiToJalaliConvertor,
-  numberWithCommas,
   timeFixer,
 } from "../../Utils/newTour";
-import {
-  Shimmers1,
-  Shimmers4,
-} from "../../Components/NewTours/Components/subComponents/Shimmers";
+import { Shimmers4 } from "../../Components/NewTours/Components/subComponents/Shimmers";
 import Modal from "react-modal";
-
 import { moneyFormatrial } from "../../Utils/SimpleTasks";
 import { Loader } from "../../Utils/Loader";
-import PopUpWide from "./PopUpWide.component";
 import RequestTour from "../../Components/modal/RequestTour";
-import React, { useEffect, useRef, useState } from "react";
-import TransfersList from "./TransfersList";
-
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import globals from "../Global";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import RoomSelection from "../../Components/NewTours/Rooms/RoomSelection";
 
 const Packages = (props) => {
   const router = useRouter();
@@ -37,46 +29,42 @@ const Packages = (props) => {
   const [TargetFlight, setTargetFlight] = useState({});
   const [filter, setFilter] = useState({
     search_input: "",
-    sort_by: "2",
+    // sort_by: "2",
+    star: false,
+    cheapest: false,
+    expense: false,
   });
 
   const [isdownload, setIsDownload] = useState(false);
   const [data, setData] = useState({});
   const [packages, setPackages] = useState([]);
   const [show, setShow] = useState(false);
+  const [reqReserve, setReqReserve] = useState(false);
   const [flightList, setFlightList] = useState([]);
   const [isOpenFilter, setIsOpenFilter] = useState(false);
-  // const [showTransfers, setShowTransfers] = useState(false);
-  // const [flightId, setFlightId] = useState({
-  //     depratureId: null,
-  //     returnId: null,
-  // });
 
-  // const[isDownload,setIsDownload]
+
+  useEffect(()=>{
+    console.log(props.selected_flight);
+    
+  },[props.selected_flight])
   const roomFinder1 = (rooms, roomTypeID) => {
+let cheapest
     let foundRoom = rooms?.filter((room) => room?.room_type_id === roomTypeID);
-    let cheapest = foundRoom.reduce(
+   if(props.tour_type==='hotel'){
+    cheapest = foundRoom.reduce(
       (min, obj) => (obj.price < min.price ? obj : min),
       foundRoom[0]
     );
-    // console.log(cheapest)
+   }else{
+  cheapest=  foundRoom.filter((room)=>+room.flight_id === +props.selected_flight)[0]
+   }
+  
     return cheapest;
   };
 
-  const getroomsTitle = (rooms) => {
-    return rooms?.filter((room) => room.pin === 0);
-  };
-
-  const hotelSearch = (searchTerm) => {
-    let filteredHotel = data?.packages.filter(
-      (pack) =>
-        pack.hotel_name.includes(searchTerm) ||
-        pack.hotel_nameEn.toUpperCase().includes(searchTerm.toUpperCase())
-    );
-    setPackages(filteredHotel);
-  };
   const compositionFilter = () => {
-    // debugger
+    
 
     let filteredData = [...packages];
 
@@ -96,19 +84,15 @@ const Packages = (props) => {
           : props.tourdata;
     }
 
-    // Filter by flight numbers
-    if (filter.sort_by) {
-      if (filter.sort_by === "0") {
-        filteredData = filteredData.sort(
-          (a, b) => +a.hotel_stars - +b.hotel_stars
-        );
-      } else if (filter.sort_by === "1") {
-        filteredData = filteredData.sort(
-          (a, b) =>
-            roomFinder1(a.rooms, 148)?.price - roomFinder1(b.rooms, 148)?.price
-        );
-      } else {
-        let list = [];
+    if(filter.star){
+      filteredData=filteredData.sort(
+        (a, b) => +a.hotel_stars - +b.hotel_stars
+      );
+    }
+
+    if(filter.cheapest){
+      if(filter.star){
+             let list = [];
         for (let i = 1; i < 7; i++) {
           let filterdHotelBystar = filteredData.filter(
             (hotel) => +hotel.hotel_stars === i
@@ -123,55 +107,108 @@ const Packages = (props) => {
         }
 
         filteredData = list;
+      }else{
+        filteredData= filteredData = filteredData.sort(
+          (a, b) =>
+            roomFinder1(a.rooms, 148)?.price - roomFinder1(b.rooms, 148)?.price
+        );
       }
+   
     }
+    if(filter.expense){
+      if(filter.star){
+        let list = [];
+        for (let i = 1; i < 7; i++) {
+          let filterdHotelBystar = filteredData.filter(
+            (hotel) => +hotel.hotel_stars === i
+          );
+          list.push(
+            ...filterdHotelBystar.sort(
+              (a, b) =>
+                +roomFinder1(b.rooms, 148)?.price -
+                +roomFinder1(a.rooms, 148)?.price
+            )
+          );
+        }
+
+        filteredData = list;
+
+      }else{
+        filteredData= filteredData = filteredData.sort(
+          (a, b) =>
+            roomFinder1(b.rooms, 148)?.price - roomFinder1(a.rooms, 148)?.price
+        );
+      }
+   
+    }
+
+    // if()
+    // if (filter.sort_by) {
+    //   if (filter.sort_by === "0") {
+    //     filteredData = filteredData.sort(
+    //       (a, b) => +a.hotel_stars - +b.hotel_stars
+    //     );
+    //   } else if (filter.sort_by === "1") {
+    //     filteredData = filteredData.sort(
+    //       (a, b) =>
+    //         roomFinder1(a.rooms, 148)?.price - roomFinder1(b.rooms, 148)?.price
+    //     );
+    //   } else {
+    //     let list = [];
+    //     for (let i = 1; i < 7; i++) {
+    //       let filterdHotelBystar = filteredData.filter(
+    //         (hotel) => +hotel.hotel_stars === i
+    //       );
+    //       list.push(
+    //         ...filterdHotelBystar.sort(
+    //           (a, b) =>
+    //             +roomFinder1(a.rooms, 148)?.price -
+    //             +roomFinder1(b.rooms, 148)?.price
+    //         )
+    //       );
+    //     }
+
+    //     filteredData = list;
+    //   }
+    // }
 
     return filteredData;
   };
 
   const [selectedRooms, setSelectedRoom] = useState(0);
+  const [targetHotel, setTargetHotel] = useState({});
   const foundRooms = (pack) => {
-    let foundRoom = pack?.filter((room) => +room?.room_type_id === 148);
-    let cheapest148room = foundRoom?.reduce(
-      (min, obj) => (obj.price < min.price ? obj : min),
-      foundRoom[0]
-    );
-    let rooms = [cheapest148room];
-    let OtherRoom = pack?.filter(
-      (room) =>
-        room?.flight_id === cheapest148room?.flight_id &&
-        +room?.room_type_id !== 148
-    );
 
-    rooms.push(...OtherRoom);
+    let rooms=[]
+    if(props.tour_type==='hotel'){
+      let foundRoom = pack?.filter((room) => +room?.room_type_id === 148);
+      let cheapest148room = foundRoom?.reduce(
+        (min, obj) => (obj.price < min.price ? obj : min),
+        foundRoom[0]
+      );
+       rooms = [cheapest148room];
+      let OtherRoom = pack?.filter(
+        (room) =>
+          room?.flight_id === cheapest148room?.flight_id &&
+          +room?.room_type_id !== 148 
+          // &&
+          // +cheapest148room.package_id === +room.package_id
+      );
+  
+      rooms.push(...OtherRoom);
+    }else{
+      let foundRoom= pack.filter(room=>+room.flight_id===+props.selected_flight)
+
+      rooms=foundRoom
+    }
+
 
     setSelectedRoom(rooms);
   };
 
-  // const sortByStars = (hotellist=[]) => {
-  //     let filteredHotel = [];
-  //
-  //     for (let i = 1; i < 7; i++) {
-  //         let filterdHotelBystar = hotellist?.filter(
-  //             (hotel) => +hotel.hotel_stars === i
-  //         );
-  //         filteredHotel.push(
-  //             ...filterdHotelBystar.sort(
-  //                 (a, b) =>
-  //                     roomFinder1(a.rooms, 148)[0]?.price -
-  //                     roomFinder1(b.rooms, 148)[0]?.price
-  //             )
-  //         );
-  //     }
-  //     return filteredHotel;
-  // };
-
   useEffect(() => {
-    console.log(props.all_data);
     setData(null);
-
     setData(props.tourdata);
-
     setPackages(
       props.tour_type === "package" ? props.tourdata?.packages : props.tourdata
     );
@@ -181,14 +218,6 @@ const Packages = (props) => {
       let foundFlight = props.tourdata?.flights?.filter(
         (flight) => flight?.id === props.tourdata?.selected_flight
       );
-
-      // Check if foundFlight exists and has at least one element
-      // if (Array.isArray(foundFlight) && foundFlight.length > 0) {
-      //     setFlightId({
-      //         departureId: foundFlight[0]?.departure_flight?.id,
-      //         returnId: foundFlight[0]?.return_flight?.id,
-      //     });
-      // }
 
       setFlightList(props.tourdata?.flights);
     }
@@ -207,6 +236,7 @@ const Packages = (props) => {
   }
 
   const hotel_flight_merger = (hotels, flights) => {
+  
     return hotels.map((hotel) => {
       let related_flights = [];
       hotel.rooms = hotel.rooms.map((room) => {
@@ -225,27 +255,11 @@ const Packages = (props) => {
   };
 
   const handlePackageClick = async (pack) => {
+    
     setSelectedHotel(pack.id);
 
     let default_hotel =
       props.tour_type === "package" ? [{ ...pack }] : [{ ...pack }];
-    // props.all_data.allTours.filter(
-    //     (tour) =>
-    //         tour.hotel_id === pack.hotel_id && tour.id === pack.id
-    // );
-
-    // let suggested_hotels=
-    //     props.tour_type === "package"
-    //         ? []
-    //         : props.all_data.allTours.filter(
-    //             (tour) =>
-    //                 tour.hotel_id === pack.hotel_id && tour.id !== pack.id
-    //         );
-
-    // suggested_hotels =
-    //     props.tour_type === "package"
-    //         ? hotel_flight_merger(suggested_hotels, flightList)
-    //         : hotel_flight_merger(suggested_hotels, props?.all_data?.allFlights);
 
     default_hotel =
       props.tour_type === "package"
@@ -255,9 +269,10 @@ const Packages = (props) => {
       default_hotel[0].tour_id = props.tourId;
     }
 
-    console.log(
-      hotel_flight_merger(default_hotel, props?.all_data?.allFlights)
-    );
+
+
+
+
     if (default_hotel.length > 0) {
       try {
         // Cache the selected package
@@ -268,20 +283,15 @@ const Packages = (props) => {
           },
           body: JSON.stringify({
             default_hotel,
-            // suggested_hotels,
             hote_slug: pack.hotel_slug,
           }),
         });
-
         const data = await response.json();
 
         if (response.ok) {
           const { key } = data;
-
           setSelectedHotel(pack.id);
           router.push(`/tours/tourdetails/${key}`);
-
-          // router.push(`/tour/hoteldetail/${key}`);
         } else {
           console.error("Error caching package:", data.message);
         }
@@ -299,7 +309,6 @@ const Packages = (props) => {
     link.href = pdfLink;
     link.setAttribute("download", "downloaded-file.pdf"); // Set the desired filename
     link.download = "tours.pdf";
-    // link.target = '_blank'
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -338,9 +347,37 @@ const Packages = (props) => {
     );
   }, [flightList]);
 
-  useEffect(() => {
-    console.log(TargetFlight);
-  }, [TargetFlight]);
+
+
+  const handleCheckbox = (e, type) => {
+    if(type==='cheapest' &&  e.target.checked){
+      setFilter((prev) => ({
+        ...prev,
+        [type]: e.target.checked,
+        expense:false
+  
+  
+      }));
+    }else if(type==='expense' &&  e.target.checked){
+      setFilter((prev) => ({
+        ...prev,
+        [type]: e.target.checked,
+        cheapest:false
+  
+  
+      }));
+    }else{
+      setFilter((prev) => ({
+        ...prev,
+        [type]: e.target.checked,
+  
+  
+      }));
+    }
+ 
+  };
+
+
   return (
     <>
       <div>
@@ -356,43 +393,7 @@ const Packages = (props) => {
           </title>
         </Head>
         <div className={styles["tours"]}>
-          <div className="padd" style={{ position: "relative !important" }}>
-            {/*{(props.tour_type === 'package' && props.tourdata?.flights.length > 0) &&*/}
-            {/*    <section className=" mt-2-mobi pt-3-mobi  ">*/}
-            {/*        <Scrolltoprefresh/>*/}
-            {/*        /!*<div className="container mt-2 ">*!/*/}
-
-            {/*            <div*/}
-            {/*                className="detail-tour col-xl-12 col-lg-12 col-12 d-flex flex-wrap justify-content-between border-bottom py-1">*/}
-            {/*                {data && !props.isLoading ? (*/}
-
-            {/*                    <>*/}
-            {/*                        <TransfersList setShowTransfers={(val) => {*/}
-            {/*                            setShowTransfers(val);*/}
-            {/*                        }}*/}
-            {/*                                       hotelInfo={data}*/}
-            {/*                                       index={flightList?.findIndex(*/}
-            {/*                                           (transfer) => selectedFlight === transfer.id*/}
-            {/*                                       )}*/}
-            {/*                                       transfers={flightList && flightList}*/}
-            {/*                                       showTransfers={showTransfers}*/}
-            {/*                                       setFlightId={(val) => setFlightId(val)}*/}
-
-            {/*                                       setSelectedFlight={(val) => props.getData(val)}*/}
-            {/*                                       selectedFlight={selectedFlight}*/}
-            {/*                        />*/}
-
-            {/*                    </>*/}
-            {/*                ) : (*/}
-            {/*                    <Shimmers1/>*/}
-            {/*                )}*/}
-
-            {/*            </div>*/}
-            {/*        /!*</div>*!/*/}
-            {/*    </section>*/}
-
-            {/*}*/}
-
+          <div style={{ position: "relative !important" }}>
             <section className="mt-8">
               {
                 <div className={styles["tour"]}>
@@ -408,7 +409,7 @@ const Packages = (props) => {
                               >{`هتل های ${
                                 props.tour_type === "package"
                                   ? data?.title
-                                  : props.all_data?.tour_info?.title
+                                  : props.all_data?.tour_info?.title ? props.all_data?.tour_info?.title :'لیست تور'
                               }`}</p>
                             </div>
 
@@ -441,6 +442,29 @@ const Packages = (props) => {
                         {props.tour_type === "package" &&
                           !isEmpty(TargetFlight) && (
                             <div>
+                              <div className="d-flex align-items-center w-100 gap-2 mb-2">
+                                <svg
+                                  style={{ rotate: "270deg" }}
+                                  viewBox="0 0 24 24"
+                                  // fill="#e20000"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="20"
+                                  height="20"
+                                  fill="#e20000"
+                                >
+                                  <g>
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M14 8.947L22 14v2l-8-2.526v5.36l3 1.666V22l-4.5-1L8 22v-1.5l3-1.667v-5.36L3 16v-2l8-5.053V3.5a1.5 1.5 0 0 1 3 0v5.447z" />
+                                  </g>
+                                </svg>
+
+                                <p
+                                  className="font-size-14 p-0 m-0 font-bold"
+                                  style={{ color: "#e20000" }}
+                                >
+                                  اطلاعات پرواز این تور
+                                </p>
+                              </div>
                               <motion.div
                                 className={styles["flight_card"]}
                                 style={{ cursor: "pointer" }}
@@ -610,7 +634,7 @@ const Packages = (props) => {
                               <motion.div
                                 className={styles["hotel-item"]}
                                 key={pack.id}
-                                whileHover={{ translateX: "20px" }}
+                                whileHover={{ translateX: "10px" }}
                                 // animate={{translateX:'100px'}}
                               >
                                 <div className="d-detail position-relative col-xl-12 col-lg-12 col-12  bg-white">
@@ -658,154 +682,206 @@ const Packages = (props) => {
                                                   className={styles["names"]}
                                                 >
                                                   <div>
-                                                    <div
-                                                      className="star"
-                                                      style={{
-                                                        display: "flex",
-                                                        marginBottom: "5px",
-                                                      }}
-                                                    >
-                                                      <div className="d-flex align-items-center">
-                                                        <div className="image d-flex align-items-center">
-                                                          {(() => {
-                                                            let stars = [];
-                                                            for (
-                                                              let i = 1;
-                                                              i <=
-                                                              parseInt(
-                                                                pack?.hotel_stars
-                                                              );
-                                                              i++
-                                                            ) {
-                                                              stars.push(
-                                                                <svg
-                                                                  width="20px"
-                                                                  height="20px"
-                                                                  viewBox="0 0 24 24"
-                                                                  fill="#F8CF15"
-                                                                  xmlns="http://www.w3.org/2000/svg"
-                                                                >
-                                                                  <path
-                                                                    d="M11.245 4.174C11.4765 3.50808 11.5922 3.17513 11.7634 3.08285C11.9115 3.00298 12.0898 3.00298 12.238 3.08285C12.4091 3.17513 12.5248 3.50808 12.7563 4.174L14.2866 8.57639C14.3525 8.76592 14.3854 8.86068 14.4448 8.93125C14.4972 8.99359 14.5641 9.04218 14.6396 9.07278C14.725 9.10743 14.8253 9.10947 15.0259 9.11356L19.6857 9.20852C20.3906 9.22288 20.743 9.23007 20.8837 9.36432C21.0054 9.48051 21.0605 9.65014 21.0303 9.81569C20.9955 10.007 20.7146 10.2199 20.1528 10.6459L16.4387 13.4616C16.2788 13.5829 16.1989 13.6435 16.1501 13.7217C16.107 13.7909 16.0815 13.8695 16.0757 13.9507C16.0692 14.0427 16.0982 14.1387 16.1563 14.3308L17.506 18.7919C17.7101 19.4667 17.8122 19.8041 17.728 19.9793C17.6551 20.131 17.5108 20.2358 17.344 20.2583C17.1513 20.2842 16.862 20.0829 16.2833 19.6802L12.4576 17.0181C12.2929 16.9035 12.2106 16.8462 12.1211 16.8239C12.042 16.8043 11.9593 16.8043 11.8803 16.8239C11.7908 16.8462 11.7084 16.9035 11.5437 17.0181L7.71805 19.6802C7.13937 20.0829 6.85003 20.2842 6.65733 20.2583C6.49056 20.2358 6.34626 20.131 6.27337 19.9793C6.18915 19.8041 6.29123 19.4667 6.49538 18.7919L7.84503 14.3308C7.90313 14.1387 7.93218 14.0427 7.92564 13.9507C7.91986 13.8695 7.89432 13.7909 7.85123 13.7217C7.80246 13.6435 7.72251 13.5829 7.56262 13.4616L3.84858 10.6459C3.28678 10.2199 3.00588 10.007 2.97101 9.81569C2.94082 9.65014 2.99594 9.48051 3.11767 9.36432C3.25831 9.23007 3.61074 9.22289 4.31559 9.20852L8.9754 9.11356C9.176 9.10947 9.27631 9.10743 9.36177 9.07278C9.43726 9.04218 9.50414 8.99359 9.55657 8.93125C9.61593 8.86068 9.64887 8.76592 9.71475 8.57639L11.245 4.174Z"
-                                                                    stroke="#F8CF15"
-                                                                    strokeWidth="1"
-                                                                    strokeLinecap="round"
-                                                                    strokeLinejoin="round"
-                                                                  />
-                                                                </svg>
-                                                              );
-                                                            }
-                                                            return stars;
-                                                          })()}
+                                                    <div>
+                                                      <div
+                                                        className="star"
+                                                        style={{
+                                                          display: "flex",
+                                                          marginBottom: "5px",
+                                                        }}
+                                                      >
+                                                        <div className="d-flex align-items-center">
+                                                          <div className="image d-flex align-items-center">
+                                                            {(() => {
+                                                              let stars = [];
+                                                              for (
+                                                                let i = 1;
+                                                                i <=
+                                                                parseInt(
+                                                                  pack?.hotel_stars
+                                                                );
+                                                                i++
+                                                              ) {
+                                                                stars.push(
+                                                                  <svg
+                                                                    width="20px"
+                                                                    height="20px"
+                                                                    viewBox="0 0 24 24"
+                                                                    fill="#F8CF15"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                  >
+                                                                    <path
+                                                                      d="M11.245 4.174C11.4765 3.50808 11.5922 3.17513 11.7634 3.08285C11.9115 3.00298 12.0898 3.00298 12.238 3.08285C12.4091 3.17513 12.5248 3.50808 12.7563 4.174L14.2866 8.57639C14.3525 8.76592 14.3854 8.86068 14.4448 8.93125C14.4972 8.99359 14.5641 9.04218 14.6396 9.07278C14.725 9.10743 14.8253 9.10947 15.0259 9.11356L19.6857 9.20852C20.3906 9.22288 20.743 9.23007 20.8837 9.36432C21.0054 9.48051 21.0605 9.65014 21.0303 9.81569C20.9955 10.007 20.7146 10.2199 20.1528 10.6459L16.4387 13.4616C16.2788 13.5829 16.1989 13.6435 16.1501 13.7217C16.107 13.7909 16.0815 13.8695 16.0757 13.9507C16.0692 14.0427 16.0982 14.1387 16.1563 14.3308L17.506 18.7919C17.7101 19.4667 17.8122 19.8041 17.728 19.9793C17.6551 20.131 17.5108 20.2358 17.344 20.2583C17.1513 20.2842 16.862 20.0829 16.2833 19.6802L12.4576 17.0181C12.2929 16.9035 12.2106 16.8462 12.1211 16.8239C12.042 16.8043 11.9593 16.8043 11.8803 16.8239C11.7908 16.8462 11.7084 16.9035 11.5437 17.0181L7.71805 19.6802C7.13937 20.0829 6.85003 20.2842 6.65733 20.2583C6.49056 20.2358 6.34626 20.131 6.27337 19.9793C6.18915 19.8041 6.29123 19.4667 6.49538 18.7919L7.84503 14.3308C7.90313 14.1387 7.93218 14.0427 7.92564 13.9507C7.91986 13.8695 7.89432 13.7909 7.85123 13.7217C7.80246 13.6435 7.72251 13.5829 7.56262 13.4616L3.84858 10.6459C3.28678 10.2199 3.00588 10.007 2.97101 9.81569C2.94082 9.65014 2.99594 9.48051 3.11767 9.36432C3.25831 9.23007 3.61074 9.22289 4.31559 9.20852L8.9754 9.11356C9.176 9.10947 9.27631 9.10743 9.36177 9.07278C9.43726 9.04218 9.50414 8.99359 9.55657 8.93125C9.61593 8.86068 9.64887 8.76592 9.71475 8.57639L11.245 4.174Z"
+                                                                      stroke="#F8CF15"
+                                                                      strokeWidth="1"
+                                                                      strokeLinecap="round"
+                                                                      strokeLinejoin="round"
+                                                                    />
+                                                                  </svg>
+                                                                );
+                                                              }
+                                                              return stars;
+                                                            })()}
 
-                                                          <div
-                                                            style={{
-                                                              marginRight:
-                                                                "10px",
-                                                              padding: "3px",
-                                                              backgroundColor:
-                                                                "#e20000",
-                                                              borderRadius:
-                                                                "10px",
-                                                              width: "60px",
-                                                              height: "20px",
-                                                              color: "white",
-                                                              display: "flex",
-                                                              justifyContent:
-                                                                "center",
-                                                              fontSize: "13px",
-                                                            }}
-                                                          >
-                                                            {pack?.board_type}
+                                                            <div
+                                                              style={{
+                                                                marginRight:
+                                                                  "10px",
+                                                                padding: "3px",
+                                                                backgroundColor:
+                                                                  "#e20000",
+                                                                borderRadius:
+                                                                  "10px",
+                                                                width: "60px",
+                                                                height: "20px",
+                                                                color: "white",
+                                                                display: "flex",
+                                                                justifyContent:
+                                                                  "center",
+                                                                fontSize:
+                                                                  "13px",
+                                                              }}
+                                                            >
+                                                              {pack?.board_type}
+                                                            </div>
                                                           </div>
                                                         </div>
                                                       </div>
                                                     </div>
-                                                  </div>
-                                                  {/*<Link href={`/hotels/dshgfj`}>*/}
-
-                                                  <div
-                                                    style={{
-                                                      display: "flex",
-                                                      flexDirection: "column",
-                                                    }}
-                                                    onClick={() =>
-                                                      props.tour_type ===
-                                                        "hotel" &&
-                                                      handlePackageClick(pack)
-                                                    }
-                                                  >
-                                                    <p
-                                                      // href={`/hotels/${pack?.hotel_slug}`}
+                                                    <div
                                                       style={{
-                                                        color: "#000",
-                                                        fontWeight: "900",
+                                                        display: "flex",
+                                                        flexDirection: "column",
                                                       }}
+                                                      onClick={() =>
+                                                        props.tour_type ===
+                                                          "hotel" &&
+                                                        handlePackageClick(pack)
+                                                      }
                                                     >
-                                                      {pack?.hotel_nameEn}
-                                                    </p>
-                                                    <p
-                                                      // href={`/hotels/${pack.hotel_slug}`}
-                                                      style={{
-                                                        color:
-                                                          "rgb(101,101,101)",
-                                                        fontSize: "13px",
-                                                      }}
-                                                    >
-                                                      {pack?.hotel_name}
-                                                    </p>
-                                                  </div>
-
-                                                  {/*</Link>*/}
-                                                  <div>
-                                                    <div className="d-flex align-items-center mt-1">
-                                                      <svg
-                                                        className="ms-1"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="15"
-                                                        height="15"
-                                                        viewBox="0 0 23.528 26.039"
+                                                      <p
+                                                        // href={`/hotels/${pack?.hotel_slug}`}
+                                                        style={{
+                                                          color: "#000",
+                                                          fontWeight: "900",
+                                                        }}
                                                       >
-                                                        <g
-                                                          id="Location"
-                                                          transform="translate(0.028)"
-                                                        >
-                                                          <path
-                                                            id="Path_1011"
-                                                            data-name="Path 1011"
-                                                            d="M1.152,12.976a14.6,14.6,0,0,0,4.131,7.545,25.71,25.71,0,0,0,5.471,4.223,1.912,1.912,0,0,0,1.962,0,25.71,25.71,0,0,0,5.471-4.223,14.6,14.6,0,0,0,4.131-7.545,10.842,10.842,0,0,0-1.656-7.829C19.058,2.823,16.236,1,11.736,1S4.413,2.823,2.809,5.147A10.842,10.842,0,0,0,1.152,12.976Z"
-                                                            transform="translate(0 0)"
-                                                            fill="none"
-                                                            stroke="#000"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            strokeWidth={2}
-                                                          ></path>
-                                                          <circle
-                                                            id="Ellipse_49"
-                                                            data-name="Ellipse 49"
-                                                            cx="2.928"
-                                                            cy="2.928"
-                                                            r="2.928"
-                                                            transform="translate(14.663 12.712) rotate(180)"
-                                                            fill="none"
-                                                            stroke="#000"
-                                                            strokeWidth={2}
-                                                          ></circle>
-                                                        </g>
-                                                      </svg>
-                                                      <span className="font-bold font-size-12">
-                                                        {pack?.location}
-                                                      </span>
+                                                        {pack?.hotel_nameEn}
+                                                      </p>
+                                                      <p
+                                                        // href={`/hotels/${pack.hotel_slug}`}
+                                                        style={{
+                                                          color:
+                                                            "rgb(101,101,101)",
+                                                          fontSize: "13px",
+                                                        }}
+                                                      >
+                                                        {pack?.hotel_name}
+                                                      </p>
                                                     </div>
                                                   </div>
 
+                                                  {/*</Link>*/}
+
                                                   <div
                                                     className={
-                                                      "d-flex gap-3 align-items-center mt-3 justify-content-center"
+                                                      styles["roomsDet"]
                                                     }
                                                   >
-                                                    {getRandomNumber(3).map(
+                                                    <div>
+                                                      {
+                                                        <div
+                                                          className={
+                                                            styles[
+                                                              "rooms-title"
+                                                            ]
+                                                          }
+                                                        >
+                                                          <div
+                                                            className={
+                                                              styles["room-prc"]
+                                                            }
+                                                          >
+                                                            <div
+                                                              className={
+                                                                styles[
+                                                                  "room-title"
+                                                                ]
+                                                              }
+                                                            >
+                                                              <span
+                                                                className={
+                                                                  styles[""]
+                                                                }
+                                                              >
+                                                                دو تخته (هرنفر){" "}
+                                                              </span>
+                                                            </div>
+                                                            <div
+                                                              className={
+                                                                styles["room"]
+                                                              }
+                                                            >
+                                                              <div className=" d-flex align-items-start ">
+                                                                <div className=" w-100">
+                                                                  {
+                                                                    // getHotelRooms(pack)
+                                                                    roomFinder1(
+                                                                      pack.rooms,
+                                                                      148
+                                                                    )?.price ? (
+                                                                      <>
+                                                                        <p
+                                                                          className="font-size-16   m-0 price-color"
+                                                                          style={{
+                                                                            fontWeight:
+                                                                              "600",
+                                                                          }}
+                                                                        >
+                                                                          {moneyFormatrial(
+                                                                            roomFinder1(
+                                                                              pack.rooms,
+                                                                              148
+                                                                            )
+                                                                              .price
+                                                                          )}
+
+                                                                          <span className="font-size-14 font-bold px-1  m-0 color-gray">
+                                                                            تومان
+                                                                          </span>
+                                                                        </p>
+
+                                                                        {/*<p className="px-2 font-size-13 m-0 text-center font-blue text-center"> {getcurrencyfa(currency) } </p>*/}
+                                                                      </>
+                                                                    ) : (
+                                                                      <span className="font-bold font-size-13 font-bold color-gray">
+                                                                        {" "}
+                                                                        عدم
+                                                                        موجودی
+                                                                      </span>
+                                                                    )
+                                                                  }
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      }
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <div
+                                                  className={
+                                                    styles["service-btn"]
+                                                  }
+                                                >
+                                                  <div
+                                                    className={
+                                                      "d-flex gap-3 align-items-center justify-content-center"
+                                                    }
+                                                  >
+                                                    {pack?.feature?.map(
                                                       (item, index) => (
                                                         <div
                                                           style={{
@@ -821,7 +897,7 @@ const Packages = (props) => {
                                                         >
                                                           <p
                                                             className={
-                                                              "font-size-8 "
+                                                              "font-size-8 m-0 p-0"
                                                             }
                                                             style={{
                                                               fontSize: "11px",
@@ -830,206 +906,64 @@ const Packages = (props) => {
                                                               fontWeight: "900",
                                                             }}
                                                           >
-                                                            {tags[item]}
+                                                            {item}
                                                           </p>
                                                         </div>
                                                       )
                                                     )}
                                                   </div>
-                                                </div>
-                                                <div
-                                                  className={styles["roomsDet"]}
-                                                >
-                                                  <div>
-                                                    {
-                                                      <div
-                                                        className={
-                                                          styles["rooms-title"]
-                                                        }
-                                                      >
-                                                        <div
-                                                          className={
-                                                            styles["room-prc"]
-                                                          }
-                                                        >
-                                                          <div
-                                                            className={
-                                                              styles[
-                                                                "room-title"
-                                                              ]
-                                                            }
-                                                          >
-                                                            <span
-                                                              className={
-                                                                styles[""]
-                                                              }
-                                                            >
-                                                              دو تخته (هرنفر){" "}
-                                                            </span>
-                                                          </div>
-                                                          <div
-                                                            className={
-                                                              styles["room"]
-                                                            }
-                                                          >
-                                                            <div className=" d-flex align-items-start ">
-                                                              <div className=" w-100">
-                                                                {
-                                                                  // getHotelRooms(pack)
-                                                                  roomFinder1(
-                                                                    pack.rooms,
-                                                                    148
-                                                                  )?.price ? (
-                                                                    <>
-                                                                      <p
-                                                                        className="font-size-16   m-0 price-color"
-                                                                        style={{
-                                                                          fontWeight:
-                                                                            "600",
-                                                                        }}
-                                                                      >
-                                                                        {moneyFormatrial(
-                                                                          roomFinder1(
-                                                                            pack.rooms,
-                                                                            148
-                                                                          )
-                                                                            .price
-                                                                        )}
-
-                                                                        <span className="font-size-14 font-bold px-1  m-0 color-gray">
-                                                                          تومان
-                                                                        </span>
-                                                                      </p>
-
-                                                                      {/*<p className="px-2 font-size-13 m-0 text-center font-blue text-center"> {getcurrencyfa(currency) } </p>*/}
-                                                                    </>
-                                                                  ) : (
-                                                                    <span className="font-bold font-size-13 font-bold color-gray">
-                                                                      {" "}
-                                                                      عدم موجودی
-                                                                    </span>
-                                                                  )
-                                                                }
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                    }
-
-                                                    <div>
-                                                      <div
-                                                        className={
-                                                          styles["btn-con"]
-                                                        }
-                                                      >
-                                                        <button
-                                                          className=""
-                                                          onClick={() => {
-                                                            setShow(true);
-                                                            // posthog.capture("TourPackageHotelSelect")
-                                                            // setPackData({tourId: pack.id});
-                                                            // setSelectedHotel(pack)
-
-                                                            foundRooms(
-                                                              pack.rooms
-                                                            );
-                                                          }}
-                                                        >
-                                                          اتاق های دیگر
-                                                        </button>
-                                                        {props.tour_type ===
-                                                          "hotel" && (
-                                                          <button
-                                                            className=""
-                                                            style={{
-                                                              fontWeight: "700",
-                                                            }}
-                                                            onClick={() => {
-                                                              // setIsReserve(true)
-                                                              setSelectedHotel(
-                                                                pack.id
-                                                              );
-                                                              handlePackageClick(
-                                                                pack
-                                                              );
-                                                            }}
-                                                          >
-                                                            {+selectedHotel ===
-                                                            +pack.id
-                                                              ? "منتظر بمانید..."
-                                                              : "رزرو"}
-                                                          </button>
-                                                        )}
-                                                      </div>
-                                                    </div>
-                                                  </div>
-
                                                   <div
                                                     className={
-                                                      styles["rooms-title"]
+                                                      styles["btn-con"]
                                                     }
                                                   >
-                                                    {getroomsTitle(
-                                                      pack.rooms
-                                                    ).map((t) => (
-                                                      <div
-                                                        className={
-                                                          styles["room-prc"]
-                                                        }
+                                                    <button
+                                                      className=""
+                                                      onClick={() => {
+                                                        setShow(true);
+                                                        // posthog.capture("TourPackageHotelSelect")
+                                                        // setPackData({tourId: pack.id});
+                                                        // setSelectedHotel(pack)
+                                                     
+
+                                                        foundRooms(pack.rooms);
+                                                      }}
+                                                    >
+                                                      اتاق های دیگر
+                                                    </button>
+                                                    {
+                                                      <button
+                                                        className=""
+                                                        style={{
+                                                          fontWeight: "700",
+                                                        }}
+                                                        onClick={() => {
+                                                          if (
+                                                            props.tour_type ===
+                                                            "package"
+                                                          ) {
+                                                            
+                                                            setTargetHotel(pack)
+                                                            foundRooms(pack.rooms);
+
+                                                            setReqReserve(true);
+                                                          } else {
+                                                            // setIsReserve(true)
+                                                            setSelectedHotel(
+                                                              pack.id
+                                                            );
+                                                            handlePackageClick(
+                                                              pack
+                                                            );
+                                                          }
+                                                        }}
                                                       >
-                                                        <div
-                                                          className={
-                                                            styles["room-title"]
-                                                          }
-                                                        >
-                                                          <span
-                                                            className={
-                                                              styles[""]
-                                                            }
-                                                          >
-                                                            {t.name}
-                                                          </span>
-                                                        </div>
-                                                        <div
-                                                          className={
-                                                            styles["room"]
-                                                          }
-                                                        >
-                                                          <div className=" d-flex align-items-start ">
-                                                            <div className=" w-100 py-3">
-                                                              {
-                                                                // getHotelRooms(pack)
-                                                                t.price ? (
-                                                                  <>
-                                                                    <p
-                                                                      className="font-size-16 font-bold  m-0 price-color"
-                                                                      style={{
-                                                                        fontWeight:
-                                                                          "bold",
-                                                                      }}
-                                                                    >
-                                                                      {t?.price}
-
-                                                                      <span className="font-size-14 font-bold px-1  m-0 color-gray">
-                                                                        تومان
-                                                                      </span>
-                                                                    </p>
-
-                                                                    {/*<p className="px-2 font-size-13 m-0 text-center font-blue text-center"> {getcurrencyfa(currency) } </p>*/}
-                                                                  </>
-                                                                ) : (
-                                                                  <span className="font-bold font-size-13 font-bold color-gray">
-                                                                    {" "}
-                                                                    عدم موجودی
-                                                                  </span>
-                                                                )
-                                                              }
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                    ))}
+                                                        {+selectedHotel ===
+                                                        +pack.id
+                                                          ? "منتظر بمانید..."
+                                                          : "رزرو"}
+                                                      </button>
+                                                    }
                                                   </div>
                                                 </div>
                                               </div>
@@ -1174,173 +1108,183 @@ const Packages = (props) => {
                     <div className={styles["tour_details_container"]}>
                       <div className={styles["tour_details"]}>
                         <div className="ps-2 ms-2 w-100">
-                          <div className={`isDesktop ${styles["tour_info"]}`}>
-                            <div className="d-flex align-items-center justify-content-center">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 17.401 17.401"
-                              >
-                                <g
-                                  id="Document_Align_Center_1"
-                                  data-name="Document Align Center 1"
-                                  transform="translate(1 1)"
-                                >
-                                  <path
-                                    id="Path_895"
-                                    data-name="Path 895"
-                                    d="M1,8.7a19.485,19.485,0,0,0,.323,4.079A4.335,4.335,0,0,0,2.4,15a4.336,4.336,0,0,0,2.22,1.078A19.488,19.488,0,0,0,8.7,16.4a19.488,19.488,0,0,0,4.079-.323A4.335,4.335,0,0,0,15,15a4.335,4.335,0,0,0,1.078-2.22A19.488,19.488,0,0,0,16.4,8.7a19.488,19.488,0,0,0-.323-4.079A4.336,4.336,0,0,0,15,2.4a4.335,4.335,0,0,0-2.22-1.078A19.485,19.485,0,0,0,8.7,1a19.485,19.485,0,0,0-4.079.323A4.335,4.335,0,0,0,2.4,2.4a4.335,4.335,0,0,0-1.078,2.22A19.485,19.485,0,0,0,1,8.7Z"
-                                    transform="translate(-1 -1)"
-                                    fill="none"
-                                    stroke="#646564"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                  />
-                                  <path
-                                    id="Path_896"
-                                    data-name="Path 896"
-                                    d="M10,7h2.8"
-                                    transform="translate(-3.699 -2.8)"
-                                    fill="none"
-                                    stroke="#646564"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                  />
-                                  <path
-                                    id="Path_897"
-                                    data-name="Path 897"
-                                    d="M7,12h7"
-                                    transform="translate(-2.8 -4.299)"
-                                    fill="none"
-                                    stroke="#646564"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                  />
-                                  <path
-                                    id="Path_898"
-                                    data-name="Path 898"
-                                    d="M10,17h2.8"
-                                    transform="translate(-3.699 -5.799)"
-                                    fill="none"
-                                    stroke="#646564"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                  />
-                                </g>
-                              </svg>
-
-                              <p className={styles["title"]}>{`هتل های ${
-                                props.tour_type === "package"
-                                  ? data?.title
-                                  : props.all_data?.tour_info?.title
-                              }`}</p>
-                            </div>
-
-                            <hr className={"p-0 mt-2"} />
-
-                            <div className={styles["date_time"]}>
-                              <div>
-                                <div className={styles["checkin_checkout"]}>
-                                  <p>تاریخ ورود به هتل:</p>
-                                  <p>
-                                    {" "}
-                                    {MiladiToJalaliConvertor(
-                                      props.tour_type === "package"
-                                        ? data.checkin
-                                        : props.all_data?.tour_info?.checkin
-                                    )}
-                                  </p>
-                                </div>
-                                <div className={styles["checkin_checkout"]}>
-                                  <p>تاریخ خروج از هتل:</p>
-                                  <p>
-                                    {" "}
-                                    {MiladiToJalaliConvertor(
-                                      props.tour_type === "package"
-                                        ? data.checkout
-                                        : props.all_data?.tour_info?.checkout
-                                    )}
-                                  </p>
-                                </div>
-                              </div>
-
-                              <div className={styles["night"]}>
-                                <p className="text-xs text-secondary-color font-black">
-                                  {props.tour_type === "package"
-                                    ? data.night_num
-                                    : props.all_data?.tour_info?.night_num}{" "}
-                                  شب
-                                </p>
-                                <p className="text-xs text-secondary-color font-black">
-                                  و
-                                </p>
-                                <p className="text-xs text-secondary-color font-black">
-                                  {props.tour_type === "package"
-                                    ? data.day_num
-                                    : props.all_data?.tour_info?.day_num}{" "}
-                                  روز
-                                </p>
-                              </div>
-                            </div>
-                            <hr />
-
-                            {props.tour_type === "package" && (
-                              <>
-                                <div
-                                  className={"d-flex justify-content-between"}
-                                >
-                                  <p className={"font-size-14"}>نام آژانس:</p>
-                                  <p className={"font-size-15 font-bold"}>
-                                    {data?.agency}
-                                  </p>
-                                </div>
-
-                                <div
-                                  className={
-                                    "d-flex justify-content-center align-items-center gap-3 cursor-pointer"
-                                  }
-                                  style={{
-                                    width: "100%",
-                                    padding: "10px",
-                                    border: "1px solid #e20000",
-                                    borderRadius: "20px",
-                                    cursor: "pointer",
-                                  }}
-                                >
+                          {(props.tour_type === "package" ||
+                            (props.tour_type === "hotel" &&
+                              router.query.date &&
+                              router.query.nights !== "null")) && (
+                            <div
+                              className={`isDesktop ${styles["tour_info"]} w-full`}
+                            >
+                              {
+                                <div className="d-flex align-items-center justify-content-center">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    width={20}
-                                    height={20}
-                                    stroke="#e20000"
-                                    className="size-6"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 17.401 17.401"
                                   >
-                                    <path
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                      d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
-                                    />
+                                    <g
+                                      id="Document_Align_Center_1"
+                                      data-name="Document Align Center 1"
+                                      transform="translate(1 1)"
+                                    >
+                                      <path
+                                        id="Path_895"
+                                        data-name="Path 895"
+                                        d="M1,8.7a19.485,19.485,0,0,0,.323,4.079A4.335,4.335,0,0,0,2.4,15a4.336,4.336,0,0,0,2.22,1.078A19.488,19.488,0,0,0,8.7,16.4a19.488,19.488,0,0,0,4.079-.323A4.335,4.335,0,0,0,15,15a4.335,4.335,0,0,0,1.078-2.22A19.488,19.488,0,0,0,16.4,8.7a19.488,19.488,0,0,0-.323-4.079A4.336,4.336,0,0,0,15,2.4a4.335,4.335,0,0,0-2.22-1.078A19.485,19.485,0,0,0,8.7,1a19.485,19.485,0,0,0-4.079.323A4.335,4.335,0,0,0,2.4,2.4a4.335,4.335,0,0,0-1.078,2.22A19.485,19.485,0,0,0,1,8.7Z"
+                                        transform="translate(-1 -1)"
+                                        fill="none"
+                                        stroke="#646564"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                      />
+                                      <path
+                                        id="Path_896"
+                                        data-name="Path 896"
+                                        d="M10,7h2.8"
+                                        transform="translate(-3.699 -2.8)"
+                                        fill="none"
+                                        stroke="#646564"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                      />
+                                      <path
+                                        id="Path_897"
+                                        data-name="Path 897"
+                                        d="M7,12h7"
+                                        transform="translate(-2.8 -4.299)"
+                                        fill="none"
+                                        stroke="#646564"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                      />
+                                      <path
+                                        id="Path_898"
+                                        data-name="Path 898"
+                                        d="M10,17h2.8"
+                                        transform="translate(-3.699 -5.799)"
+                                        fill="none"
+                                        stroke="#646564"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                      />
+                                    </g>
                                   </svg>
 
-                                  <a
-                                    href={`tel:${data.agency_tell}`}
-                                    className={
-                                      "p-0 m-0 font-bold cursor-pointer"
-                                    }
-                                  >
-                                    {data.agency_tell}
-                                  </a>
+                                  <p className={styles["title"]}>{`هتل های ${
+                                    props.tour_type === "package"
+                                      ? data?.title
+                                      : props.all_data?.tour_info?.title
+                                  }`}</p>
                                 </div>
-                              </>
-                            )}
-                          </div>
+                              }
+
+                              <hr className={"p-0 mt-2"} />
+
+                              <div className={styles["date_time"]}>
+                                <div>
+                                  <div className={styles["checkin_checkout"]}>
+                                    <p>تاریخ ورود به هتل:</p>
+                                    <p>
+                                      {" "}
+                                      {MiladiToJalaliConvertor(
+                                        props.tour_type === "package"
+                                          ? data.checkin
+                                          : props.all_data?.tour_info?.checkin
+                                      )}
+                                    </p>
+                                  </div>
+                                  <div className={styles["checkin_checkout"]}>
+                                    <p>تاریخ خروج از هتل:</p>
+                                    <p>
+                                      {" "}
+                                      {MiladiToJalaliConvertor(
+                                        props.tour_type === "package"
+                                          ? data.checkout
+                                          : props.all_data?.tour_info?.checkout
+                                      )}
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <div className={styles["night"]}>
+                                  <p className="text-xs text-secondary-color font-black">
+                                    {props.tour_type === "package"
+                                      ? data.night_num
+                                      : props.all_data?.tour_info
+                                          ?.night_num}{" "}
+                                    شب
+                                  </p>
+                                  <p className="text-xs text-secondary-color font-black">
+                                    و
+                                  </p>
+                                  <p className="text-xs text-secondary-color font-black">
+                                    {props.tour_type === "package"
+                                      ? data.day_num
+                                      : props.all_data?.tour_info?.day_num}{" "}
+                                    روز
+                                  </p>
+                                </div>
+                              </div>
+                              {props.tour_type === "package" && <hr />}
+
+                              {props.tour_type === "package" && (
+                                <>
+                                  <div
+                                    className={"d-flex justify-content-between"}
+                                  >
+                                    <p className={"font-size-14"}>نام آژانس:</p>
+                                    <p className={"font-size-15 font-bold"}>
+                                      {data?.agency}
+                                    </p>
+                                  </div>
+
+                                  <div
+                                    className={
+                                      "d-flex justify-content-center align-items-center gap-3 cursor-pointer"
+                                    }
+                                    style={{
+                                      width: "100%",
+                                      padding: "10px",
+                                      border: "1px solid #e20000",
+                                      borderRadius: "20px",
+                                      cursor: "pointer",
+                                    }}
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke-width="1.5"
+                                      width={20}
+                                      height={20}
+                                      stroke="#e20000"
+                                      className="size-6"
+                                    >
+                                      <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                                      />
+                                    </svg>
+
+                                    <a
+                                      href={`tel:${data.agency_tell}`}
+                                      className={
+                                        "p-0 m-0 font-bold cursor-pointer"
+                                      }
+                                    >
+                                      {data.agency_tell}
+                                    </a>
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          )}
 
                           <div
                             className={`${styles["tour_info"]} ${
@@ -1348,7 +1292,7 @@ const Packages = (props) => {
                             }`}
                           >
                             <div>
-                              <p className={"p-0 m-0 mb-2"}>فیلترها</p>
+                              <p className={"p-0 m-0 mb-2 font-size-15"}>فیلترها</p>
                             </div>
 
                             <hr className={"p-0 mt-2 mb-2"} />
@@ -1400,42 +1344,98 @@ const Packages = (props) => {
                             </div>
 
                             <hr />
-                            <div
-                              className="c-input col-xl-3 col-lg-3 col-sm-3 col-12 position-relative "
-                              style={{
-                                width: "100%",
-                                height: "50px",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                border: "1px solid #cecece",
-                                borderRadius: "10px",
-                              }}
-                            >
-                              <select
-                                name=""
-                                style={{
-                                  outline: "none",
-                                  border: "none",
-                                  width: "100%",
-                                }}
-                                id=""
-                                onChange={(e) =>
-                                  setFilter((prev) => ({
-                                    ...prev,
-                                    sort_by: e.target.value,
-                                  }))
+                            <div>
+                              {/* <p className="m-0 p-0 font-size-13">
+                                فیلتر براساس
+                              </p> */}
+
+                              <div className=" d-flex align-items-center gap-1 " >
+                              <input
+                               className={
+                                  'checkbox'
                                 }
-                                value={filter.sort_by}
+                                  type="checkbox"
+                                  value={filter.cheapest}
+                                  checked={filter.cheapest}
+                                  onChange={(e) => handleCheckbox(e, "cheapest")}
+                                />
+                                <label className="font-size-13">
+                                  ارزان ترین
+                                </label>
+                          
+                              </div>
+                              <div className=" d-flex align-items-center gap-1 " >
+                              <input
+                                   className={
+                                  'checkbox'
+                                }
+                                  type="checkbox"
+                                  value={filter.expense}
+                                  checked={filter.expense}
+
+                                  onChange={(e) =>
+                                    handleCheckbox(e, "expense")
+                                  }
+                                />
+                                <label  className="font-size-13">گران ترین</label>
+  
+                              </div>
+                              <div className="d-flex align-items-center gap-1 " >
+                              <input
+                                    className={
+                                  'checkbox'
+                                }
+                                  type="checkbox"
+                                  value={filter.star}
+                                  checked={filter.star}
+
+                                  onChange={(e) => handleCheckbox(e, "star")}
+                                />
+                                <label  className="font-size-13">ستاره </label>
+        
+                              </div>
+                              {/* <div
+                                className="c-input col-xl-3 col-lg-3 col-sm-3 col-12 position-relative "
+                                style={{
+                                  width: "100%",
+                                  height: "50px",
+                                  display: "flex",
+                                  justifyContent: "center",
+                                  alignItems: "center",
+                                  border: "1px solid #cecece",
+                                  borderRadius: "10px",
+                                }}
                               >
-                                <option value="" disabled={true}>
-                                  فیلتر براساس....
-                                </option>
-                                <option value="0">ستاره</option>
-                                <option value="1"> قیمت</option>
-                                <option value="2"> ستاره + قیمت</option>
-                              </select>
+                                <select
+                                  name=""
+                                  style={{
+                                    outline: "none",
+                                    border: "none",
+                                    width: "100%",
+                                    fontSize: "13px",
+                                    // color:'red'
+                                  }}
+                                  id=""
+                                  onChange={(e) =>
+                                    setFilter((prev) => ({
+                                      ...prev,
+                                      sort_by: e.target.value,
+                                    }))
+                                  }
+                                  value={filter.sort_by}
+                                >
+                                  <option value="" disabled={true}>
+                                    فیلتر براساس....
+                                  </option>
+                                  <option value="0">ستاره</option>
+                                  <option value="1"> قیمت</option>
+                                  <option value="2"> ستاره + قیمت</option>
+                                </select>
+                              </div> */}
                             </div>
+
+                            <hr />
+
                             <div>
                               <div
                                 className={
@@ -1557,24 +1557,37 @@ const Packages = (props) => {
           </div>
         </div>
         {show && (
-                <Modal
-                            isOpen={show}
-                            onRequestClose={() => setShow(false)}
-                            className={"Modal-rooms "}
-                            overlayClassName={"Overlay"}
-                            contentLabel="Example Modal">
+          <Modal
+            isOpen={show}
+            onRequestClose={() => setShow(false)}
+            className={"Modal-rooms "}
+            overlayClassName={"Overlay"}
+            contentLabel="Example Modal"
+          >
             <RequestTour rooms={selectedRooms} />
-
-
-                            </Modal>
-        
+          </Modal>
         )}
+
+        {
+          <Modal
+            isOpen={reqReserve}
+            onRequestClose={() => setReqReserve(false)}
+            className={"Modal-2"}
+            overlayClassName={"Overlay"}
+            contentLabel="Example Modal"
+          >
+    
+            <RoomSelection rooms={selectedRooms} hotel={targetHotel} flight_id={TargetFlight?.id}/>
+          </Modal>
+        }
       </div>
     </>
   );
 };
 
 export default Packages;
-  {/* <PopUpWide opened={show} closePopUp={setShow}>
+{
+  /* <PopUpWide opened={show} closePopUp={setShow}>
             <RequestTour rooms={selectedRooms} />
-          </PopUpWide> */}
+          </PopUpWide> */
+}

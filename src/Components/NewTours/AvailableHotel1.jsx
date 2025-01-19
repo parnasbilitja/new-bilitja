@@ -105,7 +105,6 @@ const AvailableHotel1 = () => {
                 }
             )
             .then((res) => {
-                // debugger
 
 
                 setHotels(res?.data?.data);

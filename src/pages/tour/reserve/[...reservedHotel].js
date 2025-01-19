@@ -29,7 +29,7 @@ const ReservedHotel = (props) => {
 
                 setHoteldet(res?.data);
 
-                console.log(res.data)
+  
 
             })
     }

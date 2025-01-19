@@ -28,7 +28,6 @@ const Dashboard = () => {
   const mayRouter = useRouter();
   const mony = parseInt(changemony);
   const monyselect = parseInt(itemselected);
-  console.log("flight list :", flightlist);
   //////////////
   const search = (param) => {
     setParam(param);
@@ -52,7 +51,6 @@ const Dashboard = () => {
       .then((res) => res.json())
       .then((res) => setFlightlist(res));
 
-    console.log("flightlist: ", flightlist);
   }, [cond]);
 
   useEffect(() => {
@@ -62,12 +60,11 @@ const Dashboard = () => {
           `https://api.bilitja.com/api/BilitAirLines/getRavisKndSysDeclare/1a157116-a01a-4027-ab10-74098ac63815`
         )
         .then((res) => {
-          console.log(res);
           setAgency(res.data);
-          console.log("agency :", agency);
+    
         });
     } catch (e) {
-      console.log(e);
+ 
     }
   }, []);
 
@@ -81,13 +78,11 @@ const Dashboard = () => {
     setOpen(value);
   };
   const handlecick = (index) => {
-    console.log("e :", index);
+
     setIditems(index);
-    console.log("id items :", iditems);
   };
 
   const getitem = (item1) => {
-    console.log("index : ", item1);
     setItemselected(item1);
     if (itemselected && checked === true) {
       setValuechange(moneyFormat(item1 * 0.01 * changemony + item1));

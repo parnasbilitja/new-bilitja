@@ -62,7 +62,7 @@ const Turkey = () => {
 
 
     const getData1 = (city) => {
-        // debugger
+        
         axios.get(`https://api.hamnavaz.com/api/v1/city/getCity/${city}`)
             .then(res => {
                 if (res.data.isDone) {
@@ -116,7 +116,7 @@ const Turkey = () => {
 
 
     useEffect(() => {
-        // debugger
+        
         if (data) {
             setNewData(data?.filter(city => city.endCity.name === currentCity.slice(4, currentCity.length)))
         }

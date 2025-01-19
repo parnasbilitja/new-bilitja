@@ -1,33 +1,29 @@
-.bedcount-container {
+.room-selection {
+  width: 500px;
+}
 
+.bedcount-container {
   width: 100%;
-  padding: 1rem .5rem;
+  padding: 1rem 0.5rem;
   display: flex;
   justify-content: center;
 
   .bedcount {
-
     height: auto;
     display: flex;
+    // flex-wrap: wrap;
+    // gap: 10px;
     align-items: center;
-    //border: 1px solid #e20000;
-    //width: 100%;
-    //border: 1px solid #cecece;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     background-color: #ffffff;
-    // box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
-
     padding: 1rem;
-
     border-radius: 10px;
 
     p {
-
       margin-bottom: 0;
-      margin-top: .3rem;
+      margin-top: 0.3rem;
     }
-
 
     .bedtype {
       font-weight: 900;
@@ -41,28 +37,27 @@
     }
 
     .passengercount:not(:last-child) {
-      //border-right: 1px solid #cecece;
       border-left: 1px solid #cecece;
     }
 
     .passengercount {
-      //display: flex;
-      //justify-content: space-between;
-      //padding: 0 2.5rem;
-      //align-items: center;
+
       margin-bottom: 10px;
       text-align: center;
+      padding: 0 4px;
 
       width: 100%;
 
       .count {
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
+        justify-content: center;
+        gap: 5px;
         align-items: center;
         padding: 0 1rem 0 1rem;
-        //margin-top: .4rem;
+
         p {
-          margin: 0 .5rem;
+          margin: 0 0.5rem;
         }
 
         .decin {
@@ -70,16 +65,15 @@
           width: 23px;
           height: 23px;
           border: 1px solid #e20000;
-          background-color: #e20000;
+          // background-color: #e20000;
           border-radius: 5px;
-          color: #ffff;
+          color: #e20000;
           cursor: pointer;
           display: flex;
           justify-content: center;
           align-items: center;
           cursor: pointer;
           align-self: start;
-
         }
 
         .dis_decin {
@@ -88,7 +82,7 @@
           height: 23px;
           border: 1px solid #cecece;
           border-radius: 5px;
-          color: #cecece;
+          color: #e20000;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -96,18 +90,18 @@
         }
       }
     }
-
   }
 }
+
 .count {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem 0 1rem;
   width: 100%;
-  //margin-top: .4rem;
+
   p {
-    margin: 0 .5rem;
+    margin: 0 0.5rem;
   }
 
   .decin {
@@ -122,16 +116,13 @@
     align-items: center;
     cursor: pointer;
     align-self: start;
-
   }
 
   .dis_decin {
     font-size: 1rem;
     width: 23px;
     height: 23px;
-    //border: 1px solid $containerColor2;
     border-radius: 5px;
-    //color: $containerColor2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,14 +130,324 @@
   }
 }
 
-.title{
+.title {
   padding: 3px;
   width: 100%;
-  //background-color: rgba(222, 220, 220, 0.78);
-  p{
-    font-weight: bold;
+
+  p {
     margin: 0;
     padding: 0;
     color: #e20000;
   }
+}
+
+.selectioncontainer {
+  position: relative;
+}
+
+.confimation_details {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  // background-color: #fff;
+  padding: 5px;
+}
+
+.hotel_flight {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+}
+
+.hotel {
+  @extend .card;
+
+  p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .main-info {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 0.5fr 1fr;
+
+    .info {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  .img-con {
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+    border-radius: 10px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+}
+
+.card {
+  padding: 5px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.title {
+  p {
+    font-size: 14px;
+    color: #000;
+  }
+}
+
+.flight_card {
+  p {
+    font-size: 12px !important;
+  }
+
+  //width: 100%;
+  justify-content: space-between;
+  padding: 4px 10px;
+  // margin-bottom: 10px;
+  align-items: space-between;
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+
+  grid-template-columns: 1fr 0.25fr 1fr;
+  border-radius: 10px;
+  // background-color: #f8f9fd;
+  cursor: pointer !important;
+  //box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  .dep_return {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .item_details {
+      //margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+
+      .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+
+        p {
+          margin: 0;
+          padding: 0;
+          font-size: 13px;
+          word-break: auto-phrase;
+        }
+      }
+
+      .img_container {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        justify-self: end;
+
+        img {
+          width: 100%;
+          height: 100%;
+          aspect-ratio: 4 / 3;
+          /* This is an example ratio; change as needed */
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}
+
+.flight_card {
+  &:hover {
+    .btn-con {
+      button {
+        background-color: white !important;
+        border: 1px solid #e20000 !important;
+        color: #e20000 !important;
+      }
+    }
+  }
+}
+
+.room {
+  // border: 1px solid #cecece;
+  background-color: #f8f9fd;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  // border: 1px solid #cecece;
+  gap: 4px;
+  border-radius: 5px;
+
+  p {
+    color: #e20000;
+  }
+}
+
+.rooms {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.success-message {
+  width: 100%;
+  border: 2px solid #4bb543;
+  background-color: #4bb5435f;
+  border-radius: 10px;
+  padding: 8px;
+  // margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  p {
+    text-align: justify;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 900;
+  }
+}
+
+.ref_code {
+  cursor: pointer !important;
+  @extend .success-message;
+  width: fit-content !important;
+  flex-direction: column !important;
+  margin: 0 !important;
+  align-items: center;
+  justify-content: center;
+  // display: block !important;
+}
+
+.moreinfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media only screen and (max-width: 868px) {
+  .bedcount{
+    flex-wrap: wrap !important;
+    .passengercount{
+      flex: 1 1 50%;
+      // border-bottom: 1px solid #cecece;
+
+    }
+
+    .passengercount:not(:nth-child(odd)){
+      border: none !important;
+    }
+  }
+  .pdf-btn {
+    width: 100% !important;
+    margin-top: 2px;
+  }
+
+  .hotel_flight {
+    display: block;
+  }
+
+  .rooms {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .moreinfo {
+    gap: 5px;
+    grid-template-columns: 1fr;
+  }
+
+  .flight_card {
+    .dep_return {
+      display: block;
+
+      .item_details {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .success-message {
+    svg {
+      width: 35px;
+      height: 35px;
+    }
+  }
+}
+
+.pdf-btn {
+  width: 110px;
+  padding: 3px;
+  height: 40px;
+  background-color: #e20000;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.forms {
+  padding: 20px;
+  // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.warn {
+  @extend .success-message;
+  border: 2px solid #eae554;
+  background-color: #fff82527;
+}
+
+
+.input-container {
+  border: 1px solid #cecece;
+  border-radius: 10px;
+  height: 40px;
+  width: 200px;
+  padding: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
 }

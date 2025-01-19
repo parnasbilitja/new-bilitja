@@ -1470,6 +1470,17 @@ button {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px
 }
 
+.p-res{
+  padding-top: 10rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .p-res{
+    padding-top: 7rem;
+  }
+  
+}
+
 .tour-item:hover {
   background-color: #ededed;
 
@@ -2453,7 +2464,7 @@ $sizes: 100;
 }
 
 .prevNextbtnSwiper {
-  border: 3px solid $base-color-2;
+  border: 1px solid $base-color-2;
   color: $base-color-2;
   width: 30px;
   height: 30px;
@@ -5337,7 +5348,8 @@ p img {
 
   .bedcount {
     height: auto;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
     align-items: center;
     //width: 100%;
     //border: 1px solid #cecece;
@@ -5367,9 +5379,10 @@ p img {
       font-size: 12px;
     }
 
-    .passengercount:not(:last-child) {
+    .passengercount:not(:nth-child(odd)) {
       //border-right: 1px solid #cecece;
-      border-left: 1px solid #cecece;
+      border-right: 1px solid #cecece;
+      padding: 5px;
     }
 
     .passengercount {
@@ -5378,9 +5391,11 @@ p img {
       //padding: 0 2.5rem;
       //align-items: center;
       margin-bottom: 10px;
+      max-width: 600px;
       text-align: center;
+      padding: 0 ;
 
-      width: 100%;
+      // width: 100%;
 
       .count {
         display: flex;
@@ -5680,6 +5695,12 @@ p img {
 }
 
 @media only screen and (max-width: 868px) {
+  .bedcount-container {
+    .bedcount{
+      grid-template-columns: repeat(2,1fr);
+      gap: 5px;
+    }
+  }
   .calendarres{
     display: block;
   }
@@ -5993,11 +6014,7 @@ p img {
 
 .endlessscroll {
   cursor: pointer;
-  //position: absolute;
-  //bottom: 0;
-  //left: 0;
-  //background-image: linear-gradient(to top, rgba(141, 140, 140, 0.75) 0%, rgba(212, 212, 212, 0.07) 100%);
-  //border: 1px solid #e20000;
+
   display: flex;
   justify-content: end;
   align-items: center;
@@ -6109,7 +6126,7 @@ p img {
 .Modal {
   // position: absolute;
   width: 600px;
-  max-height: 600px; // height: 50%;
+  height: 600px; // height: 50%;
   bottom: 40px;
   padding: 1rem;
   background-color: white;
@@ -6117,8 +6134,8 @@ p img {
   //overflow-y: auto;
 }
 .Modal-2 {
-  width: 100%;
-  max-width: 700px;
+  // width: 100%;
+  max-width: 1250px;
   max-height: 90vh; /* Responsive height */
   padding: 1rem;
   background-color: white;
@@ -6130,6 +6147,17 @@ p img {
 .Modal-rooms {
   width: 100%;
   max-width: 1200px;
+  max-height: 90vh; /* Responsive height */
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  overflow-y: auto; /* Scrollable parent */
+  display: flex;
+  flex-direction: column;
+}
+.Modal-rooms2 {
+  width: 100%;
+  max-width: 1100px;
   max-height: 90vh; /* Responsive height */
   padding: 1rem;
   background-color: white;
@@ -6187,7 +6215,7 @@ p img {
   }
   .Modal {
     width: 95%;
-    height: 60%;
+    height: 50%;
     overflow: hidden;
   }
 
@@ -6268,4 +6296,108 @@ p img {
   height: 30px !important;
   justify-content: center;
   margin: 0 3px !important;
+}
+
+
+
+
+.radio[type="checkbox"] {
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  margin: 6px;
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+
+  border: 1px solid #cecece;
+  appearance: none;
+  background-color: transparent;
+  outline: none;
+  transition: outline 0.1s;
+}
+
+.radio[type="checkbox"]:checked {
+  background-size: cover;
+  padding: 2px;
+}
+@keyframes zoomin {
+  from {
+    opacity: 0;
+    // transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    // transform: scale(1);
+  }
+}
+
+.radio[type="checkbox"]:not(:disabled):checked {
+  border-color: #e20000;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #e20000;
+    animation: zoomin 0.3s;
+
+    // Add centering properties
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+.checkbox[type="checkbox"] {
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  margin: 6px;
+  padding: 0;
+  border-radius: 2px;
+  cursor: pointer;
+
+  border: 2px solid #cecece;
+  appearance: none;
+  background-color: transparent;
+  outline: none;
+  transition: outline 0.1s;
+}
+
+.checkbox[type="checkbox"]:checked {
+  background-size: cover;
+  padding: 2px;
+}
+@keyframes zoomin {
+  from {
+    opacity: 0;
+    // transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    // transform: scale(1);
+  }
+}
+
+.checkbox[type="checkbox"]:not(:disabled):checked {
+  border-color: #e20000;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    background-color: #e20000;
+    animation: zoomin 0.3s;
+
+    // Add centering properties
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

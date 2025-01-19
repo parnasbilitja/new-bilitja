@@ -37,7 +37,6 @@ const Cities = (props) => {
 
 
     useEffect(() => {
-        console.log('daa',props)
         setCities(props.cities)
     }, [props.cities])
 

@@ -121,7 +121,7 @@ const FutureDays = (props) => {
         {state.firstMonth ? (
           <div className="col-lg-12 col-md-12 col-md-12 col-12 mt-3">
             <div className={`date-show `}  style={{height: "fit-content" , display: "flex" , justifyContent: "center"}}>
-              {console.log(props.credentials.flightDatePersian.split('/'))}
+        
               {state.firstMonth[0] && state.firstMonth[0].map((day) => (<>
                 {
                   parseInt(props.credentials.flightDatePersian.split('/')[2]) <= day.day 

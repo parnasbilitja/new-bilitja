@@ -61,7 +61,6 @@ const PriceHandling = () => {
 
       );
 
-      console.log(items)
       setFilter(items);
       setStaticData(items)
       setAgency(items);
@@ -86,9 +85,7 @@ const PriceHandling = () => {
   }, []);
 
 
-  React.useEffect(() => {
-    console.log(filter)
-  }, [filter]);
+
   const handleCancel = async () => {
     router.reload();
   };
@@ -96,7 +93,6 @@ const PriceHandling = () => {
     return numberStr.replace(/,/g, '');
   }
   const handleSave = async () => {
-    debugger
     const list = [...filter];
     list.map(async (option) => {
       const info = {
