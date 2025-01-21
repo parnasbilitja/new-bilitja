@@ -147,7 +147,7 @@ const AvailableFlightMobile = ({flight, setSelectedRoom, setSelectedFlight, setI
                                      // ref={el => collapseRefs.current[flight.departure.id.toString() + flight.return.id.toString()] = el}
                                     >
                                     <p className={styles["priceTitle"]}> قیمت هتل + پرواز (هرنفر) :</p>
-                                    <p>
+                                    <p style={{color:'#e20000',fontSize:'15px !important',fontWeight:'900'}}>
                                         {price + ' ' + 'تومان'}
                                     </p>
                                 </div>

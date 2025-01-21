@@ -703,7 +703,7 @@ const FlightListTour = (props) => {
                     <div className={styles["btn-con"]}>
                       <div className={styles["price"]}>
                         <p>قیمت هتل + پرواز (هرنفر)</p>
-                        <p className={"font-bold"}>
+                        <p className={"font-bold"} style={{color:'#e20000'}}>
                           {numberWithCommas(
                             rooms_flightBase_finder(flight.id, 148)[0].price
                           ) +

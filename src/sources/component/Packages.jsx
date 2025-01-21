@@ -832,11 +832,10 @@ let cheapest
                                                                     )?.price ? (
                                                                       <>
                                                                         <p
-                                                                          className="font-size-16 font-iransans-bold  m-0 price-color"
+                                                                          className="font-size-16   m-0 price-color"
                                                                           style={{
                                                                             fontWeight:
                                                                               "600",
-                                                                              color:'#e20000'
                                                                           }}
                                                                         >
                                                                           {moneyFormatrial(
@@ -847,9 +846,7 @@ let cheapest
                                                                               .price
                                                                           )}
 
-                                                                          <span style={{
-                                                                        color:'#e20000'
-                                                                      }} className="font-size-14 font-bold px-1  m-0 color-gray">
+                                                                          <span className="font-size-14 font-bold px-1  m-0 color-gray">
                                                                             تومان
                                                                           </span>
                                                                         </p>
@@ -857,7 +854,7 @@ let cheapest
                                                                         {/*<p className="px-2 font-size-13 m-0 text-center font-blue text-center"> {getcurrencyfa(currency) } </p>*/}
                                                                       </>
                                                                     ) : (
-                                                                      <span  className="font-bold font-size-13 font-bold color-gray">
+                                                                      <span className="font-bold font-size-13 font-bold color-gray">
                                                                         {" "}
                                                                         عدم
                                                                         موجودی
