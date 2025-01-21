@@ -29,7 +29,7 @@ const tour = (props) => {
         {
           headers: {
             "x-app-key":
-              "1673|m1lGLn82YxUIpOQTfg2RrOdEuPeg6BP0XQ0dwshE2de4b92d", //the token is a variable which holds the token
+              "1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05", //the token is a variable which holds the token
           },
         }
       )

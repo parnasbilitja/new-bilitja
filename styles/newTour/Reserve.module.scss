@@ -2,19 +2,15 @@ $time-color: #646464;
 $black: #00001f;
 $costColor: #e20000;
 
-
 .p-body {
   padding: 2rem 0;
-   //padding: 0 2.5rem 0 2.5rem;
+  //padding: 0 2.5rem 0 2.5rem;
 
   .prs-responsive {
     max-width: 1366px;
     margin: 0 auto;
 
-
-
     .main-reserve {
-
       margin: 0 auto;
       padding-bottom: 1rem;
       width: 91.6%;
@@ -41,10 +37,7 @@ $costColor: #e20000;
             border-radius: 20px;
             grid-template-columns: 1fr 1fr;
 
-
             .priceDet_container {
-
-
               display: flex;
               align-items: center;
               justify-content: center;
@@ -52,7 +45,7 @@ $costColor: #e20000;
               .priceDet {
                 display: flex;
                 justify-content: space-between;
-                column-gap: .6rem;
+                column-gap: 0.6rem;
                 align-items: center;
 
                 div {
@@ -77,12 +70,11 @@ $costColor: #e20000;
                     font-weight: 900;
                   }
                 }
-
               }
             }
 
             .paymentoption {
-              padding: .5rem;
+              padding: 0.5rem;
 
               display: flex;
               justify-content: center;
@@ -91,7 +83,6 @@ $costColor: #e20000;
               height: 100%;
 
               .payment_container {
-
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -118,7 +109,6 @@ $costColor: #e20000;
               align-items: center;
               justify-content: center;
 
-
               .totalprice_container {
                 width: 90%;
 
@@ -134,10 +124,9 @@ $costColor: #e20000;
                   width: 100%;
 
                   p {
-                    font-size: .8rem;
+                    font-size: 0.8rem;
                     margin: 0;
-                    margin-left: .5rem;
-
+                    margin-left: 0.5rem;
                   }
 
                   span {
@@ -147,26 +136,24 @@ $costColor: #e20000;
                     margin-left: 5px;
                   }
                 }
-
               }
-
             }
 
             .paymentbtn {
               display: flex;
-              padding-top: .5rem;
+              padding-top: 0.5rem;
               flex-direction: column;
               justify-content: center;
               align-items: center;
 
               button {
                 cursor: pointer;
-                padding: .5rem;
-                margin-bottom: .5rem;
+                padding: 0.5rem;
+                margin-bottom: 0.5rem;
                 width: 135px;
                 height: 50px;
                 border-radius: 10px;
-                background-color:$costColor;
+                background-color: $costColor;
                 font-size: 14px;
                 font-weight: 900;
                 color: white;
@@ -174,23 +161,21 @@ $costColor: #e20000;
 
               p {
                 color: #e20000;
-                font-size: .8rem;
+                font-size: 0.8rem;
                 border-bottom: 1px dashed #e20000;
                 cursor: pointer;
               }
             }
-
           }
         }
       }
 
       .tourDet-container {
-        border-bottom: 1px solid #C6C6C6;
+        border-bottom: 1px solid #c6c6c6;
         // "d-flex  align-items-center justify-content-between title-complete"
         display: flex;
         align-items: center;
         justify-content: space-between;
-
 
         padding-bottom: 0;
 
@@ -200,28 +185,26 @@ $costColor: #e20000;
           transform: translateX(-30px);
 
           width: 20%;
-          padding-bottom: .5rem;
+          padding-bottom: 0.5rem;
 
           .entext {
             margin-left: 1rem;
-            padding: 0 0 0 .5rem;
+            padding: 0 0 0 0.5rem;
 
             .entexttitle {
               font-weight: 900;
             }
-
 
             p {
               font-size: 13px;
               text-align: center;
               margin: 0;
             }
-
           }
 
           .entext:not(:last-child) {
-            border-left: 1px solid #C6C6C6;
-            margin-left: .8rem;
+            border-left: 1px solid #c6c6c6;
+            margin-left: 0.8rem;
           }
         }
 
@@ -236,15 +219,13 @@ $costColor: #e20000;
             font-weight: 700;
             font-size: 16px;
           }
-
         }
 
         .selected-hotel_conatiner {
-
           .selected-hotel {
             // d-flex align-items-center
             padding-right: 0;
-            margin-bottom: .2rem;
+            margin-bottom: 0.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -270,17 +251,12 @@ $costColor: #e20000;
                 font-weight: 200;
                 margin: 0;
               }
-
             }
-
-
           }
         }
       }
 
-
       .box-top-box-reserve {
-
         padding: 1rem 2rem;
         width: 100%;
         border-radius: 8px;
@@ -290,7 +266,6 @@ $costColor: #e20000;
           display: flex;
           align-items: center;
           justify-content: space-between;
-
 
           h3 {
             width: 40%;
@@ -302,12 +277,11 @@ $costColor: #e20000;
           }
         }
 
-
         .reserverform_container {
           margin-top: 0rem;
           margin-bottom: 2.2rem;
           // border: 1px solid #C6C6C6;
-          padding: .5rem;
+          padding: 0.5rem;
           border-radius: 8px;
           padding: 1rem;
           background-color: #ede8e8;
@@ -326,17 +300,13 @@ $costColor: #e20000;
             }
           }
 
-
           .set-info-supervisor {
-
-
             margin: 12px 0;
             padding: 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-
 
             .item-form {
               width: 24%;
@@ -383,13 +353,10 @@ $costColor: #e20000;
                   width: 100%;
                   height: 100%;
 
-
                   &::placeholder {
                     font-weight: 600;
                   }
                 }
-
-
               }
 
               small {
@@ -397,17 +364,15 @@ $costColor: #e20000;
                 font-size: 10px;
               }
 
-              p{
+              p {
                 color: red;
                 font-size: 10px;
                 padding: 0;
                 margin: 0;
               }
-
             }
           }
         }
-
 
         .rules {
           display: flex;
@@ -431,25 +396,20 @@ $costColor: #e20000;
             line-height: 25px;
           }
 
-          span{
+          span {
             color: #e20000;
-            margin: 0 .5rem;
+            margin: 0 0.5rem;
             font-weight: 600;
           }
         }
-
       }
-
     }
-
   }
-
-
 
   .box-top-box-reserve2 {
     background-color: rgb(185, 185, 185);
     border-radius: 8px;
-    border: 1px solid #E0E0E0;
+    border: 1px solid #e0e0e0;
     display: flex;
     margin: 12px 0;
     height: 310px;
@@ -458,33 +418,14 @@ $costColor: #e20000;
     justify-content: flex-end;
     overflow: hidden;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
-
-
 @media only screen and (max-width: 868px) {
-  .p-body{
+  .p-body {
     padding: 0 !important;
   }
 
-  .box-top-box-reserve{
+  .box-top-box-reserve {
     padding: 1rem 0 !important;
   }
   .tourDet-container {
@@ -552,17 +493,15 @@ $costColor: #e20000;
     padding: 10px !important;
 
     .p-detail-reservation {
-
       //grid-template-columns: 1fr !important;
 
       .priceDet_container {
         width: 100% !important;
 
-
         .priceDet {
           width: 100% !important;
           justify-content: space-between !important;
-display: block !important;
+          display: block !important;
           .price {
             margin-top: 5px;
             p {

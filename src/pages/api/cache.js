@@ -83,7 +83,7 @@ const getHotel = async(hotelslug) => {
     const response = await fetch(`https://api.hotelobilit.com/api/v2/hotels/${hotelslug}`, {
         method: 'GET',
         headers: {
-            "x-app-key": '1673|m1lGLn82YxUIpOQTfg2RrOdEuPeg6BP0XQ0dwshE2de4b92d'
+            "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05'
         }
     });
 

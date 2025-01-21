@@ -123,6 +123,7 @@ const OfferdTours = (data) => {
               <SwiperSlide key={item.id}>
                   <div className="box-special-tour" key={item.id}>
                       <div className="img-special-tour">
+                      {/* href={`/tours/tourlist?origin=${item?.origin.code}&destination=${item?.destination.code}&date=${item?.departure_date}&nights=${item.night_num}&tour_type=package` */}
                       <Link  href={`/tours/${item.id}`}>
                           <a>
                               <div className="hover-info-img animated pulse">
