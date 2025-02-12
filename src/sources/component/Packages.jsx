@@ -64,8 +64,6 @@ let cheapest
   };
 
   const compositionFilter = () => {
-    
-
     let filteredData = [...packages];
 
     // Filter by airline names
@@ -84,93 +82,54 @@ let cheapest
           : props.tourdata;
     }
 
-    if(filter.star){
-      filteredData=filteredData.sort(
+    if (filter.star && !filter.cheapest && !filter.expense) {
+      filteredData = filteredData.sort(
         (a, b) => +a.hotel_stars - +b.hotel_stars
+      );
+    }else if (filter.cheapest && filter.star) {
+      let list = [];
+      for (let i = 1; i < 7; i++) {
+        let filterdHotelBystar = filteredData.filter(
+          (hotel) => +hotel.hotel_stars === i
+        );
+        list.push(
+          ...filterdHotelBystar.sort(
+            (a, b) =>
+              +roomFinder1(a.rooms, 148)?.price -
+              +roomFinder1(b.rooms, 148)?.price
+          )
+        );
+      }
+
+      filteredData = list;
+    } else if (filter.cheapest && !filter.star) {
+      filteredData = filteredData.sort(
+        (a, b) =>
+          roomFinder1(a.rooms, 148)?.price - roomFinder1(b.rooms, 148)?.price
+      );
+    }else if (filter.expense && filter.star) {
+      let list = [];
+      for (let i = 1; i < 7; i++) {
+        let filterdHotelBystar = filteredData.filter(
+          (hotel) => +hotel.hotel_stars === i
+        );
+        list.push(
+          ...filterdHotelBystar.sort(
+            (a, b) =>
+              +roomFinder1(b.rooms, 148)?.price -
+              +roomFinder1(a.rooms, 148)?.price
+          )
+        );
+      }
+
+      filteredData = list;
+    } else if(filter.expense && !filter.star) {
+      filteredData = filteredData.sort(
+        (a, b) =>
+          roomFinder1(b?.rooms, 148)?.price - roomFinder1(a?.rooms, 148)?.price
       );
     }
 
-    if(filter.cheapest){
-      if(filter.star){
-             let list = [];
-        for (let i = 1; i < 7; i++) {
-          let filterdHotelBystar = filteredData.filter(
-            (hotel) => +hotel.hotel_stars === i
-          );
-          list.push(
-            ...filterdHotelBystar.sort(
-              (a, b) =>
-                +roomFinder1(a.rooms, 148)?.price -
-                +roomFinder1(b.rooms, 148)?.price
-            )
-          );
-        }
-
-        filteredData = list;
-      }else{
-        filteredData= filteredData = filteredData.sort(
-          (a, b) =>
-            roomFinder1(a.rooms, 148)?.price - roomFinder1(b.rooms, 148)?.price
-        );
-      }
-   
-    }
-    if(filter.expense){
-      if(filter.star){
-        let list = [];
-        for (let i = 1; i < 7; i++) {
-          let filterdHotelBystar = filteredData.filter(
-            (hotel) => +hotel.hotel_stars === i
-          );
-          list.push(
-            ...filterdHotelBystar.sort(
-              (a, b) =>
-                +roomFinder1(b.rooms, 148)?.price -
-                +roomFinder1(a.rooms, 148)?.price
-            )
-          );
-        }
-
-        filteredData = list;
-
-      }else{
-        filteredData= filteredData = filteredData.sort(
-          (a, b) =>
-            roomFinder1(b.rooms, 148)?.price - roomFinder1(a.rooms, 148)?.price
-        );
-      }
-   
-    }
-
-    // if()
-    // if (filter.sort_by) {
-    //   if (filter.sort_by === "0") {
-    //     filteredData = filteredData.sort(
-    //       (a, b) => +a.hotel_stars - +b.hotel_stars
-    //     );
-    //   } else if (filter.sort_by === "1") {
-    //     filteredData = filteredData.sort(
-    //       (a, b) =>
-    //         roomFinder1(a.rooms, 148)?.price - roomFinder1(b.rooms, 148)?.price
-    //     );
-    //   } else {
-    //     let list = [];
-    //     for (let i = 1; i < 7; i++) {
-    //       let filterdHotelBystar = filteredData.filter(
-    //         (hotel) => +hotel.hotel_stars === i
-    //       );
-    //       list.push(
-    //         ...filterdHotelBystar.sort(
-    //           (a, b) =>
-    //             +roomFinder1(a.rooms, 148)?.price -
-    //             +roomFinder1(b.rooms, 148)?.price
-    //         )
-    //       );
-    //     }
-
-    //     filteredData = list;
-    //   }
-    // }
 
     return filteredData;
   };
@@ -814,6 +773,7 @@ let cheapest
                                                                   styles[""]
                                                                 }
                                                               >
+                                                              
                                                                 دو تخته (هرنفر){" "}
                                                               </span>
                                                             </div>
@@ -829,7 +789,10 @@ let cheapest
                                                                     roomFinder1(
                                                                       pack.rooms,
                                                                       148
-                                                                    )?.price ? (
+                                                                    )?.price &&   roomFinder1(
+                                                                      pack.rooms,
+                                                                      148
+                                                                    ).available_room_count > 0 ? (
                                                                       <>
                                                                         <p
                                                                           className="font-size-16   m-0 price-color"
@@ -856,6 +819,8 @@ let cheapest
                                                                     ) : (
                                                                       <span className="font-bold font-size-13 font-bold color-gray">
                                                                         {" "}
+
+                                                                      
                                                                         عدم
                                                                         موجودی
                                                                       </span>
