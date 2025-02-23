@@ -9,12 +9,12 @@ import { Navigation } from "swiper";
 import "swiper/css/navigation";
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Loader } from '../../Utils/Loader';
-import moment from 'moment-jalaali';
+// import { Loader } from '../../Utils/Loader';
+// import moment from 'moment-jalaali';
 import Link from 'next/link';
 import { useSelector ,useDispatch } from 'react-redux';
-import { fetchOfferdTour } from '../../Redux/OfferdTours/Action';
-import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
+// import { fetchOfferdTour } from '../../Redux/OfferdTours/Action';
+// import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
 import {Shimmers6} from "../../Components/NewTours/Components/subComponents/Shimmers";
 
 const OfferdTours = (data) => {
@@ -123,8 +123,9 @@ const OfferdTours = (data) => {
               <SwiperSlide key={item.id}>
                   <div className="box-special-tour" key={item.id}>
                       <div className="img-special-tour">
-                      {/* href={`/tours/tourlist?origin=${item?.origin.code}&destination=${item?.destination.code}&date=${item?.departure_date}&nights=${item.night_num}&tour_type=package` */}
-                      <Link  href={`/tours/${item.id}`}>
+                    
+
+                      <Link    href={`/tours/tourlist?origin=${item?.origin.code}&destination=${item?.destination.code}&date=${item?.departure_date}&nights=${item.night_num}&tour_type=package`}>
                           <a>
                               <div className="hover-info-img animated pulse">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16.085" height="22.888"
@@ -133,7 +134,7 @@ const OfferdTours = (data) => {
                                             d="M15.129,2.531s.8,2.8-1.01,9.564c-2.459,9.176-5.038,11.074-8.9,10.038S.069,18.166,2.528,8.99,10.11.909,11.36,3.074c1.414,2.449-.88,9.082-.88,9.082s-1.5,5.291-3.838,4.666c-3.381-.906.4-9.211.4-9.211"
                                             transform="translate(-0.285 -0.488)" fill="none" stroke="#fff"/>
                                   </svg>
-                                  <Link href={`/tours/${item.id}`} className="view-details-more text-white" rel="noreferrer">
+                                  <Link   href={`/tours/tourlist?origin=${item?.origin.code}&destination=${item?.destination.code}&date=${item?.departure_date}&nights=${item.night_num}&tour_type=package`} className="view-details-more text-white" rel="noreferrer">
                                         مشاهده جزئیات بیشتر
                                     </Link>
                               </div>
@@ -181,7 +182,7 @@ const OfferdTours = (data) => {
                       </div>
                       <div className="mid-info-tour-special">
                           <div className="inner-mid-info-tour-special w-100" >
-                              <Link href={`/tours/${item.id}`} rel="noreferrer" className='cursor-pointer'>
+                              <Link   href={`/tours/tourlist?origin=${item?.origin.code}&destination=${item?.destination.code}&date=${item?.departure_date}&nights=${item.night_num}&tour_type=package`} rel="noreferrer" className='cursor-pointer'>
                                 <a>
                                     <h2 className="title-tour-special cursor-pointer " style={{fontSize: '15px'}}>{item.title}</h2>
                                 </a>
