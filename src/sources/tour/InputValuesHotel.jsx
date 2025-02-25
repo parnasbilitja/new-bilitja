@@ -41,7 +41,7 @@ const InputValues = ({
             })
         }
         useEffect(() => {
-         
+
 
             setHide(false)
         }, [months, search])
@@ -51,6 +51,7 @@ const InputValues = ({
 
                             <div
                                 className={`suggestion-box ${styles['citiescontainer']}`}
+                                style={{position:'absolute', top:'55px',right:'0'}}
                             >
                                 {months.map((item) => (
                                     <>

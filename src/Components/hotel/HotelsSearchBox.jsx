@@ -26,7 +26,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
         const { name,value } = event.target;
         setCity(search.id);
         setSearch({...search,hotel:''})
-      
+
     };
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -35,7 +35,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
 
   const handleChange1 = (event) => {
     const { name, value } = event.target;
-    
+
     if (name=='slug') {
         setCity(search.id);
         setSearch({...search,hotel:''})
@@ -80,9 +80,9 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
     return (
       <div className="row justify-content-center pt-0 mx-1">
         <div className="col-md-10 px-2">
-          <div className={'row justify-content-between'}>
+          <div className={'row justify-content-between justify-content-lg-between justify-content-md-between justify-content-sm-center'}>
             <Scrolltoprefresh />
-              <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
+              <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%',position:'relative'}}>
                 <FontAwesomeIcon icon={faCity} style={{height:'30px'}} className="mx-2 tour-input-icon" />
                 <PrimaryTextInputMobile
                   value={searchInput}
@@ -92,7 +92,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
                   onChange={(e)=>handleChange(e)}
                   onClick={() => {
                     setIsSearchbox(true)
-                    // 
+                    //
                   }}
                   placeholder={"مقصد خود را انتخاب کنید"}
                 />
@@ -107,9 +107,9 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
                     setIsSearchbox={()=>setIsSearchbox(false)}
                     searchInput={searchInput}
                     handleChange={(val)=>handleChange(val)}
-                    
+
                 />
-              
+
             </div>
             <div className={`col-12 custom-col-md-5 form-input-border ${styles["prs-input"]} `} style={{width:width>=826?'40%':'100%'}}>
                 <FontAwesomeIcon icon={faCalendarAlt} style={{height:'30px'}} className="mx-2 tour-input-icon" />
@@ -118,7 +118,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
                   name={'hotel'}
                   onChange={handleChange1}
                   onClick={(e) => {
-                    // 
+                    //
                   }}
                   placeholder={"نام هتل را وارد کنید"}
                 />
@@ -134,7 +134,7 @@ const HotelsSearchBox = ({searchHotel,setCity,search,setSearch,scroll}) =>{
                 }}
               >{ "جستجو" }</PrimaryButton>
             </div>
-            
+
           </div>
         </div>
       </div>
