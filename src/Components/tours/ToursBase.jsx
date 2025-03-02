@@ -30,6 +30,7 @@ import {fetchOfferdTour} from "../../Redux/OfferdTours/Action";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation} from "swiper";
 import {setSearchStep} from "../../Redux/TourSearchbox/Action";
+// import Test from "../../sources/tour/test";
 
 
 const ToursBase = (props) => {
@@ -71,8 +72,8 @@ const ToursBase = (props) => {
           req_type:'package'
         }, {
           headers: {
-            "x-app-key": '498|dNk7pOSiwfVlyX6uNWejkZ136Oy9U5iJTpne87PP' //the token is a variable which holds the token
-          }
+            "x-app-key":
+            "1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05",          }
         })
         .then((res) => {
           if(offered===true){
@@ -152,6 +153,12 @@ const ToursBase = (props) => {
     window.addEventListener("resize", handleWindowResize);
   }, []);
   const[cities,setCities] = useState([])
+
+
+  useEffect(()=>{
+    console.log(offeredtourData);
+    
+  },[offeredtourData])
 
   useEffect(() => {
     axios.post('https://api.hamnavaz.com/api/v1/city/getCities',{hasTour:false})
@@ -269,6 +276,7 @@ const ToursBase = (props) => {
                 )}
               </div>
               <div>
+              {/* <Test/> */}
 
                 {router.asPath === '/tours' || router.asPath === '/' ?
 
@@ -427,7 +435,10 @@ const ToursBase = (props) => {
           </div>
         </div>
         <div className="col-md-10 m-auto px-3 padd">
+        {offeredtourData?.data?.length>0 &&
           <OfferdTours data={offeredtourData?.data}/>
+
+        }
           {/*<CitiesSuggest/>*/}
 
           {/*<div id="list">*/}
