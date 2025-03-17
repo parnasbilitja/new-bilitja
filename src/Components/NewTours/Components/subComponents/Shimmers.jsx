@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {motion} from "framer-motion";
 import styles from "../../../../../styles/newTour/components/subComponent/Shimmers.module.scss";
 import NewLoader from "../../../NewTours/Components/subComponents/NewLoader";
+
+// import styles from '../../../../../styles/allTours.module.scss';
+
+
 
 export const Shimmers = () => {
     return (
@@ -100,3 +104,42 @@ export const Shimmers6= ({selectedHeight}) => {
 
 
 
+export const Loading=({title})=> {
+
+    const [progress, setProgress] = useState(0);
+    useEffect(() => {
+        const duration = 1 * 60 * 1000; 
+        const interval = 100; // Update every 100ms
+        const increment = (100 * interval) / duration;
+
+        const intervalId = setInterval(() => {
+            setProgress((prev) => {
+                if (prev + increment >= 100) {
+                    clearInterval(intervalId);
+                    return 100;
+                }
+                return prev + increment;
+            });
+        }, interval);
+
+        return () => clearInterval(intervalId);
+    }, []);
+    return <>
+
+<div className='loading'>
+<div className={'content'}>
+                <img src="../../Images/travel.gif" alt="" width='80px' height='80px'style={{marginBottom:'3px'}}/>
+                <p>{title}</p>
+
+        <div className={"progress-bar-container"}>
+            <div className={"progress-bar"}>
+                <div className={"progress-bar-fill"} style={{width: `${progress}%`}}></div>
+            </div>
+            <div className={"progress-bar-text"}>{Math.round(progress)}%</div>
+        </div>
+        </div>
+</div>
+
+
+    </>
+}

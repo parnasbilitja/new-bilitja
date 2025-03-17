@@ -3,7 +3,7 @@ import axios from "axios";
 import NavHandler from "../../Components/share/NavHandler";
 import Footer from "../../sources/component/Footer.component";
 import globals from "../../sources/Global";
-import { Shimmers3 } from "../../Components/NewTours/Components/subComponents/Shimmers";
+import { Loading, Shimmers3 } from "../../Components/NewTours/Components/subComponents/Shimmers";
 import NotFound from "../NotFound";
 import Packages from "../../sources/component/Packages";
 
@@ -67,6 +67,9 @@ const tour = (props) => {
           <Shimmers3 />
           <Shimmers3 />
           <Shimmers3 />
+
+          <Loading title={'درحال جستجو تور انتخابی شما هستیم...'}/>
+
         </div>
       ) : (
         <NotFound title={"متاسفانه توری یافت نشد"} />

@@ -722,7 +722,7 @@ html {
 
       @media only screen and (max-width: 868px) {
         .roomcount {
-          justify-content: center      
+          justify-content: center
           }
 
       }
@@ -1478,7 +1478,7 @@ button {
   .p-res{
     padding-top: 7rem;
   }
-  
+
 }
 
 .tour-item:hover {
@@ -5351,7 +5351,7 @@ p img {
     display: flex;
     // grid-template-columns: repeat(8,1fr);
     justify-content: center;
-    
+
     align-items: center;
     //width: 100%;
     //border: 1px solid #cecece;
@@ -6408,5 +6408,65 @@ p img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+.progress-bar-container {
+  width: 100%;
+  display: flex;
+  gap:3px;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #0c0c1e61;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  height: 10px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #060612de;
+  width: 0;
+  transition: width 0.1s linear;
+}
+
+.progress-bar-text {
+  // margin-top: 10px;
+  font-size: 16px;
+  color: #000;
+}
+
+
+.loading{
+  position: fixed;
+  z-index: 99999;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  background-color: rgba(64,64,64,.5);
+
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+  .content{
+    padding: 20px;
+    background-color: white;
+    width: 450px;
+    height:fit-content;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
   }
 }

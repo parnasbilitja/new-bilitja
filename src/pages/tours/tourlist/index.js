@@ -10,12 +10,14 @@ import globals from "../../../sources/Global";
 import useSWR from "swr";
 import TourListData from "../../../Components/NewTours/TourListData";
 import {
+  Loading,
   Shimmers,
   Shimmers6,
 } from "../../../Components/NewTours/Components/subComponents/Shimmers";
 import ReactPaginate from "react-paginate";
 import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
+import Head from "next/head";
 
 function Index(props) {
   const router = useRouter();
@@ -56,10 +58,11 @@ function Index(props) {
     return response.json();
   };
   useEffect(() => {
+    
     if (router.isReady && router.query) {
       setApiParams({
-        destination: router.query.destination,
-        origin: router.query?.origin,
+        destination: router.query.destination.split('-')[0],
+        origin: router.query?.origin.split('-')[0],
         month: "",
         stayCount: +router.query?.nights,
         ordering: 1,
@@ -235,8 +238,16 @@ function Index(props) {
     body[0].scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }
 
+
   return (
     <>
+      <Head>
+          <title>
+            {" "}
+            {initialData?.data[0]?.title? initialData?.data[0]?.title+" " + '|' + " "+ "بلیطجا":'بلیطجا'}{" "}
+            {" "}
+          </title>
+        </Head>
       <Scrolltoprefresh />
 
       <NavHandler />
@@ -247,28 +258,20 @@ function Index(props) {
 
           <div style={{ marginTop: "5rem" }}>
             {isLoading || toursLoading ? (
-              <>
-                <Shimmers6 selectedHeight={110} />
-                <Shimmers6 selectedHeight={110} />
-                <Shimmers6 selectedHeight={110} />
-                <Shimmers6 selectedHeight={110} />
-                <Shimmers6 selectedHeight={110} />
-                <Shimmers6 selectedHeight={110} />
-                <Shimmers6 selectedHeight={110} />
-                <Shimmers6 selectedHeight={110} />
-                <Shimmers6 selectedHeight={110} />
-                <Shimmers6 selectedHeight={110} />
-                <Shimmers6 selectedHeight={110} />
-                <Shimmers6 selectedHeight={110} />
-              </>
+
+
+
+                      <Loading title={`درحال جستجو تورهای`+' ' + router.query?.origin?.split('-')[1] +' '+'به' +' '+ router.query?.destination?.split('-')[1] + router?.query?.nights +' '+ 'شب' + '....'}/>
+
+
             ) : (
-              <div className={styles["list_container"]}>
-                <div
-                  className={`${styles["filterbox_container"]} ${
-                    isFilter_mobile && styles["filter_open"]
-                  }`}
-                >
-                  <div className={styles["filter_box"]}>
+                <div className={styles["list_container"]}>
+                  <div
+                      className={`${styles["filterbox_container"]} ${
+                          isFilter_mobile && styles["filter_open"]
+                      }`}
+                  >
+                    <div className={styles["filter_box"]}>
                     <div
                       className={styles["flight_title"]}
                       style={{
@@ -382,7 +385,7 @@ function Index(props) {
                           <div
                             className={`${styles["airline_item"]} `}
                             onClick={() => {
-                              
+
                               setFilters((prev) => ({
                                 ...prev,
                                 airline: {
