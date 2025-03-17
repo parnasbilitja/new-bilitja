@@ -3,9 +3,7 @@ import styles from "../../../styles/FlightSearchBox.module.scss";
 import PrimaryTextInputMobile from "../component/PrimaryTextInputMobile";
 import Scrolltoprefresh from "../component/Scrolltoprefresh";
 import InputValues from "./InputValues";
-import axios from "axios";
 import styles1 from "../../../styles/PrimaryButton.module.scss";
-
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -61,26 +59,43 @@ const SearchBox = ({ state, setState, toursHandler, executeScroll }) => {
     }
   }, [searchInput]);
   const getData = async () => {
-    let data = await axios
-      .get("https://api.hotelobilit.com/api/v2/tours/destinations", {
-        headers: {
-          "x-app-key": "1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05", //the token is a variable which holds the token
-        },
-      })
-      .then((response) => {
-        setOrigins(response.data.data);
-        let dest = [];
-        response.data.data.map((org) => {
-          dest.push(...org.destinations);
-        });
+    try {
+      // Fetch data with revalidation
+      const res = await fetch(
+        "https://api.hotelobilit.com/api/v2/tours/destinations",
+        {
+          headers: {
+            "x-app-key":
+              "1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05", //the token is a variable which holds the token
+          },
+          next: { revalidate: 600 }, // Revalidate the data every 10 minutes (600 seconds)
+        }
+      );
 
-        setDestinations(removeDuplicateObj(dest, "code"));
+      // Check if the response is successful
+      if (!res.ok) {
+        throw new Error("Failed to fetch data");
+      }
 
+      // Parse the JSON response
+      const responseData = await res.json();
+
+      // Process the data
+      setOrigins(responseData.data);
+      let dest = [];
+      responseData.data.map((org) => {
+        dest.push(...org.destinations);
       });
-    return data;
+
+      setDestinations(removeDuplicateObj(dest, "code"));
+
+      return responseData; // Return the fetched data
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error; // Re-throw the error for handling elsewhere
+    }
   };
   const removeDuplicateObj = (data, prop) => {
-    
     const seenIds = {}; // Helper object to keep track of seen IDs
 
     const filteredData = data.filter((obj) => {
@@ -103,7 +118,6 @@ const SearchBox = ({ state, setState, toursHandler, executeScroll }) => {
   const handleFocus = () => {
     setSearchInput("");
   };
-
 
   const setSearchBoxState = (
     actionCreator,
@@ -141,7 +155,6 @@ const SearchBox = ({ state, setState, toursHandler, executeScroll }) => {
     ]);
   };
 
-
   useEffect(() => {
     if (toursData.selectedOrigin) {
       let foundOrg = origins.filter(
@@ -169,12 +182,10 @@ const SearchBox = ({ state, setState, toursHandler, executeScroll }) => {
         dispatch(setSearchStep(step));
         break;
       case "dest":
-        if(
-           toursData.selectedOrigin.name && toursData.selectedOrigin.code
-        ){
-        dispatch(setSearchStep(step));
-        }else{
-            Err('لطفا مبدا خود را انتخاب کنید')
+        if (toursData.selectedOrigin.name && toursData.selectedOrigin.code) {
+          dispatch(setSearchStep(step));
+        } else {
+          Err("لطفا مبدا خود را انتخاب کنید");
         }
         break;
       case "date":
@@ -201,7 +212,6 @@ const SearchBox = ({ state, setState, toursHandler, executeScroll }) => {
         break;
     }
   };
-
 
   return (
     <>
@@ -257,7 +267,15 @@ const SearchBox = ({ state, setState, toursHandler, executeScroll }) => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
-                  onClick={() => dispatch(setOrgLoc({ name: "", code: "" }))}
+                  onClick={() => {
+                    dispatch(setOrgLoc({ name: "", code: "" }));
+                    dispatch(setDestLoc({ name: "", code: "" }));
+
+                    dispatch(
+                      setFlightDate({ miladiDate: "", persianDate: "" })
+                    );
+                    dispatch(setNightNumber(null));
+                  }}
                   width={15}
                   height={15}
                   className={"cursor-pointer"}
@@ -322,9 +340,7 @@ const SearchBox = ({ state, setState, toursHandler, executeScroll }) => {
         </div>
 
         <div className={"w-100 position-relative"}>
-          <div
-            className={` form-input-border ${styles["prs-input"]} `}
-          >
+          <div className={` form-input-border ${styles["prs-input"]} `}>
             <PrimaryTextInputMobile
               value={toursData?.selectedDestination?.name}
               name={"slug"}
@@ -1087,11 +1103,11 @@ const SearchBox = ({ state, setState, toursHandler, executeScroll }) => {
 
                   if (toursData.tour_type === "package") {
                     router.push(
-                      `/tours/tourlist?origin=${toursData.selectedOrigin.code}&destination=${toursData.selectedDestination.code}&date=${toursData.selectedDate.miladiDate}&nights=${toursData.selectedNight}&tour_type=${toursData.tour_type}`
+                      `/tours/tourlist?origin=${toursData.selectedOrigin.code+'-'+toursData.selectedOrigin.name}&destination=${toursData.selectedDestination.code + '-' +toursData.selectedDestination.name}&date=${toursData.selectedDate.miladiDate}&nights=${toursData.selectedNight}&tour_type=${toursData.tour_type}`
                     );
                   } else {
                     router.push(
-                      `/tours/packagelist/${toursData.selectedOrigin.code}-${toursData.selectedDestination.code}?date=${toursData.selectedDate.miladiDate}&nights=${toursData.selectedNight}&tour_type=${toursData.tour_type}`
+                      `/tours/packagelist?origin=${toursData.selectedOrigin.code}-${toursData.selectedOrigin.name}&destination=${toursData.selectedDestination.code}-${toursData.selectedDestination.name}&date=${toursData.selectedDate.miladiDate}&nights=${toursData.selectedNight}&tour_type=${toursData.tour_type}`
                     );
                   }
                 }
@@ -1108,7 +1124,6 @@ const SearchBox = ({ state, setState, toursHandler, executeScroll }) => {
             <PopUpWide opened={toursData.searchboxStep === "date"}>
               <div
                 style={{
-           
                   width: "fit-content",
                   height: "fit-content",
                   marginTop: "100px",
