@@ -46,7 +46,7 @@ const Packages = (props) => {
 
   useEffect(()=>{
     console.log(props.selected_flight);
-    
+
   },[props.selected_flight])
   const roomFinder1 = (rooms, roomTypeID) => {
 let cheapest
@@ -59,7 +59,7 @@ let cheapest
    }else{
   cheapest=  foundRoom.filter((room)=>+room.flight_id === +props.selected_flight)[0]
    }
-  
+
     return cheapest;
   };
 
@@ -129,9 +129,17 @@ let cheapest
           roomFinder1(b?.rooms, 148)?.price - roomFinder1(a?.rooms, 148)?.price
       );
     }
-
-
-    return filteredData;
+    let with0ut148=[]
+    let with148=[]
+    filteredData.map((pack)=>{
+      let foundRoom=pack.rooms.filter((room)=>room.room_type_id===148)
+      if(foundRoom.length===0){
+        with0ut148.push(pack)
+      }else{
+        with148.push(pack)
+      }
+    })
+    return [...with148,...with0ut148];
   };
 
   const [selectedRooms, setSelectedRoom] = useState(0);
@@ -140,21 +148,45 @@ let cheapest
 
     let rooms=[]
     if(props.tour_type==='hotel'){
-      let foundRoom = pack?.filter((room) => +room?.room_type_id === 148);
-      let cheapest148room = foundRoom?.reduce(
-        (min, obj) => (obj.price < min.price ? obj : min),
-        foundRoom[0]
-      );
-       rooms = [cheapest148room];
-      let OtherRoom = pack?.filter(
-        (room) =>
-          room?.flight_id === cheapest148room?.flight_id &&
-          +room?.room_type_id !== 148 
-          // &&
-          // +cheapest148room.package_id === +room.package_id
-      );
-  
-      rooms.push(...OtherRoom);
+
+
+      if(pack.length>0){
+        let foundRoom = pack?.filter((room) => +room?.room_type_id === 148);
+
+        if(foundRoom.length>0){
+          let cheapest148room = foundRoom?.reduce(
+              (min, obj) => (obj.price < min.price ? obj : min),
+              foundRoom[0]
+          );
+          rooms = [cheapest148room];
+          let OtherRoom = pack?.filter(
+              (room) =>
+                  room?.flight_id === cheapest148room?.flight_id &&
+                  +room?.room_type_id !== 148
+              // &&
+              // +cheapest148room.package_id === +room.package_id
+          );
+
+          rooms.push(...OtherRoom);
+        }else{
+          let cheapestRoom=pack?.reduce(
+              (min, obj) => (obj.price < min.price ? obj : min),
+              pack[0]
+          );
+          rooms=[cheapestRoom]
+          let OtherRoom = pack?.filter(
+              (room) =>
+                  room?.flight_id === cheapestRoom?.flight_id &&
+                  +room?.room_type_id !== cheapestRoom.room_type_id
+              // &&
+              // +cheapest148room.package_id === +room.package_id
+          );
+
+          rooms.push(...OtherRoom)
+        }
+      }
+
+
     }else{
       let foundRoom= pack.filter(room=>+room.flight_id===+props.selected_flight)
 
@@ -195,7 +227,7 @@ let cheapest
   }
 
   const hotel_flight_merger = (hotels, flights) => {
-  
+
     return hotels.map((hotel) => {
       let related_flights = [];
       hotel.rooms = hotel.rooms.map((room) => {
@@ -214,7 +246,7 @@ let cheapest
   };
 
   const handlePackageClick = async (pack) => {
-    
+
     setSelectedHotel(pack.id);
 
     let default_hotel =
@@ -314,26 +346,26 @@ let cheapest
         ...prev,
         [type]: e.target.checked,
         expense:false
-  
-  
+
+
       }));
     }else if(type==='expense' &&  e.target.checked){
       setFilter((prev) => ({
         ...prev,
         [type]: e.target.checked,
         cheapest:false
-  
-  
+
+
       }));
     }else{
       setFilter((prev) => ({
         ...prev,
         [type]: e.target.checked,
-  
-  
+
+
       }));
     }
- 
+
   };
 
 
@@ -773,7 +805,7 @@ let cheapest
                                                                   styles[""]
                                                                 }
                                                               >
-                                                              
+
                                                                 دو تخته (هرنفر){" "}
                                                               </span>
                                                             </div>
@@ -820,7 +852,7 @@ let cheapest
                                                                       <span className="font-bold font-size-13 font-bold color-gray">
                                                                         {" "}
 
-                                                                      
+
                                                                         عدم
                                                                         موجودی
                                                                       </span>
@@ -889,7 +921,7 @@ let cheapest
                                                         // posthog.capture("TourPackageHotelSelect")
                                                         // setPackData({tourId: pack.id});
                                                         // setSelectedHotel(pack)
-                                                     
+
 
                                                         foundRooms(pack.rooms);
                                                       }}
@@ -907,7 +939,7 @@ let cheapest
                                                             props.tour_type ===
                                                             "package"
                                                           ) {
-                                                            
+
                                                             setTargetHotel(pack)
                                                             foundRooms(pack.rooms);
 
@@ -1327,7 +1359,7 @@ let cheapest
                                 <label className="font-size-13">
                                   ارزان ترین
                                 </label>
-                          
+
                               </div>
                               <div className=" d-flex align-items-center gap-1 " >
                               <input
@@ -1343,7 +1375,7 @@ let cheapest
                                   }
                                 />
                                 <label  className="font-size-13">گران ترین</label>
-  
+
                               </div>
                               <div className="d-flex align-items-center gap-1 " >
                               <input
@@ -1357,7 +1389,7 @@ let cheapest
                                   onChange={(e) => handleCheckbox(e, "star")}
                                 />
                                 <label  className="font-size-13">ستاره </label>
-        
+
                               </div>
                               {/* <div
                                 className="c-input col-xl-3 col-lg-3 col-sm-3 col-12 position-relative "
@@ -1541,7 +1573,7 @@ let cheapest
             overlayClassName={"Overlay"}
             contentLabel="Example Modal"
           >
-    
+
             <RoomSelection rooms={selectedRooms} hotel={targetHotel} flight_id={TargetFlight?.id}/>
           </Modal>
         }

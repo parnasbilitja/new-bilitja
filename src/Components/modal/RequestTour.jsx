@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import { numberWithCommas } from "../../Utils/newTour";
 const RequestTour = ({ rooms }) => {
+  useEffect(()=>{
+    debugger
+    console.log(rooms)
+  },[rooms])
   return (
     <div
       className="req-container"
@@ -42,7 +46,7 @@ const RequestTour = ({ rooms }) => {
                     {/*}*/}
                     <div className="description">
                       <p>
-                        {price.price
+                        {price?.price
                           ? numberWithCommas(price.price) + "تومان"
                           : "عدم موجودی"}
                       </p>
