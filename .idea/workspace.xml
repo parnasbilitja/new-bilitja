@@ -4,43 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="change loading style">
-      <change beforePath="$PROJECT_DIR$/.env.local" beforeDir="false" afterPath="$PROJECT_DIR$/.env.local" afterDir="false" />
+    <list default="true" id="1b030c54-2368-4a82-89e4-3e4b5965f00a" name="Default Changelist" comment="some changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableFlightBasedonSelectedTour.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewTours/AvailableHotel1.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewTours/AvailableHotel1.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hotel/Hotels.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/PackageReserve.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/share/NavHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/share/NavHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_document.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/blog.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/blogs/[blog].js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/flights.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/flights.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotels/[hotel].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/hotels/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotels/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ticket.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/[...tour].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/[...tour].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/packagelist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/packagelist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/tourdetails/[tourdata].jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/tourdetails/[tourdata].jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tours/tourlist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tours/tourlist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/base/Airports.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/base/Airports.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/blog/Blog.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/blog/Blog.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Footer.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/NavBarMobile.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/NavBarMobile.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/Packages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/Packages.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/component/PageTabs.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/FlightSearchBox.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/FlightSearchBox.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/flight_List/GetFlightList.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/List.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sources/tour/SearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Footer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Footer.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/NavBar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/NavBar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/NavBarMobile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/NavBarMobile.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/SlideIn.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/SlideIn.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/global.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -380,7 +345,7 @@
       <workItem from="1744809913850" duration="1970000" />
       <workItem from="1747718417139" duration="3769000" />
       <workItem from="1747725342122" duration="942000" />
-      <workItem from="1747727036358" duration="1494000" />
+      <workItem from="1747727036358" duration="2995000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="design footer &amp; text bold shop ticket">
       <created>1655042277930</created>
@@ -550,14 +515,6 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۲۸" />
       <updated>1690379765347</updated>
     </task>
-    <task id="LOCAL-00260" summary="UI bug fixed">
-      <option name="closed" value="true" />
-      <created>1735469988333</created>
-      <option name="number" value="00260" />
-      <option name="presentableId" value="LOCAL-00260" />
-      <option name="project" value="LOCAL" />
-      <updated>1735469988334</updated>
-    </task>
     <task id="LOCAL-00261" summary="UI bug fixed">
       <option name="closed" value="true" />
       <created>1735470286170</created>
@@ -718,7 +675,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742290240477</updated>
     </task>
-    <option name="localTasksCounter" value="281" />
+    <task id="LOCAL-00281" summary="some changes">
+      <option name="closed" value="true" />
+      <created>1747728819842</created>
+      <option name="number" value="00281" />
+      <option name="presentableId" value="LOCAL-00281" />
+      <option name="project" value="LOCAL" />
+      <updated>1747728819842</updated>
+    </task>
+    <option name="localTasksCounter" value="282" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -750,7 +715,6 @@
     <MESSAGE value="table bug fixed" />
     <MESSAGE value="some task and bugs have been resolved" />
     <MESSAGE value="new bilitja" />
-    <MESSAGE value="some changes" />
     <MESSAGE value="flight api has been changed" />
     <MESSAGE value="some changes for bug" />
     <MESSAGE value="filtered package by stars and price has been set" />
@@ -763,7 +727,8 @@
     <MESSAGE value="searchbox 's UI" />
     <MESSAGE value="sort tourList by min_price" />
     <MESSAGE value="change loading style" />
-    <option name="LAST_COMMIT_MESSAGE" value="change loading style" />
+    <MESSAGE value="some changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
