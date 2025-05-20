@@ -25,8 +25,6 @@ import HotelsSideBarSearch from "../../Components/NewTours/Components/subCompone
 import Footer from "../../sources/component/Footer.component";
 import NewLoader from "../../Components/NewTours/Components/subComponents/NewLoader";
 import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
-import Paginate from "../../Components/NewTours/Components/subComponents/Paginate";
-import Head from "next/head";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Navigation, Pagination, Scrollbar } from "swiper";
 import "swiper/css";

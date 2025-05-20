@@ -12,8 +12,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllHotels } from '../../Redux/allHotels/Action';
 import { fetchCitySearch } from '../../Redux/citiesSearch/Action';
 import NewLoader from "../NewTours/Components/subComponents/NewLoader";
-const Hotels = () => {
+import { useRouter } from 'next/router';
+const Hotels = (props) => {
     let hotels = useSelector(state => state.AllHotelReducer)
+
+    const router=useRouter()
     const dispatch = useDispatch()
     const [city, setCity] = useState('');
     const [width, setWidth] = useState();
@@ -28,17 +31,21 @@ const Hotels = () => {
         dispatch(fetchCitySearch())
         setWidth(window.innerWidth)
     },[])
+
+    useEffect(()=>{city},[city])
     const searchHotel = ()=>{
-        dispatch(fetchAllHotels(city,search.hotel,1))
+
+        router.push(`/hotels?id=${city}`)
+        // dispatch(fetchAllHotels(city,search.hotel,1))
         //
     }
     useEffect(()=>{
-        dispatch(fetchAllHotels(city,search.hotel,page))
+        dispatch(fetchAllHotels(props.id,search.hotel,page))
 
 
-    },[])
+    },[props.id])
     useEffect(() => {
-        dispatch(fetchAllHotels(!city?'':city,search.hotel,page))
+        dispatch(fetchAllHotels(!props.id?'':props.id,search.hotel,page))
     },[page])
 
 

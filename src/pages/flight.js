@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
-const Home = dynamic(() => import("./../sources/Home.page"));
-const Footer = dynamic(() => import("./../sources/component/Footer.component"));
+const Home = dynamic(() => import("../sources/Home.page"));
+const Footer = dynamic(() => import("../sources/component/Footer.component"));
 const MessageBox = dynamic(() =>
-  import("./../sources/component/MessageBox.component")
+  import("../sources/component/MessageBox.component")
 );
-const PopUp = dynamic(() => import("./../sources/component/PopUp.component"));
-const Account = dynamic(() => import("./../sources/account/Account.component"));
+const PopUp = dynamic(() => import("../sources/component/PopUp.component"));
+const Account = dynamic(() => import("../sources/account/Account.component"));
 
 import { connect } from "react-redux";
 import { selcetAccountBox } from "../Redux/UI/ui.reselect";

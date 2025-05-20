@@ -1,0 +1,7 @@
+# Disallow all crawlers
+User-agent: *
+Disallow: /
+
+# Noindex and nofollow
+Noindex: /
+Nofollow: /

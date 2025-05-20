@@ -384,7 +384,7 @@ const PackageReserve = ({
                     setLoading(false)
                     ErrSuccess("به صفحه تکمیل اطلاعات و رزرو منتقل می‌شوید");
                     router.push(
-                        `/tour/reserve/${hotel.hotel_id}/${res.data.data.flights.departure.id}/${res.data.data.flights.return.id}?checkin=${hotel.check_in}&checkout=${hotel.check_out}&rooms=${JSON.stringify(selectedRoomsData)}&ref_code=${res.data.data.information.ref_code}`
+                        `/tours/reserve/${hotel.hotel_id}/${res.data.data.flights.departure.id}/${res.data.data.flights.return.id}?checkin=${hotel.check_in}&checkout=${hotel.check_out}&rooms=${JSON.stringify(selectedRoomsData)}&ref_code=${res.data.data.information.ref_code}`
                     );
                 })
                 .catch((err) => {

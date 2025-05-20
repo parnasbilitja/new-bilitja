@@ -324,7 +324,9 @@ const router=useRouter()
                                         </div>
                                     )) :
                                     ( data?.map((item) => (
-                                           <Link href={`/tours/${item?.id}?tour_type=${router.query.tour_type}`} onClick={() => slugHandler(item?.id)}
+                                                             
+
+                                           <Link href={`/tours/packagelist?origin=${item?.origin?.code}-${item?.origin?.name}&destination=${item?.destination?.code}-${item?.destination?.name}&date=${item?.departure_date}&nights=${item?.night_num}&tour_type=hotel`} onClick={() => slugHandler(item?.id)}
                                                  key={item?.id}
                                                  className="w-100 col-xl-12 col-lg-12 w-100 d-flex flex-column">
                                                <div className="tour-item col-xl-12 col-lg-12 mb-4"

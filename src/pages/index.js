@@ -8,14 +8,15 @@ import {accountBoxModify} from "../Redux/UI/ui.action";
 import {withRouter} from "next/router";
 import {connect} from "react-redux";
 import NavHandler from "../Components/share/NavHandler";
+import NewNavBar from "../sources/component/NewNavbar";
 const App = (props) =>  {
 
-    useEffect(()=>{
-        console.log('node v',process?.version)
-    },[process])
+
     return (
       <div className="bodyVar">
           <NavHandler/>
+
+          {/* <NewNavBar/> */}
           <Ticket {...props} />
           <PopUp
               opened={props.accountBox.state}

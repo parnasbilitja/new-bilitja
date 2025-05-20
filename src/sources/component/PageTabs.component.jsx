@@ -15,12 +15,12 @@ const PageTabls = (props) => {
           className={` mobile-tab row justify-content-center me-0 w-100 position-relative ${styles['tabscontainer']}`}
           style={{ top: "2px" }}
         >
-          <Link href="/ticket">
+          <Link href="/flight">
             <div
               className={`${
                 styles["tab-home-main"]
               } col-6 col-md-2 col-xl-1 cursor-pointer  ${
-                  (router.asPath=== "/ticket"  || router.asPath=== "/")  ? styles["home-tab-active"] : null
+                  (router.asPath=== "/flights" || router.asPath=== "/flight"  || router.asPath=== "/")  ? styles["home-tab-active"] : null
               } `}
               onClick={() => {
                 // props.setType(1);
@@ -127,7 +127,7 @@ const PageTabls = (props) => {
               className={`col-xl-1 ${styles["tab-home-main"]} ${
                 styles["mobile-tab2"]
               } col-6 col-md-3 cursor-pointer ${
-                  router.asPath=== "/hotels"  ? styles["home-tab-active"] : null
+                  router.asPath.includes("/hotels")  ? styles["home-tab-active"] : null
               } ${styles["width-full"]}`}
               onClick={() => {
                 // props.setType(3)

@@ -180,9 +180,7 @@ const FlightSearchBox = (props) => {
   //   // }
   //   gtag('event', 'formStarted', { 'destination': props.credentials.dest, 'selectedDate': props.credentials.stDate})
   // };
-  useEffect(()=>{
-    console.log(props.credentials.source.split(','))
-  },[props.credentials])
+
   return (
     <div className={`${styles["home-flight-form"]}`}>
       <div className="position-relative">

@@ -1103,11 +1103,11 @@ const SearchBox = ({ state, setState, toursHandler, executeScroll }) => {
 
                   if (toursData.tour_type === "package") {
                     router.push(
-                      `/tours/tourlist?origin=${toursData.selectedOrigin.code+'-'+toursData.selectedOrigin.name}&destination=${toursData.selectedDestination.code + '-' +toursData.selectedDestination.name}&date=${toursData.selectedDate.miladiDate}&nights=${toursData.selectedNight}&tour_type=${toursData.tour_type}`
+                      `/tours/search?origin=${toursData.selectedOrigin.code+'-'+toursData.selectedOrigin.name}&destination=${toursData.selectedDestination.code + '-' +toursData.selectedDestination.name}&date=${toursData.selectedDate.miladiDate}&nights=${toursData.selectedNight}&tour_type=${toursData.tour_type}`
                     );
                   } else {
                     router.push(
-                      `/tours/packagelist?origin=${toursData.selectedOrigin.code}-${toursData.selectedOrigin.name}&destination=${toursData.selectedDestination.code}-${toursData.selectedDestination.name}&date=${toursData.selectedDate.miladiDate}&nights=${toursData.selectedNight}&tour_type=${toursData.tour_type}`
+                      `/tours/search?origin=${toursData.selectedOrigin.code}-${toursData.selectedOrigin.name}&destination=${toursData.selectedDestination.code}-${toursData.selectedDestination.name}&date=${toursData.selectedDate.miladiDate}&nights=${toursData.selectedNight}&tour_type=${toursData.tour_type}`
                     );
                   }
                 }

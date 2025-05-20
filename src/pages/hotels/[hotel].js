@@ -56,7 +56,7 @@ const hotel = (props) => {
         // .catch((err) =>r);
     };
     //     const getData = async () => {
-    //     
+    //
     //         await axios.get(`https://api.hotelobilit.com/api/v2/hotels/${props.Pathname.hotel}`,{
     //             headers:{
     //                 "x-app-key": '1671|4fd32tDjR5YMiFBuPTIiRHJhDkKgGrd5SaBigR6C5a86ac05'
@@ -75,7 +75,7 @@ const hotel = (props) => {
 
 
     const latLngSeparator=(coordinates)=>{
-        
+
         let latlng=coordinates?.split(',')
     return [+latlng[0],+latlng[1]]
 
@@ -89,7 +89,7 @@ AlltoursHandler(props.hotel.city.code)
     return (
         <>
                 <NavHandler />
-            <div className='padd'>
+            <div className='container1'>
                 <Scrolltoprefresh/>
                 <div className="col-md-10 m-auto parent-info-hotel marginTop120 my-5">
                     <Head>
@@ -101,7 +101,7 @@ AlltoursHandler(props.hotel.city.code)
                     </Head>
                     <div className="title-info-hotel">
                         <div className="right">
-                            <img src="/Images/Tag1.png" width="35" alt="اطلاعات-هتل" className='mx-2'/>
+                            <img src="/Images/Tag1.png" width="35px" height='35px' alt="اطلاعات-هتل" className='mx-2'/>
                             <div className="text">
                                 <h2 className="title-fa" style={{whiteSpace:'nowrap'}}>{props.hotel?.title}</h2>
                                 <h2 className="title-en">{props.hotel?.titleEn}</h2>
@@ -120,7 +120,7 @@ AlltoursHandler(props.hotel.city.code)
                     </div>
                     <div className="title-hotel">
                         <div className="name-city-country">
-                            <img src="/Images/Location.svg" width="20" alt="آدرس-شهر و منطقه"/>
+                            <img src="/Images/Location.svg" width="20px" height='20px' alt="آدرس-شهر و منطقه"/>
                             <span className="title-small-fa">آدرس و منطقه :</span>
                             <span className="title-fa mr-2">{ props.hotel?.address}</span>
                             <span className="title-fa mr-2">{ props.hotel?.location}</span>
@@ -166,7 +166,7 @@ AlltoursHandler(props.hotel.city.code)
                             <div className="parent-view-all-photo">
                                 <div className="btn-photos" onClick={() =>setShow(true)}>
                                     <img className="d-none" src="https://api.hamnavaz.com/source/jadid/اس8.jpg" alt="مشاهده-عکس ها"/>
-                                    <img src="../../../Images/Menu-hotel.svg" width="20" alt=""/>
+                                    <img src="../../../Images/Menu-hotel.svg" width="20px" height='20px' alt=""/>
                                     <span className="text-dark" style={{cursor:'pointer'}}>&nbsp;مشاهده همه عکس ها</span>
                                 </div>
                             </div>

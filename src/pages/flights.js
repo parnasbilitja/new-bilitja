@@ -15,6 +15,7 @@ import TrackOrder from "./../sources/report/TrackOrder.page";
 import { withRouter } from "next/router";
 import { selectAirports } from "../Redux/Airports/airport.reselect";
 import NavHandler from "../Components/share/NavHandler";
+import FlightBase from "../sources/manager/flights/FlightBase";
 
 class Flights extends React.Component {
     constructor(props) {
@@ -36,7 +37,12 @@ class Flights extends React.Component {
         } else if (pathName.indexOf("order") > 0) {
             return <TrackOrder />;
         } else {
-            return <GetFlightList />;
+            if(pathName.indexOf('to')>0){
+
+                return <GetFlightList />;
+            }else{
+                return <FlightBase/>
+            }
         }
     }
 

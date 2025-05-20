@@ -1,25 +1,21 @@
 import React, { useEffect, useMemo, useState } from "react";
-import NavHandler from "../../../Components/share/NavHandler";
-import List from "../../../sources/tour/List";
+import NavHandler from "../share/NavHandler";
+// import List from "../../../sources/tour/List";
 import axios from "axios";
 // import Paginate from "@/Components/NewTours/Components/subComponents/Paginate";
-import Scrolltoprefresh from "../../../sources/component/Scrolltoprefresh";
-import styles from "../../../../styles/allTours.module.scss";
+import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
+import styles from "../../../styles/allTours.module.scss";
 import { useRouter } from "next/router";
-import globals from "../../../sources/Global";
+import globals from "../../sources/Global";
 import useSWR from "swr";
-import TourListData from "../../../Components/NewTours/TourListData";
-import {
-  Loading,
-  Shimmers,
-  Shimmers6,
-} from "../../../Components/NewTours/Components/subComponents/Shimmers";
+import TourListData from "../NewTours/TourListData";
+import { Loading } from "../NewTours/Components/subComponents/Shimmers";
 import ReactPaginate from "react-paginate";
 import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
 import Head from "next/head";
 
-function Index(props) {
+function TourList(props) {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
   const [page, setPage] = useState(1);
@@ -59,19 +55,21 @@ function Index(props) {
   };
   useEffect(() => {
     
-    if (router.isReady && router.query) {
+    
+    if (props.params) {
+        
       setApiParams({
-        destination: router.query.destination.split('-')[0],
-        origin: router.query?.origin.split('-')[0],
+        destination: props.params.destination?.split('-')[0],
+        origin: props.params?.origin?.split('-')[0],
         month: "",
-        stayCount: +router.query?.nights,
+        stayCount: +props.params?.nights,
         ordering: 1,
         req_type: "package",
-        date: router.query?.date,
+        date: props.params?.date,
       });
       setIsParamsReady(true);
     }
-  }, [router.isReady, router.query]);
+  }, [ props]);
   const {
     data: initialData,
     error: initialError,
@@ -89,9 +87,14 @@ function Index(props) {
     // }
   );
 
+
+
   useEffect(() => {
     setMeta(initialData?.meta);
     setCurrentPage(initialData?.meta?.current_page);
+
+    console.log(initialData);
+    
     // console.log(initialData)
   }, [initialData]);
 
@@ -692,4 +695,4 @@ function Index(props) {
   );
 }
 
-export default Index;
+export default TourList;

@@ -5,6 +5,8 @@ import NavBar from "../../sources/component/NavBar.component";
 import NavBarMobileCustom from '../../sources/component/NavBarMobileCustom';
 import dynamic from "next/dynamic";
 import Router, {useRouter} from "next/router";
+import NewNavBar from "../../sources/component/NewNavbar";
+
 
 const NavBarMobile = dynamic(() =>
         import("../../sources/component/NavBarMobile.component"),
@@ -54,8 +56,8 @@ const NavHandler = (props) => {
                 <NabvarCustom/>
                 :
 
-
-                  <NavBar/>
+<NewNavBar/>
+        
 
                 }
                 </div>
@@ -64,3 +66,4 @@ const NavHandler = (props) => {
 }
 
 export default NavHandler;
+          {/* <NavBar/> */}

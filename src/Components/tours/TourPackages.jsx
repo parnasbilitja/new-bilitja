@@ -1,38 +1,39 @@
 import useSWR from "swr";
 import React, { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/router";
-import globals from "../../../sources/Global";
-import Packages from "../../../sources/component/Packages";
-import { Loading, Shimmers3 } from "../../../Components/NewTours/Components/subComponents/Shimmers";
-import NotFound from "../../NotFound";
-import NavHandler from "../../../Components/share/NavHandler";
-import Footer from "../../../sources/component/Footer.component";
-import Scrolltoprefresh from "../../../sources/component/Scrolltoprefresh";
-import { getRandomNumber } from "../../../Utils/newTour";
+// import { useRouter } from "next/router";
+import globals from "../../sources/Global";
+import Packages from "../../sources/component/Packages";
+import { Loading,Shimmers3 } from "../NewTours/Components/subComponents/Shimmers";
+import NotFound from "../../pages/NotFound";
+import NavHandler from "../share/NavHandler";
+import Footer from "../../sources/component/Footer.component";
+import Scrolltoprefresh from "../../sources/component/Scrolltoprefresh";
 
-const PackageListPage = () => {
-  const router = useRouter();
+import { getRandomNumber } from "../../Utils/newTour";
+
+const TourPackages = (props) => {
+  // const router = useRouter();
   const [isParamsReady, setIsParamsReady] = useState(false);
   const [apiParams, setApiParams] = useState(null);
 
   useEffect(() => {
-    if (router.isReady && router.query) {
+    if (props.params) {
 
 
       setApiParams({
-        origin: router.query.origin.split("-")[0],
-        destination: router.query.destination.split("-")[0],
+        origin: props.params.origin.split("-")[0],
+        destination: props.params.destination.split("-")[0],
         month: "",
-        stayCount:router.query.nights === "null" || !router.query.nights
+        stayCount:props.params.nights === "null" || !props.params.nights
             ? ""
-            : router.query.nights,
+            : props.params.nights,
         ordering: 1,
         req_type: "package",
-        date: router.query.date,
+        date: props.params.date,
       });
       setIsParamsReady(true);
     }
-  }, [router.isReady, router.query]);
+  }, [props]);
 
   const fetcher = async ([url, data]) => {
     const response = await fetch(url, {
@@ -222,7 +223,7 @@ return list
         <Packages
           tourdata={optimizedPackages}
           all_data={mergedData}
-          tour_type={router.query.tour_type}
+          tour_type={props.params.tour_type}
           isLoading={isLoading}
         />
       ) : toursLoading || isLoading ? (
@@ -232,7 +233,7 @@ return list
           <Shimmers3 />
           <Shimmers3 />
           <Shimmers3 />
-                      <Loading title={`درحال جستجو تورهای` + ' ' + router.query?.origin?.split('-')[1] +' '+'به' +' '+ router.query?.destination?.split('-')[1] + ' '+ router?.query?.nights +' '+ 'شب' + '....'}/>
+                      <Loading title={`درحال جستجو تورهای` + ' ' + props.params?.origin?.split('-')[1] +' '+'به' +' '+ props.params?.destination?.split('-')[1] + ' '+ props.params?.nights +' '+ 'شب' + '....'}/>
 
         </div>
       ) : (
@@ -242,4 +243,4 @@ return list
     </>
   );
 };
-export default PackageListPage;
+export default TourPackages;

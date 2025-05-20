@@ -66,7 +66,7 @@
     position: fixed;
     top: 0;
     z-index: 9999;
-width: 100%;
+    width: 100%;
     .navVar{
         // display: flex !important;
         flex-direction: row-reverse;
@@ -106,9 +106,9 @@ width: 100%;
             margin-right: 3px;
         }
     }
-   i{
-       font-size: 14px;
-   }
+    i{
+        font-size: 14px;
+    }
 }
 
 .navbar-items{

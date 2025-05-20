@@ -35,6 +35,11 @@ const Packages = (props) => {
     expense: false,
   });
 
+  useEffect(()=>{
+console.log(props,'djgshadj');
+
+  },[props])
+
   const [isdownload, setIsDownload] = useState(false);
   const [data, setData] = useState({});
   const [packages, setPackages] = useState([]);
@@ -57,6 +62,7 @@ let cheapest
       foundRoom[0]
     );
    }else{
+    debugger
   cheapest=  foundRoom.filter((room)=>+room.flight_id === +props.selected_flight)[0]
    }
 
@@ -139,6 +145,7 @@ let cheapest
         with148.push(pack)
       }
     })
+    
     return [...with148,...with0ut148];
   };
 
@@ -935,6 +942,7 @@ let cheapest
                                                           fontWeight: "700",
                                                         }}
                                                         onClick={() => {
+                                                          
                                                           if (
                                                             props.tour_type ===
                                                             "package"

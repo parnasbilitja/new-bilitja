@@ -32,10 +32,10 @@ export default class MyDocument extends Document {
             {/*}*/}
 
 
-            <Script
-                async
-                src={`https://www.googletagmanager.com/gtag/js?id=GTM-WN4X4CF7`}
-            />
+            {/*<Script*/}
+            {/*    async*/}
+            {/*    src={`https://www.googletagmanager.com/gtag/js?id=GTM-WN4X4CF7`}*/}
+            {/*/>*/}
 
 
           <link rel="manifest" href="/manifest.json">
@@ -97,11 +97,11 @@ export default class MyDocument extends Document {
 
         </Head>
         <body>
-        {(process.env.NODE_ENV === 'production') &&
-            <noscript dangerouslySetInnerHTML={{
-                __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WN4X4CF7" height="0" width="0" style="display:none;visibility:hidden"></iframe>`
-            }}></noscript>
-        }
+        {/*{(process.env.NODE_ENV === 'production') &&*/}
+        {/*    <noscript dangerouslySetInnerHTML={{*/}
+        {/*        __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WN4X4CF7" height="0" width="0" style="display:none;visibility:hidden"></iframe>`*/}
+        {/*    }}></noscript>*/}
+        {/*}*/}
           <Main />
           <NextScript />
         </body>

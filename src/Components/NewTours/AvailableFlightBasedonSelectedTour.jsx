@@ -495,7 +495,7 @@ const AvailableFlightBasedonSelectedTour = (props) => {
              
                     ErrSuccess("به صفحه تکمیل اطلاعات و رزرو منتقل می‌شوید");
                     router.push(
-                        `/tour/reserve/${hotelId}/${fDId}/${fRId}?checkin=${fCheckin}&checkout=${fCheckout}&ref_code=${res.data.data.ref_code}`
+                        `/tours/reserve/${hotelId}/${fDId}/${fRId}?checkin=${fCheckin}&checkout=${fCheckout}&ref_code=${res.data.data.ref_code}`
                     );
                 })
                 .catch((err) => {
